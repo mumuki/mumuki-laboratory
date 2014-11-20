@@ -22,6 +22,7 @@ module Mumuki
 
     config.generators.stylesheets = false
     config.generators.javascripts = false
+    config.generators.test_framework = :rspec
 
   end
 end
