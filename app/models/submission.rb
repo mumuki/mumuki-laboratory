@@ -8,6 +8,10 @@ class Submission < ActiveRecord::Base
     TestRunner.perform_async(id)
   end
 
+  def language
+    exercise.language
+  end
+
   def compile
     _compile(exercise.test, content)
   end

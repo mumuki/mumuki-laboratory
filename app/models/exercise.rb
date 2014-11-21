@@ -1,4 +1,5 @@
 class Exercise < ActiveRecord::Base
+  enum language: [:haskell, :prolog]
 
   has_many :submissions
 

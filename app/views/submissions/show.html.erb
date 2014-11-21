@@ -10,4 +10,17 @@
   <%= @submission.exercise.title %>
 </p>
 
+<p>
+  <strong>Status:</strong>
+  <%= @submission.status %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <pre class="<%= @submission.language %>">
+    <%= @submission.result %>
+  </pre>
+</p>
+
+
 <%= link_to 'Back', exercise_submissions_path(@exercise) %>

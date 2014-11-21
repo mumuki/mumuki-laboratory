@@ -3,9 +3,9 @@
 <table>
   <thead>
     <tr>
+      <th>Language</th>
       <th>Title</th>
       <th>Description</th>
-      <th>Test</th>
       <th colspan="5"></th>
     </tr>
   </thead>
@@ -13,9 +13,9 @@
   <tbody>
     <% @exercises.each do |exercise| %>
       <tr>
+        <td><%= exercise.language %></td>
         <td><%= exercise.title %></td>
         <td><%= exercise.description %></td>
-        <td><pre><%= exercise.test %></pre></td>
         <td><%= link_to 'Show', exercise %></td>
         <td><%= link_to 'Edit', edit_exercise_path(exercise) %></td>
         <td><%= link_to 'Submissions', exercise_submissions_path(exercise) %></td>
