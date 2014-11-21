@@ -4,6 +4,8 @@
   <thead>
   <tr>
     <th>Submission Date</th>
+    <th>Status</th>
+    <th>Result</th>
     <th colspan="1"></th>
   </tr>
   </thead>
@@ -12,6 +14,8 @@
   <% @submissions.each do |submission| %>
       <tr>
         <td><%= submission.created_at %></td>
+        <td><%= submission.status %></td>
+        <td><pre><%= submission.result %></pre></td>
         <td><%= link_to 'Show', [@exercise, submission] %></td>
       </tr>
   <% end %>
