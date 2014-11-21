@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @submission.content %>
+</p>
+
+<p>
+  <strong>Exercise:</strong>
+  <%= @submission.exercise.title %>
+</p>
+
+<%= link_to 'Back', exercise_submissions_path(@exercise) %>

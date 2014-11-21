@@ -1,0 +1,23 @@
+<h1>Listing submissions for exercise <%= @exercise.title %></h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Submission Date</th>
+    <th colspan="1"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @submissions.each do |submission| %>
+      <tr>
+        <td><%= submission.created_at %></td>
+        <td><%= link_to 'Show', [@exercise, submission] %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Submission', new_exercise_submission_path([@exercise]) %>
