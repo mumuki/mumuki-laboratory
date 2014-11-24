@@ -5,7 +5,7 @@ class Submission < ActiveRecord::Base
   validates_presence_of :exercise
 
   after_create do
-    TestRunner.perform_async(id)
+    TestRunner.new.async.perform(id)
   end
 
   def language
