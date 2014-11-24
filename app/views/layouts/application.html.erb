@@ -8,11 +8,16 @@
 
   <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-  <script>$(function(){
+  <script>$(function () {
       hljs.initHighlightingOnLoad();
   })</script>
 </head>
 <body>
+
+<% if current_user? %>
+    Currently logged as <%= current_user.name %>
+<% end %>
+
 
 <%= yield %>
 
