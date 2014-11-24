@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.name = auth.info.name
       user.token = auth.credentials.token
-      user.expires_at = Time.at(auth.credentials.expires_at)
+      auth.credentials.expires_at.try do |expiration|
+        user.expires_at = Time.at(expiration)
+      end
       user.save!
     end
   end
