@@ -1,14 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Content:</strong>
-  <%= @submission.content %>
-</p>
-
-<p>
   <strong>Exercise:</strong>
   <%= @submission.exercise.title %>
 </p>
+
+<p>
+  <strong>Content:</strong>
+<pre class="hljs <%= @submission.language %>"><code><%= @submission.content %></code></pre>
+</p>
+
 
 <p>
   <strong>Status:</strong>
@@ -17,9 +18,7 @@
 
 <p>
   <strong>Result:</strong>
-  <pre class="<%= @submission.language %>">
-    <%= @submission.result %>
-  </pre>
+<pre class="hljs <%= @submission.language %>"><code><%= @submission.result %></code></pre>
 </p>
 
 

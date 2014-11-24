@@ -10,12 +10,9 @@
   <%= @exercise.description %>
 </p>
 
-
 <p>
   <strong>Test:</strong>
-  <pre class="<%= @exercise.language %>">
-    <%= @exercise.test %>
-  </pre>
+<pre class="hljs <%= @exercise.language %>"><code><%= @exercise.test %></code></pre>
 </p>
 
 <%= link_to 'Edit', edit_exercise_path(@exercise) %> |
