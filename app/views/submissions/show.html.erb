@@ -7,7 +7,7 @@
 
 <p>
   <strong>Content:</strong>
-<pre class="hljs <%= @submission.language %>"><code><%= @submission.content %></code></pre>
+  <%= highlighted_code @submission.language, @submission.content %>
 </p>
 
 
@@ -18,7 +18,7 @@
 
 <p>
   <strong>Result:</strong>
-<pre class="hljs <%= @submission.language %>"><code><%= @submission.result %></code></pre>
+  <%= highlighted_code @submission.language, @submission.result %>
 </p>
 
 

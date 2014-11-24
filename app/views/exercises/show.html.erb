@@ -12,7 +12,7 @@
 
 <p>
   <strong>Test:</strong>
-<pre class="hljs <%= @exercise.language %>"><code><%= @exercise.test %></code></pre>
+  <%= highlighted_code @exercise.language, @exercise.test %>
 </p>
 
 <%= link_to 'Edit', edit_exercise_path(@exercise) %> |
