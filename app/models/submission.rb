@@ -2,6 +2,8 @@ class Submission < ActiveRecord::Base
   enum status: [:pending, :running, :passed, :failed]
 
   belongs_to :exercise
+  belongs_to :user
+
   validates_presence_of :exercise
 
   after_create do
