@@ -14,12 +14,46 @@
 </head>
 <body>
 
-<% if current_user? %>
-    Currently logged as <%= current_user.name %>
-<% end %>
 
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="<%= root_path %>">Mumuki</a>
+    </div>
 
-<%= yield %>
+    <ul class="nav navbar-nav navbar-left">
+      <% if current_user? %>
+          <li><%= link_to('Sign out', logout_path) %></li>
+      <% else %>
+          <li><%= link_to('Sign in with Github', '/auth/github') %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <% if notice %>
+        <div class="alert alert-success" role="alert">
+          <%= notice %>
+        </div>
+    <% elsif alert %>
+        <div class="alert alert-danger" role="alert">
+          <%= alert %>
+        </div>
+    <% end %>
+  </div>
+
+  <%= yield %>
+  <div class="row">
+    <div class="col-md-12">
+      <footer>
+        <hr>
+        <p>&copy; Copyright 2014 Mumuki</p>
+      </footer>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
