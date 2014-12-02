@@ -31,6 +31,13 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+      provider: 'twitter',
+      uid: '123545',
+      credentials: {},
+      info: { name: 'Test' }
+   })
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
