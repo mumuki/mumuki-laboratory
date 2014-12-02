@@ -11,6 +11,7 @@
  * file per style scope.
 
  *= require highlightjs
+ *= require bootstrap
  *= require_tree .
  *= require_self
  */

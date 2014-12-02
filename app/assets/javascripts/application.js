@@ -11,4 +11,5 @@
 // about supported directives.
 //
 //= require highlightjs
+//= require bootstrap
 //= require_tree .

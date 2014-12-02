@@ -22,6 +22,7 @@ group :test do
 end
 
 gem 'rails-assets-highlightjs'
+gem 'rails-assets-bootstrap'
 
 gem 'omniauth-github'
 
