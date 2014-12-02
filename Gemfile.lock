@@ -29,9 +29,16 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    better_errors (1.1.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     builder (3.2.2)
     celluloid (0.16.0)
       timers (~> 4.0.0)
+    coderay (1.1.0)
+    debug_inspector (0.0.2)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (2.2.2)
@@ -141,6 +148,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   omniauth-github
   pg
   rails (= 4.1.4)
