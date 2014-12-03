@@ -5,7 +5,7 @@ class TestRunner
 
   def perform(submission_id)
     ActiveRecord::Base.connection_pool.with_connection do
-      submission = ::Submission.find((submission_id))
+      submission = ::Submission.find(submission_id)
       submission.update! status: :running
 
       compilation = submission.compile
