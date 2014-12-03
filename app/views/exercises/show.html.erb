@@ -1,19 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @exercise.title %>
-</p>
+<div class="row">
 
-<p>
-  <strong>Description:</strong>
-  <%= @exercise.description %>
-</p>
+  <h2>
+    <%= @exercise.title %>
+  </h2>
 
-<p>
-  <strong>Test:</strong>
-  <%= highlighted_code @exercise.language, @exercise.test %>
-</p>
+  <p>
+    <%= @exercise.description %>
+  </p>
 
-<%= link_to 'Edit', edit_exercise_path(@exercise) %> |
-<%= link_to 'Back', exercises_path %>
+  <p>
+    <strong>Test:</strong>
+    <%= highlighted_code @exercise.language, @exercise.test %>
+  </p>
+
+  <%= link_to 'Edit', edit_exercise_path(@exercise) %> |
+  <%= link_to 'Back', exercises_path %>
+
+
+</div>
