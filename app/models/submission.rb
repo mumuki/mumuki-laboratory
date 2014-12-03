@@ -6,7 +6,9 @@ class Submission < ActiveRecord::Base
 
   validates_presence_of :exercise
 
-  after_create do
+  after_commit :run_tests!, on: :create
+
+  def run_tests!
     TestRunner.new.async.perform(id)
   end
 
