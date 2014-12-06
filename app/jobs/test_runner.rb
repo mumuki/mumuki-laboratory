@@ -13,7 +13,7 @@ class TestRunner
       file.write(compilation)
       file.close
 
-      result = %x{runhaskell #{file.path}}
+      result = %x{runhaskell #{file.path} 2>&1}
       status = $?.success? ? :passed : :failed
 
       file.unlink
