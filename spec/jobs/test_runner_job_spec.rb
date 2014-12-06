@@ -1,20 +1,10 @@
 require 'spec_helper'
 
-describe User do
+describe TestRunnerJob do
 
   describe '#perform' do
-    let(:exercise) {
-      Exercise.create!(
-          title: 'Exercise 1',
-          description: 'Simple exercise',
-          language: :haskell,
-          test: <<-EOT
-          describe "x" $ do
-            it "should be equal 5" $ do
-               x `shouldBe` 5
-      EOT
-      ) }
-    before { TestRunner.new.perform(submission.id) }
+    let(:exercise) { create(:exercise) }
+    before { TestRunnerJob.new.perform(submission.id) }
 
     context 'when submission is ok' do
       let(:submission) { exercise.submissions.create! }

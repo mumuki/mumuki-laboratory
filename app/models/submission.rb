@@ -8,32 +8,11 @@ class Submission < ActiveRecord::Base
 
   after_commit :run_tests!, on: :create
 
+  delegate :language, :plugin, to: :exercise
+
   def run_tests!
-    TestRunner.new.async.perform(id)
+    TestRunnerJob.new.async.perform(id)
   end
-
-  def language
-    exercise.language
-  end
-
-  def compile
-    _compile(exercise.test, content)
-  end
-
-  private
-
-  def _compile(test_src, submission_src)
-    <<EOF
-import Test.Hspec
-import Test.QuickCheck
-
-#{submission_src}
-main :: IO ()
-main = hspec $ do
-  #{test_src}
-EOF
-  end
-
 end
 
 
