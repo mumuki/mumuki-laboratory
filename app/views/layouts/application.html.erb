@@ -23,6 +23,7 @@
 
     <ul class="nav navbar-nav navbar-left">
       <% if current_user? %>
+          <li><a href="#">Currently logged as <%= current_user.name %></a></li>
           <li><%= link_to('Sign out', logout_path) %></li>
       <% else %>
           <li><%= link_to('Sign in with Github', '/auth/github') %></li>
