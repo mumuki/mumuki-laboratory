@@ -8,7 +8,7 @@ class TestRunnerJob
       submission = ::Submission.find(submission_id)
       submission.run_update! do
         plugin = submission.plugin
-        compilation = plugin.compile(submission)
+        compilation = submission.compile_with(plugin)
         file = create_compilation_file(submission, compilation)
         results = plugin.run_test_file!(file)
         file.unlink
@@ -33,17 +33,11 @@ class HaskellPlugin
     [%x{#{run_test_command(file)}}, $?.success? ? :passed : :failed]
   end
 
-  def compile(submission)
-    _compile(submission.exercise.test, submission.content)
-  end
-
   def run_test_command(file)
     "runhaskell #{file.path} 2>&1"
   end
 
-  private
-
-  def _compile(test_src, submission_src)
+  def compile(test_src, submission_src)
     <<EOF
 import Test.Hspec
 import Test.QuickCheck

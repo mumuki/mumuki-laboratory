@@ -25,6 +25,9 @@ class Submission < ActiveRecord::Base
     end
   end
 
+  def compile_with(plugin)
+    plugin.compile(exercise.test, content)
+  end
 end
 
 
