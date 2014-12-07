@@ -20,6 +20,10 @@
     <%= f.text_field :description %>
   </div>
   <div class="field">
+    <%= f.label :language %><br>
+    <%= f.select :language, Exercise::LANGUAGES %>
+  </div>
+  <div class="field">
     <%= f.label :test %><br>
     <%= f.text_area :test %>
   </div>
