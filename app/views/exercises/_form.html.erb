@@ -1,4 +1,4 @@
-<%= form_for(@exercise) do |f| %>
+<%= form_for(@exercise, html: {role: 'form'}) do |f| %>
   <% if @exercise.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@exercise.errors.count, "error") %> prohibited this exercise from being saved:</h2>
@@ -11,23 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_field :description, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :language %><br>
-    <%= f.select :language, Exercise::LANGUAGES %>
+    <%= f.select :language, Exercise::LANGUAGES, {}, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :test %><br>
-    <%= f.text_area :test %>
+    <%= f.text_area :test, class: 'form-control' %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions form-group" >
+    <%= f.submit class: "btn btn-default" %>
   </div>
 <% end %>
