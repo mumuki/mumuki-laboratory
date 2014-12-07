@@ -24,5 +24,7 @@ module Mumuki
     config.generators.javascripts = false
     config.generators.test_framework = :rspec
 
+    config.autoload_paths += %W(#{config.root}/plugins)
+
   end
 end

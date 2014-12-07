@@ -1,5 +1,6 @@
 class Submission < ActiveRecord::Base
   include Compilation
+  include TestRunning
 
   enum status: [:pending, :running, :passed, :failed]
 
@@ -8,13 +9,9 @@ class Submission < ActiveRecord::Base
 
   validates_presence_of :exercise
 
-  after_commit :run_tests!, on: :create
+  after_commit :schedule_test_run!, on: :create
 
   delegate :language, :plugin, to: :exercise
-
-  def run_tests!
-    TestRunnerJob.new.async.perform(id)
-  end
 
   def run_update!
     update! status: :running

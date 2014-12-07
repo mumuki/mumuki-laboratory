@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe TestRunnerJob do
+describe TestRunning do
 
   describe '#perform' do
     let(:exercise) { create(:exercise) }
-    before { TestRunnerJob.new.perform_with(submission) }
+    before { submission.run_tests! }
 
     context 'when submission is ok' do
       let(:submission) { exercise.submissions.create! }
