@@ -60,7 +60,7 @@ class PrologPlugin
   end
 
   def run_command(file)
-    "swipl -f #{file.path}  --quiet -t run_tests"
+    "swipl -f #{file.path} --quiet -t run_tests 2>&1"
   end
 
   private
