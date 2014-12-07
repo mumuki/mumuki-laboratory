@@ -17,7 +17,6 @@ class TestRunnerJob
     end
   end
 
-
   def create_compilation_file(submission, compilation)
     file = Tempfile.new("mumuki.#{submission.language}.compile")
     file.write(compilation)
@@ -26,12 +25,13 @@ class TestRunnerJob
   end
 end
 
-
-class HaskellPlugin
-
+class BasePlugin
   def run_test_file!(file)
     [%x{#{run_test_command(file)}}, $?.success? ? :passed : :failed]
   end
+end
+
+class HaskellPlugin < BasePlugin
 
   def run_test_command(file)
     "runhaskell #{file.path} 2>&1"
@@ -51,29 +51,27 @@ EOF
 
 end
 
-class PrologPlugin
+class PrologPlugin < BasePlugin
 
   def run_test_file!(file)
-    [%x{#{run_test_command(file)}}, $?.success? ? :passed : :failed]
-  end
-
-
-  def compile(submission)
-    _compile(submission.exercise.test, submission.content)
+    result, status = super
+    if /ERROR: #{file.path}:.*: Syntax error: .*/ =~ result
+      [result, :failed]
+    else
+      [result, status]
+    end
   end
 
   def run_test_command(file)
     "swipl -f #{file.path} --quiet -t run_tests 2>&1"
   end
 
-  private
-
-  def _compile(test_src, submission_src)
+  def compile(test_src, submission_src)
     <<EOF
-:- begin_tests(mumki_submission_test, []).
+:- begin_tests(mumuki_submission_test, []).
 #{test_src}
 #{submission_src}
-:- end_tests(mumki_submission_test).
+:- end_tests(mumuki_submission_test).
 EOF
   end
 
