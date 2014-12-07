@@ -10,7 +10,7 @@ class TestRunnerJob
         plugin = submission.plugin
         compilation = plugin.compile(submission)
         file = create_compilation_file(submission, compilation)
-        results = %x{#{plugin.run_command(file)}}, $?.success? ? :passed : :failed
+        results = plugin.run_test_file!(file)
         file.unlink
         results
       end
@@ -29,11 +29,15 @@ end
 
 class HaskellPlugin
 
+  def run_test_file!(file)
+    [%x{#{run_test_command(file)}}, $?.success? ? :passed : :failed]
+  end
+
   def compile(submission)
     _compile(submission.exercise.test, submission.content)
   end
 
-  def run_command(file)
+  def run_test_command(file)
     "runhaskell #{file.path} 2>&1"
   end
 
@@ -55,11 +59,16 @@ end
 
 class PrologPlugin
 
+  def run_test_file!(file)
+    [%x{#{run_test_command(file)}}, $?.success? ? :passed : :failed]
+  end
+
+
   def compile(submission)
     _compile(submission.exercise.test, submission.content)
   end
 
-  def run_command(file)
+  def run_test_command(file)
     "swipl -f #{file.path} --quiet -t run_tests 2>&1"
   end
 
