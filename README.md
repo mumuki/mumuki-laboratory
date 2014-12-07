@@ -1,0 +1,1 @@
+![Build Status](https://travis-ci.org/flbulgarelli/mumuki.svg?branch=master)
