@@ -6,17 +6,17 @@ class TestRunnerJob
   def perform(submission_id)
     ActiveRecord::Base.connection_pool.with_connection do
       submission = ::Submission.find(submission_id)
-      submission.update! status: :running
-
-      plugin = submission.plugin
-      compilation = plugin.compile(submission)
-      file = create_compilation_file(submission, compilation)
-      result = %x{#{plugin.run_command(file)}}
-      status = $?.success? ? :passed : :failed
-      file.unlink
-      submission.update! result: result, status: status
+      submission.run_update! do
+        plugin = submission.plugin
+        compilation = plugin.compile(submission)
+        file = create_compilation_file(submission, compilation)
+        results = %x{#{plugin.run_command(file)}}, $?.success? ? :passed : :failed
+        file.unlink
+        results
+      end
     end
   end
+
 
   def create_compilation_file(submission, compilation)
     file = Tempfile.new("mumuki.#{submission.language}.compile")
