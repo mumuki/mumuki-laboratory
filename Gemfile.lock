@@ -164,6 +164,7 @@ DEPENDENCIES
   rails (= 4.1.4)
   rails-assets-bootstrap
   rails-assets-highlightjs
+  rake
   rspec-rails
   sass-rails
   sucker_punch (~> 1.0)

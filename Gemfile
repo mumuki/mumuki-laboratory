@@ -20,6 +20,7 @@ gem 'sucker_punch', '~> 1.0'
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'rake'
 end
 
 gem 'rails-assets-highlightjs'
