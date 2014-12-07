@@ -3,25 +3,21 @@ require 'tempfile'
 class TestRunnerJob
   include SuckerPunch::Job
 
-  def perform(submission_id)
-    ActiveRecord::Base.connection_pool.with_connection do
-      submission = ::Submission.find(submission_id)
-      submission.run_update! do
-        plugin = submission.plugin
-        compilation = submission.compile_with(plugin)
-        file = create_compilation_file(submission, compilation)
-        results = plugin.run_test_file!(file)
-        file.unlink
-        results
-      end
+  def perform_with(submission)
+    submission.run_update! do
+      plugin = submission.plugin
+      compilation = submission.compile_with(plugin)
+      file = submission.create_compilation_file!(compilation)
+      results = plugin.run_test_file!(file)
+      file.unlink
+      results
     end
   end
 
-  def create_compilation_file(submission, compilation)
-    file = Tempfile.new("mumuki.#{submission.language}.compile")
-    file.write(compilation)
-    file.close
-    file
+  def perform(submission_id)
+    ActiveRecord::Base.connection_pool.with_connection do
+      perform_with(::Submission.find(submission_id))
+    end
   end
 end
 

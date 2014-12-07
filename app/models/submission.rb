@@ -1,4 +1,6 @@
 class Submission < ActiveRecord::Base
+  include Compilation
+
   enum status: [:pending, :running, :passed, :failed]
 
   belongs_to :exercise
@@ -23,10 +25,6 @@ class Submission < ActiveRecord::Base
       update! result: e.message, status: :failed
       raise e
     end
-  end
-
-  def compile_with(plugin)
-    plugin.compile(exercise.test, content)
   end
 end
 
