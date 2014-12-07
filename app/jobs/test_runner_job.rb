@@ -54,7 +54,10 @@ end
 class PrologPlugin < BasePlugin
 
   def run_test_file!(file)
-    result, status = super
+    validate_compile_errors(file, *super)
+  end
+
+  def validate_compile_errors(file, result, status)
     if /ERROR: #{file.path}:.*: Syntax error: .*/ =~ result
       [result, :failed]
     else
