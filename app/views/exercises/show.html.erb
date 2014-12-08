@@ -15,8 +15,12 @@
       </p>
   <% end %>
 
-  <%= link_to 'Edit', edit_exercise_path(@exercise) %> |
-  <%= link_to 'Back', exercises_path %>
+  <%= link_to 'My Submissions', exercise_submissions_path(@exercise) %> |
+  <%= link_to 'New submission', new_exercise_submission_path(@exercise) %> |
+  <% restricted_to_current_user @exercise do %>
+      <%= link_to 'Edit', edit_exercise_path(@exercise) %> |
+  <% end %>
+  <%= link_to 'All exercises', exercises_path %>
 
 
 </div>
