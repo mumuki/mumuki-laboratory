@@ -8,10 +8,12 @@
     <%= @exercise.description %>
   </p>
 
-  <p>
-    <strong>Test:</strong>
-    <%= highlighted_code @exercise.language, @exercise.test %>
-  </p>
+  <% restricted_to_current_user @exercise  do %>
+      <p>
+        <strong>Test:</strong>
+        <%= highlighted_code @exercise.language, @exercise.test %>
+      </p>
+  <% end %>
 
   <%= link_to 'Edit', edit_exercise_path(@exercise) %> |
   <%= link_to 'Back', exercises_path %>

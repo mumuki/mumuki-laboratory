@@ -15,4 +15,8 @@ module ApplicationHelper
         'https://www.haskell.org/wikistatic/haskellwiki_logo.png'
     end
   end
+
+  def restricted_to_current_user(exercise)
+    yield if exercise.authored_by? current_user
+  end
 end

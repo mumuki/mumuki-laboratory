@@ -14,6 +14,11 @@ class Exercise < ActiveRecord::Base
     Kernel.const_get("#{language.to_s.titleize}Plugin".to_sym).new
   end
 
+  def authored_by?(user)
+    #FIXME remove nil check
+    author != nil && user == author
+  end
+
   private
 
   def defaults

@@ -7,7 +7,7 @@
       <th>Language</th>
       <th>Title</th>
       <th>Description</th>
-      <th colspan="5"></th>
+      <th colspan="5">Actions</th>
     </tr>
     </thead>
 
@@ -18,10 +18,12 @@
           <td><%= exercise.title %></td>
           <td><%= exercise.description %></td>
           <td><%= link_to 'Show', exercise %></td>
-          <td><%= link_to 'Edit', edit_exercise_path(exercise) %></td>
-          <td><%= link_to 'Submissions', exercise_submissions_path(exercise) %></td>
+          <td><%= link_to 'My Submissions', exercise_submissions_path(exercise) %></td>
           <td><%= link_to 'New submission', new_exercise_submission_path(exercise) %></td>
-          <td><%= link_to 'Destroy', exercise, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          <% restricted_to_current_user exercise do %>
+              <td><%= link_to 'Edit', edit_exercise_path(exercise) %></td>
+              <td><%= link_to 'Destroy', exercise, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          <% end %>
         </tr>
     <% end %>
     </tbody>
