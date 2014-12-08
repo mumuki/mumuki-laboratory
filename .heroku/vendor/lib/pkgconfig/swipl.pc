@@ -1,0 +1,19 @@
+prefix=/app/.heroku/vendor
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+PLBASE=${exec_prefix}/lib/swipl-6.6.6
+PLARCH=x86_64-linux
+INSTALL_PLARCH=x86_64-linux
+PLLIBS=
+PLLIB=-lswipl
+PLCFLAGS=-fno-strict-aliasing -pthread -fPIC   
+PLLDFLAGS=-rdynamic -O2 -pthread -Wl,-rpath=${exec_prefix}/lib/swipl-6.6.6/lib/x86_64-linux
+PLSOEXT=so
+
+Name: swipl
+Description: ISO/Edinburgh-style Prolog compiler
+Version: 6.6.6
+Libs: ${PLLDFLAGS}  -L${exec_prefix}/lib/swipl-6.6.6/lib/x86_64-linux -lswipl
+Cflags: ${PLCFLAGS} -I${exec_prefix}/lib/swipl-6.6.6/include
