@@ -2,6 +2,7 @@ class Exercise < ActiveRecord::Base
   LANGUAGES = [:haskell, :prolog]
 
   enum language: LANGUAGES
+  belongs_to :author, class_name: 'User'
 
   has_many :submissions
 

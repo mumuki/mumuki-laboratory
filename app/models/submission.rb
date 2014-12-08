@@ -5,7 +5,7 @@ class Submission < ActiveRecord::Base
   enum status: [:pending, :running, :passed, :failed]
 
   belongs_to :exercise
-  belongs_to :user
+  belongs_to :submitter, class_name: 'User'
 
   validates_presence_of :exercise
 
