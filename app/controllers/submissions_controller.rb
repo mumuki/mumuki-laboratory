@@ -14,7 +14,7 @@ class SubmissionsController < ApplicationController
   end
 
   def create
-    @submission = Submission.new(submission_params)
+    @submission = current_user.submissions.build(submission_params)
 
     if @submission.save
       redirect_to [@exercise, @submission], notice: 'Submission was successfully created.'

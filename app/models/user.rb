@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :submissions
-  has_many :exercises
+  has_many :submissions, foreign_key: :submitter_id
+  has_many :exercises, foreign_key: :author_id
 
   def self.omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|

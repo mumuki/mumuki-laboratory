@@ -1,10 +1,8 @@
 require 'spec_helper'
 
 describe Submission do
-  let(:exercise) { create(:exercise) }
-
   describe '#run_update!' do
-    let(:submission) { exercise.submissions.create! }
+    let(:submission) { create(:submission) }
     context 'when run passes' do
       before { submission.run_update! { ['ok', :passed] } }
       it { expect(submission.status).to eq('passed') }
@@ -28,10 +26,13 @@ describe Submission do
   end
 
   describe '#update_submissions_count!' do
+    let(:exercise) { create(:exercise) }
+    let(:user) { create(:user) }
+
     before do
-      Submission.create!(exercise: exercise)
-      Submission.create!(exercise: exercise)
-      Submission.create!(exercise: exercise)
+      exercise.submissions.create!(submitter: user)
+      exercise.submissions.create!(submitter: user)
+      exercise.submissions.create!(submitter: user)
     end
 
     it { expect(exercise.reload.submissions_count).to eq(3) }

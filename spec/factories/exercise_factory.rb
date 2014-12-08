@@ -1,9 +1,11 @@
 FactoryGirl.define do
+
   factory :exercise do
     title 'Exercise 1'
     description 'Simple exercise'
     language :haskell
     test 'dont care'
+    author { create(:user) }
   end
 
   factory :x_equal_5_exercise, parent: :exercise do
