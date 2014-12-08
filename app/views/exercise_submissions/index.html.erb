@@ -1,9 +1,8 @@
-<h1>Listing all submissions</h1>
+<h1>Listing submissions for exercise <%= @exercise.title %></h1>
 
 <table class="table">
   <thead>
   <tr>
-    <th>Exercise</th>
     <th>Submission Date</th>
     <th>Status</th>
     <th colspan="1"></th>
@@ -13,13 +12,14 @@
   <tbody>
   <% @submissions.each do |submission| %>
       <tr>
-        <td><%= link_to submission.exercise.title, exercise_path(submission.exercise) %></td>
         <td><%= submission.created_at %></td>
         <td><%= submission.status %></td>
-        <td><%= link_to 'Show', [submission.exercise, submission] %></td>
+        <td><%= link_to 'Show', [@exercise, submission] %></td>
       </tr>
   <% end %>
   </tbody>
 </table>
 
 <br>
+
+<%= link_to 'New Submission', new_exercise_submission_path([@exercise]) %>
