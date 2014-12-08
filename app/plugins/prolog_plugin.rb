@@ -13,7 +13,7 @@ class PrologPlugin < BasePlugin
   end
 
   def run_test_command(file)
-    "swipl -f #{file.path} --quiet -t run_tests 2>&1"
+    "#{swipl_path} -f #{file.path} --quiet -t run_tests 2>&1"
   end
 
   def compile(test_src, submission_src)
@@ -23,6 +23,11 @@ class PrologPlugin < BasePlugin
 #{submission_src}
 :- end_tests(mumuki_submission_test).
 EOF
+  end
+
+  private
+  def swipl_path
+    Rails.application.config.swipl_path
   end
 
 end
