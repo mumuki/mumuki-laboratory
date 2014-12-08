@@ -1,35 +1,11 @@
 <div class="row">
   <div class="col-md-6">
     <h2>Latest Exercises</h2>
-    <% @latest_exercises.each do |exercise| %>
-        <div class="row">
-          <div class="col-md-3">
-            <%= time_ago_in_words(exercise.created_at) %>
-          </div>
-          <div class="col-md-1">
-            <%= exercise.language %>
-          </div>
-          <div class="col-md-2">
-            <a href="<%= exercise_path(exercise) %>"><%= exercise.title %></a>
-          </div>
-        </div>
-    <% end %>
+    <%= render partial: 'exercise', collection: @latest_exercises %>
   </div>
   <div class="col-md-6">
     <h2>Hottest Exercises</h2>
-    <% @hottest_exercises.each do |exercise| %>
-        <div class="row">
-          <div class="col-md-2">
-            <%= exercise.submissions_count %>
-          </div>
-          <div class="col-md-1">
-            <%= exercise.language %>
-          </div>
-          <div class="col-md-3">
-            <a href="<%= exercise_path(exercise) %>"><%= exercise.title %></a>
-          </div>
-        </div>
-    <% end %>
+        <%= render partial: 'exercise', collection: @hottest_exercises %>
   </div>
 </div>
 
@@ -43,42 +19,26 @@
 <div class="row">
   <div class="col-md-6">
     <h3>My Exercises</h3>
-
-    <% @my_exercises.each do |exercise| %>
-        <div class="row">
-          <div class="col-md-3">
-            <%= time_ago_in_words(exercise.created_at) %>
-          </div>
-          <div class="col-md-1">
-            <%= exercise.language %>
-          </div>
-          <div class="col-md-2">
-            <a href="<%= exercise_path(exercise) %>"><%= exercise.title %></a>
-          </div>
-        </div>
-    <% end %>
-
+    <%= render partial: 'exercise', collection: @my_exercises %>
     <a href="#">More</a>
   </div>
 
   <div class="col-md-6">
     <h3>My Submissions</h3>
 
-
     <% @my_submissions.each do |submission| %>
         <div class="row">
-          <div class="col-md-3">
-            <%=  time_ago_in_words(submission.created_at) %>
-          </div>
           <div class="col-md-1">
             <%= submission.language %>
           </div>
           <div class="col-md-1">
             <%= submission.status %>
           </div>
+          <div class="col-md-10">
+            <%= link_to(time_ago_in_words(submission.created_at), [submission.exercise, submission])  %>
+          </div>
         </div>
     <% end %>
-
 
     <a href="#">More</a>
   </div>

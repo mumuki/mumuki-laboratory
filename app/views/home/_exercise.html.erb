@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-1">
+    <%= exercise.language %>
+  </div>
+  <div class="col-md-1">
+    <%= exercise.submissions_count %>
+  </div>
+  <div class="col-md-7">
+    <a href="<%= exercise_path(exercise) %>"><%= exercise.title %></a>
+  </div>
+  <div class="col-md-3">
+    <%= time_ago_in_words(exercise.created_at) %>
+  </div>
+</div>
