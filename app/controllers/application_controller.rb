@@ -15,4 +15,9 @@ class ApplicationController < ActionController::Base
   def current_user
     User.find(current_user_id) if current_user?
   end
+
+  def authenticate!
+    redirect_to :back, alert: "You must #{view_context.link_to('Sign in with Github', '/auth/github')} before continue" unless current_user?
+  end
+
 end

@@ -1,5 +1,6 @@
 class ExercisesController < ApplicationController
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate!, except: [:show, :index]
 
   def index
     @exercises = Exercise.all

@@ -40,11 +40,11 @@
   <div class="row">
     <% if notice %>
         <div class="alert alert-success" role="alert">
-          <%= notice %>
+          <%= notice.html_safe %>
         </div>
     <% elsif alert %>
         <div class="alert alert-danger" role="alert">
-          <%= alert %>
+          <%= alert.html_safe %>
         </div>
     <% end %>
   </div>

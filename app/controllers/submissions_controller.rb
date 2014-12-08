@@ -1,6 +1,7 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show]
   before_action :set_exercise, only: [:create, :new, :show, :index]
+  before_filter :authenticate!
 
   def index
     @submissions = @exercise.submissions
