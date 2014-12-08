@@ -1,11 +1,12 @@
 require 'spec_helper'
 
-TRUE_TEST = <<EOT
+describe PrologPlugin do
+  true_test = <<EOT
 test(the_truth) :-
   assertion(true == true).
 EOT
 
-COMPILED_TRUE_TEST_SUBMISSION = <<EOT
+  compiled_test_submission = <<EOT
 :- begin_tests(mumuki_submission_test, []).
 test(the_truth) :-
   assertion(true == true).
@@ -14,7 +15,6 @@ test(the_truth) :-
 :- end_tests(mumuki_submission_test).
 EOT
 
-describe PrologPlugin do
   let(:plugin) { PrologPlugin.new }
   let(:file) { OpenStruct.new(path: '/tmp/foo.pl') }
 
@@ -24,10 +24,10 @@ describe PrologPlugin do
   end
 
   describe '#compile' do
-    let(:exercise) { create :exercise, language: :prolog, test: TRUE_TEST }
+    let(:exercise) { create :exercise, language: :prolog, test: true_test }
     let(:submission) { exercise.submissions.create content: '' }
 
-    it { expect(submission.compile_with(plugin)).to eq(COMPILED_TRUE_TEST_SUBMISSION) }
+    it { expect(submission.compile_with(plugin)).to eq(compiled_test_submission) }
   end
 
   describe '#validate_compile_errors' do
