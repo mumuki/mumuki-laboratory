@@ -16,6 +16,7 @@ gem 'sass-rails'
 #gem 'spring',        group: :development
 
 gem 'sucker_punch', '~> 1.0'
+gem "unicorn-rails"
 
 group :test do
   gem 'rspec-rails'
