@@ -12,7 +12,7 @@ class Submission < ActiveRecord::Base
   after_create :update_submissions_count!
   after_commit :schedule_test_run!, on: :create
 
-  delegate :language, :plugin, to: :exercise
+  delegate :language, :plugin, :title, to: :exercise
 
   def run_update!
     update! status: :running

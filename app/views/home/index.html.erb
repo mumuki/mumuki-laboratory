@@ -16,26 +16,27 @@
 </div>
 
 <% if current_user? %>
+<hr>
 <div class="row">
   <div class="col-md-6">
-    <h3>My Exercises</h3>
+    <h2>My Exercises</h2>
     <%= render partial: 'exercise', collection: @my_exercises %>
     <%= link_to 'More', exercises_path %>
   </div>
 
   <div class="col-md-6">
-    <h3>My Submissions</h3>
+    <h2>My Submissions</h2>
 
     <% @my_submissions.each do |submission| %>
         <div class="row">
           <div class="col-md-1">
-            <%= language_image_tag(submission.language) %>
+            <%= language_image_tag submission.language %>
           </div>
-          <div class="col-md-1">
-            <%= submission.status %>
+          <div class="col-md-8">
+            <%= status_span submission.status %> <%= link_to(submission.title, [submission.exercise, submission])   %>
           </div>
-          <div class="col-md-10">
-            <%= link_to(time_ago_in_words(submission.created_at), [submission.exercise, submission])  %>
+          <div class="col-md-3">
+            <%= time_ago_in_words(submission.created_at) %>
           </div>
         </div>
     <% end %>

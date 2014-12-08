@@ -16,7 +16,21 @@ module ApplicationHelper
     end
   end
 
+  def status_span(status)
+    "<span class=\"glyphicon glyphicon-#{glyphicon_for_status(status)}\"></span>".html_safe
+  end
+
   def restricted_to_current_user(exercise)
     yield if exercise.authored_by? current_user
+  end
+
+  private
+
+  def glyphicon_for_status(status)
+    case status
+      when 'passed' then 'ok'
+      when 'failed' then 'remove'
+      when 'pending' then 'time'
+    end
   end
 end
