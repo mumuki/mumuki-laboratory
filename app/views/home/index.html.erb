@@ -29,7 +29,7 @@
     <% @my_submissions.each do |submission| %>
         <div class="row">
           <div class="col-md-1">
-            <%= submission.language %>
+            <%= language_image_tag(submission.language) %>
           </div>
           <div class="col-md-1">
             <%= submission.status %>
