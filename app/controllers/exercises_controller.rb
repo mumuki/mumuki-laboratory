@@ -3,7 +3,12 @@ class ExercisesController < ApplicationController
   before_filter :authenticate!, except: [:show, :index]
 
   def index
-    @exercises = Exercise.all
+    if params[:all] == 'true'
+      @exercises = Exercise.all
+    else
+      authenticate!
+      @exercises = current_user.exercises
+    end
   end
 
   def show
