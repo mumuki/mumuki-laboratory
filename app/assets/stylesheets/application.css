@@ -31,3 +31,11 @@ body {
 .page-header {
     margin-top: 20px;
 }
+
+.gh-ribbon {
+    z-index: 1040;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+}
