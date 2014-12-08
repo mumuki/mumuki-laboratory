@@ -9,6 +9,7 @@ class Submission < ActiveRecord::Base
 
   validates_presence_of :exercise
 
+  after_create :update_submissions_count!
   after_commit :schedule_test_run!, on: :create
 
   delegate :language, :plugin, to: :exercise
@@ -22,6 +23,13 @@ class Submission < ActiveRecord::Base
       update! result: e.message, status: :failed
       raise e
     end
+  end
+
+  private
+
+  def update_submissions_count!
+    self.class.connection.execute("update exercises set submissions_count = submissions_count + 1 where id = #{exercise.id}")
+    exercise.reload
   end
 end
 
