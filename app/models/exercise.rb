@@ -19,6 +19,11 @@ class Exercise < ActiveRecord::Base
     author != nil && user == author
   end
 
+  def description_html
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true)
+    markdown.render(description).html_safe
+  end
+
   private
 
   def defaults
