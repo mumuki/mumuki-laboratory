@@ -108,6 +108,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.3.2)
+    redcarpet (3.2.1)
     ref (1.0.5)
     rspec-core (2.13.1)
     rspec-expectations (2.13.0)
@@ -174,6 +175,7 @@ DEPENDENCIES
   rails-assets-bootstrap
   rails-assets-highlightjs
   rake
+  redcarpet
   rspec-rails
   sass-rails
   sucker_punch (~> 1.0)
