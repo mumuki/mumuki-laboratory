@@ -1,4 +1,5 @@
 class Exercise < ActiveRecord::Base
+  include WithMarkup
   LANGUAGES = [:haskell, :prolog]
 
   enum language: LANGUAGES
@@ -20,8 +21,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def description_html
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true)
-    markdown.render(description).html_safe
+    with_markup description
   end
 
   private
