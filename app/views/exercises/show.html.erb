@@ -1,18 +1,23 @@
 <div class="row">
 
-  <h2>
-    <%= @exercise.title %>
-  </h2>
+  <h1>
+    <%= @exercise.title %> <small> - <%= @exercise.language %></small>
+  </h1>
 
-  <p>
-    <%= @exercise.description %>
-  </p>
+  <section>
+    <h2>Description &amp; Instructions</h2>
+    <p>
+      <%= @exercise.description %>
+    </p>
+  </section>
 
-  <% restricted_to_current_user @exercise  do %>
-      <p>
-        <strong>Test:</strong>
+  <% restricted_to_current_user @exercise do %>
+      <section>
+        <h2>Tests</h2>
+        <p>
         <%= highlighted_code @exercise.language, @exercise.test %>
-      </p>
+        </p>
+      </section>
   <% end %>
 
   <%= link_to 'My Submissions', exercise_submissions_path(@exercise) %> |
