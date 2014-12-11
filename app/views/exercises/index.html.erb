@@ -6,7 +6,6 @@
     <tr>
       <th>Language</th>
       <th>Title</th>
-      <th>Description</th>
       <th colspan="5">Actions</th>
     </tr>
     </thead>
@@ -14,9 +13,8 @@
     <tbody>
     <% @exercises.each do |exercise| %>
         <tr>
-          <td><%= exercise.language %></td>
+          <td><%= language_image_tag exercise.language %> <%= exercise.language %> </td>
           <td><%= exercise.title %></td>
-          <td><%= exercise.description %></td>
           <td><%= link_to 'Show', exercise %></td>
           <td><%= link_to 'My Submissions', exercise_submissions_path(exercise) %></td>
           <td><%= link_to 'New submission', new_exercise_submission_path(exercise) %></td>
