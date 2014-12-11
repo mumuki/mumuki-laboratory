@@ -1,4 +1,5 @@
 class Exercise < ActiveRecord::Base
+  include WithMarkup
   LANGUAGES = [:haskell, :prolog]
 
   enum language: LANGUAGES
@@ -17,6 +18,10 @@ class Exercise < ActiveRecord::Base
   def authored_by?(user)
     #FIXME remove nil check
     author != nil && user == author
+  end
+
+  def description_html
+    with_markup description
   end
 
   private
