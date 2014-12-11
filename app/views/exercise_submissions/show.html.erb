@@ -1,20 +1,23 @@
-<p>
-  <strong>Exercise:</strong>
-  <%= @submission.exercise.title %>
-</p>
+<h1>Submission for exercise <%= link_to @submission.exercise.title, @submission.exercise %>
+  <small> - <%= @submission.language %></small>
+</h1>
 
-<p>
-  <strong>Content:</strong>
+<section>
+  <h2>Content</h2>
   <%= highlighted_code @submission.language, @submission.content %>
-</p>
+</section>
 
+<secion>
+  <h2>Results</h2>
 
-<p>
-  <strong>Status:</strong>
-  <%= @submission.status %>
-</p>
+  <p>
+    <strong>Status:</strong>
+    <%= status_span @submission.status %> <%= @submission.status %>
+  </p>
 
-<p>
-  <strong>Result:</strong>
-  <%= highlighted_code @submission.language, @submission.result %>
-</p>
+  <p>
+    <strong>Output:</strong>
+    <%= highlighted_code @submission.language, @submission.result %>
+  </p>
+
+</secion>
