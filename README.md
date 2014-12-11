@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.org/flbulgarelli/mumuki.svg)](https://travis-ci.org/flbulgarelli/mumuki)
+[![Build Status](https://travis-ci.org/uqbar-project/mumuki.svg?branch=master)](https://travis-ci.org/uqbar-project/mumuki)
