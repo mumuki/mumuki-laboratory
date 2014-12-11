@@ -1,23 +1,28 @@
-<h1>Submission for exercise <%= link_to @submission.exercise.title, @submission.exercise %>
-  <small> - <%= @submission.language %></small>
-</h1>
+<div class="row">
+  <h1>Submission for exercise <%= link_to @submission.exercise.title, @submission.exercise %>
+    <small> - <%= @submission.language %></small>
+  </h1>
 
-<section>
-  <h2>Content</h2>
-  <%= highlighted_code @submission.language, @submission.content %>
-</section>
+  <section>
+    <h2>Content</h2>
+    <%= highlighted_code @submission.language, @submission.content %>
+  </section>
 
-<secion>
-  <h2>Results</h2>
+  <section>
+    <h2>Results</h2>
 
-  <p>
-    <strong>Status:</strong>
-    <%= status_span @submission.status %> <%= @submission.status %>
-  </p>
+    <p>
+      <strong>Status:</strong>
+      <%= status_span @submission.status %> <%= @submission.status %>
+    </p>
 
-  <p>
-    <strong>Output:</strong>
-    <%= highlighted_code @submission.language, @submission.result %>
-  </p>
+    <p>
+      <strong>Output:</strong>
+      <%= highlighted_code @submission.language, @submission.result %>
+    </p>
 
-</secion>
+  </section>
+</div>
+<div class="row">
+  <%= link_to 'New submission', new_exercise_submission_path(@submission.exercise) %>
+</div>
