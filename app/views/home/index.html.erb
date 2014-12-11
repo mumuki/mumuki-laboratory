@@ -1,46 +1,66 @@
 <div class="row">
   <div class="col-md-6">
-    <h2>Latest Exercises</h2>
-    <%= render partial: 'exercise', collection: @latest_exercises %>
+    <div class="panel panel-default">
+      <div class="panel-heading">Latest Exercises</div>
+      <div class="panel-body">
+        <table class="table">
+          <%= render partial: 'exercise', collection: @latest_exercises %>
+        </table>
+        <%= link_to 'More', exercises_path(all: true) %>
+      </div>
+    </div>
   </div>
   <div class="col-md-6">
-    <h2>Hottest Exercises</h2>
-        <%= render partial: 'exercise', collection: @hottest_exercises %>
+    <div class="panel panel-default">
+      <div class="panel-heading">Hottest Exercises</div>
+      <div class="panel-body">
+        <table class="table">
+          <%= render partial: 'exercise', collection: @hottest_exercises %>
+        </table>
+        <%= link_to 'More', exercises_path(all: true) %>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <%= link_to 'More', exercises_path(all: true) %>
-  </div>
-</div>
 
 <% if current_user? %>
-<hr>
-<div class="row">
-  <div class="col-md-6">
-    <h2>My Exercises</h2>
-    <%= render partial: 'exercise', collection: @my_exercises %>
-    <%= link_to 'More', exercises_path %>
-  </div>
 
-  <div class="col-md-6">
-    <h2>My Submissions</h2>
-
-    <% @my_submissions.each do |submission| %>
-        <div class="row">
-          <div class="col-md-1">
-            <%= language_image_tag submission.language %>
-          </div>
-          <div class="col-md-8">
-            <%= status_span submission.status %> <%= link_to(submission.title, [submission.exercise, submission])   %>
-          </div>
-          <div class="col-md-3">
-            <%= time_ago_in_words(submission.created_at) %>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">My Exercises</div>
+          <div class="panel-body">
+            <table class="table">
+              <%= render partial: 'exercise', collection: @my_exercises %>
+            </table>
+            <%= link_to 'More', exercises_path %>
           </div>
         </div>
-    <% end %>
-    <%= link_to 'More', submissions_path %>
-  </div>
-</div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">My Submissions</div>
+          <div class="panel-body">
+            <table class="table">
+              <% @my_submissions.each do |submission| %>
+                  <tr>
+                    <td>
+                      <%= language_image_tag submission.language %>
+                    </td>
+                    <td >
+                      <%= status_span submission.status %> <%= link_to(submission.title, [submission.exercise, submission]) %>
+                    </td>
+                    <td>
+                      <%= time_ago_in_words(submission.created_at) %>
+                    </td>
+                  </tr>
+              <% end %>
+            </table>
+            <%= link_to 'More', submissions_path %>
+          </div>
+        </div>
+      </div>
+    </div>
 <% end %>
