@@ -6,23 +6,13 @@ gem 'rails', '4.1.4'
 
 gem 'pg'
 
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+
 gem 'therubyracer', platforms: :ruby
 
 gem 'sass-rails'
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-#gem 'spring',        group: :development
 
 gem 'sucker_punch', '~> 1.0'
-gem "unicorn-rails"
-
-group :test do
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-  gem 'rake'
-end
 
 gem 'rails-assets-highlightjs'
 gem 'rails-assets-bootstrap'
@@ -30,6 +20,15 @@ gem 'rails-assets-bootstrap'
 gem 'omniauth-github'
 
 gem 'redcarpet'
+
+gem "unicorn-rails"
+
+
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'rake'
+end
 
 group :development do
   gem 'better_errors'
