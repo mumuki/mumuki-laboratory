@@ -20,6 +20,10 @@
     <%= f.select :language, Exercise::LANGUAGES, {}, class: 'form-control' %>
   </div>
   <div class="field form-group">
+    <%= f.label :tag_list %><br>
+    <%= f.text_field :tag_list, class: 'form-control' %>
+  </div>
+  <div class="field form-group">
     <%= f.label :description %><br>
     <small>You can use <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> here</small>
     <%= f.text_area :description, class: 'form-control', rows: 8 %>

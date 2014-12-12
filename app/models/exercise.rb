@@ -7,6 +7,8 @@ class Exercise < ActiveRecord::Base
 
   has_many :submissions
 
+  acts_as_taggable
+
   validates_presence_of :title, :description, :language, :test,
                         :submissions_count, :author
   after_initialize :defaults, if: :new_record?
