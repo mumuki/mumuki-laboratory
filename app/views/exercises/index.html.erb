@@ -6,6 +6,7 @@
     <tr>
       <th>Language</th>
       <th>Title</th>
+      <th>Tags</th>
       <th colspan="5">Actions</th>
     </tr>
     </thead>
@@ -15,6 +16,7 @@
         <tr>
           <td><%= language_image_tag exercise.language %> <%= exercise.language %> </td>
           <td><%= exercise.title %></td>
+          <td><%= exercise.tag_list %></td>
           <td><%= link_to 'Show', exercise %></td>
           <td><%= link_to 'My Submissions', exercise_submissions_path(exercise) %></td>
           <td><%= link_to 'New submission', new_exercise_submission_path(exercise) %></td>

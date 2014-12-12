@@ -5,6 +5,8 @@ class ExercisesController < ApplicationController
   def index
     if params[:all] == 'true'
       @exercises = Exercise.all
+    elsif params[:tag] != nil
+      @exercises = Exercise.tagged_with params[:tag]
     else
       authenticate!
       @exercises = current_user.exercises
