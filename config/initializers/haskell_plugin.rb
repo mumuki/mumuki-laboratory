@@ -1,0 +1,1 @@
+HaskellPlugin.send :include, Rails.application.config.haskell_plugin_type

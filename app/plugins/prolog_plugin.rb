@@ -1,4 +1,5 @@
-class PrologPlugin < BasePlugin
+class PrologPlugin
+  include CommandLinePlugin
 
   def run_test_file!(file)
     validate_compile_errors(file, *super)

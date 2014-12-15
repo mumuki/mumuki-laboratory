@@ -1,8 +1,4 @@
-class HaskellPlugin < BasePlugin
-
-  def run_test_command(file)
-    "runhaskell #{file.path} 2>&1"
-  end
+class HaskellPlugin
 
   def compile(test_src, submission_src)
     <<EOF

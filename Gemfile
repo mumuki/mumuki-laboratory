@@ -17,6 +17,8 @@ gem 'sucker_punch', '~> 1.0'
 gem 'rails-assets-highlightjs'
 gem 'rails-assets-bootstrap'
 
+gem 'rest-client'
+
 gem 'omniauth-github'
 
 gem 'redcarpet'
