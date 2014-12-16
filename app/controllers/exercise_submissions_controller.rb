@@ -4,7 +4,7 @@ class ExerciseSubmissionsController < ApplicationController
   before_filter :authenticate!
 
   def index
-    @submissions = @exercise.submissions
+    @submissions = paginated @exercise.submissions
   end
 
   def show

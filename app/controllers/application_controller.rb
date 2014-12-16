@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user, :current_user?, :current_user_id, :login_path
 
+  def paginated(relation)
+    relation.page params[:page]
+  end
+
 end

@@ -57,6 +57,9 @@ GEM
     i18n (0.6.11)
     json (1.8.1)
     jwt (1.0.0)
+    kaminari (0.16.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     kgio (2.9.2)
     libv8 (3.11.8.17)
     mail (2.5.4)
@@ -176,6 +179,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   factory_girl_rails
+  kaminari
   omniauth-github
   pg
   rails (= 4.1.4)

@@ -10,7 +10,7 @@ class ExercisesController < ApplicationController
       Exercise.all
     end
 
-    @exercises = base.by_tag params[:tag]
+    @exercises = paginated base.by_tag params[:tag]
   end
 
   def show

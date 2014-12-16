@@ -1,6 +1,6 @@
 class SubmissionsController < ApplicationController
   before_filter :authenticate!
   def index
-    @submissions = current_user.submissions
+    @submissions = paginated current_user.submissions
   end
 end

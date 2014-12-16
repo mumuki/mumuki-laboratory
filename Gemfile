@@ -27,6 +27,8 @@ gem "unicorn-rails"
 
 gem 'acts-as-taggable-on', '~> 3.4'
 
+gem 'kaminari'
+
 group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
