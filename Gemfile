@@ -28,6 +28,7 @@ gem "unicorn-rails"
 gem 'acts-as-taggable-on', '~> 3.4'
 
 gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 group :test do
   gem 'rspec-rails'

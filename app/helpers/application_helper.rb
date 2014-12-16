@@ -28,6 +28,10 @@ module ApplicationHelper
     link_to exercise.title, exercise
   end
 
+  def paginate(object)
+    super(object, theme: 'twitter-bootstrap-3')
+  end
+
   private
 
   def glyphicon_for_status(status)
