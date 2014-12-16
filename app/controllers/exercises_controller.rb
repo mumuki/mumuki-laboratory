@@ -3,14 +3,14 @@ class ExercisesController < ApplicationController
   before_filter :authenticate!, except: [:show, :index]
 
   def index
-    if params[:all] == 'true'
-      @exercises = Exercise.all
-    elsif params[:tag] != nil
-      @exercises = Exercise.tagged_with params[:tag]
-    else
+    base = if params[:owned_only] == 'true'
       authenticate!
-      @exercises = current_user.exercises
+      current_user.exercises
+    else
+      Exercise.all
     end
+
+    @exercises = base.by_tag params[:tag]
   end
 
   def show

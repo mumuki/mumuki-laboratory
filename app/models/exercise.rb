@@ -13,6 +13,8 @@ class Exercise < ActiveRecord::Base
                         :submissions_count, :author
   after_initialize :defaults, if: :new_record?
 
+  scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
+
   def plugin
     Kernel.const_get("#{language.to_s.titleize}Plugin".to_sym).new
   end

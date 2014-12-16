@@ -6,7 +6,7 @@
         <table class="table">
           <%= render partial: 'exercise', collection: @latest_exercises %>
         </table>
-        <%= link_to 'More', exercises_path(all: true) %>
+        <%= link_to 'More', exercises_path %>
       </div>
     </div>
   </div>
@@ -17,7 +17,7 @@
         <table class="table">
           <%= render partial: 'exercise', collection: @hottest_exercises %>
         </table>
-        <%= link_to 'More', exercises_path(all: true) %>
+        <%= link_to 'More', exercises_path %>
       </div>
     </div>
   </div>
@@ -34,7 +34,7 @@
             <table class="table">
               <%= render partial: 'exercise', collection: @my_exercises %>
             </table>
-            <%= link_to 'More', exercises_path %>
+            <%= link_to 'More', exercises_path(owned_only: true) %>
           </div>
         </div>
       </div>
