@@ -13,15 +13,12 @@ module ApplicationHelper
         'http://cdn.portableapps.com/SWI-PrologPortable_128.png'
       when 'haskell' then
         'https://www.haskell.org/wikistatic/haskellwiki_logo.png'
+      else raise "Unknown language #{lang}"
     end
   end
 
   def status_span(status)
     "<span class=\"glyphicon glyphicon-#{glyphicon_for_status(status)}\"></span>".html_safe
-  end
-
-  def restricted_to_current_user(exercise)
-    yield if exercise.authored_by? current_user
   end
 
   def link_to_exercise(exercise)
@@ -40,6 +37,7 @@ module ApplicationHelper
       when 'failed' then 'remove'
       when 'running' then 'time'
       when 'pending' then 'time'
+      else raise "Unknown status #{status}"
     end
   end
 end

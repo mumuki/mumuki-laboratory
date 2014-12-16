@@ -18,4 +18,9 @@ module Authentication
   def authenticate!
     redirect_to :back, alert: "You must #{view_context.link_to('sign in with Github', login_path)} before continue" unless current_user?
   end
+
+  def restricted_to_current_user(exercise)
+    yield if exercise.authored_by? current_user
+  end
+
 end
