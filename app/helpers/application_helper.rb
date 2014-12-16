@@ -30,6 +30,7 @@ module ApplicationHelper
     case status
       when 'passed' then 'ok'
       when 'failed' then 'remove'
+      when 'running' then 'time'
       when 'pending' then 'time'
     end
   end
