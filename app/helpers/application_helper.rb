@@ -24,6 +24,10 @@ module ApplicationHelper
     yield if exercise.authored_by? current_user
   end
 
+  def link_to_exercise(exercise)
+    link_to exercise.title, exercise
+  end
+
   private
 
   def glyphicon_for_status(status)
