@@ -44,19 +44,7 @@
           <div class="panel-heading">My Submissions</div>
           <div class="panel-body">
             <table class="table">
-              <% @my_submissions.each do |submission| %>
-                  <tr>
-                    <td>
-                      <%= language_image_tag submission.language %>
-                    </td>
-                    <td >
-                      <%= status_span submission.status %> <%= link_to(submission.title, [submission.exercise, submission]) %>
-                    </td>
-                    <td>
-                      <%= time_ago_in_words(submission.created_at) %>
-                    </td>
-                  </tr>
-              <% end %>
+              <%= render partial: 'submission', collection: @my_submissions %>
             </table>
             <%= link_to 'More', submissions_path %>
           </div>
