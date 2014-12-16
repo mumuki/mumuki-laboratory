@@ -29,6 +29,14 @@ module ApplicationHelper
     super(object, theme: 'twitter-bootstrap-3')
   end
 
+  def taglist_tag(tags)
+    #TODO use it also for writable inputs
+    box_options, input_options = ['readonly', 'readonly disabled']
+    %Q{<div class="taglist-box #{box_options}">
+        <input type="text" value="#{tags}" data-role="tagsinput" #{input_options}>
+       </div>}.html_safe
+  end
+
   private
 
   def glyphicon_for_status(status)

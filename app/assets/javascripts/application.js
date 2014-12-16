@@ -11,5 +11,7 @@
 // about supported directives.
 //
 //= require highlightjs
+//= require jquery
 //= require bootstrap
+//= require bootstrap-tagsinput
 //= require_tree .

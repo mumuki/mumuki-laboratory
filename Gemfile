@@ -16,6 +16,7 @@ gem 'sucker_punch', '~> 1.0'
 
 gem 'rails-assets-highlightjs'
 gem 'rails-assets-bootstrap'
+gem 'rails-assets-bootstrap-tagsinput'
 
 gem 'rest-client'
 
