@@ -1,5 +1,7 @@
 <div class="row">
-  <h1>Edit <%= link_to_exercise @exercise %></h1>
+  <h1><%= t('edit') +  @exercise.title %></h1>
 
   <%= render 'form' %>
+
+  <%= link_to t('show'), @exercise %> |
 </div>

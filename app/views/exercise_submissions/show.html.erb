@@ -1,5 +1,5 @@
 <div class="row">
-  <h1>Submission for exercise <%= link_to_exercise @submission.exercise %>
+  <h1><%=t('submission_for_exercise')%> <%= link_to_exercise @submission.exercise %>
     <small> - <%= @submission.language %></small>
   </h1>
 
@@ -9,7 +9,7 @@
   </section>
 
   <section>
-    <h2>Results</h2>
+    <h2><%= t('results')%></h2>
 
     <p>
       <strong>Status:</strong>
@@ -24,6 +24,6 @@
   </section>
 </div>
 <div class="row">
-  <%= link_to 'New submission', new_exercise_submission_path(@submission.exercise), class: 'btn btn-primary' %>
-  <%= link_to 'My Submissions', exercise_submissions_path(@submission.exercise), class: 'btn btn-default'  %>
+  <%= link_to t('my_submissions'), exercise_submissions_path(@submission.exercise), class: 'btn btn-default'  %>
+  <%= link_to t('new_submission'), new_exercise_submission_path(@submission.exercise) %>
 </div>

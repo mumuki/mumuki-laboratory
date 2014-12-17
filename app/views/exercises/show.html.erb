@@ -24,9 +24,10 @@
   <% end %>
 </div>
 <div class="row">
-  <%= link_to 'New submission', new_exercise_submission_path(@exercise), class: 'btn btn-primary'  %>
-  <%= link_to 'My Submissions', exercise_submissions_path(@exercise), class: 'btn btn-default'  %>
+  <%= link_to t('my_submissions'), exercise_submissions_path(@exercise) %> 
+  <%= link_to t('new_submission'), new_exercise_submission_path(@exercise) %> 
   <% restricted_to_current_user @exercise do %>
-      <%= link_to 'Edit', edit_exercise_path(@exercise), class: 'btn btn-default'  %> 
+      <%= link_to t('edit'), edit_exercise_path(@exercise) %> 
   <% end %>
+  <%= link_to t('all_exercises'), exercises_path %>
 </div>
