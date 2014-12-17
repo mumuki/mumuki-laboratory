@@ -24,5 +24,6 @@
   </section>
 </div>
 <div class="row">
-  <%= link_to 'New submission', new_exercise_submission_path(@submission.exercise) %>
+  <%= link_to 'New submission', new_exercise_submission_path(@submission.exercise), class: 'btn btn-primary' %>
+  <%= link_to 'My Submissions', exercise_submissions_path(@submission.exercise), class: 'btn btn-default'  %>
 </div>
