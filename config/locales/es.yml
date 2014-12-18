@@ -1,0 +1,37 @@
+es:
+  hello: "Hola mundo"
+  cancel: "Cancelar"
+  show: "Mostrar"
+  destroy: 'Eliminar'
+  edit: "Editar"
+  edit_exercise: "Editar %{exercise}"
+  new_submission: "Nueva Entrega"
+  my_submissions: 'Mis Entregas'
+  my_exercises: 'Mis Ejercicios'
+  new_exercise: 'Nuevo Ejercicio'
+  results: 'Resultados'
+  submission_for_exercise: 'Entrega para ejercicio'
+  more: "Mas"
+  comma_or_space_separated: 'Separados por espacio o coma!'
+  you_can_use_markdown_here_html: 'Puedes usar <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> aqui'
+  here: 'aqui'
+  language: 'Lenguaje'
+  title: 'Titulo'
+  actions: 'Acciones'
+  are_you_sure: 'Estas seguro?'
+  all_exercises: 'Todos los ejercicios'
+  latest_exercises: 'Ultimos ejercicios'
+  hottest_exercises: 'Ejercicios Mas Usados'
+  sign_out: "Cerrar Sesion"
+  sign_in_with_github: 'Inicie sesion con Github'
+  currently_logged_as: 'Ha iniciado sesion como '
+  exercise: 'Ejercicio'
+  submission_date: 'Fecha de entrega'
+  status: 'Estado'
+  passed: 'aprobado'
+  failed: 'fallo'
+  running: 'procesando'
+  pending: 'pendiente'
+  listing_exercises: 'Listando ejercicios'
+  search_exercises_by_tag: "Busque ejercicios por tag!"
+  search: 'Buscar'

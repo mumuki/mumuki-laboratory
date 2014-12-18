@@ -1,23 +1,23 @@
 <div class="row">
   <div class="col-md-6">
     <div class="panel panel-default">
-      <div class="panel-heading">Latest Exercises</div>
+      <div class="panel-heading"><%=t('latest_exercises')%></div>
       <div class="panel-body">
         <table class="table">
           <%= render partial: 'exercise', collection: @latest_exercises %>
         </table>
-        <%= link_to 'More', exercises_path %>
+        <%= link_to t('more'), exercises_path %>
       </div>
     </div>
   </div>
   <div class="col-md-6">
     <div class="panel panel-default">
-      <div class="panel-heading">Hottest Exercises</div>
+      <div class="panel-heading"><%=t('hottest_exercises')%></div>
       <div class="panel-body">
         <table class="table">
           <%= render partial: 'exercise', collection: @hottest_exercises %>
         </table>
-        <%= link_to 'More', exercises_path %>
+        <%= link_to t('more'), exercises_path %>
       </div>
     </div>
   </div>
@@ -29,24 +29,24 @@
     <div class="row">
       <div class="col-md-6">
         <div class="panel panel-default">
-          <div class="panel-heading">My Exercises</div>
+          <div class="panel-heading"><%=t('my_exercises')%></div>
           <div class="panel-body">
             <table class="table">
               <%= render partial: 'exercise', collection: @my_exercises %>
             </table>
-            <%= link_to 'More', exercises_path(owned_only: true) %>
+            <%= link_to t('more'), exercises_path(owned_only: true) %>
           </div>
         </div>
       </div>
 
       <div class="col-md-6">
         <div class="panel panel-default">
-          <div class="panel-heading">My Submissions</div>
+          <div class="panel-heading"><%=t('my_submissions')%></div>
           <div class="panel-body">
             <table class="table">
               <%= render partial: 'submission', collection: @my_submissions %>
             </table>
-            <%= link_to 'More', submissions_path %>
+            <%= link_to t('more'), submissions_path %>
           </div>
         </div>
       </div>

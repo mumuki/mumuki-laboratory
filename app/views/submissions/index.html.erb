@@ -3,9 +3,9 @@
 <table class="table">
   <thead>
   <tr>
-    <th>Exercise</th>
-    <th>Submission Date</th>
-    <th>Status</th>
+    <th><%=t('exercise')%></th>
+    <th><%=t('submission_date')%></th>
+    <th><%=t('status')%></th>
     <th colspan="1"></th>
   </tr>
   </thead>
@@ -16,7 +16,7 @@
         <td><%= link_to submission.exercise.title, exercise_path(submission.exercise) %></td>
         <td><%= submission.created_at %></td>
         <td><%= submission.status %></td>
-        <td><%= link_to 'Show', [submission.exercise, submission] %></td>
+        <td><%= link_to t('show'), [submission.exercise, submission] %></td>
       </tr>
   <% end %>
   </tbody>

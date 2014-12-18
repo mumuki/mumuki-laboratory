@@ -21,12 +21,13 @@
   </div>
   <div class="field form-group">
     <%= f.label :tag_list %><br>
-    <small>Comma separated!</small>
-    <%= f.text_field :tag_list, class: 'form-control', 'data-role '=> "tagsinput" %>
+    <small><%=t('comma_or_space_separated')%></small>
+    <%= f.text_field :tag_list, class: 'form-control' %>
   </div>
   <div class="field form-group">
     <%= f.label :description %><br>
-    <small>You can use <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> here</small>
+    <small><%=t('you_can_use_markdown_here_html') %> 
+     </small>
     <%= f.text_area :description, class: 'form-control', rows: 8 %>
   </div>
   <div class="field form-group">
@@ -35,6 +36,6 @@
   </div>
   <div class="actions form-group" >
     <%= f.submit class: 'btn btn-primary' %>
-    <%= link_to 'Cancel',  :back,  class: 'btn btn-default' %>
+    <%= link_to t('cancel'),  :back,  class: 'btn btn-default' %>
   </div>
 <% end %>

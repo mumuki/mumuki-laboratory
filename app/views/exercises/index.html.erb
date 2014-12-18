@@ -1,13 +1,13 @@
-<h1>Listing exercises</h1>
+<h1><%=t ('listing_exercises')%></h1>
 
 <div class="row">
   <table class="table">
     <thead>
     <tr>
-      <th>Language</th>
-      <th>Title</th>
+      <th><%=t('language')%></th>
+      <th><%=t('title')%></th>
       <th>Tags</th>
-      <th colspan="5">Actions</th>
+      <th colspan="5"><%=t('actions')%></th>
     </tr>
     </thead>
 
@@ -17,12 +17,12 @@
           <td><%= language_image_tag exercise.language %> <%= exercise.language %> </td>
           <td><%= exercise.title %></td>
           <td><%= exercise.tag_list %></td>
-          <td><%= link_to 'Show', exercise %></td>
-          <td><%= link_to 'My Submissions', exercise_submissions_path(exercise) %></td>
-          <td><%= link_to 'New submission', new_exercise_submission_path(exercise) %></td>
+          <td><%= link_to t('show'), exercise %></td>
+          <td><%= link_to t('my_submissions'), exercise_submissions_path(exercise) %></td>
+          <td><%= link_to t('new_submission'), new_exercise_submission_path(exercise) %></td>
           <% restricted_to_current_user exercise do %>
-              <td><%= link_to 'Edit', edit_exercise_path(exercise) %></td>
-              <td><%= link_to 'Destroy', exercise, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+              <td><%= link_to t('edit'), edit_exercise_path(exercise) %></td>
+              <td><%= link_to t('destroy'), exercise, method: :delete, data: {confirm: t('are_you_sure')} %></td>
           <% end %>
         </tr>
     <% end %>
@@ -30,6 +30,6 @@
   </table>
   <%= paginate @exercises %>
   <br>
-  <%= link_to 'New Exercise', new_exercise_path, class: 'btn btn-primary' %>
 
+  <%= link_to t('new_exercise'), new_exercise_path %>
 </div>

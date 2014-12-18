@@ -21,18 +21,18 @@
 
     <ul class="nav navbar-nav navbar-left">
       <% if current_user? %>
-          <li><a href="#">Currently logged as <%= current_user.name %></a></li>
-          <li><%= link_to('Sign out', logout_path) %></li>
+          <li><a href="#"><%= t('currently_logged_as')+  current_user.name %></a></li>
+          <li><%= link_to(t('sign_out'), logout_path) %></li>
       <% else %>
-          <li><%= link_to('Sign in with Github', login_path) %></li>
+          <li><%= link_to(t('sign_in_with_github'), login_path) %></li>
       <% end %>
     </ul>
 
     <form class="navbar-form navbar-left" role="search" action="<%= exercises_path %>">
       <div class="form-group">
-        <input name="tag" type="text" class="form-control" placeholder="Search exercises by tag!">
+        <input name="tag" type="text" class="form-control" placeholder= "<%=t("search_exercises_by_tag")%>">
       </div>
-      <button type="submit" class="btn btn-default">Search</button>
+      <button type="submit" class="btn btn-default"><%= t('search')%></button>
     </form>
   </div>
 </div>

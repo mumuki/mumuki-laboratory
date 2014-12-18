@@ -14,11 +14,12 @@
       <tr>
         <td><%= submission.created_at %></td>
         <td><%= submission.status %></td>
-        <td><%= link_to 'Show', [@exercise, submission] %></td>
+        <td><%= link_to t('show'), [@exercise, submission] %></td>
       </tr>
   <% end %>
   </tbody>
 </table>
 <%= paginate @submissions %>
 <br>
-<%= link_to 'New Submission', new_exercise_submission_path([@exercise]), class: 'btn btn-primary' %>
+
+<%= link_to t('new_submission'), new_exercise_submission_path([@exercise]) %>
