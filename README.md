@@ -3,7 +3,7 @@
 Mumuki
 ======
 
-Distribute and validate programming exercises
+Open platform for distribution and validation of programming exercises
 
 # What is Mumuki?
 
@@ -25,12 +25,19 @@ We would like you to collaborate on Mumuki development - we are waiting for your
 
 Mumuki is also open for extension, we would like to have exercises for a large range of programming languages
 
-# Supported Languages
+# Which languages are supported?
 
 Currently Mumuki supports Haskell, through [GHC](https://www.haskell.org/ghc/), and Prolog,
-through [SWI-Prolog](http://www.swi-prolog.org/). Support for more programming languages is pending task.
+through [SWI-Prolog](http://www.swi-prolog.org/). Support for more programming languages is pending task. We would like to offer support in the short term for the following too: 
+ * JavaScript
+ * Clojure
+ * Smalltalk
+ 
+# How can I contribute?
 
-
-
-
+1. Navigate Mumuki at http://mumuki.herokuapp.com, and submit issues for every thing you dislike
+1. Check the current issues, fork the repository, and take any of your interest. Then pull request it.
+1. Choose your preffered langauge and create your test runner server. Use [mumuki-hspec-server](https://github.com/uqbar-project/mumuki-hspec-server) as insipiration 
+1. Create exercises! Mumuki is in early stages, so remember to add your tests to some SCM. 
+1. Are you a UI designer? We want Mumuki to look great. 
 
