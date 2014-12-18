@@ -30,9 +30,9 @@
 
     <form class="navbar-form navbar-left" role="search" action="<%= exercises_path %>">
       <div class="form-group">
-        <input name="tag" type="text" class="form-control" placeholder="Search exercises by tag!">
+        <input name="tag" type="text" class="form-control" placeholder= "<%=t("search_exercises_by_tag")%>">
       </div>
-      <button type="submit" class="btn btn-default">Search</button>
+      <button type="submit" class="btn btn-default"><%= t('search')%></button>
     </form>
   </div>
 </div>

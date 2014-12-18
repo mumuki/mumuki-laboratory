@@ -4,6 +4,7 @@ es:
   show: "Mostrar"
   destroy: 'Eliminar'
   edit: "Editar"
+  edit_exercise: "Editar %{exercise}"
   new_submission: "Nueva Entrega"
   my_submissions: 'Mis Entregas'
   my_exercises: 'Mis Ejercicios'
@@ -12,7 +13,7 @@ es:
   submission_for_exercise: 'Entrega para ejercicio'
   more: "Mas"
   comma_or_space_separated: 'Separados por espacio o coma!'
-  you_can_use: 'Puedes usar'
+  you_can_use_markdown_here_html: 'Puedes usar <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> aqui'
   here: 'aqui'
   language: 'Lenguaje'
   title: 'Titulo'
@@ -27,7 +28,10 @@ es:
   exercise: 'Ejercicio'
   submission_date: 'Fecha de entrega'
   status: 'Estado'
-  passed: 'pasado'
+  passed: 'aprobado'
   failed: 'fallo'
   running: 'procesando'
   pending: 'pendiente'
+  listing_exercises: 'Listando ejercicios'
+  search_exercises_by_tag: "Busque ejercicios por tag!"
+  search: 'Buscar'

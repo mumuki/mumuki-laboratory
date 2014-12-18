@@ -40,11 +40,11 @@ module ApplicationHelper
   private
 
   def glyphicon_for_status(status)
-    case t(status)
-      when t('passed') then 'ok'
-      when t('failed') then 'remove'
-      when t('running') then 'time'
-      when t('pending') then 'time'
+    case status
+      when 'passed' then 'ok'
+      when 'failed' then 'remove'
+      when 'running' then 'time'
+      when 'pending' then 'time'
       else raise "Unknown status #{status}"
     end
   end

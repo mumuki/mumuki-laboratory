@@ -4,6 +4,7 @@ en:
   show: "Show"
   destroy: 'Destroy'
   edit: "Edit"
+  edit_exercise: "Edit %{exercise}"
   new_submission: "New Submission"
   my_submissions: 'My Submissions'
   my_exercises: 'My Exercises'
@@ -12,7 +13,7 @@ en:
   submission_for_exercise: 'Submission for exercise'
   more: "More"
   comma_or_space_separated: 'Comma or space separated!'
-  you_can_use: 'You can use'
+  you_can_use_markdown_here_html: 'You can use <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> here'
   here: 'here'
   language: 'Language'
   title: 'Title'
@@ -31,3 +32,6 @@ en:
   failed: 'failed'
   running: 'running'
   pending: 'pending'
+  listing_exercises: 'Listing exercises'
+  search_exercises_by_tag: "Search exercises by tag!"
+  search: 'Search'
