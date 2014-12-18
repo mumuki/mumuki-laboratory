@@ -1,7 +1,4 @@
 <div class="row">
-  <h1><%= t 'edit_exercise', exercise: @exercise.title %></h1>
-
+  <h1><%= raw t 'edit_exercise', exercise: (link_to_exercise @exercise) %></h1>
   <%= render 'form' %>
-
-  <%= link_to t('show'), @exercise %> |
 </div>
