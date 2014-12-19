@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  controller :sessions do
+    get 'auth/:provider/callback' => :create
+    get 'logout' => :destroy
+  end
 
   scope '(:locale)' do
     root to: 'home#index'
@@ -9,8 +13,4 @@ Rails.application.routes.draw do
     resources :submissions, only: :index
   end
 
-  controller :sessions do
-    get 'auth/:provider/callback' => :create
-    get 'logout' => :destroy
-  end
 end
