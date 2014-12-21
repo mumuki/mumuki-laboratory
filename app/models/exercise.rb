@@ -15,6 +15,13 @@ class Exercise < ActiveRecord::Base
 
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
 
+
+  def self.create_or_update_for_import!(original_id, repo_id, options)
+    exercise = find_or_initialize_by(original_id: original_id, origin_id: repo_id)
+    exercise.assign_attributes(options)
+    exercise.save!
+  end
+
   def plugin
     Kernel.const_get("#{language.to_s.titleize}Plugin".to_sym).new
   end

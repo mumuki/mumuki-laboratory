@@ -4,20 +4,8 @@ class ExerciseRepo < ActiveRecord::Base
   validates_presence_of :github_url, :name, :author
 
   def import_from_directory!(dir)
-    dir = File.expand_path(dir)
-    raise "directory #{dir} must exist" unless File.exist? dir
-
     #TODO log importing errors
-    Dir.glob("#{dir}/**") do |file|
-
-      basename = File.basename(file)
-
-      match = /(\d*)_(.+)/.match basename
-      next unless match
-
-      original_id = match[1]
-      title = match[2]
-
+    self.class.each_exercise_file(dir) do |file, original_id, title|
       description_path = "#{file}/description.md"
       next unless File.exist? description_path
 
@@ -31,13 +19,17 @@ class ExerciseRepo < ActiveRecord::Base
 
       extension = /.*\.(.*)/.match(File.basename(test_file))[1]
 
-      language = case extension
-        when 'hs' then :haskell
-        when 'pl' then :prolog
-        else next
-      end
+      language =
+          case extension
+            when 'hs' then
+              :haskell
+            when 'pl' then
+              :prolog
+            else
+              next
+          end
 
-      ExerciseRepo.create_or_update_for_import!(
+      Exercise.create_or_update_for_import!(
           original_id, id,
           title: title.titleize,
           description: File.read(description_path),
@@ -48,7 +40,6 @@ class ExerciseRepo < ActiveRecord::Base
     end
   end
 
-
   def import!
     #TODO handle private repositories
     Dir.mktmpdir("mumuki.#{id}.import") do |dir|
@@ -57,10 +48,17 @@ class ExerciseRepo < ActiveRecord::Base
     end
   end
 
-  def self.create_or_update_for_import!(original_id, repo_id, options)
-    exercise = Exercise.find_or_initialize_by(original_id: original_id, origin_id: repo_id)
-    exercise.assign_attributes(options)
-    exercise.save!
+  private
+
+  def self.each_exercise_file(dir)
+    dir = File.expand_path(dir)
+    raise "directory #{dir} must exist" unless File.exist? dir
+    Dir.glob("#{dir}/**") do |file|
+      basename = File.basename(file)
+      match = /(\d*)_(.+)/.match basename
+      next unless match
+      yield file, match[1], match[2]
+    end
   end
 
 end
