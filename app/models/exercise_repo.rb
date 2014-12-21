@@ -37,16 +37,17 @@ class ExerciseRepo < ActiveRecord::Base
         else next
       end
 
-      exercise = Exercise.find_or_initialize_by(original_id: original_id, origin_id: id)
-      exercise.title = title.titleize
-      exercise.description = File.read description_path
-      exercise.tag_list = meta['tags']
-      exercise.test = File.read test_file
-      exercise.language = language
-      exercise.author = author
-      exercise.save!
+      ExerciseRepo.create_or_update_for_import!(
+          original_id, id,
+          title: title.titleize,
+          description: File.read(description_path),
+          tag_list: meta['tags'],
+          language: language,
+          author: author,
+          test: File.read(test_file))
     end
   end
+
 
   def import!
     #TODO handle private repositories
@@ -54,6 +55,12 @@ class ExerciseRepo < ActiveRecord::Base
       Git.clone("https://github.com/#{github_url}", 'name', dir)
       import_from_directory! dir
     end
+  end
+
+  def self.create_or_update_for_import!(original_id, repo_id, options)
+    exercise = Exercise.find_or_initialize_by(original_id: original_id, origin_id: repo_id)
+    exercise.assign_attributes(options)
+    exercise.save!
   end
 
 end
