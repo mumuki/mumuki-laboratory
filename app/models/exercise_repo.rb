@@ -9,21 +9,40 @@ class ExerciseRepo < ActiveRecord::Base
 
     #TODO log importing errors
     Dir.glob("#{dir}/**") do |file|
-      match = /(\d*)_(.+)/.match file
+
+      basename = File.basename(file)
+
+      match = /(\d*)_(.+)/.match basename
       next unless match
 
       original_id = match[1]
       title = match[2]
 
-      description_path = "#{file }/description.md"
-      meta = YAML.load_file "#{file }/meta.yml"
+      description_path = "#{file}/description.md"
+      next unless File.exist? description_path
+
+      meta_path = "#{file}/meta.yml"
+      next unless File.exist? meta_path
+      meta = YAML.load_file meta_path
+
+      test_files = Dir.glob("#{file}/test.*")
+      next if test_files.length != 1
+      test_file = test_files[0]
+
+      extension = /.*\.(.*)/.match(File.basename(test_file))[1]
+
+      language = case extension
+        when 'hs' then :haskell
+        when 'pl' then :prolog
+        else next
+      end
 
       exercise = Exercise.find_or_initialize_by(original_id: original_id, origin_id: id)
-      exercise.title = title
+      exercise.title = title.titleize
       exercise.description = File.read description_path
       exercise.tag_list = meta['tags']
-      exercise.test = "todo"
-      exercise.language = "prolog"
+      exercise.test = File.read test_file
+      exercise.language = language
       exercise.author = author
       exercise.save!
     end
