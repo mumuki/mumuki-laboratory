@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe ExerciseRepo do
+  let(:user) { create(:user) }
+  let(:repo) { ExerciseRepo.new name: 'foo', author: user, github_url: 'flbulgarelli/mumuki-sample-exercises' }
 
-  describe '#import!' do
-    let(:user) { create(:user) }
-    let(:repo) { ExerciseRepo.new name: 'foo', author: user, github_url: 'flbulgarelli/mumuki-sample-exercises' }
+  describe '#import_from_directory!' do
 
     before { repo.import_from_directory! 'spec/data/mumuki-sample-exercises' }
 
@@ -19,4 +19,9 @@ describe ExerciseRepo do
     it { expect(imported_exercise.tag_list).to include *%w(foo bar baz) }
 
   end
+
+  describe 'import!' do
+    pending
+  end
+
 end

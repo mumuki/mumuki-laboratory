@@ -1,8 +1,7 @@
 class Exercise < ActiveRecord::Base
   include WithMarkup
-  LANGUAGES = [:haskell, :prolog]
 
-  enum language: LANGUAGES
+  enum language: Plugins::LANGUAGES
   belongs_to :author, class_name: 'User'
 
   has_many :submissions
