@@ -16,7 +16,10 @@ module Authentication
   end
 
   def authenticate!
-    redirect_to :back, alert: "You must #{view_context.link_to('sign in with Github', login_path)} before continue" unless current_user?
+    message = "You must #{view_context.link_to('sign in with Github', login_path)} before continue"
+    redirect_to :back, alert: message unless current_user?
+  rescue ActionController::RedirectBackError
+    redirect_to root_path, alert: message unless current_user?
   end
 
   def restricted_to_current_user(exercise)
