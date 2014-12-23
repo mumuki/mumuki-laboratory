@@ -46,10 +46,12 @@
     <% if notice %>
         <div class="alert alert-success" role="alert">
           <%= notice.html_safe %>
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
         </div>
     <% elsif alert %>
         <div class="alert alert-danger" role="alert">
           <%= alert.html_safe %>
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
         </div>
     <% end %>
   </div>
