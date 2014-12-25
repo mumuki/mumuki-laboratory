@@ -1,6 +1,6 @@
 <h1><%= @guide.name %></h1>
 
-<%= link_to @guide.github_repository, @guide.github_url %>
+<%= link_to_github @guide %>
 
 <ul>
   <%= render partial: 'exercise', collection: @guide.exercises %>

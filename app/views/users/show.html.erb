@@ -1,0 +1,12 @@
+<h1><%= @user.name %></h1>
+
+<%= render 'layouts/exercise_panel/panel',
+           heading: t(:exercise).titleize.pluralize,
+           exercises: @user.exercises,
+           more_link: exercises_path %>
+
+<%= render 'layouts/panel/panel',
+           heading: t(:guide).titleize.pluralize,
+           item_partial: 'guide',
+           items: @user.guides,
+           more_link: nil %>
