@@ -16,15 +16,20 @@ class Guide < ActiveRecord::Base
   end
 
   def import!
+    Rails.logger.info("Importing exercises for #{git_url}")
     #TODO handle private repositories
     Dir.mktmpdir("mumuki.#{id}.import") do |dir|
-      Git.clone("https://github.com/#{github_url}", name, path: dir)
+      Git.clone(git_url, name, path: dir)
       import_from_directory! dir
     end
   end
 
   def schedule_import!
-    ImportGuideJob.new.async.perform(id)
+    ImportGuideJob.run_async(id)
+  end
+
+  def git_url
+    "https://github.com/#{github_url}"
   end
 
 end
