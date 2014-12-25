@@ -1,0 +1,13 @@
+<div class="panel panel-default">
+
+  <div class="panel-heading"><%= heading %></div>
+  <table class="table">
+    <%= render partial: item_partial, collection: items %>
+  </table>
+
+  <% if more_link %>
+      <div class="panel-footer">
+        <%= link_to t('more'), more_link %>
+      </div>
+  <% end %>
+</div>

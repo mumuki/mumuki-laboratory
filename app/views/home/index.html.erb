@@ -25,15 +25,11 @@
       </div>
 
       <div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-heading"><%= t('my_submissions') %></div>
-          <table class="table">
-            <%= render partial: 'submission', collection: @my_submissions %>
-          </table>
-          <div class="panel-footer">
-            <%= link_to t('more'), submissions_path %>
-          </div>
-        </div>
+        <%= render 'layouts/panel/panel',
+                   heading: t('my_submissions'),
+                   item_partial: 'submission',
+                   items: @my_submissions,
+                   more_link: submissions_path %>
       </div>
     </div>
 <% end %>
