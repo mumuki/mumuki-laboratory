@@ -1,6 +1,12 @@
 <h1><%= @guide.name %></h1>
 
-<%= link_to_github @guide %>
+<div>
+  <%= link_to_github @guide %>
+</div>
+
+<div>
+  <%= link_to guide_imports_url(@guide), guide_imports_url(@guide) %>
+</div>
 
 <ul>
   <%= render partial: 'exercise', collection: @guide.exercises %>
