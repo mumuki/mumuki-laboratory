@@ -22,6 +22,6 @@ class GuidesController < ApplicationController
   private
 
   def guide_params
-    params.require(:guide).permit(:github_url, :name)
+    params.require(:guide).permit(:github_repository, :name)
   end
 end
