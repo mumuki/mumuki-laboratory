@@ -8,6 +8,7 @@ class GuidesController < ApplicationController
 
   def create
     @guide = Guide.new(guide_params.merge(author: current_user))
+    @guide.imports.build
     if @guide.save
       redirect_to @guide, notice: t(:guide_created)
     else

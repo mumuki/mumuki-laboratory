@@ -40,3 +40,4 @@ en:
   guide_created: "Guide created successfully"
   guide: "guide"
   authored_by: "Authored by %{author}"
+  import_created: "Import enqueued"

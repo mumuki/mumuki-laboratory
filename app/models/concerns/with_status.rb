@@ -1,5 +1,9 @@
 module WithStatus
-  enum status: [:pending, :running, :passed, :failed]
+  extend ActiveSupport::Concern
+
+  included do
+    enum status: [:pending, :running, :passed, :failed]
+  end
 
   def run_update!
     update! status: :running

@@ -1,6 +1,6 @@
 class ImportGuideJob < ActiveRecordJob
 
-  def perform_with_connection(guide_id)
-    ::Guide.find(guide_id).import!
+  def perform_with_connection(import_id)
+    ::Import.find(import_id).run_import!
   end
 end
