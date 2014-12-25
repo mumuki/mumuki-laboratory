@@ -8,13 +8,7 @@ module ApplicationHelper
   end
 
   def language_image_url(lang)
-    case lang
-      when 'prolog' then
-        'http://cdn.portableapps.com/SWI-PrologPortable_128.png'
-      when 'haskell' then
-        'https://www.haskell.org/wikistatic/haskellwiki_logo.png'
-      else raise "Unknown language #{lang}"
-    end
+    Plugins.language_image_url_for(lang)
   end
 
   def status_span(status)

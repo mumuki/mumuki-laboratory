@@ -1,6 +1,6 @@
 module TestRunning
   def schedule_test_run!
-    TestRunnerJob.new.async.perform(id)
+    TestRunnerJob.run_async(id)
   end
 
   def run_tests!

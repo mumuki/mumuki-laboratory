@@ -35,3 +35,7 @@ en:
   listing_exercises: 'Listing exercises'
   search_exercises_by_tag: "Search exercises by tag!"
   search: 'Search'
+  new_guide: "New Guide"
+  github_url_hint: "username/repository"
+  guide_created: "Guide created successfully"
+  guide: "guide"

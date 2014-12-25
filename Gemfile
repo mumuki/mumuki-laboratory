@@ -28,6 +28,8 @@ gem "unicorn-rails"
 
 gem 'acts-as-taggable-on', '~> 3.4'
 
+gem 'git'
+
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
