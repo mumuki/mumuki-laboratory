@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include LinksRendering
+
   def highlighted_code(lang, code)
     "<pre><code class=\"hljs #{lang}\">#{code}</code></pre>".html_safe
   end
@@ -13,10 +15,6 @@ module ApplicationHelper
 
   def status_span(status)
     "<span class=\"glyphicon glyphicon-#{glyphicon_for_status(status)}\"></span>".html_safe
-  end
-
-  def link_to_exercise(exercise)
-    link_to exercise.title, exercise
   end
 
   def paginate(object)
