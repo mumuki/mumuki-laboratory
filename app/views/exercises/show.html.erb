@@ -7,7 +7,7 @@
 
   <section>
     <p>
-      <%= t :authored_by, author: @exercise.author.name %>
+      <%= raw t :authored_by, author: link_to(@exercise.author.name, user_path(@exercise.author)) %>
     </p>
   </section>
 
@@ -32,9 +32,8 @@
       <% if @exercise.guide %>
           <section>
             <h2><%= t(:guide).titleize %></h2>
-
             <p>
-              <%= link_to @exercise.guide.name, guide_path(@exercise.guide) %>
+              <%= link_to_guide @exercise.guide  %>
             </p>
           </section>
       <% end %>

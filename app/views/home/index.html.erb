@@ -1,25 +1,15 @@
 <div class="row">
   <div class="col-md-6">
-    <div class="panel panel-default">
-      <div class="panel-heading"><%=t('latest_exercises')%></div>
-      <div class="panel-body">
-        <table class="table">
-          <%= render partial: 'exercise', collection: @latest_exercises %>
-        </table>
-        <%= link_to t('more'), exercises_path %>
-      </div>
-    </div>
+    <%= render 'layouts/exercise_panel/panel',
+               heading: t('latest_exercises'),
+               exercises: @latest_exercises,
+               more_link: exercises_path %>
   </div>
   <div class="col-md-6">
-    <div class="panel panel-default">
-      <div class="panel-heading"><%=t('hottest_exercises')%></div>
-      <div class="panel-body">
-        <table class="table">
-          <%= render partial: 'exercise', collection: @hottest_exercises %>
-        </table>
-        <%= link_to t('more'), exercises_path %>
-      </div>
-    </div>
+    <%= render 'layouts/exercise_panel/panel',
+               heading: t('hottest_exercises'),
+               exercises: @hottest_exercises,
+               more_link: exercises_path %>
   </div>
 </div>
 
@@ -28,27 +18,18 @@
 
     <div class="row">
       <div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-heading"><%=t('my_exercises')%></div>
-          <div class="panel-body">
-            <table class="table">
-              <%= render partial: 'exercise', collection: @my_exercises %>
-            </table>
-            <%= link_to t('more'), exercises_path(owned_only: true) %>
-          </div>
-        </div>
+        <%= render 'layouts/exercise_panel/panel',
+                   heading: t('hottest_exercises'),
+                   exercises: @hottest_exercises,
+                   more_link: exercises_path(owned_only: true) %>
       </div>
 
       <div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-heading"><%=t('my_submissions')%></div>
-          <div class="panel-body">
-            <table class="table">
-              <%= render partial: 'submission', collection: @my_submissions %>
-            </table>
-            <%= link_to t('more'), submissions_path %>
-          </div>
-        </div>
+        <%= render 'layouts/panel/panel',
+                   heading: t('my_submissions'),
+                   item_partial: 'submission',
+                   items: @my_submissions,
+                   more_link: submissions_path %>
       </div>
     </div>
 <% end %>
