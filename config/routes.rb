@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :exercises do
       resources :submissions, controller: 'exercise_submissions', only: [:new, :create, :show, :index]
     end
+    resources :exercise_repos, only: [:new, :create, :show]
     resources :submissions, only: :index
   end
 

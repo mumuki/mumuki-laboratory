@@ -1,0 +1,30 @@
+<%= form_for(@repo, html: {role: 'form'}) do |f| %>
+    <% if @repo.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@repo.errors.count, 'error') %> prohibited this exercise from being saved:</h2>
+
+          <ul>
+            <% @repo.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field form-group">
+      <%= f.label :name %>
+      <br>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :github_url %><small> <%= t 'github_url_hint' %></small>
+      <br>
+      <%= f.text_field :github_url, class: 'form-control' %>
+    </div>
+
+    <div class="actions form-group">
+      <%= f.submit class: 'btn btn-primary' %>
+      <%= link_to t('cancel'), :back, class: 'btn btn-default' %>
+    </div>
+<% end %>

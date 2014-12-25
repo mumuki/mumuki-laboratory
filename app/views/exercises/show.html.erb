@@ -1,7 +1,8 @@
 <div class="row">
 
   <h1>
-    <%= @exercise.title %> <small> - <%= @exercise.language %></small>
+    <%= @exercise.title %>
+    <small> - <%= @exercise.language %></small>
   </h1>
 
   <section>
@@ -17,16 +18,25 @@
   <% restricted_to_current_user @exercise do %>
       <section>
         <h2>Tests</h2>
+
         <p>
-        <%= highlighted_code @exercise.language, @exercise.test %>
+          <%= highlighted_code @exercise.language, @exercise.test %>
         </p>
       </section>
+      <% if @exercise.origin %>
+          <section>
+            <h2>Origin</h2>
+            <p>
+              This exercise comes from <%= link_to 'a repository', exercise_repo_path(@exercise.origin) %>
+            </p>
+          </section>
+      <% end %>
   <% end %>
 </div>
 <div class="row">
   <%= link_to t('new_submission'), new_exercise_submission_path(@exercise), class: 'btn btn-primary' %>
-  <%= link_to t('my_submissions'), exercise_submissions_path(@exercise), class: 'btn btn-default'  %>
+  <%= link_to t('my_submissions'), exercise_submissions_path(@exercise), class: 'btn btn-default' %>
   <% restricted_to_current_user @exercise do %>
-      <%= link_to t('edit'), edit_exercise_path(@exercise), class: 'btn btn-default'  %>
+      <%= link_to t('edit'), edit_exercise_path(@exercise), class: 'btn btn-default' %>
   <% end %>
 </div>

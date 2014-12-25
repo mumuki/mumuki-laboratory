@@ -2,7 +2,9 @@ class Exercise < ActiveRecord::Base
   include WithMarkup
 
   enum language: Plugins::LANGUAGES
+
   belongs_to :author, class_name: 'User'
+  belongs_to :origin, class_name: 'ExerciseRepo'
 
   has_many :submissions
 
@@ -15,13 +17,14 @@ class Exercise < ActiveRecord::Base
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
 
 
-  def self.create_or_update_for_import!(original_id, repo_id, options)
-    exercise = find_or_initialize_by(original_id: original_id, origin_id: repo_id)
+  def self.create_or_update_for_import!(repo, original_id, options)
+    exercise = find_or_initialize_by(original_id: original_id, origin_id: repo.id)
     exercise.assign_attributes(options)
     exercise.save!
   end
 
   def plugin
+    #FIXME move to Plugins
     Kernel.const_get("#{language.to_s.titleize}Plugin".to_sym).new
   end
 
