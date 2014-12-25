@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Guide do
   let(:user) { create(:user) }
-  let(:guide) { Guide.new name: 'foo', author: user, github_url: 'flbulgarelli/mumuki-sample-exercises' }
+  let(:guide) { Guide.new name: 'foo', author: user, github_repository: 'flbulgarelli/mumuki-sample-exercises' }
 
   describe '#import_from_directory!' do
 

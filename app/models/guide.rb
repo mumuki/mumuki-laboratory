@@ -5,7 +5,7 @@ class Guide < ActiveRecord::Base
 
   has_many :exercises
 
-  validates_presence_of :github_url, :name, :author
+  validates_presence_of :github_repository, :name, :author
 
   after_commit :schedule_import!
 
@@ -16,7 +16,7 @@ class Guide < ActiveRecord::Base
   end
 
   def import!
-    Rails.logger.info("Importing exercises for #{git_url}")
+    Rails.logger.info("Importing exercises for #{github_url}")
     #TODO handle private repositories
     Dir.mktmpdir("mumuki.#{id}.import") do |dir|
       Git.clone(git_url, name, path: dir)
@@ -28,8 +28,8 @@ class Guide < ActiveRecord::Base
     ImportGuideJob.run_async(id)
   end
 
-  def git_url
-    "https://github.com/#{github_url}"
+  def github_url
+    "https://github.com/#{github_repository}"
   end
 
 end

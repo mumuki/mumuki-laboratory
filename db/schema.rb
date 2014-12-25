@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141225034553) do
+ActiveRecord::Schema.define(version: 20141225143218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20141225034553) do
   add_index "exercises", ["guide_id"], name: "index_exercises_on_guide_id", using: :btree
 
   create_table "guides", force: true do |t|
-    t.string   "github_url"
+    t.string   "github_repository"
     t.string   "name"
     t.integer  "author_id"
     t.datetime "created_at"
