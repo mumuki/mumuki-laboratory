@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
     resources :guides, only: [:new, :create, :show]
     resources :submissions, only: :index
+    resources :users, only: :show
   end
 
 end
