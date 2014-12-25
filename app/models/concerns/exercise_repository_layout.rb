@@ -1,4 +1,4 @@
-module ExerciseRepoLayout
+module ExerciseRepositoryLayout
 
   def process_files(dir)
     #TODO log importing errors

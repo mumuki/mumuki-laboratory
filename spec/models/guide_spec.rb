@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe ExerciseRepo do
+describe Guide do
   let(:user) { create(:user) }
-  let(:repo) { ExerciseRepo.new name: 'foo', author: user, github_url: 'flbulgarelli/mumuki-sample-exercises' }
+  let(:guide) { Guide.new name: 'foo', author: user, github_url: 'flbulgarelli/mumuki-sample-exercises' }
 
   describe '#import_from_directory!' do
 
-    before { repo.import_from_directory! 'spec/data/mumuki-sample-exercises' }
+    before { guide.import_from_directory! 'spec/data/mumuki-sample-exercises' }
 
-    let(:imported_exercise) { Exercise.find_by(origin_id: repo.id, original_id: 1) }
+    let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 1) }
 
     it { expect(imported_exercise).to_not be nil }
     it { expect(imported_exercise.author).to eq user }

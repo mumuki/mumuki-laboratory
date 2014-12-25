@@ -4,7 +4,7 @@ class Exercise < ActiveRecord::Base
   enum language: Plugins::LANGUAGES
 
   belongs_to :author, class_name: 'User'
-  belongs_to :origin, class_name: 'ExerciseRepo'
+  belongs_to :guide
 
   has_many :submissions
 
@@ -17,8 +17,8 @@ class Exercise < ActiveRecord::Base
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
 
 
-  def self.create_or_update_for_import!(repo, original_id, options)
-    exercise = find_or_initialize_by(original_id: original_id, origin_id: repo.id)
+  def self.create_or_update_for_import!(guide, original_id, options)
+    exercise = find_or_initialize_by(original_id: original_id, guide_id: guide.id)
     exercise.assign_attributes(options)
     exercise.save!
   end

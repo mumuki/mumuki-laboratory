@@ -1,0 +1,7 @@
+<h1><%= @guide.name %></h1>
+
+<%= @guide.github_url %>
+
+<ul>
+  <%= render partial: 'exercise', collection: @guide.exercises %>
+</ul>

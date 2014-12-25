@@ -1,9 +1,9 @@
-class ExerciseRepo < ActiveRecord::Base
-  include ExerciseRepoLayout
+class Guide < ActiveRecord::Base
+  include ExerciseRepositoryLayout
 
   belongs_to :author, class_name: 'User'
 
-  has_many :exercises, foreign_key: :origin_id
+  has_many :exercises
 
   validates_presence_of :github_url, :name, :author
 
@@ -24,7 +24,7 @@ class ExerciseRepo < ActiveRecord::Base
   end
 
   def schedule_import!
-    ImportRepoJob.new.async.perform(id)
+    ImportGuideJob.new.async.perform(id)
   end
 
 end

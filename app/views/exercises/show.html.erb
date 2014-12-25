@@ -23,11 +23,11 @@
           <%= highlighted_code @exercise.language, @exercise.test %>
         </p>
       </section>
-      <% if @exercise.origin %>
+      <% if @exercise.guide %>
           <section>
-            <h2>Origin</h2>
+            <h2><%= t(:guide).titleize %></h2>
             <p>
-              This exercise comes from <%= link_to 'a repository', exercise_repo_path(@exercise.origin) %>
+              <%= link_to @exercise.guide.name, guide_path(@exercise.guide) %>
             </p>
           </section>
       <% end %>

@@ -1,10 +1,10 @@
-<%= form_for(@repo, html: {role: 'form'}) do |f| %>
-    <% if @repo.errors.any? %>
+<%= form_for(@guide, html: {role: 'form'}) do |f| %>
+    <% if @guide.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@repo.errors.count, 'error') %> prohibited this exercise from being saved:</h2>
+          <h2><%= pluralize(@guide.errors.count, 'error') %> prohibited this exercise from being saved:</h2>
 
           <ul>
-            <% @repo.errors.full_messages.each do |message| %>
+            <% @guide.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
             <% end %>
           </ul>
