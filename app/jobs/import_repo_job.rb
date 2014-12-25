@@ -1,9 +1,6 @@
-class ImportRepoJob
-  include SuckerPunch::Job
+class ImportRepoJob < ActiveRecordJob
 
-  def perform(repo_id)
-    ActiveRecord::Base.connection_pool.with_connection do
-      ::ExerciseRepo.find(repo_id).import!
-    end
+  def perform_with_connection(repo_id)
+    ::ExerciseRepo.find(repo_id).import!
   end
 end
