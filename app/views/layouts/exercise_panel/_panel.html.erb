@@ -1,9 +1,9 @@
 <div class="panel panel-default">
   <div class="panel-heading"><%= heading %></div>
-  <div class="panel-body">
-    <table class="table">
-      <%= render partial: 'layouts/exercise_panel/exercise', collection: exercises %>
-    </table>
+  <table class="table">
+    <%= render partial: 'layouts/exercise_panel/exercise', collection: exercises %>
+  </table>
+  <div class="panel-footer">
     <%= link_to t('more'), more_link %>
   </div>
 </div>
