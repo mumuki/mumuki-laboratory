@@ -6,6 +6,12 @@
   </h1>
 
   <section>
+    <p>
+      <%= t :authored_by, author: @exercise.author.name %>
+    </p>
+  </section>
+
+  <section>
     <%= taglist_tag @exercise.tag_list %>
   </section>
 
@@ -26,6 +32,7 @@
       <% if @exercise.guide %>
           <section>
             <h2><%= t(:guide).titleize %></h2>
+
             <p>
               <%= link_to @exercise.guide.name, guide_path(@exercise.guide) %>
             </p>

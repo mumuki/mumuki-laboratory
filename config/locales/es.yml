@@ -39,3 +39,4 @@ es:
   github_url_hint: "usuario/repositorio"
   guide_created: "Guia creada exitosamente"
   guide: "guía"
+  authored_by: "Creado por %{author}"
