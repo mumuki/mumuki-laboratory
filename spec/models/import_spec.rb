@@ -22,6 +22,8 @@ describe Import do
   end
 
   describe 'import!' do
-    pending
+    it 'is marked as failed if exception occurs'
+    it 'is initially pending'
+    it 'fails if repo is private'
   end
 end

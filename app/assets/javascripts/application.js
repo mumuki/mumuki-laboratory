@@ -10,8 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require highlightjs
 //= require jquery
+//= require jquery_ujs
+//= require highlightjs
 //= require bootstrap
 //= require bootstrap-tagsinput
 //= require_tree .

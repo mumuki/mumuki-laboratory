@@ -16,3 +16,5 @@
 <ul>
   <%= render partial: 'import', collection: @guide.imports %>
 </ul>
+
+<%= link_to t(:new_import), guide_imports_path(@guide), method: :post, class: 'btn btn-primary' %>
