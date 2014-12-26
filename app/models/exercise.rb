@@ -29,7 +29,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def authored_by?(user)
-    author != nil
+    user == author
   end
 
   def description_html
