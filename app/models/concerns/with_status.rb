@@ -3,6 +3,7 @@ module WithStatus
 
   included do
     enum status: [:pending, :running, :passed, :failed]
+    validates_presence_of :status
   end
 
   def run_update!
