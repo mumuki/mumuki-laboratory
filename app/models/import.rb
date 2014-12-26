@@ -34,7 +34,7 @@ class Import < ActiveRecord::Base
   private
 
   def git_clone_into(dir)
-    Git.clone(guide.github_url, guide.name, path: dir)
+    Git.clone(guide.github_url, '.', path: dir)
   rescue Git::GitExecuteError => e
     raise 'Repository is private or does not exist' if private_repo_error(e.message)
     raise e
