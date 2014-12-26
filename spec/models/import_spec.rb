@@ -40,7 +40,7 @@ describe Import do
 
       it do
         expect(import.status).to eq 'failed'
-        expect(import.result).to eq 'failed'
+        expect(import.result).to eq 'Repository is private or does not exist'
       end
     end
 
