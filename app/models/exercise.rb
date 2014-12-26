@@ -29,8 +29,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def authored_by?(user)
-    #FIXME remove nil check
-    author != nil && user == author
+    author != nil
   end
 
   def description_html
