@@ -24,7 +24,7 @@ en:
   hottest_exercises: 'Hottest Exercises'
   sign_out: "Sign Out"
   sign_in_with_github: 'Sign in with Github'
-  currently_logged_as: 'Currently logged as '
+  currently_logged_as: 'Currently logged as %{username}'
   exercise: 'Exercise'
   submission_date: 'Submission date'
   status: 'Status'

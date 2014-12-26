@@ -24,7 +24,7 @@ es:
   hottest_exercises: 'Ejercicios Mas Usados'
   sign_out: "Cerrar Sesion"
   sign_in_with_github: 'Inicie sesion con Github'
-  currently_logged_as: 'Ha iniciado sesion como '
+  currently_logged_as: 'Ha iniciado sesion como %{username}'
   exercise: 'Ejercicio'
   submission_date: 'Fecha de entrega'
   status: 'Estado'

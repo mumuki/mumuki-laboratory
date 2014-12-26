@@ -26,4 +26,8 @@ module Authentication
     yield if exercise.authored_by? current_user
   end
 
+
+  def current_user_path
+    user_path(current_user)
+  end
 end
