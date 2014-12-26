@@ -40,3 +40,4 @@ es:
   guide_created: "Guia creada exitosamente"
   guide: "guía"
   authored_by: "Creado por %{author}"
+  import_created: "Importación encolada"

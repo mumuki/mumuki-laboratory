@@ -1,7 +1,20 @@
 <h1><%= @guide.name %></h1>
 
-<%= link_to_github @guide %>
+<div>
+  <%= link_to_github @guide %>
+</div>
+
+<div>
+  <%= link_to guide_imports_url(@guide), guide_imports_url(@guide) %>
+</div>
 
 <ul>
   <%= render partial: 'exercise', collection: @guide.exercises %>
 </ul>
+
+
+<ul>
+  <%= render partial: 'import', collection: @guide.imports %>
+</ul>
+
+<%= link_to t(:new_import), guide_imports_path(@guide), method: :post, class: 'btn btn-primary' %>
