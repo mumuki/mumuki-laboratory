@@ -21,14 +21,13 @@
         <%= render 'layouts/exercise_panel/panel',
                    heading: t('my_exercises'),
                    exercises: @hottest_exercises,
-                   more_link: exercises_path(owned_only: true) %>
+                   more_link: user_exercises_path(current_user) %>
       </div>
 
       <div class="col-md-6">
-        <%= render 'layouts/panel/panel',
+        <%= render 'layouts/submissions_panel/panel',
                    heading: t('my_submissions'),
-                   item_partial: 'submission',
-                   items: @my_submissions,
+                   submissions: @my_submissions,
                    more_link: submissions_path %>
       </div>
     </div>

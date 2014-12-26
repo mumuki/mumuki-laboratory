@@ -3,10 +3,15 @@
 <%= render 'layouts/exercise_panel/panel',
            heading: t(:exercise).titleize.pluralize,
            exercises: @user.exercises,
-           more_link: exercises_path %>
+           more_link: user_exercises_path(@user) %>
 
 <%= render 'layouts/panel/panel',
            heading: t(:guide).titleize.pluralize,
            item_partial: 'guide',
            items: @user.guides,
-           more_link: nil %>
+           more_link: guides_path %>
+
+<%= render 'layouts/submissions_panel/panel',
+           heading: t('submission').titleize.pluralize,
+           submissions: @user.submissions,
+           more_link: submissions_path %>

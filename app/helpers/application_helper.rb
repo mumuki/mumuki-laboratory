@@ -1,6 +1,10 @@
 module ApplicationHelper
   include LinksRendering
 
+  def limit(items)
+    items.take(5)
+  end
+
   def highlighted_code(lang, code)
     "<pre><code class=\"hljs #{lang}\">#{code}</code></pre>".html_safe
   end

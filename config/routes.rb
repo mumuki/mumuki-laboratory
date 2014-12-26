@@ -10,11 +10,16 @@ Rails.application.routes.draw do
     resources :exercises do
       resources :submissions, controller: 'exercise_submissions', only: [:new, :create, :show, :index]
     end
-    resources :guides, only: [:new, :create, :show] do
+
+    resources :guides, only: [:new, :create, :show, :index] do
       resources :imports, controller: 'guide_imports', only: [:create]
     end
+
     resources :submissions, only: :index
-    resources :users, only: :show
+
+    resources :users, only: :show do
+      resources :exercises, controller: 'user_exercises', only: :index
+    end
   end
 
 end

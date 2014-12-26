@@ -20,6 +20,10 @@ class GuidesController < ApplicationController
     @guide = Guide.find(params[:id])
   end
 
+  def index
+    
+  end
+
   private
 
   def guide_params

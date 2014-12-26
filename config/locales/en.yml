@@ -41,3 +41,4 @@ en:
   guide: "guide"
   authored_by: "Authored by %{author}"
   import_created: "Import enqueued"
+  submission: "submission"
