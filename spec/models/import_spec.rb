@@ -1,18 +1,24 @@
 require 'spec_helper'
 
 describe Import do
-  let(:user) { create(:user) }
-  let(:guide) { Guide.new name: 'foo', author: user, github_repository: 'flbulgarelli/mumuki-sample-exercises' }
   let(:import) { guide.imports.build }
 
+  describe '#status' do
+    let(:guide) { create(:guide) }
+
+    it { expect(import.status).to eq 'pending' }
+  end
+
+
   describe '#import_from_directory!' do
+    let(:guide) { create(:guide) }
 
     before { import.run_import_from_directory! 'spec/data/mumuki-sample-exercises' }
 
     let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 1) }
 
     it { expect(imported_exercise).to_not be nil }
-    it { expect(imported_exercise.author).to eq user }
+    it { expect(imported_exercise.author).to eq guide.author }
     it { expect(imported_exercise.title).to eq 'Sample Title' }
     it { expect(imported_exercise.description).to eq '##Sample Description' }
     it { expect(imported_exercise.test).to eq 'pending' }
@@ -21,9 +27,33 @@ describe Import do
 
   end
 
-  describe 'import!' do
-    it 'is marked as failed if exception occurs'
-    it 'is initially pending'
+  describe '#import!' do
+    before do
+      begin
+        import.run_import!
+      rescue
+      end
+    end
+
+    context 'when repository does not exist' do
+      let(:guide) { create(:guide, github_repository: 'uqbar-project/foobar123456') }
+
+      it do
+        expect(import.status).to eq 'failed'
+        expect(import.result).to eq 'failed'
+      end
+    end
+
     it 'fails if repo is private'
+    it 'fails succeeds when repo is clonable'
+
+    context 'when repository does not exist' do
+      let(:guide) { create(:guide, github_repository: 'uqbar-project/mumuki-hspec-server') }
+
+      it do
+        expect(import.status).to eq 'passed'
+        expect(import.result).to eq ''
+      end
+    end
   end
 end
