@@ -5,7 +5,7 @@ describe Authentication do
 
   describe '#restricted_for_current_user' do
     let(:exercise) { create(:exercise) }
-    let(:result) { restricted_to_current_user(exercise) { true } }
+    let(:result) { restricted_to_author(exercise) { true } }
 
     def current_user
       _user
