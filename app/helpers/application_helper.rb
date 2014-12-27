@@ -1,8 +1,10 @@
 module ApplicationHelper
   include LinksRendering
 
-  def limit(items)
-    items.take(5)
+  def limit(items, preserve_order = false)
+    limited = items.last(5)
+    limited = limited.reverse unless preserve_order
+    limited
   end
 
   def highlighted_code(lang, code)

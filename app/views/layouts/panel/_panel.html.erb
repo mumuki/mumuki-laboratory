@@ -2,7 +2,7 @@
 
   <div class="panel-heading"><%= heading %></div>
   <table class="table">
-    <%= render partial: item_partial, collection: limit(items) %>
+    <%= render partial: item_partial, collection: limit(items, local_assigns[:preserve_order]) %>
   </table>
 
   <div class="panel-footer">

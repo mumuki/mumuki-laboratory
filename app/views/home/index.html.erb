@@ -9,6 +9,7 @@
     <%= render 'layouts/exercise_panel/panel',
                heading: t('hottest_exercises'),
                exercises: @hottest_exercises,
+               preserve_order: true,
                more_link: exercises_path %>
   </div>
 </div>
