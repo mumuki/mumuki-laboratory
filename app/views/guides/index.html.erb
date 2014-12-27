@@ -1,1 +1,27 @@
-TODO: guides page here!
+<!-- TODO extract duplicated logic in exercises/index -->
+<div class="row">
+  <table class="table">
+    <thead>
+    <tr>
+      <th><%= t('title') %></th>
+      <th><%= t('created_at') %></th>
+      <th colspan="1"><%= t('actions') %></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @guides.each do |guide| %>
+        <tr>
+          <td><%= guide.name %></td>
+          <td><%= guide.created_at %></td>
+          <td><%= link_to t('show'), guide %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= paginate @guides %>
+  <br>
+</div>
+<div class="row">
+  <%= link_to t('new_guide'), new_guide_path, class: 'btn btn-primary' %>
+</div>

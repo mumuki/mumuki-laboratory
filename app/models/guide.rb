@@ -1,6 +1,7 @@
 class Guide < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
 
+  #TODO rename name to title. This helps building also generic link_to compoenetns
   has_many :exercises
   has_many :imports
 

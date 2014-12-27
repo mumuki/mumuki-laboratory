@@ -1,20 +1,21 @@
-<h1><%= @guide.name %></h1>
+<h1><%= @guide.name %>
+  <small> - <%= link_to_github @guide %></small></h1>
+
 
 <div>
-  <%= link_to_github @guide %>
+  Post commit hook:
+  <pre><%= guide_imports_url(@guide) %></pre>
 </div>
 
-<div>
-  <%= link_to guide_imports_url(@guide), guide_imports_url(@guide) %>
-</div>
+<%= render 'layouts/exercise_panel/panel',
+           heading: t(:exercise).pluralize,
+           exercises: @guide.exercises,
+           more_link: '#' %>
 
-<ul>
-  <%= render partial: 'exercise', collection: @guide.exercises %>
-</ul>
-
-
-<ul>
-  <%= render partial: 'import', collection: @guide.imports %>
-</ul>
+<%= render 'layouts/panel/panel',
+           heading: t(:import).titleize.pluralize,
+           items: @guide.imports,
+           item_partial: 'import',
+           more_link: '#' %>
 
 <%= link_to t(:new_import), guide_imports_path(@guide), method: :post, class: 'btn btn-primary' %>

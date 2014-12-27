@@ -42,3 +42,4 @@ en:
   authored_by: "Authored by %{author}"
   import_created: "Import enqueued"
   submission: "submission"
+  import: "import"
