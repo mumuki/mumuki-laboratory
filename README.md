@@ -41,3 +41,6 @@ through [SWI-Prolog](http://www.swi-prolog.org/). Support for more programming l
 1. Create exercises! Mumuki is in early stages, so remember to add your tests to some SCM. 
 1. Are you a UI designer? We want Mumuki to look great. 
 
+# Where can I read more?
+
+Check the wiki!
