@@ -12,7 +12,7 @@ en:
   results: 'Results'
   submission_for_exercise: 'Submission for exercise'
   more: "More"
-  comma_or_space_separated: 'Comma or space separated!'
+  comma_or_tab_separated: 'Comma or tab separated!'
   you_can_use_markdown_here_html: 'You can use <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> here'
   here: 'here'
   language: 'Language'

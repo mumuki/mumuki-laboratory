@@ -21,8 +21,8 @@
   </div>
   <div class="field form-group">
     <%= f.label :tag_list %><br>
-    <small><%=t('comma_or_space_separated')%></small>
-    <%= f.text_field :tag_list, class: 'form-control' %>
+    <small><%=t('comma_or_tab_separated')%></small>
+    <%= f.text_field :tag_list, class: 'form-control', 'data-role '=> 'tagsinput' %>
   </div>
   <div class="field form-group">
     <%= f.label :description %><br>

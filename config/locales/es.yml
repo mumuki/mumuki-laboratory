@@ -12,7 +12,7 @@ es:
   results: 'Resultados'
   submission_for_exercise: 'Entrega para ejercicio'
   more: "Mas"
-  comma_or_space_separated: 'Separados por espacio o coma!'
+  comma_or_tab_separated: 'Separados por tab o coma!'
   you_can_use_markdown_here_html: 'Puedes usar <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> aqui'
   here: 'aqui'
   language: 'Lenguaje'
