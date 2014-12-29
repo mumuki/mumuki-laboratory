@@ -32,7 +32,7 @@
   </div>
   <div class="field form-group">
     <%= f.label :test %><br>
-    <%= f.text_area :test, class: 'form-control', rows: 15 %>
+    <%= f.text_area :test, class: 'form-control', rows: 15, placeholder: @test_hint %>
   </div>
   <div class="actions form-group" >
     <%= f.submit class: 'btn btn-primary' %>
