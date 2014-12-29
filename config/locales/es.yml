@@ -7,6 +7,7 @@ es:
   edit_exercise: "Editar %{exercise}"
   new_submission: "Nueva Entrega"
   my_submissions: 'Mis Entregas'
+  submission_created: 'La entrega fue creada exitosamente'
   my_exercises: 'Mis Ejercicios'
   new_exercise: 'Nuevo Ejercicio'
   results: 'Resultados'
