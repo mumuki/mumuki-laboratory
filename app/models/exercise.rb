@@ -36,6 +36,10 @@ class Exercise < ActiveRecord::Base
     with_markup description
   end
 
+  def can_be_destroy?
+    submissions_count == 0
+  end
+
   private
 
   def defaults
