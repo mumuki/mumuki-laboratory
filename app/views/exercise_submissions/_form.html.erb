@@ -13,7 +13,7 @@
 
   <div class="field form-group" >
     <%= f.label :content %><br>
-    <%= f.text_area :content, class: 'form-control' %>
+    <%= f.text_area :content, class: 'form-control', value: @previous_submission_content %>
   </div>
   <div class="actions form-group">
     <%= f.submit class: 'btn btn-primary' %>

@@ -1,6 +1,7 @@
 class ExerciseSubmissionsController < ApplicationController
   before_action :set_submission, only: [:show]
   before_action :set_exercise, only: [:create, :new, :show, :index]
+  before_action :set_previous_submission_content, only: [:new]
   before_filter :authenticate!
 
   def index
@@ -27,6 +28,14 @@ class ExerciseSubmissionsController < ApplicationController
   private
   def set_submission
     @submission = Submission.find(params[:id])
+  end
+
+  def set_previous_submission_content
+    if @exercise.submissions
+      @previous_submission_content = @exercise.submissions.last.content
+    else
+      @previous_submission_content = ""
+    end
   end
 
   def set_exercise
