@@ -40,6 +40,10 @@ class Exercise < ActiveRecord::Base
     submissions_count == 0
   end
 
+  def can_be_edited?
+    guide.nil?
+  end
+
   private
 
   def defaults
