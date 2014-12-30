@@ -11,7 +11,6 @@ class ExercisesController < ApplicationController
 
   def new
     @exercise = Exercise.new
-    @test_hint = "describe \"x\"  $ do\r\n  it \"should be 3\" $ do\r\n     x `shouldBe` 3 " 
   end
 
   def edit
