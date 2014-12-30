@@ -6,6 +6,8 @@ class Exercise < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   belongs_to :guide
 
+  before_destroy :can_destroy?
+
   has_many :submissions
 
   acts_as_taggable
