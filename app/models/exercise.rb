@@ -36,11 +36,11 @@ class Exercise < ActiveRecord::Base
     with_markup description
   end
 
-  def can_be_destroy?
+  def can_destroy?
     submissions_count == 0
   end
 
-  def can_be_edited?
+  def can_edit?
     guide.nil?
   end
 
