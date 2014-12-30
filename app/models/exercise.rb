@@ -46,6 +46,10 @@ class Exercise < ActiveRecord::Base
     guide.nil?
   end
 
+  def default_content_for(user)
+    submissions.select {|s| s.submitter_id == user.id }.last.content
+  end
+
   private
 
   def defaults
