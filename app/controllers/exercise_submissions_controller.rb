@@ -32,7 +32,7 @@ class ExerciseSubmissionsController < ApplicationController
 
   def set_previous_submission_content
     if @exercise.submissions
-      @previous_submission_content = @exercise.submissions.last.content
+      @previous_submission_content = @exercise.submissions.select {|s| s.submitter_id == current_user.id }.last.content
     else
       @previous_submission_content = ""
     end
