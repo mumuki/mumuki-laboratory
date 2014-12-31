@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141228151351) do
+ActiveRecord::Schema.define(version: 20141231074400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,18 @@ ActiveRecord::Schema.define(version: 20141228151351) do
     t.integer  "status",     default: 0
     t.text     "result"
   end
+
+  create_table "languages", force: true do |t|
+    t.string   "name"
+    t.string   "test_runner_url"
+    t.string   "extension"
+    t.string   "image_url"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "languages", ["author_id"], name: "index_languages_on_author_id", using: :btree
 
   create_table "submissions", force: true do |t|
     t.text     "content"
