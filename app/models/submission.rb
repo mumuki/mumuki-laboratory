@@ -1,5 +1,4 @@
 class Submission < ActiveRecord::Base
-  include Compilation
   include TestRunning
   include WithStatus
 
@@ -11,7 +10,7 @@ class Submission < ActiveRecord::Base
   after_create :update_submissions_count!
   after_commit :schedule_test_run!, on: :create
 
-  delegate :language, :plugin, :title, to: :exercise
+  delegate :language, :title, to: :exercise
 
   private
 

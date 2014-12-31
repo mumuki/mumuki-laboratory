@@ -24,10 +24,6 @@ class Exercise < ActiveRecord::Base
     exercise.save!
   end
 
-  def plugin
-    Plugins.find_by_language(language)
-  end
-
   def authored_by?(user)
     user == author
   end

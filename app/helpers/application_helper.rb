@@ -12,11 +12,7 @@ module ApplicationHelper
   end
 
   def language_image_tag(lang)
-    image_tag language_image_url(lang), alt: lang, height: 16
-  end
-
-  def language_image_url(lang)
-    Plugins.language_image_url_for(lang)
+    image_tag lang.image_url, alt: lang.name, height: 16
   end
 
   def status_span(status)
