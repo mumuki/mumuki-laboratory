@@ -19,7 +19,4 @@ module Plugins
   def self.language_image_url_for(lang)
     find_by_language(lang).image_url
   end
-
 end
-
-HaskellPlugin.send :include, Rails.application.config.haskell_plugin_type

@@ -36,7 +36,4 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-
-  config.swipl_path = 'swipl'
-  config.haskell_plugin_type = LocalHaskell
 end
