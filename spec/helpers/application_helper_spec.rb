@@ -9,9 +9,13 @@ describe ApplicationHelper do
     it { expect(limit([1, 2, 3], true)).to eq [1, 2, 3] }
   end
 
+  describe '#language_image_tag' do
+    let(:haskell_img_tag) { '<img alt="haskell" height="16" src="https://www.haskell.org/wikistatic/haskellwiki_logo.png" />' }
+    it { expect(language_image_tag('haskell')).to eq haskell_img_tag }
+  end
+
   it '#link_to_exercise'
   it '#link_to_guide'
   it '#link_to_github'
-  it '#language_image_url'
   it '#paginate'
 end

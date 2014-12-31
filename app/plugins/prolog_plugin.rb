@@ -1,6 +1,10 @@
 class PrologPlugin
   include CommandLinePlugin
 
+  def image_url
+    'http://cdn.portableapps.com/SWI-PrologPortable_128.png'
+  end
+
   def run_test_file!(file)
     validate_compile_errors(file, *super)
   end

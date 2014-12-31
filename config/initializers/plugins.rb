@@ -17,14 +17,7 @@ module Plugins
   end
 
   def self.language_image_url_for(lang)
-    case lang
-      when 'prolog' then
-        'http://cdn.portableapps.com/SWI-PrologPortable_128.png'
-      when 'haskell' then
-        'https://www.haskell.org/wikistatic/haskellwiki_logo.png'
-      else
-        raise "Unknown language #{lang}"
-    end
+    find_by_language(lang).image_url
   end
 
 end
