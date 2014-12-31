@@ -21,8 +21,8 @@
           <td><%= link_to t('my_submissions'), exercise_submissions_path(exercise) %></td>
           <td><%= link_to t('new_submission'), new_exercise_submission_path(exercise) %></td>
           <% restricted_to_author exercise do %>
-              <td><%= link_to t('edit'), edit_exercise_path(exercise) %></td>
-              <td><%= link_to t('destroy'), exercise, method: :delete, data: {confirm: t('are_you_sure')} %></td>
+              <td><%= link_to t('edit'), edit_exercise_path(exercise) if exercise.can_edit? %></td>
+              <td><%= link_to t('destroy'), exercise, method: :delete, data: {confirm: t('are_you_sure')} if exercise.can_destroy? %></td>
           <% end %>
         </tr>
     <% end %>

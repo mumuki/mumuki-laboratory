@@ -6,6 +6,8 @@ class Exercise < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   belongs_to :guide
 
+  before_destroy :can_destroy?
+
   has_many :submissions
 
   acts_as_taggable
@@ -34,6 +36,18 @@ class Exercise < ActiveRecord::Base
 
   def description_html
     with_markup description
+  end
+
+  def can_destroy?
+    submissions_count == 0
+  end
+
+  def can_edit?
+    guide.nil?
+  end
+
+  def default_content_for(user)
+    submissions.select {|s| s.submitter_id == user.id }.last.content
   end
 
   private
