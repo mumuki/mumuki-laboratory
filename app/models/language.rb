@@ -1,7 +1,7 @@
 require 'rest_client'
 
 class Language < ActiveRecord::Base
-  belongs_to :author, class_name: 'User'
+  belongs_to :plugin_author, class_name: 'User'
 
   validates_presence_of :name, :test_runner_url, :extension, :image_url
 

@@ -1,8 +1,7 @@
 class Exercise < ActiveRecord::Base
   include WithMarkup
 
-  enum language: Plugins::LANGUAGES
-
+  belongs_to :language
   belongs_to :author, class_name: 'User'
   belongs_to :guide
 
