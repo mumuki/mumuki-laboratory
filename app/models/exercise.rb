@@ -47,16 +47,11 @@ class Exercise < ActiveRecord::Base
   end
 
   def default_content_for(user)
-    submissions = submissions_for(user)
-    if submissions.any?
-      submissions.last.content
-    else
-      ''
-    end
+    submissions_for(user).last.try(&:content) || ''
   end
 
   def submissions_for(user)
-    submissions.select { |s| s.submitter_id == user.id }
+    submissions.where(submitter_id: user.id)
   end
 
   private
