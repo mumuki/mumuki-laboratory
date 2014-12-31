@@ -36,7 +36,7 @@ Rails.application.configure do
       provider: 'twitter',
       uid: '123545',
       credentials: {},
-      info: { name: 'Test' }
+      info: { name: 'Test', nickname: 'test' }
    })
 
   # Raises error for missing translations
