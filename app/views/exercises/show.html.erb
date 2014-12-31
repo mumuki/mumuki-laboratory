@@ -43,6 +43,6 @@
   <%= link_to t('new_submission'), new_exercise_submission_path(@exercise), class: 'btn btn-primary' %>
   <%= link_to t('my_submissions'), exercise_submissions_path(@exercise), class: 'btn btn-default' %>
   <% restricted_to_author @exercise do %>
-      <%= link_to t('edit'), edit_exercise_path(@exercise), class: 'btn btn-default' %>
+      <%= link_to t('edit'), edit_exercise_path(@exercise), class: 'btn btn-default' if @exercise.can_edit? %>
   <% end %>
 </div>
