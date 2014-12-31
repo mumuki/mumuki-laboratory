@@ -1,6 +1,20 @@
 require 'spec_helper'
 
 describe Exercise do
+  describe '#destroy' do
+    let(:exercise) { create(:exercise) }
+
+    context 'when there are no submissions' do
+      it { exercise.destroy! }
+    end
+
+    context 'when there are submissions' do
+      before { create(:submission, exercise: exercise) }
+      it { expect { exercise.destroy! }.to raise_error }
+    end
+
+  end
+
   describe '#default_content_for' do
     let(:user) { create(:user) }
     let(:exercise) { create(:exercise) }
