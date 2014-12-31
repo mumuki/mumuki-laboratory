@@ -31,11 +31,7 @@ class ExerciseSubmissionsController < ApplicationController
   end
 
   def set_previous_submission_content
-    if @exercise.submissions
-      @previous_submission_content = @exercise.default_content_for(current_user)
-    else
-      @previous_submission_content = ""
-    end
+    @previous_submission_content = @exercise.default_content_for(current_user)
   end
 
   def set_exercise

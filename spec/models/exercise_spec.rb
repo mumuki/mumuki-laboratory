@@ -1,6 +1,29 @@
 require 'spec_helper'
 
 describe Exercise do
+  describe '#default_content_for' do
+    let(:user) { create(:user) }
+    let(:exercise) { create(:exercise) }
+
+    context 'when user has a single submission for the exercise' do
+      let!(:submission) { exercise.submissions.create!(submitter: user, content: 'foo') }
+
+      it { expect(exercise.default_content_for(user)).to eq submission.content }
+    end
+
+    context 'when user has no submissions for the exercise' do
+      it { expect(exercise.default_content_for(user)).to eq '' }
+    end
+
+
+    context 'when user has multiple submission for the exercise' do
+      let!(:submissions) { [exercise.submissions.create!(submitter: user, content: 'foo'),
+                            exercise.submissions.create!(submitter: user, content: 'bar')] }
+
+      it { expect(exercise.default_content_for(user)).to eq submissions.last.content }
+    end
+  end
+
   describe '#plugin' do
     let(:hs_exercise) { create(:exercise) }
     let(:pl_exercise) { create(:exercise, language: :prolog) }
