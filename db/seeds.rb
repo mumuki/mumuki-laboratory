@@ -1,7 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Language.create!(name: 'Prolog',
+                 test_runner_url: 'http://mumuki-plunit-server.herokuapp.com',
+                 extension: 'pl',
+                 image_url: 'http://cdn.portableapps.com/SWI-PrologPortable_128.png')
+
+Language.create!(name: 'Haskell',
+                 test_runner_url: 'http://mumuki-hspec-server.herokuapp.com',
+                 extension: 'hs',
+                 image_url: 'https://www.haskell.org/wikistatic/haskellwiki_logo.png')
