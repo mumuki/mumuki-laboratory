@@ -1,6 +1,10 @@
 module Plugins
   LANGUAGES = [:haskell, :prolog]
 
+  def self.find_by_language(lang)
+    Kernel.const_get("#{lang.to_s.titleize}Plugin".to_sym).new
+  end
+
   def self.language_for_extension(extension)
     case extension
       when 'hs' then

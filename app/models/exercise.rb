@@ -26,8 +26,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def plugin
-    #FIXME move to Plugins
-    Kernel.const_get("#{language.to_s.titleize}Plugin".to_sym).new
+    Plugins.find_by_language(language)
   end
 
   def authored_by?(user)
