@@ -6,8 +6,8 @@ class Language < ActiveRecord::Base
   validates_presence_of :name, :test_runner_url, :extension, :image_url
 
   def run_tests!(test, content)
-    response = JSON.parse RestClient.post("#{test_runner_url}/test", {conent: content, test: test}.to_json)
-    [response['out'], response['exit'] == 0 ? :passed : :failed]
+    response = JSON.parse RestClient.post("#{test_runner_url}/test", {content: content, test: test}.to_json)
+    [response['out'], response['exit']]
   rescue Exception => e
     [e.message, :failed]
   end
