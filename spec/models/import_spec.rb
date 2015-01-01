@@ -12,6 +12,7 @@ describe Import do
 
   describe '#import_from_directory!' do
     let(:guide) { create(:guide) }
+    let!(:haskell) { create(:language, extension: 'hs') }
 
     before { import.run_import_from_directory! 'spec/data/mumuki-sample-exercises' }
 
@@ -22,7 +23,7 @@ describe Import do
     it { expect(imported_exercise.title).to eq 'Sample Title' }
     it { expect(imported_exercise.description).to eq '##Sample Description' }
     it { expect(imported_exercise.test).to eq 'pending' }
-    it { expect(imported_exercise.language).to eq 'haskell' }
+    it { expect(imported_exercise.language).to eq haskell }
     it { expect(imported_exercise.tag_list).to include *%w(foo bar baz) }
 
   end

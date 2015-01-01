@@ -16,7 +16,7 @@ module ExerciseRepositoryLayout
 
       extension = /.*\.(.*)/.match(File.basename(test_file))[1]
 
-      language = Plugins.language_for_extension(extension) rescue next
+      language = Language.find_by!(extension: extension) rescue next
 
       yield original_id,
           {title: title.titleize,

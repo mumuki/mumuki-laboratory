@@ -17,7 +17,7 @@
   </div>
   <div class="field form-group">
     <%= f.label :language %><br>
-    <%= f.select :language, Plugins::LANGUAGES, {}, class: 'form-control' %>
+    <%= f.collection_select(:language_id, Language.all, :id, :name, {}, class: 'form-control') %>
   </div>
   <div class="field form-group">
     <%= f.label :tag_list %><br>
@@ -26,7 +26,7 @@
   </div>
   <div class="field form-group">
     <%= f.label :description %><br>
-    <small><%=t('you_can_use_markdown_here_html') %> 
+    <small><%=t('you_can_use_markdown_here_html') %>
      </small>
     <%= f.text_area :description, class: 'form-control', rows: 8 %>
   </div>

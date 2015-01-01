@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141228151351) do
+ActiveRecord::Schema.define(version: 20141231234940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20141228151351) do
     t.text     "test"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "language",          default: 0
+    t.integer  "language_id",       default: 0
     t.integer  "submissions_count"
     t.integer  "author_id"
     t.integer  "guide_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20141228151351) do
 
   add_index "exercises", ["author_id"], name: "index_exercises_on_author_id", using: :btree
   add_index "exercises", ["guide_id"], name: "index_exercises_on_guide_id", using: :btree
+  add_index "exercises", ["language_id"], name: "index_exercises_on_language_id", using: :btree
 
   create_table "guides", force: true do |t|
     t.string   "github_repository"
@@ -49,6 +50,18 @@ ActiveRecord::Schema.define(version: 20141228151351) do
     t.integer  "status",     default: 0
     t.text     "result"
   end
+
+  create_table "languages", force: true do |t|
+    t.string   "name"
+    t.string   "test_runner_url"
+    t.string   "extension"
+    t.string   "image_url"
+    t.integer  "plugin_author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "languages", ["plugin_author_id"], name: "index_languages_on_plugin_author_id", using: :btree
 
   create_table "submissions", force: true do |t|
     t.text     "content"

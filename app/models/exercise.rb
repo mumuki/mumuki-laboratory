@@ -1,8 +1,7 @@
 class Exercise < ActiveRecord::Base
   include WithMarkup
 
-  enum language: Plugins::LANGUAGES
-
+  belongs_to :language
   belongs_to :author, class_name: 'User'
   belongs_to :guide
 
@@ -23,10 +22,6 @@ class Exercise < ActiveRecord::Base
     exercise = find_or_initialize_by(original_id: original_id, guide_id: guide.id)
     exercise.assign_attributes(options)
     exercise.save!
-  end
-
-  def plugin
-    Plugins.find_by_language(language)
   end
 
   def authored_by?(user)

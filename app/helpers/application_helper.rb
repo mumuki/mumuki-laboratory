@@ -8,15 +8,11 @@ module ApplicationHelper
   end
 
   def highlighted_code(lang, code)
-    "<pre><code class=\"hljs #{lang}\">#{code}</code></pre>".html_safe
+    "<pre><code class=\"hljs #{lang.name}\">#{code}</code></pre>".html_safe
   end
 
   def language_image_tag(lang)
-    image_tag language_image_url(lang), alt: lang, height: 16
-  end
-
-  def language_image_url(lang)
-    Plugins.language_image_url_for(lang)
+    image_tag lang.image_url, alt: lang.name, height: 16
   end
 
   def status_span(status)

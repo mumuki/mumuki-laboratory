@@ -35,9 +35,10 @@ gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.14'
   gem 'factory_girl_rails'
   gem 'rake'
+  gem 'faker'
 end
 
 group :development do
