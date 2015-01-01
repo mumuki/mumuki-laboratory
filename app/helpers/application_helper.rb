@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def highlighted_code(lang, code)
-    "<pre><code class=\"hljs #{lang}\">#{code}</code></pre>".html_safe
+    "<pre><code class=\"hljs #{lang.name}\">#{code}</code></pre>".html_safe
   end
 
   def language_image_tag(lang)

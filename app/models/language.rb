@@ -12,4 +12,7 @@ class Language < ActiveRecord::Base
     [e.message, :failed]
   end
 
+  def to_s
+    name
+  end
 end

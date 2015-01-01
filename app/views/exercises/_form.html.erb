@@ -17,7 +17,7 @@
   </div>
   <div class="field form-group">
     <%= f.label :language %><br>
-    <%= f.collection_select(:language, Language.all, :id, :language, class: 'form-control') %>
+    <%= f.collection_select(:language_id, Language.all, :id, :name, {}, class: 'form-control') %>
   </div>
   <div class="field form-group">
     <%= f.label :tag_list %><br>
