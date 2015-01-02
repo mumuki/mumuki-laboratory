@@ -6,7 +6,7 @@
     <%= exercise.submissions_count %>
   </td>
   <td>
-    <a class=<%= exercise.solved_by?(current_user) ? 'passed-exercise' : 'pending-exercise' %> 
+    <a class=<%= exercise.solved_by?(current_user) ? 'passed-exercise' : 'pending-exercise' if current_user %> 
     href="<%= exercise_path(exercise) %>"><%= exercise.title %></a>
   </td>
   <td>

@@ -15,7 +15,8 @@
     <% @exercises.each do |exercise| %>
         <tr>
           <td><%= language_image_tag exercise.language %> <%= exercise.language %> </td>
-          <td class=<%= exercise.solved_by?(current_user) ? 'passed-exercise' : 'pending-exercise' %>><%= exercise.title %></td>
+          <td class=<%= exercise.solved_by?(current_user) ? 'passed-exercise' : 'pending-exercise' if current_user %>>
+          <%= exercise.title %></td>
           <td><%= exercise.tag_list %></td>
           <td><%= link_to t('show'), exercise %></td>
           <td><%= link_to t('my_submissions'), exercise_submissions_path(exercise) %></td>
