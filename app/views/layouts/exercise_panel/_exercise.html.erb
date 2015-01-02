@@ -6,8 +6,12 @@
     <%= exercise.submissions_count %>
   </td>
   <td>
-    <a class=<%= exercise.solved_by?(current_user) ? 'passed-exercise' : 'pending-exercise' if current_user %> 
-    href="<%= exercise_path(exercise) %>"><%= exercise.title %></a>
+    <% if exercise.solved_by?(current_user) && current_user %>
+      <span class="glyphicon glyphicon-certificate passed-exercise" aria-hidden="true"></span>
+    <% elsif !exercise.solved_by?(current_user) && current_user %>
+      <span class="glyphicon glyphicon-certificate pending-exercise" aria-hidden="true"></span>
+    <% end %>
+    <a href="<%= exercise_path(exercise) %>"><%= exercise.title %></a>
   </td>
   <td>
     <%= time_ago_in_words(exercise.created_at) %>
