@@ -6,7 +6,8 @@
     <%= exercise.submissions_count %>
   </td>
   <td>
-    <a href="<%= exercise_path(exercise) %>"><%= exercise.title %></a>
+    <a class=<%= exercise.solved_by?(current_user) ? 'passed-exercise' : 'pending-exercise' %> 
+    href="<%= exercise_path(exercise) %>"><%= exercise.title %></a>
   </td>
   <td>
     <%= time_ago_in_words(exercise.created_at) %>
