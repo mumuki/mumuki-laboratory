@@ -45,7 +45,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def submissions_for(user)
-    submissions.where(submitter_id: user.id)
+    submissions.where(submitter_id: user.try(:id))
   end
 
   def solved_by?(user)
