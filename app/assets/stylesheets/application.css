@@ -58,3 +58,10 @@ body {
 .taglist-box.readonly [data-role="remove"] {
     display: none;
 }
+.passed-exercise {
+    color: green;
+}
+
+.pending-exercise {
+    color: red;
+}

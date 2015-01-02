@@ -48,6 +48,10 @@ class Exercise < ActiveRecord::Base
     submissions.where(submitter_id: user.id)
   end
 
+  def solved_by?(user)
+    submissions_for(user).where(status: 2).count > 0
+  end
+
   private
 
   def defaults
