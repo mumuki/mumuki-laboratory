@@ -4,3 +4,6 @@ rvm:
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.travis.yml config/database.yml
+deploy:
+  provider: heroku
+  api_key: "YOUR API KEY"
