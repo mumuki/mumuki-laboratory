@@ -7,7 +7,7 @@
       <th><%=t('language')%></th>
       <th><%=t('title')%></th>
       <th>Tags</th>
-      <th colspan="5"><%=t('actions')%></th>
+      <th colspan="4"><%=t('actions')%></th>
     </tr>
     </thead>
 
@@ -17,10 +17,9 @@
           <td><%= language_image_tag exercise.language %> <%= exercise.language %> </td>
           <td>
             <%= glyphicon_for_exercise(exercise) %>
-            <%= exercise.title %>
+            <%= link_to exercise.title, exercise %>
           </td>
           <td><%= exercise.tag_list %></td>
-          <td><%= link_to t('show'), exercise %></td>
           <td><%= link_to t('my_submissions'), exercise_submissions_path(exercise) %></td>
           <td><%= link_to t('new_submission'), new_exercise_submission_path(exercise) %></td>
           <% restricted_to_author exercise do %>
