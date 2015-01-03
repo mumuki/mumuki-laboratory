@@ -1,9 +1,6 @@
 <tr>
   <td>
-    <%= import.created_at %>
-  </td>
-  <td>
-    <%= import.status %>
+    <%= status_span import.status %> <%= import.created_at %>
   </td>
   <td>
     <%= import.result %>
