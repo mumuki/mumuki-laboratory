@@ -6,4 +6,5 @@ before_script:
   - cp config/database.travis.yml config/database.yml
 deploy:
   provider: heroku
-  api_key: "YOUR API KEY"
+  api_key:
+    secure: gxiVqtd/NH+W4jAsSGuVItq40XW111idGcSr1tyHAKuWSAoaPoQjofqz7u4s6AfkR97hgc3kS7kh2MgymLRITJWvnoYNcepbpoh60875P2nW2QLGOVcDYoB9RkllYHn9rTiYLtqmO+Z8v/XJgc3s9v7Mx90DsL4BI5MspfLEsIg=
