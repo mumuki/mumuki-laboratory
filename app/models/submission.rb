@@ -12,6 +12,10 @@ class Submission < ActiveRecord::Base
 
   delegate :language, :title, to: :exercise
 
+  def result_preview
+    result.truncate(100) unless passed?
+  end
+
   private
 
   def update_submissions_count!

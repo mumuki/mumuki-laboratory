@@ -4,15 +4,15 @@
   <thead>
   <tr>
     <th>Submission Date</th>
-    <th>Status</th>
+    <th>Output</th>
   </tr>
   </thead>
 
   <tbody>
   <% @submissions.each do |submission| %>
       <tr>
-        <td><%= link_to submission.created_at, [@exercise, submission] %></td>
-        <td><%= submission.status %></td>
+        <td><%= status_span submission.status %> <%= link_to submission.created_at, [@exercise, submission] %></td>
+        <td><%= submission.result_preview %></td>
       </tr>
   <% end %>
   </tbody>
