@@ -16,9 +16,9 @@
         <tr>
           <td><%= language_image_tag exercise.language %> <%= exercise.language %> </td>
           <td>
-            <% if exercise.solved_by?(current_user) && current_user %>
+            <% if current_user && exercise.solved_by?(current_user) %>
               <span class="glyphicon glyphicon-certificate passed-exercise" aria-hidden="true"></span>
-            <% elsif !exercise.solved_by?(current_user) && current_user %>
+            <% elsif current_user && !exercise.solved_by?(current_user) %>
               <span class="glyphicon glyphicon-certificate pending-exercise" aria-hidden="true"></span>
             <% end %>
             <%= exercise.title %>
