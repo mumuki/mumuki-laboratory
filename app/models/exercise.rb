@@ -45,11 +45,11 @@ class Exercise < ActiveRecord::Base
   end
 
   def submissions_for(user)
-    submissions.where(submitter_id: user.try(:id))
+    submissions.where(submitter_id: user.id)
   end
 
   def solved_by?(user)
-    submissions_for(user).where(status: 2).count > 0
+    submissions_for(user).where("status = ?", Submission.statuses[:passed]).count > 0
   end
 
   private
