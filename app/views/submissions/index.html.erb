@@ -6,7 +6,6 @@
     <th><%=t('exercise')%></th>
     <th><%=t('submission_date')%></th>
     <th><%=t('status')%></th>
-    <th colspan="1"></th>
   </tr>
   </thead>
 
@@ -14,9 +13,8 @@
   <% @submissions.each do |submission| %>
       <tr>
         <td><%= link_to submission.exercise.title, exercise_path(submission.exercise) %></td>
-        <td><%= submission.created_at %></td>
+        <td><%= link_to submission.created_at, [submission.exercise, submission] %></td>
         <td><%= submission.status %></td>
-        <td><%= link_to t('show'), [submission.exercise, submission] %></td>
       </tr>
   <% end %>
   </tbody>
