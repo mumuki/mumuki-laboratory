@@ -19,16 +19,18 @@ module ApplicationHelper
     "<span class=\"glyphicon glyphicon-#{glyphicon_for_status(status)}\"></span>".html_safe
   end
 
+  #TODO may reuse colors and icons with submission statuses
   def glyphicon_for_exercise(exercise)
     return nil unless current_user?
-
-    if !exercise.submitted_by(current_user)
-      "<span class='glyphicon glyphicon-certificate text-muted' aria-hidden='true'></span>".html_safe
-     elsif exercise.solved_by?(current_user)
-      "<span class='glyphicon glyphicon-certificate text-success' aria-hidden='true'></span>".html_safe
-     else
-      "<span class='glyphicon glyphicon-certificate text-danger' aria-hidden='true'></span>".html_safe
-     end
+    text_class =
+        if !exercise.submitted_by(current_user)
+          'text-muted'
+        elsif exercise.solved_by?(current_user)
+          'text-success'
+        else
+          'text-danger'
+        end
+    "<span class=\"glyphicon glyphicon-certificate #{text_class}\" aria-hidden=\"true\"></span>".html_safe
   end
 
   def paginate(object)
