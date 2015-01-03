@@ -10,7 +10,11 @@
       </ul>
     </div>
   <% end %>
-
+  <section>
+    <p>
+      <%= @exercise.description_html %>
+    </p>
+  </section>
   <div class="field form-group" >
     <%= f.label :content %><br>
     <%= f.text_area :content, class: 'form-control', value: @previous_submission_content %>
