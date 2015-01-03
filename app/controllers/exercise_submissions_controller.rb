@@ -1,8 +1,9 @@
 class ExerciseSubmissionsController < ApplicationController
+  before_action :authenticate!
+
   before_action :set_submission, only: [:show]
   before_action :set_exercise, only: [:create, :new, :show, :index]
   before_action :set_previous_submission_content, only: [:new]
-  before_filter :authenticate!
 
   def index
     @submissions = paginated @exercise.submissions_for current_user
