@@ -65,3 +65,7 @@ body {
 .pending-exercise {
     color: red;
 }
+
+.not_submitted-exercise {
+    color: gray;
+}

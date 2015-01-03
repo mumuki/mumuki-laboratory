@@ -52,6 +52,10 @@ class Exercise < ActiveRecord::Base
     submissions_for(user).where("status = ?", Submission.statuses[:passed]).count > 0
   end
 
+  def submitted_by(user)
+    submissions_for(user).count > 0
+  end
+
   private
 
   def defaults
