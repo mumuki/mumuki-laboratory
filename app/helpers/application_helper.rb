@@ -23,7 +23,7 @@ module ApplicationHelper
   def glyphicon_for_exercise(exercise)
     return nil unless current_user?
     text_class =
-        if !exercise.submitted_by(current_user)
+        if !exercise.submitted_by?(current_user)
           'text-muted'
         elsif exercise.solved_by?(current_user)
           'text-success'

@@ -49,11 +49,11 @@ class Exercise < ActiveRecord::Base
   end
 
   def solved_by?(user)
-    submissions_for(user).where("status = ?", Submission.statuses[:passed]).count > 0
+    submissions_for(user).where("status = ?", Submission.statuses[:passed]).exists?
   end
 
-  def submitted_by(user)
-    submissions_for(user).count > 0
+  def submitted_by?(user)
+    submissions_for(user).exists?
   end
 
   private
