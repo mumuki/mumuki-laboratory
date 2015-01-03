@@ -16,7 +16,11 @@ module ApplicationHelper
   end
 
   def status_span(status)
-    "<span class=\"glyphicon glyphicon-#{glyphicon_for_status(status)}\"></span>".html_safe
+    glyphicon(glyphicon_for_status(status))
+  end
+
+  def glyphicon(name)
+    "<span class=\"glyphicon glyphicon-#{name}\"></span>".html_safe
   end
 
   #TODO may reuse colors and icons with submission statuses
