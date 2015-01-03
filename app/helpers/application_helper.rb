@@ -20,13 +20,15 @@ module ApplicationHelper
   end
 
   def glyphicon_for_exercise(exercise)
-    if current_user && !exercise.submitted_by(current_user)
-      "<span class='glyphicon glyphicon-certificate not-submitted-exercise' aria-hidden='true'></span>".html_safe
-     elsif current_user && exercise.solved_by?(current_user)
-      "<span class='glyphicon glyphicon-certificate passed-exercise' aria-hidden='true'></span>".html_safe
-     elsif current_user && !exercise.solved_by?(current_user)
-      "<span class='glyphicon glyphicon-certificate pending-exercise' aria-hidden='true'></span>".html_safe
-     end 
+    return nil unless current_user?
+
+    if !exercise.submitted_by(current_user)
+      "<span class='glyphicon glyphicon-certificate text-muted' aria-hidden='true'></span>".html_safe
+     elsif exercise.solved_by?(current_user)
+      "<span class='glyphicon glyphicon-certificate text-success' aria-hidden='true'></span>".html_safe
+     else
+      "<span class='glyphicon glyphicon-certificate text-danger' aria-hidden='true'></span>".html_safe
+     end
   end
 
   def paginate(object)
