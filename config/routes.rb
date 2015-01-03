@@ -14,8 +14,10 @@ Rails.application.routes.draw do
 
     # Current user
     resources :guides, only: [:new, :create, :show, :index] do
-      # Current user
-      resources :imports, controller: 'guide_imports', only: [:create]
+      # All users
+      resources :imports, controller: 'guide_imports', only: :create
+      # All users
+      resources :exercises, controller: 'guide_exercises', only: :index
     end
 
     # Current user

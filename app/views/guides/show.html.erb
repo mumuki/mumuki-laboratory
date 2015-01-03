@@ -10,7 +10,7 @@
 <%= render 'layouts/exercise_panel/panel',
            heading: t(:exercise).pluralize,
            exercises: @guide.exercises,
-           more_link: '#' %>
+           more_link: guide_exercises_path(@guide) %>
 
 <%= render 'layouts/panel/panel',
            heading: t(:import).titleize.pluralize,
