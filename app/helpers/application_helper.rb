@@ -19,6 +19,16 @@ module ApplicationHelper
     "<span class=\"glyphicon glyphicon-#{glyphicon_for_status(status)}\"></span>".html_safe
   end
 
+  def glyphicon_for_exercise(exercise)
+    if current_user && !exercise.submitted_by(current_user)
+      "<span class='glyphicon glyphicon-certificate not-submitted-exercise' aria-hidden='true'></span>".html_safe
+     elsif current_user && exercise.solved_by?(current_user)
+      "<span class='glyphicon glyphicon-certificate passed-exercise' aria-hidden='true'></span>".html_safe
+     elsif current_user && !exercise.solved_by?(current_user)
+      "<span class='glyphicon glyphicon-certificate pending-exercise' aria-hidden='true'></span>".html_safe
+     end 
+  end
+
   def paginate(object)
     super(object, theme: 'twitter-bootstrap-3')
   end
