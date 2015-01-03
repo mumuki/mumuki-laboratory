@@ -6,6 +6,7 @@
     <%= exercise.submissions_count %>
   </td>
   <td>
+    <%= glyphicon_for_exercise(exercise) %>
     <a href="<%= exercise_path(exercise) %>"><%= exercise.title %></a>
   </td>
   <td>
