@@ -1,10 +1,8 @@
 class ExercisesController < ApplicationController
+  include WithExerciseIndex
+
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
   before_action :authenticate!, except: [:show, :index]
-
-  def index
-    @exercises = paginated Exercise.all.by_tag params[:tag]
-  end
 
   def show
   end
@@ -47,4 +45,9 @@ class ExercisesController < ApplicationController
   def exercise_params
     params.require(:exercise).permit(:title, :description, :test, :language_id, :tag_list)
   end
+
+  def exercises
+    Exercise.all
+  end
+
 end
