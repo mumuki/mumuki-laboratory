@@ -1,6 +1,6 @@
 class ExercisesController < ApplicationController
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate!, except: [:show, :index]
+  before_action :authenticate!, except: [:show, :index]
 
   def index
     @exercises = paginated Exercise.all.by_tag params[:tag]

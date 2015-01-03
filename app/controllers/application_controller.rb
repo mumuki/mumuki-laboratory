@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   include Authentication
   include Pagination
 
-  before_filter :set_locale
+  before_action :set_locale
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.

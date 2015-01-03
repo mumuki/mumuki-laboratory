@@ -1,5 +1,5 @@
 class UserExercisesController < ApplicationController
-  before_filter :set_user
+  before_action :set_user
 
   def index
     #TODO duplicated logic in exercise controller
