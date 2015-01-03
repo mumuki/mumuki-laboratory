@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/uqbar-project/mumuki.svg?branch=master)](https://travis-ci.org/uqbar-project/mumuki)
+[![Build Status](https://travis-ci.org/uqbar-project/mumuki-platform.svg?branch=master)](https://travis-ci.org/uqbar-project/mumuki-platform)
 
 Mumuki
 ======
