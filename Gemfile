@@ -25,6 +25,8 @@ gem 'omniauth-github'
 
 gem 'redcarpet'
 
+gem 'ace-rails-ap'
+
 gem "unicorn-rails"
 
 gem 'acts-as-taggable-on', '~> 3.4'

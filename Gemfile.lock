@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
   specs:
+    ace-rails-ap (3.0.2)
     actionmailer (4.1.4)
       actionpack (= 4.1.4)
       actionview (= 4.1.4)
@@ -190,6 +191,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ace-rails-ap
   acts-as-taggable-on (~> 3.4)
   better_errors
   binding_of_caller
