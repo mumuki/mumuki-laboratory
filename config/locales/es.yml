@@ -43,3 +43,23 @@ es:
   authored_by: "Creado por %{author}"
   import_created: "Importación encolada"
   submission: "entrega"
+
+
+  
+  datetime:
+    distance_in_words:
+      x_seconds:
+        one: "Hace 1 segundo"
+        other: "Hace %{count} segundos"
+      x_minutes:
+        one: "Hace 1 minuto"
+        other: "Hace %{count} minutos" 
+      x_days:
+        one: "Hace 1 dia"
+        other: "Hace %{count} dias" 
+      x_months:
+        one: "Hace 1 mes"
+        other: "Hace %{count} meses" 
+      about_x_hours:
+        one: "Alrededor de 1 hora"
+        other: "Alrededor de %{count} horas"   
