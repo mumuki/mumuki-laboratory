@@ -31,8 +31,8 @@ describe ApplicationHelper do
   end
 
   describe '#status_span' do
-    it { expect(status_span(:passed)).to eq '<span class="glyphicon glyphicon-ok"></span>' }
-    it { expect(status_span(:failed)).to eq '<span class="glyphicon glyphicon-remove"></span>' }
+    it { expect(status_span(:passed)).to eq '<span class="glyphicon glyphicon-ok text-success"></span>' }
+    it { expect(status_span(:failed)).to eq '<span class="glyphicon glyphicon-remove text-danger"></span>' }
   end
 
 end
