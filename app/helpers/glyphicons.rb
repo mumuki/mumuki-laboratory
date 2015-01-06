@@ -26,8 +26,8 @@ module Glyphicons
 
   def glyphicon_for_status(status)
     case status.to_s
-      when 'passed' then 'ok'
-      when 'failed' then 'remove'
+      when 'passed' then 'ok text-success'
+      when 'failed' then 'remove text-danger'
       when 'running' then 'time'
       when 'pending' then 'time'
       else raise "Unknown status #{status}"
