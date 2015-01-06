@@ -1,11 +1,12 @@
 language: ruby
 rvm:
  - 2.0.0
-before_install:
- - sudo apt-get update -qq
- - sudo apt-get install -qq ghc cabal-install
- - cabal update
- - cabal install hspec
 before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.travis.yml config/database.yml
+deploy:
+  provider: heroku
+  app: mumuki
+  run: "rake db:migrate"
+  api_key:
+    secure: gxiVqtd/NH+W4jAsSGuVItq40XW111idGcSr1tyHAKuWSAoaPoQjofqz7u4s6AfkR97hgc3kS7kh2MgymLRITJWvnoYNcepbpoh60875P2nW2QLGOVcDYoB9RkllYHn9rTiYLtqmO+Z8v/XJgc3s9v7Mx90DsL4BI5MspfLEsIg=

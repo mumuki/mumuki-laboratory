@@ -21,7 +21,7 @@
 
     <ul class="nav navbar-nav navbar-left">
       <% if current_user? %>
-          <li><a href="#"><%= t('currently_logged_as')+  current_user.name %></a></li>
+          <li><%= link_to t('currently_logged_as', username: current_user.name ), current_user_path %></li>
           <li><%= link_to(t('sign_out'), logout_path) %></li>
       <% else %>
           <li><%= link_to(t('sign_in_with_github'), login_path) %></li>

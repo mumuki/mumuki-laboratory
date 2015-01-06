@@ -3,18 +3,16 @@
 <table class="table">
   <thead>
   <tr>
-    <th>Submission Date</th>
-    <th>Status</th>
-    <th colspan="1"></th>
+    <th><%= t :submission_date %></th>
+    <th><%= t :output %></th>
   </tr>
   </thead>
 
   <tbody>
   <% @submissions.each do |submission| %>
       <tr>
-        <td><%= submission.created_at %></td>
-        <td><%= submission.status %></td>
-        <td><%= link_to t('show'), [@exercise, submission] %></td>
+        <td><%= status_span submission.status %> <%= link_to submission.created_at, [@exercise, submission] %></td>
+        <td><%= submission.result_preview %></td>
       </tr>
   <% end %>
   </tbody>

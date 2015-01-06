@@ -1,0 +1,21 @@
+<h1><%= @guide.name %>
+  <small> - <%= link_to_github @guide %></small></h1>
+
+
+<div>
+  Post commit hook:
+  <pre><%= guide_imports_url(@guide) %></pre>
+</div>
+
+<%= render 'layouts/exercise_panel/panel',
+           heading: t(:exercise).pluralize,
+           exercises: @guide.exercises,
+           more_link: guide_exercises_path(@guide) %>
+
+<%= render 'layouts/panel/panel',
+           heading: t(:import).titleize.pluralize,
+           items: @guide.imports,
+           item_partial: 'import',
+           more_link: '#' %>
+
+<%= link_to t(:new_import), guide_imports_path(@guide), method: :post, class: 'btn btn-primary' %>

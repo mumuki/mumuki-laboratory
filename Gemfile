@@ -14,6 +14,7 @@ gem 'sass-rails'
 
 gem 'sucker_punch', '~> 1.0'
 
+gem 'jquery-rails'
 gem 'rails-assets-highlightjs'
 gem 'rails-assets-bootstrap'
 gem 'rails-assets-bootstrap-tagsinput'
@@ -24,17 +25,22 @@ gem 'omniauth-github'
 
 gem 'redcarpet'
 
+gem 'ace-rails-ap'
+
 gem "unicorn-rails"
 
 gem 'acts-as-taggable-on', '~> 3.4'
+
+gem 'git'
 
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.14'
   gem 'factory_girl_rails'
   gem 'rake'
+  gem 'faker'
 end
 
 group :development do

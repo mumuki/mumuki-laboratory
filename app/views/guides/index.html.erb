@@ -1,0 +1,25 @@
+<!-- TODO extract duplicated logic in exercises/index -->
+<div class="row">
+  <table class="table">
+    <thead>
+    <tr>
+      <th><%= t('title') %></th>
+      <th><%= t('created_at') %></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @guides.each do |guide| %>
+        <tr>
+          <td><%= link_to guide.name, guide %></td>
+          <td><%= guide.created_at %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= paginate @guides %>
+  <br>
+</div>
+<div class="row">
+  <%= link_to t('new_guide'), new_guide_path, class: 'btn btn-primary' %>
+</div>

@@ -1,8 +1,6 @@
 class Submission < ActiveRecord::Base
-  include Compilation
   include TestRunning
-
-  enum status: [:pending, :running, :passed, :failed]
+  include WithStatus
 
   belongs_to :exercise
   belongs_to :submitter, class_name: 'User'
@@ -12,17 +10,10 @@ class Submission < ActiveRecord::Base
   after_create :update_submissions_count!
   after_commit :schedule_test_run!, on: :create
 
-  delegate :language, :plugin, :title, to: :exercise
+  delegate :language, :title, to: :exercise
 
-  def run_update!
-    update! status: :running
-    begin
-      result, status = yield
-      update! result: result, status: status
-    rescue => e
-      update! result: e.message, status: :failed
-      raise e
-    end
+  def result_preview
+    result.truncate(100) unless passed?
   end
 
   private

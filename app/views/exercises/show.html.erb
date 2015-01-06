@@ -1,8 +1,15 @@
 <div class="row">
 
   <h1>
-    <%= @exercise.title %> <small> - <%= @exercise.language %></small>
+    <%= @exercise.title %>
+    <small> - <%= @exercise.language %></small>
   </h1>
+
+  <section>
+    <p>
+      <%= raw t :authored_by, author: link_to(@exercise.author.name, user_path(@exercise.author)) %>
+    </p>
+  </section>
 
   <section>
     <%= taglist_tag @exercise.tag_list %>
@@ -14,19 +21,28 @@
     </p>
   </section>
 
-  <% restricted_to_current_user @exercise do %>
+  <% restricted_to_author @exercise do %>
       <section>
         <h2>Tests</h2>
+
         <p>
-        <%= highlighted_code @exercise.language, @exercise.test %>
+          <%= highlighted_code @exercise.language, @exercise.test %>
         </p>
       </section>
+      <% if @exercise.guide %>
+          <section>
+            <h2><%= t(:guide).titleize %></h2>
+            <p>
+              <%= link_to_guide @exercise.guide  %>
+            </p>
+          </section>
+      <% end %>
   <% end %>
 </div>
 <div class="row">
   <%= link_to t('new_submission'), new_exercise_submission_path(@exercise), class: 'btn btn-primary' %>
-  <%= link_to t('my_submissions'), exercise_submissions_path(@exercise), class: 'btn btn-default'  %>
-  <% restricted_to_current_user @exercise do %>
-      <%= link_to t('edit'), edit_exercise_path(@exercise), class: 'btn btn-default'  %>
+  <%= link_to t('my_submissions'), exercise_submissions_path(@exercise), class: 'btn btn-default' %>
+  <% restricted_to_author @exercise do %>
+      <%= link_to t('edit'), edit_exercise_path(@exercise), class: 'btn btn-default' if @exercise.can_edit? %>
   <% end %>
 </div>

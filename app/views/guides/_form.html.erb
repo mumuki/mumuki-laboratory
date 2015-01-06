@@ -1,0 +1,30 @@
+<%= form_for(@guide, html: {role: 'form'}) do |f| %>
+    <% if @guide.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@guide.errors.count, 'error') %> prohibited this exercise from being saved:</h2>
+
+          <ul>
+            <% @guide.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field form-group">
+      <%= f.label :name %>
+      <br>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :github_repository %><small> <%= t 'github_url_hint' %></small>
+      <br>
+      <%= f.text_field :github_repository, class: 'form-control' %>
+    </div>
+
+    <div class="actions form-group">
+      <%= f.submit class: 'btn btn-primary' %>
+      <%= link_to t('cancel'), :back, class: 'btn btn-default' %>
+    </div>
+<% end %>

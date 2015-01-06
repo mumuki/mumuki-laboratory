@@ -1,4 +1,4 @@
-<%= form_for([@exercise, @submission], html: {role: 'form'}) do |f| %>
+<%= form_for([@exercise, @submission], id: 'exercise-submission-form',html: {role: 'form'}) do |f| %>
   <% if @submission.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
@@ -10,10 +10,14 @@
       </ul>
     </div>
   <% end %>
-
+  <section>
+    <p>
+      <%= @exercise.description_html %>
+    </p>
+  </section>
   <div class="field form-group" >
     <%= f.label :content %><br>
-    <%= f.text_area :content, class: 'form-control' %>
+    <%= f.text_area :content, class: 'form-control data-editor', id: 'editor', value: @previous_submission_content %>
   </div>
   <div class="actions form-group">
     <%= f.submit class: 'btn btn-primary' %>

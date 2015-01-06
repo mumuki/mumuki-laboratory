@@ -7,7 +7,7 @@
       <th><%=t('language')%></th>
       <th><%=t('title')%></th>
       <th>Tags</th>
-      <th colspan="5"><%=t('actions')%></th>
+      <th colspan="4"><%=t('actions')%></th>
     </tr>
     </thead>
 
@@ -15,14 +15,16 @@
     <% @exercises.each do |exercise| %>
         <tr>
           <td><%= language_image_tag exercise.language %> <%= exercise.language %> </td>
-          <td><%= exercise.title %></td>
+          <td>
+            <%= glyphicon_for_exercise(exercise) %>
+            <%= link_to exercise.title, exercise %>
+          </td>
           <td><%= exercise.tag_list %></td>
-          <td><%= link_to t('show'), exercise %></td>
           <td><%= link_to t('my_submissions'), exercise_submissions_path(exercise) %></td>
           <td><%= link_to t('new_submission'), new_exercise_submission_path(exercise) %></td>
-          <% restricted_to_current_user exercise do %>
-              <td><%= link_to t('edit'), edit_exercise_path(exercise) %></td>
-              <td><%= link_to t('destroy'), exercise, method: :delete, data: {confirm: t('are_you_sure')} %></td>
+          <% restricted_to_author exercise do %>
+              <td><%= link_to glyphicon(:pencil), edit_exercise_path(exercise) if exercise.can_edit? %></td>
+              <td><%= link_to glyphicon(:trash), exercise, method: :delete, data: {confirm: t('are_you_sure')} if exercise.can_destroy? %></td>
           <% end %>
         </tr>
     <% end %>
@@ -32,4 +34,6 @@
   <br>
 
   <%= link_to t('new_exercise'), new_exercise_path, class: 'btn btn-primary' %>
+  <%= link_to t('new_guide'), new_guide_path, class: 'btn btn-primary' %>
+
 </div>

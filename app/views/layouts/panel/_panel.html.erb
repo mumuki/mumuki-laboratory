@@ -1,0 +1,11 @@
+<div class="panel panel-default">
+
+  <div class="panel-heading"><%= heading %></div>
+  <table class="table">
+    <%= render partial: item_partial, collection: limit(items, local_assigns[:preserve_order]) %>
+  </table>
+
+  <div class="panel-footer">
+    <%= link_to t('more'), more_link %>
+  </div>
+</div>

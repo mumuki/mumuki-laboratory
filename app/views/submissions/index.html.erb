@@ -1,22 +1,20 @@
-<h1>Listing all submissions</h1>
+<h1><%= t :my_submissions %></h1>
 
 <table class="table">
   <thead>
   <tr>
-    <th><%=t('exercise')%></th>
     <th><%=t('submission_date')%></th>
-    <th><%=t('status')%></th>
-    <th colspan="1"></th>
+    <th><%=t('exercise')%></th>
+    <th><%=t('output')%></th>
   </tr>
   </thead>
 
   <tbody>
   <% @submissions.each do |submission| %>
       <tr>
+        <td><%= status_span submission.status %> <%= link_to submission.created_at, [submission.exercise, submission] %></td>
         <td><%= link_to submission.exercise.title, exercise_path(submission.exercise) %></td>
-        <td><%= submission.created_at %></td>
-        <td><%= submission.status %></td>
-        <td><%= link_to t('show'), [submission.exercise, submission] %></td>
+        <td><%= submission.result_preview %></td>
       </tr>
   <% end %>
   </tbody>

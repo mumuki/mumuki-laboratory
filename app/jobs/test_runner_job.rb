@@ -1,11 +1,6 @@
-require 'tempfile'
+class TestRunnerJob < ActiveRecordJob
 
-class TestRunnerJob
-  include SuckerPunch::Job
-
-  def perform(submission_id)
-    ActiveRecord::Base.connection_pool.with_connection do
-      ::Submission.find(submission_id).run_tests!
-    end
+  def perform_with_connection(submission_id)
+    ::Submission.find(submission_id).run_tests!
   end
 end

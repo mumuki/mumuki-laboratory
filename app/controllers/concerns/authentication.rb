@@ -22,8 +22,15 @@ module Authentication
     redirect_to root_path, alert: message unless current_user?
   end
 
-  def restricted_to_current_user(exercise)
+  def restricted_to_author(exercise)
     yield if exercise.authored_by? current_user
   end
 
+  def restricted_to_current_user(user)
+    yield if user == current_user
+  end
+
+  def current_user_path
+    user_path(current_user)
+  end
 end

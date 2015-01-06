@@ -1,0 +1,15 @@
+<tr>
+  <td>
+    <%= language_image_tag(exercise.language) %>
+  </td>
+  <td>
+    <%= exercise.submissions_count %>
+  </td>
+  <td>
+    <%= glyphicon_for_exercise(exercise) %>
+    <a href="<%= exercise_path(exercise) %>"><%= exercise.title %></a>
+  </td>
+  <td>
+    <%= time_ago_in_words(exercise.created_at) %>
+  </td>
+</tr>

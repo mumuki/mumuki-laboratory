@@ -7,12 +7,13 @@ en:
   edit_exercise: "Edit %{exercise}"
   new_submission: "New Submission"
   my_submissions: 'My Submissions'
+  submission_created: 'Submission was successfully created'
   my_exercises: 'My Exercises'
   new_exercise: 'New Exercise'
   results: 'Results'
   submission_for_exercise: 'Submission for exercise'
   more: "More"
-  comma_or_space_separated: 'Comma or space separated!'
+  comma_or_tab_separated: 'Comma or tab separated!'
   you_can_use_markdown_here_html: 'You can use <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> here'
   here: 'here'
   language: 'Language'
@@ -24,7 +25,7 @@ en:
   hottest_exercises: 'Hottest Exercises'
   sign_out: "Sign Out"
   sign_in_with_github: 'Sign in with Github'
-  currently_logged_as: 'Currently logged as '
+  currently_logged_as: 'Currently logged as %{username}'
   exercise: 'Exercise'
   submission_date: 'Submission date'
   status: 'Status'
@@ -35,3 +36,11 @@ en:
   listing_exercises: 'Listing exercises'
   search_exercises_by_tag: "Search exercises by tag!"
   search: 'Search'
+  new_guide: "New Guide"
+  github_url_hint: "username/repository"
+  guide_created: "Guide created successfully"
+  guide: "guide"
+  authored_by: "Authored by %{author}"
+  import_created: "Import enqueued"
+  submission: "submission"
+  import: "import"
