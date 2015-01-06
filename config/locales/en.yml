@@ -44,3 +44,5 @@ en:
   import_created: "Import enqueued"
   submission: "submission"
   import: "import"
+  mumuki_catchphrase: "Improve your programming skills"
+  mumuki_short_description: "Mumuki is an simple, open and collaborative platform for sharing and solving programming exercises. It is aimed to help people with learning and teaching programing languages and paradigms"

@@ -53,13 +53,15 @@ es:
         other: "Hace %{count} segundos"
       x_minutes:
         one: "Hace 1 minuto"
-        other: "Hace %{count} minutos" 
+        other: "Hace %{count} minutos"
       x_days:
         one: "Hace 1 dia"
-        other: "Hace %{count} dias" 
+        other: "Hace %{count} dias"
       x_months:
         one: "Hace 1 mes"
-        other: "Hace %{count} meses" 
+        other: "Hace %{count} meses"
       about_x_hours:
         one: "Alrededor de 1 hora"
-        other: "Alrededor de %{count} horas"   
+        other: "Alrededor de %{count} horas"
+  mumuki_catchphrase: "Mejorá tus habilidades de programación"
+  mumuki_short_description: "Mumuki es una plataforma simple, abierta y colaborativa para compartir y resolver ejercicios de programación. Mumuki existe para ayudar a las personas a aprender y enseñar lenguajes y paradigmas de programación"
