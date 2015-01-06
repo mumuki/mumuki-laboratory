@@ -3,6 +3,7 @@ function setAceEditor() {
   var form = textarea.form
 
   editor = ace.edit(textarea)
+  editor.getSession().setUseWorker(false)
   language = $(":selected").html()
   changeEditorLanguage(language)
   editor.container.id = "ta"
