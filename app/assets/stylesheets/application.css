@@ -25,10 +25,7 @@ body {
 }
 
 .alert {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 50px;
-    margin-left: 15px;
+    margin: 10px 50px 10px 15px;
 }
 
 .page-header {
