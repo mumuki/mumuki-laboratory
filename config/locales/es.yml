@@ -14,18 +14,18 @@ es:
   submission_for_exercise: 'Entrega para ejercicio'
   more: "Mas"
   comma_or_tab_separated: 'Separados por tab o coma!'
-  you_can_use_markdown_here_html: 'Puedes usar <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> aqui'
-  here: 'aqui'
+  you_can_use_markdown_here_html: 'Podés usar <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>'
+  here: 'acá'
   language: 'Lenguaje'
-  title: 'Titulo'
+  title: 'Título'
   actions: 'Acciones'
-  are_you_sure: 'Estas seguro?'
+  are_you_sure: '¿Estás seguro?'
   all_exercises: 'Todos los ejercicios'
   latest_exercises: 'Ultimos ejercicios'
-  hottest_exercises: 'Ejercicios Mas Usados'
-  sign_out: "Cerrar Sesion"
-  sign_in_with_github: 'Inicie sesion con Github'
-  currently_logged_as: 'Ha iniciado sesion como %{username}'
+  hottest_exercises: 'Ejercicios más usados'
+  sign_out: "Cerrar Sesión"
+  sign_in_with_github: 'Iniciá sesion con Github'
+  currently_logged_as: 'Iniciaste sesión como %{username}'
   exercise: 'Ejercicio'
   submission_date: 'Fecha de entrega'
   status: 'Estado'
@@ -33,8 +33,8 @@ es:
   failed: 'fallo'
   running: 'procesando'
   pending: 'pendiente'
-  listing_exercises: 'Listando ejercicios'
-  search_exercises_by_tag: "Busque ejercicios por tag!"
+  listing_exercises: 'Listado de ejercicios'
+  search_exercises_by_tag: "Buscá ejercicios"
   search: 'Buscar'
   new_guide: "Nueva Guía"
   github_url_hint: "usuario/repositorio"
