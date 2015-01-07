@@ -6,7 +6,7 @@ function setAceEditor() {
   editor.getSession().setUseWorker(false)
   language = $(":selected").html()
   changeEditorLanguage(language)
-  editor.container.id = "ta"
+  editor.container.id = "editor-container"
 
   form.addEventListener("submit", function() {    
     textarea.style.visibility = "hidden"
@@ -23,7 +23,9 @@ function onSelectChange() {
 };
 
 function changeEditorLanguage(language) {
-  editor.getSession().setMode("ace/mode/"+language.toLowerCase())
+  if(language != null) {
+    editor.getSession().setMode("ace/mode/"+language.toLowerCase())
+  }
 };
 
 

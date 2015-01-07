@@ -56,10 +56,6 @@ body {
 .taglist-box.readonly [data-role="remove"] {
     display: none;
 }
-#ta {
-    height: 300px;
-}
 
-.ace_editor {
+#editor-container { 
     height: 300px;
-}
