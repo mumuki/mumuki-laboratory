@@ -13,6 +13,7 @@
  *= require highlightjs
  *= require bootstrap
  *= require bootstrap-tagsinput
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */
@@ -55,9 +56,10 @@ body {
 .taglist-box.readonly [data-role="remove"] {
     display: none;
 }
-#ta { 
+#ta {
     height: 300px;
 }
-.ace_editor { 
+
+.ace_editor {
     height: 300px;
 }

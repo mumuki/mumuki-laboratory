@@ -24,6 +24,17 @@ class Exercise < ActiveRecord::Base
     exercise.save!
   end
 
+  def status_for(user)
+    #TODO may just get the status of the last submission, or unknown, if there is no submission
+    if solved_by?(user)
+      :passed
+    elsif submitted_by?(user)
+      :failed
+    else
+      :unknown
+    end
+  end
+
   def authored_by?(user)
     user == author
   end

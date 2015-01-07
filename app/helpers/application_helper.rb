@@ -1,6 +1,6 @@
 module ApplicationHelper
   include LinksRendering
-  include Glyphicons
+  include Icons
 
   def limit(items, preserve_order = false)
     limited = items.last(5)

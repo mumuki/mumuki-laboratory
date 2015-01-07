@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe ApplicationHelper do
   helper ApplicationHelper
+  helper FontAwesome::Rails::IconHelper
 
   describe '#limit' do
     it { expect(limit([1, 2, 3, 4, 5, 6])).to eq [6, 5, 4, 3, 2] }
@@ -31,8 +32,8 @@ describe ApplicationHelper do
   end
 
   describe '#status_span' do
-    it { expect(status_span(:passed)).to eq '<span class="glyphicon glyphicon-ok text-success"></span>' }
-    it { expect(status_span(:failed)).to eq '<span class="glyphicon glyphicon-remove text-danger"></span>' }
+    it { expect(status_span(:passed)).to eq '<i class="fa fa-check text-success"></i>' }
+    it { expect(status_span(:failed)).to eq '<i class="fa fa-times text-danger"></i>' }
   end
 
 end

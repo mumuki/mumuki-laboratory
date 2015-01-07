@@ -23,11 +23,13 @@ gem 'rest-client'
 
 gem 'omniauth-github'
 
+gem 'font-awesome-rails'
+
 gem 'redcarpet'
 
 gem 'ace-rails-ap'
 
-gem "unicorn-rails"
+gem 'unicorn-rails'
 
 gem 'acts-as-taggable-on', '~> 3.4'
 
