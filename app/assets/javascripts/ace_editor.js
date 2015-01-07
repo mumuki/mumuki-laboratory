@@ -13,17 +13,17 @@ function setAceEditor() {
     textarea.value = editor.getValue();
     form.appendChild(textarea)
   });
-};
+}
 
 function onSelectChange() {
   $("#exercise_language_id").change(function() {
     language = $(":selected").html();
     changeEditorLanguage(language)
   });
-};
+}
 
 function changeEditorLanguage(language) {
-  if(language != null) {
+  if(language !== undefined) {
     editor.getSession().setMode("ace/mode/"+language.toLowerCase())
   }
 }
