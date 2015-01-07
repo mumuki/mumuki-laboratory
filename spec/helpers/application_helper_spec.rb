@@ -31,9 +31,12 @@ describe ApplicationHelper do
     it { expect(link_to_github(guide)).to eq '<a href="https://github.com/foo/bar">foo/bar</a>' }
   end
 
-  describe '#status_span' do
-    it { expect(status_span(:passed)).to eq '<i class="fa fa-check text-success"></i>' }
-    it { expect(status_span(:failed)).to eq '<i class="fa fa-times text-danger"></i>' }
+  describe '#status_icon' do
+    let(:passed_submission) { create(:submission, status: :passed) }
+    let(:failed_submission) { create(:submission, status: :failed) }
+
+    it { expect(status_icon(passed_submission)).to eq '<i class="fa fa-check text-success"></i>' }
+    it { expect(status_icon(failed_submission)).to eq '<i class="fa fa-times text-danger"></i>' }
   end
 
 end

@@ -3,7 +3,7 @@
     <%= language_image_tag submission.language %>
   </td>
   <td>
-    <%= status_span submission.status %> <%= link_to(submission.title, [submission.exercise, submission]) %>
+    <%= status_icon submission %> <%= link_to(submission.title, [submission.exercise, submission]) %>
   </td>
   <td>
     <%= time_ago_in_words(submission.created_at) %>

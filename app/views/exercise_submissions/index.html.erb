@@ -11,7 +11,7 @@
   <tbody>
   <% @submissions.each do |submission| %>
       <tr>
-        <td><%= status_span submission.status %> <%= link_to submission.created_at, [@exercise, submission] %></td>
+        <td><%= status_icon submission %> <%= link_to submission.created_at, [@exercise, submission] %></td>
         <td><%= submission.result_preview %></td>
       </tr>
   <% end %>

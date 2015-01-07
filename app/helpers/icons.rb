@@ -1,7 +1,7 @@
 module Icons
 
-  def status_span(status)
-    fa_icon *icon_for_status(status)
+  def status_icon(with_status)
+    fa_icon *icon_for_status(with_status.status)
   end
 
   def exercise_status_icon(exercise)
