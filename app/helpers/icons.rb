@@ -5,10 +5,15 @@ module Icons
   end
 
   def exercise_status_icon(exercise)
-    fa_icon *icon_for_status(exercise.status_for(current_user)) if current_user?
+    link_to exercise_status_fa_icon(exercise),
+            exercise_submissions_path(exercise) if current_user?
   end
 
   private
+
+  def exercise_status_fa_icon(exercise)
+    fa_icon(*icon_for_status(exercise.status_for(current_user)))
+  end
 
   def icon_for_status(status)
     case status.to_s
