@@ -65,3 +65,6 @@ es:
         other: "Alrededor de %{count} horas"
   mumuki_catchphrase: "Mejorá tus habilidades de programación"
   mumuki_short_description: "Mumuki es una plataforma simple, abierta y colaborativa para compartir y resolver ejercicios de programación. Mumuki existe para ayudar a las personas a aprender y enseñar lenguajes y paradigmas de programación"
+  tag: "Etiqueta"
+  new_submission_for: "Nueva entrega para %{exercise}"
+  submissions_for: "Entregas para %{exercise}"
