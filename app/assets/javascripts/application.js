@@ -15,6 +15,6 @@
 //= require highlightjs
 //= require bootstrap
 //= require bootstrap-tagsinput
-//= require_tree .
 //= require ace/ace
 //= require ace/worker-html
+//= require_tree .
