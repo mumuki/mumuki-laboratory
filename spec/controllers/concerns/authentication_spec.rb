@@ -13,7 +13,7 @@ describe Authentication do
 
     context 'when is current user' do
       let(:_user) { exercise.author }
-      it { expect(result).to be_true }
+      it { expect(result).to be_truthy }
     end
 
     context 'when is current user' do
