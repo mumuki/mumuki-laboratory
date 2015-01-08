@@ -16,7 +16,7 @@ module Authentication
   end
 
   def authenticate!
-    message = "You must #{view_context.link_to('sign in with Github', login_path)} before continue"
+    message = t :you_must, action: view_context.link_to(t(:sign_in_with_github_action), login_path)
     redirect_to :back, alert: message unless current_user?
   rescue ActionController::RedirectBackError
     redirect_to root_path, alert: message unless current_user?

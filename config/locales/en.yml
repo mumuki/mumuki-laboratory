@@ -49,3 +49,5 @@ en:
   tag: "Tag"
   new_submission_for: "New submission for %{exercise}"
   submissions_for: "Submissions for %{exercise}"
+  you_must: "You must %{action} before continue"
+  sign_in_with_github_action: "sign in with Github"

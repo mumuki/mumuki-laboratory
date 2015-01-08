@@ -85,3 +85,5 @@ es:
         language: "Lenguaje"
         tag_list: "Etiquetas"
         description: "Descripción"
+  you_must: "Tenés que %{action} antes de continuar"
+  sign_in_with_github_action: "iniciar sesión con Github"
