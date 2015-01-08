@@ -68,3 +68,20 @@ es:
   tag: "Etiqueta"
   new_submission_for: "Nueva entrega para %{exercise}"
   submissions_for: "Entregas para %{exercise}"
+
+  activerecord:
+    models:
+      submission: "Entrega"
+      exercise: "Ejercicio"
+      import: "Importación"
+      guide:  "Guía"
+
+    attributes:
+      submission:
+        content: "Contenido"
+
+      exercise:
+        title: "Título"
+        language: "Lenguaje"
+        tag_list: "Etiquetas"
+        description: "Descripción"
