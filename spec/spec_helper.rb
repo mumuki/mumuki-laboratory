@@ -4,7 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'minitest/autorun'
 require 'rspec/rails'
 require 'rspec/autorun'
-
+require "codeclimate-test-reporter"
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -46,3 +46,6 @@ RSpec.configure do |config|
 
   config.infer_spec_type_from_file_location!
 end
+
+#Start codeclimate test reporter
+CodeClimate::TestReporter.start

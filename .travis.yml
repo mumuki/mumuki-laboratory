@@ -10,3 +10,7 @@ deploy:
   run: "rake db:migrate"
   api_key:
     secure: gxiVqtd/NH+W4jAsSGuVItq40XW111idGcSr1tyHAKuWSAoaPoQjofqz7u4s6AfkR97hgc3kS7kh2MgymLRITJWvnoYNcepbpoh60875P2nW2QLGOVcDYoB9RkllYHn9rTiYLtqmO+Z8v/XJgc3s9v7Mx90DsL4BI5MspfLEsIg=
+addons:
+    code_climate:
+      repo_token: befbdba5a24b61b890880065f2440779049041db7d5b25e28794030bb1eec1bc
+env: CODECLIMATE_REPO_TOKEN=befbdba5a24b61b890880065f2440779049041db7d5b25e28794030bb1eec1bc
