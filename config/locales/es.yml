@@ -43,14 +43,22 @@ es:
   authored_by: "Creado por %{author}"
   import_created: "Importación encolada"
   submission: "entrega"
-
-
+  mumuki_catchphrase: "Mejorá tus habilidades de programación"
+  mumuki_short_description: "Mumuki es una plataforma simple, abierta y colaborativa para compartir y resolver ejercicios de programación. Mumuki existe para ayudar a las personas a aprender y enseñar lenguajes y paradigmas de programación"
+  tag: "Etiqueta"
+  new_submission_for: "Nueva entrega para %{exercise}"
+  submissions_for: "Entregas para %{exercise}"
+  you_must: "Tenés que %{action} antes de continuar"
+  sign_in_with_github_action: "iniciar sesión con Github"
 
   datetime:
     distance_in_words:
       x_seconds:
         one: "Hace 1 segundo"
         other: "Hace %{count} segundos"
+      less_than_x_minutes:
+        one: "Hace menos de 1 minuto"
+        other: "Hace menos de %{count} minutos"
       x_minutes:
         one: "Hace 1 minuto"
         other: "Hace %{count} minutos"
@@ -63,11 +71,6 @@ es:
       about_x_hours:
         one: "Alrededor de 1 hora"
         other: "Alrededor de %{count} horas"
-  mumuki_catchphrase: "Mejorá tus habilidades de programación"
-  mumuki_short_description: "Mumuki es una plataforma simple, abierta y colaborativa para compartir y resolver ejercicios de programación. Mumuki existe para ayudar a las personas a aprender y enseñar lenguajes y paradigmas de programación"
-  tag: "Etiqueta"
-  new_submission_for: "Nueva entrega para %{exercise}"
-  submissions_for: "Entregas para %{exercise}"
 
   activerecord:
     models:
@@ -85,5 +88,15 @@ es:
         language: "Lenguaje"
         tag_list: "Etiquetas"
         description: "Descripción"
-  you_must: "Tenés que %{action} antes de continuar"
-  sign_in_with_github_action: "iniciar sesión con Github"
+        locale: "Idioma"
+
+    errors:
+      models:
+        exercise:
+          attributes:
+            test:
+              blank: "no puede estar vacío"
+            description:
+              blank: "no puede estar vacía"
+            title:
+              blank: "no puede estar vacío"

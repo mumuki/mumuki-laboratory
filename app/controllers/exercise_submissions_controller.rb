@@ -20,7 +20,7 @@ class ExerciseSubmissionsController < ApplicationController
     @submission = current_user.submissions.build(submission_params)
 
     if @submission.save
-      redirect_to [@exercise, @submission], notice: 'Submission was successfully created.'
+      redirect_to [@exercise, @submission], notice: t(:submission_created)
     else
       render :new
     end
