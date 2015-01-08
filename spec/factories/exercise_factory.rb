@@ -13,6 +13,7 @@ FactoryGirl.define do
     language
     test 'dont care'
     author { create(:user) }
+    locale :en
   end
 
   factory :x_equal_5_exercise, parent: :exercise do
