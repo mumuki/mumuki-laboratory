@@ -20,6 +20,10 @@
     <%= f.collection_select(:language_id, Language.all, :id, :name, {}, class: 'form-control') %>
   </div>
   <div class="field form-group">
+    <%= f.label :locale %><br>
+    <%= f.select(:locale, [['English', :en], ['Español', :es]], {}, class: 'form-control') %>
+  </div>
+  <div class="field form-group">
     <%= f.label :tag_list %><br>
     <small><%=t('comma_or_tab_separated')%></small>
     <%= f.text_field :tag_list, class: 'form-control', 'data-role '=> 'tagsinput' %>

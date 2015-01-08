@@ -12,7 +12,7 @@ class Exercise < ActiveRecord::Base
   acts_as_taggable
 
   validates_presence_of :title, :description, :language, :test,
-                        :submissions_count, :author
+                        :submissions_count, :author, :locale
   after_initialize :defaults, if: :new_record?
 
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
