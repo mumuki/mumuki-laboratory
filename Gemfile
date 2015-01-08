@@ -50,6 +50,9 @@ group :development do
   gem 'binding_of_caller'
 end
 
+#Add integration of test coverage with Code Climate
+gem "codeclimate-test-reporter", group: :test, require: nil
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
