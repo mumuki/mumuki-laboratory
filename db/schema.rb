@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141231234940) do
+ActiveRecord::Schema.define(version: 20150108014005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20141231234940) do
     t.integer  "author_id"
     t.integer  "guide_id"
     t.integer  "original_id"
+    t.string   "locale",            default: "en"
   end
 
   add_index "exercises", ["author_id"], name: "index_exercises_on_author_id", using: :btree

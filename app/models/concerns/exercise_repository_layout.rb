@@ -22,6 +22,7 @@ module ExerciseRepositoryLayout
           {title: title.titleize,
            description: File.read(description_path),
            tag_list: meta['tags'],
+           locale: meta['locale'],
            language: language,
            author: author,
            test: File.read(test_file)}

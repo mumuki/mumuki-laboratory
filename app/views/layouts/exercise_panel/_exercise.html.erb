@@ -9,6 +9,7 @@
     <%= exercise_status_icon(exercise) %>
     <a href="<%= exercise_path(exercise) %>"><%= exercise.title %></a>
   </td>
+  <td><%= flag(exercise.locale) %></td>
   <td>
     <%= time_ago_in_words(exercise.created_at) %>
   </td>

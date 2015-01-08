@@ -6,6 +6,7 @@
     <tr>
       <th><%= t :language %></th>
       <th><%= t :title %></th>
+      <th></th>
       <th><%= t :tag %></th>
       <th colspan="4"><%= t :actions %></th>
     </tr>
@@ -19,6 +20,7 @@
             <%= exercise_status_icon(exercise) %>
             <%= link_to exercise.title, exercise %>
           </td>
+          <td><%= flag(exercise.locale) %></td>
           <td><%= exercise.tag_list %></td>
           <td><%= link_to t('my_submissions'), exercise_submissions_path(exercise) %></td>
           <td><%= link_to t('new_submission'), new_exercise_submission_path(exercise) %></td>
