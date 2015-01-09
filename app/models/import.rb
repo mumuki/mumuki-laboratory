@@ -1,6 +1,6 @@
 class Import < ActiveRecord::Base
   include WithStatus
-  include ExerciseRepositoryLayout
+  include WithExerciseRepository
 
   belongs_to :guide
 
@@ -9,7 +9,7 @@ class Import < ActiveRecord::Base
   delegate :author, to: :guide
 
   def run_import_from_directory!(dir)
-    process_files dir do |original_id, attributes|
+    process_repository_files dir do |original_id, attributes|
       Exercise.create_or_update_for_import!(guide, original_id, attributes)
     end
   end
@@ -18,12 +18,12 @@ class Import < ActiveRecord::Base
     run_update! do
       Rails.logger.info("Importing exercises for #{guide.github_url}")
       #TODO handle private repositories
-      out = ''
+      log = nil
       Dir.mktmpdir("mumuki.#{id}.import") do |dir|
         git_clone_into dir
-        out = run_import_from_directory! dir
+        log = run_import_from_directory! dir
       end
-      [out, :passed]
+      [log.to_s, :passed]
     end
   end
 
