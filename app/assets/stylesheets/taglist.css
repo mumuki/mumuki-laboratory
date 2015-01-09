@@ -1,0 +1,11 @@
+.bootstrap-tagsinput {
+    width: 100%;
+}
+
+.bootstrap-tagsinput .label {
+    font-size: 13px;
+}
+
+.taglist-box.readonly [data-role="remove"] {
+    display: none;
+}

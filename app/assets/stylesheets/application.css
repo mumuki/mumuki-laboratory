@@ -17,61 +17,9 @@
  *= require_tree .
  *= require_self
  */
-html {
-    position: relative;
-    min-height: 100%;
-}
-
-body {
-    padding-top: 60px;
-    margin-bottom: 80px;
-}
-
-.navbar-default {
-    background-image: none;
-}
-
-.alert {
-    margin: 10px 50px 10px 15px;
-}
-
-.page-header {
-    margin-top: 20px;
-}
-
-.gh-ribbon {
-    z-index: 1040;
-    position: absolute;
-    top: 0;
-    right: 0;
-    border: 0;
-}
 
 .hljs {
     background-color: transparent;
-}
-
-.bootstrap-tagsinput {
-    width: 100%;
-}
-
-.bootstrap-tagsinput .label {
-    font-size: 13px;
-}
-
-.taglist-box.readonly [data-role="remove"] {
-    display: none;
-}
-
-#editor-container {
-    height: 300px;
-}
-
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 80px;
 }
 
 .alert-danger a {
