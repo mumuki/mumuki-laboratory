@@ -18,11 +18,12 @@ class Import < ActiveRecord::Base
     run_update! do
       Rails.logger.info("Importing exercises for #{guide.github_url}")
       #TODO handle private repositories
+      out = ''
       Dir.mktmpdir("mumuki.#{id}.import") do |dir|
         git_clone_into dir
-        run_import_from_directory! dir
+        out = run_import_from_directory! dir
       end
-      ['', :passed]
+      [out, :passed]
     end
   end
 

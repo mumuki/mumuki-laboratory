@@ -1,22 +1,36 @@
 module ExerciseRepositoryLayout
 
   def process_files(dir)
-    #TODO log importing errors
+    out = []
     each_exercise_file(dir) do |file, original_id, title|
       description_path = "#{file}/description.md"
-      next unless File.exist? description_path
+
+      unless File.exist? description_path
+        out << "Description does not exist for #{title}"
+        next
+      end
 
       meta_path = "#{file}/meta.yml"
-      next unless File.exist? meta_path
+      unless File.exist? meta_path
+        out << "Meta does not exist for #{title}"
+        next
+      end
       meta = YAML.load_file meta_path
 
       test_files = Dir.glob("#{file}/test.*")
-      next if test_files.length != 1
+      if test_files.length != 1
+        out << "There must be exactly 1 test file for #{title}"
+        next
+      end
       test_file = test_files[0]
 
       extension = /.*\.(.*)/.match(File.basename(test_file))[1]
 
-      language = Language.find_by!(extension: extension) rescue next
+      language = Language.find_by(extension: extension)
+      unless language
+        out << "Language not found for extension #{extension}, for #{title}"
+        next
+      end
 
       yield original_id,
           {title: title.titleize,
@@ -27,6 +41,7 @@ module ExerciseRepositoryLayout
            author: author,
            test: File.read(test_file)}
     end
+    out.join(', ')
   end
 
   private
