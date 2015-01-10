@@ -19,6 +19,7 @@ class LanguagesController < ApplicationController
 
   def create
     @language = Language.create(language_params)
+    @language.plugin_author_id = current_user.id
 
     if @language.save
       redirect_to @language, notice: 'Language was successfully created.'

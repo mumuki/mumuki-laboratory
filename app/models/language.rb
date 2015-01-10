@@ -12,6 +12,10 @@ class Language < ActiveRecord::Base
     [e.message, :failed]
   end
 
+  def created_by? user
+    user.id == plugin_author.id
+  end
+
   def to_s
     name
   end
