@@ -35,10 +35,17 @@
       </div>
       <button type="submit" class="btn btn-default"><%= t('search')%></button>
     </form>
-    <section>
-      <%= link_to_unless I18n.locale == :en, flag(:en), locale: :en %>
-      <%= link_to_unless I18n.locale == :es, flag(:es), locale: :es %>
-    </section>
+    <ul class="nav navbar-nav navbar-left">
+      <li>
+        <section>
+          <%= link_to_unless I18n.locale == :en, flag(:en), locale: :en %>
+          <%= link_to_unless I18n.locale == :es, flag(:es), locale: :es %>
+        </section>
+      </li>
+      <li>
+        <%= link_to t("languages"), languages_path %>
+      </li>
+    </ul>
   </div>
 </div>
 
