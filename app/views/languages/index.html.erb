@@ -1,0 +1,34 @@
+<h1><%=t ('listing_languages')%></h1>
+
+<div class="row">
+  <table class="table">
+    <thead>
+    <tr>
+      <th><%= t :image %></th>
+      <th><%= t :name %></th>
+      <th> <%= t :image_url %></th>
+      <th><%= t :test_runner_url %></th>
+      <th colspan="4"><%=  %></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @languages.each do |language| %>
+        <tr>
+          <td><%= language_image_tag language %></td>
+          <td><%= language %></td>
+          <td> <%= language.image_url%> </td>
+          <td> <%= language.test_runner_url %> </td>
+          <td> <%= link_to fa_icon(:pencil), edit_language_path(language) %> </td>
+          <td><%= link_to fa_icon(:trash), language, method: :delete, data: {confirm: t('are_you_sure')} %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= paginate @languages %>
+  <br>
+
+  <%= link_to t('new_language'), new_language_path, class: 'btn btn-primary' %>
+
+</div>
+

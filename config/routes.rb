@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'languages/index'
+
+  get 'languages/show'
+
+  get 'languages/new'
+
+  get 'languages/edit'
+
+  get 'languages/create'
+
+  get 'languages/update'
+
+  get 'languages/destroy'
+
   controller :sessions do
     get 'auth/:provider/callback' => :create
     get 'logout' => :destroy
@@ -22,6 +36,7 @@ Rails.application.routes.draw do
 
     # Current user
     resources :submissions, only: :index
+    resources :languages
 
     # All users
     resources :users, only: :show do

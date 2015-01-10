@@ -78,6 +78,7 @@ es:
       exercise: "Ejercicio"
       import: "Importación"
       guide:  "Guía"
+      language: "Lenguaje"
 
     attributes:
       submission:
