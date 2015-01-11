@@ -20,7 +20,7 @@ module Icons
       when 'passed' then ['check', class: 'text-success']
       when 'failed' then ['times', class: 'text-danger']
       when 'running' then ['circle', class: 'text-warning']
-      when 'pending' then ['time', class: 'text-info']
+      when 'pending' then ['clock-o', class: 'text-info']
       when 'unknown' then ['circle', class: 'text-muted']
       else raise "Unknown status #{status}"
     end
