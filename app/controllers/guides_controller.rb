@@ -1,6 +1,6 @@
 class GuidesController < ApplicationController
 
-  before_action :authenticate!
+  before_action :authenticate!, only: [:new, :create]
 
   def new
     @guide = Guide.new
