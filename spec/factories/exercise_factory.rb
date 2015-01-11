@@ -1,10 +1,11 @@
 FactoryGirl.define do
 
   factory :language do
-    name Faker::Lorem.word
-    test_runner_url Faker::Internet.url
-    extension Faker::Lorem.characters(3)
-    image_url Faker::Internet.url
+    sequence(:name) {|n| "lang#{n}"}
+    sequence(:extension) {|n| "ext#{n}"}
+
+    test_runner_url { Faker::Internet.url }
+    image_url { Faker::Internet.url }
   end
 
   factory :exercise do
