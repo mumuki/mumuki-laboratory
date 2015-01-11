@@ -1,10 +1,10 @@
-function setAceEditor() {
+var editor = null;
+
+function setupAceEditor() {
   var textarea = document.getElementById("editor");
   var form = textarea.form;
 
   editor = ace.edit(textarea);
-  language = $(":selected").html();
-  changeEditorLanguage(language);
   editor.container.id = "editor-container";
 
   form.addEventListener("submit", function() {
@@ -14,21 +14,20 @@ function setAceEditor() {
   });
 }
 
-function onSelectChange() {
-  $("#exercise_language_id").change(function() {
-    language = $(":selected").html();
-    changeEditorLanguage(language)
-  });
+function onSelectUpdateAceEditor() {
+  $("#exercise_language_id").change(updateAceEditorLanguage);
 }
 
-function changeEditorLanguage(language) {
-  if(language !== undefined) {
+function updateAceEditorLanguage() {
+   var language = $("#exercise_language_id").find(":selected").html() || $('#exercise_language').val();
+    if(language !== undefined) {
     editor.getSession().setMode("ace/mode/"+language.toLowerCase())
   }
 }
 
-
-$(document).ready(function() {
-  setAceEditor();
-  onSelectChange()
+$(function() {
+  setupAceEditor();
+  updateAceEditorLanguage();
+  onSelectUpdateAceEditor();
 });
+

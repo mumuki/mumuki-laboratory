@@ -18,9 +18,11 @@
   <div class="field form-group" >
     <%= f.label :content %><br>
     <%= f.text_area :content, class: 'form-control', id: 'editor', value: @previous_submission_content %>
+    <%= hidden_field_tag(:exercise_language, @exercise.language) %>
   </div>
   <div class="actions form-group">
     <%= f.submit class: 'btn btn-primary' %>
     <%= link_to t('cancel'),  :back,  class: 'btn btn-default' %>
   </div>
+
 <% end %>
