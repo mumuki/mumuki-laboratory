@@ -17,4 +17,7 @@
 //= require bootstrap-tagsinput
 //= require ace/ace
 //= require ace/worker-html
+//= require ace/mode-ruby
+//= require ace/mode-haskell
+//= require ace/mode-prolog
 //= require_tree .
