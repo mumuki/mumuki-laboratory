@@ -1,5 +1,6 @@
 class Exercise < ActiveRecord::Base
   include WithMarkup
+  include WithAuthor
 
   belongs_to :language
   belongs_to :author, class_name: 'User'
@@ -33,10 +34,6 @@ class Exercise < ActiveRecord::Base
     else
       :unknown
     end
-  end
-
-  def authored_by?(user)
-    user == author
   end
 
   def description_html

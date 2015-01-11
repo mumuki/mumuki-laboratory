@@ -1,4 +1,6 @@
 class Guide < ActiveRecord::Base
+  include WithAuthor
+
   belongs_to :author, class_name: 'User'
 
   #TODO rename name to title. This helps building also generic link_to compoenetns
