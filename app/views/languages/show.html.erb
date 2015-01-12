@@ -22,6 +22,8 @@
   </section>
 
 </div>
-<div class="row">
-  <%= link_to fa_icon(:pencil), edit_language_path(@language), class: 'btn btn-default' if @language.can_edit? current_user%>
-</div>
+<% restricted_to_author @exercise do %>
+  <div class="row">
+    <%= link_to fa_icon(:pencil), edit_language_path(@language), class: 'btn btn-default' %>
+  </div>
+<% end %>
