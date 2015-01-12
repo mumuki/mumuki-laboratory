@@ -19,8 +19,7 @@
           <td><%= language %></td>
           <td> <%= language.image_url%> </td>
           <td> <%= language.test_runner_url %> </td>
-          <td> <%= link_to fa_icon(:pencil), edit_language_path(language) %> </td>
-          <td><%= link_to fa_icon(:trash), language, method: :delete, data: {confirm: t('are_you_sure')} %></td>
+          <td> <%= link_to fa_icon(:pencil), edit_language_path(language) if language.can_edit? current_user %> </td>
         </tr>
     <% end %>
     </tbody>

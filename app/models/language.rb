@@ -16,6 +16,14 @@ class Language < ActiveRecord::Base
     user.id == plugin_author.id
   end
 
+  def can_edit? user
+    self.created_by? user
+  end
+
+  def can_destroy? user
+    self.created_by? user
+  end
+
   def to_s
     name
   end
