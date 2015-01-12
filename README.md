@@ -9,17 +9,17 @@ Open platform for distribution and validation of programming exercises
 
 # What is Mumuki?
 
-Mumuki is just a simple, open and collaborative platform that allows users to store and distribute programming exercises - that is a problem description and a set of automated tests -, and submit solutions to them. It is aimed to assist people to learn programing languages and paradigms.
+Mumuki is just a simple, open and collaborative platform that allows users to store and distribute programming exercises - that is a problem description and a set of automated tests -, and submit their solutions. It is aimed at assisting people in learning programming languages and paradigms.
 
 ## Mumuki is simple
 
-We say Mumuki is a simple platform, because it justs provides exercises distribution and validation - you will not get any grading or certificates for sending correct submissions. It just allows to practice your programming skills, in the form of programming quizzes. 
+We say Mumuki is a simple platform, because it just provides exercise distribution and validation - you will not get any grading or certificates for sending correct submissions. It just allows you to practice your programming skills, in the form of programming quizzes.
 
-Think it a [Code Kata](http://codekata.com/) platform, where you can get feedback of your solution. 
+Think of it as a [Code Kata](http://codekata.com/) platform, where you can get feedback of your solution. 
 
 ## Mumuki content is collaborative
 
-In Mumuki exercises are not provided by experts but by the community. There is no distinction between a teacher and a student in Mumuki - anyone can create new exercises. We encourage you to submit your own programming problems.
+In Mumuki, exercises are not provided by experts but by the community. There is no distinction between a teacher and a student in Mumuki - anyone can create new exercises. We encourage you to submit your own programming problems.
 
 ## Mumuki is an open platform 
 
@@ -30,7 +30,7 @@ Mumuki is also open for extension, we would like to have exercises for a large r
 # Which languages are supported?
 
 Currently Mumuki supports Haskell, through [GHC](https://www.haskell.org/ghc/), and Prolog,
-through [SWI-Prolog](http://www.swi-prolog.org/). Support for more programming languages is pending task. We would like to offer support in the short term for the following too: 
+through [SWI-Prolog](http://www.swi-prolog.org/). Support for more programming languages is a pending task. We would like to offer support in the short term for the following too: 
  * JavaScript
  * Clojure
  * Smalltalk
