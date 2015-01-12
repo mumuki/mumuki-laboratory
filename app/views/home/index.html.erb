@@ -12,16 +12,28 @@
 <div class="row">
   <div class="col-md-6">
     <%= render 'layouts/exercise_panel/panel',
-               heading: t('latest_exercises'),
+               heading: t(:latest_exercises),
                exercises: @latest_exercises,
                more_link: exercises_path %>
   </div>
   <div class="col-md-6">
     <%= render 'layouts/exercise_panel/panel',
-               heading: t('hottest_exercises'),
+               heading: t(:hottest_exercises),
                exercises: @hottest_exercises,
                preserve_order: true,
                more_link: exercises_path %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-6">
+    <%= render 'layouts/guides_panel/panel',
+               heading: t(:latest_guides).titleize,
+               guides: @guides,
+               more_link: guides_path %>
+  </div>
+  <div class="col-md-6">
   </div>
 </div>
 
