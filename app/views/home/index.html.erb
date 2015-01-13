@@ -18,19 +18,14 @@
   <div class="col-md-4">
     <h2><%= t :mumuki_is_simple %></h2>
 
-    <p>Mumuki lets you focous on what you want: improve your programing skills by resolving programming problems. We
-      will not force any schedule or exams - you practice when you want.
-      Think it a Code Kata platform, where you can get feedback of your solution.
-    </p>
+    <p><%= t :mumuki_is_simple_description %></p>
     <%= link_to t(:start_practicing), search_path, class: 'btn btn-default', role: 'button ' %>
   </div>
   <div class="col-md-4">
     <h2><%= t :mumuki_is_collaborative %></h2>
 
     <p>
-      Mumuki's exercises are not provided by experts but by the community. There is no distinction
-      between a teacher and a student in Mumuki - anyone can create new exercises. We encourage you to create and
-      share your own.
+      <%= t :mumuki_is_collaborative_description %>
     </p>
 
     <%= link_to t(:create_exercises), dashboard_path, class: 'btn btn-default', role: 'button ' %>
@@ -38,11 +33,7 @@
   <div class="col-md-4">
     <h2><%= t :mumuki_is_open %></h2>
 
-    <p>
-      Mumuki is open source software - that means, you can help to improve Mumuki Platform.
-      Mumuki is also open for extension - we want to have exercises for a large range of programming languages. You
-      can help us to meet that goal.
-    </p>
+    <p><%= t :mumuki_is_open_description %></p>
 
     <%= link_to t(:extend_mumuki), 'https://github.com/uqbar-project/mumuki-platform', class: 'btn btn-default', role: 'button ' %>
   </div>
