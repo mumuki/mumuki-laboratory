@@ -50,6 +50,7 @@ es:
   submissions_for: "Entregas para %{exercise}"
   you_must: "Tenés que %{action} antes de continuar"
   sign_in_with_github_action: "iniciar sesión con Github"
+  languages: "Lenguajes"
 
   datetime:
     distance_in_words:
@@ -78,6 +79,7 @@ es:
       exercise: "Ejercicio"
       import: "Importación"
       guide:  "Guía"
+      language: "Lenguaje"
 
     attributes:
       submission:

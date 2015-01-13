@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   controller :sessions do
     get 'auth/:provider/callback' => :create
     get 'logout' => :destroy
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
 
     # Current user
     resources :submissions, only: :index
+    resources :languages
 
     # All users
     resources :users, only: :show do

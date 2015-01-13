@@ -1,0 +1,29 @@
+<div class="row">
+
+  <h1>
+    <%= @language.name %>
+    <small> - <%= language_image_tag @language  %></small>
+  </h1>
+
+  <section>
+    <p>
+      <%= raw t :plugin_author, author: link_to(@language.plugin_author.name, user_path(@language.author)) if @language.plugin_author %>
+    </p>
+  </section>
+
+  <section>
+    <%= @language.image_url %>
+  </section>
+
+  <section>
+    <p>
+      <%= @language.test_runner_url %>
+    </p>
+  </section>
+
+</div>
+<% restricted_to_author @exercise do %>
+  <div class="row">
+    <%= link_to fa_icon(:pencil), edit_language_path(@language), class: 'btn btn-default' %>
+  </div>
+<% end %>
