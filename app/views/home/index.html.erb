@@ -1,58 +1,50 @@
-<section id="welcome">
-  <div class="jumbotron">
-    <div class="container">
-      <h1><%= t :mumuki_catchphrase %></h1>
-      <p><%= t :mumuki_short_description %></p>
-    </div>
-  </div>
-</section>
+<%= content_for :no_container do %>
+    <div class="jumbotron">
+        <div class="container">
+          <h1><%= t :mumuki_catchphrase %></h1>
 
+          <p><%= t :mumuki_short_description %></p>
 
-
-<div class="row">
-  <div class="col-md-6">
-    <%= render 'layouts/exercise_panel/panel',
-               heading: t(:latest_exercises),
-               exercises: @latest_exercises,
-               more_link: exercises_path %>
-  </div>
-  <div class="col-md-6">
-    <%= render 'layouts/exercise_panel/panel',
-               heading: t(:hottest_exercises),
-               exercises: @hottest_exercises,
-               preserve_order: true,
-               more_link: exercises_path %>
-  </div>
-</div>
-
-
-<div class="row">
-  <div class="col-md-6">
-    <%= render 'layouts/guides_panel/panel',
-               heading: t(:latest_guides).titleize,
-               guides: @guides,
-               more_link: guides_path %>
-  </div>
-  <div class="col-md-6">
-  </div>
-</div>
-
-
-<% if current_user? %>
-
-    <div class="row">
-      <div class="col-md-6">
-        <%= render 'layouts/exercise_panel/panel',
-                   heading: t('my_exercises'),
-                   exercises: @my_exercises,
-                   more_link: user_exercises_path(current_user) %>
-      </div>
-
-      <div class="col-md-6">
-        <%= render 'layouts/submissions_panel/panel',
-                   heading: t('my_submissions'),
-                   submissions: @my_submissions,
-                   more_link: submissions_path %>
-      </div>
+          <p class="text-center">
+            <% @languages_icon_urls.each do |icon| %>
+                <%= image_tag icon, height: 28 %>
+            <% end %>
+          </p>
+        </div>
     </div>
 <% end %>
+
+<div class="row">
+  <div class="col-md-4">
+    <h2><%= t :mumuki_is_simple %></h2>
+
+    <p>Mumuki lets you focous on what you want: improve your programing skills by resolving programming problems. We
+      will not force any schedule or exams - you practice when you want.
+      Think it a Code Kata platform, where you can get feedback of your solution.
+    </p>
+    <%= link_to t(:start_practicing), search_path, class: 'btn btn-default', role: 'button ' %>
+  </div>
+  <div class="col-md-4">
+    <h2><%= t :mumuki_is_collaborative %></h2>
+
+    <p>
+      Mumuki's exercises are not provided by experts but by the community. There is no distinction
+      between a teacher and a student in Mumuki - anyone can create new exercises. We encourage you to create and
+      share your own.
+    </p>
+
+    <%= link_to t(:create_exercises), dashboard_path, class: 'btn btn-default', role: 'button ' %>
+  </div>
+  <div class="col-md-4">
+    <h2><%= t :mumuki_is_open %></h2>
+
+    <p>
+      Mumuki is open source software - that means, you can help to improve Mumuki Platform.
+      Mumuki is also open for extension - we want to have exercises for a large range of programming languages. You
+      can help us to meet that goal.
+    </p>
+
+    <%= link_to t(:extend_mumuki), 'https://github.com/uqbar-project/mumuki-platform', class: 'btn btn-default', role: 'button ' %>
+  </div>
+
+</div>

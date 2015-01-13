@@ -25,7 +25,6 @@ es:
   hottest_exercises: 'Ejercicios más usados'
   sign_out: "Cerrar Sesión"
   sign_in_with_github: 'Iniciá sesion con Github'
-  currently_logged_as: 'Iniciaste sesión como %{username}'
   exercise: 'Ejercicio'
   submission_date: 'Fecha de entrega'
   status: 'Estado'
@@ -43,7 +42,7 @@ es:
   authored_by: "Creado por %{author}"
   import_created: "Importación encolada"
   submission: "entrega"
-  mumuki_catchphrase: "Mejorá tus habilidades de programación"
+  mumuki_catchphrase: "Programá mejor"
   mumuki_short_description: "Mumuki es una plataforma simple, abierta y colaborativa para compartir y resolver ejercicios de programación. Mumuki existe para ayudar a las personas a aprender y enseñar lenguajes y paradigmas de programación"
   tag: "Etiqueta"
   new_submission_for: "Nueva entrega para %{exercise}"
@@ -101,3 +100,10 @@ es:
             title:
               blank: "no puede estar vacío"
   latest_guides: "últimas guías"
+  submissions_count: "Entregas"
+  mumuki_is_simple: "Mumuki es simple"
+  mumuki_is_collaborative: "Mumuki es colaborativo"
+  mumuki_is_open: "Mumuki es abierto"
+  start_practicing: "Empezá a practicar!"
+  create_exercises: "Creá ejercicios!"
+  extend_mumuki: "Extendé Mumuki!"

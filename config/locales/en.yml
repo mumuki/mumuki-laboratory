@@ -25,7 +25,6 @@ en:
   hottest_exercises: 'Hottest Exercises'
   sign_out: "Sign Out"
   sign_in_with_github: 'Sign in with Github'
-  currently_logged_as: 'Currently logged as %{username}'
   exercise: 'Exercise'
   submission_date: 'Submission date'
   status: 'Status'
@@ -52,3 +51,9 @@ en:
   you_must: "You must %{action} before continue"
   sign_in_with_github_action: "sign in with Github"
   latest_guides: "latests guides"
+  submissions_count: "Submissions"
+  mumuki_is_simple: "Mumuki is simple"
+  mumuki_is_collaborative: "Mumuki is collaborative"
+  mumuki_is_open: "Mumuki is open"
+  start_practicing: "Start Practicing!"
+  create_exercises: "Create exercises!"
