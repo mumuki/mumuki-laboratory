@@ -5,12 +5,12 @@
            exercises: @user.exercises,
            more_link: user_exercises_path(@user) %>
 
+<%= render 'layouts/guides_panel/panel',
+           heading: t(:guide).titleize.pluralize,
+           guides: @user.guides,
+           more_link: user_guides_path(@user) %>
+
 <% restricted_to_current_user(@user) do %>
-    <%= render 'layouts/panel/panel',
-               heading: t(:guide).titleize.pluralize,
-               item_partial: 'guide',
-               items: @user.guides,
-               more_link: guides_path %>
     <%= render 'layouts/submissions_panel/panel',
                heading: t('submission').titleize.pluralize,
                submissions: @user.submissions,

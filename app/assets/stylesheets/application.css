@@ -18,6 +18,10 @@
  *= require_self
  */
 
+.lang-selector {
+    padding-top: 25px;
+}
+
 .hljs {
     background-color: transparent;
 }

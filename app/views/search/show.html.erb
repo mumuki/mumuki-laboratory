@@ -1,37 +1,56 @@
-<h1><%=t ('listing_exercises')%></h1>
+<div class="row">
+  <div class="navbar">
+    <form role="search" action="<%= search_path %>">
+      <div class="form-group">
+        <div class="col-md-11">
+          <input name="q" type="text" class="form-control" placeholder="<%= t(:search_exercises_by_tag) %>">
+        </div>
+        <div class="col-md-1">
+          <button type="submit" class="btn btn-default"><%= t('search') %></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
 
 <div class="row">
   <table class="table">
     <thead>
     <tr>
       <th><%= t :language %></th>
+      <th><%= t :submissions_count %></th>
       <th><%= t :title %></th>
       <th></th>
       <th><%= t :tag %></th>
+      <th><%= t :created %></th>
       <th colspan="4"><%= t :actions %></th>
     </tr>
     </thead>
 
     <tbody>
-    <% @exercises.each do |exercise| %>
+    <% @results.each do |exercise| %>
         <tr>
           <td><%= language_image_tag exercise.language %> <%= exercise.language %> </td>
+          <td>
+            <%= exercise.submissions_count %>
+          </td>
           <td>
             <%= exercise_status_icon(exercise) %>
             <%= link_to exercise.title, exercise %>
           </td>
           <td><%= flag(exercise.locale) %></td>
           <td><%= exercise.tag_list %></td>
+          <td>
+            <%= time_ago_in_words(exercise.created_at) %>
+          </td>
           <td><%= link_to t('my_submissions'), exercise_submissions_path(exercise) %></td>
           <td><%= link_to t('new_submission'), new_exercise_submission_path(exercise) %></td>
-          <% restricted_to_author exercise do %>
-              <td><%= link_to fa_icon(:pencil), edit_exercise_path(exercise) if exercise.can_edit? %></td>
-              <td><%= link_to fa_icon(:trash), exercise, method: :delete, data: {confirm: t('are_you_sure')} if exercise.can_destroy? %></td>
-          <% end %>
         </tr>
     <% end %>
     </tbody>
   </table>
-  <%= paginate @exercises %>
+  <%= paginate @results %>
   <br>
 </div>
+

@@ -1,9 +1,9 @@
-<!-- TODO extract duplicated logic in exercises/index -->
 <div class="row">
   <table class="table">
     <thead>
     <tr>
       <th><%= t('title') %></th>
+      <th><%= label(:guide, :github_repository) %></th>
       <th><%= t('created_at') %></th>
     </tr>
     </thead>
@@ -11,7 +11,8 @@
     <tbody>
     <% @guides.each do |guide| %>
         <tr>
-          <td><%= link_to guide.name, guide %></td>
+          <td><%= link_to_guide guide %></td>
+          <td><%= link_to_github guide %></td>
           <td><%= guide.created_at %></td>
         </tr>
     <% end %>

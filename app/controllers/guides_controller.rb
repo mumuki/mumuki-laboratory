@@ -21,7 +21,7 @@ class GuidesController < ApplicationController
   end
 
   def index
-    @guides = paginated current_user.guides
+    @guides = paginated Guide.all
   end
 
   private

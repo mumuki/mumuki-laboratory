@@ -9,6 +9,10 @@ class Guide < ActiveRecord::Base
 
   validates_presence_of :github_repository, :name, :author
 
+  def exercises_count
+    exercises.count
+  end
+
   def github_url
     "https://github.com/#{github_repository}"
   end

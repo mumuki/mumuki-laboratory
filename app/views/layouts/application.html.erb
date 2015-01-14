@@ -22,29 +22,21 @@
 
     <ul class="nav navbar-nav navbar-left">
       <% if current_user? %>
-          <li><%= link_to t('currently_logged_as', username: current_user.name ), current_user_path %></li>
-          <li><%= link_to(t('sign_out'), logout_path) %></li>
+          <li><%= link_to current_user.name, dashboard_path %></li>
+          <li><%= link_to(t(:sign_out), logout_path) %></li>
       <% else %>
-          <li><%= link_to(t('sign_in_with_github'), login_path) %></li>
+          <li><%= link_to(t(:sign_in_with_github), login_path) %></li>
       <% end %>
     </ul>
 
-    <form class="navbar-form navbar-left" role="search" action="<%= exercises_path %>">
-      <div class="form-group">
-        <input name="tag" type="text" class="form-control" placeholder= "<%=t("search_exercises_by_tag")%>">
-      </div>
-      <button type="submit" class="btn btn-default"><%= t('search')%></button>
-    </form>
-    <ul class="nav navbar-nav navbar-left">
-      <li>
-        <section>
-          <%= link_to_unless I18n.locale == :en, flag(:en), locale: :en %>
-          <%= link_to_unless I18n.locale == :es, flag(:es), locale: :es %>
-        </section>
-      </li>
-    </ul>
+    <section>
+      <%= link_to_unless I18n.locale == :en, flag(:en, class: 'lang-selector'), locale: :en %>
+      <%= link_to_unless I18n.locale == :es, flag(:es, class: 'lang-selector'), locale: :es %>
+    </section>
   </div>
 </div>
+
+<%= yield :no_container %>
 
 <div class="container">
   <a href="https://github.com/uqbar-project/mumuki">

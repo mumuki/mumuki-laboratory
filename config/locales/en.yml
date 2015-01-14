@@ -25,7 +25,6 @@ en:
   hottest_exercises: 'Hottest Exercises'
   sign_out: "Sign Out"
   sign_in_with_github: 'Sign in with Github'
-  currently_logged_as: 'Currently logged as %{username}'
   exercise: 'Exercise'
   submission_date: 'Submission date'
   status: 'Status'
@@ -51,3 +50,14 @@ en:
   submissions_for: "Submissions for %{exercise}"
   you_must: "You must %{action} before continue"
   sign_in_with_github_action: "sign in with Github"
+  latest_guides: "latests guides"
+  submissions_count: "Submissions"
+  mumuki_is_simple: "Mumuki is simple"
+  mumuki_is_collaborative: "Mumuki is collaborative"
+  mumuki_is_open: "Mumuki is open"
+  start_practicing: "Start Practicing!"
+  create_exercises: "Create exercises!"
+  mumuki_is_simple_description: "Mumuki lets you focous on what you want: improve your programing skills by resolving programming problems. We will not force any schedule or exams - you practice when you want. Think it a Code Kata platform, where you can get feedback of your solution."
+  mumuki_is_collaborative_description: "Mumuki's exercises are not provided by experts but by the community. There is no distinction between a teacher and a student in Mumuki - anyone can create new exercises. We encourage you to create and share your own."
+  mumuki_is_open_description: "Mumuki is open source software - that means, you can help to improve Mumuki Platform.       Mumuki is also open for extension - we want to have exercises for a large range of programming languages. You       can help us to meet that goal."
+  my_guides: "My Guides"
