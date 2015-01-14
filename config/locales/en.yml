@@ -61,3 +61,4 @@ en:
   mumuki_is_collaborative_description: "Mumuki's exercises are not provided by experts but by the community. There is no distinction between a teacher and a student in Mumuki - anyone can create new exercises. We encourage you to create and share your own."
   mumuki_is_open_description: "Mumuki is open source software - that means, you can help to improve Mumuki Platform.       Mumuki is also open for extension - we want to have exercises for a large range of programming languages. You       can help us to meet that goal."
   my_guides: "My Guides"
+  profile_of: "Profile of %{username}"

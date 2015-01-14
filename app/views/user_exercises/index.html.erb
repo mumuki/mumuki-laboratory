@@ -49,8 +49,8 @@
         <td>
           <%= time_ago_in_words(exercise.created_at) %>
         </td>
-        <td><%= link_to t('my_submissions'), exercise_submissions_path(exercise) %></td>
-        <td><%= link_to t('new_submission'), new_exercise_submission_path(exercise) %></td>
+        <td><%= link_to fa_icon(:pencil), edit_exercise_path(exercise) if exercise.can_edit? %></td>
+        <td><%= link_to fa_icon(:trash), exercise, method: :delete, data: {confirm: t('are_you_sure')} if exercise.can_destroy? %></td>
       </tr>
   <% end %>
   </tbody>
