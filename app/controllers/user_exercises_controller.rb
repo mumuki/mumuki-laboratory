@@ -1,10 +1,7 @@
 class UserExercisesController < ApplicationController
-  include WithExerciseIndex
   include NestedInUser
 
-  private
-
-  def exercises
-    @user.exercises
+  def index
+    @exercises = paginated @user.exercises
   end
 end

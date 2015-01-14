@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="navbar navbar-form">
+    <div class="col-md-8">
+      <ul class="nav nav-tabs">
+        <li role="presentation"><%= link_to t(:my_submissions), submissions_path %></li>
+        <li role="presentation" class="active"><%= link_to t(:my_exercises), user_exercises_path(current_user) %></li>
+        <li role="presentation"><%= link_to t(:my_guides), user_guides_path(current_user) %></li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <div class="navbar">
+        <%= link_to t('search'), search_path, class: 'btn btn-default' %>
+        <%= link_to t('new_guide'), new_guide_path, class: 'btn btn-default' %>
+        <%= link_to t('new_exercise'), new_exercise_path, class: 'btn btn-default' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<table class="table">
+  <thead>
+  <tr>
+    <th><%= t :language %></th>
+    <th><%= t :submissions_count %></th>
+    <th><%= t :title %></th>
+    <th></th>
+    <th><%= t :tag %></th>
+    <th><%= t :created %></th>
+    <th colspan="4"><%= t :actions %></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @exercises.each do |exercise| %>
+      <tr>
+        <td><%= language_image_tag exercise.language %> <%= exercise.language %> </td>
+        <td>
+          <%= exercise.submissions_count %>
+        </td>
+        <td>
+          <%= exercise_status_icon(exercise) %>
+          <%= link_to exercise.title, exercise %>
+        </td>
+        <td><%= flag(exercise.locale) %></td>
+        <td><%= exercise.tag_list %></td>
+        <td>
+          <%= time_ago_in_words(exercise.created_at) %>
+        </td>
+        <td><%= link_to t('my_submissions'), exercise_submissions_path(exercise) %></td>
+        <td><%= link_to t('new_submission'), new_exercise_submission_path(exercise) %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= paginate @exercises %>
+<br>
+

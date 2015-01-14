@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user, :current_user?,
                 :current_user_id,
-                :current_user_path, :login_path,
+                :current_user_path, :login_path, :dashboard_path,
                 :restricted_to_author, :restricted_to_current_user
 
   def set_locale
