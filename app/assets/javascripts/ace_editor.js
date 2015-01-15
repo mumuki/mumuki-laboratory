@@ -2,6 +2,9 @@ var editor = null;
 
 function setupAceEditor() {
   var textarea = document.getElementById("editor");
+  if (!textarea) {
+    return;
+  }
   var form = textarea.form;
 
   editor = ace.edit(textarea);
