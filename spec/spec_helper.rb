@@ -47,5 +47,9 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 end
 
+Capybara.register_driver :rack_test do |app|
+  Capybara::RackTest::Driver.new(app, :headers => { 'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.8,es;q=0.6,de;q=0.4' })
+end
+
 #Start codeclimate test reporter
 CodeClimate::TestReporter.start
