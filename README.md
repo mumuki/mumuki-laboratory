@@ -37,7 +37,7 @@ through [SWI-Prolog](http://www.swi-prolog.org/). Support for more programming l
  
 # How can I contribute?
 
-1. Navigate Mumuki at http://mumuki.herokuapp.com, and submit issues for every thing you dislike
+1. Navigate Mumuki at http://mumuki.io, and submit issues for every thing you dislike
 1. Check the current issues, fork the repository, and take any of your interest. Then pull request it.
 1. Choose your preffered language and create your test runner server. Use any of those server for inspiration:
   * [mumuki-hspec-server](https://github.com/uqbar-project/mumuki-hspec-server) (written in Haskell)
