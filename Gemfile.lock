@@ -105,6 +105,8 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     pg (0.18.1)
+    polyamorous (1.1.0)
+      activerecord (>= 3.0)
     polyglot (0.3.5)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -132,6 +134,12 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.4.2)
+    ransack (1.5.1)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.1)
     redcarpet (3.2.2)
     ref (1.0.5)
     rest-client (1.7.2)
@@ -222,6 +230,7 @@ DEPENDENCIES
   rails-assets-bootstrap-tagsinput
   rails-assets-highlightjs
   rake
+  ransack
   redcarpet
   rest-client
   rspec-rails (~> 2.14)

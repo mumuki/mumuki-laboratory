@@ -1,7 +1,8 @@
 module WithExerciseIndex
 
   def index
-    @exercises  = paginated exercises.by_tag params[:tag]
+    @q = Exercise.ransack(params[:q])
+    @exercises = paginated @q.result(distinct: true)
     render 'exercises/index'
   end
 
