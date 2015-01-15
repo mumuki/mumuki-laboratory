@@ -38,6 +38,8 @@ gem 'git'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
+gem 'ransack'
+
 group :test do
   gem 'rspec-rails', '~> 2.14'
   gem 'factory_girl_rails'
