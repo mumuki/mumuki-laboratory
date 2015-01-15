@@ -10,6 +10,9 @@
                 <%= image_tag icon, height: 28 %>
             <% end %>
           </p>
+          <p class="text-center">
+            <%= link_to t(:start_practicing), search_path, class: 'btn btn-primary', role: 'button ' %>
+          </p>
         </div>
     </div>
 <% end %>
@@ -19,7 +22,7 @@
     <h2><%= t :mumuki_is_simple %></h2>
 
     <p><%= t :mumuki_is_simple_description %></p>
-    <%= link_to t(:start_practicing), search_path, class: 'btn btn-default', role: 'button ' %>
+    <%= link_to t(:start_practicing), search_path, class: 'btn btn-primary', role: 'button ' %>
   </div>
   <div class="col-md-4">
     <h2><%= t :mumuki_is_collaborative %></h2>
@@ -28,14 +31,14 @@
       <%= t :mumuki_is_collaborative_description %>
     </p>
 
-    <%= link_to t(:create_exercises), dashboard_path, class: 'btn btn-default', role: 'button ' %>
+    <%= link_to t(:create_exercises), dashboard_path, class: 'btn btn-primary', role: 'button ' %>
   </div>
   <div class="col-md-4">
     <h2><%= t :mumuki_is_open %></h2>
 
     <p><%= t :mumuki_is_open_description %></p>
 
-    <%= link_to t(:extend_mumuki), 'https://github.com/uqbar-project/mumuki-platform', class: 'btn btn-default', role: 'button ' %>
+    <%= link_to t(:extend_mumuki), 'https://github.com/uqbar-project/mumuki-platform', class: 'btn btn-primary', role: 'button ' %>
   </div>
 
 </div>
