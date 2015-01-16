@@ -12,6 +12,9 @@ gem 'therubyracer', platforms: :ruby
 
 gem 'sass-rails'
 
+gem 'activeadmin', github: 'activeadmin'
+gem 'devise'
+
 gem 'sucker_punch', '~> 1.0'
 
 gem 'jquery-rails'
