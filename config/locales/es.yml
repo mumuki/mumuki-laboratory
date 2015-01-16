@@ -74,10 +74,14 @@ es:
 
   activerecord:
     models:
-      submission: "Entrega"
-      exercise: "Ejercicio"
+      submission:
+        one: "Entrega"
+        other: "Entregas"
+      exercise: 
+        one: "Ejercicio"
+        other: "Ejercicios"
       import: "Importación"
-      guide:  "Guía"
+      guide: "Guía"
       language: "Lenguaje"
 
     attributes:
