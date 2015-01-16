@@ -33,7 +33,6 @@ es:
   running: 'procesando'
   pending: 'pendiente'
   listing_exercises: 'Listado de ejercicios'
-  search_exercises_by_tag: "Buscá ejercicios"
   search: 'Buscar'
   new_guide: "Nueva Guía"
   github_url_hint: "usuario/repositorio"

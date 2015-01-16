@@ -33,7 +33,6 @@ en:
   running: 'running'
   pending: 'pending'
   listing_exercises: 'Listing exercises'
-  search_exercises_by_tag: "Search exercises!"
   search: 'Search'
   new_guide: "New Guide"
   github_url_hint: "username/repository"
