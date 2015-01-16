@@ -1,7 +1,6 @@
-<%= search_form_for @q do |f| %>
+<%= search_form_for @q, url: search_path do |f| %>
   <div class="form-group">
-    <%= f.label t("exercise_search") %>
-    <input class="form-control" id="q_language_name_or_title_or_description_or_locale_cont" name="q[language_name_or_title_or_description_or_locale_cont]" type="search">
+    <input class="form-control" id="q_language_name_or_title_or_description_or_locale_cont" name="q[language_name_or_title_or_description_or_locale_cont]" type="search" placeholder=<%= t("exercise_search")%>>
     <input class="btn btn-default pull-right" name="commit" type="submit" value="Buscar">
   </div>
 <% end %>
