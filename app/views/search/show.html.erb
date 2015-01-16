@@ -1,10 +1,17 @@
-<%= search_form_for @q, url: search_path do |f| %>
-  <div class="form-group">
-    <input class="form-control" id="q_language_name_or_title_or_description_or_locale_cont" name="q[language_name_or_title_or_description_or_locale_cont]" type="search" placeholder=<%= t("exercise_search")%>>
-    <input class="btn btn-default pull-right" name="commit" type="submit" value="Buscar">
+<div class="row">
+  <div class="navbar">
+    <%= search_form_for @q, url: search_path do |f| %>
+        <div class="form-group">
+          <div class="col-md-11">
+            <input class="form-control" id="q_language_name_or_title_or_description_or_locale_cont" name="q[language_name_or_title_or_description_or_locale_cont]" type="search" placeholder=<%= t("exercise_search") %>>
+          </div>
+          <div class="col-md-1">
+            <input class="btn btn-default pull-right" name="commit" type="submit" value="Buscar">
+          </div>
+        </div>
+    <% end %>
   </div>
-<% end %>
-
+</div>
 
 <div class="row">
   <table class="table">
