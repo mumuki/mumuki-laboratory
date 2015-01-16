@@ -16,8 +16,7 @@ feature 'Search Flow' do
     end
 
     fill_in 'q_language_name_or_title_or_description_or_locale_cont', with: 'haskell'
-    #TODO
-    #click_on 'Buscar'
+    click_on 'Search'
 
     #expect(page).to have_text('Title')
     #expect(page).to have_text('Foo')
