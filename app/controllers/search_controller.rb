@@ -1,6 +1,5 @@
 class SearchController < ApplicationController
   def show
-    @q = Exercise.ransack(params[:q])
-    @results = paginated @q.result(distinct: true)
+    @results = paginated Exercise.by_full_text(params[:q]).order(submissions_count: :desc)
   end
 end
