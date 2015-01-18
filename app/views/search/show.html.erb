@@ -3,7 +3,8 @@
     <%= form_tag search_path, method: :get do |f| %>
         <div class="form-group">
           <div class="col-md-11">
-            <input class="form-control" id="q" name="q" type="search" placeholder=<%= t(:exercise_search) %>>
+            <input class="form-control" id="q" name="q" type="search"
+                   placeholder="<%= t(:exercise_search) %>" value="<%= @q %>">
           </div>
           <div class="col-md-1">
             <input class="btn btn-default pull-right" name="commit" type="submit" value="<%= t :search %>">
