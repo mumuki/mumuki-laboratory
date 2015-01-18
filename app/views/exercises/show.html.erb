@@ -29,14 +29,16 @@
           <%= highlighted_code @exercise.language, @exercise.test %>
         </p>
       </section>
-      <% if @exercise.guide %>
-          <section>
-            <h2><%= t(:guide).titleize %></h2>
-            <p>
-              <%= link_to_guide @exercise.guide  %>
-            </p>
-          </section>
-      <% end %>
+  <% end %>
+
+  <% if @exercise.guide %>
+      <section>
+        <h2><%= t(:guide).titleize %></h2>
+
+        <p>
+          <%= link_to_guide @exercise.guide %>
+        </p>
+      </section>
   <% end %>
 </div>
 <div class="row">
