@@ -17,11 +17,11 @@
   <table class="table">
     <thead>
     <tr>
-      <th><%= t :language %></th>
       <th><%= t :submissions_count %></th>
       <th><%= t :title %></th>
       <th></th>
       <th><%= t :tag %></th>
+      <th><%= t :language %></th>
       <th><%= t :created %></th>
       <th colspan="4"><%= t :actions %></th>
     </tr>
@@ -30,7 +30,6 @@
     <tbody>
     <% @results.each do |exercise| %>
         <tr>
-          <td><%= language_image_tag exercise.language %> <%= exercise.language %> </td>
           <td>
             <%= exercise.submissions_count %>
           </td>
@@ -39,7 +38,12 @@
             <%= link_to exercise.title, exercise %>
           </td>
           <td><%= flag(exercise.locale) %></td>
-          <td><%= exercise.tag_list %></td>
+
+          <td><%= exercise.tag_list.map { |tag|
+            link_to tag, search_path(q: tag)
+          }.join(', ').html_safe %></td>
+          <td><%= language_image_tag exercise.language %>
+            <%= link_to exercise.language, search_path(q: exercise.language.name) %> </td>
           <td>
             <%= time_ago_in_words(exercise.created_at) %>
           </td>
