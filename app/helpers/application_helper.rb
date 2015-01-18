@@ -28,4 +28,8 @@ module ApplicationHelper
         <input type="text" value="#{tags}" data-role="tagsinput" #{input_options}>
        </div>}.html_safe
   end
+
+  def link_to_tag_list(tags)
+    tags.map { |tag| link_to tag, search_path(q: tag) }.join(', ').html_safe
+  end
 end
