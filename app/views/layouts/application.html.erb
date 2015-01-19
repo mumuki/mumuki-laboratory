@@ -25,7 +25,7 @@
           <li><%= link_to current_user.name, dashboard_path %></li>
           <li><%= link_to(t(:sign_out), logout_path) %></li>
       <% else %>
-          <li><%= link_to(t(:sign_in_with_github), login_path) %></li>
+          <li><%= link_to(t(:sign_in_with_github), login_path(request.path)) %></li>
       <% end %>
     </ul>
 
