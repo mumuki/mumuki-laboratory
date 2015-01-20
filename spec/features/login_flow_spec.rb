@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 feature 'Login Flow' do
+  let!(:exercise) { create(:exercise) }
+
   scenario 'login from home' do
     visit '/'
 
@@ -17,5 +19,21 @@ feature 'Login Flow' do
 
     expect(page).to have_text('testuser')
     expect(page).to have_text('Mumuki es una plataforma simple, abierta y colaborativa')
+  end
+
+
+  scenario 'login on authentication request' do
+    visit "/en/exercises/#{exercise.id}"
+
+    click_on 'New Submission'
+
+    expect(page).to have_text('You must sign in with Github before continue')
+    expect(page).to_not have_text("New submission for #{exercise.title}")
+
+    click_on 'sign in with Github'
+
+    expect(page).to have_text("New submission for #{exercise.title}")
+    expect(page).to_not have_text('You must sign in with Github before continue')
+
   end
 end
