@@ -5,7 +5,6 @@ class Exercise < ActiveRecord::Base
   include WithAuthor
 
   belongs_to :language
-  belongs_to :author, class_name: 'User'
   belongs_to :guide
 
   before_destroy :can_destroy?
