@@ -1,10 +1,15 @@
 class ExercisesController < ApplicationController
   include WithExerciseIndex
 
+  before_action :set_exercises, only: [:index]
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
   before_action :authenticate!, except: [:show, :index]
 
   def show
+  end
+
+  def index
+
   end
 
   def new

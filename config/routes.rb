@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   scope '(:locale)' do
     root to: 'home#index'
 
-    get 'search' => 'search#show'
-
     get 'dashboard' => 'dashboard#show'
 
     # All users
