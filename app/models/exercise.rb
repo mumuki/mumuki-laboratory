@@ -47,7 +47,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def can_destroy?
-    submissions_count == 0
+    can_edit? && submissions_count == 0
   end
 
   def can_edit?
