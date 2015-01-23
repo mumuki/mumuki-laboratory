@@ -29,8 +29,8 @@ Mumuki is also open for extension, we would like to have exercises for a large r
 
 # Which languages are supported?
 
-Currently Mumuki supports Haskell, through [GHC](https://www.haskell.org/ghc/), and Prolog,
-through [SWI-Prolog](http://www.swi-prolog.org/). Support for more programming languages is a pending task. We would like to offer support in the short term for the following too: 
+Currently Mumuki supports Haskell, through [GHC](https://www.haskell.org/ghc/), Prolog,
+through [SWI-Prolog](http://www.swi-prolog.org/) and Ruby. Support for more programming languages is a pending task. We would like to offer support in the short term for the following too: 
  * JavaScript
  * Clojure
  * Smalltalk
