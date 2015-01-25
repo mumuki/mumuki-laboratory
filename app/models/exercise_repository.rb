@@ -7,21 +7,24 @@ class ExerciseRepository
   end
 
   ## Process files in the repository, logging errors
-  ## to a given ImportLog, and yields each processed file
+  ## to a given ImportLog, and yields each processed root
   def process_files(log)
-    each_exercise_file do |file, original_id, title|
+    each_exercise_file do |root, original_id, title|
 
-      description_path = description_path(file) || (log.no_description title; next)
+      description = markdown(root, 'description') || (log.no_description title; next)
 
-      meta = meta(file) || (log.no_meta(title); next)
+      hint = markdown(root, 'hint')
 
-      test_file = test_path(file) || (log.no_test title; next)
+      meta = meta(root) || (log.no_meta(title); next)
+
+      test_file = test_path(root) || (log.no_test title; next)
 
       language = language(test_file) || (log.no_lang(title); next)
 
       yield original_id,
           {title: title.titleize,
-           description: File.read(description_path),
+           description: description,
+           hint: hint,
            tag_list: meta['tags'],
            locale: meta['locale'],
            language: language,
@@ -46,18 +49,18 @@ class ExerciseRepository
     raise "directory #{@dir} must exist" unless File.exist? @dir
   end
 
-  def description_path(file)
-    path = "#{file}/description.md"
-    path if File.exist? path
+  def markdown(root, filename)
+    path = "#{root}/#{filename}.md"
+    File.read(path) if File.exist? path
   end
 
-  def meta(file)
-    path = "#{file}/meta.yml"
+  def meta(root)
+    path = "#{root}/meta.yml"
     YAML.load_file(path) if File.exist? path
   end
 
-  def test_path(file)
-    test_files = Dir.glob("#{file}/test.*")
+  def test_path(root)
+    test_files = Dir.glob("#{root}/test.*")
     test_files[0] if test_files.length == 1
   end
 
