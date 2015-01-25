@@ -15,6 +15,20 @@
       <%= @exercise.description_html %>
     </p>
   </section>
+  <% if @exercise.hint %>
+    <section>
+      <a data-toggle="collapse"
+         href="#hint-section">
+        <%= label :exercise, :hint %>
+      </a>
+
+      <div id="hint-section" class="collapse">
+        <p>
+          <%= @exercise.hint_html %>
+        </p>
+      </div>
+    </section>
+  <% end %>
   <div class="field form-group" >
     <%= f.label :content %><br>
     <%= f.text_area :content, class: 'form-control', id: 'editor', value: @previous_submission_content %>

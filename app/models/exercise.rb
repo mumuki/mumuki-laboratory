@@ -26,6 +26,7 @@ class Exercise < ActiveRecord::Base
   scope :by_full_text, lambda { |q| full_text_search(q) if q.present? }
 
   markup_on :description
+  markup_on :hint
 
   def self.create_or_update_for_import!(guide, original_id, options)
     exercise = find_or_initialize_by(original_id: original_id, guide_id: guide.id)

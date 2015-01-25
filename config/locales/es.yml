@@ -89,6 +89,7 @@ es:
         tag_list: "Etiquetas"
         description: "Descripción"
         locale: "Idioma"
+        hint: 'Tips'
 
     errors:
       models:

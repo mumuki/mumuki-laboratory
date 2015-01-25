@@ -34,6 +34,14 @@
      </small>
     <%= f.text_area :description, class: 'form-control', rows: 8 %>
   </div>
+
+  <div class="field form-group">
+    <%= f.label :hint %><br>
+    <small><%=t :you_can_use_markdown_here_html %>
+    </small>
+    <%= f.text_area :hint, class: 'form-control', rows: 8 %>
+  </div>
+
   <div class="field form-group">
     <%= f.label :test %><br>
     <%= f.text_area :test, class: 'form-control', id: 'editor', rows: 15 %>
