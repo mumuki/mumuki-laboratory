@@ -28,23 +28,14 @@
 
   <% restricted_to_author @exercise do %>
       <section>
-        <h2>Tests</h2>
+        <h2><a href="#test-section" data-toggle="collapse">Tests</a></h2>
 
-        <p>
-          <%= highlighted_code @exercise.language, @exercise.test %>
-        </p>
+        <div class="collapse" id="test-section">
+            <%= highlighted_code @exercise.language, @exercise.test %>
+        </div>
       </section>
   <% end %>
 
-  <% if @exercise.guide %>
-      <section>
-        <h2><%= t(:guide).titleize %></h2>
-
-        <p>
-          <%= link_to_guide @exercise.guide %>
-        </p>
-      </section>
-  <% end %>
 </div>
 <div class="row">
   <%= link_to t('new_submission'), new_exercise_submission_path(@exercise), class: 'btn btn-primary' %>
