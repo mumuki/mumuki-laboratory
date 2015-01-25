@@ -13,7 +13,7 @@ class Submission < ActiveRecord::Base
   delegate :language, :title, to: :exercise
 
   def result_preview
-    result.truncate(100) unless passed?
+    result.truncate(100) if failed?
   end
 
   def eligible_for_run?
