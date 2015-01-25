@@ -16,6 +16,10 @@ class Submission < ActiveRecord::Base
     result.truncate(100) unless passed?
   end
 
+  def eligible_for_run?
+    exercise.submissions_for(submitter).last == self
+  end
+
   private
 
   def update_submissions_count!
