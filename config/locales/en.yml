@@ -62,3 +62,4 @@ en:
   my_guides: "My Guides"
   profile_of: "Profile of %{username}"
   exercise_search: "Search exercises"
+  belongs_to_guide: "Belongs to guide %{guide}"

@@ -115,3 +115,4 @@ es:
   my_guides: "Mis Guías"
   profile_of: "Perfil de %{username}"
   exercise_search: "Buscá ejercicios"
+  belongs_to_guide: "Pertence a la guía %{guide}"
