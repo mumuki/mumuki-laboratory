@@ -6,7 +6,7 @@ class ExerciseSubmissionsController < ApplicationController
   before_action :set_previous_submission_content, only: [:new]
 
   def index
-    @submissions = paginated @exercise.submissions_for current_user
+    @submissions = paginated @exercise.submissions_for(current_user).order(created_at: :desc)
   end
 
   def show
