@@ -11,6 +11,8 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'therubyracer', platforms: :ruby
 
+gem 'turbolinks'
+
 gem 'sass-rails'
 
 gem 'sucker_punch', '~> 1.0'
