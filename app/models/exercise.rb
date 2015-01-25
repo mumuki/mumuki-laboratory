@@ -25,6 +25,8 @@ class Exercise < ActiveRecord::Base
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
   scope :by_full_text, lambda { |q| full_text_search(q) if q.present? }
 
+  markup_on :description
+
   def self.create_or_update_for_import!(guide, original_id, options)
     exercise = find_or_initialize_by(original_id: original_id, guide_id: guide.id)
     exercise.assign_attributes(options)
@@ -40,10 +42,6 @@ class Exercise < ActiveRecord::Base
     else
       :unknown
     end
-  end
-
-  def description_html
-    with_markup description
   end
 
   def can_destroy?
