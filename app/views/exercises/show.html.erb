@@ -20,11 +20,8 @@
     <%= taglist_tag @exercise.tag_list %>
   </section>
 
-  <section>
-    <p>
-      <%= @exercise.description_html %>
-    </p>
-  </section>
+  <%= render 'layouts/exercise_description_section', exercise: @exercise %>
+
 
   <% restricted_to_author @exercise do %>
       <section>
