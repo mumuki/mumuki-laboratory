@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-feature 'Search Flow' do
+feature 'Read Exercise Flow' do
   let!(:exercise) { create(:exercise, tag_list: ['haskell'], title: 'Foo', description: 'an awesome problem description') }
 
   scenario 'show exercise from search' do
-    visit '/en/search'
+    visit '/en/exercises'
 
     click_on 'Foo'
     expect(page).to have_text('an awesome problem description')

@@ -1,6 +1,6 @@
 module Authentication
   def login_path
-    '/auth/github'
+    '/auth/github?next=' + request.path
   end
 
   def current_user_id

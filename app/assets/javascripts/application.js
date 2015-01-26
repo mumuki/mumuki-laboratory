@@ -20,4 +20,5 @@
 //= require ace/mode-ruby
 //= require ace/mode-haskell
 //= require ace/mode-prolog
+//= require turbolinks
 //= require_tree .

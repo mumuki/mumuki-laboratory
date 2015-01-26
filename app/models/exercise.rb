@@ -1,9 +1,10 @@
 class Exercise < ActiveRecord::Base
+  include PgSearch
+
   include WithMarkup
   include WithAuthor
 
   belongs_to :language
-  belongs_to :author, class_name: 'User'
   belongs_to :guide
 
   before_destroy :can_destroy?
@@ -16,8 +17,16 @@ class Exercise < ActiveRecord::Base
                         :submissions_count, :author, :locale
   after_initialize :defaults, if: :new_record?
 
-  scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
+  pg_search_scope :full_text_search,
+                  against: [:title, :description],
+                  associated_against: {language: [:name], tags: [:name]},
+                  using: {tsearch: {prefix: true}}
 
+  scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
+  scope :by_full_text, lambda { |q| full_text_search(q) if q.present? }
+
+  markup_on :description
+  markup_on :hint
 
   def self.create_or_update_for_import!(guide, original_id, options)
     exercise = find_or_initialize_by(original_id: original_id, guide_id: guide.id)
@@ -36,12 +45,8 @@ class Exercise < ActiveRecord::Base
     end
   end
 
-  def description_html
-    with_markup description
-  end
-
   def can_destroy?
-    submissions_count == 0
+    can_edit? && submissions_count == 0
   end
 
   def can_edit?
@@ -63,7 +68,6 @@ class Exercise < ActiveRecord::Base
   def submitted_by?(user)
     submissions_for(user).exists?
   end
-
   private
 
   def defaults

@@ -36,6 +36,28 @@ describe Submission do
     end
 
     it { expect(exercise.reload.submissions_count).to eq(3) }
+  end
+
+  describe 'eligible_for_run?' do
+    let(:exercise) { create(:exercise) }
+    let(:user) { create(:user) }
+    let(:other_user) { create(:user) }
+
+    context 'when there is only one submission' do
+      let(:submission) { exercise.submissions.create!(submitter: user) }
+
+      it { expect(submission.eligible_for_run?).to be true  }
+    end
+
+    context 'when there are many submissions' do
+      let!(:submission) { exercise.submissions.create!(submitter: user) }
+      let!(:other_submission) { exercise.submissions.create!(submitter: user) }
+      let!(:submission_for_other_user) { exercise.submissions.create!(submitter: other_user) }
+
+      it { expect(submission.eligible_for_run?).to be false }
+      it { expect(other_submission.eligible_for_run?).to be true  }
+      it { expect(submission_for_other_user.eligible_for_run?).to be true  }
+    end
 
 
   end

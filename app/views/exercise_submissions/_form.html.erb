@@ -10,11 +10,9 @@
       </ul>
     </div>
   <% end %>
-  <section>
-    <p>
-      <%= @exercise.description_html %>
-    </p>
-  </section>
+
+  <%= render 'layouts/exercise_description_section', exercise: @exercise %>
+
   <div class="field form-group" >
     <%= f.label :content %><br>
     <%= f.text_area :content, class: 'form-control', id: 'editor', value: @previous_submission_content %>

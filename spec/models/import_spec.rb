@@ -16,16 +16,33 @@ describe Import do
 
     before { import.run_import_from_directory! 'spec/data/mumuki-sample-exercises' }
 
-    let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 1) }
+    it { expect(Exercise.count).to eq 2 }
 
-    it { expect(imported_exercise).to_not be nil }
-    it { expect(imported_exercise.author).to eq guide.author }
-    it { expect(imported_exercise.title).to eq 'Sample Title' }
-    it { expect(imported_exercise.description).to eq '##Sample Description' }
-    it { expect(imported_exercise.test).to eq 'pending' }
-    it { expect(imported_exercise.language).to eq haskell }
-    it { expect(imported_exercise.tag_list).to include *%w(foo bar baz) }
+    context 'when importing basic exercise' do
+      let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 1) }
 
+      it { expect(imported_exercise).to_not be nil }
+      it { expect(imported_exercise.author).to eq guide.author }
+      it { expect(imported_exercise.title).to eq 'Sample Title' }
+      it { expect(imported_exercise.description).to eq '##Sample Description' }
+      it { expect(imported_exercise.test).to eq 'pending' }
+      it { expect(imported_exercise.hint).to be nil }
+      it { expect(imported_exercise.language).to eq haskell }
+      it { expect(imported_exercise.tag_list).to include *%w(foo bar baz) }
+    end
+
+    context 'when importing exercise with errors' do
+      let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 2) }
+
+      it { expect(imported_exercise).to be nil }
+    end
+
+    context 'when importing exercise with hint' do
+      let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 3) }
+
+      it { expect(imported_exercise).to_not be nil }
+      it { expect(imported_exercise.hint).to eq "Try this: blah blah\n" }
+    end
   end
 
   describe '#import!' do

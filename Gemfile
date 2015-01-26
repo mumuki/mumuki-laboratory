@@ -5,10 +5,13 @@ source 'https://rails-assets.org'
 gem 'rails', '4.1.4'
 
 gem 'pg'
+gem 'pg_search'
 
 gem 'uglifier', '>= 1.3.0'
 
 gem 'therubyracer', platforms: :ruby
+
+gem 'turbolinks'
 
 gem 'sass-rails'
 
@@ -40,8 +43,6 @@ gem 'git'
 
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
-
-gem 'ransack'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'

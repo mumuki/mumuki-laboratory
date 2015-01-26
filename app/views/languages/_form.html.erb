@@ -27,8 +27,13 @@
     <%= f.label :test_runner_url %><br>
     <%= f.text_field :test_runner_url, class: 'form-control' %>
   </div>
-  
-  <div class="actions form-group" >
+  <div class="field form-group">
+    <%= f.label :test_syntax_hint %><br>
+    <small><%=t :you_can_use_markdown_here_html %></small>
+    <%= f.text_area :test_syntax_hint, class: 'form-control', rows: 14   %>
+  </div>
+
+    <div class="actions form-group" >
     <%= f.submit class: 'btn btn-primary' %>
     <%= link_to t('cancel'),  :back,  class: 'btn btn-default' %>
   </div>

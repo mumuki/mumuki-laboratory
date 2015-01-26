@@ -1,9 +1,8 @@
 module WithExerciseIndex
 
-  def index
-    @q = Exercise.ransack(params[:q])
-    @exercises = paginated @q.result(distinct: true)
-    render 'exercises/index'
+  def set_exercises
+    @q = params[:q]
+    @exercises = paginated Exercise.by_full_text(@q).reorder(submissions_count: :desc)
   end
 
 end

@@ -33,7 +33,6 @@ es:
   running: 'procesando'
   pending: 'pendiente'
   listing_exercises: 'Listado de ejercicios'
-  search_exercises_by_tag: "Buscá ejercicios"
   search: 'Buscar'
   new_guide: "Nueva Guía"
   github_url_hint: "usuario/repositorio"
@@ -94,6 +93,7 @@ es:
         tag_list: "Etiquetas"
         description: "Descripción"
         locale: "Idioma"
+        hint: 'Tips'
 
     errors:
       models:
@@ -118,4 +118,5 @@ es:
   mumuki_is_collaborative_description: "Los ejercicios en Mumuki no son provisto por expertos, sino por la comunidad. No hay diferencia entre un maestro y un estudiante en Mumuki: todos pueden crear ejercicios. Nos encantaría que vos compartas los tuyos."
   my_guides: "Mis Guías"
   profile_of: "Perfil de %{username}"
-  exercise_search: "Busque por título, lenguaje, idioma o descripción"
+  exercise_search: "Buscá ejercicios"
+  belongs_to_guide: "Pertence a la guía %{guide}"
