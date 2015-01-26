@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   controller :sessions do
     get 'auth/:provider/callback' => :create
     get 'logout' => :destroy
