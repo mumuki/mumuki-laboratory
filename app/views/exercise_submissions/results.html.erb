@@ -1,0 +1,13 @@
+<div>
+  <h2><%= t('results')%></h2>
+
+  <p>
+    <strong><%= t :status %>:</strong>
+    <%= status_icon @submission %> <%= @submission.status %>
+  </p>
+
+  <p>
+    <strong><%= t :output %>:</strong>
+    <%= highlighted_code @submission.language, @submission.result %>
+  </p>
+</div>

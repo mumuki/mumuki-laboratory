@@ -1,7 +1,7 @@
 class ExerciseSubmissionsController < ApplicationController
   before_action :authenticate!
 
-  before_action :set_submission, only: [:show]
+  before_action :set_submission, only: [:show, :status, :results]
   before_action :set_exercise, only: [:create, :new, :show, :index]
   before_action :set_previous_submission_content, only: [:new]
 
@@ -26,9 +26,17 @@ class ExerciseSubmissionsController < ApplicationController
     end
   end
 
+  def status
+    render json: @submission.as_json(only: :status)
+  end
+
+  def results
+    render :results, layout: false
+  end
+
   private
   def set_submission
-    @submission = Submission.find(params[:id])
+    @submission = Submission.find(params[:id] || params[:submission_id])
   end
 
   def set_previous_submission_content

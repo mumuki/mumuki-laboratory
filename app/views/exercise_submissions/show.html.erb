@@ -3,27 +3,36 @@
     <small> - <%= @submission.language %></small>
   </h1>
 
-  <section>
+  <div>
     <h2>Content</h2>
     <%= highlighted_code @submission.language, @submission.content %>
-  </section>
+  </div>
 
-  <section>
-    <h2><%= t('results')%></h2>
-
-    <p>
-      <strong><%= t :status %>:</strong>
-      <%= status_icon @submission %> <%= @submission.status %>
-    </p>
-
-    <p>
-      <strong><%= t :output %>:</strong>
-      <%= highlighted_code @submission.language, @submission.result %>
-    </p>
-
-  </section>
+  <div id="exercise-results">
+    Loading...
+  </div>
 </div>
 <div class="row">
   <%= link_to t('new_submission'), new_exercise_submission_path(@submission.exercise), class: 'btn btn-primary' %>
   <%= link_to t('my_submissions'), exercise_submissions_path(@submission.exercise), class: 'btn btn-default'  %>
 </div>
+
+<%= content_for :tail do %>
+  <script>
+    function loadResults() {
+      $.ajax({
+        url: "<%= exercise_submission_status_path(@exercise, @submission) %>"
+      }).done(function (data) {
+        if (data.status === 'pending' || data.status === 'running') {
+          setTimeout(loadResults, 500);
+        }
+      });
+      $.ajax({
+        url: "<%= exercise_submission_results_path(@exercise, @submission) %>"
+      }).done(function (data) {
+        $('#exercise-results').html(data);
+      });
+    }
+    $(loadResults);
+  </script>
+<% end %>
