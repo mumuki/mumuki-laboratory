@@ -14,7 +14,7 @@
  *= require bootstrap-tagsinput
  *= require font-awesome
  *= require highlightjs
- *= require_tree .
+ *= require_tree ./application
  *= require_self
  */
 
