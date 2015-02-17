@@ -73,8 +73,12 @@ es:
 
   activerecord:
     models:
-      submission: "Entrega"
-      exercise: "Ejercicio"
+      submission:
+        one: "Entrega"
+        other: "Entregas"
+      exercise: 
+        one: "Ejercicio"
+        other: "Ejercicios"
       import: "Importación"
       guide:  "Guía"
       language: "Lenguaje"
@@ -116,3 +120,10 @@ es:
   profile_of: "Perfil de %{username}"
   exercise_search: "Buscá ejercicios"
   belongs_to_guide: "Pertence a la guía %{guide}"
+  devise:
+    sessions:
+      admin_user:
+        signed_in: Ha ingresado
+    failure:
+      admin_user:
+        unauthenticated: Usuario no autenticado
