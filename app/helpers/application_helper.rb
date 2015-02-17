@@ -17,8 +17,8 @@ module ApplicationHelper
     image_tag lang.image_url, alt: lang.name, height: 16
   end
 
-  def paginate(object)
-    super(object, theme: 'twitter-bootstrap-3')
+  def paginate(object, options={})
+    super(object, {theme: 'twitter-bootstrap-3'}.merge(options))
   end
 
   def taglist_tag(tags)
