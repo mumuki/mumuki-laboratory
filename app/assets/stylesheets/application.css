@@ -29,3 +29,41 @@
 .alert-danger a {
     color: greenyellow;
 }
+
+.white-font {
+  color:white;
+  text-shadow: 2px 2px 5px #222222;
+}
+
+.special-button:hover {
+  -webkit-transform: scale(1.25);
+  -moz-transform: scale(1.25);
+  -ms-transform: scale(1.25);
+  -o-transform: scale(1.25);
+  transform: scale(1.25);
+}
+
+
+.ha-bg-parallax {
+
+    background: url(team_picture.jpg) 50% 0px no-repeat fixed;
+
+    -moz-background-size: cover;
+
+    -o-background-size: cover;
+
+    -webkit-background-size: cover;
+
+    background-size: cover;
+
+    height: 300px;
+
+    margin: 0 auto;
+
+    width: 100%;
+
+    display: table;
+
+    vertical-align: middle;
+
+}
