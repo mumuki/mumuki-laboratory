@@ -1,6 +1,6 @@
 <%= content_for :no_container do %>
-    <div class="jumbotron">
-        <div class="container">
+    <div class="jumbotron ha-bg-parallax">
+        <div class="container white-font">
           <h1><%= t :mumuki_catchphrase %></h1>
 
           <p><%= t :mumuki_short_description %></p>
@@ -11,7 +11,7 @@
             <% end %>
           </p>
           <p class="text-center">
-            <%= link_to t(:start_practicing), exercises_path, class: 'btn btn-primary', role: 'button ' %>
+            <%= link_to t(:start_practicing), exercises_path, class: 'btn btn-primary special-button', role: 'button ' %>
           </p>
         </div>
     </div>
@@ -22,7 +22,7 @@
     <h2><%= t :mumuki_is_simple %></h2>
 
     <p><%= t :mumuki_is_simple_description %></p>
-    <%= link_to t(:start_practicing), exercises_path, class: 'btn btn-primary', role: 'button ' %>
+    <%= link_to t(:start_practicing), exercises_path, class: 'btn btn-primary special-button', role: 'button ' %>
   </div>
   <div class="col-md-4">
     <h2><%= t :mumuki_is_collaborative %></h2>
@@ -31,14 +31,14 @@
       <%= t :mumuki_is_collaborative_description %>
     </p>
 
-    <%= link_to t(:create_exercises), dashboard_path, class: 'btn btn-primary', role: 'button ' %>
+    <%= link_to t(:create_exercises), dashboard_path, class: 'btn btn-primary special-button', role: 'button ' %>
   </div>
   <div class="col-md-4">
     <h2><%= t :mumuki_is_open %></h2>
 
     <p><%= t :mumuki_is_open_description %></p>
 
-    <%= link_to t(:extend_mumuki), 'https://github.com/uqbar-project/mumuki-platform', class: 'btn btn-primary', role: 'button ' %>
+    <%= link_to t(:extend_mumuki), 'https://github.com/uqbar-project/mumuki-platform', class: 'btn btn-primary special-button', role: 'button ' %>
   </div>
 
 </div>
