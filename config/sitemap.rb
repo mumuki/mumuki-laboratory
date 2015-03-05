@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = 'http://mumuki.herokuapp.com'
+SitemapGenerator::Sitemap.default_host = 'http://mumuki.io'
 
 SitemapGenerator::Sitemap.create do
   add '/en', :changefreq => 'daily', :priority => 0.9
