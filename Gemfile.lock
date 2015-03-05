@@ -239,6 +239,8 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
+    sitemap_generator (5.0.5)
+      builder
     sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -311,6 +313,7 @@ DEPENDENCIES
   rest-client
   rspec-rails (~> 2.14)
   sass-rails
+  sitemap_generator
   sucker_punch (~> 1.0)
   therubyracer
   turbolinks
