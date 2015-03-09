@@ -10,10 +10,10 @@
             <input class="btn btn-default pull-right" name="commit" type="submit" value="<%= t :search %>">
           </div>
         </div>
-    <% end %>
+      <em><%= raw t :look_at_our_guides, guides: link_to(t(:guides), guides_path) %></em>
+  <% end %>
   </div>
 </div>
-
 <div class="row">
   <table class="table">
     <thead>

@@ -76,7 +76,7 @@ es:
       submission:
         one: "Entrega"
         other: "Entregas"
-      exercise: 
+      exercise:
         one: "Ejercicio"
         other: "Ejercicios"
       import: "Importación"
@@ -127,3 +127,5 @@ es:
     failure:
       admin_user:
         unauthenticated: Usuario no autenticado
+  look_at_our_guides: "O mirá nuestras %{guides}"
+  guides: "guías"
