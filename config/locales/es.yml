@@ -37,7 +37,7 @@ es:
   new_guide: "Nueva Guía"
   github_url_hint: "usuario/repositorio"
   guide_created: "Guia creada exitosamente"
-  guide: "guía"
+  guide: "Guía"
   authored_by: "Creado por %{author}"
   import_created: "Importación encolada"
   submission: "entrega"
@@ -70,6 +70,9 @@ es:
       about_x_hours:
         one: "Alrededor de 1 hora"
         other: "Alrededor de %{count} horas"
+      about_x_months:
+        one: "Alrededor de 1 mes"
+        other: "Alrededor de %{count} meses"
 
   activerecord:
     models:
@@ -127,5 +130,4 @@ es:
     failure:
       admin_user:
         unauthenticated: Usuario no autenticado
-  look_at_our_guides: "O mirá nuestras %{guides}"
-  guides: "guías"
+  created_at: "Creado"

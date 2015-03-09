@@ -10,7 +10,6 @@
             <input class="btn btn-default pull-right" name="commit" type="submit" value="<%= t :search %>">
           </div>
         </div>
-      <em><%= raw t :look_at_our_guides, guides: link_to(t(:guides), guides_path) %></em>
   <% end %>
   </div>
 </div>
@@ -23,7 +22,8 @@
       <th></th>
       <th><%= t :tag %></th>
       <th><%= t :language %></th>
-      <th><%= t :created %></th>
+      <th><%= t :guide %></th>
+      <th><%= t :created_at %></th>
       <th colspan="1"></th>
     </tr>
     </thead>
@@ -42,6 +42,9 @@
           <td><%= link_to_tag_list(exercise.tag_list) %></td>
           <td><%= language_icon exercise.language %>
             <%= link_to exercise.language, exercises_path(q: exercise.language.name) %> </td>
+          <td>
+            <%= link_to_guide_exercises(exercise.guide) %>
+          </td>
           <td>
             <%= time_ago_in_words(exercise.created_at) %>
           </td>

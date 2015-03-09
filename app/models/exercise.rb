@@ -1,4 +1,12 @@
 class Exercise < ActiveRecord::Base
+  INDEXED_ATTRIBUTES = {
+      against: [:title, :description],
+      associated_against: {
+          language: [:name],
+          tags: [:name],
+          guide: [:name]},
+  }
+
   include PgSearch
 
   include WithMarkup
@@ -17,10 +25,7 @@ class Exercise < ActiveRecord::Base
                         :submissions_count, :author, :locale
   after_initialize :defaults, if: :new_record?
 
-  pg_search_scope :full_text_search,
-                  against: [:title, :description],
-                  associated_against: {language: [:name], tags: [:name]},
-                  using: {tsearch: {prefix: true}}
+  pg_search_scope :full_text_search, INDEXED_ATTRIBUTES.merge(using: {tsearch: {prefix: true}})
 
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
   scope :by_full_text, lambda { |q| full_text_search(q) if q.present? }

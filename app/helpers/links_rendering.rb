@@ -11,6 +11,10 @@ module LinksRendering
     link_to guide.name, guide
   end
 
+  def link_to_guide_exercises(guide)
+    link_to guide.name, exercises_path(q: guide.name) if guide
+  end
+
   def link_to_github(guide)
     link_to guide.github_repository, guide.github_url
   end

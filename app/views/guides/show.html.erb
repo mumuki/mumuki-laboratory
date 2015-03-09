@@ -1,7 +1,6 @@
 <h1><%= @guide.name %>
   <small> - <%= link_to_github @guide %></small></h1>
 
-
 <div>
   <% restricted_to_author(@guide) do %>
       Post commit hook:
@@ -12,7 +11,7 @@
 <%= render 'layouts/exercise_panel/panel',
            heading: t(:exercise).pluralize,
            exercises: @guide.exercises,
-           more_link: guide_exercises_path(@guide) %>
+           more_link: exercises_path(q: @guide.name) %>
 
 <%= render 'layouts/panel/panel',
            heading: t(:import).titleize.pluralize,
