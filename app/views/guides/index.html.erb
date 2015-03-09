@@ -18,9 +18,8 @@
     <% end %>
     </tbody>
   </table>
-  <%= paginate @guides %>
+  <div class="text-center">
+    <%= paginate @guides %>
+  </div>
   <br>
-</div>
-<div class="row">
-  <%= link_to t('new_guide'), new_guide_path, class: 'btn btn-primary' %>
 </div>
