@@ -6,8 +6,8 @@
           <p><%= t :mumuki_short_description %></p>
 
           <p class="text-center">
-            <% @languages_icon_urls.each do |icon| %>
-                <%= image_tag icon, height: 28 %>
+            <% @languages.each do |language| %>
+                <%= link_to image_tag(language.image_url, height: 28), exercises_path(q: language.name) %>
             <% end %>
           </p>
           <p class="text-center">
