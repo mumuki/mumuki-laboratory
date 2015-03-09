@@ -7,7 +7,7 @@
 
           <p class="text-center">
             <% @languages.each do |language| %>
-                <%= link_to image_tag(language.image_url, height: 28), exercises_path(q: language.name) %>
+                <%= language_icon language, height: 28 %>
             <% end %>
           </p>
           <p class="text-center">

@@ -9,6 +9,11 @@ module Icons
             exercise_submissions_path(exercise) if current_user?
   end
 
+  def language_icon(language, options={})
+    options = {alt: language.name, height: 16}.merge(options)
+    link_to image_tag(language.image_url, options), exercises_path(q: language.name)
+  end
+
   private
 
   def exercise_status_fa_icon(exercise)

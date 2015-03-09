@@ -10,10 +10,10 @@ describe ApplicationHelper do
     it { expect(limit([1, 2, 3], true)).to eq [1, 2, 3] }
   end
 
-  describe '#language_image_tag' do
+  describe '#language_icon' do
     let(:haskell) { create(:language, name: 'Haskell', image_url: 'https://foo/foo.png') }
     let(:haskell_img_tag) { '<img alt="Haskell" height="16" src="https://foo/foo.png" />' }
-    it { expect(language_image_tag(haskell)).to eq haskell_img_tag }
+    it { expect(language_icon(haskell)).to include haskell_img_tag }
   end
 
   describe '#link_to_exercise' do

@@ -36,7 +36,7 @@
   <tbody>
   <% @exercises.each do |exercise| %>
       <tr>
-        <td><%= language_image_tag exercise.language %> <%= exercise.language %> </td>
+        <td><%= language_icon exercise.language %> <%= exercise.language %> </td>
         <td>
           <%= exercise.submissions_count %>
         </td>

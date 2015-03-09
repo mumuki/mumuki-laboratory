@@ -13,10 +13,6 @@ module ApplicationHelper
     "<pre><code class=\"hljs #{lang.name}\">#{code}</code></pre>".html_safe
   end
 
-  def language_image_tag(lang)
-    image_tag lang.image_url, alt: lang.name, height: 16
-  end
-
   def paginate(object, options={})
     "<div class=\"text-center\">#{super(object, {theme: 'twitter-bootstrap-3'}.merge(options))}</div>".html_safe
   end
