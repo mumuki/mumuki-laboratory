@@ -11,7 +11,7 @@
     </p>
     <% if @exercise.guide %>
       <p>
-        <%= raw t :belongs_to_guide, guide: link_to_guide_exercises(@exercise.guide) %>
+        <%= raw t :belongs_to_guide, guide: link_to_guide(@exercise.guide) %>
       </p>
     <% end %>
   </section>
