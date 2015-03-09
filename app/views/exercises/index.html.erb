@@ -24,7 +24,7 @@
       <th><%= t :tag %></th>
       <th><%= t :language %></th>
       <th><%= t :created %></th>
-      <th colspan="4"><%= t :actions %></th>
+      <th colspan="1"></th>
     </tr>
     </thead>
 
@@ -45,7 +45,6 @@
           <td>
             <%= time_ago_in_words(exercise.created_at) %>
           </td>
-          <td><%= link_to t('my_submissions'), exercise_submissions_path(exercise) %></td>
           <td><%= link_to t('new_submission'), new_exercise_submission_path(exercise) %></td>
         </tr>
     <% end %>
