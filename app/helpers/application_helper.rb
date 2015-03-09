@@ -18,7 +18,7 @@ module ApplicationHelper
   end
 
   def paginate(object, options={})
-    super(object, {theme: 'twitter-bootstrap-3'}.merge(options))
+    "<div class=\"text-center\">#{super(object, {theme: 'twitter-bootstrap-3'}.merge(options))}</div>".html_safe
   end
 
   def taglist_tag(tags)
