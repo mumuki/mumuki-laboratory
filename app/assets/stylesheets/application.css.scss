@@ -35,6 +35,15 @@
   text-shadow: 2px 2px 5px #222222;
 }
 
+
+.special-icon:hover {
+  -webkit-transform: scale(1.35);
+  -moz-transform: scale(1.35);
+  -ms-transform: scale(1.35);
+  -o-transform: scale(1.35);
+  transform: scale(1.35);
+}
+
 .special-button:hover {
   -webkit-transform: scale(1.25);
   -moz-transform: scale(1.25);

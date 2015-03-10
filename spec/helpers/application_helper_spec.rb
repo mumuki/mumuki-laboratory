@@ -12,7 +12,7 @@ describe ApplicationHelper do
 
   describe '#language_icon' do
     let(:haskell) { create(:language, name: 'Haskell', image_url: 'https://foo/foo.png') }
-    let(:haskell_img_tag) { '<img alt="Haskell" height="16" src="https://foo/foo.png" />' }
+    let(:haskell_img_tag) { '<img alt="Haskell" class="special-icon" height="16" src="https://foo/foo.png" />' }
     it { expect(language_icon(haskell)).to include haskell_img_tag }
   end
 
@@ -35,8 +35,8 @@ describe ApplicationHelper do
     let(:passed_submission) { create(:submission, status: :passed) }
     let(:failed_submission) { create(:submission, status: :failed) }
 
-    it { expect(status_icon(passed_submission)).to eq '<i class="fa fa-check text-success"></i>' }
-    it { expect(status_icon(failed_submission)).to eq '<i class="fa fa-times text-danger"></i>' }
+    it { expect(status_icon(passed_submission)).to eq '<i class="fa fa-check text-success special-icon"></i>' }
+    it { expect(status_icon(failed_submission)).to eq '<i class="fa fa-times text-danger special-icon"></i>' }
   end
 
 end

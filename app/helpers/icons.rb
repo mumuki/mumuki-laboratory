@@ -10,7 +10,7 @@ module Icons
   end
 
   def language_icon(language, options={})
-    options = {alt: language.name, height: 16}.merge(options)
+    options = {alt: language.name, height: 16, class: 'special-icon'}.merge(options)
     link_to image_tag(language.image_url, options), exercises_path(q: language.name)
   end
 
@@ -21,13 +21,17 @@ module Icons
   end
 
   def icon_for_status(status)
+    def i(icon, class_)
+      [icon, class: "text-#{class_} special-icon"]
+    end
     case status.to_s
-      when 'passed' then ['check', class: 'text-success']
-      when 'failed' then ['times', class: 'text-danger']
-      when 'running' then ['circle', class: 'text-warning']
-      when 'pending' then ['clock-o', class: 'text-info']
-      when 'unknown' then ['circle', class: 'text-muted']
+      when 'passed' then i 'check','success'
+      when 'failed' then i 'times', 'danger'
+      when 'running' then i 'circle', 'warning'
+      when 'pending' then i 'clock-o','info'
+      when 'unknown' then i 'circle', 'muted'
       else raise "Unknown status #{status}"
     end
   end
+
 end
