@@ -18,12 +18,13 @@
         <small> - <%= @exercise.language %></small>
       </h1>
       <section>
-        <p>
-          <%= raw t :authored_by, author: link_to(@exercise.author.name, user_path(@exercise.author)) %>
-        </p>
         <% if @exercise.guide %>
           <p>
             <%= raw t :belongs_to_guide, guide: link_to_guide(@exercise.guide) %>
+          </p>
+         <% else %>
+          <p>
+            <%= raw t :authored_by, author: link_to(@exercise.author.name, user_path(@exercise.author)) %>
           </p>
         <% end %>
       </section>
