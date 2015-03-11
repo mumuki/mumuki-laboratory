@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     # All users
     resources :exercises do
       # Current user
-      resources :submissions, controller: 'exercise_submissions', only: [:new, :create, :show, :index] do
+      resources :submissions, controller: 'exercise_submissions', only: [:create, :show, :index] do
         get :status
         get :results
       end

@@ -12,10 +12,6 @@ class ExerciseSubmissionsController < ApplicationController
   def show
   end
 
-  def new
-    @submission = Submission.new
-  end
-
   def create
     @submission = current_user.submissions.build(submission_params)
 

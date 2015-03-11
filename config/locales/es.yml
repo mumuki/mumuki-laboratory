@@ -44,7 +44,6 @@ es:
   mumuki_catchphrase: "Programá mejor"
   mumuki_short_description: "Mumuki es una plataforma simple, abierta y colaborativa para compartir y resolver ejercicios de programación. Mumuki existe para ayudar a las personas a aprender y enseñar lenguajes y paradigmas de programación"
   tag: "Etiqueta"
-  new_submission_for: "Nueva entrega para %{exercise}"
   submissions_for: "Entregas para %{exercise}"
   you_must: "Tenés que %{action} antes de continuar"
   sign_in_with_github_action: "iniciar sesión con Github"

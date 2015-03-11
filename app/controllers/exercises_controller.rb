@@ -6,6 +6,7 @@ class ExercisesController < ApplicationController
   before_action :authenticate!, except: [:show, :index]
 
   def show
+    @submission = @exercise.submissions.build
   end
 
   def index

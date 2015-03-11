@@ -15,7 +15,7 @@
   </div>
 </div>
 <div class="row">
-  <%= link_to t('new_submission'), new_exercise_submission_path(@submission.exercise), class: 'btn btn-primary' %>
+  <%= link_to t('new_submission'), exercise_path(@submission.exercise), class: 'btn btn-primary' %>
   <%= link_to t('my_submissions'), exercise_submissions_path(@submission.exercise), class: 'btn btn-default'  %>
 </div>
 

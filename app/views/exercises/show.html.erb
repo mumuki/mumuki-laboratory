@@ -1,43 +1,79 @@
-<div class="row">
+<%= form_for([@exercise, @submission], id: 'exercise-submission-form', html: {role: 'form'}) do |f| %>
+  <% if @submission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
 
-  <h1>
-    <%= @exercise.title %>
-    <small> - <%= @exercise.language %></small>
-  </h1>
+      <ul>
+        <% @submission.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-  <section>
-    <p>
-      <%= raw t :authored_by, author: link_to(@exercise.author.name, user_path(@exercise.author)) %>
-    </p>
-    <% if @exercise.guide %>
-      <p>
-        <%= raw t :belongs_to_guide, guide: link_to_guide(@exercise.guide) %>
-      </p>
-    <% end %>
-  </section>
-
-  <section>
-    <%= taglist_tag @exercise.tag_list %>
-  </section>
-
-  <%= render 'layouts/exercise_description_section', exercise: @exercise %>
-
-
-  <% restricted_to_author @exercise do %>
+  <div class="row">
+    <div class="col-md-12">
+      <h1>
+        <%= @exercise.title %>
+        <small> - <%= @exercise.language %></small>
+      </h1>
       <section>
-        <h2><a href="#test-section" data-toggle="collapse">Tests</a></h2>
-
-        <div class="collapse" id="test-section">
-            <%= highlighted_code @exercise.language, @exercise.test %>
-        </div>
+        <p>
+          <%= raw t :authored_by, author: link_to(@exercise.author.name, user_path(@exercise.author)) %>
+        </p>
+        <% if @exercise.guide %>
+          <p>
+            <%= raw t :belongs_to_guide, guide: link_to_guide(@exercise.guide) %>
+          </p>
+        <% end %>
       </section>
-  <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <section>
+        <%= taglist_tag @exercise.tag_list %>
+      </section>
+      <div>
+        <p>
+          <%= @exercise.description_html %>
+        </p>
+      </div>
+      <div>
+        <% if @exercise.hint %>
+          <a data-toggle="collapse"
+             href="#hint-section">
+            <%= label :exercise, :hint %>
+          </a>
 
-</div>
-<div class="row">
-  <%= link_to t('new_submission'), new_exercise_submission_path(@exercise), class: 'btn btn-primary' %>
-  <%= link_to t('my_submissions'), exercise_submissions_path(@exercise), class: 'btn btn-default' %>
-  <% restricted_to_author @exercise do %>
-      <%= link_to t('edit'), edit_exercise_path(@exercise), class: 'btn btn-default' if @exercise.can_edit? %>
-  <% end %>
-</div>
+          <div id="hint-section" class="collapse">
+            <p>
+              <%= @exercise.hint_html %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+      <%= link_to t('my_submissions'), exercise_submissions_path(@exercise), class: 'btn btn-default' %>
+      <% restricted_to_author @exercise do %>
+        <%= link_to t('edit'), edit_exercise_path(@exercise), class: 'btn btn-default' if @exercise.can_edit? %>
+      <% end %>
+    </div>
+
+    <div class="col-md-7">
+      <div class="field form-group">
+        <%= f.text_area :content, class: 'form-control', id: 'editor', value: @previous_submission_content %>
+        <%= hidden_field_tag(:exercise_language, @exercise.language) %>
+      </div>
+      <div class="actions form-group text-right">
+        <%= f.submit t(:create_submission), class: 'btn btn-primary' %>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+<% end %>
