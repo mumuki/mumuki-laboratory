@@ -23,7 +23,6 @@
       <th><%= t :tag %></th>
       <th><%= t :language %></th>
       <th><%= t :created_at %></th>
-      <th colspan="1"></th>
     </tr>
     </thead>
 
@@ -44,7 +43,6 @@
           <td>
             <%= time_ago_in_words(exercise.created_at) %>
           </td>
-          <td><%= link_to t('new_submission'), new_exercise_submission_path(exercise) %></td>
         </tr>
     <% end %>
     </tbody>
