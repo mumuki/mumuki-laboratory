@@ -11,16 +11,42 @@
     </div>
   <% end %>
 
-  <%= render 'layouts/exercise_description_section', exercise: @exercise %>
+  <div class="row">
+    <div class="col-md-5">
+      <div>
+        <p>
+          <%= @exercise.description_html %>
+        </p>
+      </div>
+      <div>
+        <% if @exercise.hint %>
+          <a data-toggle="collapse"
+             href="#hint-section">
+            <%= label :exercise, :hint %>
+          </a>
+          <div id="hint-section" class="collapse">
+            <p>
+              <%= @exercise.hint_html %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
-  <div class="field form-group" >
-    <%= f.label :content %><br>
-    <%= f.text_area :content, class: 'form-control', id: 'editor', value: @previous_submission_content %>
-    <%= hidden_field_tag(:exercise_language, @exercise.language) %>
+    <div class="col-md-7">
+      <div class="field form-group" >
+        <%= f.text_area :content, class: 'form-control', id: 'editor', value: @previous_submission_content %>
+        <%= hidden_field_tag(:exercise_language, @exercise.language) %>
+      </div>
+      <div class="actions form-group text-right">
+        <%= f.submit t(:create_submission), class: 'btn btn-primary' %>
+      </div>
+    </div>
+
   </div>
-  <div class="actions form-group">
-    <%= f.submit class: 'btn btn-primary' %>
-    <%= link_to t('cancel'),  :back,  class: 'btn btn-default' %>
-  </div>
+
+
+
+
 
 <% end %>
