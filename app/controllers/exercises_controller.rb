@@ -1,9 +1,10 @@
 class ExercisesController < ApplicationController
   include WithExerciseIndex
 
+  before_action :authenticate!, except: [:index]
   before_action :set_exercises, only: [:index]
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate!, except: [:show, :index]
+  before_action :set_previous_submission_content, only: :show
 
   def show
     @submission = @exercise.submissions.build
@@ -44,6 +45,11 @@ class ExercisesController < ApplicationController
   end
 
   private
+  def set_previous_submission_content
+    @previous_submission_content = @exercise.default_content_for(current_user)
+  end
+
+
   def set_exercise
     @exercise = Exercise.find(params[:id])
   end

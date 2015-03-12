@@ -2,8 +2,7 @@ class ExerciseSubmissionsController < ApplicationController
   before_action :authenticate!
 
   before_action :set_submission, only: [:show, :status, :results]
-  before_action :set_exercise, only: [:create, :new, :show, :index]
-  before_action :set_previous_submission_content, only: [:new]
+  before_action :set_exercise, only: [:create, :show, :index]
 
   def index
     @submissions = paginated @exercise.submissions_for(current_user).order(created_at: :desc)
@@ -35,9 +34,6 @@ class ExerciseSubmissionsController < ApplicationController
     @submission = Submission.find(params[:id] || params[:submission_id])
   end
 
-  def set_previous_submission_content
-    @previous_submission_content = @exercise.default_content_for(current_user)
-  end
 
   def set_exercise
     @exercise = Exercise.find(params[:exercise_id])
