@@ -66,7 +66,7 @@
       </div>
       <div class="actions form-group text-right">
         <%= f.submit t(:create_submission), class: 'btn btn-primary' %>
-        <%= link_to t('my_submissions'), exercise_submissions_path(@exercise), class: 'btn btn-default' %>
+        <%= link_to t('my_submissions'), exercise_submissions_path(@exercise), class: 'btn btn-default' if @exercise.has_submissions_for?(current_user) %>
       </div>
     </div>
 

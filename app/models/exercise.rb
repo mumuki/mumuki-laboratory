@@ -65,6 +65,10 @@ class Exercise < ActiveRecord::Base
     submissions.where(submitter_id: user.id)
   end
 
+  def has_submissions_for?(user)
+    submissions_for(user).any?
+  end
+
   def solved_by?(user)
     submissions_for(user).where("status = ?", Submission.statuses[:passed]).exists?
   end
