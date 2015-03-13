@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require highlightjs
+//= require tooltipsy.min
+//= require tooltipsy
 //= require bootstrap
 //= require bootstrap-tagsinput
 //= require ace/ace

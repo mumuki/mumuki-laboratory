@@ -56,23 +56,25 @@
 .ha-bg-parallax {
 
     background: image-url('team_picture.jpg') 50% 0px no-repeat fixed;
-
     -moz-background-size: cover;
-
     -o-background-size: cover;
-
     -webkit-background-size: cover;
-
     background-size: cover;
-
     height: 300px;
-
     margin: 0 auto;
-
     width: 100%;
-
     display: table;
-
     vertical-align: middle;
 
+}
+
+.tooltipsy {
+  position: absolute;
+  width:140px;
+  color: #FFFFFF;
+  background: #2c3e50;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 6px;
 }

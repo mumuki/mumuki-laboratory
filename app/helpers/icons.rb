@@ -10,7 +10,7 @@ module Icons
   end
 
   def language_icon(language, options={})
-    options = {alt: language.name, height: 16, class: 'special-icon'}.merge(options)
+    options = {title: language, alt: language.name, height: 16, class: 'special-icon has-tooltip'}.merge(options)
     link_to image_tag(language.image_url, options), exercises_path(q: language.name)
   end
 
