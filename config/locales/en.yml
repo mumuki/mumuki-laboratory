@@ -64,3 +64,4 @@ en:
   belongs_to_guide: "Belongs to guide %{guide}"
   created_at: "Created at"
   create_submission: "Submit your solution!"
+  next_exercise: "Gimme another exercise!"

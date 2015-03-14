@@ -4,6 +4,34 @@ describe Exercise do
   let(:exercise) { create(:exercise) }
   let(:user) { create(:user) }
 
+  describe '#next_for' do
+    context 'when exercise has no guide' do
+      it { expect(exercise.next_for(user)).to be nil }
+    end
+    context 'when exercise belong to a guide with a single exercise' do
+      let(:exercise_with_guide) { create(:exercise, guide: guide) }
+      let(:guide) { create(:guide) }
+
+      it { expect(exercise_with_guide.next_for(user)).to be nil }
+    end
+    context 'when exercise belongs to a guide with two exercises' do
+      let(:exercise_with_guide) { create(:exercise, guide: guide) }
+      let!(:alternative_exercise) { create(:exercise, guide: guide) }
+      let(:guide) { create(:guide) }
+
+      it { expect(exercise_with_guide.next_for(user)).to eq alternative_exercise }
+    end
+    context 'when exercise belongs to a guide with two exercises and alternative exercise has being solved' do
+      let(:exercise_with_guide) { create(:exercise, guide: guide) }
+      let!(:alternative_exercise) { create(:exercise, guide: guide) }
+      let(:guide) { create(:guide) }
+
+      before { user.submissions.create!(exercise: alternative_exercise, content: 'foo') }
+
+      it { expect(exercise_with_guide.next_for(user)).to be nil }
+    end
+  end
+
   describe '#submitted_by?' do
     context 'when user did a submission' do
       before { exercise.submissions.create(submitter: user) }

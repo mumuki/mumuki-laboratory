@@ -3,6 +3,7 @@ class ExerciseSubmissionsController < ApplicationController
 
   before_action :set_submission, only: [:show, :status, :results]
   before_action :set_exercise, only: [:create, :show, :index]
+  before_action :set_next_exercise, only: :show
 
   def index
     @submissions = paginated @exercise.submissions_for(current_user).order(created_at: :desc)
@@ -13,12 +14,8 @@ class ExerciseSubmissionsController < ApplicationController
 
   def create
     @submission = current_user.submissions.build(submission_params)
-
-    if @submission.save
-      redirect_to [@exercise, @submission], notice: t(:submission_created)
-    else
-      render :new
-    end
+    @submission.save!
+    redirect_to [@exercise, @submission], notice: t(:submission_created)
   end
 
   def status
@@ -30,10 +27,15 @@ class ExerciseSubmissionsController < ApplicationController
   end
 
   private
+
+  def set_next_exercise
+    @next_exercise = @exercise.next_for current_user
+  end
+
+  private
   def set_submission
     @submission = Submission.find(params[:id] || params[:submission_id])
   end
-
 
   def set_exercise
     @exercise = Exercise.find(params[:exercise_id])

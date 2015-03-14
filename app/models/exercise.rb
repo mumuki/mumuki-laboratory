@@ -76,6 +76,17 @@ class Exercise < ActiveRecord::Base
   def submitted_by?(user)
     submissions_for(user).exists?
   end
+
+  def next_for(user)
+    guide.exercises.
+        joins("left join submissions
+                on submissions.exercise_id = exercises.id
+                and submissions.submitter_id = #{user.id}").
+        where('submissions.id is null and exercises.id <> :id', id: id).
+        order('RANDOM()').
+        first if guide
+  end
+
   private
 
   def defaults
