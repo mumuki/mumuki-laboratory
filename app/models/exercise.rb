@@ -12,13 +12,12 @@ class Exercise < ActiveRecord::Base
 
   include WithMarkup
   include WithAuthor
+  include WithSubmissions
 
   belongs_to :language
   belongs_to :guide
 
   before_destroy :can_destroy?
-
-  has_many :submissions
 
   acts_as_taggable
 
@@ -58,26 +57,6 @@ class Exercise < ActiveRecord::Base
 
   def can_edit?
     guide.nil?
-  end
-
-  def default_content_for(user)
-    submissions_for(user).last.try(&:content) || ''
-  end
-
-  def submissions_for(user)
-    submissions.where(submitter_id: user.id)
-  end
-
-  def has_submissions_for?(user)
-    submissions_for(user).any?
-  end
-
-  def solved_by?(user)
-    submissions_for(user).where("status = ?", Submission.statuses[:passed]).exists?
-  end
-
-  def submitted_by?(user)
-    submissions_for(user).exists?
   end
 
   def next_for(user)
