@@ -3,7 +3,9 @@ class Exercise < ActiveRecord::Base
       against: [:title, :description],
       associated_against: {
           language: [:name],
-          tags: [:name]},
+          tags: [:name],
+          guide: [:name]
+      },
   }
 
   include PgSearch

@@ -5,7 +5,12 @@ class Guide < ActiveRecord::Base
   has_many :exercises
   has_many :imports
 
-  validates_presence_of :github_repository, :name, :author
+  validates_presence_of :github_repository, :name, :author, :description
+  validate :valid_name?
+
+  def valid_name?
+    errors.add(:name, 'can not contain whitespaces') if name && name =~ /\s+/
+  end
 
   def exercises_count
     exercises.count

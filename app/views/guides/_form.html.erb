@@ -18,6 +18,12 @@
     </div>
 
     <div class="field form-group">
+      <%= f.label :description %>
+      <br>
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+
+    <div class="field form-group">
       <%= f.label :github_repository %><small> <%= t 'github_url_hint' %></small>
       <br>
       <%= f.text_field :github_repository, class: 'form-control' %>
