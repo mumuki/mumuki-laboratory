@@ -59,6 +59,10 @@ class Exercise < ActiveRecord::Base
     guide.nil?
   end
 
+  def search_tags
+    tag_list + [language.name] + (guide.try(&:name) || [])
+  end
+
   def next_for(user)
     guide.exercises.
         at_locale.

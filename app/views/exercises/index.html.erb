@@ -18,8 +18,8 @@
     <thead>
     <tr>
       <th><%= t :submissions_count %></th>
-      <th><%= t :language %></th>
       <th><%= t :title %></th>
+      <th></th>
       <th><%= t :tag %></th>
       <th><%= t :created_at %></th>
     </tr>
@@ -31,13 +31,12 @@
           <td>
             <%= exercise.submissions_count %>
           </td>
-          <td><%= language_icon exercise.language %>
-            <%= link_to exercise.language, exercises_path(q: exercise.language.name) %> </td>
           <td>
-            <%= exercise_status_icon(exercise) %>
+            <%= language_icon exercise.language %>
             <%= link_to exercise.title, exercise %>
           </td>
-          <td><%= link_to_tag_list(exercise.tag_list) %></td>
+          <td><%= exercise_status_icon(exercise) %></td>
+          <td><%= link_to_tag_list(exercise.search_tags) %></td>
           <td>
             <%= time_ago_in_words(exercise.created_at) %>
           </td>
