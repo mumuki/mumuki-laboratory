@@ -28,6 +28,7 @@ class Exercise < ActiveRecord::Base
 
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
   scope :by_full_text, lambda { |q| full_text_search(q) if q.present? }
+  scope :at_locale, lambda { where(locale: I18n.locale) }
 
   markup_on :description
   markup_on :hint
@@ -79,6 +80,7 @@ class Exercise < ActiveRecord::Base
 
   def next_for(user)
     guide.exercises.
+        at_locale.
         joins("left join submissions
                 on submissions.exercise_id = exercises.id
                 and submissions.submitter_id = #{user.id}").
