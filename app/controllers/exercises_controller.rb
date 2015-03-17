@@ -15,7 +15,7 @@ class ExercisesController < ApplicationController
   end
 
   def new
-    @exercise = Exercise.new
+    @exercise = Exercise.new(locale: I18n.locale)
   end
 
   def edit

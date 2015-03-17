@@ -1,53 +1,57 @@
-<%= form_for(@exercise, html: {role: 'form'}) do |f| %>
-  <% if @exercise.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@exercise.errors.count, "error") %> prohibited this exercise from being saved:</h2>
-
-      <ul>
-      <% @exercise.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= bootstrap_form_for(@exercise) do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="field form-group">
+        <%= f.text_field :title %>
+      </div>
+      <div class="field form-group">
+        <%= f.text_field :tag_list, class: 'form-control', 'data-role ' => 'tagsinput' %>
+        <small><%= t('comma_or_tab_separated') %></small>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field form-group">
-    <%= f.label :title %><br>
-    <%= f.text_field :title, class: 'form-control' %>
-  </div>
-  <div class="field form-group">
-    <%= f.label :language %><br>
-    <%= f.collection_select(:language_id, Language.all, :id, :name, {}, class: 'form-control') %>
-  </div>
-  <div class="field form-group">
-    <%= f.label :locale %><br>
-    <%= f.select(:locale, [['English', :en], ['Español', :es]], {}, class: 'form-control') %>
-  </div>
-  <div class="field form-group">
-    <%= f.label :tag_list %><br>
-    <small><%=t('comma_or_tab_separated')%></small>
-    <%= f.text_field :tag_list, class: 'form-control', 'data-role '=> 'tagsinput' %>
-  </div>
-  <div class="field form-group">
-    <%= f.label :description %><br>
-    <small><%=t('you_can_use_markdown_here_html') %>
-     </small>
-    <%= f.text_area :description, class: 'form-control', rows: 8 %>
+    <div class="col-md-6">
+      <div class="field form-group">
+        <%= f.collection_select(:language_id, Language.all, :id, :name, {}, class: 'form-control') %>
+      </div>
+      <div class="field form-group">
+        <%= f.select(:locale, [['English', :en], ['Español', :es]], {}, class: 'form-control') %>
+      </div>
+    </div>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :hint %><br>
-    <small><%=t :you_can_use_markdown_here_html %>
-    </small>
-    <%= f.text_area :hint, class: 'form-control', rows: 8 %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="field form-group">
+        <%= f.text_area :description, rows: 12 %>
+        <small><%= t('you_can_use_markdown_here_html') %></small>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="field form-group">
+        <%= f.text_area :hint, rows: 12 %>
+        <small><%= t :you_can_use_markdown_here_html %></small>
+      </div>
+    </div>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :test %><br>
-    <%= f.text_area :test, class: 'form-control', id: 'editor', rows: 15 %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="field form-group">
+        <%= f.text_area :test, class: 'form-control', id: 'editor', rows: 15 %>
+      </div>
+    </div>
   </div>
-  <div class="actions form-group" >
-    <%= f.submit class: 'btn btn-primary' %>
-    <%= link_to t('cancel'),  :back,  class: 'btn btn-default' %>
+
+
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="actions form-group">
+        <%= f.submit class: 'btn btn-primary' %>
+        <%= link_to t('cancel'), :back, class: 'btn btn-default' %>
+      </div>
+    </div>
   </div>
 <% end %>

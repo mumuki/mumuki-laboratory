@@ -44,6 +44,8 @@ gem 'git'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
+gem 'bootstrap_form'
+
 group :test do
   gem 'rspec-rails', '~> 2.14'
   gem 'factory_girl_rails'
