@@ -1,53 +1,68 @@
-<div class="row">
-  <div class="navbar">
-    <%= form_tag exercises_path, method: :get do |f| %>
-        <div class="form-group">
-          <div class="col-md-11">
-            <input class="form-control" id="q" name="q" type="search"
-                   placeholder="<%= t(:exercise_search) %>" value="<%= @q %>">
-          </div>
-          <div class="col-md-1">
-            <input class="btn btn-default pull-right" name="commit" type="submit" value="<%= t :search %>">
+<br>
+<%= form_tag exercises_path, method: :get do |f| %>
+  <div class="row">
+    <div class="navbar">
+      <div class="form-group">
+        <div class="col-md-11">
+          <input class="form-control" id="q" name="q" type="search"
+                 placeholder="<%= t(:exercise_search) %>" value="<%= @q %>">
+        </div>
+        <div class="col-md-1">
+          <input class="btn btn-default pull-right" name="commit" type="submit" value="<%= t :search %>">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+      <% @exercises.each do |exercise| %>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-10">
+                <p class="text-left">
+                  <%= exercise_status_icon(exercise) %>
+                  <%= link_to exercise.title, exercise %>
+                </p>
+              </div>
+              <div class="col-md-2">
+                <p class="text-right">
+                  <%= language_icon exercise.language %>
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-9">
+                <%= exercise.teaser_html %>
+              </div>
+              <div class="col-md-3">
+                <p class="text-right">Popularidad <%= exercise.submissions_count %></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-8">
+                <%= link_to_tag_list(exercise.search_tags) %>
+              </div>
+              <div class="col-md-4">
+                <p class="text-right">Creado <%= time_ago_in_words(exercise.created_at) %></p>
+              </div>
+            </div>
           </div>
         </div>
-  <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
-<div class="row">
-  <table class="table">
-    <thead>
-    <tr>
-      <th><%= t :submissions_count %></th>
-      <th><%= t :title %></th>
-      <th></th>
-      <th><%= t :tag %></th>
-      <th><%= t :created_at %></th>
-    </tr>
-    </thead>
 
-    <tbody>
-    <% @exercises.each do |exercise| %>
-        <tr>
-          <td>
-            <%= exercise.submissions_count %>
-          </td>
-          <td>
-            <%= language_icon exercise.language %>
-            <%= link_to exercise.title, exercise %>
-          </td>
-          <td><%= exercise_status_icon(exercise) %></td>
-          <td><%= link_to_tag_list(exercise.search_tags) %></td>
-          <td>
-            <%= time_ago_in_words(exercise.created_at) %>
-          </td>
-        </tr>
-    <% end %>
-    </tbody>
-  </table>
+
   <div class="text-center">
     <strong><%= raw t :no_exercises, create_path: new_exercise_path if @exercises.empty? %></strong>
   </div>
 
-  <%= paginate @exercises %>
-  <br>
-</div>
+
+  <div class="row">
+    <%= paginate @exercises %>
+    <br>
+  </div>
+<% end %>

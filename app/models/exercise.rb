@@ -33,11 +33,16 @@ class Exercise < ActiveRecord::Base
 
   markup_on :description
   markup_on :hint
+  markup_on :teaser
 
   def self.create_or_update_for_import!(guide, original_id, options)
     exercise = find_or_initialize_by(original_id: original_id, guide_id: guide.id)
     exercise.assign_attributes(options)
     exercise.save!
+  end
+
+  def teaser
+    description.truncate(70)
   end
 
   def status_for(user)
