@@ -97,16 +97,6 @@ es:
         locale: "Idioma"
         hint: 'Tips'
 
-    errors:
-      models:
-        exercise:
-          attributes:
-            test:
-              blank: "no puede estar vacío"
-            description:
-              blank: "no puede estar vacía"
-            title:
-              blank: "no puede estar vacío"
   latest_guides: "últimas guías"
   submissions_count: "Entregas"
   mumuki_is_simple: "Mumuki es simple"
