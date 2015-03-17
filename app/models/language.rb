@@ -1,7 +1,6 @@
 require 'rest_client'
 
 class Language < ActiveRecord::Base
-  include WithAuthor
   include WithMarkup
 
   validates_presence_of :name, :test_runner_url, :extension, :image_url
@@ -13,10 +12,6 @@ class Language < ActiveRecord::Base
     [response['out'], response['exit']]
   rescue Exception => e
     [e.message, :failed]
-  end
-
-  def created_by? user
-    user.id == plugin_author.id
   end
 
   def to_s

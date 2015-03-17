@@ -15,7 +15,7 @@ gem 'turbolinks'
 
 gem 'sass-rails'
 
-gem 'activeadmin', github: 'activeadmin'
+gem 'activeadmin', '~> 1.0.0.pre1'
 gem 'devise'
 
 gem 'sucker_punch', '~> 1.0'

@@ -39,6 +39,5 @@ Rails.application.routes.draw do
 
     # Current user
     resources :submissions, only: :index
-    resources :languages
   end
 end
