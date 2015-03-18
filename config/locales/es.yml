@@ -122,3 +122,4 @@ es:
   created_at: "Creado"
   create_submission: "Envía tu solución!"
   next_exercise: "Dame otro ejercicio!"
+  no_exercises: "Nadie creó un ejercicio para tu búsqueda aún. <a href=\"%{create_path}\">¡Sé el primero!</a>"

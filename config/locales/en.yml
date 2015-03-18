@@ -65,3 +65,4 @@ en:
   created_at: "Created at"
   create_submission: "Submit your solution!"
   next_exercise: "Gimme another exercise!"
+  no_exercises: "Nobody created an exercise for this search yet. <a href=\"%{create_path}\">Be the first!</a>"
