@@ -12,7 +12,7 @@ es:
   new_exercise: 'Nuevo Ejercicio'
   results: 'Resultados'
   submission_for_exercise: 'Entrega para ejercicio'
-  more: "Mas"
+  more: "mas..."
   comma_or_tab_separated: 'Separados por tab o coma!'
   you_can_use_markdown_here_html: 'Podés usar <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>'
   here: 'acá'

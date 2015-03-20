@@ -41,8 +41,8 @@ class Exercise < ActiveRecord::Base
     exercise.save!
   end
 
-  def teaser
-    description.truncate(70)
+  def teaser(more_link)
+    description.truncate(70, omission: more_link)
   end
 
   def status_for(user)

@@ -1,16 +1,4 @@
 <%= form_for([@exercise, @submission], id: 'exercise-submission-form', html: {role: 'form'}) do |f| %>
-  <% if @submission.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
-
-      <ul>
-        <% @submission.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="row">
     <div class="col-md-12">
       <h1>

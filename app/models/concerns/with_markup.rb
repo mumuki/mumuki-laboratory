@@ -9,8 +9,8 @@ module WithMarkup
 
   module ClassMethods
     def markup_on(selector)
-      define_method("#{selector}_html".to_sym) do
-        with_markup self.send(selector)
+      define_method("#{selector}_html".to_sym) do |*args|
+        with_markup self.send(selector, *args)
       end
     end
   end
