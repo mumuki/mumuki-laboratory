@@ -21,7 +21,6 @@ feature 'Search Flow' do
     fill_in 'q', with: 'haskell'
     click_on 'Search'
 
-    expect(page).to have_text('Title')
     expect(page).to have_text('Bar')
     expect(page).to have_text('Baz')
     expect(page).to have_text('Foo')
@@ -36,7 +35,6 @@ feature 'Search Flow' do
     fill_in 'q', with: 'awesomeGuide'
     click_on 'Search'
 
-    expect(page).to have_text('Title')
     expect(page).to_not have_text('Bar')
     expect(page).to_not have_text('Baz')
     expect(page).to_not have_text('Foo')
