@@ -15,9 +15,9 @@ describe Exercise do
       it { expect(exercise_with_guide.next_for(user)).to be nil }
     end
     context 'when exercise belongs to a guide with two exercises' do
-      let(:exercise_with_guide) { create(:exercise, guide: guide) }
+      let!(:exercise_with_guide) { create(:exercise, guide: guide) }
       let!(:alternative_exercise) { create(:exercise, guide: guide) }
-      let(:guide) { create(:guide) }
+      let!(:guide) { create(:guide) }
 
       it { expect(exercise_with_guide.next_for(user)).to eq alternative_exercise }
     end
