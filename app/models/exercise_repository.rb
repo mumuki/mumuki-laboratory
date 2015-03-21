@@ -17,9 +17,11 @@ class ExerciseRepository
 
       meta = meta(root) || (log.no_meta(title); next)
 
-      test_file = test_path(root) || (log.no_test title; next)
+      test_code, test_extension = test_code(root) || (log.no_test title; next)
 
-      language = language(test_file) || (log.no_lang(title); next)
+      extra_code, _extra_extension = extra_code(root)
+
+      language = language(test_extension) || (log.no_lang(title); next)
 
       yield original_id,
           {title: title.titleize,
@@ -29,7 +31,8 @@ class ExerciseRepository
            locale: meta['locale'],
            language: language,
            author: @author,
-           test: File.read(test_file)}
+           test: test_code,
+           extra_code: extra_code}
     end
   end
 
@@ -59,13 +62,21 @@ class ExerciseRepository
     YAML.load_file(path) if File.exist? path
   end
 
-  def test_path(root)
-    test_files = Dir.glob("#{root}/test.*")
-    test_files[0] if test_files.length == 1
+  def code(root,filename)
+    files = Dir.glob("#{root}/#{filename}.*")
+    file = files[0]
+    [File.read(file), parse_extension(file)] if files.length == 1
   end
 
-  def language(test_file)
-    extension = parse_extension(test_file)
+  def test_code(root)
+    code(root, 'test')
+  end
+
+  def extra_code(root)
+    code(root, 'extra')
+  end
+
+  def language(extension)
     Language.find_by(extension: extension)
   end
 

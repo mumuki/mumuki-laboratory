@@ -26,6 +26,7 @@ describe Import do
       it { expect(imported_exercise.title).to eq 'Sample Title' }
       it { expect(imported_exercise.description).to eq '##Sample Description' }
       it { expect(imported_exercise.test).to eq 'pending' }
+      it { expect(imported_exercise.extra_code).to eq "extra\n" }
       it { expect(imported_exercise.hint).to be nil }
       it { expect(imported_exercise.language).to eq haskell }
       it { expect(imported_exercise.tag_list).to include *%w(foo bar baz) }

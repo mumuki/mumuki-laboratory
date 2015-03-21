@@ -5,7 +5,7 @@ module TestRunning
 
   def run_tests!
     run_update! do
-      language.run_tests!(exercise.test, content)
+      language.run_tests!(exercise.test, exercise.extra_code, content)
     end
   end
 end
