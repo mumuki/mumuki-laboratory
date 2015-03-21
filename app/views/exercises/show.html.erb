@@ -49,7 +49,7 @@
 
     <div class="col-md-7">
       <div class="field form-group">
-        <%= f.text_area :content, class: 'form-control', id: 'editor', value: @previous_submission_content %>
+        <%= f.text_area :content, class: 'form-control editor', value: @previous_submission_content %>
         <%= hidden_field_tag(:exercise_language, @exercise.language) %>
       </div>
       <div class="actions form-group text-right">
