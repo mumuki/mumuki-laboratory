@@ -8,7 +8,7 @@ class Language < ActiveRecord::Base
   markup_on :test_syntax_hint
 
   def run_tests!(test, extra, content)
-    response = JSON.parse RestClient.post("#{test_runner_url}/test", {test: test, extra: extra, content: content}.to_json)
+    response = JSON.parse RestClient.post("#{test_runner_url}/test", {test: test, extra: extra || '', content: content}.to_json)
     [response['out'], response['exit']]
   rescue Exception => e
     [e.message, :failed]
