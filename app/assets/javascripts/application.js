@@ -21,4 +21,6 @@
 //= require ace/mode-haskell
 //= require ace/mode-prolog
 //= require turbolinks
+//= require nprogress
+//= require nprogress-turbolinks
 //= require_tree .
