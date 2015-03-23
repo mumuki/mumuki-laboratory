@@ -1,39 +1,60 @@
-<div class="row">
-  <div class="col-md-12">
-    <h1>
-      <%= @guide.name %>
-      <small> - <%= @guide.language %></small>
-    </h1>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <%= taglist_tag @guide.tag_list %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <% @stats.each do |status, count| %>
-        <span>
-          <%= status_icon(status) %> <%= count %>
-        </span>
-    <% end %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <div>
-      <p>
-        <%= @guide.description %>
-      </p>
+<%= render layout: 'layouts/guides', locals: {current_tab: :guide} do %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <%= taglist_tag @guide.tag_list %>
     </div>
-    <% restricted_to_author @guide do %>
-      <%# link_to t('edit'), edit_guide_path(@exercise), class: 'btn btn-default' if @guide.can_edit? %>
-    <% end %>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <%= link_to t(:start_practicing), exercise_path(@next_exercise), class: 'btn btn-primary' if @next_exercise %>
+  <div class="row">
+    <div class="col-md-12">
+      <div>
+        <h3>Sobre esta guía</h3>
+
+        <p>
+          <%= @guide.description %>
+        </p>
+      </div>
+      <% restricted_to_author @guide do %>
+        <%# link_to t('edit'), edit_guide_path(@exercise), class: 'btn btn-default' if @guide.can_edit? %>
+      <% end %>
+    </div>
   </div>
-</div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Algunos números</h3>
+
+      <p>
+        Esta guía tiene <strong><%= @guide.exercises_count %> ejercicios </strong>.
+        Vos ya <strong>resolviste <%= stats(@stats, :passed) %></strong> de ellos.
+
+        Además, <strong> intentaste resolver <%= stats(@stats, :failed) %>
+        ejercicios </strong> más.
+
+        Y todavía <strong>hay <%= stats(@stats, :unknown) %> que podrías intentar resolver</strong>.
+      </p>
+
+      <p>
+        <% if @stats[:passed] * 1.3 > @stats[:failed] %>
+          Además la mayoría de las soluciones que enviste resolvieron los ejercicios adecuadamente.
+          ¡Felicitaciones!
+        <% elsif @stats[:failed] * 1.3 > @stats[:passed] %>
+          Parecería que te está costando un poco despegar con esta guía. ¡<strong>No te desanimes</strong>, es
+          cuestión de práctica y
+          seguir intentando!
+        <% end %>
+      </p>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="actions">
+        <%= link_to t(:start_practicing), exercise_path(@next_exercise), class: 'btn btn-primary' if @next_exercise %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+

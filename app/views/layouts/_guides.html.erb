@@ -1,0 +1,33 @@
+<% @current_tab = current_tab %>
+
+<div class="row">
+  <div class="col-md-12">
+    <h1>
+      <%= @guide.name %>
+      <small> - <%= @guide.language %></small>
+    </h1>
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10">
+    <%= yield %>
+  </div>
+  <div class="col-md-2">
+    <ul class="nav nav-tabs tabs-right vertical-text">
+      <li <%= active_if :guide %>>
+        <%= link_to t(:guide), @guide %>
+      </li>
+      <li <%= active_if :details %>>
+        <%= link_to t(:details), details_guide_path(@guide) %>
+      </li>
+      <% restricted_to_author @guide do %>
+        <li <%= active_if :edit %>>
+          <%= link_to t(:edit), edit_guide_path(@guide) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+

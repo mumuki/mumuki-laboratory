@@ -1,6 +1,7 @@
 class GuidesController < ApplicationController
 
   before_action :authenticate!
+  before_action :set_guide, only: [:show, :edit, :details]
 
   def new
     @guide = Guide.new
@@ -17,13 +18,15 @@ class GuidesController < ApplicationController
   end
 
   def show
-    @guide = Guide.find(params[:id])
     @stats = @guide.stats(current_user)
     @next_exercise = @guide.next_exercise(current_user)
   end
 
+  def edit
+
+  end
+
   def details
-    @guide = Guide.find(params[:id])
   end
 
   def index
@@ -32,6 +35,10 @@ class GuidesController < ApplicationController
   end
 
   private
+
+  def set_guide
+    @guide = Guide.find(params[:id])
+  end
 
   def guide_params
     params.require(:guide).permit(:github_repository, :name, :description)

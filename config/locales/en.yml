@@ -6,6 +6,7 @@ en:
   edit: "Edit"
   edit_exercise: "Edit %{exercise}"
   new_submission: "New Submission"
+  new_import: "Import now!"
   my_submissions: 'My Submissions'
   submission_created: 'Submission was successfully created'
   my_exercises: 'My Exercises'

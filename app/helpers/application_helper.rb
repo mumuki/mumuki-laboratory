@@ -32,4 +32,9 @@ module ApplicationHelper
   def active_if(expected)
     'class="active"'.html_safe if expected == @current_tab
   end
+
+  def stats(stats,k)
+     "#{stats[k]} #{status_icon(k)} ".html_safe
+  end
+
 end
