@@ -110,7 +110,7 @@ es:
   mumuki_is_collaborative_description: "Los ejercicios en Mumuki no son provisto por expertos, sino por la comunidad. No hay diferencia entre un maestro y un estudiante en Mumuki: todos pueden crear ejercicios. Nos encantaría que vos compartas los tuyos."
   my_guides: "Mis Guías"
   profile_of: "Perfil de %{username}"
-  exercise_search: "Buscá ejercicios"
+  search: "Buscá"
   belongs_to_guide: "Pertence a la guía %{guide}"
   devise:
     sessions:
@@ -123,3 +123,5 @@ es:
   create_submission: "Envía tu solución!"
   next_exercise: "Dame otro ejercicio!"
   no_exercises: "Nadie creó un ejercicio para tu búsqueda aún. <a href=\"%{create_path}\">¡Sé el primero!</a>"
+  no_guides: "Nadie creó una guía para tu búsqueda aún. <a href=\"%{create_path}\">¡Sé el primero!</a>"
+

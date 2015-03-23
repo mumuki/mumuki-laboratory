@@ -3,10 +3,39 @@
 <div class="row">
   <div class="col-md-3">
     <div class="exercise-search-box" >
-      <%= bootstrap_form_tag url: exercises_path, method: :get do |f| %>
-        <%= f.text_field :q, hide_label: true, placeholder: t(:exercise_search) %>
-        <%= f.submit t(:search), class: 'btn btn-primary btn-block' %>
-      <% end %>
+      <div class="row">
+        <div class="col-md-12">
+          <form>
+          </form>
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= bootstrap_form_tag url: exercises_path, method: :get do |f| %>
+
+          <div class="form-group">
+            <div class="input-group">
+              <input type="input" class="form-control" placeholder="<%= t :search %>" name="q">
+              <div class="input-group-btn">
+                <button id="search" class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group" >
+            <div class="btn-group btn-group-justified">
+              <a class="btn btn-default active" href="#"><%= t(:exercise).pluralize %>
+              </a>
+              <a class="btn btn-default" href="<%=guides_path %>"><%= t(:guide).pluralize %>
+              </a>
+            </div>
+          </div>
+
+        <% end %>
+      </div>
+
+    </div>
+
     </div>
   </div>
 

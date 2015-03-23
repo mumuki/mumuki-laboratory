@@ -1,4 +1,9 @@
 class Guide < ActiveRecord::Base
+  INDEXED_ATTRIBUTES = {
+      against: [:name, :description],
+  }
+
+  include WithSearch
   include WithAuthor
 
   #TODO rename name to title. This helps building also generic link_to compoenetns
@@ -14,6 +19,14 @@ class Guide < ActiveRecord::Base
 
   def exercises_count
     exercises.count
+  end
+
+  def language
+    exercises.first.language
+  end
+
+  def search_tags
+    exercises.flat_map(&:search_tags).uniq
   end
 
   def github_url

@@ -60,9 +60,11 @@ en:
   mumuki_is_open_description: "Mumuki is open source software - that means, you can help to improve Mumuki Platform.       Mumuki is also open for extension - we want to have exercises for a large range of programming languages. You       can help us to meet that goal."
   my_guides: "My Guides"
   profile_of: "Profile of %{username}"
-  exercise_search: "Search exercises"
+  search: "Search"
   belongs_to_guide: "Belongs to guide %{guide}"
   created_at: "Created at"
   create_submission: "Submit your solution!"
   next_exercise: "Gimme another exercise!"
   no_exercises: "Nobody created an exercise for this search yet. <a href=\"%{create_path}\">Be the first!</a>"
+  no_guides: "Nobody created a guide for this search yet. <a href=\"%{create_path}\">Be the first!</a>"
+

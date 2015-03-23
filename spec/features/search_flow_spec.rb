@@ -19,7 +19,7 @@ feature 'Search Flow' do
     end
 
     fill_in 'q', with: 'haskell'
-    click_on 'Search'
+    click_on 'search'
 
     expect(page).to have_text('Bar')
     expect(page).to have_text('Baz')
@@ -33,7 +33,7 @@ feature 'Search Flow' do
     visit '/en/exercises'
 
     fill_in 'q', with: 'awesomeGuide'
-    click_on 'Search'
+    click_on 'search'
 
     expect(page).to_not have_text('Bar')
     expect(page).to_not have_text('Baz')

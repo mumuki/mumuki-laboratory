@@ -21,7 +21,8 @@ class GuidesController < ApplicationController
   end
 
   def index
-    @guides = paginated Guide.all
+    @q = params[:q]
+    @guides = paginated Guide.by_full_text(@q)
   end
 
   private

@@ -8,7 +8,7 @@ class Exercise < ActiveRecord::Base
       },
   }
 
-  include PgSearch
+  include WithSearch
 
   include WithMarkup
   include WithAuthor
@@ -25,10 +25,7 @@ class Exercise < ActiveRecord::Base
                         :submissions_count, :author, :locale
   after_initialize :defaults, if: :new_record?
 
-  pg_search_scope :full_text_search, INDEXED_ATTRIBUTES.merge(using: {tsearch: {prefix: true}})
-
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
-  scope :by_full_text, lambda { |q| full_text_search(q) if q.present? }
   scope :at_locale, lambda { where(locale: I18n.locale) }
 
   markup_on :description

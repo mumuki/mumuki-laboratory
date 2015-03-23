@@ -1,25 +1,91 @@
-<div class="row">
-  <table class="table">
-    <thead>
-    <tr>
-      <th><%= t('title') %></th>
-      <th><%= label(:guide, :github_repository) %></th>
-      <th><%= t('created_at') %></th>
-    </tr>
-    </thead>
+<br>
 
-    <tbody>
-    <% @guides.each do |guide| %>
-        <tr>
-          <td><%= link_to_guide guide %></td>
-          <td><%= link_to_github guide %></td>
-          <td><%= guide.created_at %></td>
-        </tr>
-    <% end %>
-    </tbody>
-  </table>
-  <div class="text-center">
-    <%= paginate @guides %>
+<div class="row">
+  <div class="col-md-3">
+    <div class="exercise-search-box" >
+      <div class="row">
+        <div class="col-md-12">
+          <form>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <%= bootstrap_form_tag url: guides_path, method: :get do |f| %>
+
+            <div class="form-group">
+              <div class="input-group">
+                <input type="input" class="form-control" placeholder="<%= t :search %>" name="q">
+                <div class="input-group-btn">
+                  <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group" >
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default" href="<%=exercises_path%>"><%= t(:exercise).pluralize %>
+                </a>
+                <a class="btn btn-default active" href="#"><%= t(:guide).pluralize %>
+                </a>
+              </div>
+            </div>
+
+          <% end %>
+        </div>
+
+      </div>
+
+    </div>
   </div>
+
+  <div class="col-md-9">
+    <% @guides.each do |it| %>
+      <div class="panel panel-default exercise-panel">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-10">
+              <p class="text-left">
+                <%# exercise_status_icon(it) %>
+                <strong><%= link_to it.name, it %></strong>
+              </p>
+            </div>
+            <div class="col-md-2">
+              <p class="text-right">
+                <%= language_icon it.language rescue nil %>
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-9">
+              <%= it.description %>
+            </div>
+            <div class="col-md-3">
+              <p class="text-right"><%= it.exercises_count %> <%= t :submissions_count %> </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+              <%= link_to_tag_list(it.search_tags) %>
+            </div>
+            <div class="col-md-4">
+              <p class="text-right"><%= time_ago_in_words(it.created_at) %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="text-center">
+  <strong><%= raw t :no_guides, create_path: new_guide_path if @guides.empty? %></strong>
+</div>
+
+
+<div class="row">
+  <%= paginate @guides %>
   <br>
 </div>
+
