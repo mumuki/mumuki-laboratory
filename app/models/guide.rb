@@ -21,15 +21,27 @@ class Guide < ActiveRecord::Base
     exercises.count
   end
 
+  #TODO normalize
   def language
-    exercises.first.language
+    exercises.first.language rescue nil
   end
 
+  #TODO denormalize
   def search_tags
     exercises.flat_map(&:search_tags).uniq
   end
 
+  #TODO normalize
+  def locale
+    exercises.first.locale rescue nil
+  end
+
   def github_url
     "https://github.com/#{github_repository}"
+  end
+
+  #TODO move to DB
+  def self.at_locale
+    select { |it| it.locale == I18n.locale.to_s }
   end
 end

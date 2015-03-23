@@ -125,3 +125,4 @@ es:
   no_exercises: "Nadie creó un ejercicio para tu búsqueda aún. <a href=\"%{create_path}\">¡Sé el primero!</a>"
   no_guides: "Nadie creó una guía para tu búsqueda aún. <a href=\"%{create_path}\">¡Sé el primero!</a>"
 
+  exercise_count: "ejercicios"

@@ -1,5 +1,5 @@
 <br>
-
+<%# TODO duplicated code with exercise index %>
 <div class="row">
   <div class="col-md-3">
     <div class="exercise-search-box" >
@@ -52,7 +52,7 @@
             </div>
             <div class="col-md-2">
               <p class="text-right">
-                <%= language_icon it.language rescue nil %>
+                <%= language_icon it.language %>
               </p>
             </div>
           </div>
@@ -61,7 +61,7 @@
               <%= it.description %>
             </div>
             <div class="col-md-3">
-              <p class="text-right"><%= it.exercises_count %> <%= t :submissions_count %> </p>
+              <p class="text-right"><%= it.exercises_count %> <%= t :exercise_count %> <%# TODO use quantifiers %> </p>
             </div>
           </div>
           <div class="row">

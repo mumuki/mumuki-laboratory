@@ -68,3 +68,4 @@ en:
   no_exercises: "Nobody created an exercise for this search yet. <a href=\"%{create_path}\">Be the first!</a>"
   no_guides: "Nobody created a guide for this search yet. <a href=\"%{create_path}\">Be the first!</a>"
 
+  exercise_count: "exercises"

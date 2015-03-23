@@ -22,7 +22,7 @@ class GuidesController < ApplicationController
 
   def index
     @q = params[:q]
-    @guides = paginated Guide.by_full_text(@q)
+    @guides = paginated Guide.by_full_text(@q).at_locale
   end
 
   private
