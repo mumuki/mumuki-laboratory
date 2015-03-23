@@ -29,7 +29,7 @@ describe Exercise do
       let!(:alternative_exercise) { create(:exercise, guide: guide) }
       let(:guide) { create(:guide) }
 
-      before { user.submissions.create!(exercise: alternative_exercise, content: 'foo') }
+      before { user.submissions.create!(exercise: alternative_exercise, content: 'foo', status: :passed) }
 
       it { expect(exercise_with_guide.next_for(user)).to be nil }
     end

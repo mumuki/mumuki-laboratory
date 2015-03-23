@@ -26,8 +26,9 @@ class Guide < ActiveRecord::Base
         at_locale.
         joins("left join submissions
                 on submissions.exercise_id = exercises.id
-                and submissions.submitter_id = #{user.id}").
-        where('submissions.id is null or submissions.status = :failed', failed: Submission.statuses[:failed])
+                and submissions.submitter_id = #{user.id}
+                and submissions.status = #{Submission.statuses[:passed]}").
+        where('submissions.id is null')
 
     candidates = extra.call(candidates) if block_given?
 
