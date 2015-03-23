@@ -67,6 +67,8 @@
   </div>
 </footer>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag '//www.google.com/jsapi', 'chartkick' %>
 <%= yield :tail %>
+<%= yield :charts_js %>
 </body>
 </html>

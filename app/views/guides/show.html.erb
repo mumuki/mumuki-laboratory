@@ -21,11 +21,13 @@
   </div>
 
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-5">
       <h3>Algunos números</h3>
 
       <p>
         Esta guía tiene <strong><%= @guide.exercises_count %> ejercicios </strong>.
+      </p>
+      <p>
         Vos ya <strong>resolviste <%= stats(@stats, :passed) %></strong> de ellos.
 
         Además, <strong> intentaste resolver <%= stats(@stats, :failed) %>
@@ -44,7 +46,9 @@
           seguir intentando!
         <% end %>
       </p>
-
+    </div>
+    <div class="col-md-7">
+      <%= pie_chart @stats, colors: ["green", "red", 'grey'] %>
     </div>
   </div>
 

@@ -26,6 +26,8 @@ gem 'rails-assets-bootstrap'
 gem 'rails-assets-bootstrap-tagsinput'
 gem 'rails-assets-bootstrap-vertical-tabs'
 
+gem 'chartkick'
+
 gem 'rest-client'
 
 gem 'omniauth-github'
