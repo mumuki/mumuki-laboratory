@@ -28,4 +28,8 @@ module ApplicationHelper
   def link_to_tag_list(tags)
     tags.map { |tag| link_to "##{tag}", exercises_path(q: tag) }.join(', ').html_safe
   end
+
+  def active_if(expected)
+    'class="active"'.html_safe if expected == @current_tab
+  end
 end

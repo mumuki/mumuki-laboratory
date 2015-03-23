@@ -33,6 +33,18 @@ describe Exercise do
 
       it { expect(exercise_with_guide.next_for(user)).to be nil }
     end
+
+
+    context 'when exercise belongs to a guide with two exercises and alternative exercise has being submitted but not solved' do
+      let(:exercise_with_guide) { create(:exercise, guide: guide) }
+      let!(:alternative_exercise) { create(:exercise, guide: guide) }
+      let(:guide) { create(:guide) }
+
+      before { user.submissions.create!(exercise: alternative_exercise, content: 'foo') }
+
+      it { expect(exercise_with_guide.next_for(user)).to eq alternative_exercise }
+    end
+
   end
 
   describe '#submitted_by?' do

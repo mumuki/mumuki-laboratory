@@ -1,0 +1,37 @@
+<% @current_tab = current_tab %>
+<div class="row">
+  <div class="col-md-12">
+    <h1>
+      <%= @exercise.title %>
+      <small> - <%= @exercise.language %></small>
+    </h1>
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10">
+    <%= yield %>
+  </div>
+
+  <div class="col-md-2">
+    <ul class="nav nav-tabs tabs-right vertical-text">
+      <li <%= active_if :exercise %>>
+        <%= link_to t(:exercise), exercise_path(@exercise) %>
+      </li>
+      <li <%= active_if :status %>>
+        <% @last_submission = @exercise.last_submission(current_user) %>
+        <%= link_to t(:status), exercise_submission_path(@exercise, @last_submission) if @last_submission %>
+      </li>
+      <li <%= active_if :my_submissions %>>
+        <%= link_to t(:my_submissions), exercise_submissions_path(@exercise) %>
+      </li>
+      <% restricted_to_author @exercise do %>
+        <li <%= active_if :edit %>>
+          <%= link_to t(:edit), edit_exercise_path(@exercise) if @exercise.can_edit? %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+

@@ -24,4 +24,8 @@ module WithSubmissions
   def submitted_by?(user)
     submissions_for(user).exists?
   end
+
+  def last_submission(user)
+    submissions_for(user).last
+  end
 end

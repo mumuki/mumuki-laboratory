@@ -1,68 +1,51 @@
-<%= form_for([@exercise, @submission], id: 'exercise-submission-form', html: {role: 'form'}) do |f| %>
-  <div class="row">
-    <div class="col-md-12">
-      <h1>
-        <%= @exercise.title %>
-        <small> - <%= @exercise.language %></small>
-      </h1>
-      <section>
-        <% if @exercise.guide %>
-          <p>
-            <%= raw t :belongs_to_guide, guide: link_to_guide(@exercise.guide) %>
-          </p>
-         <% else %>
-          <p>
-            <%= raw t :authored_by, author: link_to(@exercise.author.name, user_path(@exercise.author)) %>
-          </p>
-        <% end %>
-      </section>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-5">
-      <section>
-        <%= taglist_tag @exercise.tag_list %>
-      </section>
-      <div>
-        <p>
-          <%= @exercise.description_html %>
-        </p>
-      </div>
-      <div>
-        <% if @exercise.hint %>
-          <a data-toggle="collapse"
-             href="#hint-section">
-            <%= label :exercise, :hint %>
-          </a>
-
-          <div id="hint-section" class="collapse">
-            <p>
-              <%= @exercise.hint_html %>
-            </p>
+<%= render layout: 'layouts/exercise', locals: {current_tab: :exercise} do %>
+    <%= form_for([@exercise, @submission], id: 'exercise-submission-form', html: {role: 'form'}) do |f| %>
+      <div class="row">
+        <div class="col-md-6">
+          <section>
+            <% if @exercise.guide %>
+              <p>
+                <%= raw t :belongs_to_guide, guide: link_to_guide(@exercise.guide) %>
+              </p>
+            <% else %>
+              <p>
+                <%= raw t :authored_by, author: link_to(@exercise.author.name, user_path(@exercise.author)) %>
+              </p>
+            <% end %>
+          </section>
+          <section>
+            <%= taglist_tag @exercise.tag_list %>
+          </section>
+          <div>
+              <%= @exercise.description_html %>
           </div>
-        <% end %>
+          <div>
+            <% if @exercise.hint %>
+              <a data-toggle="collapse"
+                 href="#hint-section">
+                <%= label :exercise, :hint %>
+              </a>
+
+              <div id="hint-section" class="collapse">
+                <p>
+                  <%= @exercise.hint_html %>
+                </p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="field form-group">
+            <%= f.text_area :content, class: 'form-control editor', value: @previous_submission_content %>
+            <%= hidden_field_tag(:exercise_language, @exercise.language) %>
+          </div>
+          <div class="actions form-group text-right">
+            <%= f.submit t(:create_submission), class: 'btn btn-primary' %>
+          </div>
+        </div>
+
       </div>
-      <% restricted_to_author @exercise do %>
-        <%= link_to t('edit'), edit_exercise_path(@exercise), class: 'btn btn-default' if @exercise.can_edit? %>
-      <% end %>
-    </div>
-
-    <div class="col-md-7">
-      <div class="field form-group">
-        <%= f.text_area :content, class: 'form-control editor', value: @previous_submission_content %>
-        <%= hidden_field_tag(:exercise_language, @exercise.language) %>
-      </div>
-      <div class="actions form-group text-right">
-        <%= f.submit t(:create_submission), class: 'btn btn-primary' %>
-        <%= link_to t('my_submissions'), exercise_submissions_path(@exercise), class: 'btn btn-default' if @exercise.has_submissions_for?(current_user) %>
-      </div>
-    </div>
-
-  </div>
-
-
-
-
-
-
+    <% end %>
 <% end %>
+

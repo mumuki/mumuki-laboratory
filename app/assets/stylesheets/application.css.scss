@@ -12,6 +12,7 @@
 
  *= require bootstrap-flatty
  *= require bootstrap-tagsinput
+ *= require bootstrap-vertical-tabs
  *= require font-awesome
  *= require highlightjs
  *= require rails_bootstrap_forms
@@ -87,4 +88,8 @@
 
 .exercise-panel {
   background-color: ghostwhite;
+}
+
+.actions {
+  text-align: right;
 }

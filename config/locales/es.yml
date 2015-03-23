@@ -126,3 +126,4 @@ es:
   no_guides: "Nadie creó una guía para tu búsqueda aún. <a href=\"%{create_path}\">¡Sé el primero!</a>"
 
   exercise_count: "ejercicios"
+  no_submissions: "¡Parece que aún no intentaste resolver este ejercicio aún!"

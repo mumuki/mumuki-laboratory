@@ -1,26 +1,26 @@
-<div class="row">
-  <h1><%=t('submission_for_exercise')%> <%= link_to_exercise @submission.exercise %>
-    <small> - <%= @submission.language %></small>
-  </h1>
+<%= render layout: 'layouts/exercise', locals: {current_tab: :status} do %>
+  <div class="row">
+    <div>
+      <%= highlighted_code @submission.language, @submission.content %>
+    </div>
 
-  <div>
-    <h2>Content</h2>
-    <%= highlighted_code @submission.language, @submission.content %>
+    <div id="exercise-results">
+    </div>
+
   </div>
-
-  <div id="exercise-results" >
+  <div class="row">
+    <div class="actions">
+      <%= link_to t(:next_exercise), exercise_path(@next_exercise), class: 'btn btn-primary' if @next_exercise %>
+      <%= link_to t(:new_submission), exercise_path(@submission.exercise), class: 'btn btn-primary' %>
+    </div>
   </div>
-
-</div>
-<div class="row">
-  <%= link_to t('new_submission'), exercise_path(@submission.exercise), class: 'btn btn-primary' %>
-  <%= link_to t(:next_exercise), exercise_path(@next_exercise), class: 'btn btn-primary' if @next_exercise %>
-  <%= link_to t('my_submissions'), exercise_submissions_path(@submission.exercise), class: 'btn btn-default'  %>
-</div>
+<% end %>
 
 <%= content_for :tail do %>
   <script>
     function loadResults() {
+      if($('#exercise-results').length == 0) return;
+
       $.ajax({
         url: "<%= exercise_submission_status_path(@exercise, @submission) %>"
       }).done(function (data) {
@@ -34,6 +34,8 @@
         $('#exercise-results').html(data);
       });
     }
-    $(loadResults);
+    $(document).on('page:change',  loadResults);
+    $(document).on('page:restore', loadResults);
   </script>
 <% end %>
+

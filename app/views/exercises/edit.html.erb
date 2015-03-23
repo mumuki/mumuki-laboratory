@@ -1,4 +1,3 @@
-<div class="row">
-  <h1><%= raw t 'edit_exercise', exercise: (link_to_exercise @exercise) %></h1>
+<%= render layout: 'layouts/exercise', locals: {current_tab: :edit} do %>
   <%= render 'form' %>
-</div>
+<% end %>

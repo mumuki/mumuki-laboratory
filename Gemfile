@@ -24,6 +24,7 @@ gem 'jquery-rails'
 gem 'rails-assets-highlightjs'
 gem 'rails-assets-bootstrap'
 gem 'rails-assets-bootstrap-tagsinput'
+gem 'rails-assets-bootstrap-vertical-tabs'
 
 gem 'rest-client'
 
