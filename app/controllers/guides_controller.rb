@@ -1,6 +1,6 @@
 class GuidesController < ApplicationController
 
-  before_action :authenticate!, only: [:new, :create]
+  before_action :authenticate!
 
   def new
     @guide = Guide.new
@@ -17,6 +17,12 @@ class GuidesController < ApplicationController
   end
 
   def show
+    @guide = Guide.find(params[:id])
+    @stats = @guide.stats(current_user)
+    @next_exercise = @guide.next_exercise(current_user)
+  end
+
+  def details
     @guide = Guide.find(params[:id])
   end
 

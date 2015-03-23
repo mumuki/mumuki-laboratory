@@ -66,14 +66,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def next_for(user)
-    guide.exercises.
-        at_locale.
-        joins("left join submissions
-                on submissions.exercise_id = exercises.id
-                and submissions.submitter_id = #{user.id}").
-        where('submissions.id is null and exercises.id <> :id', id: id).
-        order('RANDOM()').
-        first if guide
+    guide.next_exercise(user) { |it| it.where('exercises.id <> :id', id: id) } if guide
   end
 
   private

@@ -23,6 +23,9 @@ Rails.application.routes.draw do
 
     # All users
     resources :guides, only: [:new, :create, :show, :index] do
+      member do
+        get :details
+      end
       # All users
       resources :imports, controller: 'guide_imports', only: :create
       # All users

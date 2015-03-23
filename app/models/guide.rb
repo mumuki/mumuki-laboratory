@@ -21,6 +21,19 @@ class Guide < ActiveRecord::Base
     exercises.count
   end
 
+  def next_exercise(user, &extra)
+    candidates = exercises.
+        at_locale.
+        joins("left join submissions
+                on submissions.exercise_id = exercises.id
+                and submissions.submitter_id = #{user.id}").
+        where('submissions.id is null or submissions.status = :failed', failed: Submission.statuses[:failed])
+
+    candidates = extra.call(candidates) if block_given?
+
+    candidates.order('RANDOM()').first
+  end
+
   #TODO normalize
   def language
     exercises.first.language rescue nil
@@ -31,6 +44,11 @@ class Guide < ActiveRecord::Base
     exercises.flat_map(&:search_tags).uniq
   end
 
+  #TODO denormalize
+  def tag_list
+    exercises.flat_map(&:tag_list).uniq.join(', ')
+  end
+
   #TODO normalize
   def locale
     exercises.first.locale rescue nil
@@ -38,6 +56,15 @@ class Guide < ActiveRecord::Base
 
   def github_url
     "https://github.com/#{github_repository}"
+  end
+
+  def stats(user)
+    exercises.
+        map { |it| it.status_for(user) }.
+        inject({passed: 0, failed: 0, unknown: 0}) do |accum, status|
+      accum[status] += 1
+      accum
+    end
   end
 
   #TODO move to DB
