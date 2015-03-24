@@ -132,3 +132,6 @@ es:
 
   details: 'Detalles'
   output: "Salida"
+  about_this_guide: "Sobre esta guía"
+  stats: "Algunos números"
+  guide_has_exercises_stats: "Esta guía tiene <strong>%{total} ejercicios </strong>"

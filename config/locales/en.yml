@@ -72,3 +72,7 @@ en:
   exercise_count: "exercises"
   no_submissions: "Its seems like you haven't tried to solve this exercise"
   output: "Output"
+  about_this_guide: "About this guide"
+  stats: "Some stats"
+  guide_has_exercises_stats: "This guide has <strong>%{total} exercises</strong>"
+

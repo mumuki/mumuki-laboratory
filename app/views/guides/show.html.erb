@@ -8,24 +8,21 @@
   <div class="row">
     <div class="col-md-12">
       <div>
-        <h3>Sobre esta guía</h3>
+        <h3><%= t :about_this_guide %></h3>
 
         <p>
           <%= @guide.description %>
         </p>
       </div>
-      <% restricted_to_author @guide do %>
-        <%# link_to t('edit'), edit_guide_path(@exercise), class: 'btn btn-default' if @guide.can_edit? %>
-      <% end %>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-5">
-      <h3>Algunos números</h3>
+      <h3><%= t :stats %></h3>
 
       <p>
-        Esta guía tiene <strong><%= @stats.total %> ejercicios </strong>.
+        <%= raw t :guide_has_exercises_stats, total: @stats.total %>
       </p>
 
       <p>
