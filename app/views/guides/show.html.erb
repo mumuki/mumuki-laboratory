@@ -37,7 +37,7 @@
       <p>
         <% if @stats.done? %>
           ¡Eso significa que <strong>ya terminaste esta guía</strong>! ¡Bien hecho!
-          Seguí con <%= link_to guides_path, 'otra guía' %>
+          Seguí con <%= link_to 'otra guía', guides_path %>
         <% elsif @stats.good_progress? %>
           Además <strong>vas muy bien</strong>: la mayoría de las soluciones que enviaste resolvieron los ejercicios adecuadamente.
           ¡Felicitaciones!
