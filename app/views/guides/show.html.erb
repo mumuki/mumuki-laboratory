@@ -37,9 +37,12 @@
       <p>
         <% if @stats.done? %>
           ¡Eso significa que <strong>ya terminaste esta guía</strong>! ¡Bien hecho!
+          Seguí con <%= link_to guides_path, 'otra guía' %>
         <% elsif @stats.good_progress? %>
-          Además la mayoría de las soluciones que enviste resolvieron los ejercicios adecuadamente.
+          Además <strong>vas muy bien</strong>: la mayoría de las soluciones que enviaste resolvieron los ejercicios adecuadamente.
           ¡Felicitaciones!
+        <% elsif !@stats.started? %>
+          Eso significa que aún no empezaste con esta guía. <strong>!Comenzá ahora mismo!</strong>
         <% elsif @stats.stuck? %>
           Parecería que te está costando un poco despegar con esta guía. ¡<strong>No te desanimes</strong>, es
           cuestión de práctica y
