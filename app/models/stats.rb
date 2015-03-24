@@ -27,6 +27,10 @@ class Stats
     failed * 1.3 > passed
   end
 
+  def started?
+    submitted > 0
+  end
+
   def to_h(&key)
     [:passed, :failed, :unknown].map { |it| [key.call(it), send(it)] }.to_h
   end

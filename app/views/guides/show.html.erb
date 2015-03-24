@@ -56,7 +56,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="actions">
-        <%= link_to t(:start_practicing), exercise_path(@next_exercise), class: 'btn btn-primary' if @next_exercise %>
+        <%= link_to t(practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-primary' if @next_exercise %>
       </div>
     </div>
   </div>
