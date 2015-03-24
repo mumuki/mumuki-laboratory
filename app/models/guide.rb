@@ -60,12 +60,7 @@ class Guide < ActiveRecord::Base
   end
 
   def stats(user)
-    exercises.
-        map { |it| it.status_for(user) }.
-        inject({passed: 0, failed: 0, unknown: 0}) do |accum, status|
-      accum[status] += 1
-      accum
-    end
+    Stats.from_statuses exercises.map { |it| it.status_for(user) }
   end
 
   #TODO move to DB

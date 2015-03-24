@@ -28,8 +28,9 @@ es:
   exercise: 'Ejercicio'
   submission_date: 'Fecha de entrega'
   status: 'Estado'
-  passed: 'aprobado'
-  failed: 'fallo'
+  passed: 'pasó'
+  failed: 'falló'
+  unknown: 'no resuelto'
   running: 'procesando'
   pending: 'pendiente'
   listing_exercises: 'Listado de ejercicios'
@@ -128,3 +129,6 @@ es:
   exercise_count: "ejercicios"
   no_submissions: "¡Parece que aún no intentaste resolver este ejercicio aún!"
   new_import: "¡Importar ahora!"
+
+  details: 'Detalles'
+  output: "Salida"

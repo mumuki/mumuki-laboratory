@@ -34,7 +34,7 @@ module ApplicationHelper
   end
 
   def stats(stats,k)
-     "#{stats[k]} #{status_icon(k)} ".html_safe
+     "#{stats.send k} #{status_icon(k)} ".html_safe
   end
 
 end
