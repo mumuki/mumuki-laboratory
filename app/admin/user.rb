@@ -8,9 +8,9 @@ ActiveAdmin.register User do
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
-    column :submissions_count {|user| Submissions.where(submitter_id: user.id).count}
-    column :exercises_count {|user| user.exercises.count}
-    column :guides_count {|user| user.guides.count}
+    column (:submissions_count) {|user| Submissions.where(submitter_id: user.id).count}
+    column (:exercises_count) {|user| user.exercises.count}
+    column (:guides_count) {|user| user.guides.count}
     actions
   end
 
