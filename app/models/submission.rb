@@ -5,8 +5,6 @@ class Submission < ActiveRecord::Base
   belongs_to :exercise
   belongs_to :submitter, class_name: 'User'
 
-  has_many :expectations
-
   validates_presence_of :exercise, :submitter
 
   after_create :update_submissions_count!

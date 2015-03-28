@@ -17,6 +17,8 @@ class Exercise < ActiveRecord::Base
   belongs_to :language
   belongs_to :guide
 
+  has_many :expectations
+
   before_destroy :can_destroy?
 
   acts_as_taggable

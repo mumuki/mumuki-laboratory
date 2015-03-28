@@ -3,7 +3,8 @@ require 'spec_helper'
 describe TestRunning do
 
   describe '#run_tests!' do
-    let(:exercise) { create(:x_equal_5_exercise) }
+    let(:exercise) { create(:x_equal_5_exercise, expectations: [
+        Expectation.new(binding: :foo, inspection: :HasComposition)]) }
     let(:user) { exercise.author }
 
     before { expect(submission.language).to receive(:run_tests!).and_return(server_response) }
@@ -19,8 +20,7 @@ describe TestRunning do
 
     context 'when submission is ok and has expectations' do
       let(:submission) { create(:submission,
-                                exercise: exercise,
-                                expectations: [Expectation.new(binding: :foo, inspection: :HasComposition)]) }
+                                exercise: exercise) }
       let(:server_response) { ['0 failures', :passed] }
 
       it { expect(submission.reload.status).to eq('passed') }

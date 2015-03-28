@@ -29,6 +29,7 @@ describe Import do
       it { expect(imported_exercise.extra_code).to eq "extra\n" }
       it { expect(imported_exercise.hint).to be nil }
       it { expect(imported_exercise.language).to eq haskell }
+      it { expect(imported_exercise.expectations.size).to eq 2 }
       it { expect(imported_exercise.tag_list).to include *%w(foo bar baz) }
     end
 

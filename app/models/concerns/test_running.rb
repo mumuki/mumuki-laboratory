@@ -13,6 +13,6 @@ module TestRunning
     {test: exercise.test,
      extra: exercise.extra_code || '',
      content: content,
-     expectations: expectations.as_json(only: [:binding, :inspection])}
+     expectations: exercise.expectations.as_json(only: [:binding, :inspection])}
   end
 end

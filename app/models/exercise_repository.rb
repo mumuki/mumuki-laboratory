@@ -23,6 +23,10 @@ class ExerciseRepository
 
       language = language(test_extension) || (log.no_lang(title); next)
 
+      expectations = (expectations(root).try { |it| it['expectations'] } || []).map do |e|
+        Expectation.new(binding: e['binding'], inspection: e['inspection'])
+      end
+
       yield original_id,
           {title: title.titleize,
            description: description,
@@ -30,6 +34,7 @@ class ExerciseRepository
            tag_list: meta['tags'],
            locale: meta['locale'],
            language: language,
+           expectations: expectations,
            author: @author,
            test: test_code,
            extra_code: extra_code}
@@ -57,11 +62,6 @@ class ExerciseRepository
     File.read(path) if File.exist? path
   end
 
-  def meta(root)
-    path = "#{root}/meta.yml"
-    YAML.load_file(path) if File.exist? path
-  end
-
   def code(root,filename)
     files = Dir.glob("#{root}/#{filename}.*")
     file = files[0]
@@ -82,5 +82,18 @@ class ExerciseRepository
 
   def parse_extension(test_file)
     /.*\.(.*)/.match(File.basename(test_file))[1]
+  end
+
+  def yaml(root, filename)
+    path = "#{root}/#{filename}.yml"
+    YAML.load_file(path) if File.exist? path
+  end
+
+  def meta(root)
+    yaml(root, 'meta')
+  end
+
+  def expectations(root)
+    yaml(root, 'expectations')
   end
 end
