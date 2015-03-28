@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150321150030) do
+ActiveRecord::Schema.define(version: 20150328211331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,13 +69,20 @@ ActiveRecord::Schema.define(version: 20150321150030) do
   add_index "exercises", ["guide_id"], name: "index_exercises_on_guide_id", using: :btree
   add_index "exercises", ["language_id"], name: "index_exercises_on_language_id", using: :btree
 
+  create_table "expectations", force: true do |t|
+    t.integer  "exercise_id"
+    t.string   "binding"
+    t.string   "inspection"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "guides", force: true do |t|
     t.string   "github_repository"
     t.string   "name"
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "id_tag"
     t.string   "description"
   end
 

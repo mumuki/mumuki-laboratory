@@ -17,6 +17,16 @@ describe TestRunning do
       it { expect(submission.reload.result).to include('0 failures') }
     end
 
+    context 'when submission is ok and has expectations' do
+      let(:submission) { create(:submission,
+                                exercise: exercise,
+                                expectations: [Expectation.new(binding: :foo, inspection: :HasComposition)]) }
+      let(:server_response) { ['0 failures', :passed] }
+
+      it { expect(submission.reload.status).to eq('passed') }
+      it { expect(submission.reload.result).to include('0 failures') }
+    end
+
     context 'when submission is not ok' do
       let(:submission) { create(:submission, exercise: exercise)}
       let(:server_response) { ['should be equal 5 FAILED', :failed] }

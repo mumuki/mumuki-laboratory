@@ -7,10 +7,10 @@ class Language < ActiveRecord::Base
 
   markup_on :test_syntax_hint
 
-  def run_tests!(test, extra, content)
+  def run_tests!(request)
     raw_response = RestClient.post(
         "#{test_runner_url}/test",
-        {test: test, extra: extra || '', content: content, expectations: []}.to_json,
+        request.to_json,
         content_type: :json)
     response = JSON.parse raw_response
     [response['out'], response['exit']]
