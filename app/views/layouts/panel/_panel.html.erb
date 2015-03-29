@@ -1,7 +1,7 @@
 <div class="panel panel-default">
 
   <div class="panel-heading"><%= heading %></div>
-  <table class="table">
+  <table class="table table-striped">
     <%= render partial: item_partial, collection: limit(items, local_assigns[:preserve_order]) %>
   </table>
 
