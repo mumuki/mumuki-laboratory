@@ -1,6 +1,6 @@
 class GuidesController < ApplicationController
 
-  before_action :authenticate!, except: :index
+  before_action :authenticate!, except: [:index, :show]
   before_action :set_guide, only: [:show, :edit, :details]
 
   def new
@@ -18,8 +18,10 @@ class GuidesController < ApplicationController
   end
 
   def show
-    @stats = @guide.stats(current_user)
-    @next_exercise = @guide.next_exercise(current_user)
+    if current_user?
+      @stats = @guide.stats(current_user)
+      @next_exercise = @guide.next_exercise(current_user)
+    end
   end
 
   def edit

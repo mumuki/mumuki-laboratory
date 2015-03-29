@@ -17,52 +17,75 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-5">
-      <h3><%= t :stats %></h3>
+  <% if current_user? %>
+    <div class="row">
+      <div class="col-md-5">
+        <h3><%= t :stats %></h3>
 
-      <p>
-        <%= raw t :guide_has_exercises_stats, total: @stats.total %>
-      </p>
+        <p>
+          <%= raw t :guide_has_exercises_stats, total: @stats.total %>
+        </p>
 
-      <p>
-        Vos ya <strong>resolviste <%= stats(@stats, :passed) %></strong> de ellos.
+        <p>
+          Vos ya <strong>resolviste <%= stats(@stats, :passed) %></strong> de ellos.
 
-        Además, <strong> intentaste resolver <%= stats(@stats, :failed) %>
-        ejercicios </strong> más.
+          Además, <strong> intentaste resolver <%= stats(@stats, :failed) %>
+          ejercicios </strong> más.
 
-        Y todavía <strong>hay <%= stats(@stats, :unknown) %> que podrías intentar resolver</strong>.
-      </p>
+          Y todavía <strong>hay <%= stats(@stats, :unknown) %> que podrías intentar resolver</strong>.
+        </p>
 
-      <p>
-        <% if @stats.done? %>
-          ¡Eso significa que <strong>ya terminaste esta guía</strong>! ¡Bien hecho!
-          Seguí con <%= link_to 'otra guía', guides_path %>
-        <% elsif @stats.good_progress? %>
-          Además <strong>vas muy bien</strong>: la mayoría de las soluciones que enviaste resolvieron los ejercicios adecuadamente.
-          ¡Felicitaciones!
-        <% elsif !@stats.started? %>
-          Eso significa que aún no empezaste con esta guía. <strong>!Comenzá ahora mismo!</strong>
-        <% elsif @stats.stuck? %>
-          Parecería que te está costando un poco despegar con esta guía. ¡<strong>No te desanimes</strong>, es
-          cuestión de práctica y
-          seguir intentando!
-        <% end %>
-      </p>
+        <p>
+          <% if @stats.done? %>
+            ¡Eso significa que <strong>ya terminaste esta guía</strong>! ¡Bien hecho!
+            Seguí con <%= link_to 'otra guía', guides_path %>
+          <% elsif @stats.good_progress? %>
+            Además <strong>vas muy bien</strong>: la mayoría de las soluciones que enviaste resolvieron los ejercicios
+            adecuadamente.
+            ¡Felicitaciones!
+          <% elsif !@stats.started? %>
+            Eso significa que aún no empezaste con esta guía. <strong>!Comenzá ahora mismo!</strong>
+          <% elsif @stats.stuck? %>
+            Parecería que te está costando un poco despegar con esta guía. ¡<strong>No te desanimes</strong>, es
+            cuestión de práctica y
+            seguir intentando!
+          <% end %>
+        </p>
 
-    </div>
-    <div class="col-md-7">
-      <%= pie_chart @stats.to_h { |it| t(it) }, colors: ["green", "red", 'grey'] %>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <div class="actions">
-        <%= link_to t(practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-primary' if @next_exercise %>
+      </div>
+      <div class="col-md-7">
+        <%= pie_chart @stats.to_h { |it| t(it) }, colors: ["green", "red", 'grey'] %>
       </div>
     </div>
-  </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="actions">
+          <%= link_to t(practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-primary' if @next_exercise %>
+        </div>
+      </div>
+    </div>
+  <% else %>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h3><%= t :stats %></h3>
+        <p>
+          <%= raw t :guide_has_exercises_stats, total: @guide.exercises_count %>
+        </p>
+
+        <p>
+          <strong>Necestiás iniciar sesión con Github para ver más estadísticas sobre tu progreso y empezar a
+            practicar. </strong>
+        </p>
+
+        <div class="actions">
+          <%= link_to t(:sign_in_with_github), login_path, class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
 <% end %>
 
 
