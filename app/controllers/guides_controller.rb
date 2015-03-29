@@ -1,6 +1,6 @@
 class GuidesController < ApplicationController
 
-  before_action :authenticate!
+  before_action :authenticate!, except: :index
   before_action :set_guide, only: [:show, :edit, :details]
 
   def new
