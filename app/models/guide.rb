@@ -21,17 +21,19 @@ class Guide < ActiveRecord::Base
     exercises.count
   end
 
-  def next_exercise(user, &extra)
-    candidates = exercises.
+  def pending_exercises(user)
+    exercises.
         at_locale.
         joins("left join submissions
                 on submissions.exercise_id = exercises.id
                 and submissions.submitter_id = #{user.id}
                 and submissions.status = #{Submission.statuses[:passed]}").
         where('submissions.id is null')
+  end
 
+  def next_exercise(user, &extra)
+    candidates = pending_exercises(user)
     candidates = extra.call(candidates) if block_given?
-
     candidates.order('RANDOM()').first
   end
 

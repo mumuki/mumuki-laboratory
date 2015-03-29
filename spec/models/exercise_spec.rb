@@ -42,7 +42,14 @@ describe Exercise do
 
       before { user.submissions.create!(exercise: alternative_exercise, content: 'foo') }
 
-      it { expect(exercise_with_guide.next_for(user)).to eq alternative_exercise }
+      it do
+        expect(exercise_with_guide.guide).to eq guide
+        expect(guide.pending_exercises(user)).to_not eq []
+        expect(guide.pending_exercises(user)).to include(exercise_with_guide)
+        expect(guide.pending_exercises(user)).to include(alternative_exercise)
+        expect(guide.next_exercise(user)).to_not be nil
+        expect(exercise_with_guide.next_for(user)).to eq alternative_exercise
+      end
     end
 
   end
