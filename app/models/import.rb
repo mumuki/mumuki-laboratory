@@ -23,7 +23,7 @@ class Import < ActiveRecord::Base
         git_clone_into dir
         log = run_import_from_directory! dir
       end
-      [log.to_s, :passed]
+      {result: log.to_s, status: :passed}
     end
   end
 
@@ -44,4 +44,5 @@ class Import < ActiveRecord::Base
   def private_repo_error(message)
     ['could not read Username', 'Invalid username or password'].any? { |it| message.include? it }
   end
+
 end

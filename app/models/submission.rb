@@ -7,6 +7,8 @@ class Submission < ActiveRecord::Base
 
   validates_presence_of :exercise, :submitter
 
+  serialize :expectation_results
+
   after_create :update_submissions_count!
   after_commit :schedule_test_run!, on: :create
 

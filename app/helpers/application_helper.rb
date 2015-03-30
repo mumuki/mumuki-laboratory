@@ -45,4 +45,8 @@ module ApplicationHelper
     end
   end
 
+  def t_expectation_result(binding, inspection)
+    t "expectation_#{inspection}", binding: binding
+  end
+
 end

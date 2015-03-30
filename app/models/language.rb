@@ -8,14 +8,29 @@ class Language < ActiveRecord::Base
   markup_on :test_syntax_hint
 
   def run_tests!(request)
-    raw_response = RestClient.post(
+    response = post_to_server(request)
+
+    {result: response['out'],
+     status: response['exit'],
+     expectation_results: parse_expectation_results(response['expectationResults'] || [])}
+
+  rescue Exception => e
+    {result: e.message, status: :failed}
+  end
+
+  def parse_expectation_results(results)
+    results.map do |it|
+      {binding: it['expectation']['binding'],
+       inspection: it['expectation']['inspection'],
+       result: it['result'] ? :passed : :failed}
+    end
+  end
+
+  def post_to_server(request)
+    JSON.parse RestClient.post(
         "#{test_runner_url}/test",
         request.to_json,
         content_type: :json)
-    response = JSON.parse raw_response
-    [response['out'], response['exit']]
-  rescue Exception => e
-    [e.message, :failed]
   end
 
   def to_s

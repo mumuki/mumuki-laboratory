@@ -137,3 +137,9 @@ es:
   about_this_guide: "Sobre esta guía"
   stats: "Algunos números"
   guide_has_exercises_stats: "Esta guía tiene <strong>%{total} ejercicios </strong>"
+
+
+  expectation_HasBinding: "%{binding} debe estar definido"
+  expectation_HasGuards: "%{binding} debe usar guardas"
+  expectation_HasComposition: "%{binding} debe usar composición"
+  expectation_HasLambda: "%{binding} debe emplear expresiones lambda"

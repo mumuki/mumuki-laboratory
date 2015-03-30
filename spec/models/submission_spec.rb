@@ -4,12 +4,12 @@ describe Submission do
   describe '#run_update!' do
     let(:submission) { create(:submission) }
     context 'when run passes' do
-      before { submission.run_update! { ['ok', :passed] } }
+      before { submission.run_update! { {result: 'ok', status: :passed} } }
       it { expect(submission.status).to eq('passed') }
       it { expect(submission.result).to eq('ok') }
     end
     context 'when run fails' do
-      before { submission.run_update! { ['ups', :failed] } }
+      before { submission.run_update! { {result: 'ups', status: :failed} } }
       it { expect(submission.status).to eq('failed') }
       it { expect(submission.result).to eq('ups') }
     end

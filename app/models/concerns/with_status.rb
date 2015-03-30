@@ -9,8 +9,7 @@ module WithStatus
   def run_update!
     update! status: :running
     begin
-      result, status = yield
-      update! result: result, status: status
+      update! yield
     rescue => e
       update! result: e.message, status: :failed
       raise e
