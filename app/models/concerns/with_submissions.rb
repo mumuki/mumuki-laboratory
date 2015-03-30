@@ -6,7 +6,7 @@ module WithSubmissions
   end
 
   def default_content_for(user)
-    submissions_for(user).last.try(&:content) || ''
+    last_submission(user).try(&:content) || ''
   end
 
   def submissions_for(user)
