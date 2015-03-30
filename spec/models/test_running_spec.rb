@@ -33,7 +33,7 @@ describe TestRunning do
 
       it { expect(submission.reload.status).to eq('passed') }
       it { expect(submission.reload.result).to include('0 failures') }
-      it { expect(submission.reload.expectation_results).to eq([{binding: 'foo', inspection: 'HasBinding', result: true}]) }
+      it { expect(submission.reload.expectation_results).to eq([{binding: 'foo', inspection: 'HasBinding', result: :passed}]) }
 
     end
 
