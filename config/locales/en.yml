@@ -48,6 +48,7 @@ en:
   tag: "Tag"
   submissions_for: "Submissions for %{exercise}"
   you_must: "You must %{action} before continue"
+  you_must_sign_in_before_submitting: 'You must sign in with Github before submitting your solutions'
   sign_in_with_github_action: "sign in with Github"
   latest_guides: "latests guides"
   submissions_count: "Submissions"

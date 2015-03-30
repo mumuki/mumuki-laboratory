@@ -1,51 +1,60 @@
 <%= render layout: 'layouts/exercise', locals: {current_tab: :exercise} do %>
-    <%= form_for([@exercise, @submission], id: 'exercise-submission-form', html: {role: 'form'}) do |f| %>
-      <div class="row">
-        <div class="col-md-6">
-          <section>
-            <% if @exercise.guide %>
-              <p>
-                <%= raw t :belongs_to_guide, guide: link_to_guide(@exercise.guide) %>
-              </p>
-            <% else %>
-              <p>
-                <%= raw t :authored_by, author: link_to(@exercise.author.name, user_path(@exercise.author)) %>
-              </p>
-            <% end %>
-          </section>
-          <section>
-            <%= taglist_tag @exercise.tag_list %>
-          </section>
-          <div>
-              <%= @exercise.description_html %>
-          </div>
-          <div>
-            <% if @exercise.hint %>
-              <a data-toggle="collapse"
-                 href="#hint-section">
-                <%= label :exercise, :hint %>
-              </a>
+  <div class="row">
+    <div class="col-md-6">
+      <section>
+        <% if @exercise.guide %>
+          <p>
+            <%= raw t :belongs_to_guide, guide: link_to_guide(@exercise.guide) %>
+          </p>
+        <% else %>
+          <p>
+            <%= raw t :authored_by, author: link_to(@exercise.author.name, user_path(@exercise.author)) %>
+          </p>
+        <% end %>
+      </section>
+      <section>
+        <%= taglist_tag @exercise.tag_list %>
+      </section>
+      <div>
+        <%= @exercise.description_html %>
+      </div>
+      <div>
+        <% if @exercise.hint %>
+          <a data-toggle="collapse"
+             href="#hint-section">
+            <%= label :exercise, :hint %>
+          </a>
 
-              <div id="hint-section" class="collapse">
-                <p>
-                  <%= @exercise.hint_html %>
-                </p>
-              </div>
-            <% end %>
+          <div id="hint-section" class="collapse">
+            <p>
+              <%= @exercise.hint_html %>
+            </p>
           </div>
-        </div>
+        <% end %>
+      </div>
+    </div>
 
-        <div class="col-md-6">
+    <div class="col-md-6">
+      <% if current_user? %>
+        <%= form_for([@exercise, @submission], id: 'exercise-submission-form', html: {role: 'form'}) do |f| %>
           <div class="field form-group">
             <%= f.text_area :content, class: 'form-control editor', value: @previous_submission_content %>
             <%= hidden_field_tag(:exercise_language, @exercise.language) %>
           </div>
-          <div class="actions form-group text-right">
+          <div class="actions">
             <%= f.submit t(:create_submission), class: 'btn btn-primary' %>
           </div>
-        </div>
+        <% end %>
+      <% else %>
+        <p><%= t :you_must_sign_in_before_submitting %></p>
 
-      </div>
-    <% end %>
+        <div class="actions">
+          <%= link_to t(:sign_in_with_github), login_path, class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+
+
+  </div>
 <% end %>
 

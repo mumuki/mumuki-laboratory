@@ -20,7 +20,7 @@
         <%= link_to t(:exercise), exercise_path(@exercise) %>
       </li>
       <li <%= active_if :status %>>
-        <% @last_submission = @exercise.last_submission(current_user) %>
+        <% @last_submission = @exercise.last_submission(current_user) if current_user? %>
         <%= link_to t(:status), exercise_submission_path(@exercise, @last_submission) if @last_submission %>
       </li>
       <li <%= active_if :my_submissions %>>
