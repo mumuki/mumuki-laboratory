@@ -70,6 +70,9 @@ en:
   next_exercise: "Next"
   no_exercises: "Nobody created an exercise for this search yet. <a href=\"%{create_path}\">Be the first!</a>"
   no_guides: "Nobody created a guide for this search yet. <a href=\"%{create_path}\">Be the first!</a>"
+  notify_problem_to_author: "Notify problem to author"
+  problem_with_exercise: "[Mumuki] Problem with exercise: %{title}"
+
 
   exercise_count: "exercises"
   no_submissions: "Its seems like you haven't tried to solve this exercise"
