@@ -54,6 +54,7 @@ gem 'rails-i18n', '~> 4.0.0'
 
 gem 'nprogress-rails'
 
+gem 'yaml_db'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'
