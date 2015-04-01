@@ -32,9 +32,9 @@ class Stats
   end
 
   def to_h(&key)
-    {t(:passed) => passed,
-     t(:failed) => failed,
-     t(:unknown) => unknown}
+    {key.call(:passed) => passed,
+     key.call(:failed) => failed,
+     key.call(:unknown) => unknown}
   end
 
   def self.from_statuses(statuses)
