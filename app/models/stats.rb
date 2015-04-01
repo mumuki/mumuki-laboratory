@@ -32,7 +32,9 @@ class Stats
   end
 
   def to_h(&key)
-    [:passed, :failed, :unknown].map { |it| [key.call(it), send(it)] }.to_h
+    {t(:passed) => passed,
+     t(:failed) => failed,
+     t(:unknown) => unknown}
   end
 
   def self.from_statuses(statuses)
