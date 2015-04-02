@@ -78,3 +78,16 @@ en:
   stats: "Some stats"
   guide_has_exercises_stats: "This guide has <strong>%{total} exercises</strong>"
 
+
+
+  expectation_must: 'must'
+  expectation_must_not: 'must not'
+
+  expectation_HasBinding: "%{binding} %{must} be defined"
+  expectation_HasGuards: "%{binding} %{must} use gards"
+  expectation_HasComposition: "%{binding} %{must} use composition"
+  expectation_HasLambda: "%{binding} %{must} use lambda expressions"
+  expectation_HasComprehension: "%{binding} %{must} use list comprehensions"
+  expectation_HasDirectRecursion: "%{binding} %{must} use recursion"
+  expectation_HasUsage: "%{binding} %{must} use %{target}"
+  expectations: "Expectations"

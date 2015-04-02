@@ -2,6 +2,7 @@ module ApplicationHelper
   include LinksRendering
   include Icons
   include Flags
+  include ExpectationsTranslate
 
   def limit(items, preserve_order = false)
     limited = items.last(5)
@@ -44,9 +45,4 @@ module ApplicationHelper
       :start_practicing
     end
   end
-
-  def t_expectation_result(binding, inspection)
-    t "expectation_#{inspection}", binding: binding
-  end
-
 end
