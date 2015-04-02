@@ -5,13 +5,13 @@ es:
   destroy: 'Eliminar'
   edit: "Editar"
   edit_exercise: "Editar %{exercise}"
-  new_submission: "Nueva Entrega"
-  my_submissions: 'Mis Entregas'
-  submission_created: 'La entrega fue creada exitosamente'
-  my_exercises: 'Mis Ejercicios'
+  new_submission: "Nueva Solución"
+  my_submissions: 'Mis Soluciones'
+  submission_created: 'La solución fue enviada correctamente'
+  my_exercises: 'Mis solución'
   new_exercise: 'Nuevo Ejercicio'
   results: 'Resultados'
-  submission_for_exercise: 'Entrega para ejercicio'
+  submission_for_exercise: 'Solucion para ejercicio'
   more: "mas..."
   comma_or_tab_separated: 'Separados por tab o coma!'
   you_can_use_markdown_here_html: 'Podés usar <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>'
@@ -26,7 +26,7 @@ es:
   sign_out: "Cerrar Sesión"
   sign_in_with_github: 'Iniciá sesion con Github'
   exercise: 'Ejercicio'
-  submission_date: 'Fecha de entrega'
+  submission_date: 'Fecha de envío'
   status: 'Estado'
   passed: 'pasó'
   failed: 'falló'
@@ -41,11 +41,11 @@ es:
   guide: "Guía"
   authored_by: "Creado por %{author}"
   import_created: "Importación encolada"
-  submission: "entrega"
+  submission: "solución"
   mumuki_catchphrase: "Programá mejor"
   mumuki_short_description: "Mumuki es una plataforma simple, abierta y colaborativa para compartir y resolver ejercicios de programación. Mumuki existe para ayudar a las personas a aprender y enseñar lenguajes y paradigmas de programación"
   tag: "Etiqueta"
-  submissions_for: "Entregas para %{exercise}"
+  submissions_for: "Soluciones para %{exercise}"
   you_must: "Tenés que %{action} antes de continuar"
   you_must_sign_in_before_submitting: 'Tenés que iniciar sesión con Github antes de empezar a enviar tus soluciones'
   sign_in_with_github_action: "iniciar sesión con Github"
@@ -78,8 +78,8 @@ es:
   activerecord:
     models:
       submission:
-        one: "Entrega"
-        other: "Entregas"
+        one: "Solucion"
+        other: "Soluciones"
       exercise:
         one: "Ejercicio"
         other: "Ejercicios"
@@ -100,7 +100,7 @@ es:
         hint: 'Tips'
 
   latest_guides: "últimas guías"
-  submissions_count: "Entregas"
+  submissions_count: "Soluciones"
   mumuki_is_simple: "Mumuki es simple"
   mumuki_is_collaborative: "Mumuki es colaborativo"
   mumuki_is_open: "Mumuki es abierto"
@@ -123,8 +123,8 @@ es:
       admin_user:
         unauthenticated: Usuario no autenticado
   created_at: "Creado"
-  create_submission: "Envía tu solución!"
-  next_exercise: "Dame otro ejercicio!"
+  create_submission: "¡Envía tu solución!"
+  next_exercise: "¡Dame otro ejercicio!"
   no_exercises: "Nadie creó un ejercicio para tu búsqueda aún. <a href=\"%{create_path}\">¡Sé el primero!</a>"
   no_guides: "Nadie creó una guía para tu búsqueda aún. <a href=\"%{create_path}\">¡Sé el primero!</a>"
 
