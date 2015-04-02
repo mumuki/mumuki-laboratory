@@ -6,7 +6,7 @@
     <%= status_icon @submission %> <%= t @submission.status %>
   </p>
 
-  <% unless @submission.expectation_results.empty? %>
+  <% unless @submission.expectation_results.blank? %>
     <p>
       <strong><%= t :expectations %>:</strong>
     <ul>
