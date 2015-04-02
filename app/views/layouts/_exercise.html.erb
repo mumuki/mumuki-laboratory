@@ -2,9 +2,9 @@
 <div class="row">
   <div class="col-md-12">
     <h1>
+      <%= exercise_status_icon(@exercise)%>
       <%= @exercise.title %>
       <small> - <%= @exercise.language %></small>
-      <%= exercise_status_icon(@exercise)%>
     </h1>
     <hr>
   </div>
