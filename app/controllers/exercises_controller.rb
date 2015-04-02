@@ -15,7 +15,7 @@ class ExercisesController < ApplicationController
   end
 
   def new
-    @exercise = Exercise.new(locale: I18n.locale, expectations: Array.new(5) { Expectation.new })
+    @exercise = Exercise.new(locale: I18n.locale)
   end
 
   def edit
@@ -55,7 +55,10 @@ class ExercisesController < ApplicationController
   end
 
   def exercise_params
-    params.require(:exercise).permit(:title, :description, :locale, :test, :extra_code, :language_id, :hint, :tag_list)
+    params.require(:exercise).
+        permit(:title, :description, :locale, :test,
+               :extra_code, :language_id, :hint, :tag_list,
+               expectations_attributes: [:id, :binding, :inspection, :_destroy])
   end
 
   def exercises

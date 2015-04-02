@@ -18,7 +18,7 @@ class Exercise < ActiveRecord::Base
   belongs_to :guide
 
   has_many :expectations
-  accepts_nested_attributes_for :expectations
+  accepts_nested_attributes_for :expectations, reject_if: :all_blank, allow_destroy: true
 
   before_destroy :can_destroy?
 
