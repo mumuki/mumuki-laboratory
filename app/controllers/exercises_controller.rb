@@ -15,7 +15,7 @@ class ExercisesController < ApplicationController
   end
 
   def new
-    @exercise = Exercise.new(locale: I18n.locale)
+    @exercise = Exercise.new(locale: I18n.locale, expectations: Array.new(5) { Expectation.new })
   end
 
   def edit

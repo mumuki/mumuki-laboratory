@@ -13,7 +13,7 @@
       <div class="field form-group">
         <%= f.collection_select(:language_id, Language.all, :id, :name, {}, class: 'form-control') %>
       </div>
-      <div class="field form-group">
+      <div class="field form-group"><%# TODO extract %>
         <%= f.select(:locale, [['English', :en], ['Español', :es]], {}, class: 'form-control') %>
       </div>
     </div>
@@ -48,6 +48,27 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table  table-bordered">
+        <thead>
+        <tr>
+          <th><%= t :binding %></th>
+          <th><%= t :inspection %></th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= f.fields_for :expectations do |f| %>
+          <tr>
+            <td><%= f.text_field :inspection, hide_label: true %></td>
+            <td><%= f.text_field :binding, hide_label: true %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
 
   <div class="row">
     <div class="col-md-12">
