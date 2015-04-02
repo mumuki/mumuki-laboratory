@@ -19,10 +19,7 @@ describe Exercise do
       let!(:alternative_exercise) { create(:exercise, guide: guide) }
       let!(:guide) { create(:guide) }
 
-      it {
-        pending 'this test is failing randomly on CI'
-        expect(exercise_with_guide.next_for(user)).to eq alternative_exercise
-      }
+      it { expect(exercise_with_guide.next_for(user)).to eq alternative_exercise }
     end
     context 'when exercise belongs to a guide with two exercises and alternative exercise has being solved' do
       let(:exercise_with_guide) { create(:exercise, guide: guide) }
@@ -36,7 +33,7 @@ describe Exercise do
 
 
     context 'when exercise belongs to a guide with two exercises and alternative exercise has being submitted but not solved' do
-      let(:exercise_with_guide) { create(:exercise, guide: guide) }
+      let!(:exercise_with_guide) { create(:exercise, guide: guide) }
       let!(:alternative_exercise) { create(:exercise, guide: guide) }
       let(:guide) { create(:guide) }
 
@@ -44,6 +41,8 @@ describe Exercise do
 
       it do
         expect(exercise_with_guide.guide).to eq guide
+        expect(guide.exercises).to_not eq []
+        expect(guide.exercises.at_locale).to_not eq []
         expect(guide.pending_exercises(user)).to_not eq []
         expect(guide.pending_exercises(user)).to include(exercise_with_guide)
         expect(guide.pending_exercises(user)).to include(alternative_exercise)
