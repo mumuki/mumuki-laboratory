@@ -4,6 +4,8 @@ describe Exercise do
   let(:exercise) { create(:exercise) }
   let(:user) { create(:user) }
 
+  before { I18n.locale = :en  }
+
   describe '#next_for' do
     context 'when exercise has no guide' do
       it { expect(exercise.next_for(user)).to be nil }
