@@ -1,49 +1,96 @@
 <%= bootstrap_form_for(@exercise) do |f| %>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="field form-group">
-        <%= f.text_field :title %>
-      </div>
-      <div class="field form-group">
-        <%= f.text_field :tag_list, class: 'form-control', 'data-role ' => 'tagsinput' %>
-        <small><%= t('comma_or_tab_separated') %></small>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="field form-group">
-        <%= f.collection_select(:language_id, Language.all, :id, :name, {}, class: 'form-control') %>
-      </div>
-      <div class="field form-group">
-        <%= f.select(:locale, [['English', :en], ['Español', :es]], {}, class: 'form-control') %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-      <div class="field form-group">
-        <%= f.text_area :description, rows: 12 %>
-        <small><%= t('you_can_use_markdown_here_html') %></small>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="field form-group">
-        <%= f.text_area :hint, rows: 12 %>
-        <small><%= t :you_can_use_markdown_here_html %></small>
-      </div>
-    </div>
-  </div>
 
 
-  <div class="row">
-    <div class="col-md-6">
-      <div class="field form-group">
-        <%= f.text_area :test, class: 'form-control editor', rows: 15 %>
+  <div role="tabpanel">
+    <br>
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+        <a href="#basic-panel" aria-controls="basic" role="tab" data-toggle="tab"><%= t(:basic) %></a>
+      </li>
+      <li role="presentation"><a href="#extra-panel" aria-controls="extra" role="tab" data-toggle="tab"><%= t(:extras) %></a></li>
+      <li role="presentation">
+        <a href="#expectations-panel" aria-controls="expectations" role="tab" data-toggle="tab"><%= t(:expectations) %></a></li>
+
+    </ul>
+
+    <div class="tab-content">
+      <br>
+
+      <div role="tabpanel" class="tab-pane active" id="basic-panel">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="field form-group">
+              <%= f.text_field :title %>
+            </div>
+            <div class="field form-group">
+              <%= f.text_field :tag_list, class: 'form-control', 'data-role ' => 'tagsinput' %>
+              <small><%= t('comma_or_tab_separated') %></small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="field form-group">
+              <%= f.collection_select(:language_id, Language.all, :id, :name, {}, class: 'form-control') %>
+            </div>
+            <div class="field form-group"><%# TODO extract %>
+              <%= f.select(:locale, [['English', :en], ['Español', :es]], {}, class: 'form-control') %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="field form-group">
+              <%= f.text_area :description, rows: 12 %>
+              <small><%= t('you_can_use_markdown_here_html') %></small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="field form-group">
+              <%= f.text_area :test, class: 'form-control editor', rows: 15 %>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="col-md-6">
-      <div class="field form-group">
-        <%= f.text_area :extra_code, class: 'form-control editor', rows: 15 %>
+      <div role="tabpanel" class="tab-pane" id="extra-panel">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="field form-group">
+              <%= f.text_area :extra_code, class: 'form-control editor', rows: 15 %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="field form-group">
+              <%= f.text_area :hint, rows: 12 %>
+              <small><%= t :you_can_use_markdown_here_html %></small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="expectations-panel">
+        <div class="row">
+          <div class="col-md-8">
+            <table class="table  table-bordered">
+              <thead>
+              <tr>
+                <th><%= t :inspection %></th>
+                <th><%= t :binding %></th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody id="expectations">
+              <%= f.fields_for :expectations do |f| %>
+                <%= render 'expectation_fields', f: f %>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-2">
+            <div class="links text-right">
+              <%= link_to_add_association "#{fa_icon('plus')} #{t(:add_expectation)}".html_safe, f, :expectations,
+                                          'data-association-insertion-node' => '#expectations',
+                                          'data-association-insertion-method' => 'append' %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

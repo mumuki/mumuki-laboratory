@@ -25,4 +25,5 @@
 //= require nprogress-turbolinks
 //= require nprogress-ajax
 //= require chartkick
+//= require cocoon
 //= require_tree .

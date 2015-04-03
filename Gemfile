@@ -44,7 +44,7 @@ gem 'unicorn-rails'
 gem 'acts-as-taggable-on', '~> 3.4'
 
 gem 'git'
-
+gem 'cocoon'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 

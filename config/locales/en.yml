@@ -91,3 +91,6 @@ en:
   expectation_HasDirectRecursion: "%{binding} %{must} use recursion"
   expectation_HasUsage: "%{binding} %{must} use %{target}"
   expectations: "Expectations"
+  add_expectation: "Add Expectation"
+  extras: "Extras"
+  basic: "Basic"
