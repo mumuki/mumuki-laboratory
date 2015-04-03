@@ -42,6 +42,7 @@
             <%= hidden_field_tag(:exercise_language, @exercise.language) %>
           </div>
           <div class="actions">
+            <%= link_to t(:cancel), exercises_path, class: 'btn btn-default pull-left' %>
             <%= f.submit t(:create_submission), class: 'btn btn-primary' %>
           </div>
         <% end %>
