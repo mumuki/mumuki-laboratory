@@ -15,8 +15,8 @@ describe ExpectationsTranslate do
     before { I18n.locale = :es }
 
     it { expect(t_expectation_result('foo', 'HasBinding')).to eq('foo debe estar definido') }
-    it { expect(t_expectation_result('foo', 'Not:HasUsage:baz')).to eq('foo no debe definir baz') }
-    it { expect(t_expectation_result('foo', 'Not:HasLambda')).to eq('foo no debe usar expresiones lambda') }
+    it { expect(t_expectation_result('foo', 'Not:HasUsage:baz')).to eq('foo no debe utilizar baz') }
+    it { expect(t_expectation_result('foo', 'Not:HasLambda')).to eq('foo no debe emplear expresiones lambda') }
   end
 
 
