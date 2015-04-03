@@ -96,8 +96,9 @@ es:
         language: "Lenguaje"
         tag_list: "Etiquetas"
         description: "Descripción"
+        extra_code: 'Código Adicional'
         locale: "Idioma"
-        hint: 'Tips'
+        hint: 'Ayudas'
 
   latest_guides: "últimas guías"
   submissions_count: "Soluciones"
@@ -150,3 +151,6 @@ es:
   expectation_HasDirectRecursion: "%{binding} %{must} emplear recursión"
   expectation_HasUsage: "%{binding} %{must} utilizar %{target}"
   expectations: "Objetivos"
+  add_expectation: "Agregar Objetivo"
+  extras: "Adicionales"
+  basic: "Básico"
