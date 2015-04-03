@@ -30,8 +30,7 @@ Mumuki is also open for extension, we would like to have exercises for a large r
 # Which languages are supported?
 
 Currently Mumuki supports Haskell, through [GHC](https://www.haskell.org/ghc/), Prolog,
-through [SWI-Prolog](http://www.swi-prolog.org/) and Ruby. Support for more programming languages is a pending task. We would like to offer support in the short term for the following too: 
- * JavaScript
+through [SWI-Prolog](http://www.swi-prolog.org/), Ruby and JavaScript. Support for more programming languages is a pending task. We would like to offer support in the short term for the following too: 
  * Clojure
  * Smalltalk
  
@@ -42,6 +41,7 @@ through [SWI-Prolog](http://www.swi-prolog.org/) and Ruby. Support for more prog
 1. Choose your preffered language and create your test runner server. Use any of those server for inspiration:
   * [mumuki-hspec-server](https://github.com/uqbar-project/mumuki-hspec-server) (written in Haskell)
   * [mumuki-rspec-server](https://github.com/aguspina/mumuki-rspec-server)  (written in Ruby)
+  * [mumuki-mocha-server](https://github.com/aguspina/mumuki-mocha-server)  (written in JavaScript)
   * [mumuki-plunit-server](https://github.com/uqbar-project/mumuki-plunit-server)  (written in Ruby)
 1. Create exercises! Mumuki is in early stages, so remember to add your tests to some SCM. 
 1. Are you a UI designer? We want Mumuki to look great. 
