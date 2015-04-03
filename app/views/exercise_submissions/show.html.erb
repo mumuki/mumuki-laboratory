@@ -10,6 +10,7 @@
   </div>
   <div class="row">
     <div class="actions">
+    <%= mail_to @submission.exercise.author.email, t('notify_problem_to_author'), subject: t("problem_with_exercise", title: @submission.exercise.title), class: 'btn btn-warning pull-left' %>
       <%= link_to t(:next_exercise), exercise_path(@next_exercise), class: 'btn btn-primary' if @next_exercise %>
       <%= link_to t(:new_submission), exercise_path(@submission.exercise), class: 'btn btn-primary' %>
     </div>
