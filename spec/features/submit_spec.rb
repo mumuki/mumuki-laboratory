@@ -30,9 +30,30 @@ feature 'Search Flow' do
 
     click_on 'Submit'
 
+    pending
+
     click_on 'Next'
 
-    expect(page).to have_text("Baz")
+    expect(page).to have_text('Baz')
+  end
+
+
+  scenario 'create submission and then retry exercise' do
+    visit "/en/exercises/#{exercise.id}"
+
+    within '.actions' do
+      click_on 'Sign in with Github'
+    end
+
+    click_on 'Submit'
+
+    pending
+
+    expect(page).to have_text('Results')
+
+    click_on 'Retry'
+
+    expect(page).to have_text('Foo')
   end
 
 end
