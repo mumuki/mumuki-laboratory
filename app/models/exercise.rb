@@ -67,7 +67,15 @@ class Exercise < ActiveRecord::Base
   end
 
   def next_for(user)
-    guide.next_exercise(user) { |it| it.where('exercises.id <> :id', id: id) } if guide
+    sibling_for user, 'exercises.original_id > :id'
+  end
+
+  def previous_for(user)
+    sibling_for user, 'exercises.original_id < :id'
+  end
+
+  def sibling_for(user, query)
+    guide.next_exercise(user) { |it| it.where(query, id: original_id) } if guide
   end
 
   private
