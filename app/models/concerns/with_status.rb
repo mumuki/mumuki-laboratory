@@ -15,4 +15,10 @@ module WithStatus
       raise e
     end
   end
+
+  module ClassMethods
+    def passed_status
+      statuses[:passed]
+    end
+  end
 end

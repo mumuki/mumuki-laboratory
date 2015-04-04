@@ -60,4 +60,7 @@ module ApplicationHelper
     link_to fa_icon(:backward, text: t(:previous_exercise)), exercise_path(previous_exercise), class: 'btn btn-primary' if previous_exercise
   end
 
+  def time_ago_in_words_or_never(date)
+    date ? time_ago_in_words(date) : t(:never)
+  end
 end

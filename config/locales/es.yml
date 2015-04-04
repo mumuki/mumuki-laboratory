@@ -156,3 +156,8 @@ es:
   basic: "Básico"
   repeat_submission: "Reinentar"
   previous_exercise: "Anterior"
+  never: "nunca"
+  username: "Nombre de usuario"
+  submissions_success_rate: "Taza de éxito en soluciones"
+  exercise_success_rate: "Taza de éxito en ejercicios"
+  last_submission_date: "Última solucion"
