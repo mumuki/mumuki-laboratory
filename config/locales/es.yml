@@ -124,8 +124,8 @@ es:
       admin_user:
         unauthenticated: Usuario no autenticado
   created_at: "Creado"
-  create_submission: "¡Envía tu solución!"
-  next_exercise: "¡Dame otro ejercicio!"
+  create_submission: "Enviar"
+  next_exercise: "Siguiente"
   no_exercises: "Nadie creó un ejercicio para tu búsqueda aún. <a href=\"%{create_path}\">¡Sé el primero!</a>"
   no_guides: "Nadie creó una guía para tu búsqueda aún. <a href=\"%{create_path}\">¡Sé el primero!</a>"
 
