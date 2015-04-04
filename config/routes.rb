@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     end
 
     # All users
-    resources :users, only: :show do
+    resources :users, only: [:show, :index] do
       # Nested user
       resources :exercises, controller: 'user_exercises', only: :index
       # Nested user

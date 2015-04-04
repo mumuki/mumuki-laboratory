@@ -2,40 +2,32 @@
 
 <div class="row">
   <div class="col-md-3">
-    <div class="exercise-search-box" >
+    <div class="exercise-search-box">
       <div class="row">
         <div class="col-md-12">
-          <form>
-          </form>
-        </div>
-      </div>
-    <div class="row">
-      <div class="col-md-12">
-        <%= bootstrap_form_tag url: exercises_path, method: :get do |f| %>
+          <%= bootstrap_form_tag url: exercises_path, method: :get do |f| %>
 
-          <div class="form-group">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="<%= t :search %>" name="q" value="<%= @q %>">
-              <div class="input-group-btn">
-                <button id="search" class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="<%= t :search %>" name="q" value="<%= @q %>">
+
+                <div class="input-group-btn">
+                  <button id="search" class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="form-group" >
-            <div class="btn-group btn-group-justified">
-              <a class="btn btn-default active" href="#"><%= t(:exercise).pluralize %>
-              </a>
-              <a class="btn btn-default" href="<%=guides_path %>"><%= t(:guide).pluralize %>
-              </a>
+            <div class="form-group">
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default active" href="#"><%= t(:exercise).pluralize %>
+                </a>
+                <a class="btn btn-default" href="<%= guides_path %>"><%= t(:guide).pluralize %>
+                </a>
+              </div>
             </div>
-          </div>
-
-        <% end %>
+          <% end %>
+        </div>
       </div>
-
-    </div>
-
     </div>
   </div>
 

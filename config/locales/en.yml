@@ -96,3 +96,8 @@ en:
   basic: "Basic"
   repeat_submission: "Retry"
   previous_exercise: "Previous"
+  never: "never"
+  submissions_success_rate: "Submissions success rate"
+  exercise_success_rate: "Exercises success rate"
+  last_submission_date: "Last submission"
+  username: "Username"
