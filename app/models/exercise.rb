@@ -8,13 +8,7 @@ class Exercise < ActiveRecord::Base
       },
   }
 
-  include WithSearch
-
-  include WithMarkup
-  include WithAuthor
-  include WithSubmissions
-
-  include WithGuide
+  include WithSearch, WithMarkup, WithAuthor, WithSubmissions, WithGuide
 
   belongs_to :language
 
