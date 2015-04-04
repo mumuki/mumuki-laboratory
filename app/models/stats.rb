@@ -31,6 +31,14 @@ class Stats
     submitted > 0
   end
 
+  def passed_ratio
+    100 * passed / total
+  end
+
+  def failed_ratio
+    100 * failed / total
+  end
+
   def to_h(&key)
     {key.call(:passed) => passed,
      key.call(:failed) => failed,

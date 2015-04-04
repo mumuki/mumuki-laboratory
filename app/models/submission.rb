@@ -14,6 +14,10 @@ class Submission < ActiveRecord::Base
 
   delegate :language, :title, to: :exercise
 
+  def should_retry?
+    failed? || expectation_results.any? { |it| it[:result] == :failed } #TODO rename result => status
+  end
+
   def result_preview
     result.truncate(100) if failed?
   end

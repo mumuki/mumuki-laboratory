@@ -24,3 +24,17 @@
   </p>
 
 </div>
+<div class="actions">
+  <%= previous_exercise_button(@exercise) %>
+  <%= repeat_submission_button(@exercise) if @submission.should_retry? %>
+  <%= next_exercise_button(@exercise) %>
+</div>
+
+<script>
+  $('#exercise-status-icon').html("<%= escape_javascript exercise_status_icon(@exercise) %>");
+  <% if @exercise.guide %>
+    <% @stats = @exercise.guide.stats(current_user) %>
+    $('#failed-progress-bar').css("width", "<%= @stats.failed_ratio %>%");
+    $('#passed-progress-bar').css("width", "<%= @stats.passed_ratio %>%");
+  <% end %>
+</script>

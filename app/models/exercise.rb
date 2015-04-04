@@ -46,13 +46,11 @@ class Exercise < ActiveRecord::Base
   end
 
   def status_for(user)
-    #TODO may just get the status of the last submission, or unknown, if there is no submission
-    if solved_by?(user)
-      :passed
-    elsif submitted_by?(user)
-      :failed
-    else
-      :unknown
+    s = submissions_for(user).last.try(&:status)
+    case s
+      when 'passed' then :passed
+      when 'failed' then :failed
+      else :unknown
     end
   end
 
@@ -69,7 +67,15 @@ class Exercise < ActiveRecord::Base
   end
 
   def next_for(user)
-    guide.next_exercise(user) { |it| it.where('exercises.id <> :id', id: id) } if guide
+    sibling_for user, 'exercises.original_id > :id', 'exercises.original_id asc'
+  end
+
+  def previous_for(user)
+    sibling_for user, 'exercises.original_id < :id', 'exercises.original_id desc'
+  end
+
+  def sibling_for(user, query, order)
+    guide.pending_exercises(user).where(query, id: original_id).order(order).first  if guide
   end
 
   private

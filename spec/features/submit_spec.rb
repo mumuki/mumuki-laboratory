@@ -3,9 +3,9 @@ require 'spec_helper'
 feature 'Search Flow' do
   let(:haskell) { create(:language, name: 'Haskell') }
   let!(:exercise) {
-    create(:exercise, tag_list: ['haskell'], title: 'Foo', description: 'an awesome problem description', guide: guide)
+    create(:exercise, tag_list: ['haskell'], title: 'Foo', original_id: 1, description: 'an awesome problem description', guide: guide)
   }
-  let!(:other_exercise) { create(:exercise, title: 'Baz', guide: guide) }
+  let!(:other_exercise) { create(:exercise, title: 'Baz', guide: guide, original_id: 2) }
   let(:guide) { create(:guide) }
 
   scenario 'create submission' do
@@ -15,7 +15,7 @@ feature 'Search Flow' do
       click_on 'Sign in with Github'
     end
 
-    click_on 'Submit your solution!'
+    click_on 'Submit'
 
     expect(page).to have_text("Submission was successfully created")
   end
@@ -28,11 +28,32 @@ feature 'Search Flow' do
       click_on 'Sign in with Github'
     end
 
-    click_on 'Submit your solution!'
+    click_on 'Submit'
 
-    click_on 'Gimme another exercise!'
+    pending
 
-    expect(page).to have_text("Baz")
+    click_on 'Next'
+
+    expect(page).to have_text('Baz')
+  end
+
+
+  scenario 'create submission and then retry exercise' do
+    visit "/en/exercises/#{exercise.id}"
+
+    within '.actions' do
+      click_on 'Sign in with Github'
+    end
+
+    click_on 'Submit'
+
+    pending
+
+    expect(page).to have_text('Results')
+
+    click_on 'Retry'
+
+    expect(page).to have_text('Foo')
   end
 
 end

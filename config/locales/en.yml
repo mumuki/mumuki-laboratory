@@ -66,8 +66,8 @@ en:
   search: "Search"
   belongs_to_guide: "Belongs to guide %{guide}"
   created_at: "Created at"
-  create_submission: "Submit your solution!"
-  next_exercise: "Gimme another exercise!"
+  create_submission: "Submit"
+  next_exercise: "Next"
   no_exercises: "Nobody created an exercise for this search yet. <a href=\"%{create_path}\">Be the first!</a>"
   no_guides: "Nobody created a guide for this search yet. <a href=\"%{create_path}\">Be the first!</a>"
 
@@ -94,3 +94,5 @@ en:
   add_expectation: "Add Expectation"
   extras: "Extras"
   basic: "Basic"
+  repeat_submission: "Retry"
+  previous_exercise: "Previous"
