@@ -14,8 +14,9 @@ class Exercise < ActiveRecord::Base
   include WithAuthor
   include WithSubmissions
 
+  include WithGuide
+
   belongs_to :language
-  belongs_to :guide
 
   has_many :expectations
   accepts_nested_attributes_for :expectations, reject_if: :all_blank, allow_destroy: true
@@ -64,18 +65,6 @@ class Exercise < ActiveRecord::Base
 
   def search_tags
     tag_list + [language.name] + (guide.try(&:name) || [])
-  end
-
-  def next_for(user)
-    sibling_for user, 'exercises.original_id > :id', 'exercises.original_id asc'
-  end
-
-  def previous_for(user)
-    sibling_for user, 'exercises.original_id < :id', 'exercises.original_id desc'
-  end
-
-  def sibling_for(user, query, order)
-    guide.pending_exercises(user).where(query, id: original_id).order(order).first  if guide
   end
 
   private
