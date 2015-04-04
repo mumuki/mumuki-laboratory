@@ -30,3 +30,11 @@
   <%= next_exercise_button(@exercise) %>
 </div>
 
+<script>
+  $('#exercise-status-icon').html("<%= escape_javascript exercise_status_icon(@exercise) %>");
+  <% if @exercise.guide %>
+    <% @stats = @exercise.guide.stats(current_user) %>
+    $('#failed-progress-bar').css("width", "<%= @stats.failed_ratio %>%");
+    $('#passed-progress-bar').css("width", "<%= @stats.passed_ratio %>%");
+  <% end %>
+</script>
