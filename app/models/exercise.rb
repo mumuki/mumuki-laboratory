@@ -46,15 +46,6 @@ class Exercise < ActiveRecord::Base
     description.truncate(70, omission: more_link)
   end
 
-  def status_for(user)
-    s = submissions_for(user).last.try(&:status)
-    case s
-      when 'passed' then :passed
-      when 'failed' then :failed
-      else :unknown
-    end
-  end
-
   def can_destroy?
     can_edit? && submissions_count == 0
   end

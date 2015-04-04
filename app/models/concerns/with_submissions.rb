@@ -28,4 +28,14 @@ module WithSubmissions
   def last_submission(user)
     submissions_for(user).last
   end
+
+  def status_for(user)
+    s = submissions_for(user).last.try(&:status)
+    case s
+      when 'passed' then :passed
+      when 'failed' then :failed
+      else :unknown
+    end
+  end
+
 end
