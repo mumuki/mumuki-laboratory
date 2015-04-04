@@ -31,10 +31,8 @@ class Guide < ActiveRecord::Base
         where('submissions.id is null')
   end
 
-  def next_exercise(user, &extra) #TODO rename
-    candidates = pending_exercises(user)
-    candidates = extra.call(candidates) if block_given?
-    candidates.order('exercises.original_id asc').first
+  def next_exercise(user)
+    pending_exercises(user).order('exercises.original_id asc').first
   end
 
   #TODO normalize
