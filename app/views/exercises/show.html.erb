@@ -42,7 +42,9 @@
             <%= hidden_field_tag(:exercise_language, @exercise.language) %>
           </div>
           <div class="actions">
-            <%= f.submit t(:create_submission), class: 'btn btn-primary' %>
+            <button class="btn btn-primary">
+              <%= fa_icon :play, text: t(:create_submission) %>
+            </button>
           </div>
         <% end %>
       <% else %>
