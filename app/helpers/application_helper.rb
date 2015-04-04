@@ -2,7 +2,6 @@ module ApplicationHelper
   include LinksRendering
   include Icons
   include Flags
-  include ExpectationsTranslate
 
   def limit(items, preserve_order = false)
     limited = items.last(5)
