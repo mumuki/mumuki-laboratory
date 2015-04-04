@@ -24,3 +24,9 @@
   </p>
 
 </div>
+<div class="actions">
+  <%= previous_exercise_button(@exercise) %>
+  <%= repeat_submission_button(@exercise) if @submission.should_retry? %>
+  <%= next_exercise_button(@exercise) %>
+</div>
+

@@ -154,3 +154,5 @@ es:
   add_expectation: "Agregar Objetivo"
   extras: "Adicionales"
   basic: "Básico"
+  repeat_submission: "Reinentar"
+  previous_exercise: "Anterior"
