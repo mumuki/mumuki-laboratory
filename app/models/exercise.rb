@@ -46,13 +46,11 @@ class Exercise < ActiveRecord::Base
   end
 
   def status_for(user)
-    #TODO may just get the status of the last submission, or unknown, if there is no submission
-    if solved_by?(user)
-      :passed
-    elsif submitted_by?(user)
-      :failed
-    else
-      :unknown
+    s = submissions_for(user).last.try(&:status)
+    case s
+      when 'passed' then :passed
+      when 'failed' then :failed
+      else :unknown
     end
   end
 
