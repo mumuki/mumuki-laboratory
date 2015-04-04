@@ -64,10 +64,9 @@ describe Import do
       end
     end
 
-    it 'fails if repo is private'
-    it 'fails succeeds when repo is clonable'
+    it 'succeeds when repo is private'
 
-    context 'when repository does not exist' do
+    context 'when repository exists' do
       let(:guide) { create(:guide, github_repository: 'uqbar-project/mumuki-hspec-server') }
 
       it do
