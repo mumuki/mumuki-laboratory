@@ -4,12 +4,14 @@ module ExerciseSubmissionsHelper
   end
 
   def next_exercise_button(exercise)
-    next_exercise = exercise.next_for current_user
-    link_to fa_icon(:forward, text: t(:next_exercise)), exercise_path(next_exercise), class: 'btn btn-primary' if next_exercise
+    sibling_exercise_button(exercise.next_for(current_user), :next_exercise, :forward)
   end
 
   def previous_exercise_button(exercise)
-    previous_exercise = exercise.previous_for current_user
-    link_to fa_icon(:backward, text: t(:previous_exercise)), exercise_path(previous_exercise), class: 'btn btn-primary' if previous_exercise
+    sibling_exercise_button(exercise.previous_for(current_user), :previous_exercise, :backward)
+  end
+
+  def sibling_exercise_button(sibling, key, icon)
+    link_to fa_icon(icon, text: t(key)), exercise_path(sibling), class: 'btn btn-primary' if sibling
   end
 end
