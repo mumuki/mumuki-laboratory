@@ -32,9 +32,7 @@ class Exercise < ActiveRecord::Base
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
   scope :at_locale, lambda { where(locale: I18n.locale) }
 
-  markup_on :description
-  markup_on :hint
-  markup_on :teaser
+  markup_on :description, :hint, :teaser
 
   def self.create_or_update_for_import!(guide, original_id, options)
     exercise = find_or_initialize_by(original_id: original_id, guide_id: guide.id)
