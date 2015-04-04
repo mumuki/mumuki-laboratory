@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = paginated User.all
+    @q = params[:q]
+    @users = paginated User.by_full_text(@q)
   end
   private
 

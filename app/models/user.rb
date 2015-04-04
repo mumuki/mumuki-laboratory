@@ -1,4 +1,13 @@
 class User < ActiveRecord::Base
+  INDEXED_ATTRIBUTES = {
+      against: [:name],
+      using: {
+          tsearch: {any_word: true}
+      }
+  }
+
+  include WithSearch
+
   has_many :submissions, foreign_key: :submitter_id
   has_many :exercises, foreign_key: :author_id
   has_many :guides, foreign_key: :author_id
