@@ -2,8 +2,7 @@ class ExerciseSubmissionsController < ApplicationController
   before_action :authenticate!
 
   before_action :set_submission, only: [:show, :status, :results]
-  before_action :set_exercise, only: [:create, :show, :index]
-  before_action :set_next_exercise, only: :show
+  before_action :set_exercise, only: [:create, :show, :index, :results]
 
   def index
     @submissions = paginated @exercise.submissions_for(current_user).order(created_at: :desc)
@@ -24,12 +23,6 @@ class ExerciseSubmissionsController < ApplicationController
 
   def results
     render :results, layout: false
-  end
-
-  private
-
-  def set_next_exercise
-    @next_exercise = @exercise.next_for current_user
   end
 
   private
