@@ -50,6 +50,7 @@ es:
   you_must_sign_in_before_submitting: 'Tenés que iniciar sesión con Github antes de empezar a enviar tus soluciones'
   sign_in_with_github_action: "iniciar sesión con Github"
   languages: "Lenguajes"
+  back_to_search: "Volver a la búsqueda"
 
   datetime:
     distance_in_words:
