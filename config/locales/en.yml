@@ -90,6 +90,10 @@ en:
   expectation_HasComprehension: "%{binding} %{must} use list comprehensions"
   expectation_HasDirectRecursion: "%{binding} %{must} use recursion"
   expectation_HasUsage: "%{binding} %{must} use %{target}"
+  expectation_HasIf: "%{binding} %{must} use if"
+  expectation_HasConditional: "%{binding} %{must} use conditionals"
+
+
   expectations: "Expectations"
   add_expectation: "Add Expectation"
   extras: "Extras"
