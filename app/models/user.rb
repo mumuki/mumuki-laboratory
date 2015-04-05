@@ -25,6 +25,12 @@ class User < ActiveRecord::Base
            class_name: 'Exercise',
            source: :exercise
 
+  belongs_to :default_guide, class_name: 'Guide'
+
+  def last_submission_date
+    submissions.last.try(&:created_at)
+  end
+
   def submissions_count
     submissions.count
   end
