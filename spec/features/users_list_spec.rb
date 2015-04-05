@@ -12,7 +12,6 @@ feature 'Users listing' do
   scenario 'list users' do
     visit '/en/users'
 
-    expect(page).to have_text('Users')
     expect(page).to have_text('foobar')
     expect(page).to have_text('baz')
   end

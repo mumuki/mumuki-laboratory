@@ -151,6 +151,10 @@ es:
   expectation_HasComprehension: "%{binding} %{must} emplear listas por comprensión"
   expectation_HasDirectRecursion: "%{binding} %{must} emplear recursión"
   expectation_HasUsage: "%{binding} %{must} utilizar %{target}"
+  expectation_HasIf: "%{binding} %{must} usar if"
+  expectation_HasConditional: "%{binding} %{must} utilizar condicionales (guardas/if)"
+
+
   expectations: "Objetivos"
   add_expectation: "Agregar Objetivo"
   extras: "Adicionales"
