@@ -24,7 +24,7 @@ describe User do
         user.submissions.create!(exercise: exercise_3, status: :failed, content: '')
       end
 
-      it { expect(user.last_submission_date).to eq last_submission.reload.created_at }
+      it { expect(user.reload.last_submission_date).to eq last_submission.reload.created_at }
       it { expect(user.submitted_exercises_count).to eq 3 }
       it { expect(user.solved_exercises_count).to eq 2 }
       it { expect(user.submissions_count).to eq 4 }

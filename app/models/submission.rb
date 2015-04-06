@@ -10,6 +10,8 @@ class Submission < ActiveRecord::Base
   serialize :expectation_results
 
   after_create :update_submissions_count!
+  after_create :update_last_submission!
+
   after_commit :schedule_test_run!, on: :create
 
   delegate :language, :title, to: :exercise
@@ -34,6 +36,10 @@ class Submission < ActiveRecord::Base
          set submissions_count = submissions_count + 1
         where id = #{exercise.id}")
     exercise.reload
+  end
+
+  def update_last_submission!
+    submitter.update!(last_submission_date: created_at)
   end
 end
 
