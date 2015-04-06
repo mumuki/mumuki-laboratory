@@ -10,18 +10,19 @@ class Exercise < ActiveRecord::Base
 
   include WithSearch, WithMarkup, WithAuthor, WithSubmissions, WithGuide
 
+  acts_as_taggable
+
   belongs_to :language
 
   has_many :expectations
+
   accepts_nested_attributes_for :expectations, reject_if: :all_blank, allow_destroy: true
 
   before_destroy :can_destroy?
-
-  acts_as_taggable
+  after_initialize :defaults, if: :new_record?
 
   validates_presence_of :title, :description, :language, :test,
                         :submissions_count, :author, :locale
-  after_initialize :defaults, if: :new_record?
 
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
   scope :at_locale, lambda { where(locale: I18n.locale) }
@@ -43,7 +44,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def can_edit?
-    guide.nil?
+    guide.nil? || author.default_guide == guide #TODO temporal fix
   end
 
   def search_tags

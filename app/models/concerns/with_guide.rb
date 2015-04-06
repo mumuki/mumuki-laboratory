@@ -3,6 +3,7 @@ module WithGuide
 
   included do
     belongs_to :guide
+    before_create  :assign_guide!, if: :orphan?
   end
 
   def next_for(user)
@@ -15,5 +16,13 @@ module WithGuide
 
   def sibling_for(user, query, order)
     guide.pending_exercises(user).where(query, id: original_id).order(order).first  if guide
+  end
+
+  def orphan?
+    guide.nil?
+  end
+
+  def assign_guide!
+    self.guide = author.find_or_create_default_guide
   end
 end
