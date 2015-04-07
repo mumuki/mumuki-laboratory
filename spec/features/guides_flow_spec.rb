@@ -7,11 +7,9 @@ feature 'Search Flow' do
   let!(:exercises) {
     create(:exercise, title: 'Foo',        guide: guide, original_id: 1, language: haskell, description: 'Description of foo')
     create(:exercise, title: 'Bar',        guide: guide, original_id: 2)
-    create(:exercise, title: 'haskelloid', guide: guide, original_id: 3)
     create(:exercise, title: 'Baz',        guide: guide, original_id: 4)
-    create(:exercise, title: 'nothing',    guide: guide, original_id: 5)
   }
-  let(:guide) { create(:guide, name: 'awesomeGuide', description: 'Haskelloid baz guide') }
+  let(:guide) { create(:guide, name: 'awesomeGuide', description: 'An awesome guide') }
 
   scenario 'visit guides from search page, signs in, and starts practicing' do
     visit '/en'
@@ -25,6 +23,7 @@ feature 'Search Flow' do
     click_on 'awesomeGuide'
 
     expect(page).to have_text('awesomeGuide')
+    expect(page).to have_text('An awesome guide')
     expect(page).to have_text('About this guide')
 
     within('.actions') do
@@ -35,4 +34,22 @@ feature 'Search Flow' do
 
     expect(page).to have_text('Description of foo')
   end
+
+  scenario 'visits a guide, tries to check progress, signs in, checks progress' do
+    visit "/en/guides/#{guide.id}"
+
+    click_on 'Your Progress'
+
+    expect(page).to have_text('You must sign in')
+
+    within('.alert') do
+      click_on 'sign in with Github'
+    end
+
+    expect(page).to have_text('Foo')
+    expect(page).to have_text('Bar')
+    expect(page).to have_text('Baz')
+  end
+
+
 end
