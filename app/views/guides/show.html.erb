@@ -51,7 +51,7 @@
             seguir intentando!
           <% end %>
         </p>
-
+        <%= link_to t(:back_to_search), guides_path, class: 'btn btn-link' %>
       </div>
       <div class="col-md-7">
         <%= pie_chart @stats.to_h { |it| t(it) }, colors: ["green", "red", 'grey'] %>
