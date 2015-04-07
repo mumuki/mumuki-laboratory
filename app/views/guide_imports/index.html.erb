@@ -1,0 +1,39 @@
+<%= render layout: 'layouts/guides', locals: {current_tab: :history} do %>
+
+  <div>
+    <% restricted_to_author(@guide) do %>
+      <h2>Post commit hook:</h2>
+      <pre><%= guide_imports_url(@guide) %></pre>
+    <% end %>
+  </div>
+
+  <div>
+    <h2><%= t :imports %></h2>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th><%= t :import_date %></th>
+        <th><%= t :output %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @imports.each do |import| %>
+        <tr>
+          <td>
+            <%= status_icon import %> <%= import.created_at %>
+          </td>
+          <td>
+            <%= import.result %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <%= paginate @imports %>
+  </div>
+
+  <div class="actions">
+    <%= link_to t(:new_import), guide_imports_path(@guide), method: :post, class: 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -24,10 +24,6 @@ class GuidesController < ApplicationController
     end
   end
 
-  def edit
-
-  end
-
   def details
   end
 

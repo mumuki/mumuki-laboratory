@@ -10,4 +10,8 @@ class GuideImportsController < ApplicationController
     flash[:notice] = t(:import_created)
     respond_with @import, location: @guide
   end
+
+  def index
+    @imports = paginated @guide.imports
+  end
 end

@@ -166,3 +166,8 @@ es:
   exercise_success_rate: "Taza de éxito en ejercicios"
   last_submission_date: "Última solucion"
   sign_up_date: "Usuario dede"
+  import_date: "Fecha"
+  imports: "Actualizaciones"
+  history: "Historial"
+  progress: "Tu progreso"
+  overview: "Vista general"

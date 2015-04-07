@@ -106,3 +106,8 @@ en:
   last_submission_date: "Last submission"
   username: "Username"
   sign_up_date: "User since"
+  import_date: "Date"
+  imports: "Updates"
+  history: "History"
+  progress: "Your Progress"
+  overview: "Overview"

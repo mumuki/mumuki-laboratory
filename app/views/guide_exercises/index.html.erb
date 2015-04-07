@@ -1,0 +1,17 @@
+<%= render layout: 'layouts/guides', locals: {current_tab: :progress} do %>
+
+  <div>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th><%= t :import_date %>></th>
+        <th><%= t :output %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render collection: @exercises, partial: 'layouts/exercise_panel/exercise' %>
+      </tbody>
+    </table>
+    <%= paginate @exercises %>
+  </div>
+<% end %>
