@@ -4,12 +4,16 @@
     <table class="table table-striped">
       <thead>
       <tr>
-        <th><%= t :import_date %>></th>
-        <th><%= t :output %></th>
+        <th><%= t :exercise_number %></th>
+        <th><%= t :exercise %></th>
+        <th><%= t :submissions_count %></th>
+        <th><%= t :last_submission_date %></th>
       </tr>
       </thead>
       <tbody>
-      <%= render collection: @exercises, partial: 'layouts/exercise_panel/exercise' %>
+      <%= render collection: @exercises,
+                 partial: 'layouts/contextualized_exercise/exercise',
+                 locals: {user: current_user} %>
       </tbody>
     </table>
     <%= paginate @exercises %>

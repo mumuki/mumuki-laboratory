@@ -30,7 +30,7 @@ module WithSubmissions
   end
 
   def status_for(user)
-    s = submissions_for(user).last.try(&:status)
+    s = last_submission(user).try(&:status)
     case s
       when 'passed' then :passed
       when 'failed' then :failed
@@ -38,4 +38,11 @@ module WithSubmissions
     end
   end
 
+  def last_submission_date_for(user)
+    last_submission(user).try(&:created_at)
+  end
+
+  def submissions_count_for(user)
+    submissions_for(user).count
+  end
 end

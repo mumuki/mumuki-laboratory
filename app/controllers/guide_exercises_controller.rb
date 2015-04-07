@@ -4,7 +4,7 @@ class GuideExercisesController < ApplicationController
   before_action :authenticate!
 
   def index
-    @exercises = paginated @guide.exercises
+    @exercises = paginated @guide.exercises.order(original_id: :asc)
   end
 
 end

@@ -1,0 +1,15 @@
+<tr>
+  <td>
+    <%= exercise_counter + 1%>
+  </td>
+  <td>
+    <%= exercise_status_icon(exercise) %>
+    <a href="<%= exercise_path(exercise) %>"><%= exercise.title %></a>
+  </td>
+  <td>
+    <%= exercise.submissions_count_for(user) %>
+  </td>
+  <td>
+    <%= time_ago_in_words_or_never exercise.last_submission_date_for(user)  %>
+  </td>
+</tr>
