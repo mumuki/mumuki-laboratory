@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def index
     @q = params[:q]
-    @users = paginated User.by_full_text(@q).order(last_submission_date: :desc), 30
+    @users = paginated User.by_full_text(@q).order('last_submission_date desc nulls last'), 30
   end
   private
 
