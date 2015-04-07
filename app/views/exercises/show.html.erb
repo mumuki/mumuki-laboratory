@@ -1,20 +1,6 @@
 <%= render layout: 'layouts/exercise', locals: {current_tab: :exercise} do %>
   <div class="row">
     <div class="col-md-6">
-      <section>
-        <% if @exercise.guide %>
-          <p>
-            <%= raw t :belongs_to_guide, guide: link_to_guide(@exercise.guide) %>
-          </p>
-        <% else %>
-          <p>
-            <%= raw t :authored_by, author: link_to(@exercise.author.name, user_path(@exercise.author)) %>
-          </p>
-        <% end %>
-      </section>
-      <section>
-        <%= taglist_tag @exercise.tag_list %>
-      </section>
       <div>
         <%= @exercise.description_html %>
       </div>
