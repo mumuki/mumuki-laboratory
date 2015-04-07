@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :user do
-    name Faker::Internet.user_name
+    sequence(:name) { |n| "#{Faker::Internet.user_name}#{n}" }
   end
 end

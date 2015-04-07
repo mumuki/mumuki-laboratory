@@ -81,6 +81,9 @@ ActiveRecord::Schema.define(version: 20150411215351) do
     t.integer  "guide_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "status",       default: 0
+    t.text     "result"
+    t.integer  "committer_id"
   end
 
   add_index "exports", ["guide_id"], name: "index_exports_on_guide_id", using: :btree
@@ -162,5 +165,7 @@ ActiveRecord::Schema.define(version: 20150411215351) do
     t.integer  "default_guide_id"
     t.datetime "last_submission_date"
   end
+
+  add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree
 
 end
