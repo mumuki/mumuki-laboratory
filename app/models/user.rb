@@ -25,10 +25,6 @@ class User < ActiveRecord::Base
            class_name: 'Exercise',
            source: :exercise
 
-  def last_submission_date
-    submissions.last.try(&:created_at)
-  end
-
   def submissions_count
     submissions.count
   end

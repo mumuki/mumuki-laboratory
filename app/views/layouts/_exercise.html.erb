@@ -8,6 +8,23 @@
       <small> - <%= @exercise.language %></small>
     </h1>
 
+    <div class="row">
+      <div class="col-md-5">
+        <% if @exercise.guide %>
+          <p>
+            <%= raw t :belongs_to_guide, guide: link_to_guide(@exercise.guide) %>
+          </p>
+        <% else %>
+          <p>
+            <%= raw t :authored_by, author: link_to(@exercise.author.name, user_path(@exercise.author)) %>
+          </p>
+        <% end %>
+      </div>
+      <div class="col-md-7 text-right">
+        <%= link_to_tag_list(@exercise.tag_list) %>
+      </div>
+    </div>
+
     <% if @stats %>
       <div class="progress">
         <a id="passed-progress-bar" href="<%= guide_path(@exercise.guide)%>"
