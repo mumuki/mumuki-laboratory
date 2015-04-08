@@ -2,9 +2,11 @@ class Import < ActiveRecord::Base
   include WithStatus
   include WithExerciseRepository
 
+  extend WithAsyncAction
+
   belongs_to :guide
 
-  after_commit :schedule_run_import!, on: :create
+  schedule_on_create ImportGuideJob
 
   delegate :author, to: :guide
 
@@ -26,11 +28,6 @@ class Import < ActiveRecord::Base
       end
       {result: log.to_s, status: :passed}
     end
-  end
-
-
-  def schedule_run_import!
-    ImportGuideJob.run_async(id)
   end
 
   private
