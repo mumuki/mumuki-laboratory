@@ -23,7 +23,14 @@ class Export < ActiveRecord::Base
   end
 
   def create_guide_files(dir)
-    # code here
+    guide.exercises.each do |e|
+      dirname = "#{e.id}_#{e.title}"
+      Dir.mkdir dirname
+      File.new('test').write(e.test)
+      File.new('description.md').write(e.description)
+      File.new('hint.md').write(e.hint)
+      File.new('extra').write(e.extra_code)
+    end
   end
 
 
