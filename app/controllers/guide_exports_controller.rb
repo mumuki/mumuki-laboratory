@@ -2,9 +2,9 @@ class GuideExportsController < ApplicationController
   include NestedInGuide
 
   def create
-    @import = @guide.imports.create!
-    flash[:notice] = t(:import_created)
+    @import = @guide.exports.create!
+    flash[:notice] = t(:export_created)
 
-    respond_with @import, location: @guide
+    respond_with @guide
   end
 end
