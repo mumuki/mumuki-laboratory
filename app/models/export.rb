@@ -5,8 +5,11 @@ class Export < ActiveRecord::Base
   include WithGitGuide
 
   belongs_to :guide
+  belongs_to :committer, class_name: 'User'
 
   schedule_on_create ExportGuideJob
+
+  validates_presence_of :committer
 
   def run_export!
     run_update! do
@@ -29,6 +32,7 @@ class Export < ActiveRecord::Base
   end
 
   def create_repo
-    #TODO
+    client = Octokit::Client.new(access_token: committer.token)
+    client.create_repository(guide.github_repository)
   end
 end
