@@ -16,7 +16,8 @@ class Export < ActiveRecord::Base
       ensure_repo_exists!
       with_cloned_repo 'export' do |dir, repo|
         create_guide_files dir
-        repo.commit_all("Mumuki Export on #{Time.now}")
+        repo.add(all: true)
+        repo.commit("Mumuki Export on #{Time.now}")
         repo.push
       end
     end
