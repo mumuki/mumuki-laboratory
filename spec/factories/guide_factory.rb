@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   factory :guide do
-    name 'guide1'
+    sequence(:name) { |n| "guide#{n}" }
     description 'A Guide'
     author { create(:user) }
     github_repository 'flbulgarelli/mumuki-sample-exercises'

@@ -9,6 +9,7 @@ class Guide < ActiveRecord::Base
   #TODO rename name to title. This helps building also generic link_to compoenetns
   has_many :exercises
   has_many :imports
+  has_many :exports
 
   validates_presence_of :github_repository, :name, :author, :description
   validate :valid_name?

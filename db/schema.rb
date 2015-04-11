@@ -77,6 +77,17 @@ ActiveRecord::Schema.define(version: 20150411215351) do
     t.datetime "updated_at"
   end
 
+  create_table "exports", force: true do |t|
+    t.integer  "guide_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "status",       default: 0
+    t.text     "result"
+    t.integer  "committer_id"
+  end
+
+  add_index "exports", ["guide_id"], name: "index_exports_on_guide_id", using: :btree
+
   create_table "guides", force: true do |t|
     t.string   "github_repository"
     t.string   "name"
@@ -151,7 +162,10 @@ ActiveRecord::Schema.define(version: 20150411215351) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
+    t.integer  "default_guide_id"
     t.datetime "last_submission_date"
   end
+
+  add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree
 
 end
