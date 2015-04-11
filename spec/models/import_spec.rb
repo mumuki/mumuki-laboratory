@@ -12,7 +12,7 @@ describe Import do
 
   describe '#import_from_directory!' do
     let(:guide) { create(:guide) }
-    let!(:haskell) { create(:language, extension: 'hs') }
+    let!(:haskell) { create(:haskell) }
 
     before { import.run_import_from_directory! 'spec/data/mumuki-sample-exercises' }
 
