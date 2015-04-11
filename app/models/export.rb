@@ -12,6 +12,7 @@ class Export < ActiveRecord::Base
   validates_presence_of :committer
 
   def run_export!
+    Rails.logger.info "Exporting guide #{guide.name}"
     run_update! do
       ensure_repo_exists!
       with_cloned_repo 'export' do |dir, repo|
@@ -26,6 +27,7 @@ class Export < ActiveRecord::Base
   def create_guide_files(dir)
     write_file dir, 'description.md', guide.description
     guide.exercises.each do |e|
+      Rails.logger.info "Exporting exercise #{e.title} of guide #{guide.title}"
       dirname = File.join dir, "#{'%05d' % e.original_id}_#{e.title}"
       Dir.mkdir dirname
       write_file(dirname, format_extension('test'), e.test)
