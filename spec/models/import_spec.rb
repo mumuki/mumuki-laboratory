@@ -31,6 +31,7 @@ describe Import do
       it { expect(imported_exercise.language).to eq haskell }
       it { expect(imported_exercise.expectations.size).to eq 2 }
       it { expect(imported_exercise.tag_list).to include *%w(foo bar baz) }
+      it { expect(guide.description).to eq "Awesome guide\n"}
     end
 
     context 'when importing exercise with errors' do
