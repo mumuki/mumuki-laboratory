@@ -23,14 +23,26 @@ class Export < ActiveRecord::Base
   end
 
   def create_guide_files(dir)
+    write_file dir, 'description.md', guide.description
     guide.exercises.each do |e|
-      dirname = "#{e.id}_#{e.title}"
+      dirname = File.join dir, "#{'%05d' % e.original_id}_#{e.title}"
       Dir.mkdir dirname
-      File.new('test').write(e.test)
-      File.new('description.md').write(e.description)
-      File.new('hint.md').write(e.hint)
-      File.new('extra').write(e.extra_code)
+      write_file(dirname, format_extension('test'), e.test)
+      write_file(dirname, 'description.md', e.description)
+      write_file(dirname, 'meta.yml', '')
+
+      write_file(dirname, 'hint.md', e.hint) if e.hint
+      write_file(dirname, format_extension('extra'), e.extra_code) if e.extra_code
+      write_file(dirname, 'expectations.yml', '') if e.expectations.present?
     end
+  end
+
+  def format_extension(filename)
+    "#{filename}.#{guide.language.extension}"
+  end
+
+  def write_file(dirname, name, content)
+    File.write(File.join(dirname, name), content)
   end
 
 
