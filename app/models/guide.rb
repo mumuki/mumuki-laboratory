@@ -69,6 +69,10 @@ class Guide < ActiveRecord::Base
     Stats.from_statuses exercises.map { |it| it.status_for(user) }
   end
 
+  def github_repository_name
+    github_repository.split('/')[1]
+  end
+
   #TODO move to DB
   def self.at_locale
     select { |it| it.locale == I18n.locale.to_s }
