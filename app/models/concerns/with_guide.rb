@@ -16,4 +16,8 @@ module WithGuide
   def sibling_for(user, query, order)
     guide.pending_exercises(user).where(query, id: original_id).order(order).first  if guide
   end
+
+  def orphan?
+    guide.nil?
+  end
 end

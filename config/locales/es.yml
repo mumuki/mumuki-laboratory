@@ -51,6 +51,8 @@ es:
   sign_in_with_github_action: "iniciar sesión con Github"
   languages: "Lenguajes"
   back_to_search: "Volver a la búsqueda"
+  notify_problem_to_author: "Notificar problema al autor"
+  problem_with_exercise: "[Mumuki] Error con el ejercicio: %{title}"
 
   datetime:
     distance_in_words:
@@ -173,3 +175,4 @@ es:
   progress: "Tu progreso"
   overview: "Vista general"
   exercise_number: "Número"
+  export_created: "Exportación encolada"

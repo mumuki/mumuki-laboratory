@@ -6,8 +6,7 @@ class User < ActiveRecord::Base
       }
   }
 
-  include WithSearch
-  include WithOmniauth
+  include WithSearch, WithOmniauth, WithOctokit
 
   has_many :submissions, foreign_key: :submitter_id
   has_many :exercises, foreign_key: :author_id
@@ -24,6 +23,10 @@ class User < ActiveRecord::Base
            through: :submissions,
            class_name: 'Exercise',
            source: :exercise
+
+  def last_submission_date
+    submissions.last.try(&:created_at)
+  end
 
   def submissions_count
     submissions.count
@@ -48,4 +51,5 @@ class User < ActiveRecord::Base
   def exercises_success_rate
     "#{solved_exercises_count}/#{submitted_exercises_count}"
   end
+
 end

@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'Search Flow' do
   before { I18n.locale = :en }
 
-  let(:haskell) { create(:language, name: 'Haskell') }
+  let(:haskell) { create(:haskell) }
   let!(:exercises) {
     create(:exercise, title: 'Foo',        guide: guide, original_id: 1, language: haskell, description: 'Description of foo')
     create(:exercise, title: 'Bar',        guide: guide, original_id: 2)

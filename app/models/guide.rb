@@ -5,10 +5,12 @@ class Guide < ActiveRecord::Base
 
   include WithSearch
   include WithAuthor
+  include WithWebHook
 
   #TODO rename name to title. This helps building also generic link_to compoenetns
   has_many :exercises
   has_many :imports
+  has_many :exports
 
   validates_presence_of :github_repository, :name, :author, :description
   validate :valid_name?
@@ -59,8 +61,16 @@ class Guide < ActiveRecord::Base
     "https://github.com/#{github_repository}"
   end
 
+  def github_authorized_url(user)
+    "https://#{user.token}:@github.com/#{github_repository}"
+  end
+
   def stats(user)
     Stats.from_statuses exercises.map { |it| it.status_for(user) }
+  end
+
+  def github_repository_name
+    github_repository.split('/')[1]
   end
 
   #TODO move to DB

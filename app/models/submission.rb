@@ -2,6 +2,8 @@ class Submission < ActiveRecord::Base
   include TestRunning
   include WithStatus
 
+  extend WithAsyncAction
+
   belongs_to :exercise
   belongs_to :submitter, class_name: 'User'
 
@@ -12,7 +14,7 @@ class Submission < ActiveRecord::Base
   after_create :update_submissions_count!
   after_create :update_last_submission!
 
-  after_commit :schedule_test_run!, on: :create
+  schedule_on_create TestRunnerJob
 
   delegate :language, :title, to: :exercise
 

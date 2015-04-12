@@ -8,6 +8,11 @@ FactoryGirl.define do
     image_url { Faker::Internet.url }
   end
 
+  factory :haskell, parent: :language do
+    extension 'hs'
+    name 'Haskell'
+  end
+
   factory :exercise do
     title 'Exercise 1'
     description 'Simple exercise'

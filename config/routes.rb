@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       end
       # All users
       resources :imports, controller: 'guide_imports', only: [:create, :index]
+      resources :exports, controller: 'guide_exports', only: [:create, :index]
       # All users
       resources :exercises, controller: 'guide_exercises', only: :index
     end

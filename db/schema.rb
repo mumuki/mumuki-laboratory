@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150406020152) do
+ActiveRecord::Schema.define(version: 20150412201651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,13 +77,24 @@ ActiveRecord::Schema.define(version: 20150406020152) do
     t.datetime "updated_at"
   end
 
+  create_table "exports", force: true do |t|
+    t.integer  "guide_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "status",       default: 0
+    t.text     "result"
+    t.integer  "committer_id"
+  end
+
+  add_index "exports", ["guide_id"], name: "index_exports_on_guide_id", using: :btree
+
   create_table "guides", force: true do |t|
     t.string   "github_repository"
     t.string   "name"
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "description"
+    t.text     "description"
   end
 
   add_index "guides", ["author_id"], name: "index_guides_on_author_id", using: :btree
@@ -93,8 +104,9 @@ ActiveRecord::Schema.define(version: 20150406020152) do
     t.integer  "guide_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "status",     default: 0
+    t.integer  "status",       default: 0
     t.text     "result"
+    t.integer  "committer_id"
   end
 
   create_table "languages", force: true do |t|
@@ -153,5 +165,7 @@ ActiveRecord::Schema.define(version: 20150406020152) do
     t.string   "email"
     t.datetime "last_submission_date"
   end
+
+  add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree
 
 end
