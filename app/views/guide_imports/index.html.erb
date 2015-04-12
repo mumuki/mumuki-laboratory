@@ -3,7 +3,7 @@
   <div>
     <% restricted_to_author(@guide) do %>
       <h2>Post commit hook:</h2>
-      <pre><%= @guide.web_hook %></pre>
+      <pre><%= guide_imports_url(@guide) %></pre>
     <% end %>
   </div>
 
