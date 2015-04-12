@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
       }
   }
 
-  include WithSearch, WithOmniauth, WithDefaultGuide
+  include WithSearch, WithOmniauth, WithDefaultGuide, WithOctokit
 
   has_many :submissions, foreign_key: :submitter_id
   has_many :exercises, foreign_key: :author_id

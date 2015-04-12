@@ -5,6 +5,7 @@ class Guide < ActiveRecord::Base
 
   include WithSearch
   include WithAuthor
+  include WithWebHook
 
   #TODO rename name to title. This helps building also generic link_to compoenetns
   has_many :exercises

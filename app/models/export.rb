@@ -55,7 +55,6 @@ class Export < ActiveRecord::Base
 
   def create_repo
     Rails.logger.info "Creating repository #{guide.github_repository}"
-    client = Octokit::Client.new(access_token: committer.token)
-    client.create_repository(guide.github_repository)
+    committer.octokit.create_repository(guide.github_repository)
   end
 end
