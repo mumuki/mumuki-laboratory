@@ -8,7 +8,7 @@ module WithDefaultGuide
   def find_or_create_default_guide
     transaction do
       if default_guide.nil?
-        self.default_guide = new_default_guide
+        self.update!(default_guide: new_default_guide)
       end
     end
     self.default_guide
