@@ -9,9 +9,9 @@ module WithDefaultGuide
     transaction do
       if default_guide.nil?
         self.default_guide = new_default_guide
-        self.default_guide
       end
     end
+    self.default_guide
   end
 
   private

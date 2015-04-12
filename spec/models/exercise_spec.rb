@@ -6,6 +6,17 @@ describe Exercise do
 
   before { I18n.locale = :en  }
 
+  describe '#create!' do
+    let(:haskell) { create(:haskell) }
+    before do
+      Exercise.create!(author: user, title: 'Foo', language: haskell, description: 'foo', test: 'foo')
+      Exercise.create!(author: user, title: 'Bar', language: haskell, description: 'bar', test: 'bar')
+    end
+
+    it { expect(user.default_guide).to_not be nil }
+    it { expect(user.default_guide.exercises.size).to eq 2 }
+  end
+
   describe '#next_for' do
     context 'when exercise has no guide' do
       it { expect(exercise.next_for(user)).to be nil }
