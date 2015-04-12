@@ -61,6 +61,10 @@ class Guide < ActiveRecord::Base
     "https://github.com/#{github_repository}"
   end
 
+  def github_authorized_url(user)
+    "https://#{user.token}:@github.com/#{github_repository}"
+  end
+
   def stats(user)
     Stats.from_statuses exercises.map { |it| it.status_for(user) }
   end

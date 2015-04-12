@@ -10,17 +10,23 @@ module WithGitGuide
   private
 
   def git_clone_into(dir)
-    Git.clone(guide.github_url, '.', path: dir)
+    Git.clone(github_url, '.', path: dir)
   rescue Git::GitExecuteError => e
     raise 'Repository is private or does not exist' if private_repo_error(e.message)
     raise e
   end
 
   def git_exists?
-    Git.ls_remote(guide.github_url)
+    Git.ls_remote(github_url)
     true
   rescue Git::GitExecuteError
     false
+  end
+
+  private
+
+  def github_url
+    guide.github_authorized_url(committer)
   end
 
   def private_repo_error(message)
