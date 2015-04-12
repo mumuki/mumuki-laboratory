@@ -27,7 +27,7 @@ class Export < ActiveRecord::Base
   def create_guide_files(dir)
     write_file dir, 'description.md', guide.description
     guide.exercises.each do |e|
-      Rails.logger.info "Exporting exercise #{e.title} of guide #{guide.title}"
+      Rails.logger.info "Exporting exercise #{e.title} of guide #{guide.name}"
       dirname = File.join dir, "#{'%05d' % e.original_id}_#{e.title}"
       Dir.mkdir dirname
       write_file(dirname, format_extension('test'), e.test)
