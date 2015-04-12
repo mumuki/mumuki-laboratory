@@ -3,7 +3,6 @@ module WithGuide
 
   included do
     belongs_to :guide
-    before_create  :assign_guide!, if: :orphan?
   end
 
   def next_for(user)
@@ -20,9 +19,5 @@ module WithGuide
 
   def orphan?
     guide.nil?
-  end
-
-  def assign_guide!
-    self.guide = author.find_or_create_default_guide
   end
 end

@@ -44,7 +44,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def can_edit?
-    guide.nil? || author.default_guide == guide #TODO temporal fix
+    guide.nil?
   end
 
   def search_tags
