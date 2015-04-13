@@ -3,9 +3,7 @@ class Guide < ActiveRecord::Base
       against: [:name, :description],
   }
 
-  include WithSearch
-  include WithAuthor
-  include WithWebHook
+  include WithSearch, WithAuthor, WithWebHook, WithMarkup
 
   #TODO rename name to title. This helps building also generic link_to compoenetns
   has_many :exercises
@@ -14,6 +12,8 @@ class Guide < ActiveRecord::Base
 
   validates_presence_of :github_repository, :name, :author, :description
   validate :valid_name?
+
+  markup_on :description
 
   def valid_name?
     errors.add(:name, 'can not contain whitespaces') if name && name =~ /\s+/
