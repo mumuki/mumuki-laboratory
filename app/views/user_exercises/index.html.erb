@@ -9,7 +9,9 @@
       <th></th>
       <th><%= t :tag %></th>
       <th><%= t :created %></th>
-      <th colspan="4"><%= t :actions %></th>
+      <% restricted_to_current_user @user do %>
+        <th colspan="4"><%= t :actions %></th>
+      <% end %>
     </tr>
     </thead>
 
@@ -29,8 +31,10 @@
         <td>
           <%= time_ago_in_words(exercise.created_at) %>
         </td>
-        <td><%= link_to fa_icon(:pencil), edit_exercise_path(exercise) if exercise.can_edit? %></td>
-        <td><%= link_to fa_icon(:trash), exercise, method: :delete, data: {confirm: t('are_you_sure')} if exercise.can_destroy? %></td>
+        <% restricted_to_current_user @user do %>
+          <td><%= link_to fa_icon(:pencil), edit_exercise_path(exercise) if exercise.can_edit? %></td>
+          <td><%= link_to fa_icon(:trash), exercise, method: :delete, data: {confirm: t('are_you_sure')} if exercise.can_destroy? %></td>
+        <% end %>
       </tr>
     <% end %>
     </tbody>
@@ -41,7 +45,7 @@
       <%= paginate @exercises %>
     </div>
     <div class="col-md-4 pagination-inline">
-      <%= restricted_to_current_user @user do %>
+      <% restricted_to_current_user @user do %>
         <%= link_to t(:new_exercise), new_exercise_path, class: 'btn btn-primary' %>
       <% end %>
     </div>

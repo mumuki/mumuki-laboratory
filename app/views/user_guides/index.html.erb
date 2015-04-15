@@ -28,7 +28,7 @@
       <%= paginate @guides %>
     </div>
     <div class="col-md-4 pagination-inline">
-      <%= restricted_to_current_user @user do %>
+      <% restricted_to_current_user @user do %>
         <%= link_to t(:new_guide), new_guide_path, class: 'btn btn-primary' %>
       <% end %>
     </div>
