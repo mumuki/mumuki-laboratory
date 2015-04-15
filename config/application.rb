@@ -26,5 +26,9 @@ module Mumuki
 
     config.autoload_paths += %W(#{config.root}/plugins)
 
+    config.action_dispatch.rescue_responses.merge!(
+        'AuthorizationError' => :unauthorized
+    )
+
   end
 end
