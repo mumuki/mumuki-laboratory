@@ -1,16 +1,14 @@
-<h1><%= t :profile_of, username: @user.name %></h1>
+<%= render layout: 'layouts/user', locals: {current_tab: :overview} do %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= image_tag @user.image_url, size: '250x250', class: 'img-circle' %>
+    </div>
 
-<div class="row">
-  <div class="col-md-6">
-    <%= render 'layouts/exercise_panel/panel',
-               heading: t(:latest_exercises).titleize.pluralize,
-               exercises: @user.exercises,
-               more_link: nil %>
+    <div class="col-md-8">
+      <td><%= @user.submissions_success_rate %></td>
+      <td><%= @user.exercises_success_rate %></td>
+      <td><%= time_ago_in_words_or_never @user.last_submission_date %></td>
+      <td><%= time_ago_in_words @user.created_at %></td>
+    </div>
   </div>
-  <div class="col-md-6">
-    <%= render 'layouts/guides_panel/panel',
-               heading: t(:latest_guides).titleize.pluralize,
-               guides: @user.guides,
-               more_link: nil %>
-  </div>
-</div>
+<% end %>

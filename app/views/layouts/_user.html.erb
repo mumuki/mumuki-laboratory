@@ -1,0 +1,36 @@
+<% @current_tab = current_tab %>
+
+<div class="row">
+  <div class="col-md-12">
+    <h1>
+      <%= @user.name %>
+    </h1>
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10">
+    <%= yield %>
+  </div>
+  <div class="col-md-2">
+    <ul class="nav nav-tabs tabs-right vertical-text">
+      <li <%= active_if :overview %>>
+        <%= link_to t(:overview), @user %>
+      </li>
+      <li <%= active_if :submissions %>>
+        <%= link_to t(:submissions), user_submissions_path(@user) %>
+      </li>
+      <li <%= active_if :solved_exercises %>>
+        <%= link_to t(:solved_exercises), user_solved_exercises_path(@user) %>
+      </li>
+      <li <%= active_if :exercises %>>
+        <%= link_to t(:exercises), user_exercises_path(@user) %>
+      </li>
+      <li <%= active_if :guides %>>
+        <%= link_to t(:guides), user_guides_path(@user) %>
+      </li>
+    </ul>
+  </div>
+</div>
+

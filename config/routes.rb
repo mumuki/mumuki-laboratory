@@ -39,6 +39,10 @@ Rails.application.routes.draw do
       resources :exercises, controller: 'user_exercises', only: :index
       # Nested user
       resources :guides, controller: 'user_guides', only: :index
+      # nested user
+      resources :submissions, controller: 'user_submissions', only: :index
+      #nested user
+      resources :solved_exercises, controller: 'solved_exercises', only: :index
     end
 
     # Current user
