@@ -8,7 +8,9 @@ class Exercise < ActiveRecord::Base
       },
   }
 
-  include WithSearch, WithMarkup, WithAuthor, WithSubmissions, WithGuide
+  include WithSearch, WithTeaser,
+          WithMarkup, WithAuthor,
+          WithSubmissions, WithGuide
 
   acts_as_taggable
 
@@ -33,10 +35,6 @@ class Exercise < ActiveRecord::Base
     exercise = find_or_initialize_by(original_id: original_id, guide_id: guide.id)
     exercise.assign_attributes(options)
     exercise.save!
-  end
-
-  def teaser(more_link)
-    description.truncate(70, omission: more_link)
   end
 
   def can_destroy?
