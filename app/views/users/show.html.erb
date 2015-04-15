@@ -4,11 +4,28 @@
       <%= image_tag @user.image_url, size: '250x250', class: 'img-circle' %>
     </div>
 
+
     <div class="col-md-8">
-      <td><%= @user.submissions_success_rate %></td>
-      <td><%= @user.exercises_success_rate %></td>
-      <td><%= time_ago_in_words_or_never @user.last_submission_date %></td>
-      <td><%= time_ago_in_words @user.created_at %></td>
+      <table class="table table-striped">
+        <tbody>
+        <tr>
+          <th><%= t :submissions_success_rate %></th>
+          <td><%= @user.submissions_success_rate %></td>
+        </tr>
+        <tr>
+          <th><%= t :exercise_success_rate %></th>
+          <td><%= @user.exercises_success_rate %></td>
+        </tr>
+        <tr>
+          <th><%= t :last_submission_date %></th>
+          <td><%= time_ago_in_words_or_never @user.last_submission_date %></td>
+        </tr>
+        <tr>
+          <th><%= t :sign_up_date %></th>
+          <td><%= time_ago_in_words @user.created_at %></td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 <% end %>

@@ -15,4 +15,14 @@ feature 'Users listing' do
     expect(page).to have_text('foobar')
     expect(page).to have_text('baz')
   end
+
+  scenario 'go to user from listing' do
+    visit '/en/users'
+
+    click_on 'foobar'
+
+    expect(page).to have_text('foobar')
+    expect(page).to have_text('Overview')
+  end
+
 end

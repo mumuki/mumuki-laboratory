@@ -25,10 +25,10 @@
         <%= link_to t(:solved_exercises), user_solved_exercises_path(@user) %>
       </li>
       <li <%= active_if :exercises %>>
-        <%= link_to t(:exercises), user_exercises_path(@user) %>
+        <%= link_to t(:exercise).pluralize, user_exercises_path(@user) %>
       </li>
       <li <%= active_if :guides %>>
-        <%= link_to t(:guides), user_guides_path(@user) %>
+        <%= link_to t(:guide).pluralize, user_guides_path(@user) %>
       </li>
     </ul>
   </div>
