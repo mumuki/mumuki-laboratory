@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   scope '(:locale)' do
     root to: 'home#index'
 
-    get 'dashboard' => 'dashboard#show'
-
     # All users
     resources :exercises do
       # Current user
