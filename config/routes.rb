@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     end
 
     # All users
-    resources :guides, only: [:new, :create, :show, :edit, :index] do
+    resources :guides, only: [:new, :create, :show, :edit, :index, :update] do
       member do
         get :details
       end

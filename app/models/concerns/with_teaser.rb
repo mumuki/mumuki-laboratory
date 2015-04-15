@@ -1,0 +1,2 @@
+class WithTeaser
+end
