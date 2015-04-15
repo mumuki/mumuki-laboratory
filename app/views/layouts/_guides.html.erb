@@ -17,17 +17,17 @@
   <div class="col-md-2">
     <ul class="nav nav-tabs tabs-right vertical-text">
       <li <%= active_if :overview %>>
-        <%= link_to t(:overview), @guide %>
+        <%= link_to fa_icon('code',  text: t(:overview)), @guide %>
       </li>
       <li <%= active_if :progress %>>
-        <%= link_to t(:progress), guide_exercises_path(@guide) %>
+        <%= link_to fa_icon('trophy', text: t(:progress)), guide_exercises_path(@guide) %>
       </li>
       <li <%= active_if :history %>>
-        <%= link_to t(:history), guide_imports_path(@guide) %>
+        <%= link_to fa_icon('history',text: t(:history)), guide_imports_path(@guide) %>
       </li>
       <% restricted_to_author @guide do %>
         <li <%= active_if :edit %>>
-          <%= link_to t(:edit), edit_guide_path(@guide) %>
+          <%= link_to fa_icon('pencil', text: t(:edit)), edit_guide_path(@guide) %>
         </li>
       <% end %>
     </ul>
