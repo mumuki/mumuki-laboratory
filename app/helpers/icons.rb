@@ -34,4 +34,12 @@ module Icons
     end
   end
 
+  def icon_for_follower following
+    if following
+      fa_icon(*icon_for_status("passed"))
+    else
+      fa_icon(*icon_for_status("failed"))
+    end
+  end
+
 end

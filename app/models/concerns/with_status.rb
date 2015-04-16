@@ -20,5 +20,8 @@ module WithStatus
     def passed_status
       statuses[:passed]
     end
+    def failed_status
+      statuses[:failed]
+    end
   end
 end
