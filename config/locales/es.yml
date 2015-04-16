@@ -53,6 +53,12 @@ es:
   back_to_search: "Volver a la búsqueda"
   notify_problem_to_author: "Notificar problema al autor"
   problem_with_exercise: "[Mumuki] Error con el ejercicio: %{title}"
+  follow: Seguir!
+  unfollow: Dejar de seguir!
+  following: Siguiendo
+  passed_statistics: Estadisticas de Aprobacion
+  failed_statistics: Estadisticas de Fallo
+  all: Todos
 
   datetime:
     distance_in_words:

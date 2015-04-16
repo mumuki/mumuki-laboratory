@@ -6,6 +6,7 @@ feature 'Users listing' do
   let(:exercise) { create(:exercise) }
 
   before do
+    login_as(:user_with_submissions, :scope => :user)
     user_with_submissions.submissions.create(exercise: exercise, status: :failed, content: '')
   end
 

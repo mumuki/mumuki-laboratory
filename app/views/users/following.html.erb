@@ -5,7 +5,7 @@
     <div class="exercise-search-box"> <%# TODO rename and extract %>
       <div class="row">
         <div class="col-md-12">
-          <%= bootstrap_form_tag url: users_path, method: :get do |f| %>
+          <%= bootstrap_form_tag url: following_user_path(current_user), method: :get do |f| %>
 
             <div class="form-group">
               <div class="input-group">
@@ -19,9 +19,9 @@
 
             <div class="form-group">
               <div class="btn-group btn-group-justified">
-                <a class="btn btn-default" href="<%= following_user_path(current_user) %>"><%= t(:following) %>
+                <a class="btn btn-default active" href="<%= following_user_path(current_user) %>"><%= t(:following) %>
                 </a>
-                <a class="btn btn-default active" href="<%= users_path %>"><%= t(:all) %>
+                <a class="btn btn-default" href="<%= users_path %>"><%= t(:all) %>
                 </a>
               </div>
             </div>

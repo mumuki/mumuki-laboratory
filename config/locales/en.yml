@@ -72,6 +72,12 @@ en:
   no_guides: "Nobody created a guide for this search yet. <a href=\"%{create_path}\">Be the first!</a>"
   notify_problem_to_author: "Notify problem to author"
   problem_with_exercise: "[Mumuki] Problem with exercise: %{title}"
+  follow: Follow!
+  unfollow: Unfollow!
+  following: Following
+  passed_statistics: Passed Statistics
+  failed_statistics: Failed Statistics
+  all: All
 
 
   exercise_count: "exercises"

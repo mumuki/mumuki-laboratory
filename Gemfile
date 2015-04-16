@@ -57,6 +57,8 @@ gem 'nprogress-rails'
 
 gem 'yaml_db'
 
+gem 'groupdate'
+
 group :test do
   gem 'rspec-rails', '~> 2.14'
   gem 'factory_girl_rails'
