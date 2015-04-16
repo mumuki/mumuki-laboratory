@@ -1,4 +1,5 @@
 require 'spec_helper'
+include Devise::TestHelpers
 
 feature 'Users listing' do
   let!(:new_user) { create(:user, name: 'foobar') }
@@ -10,6 +11,10 @@ feature 'Users listing' do
   end
 
   scenario 'list users' do
+    visit '/'
+
+    click_on 'Sign in with Github'
+
     visit '/en/users'
 
     expect(page).to have_text('foobar')

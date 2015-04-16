@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :submissions, foreign_key: :submitter_id
   has_many :exercises, foreign_key: :author_id
   has_many :guides, foreign_key: :author_id
+  has_many :relationships, foreign_key: :follower_id, dependent: :destroy
+  has_many :following, through: :relationships, source: :followed
 
   has_many :submitted_exercises,
            -> { uniq },
@@ -36,6 +38,14 @@ class User < ActiveRecord::Base
     submissions.where(status: Submission.passed_status).count
   end
 
+  def passed_submissions_count_per_week
+    submissions.where(status: Submission.passed_status).group_by_week(:created_at).count
+  end
+
+  def failed_submissions_count_per_week
+    submissions.where(status: Submission.failed_status).group_by_week(:created_at).count
+  end
+
   def submitted_exercises_count
     submitted_exercises.count
   end
@@ -50,6 +60,18 @@ class User < ActiveRecord::Base
 
   def exercises_success_rate
     "#{solved_exercises_count}/#{submitted_exercises_count}"
+  end
+
+  def follow(other_user)
+    relationships.create(followed_id: other_user.id)
+  end
+
+  def unfollow(other_user)
+    relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
   end
 
 end
