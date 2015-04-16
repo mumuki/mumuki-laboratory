@@ -22,7 +22,7 @@
 
     <ul class="nav navbar-nav navbar-right">
       <% if current_user? %>
-          <li><%= link_to current_user.name, dashboard_path %></li>
+          <li><%= link_to current_user.name, user_path(current_user) %></li>
           <li><%= link_to(t(:sign_out), logout_path) %></li>
       <% else %>
           <li><%= link_to(t(:sign_in_with_github), login_path) %></li>
