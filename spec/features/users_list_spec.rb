@@ -1,5 +1,4 @@
 require 'spec_helper'
-include Devise::TestHelpers
 
 feature 'Users listing' do
   let!(:new_user) { create(:user, name: 'foobar') }

@@ -16,14 +16,6 @@ ActiveRecord::Migration.maintain_test_schema! if defined?(ActiveRecord::Migratio
 
 RSpec.configure do |config|
 
-  config.include Warden::Test::Helpers 
-  config.before :suite do   
-    Warden.test_mode!
-  end
-  config.after :each do
-    Warden.test_reset!
-  end
-
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
