@@ -159,6 +159,13 @@ es:
   expectation_HasUsage: "%{binding} %{must} utilizar %{target}"
   expectation_HasIf: "%{binding} %{must} usar if"
   expectation_HasConditional: "%{binding} %{must} utilizar condicionales (guardas/if)"
+  expectation_HasTypeSignature: "La firma para %{binding} %{must} ser declarada"
+  expectation_HasTypeDeclaration: "%{must} existir una declaración para el sinónimo de tipo %{binding}"
+  expectation_HasRedundantIf: "%{binding} tiene ifs innecesarioas"
+  expectation_HasRedundantBooleanComparison: "%{binding} hace comparaciones booleanas innecesarias"
+  expectation_HasRedundantLambda: "%{binding} tiene lambdas innecesarias"
+  expectation_HasRedundantGuards: "%{binding} tiene guardas innecesarias"
+
 
 
   expectations: "Objetivos"
