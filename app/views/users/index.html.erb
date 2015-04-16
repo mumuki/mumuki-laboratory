@@ -17,14 +17,15 @@
               </div>
             </div>
 
-            <div class="form-group">
-              <div class="btn-group btn-group-justified">
-                <a class="btn btn-default" href="<%= following_user_path(current_user) %>"><%= t(:following) %>
-                </a>
-                <a class="btn btn-default active" href="<%= users_path %>"><%= t(:all) %>
-                </a>
+            <% if current_user? %>
+              <div class="form-group">
+                <div class="btn-group btn-group-justified">
+                  <a class="btn btn-default" href="<%= following_user_path(current_user) %>"><%= t(:following) %></a>
+                  <a class="btn btn-default active" href="<%= users_path %>"><%= t(:all) %>
+                  </a>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -39,7 +40,9 @@
         <th><%= t :exercise_success_rate %></th>
         <th><%= t :last_submission_date %></th>
         <th><%= t :sign_up_date %></th>
-        <th><%= t :following %></th>
+        <% if current_user? %>
+          <th><%= t :following %></th>
+        <% end %>
       </tr>
       </thead>
       <tbody>
@@ -50,7 +53,9 @@
           <td><%= user.exercises_success_rate %></td>
           <td><%= time_ago_in_words_or_never user.last_submission_date %></td>
           <td><%= time_ago_in_words user.created_at %></td>
-          <td><%= icon_for_follower(current_user.following?(user))%></td>
+          <% if current_user? %>
+            <td><%= icon_for_follower(current_user.following?(user)) %></td>
+          <% end %>
         </tr>
       <% end %>
       </tbody>
