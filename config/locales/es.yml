@@ -56,8 +56,6 @@ es:
   follow: Seguir!
   unfollow: Dejar de seguir!
   following: Siguiendo
-  passed_statistics: Estadisticas de Aprobacion
-  failed_statistics: Estadisticas de Fallo
   all: Todos
 
   datetime:
