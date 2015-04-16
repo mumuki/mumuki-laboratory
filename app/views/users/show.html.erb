@@ -24,26 +24,23 @@
         </tr>
         </tbody>
       </table>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-md-6">
-      <h1><%= t :profile_of, username: @user.name %></h1>
-    </div>
-    <div class="col-md-6">
-      <% unless @user.id == current_user.id %>
-        <% unless current_user.following?(@user) %>
-          <%= render 'users/follow', user: @user %>
-        <% else %>
-          <%= render 'users/unfollow', user: @user %>
+      <div>
+        <% unless @user.id == current_user.id %>
+          <% if current_user.following?(@user) %>
+            <%= render 'users/unfollow', user: @user %>
+          <% else %>
+            <%= render 'users/follow', user: @user %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   </div>
 
-  <h1><%= t("failed_statistics") %></h1>
-  <%= line_chart @user.failed_submissions_count_per_week, colors: ["red"] %>
-  <h1><%= t("passed_statistics") %></h1>
-  <%= line_chart @user.passed_submissions_count_per_week, colors: ["green"] %>
+  <div>
+    <h1><%= t(:stats) %></h1>
+
+    <%= line_chart [{name: t(:passed), data: @user.passed_submissions_count_per_week},
+                    {name: t(:failed), data: @user.failed_submissions_count_per_week}], colors: %w(green red) %>
+  </div>
 <% end %>
