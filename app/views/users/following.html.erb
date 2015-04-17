@@ -50,7 +50,9 @@
           <td><%= user.exercises_success_rate %></td>
           <td><%= time_ago_in_words_or_never user.last_submission_date %></td>
           <td><%= time_ago_in_words user.created_at %></td>
-          <td><%= icon_for_follower(current_user.following?(user))%></td>
+          <% if current_user? %>
+            <td><%= render 'users/unfollow', user: user, button_class: "btn-warning" %></td>
+          <% end %>
         </tr>
       <% end %>
       </tbody>
