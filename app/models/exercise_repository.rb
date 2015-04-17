@@ -9,7 +9,7 @@ class ExerciseRepository
   ## Process files in the repository, logging errors
   ## to a given ImportLog, and yields each processed root
   def process_files(log)
-    each_exercise_file do |root, original_id, title|
+    each_exercise_file do |root, position, original_id, title|
 
       description = markdown(root, 'description') || (log.no_description title; next)
 
@@ -37,7 +37,8 @@ class ExerciseRepository
            expectations: expectations,
            author: @author,
            test: test_code,
-           extra_code: extra_code}
+           extra_code: extra_code,
+           position: position}
     end
   end
 
@@ -45,11 +46,11 @@ class ExerciseRepository
 
   def each_exercise_file
     check_exists
-    Dir.glob("#{@dir}/**") do |file|
+    Dir.glob("#{@dir}/**").sort.each_with_index do |file, index|
       basename = File.basename(file)
       match = /(\d*)_(.+)/.match basename
       next unless match
-      yield file, match[1], match[2]
+      yield file, index + 1, match[1], match[2]
     end
   end
 
