@@ -49,6 +49,10 @@ class Exercise < ActiveRecord::Base
     tag_list + [language.name] + (guide.try(&:name) || [])
   end
 
+  def generate_original_id!
+    update!(original_id: id) unless original_id
+  end
+
   private
 
   def defaults

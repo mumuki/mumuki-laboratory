@@ -79,4 +79,9 @@ class Guide < ActiveRecord::Base
   def self.at_locale
     select { |it| it.locale == I18n.locale.to_s }
   end
+
+  def format_original_id(exercise)
+    original_id_format % exercise.original_id
+  end
+
 end

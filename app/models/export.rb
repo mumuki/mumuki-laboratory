@@ -28,8 +28,13 @@ class Export < ActiveRecord::Base
     write_file dir, 'description.md', guide.description
     guide.exercises.each do |e|
       Rails.logger.info "Exporting exercise #{e.title} of guide #{guide.name}"
-      dirname = File.join dir, "#{'%05d' % e.original_id}_#{e.title}"
+
+      e.generate_original_id!
+
+      dirname = File.join dir, "#{guide.format_original_id(e)}_#{e.title}"
+
       Dir.mkdir dirname
+
       write_file(dirname, format_extension('test'), e.test)
       write_file(dirname, 'description.md', e.description)
       write_file(dirname, 'meta.yml', '')
