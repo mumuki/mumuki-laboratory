@@ -14,6 +14,7 @@ describe User do
       it { expect(user.solved_exercises_count).to eq 0 }
       it { expect(user.submissions_count).to eq 0 }
       it { expect(user.passed_submissions_count).to eq 0 }
+      it { expect(user.has_submissions?).to eq false}
     end
 
     context 'when there are submissions' do
@@ -29,6 +30,7 @@ describe User do
       it { expect(user.solved_exercises_count).to eq 2 }
       it { expect(user.submissions_count).to eq 4 }
       it { expect(user.passed_submissions_count).to eq 2 }
+      it { expect(user.has_submissions?).to eq true}
     end
   end
 end
