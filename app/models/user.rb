@@ -6,13 +6,11 @@ class User < ActiveRecord::Base
       }
   }
 
-  include WithSearch, WithOmniauth, WithOctokit
+  include WithSearch, WithOmniauth, WithOctokit, WithFollowers
 
   has_many :submissions, foreign_key: :submitter_id
   has_many :exercises, foreign_key: :author_id
   has_many :guides, foreign_key: :author_id
-  has_many :relationships, foreign_key: :follower_id, dependent: :destroy
-  has_many :following, through: :relationships, source: :followed
 
   has_many :submitted_exercises,
            -> { uniq },
@@ -60,18 +58,6 @@ class User < ActiveRecord::Base
 
   def exercises_success_rate
     "#{solved_exercises_count}/#{submitted_exercises_count}"
-  end
-
-  def follow(other_user)
-    relationships.create(followed_id: other_user.id)
-  end
-
-  def unfollow(other_user)
-    relationships.find_by(followed_id: other_user.id).destroy
-  end
-
-  def following?(other_user)
-    following.include?(other_user)
   end
 
 end
