@@ -26,7 +26,7 @@
       </table>
 
       <div>
-        <% restricted_to_current_user @user do %>
+        <% restricted_to_other_user @user do %>
           <% if current_user.following?(@user) %>
             <%= render 'users/unfollow', user: @user %>
           <% else %>
