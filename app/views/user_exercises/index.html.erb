@@ -1,40 +1,22 @@
-<div class="row">
-  <div class="navbar navbar-form">
-    <div class="col-md-8">
-      <ul class="nav nav-tabs">
-        <li role="presentation"><%= link_to t(:my_submissions), submissions_path %></li>
-        <li role="presentation" class="active"><%= link_to t(:my_exercises), user_exercises_path(current_user) %></li>
-        <li role="presentation"><%= link_to t(:my_guides), user_guides_path(current_user) %></li>
-      </ul>
-    </div>
-    <div class="col-md-4">
-      <div class="navbar">
-        <%= link_to t('search'), exercises_path, class: 'btn btn-default' %>
-        <%= link_to t('new_guide'), new_guide_path, class: 'btn btn-default' %>
-        <%= link_to t('new_exercise'), new_exercise_path, class: 'btn btn-default' %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render layout: 'layouts/user', locals: {current_tab: :exercises} do %>
 
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th><%= t :language %></th>
+      <th><%= t :submissions_count %></th>
+      <th><%= t :title %></th>
+      <th></th>
+      <th><%= t :tag %></th>
+      <th><%= t :created %></th>
+      <% restricted_to_current_user @user do %>
+        <th colspan="4"><%= t :actions %></th>
+      <% end %>
+    </tr>
+    </thead>
 
-
-
-<table class="table">
-  <thead>
-  <tr>
-    <th><%= t :language %></th>
-    <th><%= t :submissions_count %></th>
-    <th><%= t :title %></th>
-    <th></th>
-    <th><%= t :tag %></th>
-    <th><%= t :created %></th>
-    <th colspan="4"><%= t :actions %></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @exercises.each do |exercise| %>
+    <tbody>
+    <% @exercises.each do |exercise| %>
       <tr>
         <td><%= language_icon exercise.language %> <%= exercise.language %> </td>
         <td>
@@ -49,12 +31,23 @@
         <td>
           <%= time_ago_in_words(exercise.created_at) %>
         </td>
-        <td><%= link_to fa_icon(:pencil), edit_exercise_path(exercise) if exercise.can_edit? %></td>
-        <td><%= link_to fa_icon(:trash), exercise, method: :delete, data: {confirm: t('are_you_sure')} if exercise.can_destroy? %></td>
+        <% restricted_to_current_user @user do %>
+          <td><%= link_to fa_icon(:pencil), edit_exercise_path(exercise) if exercise.can_edit? %></td>
+          <td><%= link_to fa_icon(:trash), exercise, method: :delete, data: {confirm: t('are_you_sure')} if exercise.can_destroy? %></td>
+        <% end %>
       </tr>
-  <% end %>
-  </tbody>
-</table>
-<%= paginate @exercises %>
-<br>
+    <% end %>
+    </tbody>
+  </table>
 
+  <div class="actions row">
+    <div class="col-md-8">
+      <%= paginate @exercises %>
+    </div>
+    <div class="col-md-4 pagination-inline">
+      <% restricted_to_current_user @user do %>
+        <%= link_to t(:new_exercise), new_exercise_path, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

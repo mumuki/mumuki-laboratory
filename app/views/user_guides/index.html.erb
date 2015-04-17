@@ -1,42 +1,37 @@
-<div class="row">
-  <div class="navbar navbar-form">
-    <div class="col-md-8">
-      <ul class="nav nav-tabs">
-        <li role="presentation"><%= link_to t(:my_submissions), submissions_path %></li>
-        <li role="presentation"><%= link_to t(:my_exercises), user_exercises_path(current_user) %></li>
-        <li role="presentation" class="active"><%= link_to t(:my_guides), user_guides_path(current_user) %></li>
-      </ul>
-    </div>
-    <div class="col-md-4">
-      <div class="navbar">
-        <%= link_to t('search'), exercises_path, class: 'btn btn-default' %>
-        <%= link_to t('new_guide'), new_guide_path, class: 'btn btn-default' %>
-        <%= link_to t('new_exercise'), new_exercise_path, class: 'btn btn-default' %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render layout: 'layouts/user', locals: {current_tab: :guides} do %>
 
-<table class="table">
-  <thead>
+
+  <table class="table table-striped">
+    <thead>
     <tr>
-    <th><%= t(:title) %></th>
-    <th><%= t(:submissions_count) %></th>
-    <th><%= label(:guide, :github_repository) %></th>
-    <th><%= t('created_at') %></th>
-  </tr>
-  </thead>
+      <th><%= t(:title) %></th>
+      <th><%= t(:submissions_count) %></th>
+      <th><%= label(:guide, :github_repository) %></th>
+      <th><%= t('created_at') %></th>
+    </tr>
+    </thead>
 
-  <tbody>
-  <% @guides.each do |guide| %>
+    <tbody>
+    <% @guides.each do |guide| %>
       <tr>
         <td><%= link_to_guide guide %></td>
         <td><%= guide.exercises_count %></td>
         <td><%= link_to_github guide %></td>
         <td><%= guide.created_at %></td>
       </tr>
-  <% end %>
-  </tbody>
-</table>
-<%= paginate @guides %>
-<br>
+    <% end %>
+    </tbody>
+  </table>
+
+  <div class="actions row">
+    <div class="col-md-8">
+      <%= paginate @guides %>
+    </div>
+    <div class="col-md-4 pagination-inline">
+      <% restricted_to_current_user @user do %>
+        <%= link_to t(:new_guide), new_guide_path, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+
+<% end %>

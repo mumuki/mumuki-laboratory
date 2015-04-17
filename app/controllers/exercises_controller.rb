@@ -5,6 +5,7 @@ class ExercisesController < ApplicationController
   before_action :set_exercises, only: [:index]
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
   before_action :set_previous_submission_content, only: :show
+  before_action :authorize_edition!, only: [:edit, :update]
 
   def show
     @submission = @exercise.submissions.build if current_user?
@@ -40,11 +41,17 @@ class ExercisesController < ApplicationController
   end
 
   def destroy
+    authorize_with! :can_destroy?
     @exercise.destroy
     redirect_to exercises_url, notice: 'Exercise was successfully destroyed.'
   end
 
   private
+
+  def authorize_edition!
+    authorize_with! :can_edit?
+  end
+
   def set_previous_submission_content
     @previous_submission_content = @exercise.default_content_for(current_user) if current_user?
   end
@@ -65,4 +72,8 @@ class ExercisesController < ApplicationController
     Exercise.at_locale
   end
 
+
+  def authorize_with!(action)
+    raise AuthorizationError.new if !@exercise.authored_by?(current_user)|| !@exercise.send(action)
+  end
 end

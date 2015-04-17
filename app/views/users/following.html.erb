@@ -5,7 +5,7 @@
     <div class="exercise-search-box"> <%# TODO rename and extract %>
       <div class="row">
         <div class="col-md-12">
-          <%= bootstrap_form_tag url: users_path, method: :get do |f| %>
+          <%= bootstrap_form_tag url: following_user_path(current_user), method: :get do |f| %>
 
             <div class="form-group">
               <div class="input-group">
@@ -17,15 +17,14 @@
               </div>
             </div>
 
-            <% if current_user? %>
-              <div class="form-group">
-                <div class="btn-group btn-group-justified">
-                  <a class="btn btn-default" href="<%= following_user_path(current_user) %>"><%= t(:following) %></a>
-                  <a class="btn btn-default active" href="<%= users_path %>"><%= t(:all) %>
-                  </a>
-                </div>
+            <div class="form-group">
+              <div class="btn-group btn-group-justified">
+                <a class="btn btn-default active" href="<%= following_user_path(current_user) %>"><%= t(:following) %>
+                </a>
+                <a class="btn btn-default" href="<%= users_path %>"><%= t(:all) %>
+                </a>
               </div>
-            <% end %>
+            </div>
           <% end %>
         </div>
       </div>
@@ -40,9 +39,7 @@
         <th><%= t :exercise_success_rate %></th>
         <th><%= t :last_submission_date %></th>
         <th><%= t :sign_up_date %></th>
-        <% if current_user? %>
-          <th><%= t :following %></th>
-        <% end %>
+        <th><%= t :following %></th>
       </tr>
       </thead>
       <tbody>
@@ -54,11 +51,7 @@
           <td><%= time_ago_in_words_or_never user.last_submission_date %></td>
           <td><%= time_ago_in_words user.created_at %></td>
           <% if current_user? %>
-            <% if current_user.following?(user) %>
-              <td><%= render 'users/unfollow', user: user, button_class: "btn-warning" %></td>
-            <% else %>
-              <td><%= render 'users/follow', user: user, button_class: "btn-primary" %></td>
-            <% end %>
+            <td><%= render 'users/unfollow', user: user, button_class: "btn-warning" %></td>
           <% end %>
         </tr>
       <% end %>

@@ -10,9 +10,23 @@ feature 'Users listing' do
   end
 
   scenario 'list users' do
+    visit '/'
+
+    click_on 'Sign in with Github'
+
     visit '/en/users'
 
     expect(page).to have_text('foobar')
     expect(page).to have_text('baz')
   end
+
+  scenario 'go to user from listing' do
+    visit '/en/users'
+
+    click_on 'foobar'
+
+    expect(page).to have_text('foobar')
+    expect(page).to have_text('Overview')
+  end
+
 end

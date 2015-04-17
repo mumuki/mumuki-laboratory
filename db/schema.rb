@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150412201651) do
+ActiveRecord::Schema.define(version: 20150415234515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20150412201651) do
     t.string   "locale",            default: "en"
     t.text     "hint"
     t.text     "extra_code"
+    t.integer  "position"
   end
 
   add_index "exercises", ["author_id"], name: "index_exercises_on_author_id", using: :btree
@@ -121,6 +122,13 @@ ActiveRecord::Schema.define(version: 20150412201651) do
   add_index "languages", ["extension"], name: "index_languages_on_extension", unique: true, using: :btree
   add_index "languages", ["name"], name: "index_languages_on_name", unique: true, using: :btree
 
+  create_table "relationships", force: true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "submissions", force: true do |t|
     t.text     "content"
     t.integer  "exercise_id"
@@ -164,6 +172,7 @@ ActiveRecord::Schema.define(version: 20150412201651) do
     t.datetime "updated_at"
     t.string   "email"
     t.datetime "last_submission_date"
+    t.string   "image_url"
   end
 
   add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree

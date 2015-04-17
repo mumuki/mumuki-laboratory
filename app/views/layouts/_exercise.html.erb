@@ -43,25 +43,25 @@
 </div>
 
 <div class="row">
-  <div class="col-md-10">
+  <div class="col-md-11">
     <%= yield %>
   </div>
 
-  <div class="col-md-2">
+  <div class="col-md-1">
     <ul class="nav nav-tabs tabs-right vertical-text">
       <li <%= active_if :exercise %>>
-        <%= link_to t(:exercise), exercise_path(@exercise) %>
+        <%= link_to fa_icon('code'), exercise_path(@exercise), title: t(:overview) %>
       </li>
       <li <%= active_if :status %>>
         <% @last_submission = @exercise.last_submission(current_user) if current_user? %>
-        <%= link_to t(:status), exercise_submission_path(@exercise, @last_submission) if @last_submission %>
+        <%= link_to fa_icon('trophy'), exercise_submission_path(@exercise, @last_submission), title: t(:progress) if @last_submission %>
       </li>
       <li <%= active_if :my_submissions %>>
-        <%= link_to t(:my_submissions), exercise_submissions_path(@exercise) %>
+        <%= link_to fa_icon('history'), exercise_submissions_path(@exercise), title: t(:history) %>
       </li>
       <% restricted_to_author @exercise do %>
         <li <%= active_if :edit %>>
-          <%= link_to t(:edit), edit_exercise_path(@exercise) if @exercise.can_edit? %>
+          <%= link_to fa_icon('pencil'), edit_exercise_path(@exercise), title: t(:edit) if @exercise.can_edit? %>
         </li>
       <% end %>
     </ul>

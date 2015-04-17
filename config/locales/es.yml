@@ -8,7 +8,7 @@ es:
   new_submission: "Nueva Solución"
   my_submissions: 'Mis Soluciones'
   submission_created: 'La solución fue enviada correctamente'
-  my_exercises: 'Mis solución'
+  my_exercises: 'Mis Ejercicios'
   new_exercise: 'Nuevo Ejercicio'
   results: 'Resultados'
   submission_for_exercise: 'Solucion para ejercicio'
@@ -53,6 +53,10 @@ es:
   back_to_search: "Volver a la búsqueda"
   notify_problem_to_author: "Notificar problema al autor"
   problem_with_exercise: "[Mumuki] Error con el ejercicio: %{title}"
+  follow: Seguir!
+  unfollow: Dejar de seguir!
+  following: Siguiendo
+  all: Todos
 
   datetime:
     distance_in_words:
@@ -155,6 +159,13 @@ es:
   expectation_HasUsage: "%{binding} %{must} utilizar %{target}"
   expectation_HasIf: "%{binding} %{must} usar if"
   expectation_HasConditional: "%{binding} %{must} utilizar condicionales (guardas/if)"
+  expectation_HasTypeSignature: "La firma para %{binding} %{must} ser declarada"
+  expectation_HasTypeDeclaration: "%{must} existir una declaración para el sinónimo de tipo %{binding}"
+  expectation_HasRedundantIf: "%{binding} tiene ifs innecesarioas"
+  expectation_HasRedundantBooleanComparison: "%{binding} hace comparaciones booleanas innecesarias"
+  expectation_HasRedundantLambda: "%{binding} tiene lambdas innecesarias"
+  expectation_HasRedundantGuards: "%{binding} tiene guardas innecesarias"
+
 
 
   expectations: "Objetivos"
@@ -168,7 +179,7 @@ es:
   submissions_success_rate: "Taza de éxito en soluciones"
   exercise_success_rate: "Taza de éxito en ejercicios"
   last_submission_date: "Última solucion"
-  sign_up_date: "Usuario dede"
+  sign_up_date: "Usuario desde"
   import_date: "Fecha"
   imports: "Actualizaciones"
   history: "Historial"
@@ -176,3 +187,4 @@ es:
   overview: "Vista general"
   exercise_number: "Número"
   export_created: "Exportación encolada"
+  activity: "Actividad"

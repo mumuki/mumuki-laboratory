@@ -1,10 +1,18 @@
 class GuidesController < ApplicationController
 
   before_action :authenticate!, except: [:index, :show]
-  before_action :set_guide, only: [:show, :edit, :details]
+  before_action :set_guide, only: [:show, :edit, :details, :update]
 
   def new
     @guide = Guide.new
+  end
+
+  def update
+    if @guide.update(guide_params)
+      redirect_to update, notice: 'Guide was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def create

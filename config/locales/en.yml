@@ -72,6 +72,10 @@ en:
   no_guides: "Nobody created a guide for this search yet. <a href=\"%{create_path}\">Be the first!</a>"
   notify_problem_to_author: "Notify problem to author"
   problem_with_exercise: "[Mumuki] Problem with exercise: %{title}"
+  follow: Follow!
+  unfollow: Unfollow!
+  following: Following
+  all: All
 
 
   exercise_count: "exercises"
@@ -95,6 +99,12 @@ en:
   expectation_HasUsage: "%{binding} %{must} use %{target}"
   expectation_HasIf: "%{binding} %{must} use if"
   expectation_HasConditional: "%{binding} %{must} use conditionals"
+  expectation_HasTypeSignature: "Signature for %{binding} %{must} be declared"
+  expectation_HasTypeDeclaration: "type %{binding} %{must} be defined"
+  expectation_HasRedundantIf: "%{binding} has redundant ifs"
+  expectation_HasRedundantBooleanComparison: "%{binding} has redundant boolean comparisons"
+  expectation_HasRedundantLambda: "%{binding} has redundant lambdas"
+  expectation_HasRedundantGuards: "%{binding} redundant guards"
 
 
   expectations: "Expectations"
@@ -116,3 +126,4 @@ en:
   overview: "Overview"
   exercise_number: "Number"
   export_created: "Export queued"
+  activity: "Activity"

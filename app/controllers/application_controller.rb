@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :current_user?,
                 :current_user_id,
                 :current_user_path, :login_path,
-                :restricted_to_author, :restricted_to_current_user
+                :restricted_to_author, :restricted_to_current_user,
+                :restricted_to_other_user
 
   def set_locale
     I18n.locale = params[:locale] || extract_locale_from_accept_language_header || I18n.default_locale

@@ -30,6 +30,10 @@ module Authentication
     yield if user == current_user
   end
 
+  def restricted_to_other_user(user)
+    yield if current_user && user != current_user
+  end
+
   def current_user_path
     user_path(current_user)
   end
