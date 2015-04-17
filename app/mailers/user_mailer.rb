@@ -1,15 +1,10 @@
 class UserMailer < ActionMailer::Base
-  default from: "from@example.com"
-
-  def welcome_email(user)
-  	@user = user
-  	@url = 'http://mumuki.io'
-  	mail(to: @user.email, subject: 'Welcome to Mumuki!')
-  end
+  default from: "donotreply@mumuki.io"
 
   def motivation_email(user)
   	@user = user
-  	@url = 'http://mumuki.io/es/exercises'
+  	@url_exercises = 'http://mumuki.io/es/exercises'
+  	@url_do_not_reply = 
   	mail(to: @user.email, subject: 'Hey! Come and practice with us!')
   end
 

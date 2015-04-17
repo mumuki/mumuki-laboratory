@@ -1,11 +1,9 @@
 class NonActiveUsersController < ApplicationController
 
 	def send_email_non_active_users
-		today_date = Time.now.strftime("%d/%m/%Y")
-		users = User.where("today_date - created_at > 30")
-
+		users = User.where(" created_at < :date ", date: 30.days.ago)
 		users.each do |user|
-			if user.submissions_count == 0
+			if user.has_submissions?
 				UserMail.motivation_email(user).deliver_later
 			end
 		end			
