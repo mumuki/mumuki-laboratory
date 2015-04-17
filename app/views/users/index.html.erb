@@ -54,7 +54,11 @@
           <td><%= time_ago_in_words_or_never user.last_submission_date %></td>
           <td><%= time_ago_in_words user.created_at %></td>
           <% if current_user? %>
-            <td><%= icon_for_follower(current_user.following?(user)) %></td>
+            <% if current_user.following?(user) %>
+              <td><%= render 'users/unfollow', user: user, button_class: "btn-warning" %></td>
+            <% else %>
+              <td><%= render 'users/follow', user: user, button_class: "btn-primary" %></td>
+            <% end %>
           <% end %>
         </tr>
       <% end %>

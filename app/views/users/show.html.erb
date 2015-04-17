@@ -28,9 +28,9 @@
       <div>
         <% restricted_to_other_user @user do %>
           <% if current_user.following?(@user) %>
-            <%= render 'users/unfollow', user: @user %>
+            <%= render 'users/unfollow', user: @user, button_class: "btn btn-primary follow-button" %>
           <% else %>
-            <%= render 'users/follow', user: @user %>
+            <%= render 'users/follow', user: @user, button_class: "btn btn-primary follow-button" %>
           <% end %>
         <% end %>
       </div>
