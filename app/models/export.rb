@@ -16,7 +16,7 @@ class Export < ActiveRecord::Base
     run_update! do
       ensure_repo_exists!
       with_cloned_repo 'export' do |dir, repo|
-        create_guide_files dir
+        write_guide_files dir
         repo.add(all: true)
         repo.commit("Mumuki Export on #{Time.now}")
         repo.push
@@ -24,25 +24,47 @@ class Export < ActiveRecord::Base
     end
   end
 
-  def create_guide_files(dir)
-    write_file dir, 'description.md', guide.description
+  def write_guide_files(dir)
     guide.exercises.each do |e|
-      Rails.logger.info "Exporting exercise #{e.title} of guide #{guide.name}"
-
-      e.generate_original_id!
-
-      dirname = File.join dir, "#{guide.format_original_id(e)}_#{e.title}"
-
-      Dir.mkdir dirname
-
-      write_file(dirname, format_extension('test'), e.test)
-      write_file(dirname, 'description.md', e.description)
-      write_file(dirname, 'meta.yml', '')
-
-      write_file(dirname, 'hint.md', e.hint) if e.hint
-      write_file(dirname, format_extension('extra'), e.extra_code) if e.extra_code
-      write_file(dirname, 'expectations.yml', '') if e.expectations.present?
+      write_exercise dir, e
     end
+    write_description dir
+    write_meta dir
+  end
+
+  def write_exercise(dir, e)
+    Rails.logger.info "Exporting exercise #{e.title} of guide #{guide.name}"
+
+    e.generate_original_id!
+
+    dirname = File.join dir, "#{guide.format_original_id(e)}_#{e.title}"
+
+    Dir.mkdir dirname
+
+    write_file(dirname, format_extension('test'), e.test)
+    write_file(dirname, 'description.md', e.description)
+    write_file(dirname, 'meta.yml', '')
+
+    write_file(dirname, 'hint.md', e.hint) if e.hint
+    write_file(dirname, format_extension('extra'), e.extra_code) if e.extra_code
+    write_file(dirname, 'expectations.yml', expectations_yaml(e)) if e.expectations.present?
+  end
+
+  def expectations_yaml(e)
+    {'expectations' => e.expectations.as_json(only: [:binding, :inspection])}.to_yaml
+  end
+
+  def write_description(dir)
+    write_file dir, 'description.md', guide.description
+  end
+
+  def write_meta(dir)
+    write_file dir, 'meta.yml', {
+        'locale' => guide.locale,
+        'language' => guide.language.name,
+        'original_id_format' => guide.original_id_format,
+        'order' => guide.exercises.order(:position).pluck(:original_id)
+    }.to_yaml
   end
 
   def format_extension(filename)
