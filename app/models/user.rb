@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def has_submissions?
-    submissions.empty?
+    !submissions.empty?
   end
 
   def passed_submissions_count
