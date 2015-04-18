@@ -43,7 +43,7 @@ through [SWI-Prolog](http://www.swi-prolog.org/), Ruby and JavaScript. Support f
   * [mumuki-rspec-server](https://github.com/aguspina/mumuki-rspec-server)  (written in Ruby)
   * [mumuki-mocha-server](https://github.com/aguspina/mumuki-mocha-server)  (written in JavaScript)
   * [mumuki-plunit-server](https://github.com/uqbar-project/mumuki-plunit-server)  (written in Ruby)
-  * Experimental: [mumuki-cspec-server](https://github.com/uqbar-project/mumuki-cspec-server)  (written in Ruby)
+  * Experimental: [mumuki-cspec-server](https://github.com/mgarciaisaia/mumuki-cspec-server)  (written in Ruby)
  
 1. Create exercises! Mumuki is in early stages, so remember to add your tests to some SCM. 
 1. Are you a UI designer? We want Mumuki to look great. 
