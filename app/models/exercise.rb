@@ -10,7 +10,7 @@ class Exercise < ActiveRecord::Base
 
   include WithSearch, WithTeaser,
           WithMarkup, WithAuthor,
-          WithSubmissions, WithGuide
+          WithSubmissions, WithGuide, WithLocale
 
   acts_as_taggable
 
@@ -27,7 +27,6 @@ class Exercise < ActiveRecord::Base
                         :submissions_count, :author, :locale
 
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
-  scope :at_locale, lambda { where(locale: I18n.locale) }
 
   markup_on :description, :hint, :teaser
 
