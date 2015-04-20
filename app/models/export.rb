@@ -43,11 +43,15 @@ class Export < ActiveRecord::Base
 
     write_file(dirname, format_extension('test'), e.test)
     write_file(dirname, 'description.md', e.description)
-    write_file(dirname, 'meta.yml', '')
+    write_file(dirname, 'meta.yml', metadata_yaml(e))
 
     write_file(dirname, 'hint.md', e.hint) if e.hint
     write_file(dirname, format_extension('extra'), e.extra_code) if e.extra_code
     write_file(dirname, 'expectations.yml', expectations_yaml(e)) if e.expectations.present?
+  end
+
+  def metadata_yaml(e)
+    {'tags' => e.tag_list.to_a, 'locale' => e.locale}.to_yaml
   end
 
   def expectations_yaml(e)

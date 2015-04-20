@@ -5,12 +5,12 @@ describe Export do
   let(:haskell) { create(:haskell) }
   let!(:exercise_1) { create(:exercise, guide: guide,
                              title: 'foo', original_id: 100, position: 1,
-                             locale: 'en',
+                             locale: 'en', tag_list: %w(foo bar),
                              language: haskell,
                              expectations: [Expectation.new(binding: 'bar', inspection: 'HasBinding')]) }
   let!(:exercise_2) { create(:exercise, guide: guide,
                              description: 'a description',
-                             title: 'bar', original_id: 200, position: 2,
+                             title: 'bar', tag_list: %w(baz bar), original_id: 200, position: 2,
                              language: haskell, test: 'foo bar') }
   let(:guide) { create(:guide, description: 'Baz', github_repository: 'flbulgarelli/never-existent-repo', language: haskell, locale: 'en') }
   let(:export) { guide.exports.create!(committer: committer) }
@@ -57,6 +57,8 @@ describe Export do
         it { expect(File.read 'spec/data/export/00200_bar/description.md').to eq 'a description' }
 
         it { expect(File.exist? 'spec/data/export/00200_bar/meta.yml').to be true }
+        it { expect(File.read 'spec/data/export/00200_bar/meta.yml').to eq "---\ntags:\n- baz\n- bar\nlocale: :en\n"}
+
 
         it { expect(File.exist? 'spec/data/export/00200_bar/test.hs').to be true }
         it { expect(File.read 'spec/data/export/00200_bar/test.hs').to eq 'foo bar' }
