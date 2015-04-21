@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/uqbar-project/mumukit-inspection.git
+  revision: b605f44d70fbe75e9f9a190c6073cc2f95c09b81
+  branch: master
+  specs:
+    mumukit-inspection (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -320,6 +327,7 @@ DEPENDENCIES
   groupdate
   jquery-rails
   kaminari
+  mumukit-inspection!
   nprogress-rails
   octokit
   omniauth-github
