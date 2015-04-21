@@ -5,12 +5,14 @@ class Guide < ActiveRecord::Base
 
   include WithSearch, WithAuthor,
           WithWebHook, WithMarkup,
-          WithTeaser
+          WithTeaser, WithLocale
 
   #TODO rename name to title. This helps building also generic link_to compoenetns
-  has_many :exercises
+  has_many :exercises, -> { order(position: :asc) }
   has_many :imports
   has_many :exports
+
+  belongs_to :language
 
   validates_presence_of :github_repository, :name, :author, :description
   validate :valid_name?
@@ -39,11 +41,6 @@ class Guide < ActiveRecord::Base
     pending_exercises(user).order('exercises.original_id asc').first
   end
 
-  #TODO normalize
-  def language
-    exercises.first.language rescue nil
-  end
-
   #TODO denormalize
   def search_tags
     exercises.flat_map(&:search_tags).uniq
@@ -52,11 +49,6 @@ class Guide < ActiveRecord::Base
   #TODO denormalize
   def tag_list
     exercises.flat_map(&:tag_list).uniq.join(', ')
-  end
-
-  #TODO normalize
-  def locale
-    exercises.first.locale rescue nil
   end
 
   def github_url
@@ -75,8 +67,8 @@ class Guide < ActiveRecord::Base
     github_repository.split('/')[1]
   end
 
-  #TODO move to DB
-  def self.at_locale
-    select { |it| it.locale == I18n.locale.to_s }
+  def format_original_id(exercise)
+    original_id_format % exercise.original_id
   end
+
 end
