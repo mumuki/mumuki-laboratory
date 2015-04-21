@@ -20,9 +20,9 @@ describe ExpectationsTranslate do
   end
 
 
-  it { expect(parse_inspection('HasBinding')).to eq(inspection: 'HasBinding', type: 'must') }
-  it { expect(parse_inspection('Not:HasBinding')).to eq(inspection: 'HasBinding', type: 'must_not') }
-  it { expect(parse_inspection('HasUsage:m')).to eq(inspection: 'HasUsage', type: 'must', target: 'm') }
-  it { expect(parse_inspection('Not:HasUsage:m')).to eq(inspection: 'HasUsage', type: 'must_not', target: 'm') }
+  it { expect(Inspection.parse('HasBinding').to_h).to eq(type: 'HasBinding', must: 'must', target: nil) }
+  it { expect(Inspection.parse('Not:HasBinding').to_h).to eq(type: 'HasBinding', must: 'must_not', target:nil) }
+  it { expect(Inspection.parse('HasUsage:m').to_h).to eq(type: 'HasUsage', must: 'must', target: 'm') }
+  it { expect(Inspection.parse('Not:HasUsage:m').to_h).to eq(type: 'HasUsage', must: 'must_not', target: 'm') }
 
 end
