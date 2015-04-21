@@ -27,14 +27,14 @@ describe Export do
     after { FileUtils.rm_rf(dir) }
 
     describe '#write_meta' do
-      before { export.write_meta dir }
+      before { export.write_meta! dir }
 
       it { expect(File.exist? 'spec/data/export/meta.yml').to be true }
       it { expect(File.read 'spec/data/export/meta.yml').to eq "---\nlocale: en\nlanguage: Haskell\noriginal_id_format: '%05d'\norder:\n- 100\n- 200\n" }
     end
 
     describe '#write_description' do
-      before { export.write_description dir }
+      before { export.write_description! dir }
       it { expect(File.exist? 'spec/data/export/description.md').to be true }
       it { expect(File.read 'spec/data/export/description.md').to eq 'Baz' }
     end
@@ -42,14 +42,14 @@ describe Export do
 
     describe '#write_exercise' do
       context 'with expectations' do
-        before { export.write_exercise dir, exercise_1 }
+        before { export.write_exercise! dir, exercise_1 }
 
         it { expect(File.exist? 'spec/data/export/00100_foo/expectations.yml').to be true }
         it { expect(File.read 'spec/data/export/00100_foo/expectations.yml').to eq "---\nexpectations:\n- binding: bar\n  inspection: HasBinding\n"}
       end
 
       context 'without expectations' do
-        before { export.write_exercise dir, exercise_2 }
+        before { export.write_exercise! dir, exercise_2 }
 
         it { expect(Dir.exist? 'spec/data/export/00200_bar/').to be true }
 
@@ -69,7 +69,7 @@ describe Export do
 
 
     describe '#write_guide_files' do
-      before { export.write_guide_files dir }
+      before { export.write_guide! dir }
 
       it { expect(Dir.exist? 'spec/data/export/').to be true }
       it { expect(Dir.exist? 'spec/data/export/00100_foo/').to be true }
