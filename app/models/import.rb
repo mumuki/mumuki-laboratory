@@ -13,7 +13,7 @@ class Import < ActiveRecord::Base
   delegate :author, to: :guide
 
   def run_import_from_directory!(dir)
-    update_description(dir)
+    update_guide(dir)
     process_repository_files dir do |original_id, attributes|
       Exercise.create_or_update_for_import!(guide, original_id, attributes)
     end

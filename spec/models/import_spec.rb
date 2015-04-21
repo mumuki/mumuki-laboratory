@@ -17,9 +17,9 @@ describe Import do
     before { import.run_import_from_directory! 'spec/data/mumuki-sample-exercises' }
 
     it { expect(Exercise.count).to eq 2 }
-    it { expect(guide.description).to eq 'awesome guide' }
+    it { expect(guide.description).to eq "Awesome guide\n" }
     it { expect(guide.language).to eq haskell }
-    it { expect(guide.locale).to eq :en }
+    it { expect(guide.locale).to eq 'en' }
 
     context 'when importing basic exercise' do
       let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 1) }

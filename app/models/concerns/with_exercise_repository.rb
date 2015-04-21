@@ -5,8 +5,15 @@ module WithExerciseRepository
     log
   end
 
-  def update_description(dir)
-    path = File.join dir, 'description.md'
-    guide.update!(description: File.read(path)) if File.exist? path
+  def update_guide(dir)
+    description = File.read File.join(dir, 'description.md')
+    meta = YAML.load(File.read File.join(dir, 'meta.yml'))
+
+    language = Language.find_by!(name: meta['language'])
+    locale = meta['locale']
+
+    guide.update!(description: description,
+                  language: language,
+                  locale: locale)
   end
 end

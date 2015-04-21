@@ -5,11 +5,11 @@ feature 'Search Flow' do
 
   let(:haskell) { create(:haskell) }
   let!(:exercises) {
-    create(:exercise, title: 'Foo',        guide: guide, original_id: 1, language: haskell, description: 'Description of foo')
-    create(:exercise, title: 'Bar',        guide: guide, original_id: 2)
-    create(:exercise, title: 'Baz',        guide: guide, original_id: 4)
+    create(:exercise, title: 'Foo',        guide: guide, position: 1, description: 'Description of foo')
+    create(:exercise, title: 'Bar',        guide: guide, position: 2)
+    create(:exercise, title: 'Baz',        guide: guide, position: 4)
   }
-  let(:guide) { create(:guide, name: 'awesomeGuide', description: 'An awesome guide') }
+  let(:guide) { create(:guide, name: 'awesomeGuide', description: 'An awesome guide', language: haskell) }
 
   scenario 'visit guides from search page, signs in, and starts practicing' do
     visit '/en'
