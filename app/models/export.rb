@@ -67,7 +67,7 @@ class Export < ActiveRecord::Base
         'locale' => guide.locale,
         'language' => guide.language.name,
         'original_id_format' => guide.original_id_format,
-        'order' => guide.exercises.order(:position).pluck(:original_id)
+        'order' => guide.exercises.pluck(:original_id)
     }.to_yaml
   end
 

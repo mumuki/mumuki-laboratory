@@ -8,7 +8,7 @@ class Guide < ActiveRecord::Base
           WithTeaser, WithLocale
 
   #TODO rename name to title. This helps building also generic link_to compoenetns
-  has_many :exercises
+  has_many :exercises, -> { order(position: :asc) }
   has_many :imports
   has_many :exports
 
