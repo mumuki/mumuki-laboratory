@@ -52,6 +52,14 @@ class Exercise < ActiveRecord::Base
     update!(original_id: id) unless original_id
   end
 
+  def contextualized_title
+    if guide
+      "#{position}. #{title}"
+    else
+      title
+    end
+  end
+
   private
 
   def defaults
