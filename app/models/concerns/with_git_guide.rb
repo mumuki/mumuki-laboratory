@@ -2,22 +2,25 @@ module WithGitGuide
 
   def with_cloned_repo(key)
     Dir.mktmpdir("mumuki.#{id}.#{key}") do |dir|
-      repo = git_clone_into dir
+      repo = clone_repo_into dir
       yield dir, repo
     end
   end
 
-  private
+  def create_repo!
+    Rails.logger.info "Creating repository #{guide.github_repository}"
+    committer.octokit.create_repository(guide.github_repository_name)
+  end
 
-  def git_clone_into(dir)
-    Git.clone(github_url, '.', path: dir)
+  def clone_repo_into(dir)
+    Git.clone(repo_github_url, '.', path: dir)
   rescue Git::GitExecuteError => e
     raise 'Repository is private or does not exist' if private_repo_error(e.message)
     raise e
   end
 
-  def git_exists?
-    Git.ls_remote(github_url)
+  def repo_exists?
+    Git.ls_remote(repo_github_url)
     true
   rescue Git::GitExecuteError
     false
@@ -25,7 +28,7 @@ module WithGitGuide
 
   private
 
-  def github_url
+  def repo_github_url
     guide.github_authorized_url(committer)
   end
 

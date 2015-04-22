@@ -25,12 +25,7 @@ class Export < ActiveRecord::Base
   end
 
   def ensure_repo_exists!
-    create_repo! unless git_exists?
-  end
-
-  def create_repo!
-    Rails.logger.info "Creating repository #{guide.github_repository}"
-    committer.octokit.create_repository(guide.github_repository_name)
+    create_repo! unless repo_exists?
   end
 
   def write_guide!(dir)
