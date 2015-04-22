@@ -14,7 +14,10 @@ describe Import do
     let(:guide) { create(:guide) }
     let!(:haskell) { create(:haskell) }
 
-    before { import.read_guide! 'spec/data/mumuki-sample-exercises' }
+    before do
+      import.read_guide! 'spec/data/mumuki-sample-exercises'
+      guide.reload
+    end
 
     it { expect(Exercise.count).to eq 2 }
     it { expect(guide.description).to eq "Awesome guide\n" }
