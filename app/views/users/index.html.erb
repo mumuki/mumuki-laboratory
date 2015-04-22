@@ -1,74 +1,24 @@
-<br>
+<%= render layout: 'layouts/users', locals: {users: @users} do %>
+  <%= bootstrap_form_tag url: users_path, method: :get do |f| %>
 
-<div class="row">
-  <div class="col-md-3">
-    <div class="exercise-search-box"> <%# TODO rename and extract %>
-      <div class="row">
-        <div class="col-md-12">
-          <%= bootstrap_form_tag url: users_path, method: :get do |f| %>
+    <div class="form-group">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="<%= t :search %>" name="q" value="<%= @q %>">
 
-            <div class="form-group">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="<%= t :search %>" name="q" value="<%= @q %>">
-
-                <div class="input-group-btn">
-                  <button id="search" class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
-                </div>
-              </div>
-            </div>
-
-            <% if current_user? %>
-              <div class="form-group">
-                <div class="btn-group btn-group-justified">
-                  <a class="btn btn-default" href="<%= following_user_path(current_user) %>"><%= t(:following) %></a>
-                  <a class="btn btn-default active" href="<%= users_path %>"><%= t(:all) %>
-                  </a>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
+        <div class="input-group-btn">
+          <button id="search" class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-md-9">
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th><%= t :username %></th>
-        <th><%= t :submissions_success_rate %></th>
-        <th><%= t :exercise_success_rate %></th>
-        <th><%= t :last_submission_date %></th>
-        <th><%= t :sign_up_date %></th>
-        <% if current_user? %>
-          <th><%= t :following %></th>
-        <% end %>
-      </tr>
-      </thead>
-      <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= link_to user.name, user %></td>
-          <td><%= user.submissions_success_rate %></td>
-          <td><%= user.exercises_success_rate %></td>
-          <td><%= time_ago_in_words_or_never user.last_submission_date %></td>
-          <td><%= time_ago_in_words user.created_at %></td>
-          <% if current_user? %>
-            <% if current_user.following?(user) %>
-              <td><%= render 'users/unfollow', user: user, button_class: "btn-warning" %></td>
-            <% else %>
-              <td><%= render 'users/follow', user: user, button_class: "btn-primary" %></td>
-            <% end %>
-          <% end %>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-md-12">
-    <%= paginate @users %>
-  </div>
-</div>
+    <% if current_user? %>
+      <div class="form-group">
+        <div class="btn-group btn-group-justified">
+          <a class="btn btn-default" href="<%= following_user_path(current_user) %>"><%= t(:following) %></a>
+          <a class="btn btn-default active" href="<%= users_path %>"><%= t(:all) %>
+          </a>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
