@@ -10,7 +10,7 @@ FactoryGirl.define do
 
   factory :haskell, parent: :language do
     extension 'hs'
-    name 'Haskell'
+    name 'haskell'
   end
 
   factory :exercise do
