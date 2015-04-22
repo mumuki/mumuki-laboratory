@@ -35,7 +35,7 @@ class Import < ActiveRecord::Base
   def read_meta!(dir)
     meta = YAML.load_file(File.join(dir, 'meta.yml'))
 
-    language = Language.find_by!(name: meta['language'])
+    language = Language.find_by!(name: meta['language'].downcase)
     locale = meta['locale']
 
     guide.update!(language: language, locale: locale)

@@ -7,6 +7,8 @@ class Language < ActiveRecord::Base
 
   markup_on :test_syntax_hint
 
+  before_save :downcase_name!
+
   def run_tests!(request)
     response = post_to_server(request)
 
@@ -31,6 +33,10 @@ class Language < ActiveRecord::Base
         "#{test_runner_url}/test",
         request.to_json,
         content_type: :json)
+  end
+
+  def downcase_name!
+    self.name = name.downcase
   end
 
   def to_s
