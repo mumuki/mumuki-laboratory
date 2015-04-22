@@ -6,6 +6,7 @@ ActiveAdmin.register User do
     id_column
     column :name
     column :created_at
+    column :email
     column (:submissions_count) {|user| Submission.where(submitter_id: user.id).count}
     column (:exercises_count) {|user| user.exercises.count}
     column (:guides_count) {|user| user.guides.count}
@@ -16,6 +17,7 @@ ActiveAdmin.register User do
   filter :current_sign_in_at
   filter :sign_in_count
   filter :created_at
+  filter :email
 
   form do |f|
     f.inputs "User Details" do
