@@ -12,7 +12,7 @@ module LinksRendering
   end
 
   def link_to_github(guide)
-    link_to guide.github_repository, guide.repo_github_url
+    link_to guide.github_repository, guide.github_url
   end
 
 end

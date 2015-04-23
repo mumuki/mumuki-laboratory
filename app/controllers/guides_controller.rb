@@ -19,7 +19,8 @@ class GuidesController < ApplicationController
     @guide = Guide.new(guide_params.merge(author: current_user))
     @guide.imports.build
     if @guide.save
-      @guide.register_post_commit_hook!(guide_imports_url(@guide))
+      current_user.ensure_repo_exists! @guide
+      current_user.register_post_commit_hook!(@guide, guide_imports_url(@guide))
       redirect_to @guide, notice: t(:guide_created)
     else
       render :new

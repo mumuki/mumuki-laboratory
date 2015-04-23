@@ -2,7 +2,6 @@ class Export < ActiveRecord::Base
   extend WithAsyncAction
 
   include WithStatus
-  include WithGitGuide
 
   belongs_to :guide
   belongs_to :committer, class_name: 'User'
@@ -14,18 +13,14 @@ class Export < ActiveRecord::Base
   def run_export!
     Rails.logger.info "Exporting guide #{guide.name}"
     run_update! do
-      ensure_repo_exists!
-      with_cloned_repo 'export' do |dir, repo|
+      committer.ensure_repo_exists! guide
+      committer.with_cloned_repo 'export', guide do |dir, repo|
         write_guide! dir
         repo.add(all: true)
         repo.commit("Mumuki Export on #{Time.now}")
         repo.push
       end
     end
-  end
-
-  def ensure_repo_exists!
-    create_repo! unless repo_exists?
   end
 
   def write_guide!(dir)
