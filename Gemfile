@@ -59,6 +59,8 @@ gem 'yaml_db'
 
 gem 'groupdate'
 
+gem 'mumukit-inspection', github: 'uqbar-project/mumukit-inspection', branch: 'master'
+
 group :test do
   gem 'rspec-rails', '~> 2.14'
   gem 'factory_girl_rails'

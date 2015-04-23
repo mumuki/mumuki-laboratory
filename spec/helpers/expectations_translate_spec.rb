@@ -18,11 +18,4 @@ describe ExpectationsTranslate do
     it { expect(t_expectation_result('foo', 'Not:HasUsage:baz')).to eq('foo no debe utilizar baz') }
     it { expect(t_expectation_result('foo', 'Not:HasLambda')).to eq('foo no debe emplear expresiones lambda') }
   end
-
-
-  it { expect(parse_inspection('HasBinding')).to eq(inspection: 'HasBinding', type: 'must') }
-  it { expect(parse_inspection('Not:HasBinding')).to eq(inspection: 'HasBinding', type: 'must_not') }
-  it { expect(parse_inspection('HasUsage:m')).to eq(inspection: 'HasUsage', type: 'must', target: 'm') }
-  it { expect(parse_inspection('Not:HasUsage:m')).to eq(inspection: 'HasUsage', type: 'must_not', target: 'm') }
-
 end
