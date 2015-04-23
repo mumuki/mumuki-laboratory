@@ -25,6 +25,7 @@ class Exercise < ActiveRecord::Base
 
   validates_presence_of :title, :description, :language, :test,
                         :submissions_count, :author, :locale
+  validates_presence_of :position, if: :guide
 
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
 
@@ -41,7 +42,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def can_edit?
-    guide.nil?
+    true #TODO remove this method
   end
 
   def search_tags
