@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/uqbar-project/mumukit-inspection.git
-  revision: b605f44d70fbe75e9f9a190c6073cc2f95c09b81
+  revision: 7c29d27aaaa52b021a9d6c7ad0e9c7b4b39fa205
   branch: master
   specs:
     mumukit-inspection (0.0.1)
