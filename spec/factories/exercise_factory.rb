@@ -20,6 +20,7 @@ FactoryGirl.define do
     test 'dont care'
     author { create(:user) }
     locale :en
+    position 1
   end
 
   factory :x_equal_5_exercise, parent: :exercise do
