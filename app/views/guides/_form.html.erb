@@ -1,36 +1,13 @@
-<%= form_for(@guide, html: {role: 'form'}) do |f| %>
-    <% if @guide.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@guide.errors.count, 'error') %> prohibited this exercise from being saved:</h2>
+<%= bootstrap_form_for(@guide, html: {role: 'form'}) do |f| %>
+  <%= f.text_field :name %>
 
-          <ul>
-            <% @guide.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+  <%= f.text_area :description, class: 'form-control' %>
 
-    <div class="field form-group">
-      <%= f.label :name %>
-      <br>
-      <%= f.text_field :name, class: 'form-control' %>
-    </div>
+  <%= f.text_field :github_repository %>
+  <%= t 'github_url_hint' %></small>
 
-    <div class="field form-group">
-      <%= f.label :description %>
-      <br>
-      <%= f.text_area :description, class: 'form-control' %>
-    </div>
-
-    <div class="field form-group">
-      <%= f.label :github_repository %><small> <%= t 'github_url_hint' %></small>
-      <br>
-      <%= f.text_field :github_repository, class: 'form-control' %>
-    </div>
-
-    <div class="actions form-group">
-      <%= f.submit class: 'btn btn-primary' %>
-      <%= link_to t('cancel'), :back, class: 'btn btn-default' %>
-    </div>
+  <div class="actions form-group">
+    <%= f.submit class: 'btn btn-primary' %>
+    <%= link_to t('cancel'), :back, class: 'btn btn-default' %>
+  </div>
 <% end %>

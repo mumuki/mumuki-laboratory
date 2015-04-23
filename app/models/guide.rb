@@ -15,6 +15,7 @@ class Guide < ActiveRecord::Base
   belongs_to :language
 
   validates_presence_of :github_repository, :name, :author, :description
+  validates_uniqueness_of :name
   validate :valid_name?
 
   markup_on :description, :teaser
