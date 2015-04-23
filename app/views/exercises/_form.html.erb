@@ -10,6 +10,8 @@
       <li role="presentation"><a href="#extra-panel" aria-controls="extra" role="tab" data-toggle="tab"><%= t(:extras) %></a></li>
       <li role="presentation">
         <a href="#expectations-panel" aria-controls="expectations" role="tab" data-toggle="tab"><%= t(:expectations) %></a></li>
+      <li role="presentation">
+        <a href="#guide-panel" aria-controls="guide" role="tab" data-toggle="tab"><%= t(:guide) %></a></li>
 
     </ul>
 
@@ -89,6 +91,14 @@
                                           'data-association-insertion-node' => '#expectations',
                                           'data-association-insertion-method' => 'append' %>
             </div>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="guide-panel">
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.collection_select(:guide_id, Guide.all, :id, :name, {:include_blank => true}, class: 'form-control') %>
+            <%= f.number_field :position  %>
           </div>
         </div>
       </div>
