@@ -28,7 +28,7 @@ class ExerciseRepository
       end
 
       yield original_id,
-          {title: title.titleize,
+          {title: title,
            description: description,
            hint: hint,
            tag_list: meta['tags'],
