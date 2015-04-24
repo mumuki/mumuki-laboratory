@@ -51,6 +51,16 @@ module WithGitAccess
          active: true})
   end
 
+  def contributors(guide)
+    Rails.logger.info "Fetching contributors for guide #{guide}"
+    octokit.contribs(guide.github_repository)
+  end
+
+  def collaborators(guide)
+    Rails.logger.info "Fetching collaboratos for guide #{guide}"
+    octokit.collabs(guide.github_repository)
+  end
+
   private
 
   def private_repo_error(message)

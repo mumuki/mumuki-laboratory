@@ -68,4 +68,23 @@ class Guide < ActiveRecord::Base
     original_id_format % exercise.original_id
   end
 
+  def contributors
+    user_resources_to_users author.contributors(self)
+  end
+
+  def collaborators
+    user_resources_to_users author.collaborators(self)
+  end
+
+  private
+
+  def user_resources_to_users(resources)
+    resources.
+        select{|it| it[:type] = 'User'}.
+        map {|it|it[:login]}.
+        map {|it| User.find_by_name(it) }.
+        compact
+  end
+
+
 end
