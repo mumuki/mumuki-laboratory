@@ -23,10 +23,13 @@
     </div>
     <div role="tabpanel" class="tab-pane" id="import_export-panel">
       <div class="text-center">
-        <%= link_to t(:new_export), guide_exports_path(@guide), method: :post, class: 'btn btn-primary' %>
+        <%= form_tag guide_exports_path(@guide), method: :post do %>
+          <%= submit_tag t(:new_export), class: 'btn btn-primary' %>
+        <% end %>
         <br>
-        <br>
-        <%= link_to t(:new_import), guide_imports_path(@guide), method: :post, class: 'btn btn-primary' %>
+        <%= form_tag guide_imports_path(@guide), method: :post do %>
+          <%= submit_tag t(:new_import), class: 'btn btn-primary' %>
+        <% end %>
       </div>
     </div>
   </div>

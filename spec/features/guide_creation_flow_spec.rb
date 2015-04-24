@@ -4,10 +4,10 @@ feature 'Create guide flow' do
   let(:user) { User.first }
 
   before do
-    allow_any_instance_of(WithGitAccess).to receive(:repo_exists?).and_return(true)
-    allow_any_instance_of(WithGitAccess).to receive(:repo_exists?).and_return(true)
     expect_any_instance_of(WithGitAccess).to receive(:ensure_repo_exists!) {}
     expect_any_instance_of(WithGitAccess).to receive(:register_post_commit_hook!) {}
+
+    allow_any_instance_of(WithGitAccess).to receive(:clone_repo_into) {}
   end
 
   before do
@@ -56,7 +56,6 @@ feature 'Create guide flow' do
   end
 
   scenario 'Create guide and import flow' do
-    expect_any_instance_of(WithGitAccess).to receive(:clone_repo_into) {}
     click_on 'Import/Export'
 
     click_on 'Import now!'
@@ -65,7 +64,6 @@ feature 'Create guide flow' do
   end
 
   scenario 'Create guide manually and the export flow' do
-    expect_any_instance_of(WithGitAccess).to receive(:clone_repo_into) {}
     click_on 'Info'
 
     fill_in 'guide_description', with: 'a description'
@@ -78,7 +76,7 @@ feature 'Create guide flow' do
 
     click_on 'Export now!'
 
-    expect(page).to have_text('Export enqueued')
+    expect(page).to have_text('Export queued')
   end
 
 end
