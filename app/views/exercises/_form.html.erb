@@ -34,7 +34,7 @@
               <%= f.collection_select(:language_id, Language.all, :id, :name, {}, class: 'form-control') %>
             </div>
             <div class="field form-group"><%# TODO extract %>
-              <%= f.select(:locale, [['English', :en], ['Español', :es]], {}, class: 'form-control') %>
+              <%= f.select(:locale, Locale.all, {}, class: 'form-control') %>
             </div>
           </div>
         </div>
