@@ -1,21 +1,11 @@
-class Import < ActiveRecord::Base
-  extend WithAsyncAction
-
-  include WithStatus
-
-  belongs_to :guide
-  belongs_to :committer, class_name: 'User'
-
+class Import < RepositoryOperation
   schedule_on_create ImportGuideJob
-
-  delegate :author, to: :guide
-  delegate :language, to: :guide
 
   def run_import!
     run_update! do
       Rails.logger.info("Importing exercises for #{guide.github_url}")
       log = nil
-      committer.with_cloned_repo guide, 'import' do |dir|
+      with_cloned_repo do |dir|
         log = read_guide! dir
       end
       guide.update_contributors!

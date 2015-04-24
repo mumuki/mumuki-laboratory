@@ -1,22 +1,11 @@
-class Export < ActiveRecord::Base
-  extend WithAsyncAction
-
-  include WithStatus
-
-  belongs_to :guide
-  belongs_to :committer, class_name: 'User'
-
+class Export < RepositoryOperation
   schedule_on_create ExportGuideJob
 
-  validates_presence_of :committer
-
-  delegate :language, to: :guide
-
-  def run_export!
-    Rails.logger.info "Exporting guide #{guide.id}"
+  def run_export! #TODO template method
+    Rails.logger.info "Exporting guide #{guide.name}"
     run_update! do
       committer.ensure_repo_exists! guide
-      committer.with_cloned_repo guide, 'export' do |dir, repo|
+      with_cloned_repo do |dir, repo|
         write_guide! dir
         repo.add(all: true)
         repo.commit("Mumuki Export on #{Time.now}")

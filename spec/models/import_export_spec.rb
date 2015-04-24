@@ -18,7 +18,7 @@ describe 'import-export' do
     guide.exports.create!(committer: committer).write_guide! dir
     guide.exercises.delete_all
     guide.update!(description: '***', locale: 'es', language: nil)
-    guide.imports.create!.read_guide! dir
+    guide.imports.create!(committer:committer).read_guide! dir
     guide.reload
   end
 
