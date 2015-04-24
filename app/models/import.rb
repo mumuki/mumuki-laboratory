@@ -36,8 +36,9 @@ class Import < ActiveRecord::Base
 
     language = Language.find_by!(name: meta['language'].downcase)
     locale = meta['locale']
+    original_id_format = meta['original_id_format']
 
-    guide.update!(language: language, locale: locale)
+    guide.update!(language: language, locale: locale, original_id_format: meta['original_id_format'])
   end
 
   def read_exercises!(dir)
