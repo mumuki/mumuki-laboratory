@@ -37,6 +37,12 @@ module WithGitAccess
     false
   end
 
+  def can_commit?(guide)
+    octokit.collaborator?(guide.github_repository, name)
+  rescue
+    false
+  end
+
   def register_post_commit_hook!(guide, web_hook)
     octokit.create_hook(
         guide.github_repository, 'web',
