@@ -4,7 +4,10 @@ feature 'Create guide flow' do
   let(:user) { User.first }
 
   before do
-    allow_any_instance_of(WithGitGuide).to receive(:repo_exists?).and_return(true)
+    allow_any_instance_of(WithGitAccess).to receive(:repo_exists?).and_return(true)
+    allow_any_instance_of(WithGitAccess).to receive(:repo_exists?).and_return(true)
+    expect_any_instance_of(WithGitAccess).to receive(:ensure_repo_exists!) {}
+    expect_any_instance_of(WithGitAccess).to receive(:register_post_commit_hook!) {}
   end
 
   before do
@@ -12,46 +15,70 @@ feature 'Create guide flow' do
 
     click_on 'Sign in with Github'
 
-    visit "es/users/#{user.id}/guides"
+    visit "en/users/#{user.id}/guides"
 
     click_on 'New Guide'
 
-    expect(page).to have_text('Step 1')
-
-    fill_in 'name', with: 'fooGuide'
-    fill_in 'github_repository', with: 'flbulgarelli/mumuki-test-guide'
+    fill_in 'guide_name', with: 'fooGuide'
+    fill_in 'guide_github_repository', with: 'flbulgarelli/mumuki-test-guide'
 
     click_on 'Create Guide'
 
-    expect(page).to have_text('Step 2')
+    expect(page).to have_text('Guide created successfully')
 
-    expect(page).to have_text('Import guide')
+    expect(page).to have_text('Import/Export')
+    expect(page).to have_text('Info')
+    expect(page).to have_text('Basic')
   end
 
   scenario 'Create guide manually flow' do
-    click_on 'Edit Guide Manually'
+    click_on 'Info'
 
-    fill_in 'description', with: 'a description'
+    fill_in 'guide_description', with: 'a description'
 
-    click_on 'Update Guide'
+    within '#info-panel' do
+      click_on 'Update Guide'
+    end
+
+    expect(page).to have_text('Guide was successfully updated')
+
+  end
+
+  scenario 'Rename guide' do
+    fill_in 'guide_name', with: 'anotherName'
+
+    within '#basic-panel' do
+      click_on 'Update Guide'
+    end
+
+    expect(page).to have_text('Guide was successfully updated')
+
   end
 
   scenario 'Create guide and import flow' do
-    expect_any_instance_of(WithGitGuide).to receive(:clone_repo_into) {}
+    expect_any_instance_of(WithGitAccess).to receive(:clone_repo_into) {}
+    click_on 'Import/Export'
 
-    click_on 'Import Guide'
+    click_on 'Import now!'
+
+    expect(page).to have_text('Import enqueued')
   end
 
   scenario 'Create guide manually and the export flow' do
-    expect_any_instance_of(WithGitGuide).to receive(:clone_repo_into) {}
-    expect_any_instance_of(WithGitGuide).to receive(:create_repo!) {}
-    click_on 'Edit Guide Manually'
+    expect_any_instance_of(WithGitAccess).to receive(:clone_repo_into) {}
+    click_on 'Info'
 
-    fill_in 'description', with: 'a description'
+    fill_in 'guide_description', with: 'a description'
 
-    click_on 'Update Guide'
+    within '#info-panel' do
+      click_on 'Update Guide'
+    end
 
-    click_on 'Export Guide'
+    click_on 'Import/Export'
+
+    click_on 'Export now!'
+
+    expect(page).to have_text('Export enqueued')
   end
 
 end
