@@ -15,6 +15,9 @@
 
         <%= f.collection_select(:language_id, Language.all, :id, :name, {}, class: 'form-control') %>
 
+        <%= f.text_field :original_id_format %>
+
+
         <div class="actions form-group">
           <%= f.submit class: 'btn btn-primary' %>
           <%= link_to t('cancel'), :back, class: 'btn btn-default' %>
