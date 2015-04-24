@@ -9,7 +9,7 @@ class GuidesController < ApplicationController
 
   def update
     if @guide.update(guide_params)
-      redirect_to update, notice: 'Guide was successfully updated.'
+      redirect_to edit_guide_path(@guide), notice: 'Guide was successfully updated.'
     else
       render :edit
     end
@@ -17,11 +17,14 @@ class GuidesController < ApplicationController
 
   def create
     @guide = Guide.new(guide_params.merge(author: current_user))
-    @guide.imports.build
     if @guide.save
-      current_user.ensure_repo_exists! @guide
-      current_user.register_post_commit_hook!(@guide, guide_imports_url(@guide))
-      redirect_to @guide, notice: t(:guide_created)
+      begin
+        current_user.ensure_repo_exists! @guide
+        current_user.register_post_commit_hook!(@guide, guide_imports_url(@guide))
+        redirect_to edit_guide_path(@guide), notice: t(:guide_created)
+      rescue
+        redirect_to edit_guide_path(@guide), alert: t(:no_permissions)
+      end
     else
       render :new
     end
@@ -49,6 +52,6 @@ class GuidesController < ApplicationController
   end
 
   def guide_params
-    params.require(:guide).permit(:github_repository, :name, :description)
+    params.require(:guide).permit(:github_repository, :name, :description, :locale, :original_id_format, :language_id)
   end
 end

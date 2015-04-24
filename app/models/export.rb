@@ -14,12 +14,13 @@ class Export < ActiveRecord::Base
     Rails.logger.info "Exporting guide #{guide.name}"
     run_update! do
       committer.ensure_repo_exists! guide
-      committer.with_cloned_repo 'export', guide do |dir, repo|
+      committer.with_cloned_repo guide, 'export' do |dir, repo|
         write_guide! dir
         repo.add(all: true)
         repo.commit("Mumuki Export on #{Time.now}")
         repo.push
       end
+      {result: 'Exported', status: :passed} #TODO save sha
     end
   end
 

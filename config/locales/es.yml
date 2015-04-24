@@ -98,6 +98,13 @@ es:
       submission:
         content: "Contenido"
 
+      guide:
+        name: 'Nombre'
+        locale: 'Idioma'
+        description: 'Descripción'
+        language: 'Lenguaje'
+        github_repository: 'Repositorio Github'
+
       exercise:
         title: "Título"
         language: "Lenguaje"
@@ -188,3 +195,6 @@ es:
   exercise_number: "Número"
   export_created: "Exportación encolada"
   activity: "Actividad"
+  new_export: "¡Exportar ahora!"
+  no_permissions: "No tenés suficientes permisos sobre el repositorio"
+  import_export: 'Importar/Exportar'

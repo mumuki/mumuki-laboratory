@@ -1,19 +1,9 @@
 <%= bootstrap_form_for(@exercise) do |f| %>
 
-
   <div role="tabpanel">
     <br>
-    <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active">
-        <a href="#basic-panel" aria-controls="basic" role="tab" data-toggle="tab"><%= t(:basic) %></a>
-      </li>
-      <li role="presentation"><a href="#extra-panel" aria-controls="extra" role="tab" data-toggle="tab"><%= t(:extras) %></a></li>
-      <li role="presentation">
-        <a href="#expectations-panel" aria-controls="expectations" role="tab" data-toggle="tab"><%= t(:expectations) %></a></li>
-      <li role="presentation">
-        <a href="#guide-panel" aria-controls="guide" role="tab" data-toggle="tab"><%= t(:guide) %></a></li>
 
-    </ul>
+    <%= tab_list [:basic, :extras, :expectations, :guide ] %>
 
     <div class="tab-content">
       <br>
@@ -34,7 +24,7 @@
               <%= f.collection_select(:language_id, Language.all, :id, :name, {}, class: 'form-control') %>
             </div>
             <div class="field form-group"><%# TODO extract %>
-              <%= f.select(:locale, [['English', :en], ['Español', :es]], {}, class: 'form-control') %>
+              <%= f.select(:locale, Locale.all, {}, class: 'form-control') %>
             </div>
           </div>
         </div>
@@ -52,7 +42,7 @@
           </div>
         </div>
       </div>
-      <div role="tabpanel" class="tab-pane" id="extra-panel">
+      <div role="tabpanel" class="tab-pane" id="extras-panel">
         <div class="row">
           <div class="col-md-6">
             <div class="field form-group">

@@ -6,8 +6,12 @@ class GuideExportsController < ApplicationController
   before_action :authenticate!
 
   def create
-    @import = @guide.exports.create!(committer: current_user)
-    flash[:notice] = t(:export_created)
-    respond_with @import, location: @guide
+    if current_user.can_commit?(@guide)
+      @export = @guide.exports.create!(committer: current_user)
+      flash[:notice] = t(:export_created)
+    else
+      flash[:notice] = t(:export_created)
+    end
+    respond_with @export, location: edit_guide_path(@guide)
   end
 end

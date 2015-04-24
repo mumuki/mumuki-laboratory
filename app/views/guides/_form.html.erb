@@ -1,13 +1,41 @@
-<%= bootstrap_form_for(@guide, html: {role: 'form'}) do |f| %>
-  <%= f.text_field :name %>
+<div role="tabpanel">
+  <br>
+  <%= tab_list [:basic, :info, :import_export] %>
+  <br>
 
-  <%= f.text_area :description, class: 'form-control' %>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="basic-panel">
+      <%= render 'basic_form' %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="info-panel">
+      <%= bootstrap_form_for(@guide, html: {role: 'form'}) do |f| %>
+        <%= f.text_area :description, class: 'form-control' %>
 
-  <%= f.text_field :github_repository %>
-  <%= t 'github_url_hint' %></small>
+        <%= f.select(:locale, Locale.all, {}, class: 'form-control') %>
 
-  <div class="actions form-group">
-    <%= f.submit class: 'btn btn-primary' %>
-    <%= link_to t('cancel'), :back, class: 'btn btn-default' %>
+        <%= f.collection_select(:language_id, Language.all, :id, :name, {}, class: 'form-control') %>
+
+        <%= f.text_field :original_id_format %>
+
+
+        <div class="actions form-group">
+          <%= f.submit class: 'btn btn-primary' %>
+          <%= link_to t('cancel'), :back, class: 'btn btn-default' %>
+        </div>
+      <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="import_export-panel">
+      <div class="text-center">
+        <%= form_tag guide_exports_path(@guide), method: :post do %>
+          <%= submit_tag t(:new_export), class: 'btn btn-primary' %>
+        <% end %>
+        <br>
+        <%= form_tag guide_imports_path(@guide), method: :post do %>
+          <%= submit_tag t(:new_import), class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
+
+
+</div>
