@@ -12,6 +12,9 @@ class Guide < ActiveRecord::Base
   has_many :imports, -> { order(created_at: :desc)}
   has_many :exports
 
+  has_and_belongs_to_many :contributors, class_name: 'User', join_table: 'contributors'
+  has_and_belongs_to_many :collaborators, class_name: 'User', join_table: 'collaborators'
+
   belongs_to :language
 
   validates_presence_of :github_repository, :name, :author
@@ -68,12 +71,14 @@ class Guide < ActiveRecord::Base
     original_id_format % exercise.original_id
   end
 
-  def contributors
-    user_resources_to_users author.contributors(self)
+  def update_contributors!
+    self.contributors = user_resources_to_users author.contributors(self)
+    save!
   end
 
-  def collaborators
-    user_resources_to_users author.collaborators(self)
+  def update_collaborators!
+    self.collaborators = user_resources_to_users author.collaborators(self)
+    save!
   end
 
   private
@@ -85,6 +90,5 @@ class Guide < ActiveRecord::Base
         map {|it| User.find_by_name(it) }.
         compact
   end
-
 
 end

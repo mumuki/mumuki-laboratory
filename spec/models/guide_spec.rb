@@ -15,6 +15,7 @@ describe Guide do
     }
     before do
       allow_any_instance_of(WithGitAccess).to receive(:collaborators).and_return(collaborators_resource)
+      guide.update_collaborators!
     end
 
     it { expect(guide.collaborators).to eq [author] }
@@ -27,6 +28,7 @@ describe Guide do
     }
     before do
       allow_any_instance_of(WithGitAccess).to receive(:contributors).and_return(contributors_resource)
+      guide.update_contributors!
     end
 
     it { expect(guide.contributors).to eq [extra_user, author] }
