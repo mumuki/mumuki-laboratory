@@ -53,4 +53,33 @@ describe Import do
       it { expect(imported_exercise.hint).to eq "Try this: blah blah\n" }
     end
   end
+
+  describe '#import!' do
+    before do
+      begin
+        import.run_import!
+      rescue
+      end
+    end
+
+    context 'when repository does not exist' do
+      let(:guide) { create(:guide, github_repository: 'uqbar-project/foobar123456') }
+
+      it do
+        expect(import.status).to eq 'failed'
+        expect(import.result).to eq 'Repository is private or does not exist'
+      end
+    end
+
+    it 'succeeds when repo is private'
+
+    context 'when repository exists' do
+      let(:guide) { create(:guide, github_repository: 'uqbar-project/mumuki-hspec-server') }
+
+      it do
+        expect(import.status).to eq 'passed'
+        expect(import.result).to eq ''
+      end
+    end
+  end
 end
