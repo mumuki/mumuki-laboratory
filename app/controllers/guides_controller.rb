@@ -9,7 +9,7 @@ class GuidesController < ApplicationController
 
   def update
     if @guide.update(guide_params)
-      redirect_to update, notice: 'Guide was successfully updated.'
+      redirect_to edit_guide_path(@guide), notice: 'Guide was successfully updated.'
     else
       render :edit
     end
