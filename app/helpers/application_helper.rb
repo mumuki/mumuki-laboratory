@@ -36,4 +36,14 @@ module ApplicationHelper
   def time_ago_in_words_or_never(date)
     date ? time_ago_in_words(date) : t(:never)
   end
+
+  def tab_list(tabs)
+    ('<ul class="nav nav-tabs" role="tablist">' +
+        tabs.map do |tab|
+%Q{<li role="presentation" class="#{'active' if tab == tabs.first }">
+<a href="##{tab}-panel" aria-controls="#{tab}" role="tab" data-toggle="tab">#{t(tab)}</a>
+</li>}
+        end.join("\n") +
+        '</ul>').html_safe
+  end
 end
