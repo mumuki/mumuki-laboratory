@@ -17,6 +17,7 @@ class Import < ActiveRecord::Base
       committer.with_cloned_repo guide, 'import' do |dir|
         log = read_guide! dir
       end
+      guide.update_contributors!
       {result: log.to_s, status: :passed}
     end
   end

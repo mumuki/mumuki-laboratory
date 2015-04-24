@@ -1,7 +1,7 @@
 class GuidesController < ApplicationController
 
   before_action :authenticate!, except: [:index, :show]
-  before_action :set_guide, only: [:show, :edit, :details, :update]
+  before_action :set_guide, only: [:show, :edit, :details, :update, :collaborators_refresh]
 
   def new
     @guide = Guide.new
@@ -43,6 +43,10 @@ class GuidesController < ApplicationController
   def index
     @q = params[:q]
     @guides = paginated Guide.by_full_text(@q).at_locale
+  end
+
+  def collaborators_refresh
+    @guide.update_collaborators!
   end
 
   private

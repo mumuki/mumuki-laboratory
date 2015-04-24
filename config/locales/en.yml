@@ -130,3 +130,4 @@ en:
   no_permissions: "You don't have enough permissions over the repository"
   new_export: "Export now!"
   import_export: 'Import/Export'
+  refresh_collaborators: "Refresh collaborators!"

@@ -198,3 +198,4 @@ es:
   new_export: "¡Exportar ahora!"
   no_permissions: "No tenés suficientes permisos sobre el repositorio"
   import_export: 'Importar/Exportar'
+  refresh_collaborators: "¡Actualizá los colaboradores!"
