@@ -20,6 +20,7 @@ class Export < ActiveRecord::Base
         repo.commit("Mumuki Export on #{Time.now}")
         repo.push
       end
+      {result: 'Exported', status: :passed} #TODO save sha
     end
   end
 
