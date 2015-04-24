@@ -38,7 +38,7 @@ class Import < RepositoryOperation
   def read_exercises!(dir, order = nil)
     ordering = Ordering.from order
     log = ImportLog.new
-    ExerciseRepository.new(author, language, dir).process_files(log) do |original_id, attributes|
+    ExerciseRepository.new(committer, language, dir).process_files(log) do |original_id, attributes|
       Exercise.create_or_update_for_import!(guide, original_id, ordering.with_position(original_id, attributes))
     end
     log
