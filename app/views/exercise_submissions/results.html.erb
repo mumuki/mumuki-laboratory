@@ -1,4 +1,7 @@
 <% @stats = @exercise.guide.stats(current_user) if @exercise.guide %>
+
+
+<% if @submission.should_retry? %>
 <div>
   <h2><%= t('results') %></h2>
 
@@ -23,10 +26,17 @@
     <strong><%= t :output %>:</strong>
     <%= highlighted_code @submission.language, @submission.result %>
   </p>
-
 </div>
+<% else %>
+<div>
+  <h3 class="text-center"><%= t(:exercise_done) %></h3>
+</div>
+<% end %>
+
+<hr>
+
 <div class="actions">
-  <%= mail_to @submission.exercise.author.email, fa_icon("warning", text: t('notify_problem_to_author')), subject: t("problem_with_exercise", title: @submission.exercise.title), class: 'btn btn-warning pull-left' %>
+  <%= mail_to @submission.exercise.author.email, fa_icon('warning', text: t(:notify_problem_to_author)), subject: t(:problem_with_exercise, title: @submission.exercise.title), class: 'btn btn-warning pull-left' %>
   <%= previous_exercise_button(@exercise) %>
   <%= repeat_submission_button(@exercise) if @submission.should_retry? %>
   <%= next_exercise_button(@exercise) %>
