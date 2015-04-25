@@ -201,3 +201,5 @@ es:
   refresh_collaborators: "¡Actualizá los colaboradores!"
   collaborators_refreshed: "Lista de collaboradores actualizada"
   contributors: "Autores"
+  solved_exercises: "Ejercicios Resueltos"
+  submissions: "Soluciones"

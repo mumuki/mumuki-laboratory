@@ -46,4 +46,14 @@ module ApplicationHelper
         end.join("\n") +
         '</ul>').html_safe
   end
+
+  def follow_button(user)
+    restricted_to_other_user user do
+      if current_user.following?(user)
+        render 'users/unfollow', user: user, button_class: 'btn-warning'
+      else
+        render 'users/follow', user: user, button_class: 'btn-primary'
+      end
+    end
+  end
 end
