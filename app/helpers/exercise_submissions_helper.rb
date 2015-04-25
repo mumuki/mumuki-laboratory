@@ -14,6 +14,6 @@ module ExerciseSubmissionsHelper
   end
 
   def sibling_exercise_button(sibling, key, icon)
-    link_to fa_icon(icon, text: t(key)), exercise_path(sibling), class: 'btn btn-primary' if sibling
+    link_to fa_icon(icon, text: t(key)), exercise_path(sibling), class: 'btn btn-success' if sibling
   end
 end
