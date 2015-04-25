@@ -46,6 +46,7 @@ class GuidesController < ApplicationController
   end
 
   def collaborators_refresh
+    #FIXME should be done in a job
     @guide.update_collaborators!
     redirect_to edit_guide_path(@guide), notice: t(:collaborators_refreshed)
   end

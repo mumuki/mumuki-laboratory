@@ -63,6 +63,17 @@ feature 'Create guide flow' do
     expect(page).to have_text('Import enqueued')
   end
 
+  scenario 'Create guide and import collaborators' do
+    allow_any_instance_of(WithGitAccess).to receive(:collaborators).and_return([])
+
+    click_on 'Import/Export'
+
+    click_on 'Refresh collaborators!'
+
+    expect(page).to have_text('Collaborators list refreshed')
+  end
+
+
   scenario 'Create guide manually and the export flow' do
     click_on 'Info'
 
