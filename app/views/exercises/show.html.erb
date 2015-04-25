@@ -5,7 +5,7 @@
         <%= @exercise.description_html %>
       </div>
       <div>
-        <% if @exercise.hint %>
+        <% if @exercise.hint.present? %>
           <a data-toggle="collapse"
              href="#hint-section">
             <%= label :exercise, :hint %>

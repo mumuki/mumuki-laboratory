@@ -45,8 +45,8 @@ class Export < ActiveRecord::Base
     write_file!(dirname, 'description.md', e.description)
     write_file!(dirname, 'meta.yml', metadata_yaml(e))
 
-    write_file!(dirname, 'hint.md', e.hint) if e.hint
-    write_file!(dirname, format_extension('extra'), e.extra_code) if e.extra_code
+    write_file!(dirname, 'hint.md', e.hint) if e.hint.present?
+    write_file!(dirname, format_extension('extra'), e.extra_code) if e.extra_code.present?
     write_file!(dirname, 'expectations.yml', expectations_yaml(e)) if e.expectations.present?
   end
 
