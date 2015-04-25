@@ -17,7 +17,10 @@ module WithGitAccess
   end
 
   def clone_repo_into(guide, dir)
-    Git.clone(repo_github_url(guide), '.', path: dir)
+    g = Git.clone(repo_github_url(guide), '.', path: dir)
+    g.config('user.name', name)
+    g.config('user.email', email)
+    g
   rescue Git::GitExecuteError => e
     raise 'Repository is private or does not exist' if private_repo_error(e.message)
     raise e
