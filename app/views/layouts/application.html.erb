@@ -36,7 +36,7 @@
 
 <%= yield :no_container %>
 
-<div class="container">
+<div class="container" id="wrap">
   <div class="row">
     <% if notice %>
         <div class="alert alert-success" role="alert">
@@ -52,8 +52,8 @@
   </div>
 
   <%= yield %>
-</div>
 
+</div>
 
 <footer class="footer">
   <div class="container">

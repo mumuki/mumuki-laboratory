@@ -1,3 +1,4 @@
+<% @stats = @exercise.guide.stats(current_user) if @exercise.guide %>
 <div>
   <h2><%= t('results') %></h2>
 
@@ -29,13 +30,24 @@
   <%= previous_exercise_button(@exercise) %>
   <%= repeat_submission_button(@exercise) if @submission.should_retry? %>
   <%= next_exercise_button(@exercise) %>
+
+  <%= link_to t(:more_guides).titleize, guides_path, class: 'btn btn-success' if @stats.try &:done? %>
+
 </div>
 
 <script>
   $('#exercise-status-icon').html("<%= escape_javascript exercise_status_icon(@exercise) %>");
-  <% if @exercise.guide %>
-    <% @stats = @exercise.guide.stats(current_user) %>
-    $('#failed-progress-bar').css("width", "<%= @stats.failed_ratio %>%");
-    $('#passed-progress-bar').css("width", "<%= @stats.passed_ratio %>%");
+  <% if @stats %>
+  <% @stats = @exercise.guide.stats(current_user) %>
+
+  $('#failed-progress-bar').css("width", "<%= @stats.failed_ratio %>%");
+  $('#passed-progress-bar').css("width", "<%= @stats.passed_ratio %>%");
+
+  <% if @stats.done? %>
+  $('#guide-done').modal()
+  <% end %>
+
   <% end %>
 </script>
+
+

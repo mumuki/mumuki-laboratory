@@ -10,6 +10,21 @@
   </div>
 <% end %>
 
+<%= content_for :no_container do %>
+  <div class="modal fade" id="guide-done" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 text-center">
+          <h1>Felicitaciones, terminaste la guía <%= @exercise.guide.name %> </h1>
+
+          <h3>Pero no te desanimes, ¡tenemos más guías para vos!</h3>
+          <%= link_to t(:more_guides).titleize, guides_path, class: 'btn btn-success' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end if @exercise.guide %>
+
 <%= content_for :tail do %>
   <script>
     function loadResults() {
