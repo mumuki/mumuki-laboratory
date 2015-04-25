@@ -39,7 +39,7 @@ class Export < ActiveRecord::Base
 
     dirname = File.join dir, "#{guide.format_original_id(e)}_#{e.title}"
 
-    Dir.mkdir dirname
+    FileUtils.mkdir_p dirname
 
     write_file!(dirname, format_extension('test'), e.test)
     write_file!(dirname, 'description.md', e.description)
