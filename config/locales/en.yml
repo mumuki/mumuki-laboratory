@@ -131,3 +131,4 @@ en:
   new_export: "Export now!"
   import_export: 'Import/Export'
   refresh_collaborators: "Refresh collaborators!"
+  collaborators_refreshed: "Collaborators list refreshed"

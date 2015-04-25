@@ -47,6 +47,7 @@ class GuidesController < ApplicationController
 
   def collaborators_refresh
     @guide.update_collaborators!
+    redirect_to edit_guide_path(@guide), notice: t(:collaborators_refreshed)
   end
 
   private

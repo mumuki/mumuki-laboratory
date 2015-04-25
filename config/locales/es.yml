@@ -199,3 +199,4 @@ es:
   no_permissions: "No tenés suficientes permisos sobre el repositorio"
   import_export: 'Importar/Exportar'
   refresh_collaborators: "¡Actualizá los colaboradores!"
+  collaborators_refreshed: "Lista de collaboradores actualizada"
