@@ -52,6 +52,10 @@ class Exercise < ActiveRecord::Base
     end
   end
 
+  def collaborator?(user)
+    guide.present? && guide.authored_by?(user)
+  end
+
   private
 
   def defaults

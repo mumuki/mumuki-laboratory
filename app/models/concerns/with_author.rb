@@ -4,6 +4,6 @@ module WithAuthor
     belongs_to :author, class_name: 'User'
   end
   def authored_by?(user)
-    user == author
+    user == author || collaborator?(user)
   end
 end

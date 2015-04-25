@@ -81,6 +81,10 @@ class Guide < ActiveRecord::Base
     save!
   end
 
+  def collaborator?(user)
+    collaborators.include? user
+  end
+
   private
 
   def user_resources_to_users(resources)

@@ -33,6 +33,7 @@
         <%= form_tag guide_imports_path(@guide), method: :post do %>
           <%= submit_tag t(:new_import), class: 'btn btn-primary' %>
         <% end %>
+        <br>
         <%= form_tag  collaborators_refresh_guide_path(@guide), method: :post do %>
           <%= submit_tag t(:refresh_collaborators), class: 'btn btn-primary' %>
         <% end %>
