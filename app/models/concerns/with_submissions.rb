@@ -2,7 +2,7 @@ module WithSubmissions
   extend ActiveSupport::Concern
 
   included do
-    has_many :submissions
+    has_many :submissions, dependent: :restrict_with_error
   end
 
   def default_content_for(user)

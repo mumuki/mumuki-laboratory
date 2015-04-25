@@ -20,7 +20,6 @@ class Exercise < ActiveRecord::Base
 
   accepts_nested_attributes_for :expectations, reject_if: :all_blank, allow_destroy: true
 
-  before_destroy :can_destroy?
   after_initialize :defaults, if: :new_record?
 
   validates_presence_of :title, :description, :language, :test,
@@ -35,14 +34,6 @@ class Exercise < ActiveRecord::Base
     exercise = find_or_initialize_by(original_id: original_id, guide_id: guide.id)
     exercise.assign_attributes(options)
     exercise.save!
-  end
-
-  def can_destroy?
-    can_edit? && submissions_count == 0
-  end
-
-  def can_edit?
-    true #TODO remove this method
   end
 
   def search_tags

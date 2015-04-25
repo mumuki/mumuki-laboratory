@@ -61,7 +61,7 @@
       </li>
       <% restricted_to_author @exercise do %>
         <li <%= active_if :edit %>>
-          <%= link_to fa_icon('pencil'), edit_exercise_path(@exercise), title: t(:edit) if @exercise.can_edit? %>
+          <%= link_to fa_icon('pencil'), edit_exercise_path(@exercise), title: t(:edit) %>
         </li>
       <% end %>
     </ul>

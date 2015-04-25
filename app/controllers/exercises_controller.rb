@@ -41,16 +41,12 @@ class ExercisesController < ApplicationController
   end
 
   def destroy
-    authorize_with! :can_destroy?
+    authorize_edition!
     @exercise.destroy
     redirect_to exercises_url, notice: 'Exercise was successfully destroyed.'
   end
 
   private
-
-  def authorize_edition!
-    authorize_with! :can_edit?
-  end
 
   def set_previous_submission_content
     @previous_submission_content = @exercise.default_content_for(current_user) if current_user?
@@ -74,7 +70,7 @@ class ExercisesController < ApplicationController
   end
 
 
-  def authorize_with!(action)
-    raise AuthorizationError.new if !@exercise.authored_by?(current_user)|| !@exercise.send(action)
+  def authorize_edition!
+    raise AuthorizationError.new unless @exercise.authored_by?(current_user)
   end
 end

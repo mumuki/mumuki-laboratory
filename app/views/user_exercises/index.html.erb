@@ -31,9 +31,9 @@
         <td>
           <%= time_ago_in_words(exercise.created_at) %>
         </td>
-        <% restricted_to_current_user @user do %>
-          <td><%= link_to fa_icon(:pencil), edit_exercise_path(exercise) if exercise.can_edit? %></td>
-          <td><%= link_to fa_icon(:trash), exercise, method: :delete, data: {confirm: t('are_you_sure')} if exercise.can_destroy? %></td>
+        <% restricted_to_author exercise do %>
+          <td><%= link_to fa_icon(:pencil), edit_exercise_path(exercise) %></td>
+          <td><%= link_to fa_icon(:trash), exercise, method: :delete, data: {confirm: t('are_you_sure')} %></td>
         <% end %>
       </tr>
     <% end %>
