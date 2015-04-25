@@ -200,3 +200,4 @@ es:
   import_export: 'Importar/Exportar'
   refresh_collaborators: "¡Actualizá los colaboradores!"
   collaborators_refreshed: "Lista de collaboradores actualizada"
+  contributors: "Autores"

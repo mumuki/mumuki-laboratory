@@ -28,7 +28,7 @@
       <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= link_to user.name, user %></td>
+          <td><%= link_to_user user %></td>
           <td><%= user.submissions_success_rate %></td>
           <td><%= user.exercises_success_rate %></td>
           <td><%= time_ago_in_words_or_never user.last_submission_date %></td>
