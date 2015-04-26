@@ -72,7 +72,7 @@
 
 
 <div class="text-center">
-  <strong><%= raw t :no_exercises, create_path: new_exercise_path if @exercises.empty? %></strong>
+  <strong><%= raw t :no_exercises, create_path: new_exercise_path(q: @q) if @exercises.empty? %></strong>
 </div>
 
 

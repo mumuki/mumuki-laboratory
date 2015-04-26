@@ -16,7 +16,7 @@ class ExercisesController < ApplicationController
   end
 
   def new
-    @exercise = Exercise.new(locale: I18n.locale)
+    @exercise = Exercise.new(locale: I18n.locale, title: params[:q])
   end
 
   def edit

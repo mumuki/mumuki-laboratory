@@ -42,4 +42,23 @@ feature 'Search Flow' do
     expect(page).to have_text('nothing')
   end
 
+
+  scenario 'search by guide when it does not exists' do
+    visit '/en/exercises'
+
+    click_on 'Sign in with Github'
+
+    fill_in 'q', with: 'nonExistingExercise'
+
+    click_on 'search'
+
+    expect(page).to have_text('Be the first')
+
+    click_on 'Be the first'
+
+    expect(page).to have_text('New Exercise')
+
+    expect(find_field('exercise_title').value).to eq 'nonExistingExercise'
+  end
+
 end

@@ -4,7 +4,7 @@ class GuidesController < ApplicationController
   before_action :set_guide, only: [:show, :edit, :details, :update, :collaborators_refresh]
 
   def new
-    @guide = Guide.new
+    @guide = Guide.new(name: params[:q])
   end
 
   def update
