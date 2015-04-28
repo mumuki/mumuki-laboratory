@@ -15,6 +15,11 @@ class Guide < ActiveRecord::Base
   has_and_belongs_to_many :contributors, class_name: 'User', join_table: 'contributors'
   has_and_belongs_to_many :collaborators, class_name: 'User', join_table: 'collaborators'
 
+  has_and_belongs_to_many :suggested_guides,
+                          class_name: 'Guide',
+                          join_table: 'suggested_guides',
+                          association_foreign_key: 'suggested_guide_id'
+
   belongs_to :language
 
   validates_presence_of :github_repository, :name, :author
