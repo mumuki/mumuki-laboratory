@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/uqbar-project/mumukit-bridge.git
+  revision: f88727363627c51f6032b43e0839f77d23414439
+  branch: master
+  specs:
+    mumukit-bridge (0.0.1)
+      rest-client
+
+GIT
   remote: git://github.com/uqbar-project/mumukit-inspection.git
   revision: 7c29d27aaaa52b021a9d6c7ad0e9c7b4b39fa205
   branch: master
@@ -100,6 +108,8 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    domain_name (0.5.24)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.2.2)
     factory_girl (4.5.0)
@@ -125,6 +135,8 @@ GEM
     hashie (3.3.2)
     hike (1.2.3)
     hitimes (1.2.2)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     i18n (0.7.0)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
@@ -152,7 +164,7 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    netrc (0.10.2)
+    netrc (0.10.3)
     nokogiri (1.6.5)
       mini_portile (~> 0.6.0)
     nprogress-rails (0.1.6.6)
@@ -225,7 +237,8 @@ GEM
     ref (1.0.5)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
-    rest-client (1.7.2)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
     rspec-collection_matchers (1.1.2)
@@ -289,6 +302,9 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.1)
     unicorn (4.8.3)
       kgio (~> 2.6)
       rack
@@ -327,6 +343,7 @@ DEPENDENCIES
   groupdate
   jquery-rails
   kaminari
+  mumukit-bridge!
   mumukit-inspection!
   nprogress-rails
   octokit
@@ -341,7 +358,6 @@ DEPENDENCIES
   rails-i18n (~> 4.0.0)
   rake
   redcarpet
-  rest-client
   rspec-rails (~> 2.14)
   sass-rails
   sitemap_generator

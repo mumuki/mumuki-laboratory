@@ -1,4 +1,4 @@
-require 'rest_client'
+require 'mumukit/bridge'
 
 class Language < ActiveRecord::Base
   include WithMarkup
@@ -10,33 +10,15 @@ class Language < ActiveRecord::Base
   before_save :downcase_name!
 
   def run_tests!(request)
-    response = post_to_server(request)
-
-    {result: response['out'],
-     status: response['exit'],
-     expectation_results: parse_expectation_results(response['expectationResults'] || [])}
-
-  rescue Exception => e
-    {result: e.message, status: :failed}
-  end
-
-  def parse_expectation_results(results)
-    results.map do |it|
-      {binding: it['expectation']['binding'],
-       inspection: it['expectation']['inspection'],
-       result: it['result'] ? :passed : :failed}
-    end
-  end
-
-  def post_to_server(request)
-    JSON.parse RestClient.post(
-        "#{test_runner_url}/test",
-        request.to_json,
-        content_type: :json)
+    bridge.run_tests!(request)
   end
 
   def downcase_name!
     self.name = name.downcase
+  end
+
+  def bridge
+    Mumukit::Bridge::Bridge.new(test_runner_url)
   end
 
   def to_s

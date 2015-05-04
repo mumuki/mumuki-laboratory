@@ -29,8 +29,6 @@ gem 'rails-assets-bootstrap-vertical-tabs'
 
 gem 'chartkick'
 
-gem 'rest-client'
-
 gem 'omniauth-github'
 
 gem 'font-awesome-rails'
@@ -60,6 +58,7 @@ gem 'yaml_db'
 gem 'groupdate'
 
 gem 'mumukit-inspection', github: 'uqbar-project/mumukit-inspection', branch: 'master'
+gem 'mumukit-bridge',     github: 'uqbar-project/mumukit-bridge', branch: 'master'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'
