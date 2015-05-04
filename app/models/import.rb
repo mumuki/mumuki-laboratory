@@ -23,9 +23,9 @@ class Import < ActiveRecord::Base
   end
 
   def read_guide!(dir)
-    read_meta! dir
+    order = read_meta! dir
     read_description! dir
-    read_exercises! dir
+    read_exercises! dir, order
   end
 
   def read_description!(dir)
@@ -40,14 +40,16 @@ class Import < ActiveRecord::Base
     meta['original_id_format'].try { |format| guide.original_id_format = format }
 
     guide.save!
+
+    meta['order']
   end
 
-  def read_exercises!(dir)
+  def read_exercises!(dir, order = nil)
+    ordering = Ordering.from order
     log = ImportLog.new
     ExerciseRepository.new(author, dir).process_files(log) do |original_id, attributes|
-      Exercise.create_or_update_for_import!(guide, original_id, attributes)
+      Exercise.create_or_update_for_import!(guide, original_id, ordering.with_position(original_id, attributes))
     end
     log
   end
-
 end

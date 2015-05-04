@@ -50,7 +50,7 @@ class ExerciseRepository
       basename = File.basename(file)
       match = /(\d*)_(.+)/.match basename
       next unless match
-      yield file, index + 1, match[1], match[2]
+      yield file, index + 1, match[1].to_i, match[2]
     end
   end
 
