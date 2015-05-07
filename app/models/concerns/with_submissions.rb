@@ -14,7 +14,7 @@ module WithSubmissions
   end
 
   def solved_by?(user)
-    submissions_for(user).where("status = ?", Submission.passed_status).exists?
+    !!last_submission(user).try(&:passed?)
   end
 
   def submitted_by?(user)
