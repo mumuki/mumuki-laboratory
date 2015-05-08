@@ -7,6 +7,12 @@ Rails.application.routes.draw do
     get 'logout' => :destroy
   end
 
+
+  namespace :api do
+    resources :exercises, only: :index
+    resources :submissions, only: :index
+  end
+
   scope '(:locale)' do
     root to: 'home#index'
 
@@ -49,7 +55,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :relationships,       only: [:create, :destroy]
+    resources :relationships, only: [:create, :destroy]
 
     # Current user
     resources :submissions, only: :index

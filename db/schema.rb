@@ -49,6 +49,13 @@ ActiveRecord::Schema.define(version: 20150512235847) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "api_tokens", force: true do |t|
+    t.string   "value"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "collaborators", force: true do |t|
     t.integer "guide_id"
     t.integer "user_id"
