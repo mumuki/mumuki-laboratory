@@ -1,5 +1,5 @@
 class Api::ExercisesController < Api::BaseController
   def index
-    respond_with {}
+    render json: {exercises: []}
   end
 end

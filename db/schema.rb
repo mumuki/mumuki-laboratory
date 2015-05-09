@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20150512235847) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name",        null: false
   end
 
   create_table "collaborators", force: true do |t|

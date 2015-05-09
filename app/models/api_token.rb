@@ -2,7 +2,7 @@ require 'securerandom'
 
 class ApiToken < ActiveRecord::Base
 
-  before_create :set_value
+  after_initialize :set_value, if: :new_record?
 
   validates_presence_of :description
 

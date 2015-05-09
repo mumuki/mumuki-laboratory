@@ -1,7 +1,7 @@
 class Api::SubmissionsController < Api::BaseController
 
   def index
-    respond_with {}
+    render json: {submissions: []}
   end
 
 end
