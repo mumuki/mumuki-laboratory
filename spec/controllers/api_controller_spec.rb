@@ -65,6 +65,11 @@ describe 'api controller' do
         end
 
         it do
+          get :index, users: %w{user1 user2}, exercises: [3]
+          expect(response.body).to eq '{"submissions":[]}'
+        end
+
+        it do
           get :index, users: %w{user2}, exercises: [2, 3]
           expect(response.body).to eq '{"submissions":[]}'
         end
