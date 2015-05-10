@@ -1,5 +1,6 @@
 class Api::ExercisesController < Api::BaseController
   def index
-    render json: {exercises: []}
+    @exercises = Exercise.all
+    render json: {exercises: @exercises.as_json(only: [:id, :title])}
   end
 end

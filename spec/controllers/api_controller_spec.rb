@@ -14,12 +14,18 @@ describe 'api controller' do
     end
 
     context 'when there are exercises' do
-      let(:exercise_1) { create(:exercise, title: 'exercise_1', id: 1) }
-      let(:exercise_2) { create(:exercise, title: 'exercise_2', id: 2) }
+      let!(:exercise_1) { create(:exercise, title: 'exercise_1', id: 1) }
+      let!(:exercise_2) { create(:exercise, title: 'exercise_2', id: 2) }
 
-      before { get :index }
+      describe 'when not using filters' do
+        before { get :index }
+        it { expect(response.body).to eq '{"exercises":[{"id":1,"title":"exercise_1"},{"id":2,"title":"exercise_2"}]}' }
+      end
 
-      it { expect(response).to eq '{"exercises":[{"id": 1, title":"exercise_1"}, {"id": 2, title":"exercise_2"}]}' }
+      describe 'when using filters' do
+        before { get :index, exercises: [1, 5, 8] }
+        it { expect(response.body).to eq '{"exercises":[{"id":1,"title":"exercise_1"}]}' }
+      end
     end
   end
 
@@ -33,17 +39,35 @@ describe 'api controller' do
       let(:exercise) { create(:exercise, id: 1) }
       let(:user) { create(:user, name: 'user1') }
 
-      before { get :index }
-      context 'when there are successful submissions ' do
-        let(:submission) { exercise.submissions.create!(status: :passed, result: 'all ok', content: 'foo') }
+      context 'when not using filters' do
+        before { get :index }
 
-        it { expect(response.body).to eq '{"submissions":[{"username": "user1", "content":"foo", "passed": true}]}' }
+        context 'when there are successful submissions ' do
+          before { exercise.submissions.create!(status: :passed, result: 'all ok', content: 'foo', submitter: user) }
+
+          it { expect(response.body).to eq '{"submissions":[{"username": "user1","content":"foo","passed":true}]}' }
+        end
+
+        context 'when there are failed submissions ' do
+          before { exercise.submissions.create!(status: :failed, result: 'test 1 failed', content: 'foo', submitter: user) }
+
+          it { expect(response.body).to eq '{"submissions":[{"username": "user1", "content":"foo", "passed": false, "result": "test 1 failed"}]}' }
+        end
       end
 
-      context 'when there are failed submissions ' do
-        let(:submission) { exercise.submissions.create!(status: :failed, result: 'test 1 failed', content: 'foo') }
+      context 'when using filters' do
+        let(:exercise_2) { create(:exercise, id: 2) }
+        before { exercise.submissions.create!(status: :passed, result: 'all ok', content: 'bar', submitter: user) }
 
-        it { expect(response.body).to eq '{"submissions":[{"username": "user1", "content":"foo", "passed": false, "result": "test 1 failed"}]}' }
+        it do
+          get :index, users: %w{user1 user2}, exercises: [2, 3]
+          expect(response.body).to eq '{"submissions":[{"username": "user1", "content":"bar", "passed": true}]}'
+        end
+
+        it do
+          get :index, users: %w{user2}, exercises: [2, 3]
+          expect(response.body).to eq '{"submissions":[]}'
+        end
       end
     end
   end
