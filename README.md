@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/uqbar-project/mumuki-platform.png?label=ready&title=Ready)](https://waffle.io/uqbar-project/mumuki-platform)
 [![Build Status](https://travis-ci.org/uqbar-project/mumuki-platform.svg?branch=master)](https://travis-ci.org/uqbar-project/mumuki-platform)
 [![Code Climate](https://codeclimate.com/github/uqbar-project/mumuki-platform/badges/gpa.svg)](https://codeclimate.com/github/uqbar-project/mumuki-platform)
 [![Test Coverage](https://codeclimate.com/github/uqbar-project/mumuki-platform/badges/coverage.svg)](https://codeclimate.com/github/uqbar-project/mumuki-platform)
