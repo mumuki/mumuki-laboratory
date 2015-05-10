@@ -1,10 +1,10 @@
 class Api::SubmissionsController < Api::BaseController
 
   def index
-    @submissions = Submission.joins(:submitter).all
-
-    @submissions = @submissions.where(exercise_id: params[:exercises]) if params[:exercises]
-    @submissions = @submissions.where('users.name' => params[:users]) if params[:users]
+    @submissions = Submission.
+        by_exercise_ids(params[:exercises]).
+        by_usernames(params[:users]).
+        joins(:submitter)
 
     render json: {submissions: @submissions.map { |it|
       json = {username: it.submitter.name, content: it.content, passed: it.passed?}

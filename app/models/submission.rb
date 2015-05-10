@@ -18,6 +18,14 @@ class Submission < ActiveRecord::Base
 
   delegate :language, :title, to: :exercise
 
+  scope :by_exercise_ids, -> (exercise_ids) {
+    where(exercise_id: exercise_ids) if exercise_ids
+  }
+
+  scope :by_usernames, -> (usernames) {
+    joins(:submitter).where('users.name' => usernames) if usernames
+  }
+
   def should_retry?
     failed? || expectation_results.any? { |it| it[:result] == :failed } #TODO rename result => status
   end

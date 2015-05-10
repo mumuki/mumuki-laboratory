@@ -57,6 +57,7 @@ describe 'api controller' do
 
       context 'when using filters' do
         let(:exercise_2) { create(:exercise, id: 2) }
+
         before { exercise_2.submissions.create!(status: :passed, result: 'all ok', content: 'bar', submitter: user) }
 
         it do
