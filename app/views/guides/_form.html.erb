@@ -1,6 +1,6 @@
 <div role="tabpanel">
   <br>
-  <%= tab_list [:basic, :info, :import_export] %>
+  <%= tab_list [:basic, :info, :suggestions, :import_export] %>
   <br>
 
   <div class="tab-content">
@@ -18,6 +18,15 @@
         <%= f.text_field :original_id_format %>
 
 
+        <div class="actions form-group">
+          <%= f.submit class: 'btn btn-primary' %>
+          <%= link_to t('cancel'), :back, class: 'btn btn-default' %>
+        </div>
+      <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="suggestions-panel">
+      <%= bootstrap_form_for(@guide, html: {role: 'form'}) do |f| %>
+        <%= f.collection_select(:suggested_guide_ids, Guide.all, :id, :name, {}, {multiple: true, class: 'form-control'}) %>
         <div class="actions form-group">
           <%= f.submit class: 'btn btn-primary' %>
           <%= link_to t('cancel'), :back, class: 'btn btn-default' %>
