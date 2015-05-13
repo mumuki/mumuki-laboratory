@@ -23,7 +23,7 @@ class Exercise < ActiveRecord::Base
   after_initialize :defaults, if: :new_record?
 
   validates_presence_of :title, :description, :language, :test,
-                        :submissions_count, :author, :locale
+                        :submissions_count, :author
   validates_presence_of :position, if: :guide
 
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
