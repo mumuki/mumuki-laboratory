@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
   def index
-    @languages = Language.all
+    @categories = Category.all
   end
 end
