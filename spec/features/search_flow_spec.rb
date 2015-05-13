@@ -9,14 +9,26 @@ feature 'Search Flow' do
     create(:exercise, tag_list: [], title: 'Baz', description: 'do it in haskell')
     create(:exercise, tag_list: [], title: 'nothing', guide: guide)
   }
-  let(:guide) { create(:guide, name: 'awesomeGuide', description: 'Haskelloid baz guide') }
+  let(:guide) { create(:guide, language: haskell, name: 'awesomeGuide', description: 'Haskelloid baz guide') }
 
-  scenario 'search from home, by language' do
+
+  scenario 'search guides from home, by language' do
     visit '/'
 
     within('.jumbotron') do
       click_on 'Start Practicing!'
     end
+
+    fill_in 'q', with: 'haskell'
+    click_on 'search'
+
+    expect(page).to have_text('awesomeGuide')
+
+  end
+
+
+  scenario 'search by language' do
+    visit '/en/exercises'
 
     fill_in 'q', with: 'haskell'
     click_on 'search'
