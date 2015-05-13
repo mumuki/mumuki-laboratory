@@ -47,7 +47,7 @@
   <%= repeat_submission_button(@exercise) if @submission.should_retry? %>
   <%= next_exercise_button(@exercise) %>
 
-  <%= link_to t(:more_guides).titleize, guides_path, class: 'btn btn-success' if @stats.try &:done? %>
+  <%= link_to_more_guides(@exercise.guide) if @stats.try &:done? %>
 
 </div>
 

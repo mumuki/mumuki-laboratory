@@ -19,4 +19,8 @@ module LinksRendering
     link_to user.name, user
   end
 
+  def link_to_more_guides(guide)
+    link_to t(:more_guides).titleize, guides_path(at: guide.id), class: 'btn btn-success'
+  end
+
 end

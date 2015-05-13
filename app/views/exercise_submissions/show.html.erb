@@ -17,8 +17,8 @@
         <div class="col-sm-6 col-sm-offset-3 text-center">
           <h1>Felicitaciones, terminaste la guía <%= @exercise.guide.name %> </h1>
 
-          <h3>Pero no te desanimes, ¡tenemos más guías para vos!</h3>
-          <%= link_to t(:more_guides).titleize, guides_path, class: 'btn btn-success' %>
+          <h3>¿Querés seguir practicando? ¡tenemos más guías para vos!</h3>
+          <%= link_to_more_guides(@exercise.guide) %>
         </div>
       </div>
     </div>
