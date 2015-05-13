@@ -30,12 +30,6 @@ class Submission < ActiveRecord::Base
     exercise.submissions_for(submitter).last == self
   end
 
-  def feedback
-    '<div>
-      <h3>Falopa</h3>
-    </div>'
-  end
-
   private
 
   def update_submissions_count!
