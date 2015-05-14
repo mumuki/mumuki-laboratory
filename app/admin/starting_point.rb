@@ -1,6 +1,6 @@
 ActiveAdmin.register StartingPoint do
 
-  permit_params :category, :guide, :language
+  permit_params :category_id, :guide_id, :language_id
 
   filter :category
   filter :guide
