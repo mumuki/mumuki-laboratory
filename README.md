@@ -50,6 +50,10 @@ through [SWI-Prolog](http://www.swi-prolog.org/), Ruby and JavaScript. Support f
 1. Create exercises! Mumuki is in early stages, so remember to add your tests to some SCM. 
 1. Are you a UI designer? We want Mumuki to look great. 
 
+# Please Support Uqbar Project too!
+
+Mumuki was born as an [Uqbar Project](http://www.uqbar-project.org/). Please support Uqbar too!
+
 # Where can I read more?
 
 Check the wiki!
