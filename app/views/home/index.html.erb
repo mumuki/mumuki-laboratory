@@ -6,32 +6,23 @@
       <p class="text-center"><%= t :mumuki_short_description %></p>
 
       <p class="text-center">
-        <%= link_to t(:start_practicing), guides_path, class: 'btn btn-primary special-button', role: 'button ' %>
+        <% @categories.each do |category| %>
+          <%= link_to category.name, categories_path, class: 'label label-warning' %>
+      <% end %>
+      </p>
+      <p class="text-center">
+        <%= link_to t(:start_practicing), categories_path, class: 'btn btn-primary special-button', role: 'button ' %>
       </p>
     </div>
   </div>
 <% end %>
-
-<div id="starting-practicing-menu">
-  <% @categories.each do |category| %>
-    <div>
-      <%= category.name %>
-      <%= category.description %>
-      <% category.starting_points.each do |starting_point| %>
-        <div>
-          <%= language_icon starting_point.language, link_path: guide_path(starting_point.guide), height: 28 %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
 
 <div class="row">
   <div class="col-md-4">
     <h2 class="text-center"><%= t :mumuki_is_simple %></h2>
 
     <p class="text-center"><%= t :mumuki_is_simple_description %></p>
-    <%= link_to t(:start_practicing), guides_path, class: 'btn btn-primary special-button btn-block', role: 'button ' %>
+    <%= link_to t(:start_practicing), categories_path, class: 'btn btn-primary special-button btn-block', role: 'button ' %>
   </div>
   <div class="col-md-4">
     <h2 class="text-center"><%= t :mumuki_is_collaborative %></h2>

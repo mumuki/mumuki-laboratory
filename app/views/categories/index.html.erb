@@ -1,0 +1,30 @@
+<br>
+
+<div class="row">
+  <% @categories.each do |it| %>
+    <div class="col-md-6">
+      <div id="<%= it.name %>">
+        <h2><%= it.name %></h2>
+
+        <hr>
+
+        <p>
+          <%= it.description %>
+        </p>
+
+        <p>
+          <strong>Disponible en lo siguientes lenguajes</strong>
+        </p>
+        <% it.starting_points.each do |starting_point| %>
+          <a href="<%= guide_path(starting_point.guide) %>" class="btn btn-success">
+            <%= image_tag starting_point.language.image_url, height: 32 %> <%= starting_point.language.name %>
+          </a>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+

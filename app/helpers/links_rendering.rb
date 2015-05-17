@@ -7,8 +7,8 @@ module LinksRendering
     link_to language.name, language
   end
 
-  def link_to_guide(guide)
-    link_to guide.name, guide
+  def link_to_guide(guide, options={})
+    link_to guide.name, guide, options
   end
 
   def link_to_github(guide)
