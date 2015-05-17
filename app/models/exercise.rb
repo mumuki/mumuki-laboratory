@@ -10,7 +10,7 @@ class Exercise < ActiveRecord::Base
 
   include WithSearch, WithTeaser,
           WithMarkup, WithAuthor,
-          WithSubmissions, WithGuide, 
+          WithSubmissions, WithGuide,
           WithLocale, WithExtraCode
 
   acts_as_taggable
@@ -59,11 +59,11 @@ class Exercise < ActiveRecord::Base
   def collaborator?(user)
     guide.present? && guide.authored_by?(user)
   end
-  
+
   def extra_code
     [guide.try(&:extra_code), self[:extra_code]].compact.join(" \n ")
   end
-  
+
   def extra_code=(new_extra_code)
     self[:extra_code] = new_extra_code
   end
