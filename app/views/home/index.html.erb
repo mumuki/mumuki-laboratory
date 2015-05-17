@@ -6,11 +6,6 @@
       <p class="text-center"><%= t :mumuki_short_description %></p>
 
       <p class="text-center">
-        <% @categories.each do |category| %>
-          <%= link_to category.name, categories_path, class: 'label label-warning' %>
-      <% end %>
-      </p>
-      <p class="text-center">
         <%= link_to t(:start_practicing), categories_path, class: 'btn btn-primary special-button', role: 'button ' %>
       </p>
     </div>
