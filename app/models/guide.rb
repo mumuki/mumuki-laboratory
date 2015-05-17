@@ -58,6 +58,14 @@ class Guide < ActiveRecord::Base
     save!
   end
 
+  def get_extra_code_for(exercise)
+    exercise.extra_code_or_empty + ' \n ' + extra_code_or_empty
+  end
+
+  def extra_code_or_empty
+    extra_code || ''
+  end
+
   private
 
   def user_resources_to_users(resources)

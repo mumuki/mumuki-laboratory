@@ -58,6 +58,18 @@ class Exercise < ActiveRecord::Base
   def collaborator?(user)
     guide.present? && guide.authored_by?(user)
   end
+  
+  def get_extra_code
+    if guide 
+      guide.get_extra_code_for self
+    else
+      extra_code_or_empty
+    end
+  end
+  
+  def extra_code_or_empty
+    extra_code || ''
+  end
 
   private
 

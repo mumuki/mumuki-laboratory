@@ -7,7 +7,7 @@ module TestRunning
 
   def new_test_server_request
     {test: exercise.test,
-     extra: exercise.extra_code || '',
+     extra: exercise.get_extra_code,
      content: content,
      expectations: exercise.expectations.as_json(only: [:binding, :inspection])}
   end
