@@ -62,6 +62,32 @@ describe Exercise do
       it { expect(exercise_with_guide.previous_for(user)).to eq alternative_exercise }
     end
   end
+  
+  describe '#get_extra_code'do
+    context 'when exercise has no extra code' do
+      it { expect(exercise.get_extra_code).to eq '' }
+    end
+    
+    context 'when exercise has extra code and has no guide' do
+      let!(:exercise_with_extra_code) { create(:exercise, extra_code: 'exercise extra code') }
+
+      it { expect(exercise_with_extra_code.get_extra_code).to eq 'exercise extra code' }
+    end
+    
+    context 'when exercise has extra code and belong to a guide with no extra code' do
+      let!(:exercise_with_extra_code) { create(:exercise, guide: guide, extra_code: 'exercise extra code') }
+      let!(:guide) { create(:guide) }
+
+      it { expect(exercise_with_extra_code.get_extra_code).to eq 'exercise extra code' }
+    end
+    
+    context 'when exercise has extra code and belong to a guide with extra code' do
+      let!(:exercise_with_extra_code) { create(:exercise, guide: guide, extra_code: 'exercise extra code') }
+      let!(:guide) { create(:guide, extra_code: 'guide extra code') }
+
+      it { expect(exercise_with_extra_code.get_extra_code).to eq 'exercise extra code \n guide extra code' }
+    end
+  end
 
   describe '#submitted_by?' do
     context 'when user did a submission' do
