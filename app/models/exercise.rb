@@ -10,7 +10,8 @@ class Exercise < ActiveRecord::Base
 
   include WithSearch, WithTeaser,
           WithMarkup, WithAuthor,
-          WithSubmissions, WithGuide, WithLocale
+          WithSubmissions, WithGuide, 
+          WithLocale, WithExtraCode
 
   acts_as_taggable
 
@@ -60,15 +61,8 @@ class Exercise < ActiveRecord::Base
   end
   
   def get_extra_code
-    if guide 
-      guide.get_extra_code_for self
-    else
-      extra_code_or_empty
-    end
-  end
-  
-  def extra_code_or_empty
-    extra_code || ''
+    guide_extra_code = guide ? ' \n ' + guide.extra_code_or_empty : ''
+    extra_code_or_empty + guide_extra_code
   end
 
   private

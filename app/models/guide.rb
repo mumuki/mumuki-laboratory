@@ -6,11 +6,15 @@ class Guide < ActiveRecord::Base
       }
   }
 
-  include WithSearch, WithAuthor,
+  include WithSearch,
+          WithAuthor,
           WithMarkup,
-          WithTeaser, WithLocale,
-          WithCollaborators, WithPath,
-          WithExercises
+          WithTeaser,
+          WithLocale,
+          WithCollaborators,
+          WithPath,
+          WithExercises,
+          WithExtraCode,
 
   #TODO rename name to title. This helps building also generic link_to compoenetns
   has_many :imports, -> { order(created_at: :desc)}
