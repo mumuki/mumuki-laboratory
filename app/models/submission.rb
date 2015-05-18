@@ -43,11 +43,11 @@ class Submission < ActiveRecord::Base
   end
 
   def result_html
-    language.render_output(result)
+    language.output_to_html(result)
   end
 
   def feedback_html
-    language.render_output(feedback)
+    language.output_to_html(feedback)
   end
 
   private

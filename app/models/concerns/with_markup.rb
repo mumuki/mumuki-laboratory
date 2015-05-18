@@ -10,7 +10,7 @@ module WithMarkup
 
     def _define_markup_on(selector)
       define_method("#{selector}_html".to_sym) do |*args|
-        ContentType::Markdown.render self.send(selector, *args)
+        ContentType::Markdown.to_html self.send(selector, *args)
       end
     end
   end

@@ -28,7 +28,7 @@ class Language < ActiveRecord::Base
     name
   end
 
-  def render_output(content)
-    ContentType.for(output_content_type).render(content)
+  def output_to_html(content)
+    ContentType.for(output_content_type).to_html(content)
   end
 end

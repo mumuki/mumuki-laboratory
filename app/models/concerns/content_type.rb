@@ -4,13 +4,13 @@ module ContentType
   end
 
   module Html
-    def self.render(content)
+    def self.to_html(content)
       content.html_safe if content
     end
   end
 
   module Plain
-    def self.render(content)
+    def self.to_html(content)
       content
     end
   end
@@ -18,7 +18,7 @@ module ContentType
   module Markdown
     @@markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, fenced_code_blocks: true)
 
-    def self.render(content)
+    def self.to_html(content)
       @@markdown.render(content).html_safe if content
     end
   end
