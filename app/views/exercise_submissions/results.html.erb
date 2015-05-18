@@ -36,7 +36,7 @@
 
 <% if @submission.feedback.present? %>
   <h2><%= t(:feedback) %></h2>
-  <%= @submission.feedback.html_safe %>
+  <%= ContentType::Html.render(@submission.feedback) %>
 <% end %>
 
 <hr>
