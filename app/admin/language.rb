@@ -1,6 +1,6 @@
 ActiveAdmin.register Language do
 
-  permit_params :name, :image_url, :extension, :test_runner_url
+  permit_params :name, :image_url, :extension, :test_runner_url, :visible_success_output
 
   filter :name
   filter :created_at
@@ -12,6 +12,7 @@ ActiveAdmin.register Language do
     column(:image_url)
     column(:extension)
     column(:test_runner_url)
+    column(:visible_success_output)
 
     actions
   end
