@@ -22,6 +22,7 @@ class Export < RepositoryOperation
     write_description! dir
     write_corollary! dir
     write_meta! dir
+    write_extra! dir
   end
 
   def write_exercise!(dir, e)
@@ -59,6 +60,10 @@ class Export < RepositoryOperation
         'original_id_format' => guide.original_id_format,
         'order' => guide.exercises.pluck(:original_id)
     }.to_yaml
+  end
+  
+  def write_extra!(dir)
+    write_file!(dir, format_extension('extra'), guide.extra_code) if guide.extra_code.present?
   end
 
   private

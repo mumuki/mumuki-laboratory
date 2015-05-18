@@ -12,7 +12,7 @@ describe Export do
                              description: 'a description',
                              title: 'bar', tag_list: %w(baz bar), original_id: 200, position: 2,
                              language: haskell, test: 'foo bar') }
-  let(:guide) { create(:guide, description: 'Baz', github_repository: 'flbulgarelli/never-existent-repo', language: haskell, locale: 'en') }
+  let(:guide) { create(:guide, description: 'Baz', github_repository: 'flbulgarelli/never-existent-repo', language: haskell, locale: 'en', extra_code: 'Foo') }
   let(:export) { guide.exports.create!(committer: committer) }
 
 
@@ -39,6 +39,11 @@ describe Export do
       it { expect(File.read 'spec/data/export/description.md').to eq 'Baz' }
     end
 
+    describe '#write_extra' do
+      before { export.write_extra! dir }
+      it { expect(File.exist? 'spec/data/export/extra.hs').to be true }
+      it { expect(File.read 'spec/data/export/extra.hs').to eq 'Foo' }
+    end
 
     describe '#write_exercise' do
       context 'with extra' do
@@ -97,7 +102,9 @@ describe Export do
       it { expect(Dir.exist? 'spec/data/export/00100_foo/').to be true }
       it { expect(Dir.exist? 'spec/data/export/00200_bar/').to be true }
       it { expect(File.exist? 'spec/data/export/description.md').to be true }
-      it { expect(Dir['spec/data/export/*'].size).to eq 4 }
+      it { expect(File.exist? 'spec/data/export/meta.yml').to be true }
+      it { expect(File.exist? 'spec/data/export/extra.hs').to be true }
+      it { expect(Dir['spec/data/export/*'].size).to eq 5 }
     end
   end
 end
