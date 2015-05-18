@@ -6,8 +6,7 @@ describe Export do
   let!(:exercise_1) { create(:exercise, guide: guide,
                              title: 'foo', original_id: 100, position: 1,
                              locale: 'en', tag_list: %w(foo bar),
-                             language: haskell,
-                             extra_code: 'foobar',
+                             language: haskell, extra_code: 'baz',
                              expectations: [Expectation.new(binding: 'bar', inspection: 'HasBinding')]) }
   let!(:exercise_2) { create(:exercise, guide: guide,
                              description: 'a description',
@@ -63,6 +62,13 @@ describe Export do
         it { expect(File.read 'spec/data/export/00100_foo/expectations.yml').to eq "---\nexpectations:\n- binding: bar\n  inspection: HasBinding\n"}
       end
 
+      context 'with extra' do
+        before { export.write_exercise! dir, exercise_1 }
+
+        it { expect(File.exist? 'spec/data/export/00100_foo/extra.hs').to be true }
+        it { expect(File.read 'spec/data/export/00100_foo/extra.hs').to eq 'baz'}
+      end
+
       context 'without expectations' do
         before { export.write_exercise! dir, exercise_2 }
 
@@ -80,6 +86,7 @@ describe Export do
 
         it { expect(File.exist? 'spec/data/export/00200_bar/expectations.yml').to be false }
       end
+
     end
 
 
