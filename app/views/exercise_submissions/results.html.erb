@@ -1,7 +1,7 @@
 <% @stats = @exercise.guide.stats(current_user) if @exercise.guide %>
 
 
-<% if @submission.should_retry? %>
+<% if @submission.results_visible? %>
 <div>
   <h2><%= t('results') %></h2>
 
