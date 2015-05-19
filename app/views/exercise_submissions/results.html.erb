@@ -24,7 +24,7 @@
 
   <p>
     <strong><%= t :output %>:</strong>
-    <%= highlighted_code @submission.language, @submission.result %>
+    <%= highlighted_code @submission.language, @submission.result_html %>
   </p>
 </div>
 <% else %>
@@ -36,7 +36,7 @@
 
 <% if @submission.feedback.present? %>
   <h2><%= t(:feedback) %></h2>
-  <%= @submission.feedback.html_safe %>
+  <%= @submission.feedback_html %>
 <% end %>
 
 <hr>

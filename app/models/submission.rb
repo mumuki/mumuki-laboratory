@@ -42,6 +42,14 @@ class Submission < ActiveRecord::Base
     exercise.submissions_for(submitter).last == self
   end
 
+  def result_html
+    language.output_to_html(result)
+  end
+
+  def feedback_html
+    language.output_to_html(feedback)
+  end
+
   private
 
   def update_submissions_count!

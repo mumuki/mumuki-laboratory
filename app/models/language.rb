@@ -3,7 +3,10 @@ require 'mumukit/bridge'
 class Language < ActiveRecord::Base
   include WithMarkup
 
-  validates_presence_of :name, :test_runner_url, :extension, :image_url
+  enum output_content_type: [:plain, :html, :markdown]
+
+  validates_presence_of :name, :test_runner_url,
+                        :extension, :image_url, :output_content_type
 
   markup_on :test_syntax_hint
 
@@ -23,5 +26,9 @@ class Language < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+  def output_to_html(content)
+    ContentType.for(output_content_type).to_html(content)
   end
 end
