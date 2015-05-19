@@ -1,4 +1,4 @@
-<h2 class="text-center">¿Qué te gustaría aprender?</h2>
+<h2 class="text-center"><%= t :categories_index_title %></h2>
 
 <br>
 
@@ -16,7 +16,7 @@
           </p>
 
           <p>
-            <strong>Disponible en lo siguientes lenguajes</strong>
+            <strong><%= t :category_languages_availability %> </strong>
           </p>
           <% it.starting_points.each do |starting_point| %>
             <a href="<%= guide_path(starting_point.guide) %>" class="btn btn-success">
