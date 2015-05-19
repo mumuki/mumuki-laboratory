@@ -56,11 +56,6 @@ class Guide < ActiveRecord::Base
     exercises.flat_map(&:search_tags).uniq
   end
 
-  #TODO denormalize
-  def tag_list
-    exercises.flat_map(&:tag_list).uniq.join(', ')
-  end
-
   def stats(user)
     Stats.from_statuses exercises.map { |it| it.status_for(user) }
   end

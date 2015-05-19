@@ -17,14 +17,6 @@ module ApplicationHelper
     "<div class=\"text-center\">#{super(object, {theme: 'twitter-bootstrap-3'}.merge(options))}</div>".html_safe
   end
 
-  def taglist_tag(tags)
-    #TODO use it also for writable inputs
-    box_options, input_options = ['readonly', 'readonly disabled']
-    %Q{<div class="taglist-box #{box_options}">
-        <input type="text" value="#{tags}" data-role="tagsinput" #{input_options}>
-       </div>}.html_safe
-  end
-
   def link_to_tag_list(tags)
     tags.map { |tag| link_to "##{tag}", exercises_path(q: tag) }.join(', ').html_safe
   end
