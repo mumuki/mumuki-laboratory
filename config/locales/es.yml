@@ -50,7 +50,6 @@ es:
   you_must_sign_in_before_submitting: 'Tenés que iniciar sesión con Github antes de empezar a enviar tus soluciones'
   sign_in_with_github_action: "iniciar sesión con Github"
   languages: "Lenguajes"
-  back_to_search: "Volver a la búsqueda"
   notify_problem_to_author: "Notificar problema al autor"
   problem_with_exercise: "[Mumuki] Error con el ejercicio: %{title}"
   follow: Seguir!
@@ -212,6 +211,5 @@ es:
   exercises_index_title: "¿Buscando algún ejercicio particular?"
   guides_index_title: "¿Qué guía querés hacer hoy?"
   categories_index_title: "¿Qué te gustaría aprender?"
-  see_next_guides: "¿Querés seguir practicando? ¡tenemos más guías para vos!
-
+  see_next_guides: "¿Querés seguir practicando? ¡tenemos más guías para vos!"
   guide_finished: "Felicitaciones, terminaste la guía %{guide}"

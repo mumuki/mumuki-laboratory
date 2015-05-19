@@ -84,8 +84,6 @@ en:
   about_this_guide: "About this guide"
   stats: "Some stats"
   guide_has_exercises_stats: "This guide has <strong>%{total} exercises</strong>"
-  back_to_search: "Back to search"
-
 
   expectation_must: 'must'
   expectation_must_not: 'must not'
