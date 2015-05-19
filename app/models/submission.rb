@@ -30,6 +30,10 @@ class Submission < ActiveRecord::Base
     failed? || expectation_results.any? { |it| it[:result] == :failed } #TODO rename result => status
   end
 
+  def results_visible?
+    exercise.visible_success_output || should_retry?
+  end
+
   def result_preview
     result.truncate(100) if failed?
   end

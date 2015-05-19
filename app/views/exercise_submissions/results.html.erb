@@ -1,7 +1,7 @@
 <% @stats = @exercise.guide.stats(current_user) if @exercise.guide %>
 
 
-<% if @submission.should_retry? %>
+<% if @submission.results_visible? %>
 <div>
   <h2><%= t('results') %></h2>
 
@@ -28,15 +28,15 @@
   </p>
 </div>
 <% else %>
-
-<% if @submission.feedback.present? %>
-<%= @submission.feedback.html_safe %>
-<% else %>
 <div>
   <h3 class="text-center"><%= t(:exercise_done) %></h3>
 </div>
 <% end %>
 
+
+<% if @submission.feedback.present? %>
+  <h2><%= t(:feedback) %></h2>
+  <%= @submission.feedback.html_safe %>
 <% end %>
 
 <hr>

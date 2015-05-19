@@ -1,6 +1,19 @@
 require 'spec_helper'
 
 describe Submission do
+
+  describe '#results_visible?' do
+    let(:gobstones) { create(:language, visible_success_output: true)  }
+    let(:gobstones_exercise) { create(:exercise, language: gobstones) }
+
+    let(:failed_submission) { create(:submission, status: :failed) }
+    let(:passed_submission) { create(:submission, status: :passed, expectation_results: []) }
+    let(:passed_submission_with_visible_output_language) { create(:submission, status: :passed, exercise: gobstones_exercise) }
+
+    it { expect(passed_submission.results_visible?).to be false }
+    it { expect(failed_submission.results_visible?).to be true }
+    it { expect(passed_submission_with_visible_output_language.results_visible?).to be true }
+  end
   describe '#run_update!' do
     let(:submission) { create(:submission) }
     context 'when run passes' do
