@@ -22,13 +22,13 @@
       <li <%= active_if :progress %>>
         <%= link_to fa_icon('trophy', text: t(:progress)), guide_exercises_path(@guide) %>
       </li>
-      <li <%= active_if :history %>>
-        <%= link_to fa_icon('history',text: t(:history)), guide_imports_path(@guide) %>
-      </li>
       <li <%= active_if :contributors %>>
         <%= link_to fa_icon('user',text: t(:contributors)), guide_contributors_path(@guide) %>
       </li>
       <% restricted_to_author @guide do %>
+        <li <%= active_if :history %>>
+          <%= link_to fa_icon('history',text: t(:history)), guide_imports_path(@guide) %>
+        </li>
         <li <%= active_if :edit %>>
           <%= link_to fa_icon('pencil', text: t(:edit)), edit_guide_path(@guide) %>
         </li>
