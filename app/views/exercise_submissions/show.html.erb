@@ -15,9 +15,9 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3 text-center">
-          <h1>Felicitaciones, terminaste la guía <%= @exercise.guide.name %> </h1>
+          <h1><%= t :guide_finished, guide: @exercise.guide.name %> </h1>
 
-          <h3>¿Querés seguir practicando? ¡tenemos más guías para vos!</h3>
+          <h3><%= t :see_next_guides %></h3>
           <%= link_to_more_guides(@exercise.guide) %>
         </div>
       </div>

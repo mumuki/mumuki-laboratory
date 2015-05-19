@@ -142,3 +142,4 @@ en:
   exercises_index_title: "Looking for a specific exercise?"
   guides_index_title: "Which guide do you want to do today?"
   categories_index_title: "What do you want to learn?"
+  guide_finished: "Congrants! You completed guide %{guide}"
