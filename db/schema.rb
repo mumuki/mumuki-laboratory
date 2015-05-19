@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518185508) do
+ActiveRecord::Schema.define(version: 20150519131033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(version: 20150518185508) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name",        null: false
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "locale"
+    t.string   "image_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "collaborators", force: true do |t|
@@ -119,7 +128,7 @@ ActiveRecord::Schema.define(version: 20150518185508) do
     t.datetime "updated_at"
     t.text     "description"
     t.string   "original_id_format", default: "%05d", null: false
-    t.string   "locale"
+    t.string   "locale",             default: "en"
     t.integer  "language_id"
   end
 
@@ -155,6 +164,18 @@ ActiveRecord::Schema.define(version: 20150518185508) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "starting_points", force: true do |t|
+    t.integer  "category_id"
+    t.integer  "language_id"
+    t.integer  "guide_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "starting_points", ["category_id"], name: "index_starting_points_on_category_id", using: :btree
+  add_index "starting_points", ["guide_id"], name: "index_starting_points_on_guide_id", using: :btree
+  add_index "starting_points", ["language_id"], name: "index_starting_points_on_language_id", using: :btree
 
   create_table "submissions", force: true do |t|
     t.text     "content"

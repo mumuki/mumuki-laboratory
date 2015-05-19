@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   scope '(:locale)' do
     root to: 'home#index'
 
+    resources :categories, only: :index
+
     # All users
     resources :exercises do
       # Current user

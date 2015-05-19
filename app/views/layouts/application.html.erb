@@ -20,10 +20,11 @@
       <a class="navbar-brand" href="<%= root_path %>">Mumuki</a>
     </div>
 
-    <div class="nav navbar-nav navbar-left">
-      <%= link_to_unless I18n.locale == :en, flag(:en, class: 'lang-selector'), locale: :en %>
-      <%= link_to_unless I18n.locale == :es, flag(:es, class: 'lang-selector'), locale: :es %>
-    </div>
+    <ul class="nav navbar-nav navbar-left">
+      <li><a href="<%= categories_path %>"><%= t(:category).pluralize %></a></li>
+      <li><a href="<%= guides_path %>"><%= t(:guide).pluralize %></a></li>
+      <li><a href="<%= exercises_path %>"><%= t(:exercise).pluralize %></a></li>
+    </ul>
 
     <ul class="nav navbar-nav navbar-right">
       <% if current_user? %>

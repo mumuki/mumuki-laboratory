@@ -1,20 +1,15 @@
 <%= content_for :no_container do %>
-    <div class="jumbotron ha-bg-parallax">
-        <div class="container white-font">
-          <h1 class="text-center"><%= t :mumuki_catchphrase %></h1>
+  <div class="jumbotron ha-bg-parallax">
+    <div class="container white-font">
+      <h1 class="text-center"><%= t :mumuki_catchphrase %></h1>
 
-          <p class="text-center"><%= t :mumuki_short_description %></p>
+      <p class="text-center"><%= t :mumuki_short_description %></p>
 
-          <p class="text-center">
-            <% @languages.each do |language| %>
-                <%= language_icon language, height: 28 %>
-            <% end %>
-          </p>
-          <p class="text-center">
-            <%= link_to t(:start_practicing), guides_path, class: 'btn btn-primary special-button', role: 'button ' %>
-          </p>
-        </div>
+      <p class="text-center">
+        <%= link_to t(:start_practicing), categories_path, class: 'btn btn-primary special-button', role: 'button ' %>
+      </p>
     </div>
+  </div>
 <% end %>
 
 <div class="row">
@@ -22,7 +17,7 @@
     <h2 class="text-center"><%= t :mumuki_is_simple %></h2>
 
     <p class="text-center"><%= t :mumuki_is_simple_description %></p>
-    <%= link_to t(:start_practicing), guides_path, class: 'btn btn-primary special-button btn-block', role: 'button ' %>
+    <%= link_to t(:start_practicing), categories_path, class: 'btn btn-primary special-button btn-block', role: 'button ' %>
   </div>
   <div class="col-md-4">
     <h2 class="text-center"><%= t :mumuki_is_collaborative %></h2>

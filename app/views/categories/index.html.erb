@@ -1,0 +1,30 @@
+<h2 class="text-center"><%= t :categories_index_title %></h2>
+
+<br>
+
+<div class="row">
+  <% @categories.each do |it| %>
+    <div class="col-md-6">
+      <div class="panel panel-default exercise-panel">
+        <div class="panel-body text-center category-panel">
+          <h3><%= it.name %></h3>
+
+          <hr>
+
+          <p>
+            <%= it.description %>
+          </p>
+
+          <p>
+            <strong><%= t :category_languages_availability %> </strong>
+          </p>
+          <% it.starting_points.each do |starting_point| %>
+            <a href="<%= guide_path(starting_point.guide) %>" class="btn btn-success">
+              <%= image_tag starting_point.language.image_url, height: 32 %> <%= starting_point.language.name %>
+            </a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

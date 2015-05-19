@@ -11,7 +11,7 @@ module Icons
 
   def language_icon(language, options={})
     options = {alt: language.name, height: 16, class: 'special-icon'}.merge(options)
-    link_to image_tag(language.image_url, options), guides_path(q: language.name)
+    link_to image_tag(language.image_url, options), (options[:link_path] || guides_path(q: language.name))
   end
 
   private

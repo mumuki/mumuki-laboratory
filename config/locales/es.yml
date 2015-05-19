@@ -128,7 +128,7 @@ es:
   mumuki_is_collaborative_description: "Los ejercicios en Mumuki no son provisto por expertos, sino por la comunidad. No hay diferencia entre un maestro y un estudiante en Mumuki: todos pueden crear ejercicios. Nos encantaría que vos compartas los tuyos."
   my_guides: "Mis Guías"
   profile_of: "Perfil de %{username}"
-  search: "Buscá"
+  search: "Buscá, por ejemplo: polimorfismo, haskell o competenciaDeSaltos"
   belongs_to_guide: "Pertence a la guía %{guide}"
   devise:
     sessions:
@@ -206,3 +206,8 @@ es:
   more_guides: "más guías"
   exercise_done: "¡Todo en orden! Tu solución pasó todas nuestras pruebas"
   feedback: "Para tener en cuenta"
+  category: "Categoría"
+  category_languages_availability: "Disponible en los siguientes lenguajes"
+  exercises_index_title: "¿Buscando algún ejercicio particular?"
+  guides_index_title: "¿Qué guía querés hacer hoy?"
+  categories_index_title: "¿Qué te gustaría aprender?"
