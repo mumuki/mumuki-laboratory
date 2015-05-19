@@ -5,7 +5,7 @@ module GuidesHelper
   end
 
   def practice_key_for(stats)
-    if stats.started?
+    if stats && stats.started?
       :continue_practicing
     else
       :start_practicing

@@ -27,9 +27,9 @@
         </p>
 
         <p>
-          <%= raw t :passed_exercises_stats, count:  stats(@stats, :passed) %>
-          <%= raw t :failed_exercises_stats, count:  stats(@stats, :failed) %>
-          <%= raw t :unknown_exercises_stats, count:  stats(@stats, :unknown) %>
+          <%= raw t :passed_exercises_stats, count: stats(@stats, :passed) %>
+          <%= raw t :failed_exercises_stats, count: stats(@stats, :failed) %>
+          <%= raw t :unknown_exercises_stats, count: stats(@stats, :unknown) %>
         </p>
 
         <p>
@@ -50,19 +50,12 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-12">
-        <div class="actions">
-          <%= link_to t(practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-primary' if @next_exercise %>
-        </div>
-      </div>
-    </div>
-
   <% else %>
 
     <div class="row">
       <div class="col-md-12">
         <h3><%= t :stats %></h3>
+
         <p>
           <%= raw t :guide_has_exercises_stats, total: @guide.exercises_count %>
         </p>
@@ -73,15 +66,17 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-12">
-        <div class="actions">
-          <%= link_to t(:start_practicing), exercise_path(@next_exercise), class: 'btn btn-primary' %>
-        </div>
+  <% end %>
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="actions">
+        <%= link_to t(practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-primary' %>
       </div>
     </div>
+  </div>
 
-  <% end %>
 <% end %>
 
 
