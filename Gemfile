@@ -57,8 +57,8 @@ gem 'yaml_db'
 
 gem 'groupdate'
 
-gem 'mumukit-inspection', github: 'uqbar-project/mumukit-inspection', branch: 'master'
-gem 'mumukit-bridge',     github: 'uqbar-project/mumukit-bridge', branch: 'master'
+gem 'mumukit-inspection', :github => 'uqbar-project/mumukit-inspection', :branch => 'master'
+gem 'mumukit-bridge',     :github => 'uqbar-project/mumukit-bridge', :branch => 'master'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'
@@ -74,7 +74,7 @@ group :development do
 end
 
 #Add integration of test coverage with Code Climate
-gem 'codeclimate-test-reporter', group: :test, require: nil
+gem 'codeclimate-test-reporter', :group => :test, :require => nil
 
 gem 'sitemap_generator'
 
