@@ -3,9 +3,9 @@ require 'spec_helper'
 describe 'api controller' do
   include AuthHelper
 
-  let(:token) { ApiToken.create!(name: 'test', description: 'token for testing') }
+  let(:token) { ApiToken.create!(description: 'token for testing') }
 
-  before { http_login(token.name, token.value) }
+  before { http_login(token.client_id, token.client_secret) }
 
   describe Api::ExercisesController do
     context 'when there are no exercises ' do

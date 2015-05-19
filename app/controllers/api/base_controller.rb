@@ -5,7 +5,7 @@ module Api
     before_action :authenticate!
 
     def authenticate!
-      authenticate_or_request_with_http_basic { |u, p| ApiToken.find_by(name: u, value: p) }
+      authenticate_or_request_with_http_basic { |u, p| ApiToken.find_by(client_id: u, client_secret: p) }
     end
   end
 end
