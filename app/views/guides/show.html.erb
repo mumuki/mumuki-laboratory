@@ -27,12 +27,9 @@
         </p>
 
         <p>
-          Vos ya <strong>resolviste <%= stats(@stats, :passed) %></strong> de ellos.
-
-          Además, <strong> intentaste resolver <%= stats(@stats, :failed) %>
-          ejercicios </strong> más.
-
-          Y todavía <strong>hay <%= stats(@stats, :unknown) %> que podrías intentar resolver</strong>.
+          <%= raw t :passed_exercises_stats, count:  stats(@stats, :passed) %>
+          <%= raw t :failed_exercises_stats, count:  stats(@stats, :failed) %>
+          <%= raw t :unknown_exercises_stats, count:  stats(@stats, :unknown) %>
         </p>
 
         <p>
@@ -40,15 +37,11 @@
             ¡Eso significa que <strong>ya terminaste esta guía</strong>! ¡Bien hecho!
             Mirá <%= link_to t(:more_guides), guides_path %>
           <% elsif @stats.good_progress? %>
-            Además <strong>vas muy bien</strong>: la mayoría de las soluciones que enviaste resolvieron los ejercicios
-            adecuadamente.
-            ¡Felicitaciones!
+            <%= raw t :good_progress_in_guide %>
           <% elsif !@stats.started? %>
-            Eso significa que aún no empezaste con esta guía. <strong>!Comenzá ahora mismo!</strong>
+            <%= raw t :not_started_guide %>
           <% elsif @stats.stuck? %>
-            Parecería que te está costando un poco despegar con esta guía. ¡<strong>No te desanimes</strong>, es
-            cuestión de práctica y
-            seguir intentando!
+            <%= raw t :stuck_in_guide %>
           <% end %>
         </p>
       </div>
