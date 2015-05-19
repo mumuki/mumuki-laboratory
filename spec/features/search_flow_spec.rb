@@ -15,9 +15,7 @@ feature 'Search Flow' do
   scenario 'search guides from home, by language' do
     visit '/'
 
-    within('.jumbotron') do
-      click_on 'Start Practicing!'
-    end
+    click_on 'Guides'
 
     fill_in 'q', with: 'haskell'
     click_on 'search'
