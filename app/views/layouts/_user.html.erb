@@ -18,9 +18,6 @@
       <li <%= active_if :overview %>>
         <%= link_to t(:overview), @user %>
       </li>
-      <li <%= active_if :submissions %>>
-        <%= link_to t(:submissions), user_submissions_path(@user) %>
-      </li>
       <li <%= active_if :solved_exercises %>>
         <%= link_to t(:solved_exercises), user_solved_exercises_path(@user) %>
       </li>
