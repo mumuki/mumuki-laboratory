@@ -91,7 +91,7 @@ en:
   expectation_must_not: 'must not'
 
   expectation_HasBinding: "%{binding} %{must} be defined"
-  expectation_HasGuards: "%{binding} %{must} use gards"
+  expectation_HasGuards: "%{binding} %{must} use guards"
   expectation_HasComposition: "%{binding} %{must} use composition"
   expectation_HasLambda: "%{binding} %{must} use lambda expressions"
   expectation_HasComprehension: "%{binding} %{must} use list comprehensions"
@@ -104,7 +104,8 @@ en:
   expectation_HasRedundantIf: "%{binding} has redundant ifs"
   expectation_HasRedundantBooleanComparison: "%{binding} has redundant boolean comparisons"
   expectation_HasRedundantLambda: "%{binding} has redundant lambdas"
-  expectation_HasRedundantGuards: "%{binding} redundant guards"
+  expectation_HasRedundantGuards: "%{binding} has redundant guards"
+  expectation_HasRedundantParameter: "%{binding} has redundant parameters - you may avoid them using point-free"
 
 
   expectations: "Expectations"

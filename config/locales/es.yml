@@ -172,6 +172,7 @@ es:
   expectation_HasRedundantBooleanComparison: "%{binding} hace comparaciones booleanas innecesarias"
   expectation_HasRedundantLambda: "%{binding} tiene lambdas innecesarias"
   expectation_HasRedundantGuards: "%{binding} tiene guardas innecesarias"
+  expectation_HasRedundantParameter: "%{binding} tiene parámetros innecesarios (se pueden eliminar mediante point-free)"
 
 
 
