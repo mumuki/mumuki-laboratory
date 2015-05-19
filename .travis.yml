@@ -12,5 +12,5 @@ deploy:
     secure: gxiVqtd/NH+W4jAsSGuVItq40XW111idGcSr1tyHAKuWSAoaPoQjofqz7u4s6AfkR97hgc3kS7kh2MgymLRITJWvnoYNcepbpoh60875P2nW2QLGOVcDYoB9RkllYHn9rTiYLtqmO+Z8v/XJgc3s9v7Mx90DsL4BI5MspfLEsIg=
 addons:
     code_climate:
-      repo_token: befbdba5a24b61b890880065f2440779049041db7d5b25e28794030bb1eec1bc
-env: CODECLIMATE_REPO_TOKEN=befbdba5a24b61b890880065f2440779049041db7d5b25e28794030bb1eec1bc
+      repo_token: f3a989f22a2ce6d3dcb0b7cc42671bfb5529508aa8b82ca039bfe0153da0b118
+env: CODECLIMATE_REPO_TOKEN=f3a989f22a2ce6d3dcb0b7cc42671bfb5529508aa8b82ca039bfe0153da0b118
