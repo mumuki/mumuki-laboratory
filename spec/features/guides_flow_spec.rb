@@ -26,10 +26,6 @@ feature 'Search Flow' do
     expect(page).to have_text('An awesome guide')
     expect(page).to have_text('About this guide')
 
-    within('.actions') do
-      click_on 'Sign in with Github'
-    end
-
     click_on 'Start Practicing'
 
     expect(page).to have_text('Description of foo')

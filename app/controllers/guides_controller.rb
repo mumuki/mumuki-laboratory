@@ -34,6 +34,8 @@ class GuidesController < ApplicationController
     if current_user?
       @stats = @guide.stats(current_user)
       @next_exercise = @guide.next_exercise(current_user)
+    else
+      @next_exercise = @guide.first_exercise
     end
   end
 

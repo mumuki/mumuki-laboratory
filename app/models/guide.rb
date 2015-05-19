@@ -47,6 +47,10 @@ class Guide < ActiveRecord::Base
     pending_exercises(user).order('exercises.original_id asc').first
   end
 
+  def first_exercise
+    exercises.first
+  end
+
   #TODO denormalize
   def search_tags
     exercises.flat_map(&:search_tags).uniq

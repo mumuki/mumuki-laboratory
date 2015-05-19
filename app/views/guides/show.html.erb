@@ -57,6 +57,7 @@
         </div>
       </div>
     </div>
+
   <% else %>
 
     <div class="row">
@@ -67,12 +68,15 @@
         </p>
 
         <p>
-          <strong>Necestiás iniciar sesión con Github para ver más estadísticas sobre tu progreso y empezar a
-            practicar. </strong>
+          <strong><%= t :you_must_sign_in_to_see_stats %></strong>
         </p>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-md-12">
         <div class="actions">
-          <%= link_to t(:sign_in_with_github), login_path, class: 'btn btn-primary' %>
+          <%= link_to t(:start_practicing), exercise_path(@next_exercise), class: 'btn btn-primary' %>
         </div>
       </div>
     </div>

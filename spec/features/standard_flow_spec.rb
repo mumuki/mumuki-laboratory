@@ -22,12 +22,6 @@ feature 'Standard Flow' do
       click_on 'haskell'
     end
 
-
-    # FIXME do not require to login yet
-    within('.actions') do
-      click_on 'Sign in with Github'
-    end
-
     click_on 'Start Practicing!'
 
     expect(page).to have_text('Succ')
