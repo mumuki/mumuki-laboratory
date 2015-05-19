@@ -39,7 +39,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def search_tags
-    tag_list + [language.name] + (guide.try(&:name) || [])
+    tag_list + [language.name]
   end
 
   def generate_original_id!

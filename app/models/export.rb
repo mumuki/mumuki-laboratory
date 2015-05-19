@@ -11,7 +11,7 @@ class Export < ActiveRecord::Base
   validates_presence_of :committer
 
   def run_export!
-    Rails.logger.info "Exporting guide #{guide.name}"
+    Rails.logger.info "Exporting guide #{guide.id}"
     run_update! do
       committer.ensure_repo_exists! guide
       committer.with_cloned_repo guide, 'export' do |dir, repo|
@@ -33,7 +33,7 @@ class Export < ActiveRecord::Base
   end
 
   def write_exercise!(dir, e)
-    Rails.logger.info "Exporting exercise #{e.title} of guide #{guide.name}"
+    Rails.logger.info "Exporting exercise #{e.title} of guide #{guide.id}"
 
     e.generate_original_id!
 

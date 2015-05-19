@@ -26,14 +26,8 @@ class Guide < ActiveRecord::Base
   belongs_to :language
 
   validates_presence_of :github_repository, :name, :author
-  validates_uniqueness_of :name
-  validate :valid_name?
 
   markup_on :description, :teaser
-
-  def valid_name?
-    errors.add(:name, 'can not contain whitespaces') if name && name =~ /\s+/
-  end
 
   def exercises_count
     exercises.count
