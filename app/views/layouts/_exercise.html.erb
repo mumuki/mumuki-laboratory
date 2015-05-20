@@ -12,7 +12,11 @@
       <div class="col-md-5">
         <% if @exercise.guide %>
           <p>
-            <%= raw t :belongs_to_guide, guide: link_to_guide(@exercise.guide) %>
+            <span data-toggle="popover"
+                  title="<%= @exercise.guide.name %>"
+                  data-content="<%= @exercise.guide.description_html.to_str %>">
+              <%= raw t :belongs_to_guide, guide: link_to_guide(@exercise.guide) %>
+            </span>
           </p>
         <% else %>
           <p>
