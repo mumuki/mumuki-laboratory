@@ -3,6 +3,7 @@ module WithGuide
 
   included do
     belongs_to :guide
+    validates_presence_of :position, if: :guide
   end
 
   def next_for(user)

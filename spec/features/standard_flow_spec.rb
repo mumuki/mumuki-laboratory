@@ -7,9 +7,10 @@ feature 'Standard Flow' do
   let!(:exercises) {
     create(:exercise, title: 'Succ',        guide: guide, position: 1, description: 'Description of foo')
   }
-  let!(:guide) { create(:guide, name: 'getting-started', description: 'An awesome guide', language: haskell) }
   let!(:category) { create(:category, name: 'Functional Programming') }
-  let!(:starting_point) { create(:starting_point, category: category, guide: guide, language: haskell) }
+  let!(:path) { create(:path, category: category, language: haskell) }
+  let!(:guide) { create(:guide, name: 'getting-started', description: 'An awesome guide',
+                        language: haskell, position: 1, path: path) }
 
   scenario 'do a guide for first time, starting from home' do
     visit '/'

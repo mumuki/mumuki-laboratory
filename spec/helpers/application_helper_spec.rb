@@ -40,22 +40,24 @@ describe ApplicationHelper do
   end
 
   describe '#next_guides_box' do
+    let(:path) { create(:path) }
+
     context 'when guide has no suggestions' do
-      let(:guide) { create(:guide) }
+      let(:guide) { create(:guide, position: 1, path: path) }
       it { expect(next_guides_box(guide)).to be nil }
     end
 
     context 'when guide has one suggestion' do
-      let(:suggested_guide) { create(:guide) }
-      let(:guide) { create(:guide, suggested_guides: [suggested_guide]) }
+      let!(:suggested_guide) { create(:guide, position: 2, path: path) }
+      let(:guide) { create(:guide, position: 1, path: path) }
 
       it { expect(next_guides_box(guide)).to eq "<a class=\"btn btn-success\" href=\"/guides/#{suggested_guide.id}\">Next Guide</a>" }
     end
 
     context 'when guide has many suggestions' do
-      let(:suggested_guide_1) { create(:guide) }
-      let(:suggested_guide_2) { create(:guide) }
-      let(:guide) { create(:guide, suggested_guides: [suggested_guide_1, suggested_guide_2]) }
+      let!(:suggested_guide_1) { create(:guide, position: 2, path: path) }
+      let!(:suggested_guide_2) { create(:guide, position: 2, path: path) }
+      let(:guide) { create(:guide, position: 1, path: path) }
 
       it { expect(next_guides_box(guide)).to include "<li class=\"list-group-item\"><a href=\"/guides/#{suggested_guide_1.id}\">#{suggested_guide_1.name}</a></li>" }
       it { expect(next_guides_box(guide)).to be_html_safe } end

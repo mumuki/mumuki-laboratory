@@ -22,6 +22,28 @@ describe Guide do
 
   end
 
+  describe '#next_guides' do
+    let(:path) { create(:path) }
+    context 'when guide is not in path' do
+      it { expect(guide.next_guides).to eq [] }
+    end
+    context 'when guide is in path' do
+      let(:guide_in_path) { create(:guide, path: path, position: 2) }
+      context 'when it is single' do
+        it { expect(guide_in_path.next_guides).to eq [] }
+      end
+      context 'when there is a next guide' do
+        let(:other_guide) { create(:guide, path: path, position: 3) }
+        it { expect(guide_in_path.next_guides).to eq [other_guide] }
+      end
+      context 'when there are many next guides at same level' do
+        let(:other_guide_1) { create(:guide, path: path, position: 3) }
+        let(:other_guide_2) { create(:guide, path: path, position: 3) }
+        it { expect(guide_in_path.next_guides).to eq [other_guide_1, other_guide_2] }
+      end
+    end
+  end
+
   describe 'contributors' do
     let(:contributors_resource) {
       [{type: 'User', login: 'foo'}, {type: 'User', login: 'ignatiusReilly'}, {type: 'User', login: 'rigoberto88'}]

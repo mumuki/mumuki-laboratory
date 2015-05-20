@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519220307) do
+ActiveRecord::Schema.define(version: 20150520020805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,8 @@ ActiveRecord::Schema.define(version: 20150519220307) do
     t.string   "original_id_format", default: "%05d", null: false
     t.string   "locale",             default: "en"
     t.integer  "language_id"
+    t.integer  "path_id"
+    t.integer  "position"
   end
 
   add_index "guides", ["author_id"], name: "index_guides_on_author_id", using: :btree
@@ -165,17 +167,15 @@ ActiveRecord::Schema.define(version: 20150519220307) do
     t.datetime "updated_at"
   end
 
-  create_table "starting_points", force: true do |t|
+  create_table "paths", force: true do |t|
     t.integer  "category_id"
     t.integer  "language_id"
-    t.integer  "guide_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "starting_points", ["category_id"], name: "index_starting_points_on_category_id", using: :btree
-  add_index "starting_points", ["guide_id"], name: "index_starting_points_on_guide_id", using: :btree
-  add_index "starting_points", ["language_id"], name: "index_starting_points_on_language_id", using: :btree
+  add_index "paths", ["category_id"], name: "index_paths_on_category_id", using: :btree
+  add_index "paths", ["language_id"], name: "index_paths_on_language_id", using: :btree
 
   create_table "submissions", force: true do |t|
     t.text     "content"
@@ -190,11 +190,6 @@ ActiveRecord::Schema.define(version: 20150519220307) do
   end
 
   add_index "submissions", ["submitter_id"], name: "index_submissions_on_submitter_id", using: :btree
-
-  create_table "suggested_guides", force: true do |t|
-    t.integer "guide_id"
-    t.integer "suggested_guide_id"
-  end
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
