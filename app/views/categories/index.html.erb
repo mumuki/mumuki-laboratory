@@ -18,9 +18,9 @@
           <p>
             <strong><%= t :category_languages_availability %> </strong>
           </p>
-          <% it.starting_points.each do |starting_point| %>
-            <a href="<%= guide_path(starting_point.guide) %>" class="btn btn-success">
-              <%= image_tag starting_point.language.image_url, height: 32 %> <%= starting_point.language.name %>
+          <% it.paths.each do |path| %>
+            <a href="<%= guide_path(path.first_guide) %>" class="btn btn-success">
+              <%= image_tag path.language.image_url, height: 32 %> <%= path.language.name %>
             </a>
           <% end %>
         </div>

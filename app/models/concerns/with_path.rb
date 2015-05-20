@@ -7,6 +7,6 @@ module WithPath
   end
 
   def next_guides
-   path ? path.guides.where('guides.position > :position', 'guides.position asc') : []
+   path ? path.guides.where('guides.position > :position', position: position).order('guides.position asc') : []
   end
 end
