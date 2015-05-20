@@ -6,10 +6,10 @@ FactoryGirl.define do
     image_url 'http://localhost:3000/image'
   end
 
-  factory :starting_point do
+  factory :path do
     language
     category
-    guide
+    name { Faker::Lorem::sentence(3) }
   end
 
 end
