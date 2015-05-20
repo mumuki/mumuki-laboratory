@@ -19,6 +19,7 @@
 //= require ace/mode-ruby
 //= require ace/mode-haskell
 //= require ace/mode-prolog
+//= require ace/mode-javascript
 //= require turbolinks
 //= require nprogress
 //= require nprogress-turbolinks
