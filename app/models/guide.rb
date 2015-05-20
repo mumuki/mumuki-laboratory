@@ -8,7 +8,7 @@ class Guide < ActiveRecord::Base
 
   include WithSearch, WithAuthor,
           WithMarkup,
-          WithTeaser, WithLocale
+          WithTeaser, WithLocale, WithCollaborators
 
   #TODO rename name to title. This helps building also generic link_to compoenetns
   has_many :exercises, -> { order(position: :asc) }
@@ -16,7 +16,6 @@ class Guide < ActiveRecord::Base
   has_many :exports
 
   has_and_belongs_to_many :contributors, class_name: 'User', join_table: 'contributors'
-  has_and_belongs_to_many :collaborators, class_name: 'User', join_table: 'collaborators'
 
   has_and_belongs_to_many :suggested_guides,
                           class_name: 'Guide',
@@ -79,15 +78,6 @@ class Guide < ActiveRecord::Base
   def update_contributors!
     self.contributors = user_resources_to_users author.contributors(self)
     save!
-  end
-
-  def update_collaborators!
-    self.collaborators = user_resources_to_users author.collaborators(self)
-    save!
-  end
-
-  def collaborator?(user)
-    collaborators.include? user
   end
 
   private
