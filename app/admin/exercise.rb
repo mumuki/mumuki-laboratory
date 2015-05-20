@@ -11,7 +11,7 @@ ActiveAdmin.register Exercise do
   index do
     column(:id)
     column(:title)
-    column(:language) { |ex| I18n.t("#{ex.language.name}") }
+    column(:language)
     column(:submissions_count)
     column(:author_name) { |ex| ex.author.name }
     column(:locale)
