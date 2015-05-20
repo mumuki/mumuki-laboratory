@@ -9,10 +9,6 @@ module ApplicationHelper
     limited
   end
 
-  def highlighted_code(lang, code)
-    "<pre><code class=\"hljs #{lang.name}\">#{code}</code></pre>".html_safe
-  end
-
   def paginate(object, options={})
     "<div class=\"text-center\">#{super(object, {theme: 'twitter-bootstrap-3'}.merge(options))}</div>".html_safe
   end

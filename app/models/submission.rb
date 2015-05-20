@@ -50,6 +50,10 @@ class Submission < ActiveRecord::Base
     language.output_to_html(feedback)
   end
 
+  def content_html
+    ContentType::Markdown.to_html "```#{language.name}\n#{content}\n```"
+  end
+
   private
 
   def update_submissions_count!

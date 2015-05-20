@@ -22,7 +22,6 @@ gem 'devise'
 gem 'sucker_punch', '~> 1.0'
 
 gem 'jquery-rails'
-gem 'rails-assets-highlightjs'
 gem 'rails-assets-bootstrap'
 gem 'rails-assets-bootstrap-tagsinput'
 gem 'rails-assets-bootstrap-vertical-tabs'
