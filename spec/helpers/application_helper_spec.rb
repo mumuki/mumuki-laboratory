@@ -4,6 +4,8 @@ describe ApplicationHelper do
   helper ApplicationHelper
   helper FontAwesome::Rails::IconHelper
 
+  before { I18n.locale = :en }
+
   describe '#limit' do
     it { expect(limit([1, 2, 3, 4, 5, 6])).to eq [6, 5, 4, 3, 2] }
     it { expect(limit([1, 2, 3, 4, 5, 6], true)).to eq [2, 3, 4, 5, 6] }
