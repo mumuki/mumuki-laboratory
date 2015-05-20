@@ -26,4 +26,4 @@
 //= require nprogress-ajax
 //= require chartkick
 //= require cocoon
-//= require_tree .
+//= require_tree ./application
