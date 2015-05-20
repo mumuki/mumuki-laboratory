@@ -220,3 +220,4 @@ es:
   failed_exercises_stats: "Además, <strong> intentaste resolver %{count} ejercicios </strong> más."
   unknown_exercises_stats: "Y todavía <strong>hay %{count} que podrías intentar resolver</strong>."
   you_must_sign_in_to_see_stats: "Necestiás iniciar sesión con Github para ver más estadísticas sobre tu progreso"
+  next_guide: "Siguiente Guía"

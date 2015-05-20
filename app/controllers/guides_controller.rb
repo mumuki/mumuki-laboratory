@@ -44,8 +44,7 @@ class GuidesController < ApplicationController
 
   def index
     @q = params[:q]
-    @guides = params[:at] ? Guide.find(params[:at]).suggested_guides : Guide
-    @guides = paginated @guides.by_full_text(@q).at_locale
+    @guides = paginated Guide.by_full_text(@q).at_locale
   end
 
   def collaborators_refresh

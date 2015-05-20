@@ -47,7 +47,7 @@
   <%= repeat_submission_button(@exercise) if @submission.should_retry? %>
   <%= next_exercise_button(@exercise) %>
 
-  <%= link_to_more_guides(@exercise.guide) if @stats.try &:done? %>
+  <%= next_guides_box(@exercise.guide, only_first: true) if @stats.try &:done? %>
 
 </div>
 

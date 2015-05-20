@@ -22,7 +22,7 @@ describe ApplicationHelper do
   end
 
   describe '#link_to_guide' do
-    let(:guide) { create(:guide, name: 'foo', id: 1 ) }
+    let(:guide) { create(:guide, name: 'foo', id: 1) }
     it { expect(link_to_guide(guide)).to eq '<a href="/guides/1">foo</a>' }
   end
 
@@ -37,6 +37,28 @@ describe ApplicationHelper do
 
     it { expect(status_icon(passed_submission)).to eq '<i class="fa fa-check text-success special-icon"></i>' }
     it { expect(status_icon(failed_submission)).to eq '<i class="fa fa-times text-danger special-icon"></i>' }
+  end
+
+  describe '#next_guides_box' do
+    context 'when guide has no suggestions' do
+      let(:guide) { create(:guide) }
+      it { expect(next_guides_box(guide)).to be nil }
+    end
+
+    context 'when guide has one suggestion' do
+      let(:suggested_guide) { create(:guide) }
+      let(:guide) { create(:guide, suggested_guides: [suggested_guide]) }
+
+      it { expect(next_guides_box(guide)).to eq "<a class=\"btn btn-success\" href=\"/guides/#{suggested_guide.id}\">Next Guide</a>" }
+    end
+
+    context 'when guide has many suggestions' do
+      let(:suggested_guide_1) { create(:guide) }
+      let(:suggested_guide_2) { create(:guide) }
+      let(:guide) { create(:guide, suggested_guides: [suggested_guide_1, suggested_guide_2]) }
+
+      it { expect(next_guides_box(guide)).to include "<li class=\"list-group-item\"><a href=\"/guides/#{suggested_guide_1.id}\">#{suggested_guide_1.name}</a></li>" }
+      it { expect(next_guides_box(guide)).to be_html_safe } end
   end
 
 end

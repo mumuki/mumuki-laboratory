@@ -35,7 +35,8 @@
         <p>
           <% if @stats.done? %>
             ¡Eso significa que <strong>ya terminaste esta guía</strong>! ¡Bien hecho!
-            Mirá <%= link_to t(:more_guides), guides_path %>
+            Tenemos más guías para vos:
+            <%= next_guides_box @guide %>
           <% elsif @stats.good_progress? %>
             <%= raw t :good_progress_in_guide %>
           <% elsif !@stats.started? %>
@@ -44,6 +45,7 @@
             <%= raw t :stuck_in_guide %>
           <% end %>
         </p>
+
       </div>
       <div class="col-md-7">
         <%= pie_chart @stats.to_h { |it| t(it) }, colors: ["green", "red", 'grey'] %>
@@ -68,14 +70,15 @@
 
   <% end %>
 
-
-  <div class="row">
-    <div class="col-md-12">
-      <div class="actions">
-        <%= link_to t(practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-primary' %>
+  <% unless @stats.try :done? %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="actions">
+          <%= link_to t(practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-primary' %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 
 <% end %>
 

@@ -18,7 +18,7 @@
           <h1><%= t :guide_finished, guide: @exercise.guide.name %> </h1>
 
           <h3><%= t :see_next_guides %></h3>
-          <%= link_to_more_guides(@exercise.guide) %>
+          <%= next_guides_box(@exercise.guide) %>
         </div>
       </div>
     </div>

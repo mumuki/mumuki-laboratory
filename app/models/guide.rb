@@ -51,6 +51,10 @@ class Guide < ActiveRecord::Base
     exercises.first
   end
 
+  def next_guides
+    suggested_guides #TODO filter resolved, and also answer guides at the same level
+  end
+
   #TODO denormalize
   def search_tags
     exercises.flat_map(&:search_tags).uniq
