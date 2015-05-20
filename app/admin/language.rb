@@ -20,4 +20,17 @@ ActiveAdmin.register Language do
 
     actions
   end
+
+
+  form do |f|
+    f.inputs 'Language' do
+      f.input :name
+      f.input :image_url
+      f.input :extension
+      f.input :test_runner_url
+      f.input :visible_success_output
+      f.input :output_content_type, as: :select, collection: Language.output_content_types.keys
+    end
+    f.actions
+  end
 end
