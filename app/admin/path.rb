@@ -1,9 +1,8 @@
-ActiveAdmin.register StartingPoint do
+ActiveAdmin.register Path do
 
   permit_params :category_id, :guide_id, :language_id
 
   filter :category
-  filter :guide
   filter :language
   filter :created_at
   filter :updated_at
