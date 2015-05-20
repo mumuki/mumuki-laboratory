@@ -32,6 +32,7 @@ gem 'omniauth-github'
 
 gem 'font-awesome-rails'
 
+gem 'rouge'
 gem 'redcarpet'
 
 gem 'ace-rails-ap'

@@ -240,6 +240,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    rouge (1.9.0)
     rspec-collection_matchers (1.1.2)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-core (2.99.2)
@@ -356,6 +357,7 @@ DEPENDENCIES
   rails-i18n (~> 4.0.0)
   rake
   redcarpet
+  rouge
   rspec-rails (~> 2.14)
   sass-rails
   sitemap_generator
