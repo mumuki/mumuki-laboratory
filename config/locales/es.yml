@@ -128,7 +128,7 @@ es:
   my_guides: "Mis Guías"
   profile_of: "Perfil de %{username}"
   search: "Buscá, por ejemplo: polimorfismo, haskell o competenciaDeSaltos"
-  belongs_to_guide: "Pertence a la guía %{guide}"
+  belongs_to_guide: "Pertenece a la guía %{guide}"
   devise:
     sessions:
       admin_user:
