@@ -2,31 +2,28 @@
 SitemapGenerator::Sitemap.default_host = 'http://mumuki.io'
 
 SitemapGenerator::Sitemap.create do
-  add '/en', :changefreq => 'daily', :priority => 0.9
+  add '/es', :changefreq => 'daily', :priority => 0.9
   add '/es', :changefreq => 'daily', :priority => 0.9
 
-  add '/es/exercises', :changefreq => 'daily', :priority => 0.6
-  add '/en/exercises', :changefreq => 'daily', :priority => 0.6
+  add '/exercises', :changefreq => 'daily', :priority => 0.6
 
-  add '/es/guides', :changefreq => 'daily', :priority => 0.7
-  add '/en/guides', :changefreq => 'daily', :priority => 0.7
+  add '/guides', :changefreq => 'daily', :priority => 0.7
 
-  add '/es/users', :changefreq => 'daily', :priority => 0.1
-  add '/en/users', :changefreq => 'daily', :priority => 0.1
+  add '/users', :changefreq => 'daily', :priority => 0.1
 
   Exercise.all.pluck(:id).each do |id|
-    add "/es/exercises/#{id}", :changefreq => 'daily', :priority => 0.5
-    add "/es/exercises/#{id}", :changefreq => 'daily', :priority => 0.5
+    add "/exercises/#{id}", :changefreq => 'daily', :priority => 0.5
+    add "/exercises/#{id}", :changefreq => 'daily', :priority => 0.5
   end
 
   Guide.all.pluck(:id).each do |id|
-    add "/es/guides/#{id}", :changefreq => 'daily', :priority => 0.3
-    add "/es/guides/#{id}", :changefreq => 'daily', :priority => 0.3
+    add "/guides/#{id}", :changefreq => 'daily', :priority => 0.3
+    add "/guides/#{id}", :changefreq => 'daily', :priority => 0.3
   end
 
   User.all.pluck(:id).each do |id|
-    add "/es/users/#{id}", :changefreq => 'daily', :priority => 0.2
-    add "/es/users/#{id}", :changefreq => 'daily', :priority => 0.2
+    add "/users/#{id}", :changefreq => 'daily', :priority => 0.2
+    add "/users/#{id}", :changefreq => 'daily', :priority => 0.2
   end
 
 

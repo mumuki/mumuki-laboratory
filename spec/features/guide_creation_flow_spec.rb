@@ -15,7 +15,7 @@ feature 'Create guide flow' do
 
     click_on 'Sign in with Github'
 
-    visit "en/users/#{user.id}/guides"
+    visit "/users/#{user.id}/guides"
 
     click_on 'New Guide'
 

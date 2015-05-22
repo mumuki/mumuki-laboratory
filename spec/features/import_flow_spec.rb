@@ -9,7 +9,7 @@ feature 'Import Flow' do
 
     click_on 'Sign in with Github'
 
-    visit "en/guides/#{guide.id}/imports"
+    visit "/guides/#{guide.id}/imports"
 
     expect(page).to have_text('hook')
     expect(page).to have_text('Updates')

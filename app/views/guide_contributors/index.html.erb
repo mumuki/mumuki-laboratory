@@ -3,7 +3,6 @@
     <ul>
       <% @contributors.each do |contributor| %>
         <li><%= link_to_user contributor %>
-          <span style="display: inline-block"> <%= follow_button(contributor) %> </span>
         </li>
       <% end %>
     </ul>

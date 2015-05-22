@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 feature 'Search Flow' do
-  before { I18n.locale = :en }
-
   let(:haskell) { create(:haskell) }
   let!(:exercises) {
     create(:exercise, title: 'Foo',        guide: guide, position: 1, description: 'Description of foo')
@@ -12,7 +10,7 @@ feature 'Search Flow' do
   let(:guide) { create(:guide, name: 'awesomeGuide', description: 'An awesome guide', language: haskell) }
 
   scenario 'visit guides from search page, signs in, and starts practicing' do
-    visit '/en'
+    visit '/'
 
     within('.jumbotron') do
       click_on 'Start Practicing!'
@@ -32,7 +30,7 @@ feature 'Search Flow' do
   end
 
   scenario 'visits a guide, tries to check progress, signs in, checks progress' do
-    visit "/en/guides/#{guide.id}"
+    visit "/guides/#{guide.id}"
 
     click_on 'Your Progress'
 

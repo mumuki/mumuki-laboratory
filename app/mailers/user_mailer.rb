@@ -3,7 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def motivation_email(user)
   	@user = user
-  	@url_exercises = 'http://mumuki.io/es/exercises'
+  	@url_exercises = 'http://mumuki.io'
   	self.mail(to: user.email, subject: 'Hey! Come and practice with us!')
   end
 

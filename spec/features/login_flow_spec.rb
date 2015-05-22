@@ -13,7 +13,7 @@ feature 'Login Flow' do
   end
 
   scenario 'login from home, localized' do
-    visit '/es'
+    visit '/?locale=es'
 
     click_on 'Iniciá sesion con Github'
 
@@ -23,7 +23,7 @@ feature 'Login Flow' do
 
 
   scenario 'login on authentication request' do
-    visit "/en/exercises/#{exercise.id}"
+    visit "/exercises/#{exercise.id}"
 
     expect(page).to have_text(exercise.title)
 

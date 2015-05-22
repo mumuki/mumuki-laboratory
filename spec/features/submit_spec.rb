@@ -9,7 +9,7 @@ feature 'Search Flow' do
   let(:guide) { create(:guide) }
 
   scenario 'create submission' do
-    visit "/en/exercises/#{exercise.id}"
+    visit "/exercises/#{exercise.id}"
 
     within '.actions' do
       click_on 'Sign in with Github'
@@ -22,7 +22,7 @@ feature 'Search Flow' do
 
 
   scenario 'create submission and then get another exercise' do
-    visit "/en/exercises/#{exercise.id}"
+    visit "/exercises/#{exercise.id}"
 
     within '.actions' do
       click_on 'Sign in with Github'
@@ -39,7 +39,7 @@ feature 'Search Flow' do
 
 
   scenario 'create submission and then retry exercise' do
-    visit "/en/exercises/#{exercise.id}"
+    visit "/exercises/#{exercise.id}"
 
     within '.actions' do
       click_on 'Sign in with Github'

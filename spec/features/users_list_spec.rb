@@ -14,14 +14,14 @@ feature 'Users listing' do
 
     click_on 'Sign in with Github'
 
-    visit '/en/users'
+    visit '/users'
 
     expect(page).to have_text('foobar')
     expect(page).to have_text('baz')
   end
 
   scenario 'go to user from listing' do
-    visit '/en/users'
+    visit '/users'
 
     click_on 'foobar'
 

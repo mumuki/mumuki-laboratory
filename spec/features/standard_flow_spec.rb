@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 feature 'Standard Flow' do
-  before { I18n.locale = :en }
-
   let(:haskell) { create(:haskell) }
   let!(:exercises) {
     create(:exercise, title: 'Succ',        guide: guide, position: 1, description: 'Description of foo')

@@ -14,14 +14,19 @@ class ApplicationController < ActionController::Base
                 :restricted_to_other_user
 
   def set_locale
-    I18n.locale = params[:locale] || extract_locale_from_accept_language_header || I18n.default_locale
+    I18n.locale = subdomain_locale || params[:locale] ||  I18n.default_locale
   end
 
   def default_url_options
-    { :locale => I18n.locale }
+    subdomain_locale ? {} : { :locale => I18n.locale }
   end
 
-  def extract_locale_from_accept_language_header
-    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first rescue 'es'
+  def subdomain_locale
+    unless @subdomain_locale
+      parsed_locale = request.subdomains.first
+      @subdomain_locale = I18n.available_locales.map(&:to_s).include?(parsed_locale) ? parsed_locale : nil
+    end
+    @subdomain_locale
   end
+
 end

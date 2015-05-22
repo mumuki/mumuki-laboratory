@@ -26,7 +26,7 @@ feature 'Search Flow' do
 
 
   scenario 'search by language' do
-    visit '/en/exercises'
+    visit '/exercises'
 
     fill_in 'q', with: 'haskell'
     click_on 'search'
@@ -40,7 +40,7 @@ feature 'Search Flow' do
   end
 
   scenario 'search by guide' do
-    visit '/en/exercises'
+    visit '/exercises'
 
     fill_in 'q', with: 'awesomeGuide'
     click_on 'search'
@@ -54,7 +54,7 @@ feature 'Search Flow' do
 
 
   scenario 'search by guide when it does not exists' do
-    visit '/en/exercises'
+    visit '/exercises'
 
     click_on 'Sign in with Github'
 
