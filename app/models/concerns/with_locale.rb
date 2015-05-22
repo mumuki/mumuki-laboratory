@@ -3,6 +3,6 @@ module WithLocale
 
   included do
     validates_presence_of :locale
-    scope :at_locale, lambda { where(locale: I18n.locale) }
+    scope :at_locale, lambda { |locale=I18n.locale| where(locale: locale) }
   end
 end
