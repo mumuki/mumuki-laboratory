@@ -11,7 +11,7 @@ module ContentType
 
   module Plain
     def self.to_html(content)
-      content
+      "<pre>#{ERB::Util.html_escape content}</pre>".html_safe
     end
   end
 
