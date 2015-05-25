@@ -61,8 +61,7 @@ class Exercise < ActiveRecord::Base
   end
   
   def get_extra_code
-    guide_extra_code = guide ? ' \n ' + guide.extra_code_or_empty : ''
-    extra_code_or_empty + guide_extra_code
+    [guide.try(&:extra_code), extra_code].compact.join(" \n ")
   end
 
   private
