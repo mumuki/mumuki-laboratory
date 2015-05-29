@@ -6,7 +6,7 @@ feature 'Search Flow' do
     create(:exercise, tag_list: ['haskell'], title: 'Foo', original_id: 1, description: 'an awesome problem description', guide: guide)
   }
   let!(:other_exercise) { create(:exercise, title: 'Baz', guide: guide, original_id: 2) }
-  let(:guide) { create(:guide) }
+  let(:guide) { create(:guide, corollary: 'Now you understand higher order programming') }
 
   scenario 'create submission' do
     visit "/exercises/#{exercise.id}"

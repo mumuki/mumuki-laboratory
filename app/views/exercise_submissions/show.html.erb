@@ -16,12 +16,7 @@
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3 text-center">
           <h1><%= t :guide_finished, guide: @guide.name %> </h1>
-          <% if @guide.corollary.present? %>
-            <h3><%= t :corollary %></h3>
-            <p>
-              <%= @guide.corollary_html %>
-            </p>
-          <% end %>
+          <%= corollary_box @guide %>
           <h3><%= t :see_next_guides %></h3>
           <%= next_guides_box(@guide) %>
         </div>

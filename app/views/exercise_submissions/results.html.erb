@@ -1,6 +1,5 @@
 <% @stats = @guide.stats(current_user) if @guide %>
 
-
 <% if @submission.results_visible? %>
 <div>
   <h2><%= t('results') %></h2>
@@ -29,10 +28,11 @@
 </div>
 <% else %>
 <div>
-  <h3 class="text-center"><%= t(:exercise_done) %></h3>
+  <h2 class="text-center"><%= t(:exercise_done) %></h2>
 </div>
 <% end %>
 
+<%= corollary_box @exercise unless @submission.should_retry? %>
 
 <% if @submission.feedback.present? %>
   <h2><%= t(:feedback) %></h2>
