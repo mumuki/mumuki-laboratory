@@ -34,6 +34,7 @@ describe Import do
       it { expect(imported_exercise.test).to eq 'pending' }
       it { expect(imported_exercise.extra_code).to eq "extra\n" }
       it { expect(imported_exercise.hint).to be nil }
+      it { expect(imported_exercise.corollary).to be nil }
       it { expect(imported_exercise.language).to eq haskell }
       it { expect(imported_exercise.expectations.size).to eq 2 }
       it { expect(imported_exercise.tag_list).to include *%w(foo bar baz) }
@@ -46,11 +47,12 @@ describe Import do
       it { expect(imported_exercise).to be nil }
     end
 
-    context 'when importing exercise with hint' do
+    context 'when importing exercise with hint and corollary' do
       let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 3) }
 
       it { expect(imported_exercise).to_not be nil }
       it { expect(imported_exercise.hint).to eq "Try this: blah blah\n" }
+      it { expect(imported_exercise.corollary).to eq "And the corollary is...\n" }
     end
   end
 end
