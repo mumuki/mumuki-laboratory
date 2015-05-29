@@ -22,7 +22,7 @@ class Guide < ActiveRecord::Base
 
   validates_presence_of :github_repository, :name, :author
 
-  markup_on :description, :teaser
+  markup_on :description, :teaser, :corollary
 
   #TODO denormalize
   def search_tags
