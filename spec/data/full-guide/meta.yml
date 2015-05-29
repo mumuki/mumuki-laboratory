@@ -1,0 +1,4 @@
+language: Haskell
+locale: en
+order:
+- 1
