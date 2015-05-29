@@ -18,6 +18,8 @@ class ExerciseRepository
 
       hint = markdown(root, 'hint')
 
+      corollary = markdown(root, 'corollary')
+
       meta = meta(root) || (log.no_meta(title); next)
 
       test_code = test_code(root) || (log.no_test title; next)
@@ -32,6 +34,7 @@ class ExerciseRepository
           {title: title,
            description: description,
            hint: hint,
+           corollary: corollary,
            tag_list: meta['tags'],
            locale: meta['locale'],
            language: @language,

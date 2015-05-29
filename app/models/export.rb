@@ -51,6 +51,8 @@ class Export < ActiveRecord::Base
     write_file!(dirname, 'hint.md', e.hint) if e.hint.present?
     write_file!(dirname, "extra.#{language.extension}", e.extra_code) if e.extra_code.present?
     write_file!(dirname, 'expectations.yml', expectations_yaml(e)) if e.expectations.present?
+    write_file!(dirname, 'corollary.md', e.corollary) if e.corollary.present?
+
   end
 
   def write_description!(dir)
