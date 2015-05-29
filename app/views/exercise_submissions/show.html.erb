@@ -15,15 +15,15 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3 text-center">
-          <h1><%= t :guide_finished, guide: @exercise.guide.name %> </h1>
+          <h1><%= t :guide_finished, guide: @guide.name %> </h1>
 
           <h3><%= t :see_next_guides %></h3>
-          <%= next_guides_box(@exercise.guide) %>
+          <%= next_guides_box(@guide) %>
         </div>
       </div>
     </div>
   </div>
-<% end if @exercise.guide %>
+<% end if @guide %>
 
 <%= content_for :tail do %>
   <script>
