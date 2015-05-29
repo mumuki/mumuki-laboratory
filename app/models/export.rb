@@ -31,6 +31,7 @@ class Export < ActiveRecord::Base
       write_exercise! dir, e
     end
     write_description! dir
+    write_corollary! dir
     write_meta! dir
   end
 
@@ -54,6 +55,10 @@ class Export < ActiveRecord::Base
 
   def write_description!(dir)
     write_file! dir, 'description.md', guide.description
+  end
+
+  def write_corollary!(dir)
+    write_file! dir, 'corollary.md', guide.corollary if guide.corollary
   end
 
   def write_meta!(dir)

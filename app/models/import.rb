@@ -26,11 +26,16 @@ class Import < ActiveRecord::Base
   def read_guide!(dir)
     order = read_meta! dir
     read_description! dir
+    read_corollary! dir
     read_exercises! dir, order
   end
 
   def read_description!(dir)
     guide.update!(description: File.read(File.join(dir, 'description.md')))
+  end
+
+  def read_corollary!(dir)
+    guide.update!(corollary: File.read(File.join(dir, 'corollary.md')))
   end
 
   def read_meta!(dir)
