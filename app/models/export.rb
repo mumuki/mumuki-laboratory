@@ -60,7 +60,7 @@ class Export < ActiveRecord::Base
   end
 
   def write_corollary!(dir)
-    write_file! dir, 'corollary.md', guide.corollary if guide.corollary
+    write_file! dir, 'corollary.md', guide.corollary if guide.corollary.present?
   end
 
   def write_meta!(dir)
