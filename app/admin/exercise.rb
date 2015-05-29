@@ -1,6 +1,6 @@
 ActiveAdmin.register Exercise do
 
-  permit_params :author_id, :language_id, :guide_id, :title, :description, :test, :extra_code, :hint, :locale
+  permit_params :author_id, :language_id, :guide_id, :title, :description, :test, :extra_code, :hint, :corollary, :locale
 
   filter :title
   filter :author
