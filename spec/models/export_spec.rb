@@ -78,21 +78,4 @@ describe Export do
       it { expect(Dir['spec/data/export/*'].size).to eq 4 }
     end
   end
-
-  describe '#run_export!' do
-    context 'bad credentials' do
-      before do
-        begin
-          export.run_export!
-        rescue
-        end
-      end
-
-      it do
-        expect(export.status).to eq 'failed'
-        expect(export.result).to include 'Bad credentials'
-      end
-    end
-  end
-
 end
