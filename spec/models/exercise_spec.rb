@@ -180,4 +180,24 @@ describe Exercise do
       it { expect(exercise_in_guide.authored_by?(other_user)).to be false }
     end
   end
+
+
+  describe '#language' do
+    let(:guide) { create(:guide) }
+    let(:exercise_with_guide) { create(:exercise, guide: guide, language: guide.language) }
+    let(:other_language) { create(:language) }
+
+    context 'when has no guide' do
+      it { expect(exercise.valid?).to be true }
+    end
+
+    context 'when has guide and is consistent' do
+      it { expect(exercise_with_guide.valid?).to be true }
+    end
+
+    context 'when has guide and is not consistent' do
+      before { exercise_with_guide.language = other_language }
+      it { expect(exercise_with_guide.valid?).to be false }
+    end
+  end
 end

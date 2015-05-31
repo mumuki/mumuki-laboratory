@@ -82,6 +82,10 @@ es:
         other: "Alrededor de %{count} meses"
 
   activerecord:
+    errors:
+      messages:
+        same_language_of_guide: 'El lenguaje del ejercicio debe coincidir con el de su guía'
+
     models:
       submission:
         one: "Solucion"

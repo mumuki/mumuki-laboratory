@@ -142,3 +142,8 @@ en:
   categories_index_title: "What do you want to learn?"
   guide_finished: "Congrants! You completed guide %{guide}"
   next_guide: "Next Guide"
+
+  activerecord:
+    errors:
+      messages:
+        same_language_of_guide: 'Must be of same language of guide'

@@ -2,6 +2,8 @@ require 'spec_helper'
 
 feature 'Search Flow' do
   let(:haskell) { create(:language, name: 'Haskell') }
+  let(:ruby) { create(:language, name: 'Ruby') }
+
   let!(:exercises) {
     create(:exercise, tag_list: ['haskell'], title: 'Foo', description: 'an awesome problem description')
     create(:exercise, tag_list: [], title: 'Bar', language: haskell)
@@ -9,7 +11,7 @@ feature 'Search Flow' do
     create(:exercise, tag_list: [], title: 'Baz', description: 'do it in haskell')
     create(:exercise, tag_list: [], title: 'nothing', guide: guide)
   }
-  let(:guide) { create(:guide, language: haskell, name: 'awesomeGuide', description: 'Haskelloid baz guide') }
+  let(:guide) { create(:guide, language: ruby, name: 'awesomeRubyGuide', description: 'rubist baz guide') }
 
 
   scenario 'search guides from home, by language' do
@@ -17,10 +19,10 @@ feature 'Search Flow' do
 
     click_on 'Guides'
 
-    fill_in 'q', with: 'haskell'
+    fill_in 'q', with: 'ruby'
     click_on 'search'
 
-    expect(page).to have_text('awesomeGuide')
+    expect(page).to have_text('awesomeRubyGuide')
 
   end
 
@@ -42,7 +44,7 @@ feature 'Search Flow' do
   scenario 'search by guide' do
     visit '/exercises'
 
-    fill_in 'q', with: 'awesomeGuide'
+    fill_in 'q', with: 'awesomeRubyGuide'
     click_on 'search'
 
     expect(page).to_not have_text('Bar')

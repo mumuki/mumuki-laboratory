@@ -25,6 +25,8 @@ class Exercise < ActiveRecord::Base
   validates_presence_of :title, :description, :language, :test,
                         :submissions_count, :author
 
+  validate :language_consistent_with_guide, if: :guide
+
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
 
   markup_on :description, :hint, :teaser
@@ -58,6 +60,10 @@ class Exercise < ActiveRecord::Base
   end
 
   private
+
+  def language_consistent_with_guide
+    errors.add(:base, :same_language_of_guide) if language != guide.language
+  end
 
   def defaults
     self.submissions_count = 0

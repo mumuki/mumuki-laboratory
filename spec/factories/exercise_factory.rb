@@ -16,7 +16,7 @@ FactoryGirl.define do
   factory :exercise do
     title 'Exercise 1'
     description 'Simple exercise'
-    language
+    language { guide ? guide.language : create(:language) }
     test 'dont care'
     author { create(:user) }
     locale :en

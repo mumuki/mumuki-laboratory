@@ -6,6 +6,7 @@ FactoryGirl.define do
     description 'A Guide'
     author { create(:user) }
     github_repository 'flbulgarelli/mumuki-sample-exercises'
+    language
   end
 
 end
