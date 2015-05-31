@@ -9,6 +9,7 @@ class Import < ActiveRecord::Base
   schedule_on_create ImportGuideJob
 
   delegate :author, to: :guide
+  delegate :language, to: :guide
 
   def run_import!
     run_update! do
@@ -47,7 +48,7 @@ class Import < ActiveRecord::Base
   def read_exercises!(dir, order = nil)
     ordering = Ordering.from order
     log = ImportLog.new
-    ExerciseRepository.new(author, dir).process_files(log) do |original_id, attributes|
+    ExerciseRepository.new(author, language, dir).process_files(log) do |original_id, attributes|
       Exercise.create_or_update_for_import!(guide, original_id, ordering.with_position(original_id, attributes))
     end
     log

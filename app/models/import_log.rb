@@ -16,10 +16,6 @@ class ImportLog
     @messages << "There must be exactly 1 test file for #{title}"
   end
 
-  def no_lang(title)
-    @messages << "Language not found for #{title}"
-  end
-
   def to_s
     @messages.join(', ')
   end

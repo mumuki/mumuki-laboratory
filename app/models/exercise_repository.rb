@@ -1,8 +1,9 @@
 ## Represent a local repository of exercises, at a given filesystem directory
 class ExerciseRepository
 
-  def initialize(author, dir)
+  def initialize(author, language, dir)
     @author = author
+    @language = language
     @dir = File.expand_path(dir)
   end
 
@@ -17,11 +18,9 @@ class ExerciseRepository
 
       meta = meta(root) || (log.no_meta(title); next)
 
-      test_code, test_extension = test_code(root) || (log.no_test title; next)
+      test_code = test_code(root) || (log.no_test title; next)
 
-      extra_code, _extra_extension = extra_code(root)
-
-      language = language(test_extension) || (log.no_lang(title); next)
+      extra_code = extra_code(root)
 
       expectations = (expectations(root).try { |it| it['expectations'] } || []).map do |e|
         Expectation.new(binding: e['binding'], inspection: e['inspection'])
@@ -33,7 +32,7 @@ class ExerciseRepository
            hint: hint,
            tag_list: meta['tags'],
            locale: meta['locale'],
-           language: language,
+           language: @language,
            expectations: expectations,
            author: @author,
            test: test_code,
@@ -66,7 +65,7 @@ class ExerciseRepository
   def code(root,filename)
     files = Dir.glob("#{root}/#{filename}.*")
     file = files[0]
-    [File.read(file), parse_extension(file)] if files.length == 1
+    File.read(file) if files.length == 1
   end
 
   def test_code(root)
@@ -75,14 +74,6 @@ class ExerciseRepository
 
   def extra_code(root)
     code(root, 'extra')
-  end
-
-  def language(extension)
-    Language.find_by(extension: extension)
-  end
-
-  def parse_extension(test_file)
-    /.*\.(.*)/.match(File.basename(test_file))[1]
   end
 
   def yaml(root, filename)

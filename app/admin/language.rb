@@ -1,7 +1,7 @@
 ActiveAdmin.register Language do
 
   permit_params :name, :image_url,
-                :extension, :test_runner_url,
+                :extension, :test_extension, :test_runner_url,
                 :visible_success_output, :output_content_type
 
   filter :name
@@ -14,6 +14,7 @@ ActiveAdmin.register Language do
     column(:name)
     column(:image_url)
     column(:extension)
+    column(:test_extension)
     column(:test_runner_url)
     column(:visible_success_output)
     column(:output_content_type)
@@ -27,6 +28,7 @@ ActiveAdmin.register Language do
       f.input :name
       f.input :image_url
       f.input :extension
+      f.input :test_extension
       f.input :test_runner_url
       f.input :visible_success_output
       f.input :output_content_type, as: :select, collection: Language.output_content_types.keys

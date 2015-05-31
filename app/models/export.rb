@@ -10,6 +10,8 @@ class Export < ActiveRecord::Base
 
   validates_presence_of :committer
 
+  delegate :language, to: :guide
+
   def run_export!
     Rails.logger.info "Exporting guide #{guide.id}"
     run_update! do
@@ -41,12 +43,12 @@ class Export < ActiveRecord::Base
 
     FileUtils.mkdir_p dirname
 
-    write_file!(dirname, format_extension('test'), e.test)
+    write_file!(dirname, "test.#{language.test_extension}", e.test)
     write_file!(dirname, 'description.md', e.description)
     write_file!(dirname, 'meta.yml', metadata_yaml(e))
 
     write_file!(dirname, 'hint.md', e.hint) if e.hint.present?
-    write_file!(dirname, format_extension('extra'), e.extra_code) if e.extra_code.present?
+    write_file!(dirname, "extra.#{language.extension}", e.extra_code) if e.extra_code.present?
     write_file!(dirname, 'expectations.yml', expectations_yaml(e)) if e.expectations.present?
   end
 
@@ -57,7 +59,7 @@ class Export < ActiveRecord::Base
   def write_meta!(dir)
     write_file! dir, 'meta.yml', {
         'locale' => guide.locale,
-        'language' => guide.language.name,
+        'language' => language.name,
         'original_id_format' => guide.original_id_format,
         'order' => guide.exercises.pluck(:original_id)
     }.to_yaml
@@ -73,9 +75,6 @@ class Export < ActiveRecord::Base
     {'expectations' => e.expectations.as_json(only: [:binding, :inspection])}.to_yaml
   end
 
-  def format_extension(filename)
-    "#{filename}.#{guide.language.extension}"
-  end
 
   def write_file!(dirname, name, content)
     File.write(File.join(dirname, name), content)

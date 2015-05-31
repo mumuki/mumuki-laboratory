@@ -24,6 +24,10 @@ class Language < ActiveRecord::Base
     Mumukit::Bridge::Bridge.new(test_runner_url)
   end
 
+  def test_extension
+    self[:test_extension] || extension
+  end
+
   def to_s
     name
   end

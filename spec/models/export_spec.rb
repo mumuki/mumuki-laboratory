@@ -7,6 +7,7 @@ describe Export do
                              title: 'foo', original_id: 100, position: 1,
                              locale: 'en', tag_list: %w(foo bar),
                              language: haskell,
+                             extra_code: 'foobar',
                              expectations: [Expectation.new(binding: 'bar', inspection: 'HasBinding')]) }
   let!(:exercise_2) { create(:exercise, guide: guide,
                              description: 'a description',
@@ -41,6 +42,20 @@ describe Export do
 
 
     describe '#write_exercise' do
+      context 'with extra' do
+        before { export.write_exercise! dir, exercise_1 }
+
+        it { expect(File.exist? 'spec/data/export/00100_foo/extra.hs').to be true }
+        it { expect(File.read 'spec/data/export/00100_foo/extra.hs').to eq 'foobar'}
+      end
+
+      context 'without extra' do
+        before { export.write_exercise! dir, exercise_2 }
+
+        it { expect(File.exist? 'spec/data/export/00200_bar/extra.hs').to be false }
+      end
+
+
       context 'with expectations' do
         before { export.write_exercise! dir, exercise_1 }
 
