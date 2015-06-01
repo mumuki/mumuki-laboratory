@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20150531164450) do
     t.text     "hint"
     t.text     "extra_code"
     t.integer  "position"
+    t.text     "corollary"
   end
 
   add_index "exercises", ["author_id"], name: "index_exercises_on_author_id", using: :btree
@@ -132,6 +133,7 @@ ActiveRecord::Schema.define(version: 20150531164450) do
     t.integer  "language_id"
     t.integer  "path_id"
     t.integer  "position"
+    t.text     "corollary"
   end
 
   add_index "guides", ["author_id"], name: "index_guides_on_author_id", using: :btree
