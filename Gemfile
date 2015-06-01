@@ -49,6 +49,7 @@ gem 'bootstrap-kaminari-views'
 
 gem 'bootstrap_form'
 
+gem 'i18n-tasks', '~> 0.8.3'
 gem 'rails-i18n', '~> 4.0.0'
 
 gem 'nprogress-rails'

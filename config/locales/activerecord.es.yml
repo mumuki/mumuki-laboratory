@@ -1,0 +1,33 @@
+---
+es:
+  activerecord:
+    attributes:
+      exercise:
+        description: Descripción
+        extra_code: Código Adicional
+        hint: Ayudas
+        language: Lenguaje
+        locale: Idioma
+        tag_list: Etiquetas
+        title: Título
+      guide:
+        description: Descripción
+        github_repository: Repositorio Github
+        language: Lenguaje
+        locale: Idioma
+        name: Nombre
+      submission:
+        content: Contenido
+    errors:
+      messages:
+        same_language_of_guide: El lenguaje del ejercicio debe coincidir con el de su guía
+    models:
+      exercise:
+        one: Ejercicio
+        other: Ejercicios
+      guide: Guía
+      import: Importación
+      language: Lenguaje
+      submission:
+        one: Solucion
+        other: Soluciones

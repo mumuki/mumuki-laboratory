@@ -1,228 +1,134 @@
+---
 es:
-  hello: "Hola mundo"
-  cancel: "Cancelar"
-  show: "Mostrar"
-  destroy: 'Eliminar'
-  edit: "Editar"
-  edit_exercise: "Editar %{exercise}"
-  new_submission: "Nueva Solución"
-  my_submissions: 'Mis Soluciones'
-  submission_created: 'La solución fue enviada correctamente'
-  my_exercises: 'Mis Ejercicios'
-  new_exercise: 'Nuevo Ejercicio'
-  results: 'Resultados'
-  submission_for_exercise: 'Solucion para ejercicio'
-  more: "mas..."
-  comma_or_tab_separated: 'Separados por tab o coma!'
-  you_can_use_markdown_here_html: 'Podés usar <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>'
-  here: 'acá'
-  language: 'Lenguaje'
-  title: 'Título'
-  actions: 'Acciones'
-  are_you_sure: '¿Estás seguro?'
-  all_exercises: 'Todos los ejercicios'
-  latest_exercises: 'Ultimos ejercicios'
-  hottest_exercises: 'Ejercicios más usados'
-  sign_out: "Cerrar Sesión"
-  sign_in_with_github: 'Iniciá sesion con Github'
-  exercise: 'Ejercicio'
-  submission_date: 'Fecha de envío'
-  status: 'Estado'
-  passed: 'pasó'
-  failed: 'falló'
-  unknown: 'no resuelto'
-  running: 'procesando'
-  pending: 'pendiente'
-  listing_exercises: 'Listado de ejercicios'
-  search: 'Buscar'
-  new_guide: "Nueva Guía"
-  github_url_hint: "usuario/repositorio"
-  guide_created: "Guia creada exitosamente"
-  guide: "Guía"
-  authored_by: "Creado por %{author}"
-  import_created: "Importación encolada"
-  submission: "solución"
-  mumuki_catchphrase: "Programá mejor"
-  mumuki_short_description: "Mumuki es una plataforma simple, abierta y colaborativa para compartir y resolver ejercicios de programación. Mumuki existe para ayudar a las personas a aprender y enseñar lenguajes y paradigmas de programación"
-  tag: "Etiqueta"
-  submissions_for: "Soluciones para %{exercise}"
-  you_must: "Tenés que %{action} antes de continuar"
-  you_must_sign_in_before_submitting: 'Tenés que iniciar sesión con Github antes de empezar a enviar tus soluciones'
-  sign_in_with_github_action: "iniciar sesión con Github"
-  languages: "Lenguajes"
-  notify_problem_to_author: "Notificar problema al autor"
-  problem_with_exercise: "[Mumuki] Error con el ejercicio: %{title}"
-  follow: Seguir!
-  unfollow: Dejar de seguir!
-  following: Siguiendo
+  about_this_guide: Sobre esta guía
+  actions: Acciones
+  activity: Actividad
+  add_expectation: Agregar Objetivo
   all: Todos
-
-  datetime:
-    distance_in_words:
-      x_seconds:
-        one: "Hace 1 segundo"
-        other: "Hace %{count} segundos"
-      less_than_x_minutes:
-        one: "Hace menos de 1 minuto"
-        other: "Hace menos de %{count} minutos"
-      x_minutes:
-        one: "Hace 1 minuto"
-        other: "Hace %{count} minutos"
-      x_days:
-        one: "Hace 1 dia"
-        other: "Hace %{count} dias"
-      x_months:
-        one: "Hace 1 mes"
-        other: "Hace %{count} meses"
-      about_x_hours:
-        one: "Alrededor de 1 hora"
-        other: "Alrededor de %{count} horas"
-      about_x_months:
-        one: "Alrededor de 1 mes"
-        other: "Alrededor de %{count} meses"
-
-  activerecord:
-    errors:
-      messages:
-        same_language_of_guide: 'El lenguaje del ejercicio debe coincidir con el de su guía'
-
-    models:
-      submission:
-        one: "Solucion"
-        other: "Soluciones"
-      exercise:
-        one: "Ejercicio"
-        other: "Ejercicios"
-      import: "Importación"
-      guide:  "Guía"
-      language: "Lenguaje"
-
-    attributes:
-      submission:
-        content: "Contenido"
-
-      guide:
-        name: 'Nombre'
-        locale: 'Idioma'
-        description: 'Descripción'
-        language: 'Lenguaje'
-        github_repository: 'Repositorio Github'
-
-      exercise:
-        title: "Título"
-        language: "Lenguaje"
-        tag_list: "Etiquetas"
-        description: "Descripción"
-        extra_code: 'Código Adicional'
-        locale: "Idioma"
-        hint: 'Ayudas'
-
-  latest_guides: "últimas guías"
-  submissions_count: "Soluciones"
-  mumuki_is_simple: "Mumuki es simple"
-  mumuki_is_collaborative: "Mumuki es colaborativo"
-  mumuki_is_open: "Mumuki es abierto"
-  start_practicing: "¡Empezá a practicar!"
-  continue_practicing: "¡Seguí practicando!"
-  create_exercises: "¡Creá ejercicios!"
-  extend_mumuki: "¡Extendé Mumuki!"
-  mumuki_is_simple_description: "Mumuki es una plataforma simple, que te permite concentrarte en lo que te interesa: mejorar tus habilidades de programación resolviendo problemas. No vamos a imponerte calendarios o exámenes: vos practicás cuando querés y podés."
-  mumuki_is_open_description: "Mumuki es software de código abierto, lo que significa que vos también podés ayudar a mejorarlo. Y por si fuera poco, Mumuki es fácil de extender, y queremos soportar más lenguajes de programación. ¡Vos podés ayudarnos!"
-  mumuki_is_collaborative_description: "Los ejercicios en Mumuki no son provisto por expertos, sino por la comunidad. No hay diferencia entre un maestro y un estudiante en Mumuki: todos pueden crear ejercicios. Nos encantaría que vos compartas los tuyos."
-  my_guides: "Mis Guías"
-  profile_of: "Perfil de %{username}"
-  search: "Buscá, por ejemplo: polimorfismo, haskell o competenciaDeSaltos"
-  belongs_to_guide: "Pertenece a la guía %{guide}"
-  devise:
-    sessions:
-      admin_user:
-        signed_in: Ha ingresado
-    failure:
-      admin_user:
-        unauthenticated: Usuario no autenticado
-  created_at: "Creado"
-  create_submission: "Enviar"
-  next_exercise: "Siguiente"
-  no_exercises: "Nadie creó un ejercicio para tu búsqueda aún. <a href=\"%{create_path}\">¡Sé el primero!</a>"
-  no_guides: "Nadie creó una guía para tu búsqueda aún. <a href=\"%{create_path}\">¡Sé el primero!</a>"
-
-  exercise_count: "ejercicios"
-  no_submissions: "¡Parece que aún no intentaste resolver este ejercicio aún!"
-  new_import: "¡Importar ahora!"
-
-  details: 'Detalles'
-  output: "Salida"
-  about_this_guide: "Sobre esta guía"
-  stats: "Algunos números"
-  guide_has_exercises_stats: "Esta guía tiene <strong>%{total} ejercicios </strong>"
-
-
-  expectation_must: 'debe'
-  expectation_must_not: 'no debe'
-
-  expectation_HasBinding: "%{binding} %{must} estar definido"
-  expectation_HasGuards: "%{binding} %{must} usar guardas"
-  expectation_HasComposition: "%{binding} %{must} usar composición"
-  expectation_HasLambda: "%{binding} %{must} emplear expresiones lambda"
-  expectation_HasComprehension: "%{binding} %{must} emplear listas por comprensión"
-  expectation_HasDirectRecursion: "%{binding} %{must} emplear recursión"
-  expectation_HasUsage: "%{binding} %{must} utilizar %{target}"
-  expectation_HasIf: "%{binding} %{must} usar if"
-  expectation_HasConditional: "%{binding} %{must} utilizar condicionales (guardas/if)"
-  expectation_HasTypeSignature: "La firma para %{binding} %{must} ser declarada"
-  expectation_HasTypeDeclaration: "%{must} existir una declaración para el sinónimo de tipo %{binding}"
-  expectation_HasRedundantIf: "%{binding} tiene ifs innecesarioas"
-  expectation_HasRedundantBooleanComparison: "%{binding} hace comparaciones booleanas innecesarias"
-  expectation_HasRedundantLambda: "%{binding} tiene lambdas innecesarias"
-  expectation_HasRedundantGuards: "%{binding} tiene guardas innecesarias"
-  expectation_HasRedundantParameter: "%{binding} tiene parámetros innecesarios (se pueden eliminar mediante point-free)"
-
-
-
-  expectations: "Objetivos"
-  add_expectation: "Agregar Objetivo"
-  extras: "Adicionales"
-  basic: "Básico"
-  repeat_submission: "Reintentar"
-  previous_exercise: "Anterior"
-  never: "nunca"
-  username: "Nombre de usuario"
-  submissions_success_rate: "Taza de éxito en soluciones"
-  exercise_success_rate: "Taza de éxito en ejercicios"
-  last_submission_date: "Última solucion"
-  sign_up_date: "Usuario desde"
-  import_date: "Fecha"
-  imports: "Actualizaciones"
-  history: "Historial"
-  progress: "Tu progreso"
-  overview: "Vista general"
-  exercise_number: "Número"
-  export_created: "Exportación encolada"
-  activity: "Actividad"
-  new_export: "¡Exportar ahora!"
-  no_permissions: "No tenés suficientes permisos sobre el repositorio"
-  import_export: 'Importar/Exportar'
-  refresh_collaborators: "¡Actualizá los colaboradores!"
-  collaborators_refreshed: "Lista de collaboradores actualizada"
-  contributors: "Autores"
-  solved_exercises: "Ejercicios Resueltos"
-  submissions: "Soluciones"
-  more_guides: "más guías"
-  exercise_done: "¡Todo en orden! Tu solución pasó todas nuestras pruebas"
-  feedback: "Para tener en cuenta"
-  category: "Categoría"
-  category_languages_availability: "Disponible en los siguientes lenguajes"
-  exercises_index_title: "¿Buscando algún ejercicio particular?"
-  guides_index_title: "¿Qué guía querés hacer hoy?"
-  categories_index_title: "¿Qué te gustaría aprender?"
-  see_next_guides: "¿Querés seguir practicando? ¡tenemos más guías para vos!"
-  guide_finished: "Felicitaciones, terminaste la guía %{guide}"
-  stuck_in_guide: "Parecería que te está costando un poco despegar con esta guía. ¡<strong>No te desanimes</strong>, es cuestión de práctica y seguir intentando!"
-  not_started_guide: "Eso significa que aún no empezaste con esta guía. <strong>¡Comenzá ahora mismo!</strong>"
-  good_progress_in_guide: "Además <strong>vas muy bien</strong>: la mayoría de las soluciones que enviaste resolvieron los ejercicios adecuadamente. ¡Felicitaciones!"
-  passed_exercises_stats: "Vos ya <strong>resolviste %{count}</strong> de ellos."
-  failed_exercises_stats: "Además, <strong> intentaste resolver %{count} ejercicios </strong> más."
-  unknown_exercises_stats: "Y todavía <strong>hay %{count} que podrías intentar resolver</strong>."
-  you_must_sign_in_to_see_stats: "Necestiás iniciar sesión con Github para ver más estadísticas sobre tu progreso"
-  next_guide: "Siguiente Guía"
-  corollary: "Para pensar"
+  all_exercises: Todos los ejercicios
+  are_you_sure: ¿Estás seguro?
+  authored_by: Creado por %{author}
+  basic: Básico
+  belongs_to_guide: Pertenece a la guía %{guide}
+  cancel: Cancelar
+  categories_index_title: ¿Qué te gustaría aprender?
+  category: Categoría
+  category_languages_availability: Disponible en los siguientes lenguajes
+  collaborators_refreshed: Lista de collaboradores actualizada
+  comma_or_tab_separated: Separados por tab o coma!
+  continue_practicing: ¡Seguí practicando!
+  contributors: Autores
+  corollary: Para pensar
+  create_exercises: ¡Creá ejercicios!
+  create_submission: Enviar
+  created_at: Creado
+  destroy: Eliminar
+  details: Detalles
+  edit: Editar
+  edit_exercise: Editar %{exercise}
+  exercise: Ejercicio
+  exercise_count: ejercicios
+  exercise_done: ¡Todo en orden! Tu solución pasó todas nuestras pruebas
+  exercise_number: Número
+  exercise_success_rate: Taza de éxito en ejercicios
+  exercises_index_title: ¿Buscando algún ejercicio particular?
+  expectations: Objetivos
+  export_created: Exportación encolada
+  extend_mumuki: ¡Extendé Mumuki!
+  extras: Adicionales
+  failed: falló
+  failed_exercises_stats: Además, <strong> intentaste resolver %{count} ejercicios </strong> más.
+  feedback: Para tener en cuenta
+  follow: Seguir!
+  following: Siguiendo
+  github_url_hint: usuario/repositorio
+  good_progress_in_guide: 'Además <strong>vas muy bien</strong>: la mayoría de las soluciones que enviaste resolvieron los ejercicios adecuadamente. ¡Felicitaciones!'
+  guide: Guía
+  guide_created: Guia creada exitosamente
+  guide_finished: Felicitaciones, terminaste la guía %{guide}
+  guide_has_exercises_stats: Esta guía tiene <strong>%{total} ejercicios </strong>
+  guides_index_title: ¿Qué guía querés hacer hoy?
+  hello: Hola mundo
+  here: acá
+  history: Historial
+  hottest_exercises: Ejercicios más usados
+  import_created: Importación encolada
+  import_date: Fecha
+  import_export: Importar/Exportar
+  imports: Actualizaciones
+  language: Lenguaje
+  languages: Lenguajes
+  last_submission_date: Última solucion
+  latest_exercises: Ultimos ejercicios
+  latest_guides: últimas guías
+  listing_exercises: Listado de ejercicios
+  more: mas...
+  more_guides: más guías
+  mumuki_catchphrase: Programá mejor
+  mumuki_is_collaborative: Mumuki es colaborativo
+  mumuki_is_collaborative_description: 'Los ejercicios en Mumuki no son provisto por expertos, sino por la comunidad. No hay diferencia entre un maestro y un estudiante en Mumuki: todos pueden crear ejercicios. Nos encantaría que vos compartas los tuyos.'
+  mumuki_is_open: Mumuki es abierto
+  mumuki_is_open_description: Mumuki es software de código abierto, lo que significa que vos también podés ayudar a mejorarlo. Y por si fuera poco, Mumuki es fácil de extender, y queremos soportar más lenguajes de programación. ¡Vos podés ayudarnos!
+  mumuki_is_simple: Mumuki es simple
+  mumuki_is_simple_description: 'Mumuki es una plataforma simple, que te permite concentrarte en lo que te interesa: mejorar tus habilidades de programación resolviendo problemas. No vamos a imponerte calendarios o exámenes: vos practicás cuando querés y podés.'
+  mumuki_short_description: Mumuki es una plataforma simple, abierta y colaborativa para compartir y resolver ejercicios de programación. Mumuki existe para ayudar a las personas a aprender y enseñar lenguajes y paradigmas de programación
+  my_exercises: Mis Ejercicios
+  my_guides: Mis Guías
+  my_submissions: Mis Soluciones
+  never: nunca
+  new_exercise: Nuevo Ejercicio
+  new_export: ¡Exportar ahora!
+  new_guide: Nueva Guía
+  new_import: ¡Importar ahora!
+  new_submission: Nueva Solución
+  next_exercise: Siguiente
+  next_guide: Siguiente Guía
+  no_exercises: Nadie creó un ejercicio para tu búsqueda aún. <a href="%{create_path}">¡Sé el primero!</a>
+  no_guides: Nadie creó una guía para tu búsqueda aún. <a href="%{create_path}">¡Sé el primero!</a>
+  no_permissions: No tenés suficientes permisos sobre el repositorio
+  no_submissions: ¡Parece que aún no intentaste resolver este ejercicio aún!
+  not_started_guide: Eso significa que aún no empezaste con esta guía. <strong>¡Comenzá ahora mismo!</strong>
+  notify_problem_to_author: Notificar problema al autor
+  output: Salida
+  overview: Vista general
+  passed: pasó
+  passed_exercises_stats: Vos ya <strong>resolviste %{count}</strong> de ellos.
+  pending: pendiente
+  previous_exercise: Anterior
+  problem_with_exercise: '[Mumuki] Error con el ejercicio: %{title}'
+  profile_of: Perfil de %{username}
+  progress: Tu progreso
+  refresh_collaborators: ¡Actualizá los colaboradores!
+  repeat_submission: Reintentar
+  results: Resultados
+  running: procesando
+  search: 'Buscá, por ejemplo: polimorfismo, haskell o competenciaDeSaltos'
+  see_next_guides: ¿Querés seguir practicando? ¡tenemos más guías para vos!
+  show: Mostrar
+  sign_in_with_github: Iniciá sesion con Github
+  sign_in_with_github_action: iniciar sesión con Github
+  sign_out: Cerrar Sesión
+  sign_up_date: Usuario desde
+  solved_exercises: Ejercicios Resueltos
+  start_practicing: ¡Empezá a practicar!
+  stats: Algunos números
+  status: Estado
+  stuck_in_guide: Parecería que te está costando un poco despegar con esta guía. ¡<strong>No te desanimes</strong>, es cuestión de práctica y seguir intentando!
+  submission: solución
+  submission_created: La solución fue enviada correctamente
+  submission_date: Fecha de envío
+  submission_for_exercise: Solucion para ejercicio
+  submissions: Soluciones
+  submissions_count: Soluciones
+  submissions_for: Soluciones para %{exercise}
+  submissions_success_rate: Taza de éxito en soluciones
+  tag: Etiqueta
+  title: Título
+  unfollow: Dejar de seguir!
+  unknown: no resuelto
+  unknown_exercises_stats: Y todavía <strong>hay %{count} que podrías intentar resolver</strong>.
+  username: Nombre de usuario
+  you_can_use_markdown_here_html: Podés usar <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>
+  you_must: Tenés que %{action} antes de continuar
+  you_must_sign_in_before_submitting: Tenés que iniciar sesión con Github antes de empezar a enviar tus soluciones
+  you_must_sign_in_to_see_stats: Necestiás iniciar sesión con Github para ver más estadísticas sobre tu progreso
