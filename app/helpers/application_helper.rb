@@ -59,4 +59,10 @@ module ApplicationHelper
       '</ul>').html_safe
     end
   end
+
+  def corollary_box(with_corollary)
+    if with_corollary.corollary.present?
+      "<div><h3>#{t :corollary}</h3><p>#{with_corollary.corollary_html}</p></div>".html_safe
+    end
+  end
 end

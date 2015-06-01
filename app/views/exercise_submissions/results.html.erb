@@ -1,5 +1,4 @@
-<% @stats = @exercise.guide.stats(current_user) if @exercise.guide %>
-
+<% @stats = @guide.stats(current_user) if @guide %>
 
 <% if @submission.results_visible? %>
 <div>
@@ -29,10 +28,11 @@
 </div>
 <% else %>
 <div>
-  <h3 class="text-center"><%= t(:exercise_done) %></h3>
+  <h2 class="text-center"><%= t(:exercise_done) %></h2>
 </div>
 <% end %>
 
+<%= corollary_box @exercise unless @submission.should_retry? %>
 
 <% if @submission.feedback.present? %>
   <h2><%= t(:feedback) %></h2>
@@ -47,14 +47,14 @@
   <%= repeat_submission_button(@exercise) if @submission.should_retry? %>
   <%= next_exercise_button(@exercise) %>
 
-  <%= next_guides_box(@exercise.guide, only_first: true) if @stats.try &:done? %>
+  <%= next_guides_box(@guide, only_first: true) if @stats.try &:done? %>
 
 </div>
 
 <script>
   $('#exercise-status-icon').html("<%= escape_javascript exercise_status_icon(@exercise) %>");
   <% if @stats %>
-  <% @stats = @exercise.guide.stats(current_user) %>
+  <% @stats = @guide.stats(current_user) %>
 
   $('#failed-progress-bar').css("width", "<%= @stats.failed_ratio %>%");
   $('#passed-progress-bar').css("width", "<%= @stats.passed_ratio %>%");

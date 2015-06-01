@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ExerciseRepository do
   let(:author) { create(:user) }
   let(:log) { ImportLog.new }
-  let(:repo) { ExerciseRepository.new(author, haskell, 'spec/data/mumuki-sample-exercises') }
+  let(:repo) { ExerciseRepository.new(author, haskell, 'spec/data/simple-guide') }
   let(:haskell) { create(:haskell) }
   let(:results) { [] }
 

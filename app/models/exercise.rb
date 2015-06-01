@@ -29,7 +29,7 @@ class Exercise < ActiveRecord::Base
 
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
 
-  markup_on :description, :hint, :teaser
+  markup_on :description, :hint, :teaser, :corollary
 
   delegate :visible_success_output, to: :language
 

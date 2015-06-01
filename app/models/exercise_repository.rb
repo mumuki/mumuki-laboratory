@@ -1,6 +1,8 @@
 ## Represent a local repository of exercises, at a given filesystem directory
 class ExerciseRepository
 
+  include WithFileReading
+
   def initialize(author, language, dir)
     @author = author
     @language = language
@@ -16,6 +18,8 @@ class ExerciseRepository
 
       hint = markdown(root, 'hint')
 
+      corollary = markdown(root, 'corollary')
+
       meta = meta(root) || (log.no_meta(title); next)
 
       test_code = test_code(root) || (log.no_test title; next)
@@ -30,6 +34,7 @@ class ExerciseRepository
           {title: title,
            description: description,
            hint: hint,
+           corollary: corollary,
            tag_list: meta['tags'],
            locale: meta['locale'],
            language: @language,
@@ -58,14 +63,13 @@ class ExerciseRepository
   end
 
   def markdown(root, filename)
-    path = "#{root}/#{filename}.md"
-    File.read(path) if File.exist? path
+    read_file "#{root}/#{filename}.md"
   end
 
   def code(root,filename)
     files = Dir.glob("#{root}/#{filename}.*")
     file = files[0]
-    File.read(file) if files.length == 1
+    read_file(file) if files.length == 1
   end
 
   def test_code(root)
@@ -77,8 +81,7 @@ class ExerciseRepository
   end
 
   def yaml(root, filename)
-    path = "#{root}/#{filename}.yml"
-    YAML.load_file(path) if File.exist? path
+    read_yaml_file "#{root}/#{filename}.yml"
   end
 
   def meta(root)

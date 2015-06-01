@@ -2,6 +2,7 @@ class Import < ActiveRecord::Base
   extend WithAsyncAction
 
   include WithStatus
+  include WithFileReading
 
   belongs_to :guide
   belongs_to :committer, class_name: 'User'
@@ -26,15 +27,22 @@ class Import < ActiveRecord::Base
   def read_guide!(dir)
     order = read_meta! dir
     read_description! dir
+    read_corollary! dir
     read_exercises! dir, order
   end
 
   def read_description!(dir)
-    guide.update!(description: File.read(File.join(dir, 'description.md')))
+    description = read_file(File.join(dir, 'description.md'))
+    raise 'Missing description file' unless description
+    guide.update!(description: description)
+  end
+
+  def read_corollary!(dir)
+    guide.update!(corollary: read_file(File.join(dir, 'corollary.md')))
   end
 
   def read_meta!(dir)
-    meta = YAML.load_file(File.join(dir, 'meta.yml'))
+    meta = read_yaml_file(File.join(dir, 'meta.yml'))
 
     guide.language = Language.find_by!(name: meta['language'].downcase)
     guide.locale = meta['locale']
