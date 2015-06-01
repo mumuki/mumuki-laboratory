@@ -163,13 +163,6 @@ ActiveRecord::Schema.define(version: 20150531164450) do
   add_index "languages", ["extension"], name: "index_languages_on_extension", unique: true, using: :btree
   add_index "languages", ["name"], name: "index_languages_on_name", using: :btree
 
-  create_table "relationships", force: true do |t|
-    t.integer  "follower_id"
-    t.integer  "followed_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "paths", force: true do |t|
     t.integer  "category_id"
     t.integer  "language_id"
@@ -179,6 +172,13 @@ ActiveRecord::Schema.define(version: 20150531164450) do
 
   add_index "paths", ["category_id"], name: "index_paths_on_category_id", using: :btree
   add_index "paths", ["language_id"], name: "index_paths_on_language_id", using: :btree
+
+  create_table "relationships", force: true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "submissions", force: true do |t|
     t.text     "content"
