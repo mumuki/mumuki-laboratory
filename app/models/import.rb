@@ -1,21 +1,11 @@
-class Import < ActiveRecord::Base
-  extend WithAsyncAction
-
-  include WithStatus
-
-  belongs_to :guide
-  belongs_to :committer, class_name: 'User'
-
+class Import < RepositoryOperation
   schedule_on_create ImportGuideJob
-
-  delegate :author, to: :guide
-  delegate :language, to: :guide
 
   def run_import!
     run_update! do
       Rails.logger.info("Importing exercises for #{guide.github_url}")
       log = nil
-      committer.with_cloned_repo guide, 'import' do |dir|
+      with_cloned_repo do |dir|
         log = read_guide! dir
       end
       guide.update_contributors!
@@ -48,7 +38,7 @@ class Import < ActiveRecord::Base
   def read_exercises!(dir, order = nil)
     ordering = Ordering.from order
     log = ImportLog.new
-    ExerciseRepository.new(author, language, dir).process_files(log) do |original_id, attributes|
+    ExerciseRepository.new(committer, language, dir).process_files(log) do |original_id, attributes|
       Exercise.create_or_update_for_import!(guide, original_id, ordering.with_position(original_id, attributes))
     end
     log

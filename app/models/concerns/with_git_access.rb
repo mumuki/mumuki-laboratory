@@ -26,13 +26,6 @@ module WithGitAccess
     raise e
   end
 
-  def with_cloned_repo(guide, key)
-    Dir.mktmpdir("mumuki.#{id}.#{key}") do |dir|
-      repo = clone_repo_into guide, dir
-      yield dir, repo
-    end
-  end
-
   def repo_exists?(guide)
     Git.ls_remote(repo_github_url(guide))
     true
