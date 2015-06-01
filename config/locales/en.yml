@@ -1,150 +1,121 @@
+---
 en:
-  hello: "Hello world"
-  cancel: "Cancel"
-  show: "Show"
-  destroy: 'Destroy'
-  edit: "Edit"
-  edit_exercise: "Edit %{exercise}"
-  new_submission: "New Submission"
-  new_import: "Import now!"
-  my_submissions: 'My Submissions'
-  submission_created: 'Submission was successfully created'
-  my_exercises: 'My Exercises'
-  new_exercise: 'New Exercise'
-  results: 'Results'
-  submission_for_exercise: 'Submission for exercise'
-  more: "more..."
-  comma_or_tab_separated: 'Comma or tab separated!'
-  you_can_use_markdown_here_html: 'You can use <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> here'
-  here: 'here'
-  language: 'Language'
-  title: 'Title'
-  actions: 'Actions'
-  are_you_sure: 'Are you sure?'
-  all_exercises: 'All exercises'
-  latest_exercises: 'Latest exercises'
-  hottest_exercises: 'Hottest Exercises'
-  sign_out: "Sign Out"
-  sign_in_with_github: 'Sign in with Github'
-  exercise: 'Exercise'
-  submission_date: 'Submission date'
-  status: 'Status'
-  passed: 'passed'
-  failed: 'failed'
-  running: 'running'
-  pending: 'pending'
-  listing_exercises: 'Listing exercises'
-  search: 'Search'
-  new_guide: "New Guide"
-  github_url_hint: "username/repository"
-  guide_created: "Guide created successfully"
-  guide: "Guide"
-  authored_by: "Authored by %{author}"
-  import_created: "Import enqueued"
-  submission: "submission"
-  import: "import"
-  mumuki_catchphrase: "Improve your programming skills"
-  mumuki_short_description: "Mumuki is a simple, open and collaborative platform for sharing and solving programming exercises. It is aimed to help people with learning and teaching programing languages and paradigms"
-  tag: "Tag"
-  submissions_for: "Submissions for %{exercise}"
-  you_must: "You must %{action} before continue"
-  you_must_sign_in_before_submitting: 'You must sign in with Github before submitting your solutions'
-  sign_in_with_github_action: "sign in with Github"
-  latest_guides: "latests guides"
-  submissions_count: "Submissions"
-  mumuki_is_simple: "Mumuki is simple"
-  mumuki_is_collaborative: "Mumuki is collaborative"
-  mumuki_is_open: "Mumuki is open"
-  start_practicing: "Start Practicing!"
-  continue_practicing: "Continue Practicing!"
-  create_exercises: "Create exercises!"
-  mumuki_is_simple_description: "Mumuki lets you focous on what you want: improve your programing skills by resolving programming problems. We will not force any schedule or exams - you practice when you want. Think it a Code Kata platform, where you can get feedback of your solution."
-  mumuki_is_collaborative_description: "Mumuki's exercises are not provided by experts but by the community. There is no distinction between a teacher and a student in Mumuki - anyone can create new exercises. We encourage you to create and share your own."
-  mumuki_is_open_description: "Mumuki is open source software - that means, you can help to improve Mumuki Platform.       Mumuki is also open for extension - we want to have exercises for a large range of programming languages. You       can help us to meet that goal."
-  my_guides: "My Guides"
-  profile_of: "Profile of %{username}"
-  search: "Search"
-  belongs_to_guide: "Belongs to guide %{guide}"
-  created_at: "Created at"
-  create_submission: "Submit"
-  next_exercise: "Next"
-  no_exercises: "Nobody created an exercise for this search yet. <a href=\"%{create_path}\">Be the first!</a>"
-  no_guides: "Nobody created a guide for this search yet. <a href=\"%{create_path}\">Be the first!</a>"
-  notify_problem_to_author: "Notify problem to author"
-  problem_with_exercise: "[Mumuki] Problem with exercise: %{title}"
-  follow: Follow!
-  unfollow: Unfollow!
-  following: Following
+  about_this_guide: About this guide
+  actions: Actions
+  activity: Activity
+  add_expectation: Add Expectation
   all: All
-
-
-  exercise_count: "exercises"
-  no_submissions: "Its seems like you haven't tried to solve this exercise"
-  output: "Output"
-  about_this_guide: "About this guide"
-  stats: "Some stats"
-  guide_has_exercises_stats: "This guide has <strong>%{total} exercises</strong>"
-
-  expectation_must: 'must'
-  expectation_must_not: 'must not'
-
-  expectation_HasBinding: "%{binding} %{must} be defined"
-  expectation_HasGuards: "%{binding} %{must} use guards"
-  expectation_HasComposition: "%{binding} %{must} use composition"
-  expectation_HasLambda: "%{binding} %{must} use lambda expressions"
-  expectation_HasComprehension: "%{binding} %{must} use list comprehensions"
-  expectation_HasDirectRecursion: "%{binding} %{must} use recursion"
-  expectation_HasUsage: "%{binding} %{must} use %{target}"
-  expectation_HasIf: "%{binding} %{must} use if"
-  expectation_HasConditional: "%{binding} %{must} use conditionals"
-  expectation_HasTypeSignature: "Signature for %{binding} %{must} be declared"
-  expectation_HasTypeDeclaration: "type %{binding} %{must} be defined"
-  expectation_HasRedundantIf: "%{binding} has redundant ifs"
-  expectation_HasRedundantBooleanComparison: "%{binding} has redundant boolean comparisons"
-  expectation_HasRedundantLambda: "%{binding} has redundant lambdas"
-  expectation_HasRedundantGuards: "%{binding} has redundant guards"
-  expectation_HasRedundantParameter: "%{binding} has redundant parameters - you may avoid them using point-free"
-
-
-  expectations: "Expectations"
-  add_expectation: "Add Expectation"
-  extras: "Extras"
-  basic: "Basic"
-  repeat_submission: "Retry"
-  previous_exercise: "Previous"
-  never: "never"
-  submissions_success_rate: "Submissions success rate"
-  exercise_success_rate: "Exercises success rate"
-  last_submission_date: "Last submission"
-  username: "Username"
-  sign_up_date: "User since"
-  import_date: "Date"
-  imports: "Updates"
-  history: "History"
-  progress: "Your Progress"
-  overview: "Overview"
-  exercise_number: "Number"
-  export_created: "Export queued"
-  activity: "Activity"
-  no_permissions: "You don't have enough permissions over the repository"
-  new_export: "Export now!"
-  import_export: 'Import/Export'
-  refresh_collaborators: "Refresh collaborators!"
-  collaborators_refreshed: "Collaborators list refreshed"
-  contributors: "Contributors"
-  more_guides: "more guides"
-  exercise_done: "All right! All our tests passed"
-  feedback: "Feedback"
-  category: "Category"
-  category_languages_availability: "Available in the following languages"
-  exercises_index_title: "Looking for a specific exercise?"
-  guides_index_title: "Which guide do you want to do today?"
-  categories_index_title: "What do you want to learn?"
-  guide_finished: "Congrants! You completed guide %{guide}"
-  next_guide: "Next Guide"
-  activerecord:
-    errors:
-      messages:
-        same_language_of_guide: 'Must be of same language of guide'
-
-  corollary: "Corollary"
+  all_exercises: All exercises
+  are_you_sure: Are you sure?
+  authored_by: Authored by %{author}
+  basic: Basic
+  belongs_to_guide: Belongs to guide %{guide}
+  cancel: Cancel
+  categories_index_title: What do you want to learn?
+  category: Category
+  category_languages_availability: Available in the following languages
+  collaborators_refreshed: Collaborators list refreshed
+  comma_or_tab_separated: Comma or tab separated!
+  continue_practicing: Continue Practicing!
+  contributors: Contributors
+  corollary: Corollary
+  create_exercises: Create exercises!
+  create_submission: Submit
+  created_at: Created at
+  destroy: Destroy
+  edit: Edit
+  edit_exercise: Edit %{exercise}
+  exercise: Exercise
+  exercise_count: exercises
+  exercise_done: All right! All our tests passed
+  exercise_number: Number
+  exercise_success_rate: Exercises success rate
+  exercises_index_title: Looking for a specific exercise?
+  expectations: Expectations
+  export_created: Export queued
+  extras: Extras
+  failed: failed
+  feedback: Feedback
+  follow: Follow!
+  following: Following
+  github_url_hint: username/repository
+  guide: Guide
+  guide_created: Guide created successfully
+  guide_finished: Congrants! You completed guide %{guide}
+  guide_has_exercises_stats: This guide has <strong>%{total} exercises</strong>
+  guides_index_title: Which guide do you want to do today?
+  hello: Hello world
+  here: here
+  history: History
+  hottest_exercises: Hottest Exercises
+  import: import
+  import_created: Import enqueued
+  import_date: Date
+  import_export: Import/Export
+  imports: Updates
+  language: Language
+  last_submission_date: Last submission
+  latest_exercises: Latest exercises
+  latest_guides: latests guides
+  listing_exercises: Listing exercises
+  more: more...
+  more_guides: more guides
+  mumuki_catchphrase: Improve your programming skills
+  mumuki_is_collaborative: Mumuki is collaborative
+  mumuki_is_collaborative_description: Mumuki's exercises are not provided by experts but by the community. There is no distinction between a teacher and a student in Mumuki - anyone can create new exercises. We encourage you to create and share your own.
+  mumuki_is_open: Mumuki is open
+  mumuki_is_open_description: Mumuki is open source software - that means, you can help to improve Mumuki Platform.       Mumuki is also open for extension - we want to have exercises for a large range of programming languages. You       can help us to meet that goal.
+  mumuki_is_simple: Mumuki is simple
+  mumuki_is_simple_description: 'Mumuki lets you focous on what you want: improve your programing skills by resolving programming problems. We will not force any schedule or exams - you practice when you want. Think it a Code Kata platform, where you can get feedback of your solution.'
+  mumuki_short_description: Mumuki is a simple, open and collaborative platform for sharing and solving programming exercises. It is aimed to help people with learning and teaching programing languages and paradigms
+  my_exercises: My Exercises
+  my_guides: My Guides
+  my_submissions: My Submissions
+  never: never
+  new_exercise: New Exercise
+  new_export: Export now!
+  new_guide: New Guide
+  new_import: Import now!
+  new_submission: New Submission
+  next_exercise: Next
+  next_guide: Next Guide
+  no_exercises: Nobody created an exercise for this search yet. <a href="%{create_path}">Be the first!</a>
+  no_guides: Nobody created a guide for this search yet. <a href="%{create_path}">Be the first!</a>
+  no_permissions: You don't have enough permissions over the repository
+  no_submissions: Its seems like you haven't tried to solve this exercise
+  notify_problem_to_author: Notify problem to author
+  output: Output
+  overview: Overview
+  passed: passed
+  pending: pending
+  previous_exercise: Previous
+  problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'
+  profile_of: Profile of %{username}
+  progress: Your Progress
+  refresh_collaborators: Refresh collaborators!
+  repeat_submission: Retry
+  results: Results
+  running: running
+  search: Search
+  show: Show
+  sign_in_with_github: Sign in with Github
+  sign_in_with_github_action: sign in with Github
+  sign_out: Sign Out
+  sign_up_date: User since
+  start_practicing: Start Practicing!
+  stats: Some stats
+  status: Status
+  submission: submission
+  submission_created: Submission was successfully created
+  submission_date: Submission date
+  submission_for_exercise: Submission for exercise
+  submissions_count: Submissions
+  submissions_for: Submissions for %{exercise}
+  submissions_success_rate: Submissions success rate
+  tag: Tag
+  title: Title
+  unfollow: Unfollow!
+  username: Username
+  you_can_use_markdown_here_html: You can use <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> here
+  you_must: You must %{action} before continue
+  you_must_sign_in_before_submitting: You must sign in with Github before submitting your solutions

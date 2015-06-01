@@ -1,0 +1,25 @@
+---
+es:
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: Alrededor de 1 hora
+        other: Alrededor de %{count} horas
+      about_x_months:
+        one: Alrededor de 1 mes
+        other: Alrededor de %{count} meses
+      less_than_x_minutes:
+        one: Hace menos de 1 minuto
+        other: Hace menos de %{count} minutos
+      x_days:
+        one: Hace 1 dia
+        other: Hace %{count} dias
+      x_minutes:
+        one: Hace 1 minuto
+        other: Hace %{count} minutos
+      x_months:
+        one: Hace 1 mes
+        other: Hace %{count} meses
+      x_seconds:
+        one: Hace 1 segundo
+        other: Hace %{count} segundos
