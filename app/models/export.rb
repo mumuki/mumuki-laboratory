@@ -39,7 +39,7 @@ class Export < RepositoryOperation
     write_file!(dirname, 'meta.yml', metadata_yaml(e))
 
     write_file!(dirname, 'hint.md', e.hint) if e.hint.present?
-    write_file!(dirname, "extra.#{language.extension}", e.extra_code) if e.extra_code.present?
+    write_file!(dirname, "extra.#{language.extension}", e[:extra_code]) if e[:extra_code].present?
     write_file!(dirname, 'expectations.yml', expectations_yaml(e)) if e.expectations.present?
     write_file!(dirname, 'corollary.md', e.corollary) if e.corollary.present?
 
@@ -61,7 +61,7 @@ class Export < RepositoryOperation
         'order' => guide.exercises.pluck(:original_id)
     }.to_yaml
   end
-  
+
   def write_extra!(dir)
     write_file!(dir, format_extension('extra'), guide.extra_code) if guide.extra_code.present?
   end

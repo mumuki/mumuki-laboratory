@@ -24,6 +24,7 @@ describe Import do
       it { expect(guide.description).to eq "Awesome guide\n" }
       it { expect(guide.language).to eq haskell }
       it { expect(guide.locale).to eq 'en' }
+      it { expect(guide.extra_code).to eq 'extra for guides' }
 
       context 'when importing basic exercise' do
         let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 1) }

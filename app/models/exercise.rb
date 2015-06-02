@@ -60,8 +60,12 @@ class Exercise < ActiveRecord::Base
     guide.present? && guide.authored_by?(user)
   end
   
-  def get_extra_code
-    [guide.try(&:extra_code), extra_code].compact.join(" \n ")
+  def extra_code
+    [guide.try(&:extra_code), self[:extra_code]].compact.join(" \n ")
+  end
+  
+  def extra_code=(new_extra_code)
+    self[:extra_code] = new_extra_code
   end
 
   private
