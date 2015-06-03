@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603003459) do
+ActiveRecord::Schema.define(version: 20150603020457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,7 +137,7 @@ ActiveRecord::Schema.define(version: 20150603003459) do
   end
 
   add_index "guides", ["author_id"], name: "index_guides_on_author_id", using: :btree
-  add_index "guides", ["name"], name: "index_guides_on_name", unique: true, using: :btree
+  add_index "guides", ["name"], name: "index_guides_on_name", using: :btree
 
   create_table "imports", force: true do |t|
     t.integer  "guide_id"
