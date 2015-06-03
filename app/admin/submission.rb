@@ -8,6 +8,7 @@ ActiveAdmin.register Submission do
   index do
     column(:id)
     column(:exercise_title){|sub| sub.exercise.title}
+    column(:language){|sub| sub.exercise.language.name}
     column(:status)
     column(:submitter_name){|sub| sub.submitter.name}
 
