@@ -3,7 +3,6 @@ ActiveAdmin.register Submission do
   filter :status
   filter :submitter
   filter :created_at
-  filter :updated_at
 
   index do
     column(:id)
