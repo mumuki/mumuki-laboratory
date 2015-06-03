@@ -2,6 +2,7 @@ ActiveAdmin.register Submission do
 
   filter :status
   filter :submitter
+  filter :exercise_language_id, as: :select, collection: proc { Language.all }, label: 'Language'
   filter :created_at
 
   index do
