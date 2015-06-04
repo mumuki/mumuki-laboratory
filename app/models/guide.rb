@@ -38,7 +38,15 @@ class Guide < ActiveRecord::Base
   end
 
   def github_repository_name
-    github_repository.split('/')[1]
+    github_repo_owner_and_name[1]
+  end
+
+  def github_repository_owner
+    github_repo_owner_and_name[0]
+  end
+
+  def github_repo_owner_and_name
+    github_repository.split('/')
   end
 
   def format_original_id(exercise)

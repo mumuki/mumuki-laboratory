@@ -13,7 +13,12 @@ module WithGitAccess
 
   def create_repo!(guide)
     Rails.logger.info "Creating repository #{guide.github_repository}"
-    octokit.create_repository(guide.github_repository_name)
+    owner = guide.github_repository_owner
+    if owner == name
+      octokit.create_repository(guide.github_repository_name)
+    else
+      octokit.create_repository(guide.github_repository_name, organization: owner)
+    end
   end
 
   def clone_repo_into(guide, dir)
