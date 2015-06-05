@@ -11,7 +11,7 @@ class Exercise < ActiveRecord::Base
   include WithSearch, WithTeaser,
           WithMarkup, WithAuthor,
           WithSubmissions, WithGuide,
-          WithLocale, WithExtraCode
+          WithLocale
 
   acts_as_taggable
 
@@ -62,10 +62,6 @@ class Exercise < ActiveRecord::Base
 
   def extra_code
     [guide.try(&:extra_code), self[:extra_code]].compact.join(" \n ")
-  end
-
-  def extra_code=(new_extra_code)
-    self[:extra_code] = new_extra_code
   end
 
   private

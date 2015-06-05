@@ -13,8 +13,7 @@ class Guide < ActiveRecord::Base
           WithLocale,
           WithCollaborators,
           WithPath,
-          WithExercises,
-          WithExtraCode,
+          WithExercises
 
   #TODO rename name to title. This helps building also generic link_to compoenetns
   has_many :imports, -> { order(created_at: :desc)}
@@ -60,14 +59,6 @@ class Guide < ActiveRecord::Base
   def update_contributors!
     self.contributors = user_resources_to_users author.contributors(self)
     save!
-  end
-
-  def get_extra_code_for(exercise)
-    exercise.extra_code_or_empty + ' \n ' + extra_code_or_empty
-  end
-
-  def extra_code_or_empty
-    extra_code || ''
   end
 
   private

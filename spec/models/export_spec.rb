@@ -59,19 +59,11 @@ describe Export do
         it { expect(File.exist? 'spec/data/export/00200_bar/extra.hs').to be false }
       end
 
-
       context 'with expectations' do
         before { export.write_exercise! dir, exercise_1 }
 
         it { expect(File.exist? 'spec/data/export/00100_foo/expectations.yml').to be true }
         it { expect(File.read 'spec/data/export/00100_foo/expectations.yml').to eq "---\nexpectations:\n- binding: bar\n  inspection: HasBinding\n"}
-      end
-
-      context 'with extra' do
-        before { export.write_exercise! dir, exercise_1 }
-
-        it { expect(File.exist? 'spec/data/export/00100_foo/extra.hs').to be true }
-        it { expect(File.read 'spec/data/export/00100_foo/extra.hs').to eq 'baz'}
       end
 
       context 'without expectations' do
