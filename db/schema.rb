@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 20150605065543) do
     t.integer  "path_id"
     t.integer  "position"
     t.text     "corollary"
+    t.text     "extra_code"
   end
 
   add_index "guides", ["author_id"], name: "index_guides_on_author_id", using: :btree
