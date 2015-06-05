@@ -28,7 +28,7 @@
         <%= form_for([@exercise, @submission], id: 'exercise-submission-form', html: {role: 'form'}) do |f| %>
           <div class="field form-group">
             <%= f.text_area :content, class: 'form-control editor', value: @previous_submission_content %>
-            <%= hidden_field_tag(:exercise_language, @exercise.language) %>
+            <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
           </div>
           <div class="actions">
             <button class="btn btn-primary">

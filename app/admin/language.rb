@@ -2,9 +2,11 @@ ActiveAdmin.register Language do
 
   permit_params :name, :image_url,
                 :extension, :test_extension, :test_runner_url,
-                :visible_success_output, :output_content_type
+                :visible_success_output, :output_content_type,
+                :highlight_mode
 
   filter :name
+  filter :highlight_mode
   filter :created_at
   filter :updated_at
   filter :output_content_type
@@ -12,7 +14,7 @@ ActiveAdmin.register Language do
   index do
     column(:id)
     column(:name)
-    column(:image_url)
+    column(:highlight_mode)
     column(:extension)
     column(:test_extension)
     column(:test_runner_url)
@@ -26,6 +28,7 @@ ActiveAdmin.register Language do
   form do |f|
     f.inputs 'Language' do
       f.input :name
+      f.input :highlight_mode
       f.input :image_url
       f.input :extension
       f.input :test_extension

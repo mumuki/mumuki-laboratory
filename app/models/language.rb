@@ -28,6 +28,10 @@ class Language < ActiveRecord::Base
     self[:test_extension] || extension
   end
 
+  def highlight_mode
+    self[:highlight_mode] || name
+  end
+
   def to_s
     name
   end

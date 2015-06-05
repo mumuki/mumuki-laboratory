@@ -31,7 +31,7 @@ class Exercise < ActiveRecord::Base
 
   markup_on :description, :hint, :teaser, :corollary
 
-  delegate :visible_success_output, to: :language
+  delegate :visible_success_output, :highlight_mode, to: :language
 
   def self.create_or_update_for_import!(guide, original_id, options)
     exercise = find_or_initialize_by(original_id: original_id, guide_id: guide.id)
