@@ -6,7 +6,7 @@ describe Export do
   let!(:exercise_1) { create(:exercise, guide: guide,
                              title: 'foo', original_id: 100, position: 1,
                              locale: 'en', tag_list: %w(foo bar),
-                             language: haskell, extra_code: 'baz',
+                             language: haskell, extra_code: 'foobar',
                              expectations: [Expectation.new(binding: 'bar', inspection: 'HasBinding')]) }
   let!(:exercise_2) { create(:exercise, guide: guide,
                              description: 'a description',
