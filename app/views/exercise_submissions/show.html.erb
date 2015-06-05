@@ -1,7 +1,7 @@
 <%= render layout: 'layouts/exercise', locals: {current_tab: :status} do %>
   <div class="row">
     <div class="col-md-12">
-      <%= @submission.content_html %>
+      <%= @submission.content_html if @submission.content.present? %>
     </div>
   </div>
   <div class="row">
