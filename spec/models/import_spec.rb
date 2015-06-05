@@ -70,6 +70,7 @@ describe Import do
 
       it { expect(guide.exercises_count).to eq 1 }
       it { expect(guide.corollary).to eq "A guide's corollary\n" }
+      it { expect(guide.extra_code).to eq "A guide's extra code\n" }
     end
   end
 end

@@ -66,18 +66,12 @@ class ExerciseRepository
     read_file "#{root}/#{filename}.md"
   end
 
-  def code(root,filename)
-    files = Dir.glob("#{root}/#{filename}.*")
-    file = files[0]
-    read_file(file) if files.length == 1
-  end
-
   def test_code(root)
-    code(root, 'test')
+    read_code_file(root, 'test')
   end
 
   def extra_code(root)
-    code(root, 'extra')
+    read_code_file(root, 'extra')
   end
 
   def yaml(root, filename)

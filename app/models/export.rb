@@ -22,6 +22,7 @@ class Export < RepositoryOperation
     write_description! dir
     write_corollary! dir
     write_meta! dir
+    write_extra! dir
   end
 
   def write_exercise!(dir, e)
@@ -38,7 +39,7 @@ class Export < RepositoryOperation
     write_file!(dirname, 'meta.yml', metadata_yaml(e))
 
     write_file!(dirname, 'hint.md', e.hint) if e.hint.present?
-    write_file!(dirname, "extra.#{language.extension}", e.extra_code) if e.extra_code.present?
+    write_file!(dirname, extra_filename, e[:extra_code]) if e[:extra_code].present?
     write_file!(dirname, 'expectations.yml', expectations_yaml(e)) if e.expectations.present?
     write_file!(dirname, 'corollary.md', e.corollary) if e.corollary.present?
 
@@ -61,6 +62,10 @@ class Export < RepositoryOperation
     }.to_yaml
   end
 
+  def write_extra!(dir)
+    write_file!(dir, extra_filename, guide.extra_code) if guide.extra_code.present?
+  end
+
   private
 
   def metadata_yaml(e)
@@ -71,10 +76,11 @@ class Export < RepositoryOperation
     {'expectations' => e.expectations.as_json(only: [:binding, :inspection])}.to_yaml
   end
 
+  def extra_filename
+    "extra.#{language.extension}"
+  end
 
   def write_file!(dirname, name, content)
     File.write(File.join(dirname, name), content)
   end
-
-
 end

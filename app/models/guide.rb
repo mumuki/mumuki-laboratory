@@ -6,10 +6,13 @@ class Guide < ActiveRecord::Base
       }
   }
 
-  include WithSearch, WithAuthor,
+  include WithSearch,
+          WithAuthor,
           WithMarkup,
-          WithTeaser, WithLocale,
-          WithCollaborators, WithPath,
+          WithTeaser,
+          WithLocale,
+          WithCollaborators,
+          WithPath,
           WithExercises
 
   #TODO rename name to title. This helps building also generic link_to compoenetns

@@ -19,6 +19,7 @@ class Import < RepositoryOperation
     order = read_meta! dir
     read_description! dir
     read_corollary! dir
+    read_extra! dir
     read_exercises! dir, order
   end
 
@@ -30,6 +31,10 @@ class Import < RepositoryOperation
 
   def read_corollary!(dir)
     guide.update!(corollary: read_file(File.join(dir, 'corollary.md')))
+  end
+
+  def read_extra!(dir)
+    guide.update!(extra_code: read_code_file(dir, 'extra'))
   end
 
   def read_meta!(dir)

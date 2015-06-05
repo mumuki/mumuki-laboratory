@@ -6,14 +6,13 @@ describe Export do
   let!(:exercise_1) { create(:exercise, guide: guide,
                              title: 'foo', original_id: 100, position: 1,
                              locale: 'en', tag_list: %w(foo bar),
-                             language: haskell,
-                             extra_code: 'foobar',
+                             language: haskell, extra_code: 'foobar',
                              expectations: [Expectation.new(binding: 'bar', inspection: 'HasBinding')]) }
   let!(:exercise_2) { create(:exercise, guide: guide,
                              description: 'a description',
                              title: 'bar', tag_list: %w(baz bar), original_id: 200, position: 2,
                              language: haskell, test: 'foo bar') }
-  let(:guide) { create(:guide, description: 'Baz', github_repository: 'flbulgarelli/never-existent-repo', language: haskell, locale: 'en') }
+  let(:guide) { create(:guide, description: 'Baz', github_repository: 'flbulgarelli/never-existent-repo', language: haskell, locale: 'en', extra_code: 'Foo') }
   let(:export) { guide.exports.create!(committer: committer) }
 
 
@@ -40,6 +39,11 @@ describe Export do
       it { expect(File.read 'spec/data/export/description.md').to eq 'Baz' }
     end
 
+    describe '#write_extra' do
+      before { export.write_extra! dir }
+      it { expect(File.exist? 'spec/data/export/extra.hs').to be true }
+      it { expect(File.read 'spec/data/export/extra.hs').to eq 'Foo' }
+    end
 
     describe '#write_exercise' do
       context 'with extra' do
@@ -54,7 +58,6 @@ describe Export do
 
         it { expect(File.exist? 'spec/data/export/00200_bar/extra.hs').to be false }
       end
-
 
       context 'with expectations' do
         before { export.write_exercise! dir, exercise_1 }
@@ -80,6 +83,7 @@ describe Export do
 
         it { expect(File.exist? 'spec/data/export/00200_bar/expectations.yml').to be false }
       end
+
     end
 
 
@@ -90,7 +94,9 @@ describe Export do
       it { expect(Dir.exist? 'spec/data/export/00100_foo/').to be true }
       it { expect(Dir.exist? 'spec/data/export/00200_bar/').to be true }
       it { expect(File.exist? 'spec/data/export/description.md').to be true }
-      it { expect(Dir['spec/data/export/*'].size).to eq 4 }
+      it { expect(File.exist? 'spec/data/export/meta.yml').to be true }
+      it { expect(File.exist? 'spec/data/export/extra.hs').to be true }
+      it { expect(Dir['spec/data/export/*'].size).to eq 5 }
     end
   end
 end
