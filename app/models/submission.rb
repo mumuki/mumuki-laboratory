@@ -51,7 +51,7 @@ class Submission < ActiveRecord::Base
   end
 
   def content_html
-    ContentType::Markdown.to_html "```#{language.name}\n#{content}\n```"
+    ContentType::Markdown.to_html "```#{language.highlight_mode}\n#{content}\n```"
   end
 
   private
