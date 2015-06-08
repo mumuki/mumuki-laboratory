@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
            class_name: 'Exercise',
            source: :exercise
 
+  has_many :exercise_progresses
+
   scope :inactive, -> { where('created_at < :date', date: 30.days.ago).reject(&:has_submissions?)  }
 
   def last_submission_date
@@ -66,4 +68,7 @@ class User < ActiveRecord::Base
     "#{solved_exercises_count}/#{submitted_exercises_count}"
   end
 
+  def exercise_progress_for(exercise)
+    exercise_progresses.find_by(exercise_id: exercise.id)
+  end
 end

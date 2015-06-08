@@ -22,7 +22,7 @@ module WithSubmissions
   end
 
   def last_submission(user)
-    submissions_for(user).last
+    user.exercise_progress_for(self).try(&:last_submission)
   end
 
   def status_for(user)

@@ -13,6 +13,7 @@ class Submission < ActiveRecord::Base
 
   after_create :update_submissions_count!
   after_create :update_last_submission!
+  after_create :update_progress!
 
   schedule_on_create TestRunnerJob
 
@@ -66,6 +67,14 @@ class Submission < ActiveRecord::Base
 
   def update_last_submission!
     submitter.update!(last_submission_date: created_at)
+  end
+
+  def update_progress!
+    transaction do
+      progress = ExerciseProgress.find_or_initialize_by(user: submitter, exercise: exercise)
+      progress.last_submission = self
+      progress.save!
+    end
   end
 end
 
