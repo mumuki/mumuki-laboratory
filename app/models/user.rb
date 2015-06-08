@@ -12,19 +12,18 @@ class User < ActiveRecord::Base
   has_many :exercises, foreign_key: :author_id
   has_many :guides, foreign_key: :author_id
 
+  has_many :exercise_progresses
+
   has_many :submitted_exercises,
-           -> { uniq },
-           through: :submissions,
+           through: :exercise_progresses,
            class_name: 'Exercise',
            source: :exercise
 
   has_many :solved_exercises,
-           -> { where('submissions.status' => Submission.passed_status).uniq },
-           through: :submissions,
+           -> { joins(:submissions).where('submissions.status' => Submission.passed_status) },
+           through: :exercise_progresses,
            class_name: 'Exercise',
            source: :exercise
-
-  has_many :exercise_progresses
 
   scope :inactive, -> { where('created_at < :date', date: 30.days.ago).reject(&:has_submissions?)  }
 
