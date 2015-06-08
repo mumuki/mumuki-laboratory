@@ -12,9 +12,11 @@ module WithExercises
   def pending_exercises(user)
     exercises.
         at_locale.
-        joins("left join submissions
-                on submissions.exercise_id = exercises.id
-                and submissions.submitter_id = #{user.id}
+        joins("left join exercise_progresses
+                on exercise_progresses.exercise_id = exercises.id
+                and exercise_progresses.user_id = #{user.id}
+               left join submissions
+                on submissions.id = exercise_progresses.last_submission_id
                 and submissions.status = #{Submission.passed_status}").
         where('submissions.id is null')
   end
