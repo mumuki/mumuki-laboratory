@@ -20,7 +20,7 @@ module WithExercises
   end
 
   def next_exercise(user)
-    pending_exercises(user).order('exercises.original_id asc').first
+    pending_exercises(user).order('exercises.position asc').first
   end
 
   def first_exercise
