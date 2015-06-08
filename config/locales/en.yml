@@ -90,6 +90,7 @@ en:
   output: Output
   overview: Overview
   passed: passed
+  passed_exercises_stats: You <strong>have resolved %{count}</strong> of them.
   pending: pending
   previous_exercise: Previous
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'
