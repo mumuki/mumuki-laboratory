@@ -54,6 +54,14 @@ class Submission < ActiveRecord::Base
     ContentType::Markdown.to_html "```#{language.highlight_mode}\n#{content}\n```"
   end
 
+  def expectation_results_visible?
+    visible_expectation_results.present?
+  end
+
+  def visible_expectation_results
+    (expectation_results||[]).select { |it| it[:result] == :failed }
+  end
+
   private
 
   def update_submissions_count!

@@ -9,11 +9,11 @@
     <%= status_icon @submission %> <%= t @submission.status %>
   </p>
 
-  <% unless @submission.expectation_results.blank? %>
+  <% if @submission.expectation_results_visible? %>
     <p>
       <strong><%= t :expectations %>:</strong>
     <ul>
-      <% @submission.expectation_results.each do |it| %>
+      <% @submission.visible_expectation_results.each do |it| %>
         <li><%= t_expectation_result it[:binding], it[:inspection] %>: <%= status_icon(it[:result]) %>
         </li>
       <% end %>
