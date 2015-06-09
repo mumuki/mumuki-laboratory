@@ -11,7 +11,7 @@ class Exercise < ActiveRecord::Base
   include WithSearch, WithTeaser,
           WithMarkup, WithAuthor,
           WithSubmissions, WithGuide,
-          WithLocale
+          WithLocale, WithProgress
 
   acts_as_taggable
 
