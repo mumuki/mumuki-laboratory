@@ -6,7 +6,7 @@ module WithSubmissions
   end
 
   def default_content_for(user)
-    last_submission(user).try(&:content) || ''
+    progress_for(user).content
   end
 
   def submissions_for(user)
@@ -14,7 +14,7 @@ module WithSubmissions
   end
 
   def solved_by?(user)
-    !!last_submission(user).try(&:passed?)
+    progress_for(user).solved?
   end
 
   def submitted_by?(user)
@@ -22,23 +22,24 @@ module WithSubmissions
   end
 
   def last_submission(user)
-    user.exercise_progress_for(self).try(&:last_submission)
+    progress_for(user).last_submission
   end
 
   def status_for(user)
-    s = last_submission(user).try(&:status)
-    case s
-      when 'passed' then :passed
-      when 'failed' then :failed
-      else :unknown
-    end
+    progress_for(user).status
   end
 
   def last_submission_date_for(user)
-    last_submission(user).try(&:created_at)
+    progress_for(user).last_submission_date
   end
 
   def submissions_count_for(user)
     submissions_for(user).count
   end
+
+  def progress_for(user)
+    user.exercise_progress_for(self)
+  end
 end
+
+

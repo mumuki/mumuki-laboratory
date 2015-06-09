@@ -68,6 +68,6 @@ class User < ActiveRecord::Base
   end
 
   def exercise_progress_for(exercise)
-    exercise_progresses.find_by(exercise_id: exercise.id)
+    exercise_progresses.find_by(exercise_id: exercise.id) || NullExerciseProgress
   end
 end
