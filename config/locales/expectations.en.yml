@@ -16,5 +16,6 @@ en:
   expectation_HasTypeDeclaration: type %{binding} %{must} be defined
   expectation_HasTypeSignature: Signature for %{binding} %{must} be declared
   expectation_HasUsage: '%{binding} %{must} use %{target}'
+  expectation_HasWhile: '%{binding} %{must} use conditional repetition (<i>while</i> sentence)'
   expectation_must: must
   expectation_must_not: must not
