@@ -13,6 +13,7 @@ es:
   expectation_HasRedundantIf: '<strong>%{binding}</strong> tiene ifs innecesarios'
   expectation_HasRedundantLambda: '<strong>%{binding}</strong> tiene lambdas innecesarias'
   expectation_HasRedundantParameter: '<strong>%{binding}</strong> tiene parámetros innecesarios (se pueden eliminar mediante point-free)'
+  expectation_HasRepeatOf: '<strong>%{binding}</strong> %{must} usar una repetición simple de <strong>%{target}</strong>'
   expectation_HasTypeDeclaration: '%{must} existir una declaración para el sinónimo de tipo <strong>%{binding}</strong>'
   expectation_HasTypeSignature: 'La firma para <strong>%{binding}</strong> %{must} ser declarada'
   expectation_HasUsage: '<strong>%{binding}</strong> %{must} utilizar <strong>%{target}</strong>'

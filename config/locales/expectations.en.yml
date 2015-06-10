@@ -13,6 +13,7 @@ en:
   expectation_HasRedundantIf: '<strong>%{binding}</strong> has redundant ifs'
   expectation_HasRedundantLambda: '<strong>%{binding}</strong> has redundant lambdas'
   expectation_HasRedundantParameter: '<strong>%{binding}</strong> has redundant parameters - you may avoid them using point-free'
+  expectation_HasRepeatOf: '<strong>%{binding}</strong> %{must} use a simple repetition of <strong>%{target}</strong>'  
   expectation_HasTypeDeclaration: 'type <strong>%{binding}</strong> %{must} be defined'
   expectation_HasTypeSignature: 'Signature for <strong>%{binding}</strong> %{must} be declared'
   expectation_HasUsage: '<strong>%{binding}</strong> %{must} use <strong>%{target}</strong>'
