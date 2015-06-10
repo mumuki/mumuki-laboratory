@@ -10,11 +10,13 @@ es:
   expectation_HasLambda: '%{binding} %{must} emplear expresiones lambda'
   expectation_HasRedundantBooleanComparison: '%{binding} hace comparaciones booleanas innecesarias'
   expectation_HasRedundantGuards: '%{binding} tiene guardas innecesarias'
-  expectation_HasRedundantIf: '%{binding} tiene ifs innecesarioas'
+  expectation_HasRedundantIf: '%{binding} tiene ifs innecesarios'
   expectation_HasRedundantLambda: '%{binding} tiene lambdas innecesarias'
   expectation_HasRedundantParameter: '%{binding} tiene parámetros innecesarios (se pueden eliminar mediante point-free)'
+  expectation_HasRepeatOf: '%{binding} %{must} usar una repetición simple de %{target}'
   expectation_HasTypeDeclaration: '%{must} existir una declaración para el sinónimo de tipo %{binding}'
   expectation_HasTypeSignature: La firma para %{binding} %{must} ser declarada
   expectation_HasUsage: '%{binding} %{must} utilizar %{target}'
+  expectation_HasWhile: '%{binding} %{must} utilizar repetición condicional (sentencia <i>while</i>)'
   expectation_must: debe
   expectation_must_not: no debe
