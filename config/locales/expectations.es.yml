@@ -10,7 +10,7 @@ es:
   expectation_HasLambda: '%{binding} %{must} emplear expresiones lambda'
   expectation_HasRedundantBooleanComparison: '%{binding} hace comparaciones booleanas innecesarias'
   expectation_HasRedundantGuards: '%{binding} tiene guardas innecesarias'
-  expectation_HasRedundantIf: '%{binding} tiene ifs innecesarioas'
+  expectation_HasRedundantIf: '%{binding} tiene ifs innecesarios'
   expectation_HasRedundantLambda: '%{binding} tiene lambdas innecesarias'
   expectation_HasRedundantParameter: '%{binding} tiene parámetros innecesarios (se pueden eliminar mediante point-free)'
   expectation_HasTypeDeclaration: '%{must} existir una declaración para el sinónimo de tipo %{binding}'
