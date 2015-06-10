@@ -9,6 +9,7 @@ module WithTestRunning
     {test: exercise.test,
      extra: exercise.extra_code,
      content: content,
+     locale: exercise.locale,
      expectations: exercise.expectations.as_json(only: [:binding, :inspection])}
   end
 end
