@@ -1,5 +1,5 @@
 class Submission < ActiveRecord::Base
-  include TestRunning
+  include WithTestRunning
   include WithStatus
 
   extend WithAsyncAction

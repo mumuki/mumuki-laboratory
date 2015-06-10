@@ -1,4 +1,4 @@
-module TestRunning
+module WithTestRunning
   def run_tests!
     run_update! do
       language.run_tests!(new_test_server_request)

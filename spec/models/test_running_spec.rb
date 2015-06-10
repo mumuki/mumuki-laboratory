@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TestRunning do
+describe WithTestRunning do
 
   describe '#run_tests!' do
     let(:exercise) { create(:x_equal_5_exercise) }
