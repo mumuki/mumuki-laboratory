@@ -53,10 +53,18 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-6 text-center">
-              <%= link_to(t(:sign_in_with_facebook), login_facebook_path) %>
+              <h1><%= fa_icon 'facebook' %></h1>
+              <h3><%= link_to(t(:sign_in_with_facebook), login_facebook_path) %></h3>
+              <p>
+                <em><%= t(:facebook_signin_reason) %></em>
+              </p>
             </div>
             <div class="col-md-6 text-center">
-              <%= link_to(t(:sign_in_with_github), login_github_path) %>
+              <h1><%= fa_icon 'github' %></h1>
+              <h3><%= link_to(t(:sign_in_with_github), login_github_path) %></h3>
+              <p>
+                <em><%= t(:github_signin_reason) %></em>
+              </p>
             </div>
           </div>
         </div>

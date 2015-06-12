@@ -134,3 +134,5 @@ es:
   you_must: Tenés que %{action} antes de continuar
   you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
   you_must_sign_in_to_see_stats: Necestiás iniciar sesión para ver más estadísticas sobre tu progreso
+  facebook_signin_reason: "Logueate con Facebook si sólo querés aprender a programar"
+  github_signin_reason: "Logueate con Github si además querés crear tus propios ejercicios"

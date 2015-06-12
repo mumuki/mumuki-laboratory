@@ -126,3 +126,5 @@ en:
   you_can_use_markdown_here_html: You can use <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> here
   you_must: You must %{action} before continue
   you_must_sign_in_before_submitting: You must sign in before submitting your solutions
+  github_signin_reason: "Sign in with Github if you also want to create your own exercises"
+  facebook_signin_reason: "Sign in with Facebook if you just want to start programming"
