@@ -34,13 +34,45 @@
         <li><%= link_to current_user.name, user_path(current_user) %></li>
         <li><%= link_to(t(:sign_out), logout_path) %></li>
       <% else %>
-        <li><%= link_to(t(:sign_in_with_github), login_path) %></li>
+        <li><%= login_anchor %></li>
       <% end %>
     </ul>
   </div>
 </div>
 
 <%= yield :no_container %>
+
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="gridSystemModalLabel"><%= t(:sign_in) %></h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 text-center">
+              <h1><%= fa_icon 'facebook' %></h1>
+              <h3><%= link_to(t(:sign_in_with_facebook), login_facebook_path) %></h3>
+              <p>
+                <em><%= t(:facebook_signin_reason) %></em>
+              </p>
+            </div>
+            <div class="col-md-6 text-center">
+              <h1><%= fa_icon 'github' %></h1>
+              <h3><%= link_to(t(:sign_in_with_github), login_github_path) %></h3>
+              <p>
+                <em><%= t(:github_signin_reason) %></em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div class="container" id="wrap">
   <div class="row">

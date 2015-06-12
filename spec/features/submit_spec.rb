@@ -11,9 +11,7 @@ feature 'Search Flow' do
   scenario 'create submission' do
     visit "/exercises/#{exercise.id}"
 
-    within '.actions' do
-      click_on 'Sign in with Github'
-    end
+    click_on 'Sign in with Github'
 
     click_on 'Submit'
 
@@ -24,9 +22,7 @@ feature 'Search Flow' do
   scenario 'create submission and then get another exercise' do
     visit "/exercises/#{exercise.id}"
 
-    within '.actions' do
-      click_on 'Sign in with Github'
-    end
+    click_on 'Sign in with Github'
 
     click_on 'Submit'
 
@@ -41,9 +37,7 @@ feature 'Search Flow' do
   scenario 'create submission and then retry exercise' do
     visit "/exercises/#{exercise.id}"
 
-    within '.actions' do
-      click_on 'Sign in with Github'
-    end
+    click_on 'Sign in with Github'
 
     click_on 'Submit'
 

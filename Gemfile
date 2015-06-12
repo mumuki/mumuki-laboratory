@@ -29,6 +29,7 @@ gem 'rails-assets-bootstrap-vertical-tabs'
 gem 'chartkick'
 
 gem 'omniauth-github'
+gem 'omniauth-facebook'
 
 gem 'font-awesome-rails'
 

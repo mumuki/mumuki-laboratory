@@ -37,9 +37,7 @@ feature 'Search Flow' do
 
     expect(page).to have_text('You must sign in')
 
-    within('.alert') do
-      click_on 'sign in with Github'
-    end
+    click_on 'Sign in with Github'
 
     expect(page).to have_text('Foo')
     expect(page).to have_text('Bar')

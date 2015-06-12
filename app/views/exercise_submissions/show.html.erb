@@ -17,13 +17,26 @@
 
 <%= content_for :no_container do %>
   <div class="modal fade" id="guide-done" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3 text-center">
-          <h1><%= t :guide_finished, guide: @guide.name %> </h1>
-          <%= corollary_box @guide %>
-          <h3><%= t :see_next_guides %></h3>
-          <%= next_guides_box(@guide) %>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h3 class="modal-title text-center" id="gridSystemModalLabel"><%= t :guide_finished, guide: @guide.name %> </h3>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <%= corollary_box @guide %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <h4><%= t :see_next_guides %></h4>
+                <%= next_guides_box(@guide) %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
