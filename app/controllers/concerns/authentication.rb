@@ -1,10 +1,10 @@
 module Authentication
   def login_github_path
-    '/auth/github?next=' + request.fullpath
+    '/auth/github'
   end
 
   def login_facebook_path
-    '/auth/facebook?next=' + request.fullpath
+    '/auth/facebook'
   end
 
   def current_user_id
@@ -20,8 +20,11 @@ module Authentication
   end
 
   def authenticate!
-    message = t :you_must, action:  login_anchor(title: :sign_in_action)
-    redirect_to :back, alert: message unless current_user?
+    message = t :you_must, action: login_anchor(title: :sign_in_action)
+    unless current_user?
+      session[:redirect_after_login] = request.fullpath
+      redirect_to :back, alert: message
+    end
   rescue ActionController::RedirectBackError
     redirect_to root_path, alert: message unless current_user?
   end
