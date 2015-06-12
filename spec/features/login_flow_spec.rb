@@ -27,9 +27,7 @@ feature 'Login Flow' do
 
     expect(page).to have_text(exercise.title)
 
-    within '.actions' do
-      click_on 'Sign in with Github'
-    end
+    click_on 'Sign in with Github'
     expect(page).to have_text('Sign Out')
   end
 end
