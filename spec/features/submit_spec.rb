@@ -17,7 +17,7 @@ feature 'Search Flow' do
 
     click_on 'Submit'
 
-    expect(page).to have_text("Submission was successfully created")
+    expect(page).to have_text('We are processing you solution')
   end
 
 

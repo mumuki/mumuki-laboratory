@@ -96,9 +96,11 @@ es:
   pending: pendiente
   previous_exercise: Anterior
   problem_with_exercise: '[Mumuki] Error con el ejercicio: %{title}'
+  processing_you_solution: Estamos procesando tu solución
   profile_of: Perfil de %{username}
   progress: Tu progreso
   refresh_collaborators: ¡Actualizá los colaboradores!
+  refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
   repeat_submission: Reintentar
   results: Resultados
   running: procesando
@@ -115,7 +117,6 @@ es:
   status: Estado
   stuck_in_guide: Parecería que te está costando un poco despegar con esta guía. ¡<strong>No te desanimes</strong>, es cuestión de práctica y seguir intentando!
   submission: solución
-  submission_created: La solución fue enviada correctamente
   submission_date: Fecha de envío
   submission_for_exercise: Solucion para ejercicio
   submissions: Soluciones

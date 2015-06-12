@@ -15,7 +15,7 @@ class ExerciseSubmissionsController < ApplicationController
   def create
     @submission = current_user.submissions.build(submission_params)
     @submission.save!
-    redirect_to [@exercise, @submission], notice: t(:submission_created)
+    redirect_to [@exercise, @submission]
   end
 
   def status
