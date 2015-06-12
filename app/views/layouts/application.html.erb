@@ -34,7 +34,7 @@
         <li><%= link_to current_user.name, user_path(current_user) %></li>
         <li><%= link_to(t(:sign_out), logout_path) %></li>
       <% else %>
-        <li><a href="#" data-toggle="modal" data-target="#login-modal"><%= t(:sign_in_with_github) %></a></li>
+        <li><%= login_anchor %></li>
       <% end %>
     </ul>
   </div>
@@ -47,16 +47,16 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title text-center" id="gridSystemModalLabel">Login</h4>
+        <h4 class="modal-title text-center" id="gridSystemModalLabel"><%= t(:sign_in) %></h4>
       </div>
       <div class="modal-body">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-6 text-center">
-              <%= link_to(t(:sign_in_with_facebook), login_path) %>
+              <%= link_to(t(:sign_in_with_facebook), login_facebook_path) %>
             </div>
             <div class="col-md-6 text-center">
-              <%= link_to(t(:sign_in_with_github), login_path) %>
+              <%= link_to(t(:sign_in_with_github), login_github_path) %>
             </div>
           </div>
         </div>

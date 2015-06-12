@@ -105,8 +105,10 @@ es:
   search: 'Buscá, por ejemplo: polimorfismo, haskell o competenciaDeSaltos'
   see_next_guides: ¿Querés seguir practicando? ¡tenemos más guías para vos!
   show: Mostrar
+  sign_in_with_facebook: Iniciá sesion con Facebook
   sign_in_with_github: Iniciá sesion con Github
-  sign_in_with_github_action: iniciar sesión con Github
+  sign_in: Iniciá sesion
+  sign_in_action: iniciar sesión
   sign_out: Cerrar Sesión
   sign_up_date: Usuario desde
   solved_exercises: Ejercicios Resueltos
@@ -130,5 +132,5 @@ es:
   username: Nombre de usuario
   you_can_use_markdown_here_html: Podés usar <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>
   you_must: Tenés que %{action} antes de continuar
-  you_must_sign_in_before_submitting: Tenés que iniciar sesión con Github antes de empezar a enviar tus soluciones
-  you_must_sign_in_to_see_stats: Necestiás iniciar sesión con Github para ver más estadísticas sobre tu progreso
+  you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
+  you_must_sign_in_to_see_stats: Necestiás iniciar sesión para ver más estadísticas sobre tu progreso

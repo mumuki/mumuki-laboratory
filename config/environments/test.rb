@@ -42,9 +42,15 @@ Rails.application.configure do
 
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
-      provider: 'twitter',
+      provider: 'github',
       uid: '123545',
       credentials: {},
       info: {name: 'Test User', nickname: 'testuser'}
+  })
+  OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+      provider: 'facebook',
+      uid: '123545',
+      credentials: {},
+      info: {name: 'Test User', nickname: 'fbtestuser'}
   })
 end
