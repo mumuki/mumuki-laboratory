@@ -2,12 +2,7 @@
 
 <% if @submission.results_visible? %>
 <div>
-  <h2><%= t('results') %></h2>
-
-  <p>
-    <strong><%= t :status %>:</strong>
-    <%= status_icon @submission %> <%= t @submission.status %>
-  </p>
+  <h2><%= t('results') %> <%= status_icon @submission %></h2>
 
   <% if @submission.expectation_results_visible? %>
     <p>
@@ -22,13 +17,12 @@
   <% end %>
 
   <p>
-    <strong><%= t :output %>:</strong>
     <div><%= @submission.result_html %></div>
   </p>
 </div>
 <% else %>
 <div>
-  <h2 class="text-center"><%= t(:exercise_done) %></h2>
+  <h3 class="text-center"><%= t(:exercise_done) %></h3>
 </div>
 <% end %>
 
