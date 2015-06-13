@@ -85,7 +85,7 @@ describe Exercise do
       let!(:exercise_with_extra_code) { create(:exercise, guide: guide, extra_code: 'exercise extra code') }
       let!(:guide) { create(:guide, extra_code: 'guide extra code') }
 
-      it { expect(exercise_with_extra_code.extra_code).to eq "guide extra code \n exercise extra code" }
+      it { expect(exercise_with_extra_code.extra_code).to eq "guide extra code\nexercise extra code" }
       it { expect(exercise_with_extra_code[:extra_code]).to eq 'exercise extra code' }
     end
   end
