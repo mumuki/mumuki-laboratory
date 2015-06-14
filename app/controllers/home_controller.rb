@@ -16,6 +16,12 @@ class HomeController < ApplicationController
   end
 
   def visitor_comes_from_internet?
-    !%w(mumuki localhost).any? { |host| Addressable::URI.parse(request.referer).host.include? host } rescue true
+    !request_host_include? %w(mumuki localhost)
   end
+
+  def request_host_include?(hosts)
+    hosts.any? { |host| Addressable::URI.parse(request.referer).host.include? host } rescue false
+  end
+
+
 end
