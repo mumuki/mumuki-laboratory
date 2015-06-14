@@ -5,7 +5,7 @@ feature 'Home Flow' do
   let!(:exercise) { create(:exercise, id: 1, guide: guide) }
   let(:user) { User.find_by(name: 'testuser') }
 
-  context 'annonymous visitor' do
+  context 'anonymous visitor' do
     scenario 'from outside' do
       Capybara.current_session.driver.header 'Referer', 'http://google.com'
 
