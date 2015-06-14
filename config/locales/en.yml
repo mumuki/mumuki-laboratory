@@ -130,3 +130,5 @@ en:
   github_signin_reason: "Sign in with Github if you also want to create your own exercises"
   facebook_signin_reason: "Sign in with Facebook if you just want to start programming"
   new: "New"
+  learning: "Learning"
+  beta: "Beta"

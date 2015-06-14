@@ -138,3 +138,5 @@ es:
   facebook_signin_reason: "Logueate con Facebook si sólo querés aprender a programar"
   github_signin_reason: "Logueate con Github si además querés crear tus propios ejercicios"
   new: "Nuevo"
+  learning: "Aprendizaje"
+  beta: "Beta"
