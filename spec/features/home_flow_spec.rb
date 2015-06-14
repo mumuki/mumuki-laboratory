@@ -62,7 +62,7 @@ feature 'Home Flow' do
 
       expect(page).to_not have_text('Mumuki is a simple, open and collaborative platform')
       expect(page).to have_text(guide.name)
-      expect(page).to have_text('Nice to see you again. Here you where last time')
+      expect(page).to have_text('Nice to see you again! This is where you left last time')
     end
 
     scenario 'logged recurrent user' do
