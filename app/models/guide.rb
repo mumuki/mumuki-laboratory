@@ -61,6 +61,10 @@ class Guide < ActiveRecord::Base
     save!
   end
 
+  def new?
+    created_at > 7.days.ago
+  end
+
   private
 
   def user_resources_to_users(resources)
