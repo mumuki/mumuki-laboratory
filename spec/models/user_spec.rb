@@ -9,14 +9,14 @@ describe User do
 
     let(:user) { create(:user) }
     context 'when there are no submissions' do
-      it { expect(user.last_submission_date).to be nil }
+      it { expect(user.reload.last_submission_date).to be nil }
       it { expect(user.submitted_exercises_count).to eq 0 }
       it { expect(user.solved_exercises_count).to eq 0 }
       it { expect(user.submissions_count).to eq 0 }
       it { expect(user.passed_submissions_count).to eq 0 }
       it { expect(user.has_submissions?).to eq false}
-      it { expect(user.last_exercise).to be_nil }
-      it { expect(user.last_guide).to be_nil }
+      it { expect(user.reload.last_exercise).to be_nil }
+      it { expect(user.reload.last_guide).to be_nil }
     end
 
     context 'when there are submissions from orphan exercise' do
@@ -33,8 +33,8 @@ describe User do
       it { expect(user.submissions_count).to eq 4 }
       it { expect(user.passed_submissions_count).to eq 2 }
       it { expect(user.has_submissions?).to eq true}
-      it { expect(user.last_exercise).to eq exercise_3 }
-      it { expect(user.last_guide).to be_nil }
+      it { expect(user.reload.last_exercise).to eq exercise_3 }
+      it { expect(user.reload.last_guide).to be_nil }
     end
 
 
@@ -46,8 +46,8 @@ describe User do
         user.submissions.create!(exercise: exercise_4, status: :failed, content: '')
       end
 
-      it { expect(user.last_exercise).to eq exercise_4 }
-      it { expect(user.last_guide).to eq guide }
+      it { expect(user.reload.last_exercise).to eq exercise_4 }
+      it { expect(user.reload.last_guide).to eq guide }
     end
   end
 end
