@@ -47,6 +47,7 @@ module Authentication
 
   def login_anchor(options={})
     options[:title] ||= :sign_in
+    session[:redirect_after_login] ||= request.fullpath
     %Q{<a href="#" class="#{options[:class]}" data-toggle="modal" data-target="#login-modal">#{I18n.t(options[:title])}</a>}.html_safe
   end
 end
