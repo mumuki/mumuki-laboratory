@@ -16,6 +16,6 @@ class HomeController < ApplicationController
   end
 
   def visitor_comes_from_internet?
-    !Addressable::URI.parse(request.referer).host.include? 'mumuki'
+    !Addressable::URI.parse(request.referer).host.include? 'mumuki' rescue true
   end
 end
