@@ -43,7 +43,7 @@ class Import < RepositoryOperation
     guide.language = Language.find_by!(name: meta['language'].downcase)
     guide.locale = meta['locale']
     meta['original_id_format'].try { |format| guide.original_id_format = format }
-
+    meta['learning'].try { |learning| guide.learning = learning }
     guide.save!
 
     meta['order']

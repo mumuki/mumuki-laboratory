@@ -56,6 +56,7 @@ class Export < RepositoryOperation
   def write_meta!(dir)
     write_file! dir, 'meta.yml', {
         'locale' => guide.locale,
+        'learning' => guide.learning,
         'language' => language.name,
         'original_id_format' => guide.original_id_format,
         'order' => guide.exercises.pluck(:original_id)

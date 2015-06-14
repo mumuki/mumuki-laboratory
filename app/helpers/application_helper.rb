@@ -69,9 +69,11 @@ module ApplicationHelper
 
   def with_classifications(classifiable)
     classifications = []
-    classifications << classifiable.name
     if classifiable.new?
       classifications << %Q{<span class="label label-success">#{fa_icon :certificate} #{t :new}</span>}
+    end
+    if classifiable.learning
+      classifications << %Q{<span class="label label-info">#{fa_icon :university} #{t :learning}</span>}
     end
     classifications.join(' ').html_safe
   end
