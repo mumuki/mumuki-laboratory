@@ -35,6 +35,7 @@ gem 'font-awesome-rails'
 
 gem 'rouge'
 gem 'redcarpet'
+gem 'md_emoji'
 
 gem 'ace-rails-ap'
 

@@ -171,6 +171,9 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    md_emoji (1.0.2)
+      railties (>= 3.1.0)
+      redcarpet (>= 2.0)
     mime-types (1.25.1)
     mini_portile (0.6.2)
     minitest (5.5.0)
@@ -364,6 +367,7 @@ DEPENDENCIES
   i18n-tasks (~> 0.8.3)
   jquery-rails
   kaminari
+  md_emoji
   mumukit-bridge!
   mumukit-inspection!
   nprogress-rails

@@ -20,11 +20,11 @@ module ContentType
     require 'rouge'
     require 'rouge/plugins/redcarpet'
 
-    class HTML < Redcarpet::Render::HTML
+    class HTML < MdEmoji::Render
       include Rouge::Plugins::Redcarpet
     end
 
-    @@markdown = Redcarpet::Markdown.new(HTML, autolink: true, fenced_code_blocks: true)
+    @@markdown = Redcarpet::Markdown.new(HTML, autolink: true, fenced_code_blocks: true, no_intra_emphasis: true)
 
     def self.to_html(content)
       @@markdown.render(content).html_safe if content
