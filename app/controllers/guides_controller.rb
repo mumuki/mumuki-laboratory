@@ -64,6 +64,7 @@ class GuidesController < ApplicationController
         :github_repository,
         :name, :description,
         :locale, :learning,
+        :beta,
         :original_id_format, :language_id, suggested_guide_ids: [])
   end
 end

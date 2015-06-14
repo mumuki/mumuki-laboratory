@@ -57,6 +57,7 @@ class Export < RepositoryOperation
     write_file! dir, 'meta.yml', {
         'locale' => guide.locale,
         'learning' => guide.learning,
+        'beta' => guide.beta,
         'language' => language.name,
         'original_id_format' => guide.original_id_format,
         'order' => guide.exercises.pluck(:original_id)

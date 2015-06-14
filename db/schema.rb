@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150614173852) do
+ActiveRecord::Schema.define(version: 20150614180512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 20150614173852) do
     t.text     "corollary"
     t.text     "extra_code"
     t.boolean  "learning"
+    t.boolean  "beta"
   end
 
   add_index "guides", ["author_id"], name: "index_guides_on_author_id", using: :btree
