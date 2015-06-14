@@ -135,8 +135,8 @@ ActiveRecord::Schema.define(version: 20150614180512) do
     t.integer  "position"
     t.text     "corollary"
     t.text     "extra_code"
-    t.boolean  "learning"
-    t.boolean  "beta"
+    t.boolean  "learning",           default: false
+    t.boolean  "beta",               default: false
   end
 
   add_index "guides", ["author_id"], name: "index_guides_on_author_id", using: :btree
