@@ -56,4 +56,16 @@ describe Guide do
     it { expect(guide.contributors).to eq [extra_user, author] }
   end
 
+
+  describe '#new?' do
+    context 'when just created' do
+      it { expect(guide.new?).to be true }
+    end
+    context 'when created a month ago' do
+      before { guide.update!(created_at: 1.month.ago) }
+
+      it { expect(guide.new?).to be false }
+    end
+  end
+
 end

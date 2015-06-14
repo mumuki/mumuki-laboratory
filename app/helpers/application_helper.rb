@@ -65,4 +65,18 @@ module ApplicationHelper
       "<div><h3>#{t :corollary}</h3><p>#{with_corollary.corollary_html}</p></div>".html_safe
     end
   end
+
+
+  def with_classifications(classifiable)
+    classifications = [
+        (classification_label('success', :certificate, :new) if classifiable.new?),
+        (classification_label('info', :university, :learning) if classifiable.learning),
+        (classification_label('warning', :warning, :beta) if classifiable.beta)]
+    classifications.compact.join(' ').html_safe
+  end
+
+  def classification_label(style, icon, key)
+    %Q{<span class="label label-#{style}">#{fa_icon icon} #{t key}</span>}
+  end
+
 end
