@@ -8,7 +8,7 @@ class HomeController < ApplicationController
   private
 
   def redirect_to_last_guide
-    redirect_to current_user.last_guide if visitor_recurrent?
+    redirect_to current_user.last_guide, notice: t(:welcome_back_after_redirection) if visitor_recurrent?
   end
 
   def visitor_recurrent?
@@ -16,6 +16,6 @@ class HomeController < ApplicationController
   end
 
   def visitor_comes_from_internet?
-    !Addressable::URI.parse(request.referer).host.include? 'mumuki' rescue true
+    !%w(mumuki localhost).any? { |host| Addressable::URI.parse(request.referer).host.include? host } rescue true
   end
 end
