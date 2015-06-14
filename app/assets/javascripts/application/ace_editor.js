@@ -11,7 +11,10 @@ function setupAceEditor(textarea) {
 
   var editor = ace.edit(textarea);
   editor.container.id = "editor-container";
-
+  editor.setOptions({
+    minLines: 25,
+    maxLines: Infinity
+  });
   form.addEventListener("submit", function() {
     textarea.style.visibility = "hidden";
     textarea.value = editor.getValue();
