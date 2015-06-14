@@ -30,7 +30,7 @@ describe Export do
       before { export.write_meta! dir }
 
       it { expect(File.exist? 'spec/data/export/meta.yml').to be true }
-      it { expect(File.read 'spec/data/export/meta.yml').to eq "---\nlocale: en\nlanguage: haskell\noriginal_id_format: '%05d'\norder:\n- 100\n- 200\n" }
+      it { expect(File.read 'spec/data/export/meta.yml').to eq "---\nlocale: en\nlearning: false\nbeta: false\nlanguage: haskell\noriginal_id_format: '%05d'\norder:\n- 100\n- 200\n" }
     end
 
     describe '#write_description' do
