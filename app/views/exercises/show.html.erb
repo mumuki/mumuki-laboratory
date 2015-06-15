@@ -20,7 +20,7 @@
     </div>
 
     <% if current_user? %>
-      <%= form_for([@exercise, @submission], id: 'exercise-submission-form', html: {role: 'form'}) do |f| %>
+      <%= form_for([@exercise, @submission], remote: true, html: {role: 'form'}) do |f| %>
         <div class="col-md-6 ace-editor-col">
           <div class="field form-group">
             <%= f.text_area :content, class: 'form-control editor', value: @previous_submission_content %>
@@ -43,5 +43,18 @@
       </div>
     <% end %>
   </div>
+
+  <div class="row submission-results">
+  </div>
 <% end %>
 
+<% content_for :tail do %>
+  <script>
+    var resultsBox = $('.submission-results')
+    $('form.new_submission').on('ajax:beforeSend', function(event, xhr, settings) {
+      resultsBox.html('<%= escape_javascript raw %Q{<div class="alert alert-warning" role="alert"><i class="fa fa-refresh fa-spin"></i> #{t :processing_you_solution}<br><small>#{t :refresh_or_wait}</small></div>} %>')
+    }).on('ajax:success', function(xhr, data, status){
+      resultsBox.html(data);
+    });
+  </script>
+<% end %>

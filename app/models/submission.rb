@@ -14,8 +14,6 @@ class Submission < ActiveRecord::Base
   after_create :update_submissions_count!
   after_create :update_last_submission!
 
-  schedule_on_create TestRunnerJob
-
   delegate :language, :title, to: :exercise
 
   scope :by_exercise_ids, -> (exercise_ids) {

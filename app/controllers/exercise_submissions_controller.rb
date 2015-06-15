@@ -15,7 +15,8 @@ class ExerciseSubmissionsController < ApplicationController
   def create
     @submission = current_user.submissions.build(submission_params)
     @submission.save!
-    redirect_to [@exercise, @submission]
+    @submission.run_tests!
+    render :results, layout: false
   end
 
   def status
@@ -23,7 +24,7 @@ class ExerciseSubmissionsController < ApplicationController
   end
 
   def results
-    render :results, layout: false
+
   end
 
   private

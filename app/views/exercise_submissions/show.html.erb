@@ -1,20 +1,3 @@
-<%= render layout: 'layouts/exercise', locals: {current_tab: :status} do %>
-  <div class="row">
-    <div class="col-md-12">
-      <%= @submission.content_html if @submission.content.present? %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12" id="exercise-results">
-      <div class="alert alert-warning" role="alert">
-        <i class="fa fa-refresh fa-spin"></i>
-        <%= t :processing_you_solution %><br>
-        <small><%= t :refresh_or_wait %></small>
-      </div>
-    </div>
-  </div>
-<% end %>
-
 <%= content_for :no_container do %>
   <div class="modal fade" id="guide-done" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
