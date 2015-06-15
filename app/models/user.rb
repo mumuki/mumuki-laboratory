@@ -26,6 +26,9 @@ class User < ActiveRecord::Base
 
   scope :inactive, -> { where('created_at < :date', date: 30.days.ago).reject(&:has_submissions?)  }
 
+  belongs_to :last_exercise, class_name: 'Exercise'
+  has_one :last_guide, through: :last_exercise, source: :guide
+
   def last_submission_date
     submissions.last.try(&:created_at)
   end

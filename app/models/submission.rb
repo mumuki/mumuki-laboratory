@@ -73,7 +73,7 @@ class Submission < ActiveRecord::Base
   end
 
   def update_last_submission!
-    submitter.update!(last_submission_date: created_at)
+    submitter.update!(last_submission_date: created_at, last_exercise: exercise)
   end
 end
 
