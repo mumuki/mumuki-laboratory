@@ -23,7 +23,7 @@
       <%= form_for([@exercise, @submission], remote: true, html: {role: 'form'}) do |f| %>
         <div class="col-md-6 ace-editor-col">
           <div class="field form-group">
-            <%= f.text_area :content, class: 'form-control editor', value: @previous_submission_content %>
+            <%= f.text_area :content, class: 'form-control editor', value: @previous_submission_content, style: 'display: none' %>
             <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
           </div>
           <div class="actions">
