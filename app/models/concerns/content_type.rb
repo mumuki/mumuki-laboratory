@@ -24,7 +24,7 @@ module ContentType
       include Rouge::Plugins::Redcarpet
     end
 
-    @@markdown = Redcarpet::Markdown.new(HTML, autolink: true, fenced_code_blocks: true, no_intra_emphasis: true)
+    @@markdown = Redcarpet::Markdown.new(HTML, autolink: true, fenced_code_blocks: true, no_intra_emphasis: true, tables: true)
 
     def self.to_html(content)
       @@markdown.render(content).html_safe if content
