@@ -1,10 +1,6 @@
 module ExerciseSubmissionsHelper
   include ExpectationsTranslate
 
-  def repeat_submission_button(exercise)
-    link_to fa_icon(:repeat, text: t(:repeat_submission)), exercise_path(exercise), class: 'btn btn-primary'
-  end
-
   def next_exercise_button(exercise)
     sibling_exercise_button(exercise.next_for(current_user), :next_exercise, :forward)
   end

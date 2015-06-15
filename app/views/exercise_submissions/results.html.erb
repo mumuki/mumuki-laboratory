@@ -37,7 +37,6 @@
   <div class="actions">
     <%= mail_to @submission.exercise.author.email, fa_icon('warning', text: t(:notify_problem_to_author)), subject: t(:problem_with_exercise, title: @submission.exercise.title), class: 'btn btn-warning pull-left' %>
     <%= previous_exercise_button(@exercise) %>
-    <%= repeat_submission_button(@exercise) if @submission.should_retry? %>
     <%= next_exercise_button(@exercise) %>
 
     <%= next_guides_box(@guide, only_first: true) if @stats.try &:done? %>
