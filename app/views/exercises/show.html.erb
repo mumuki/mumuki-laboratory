@@ -7,10 +7,10 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row ace-editor-row">
     <% if current_user? %>
       <%= form_for([@exercise, @submission], id: 'exercise-submission-form', html: {role: 'form'}) do |f| %>
-        <div class="col-md-11 ace-editor-col">
+        <div class="col-md-10 ace-editor-col">
           <div class="field form-group">
             <%= f.text_area :content, class: 'form-control editor', value: @previous_submission_content %>
             <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
@@ -28,8 +28,8 @@
             <% end %>
           </div>
         </div>
-        <div class="col-md-1 actions">
-          <button class="btn btn-primary">
+        <div class="col-md-2 text-right">
+          <button class="btn btn-primary btn-block">
             <%= fa_icon :play, text: t(:create_submission) %>
           </button>
         </div>
