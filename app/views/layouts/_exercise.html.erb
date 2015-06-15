@@ -1,10 +1,14 @@
-<% @current_tab = current_tab %>
 <% @stats = @exercise.guide.stats(current_user) if current_user && @exercise.guide %>
+
+
 <div class="row">
   <div class="col-md-12">
     <h1>
       <span id="exercise-status-icon"><%= exercise_status_icon(@exercise) %></span>
       <%= @exercise.contextualized_title %>
+      <% restricted_to_author @exercise do %>
+        <%= link_to fa_icon('pencil'), edit_exercise_path(@exercise), title: t(:edit) %>
+      <% end %>
       <small> - <%= @exercise.language %></small>
     </h1>
 
@@ -47,21 +51,8 @@
 </div>
 
 <div class="row">
-  <div class="col-md-11">
+  <div class="col-md-12">
     <%= yield %>
-  </div>
-
-  <div class="col-md-1">
-    <ul class="nav nav-tabs tabs-right vertical-text">
-      <li <%= active_if :exercise %>>
-        <%= link_to fa_icon('code'), exercise_path(@exercise), title: t(:overview) %>
-      </li>
-      <% restricted_to_author @exercise do %>
-        <li <%= active_if :edit %>>
-          <%= link_to fa_icon('pencil'), edit_exercise_path(@exercise), title: t(:edit) %>
-        </li>
-      <% end %>
-    </ul>
   </div>
 </div>
 
