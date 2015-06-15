@@ -44,8 +44,14 @@
     <% end %>
   </div>
 
-  <div class="row submission-results">
-  </div>
+  <% if current_user? %>
+    <div class="row submission-results">
+      <% if @exercise.last_submission(current_user) %>
+        <%= render partial: 'exercise_submissions/results', locals: {submission: @exercise.last_submission(current_user)} %>
+      <% end %>
+    </div>
+  <% end %>
+
 <% end %>
 
 <% content_for :tail do %>

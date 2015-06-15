@@ -16,7 +16,7 @@ class ExerciseSubmissionsController < ApplicationController
     @submission = current_user.submissions.build(submission_params)
     @submission.save!
     @submission.run_tests!
-    render :results, layout: false
+    render partial: 'exercise_submissions/results', locals: {submission: @submission}
   end
 
   private
