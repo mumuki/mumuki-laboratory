@@ -19,14 +19,6 @@ class ExerciseSubmissionsController < ApplicationController
     render :results, layout: false
   end
 
-  def status
-    render json: @submission.as_json(only: :status)
-  end
-
-  def results
-
-  end
-
   private
 
   def set_guide

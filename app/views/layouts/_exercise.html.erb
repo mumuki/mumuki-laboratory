@@ -56,13 +56,6 @@
       <li <%= active_if :exercise %>>
         <%= link_to fa_icon('code'), exercise_path(@exercise), title: t(:overview) %>
       </li>
-      <li <%= active_if :status %>>
-        <% @last_submission = @exercise.last_submission(current_user) if current_user? %>
-        <%= link_to fa_icon('trophy'), exercise_submission_path(@exercise, @last_submission), title: t(:progress) if @last_submission %>
-      </li>
-      <li <%= active_if :my_submissions %>>
-        <%= link_to fa_icon('history'), exercise_submissions_path(@exercise), title: t(:history) %>
-      </li>
       <% restricted_to_author @exercise do %>
         <li <%= active_if :edit %>>
           <%= link_to fa_icon('pencil'), edit_exercise_path(@exercise), title: t(:edit) %>
