@@ -56,7 +56,7 @@
   <script>
     var resultsBox = $('.submission-results')
     $('form.new_submission').on('ajax:beforeSend',function (event, xhr, settings) {
-      resultsBox.html('<%= escape_javascript raw %Q{<div class="alert alert-warning" role="alert"><i class="fa fa-refresh fa-spin"></i> #{t :processing_you_solution}<br><small>#{t :refresh_or_wait}</small></div>} %>')
+      resultsBox.html('<%= escape_javascript raw %Q{<div class="col-md-12"><div class="panel panel-info"><div class="panel-heading"><h4><i class="fa fa-refresh fa-spin"></i> #{t :processing_you_solution}</div></h4><div class="panel-body">#{t :refresh_or_wait}</div></div></div>} %>')
     }).on('ajax:success', function (xhr, data, status) {
       resultsBox.html(data);
     });
