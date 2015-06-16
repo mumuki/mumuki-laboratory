@@ -1,8 +1,10 @@
+@import "application/vendor";
+
 @import "application/mixins";
 @import "application/colors";
 @import "application/layout";
 @import "application/modules";
-@import "application/vendor";
+
  
 .lang-selector {
     padding-top: 25px;
