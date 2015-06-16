@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Search Flow' do
+feature 'Submit Flow' do
   let(:haskell) { create(:language, name: 'Haskell') }
   let!(:exercise) {
     create(:exercise, tag_list: ['haskell'], title: 'Foo', original_id: 1, description: 'an awesome problem description', guide: guide)
@@ -9,6 +9,8 @@ feature 'Search Flow' do
   let(:guide) { create(:guide, corollary: 'Now you understand higher order programming') }
 
   scenario 'create submission' do
+    pending 'need to mock this'
+
     visit "/exercises/#{exercise.id}"
 
     click_on 'Sign in with Github'
@@ -20,13 +22,14 @@ feature 'Search Flow' do
 
 
   scenario 'create submission and then get another exercise' do
+    pending 'need to mock this'
+
     visit "/exercises/#{exercise.id}"
 
     click_on 'Sign in with Github'
 
     click_on 'Submit'
 
-    pending
 
     click_on 'Next'
 
@@ -35,13 +38,14 @@ feature 'Search Flow' do
 
 
   scenario 'create submission and then retry exercise' do
+    pending 'need to mock this'
+
     visit "/exercises/#{exercise.id}"
 
     click_on 'Sign in with Github'
 
     click_on 'Submit'
 
-    pending
 
     expect(page).to have_text('Results')
 
