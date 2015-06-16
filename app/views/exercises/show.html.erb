@@ -36,14 +36,12 @@
     <% else %>
       <div class="col-md-12">
         <p><%= t :you_must_sign_in_before_submitting %></p>
-
         <div class="actions">
           <%= login_anchor class: 'btn btn-primary' %>
         </div>
       </div>
     <% end %>
   </div>
-
   <% if current_user? %>
     <div class="row submission-results">
       <% if @exercise.last_submission(current_user) %>
@@ -57,9 +55,9 @@
 <% content_for :tail do %>
   <script>
     var resultsBox = $('.submission-results')
-    $('form.new_submission').on('ajax:beforeSend', function(event, xhr, settings) {
+    $('form.new_submission').on('ajax:beforeSend',function (event, xhr, settings) {
       resultsBox.html('<%= escape_javascript raw %Q{<div class="alert alert-warning" role="alert"><i class="fa fa-refresh fa-spin"></i> #{t :processing_you_solution}<br><small>#{t :refresh_or_wait}</small></div>} %>')
-    }).on('ajax:success', function(xhr, data, status){
+    }).on('ajax:success', function (xhr, data, status) {
       resultsBox.html(data);
     });
   </script>
@@ -70,7 +68,8 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
           <h3 class="modal-title text-center" id="gridSystemModalLabel"><%= t :guide_finished, guide: @guide.name %> </h3>
         </div>
         <div class="modal-body">

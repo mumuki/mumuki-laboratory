@@ -20,6 +20,21 @@ module Icons
     fa_icon(*icon_for_status(exercise.status_for(current_user)))
   end
 
+  #FIXME refactor
+  def class_for_status(status)
+    case status.to_s
+      when 'passed' then 'success'
+      when 'failed' then 'danger'
+    end
+  end
+
+  def plain_icon_for_status(status)
+    case status.to_s
+      when 'passed' then 'check'
+      when 'failed' then 'times'
+    end
+  end
+
   def icon_for_status(status)
     def i(icon, class_)
       [icon, class: "text-#{class_} special-icon"]
