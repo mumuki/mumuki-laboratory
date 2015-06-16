@@ -12,3 +12,13 @@ Language.create!(name: 'Ruby',
                  test_runner_url: 'http://mumuki-rspec-server.herokuapp.com/',
                  extension: 'rb',
                  image_url: 'https://www.ruby-lang.org/images/header-ruby-logo.png')
+
+Language.create!(name: 'ruby-stones',
+                test_runner_url: 'http://mumuki-ruby-stones-server.herokuapp.com/',
+                extension: 'yml',
+                image_url: 'https://www.ruby-lang.org/images/header-ruby-logo.png')
+
+Language.create!(name: 'gobstones',
+                test_runner_url: 'http://mumuki-gobstones-server.herokuapp.com/',
+                extension: 'yml',
+                image_url: 'https://www.ruby-lang.org/images/header-ruby-logo.png')
