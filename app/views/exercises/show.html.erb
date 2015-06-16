@@ -1,51 +1,47 @@
 <%= render layout: 'layouts/exercise', locals: {current_tab: :exercise} do %>
-  <a id="collapsible-width">
-    <i class="fa fa-arrows-h"></i>
-  </a>
   <div class="row">
-    <div class="col-md-6 exercise-description">
+    <div class="col-md-12 exercise-description">
       <div>
         <%= @exercise.description_html %>
       </div>
-      <div>
-        <% if @exercise.hint.present? %>
-          <a data-toggle="collapse"
-             href="#hint-section">
-            <%= label :exercise, :hint %>
-          </a>
-
-          <div id="hint-section" class="collapse">
-            <p>
-              <%= @exercise.hint_html %>
-            </p>
-          </div>
-        <% end %>
-      </div>
     </div>
+  </div>
 
-    <div class="col-md-6 ace-editor-col">
-      <% if current_user? %>
-        <%= form_for([@exercise, @submission], id: 'exercise-submission-form', html: {role: 'form'}) do |f| %>
+  <div class="row ace-editor-row">
+    <% if current_user? %>
+      <%= form_for([@exercise, @submission], id: 'exercise-submission-form', html: {role: 'form'}) do |f| %>
+        <div class="col-md-10 ace-editor-col">
           <div class="field form-group">
             <%= f.text_area :content, class: 'form-control editor', value: @previous_submission_content %>
             <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
           </div>
-          <div class="actions">
-            <button class="btn btn-primary">
-              <%= fa_icon :play, text: t(:create_submission) %>
-            </button>
+          <div>
+            <% if @exercise.hint.present? %>
+              <a data-toggle="collapse" href="#hint-section">
+                <%= label :exercise, :hint %>
+              </a>
+              <div id="hint-section" class="collapse">
+                <p>
+                  <%= @exercise.hint_html %>
+                </p>
+              </div>
+            <% end %>
           </div>
-        <% end %>
-      <% else %>
+        </div>
+        <div class="col-md-2 text-right">
+          <button class="btn btn-primary btn-block">
+            <%= fa_icon :play, text: t(:create_submission) %>
+          </button>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="col-md-12">
         <p><%= t :you_must_sign_in_before_submitting %></p>
-
         <div class="actions">
           <%= login_anchor class: 'btn btn-primary' %>
         </div>
-      <% end %>
-
-    </div>
-
+      </div>
+    <% end %>
   </div>
 <% end %>
 
