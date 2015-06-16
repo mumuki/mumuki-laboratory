@@ -35,7 +35,7 @@ describe ApplicationHelper do
   end
 
   describe '#status_icon' do
-    let(:passed_submission) { create(:submission, status: :passed) }
+    let(:passed_submission) { create(:submission, status: :passed, expectation_results: []) }
     let(:failed_submission) { create(:submission, status: :failed) }
 
     it { expect(status_icon(passed_submission)).to eq '<i class="fa fa-check text-success special-icon"></i>' }
