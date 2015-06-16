@@ -25,7 +25,19 @@ class Submission < ActiveRecord::Base
   }
 
   def should_retry?
-    failed? || expectation_results.any? { |it| it[:result] == :failed } #TODO rename result => status
+    failed? || expectations_failed? #TODO rename result => status
+  end
+
+  def expectations_failed?
+    expectation_results.any? { |it| it[:result] == :failed }
+  end
+
+  def fine_status
+    if passed? && expectations_failed?
+      :passed_with_warnings
+    else
+      status
+    end
   end
 
   def results_visible?

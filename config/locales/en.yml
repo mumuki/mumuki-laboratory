@@ -10,6 +10,7 @@ en:
   authored_by: Authored by %{author}
   basic: Basic
   belongs_to_guide: Belongs to guide %{guide}
+  beta: Beta
   cancel: Cancel
   categories_index_title: What do you want to learn?
   category: Category
@@ -27,18 +28,20 @@ en:
   edit_exercise: Edit %{exercise}
   exercise: Exercise
   exercise_count: exercises
-  exercise_done: All right! All our tests passed
+  exercise_done: All our tests passed!
   exercise_number: Number
   exercise_success_rate: Exercises success rate
   exercises_index_title: Looking for a specific exercise?
   expectations: Expectations
   export_created: Export queued
   extras: Extras
-  failed: failed
+  facebook_signin_reason: Sign in with Facebook if you just want to start programming
+  failed: Oops, something went wrong
   failed_exercises_stats: You tried to <strong>resolve %{count} more exercises</strong>.
   feedback: Feedback
   follow: Follow!
   following: Following
+  github_signin_reason: Sign in with Github if you also want to create your own exercises
   github_url_hint: username/repository
   good_progress_in_guide: Also, you are making it <strong>really well</strong>! Most of you submissions have passed, congratulations!
   guide: Guide
@@ -59,6 +62,7 @@ en:
   last_submission_date: Last submission
   latest_exercises: Latest exercises
   latest_guides: latests guides
+  learning: Learning
   listing_exercises: Listing exercises
   more: more...
   more_guides: more guides
@@ -74,6 +78,7 @@ en:
   my_guides: My Guides
   my_submissions: My Submissions
   never: never
+  new: New
   new_exercise: New Exercise
   new_export: Export now!
   new_guide: New Guide
@@ -89,8 +94,9 @@ en:
   notify_problem_to_author: Notify problem to author
   output: Output
   overview: Overview
-  passed: passed
+  passed: All right
   passed_exercises_stats: You <strong>have resolved %{count}</strong> of them.
+  passed_with_warnings: It worked, but you can do it better
   pending: pending
   previous_exercise: Previous
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'
@@ -99,14 +105,13 @@ en:
   progress: Exercises
   refresh_collaborators: Refresh collaborators!
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
-  results: Results
   running: running
   search: Search
   show: Show
-  sign_in_with_facebook: Sign in with Facebook
-  sign_in_with_github: Sign in with Github
   sign_in: Sign in
   sign_in_action: sign in
+  sign_in_with_facebook: Sign in with Facebook
+  sign_in_with_github: Sign in with Github
   sign_out: Sign Out
   sign_up_date: User since
   start_practicing: Start Practicing!
@@ -126,9 +131,4 @@ en:
   you_can_use_markdown_here_html: You can use <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> here
   you_must: You must %{action} before continue
   you_must_sign_in_before_submitting: You must sign in before submitting your solutions
-  github_signin_reason: "Sign in with Github if you also want to create your own exercises"
-  facebook_signin_reason: "Sign in with Facebook if you just want to start programming"
-  new: "New"
-  learning: "Learning"
-  beta: "Beta"
   welcome_back_after_redirection: "Nice to see you again! This is where you left last time"

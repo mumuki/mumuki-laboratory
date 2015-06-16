@@ -1,7 +1,7 @@
 module Icons
 
   def status_icon(with_status)
-    fa_icon *icon_for_status( with_status.is_a?(Symbol) ? with_status : with_status.status)
+    fa_icon *icon_for_status( with_status.is_a?(Symbol) ? with_status : with_status.fine_status)
   end
 
   def exercise_status_icon(exercise)
@@ -24,14 +24,24 @@ module Icons
   def class_for_status(status)
     case status.to_s
       when 'passed' then 'success'
+      when 'passed_with_warnings' then 'warning'
       when 'failed' then 'danger'
+      when 'running' then 'info'
+      when 'pending' then 'info'
+      when 'unknown' then 'muted'
+      else raise "Unknown status #{status}"
     end
   end
 
-  def plain_icon_for_status(status)
+  def icon_type_for_status(status)
     case status.to_s
       when 'passed' then 'check'
+      when 'passed_with_warnings' then 'exclamation'
       when 'failed' then 'times'
+      when 'running' then 'circle'
+      when 'pending' then 'clock-o'
+      when 'unknown' then 'circle'
+      else raise "Unknown status #{status}"
     end
   end
 
@@ -39,14 +49,7 @@ module Icons
     def i(icon, class_)
       [icon, class: "text-#{class_} special-icon"]
     end
-    case status.to_s
-      when 'passed' then i 'check','success'
-      when 'failed' then i 'times', 'danger'
-      when 'running' then i 'circle', 'warning'
-      when 'pending' then i 'clock-o','info'
-      when 'unknown' then i 'circle', 'muted'
-      else raise "Unknown status #{status}"
-    end
+    i icon_type_for_status(status), class_for_status(status)
   end
 
   def icon_for_follower following
