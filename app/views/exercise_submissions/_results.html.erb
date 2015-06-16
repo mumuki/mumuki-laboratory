@@ -3,54 +3,51 @@
    @stats = @guide.stats(current_user) if @guide
 %>
 
-<div class="col-md-12">
 
-  <div class="panel panel-<%= class_for_status submission.status %>">
-    <div class="panel-heading">
-      <h4><%= fa_icon plain_icon_for_status(submission.status) %> <%= t(:results) %></h4>
-    </div>
-     <div class="panel-body">
-       <% if submission.results_visible? %>
-         <div>
-           <% if submission.expectation_results_visible? %>
-             <div>
-               <strong><%= t :expectations %>:</strong>
-               <ul>
-                 <% submission.visible_expectation_results.each do |it| %>
-                   <li><%= t_expectation_result it[:binding], it[:inspection] %>: <%= status_icon(it[:result]) %>
-                   </li>
-                 <% end %>
-               </ul>
-             </div>
-           <% end %>
-           <div>
-             <%= submission.result_html %>
-           </div>
-         </div>
-       <% else %>
-         <div>
-           <h3 class="text-center"><%= t(:exercise_done) %></h3>
-         </div>
-       <% end %>
-
-       <%= corollary_box @exercise unless submission.should_retry? %>
-
-       <% if submission.feedback.present? %>
-         <h2><%= t(:feedback) %></h2>
-         <%= submission.feedback_html %>
-       <% end %>
-     </div>
+<div class="panel panel-<%= class_for_status submission.status %>">
+  <div class="panel-heading">
+    <h4><%= fa_icon plain_icon_for_status(submission.status) %> <%= t(:results) %></h4>
   </div>
+  <div class="panel-body">
+    <% if submission.results_visible? %>
+      <div>
+        <% if submission.expectation_results_visible? %>
+          <div>
+            <strong><%= t :expectations %>:</strong>
+            <ul>
+              <% submission.visible_expectation_results.each do |it| %>
+                <li><%= t_expectation_result it[:binding], it[:inspection] %>: <%= status_icon(it[:result]) %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div>
+          <%= submission.result_html %>
+        </div>
+      </div>
+    <% else %>
+      <div>
+        <h3 class="text-center"><%= t(:exercise_done) %></h3>
+      </div>
+    <% end %>
 
-  <div class="actions">
-    <%= mail_to submission.exercise.author.email, fa_icon('warning', text: t(:notify_problem_to_author)), subject: t(:problem_with_exercise, title: submission.exercise.title), class: 'btn btn-warning pull-left' %>
-    <%= previous_exercise_button(@exercise) %>
-    <%= next_exercise_button(@exercise) %>
+    <%= corollary_box @exercise unless submission.should_retry? %>
 
-    <%= next_guides_box(@guide, only_first: true) if @stats.try &:done? %>
+    <% if submission.feedback.present? %>
+      <h2><%= t(:feedback) %></h2>
+      <%= submission.feedback_html %>
+    <% end %>
   </div>
 </div>
 
+<div class="actions">
+  <%= mail_to submission.exercise.author.email, fa_icon('warning', text: t(:notify_problem_to_author)), subject: t(:problem_with_exercise, title: submission.exercise.title), class: 'btn btn-warning pull-left' %>
+  <%= previous_exercise_button(@exercise) %>
+  <%= next_exercise_button(@exercise) %>
+
+  <%= next_guides_box(@guide, only_first: true) if @stats.try &:done? %>
+</div>
 
 <script>
   $('#exercise-status-icon').html("<%= escape_javascript exercise_status_icon(@exercise) %>");
