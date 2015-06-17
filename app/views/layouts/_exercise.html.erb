@@ -31,8 +31,8 @@
             <span data-toggle="popover"
                   title="<%= @exercise.guide.name %>"
                   data-content="<%= @exercise.guide.description_html.to_str %>">
+              <%= link_to_guide(@exercise.guide) %>
             </span>
-            <%= link_to_guide(@exercise.guide) %>
           </p>
         <% else %>
           <p>
