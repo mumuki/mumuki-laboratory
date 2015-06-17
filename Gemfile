@@ -27,6 +27,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-tagsinput'
   gem 'rails-assets-bootstrap-vertical-tabs'
 end
+gem 'jquery-console-rails'
 
 gem 'chartkick'
 
