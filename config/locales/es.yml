@@ -129,7 +129,7 @@ es:
   submissions_count: Soluciones
   submissions_for: Soluciones para %{exercise}
   submissions_success_rate: Taza de éxito en soluciones
-  tag: Etiqueta
+  tag: Etiquetas
   title: Título
   unfollow: Dejar de seguir!
   unknown: no resuelto
@@ -141,3 +141,4 @@ es:
   you_must_sign_in_to_see_stats: Necestiás iniciar sesión para ver más estadísticas sobre tu progreso
   welcome_back_after_redirection: "¡Qué bueno verte de nuevo! Aquí es donde estuviste la última vez"
   need_a_hint: "¿Necesitás ayuda?"
+  about: "Detalles"

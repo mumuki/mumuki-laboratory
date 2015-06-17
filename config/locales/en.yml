@@ -124,7 +124,7 @@ en:
   submissions_count: Submissions
   submissions_for: Submissions for %{exercise}
   submissions_success_rate: Submissions success rate
-  tag: Tag
+  tag: Tags
   title: Title
   unfollow: Unfollow!
   username: Username
@@ -133,3 +133,4 @@ en:
   you_must_sign_in_before_submitting: You must sign in before submitting your solutions
   welcome_back_after_redirection: "Nice to see you again! This is where you left last time"
   need_a_hint: "Do you need a hint?"
+  about: "About"
