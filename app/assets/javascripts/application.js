@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.console
 //= require bootstrap
 //= require bootstrap-tagsinput
 //= require ace/ace
