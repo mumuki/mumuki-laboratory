@@ -12,7 +12,7 @@ function setupAceEditor(textarea) {
   var editor = ace.edit(textarea);
   editor.container.id = "editor-container";
   editor.setOptions({
-    minLines: 5,
+    minLines: 15,
     maxLines: Infinity
   });
   form.addEventListener("submit", function() {
