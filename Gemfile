@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-source 'https://rails-assets.org'
 ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -22,9 +21,12 @@ gem 'devise'
 gem 'sucker_punch', '~> 1.0'
 
 gem 'jquery-rails'
-gem 'rails-assets-bootstrap'
-gem 'rails-assets-bootstrap-tagsinput'
-gem 'rails-assets-bootstrap-vertical-tabs'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap'
+  gem 'rails-assets-bootstrap-tagsinput'
+  gem 'rails-assets-bootstrap-vertical-tabs'
+end
 
 gem 'chartkick'
 
