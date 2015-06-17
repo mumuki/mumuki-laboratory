@@ -8,7 +8,7 @@ module LinksRendering
   end
 
   def link_to_guide(guide, options={})
-    link_to (raw "#{guide.name} #{with_classifications(guide)}"), guide, options
+    link_to (raw guide.name), guide, options
   end
 
   def link_to_github(guide)
