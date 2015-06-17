@@ -33,7 +33,9 @@ feature 'Search Flow' do
   scenario 'visits a guide, tries to check progress, signs in, checks progress' do
     visit "/guides/#{guide.id}"
 
-    click_on 'Your Progress'
+    within '.guide-nav' do
+      click_on 'Exercises'
+    end
 
     expect(page).to have_text('You must sign in')
 

@@ -96,7 +96,7 @@ en:
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'
   processing_you_solution: We are processing you solution
   profile_of: Profile of %{username}
-  progress: Your Progress
+  progress: Exercises
   refresh_collaborators: Refresh collaborators!
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   repeat_submission: Retry

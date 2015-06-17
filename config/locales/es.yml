@@ -98,7 +98,7 @@ es:
   problem_with_exercise: '[Mumuki] Error con el ejercicio: %{title}'
   processing_you_solution: Estamos procesando tu solución
   profile_of: Perfil de %{username}
-  progress: Tu progreso
+  progress: Ejercicios
   refresh_collaborators: ¡Actualizá los colaboradores!
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
   repeat_submission: Reintentar
