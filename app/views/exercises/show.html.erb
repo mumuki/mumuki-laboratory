@@ -7,7 +7,7 @@
       <div>
         <% if @exercise.hint.present? %>
           <a data-toggle="collapse" href="#hint-section">
-            <%= label :exercise, :hint %>
+            <%= fa_icon 'question-circle' %> <%= t :need_a_hint %>
           </a>
 
           <div id="hint-section" class="collapse">

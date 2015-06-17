@@ -132,3 +132,4 @@ en:
   you_must: You must %{action} before continue
   you_must_sign_in_before_submitting: You must sign in before submitting your solutions
   welcome_back_after_redirection: "Nice to see you again! This is where you left last time"
+  need_a_hint: "Do you need a hint?"
