@@ -52,10 +52,16 @@
 
 <% content_for :tail do %>
   <script>
-    var resultsBox = $('.submission-results')
+    var resultsBox = $('.submission-results');
+
+    var scrollTo = function(domElement) {
+      var SPEED = 1000;
+      $('html, body').animate({scrollTop: domElement.offset().top}, SPEED);
+    };
+
     $('form.new_submission').on('ajax:beforeSend',function (event, xhr, settings) {
-      resultsBox.html('<%= escape_javascript raw %Q{<div class="bs-callout bs-callout-info"><h4><strong>#{t :processing_you_solution}</strong> <i class="fa fa-refresh fa-spin"></i></h4>#{t :refresh_or_wait}</div>} %>')
-      resultsBox.get(0).scrollIntoView();
+      resultsBox.html('<%= escape_javascript raw %Q{<div class="bs-callout bs-callout-info"><h4><strong>#{t :processing_you_solution}</strong> <i class="fa fa-refresh fa-spin"></i></h4>#{t :refresh_or_wait}</div>} %>');
+      scrollTo(resultsBox);
 	}).on('ajax:success',function (xhr, data, status) {
       resultsBox.html(data);
     }).on('ajax:error', function (xhr, status, error) {
