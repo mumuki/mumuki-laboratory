@@ -29,7 +29,7 @@ class Submission < ActiveRecord::Base
   end
 
   def expectations_failed?
-    expectation_results.any? { |it| it[:result] == :failed }
+    expectation_results.any? { |it| it[:result] == :failed } rescue false #FIXME resolve inconsistencies in db
   end
 
   def fine_status
