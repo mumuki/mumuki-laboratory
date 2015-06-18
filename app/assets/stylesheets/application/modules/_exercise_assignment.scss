@@ -1,0 +1,6 @@
+.exercise-assignment blockquote {
+  @include border-radius(4px);
+  background-color: $blockquote-background;
+  border-left: 8px solid darken($blockquote-background, 25%);;
+  font-size: 15px;
+}
