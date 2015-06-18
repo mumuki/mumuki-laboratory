@@ -26,7 +26,6 @@ describe ApplicationHelper do
   describe '#link_to_guide' do
     let(:guide) { create(:guide, name: 'foo', id: 1) }
     it { expect(link_to_guide(guide)).to start_with '<a href="/guides/1">foo' }
-    it { expect(link_to_guide(guide)).to include 'New' }
   end
 
   describe '#link_to_github' do
@@ -35,7 +34,7 @@ describe ApplicationHelper do
   end
 
   describe '#status_icon' do
-    let(:passed_submission) { create(:submission, status: :passed) }
+    let(:passed_submission) { create(:submission, status: :passed, expectation_results: []) }
     let(:failed_submission) { create(:submission, status: :failed) }
 
     it { expect(status_icon(passed_submission)).to eq '<i class="fa fa-check text-success special-icon"></i>' }

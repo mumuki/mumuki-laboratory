@@ -14,8 +14,6 @@ class Submission < ActiveRecord::Base
   after_create :update_submissions_count!
   after_create :update_last_submission!
 
-  schedule_on_create TestRunnerJob
-
   delegate :language, :title, to: :exercise
 
   scope :by_exercise_ids, -> (exercise_ids) {
@@ -27,7 +25,19 @@ class Submission < ActiveRecord::Base
   }
 
   def should_retry?
-    failed? || expectation_results.any? { |it| it[:result] == :failed } #TODO rename result => status
+    failed? || expectations_failed? #TODO rename result => status
+  end
+
+  def expectations_failed?
+    expectation_results.any? { |it| it[:result] == :failed }
+  end
+
+  def fine_status
+    if passed? && expectations_failed?
+      :passed_with_warnings
+    else
+      status
+    end
   end
 
   def results_visible?

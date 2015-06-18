@@ -119,10 +119,24 @@ body.modal-open #wrap{
   padding-right: 0px !important;
 }
 
-.ace-editor-row {
+.submission-results {
   margin-top: 15px;
 }
 
-.ace-editor-col {
-  padding-right: 0px;
+a.text-info:hover {
+  color: #3498db;
+}
+
+a.text-warning:hover {
+  color: #f39c12;
+}
+
+.submission-results .panel-heading h4 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.submission-results .panel-heading {
+  padding-top: 6px;
+  padding-bottom: 6px;
 }

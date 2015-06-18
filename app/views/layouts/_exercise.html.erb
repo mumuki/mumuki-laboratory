@@ -1,12 +1,28 @@
-<% @current_tab = current_tab %>
 <% @stats = @exercise.guide.stats(current_user) if current_user && @exercise.guide %>
+
+
 <div class="row">
   <div class="col-md-12">
-    <h1>
-      <span id="exercise-status-icon"><%= exercise_status_icon(@exercise) %></span>
+    <h1 style="display: inline-block">
       <%= @exercise.contextualized_title %>
-      <small> - <%= @exercise.language %></small>
     </h1>
+    <span style="margin-left: 5px">
+      <a data-toggle="collapse" href="#about-section" class="text-info">
+        <%= fa_icon 'info-circle' %> <%= t :about %>
+      </a>
+    </span>
+
+    <div id="about-section" class="collapse">
+      <ul>
+        <li><%= t :language %>: <%= @exercise.language %></li>
+        <li><%= t :created_at %>: <%= time_ago_in_words @exercise.created_at %></li>
+        <li><%= t :status %>: <%= exercise_status_icon(@exercise) %></li>
+        <li><%= t :tag %>: <%= link_to_tag_list(@exercise.tag_list) %></li>
+        <% restricted_to_author @exercise do %>
+          <li><%= t :edit %>: <%= link_to fa_icon('pencil'), edit_exercise_path(@exercise), title: t(:edit) %></li>
+        <% end %>
+      </ul>
+    </div>
 
     <div class="row">
       <div class="col-md-5">
@@ -23,9 +39,6 @@
             <%= raw t :authored_by, author: link_to(@exercise.author.name, user_path(@exercise.author)) %>
           </p>
         <% end %>
-      </div>
-      <div class="col-md-7 text-right">
-        <%= link_to_tag_list(@exercise.tag_list) %>
       </div>
     </div>
 
@@ -47,28 +60,8 @@
 </div>
 
 <div class="row">
-  <div class="col-md-11">
+  <div class="col-md-12">
     <%= yield %>
-  </div>
-
-  <div class="col-md-1">
-    <ul class="nav nav-tabs tabs-right vertical-text">
-      <li <%= active_if :exercise %>>
-        <%= link_to fa_icon('code'), exercise_path(@exercise), title: t(:overview) %>
-      </li>
-      <li <%= active_if :status %>>
-        <% @last_submission = @exercise.last_submission(current_user) if current_user? %>
-        <%= link_to fa_icon('trophy'), exercise_submission_path(@exercise, @last_submission), title: t(:progress) if @last_submission %>
-      </li>
-      <li <%= active_if :my_submissions %>>
-        <%= link_to fa_icon('history'), exercise_submissions_path(@exercise), title: t(:history) %>
-      </li>
-      <% restricted_to_author @exercise do %>
-        <li <%= active_if :edit %>>
-          <%= link_to fa_icon('pencil'), edit_exercise_path(@exercise), title: t(:edit) %>
-        </li>
-      <% end %>
-    </ul>
   </div>
 </div>
 

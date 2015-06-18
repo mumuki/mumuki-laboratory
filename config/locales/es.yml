@@ -10,6 +10,7 @@ es:
   authored_by: Creado por %{author}
   basic: Básico
   belongs_to_guide: Pertenece a la guía %{guide}
+  beta: Beta
   cancel: Cancelar
   categories_index_title: ¿Qué te gustaría aprender?
   category: Categoría
@@ -28,7 +29,7 @@ es:
   edit_exercise: Editar %{exercise}
   exercise: Ejercicio
   exercise_count: ejercicios
-  exercise_done: ¡Todo en orden! Tu solución pasó todas nuestras pruebas
+  exercise_done: ¡Tu solución pasó todas nuestras pruebas!
   exercise_number: Número
   exercise_success_rate: Taza de éxito en ejercicios
   exercises_index_title: ¿Buscando algún ejercicio particular?
@@ -36,11 +37,13 @@ es:
   export_created: Exportación encolada
   extend_mumuki: ¡Extendé Mumuki!
   extras: Adicionales
-  failed: falló
+  facebook_signin_reason: Logueate con Facebook si sólo querés aprender a programar
+  failed: Ups, algo no anduvo bien
   failed_exercises_stats: Además, <strong> intentaste resolver %{count} ejercicios </strong> más.
   feedback: Para tener en cuenta
   follow: Seguir!
   following: Siguiendo
+  github_signin_reason: Logueate con Github si además querés crear tus propios ejercicios
   github_url_hint: usuario/repositorio
   good_progress_in_guide: 'Además <strong>vas muy bien</strong>: la mayoría de las soluciones que enviaste resolvieron los ejercicios adecuadamente. ¡Felicitaciones!'
   guide: Guía
@@ -61,6 +64,7 @@ es:
   last_submission_date: Última solucion
   latest_exercises: Ultimos ejercicios
   latest_guides: últimas guías
+  learning: Aprendizaje
   listing_exercises: Listado de ejercicios
   more: mas...
   more_guides: más guías
@@ -76,6 +80,7 @@ es:
   my_guides: Mis Guías
   my_submissions: Mis Soluciones
   never: nunca
+  new: Nuevo
   new_exercise: Nuevo Ejercicio
   new_export: ¡Exportar ahora!
   new_guide: Nueva Guía
@@ -91,8 +96,9 @@ es:
   notify_problem_to_author: Notificar problema al autor
   output: Salida
   overview: Vista general
-  passed: pasó
+  passed: Todo en orden
   passed_exercises_stats: Vos ya <strong>resolviste %{count}</strong> de ellos.
+  passed_with_warnings: Funcionó, pero hay cosas para mejorar
   pending: pendiente
   previous_exercise: Anterior
   problem_with_exercise: '[Mumuki] Error con el ejercicio: %{title}'
@@ -101,16 +107,14 @@ es:
   progress: Ejercicios
   refresh_collaborators: ¡Actualizá los colaboradores!
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
-  repeat_submission: Reintentar
-  results: Resultados
   running: procesando
   search: 'Buscá, por ejemplo: polimorfismo, haskell o competenciaDeSaltos'
   see_next_guides: ¿Querés seguir practicando? ¡tenemos más guías para vos!
   show: Mostrar
-  sign_in_with_facebook: Iniciá sesion con Facebook
-  sign_in_with_github: Iniciá sesion con Github
   sign_in: Iniciá sesion
   sign_in_action: iniciar sesión
+  sign_in_with_facebook: Iniciá sesion con Facebook
+  sign_in_with_github: Iniciá sesion con Github
   sign_out: Cerrar Sesión
   sign_up_date: Usuario desde
   solved_exercises: Ejercicios Resueltos
@@ -125,7 +129,7 @@ es:
   submissions_count: Soluciones
   submissions_for: Soluciones para %{exercise}
   submissions_success_rate: Taza de éxito en soluciones
-  tag: Etiqueta
+  tag: Etiquetas
   title: Título
   unfollow: Dejar de seguir!
   unknown: no resuelto
@@ -135,9 +139,6 @@ es:
   you_must: Tenés que %{action} antes de continuar
   you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
   you_must_sign_in_to_see_stats: Necestiás iniciar sesión para ver más estadísticas sobre tu progreso
-  facebook_signin_reason: "Logueate con Facebook si sólo querés aprender a programar"
-  github_signin_reason: "Logueate con Github si además querés crear tus propios ejercicios"
-  new: "Nuevo"
-  learning: "Aprendizaje"
-  beta: "Beta"
   welcome_back_after_redirection: "¡Qué bueno verte de nuevo! Aquí es donde estuviste la última vez"
+  need_a_hint: "¿Necesitás ayuda?"
+  about: "Detalles"

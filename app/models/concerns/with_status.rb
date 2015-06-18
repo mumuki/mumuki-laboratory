@@ -16,6 +16,10 @@ module WithStatus
     end
   end
 
+  def fine_status
+    status
+  end
+
   module ClassMethods
     def passed_status
       statuses[:passed]
