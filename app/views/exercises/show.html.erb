@@ -55,7 +55,8 @@
     var resultsBox = $('.submission-results')
     $('form.new_submission').on('ajax:beforeSend',function (event, xhr, settings) {
       resultsBox.html('<%= escape_javascript raw %Q{<div class="bs-callout bs-callout-info"><h4><strong>#{t :processing_you_solution}</strong> <i class="fa fa-refresh fa-spin"></i></h4>#{t :refresh_or_wait}</div>} %>')
-    }).on('ajax:success',function (xhr, data, status) {
+      resultsBox.get(0).scrollIntoView();
+	}).on('ajax:success',function (xhr, data, status) {
       resultsBox.html(data);
     }).on('ajax:error', function (xhr, status, error) {
       resultsBox.html('<pre>' + error + '</pre>');
