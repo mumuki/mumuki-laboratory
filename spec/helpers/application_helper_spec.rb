@@ -26,7 +26,6 @@ describe ApplicationHelper do
   describe '#link_to_guide' do
     let(:guide) { create(:guide, name: 'foo', id: 1) }
     it { expect(link_to_guide(guide)).to start_with '<a href="/guides/1">foo' }
-    it { expect(link_to_guide(guide)).to include 'New' }
   end
 
   describe '#link_to_github' do
