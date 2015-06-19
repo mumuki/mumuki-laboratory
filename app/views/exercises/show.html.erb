@@ -55,17 +55,12 @@
     $(document).on('ready page:load', function(){
       var resultsBox = $('.submission-results');
 
-      var scrollTo = function(domElement) {
-        var SPEED = 1000;
-        $('html, body').animate({scrollTop: domElement.offset().top}, SPEED);
-      };
-
       $('form.new_submission').on('ajax:beforeSend',function (event, xhr, settings) {
         console.log('sending submission')
         resultsBox.html('<%= escape_javascript raw %Q{<div class="bs-callout bs-callout-info"><h4><strong>#{t :processing_you_solution}</strong> <i class="fa fa-refresh fa-spin"></i></h4>#{t :refresh_or_wait}</div>} %>');
       }).on('ajax:complete',function (xhr, status) {
         $('form button.btn.btn-primary').attr('value', '<%= t :create_submission %>');
-        scrollTo(resultsBox);
+        smoothScrollToElement(resultsBox);
       }).on('ajax:success',function (xhr, data, status) {
         resultsBox.html(data);
       }).on('ajax:error', function (xhr, status, error) {
