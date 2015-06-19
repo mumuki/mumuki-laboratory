@@ -27,7 +27,7 @@
           <div class="actions">
 			<%= button_tag (fa_icon :play, text: t(:create_submission)),
 			  class: 'btn btn-primary',
-			  data: {disable_with: "<i class='fa fa-refresh fa-spin'></i> #{t :sending_solution}"} %>
+			  data: {disable_with: "#{fa_icon 'refresh spin', text: t(:sending_solution)}"} %>
           </div>
         <% end %>
       <% else %>
