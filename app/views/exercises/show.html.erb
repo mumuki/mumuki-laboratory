@@ -27,7 +27,7 @@
           <div class="actions">
 			<%= button_tag (fa_icon :play, text: t(:create_submission)),
 			  class: 'btn btn-primary',
-			  data: {disable_with: "#{fa_icon 'refresh spin', text: t(:sending_solution)}"} %>
+			  data: {disable_with: "#{fa_icon 'refresh spin', text: t(:sending_solution)}", normal_text: t(:create_submission)} %>
           </div>
         <% end %>
       <% else %>
@@ -50,16 +50,24 @@
 
 <% end %>
 
+<div style="display: none" id="processing-template">
+  <div class="bs-callout bs-callout-info">
+    <h4><strong><%= t :processing_you_solution %></strong> <i class="fa fa-refresh fa-spin"></i></h4>
+    <%= t :refresh_or_wait %>
+  </div>
+</div>
+
 <% content_for :tail do %>
   <script>
     $(document).on('ready page:load', function(){
       var resultsBox = $('.submission-results');
-
+      var processingTemplate = $('#processing-template');
       $('form.new_submission').on('ajax:beforeSend',function (event, xhr, settings) {
         console.log('sending submission')
-        resultsBox.html('<%= escape_javascript raw %Q{<div class="bs-callout bs-callout-info"><h4><strong>#{t :processing_you_solution}</strong> <i class="fa fa-refresh fa-spin"></i></h4>#{t :refresh_or_wait}</div>} %>');
+        resultsBox.html(processingTemplate.html());
       }).on('ajax:complete',function (xhr, status) {
-        $('form button.btn.btn-primary').attr('value', '<%= t :create_submission %>');
+        var button = $('form button.btn.btn-primary');
+        button.attr('value', button.attr('data-normal-text'));
         smoothScrollToElement(resultsBox);
       }).on('ajax:success',function (xhr, data, status) {
         resultsBox.html(data);
