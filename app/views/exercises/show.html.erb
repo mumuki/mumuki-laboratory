@@ -25,9 +25,9 @@
             <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
           </div>
           <div class="actions">
-            <button class="btn btn-primary">
-              <%= fa_icon :play, text: t(:create_submission) %>
-            </button>
+			<%= button_tag (fa_icon :play, text: t(:create_submission)),
+			  class: 'btn btn-primary',
+			  data: {disable_with: "#{fa_icon 'refresh spin', text: t(:sending_solution)}"} %>
           </div>
         <% end %>
       <% else %>
@@ -61,6 +61,8 @@
 
     $('form.new_submission').on('ajax:beforeSend',function (event, xhr, settings) {
       resultsBox.html('<%= escape_javascript raw %Q{<div class="bs-callout bs-callout-info"><h4><strong>#{t :processing_you_solution}</strong> <i class="fa fa-refresh fa-spin"></i></h4>#{t :refresh_or_wait}</div>} %>');
+	}).on('ajax:complete',function (xhr, status) {
+	  $('form button.btn.btn-primary').attr('value', '<%= t :create_submission %>');
       scrollTo(resultsBox);
 	}).on('ajax:success',function (xhr, data, status) {
       resultsBox.html(data);
