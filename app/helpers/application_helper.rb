@@ -2,6 +2,7 @@ module ApplicationHelper
   include LinksRendering
   include Icons
   include Flags
+  include Nav
 
   def limit(items, preserve_order = false)
     limited = items.last(5)

@@ -6,6 +6,14 @@ module WithGuide
     validates_presence_of :position, if: :guide
   end
 
+  def next
+    guide.exercises.where(position: position + 1).first if guide
+  end
+
+  def previous
+    guide.exercises.where(position: position - 1).first if guide
+  end
+
   def next_for(user)
     sibling_for user, 'exercises.position > :position', 'exercises.position asc'
   end
