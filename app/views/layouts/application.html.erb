@@ -10,6 +10,11 @@
   <meta name="description" content="<%= t :mumuki_short_description %>"/>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag '//www.google.com/jsapi', 'chartkick' %>
+  <%= yield :tail %>
+  <%= yield :charts_js %>
+  <script src="//platform.twitter.com/widgets.js"></script>
 </head>
 <body>
 
@@ -106,9 +111,5 @@
     </div>
   </div>
 </footer>
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-<%= javascript_include_tag '//www.google.com/jsapi', 'chartkick' %>
-<%= yield :tail %>
-<%= yield :charts_js %>
 </body>
 </html>

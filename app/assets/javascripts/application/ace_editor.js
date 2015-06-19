@@ -37,7 +37,7 @@ function updateAceEditorLanguage() {
   }
 }
 
-$(function() {
+$(document).on('ready page:load', function(){
   setupAceEditors();
   updateAceEditorLanguage();
   onSelectUpdateAceEditor();
