@@ -74,5 +74,10 @@ class Exercise < ActiveRecord::Base
 
   def defaults
     self.submissions_count = 0
+    self.layout = Exercise.default_layout
+  end
+
+  def self.default_layout
+    layouts.keys[0]
   end
 end

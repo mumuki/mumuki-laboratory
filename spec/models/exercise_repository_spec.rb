@@ -9,7 +9,7 @@ describe ExerciseRepository do
 
   before { repo.process_files(log) { |it| results << it } }
 
-  it { expect(results.size).to eq 2 }
+  it { expect(results.size).to eq 3 }
   it { expect(log.messages).to eq ['Description does not exist for sample_broken'] }
 
 end

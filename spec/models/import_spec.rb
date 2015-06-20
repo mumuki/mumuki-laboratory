@@ -20,7 +20,7 @@ describe Import do
         guide.reload
       end
 
-      it { expect(Exercise.count).to eq 2 }
+      it { expect(Exercise.count).to eq 3 }
       it { expect(guide.description).to eq "Awesome guide\n" }
       it { expect(guide.language).to eq haskell }
       it { expect(guide.locale).to eq 'en' }
@@ -40,6 +40,8 @@ describe Import do
         it { expect(imported_exercise.expectations.size).to eq 2 }
         it { expect(imported_exercise.tag_list).to include *%w(foo bar baz) }
         it { expect(guide.description).to eq "Awesome guide\n" }
+        it { expect(imported_exercise.layout).to eq 'left' }
+
       end
 
       context 'when importing exercise with errors' do
@@ -54,6 +56,14 @@ describe Import do
         it { expect(imported_exercise).to_not be nil }
         it { expect(imported_exercise.hint).to eq "Try this: blah blah\n" }
         it { expect(imported_exercise.corollary).to eq "And the corollary is...\n" }
+      end
+
+
+      context 'when importing with layout' do
+        let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 4) }
+
+        it { expect(imported_exercise).to_not be nil }
+        it { expect(imported_exercise.layout).to eq 'bottom' }
       end
     end
     context 'when guide is incomplete' do
