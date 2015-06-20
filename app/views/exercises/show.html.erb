@@ -1,5 +1,5 @@
 <%= render layout: 'layouts/exercise' do %>
-  <% render layout: 'layouts/submissions/null' do %>
+  <% render layout: "layouts/submissions/#{@exercise.layout}" do %>
 
   <% end %>
 <% end %>

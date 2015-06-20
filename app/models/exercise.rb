@@ -19,6 +19,8 @@ class Exercise < ActiveRecord::Base
 
   has_many :expectations
 
+  enum layout: [:left, :null]
+
   accepts_nested_attributes_for :expectations, reject_if: :all_blank, allow_destroy: true
 
   after_initialize :defaults, if: :new_record?

@@ -26,6 +26,10 @@
             <div class="field form-group"><%# TODO extract %>
               <%= f.select(:locale, Locale.all, {}, class: 'form-control') %>
             </div>
+            <div class="field form-group">
+              <%= f.select(:layout, Exercise.layouts.keys.to_a, {}, class: 'form-control') %>
+            </div>
+
           </div>
         </div>
         <div class="row">
