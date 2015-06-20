@@ -15,7 +15,7 @@ function setupAceEditor(textarea) {
     minLines: 15,
     maxLines: Infinity
   });
-  editor.setFontSize(14);
+  editor.setFontSize(13);
 
   form.addEventListener("submit", function() {
     textarea.style.visibility = "hidden";
