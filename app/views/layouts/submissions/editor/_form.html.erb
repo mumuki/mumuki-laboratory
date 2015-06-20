@@ -1,0 +1,22 @@
+<% if current_user? %>
+  <%= form_for([@exercise, @submission], remote: true, html: {role: 'form'}) do |f| %>
+    <div class="field form-group">
+      <%= f.text_area :content,
+                      class: "form-control #{'editor' if editor_visible }",
+                      value: @previous_submission_content,
+                      style: 'display: none' %>
+      <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
+    </div>
+    <div class="actions">
+      <%= button_tag (fa_icon :play, text: t(:create_submission)),
+                     class: 'btn btn-primary',
+                     data: {disable_with: "#{fa_icon 'refresh spin', text: t(:sending_solution)}", normal_text: t(:create_submission)} %>
+    </div>
+  <% end %>
+<% else %>
+  <p><%= t :you_must_sign_in_before_submitting %></p>
+
+  <div class="actions">
+    <%= login_anchor class: 'btn btn-primary' %>
+  </div>
+<% end %>
