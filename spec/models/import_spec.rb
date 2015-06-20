@@ -40,7 +40,7 @@ describe Import do
         it { expect(imported_exercise.expectations.size).to eq 2 }
         it { expect(imported_exercise.tag_list).to include *%w(foo bar baz) }
         it { expect(guide.description).to eq "Awesome guide\n" }
-        it { expect(imported_exercise.layout).to eq 'left' }
+        it { expect(imported_exercise.layout).to eq 'right' }
 
       end
 

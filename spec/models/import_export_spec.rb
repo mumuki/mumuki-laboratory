@@ -32,7 +32,7 @@ describe 'import-export' do
   it { expect(guide.exercises.first.title).to eq 'Bar' }
   it { expect(guide.exercises.second.title).to eq 'Foo' }
   it { expect(guide.exercises.first.layout).to eq 'null' }
-  it { expect(guide.exercises.second.layout).to eq 'left' }
+  it { expect(guide.exercises.second.layout).to eq 'right' }
 
   it { expect(guide.language).to eq haskell }
   it { expect(guide.locale).to eq 'en' }

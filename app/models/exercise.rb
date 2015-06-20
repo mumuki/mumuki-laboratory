@@ -19,7 +19,7 @@ class Exercise < ActiveRecord::Base
 
   has_many :expectations
 
-  enum layout: [:left, :bottom, :null]
+  enum layout: [:right, :bottom, :null]
 
   accepts_nested_attributes_for :expectations, reject_if: :all_blank, allow_destroy: true
 
