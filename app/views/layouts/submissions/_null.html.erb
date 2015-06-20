@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-6 exercise-assignment">
+  <div class="col-md-12 exercise-assignment">
     <div>
       <%= @exercise.description_html %>
     </div>
@@ -17,12 +17,13 @@
       <% end %>
     </div>
   </div>
-  <div class="col-md-6 ace-editor-col">
+</div>
+<div class="row">
+  <div class="col-md-12 ace-editor-col">
     <% if current_user? %>
       <%= form_for([@exercise, @submission], remote: true, html: {role: 'form'}) do |f| %>
         <div class="field form-group">
-          <%= f.text_area :content, class: 'form-control editor', value: @previous_submission_content, style: 'display: none' %>
-          <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
+          <%= f.text_area :content, class: 'form-control', value: @previous_submission_content, style: 'display: none' %>
         </div>
         <div class="actions">
           <%= button_tag (fa_icon :play, text: t(:create_submission)),
