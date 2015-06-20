@@ -1,6 +1,36 @@
-<%= render layout: 'layouts/exercise' do %>
-  <% render layout: "layouts/submissions/#{@exercise.layout}" do %>
+<% content_for :assignment do %>
+  <div>
+    <%= @exercise.description_html %>
+  </div>
+  <div>
+    <% if @exercise.hint.present? %>
+      <a data-toggle="collapse" href="#hint-section" class="text-info">
+        <%= fa_icon 'question-circle' %> <%= t :need_a_hint %>
+      </a>
 
+      <div id="hint-section" class="collapse">
+        <p>
+          <%= @exercise.hint_html %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<% content_for :submission_results do %>
+  <% if current_user? %>
+    <div class="row">
+      <div class="col-md-12 submission-results">
+        <% if @exercise.last_submission(current_user) %>
+          <%= render partial: 'exercise_submissions/results', locals: {submission: @exercise.last_submission(current_user)} %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<%= render layout: 'layouts/exercise' do %>
+  <%= render layout: "layouts/submissions/#{@exercise.layout}" do %>
   <% end %>
 <% end %>
 
@@ -10,6 +40,7 @@
     <%= t :refresh_or_wait %>
   </div>
 </div>
+
 
 <%= content_for :no_container do %>
   <div class="modal fade" id="guide-done" tabindex="-1" role="dialog" aria-hidden="true">

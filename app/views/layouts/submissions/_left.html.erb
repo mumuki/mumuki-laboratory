@@ -1,21 +1,6 @@
 <div class="row">
   <div class="col-md-6 exercise-assignment">
-    <div>
-      <%= @exercise.description_html %>
-    </div>
-    <div>
-      <% if @exercise.hint.present? %>
-        <a data-toggle="collapse" href="#hint-section" class="text-info">
-          <%= fa_icon 'question-circle' %> <%= t :need_a_hint %>
-        </a>
-
-        <div id="hint-section" class="collapse">
-          <p>
-            <%= @exercise.hint_html %>
-          </p>
-        </div>
-      <% end %>
-    </div>
+    <%= yield :assignment %>
   </div>
   <div class="col-md-6 ace-editor-col">
     <% if current_user? %>
@@ -39,12 +24,5 @@
     <% end %>
   </div>
 </div>
-<% if current_user? %>
-  <div class="row">
-    <div class="col-md-12 submission-results">
-      <% if @exercise.last_submission(current_user) %>
-        <%= render partial: 'exercise_submissions/results', locals: {submission: @exercise.last_submission(current_user)} %>
-      <% end %>
-    </div>
-  </div>
-<% end %>
+
+<%= yield :submission_results %>
