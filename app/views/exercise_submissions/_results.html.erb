@@ -13,7 +13,7 @@
     <div>
       <% if submission.expectation_results_visible? %>
         <div>
-          <strong><%= t :expectations %>:</strong>
+          <strong><%= t :unmeet_expectations %>:</strong>
           <ul>
             <% submission.visible_expectation_results.each do |it| %>
               <li><%= t_expectation_result it[:binding], it[:inspection] %>: <%= status_icon(it[:result]) %>
@@ -22,7 +22,15 @@
           </ul>
         </div>
       <% end %>
-      <div>
+      <% if submission.feedback.present? %>
+        <div>
+          <%= submission.feedback_html %>
+        </div>
+        <a data-toggle="collapse" href="#results-section" class="text-danger">
+          <%= fa_icon 'question-circle' %> <%= t :details %>
+        </a>
+      <% end %>
+      <div id="results-section" class="<%='collapse' if submission.feedback.present? %>">
         <%= submission.result_html %>
       </div>
     </div>
@@ -34,10 +42,6 @@
 
   <%= corollary_box @exercise unless submission.should_retry? %>
 
-  <% if submission.feedback.present? %>
-    <h2><%= t(:feedback) %></h2>
-    <%= submission.feedback_html %>
-  <% end %>
 </div>
 
 <div class="actions">
