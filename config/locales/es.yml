@@ -40,7 +40,7 @@ es:
   facebook_signin_reason: Logueate con Facebook si sólo querés aprender a programar
   failed: Ups, algo no anduvo bien
   failed_exercises_stats: Además, <strong> intentaste resolver %{count} ejercicios </strong> más.
-  feedback: Para tener en cuenta
+  feedback: 'Problemas que encontramos'
   follow: Seguir!
   following: Siguiendo
   github_signin_reason: Logueate con Github si además querés crear tus propios ejercicios

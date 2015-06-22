@@ -23,6 +23,7 @@
         </div>
       <% end %>
       <% if submission.feedback.present? %>
+        <strong><%= t :feedback %>:</strong>
         <div>
           <%= submission.feedback_html %>
         </div>
