@@ -19,6 +19,8 @@ class Exercise < ActiveRecord::Base
 
   has_many :expectations
 
+  enum layout: [:editor_right, :editor_bottom, :no_editor, :scratchy]
+
   accepts_nested_attributes_for :expectations, reject_if: :all_blank, allow_destroy: true
 
   after_initialize :defaults, if: :new_record?
@@ -72,5 +74,10 @@ class Exercise < ActiveRecord::Base
 
   def defaults
     self.submissions_count = 0
+    self.layout = Exercise.default_layout
+  end
+
+  def self.default_layout
+    layouts.keys[0]
   end
 end

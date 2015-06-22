@@ -1,6 +1,16 @@
 ActiveAdmin.register Exercise do
 
-  permit_params :author_id, :language_id, :guide_id, :title, :description, :test, :extra_code, :hint, :corollary, :locale
+  permit_params :author_id,
+                :language_id,
+                :guide_id,
+                :title,
+                :layout,
+                :description,
+                :test,
+                :extra_code,
+                :hint,
+                :corollary,
+                :locale
 
   filter :title
   filter :author
@@ -12,6 +22,7 @@ ActiveAdmin.register Exercise do
     column(:id)
     column(:title)
     column(:language)
+    column(:layout)
     column(:submissions_count)
     column(:author_name) { |ex| ex.author.name }
     column(:locale)

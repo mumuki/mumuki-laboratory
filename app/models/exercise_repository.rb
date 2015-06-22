@@ -37,6 +37,7 @@ class ExerciseRepository
            corollary: corollary,
            tag_list: meta['tags'],
            locale: meta['locale'],
+           layout: meta['layout'] || Exercise.default_layout,
            language: @language,
            expectations: expectations,
            author: @author,

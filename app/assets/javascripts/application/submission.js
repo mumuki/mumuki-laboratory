@@ -5,6 +5,7 @@ function smoothScrollToElement(domElement) {
 
 $(document).on('ready page:load', function(){
   var resultsBox = $('.submission-results');
+  var scrollPin = $('.scroll-pin');
   if(!resultsBox) return;
 
   var processingTemplate = $('#processing-template');
@@ -14,7 +15,9 @@ $(document).on('ready page:load', function(){
   }).on('ajax:complete',function (xhr, status) {
     var button = $('form button.btn.btn-primary');
     button.attr('value', button.attr('data-normal-text'));
-    smoothScrollToElement(resultsBox);
+    if(scrollPin.length) {
+      smoothScrollToElement(scrollPin);
+    }
   }).on('ajax:success',function (xhr, data, status) {
     resultsBox.html(data);
   }).on('ajax:error', function (xhr, status, error) {
