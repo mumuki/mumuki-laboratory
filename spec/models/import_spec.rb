@@ -40,7 +40,7 @@ describe Import do
         it { expect(imported_exercise.expectations.size).to eq 2 }
         it { expect(imported_exercise.tag_list).to include *%w(foo bar baz) }
         it { expect(guide.description).to eq "Awesome guide\n" }
-        it { expect(imported_exercise.layout).to eq 'right' }
+        it { expect(imported_exercise.layout).to eq 'editor_right' }
 
       end
 
@@ -63,7 +63,7 @@ describe Import do
         let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 4) }
 
         it { expect(imported_exercise).to_not be nil }
-        it { expect(imported_exercise.layout).to eq 'bottom' }
+        it { expect(imported_exercise.layout).to eq 'editor_bottom' }
       end
     end
     context 'when guide is incomplete' do

@@ -75,7 +75,7 @@ describe Export do
         it { expect(File.read 'spec/data/export/00200_bar/description.md').to eq 'a description' }
 
         it { expect(File.exist? 'spec/data/export/00200_bar/meta.yml').to be true }
-        it { expect(File.read 'spec/data/export/00200_bar/meta.yml').to eq "---\ntags:\n- baz\n- bar\nlocale: :en\nlayout: right\n"}
+        it { expect(File.read 'spec/data/export/00200_bar/meta.yml').to eq "---\ntags:\n- baz\n- bar\nlocale: :en\nlayout: editor_right\n"}
 
 
         it { expect(File.exist? 'spec/data/export/00200_bar/test.hs').to be true }

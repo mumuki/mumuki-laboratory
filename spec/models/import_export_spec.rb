@@ -9,7 +9,7 @@ describe 'import-export' do
                              description: 'a description', test: 'foo bar',
                              tag_list: %w(baz bar),
                              language: haskell,
-                             layout: :null) }
+                             layout: :no_editor) }
   let(:guide) { create(:guide, description: 'Baz', github_repository: 'flbulgarelli/never-existent-repo', language: haskell, locale: 'en') }
 
   let(:dir) { 'spec/data/import-export' }
@@ -31,8 +31,8 @@ describe 'import-export' do
   it { expect(guide.exercises.length).to eq 2 }
   it { expect(guide.exercises.first.title).to eq 'Bar' }
   it { expect(guide.exercises.second.title).to eq 'Foo' }
-  it { expect(guide.exercises.first.layout).to eq 'null' }
-  it { expect(guide.exercises.second.layout).to eq 'right' }
+  it { expect(guide.exercises.first.layout).to eq 'no_editor' }
+  it { expect(guide.exercises.second.layout).to eq 'editor_right' }
 
   it { expect(guide.language).to eq haskell }
   it { expect(guide.locale).to eq 'en' }

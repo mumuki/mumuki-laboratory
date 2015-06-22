@@ -3,4 +3,4 @@ tags:
   - bar
   - baz
 locale: en
-layout: bottom
+layout: editor_bottom
