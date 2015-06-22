@@ -30,7 +30,7 @@
           <%= fa_icon 'question-circle' %> <%= t :details %>
         </a>
       <% end %>
-      <div id="results-section" class="<%='collapse' if submission.feedback.present? %>">
+      <div id="results-section" class="<%='collapse' if submission.feedback.present? %> results-output">
         <%= submission.result_html %>
       </div>
     </div>
