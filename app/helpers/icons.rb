@@ -1,5 +1,5 @@
 module Icons
-
+  #FIXME refactor names
   def status_icon(with_status)
     fa_icon *icon_for_status( with_status.is_a?(Symbol) ? with_status : with_status.fine_status)
   end
@@ -20,44 +20,30 @@ module Icons
     fa_icon(*icon_for_status(exercise.status_for(current_user)))
   end
 
-  #FIXME refactor
-  def class_for_status(status)
-    case status.to_s
-      when 'passed' then 'success'
-      when 'passed_with_warnings' then 'warning'
-      when 'failed' then 'danger'
-      when 'running' then 'info'
-      when 'pending' then 'info'
-      when 'unknown' then 'muted'
-      else raise "Unknown status #{status}"
-    end
+  STATUSES = {
+      passed:               {class: :success, type: :check},
+      passed_with_warnings: {class: :warning, type: :exclamation},
+      failed:               {class: :danger,  type: :times},
+      running:              {class: :info,    type: :circle},
+      pending:              {class: :info,    type: 'clock-o'},
+      unknown:              {class: :muted,   type: :circle},
+  }.with_indifferent_access
+
+  def status_for(s)
+    STATUSES[s] || raise("Unknown status #{s}")
   end
 
-  def icon_type_for_status(status)
-    case status.to_s
-      when 'passed' then 'check'
-      when 'passed_with_warnings' then 'exclamation'
-      when 'failed' then 'times'
-      when 'running' then 'circle'
-      when 'pending' then 'clock-o'
-      when 'unknown' then 'circle'
-      else raise "Unknown status #{status}"
-    end
+  def class_for_status(s)
+    status_for(s)[:class].to_s
   end
 
-  def icon_for_status(status)
-    def i(icon, class_)
-      [icon, class: "text-#{class_} special-icon"]
-    end
-    i icon_type_for_status(status), class_for_status(status)
+  def icon_type_for_status(s)
+    status_for(s)[:type].to_s
   end
 
-  def icon_for_follower following
-    if following
-      fa_icon(*icon_for_status("passed"))
-    else
-      fa_icon(*icon_for_status("failed"))
-    end
+  def icon_for_status(s)
+    status = status_for(s)
+    [status[:type], class: "text-#{status[:class]} special-icon"]
   end
 
 end
