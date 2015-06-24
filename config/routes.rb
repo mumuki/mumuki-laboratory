@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     member do
       post :collaborators_refresh
       get :details
+      get :submissions_dump
     end
     # All users
     resources :imports, controller: 'guide_imports', only: [:create, :index]
