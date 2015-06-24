@@ -1,39 +1,21 @@
-<%= content_for :no_container do %>
-  <div class="jumbotron ha-bg-parallax">
-    <div class="container white-font">
-      <h1 class="text-center"><%= t :mumuki_catchphrase %></h1>
+<style type="text/css">
+  @font-face {
+    font-family: "AhahaMojimoji";
+    src: url('fonts/AhahaMojimoji.woff') format("woff");
+  }
 
-      <p class="text-center"><%= t :mumuki_short_description %></p>
+  .ahahamojimoji {
+    font-family: "AhahaMojimoji", Verdana, Tahoma;
+  }
 
-      <p class="text-center">
-        <%= link_to t(:start_practicing), categories_path, class: 'btn btn-primary special-button', role: 'button ' %>
-      </p>
-    </div>
-  </div>
-<% end %>
+  .logo {
+    font-size: 200px;
+  }
+</style>
+<h1 class="ahahamojimoji text-center logo" style="margin-bottom: -40px">ム</h1>
+<h2 class="ahahamojimoji text-center" style="margin-top: -40px"><small>ムムキ</small></h2>
+<h2 class="text-center">Mumuki</h2>
+<h4 class="text-center">Aprendé a Programar</h4>
 
-<div class="row">
-  <div class="col-md-4">
-    <h2 class="text-center"><%= t :mumuki_is_simple %></h2>
 
-    <p class="text-center"><%= t :mumuki_is_simple_description %></p>
-    <%= link_to t(:start_practicing), categories_path, class: 'btn btn-primary special-button btn-block', role: 'button ' %>
-  </div>
-  <div class="col-md-4">
-    <h2 class="text-center"><%= t :mumuki_is_collaborative %></h2>
 
-    <p class="text-center">
-      <%= t :mumuki_is_collaborative_description %>
-    </p>
-
-    <%= link_to t(:create_exercises), new_exercise_path, class: 'btn btn-primary special-button btn-block', role: 'button ' %>
-  </div>
-  <div class="col-md-4">
-    <h2 class="text-center"><%= t :mumuki_is_open %></h2>
-
-    <p class="text-center"><%= t :mumuki_is_open_description %></p>
-
-    <%= link_to t(:extend_mumuki), 'https://github.com/uqbar-project/mumuki-platform', class: 'btn btn-primary special-button btn-block', role: 'button ' %>
-  </div>
-
-</div>
