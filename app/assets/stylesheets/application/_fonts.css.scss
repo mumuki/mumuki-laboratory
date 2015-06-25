@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "AhahaMojimoji";
+  src: url(asset-path('AhahaMojimoji.woff')) format("woff"),
+       url(asset-path('AhahaMojimoji.ttf')) format("ttf"),
+       url(asset-path('AhahaMojimoji.svg')) format("svg");
+}
+
+.ahahamojimoji {
+  font-family: "AhahaMojimoji", Verdana, Tahoma;
+}
