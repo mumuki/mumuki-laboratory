@@ -134,6 +134,20 @@ a.text-danger:hover {
   color: #d62c1a;
 }
 
+.call-to-action {
+  font-size: 20px;
+}
+
+.btn.call-to-action {
+  background-color: #DA5823;
+  border-color: #D7521C;
+}
+
+.btn.call-to-action:hover {
+  background-color: #BD410F;
+  border-color: #943A15;
+}
+
 .submission-results .panel-heading h4 {
   margin-top: 5px;
   margin-bottom: 5px;
