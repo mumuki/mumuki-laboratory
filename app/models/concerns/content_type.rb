@@ -1,3 +1,4 @@
+#FIXME use Mumukit::ContentType
 module ContentType
   def self.for(type)
     Kernel.const_get "ContentType::#{type.to_s.titleize}"
