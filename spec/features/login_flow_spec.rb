@@ -18,7 +18,7 @@ feature 'Login Flow' do
     click_on 'Iniciá sesion con Github'
 
     expect(page).to have_text('testuser')
-    expect(page).to have_text('Mumuki es una plataforma simple, abierta y colaborativa')
+    expect(page).to have_text('Mumuki es la plataforma libre y gratuita')
   end
 
 
