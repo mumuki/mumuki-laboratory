@@ -16,7 +16,7 @@ module WithPath
     path.guides
   end
 
-  def orphan?
-    path.nil?
+  def parent
+    path
   end
 end

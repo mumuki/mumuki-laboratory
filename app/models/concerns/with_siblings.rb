@@ -12,5 +12,9 @@ module WithSiblings
   def previous
     siblings.where(position: position - 1).first unless orphan?
   end
+
+  def orphan?
+    parent.nil?
+  end
 end
 

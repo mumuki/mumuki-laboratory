@@ -23,7 +23,7 @@ module WithGuide
     guide.exercises
   end
 
-  def orphan?
-    guide.nil?
+  def parent
+    guide
   end
 end
