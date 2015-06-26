@@ -2,16 +2,9 @@ module WithGuide
   extend ActiveSupport::Concern
 
   included do
+    include WithSiblings
+
     belongs_to :guide
-    validates_presence_of :position, if: :guide
-  end
-
-  def next
-    guide.exercises.where(position: position + 1).first if guide
-  end
-
-  def previous
-    guide.exercises.where(position: position - 1).first if guide
   end
 
   def next_for(user)
@@ -24,6 +17,10 @@ module WithGuide
 
   def sibling_for(user, query, order)
     guide.pending_exercises(user).where(query, position: position).order(order).first  if guide
+  end
+
+  def siblings
+    guide.exercises
   end
 
   def orphan?
