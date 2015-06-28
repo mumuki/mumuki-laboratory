@@ -1,16 +1,7 @@
 class ExerciseSubmissionsController < ApplicationController
   before_action :authenticate!
 
-  before_action :set_submission, only: [:show]
-  before_action :set_exercise, only: [:create, :show, :index]
-  before_action :set_guide, only: [:show]
-
-  def index
-    @submissions = paginated @exercise.submissions_for(current_user).order(created_at: :desc)
-  end
-
-  def show
-  end
+  before_action :set_exercise
 
   def create
     @submission = current_user.submissions.build(submission_params)
