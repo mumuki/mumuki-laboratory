@@ -4,7 +4,7 @@ class Path < ActiveRecord::Base
   belongs_to :category
   belongs_to :language
 
-  def to_s
+  def name
     "#{language.name}/#{category.name}"
   end
 end

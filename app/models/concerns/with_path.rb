@@ -2,11 +2,21 @@ module WithPath
   extend ActiveSupport::Concern
 
   included do
+    include WithSiblings
+
     belongs_to :path
-    validates_presence_of :position, if: :path
   end
 
   def next_guides
-   path ? path.guides.where('guides.position > :position', position: position).order('guides.position asc') : []
+   path ? siblings.where('guides.position > :position', position: position).order('guides.position asc') : []
+  end
+
+
+  def siblings
+    path.guides
+  end
+
+  def parent
+    path
   end
 end

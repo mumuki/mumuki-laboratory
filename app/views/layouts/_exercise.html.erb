@@ -28,13 +28,13 @@
       <div class="col-md-5">
         <% if @exercise.guide %>
           <p>
-            <%= previous_exercise_nav_button(@exercise) %>
+            <%= previous_nav_button(@exercise) %>
             <span data-toggle="popover"
                   title="<%= @exercise.guide.name %>"
                   data-content="<%= @exercise.guide.description_html.to_str %>">
               <%= link_to_guide(@exercise.guide) %>
             </span>
-            <%= next_exercise_nav_button(@exercise) %>
+            <%= next_nav_button(@exercise) %>
           </p>
         <% else %>
           <p>

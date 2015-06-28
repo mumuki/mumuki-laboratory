@@ -50,7 +50,7 @@
               fa_icon(:bug, text: t(:notify_problem_to_author)),
               subject: t(:problem_with_exercise, title: submission.exercise.title),
               class: 'text-warning warning pull-left' %>
-  <%= next_exercise_button(@exercise) %>
+  <%= next_button(@exercise) %>
 
   <%= next_guides_box(@guide, only_first: true) if @stats.try &:done? %>
 </div>
