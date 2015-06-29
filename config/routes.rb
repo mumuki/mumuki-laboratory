@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :exercises, only: [:index, :show]
-    resources :submissions, only: :index
+    resources :submissions, only: [:index, :create]
     resources :users, only: :index
   end
 

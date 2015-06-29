@@ -12,4 +12,15 @@ class Api::SubmissionsController < Api::BaseController
     }}
   end
 
+  def create
+    @submission = Submission.create!(submission_params)
+    @submission.run_tests!
+    render json: @submission
+  end
+
+  private
+
+  def submission_params
+    params.require(:submission).permit(:user_id, :exercise_id, :content)
+  end
 end
