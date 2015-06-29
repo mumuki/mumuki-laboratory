@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   get '/en/exercises', to: redirect('/exercises')
 
   namespace :api do
-    resources :exercises, only: :index
-    resources :submissions, only: :index
+    resources :exercises, only: [:index, :show]
+    resources :submissions, only: [:index, :create]
     resources :users, only: :index
   end
 
@@ -62,8 +62,5 @@ Rails.application.routes.draw do
     end
 
     resources :relationships, only: [:create, :destroy]
-
-    # Current user
-    resources :submissions, only: :index
   end
 end
