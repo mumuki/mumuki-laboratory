@@ -18,9 +18,8 @@ class Api::SubmissionsController < Api::BaseController
     render json: @submission
   end
 
-  private
-
   def submission_params
-    params.require(:submission).permit(:user_id, :exercise_id, :content)
+    JSON.parse(request.body.read).slice(:content, :exercise_id, :submitter_id)
   end
+
 end
