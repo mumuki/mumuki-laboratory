@@ -62,8 +62,5 @@ Rails.application.routes.draw do
     end
 
     resources :relationships, only: [:create, :destroy]
-
-    # Current user
-    resources :submissions, only: :index
   end
 end
