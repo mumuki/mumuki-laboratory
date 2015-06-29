@@ -33,7 +33,7 @@ describe 'api controller' do
     describe '#show' do
       let!(:exercise_1) { create(:exercise, title: 'exercise_1', id: 1) }
       before { get :show, {id: 1} }
-      it { expect(JSON.parse(response.body).slice(:id, :title, :description, :hint)).to eq exercise_1.as_json(only: [:id, :title, :description, :hint]) }
+      it { expect(JSON.parse(response.body).slice('id', 'title', 'description', 'hint')).to eq exercise_1.as_json(only: [:id, :title, :description, :hint]) }
     end
   end
 
@@ -42,11 +42,13 @@ describe 'api controller' do
     describe '#create' do
       context 'when it is a valid json' do
         let!(:exercise_1) { create(:exercise, title: 'exercise_1', id: 1) }
+        let!(:user) { create(:user, id: 1) }
 
         describe 'when not using filters' do
+          before { allow_any_instance_of(Language).to receive(:run_tests!).and_return(status: :passed) }
           before { post :create, '{"submitter_id":1, "exercise_id": 1, "content":"foo"}' }
 
-          it { expect(response.body).to eq '{"exercises":[{"id":1,"title":"exercise_1"},{"id":2,"title":"exercise_2"}]}' }
+          it { expect(JSON.parse(response.body).slice('status')).to eq('status' => 'passed') }
         end
       end
     end
