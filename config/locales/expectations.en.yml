@@ -1,5 +1,6 @@
 ---
 en:
+  expectation_HasArity: '%{binding} %{must} have %{target} parameters'
   expectation_HasBinding: '%{binding} %{must} be defined'
   expectation_HasComposition: '%{binding} %{must} use composition'
   expectation_HasComprehension: '%{binding} %{must} use list comprehensions'
@@ -13,7 +14,7 @@ en:
   expectation_HasRedundantIf: '%{binding} has redundant ifs'
   expectation_HasRedundantLambda: '%{binding} has redundant lambdas'
   expectation_HasRedundantParameter: '%{binding} has redundant parameters - you may avoid them using point-free'
-  expectation_HasRepeatOf: '%{binding} %{must} use a simple repetition of %{target}'  
+  expectation_HasRepeatOf: '%{binding} %{must} use a simple repetition of %{target}'
   expectation_HasTypeDeclaration: type %{binding} %{must} be defined
   expectation_HasTypeSignature: Signature for %{binding} %{must} be declared
   expectation_HasUsage: '%{binding} %{must} use %{target}'

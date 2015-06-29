@@ -1,5 +1,6 @@
 ---
 es:
+  expectation_HasArity: '%{binding} %{must} tener %{target} parámetros'
   expectation_HasBinding: '%{binding} %{must} estar definido'
   expectation_HasComposition: '%{binding} %{must} usar composición'
   expectation_HasComprehension: '%{binding} %{must} emplear listas por comprensión'
