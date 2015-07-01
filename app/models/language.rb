@@ -10,6 +10,10 @@ class Language < ActiveRecord::Base
 
   markup_on :test_syntax_hint
 
+  def self.find_by_name!(name)
+    self.where('lower(name) = ?', name.downcase).first
+  end
+
   def run_tests!(request)
     bridge.run_tests!(request)
   end
