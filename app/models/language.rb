@@ -1,23 +1,19 @@
 require 'mumukit/bridge'
 
 class Language < ActiveRecord::Base
-  include WithMarkup
+  include WithMarkup, WithCaseInsensitiveSearch
 
   enum output_content_type: [:plain, :html, :markdown]
 
-  validates_presence_of :name, :test_runner_url,
+  validates_presence_of :test_runner_url,
                         :extension, :image_url, :output_content_type
+
+  validates :name, presence: true, uniqueness: {case_sensitive: false}
 
   markup_on :test_syntax_hint
 
-  before_save :downcase_name!
-
   def run_tests!(request)
     bridge.run_tests!(request)
-  end
-
-  def downcase_name!
-    self.name = name.downcase
   end
 
   def bridge
