@@ -40,7 +40,7 @@ class Import < RepositoryOperation
   def read_meta!(dir)
     meta = read_yaml_file(File.join(dir, 'meta.yml'))
 
-    guide.language = Language.find_by_name! meta['language']
+    guide.language = Language.find_by_ignore_case! :name, meta['language']
     guide.locale = meta['locale']
     read_optional! meta, 'original_id_format'
     read_optional! meta, 'learning'

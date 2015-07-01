@@ -12,9 +12,7 @@ class Language < ActiveRecord::Base
 
   markup_on :test_syntax_hint
 
-  def self.find_by_name!(name)
-    self.where('lower(name) = ?', name.downcase).first
-  end
+  scope :find_by_ignore_case!, lambda { |attribute, value| where("lower(#{attribute}) = ?", value.downcase).first }
 
   def run_tests!(request)
     bridge.run_tests!(request)
