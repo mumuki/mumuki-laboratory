@@ -33,14 +33,6 @@ class Submission < ActiveRecord::Base
     expectation_results.any? { |it| it[:result] == :failed } rescue false #FIXME resolve inconsistencies in db
   end
 
-  def fine_status
-    if passed? && expectations_failed?
-      :passed_with_warnings
-    else
-      status
-    end
-  end
-
   def results_visible?
     exercise.visible_success_output || should_retry?
   end

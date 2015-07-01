@@ -4,9 +4,9 @@
 %>
 
 
-<div class="bs-callout bs-callout-<%= class_for_status submission.fine_status %>">
+<div class="bs-callout bs-callout-<%= class_for_status submission.status %>">
   <h4>
-	<strong><%= t(submission.fine_status) %> <%= fa_icon icon_type_for_status(submission.fine_status) %></strong>
+	<strong><%= t(submission.status) %> <%= fa_icon icon_type_for_status(submission.status) %></strong>
   </h4>
 
   <% if submission.results_visible? %>
