@@ -10,6 +10,7 @@ class Submission < ActiveRecord::Base
   validates_presence_of :exercise, :submitter
 
   serialize :expectation_results
+  serialize :test_results
 
   after_create :update_submissions_count!
   after_create :update_last_submission!
@@ -60,7 +61,7 @@ class Submission < ActiveRecord::Base
     language.output_to_html(feedback)
   end
 
-  def content_html
+  def content_html #FIXME remove
     ContentType::Markdown.to_html "```#{language.highlight_mode}\n#{content}\n```"
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150701030644) do
+ActiveRecord::Schema.define(version: 20150701212609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -195,6 +195,7 @@ ActiveRecord::Schema.define(version: 20150701030644) do
     t.integer  "submitter_id"
     t.text     "expectation_results"
     t.text     "feedback"
+    t.text     "test_results"
   end
 
   add_index "submissions", ["submitter_id"], name: "index_submissions_on_submitter_id", using: :btree
