@@ -1,7 +1,7 @@
 require 'mumukit/bridge'
 
 class Language < ActiveRecord::Base
-  include WithMarkup
+  include WithMarkup, WithCaseInsensitiveSearch
 
   enum output_content_type: [:plain, :html, :markdown]
 
@@ -11,8 +11,6 @@ class Language < ActiveRecord::Base
   validates :name, presence: true, uniqueness: {case_sensitive: false}
 
   markup_on :test_syntax_hint
-
-  scope :find_by_ignore_case!, lambda { |attribute, value| where("lower(#{attribute}) = ?", value.downcase).first }
 
   def run_tests!(request)
     bridge.run_tests!(request)
