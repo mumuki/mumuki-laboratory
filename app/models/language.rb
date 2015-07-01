@@ -10,14 +10,8 @@ class Language < ActiveRecord::Base
 
   markup_on :test_syntax_hint
 
-  before_save :downcase_name!
-
   def run_tests!(request)
     bridge.run_tests!(request)
-  end
-
-  def downcase_name!
-    self.name = name.downcase
   end
 
   def bridge
