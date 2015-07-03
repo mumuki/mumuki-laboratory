@@ -2,7 +2,7 @@ module WithStatus
   extend ActiveSupport::Concern
 
   included do
-    enum status: [:pending, :running, :passed, :failed]
+    enum status: [:pending, :running, :passed, :failed, :errored, :aborted, :passed_with_warnings]
     validates_presence_of :status
   end
 
@@ -11,7 +11,7 @@ module WithStatus
     begin
       update! yield
     rescue => e
-      update! result: e.message, status: :failed
+      update! result: e.message, status: :errored
       raise e
     end
   end
