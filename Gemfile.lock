@@ -1,9 +1,10 @@
 GIT
   remote: git://github.com/uqbar-project/mumukit-bridge.git
-  revision: 5a73b8aff6e4417663c938e5cdfb0017f9954571
-  tag: v0.1.0
+  revision: 3145ee21b4a64d0c525e811b857e9ea3e248554c
+  branch: master
   specs:
     mumukit-bridge (0.1.0)
+      activesupport
       rest-client
 
 GIT

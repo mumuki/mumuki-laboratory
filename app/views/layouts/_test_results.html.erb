@@ -1,0 +1,6 @@
+<% test_results.each do |test_result| %>
+  <%= status_icon(test_result[:status]) %>
+  <% if test_result[:status] == :failed %><strong class="test-result-title"><%= test_result[:title] %></strong>
+  <% else %><span class="test-result-title"><%= test_result[:title] %></span>
+  <% end %>
+<% end %>

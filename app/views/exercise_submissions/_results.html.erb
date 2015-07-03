@@ -16,8 +16,7 @@
           <strong><%= t :unmeet_expectations %>:</strong>
           <ul>
             <% submission.visible_expectation_results.each do |it| %>
-              <li><%= t_expectation_result it[:binding], it[:inspection] %>: <%= status_icon(it[:result]) %>
-              </li>
+              <li><%= status_icon(it[:result]) %> <%= t_expectation_result it[:binding], it[:inspection] %></li>
             <% end %>
           </ul>
         </div>
