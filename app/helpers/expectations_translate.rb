@@ -1,3 +1,5 @@
+#FIXME move to concerns
+
 class Mumukit::Inspection::NegatedInspection
   def must
     'must_not'

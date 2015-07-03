@@ -1,2 +1,2 @@
-module GuideExportsHelper
+module GuideExportsHelper #FIXME remove
 end

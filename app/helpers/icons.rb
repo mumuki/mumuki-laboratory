@@ -1,4 +1,5 @@
 module Icons
+  #FIXME move to concerns
   #FIXME refactor names
   def status_icon(with_status)
     fa_icon *icon_for_status( with_status.is_a?(Symbol) ? with_status : with_status.status)

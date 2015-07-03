@@ -1,5 +1,5 @@
 module GuidesHelper
-
+#FIXME extract to concern
   def stats(stats, k)
     "#{stats.send k} #{status_icon(k)} ".html_safe
   end
