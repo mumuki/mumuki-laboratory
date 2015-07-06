@@ -65,6 +65,10 @@ class Submission < ActiveRecord::Base
     (expectation_results||[]).select { |it| it[:result] == :failed }
   end
 
+  def failed?
+    %w(failed errored aborted).include? status
+  end
+
   private
 
   def update_submissions_count!
