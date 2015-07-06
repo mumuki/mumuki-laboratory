@@ -132,6 +132,7 @@ es:
   submissions_for: Soluciones para %{exercise}
   submissions_success_rate: Taza de éxito en soluciones
   tag: Etiquetas
+  test_results: Resultados de las pruebas
   title: Título
   unfollow: Dejar de seguir!
   unknown: no resuelto

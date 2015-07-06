@@ -34,6 +34,8 @@
         </div>
       <% end %>
       <div id="results-section" class="<%= 'collapse' if submission.feedback.present? %> results-item">
+        <strong><%= t :test_results %>:</strong>
+
         <%= render_test_results submission %>
       </div>
     </div>
