@@ -16,7 +16,7 @@ class Submission < ActiveRecord::Base
   after_create :update_last_submission!
 
   delegate :language, :title, to: :exercise
-  delegate :content_type, to: :language
+  delegate :output_content_type, to: :language
 
   scope :by_exercise_ids, -> (exercise_ids) {
     where(exercise_id: exercise_ids) if exercise_ids

@@ -26,7 +26,7 @@ describe TestResultsRendering do
 
         it { expect(html).to include "<i class=\"fa fa-times text-danger special-icon\"></i>" }
         it { expect(html).to include "<strong class=\"example-title\">2 is 2</strong>" }
-        it { expect(html).to include "<pre><code>something _went_ wrong</code></pre>" }
+        it { expect(html).to include "<pre>something _went_ wrong</pre>" }
       end
 
       context 'when markdown results' do
@@ -36,7 +36,7 @@ describe TestResultsRendering do
 
         it { expect(html).to include "<i class=\"fa fa-times text-danger special-icon\"></i>" }
         it { expect(html).to include "<strong class=\"example-title\">2 is 2</strong>" }
-        it { expect(html).to include "<pre><code>something <em>really</em> wrong</code></pre>" }
+        it { expect(html).to include "<p>something went <em>really</em> wrong</p>" }
       end
     end
   end

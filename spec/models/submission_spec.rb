@@ -46,7 +46,7 @@ describe Submission do
       before { submission.run_update! { runner_response } }
 
       it { expect(submission.status).to eq('passed_with_warnings') }
-      it { expect(submission.result).to eq('') }
+      it { expect(submission.result).to be_blank }
       it { expect(submission.test_results).to eq(runner_response[:test_results]) }
       it { expect(submission.expectation_results).to eq(runner_response[:expectation_results]) }
       it { expect(submission.feedback).to eq('foo') }
