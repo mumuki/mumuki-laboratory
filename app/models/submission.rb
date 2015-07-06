@@ -16,6 +16,7 @@ class Submission < ActiveRecord::Base
   after_create :update_last_submission!
 
   delegate :language, :title, to: :exercise
+  delegate :content_type, to: :language
 
   scope :by_exercise_ids, -> (exercise_ids) {
     where(exercise_id: exercise_ids) if exercise_ids
@@ -45,12 +46,12 @@ class Submission < ActiveRecord::Base
     exercise.submissions_for(submitter).last == self
   end
 
-  def result_html
-    language.output_to_html(result)
+  def result_html #TODO move rendering logic to helpers
+    output_content_type.to_html(result)
   end
 
   def feedback_html
-    language.output_to_html(feedback)
+    output_content_type.to_html(feedback)
   end
 
   def content_html #FIXME remove

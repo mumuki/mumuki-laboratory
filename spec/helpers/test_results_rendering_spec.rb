@@ -9,7 +9,10 @@ describe TestResultsRendering do
 
   context 'structured results' do
     context 'when single passed submission' do
-      let(:submission) { OpenStruct.new(test_results: [{title: '2 is 2', status: :passed, result: ''}]) }
+      let(:submission) { OpenStruct.new(
+        test_results: [{title: '2 is 2', status: :passed, result: ''}],
+        output_content_type: ContentType::Plain) }
+
       it { expect(html).to be_html_safe }
       it { expect(html).to include "<i class=\"fa fa-check text-success special-icon\"></i>" }
       it { expect(html).to include "<span class=\"example-title\">2 is 2</span>" }
@@ -17,14 +20,20 @@ describe TestResultsRendering do
 
     context 'when single failed submission' do
       context 'when plain results' do
-        let(:submission) { OpenStruct.new(test_results: [{title: '2 is 2', status: :failed, result: 'something _went_ wrong'}]) }
+        let(:submission) { OpenStruct.new(
+          test_results: [{title: '2 is 2', status: :failed, result: 'something _went_ wrong'}],
+          output_content_type: ContentType::Plain) }
+
         it { expect(html).to include "<i class=\"fa fa-times text-danger special-icon\"></i>" }
         it { expect(html).to include "<strong class=\"example-title\">2 is 2</strong>" }
         it { expect(html).to include "<pre><code>something _went_ wrong</code></pre>" }
       end
 
       context 'when markdown results' do
-        let(:submission) { OpenStruct.new(test_results: [{title: '2 is 2', status: :failed, result: 'something went _really_ wrong'}]) }
+        let(:submission) { OpenStruct.new(
+          test_results: [{title: '2 is 2', status: :failed, result: 'something went _really_ wrong'}],
+          output_content_type: ContentType::Markdown) }
+
         it { expect(html).to include "<i class=\"fa fa-times text-danger special-icon\"></i>" }
         it { expect(html).to include "<strong class=\"example-title\">2 is 2</strong>" }
         it { expect(html).to include "<pre><code>something <em>really</em> wrong</code></pre>" }

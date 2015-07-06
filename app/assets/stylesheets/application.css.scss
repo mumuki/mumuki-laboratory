@@ -151,5 +151,9 @@ a.text-danger:hover {
 
 ul.results-list {
   list-style-type: none;
-  padding-left: 15px;
+  padding-left: 10px;
+}
+
+.results-list pre {
+  margin-left: 15px;
 }
