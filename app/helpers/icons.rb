@@ -25,6 +25,8 @@ module Icons
       passed:               {class: :success, type: :check},
       passed_with_warnings: {class: :warning, type: :exclamation},
       failed:               {class: :danger,  type: :times},
+      aborted:              {class: :danger,  type: :times},
+      errored:              {class: :danger,  type: :times},
       running:              {class: :info,    type: :circle},
       pending:              {class: :info,    type: 'clock-o'},
       unknown:              {class: :muted,   type: :circle},
