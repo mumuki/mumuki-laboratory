@@ -1,11 +1,16 @@
 <ul class="results-list">
-  <% test_results.each do |test_result| %>
+  <% test_results.each_with_index do |test_result, index| %>
     <li>
       <%= status_icon(test_result[:status]) %>
       <% if test_result[:status] == :failed %>
-        <strong class="example-title"><%= test_result[:title] %></strong>
-        <div class="example-result"><%= output_content_type.to_html test_result[:result] %></div>
-      <% else %><span class="example-title"><%= test_result[:title] %></span>
+
+        <a data-toggle="collapse" href="#example-result-<%= index %>" class="text-danger">
+          <strong class="example-title"><%= test_result[:title] %></strong>
+        </a>
+
+        <div class="example-result collapse" id="example-result-<%= index %>"><%= output_content_type.to_html test_result[:result] %></div>
+      <% else %>
+        <span class="example-title text-success"><%= test_result[:title] %></span>
       <% end %>
     </li>
   <% end %>
