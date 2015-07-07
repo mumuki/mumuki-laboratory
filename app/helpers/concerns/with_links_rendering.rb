@@ -3,10 +3,6 @@ module WithLinksRendering
     link_to exercise.title, exercise
   end
 
-  def link_to_language(language)
-    link_to language.name, language
-  end
-
   def link_to_guide(guide, options={})
     link_to (raw guide.name), guide, options
   end
