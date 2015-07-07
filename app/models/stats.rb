@@ -1,18 +1,22 @@
 class Stats
   include ActiveModel::Model
 
-  attr_accessor :passed, :failed, :unknown
+  attr_accessor :passed, :passed_with_warnings, :failed, :unknown
 
   def total
-    passed + failed + unknown
+    submitted + unknown
   end
 
   def submitted
-    passed + failed
+    failed + resolved
   end
 
   def pending
     failed + unknown
+  end
+
+  def resolved
+    passed + passed_with_warnings
   end
 
   def done?
@@ -20,11 +24,11 @@ class Stats
   end
 
   def good_progress?
-    passed * 1.3 > failed
+    resolved * 1.3 > failed
   end
 
   def stuck?
-    failed * 1.3 > passed
+    failed * 1.3 > resolved
   end
 
   def started?
@@ -32,7 +36,7 @@ class Stats
   end
 
   def passed_ratio
-    100 * passed / total
+    100 * resolved / total
   end
 
   def failed_ratio
@@ -41,12 +45,13 @@ class Stats
 
   def to_h(&key)
     {key.call(:passed) => passed,
+     key.call(:passed_with_warnings) => passed_with_warnings,
      key.call(:failed) => failed,
      key.call(:unknown) => unknown}
   end
 
   def self.from_statuses(statuses)
-    Stats.new(statuses.inject({passed: 0, failed: 0, unknown: 0}) do |accum, status|
+    Stats.new(statuses.inject({passed: 0, passed_with_warnings: 0, failed: 0, unknown: 0}) do |accum, status|
       accum[status] += 1
       accum
     end)

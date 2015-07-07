@@ -1,4 +1,4 @@
-module Flags
+module Flags #FIXME remove
   def flag(locale, options={})
     name = case locale.to_s
       when 'en' then 'us'

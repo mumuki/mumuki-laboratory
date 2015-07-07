@@ -1,4 +1,6 @@
 module Nav
+  #FIXME move to concerns
+
   def next_button(navigable)
     sibling_button(navigable.next_for(current_user), :next_exercise, 'chevron-right', 'btn btn-success', true)
   end

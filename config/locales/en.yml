@@ -1,6 +1,7 @@
 ---
 en:
   about_this_guide: About this guide
+  aborted: Oops, we couldn't evaluate your solution
   actions: Actions
   activity: Activity
   add_expectation: Add Expectation
@@ -26,6 +27,7 @@ en:
   destroy: Destroy
   edit: Edit
   edit_exercise: Edit %{exercise}
+  errored: Oops, your solution didn't work
   exercise: Exercise
   exercise_count: exercises
   exercise_done: All our tests passed!

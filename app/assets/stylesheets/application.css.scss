@@ -5,7 +5,7 @@
 @import "application/layout";
 @import "application/modules";
 
- 
+
 .lang-selector {
     padding-top: 25px;
 }
@@ -145,6 +145,15 @@ a.text-danger:hover {
   padding-bottom: 6px;
 }
 
-.results-output {
-  margin-top: 5px;
+.results-item {
+  margin-top: 10px;
+}
+
+ul.results-list {
+  list-style-type: none;
+  padding-left: 10px;
+}
+
+.results-list pre {
+  margin-left: 15px;
 }

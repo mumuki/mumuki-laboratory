@@ -28,11 +28,11 @@ class Language < ActiveRecord::Base
     self[:highlight_mode] || name
   end
 
-  def to_s
-    name
+  def output_content_type
+    ContentType.for(self.class.output_content_types.key(self[:output_content_type]))
   end
 
-  def output_to_html(content)
-    ContentType.for(output_content_type).to_html(content)
+  def to_s
+    name
   end
 end

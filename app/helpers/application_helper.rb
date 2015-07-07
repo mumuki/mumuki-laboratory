@@ -1,4 +1,5 @@
 module ApplicationHelper
+  #FIXME only include what is needed
   include LinksRendering
   include Icons
   include Flags

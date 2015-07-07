@@ -8,11 +8,17 @@ module ContentType
     def self.to_html(content)
       content.html_safe if content
     end
+    def self.name
+      'html'
+    end
   end
 
   module Plain
     def self.to_html(content)
       "<pre>#{ERB::Util.html_escape content}</pre>".html_safe
+    end
+    def self.name
+      'plain'
     end
   end
 
@@ -29,6 +35,10 @@ module ContentType
 
     def self.to_html(content)
       @@markdown.render(content).html_safe if content
+    end
+
+    def self.name
+      'markdown'
     end
   end
 end

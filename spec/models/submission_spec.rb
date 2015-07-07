@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Submission do
 
   describe '#results_visible?' do
-    let(:gobstones) { create(:language, visible_success_output: true)  }
+    let(:gobstones) { create(:language, visible_success_output: true) }
     let(:gobstones_exercise) { create(:exercise, language: gobstones) }
 
     let(:failed_submission) { create(:submission, status: :failed) }
@@ -16,24 +16,49 @@ describe Submission do
   end
   describe '#run_update!' do
     let(:submission) { create(:submission) }
-    context 'when run passes' do
+    context 'when run passes unstructured' do
       before { submission.run_update! { {result: 'ok', status: :passed} } }
       it { expect(submission.status).to eq('passed') }
       it { expect(submission.result).to eq('ok') }
     end
-    context 'when run fails' do
+
+    context 'when run fails unstructured' do
       before { submission.run_update! { {result: 'ups', status: :failed} } }
       it { expect(submission.status).to eq('failed') }
       it { expect(submission.result).to eq('ups') }
     end
-    context 'when run aborts' do
+
+    context 'when run aborts unstructured' do
+      before { submission.run_update! { {result: 'took more thn 4 seconds', status: :aborted} } }
+      it { expect(submission.status).to eq('aborted') }
+      it { expect(submission.result).to eq('took more thn 4 seconds') }
+    end
+
+    context 'when run passes with warnings unstructured' do
+      let(:runner_response) do
+        {status: :passed_with_warnings,
+         test_results: [{title: 'true is true', status: :passed, result: ''},
+                        {title: 'false is false', status: :passed, result: ''}],
+         expectation_results: [{binding: 'bar', inspection: 'HasBinding', result: :passed},
+                               {binding: 'foo', inspection: 'HasBinding', result: :failed}],
+         feedback: 'foo'}
+      end
+      before { submission.run_update! { runner_response } }
+
+      it { expect(submission.status).to eq('passed_with_warnings') }
+      it { expect(submission.result).to be_blank }
+      it { expect(submission.test_results).to eq(runner_response[:test_results]) }
+      it { expect(submission.expectation_results).to eq(runner_response[:expectation_results]) }
+      it { expect(submission.feedback).to eq('foo') }
+    end
+    context 'when run raises exception' do
       before do
         begin
           submission.run_update! { raise 'ouch' }
         rescue
         end
       end
-      it { expect(submission.status).to eq('failed') }
+      it { expect(submission.status).to eq('errored') }
       it { expect(submission.result).to eq('ouch') }
     end
   end
@@ -59,7 +84,7 @@ describe Submission do
     context 'when there is only one submission' do
       let(:submission) { exercise.submissions.create!(submitter: user) }
 
-      it { expect(submission.eligible_for_run?).to be true  }
+      it { expect(submission.eligible_for_run?).to be true }
     end
 
     context 'when there are many submissions' do
@@ -68,8 +93,8 @@ describe Submission do
       let!(:submission_for_other_user) { exercise.submissions.create!(submitter: other_user) }
 
       it { expect(submission.eligible_for_run?).to be false }
-      it { expect(other_submission.eligible_for_run?).to be true  }
-      it { expect(submission_for_other_user.eligible_for_run?).to be true  }
+      it { expect(other_submission.eligible_for_run?).to be true }
+      it { expect(submission_for_other_user.eligible_for_run?).to be true }
     end
 
 

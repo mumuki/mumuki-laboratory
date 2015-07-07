@@ -61,7 +61,7 @@ gem 'yaml_db'
 gem 'groupdate'
 
 gem 'mumukit-inspection', :github => 'uqbar-project/mumukit-inspection', :branch => 'master'
-gem 'mumukit-bridge',     :github => 'uqbar-project/mumukit-bridge', :tag => 'v0.1.0'
+gem 'mumukit-bridge',     :github => 'uqbar-project/mumukit-bridge', :tag => 'v0.2.0'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'

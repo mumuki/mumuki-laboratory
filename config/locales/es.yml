@@ -1,6 +1,7 @@
 ---
 es:
   about_this_guide: Sobre esta guía
+  aborted: Ups, no pudimos evaluar tu solución
   actions: Acciones
   activity: Actividad
   add_expectation: Agregar Objetivo
@@ -27,6 +28,7 @@ es:
   details: Detalles
   edit: Editar
   edit_exercise: Editar %{exercise}
+  errored: Ups, tu solución no funcionó
   exercise: Ejercicio
   exercise_count: ejercicios
   exercise_done: ¡Tu solución pasó todas nuestras pruebas!
@@ -130,6 +132,7 @@ es:
   submissions_for: Soluciones para %{exercise}
   submissions_success_rate: Taza de éxito en soluciones
   tag: Etiquetas
+  test_results: Resultados de las pruebas
   title: Título
   unfollow: Dejar de seguir!
   unknown: no resuelto

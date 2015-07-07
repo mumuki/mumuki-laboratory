@@ -25,6 +25,7 @@ module Mumuki
     config.generators.test_framework = :rspec
 
     config.autoload_paths += %W(#{config.root}/plugins)
+    config.autoload_paths += %W(#{config.root}/app/helpers/concerns)
 
     config.action_dispatch.rescue_responses.merge!(
         'AuthorizationError' => :unauthorized

@@ -1,4 +1,6 @@
 module LinksRendering
+  #FIXME move to concerns
+
   def link_to_exercise(exercise)
     link_to exercise.title, exercise
   end

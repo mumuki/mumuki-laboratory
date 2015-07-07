@@ -30,6 +30,9 @@ module WithSubmissions
     case s
       when 'passed' then :passed
       when 'failed' then :failed
+      when 'aborted' then :failed
+      when 'errored' then :failed
+      when 'passed_with_warnings' then :passed_with_warnings
       else :unknown
     end
   end

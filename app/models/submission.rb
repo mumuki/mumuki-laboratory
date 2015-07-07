@@ -10,11 +10,13 @@ class Submission < ActiveRecord::Base
   validates_presence_of :exercise, :submitter
 
   serialize :expectation_results
+  serialize :test_results
 
   after_create :update_submissions_count!
   after_create :update_last_submission!
 
   delegate :language, :title, to: :exercise
+  delegate :output_content_type, to: :language
 
   scope :by_exercise_ids, -> (exercise_ids) {
     where(exercise_id: exercise_ids) if exercise_ids
@@ -32,14 +34,6 @@ class Submission < ActiveRecord::Base
     expectation_results.any? { |it| it[:result] == :failed } rescue false #FIXME resolve inconsistencies in db
   end
 
-  def fine_status
-    if passed? && expectations_failed?
-      :passed_with_warnings
-    else
-      status
-    end
-  end
-
   def results_visible?
     exercise.visible_success_output || should_retry?
   end
@@ -52,15 +46,15 @@ class Submission < ActiveRecord::Base
     exercise.submissions_for(submitter).last == self
   end
 
-  def result_html
-    language.output_to_html(result)
+  def result_html #TODO move rendering logic to helpers
+    output_content_type.to_html(result)
   end
 
   def feedback_html
-    language.output_to_html(feedback)
+    output_content_type.to_html(feedback)
   end
 
-  def content_html
+  def content_html #FIXME remove
     ContentType::Markdown.to_html "```#{language.highlight_mode}\n#{content}\n```"
   end
 
@@ -70,6 +64,10 @@ class Submission < ActiveRecord::Base
 
   def visible_expectation_results
     (expectation_results||[]).select { |it| it[:result] == :failed }
+  end
+
+  def failed?
+    %w(failed errored aborted).include? status
   end
 
   private
