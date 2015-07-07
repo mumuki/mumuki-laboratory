@@ -1,5 +1,3 @@
-#FIXME move to concerns
-
 class Mumukit::Inspection::NegatedInspection
   def must
     'must_not'
@@ -12,7 +10,7 @@ class Mumukit::Inspection::PositiveInspection
   end
 end
 
-module ExpectationsTranslate
+module WithExpectationsTranslate
 
   def t_expectation_result(binding, inspection)
     inspection = Mumukit::Inspection.parse inspection

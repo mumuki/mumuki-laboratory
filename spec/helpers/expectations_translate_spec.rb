@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe ExpectationsTranslate do
-  helper ExpectationsTranslate
+describe WithExpectationsTranslate do
+  helper WithExpectationsTranslate
 
   context 'en locale' do
     before { I18n.locale = :en }

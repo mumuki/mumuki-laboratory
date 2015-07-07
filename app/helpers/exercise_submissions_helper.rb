@@ -1,4 +1,4 @@
 module ExerciseSubmissionsHelper
-  include ExpectationsTranslate
-  include TestResultsRendering
+  include WithExpectationsTranslate
+  include WithTestResultsRendering
 end

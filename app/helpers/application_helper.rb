@@ -1,9 +1,8 @@
 module ApplicationHelper
   #FIXME only include what is needed
-  include LinksRendering
-  include Icons
-  include Flags
-  include Nav
+  include WithLinksRendering
+  include WithIcons
+  include WithNavigation
 
   def limit(items, preserve_order = false)
     limited = items.last(5)
