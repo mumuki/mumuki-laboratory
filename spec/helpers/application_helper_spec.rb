@@ -6,12 +6,6 @@ describe ApplicationHelper do
 
   before { I18n.locale = :en }
 
-  describe '#limit' do
-    it { expect(limit([1, 2, 3, 4, 5, 6])).to eq [6, 5, 4, 3, 2] }
-    it { expect(limit([1, 2, 3, 4, 5, 6], true)).to eq [2, 3, 4, 5, 6] }
-    it { expect(limit([1, 2, 3], true)).to eq [1, 2, 3] }
-  end
-
   describe '#language_icon' do
     let(:haskell) { create(:language, name: 'Haskell', image_url: 'https://foo/foo.png') }
     let(:haskell_img_tag) { '<img alt="Haskell" class="special-icon" height="16" src="https://foo/foo.png" />' }

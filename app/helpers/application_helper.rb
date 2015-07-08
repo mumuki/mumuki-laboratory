@@ -4,12 +4,6 @@ module ApplicationHelper
   include WithIcons
   include WithNavigation
 
-  def limit(items, preserve_order = false)
-    limited = items.last(5)
-    limited = limited.reverse unless preserve_order
-    limited
-  end
-
   def paginate(object, options={})
     "<div class=\"text-center\">#{super(object, {theme: 'twitter-bootstrap-3'}.merge(options))}</div>".html_safe
   end
