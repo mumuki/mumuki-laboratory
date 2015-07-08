@@ -48,7 +48,7 @@
 
       </div>
       <div class="col-md-7">
-        <%= pie_chart @stats.to_h { |it| t(it) }, colors: %w(green yellow red grey) %> <%# FIXME use standard colors %>
+        <%= stats_chart @stats %>
       </div>
     </div>
 
