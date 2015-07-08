@@ -18,19 +18,19 @@ describe Submission do
     let(:submission) { create(:submission) }
     context 'when run passes unstructured' do
       before { submission.run_update! { {result: 'ok', status: :passed} } }
-      it { expect(submission.status).to eq('passed') }
+      it { expect(submission.status).to eq(Status::Passed) }
       it { expect(submission.result).to eq('ok') }
     end
 
     context 'when run fails unstructured' do
       before { submission.run_update! { {result: 'ups', status: :failed} } }
-      it { expect(submission.status).to eq('failed') }
+      it { expect(submission.status).to eq(Status::Failed) }
       it { expect(submission.result).to eq('ups') }
     end
 
     context 'when run aborts unstructured' do
       before { submission.run_update! { {result: 'took more thn 4 seconds', status: :aborted} } }
-      it { expect(submission.status).to eq('aborted') }
+      it { expect(submission.status).to eq(Status::Aborted) }
       it { expect(submission.result).to eq('took more thn 4 seconds') }
     end
 
@@ -45,7 +45,7 @@ describe Submission do
       end
       before { submission.run_update! { runner_response } }
 
-      it { expect(submission.status).to eq('passed_with_warnings') }
+      it { expect(submission.status).to eq(Status::PassedWithWarnings) }
       it { expect(submission.result).to be_blank }
       it { expect(submission.test_results).to eq(runner_response[:test_results]) }
       it { expect(submission.expectation_results).to eq(runner_response[:expectation_results]) }
@@ -58,7 +58,7 @@ describe Submission do
         rescue
         end
       end
-      it { expect(submission.status).to eq('errored') }
+      it { expect(submission.status).to eq(Status::Errored) }
       it { expect(submission.result).to eq('ouch') }
     end
   end

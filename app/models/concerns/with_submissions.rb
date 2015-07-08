@@ -26,15 +26,7 @@ module WithSubmissions
   end
 
   def status_for(user)
-    s = last_submission(user).try(&:status)
-    case s
-      when 'passed' then :passed
-      when 'failed' then :failed
-      when 'aborted' then :failed
-      when 'errored' then :failed
-      when 'passed_with_warnings' then :passed_with_warnings
-      else :unknown
-    end
+    last_submission(user).try { |it| it.status.group } || Status::Unknown
   end
 
   def last_submission_date_for(user)

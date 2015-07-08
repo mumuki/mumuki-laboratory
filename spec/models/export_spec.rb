@@ -17,7 +17,7 @@ describe Export do
 
 
   describe '#status' do
-    it { expect(export.status).to eq 'pending' }
+    it { expect(export.status).to eq Status::Pending }
   end
 
   describe 'write methods' do

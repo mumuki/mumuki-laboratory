@@ -52,7 +52,7 @@ class Stats
 
   def self.from_statuses(statuses)
     Stats.new(statuses.inject({passed: 0, passed_with_warnings: 0, failed: 0, unknown: 0}) do |accum, status|
-      accum[status] += 1
+      accum[status.to_sym] += 1
       accum
     end)
   end

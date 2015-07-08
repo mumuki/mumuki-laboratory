@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
            source: :exercise
 
   has_many :solved_exercises,
-           -> { where('submissions.status' => Submission.passed_status).uniq },
+           -> { where('submissions.status' => Status::Passed.to_i).uniq },
            through: :submissions,
            class_name: 'Exercise',
            source: :exercise
@@ -42,15 +42,15 @@ class User < ActiveRecord::Base
   end
 
   def passed_submissions_count
-    submissions.where(status: Submission.passed_status).count
+    submissions.where(status: Status::Passed.to_i).count
   end
 
   def passed_submissions_count_per_week
-    submissions.where(status: Submission.passed_status).group_by_week(:created_at).count
+    submissions.where(status: Status::Passed.to_i).group_by_week(:created_at).count
   end
 
   def failed_submissions_count_per_week
-    submissions.where(status: Submission.failed_status).group_by_week(:created_at).count
+    submissions.where(status: Status::Failed.to_i).group_by_week(:created_at).count
   end
 
   def submitted_exercises_count
