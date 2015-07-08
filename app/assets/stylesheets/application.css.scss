@@ -4,6 +4,8 @@
 @import "application/colors";
 @import "application/layout";
 @import "application/modules";
+@import "application/fonts";
+
 
 
 .lang-selector {
@@ -20,7 +22,6 @@
 
 .white-font {
   color:white;
-  text-shadow: 2px 2px 5px #222222;
 }
 
 
@@ -43,7 +44,7 @@
 
 .ha-bg-parallax {
 
-    background: image-url('team_picture.jpg') 50% 0px no-repeat fixed;
+    background: image-url('team_picture_shadow.jpg') 50% 0px no-repeat fixed;
 
     -moz-background-size: cover;
 
@@ -123,6 +124,14 @@ body.modal-open #wrap{
   margin-top: 15px;
 }
 
+.mumuki-description .row {
+  margin: 10px 45px 65px 45px;
+}
+
+.mumuki-description .fa {
+  font-size: 80px;
+  margin-top: 50px;
+}
 a.text-info:hover {
   color: #3498db;
 }
@@ -133,6 +142,20 @@ a.text-warning:hover {
 
 a.text-danger:hover {
   color: #d62c1a;
+}
+
+.call-to-action {
+  font-size: 20px;
+}
+
+.btn.call-to-action {
+  background-color: #DA5823;
+  border-color: #D7521C;
+}
+
+.btn.call-to-action:hover {
+  background-color: #BD410F;
+  border-color: #943A15;
 }
 
 .submission-results .panel-heading h4 {

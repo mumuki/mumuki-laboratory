@@ -70,14 +70,14 @@ es:
   listing_exercises: Listado de ejercicios
   more: mas...
   more_guides: más guías
-  mumuki_catchphrase: Programá mejor
+  mumuki_catchphrase: Aprendé a programar
   mumuki_is_collaborative: Mumuki es colaborativo
   mumuki_is_collaborative_description: 'Los ejercicios en Mumuki no son provisto por expertos, sino por la comunidad. No hay diferencia entre un maestro y un estudiante en Mumuki: todos pueden crear ejercicios. Nos encantaría que vos compartas los tuyos.'
   mumuki_is_open: Mumuki es abierto
   mumuki_is_open_description: Mumuki es software de código abierto, lo que significa que vos también podés ayudar a mejorarlo. Y por si fuera poco, Mumuki es fácil de extender, y queremos soportar más lenguajes de programación. ¡Vos podés ayudarnos!
   mumuki_is_simple: Mumuki es simple
   mumuki_is_simple_description: 'Mumuki es una plataforma simple, que te permite concentrarte en lo que te interesa: mejorar tus habilidades de programación resolviendo problemas. No vamos a imponerte calendarios o exámenes: vos practicás cuando querés y podés.'
-  mumuki_short_description: Mumuki es una plataforma simple, abierta y colaborativa para compartir y resolver ejercicios de programación. Mumuki existe para ayudar a las personas a aprender y enseñar lenguajes y paradigmas de programación
+  mumuki_short_description: Mumuki es la plataforma libre y gratuita para aprender a programar, de la práctica a la teoría y en tu idioma
   my_exercises: Mis Ejercicios
   my_guides: Mis Guías
   my_submissions: Mis Soluciones
@@ -147,3 +147,17 @@ es:
   about: "Detalles"
   sending_solution: "Enviando solución"
   unmeet_expectations: "Objetivos que no se cumplieron"
+
+  pillars:
+    practice_to_theory: "De la práctica a la teoría"
+    practice_to_theory_description: "Al igual que si quisieras aprender a tocar un instrumento, jugar al ajedrez o triunfar en un deporte, para aprender a programar es fundamental     ejercitar. Pero además necesitás incorporar conceptos teóricos que hacen a los profesionales. En Mumuki iremos de la práctica a la teoría: cada ejercicio tiene una idea detrás que descubriremos juntos"
+    transcendent_content: "Todo cambia, pero no tanto"
+    transcendent_content_description: "Las tecnologías de la programación cambian todos los días, y mantenerse a flote puede ser muy estresante... ¡a menos que domines los conceptos fundamentales!     En Mumuki no pretenderemos enseñarte las herramientas que surgen todos los días, sino los conceptos de programación trascendentales que desde hace 30 años no cambian y te permitirán      dominar fácilmente cualquier nueva tecnología"
+    localized: "En tu idioma"
+    localized_description: "Es difícil encontrar material sobre programación, de calidad y en Español, tanto dentro como fuera de la Web.       Nuestra misión es llevar la programación a todos, lo cual no puede lograrse si el contenido no está en tu idioma. Por eso en Mumuki encontrarás todo el contenido en Español"
+    freedom: "Porque la libertad es un derecho"
+    freedom_description: "Para que la educación llegue a todos y sea realmente democrática, no basta con que los cursos sean gratuitos: deben ser libres. Por eso, todo Mumuki, tanto        su contenido como su software es de código abierto y libre, distribuido bajo licencias GPL y MIT"
+    extensibility: "Una platafotma extensible"
+    extensibility_description: "La plataforma mumuki es muy fácil de extender.      Si te gustaría que tu lenguaje favorito esté aquí, vos mismo podés hacerlo. Contamos con todas las herramientas y documentación que necesitás"
+    classroom: "Dentro y fuera del aula"
+    classroom_description: "Ya sea que sea un autodidacta que está buscando aprender a programar en Internet, o un alumno de un curso de programación presencial, Mumuki te será útil"
