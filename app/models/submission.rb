@@ -54,10 +54,6 @@ class Submission < ActiveRecord::Base
     output_content_type.to_html(feedback)
   end
 
-  def content_html #FIXME remove
-    ContentType::Markdown.to_html "```#{language.highlight_mode}\n#{content}\n```"
-  end
-
   def expectation_results_visible?
     visible_expectation_results.present?
   end
