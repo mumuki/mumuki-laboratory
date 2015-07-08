@@ -1,114 +1,17 @@
 module Status
-  module Base
-    def to_s
-      name.demodulize.underscore
-    end
+end
 
-    def to_i
-      Status::STATUSES.index(self)
-    end
+require_relative 'status/base'
+require_relative 'status/aborted'
+require_relative 'status/errored'
+require_relative 'status/failed'
+require_relative 'status/passed'
+require_relative 'status/passed_with_warnings'
+require_relative 'status/pending'
+require_relative 'status/running'
+require_relative 'status/unknown'
 
-    def to_sym
-      to_s.to_sym
-    end
-
-    def group
-      self
-    end
-
-    def passed?
-      false
-    end
-
-    def self.iconize
-      group.iconize
-    end
-  end
-
-  module Unknown
-    extend Base
-
-    def to_i
-      raise 'unknown status'
-    end
-
-    def self.iconize
-      {class: :muted, type: :circle}
-    end
-  end
-
-  module Pending
-    extend Base
-
-    def self.group
-      Unknown
-    end
-
-    def self.iconize
-      {class: :info, type: 'clock-o'}
-    end
-  end
-
-  module Running
-    extend Base
-
-    def self.group
-      Unknown
-    end
-
-    def self.iconize
-      {class: :info, type: :circle}
-    end
-  end
-
-  module Passed
-    extend Base
-
-    def passed?
-      true
-    end
-
-    def self.iconize
-      {class: :success, type: :check}
-    end
-  end
-
-  module PassedWithWarnings
-    extend Base
-
-    def passed?
-      true
-    end
-
-    def self.iconize
-      {class: :warning, type: :exclamation}
-    end
-  end
-
-  module Failed
-    extend Base
-
-    def self.iconize
-      {class: :danger, type: :times}
-    end
-  end
-
-  module Errored
-    extend Base
-
-    def self.group
-      Failed
-    end
-  end
-
-  module Aborted
-    extend Base
-
-    def self.group
-      Failed
-    end
-  end
-
+module Status
   STATUSES = [Pending, Running, Passed, Failed, Errored, Aborted, PassedWithWarnings]
 
   def self.load(i)
