@@ -15,13 +15,17 @@
             <%= it.description_html %>
           </p>
 
-          <p>
-            <strong><%= t :category_languages_availability %> </strong>
-          </p>
-          <% it.paths.each do |path| %>
-            <a href="<%= guide_path(path.first_guide) %>" class="btn btn-success">
-              <%= image_tag path.language.image_url, height: 32 %> <%= path.language.name %>
-            </a>
+          <% if it.single_path? %>
+            <%= link_to t(:start_practicing), it.single_path.first_guide, class: 'btn btn-success'%>
+          <% else %>
+            <p>
+              <strong><%= t :category_languages_availability %> </strong>
+            </p>
+            <% it.paths.each do |path| %>
+              <a href="<%= guide_path(path.first_guide) %>" class="btn btn-success">
+                <%= image_tag path.language.image_url, height: 32 %> <%= path.language.name %>
+              </a>
+            <% end %>
           <% end %>
         </div>
       </div>
