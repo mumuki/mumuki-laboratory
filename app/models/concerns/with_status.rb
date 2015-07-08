@@ -20,4 +20,12 @@ module WithStatus
     end
   end
 
+  def self.fetch_status(status_like)
+    if status_like.is_a? Symbol
+      Status.from_sym(status_like)
+    else
+      status_like.status
+    end
+  end
+
 end

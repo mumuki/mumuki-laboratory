@@ -1,7 +1,7 @@
 module WithIcons
   #FIXME refactor names
-  def status_icon(with_status)
-    fa_icon *icon_for_status(with_status.is_a?(Symbol) ? Status.from_sym(with_status) : with_status.status)
+  def status_icon(status_like)
+    fa_icon *icon_for_status(WithStatus.fetch_status(status_like))
   end
 
   def exercise_status_icon(exercise)
@@ -19,7 +19,6 @@ module WithIcons
   def exercise_status_fa_icon(exercise)
     fa_icon(*icon_for_status(exercise.status_for(current_user)))
   end
-
 
   def class_for_status(s)
     s.iconize[:class].to_s
