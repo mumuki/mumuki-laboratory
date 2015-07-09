@@ -26,7 +26,7 @@ module WithSubmissions
   end
 
   def status_for(user)
-    last_submission(user).try { |it| it.status.group } || Status::Unknown
+    last_submission(user).try(&:status) || Status::Unknown
   end
 
   def last_submission_date_for(user)
