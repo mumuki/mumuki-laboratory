@@ -1,6 +1,6 @@
 ActiveAdmin.register Category do
 
-  permit_params :name, :description, :locale, :image_url
+  permit_params :name, :position, :description, :locale, :image_url
 
   filter :name
   filter :description
@@ -11,6 +11,7 @@ ActiveAdmin.register Category do
   index do
     column(:id)
     column(:name)
+    column(:position)
     column(:description)
     column(:locale)
     column(:image_url)
