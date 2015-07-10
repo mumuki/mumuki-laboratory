@@ -42,11 +42,11 @@ class User < ActiveRecord::Base
   end
 
   def passed_submissions_count
-    submissions.where(status: Status::Passed.to_i).count
+    passed_submissions.count
   end
 
   def passed_submissions_count_per_week
-    submissions.where(status: Status::Passed.to_i).group_by_week(:created_at).count
+    passed_submissions.group_by_week(:created_at).count
   end
 
   def failed_submissions_count_per_week
@@ -67,6 +67,10 @@ class User < ActiveRecord::Base
 
   def exercises_success_rate
     "#{solved_exercises_count}/#{submitted_exercises_count}"
+  end
+
+  def passed_submissions
+    submissions.where(status: Status::Passed.to_i)
   end
 
 end
