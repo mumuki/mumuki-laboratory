@@ -19,7 +19,7 @@ module Status::Base
     false
   end
 
-  def self.iconize
+  def iconize
     group.iconize
   end
 end
