@@ -1,17 +1,4 @@
 module Status
-end
-
-require_relative 'status/base'
-require_relative 'status/aborted'
-require_relative 'status/errored'
-require_relative 'status/failed'
-require_relative 'status/passed'
-require_relative 'status/passed_with_warnings'
-require_relative 'status/pending'
-require_relative 'status/running'
-require_relative 'status/unknown'
-
-module Status
   STATUSES = [Pending, Running, Passed, Failed, Errored, Aborted, PassedWithWarnings]
 
   def self.load(i)
