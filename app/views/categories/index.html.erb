@@ -14,9 +14,12 @@
           <p>
             <%= it.description_html %>
           </p>
-
           <% if it.single_path? %>
-            <%= link_to t(:start_practicing), it.single_path.first_guide, class: 'btn btn-success'%>
+            <a href="<%= guide_path(it.single_path.first_guide) %>"
+               class="btn btn-success">
+                <%= image_tag it.single_path.language.image_url, height: 32 %>
+                <%= t(:start_practicing) %>
+            </a>
           <% else %>
             <p>
               <strong><%= t :category_languages_availability %> </strong>
