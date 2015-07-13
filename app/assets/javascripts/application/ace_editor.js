@@ -4,10 +4,10 @@ function setupAceEditors() {
   $(".editor").each(function (index, textarea) {
     var editor = setupAceEditor(textarea);
     var language = $(textarea).data('editor-language');
-    if (language) {
-      setEditorLanguage(editor, language);
-    } else {
+    if (language === 'dynamic') {
       dynamicEditors.push(editor);
+    } else {
+      setEditorLanguage(editor, language);
     }
   });
 }

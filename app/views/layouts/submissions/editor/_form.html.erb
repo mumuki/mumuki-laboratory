@@ -1,7 +1,7 @@
 <% if current_user? %>
   <%= form_for([@exercise, @submission], remote: true, html: {role: 'form'}) do |f| %>
     <div class="field form-group">
-      <%= f.text_area :content,
+      <%= f.editor :content, 'dynamic',
                       class: "form-control #{'editor' if editor_visible }",
                       value: @previous_submission_content,
                       style: 'display: none' %>

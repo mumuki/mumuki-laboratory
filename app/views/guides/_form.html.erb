@@ -9,7 +9,7 @@
     </div>
     <div role="tabpanel" class="tab-pane" id="info-panel">
       <%= bootstrap_form_for(@guide, html: {role: 'form'}) do |f| %>
-        <%= f.text_area :description, class: 'form-control editor', 'data-editor-language' => 'markdown', rows: 15 %>
+        <%= f.editor :description, :markdown %>
 
         <%= f.select(:locale, Locale.all, {}, class: 'form-control') %>
 
