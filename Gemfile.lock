@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/jneen/rouge.git
+  revision: dbdd4e7d249606543831dba63efc2737b7d6ad90
+  ref: dbdd4e7d249606543831dba63efc2737b7d6ad90
+  specs:
+    rouge (1.9.0)
+
+GIT
   remote: git://github.com/uqbar-project/mumukit-bridge.git
   revision: 06671e523f106a72cb0c624f49f758dbc8fee86b
   tag: v0.2.0
@@ -259,7 +266,6 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    rouge (1.9.0)
     rspec-collection_matchers (1.1.2)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-core (2.99.2)
@@ -384,7 +390,7 @@ DEPENDENCIES
   rails-i18n (~> 4.0.0)
   rake
   redcarpet
-  rouge
+  rouge!
   rspec-rails (~> 2.14)
   sass-rails
   sitemap_generator

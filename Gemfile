@@ -33,7 +33,7 @@ gem 'omniauth-facebook'
 
 gem 'font-awesome-rails'
 
-gem 'rouge'
+gem 'rouge', :github => 'jneen/rouge', :ref => 'dbdd4e7d249606543831dba63efc2737b7d6ad90'
 gem 'redcarpet'
 gem 'md_emoji'
 
