@@ -19,7 +19,8 @@ function setupAceEditor(textarea) {
   editor.container.id = "editor-container";
   editor.setOptions({
     minLines: 15,
-    maxLines: Infinity
+    maxLines: Infinity,
+    wrap: true
   });
   editor.setFontSize(13);
 
