@@ -10,6 +10,6 @@ module WithTestRunning
      extra: exercise.extra_code,
      content: content,
      locale: exercise.locale,
-     expectations: exercise.expectations.as_json(only: [:binding, :inspection])} #FIXME persist expectations as JSON, not records
+     expectations: exercise.expectations}
   end
 end

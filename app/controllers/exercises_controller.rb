@@ -62,8 +62,7 @@ class ExercisesController < ApplicationController
         permit(:title, :description, :locale, :test,
                :extra_code, :language_id, :hint, :tag_list,
                :guide_id, :position,
-               :layout,
-               expectations_attributes: [:id, :binding, :inspection, :_destroy])
+               :layout, :expectations_yaml)
   end
 
   def exercises

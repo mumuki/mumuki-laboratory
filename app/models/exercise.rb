@@ -11,17 +11,13 @@ class Exercise < ActiveRecord::Base
   include WithSearch, WithTeaser,
           WithMarkup, WithAuthor,
           WithSubmissions, WithGuide,
-          WithLocale
+          WithLocale, WithExpectations
 
   acts_as_taggable
 
   belongs_to :language
 
-  has_many :expectations
-
   enum layout: [:editor_right, :editor_bottom, :no_editor, :scratchy]
-
-  accepts_nested_attributes_for :expectations, reject_if: :all_blank, allow_destroy: true
 
   after_initialize :defaults, if: :new_record?
 

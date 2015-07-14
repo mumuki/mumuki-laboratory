@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708212836) do
+ActiveRecord::Schema.define(version: 20150714000532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,19 +98,12 @@ ActiveRecord::Schema.define(version: 20150708212836) do
     t.integer  "position"
     t.text     "corollary"
     t.integer  "layout",            default: 0,    null: false
+    t.text     "expectations"
   end
 
   add_index "exercises", ["author_id"], name: "index_exercises_on_author_id", using: :btree
   add_index "exercises", ["guide_id"], name: "index_exercises_on_guide_id", using: :btree
   add_index "exercises", ["language_id"], name: "index_exercises_on_language_id", using: :btree
-
-  create_table "expectations", force: true do |t|
-    t.integer  "exercise_id"
-    t.string   "binding"
-    t.string   "inspection"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "exports", force: true do |t|
     t.integer  "guide_id"
