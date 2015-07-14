@@ -16,4 +16,8 @@ module WithExpectations
   def expectations=(expectations)
     self[:expectations] = expectations.map(&:stringify_keys)
   end
+
+  def expectations
+    self[:expectations] || []
+  end
 end

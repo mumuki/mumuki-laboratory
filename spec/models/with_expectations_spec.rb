@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe WithExpectations do
   let(:exercise) { create(:exercise) }
 
@@ -12,6 +14,11 @@ describe WithExpectations do
 
     it { expect(exercise.expectations).to eq [] }
   end
+
+  context 'when no expectations' do
+    it { expect(exercise.expectations).to eq [] }
+  end
+
 
 
   context 'when setting non empty symbolized list' do
