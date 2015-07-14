@@ -27,7 +27,7 @@ class ExerciseRepository
       extra_code = extra_code(root)
 
       expectations = (expectations(root).try { |it| it['expectations'] } || []).map do |e|
-        Expectation.new(binding: e['binding'], inspection: e['inspection'])
+        {binding: e['binding'], inspection: e['inspection']}
       end
 
       yield original_id,

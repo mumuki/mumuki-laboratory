@@ -4,8 +4,8 @@ describe WithTestRunning do
 
   describe '#run_tests!' do
     let(:exercise) { create(:x_equal_5_exercise) }
-    let(:exercise_with_expectations) { create(:x_equal_5_exercise, expectations: [
-        Expectation.new(binding: :foo, inspection: :HasComposition)]) }
+    let(:exercise_with_expectations) {
+      create(:x_equal_5_exercise, expectations: [{binding: :foo, inspection: :HasComposition}]) }
     let(:user) { exercise.author }
 
     before { expect(submission.language).to receive(:run_tests!).and_return(bridge_response) }

@@ -20,11 +20,11 @@
 //= require ace/mode-haskell
 //= require ace/mode-prolog
 //= require ace/mode-javascript
+//= require ace/mode-yaml
 //= require ace/mode-markdown
 //= require turbolinks
 //= require nprogress
 //= require nprogress-turbolinks
 //= require nprogress-ajax
 //= require chartkick
-//= require cocoon
 //= require_tree ./application

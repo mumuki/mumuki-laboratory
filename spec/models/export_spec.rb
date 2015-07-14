@@ -7,7 +7,7 @@ describe Export do
                              title: 'foo', original_id: 100, position: 1,
                              locale: 'en', tag_list: %w(foo bar),
                              language: haskell, extra_code: 'foobar',
-                             expectations: [Expectation.new(binding: 'bar', inspection: 'HasBinding')]) }
+                             expectations: [{binding: 'bar', inspection: 'HasBinding'}]) }
   let!(:exercise_2) { create(:exercise, guide: guide,
                              description: 'a description',
                              title: 'bar', tag_list: %w(baz bar), original_id: 200, position: 2,

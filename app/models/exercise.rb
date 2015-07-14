@@ -17,11 +17,9 @@ class Exercise < ActiveRecord::Base
 
   belongs_to :language
 
-  has_many :expectations
+  serialize :expectations
 
   enum layout: [:editor_right, :editor_bottom, :no_editor, :scratchy]
-
-  accepts_nested_attributes_for :expectations, reject_if: :all_blank, allow_destroy: true
 
   after_initialize :defaults, if: :new_record?
 
@@ -64,6 +62,18 @@ class Exercise < ActiveRecord::Base
 
   def extra_code
     [guide.try(&:extra_code), self[:extra_code]].compact.join("\n")
+  end
+
+  def expectations_yaml
+    self.expectations.to_yaml
+  end
+
+  def expectations_yaml=(yaml)
+    self.expectations = YAML.load yaml
+  end
+
+  def expectations=(expectations)
+    self[:expectations] = expectations.map(&:stringify_keys)
   end
 
   private

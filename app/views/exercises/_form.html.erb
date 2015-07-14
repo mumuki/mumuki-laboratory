@@ -64,26 +64,8 @@
       <div role="tabpanel" class="tab-pane" id="expectations-panel">
         <div class="row">
           <div class="col-md-8">
-            <table class="table  table-bordered">
-              <thead>
-              <tr>
-                <th><%= t :inspection %></th>
-                <th><%= t :binding %></th>
-                <th></th>
-              </tr>
-              </thead>
-              <tbody id="expectations">
-              <%= f.fields_for :expectations do |f| %>
-                <%= render 'expectation_fields', f: f %>
-              <% end %>
-              </tbody>
-            </table>
-          </div>
-          <div class="col-md-2">
-            <div class="links text-right">
-              <%= link_to_add_association "#{fa_icon('plus')} #{t(:add_expectation)}".html_safe, f, :expectations,
-                                          'data-association-insertion-node' => '#expectations',
-                                          'data-association-insertion-method' => 'append' %>
+            <div class="field form-group">
+              <%= f.editor :expectations_yaml, :yaml %>
             </div>
           </div>
         </div>

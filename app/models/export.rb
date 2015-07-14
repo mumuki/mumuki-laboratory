@@ -75,7 +75,7 @@ class Export < RepositoryOperation
   end
 
   def expectations_yaml(e)
-    {'expectations' => e.expectations.as_json(only: [:binding, :inspection])}.to_yaml
+    {'expectations' => e.expectations }.to_yaml
   end
 
   def extra_filename
