@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-    subdomain_locale ? {} : { :locale => I18n.locale }
+    subdomain_locale ? {} : { locale: I18n.locale }
   end
 
   def subdomain_locale
