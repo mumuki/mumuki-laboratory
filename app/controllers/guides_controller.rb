@@ -57,7 +57,7 @@ class GuidesController < ApplicationController
     @submissions = @guide.submission_contents_for(current_user)
 
     stream = render_to_string layout: false, formats: [:text]
-    send_data(stream, :type => 'text/plain', :filename => "guide.#{@guide.language.extension}")
+    send_data(stream, type: 'text/plain', filename: "guide.#{@guide.language.extension}")
   end
 
   private
