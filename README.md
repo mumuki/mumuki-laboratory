@@ -29,9 +29,9 @@ This simplicity brings its flexibility: we use it in Mumuki Project for teaching
 In Mumuki, exercises are not provided by experts but by the community. There is no distinction between a teacher and a student in Mumuki - anyone can create new exercises. 
 
 
-## Mumuki is an open platform 
+## Mumuki Platform is open 
 
-We would like you to collaborate on Mumuki development - we are waiting for your pull request. But if you just want to fork it, go on, it is just open source software. 
+We would like you to collaborate on Mumuki Platform development - we are waiting for your pull request. But if you just want to fork it, go on, it is just open source software. 
 
 Mumuki is also open for extension, we would like to have exercises for a large range of programming languages. The way of extending Mumuki is using plugins called `runners`. You can find several runners in [Our organization](https://github.com/mumuki)
 
@@ -40,7 +40,7 @@ Mumuki is also open for extension, we would like to have exercises for a large r
 
 ## Which languages are supported?
 
-Currently Mumuki supports Haskell, through [GHC](https://www.haskell.org/ghc/), Prolog,
+Thanks our pluggable runners system, Mumuki Platform supports Haskell, through [GHC](https://www.haskell.org/ghc/), Prolog,
 through [SWI-Prolog](http://www.swi-prolog.org/), Ruby and JavaScript. 
 
 We have recently added support for [Gobstones](http://www.gobstones.org/), too!
@@ -52,7 +52,7 @@ We would like to add support for Clojure, Mongo queries and SQL in the short ter
 
 1. Navigate Mumuki at http://mumuki.io, and submit issues for every thing you dislike
 1. Check the current issues, fork the repository, and take any of your interest. Then pull request it.
-1. Choose your preffered language and create your test runner server. Use any of those server for inspiration:
+1. Choose your preffered language and create your test runner server, or help with existing runners development. Use any of these for inspiration:
   * [mumuki-hspec-server](https://github.com/mumuki/mumuki-hspec-server) (written in Haskell)
   * [mumuki-rspec-server](https://github.com/mumuki/mumuki-rspec-server)  (written in Ruby)
   * [mumuki-mocha-server](https://github.com/mumuki/mumuki-mocha-server)  (written in JavaScript)
@@ -60,8 +60,10 @@ We would like to add support for Clojure, Mongo queries and SQL in the short ter
   * [mumuki-gobstones-server](https://github.com/uqbar-project/mumuki-gobstones-server)  (written in Ruby)
   * Experimental: [mumuki-cspec-server](https://github.com/mgarciaisaia/mumuki-cspec-server)  (written in Ruby)
  
-1. Create exercises! Mumuki is in early stages, so remember to add your tests to some SCM. 
+1. Create exercises! 
+1. Create a guide! A guide is a set of exercises
 1. Are you a UI designer? We want Mumuki to look great. 
+1. And spread the word. We belive that knowleadge is not complete free if tools and content aren't. That is why Mumuki Platform and Mumuki Project are here.  
 
 ## Who sponors this platform?
 
