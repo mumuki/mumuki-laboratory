@@ -4,6 +4,7 @@ class ExercisesController < ApplicationController
   before_action :authenticate!, except: [:index, :show]
   before_action :set_exercises, only: [:index]
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
+  before_action :set_guide, only: [:show]
   before_action :set_previous_submission_content, only: :show
   before_action :authorize_edition!, only: [:edit, :update]
 
@@ -55,6 +56,11 @@ class ExercisesController < ApplicationController
 
   def set_exercise
     @exercise = Exercise.find(params[:id])
+  end
+
+
+  def set_guide
+    @guide = @exercise.guide
   end
 
   def exercise_params

@@ -8,6 +8,16 @@ feature 'Submit Flow' do
   let!(:other_exercise) { create(:exercise, title: 'Baz', guide: guide, original_id: 2) }
   let(:guide) { create(:guide, corollary: 'Now you understand higher order programming') }
 
+
+  scenario 'enter submissions page' do
+    visit "/exercises/#{exercise.id}"
+
+    click_on 'Sign in with Github'
+
+    expect(page).to have_selector('#guide-done')
+  end
+
+
   scenario 'create submission' do
     pending 'need to mock this'
 
