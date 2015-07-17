@@ -1,14 +1,18 @@
 var dynamicEditors = [];
 
+function setupEditorLanguage(textarea, editor) {
+  var language = $(textarea).data('editor-language');
+  if (language === 'dynamic') {
+    dynamicEditors.push(editor);
+  } else {
+    setEditorLanguage(editor, language);
+  }
+}
+
 function setupAceEditors() {
   var editors = $(".editor").map(function (index, textarea) {
     var editor = setupAceEditor(textarea);
-    var language = $(textarea).data('editor-language');
-    if (language === 'dynamic') {
-      dynamicEditors.push(editor);
-    } else {
-      setEditorLanguage(editor, language);
-    }
+    setupEditorLanguage(textarea, editor);
     return editor;
   });
 
@@ -17,24 +21,28 @@ function setupAceEditors() {
   }
 }
 
-function setupAceEditor(textarea) {
-  var form = textarea.form;
-
-  var editor = ace.edit(textarea);
-  editor.container.id = "editor-container";
+function setupAceEditorOptions(editor) {
   editor.setOptions({
     minLines: 15,
     maxLines: Infinity,
     wrap: true
   });
   editor.setFontSize(13);
+}
 
+function setupAceEditorSubmit(textarea, editor) {
+  var form = textarea.form;
   form.addEventListener("submit", function () {
     textarea.style.visibility = "hidden";
     textarea.value = editor.getValue();
     form.appendChild(textarea)
   });
-
+}
+function setupAceEditor(textarea) {
+  var editor = ace.edit(textarea);
+  editor.container.id = "editor-container";
+  setupAceEditorOptions(editor);
+  setupAceEditorSubmit(textarea, editor);
   return editor;
 }
 
