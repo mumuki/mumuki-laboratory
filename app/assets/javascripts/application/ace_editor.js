@@ -1,7 +1,7 @@
 var dynamicEditors = [];
 
 function setupAceEditors() {
-  $(".editor").each(function (index, textarea) {
+  var editors = $(".editor").map(function (index, textarea) {
     var editor = setupAceEditor(textarea);
     var language = $(textarea).data('editor-language');
     if (language === 'dynamic') {
@@ -9,7 +9,12 @@ function setupAceEditors() {
     } else {
       setEditorLanguage(editor, language);
     }
+    return editor;
   });
+
+  if (editors[0]) {
+    editors[0].focus();
+  }
 }
 
 function setupAceEditor(textarea) {
