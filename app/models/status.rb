@@ -6,14 +6,20 @@ module Status
   end
 
   def self.dump(status)
-    if status.is_a? Symbol
-      from_sym(status).to_i
-    else
-      status.to_i
-    end
+    coerce(status).to_i
   end
 
   def self.from_sym(status)
     Kernel.const_get("Status::#{status.to_s.camelize}")
+  end
+
+  def self.coerce(status_like)
+    if status_like.is_a? Symbol
+      from_sym(status_like)
+    elsif status_like.is_a? Status::Base
+      status_like
+    else
+      status_like.status
+    end
   end
 end

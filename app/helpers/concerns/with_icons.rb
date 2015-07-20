@@ -1,7 +1,7 @@
 module WithIcons
   #FIXME refactor names
   def status_icon(status_like)
-    fa_icon *icon_for_status(WithStatus.fetch_status(status_like))
+    fa_icon *icon_for_status(Status.coerce(status_like))
   end
 
   def exercise_status_icon(exercise)
