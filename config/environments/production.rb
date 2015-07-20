@@ -80,6 +80,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.verbosity = Verbosity::Standard
+
   config.i18n.default_locale = :es
 
   config.i18n.available_locales = [:es, :en]

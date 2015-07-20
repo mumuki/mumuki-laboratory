@@ -59,7 +59,7 @@ class Submission < ActiveRecord::Base
   end
 
   def visible_expectation_results
-    (expectation_results||[]).select { |it| it[:result] == :failed }
+    Rails.configuration.verbosity.visible_expectation_results(expectation_results || [])
   end
 
   def failed?

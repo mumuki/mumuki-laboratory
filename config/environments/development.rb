@@ -41,6 +41,8 @@ Rails.application.configure do
       info: {name: 'Test User', nickname: 'testuser'}
    })
 
+  config.verbosity = Verbosity::Verbose
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
