@@ -1,4 +1,4 @@
-var dynamicEditors = []; //FIXME clean
+var dynamicEditors;
 
 function setupAceEditors() {
   var editors = $(".editor").map(function (index, textarea) {
@@ -33,6 +33,7 @@ function setEditorLanguage(editor, language) {
 }
 
 $(document).on('ready page:load', function () {
+  dynamicEditors = [];
   setupAceEditors();
   updateAceEditorLanguage();
   onSelectUpdateAceEditor();
