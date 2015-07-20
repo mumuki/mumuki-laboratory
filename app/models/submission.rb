@@ -17,6 +17,7 @@ class Submission < ActiveRecord::Base
 
   delegate :language, :title, to: :exercise
   delegate :output_content_type, to: :language
+  delegate :should_retry?, to: :status
 
   scope :by_exercise_ids, -> (exercise_ids) {
     where(exercise_id: exercise_ids) if exercise_ids
@@ -26,20 +27,12 @@ class Submission < ActiveRecord::Base
     joins(:submitter).where('users.name' => usernames) if usernames
   }
 
-  def should_retry?
-    failed? || expectations_failed? #TODO rename result => status
-  end
-
-  def expectations_failed?
-    expectation_results.any? { |it| it[:result] == :failed } rescue false #FIXME resolve inconsistencies in db
-  end
-
   def results_visible?
     exercise.visible_success_output || should_retry?
   end
 
   def result_preview
-    result.truncate(100) if failed?
+    result.truncate(100) if should_retry?
   end
 
   def eligible_for_run?
@@ -60,10 +53,6 @@ class Submission < ActiveRecord::Base
 
   def visible_expectation_results
     Rails.configuration.verbosity.visible_expectation_results(expectation_results || [])
-  end
-
-  def failed?
-    %w(failed errored aborted).include? status
   end
 
   private

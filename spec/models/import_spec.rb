@@ -6,7 +6,7 @@ describe Import do
   describe '#status' do
     let(:guide) { create(:guide) }
 
-    it { expect(import.status).to eq 'pending' }
+    it { expect(import.status).to eq Status::Pending }
   end
 
 

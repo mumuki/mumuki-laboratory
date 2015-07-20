@@ -13,9 +13,9 @@ describe WithTestRunning do
 
     context 'when results have no expectation' do
       let(:submission) { create(:submission, exercise: exercise) }
-      let(:bridge_response) { {result: '0 failures', status: 'passed'} }
+      let(:bridge_response) { {result: '0 failures', status: :passed} }
 
-      it { expect(submission.reload.status).to eq('passed') }
+      it { expect(submission.reload.status).to eq(Status::Passed) }
       it { expect(submission.reload.result).to include('0 failures') }
     end
 
@@ -23,10 +23,10 @@ describe WithTestRunning do
       let(:submission) { create(:submission, exercise: exercise_with_expectations) }
       let(:bridge_response) { {
           result: '0 failures',
-          status: 'passed',
+          status: :passed,
           expectation_results: [binding: 'foo', inspection: 'HasBinding', result: :passed]} }
 
-      it { expect(submission.reload.status).to eq('passed') }
+      it { expect(submission.reload.status).to eq(Status::Passed) }
       it { expect(submission.reload.result).to include('0 failures') }
       it { expect(submission.reload.expectation_results).to eq([{binding: 'foo', inspection: 'HasBinding', result: :passed}]) }
     end

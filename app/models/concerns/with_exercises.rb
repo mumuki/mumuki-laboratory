@@ -15,7 +15,7 @@ module WithExercises
         joins("left join submissions
                 on submissions.exercise_id = exercises.id
                 and submissions.submitter_id = #{user.id}
-                and submissions.status = #{Submission.passed_status}").
+                and submissions.status = #{Status::Passed.to_i}").
         where('submissions.id is null')
   end
 

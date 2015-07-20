@@ -2,26 +2,22 @@ module WithStatus
   extend ActiveSupport::Concern
 
   included do
-    enum status: [:pending, :running, :passed, :failed, :errored, :aborted, :passed_with_warnings]
+    serialize :status, Status
     validates_presence_of :status
   end
 
+  def passed?
+    status.passed?
+  end
+
   def run_update!
-    update! status: :running
+    update! status: Status::Running
     begin
       update! yield
     rescue => e
-      update! result: e.message, status: :errored
+      update! result: e.message, status: Status::Errored
       raise e
     end
   end
 
-  module ClassMethods
-    def passed_status
-      statuses[:passed]
-    end
-    def failed_status
-      statuses[:failed]
-    end
-  end
 end
