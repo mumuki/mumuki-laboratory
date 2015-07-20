@@ -19,6 +19,10 @@ module Status::Base
     false
   end
 
+  def should_retry?
+    group.should_retry?
+  end
+
   def iconize
     group.iconize
   end

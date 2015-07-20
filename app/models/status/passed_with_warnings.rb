@@ -1,7 +1,11 @@
 module Status::PassedWithWarnings
   extend Status::Base
 
-  def passed?
+  def self.passed?
+    true
+  end
+
+  def self.should_retry?
     true
   end
 

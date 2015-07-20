@@ -11,6 +11,7 @@ describe Submission do
     let(:passed_submission_with_visible_output_language) { create(:submission, status: :passed, exercise: gobstones_exercise) }
 
     it { expect(passed_submission.results_visible?).to be false }
+    it { expect(failed_submission.should_retry?).to be true }
     it { expect(failed_submission.results_visible?).to be true }
     it { expect(passed_submission_with_visible_output_language.results_visible?).to be true }
   end
