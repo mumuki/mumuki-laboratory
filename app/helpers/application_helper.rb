@@ -53,7 +53,7 @@ module ApplicationHelper
   def with_classifications(classifiable)
     classifications = [
         (classification_label('success', :certificate, :new) if classifiable.new?),
-        (classification_label('info', :university, :learning) if classifiable.learning),
+        (classification_label('in fo', :university, :learning) if classifiable.learning),
         (classification_label('warning', :warning, :beta) if classifiable.beta)]
     classifications.compact.join(' ').html_safe
   end
