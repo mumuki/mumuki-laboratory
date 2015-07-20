@@ -14,7 +14,6 @@
     <% if current_user? %>
       <div class="form-group">
         <div class="btn-group btn-group-justified">
-          <a class="btn btn-default" href="<%= following_user_path(current_user) %>"><%= t(:following) %></a>
           <a class="btn btn-default active" href="<%= users_path %>"><%= t(:all) %>
           </a>
         </div>

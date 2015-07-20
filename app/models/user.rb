@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
       }
   }
 
-  include WithSearch, WithOmniauth, WithGitAccess, WithFollowers
+  include WithSearch, WithOmniauth, WithGitAccess
 
   has_many :submissions, foreign_key: :submitter_id
   has_many :exercises, foreign_key: :author_id

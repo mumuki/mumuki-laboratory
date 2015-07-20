@@ -57,11 +57,6 @@ Rails.application.routes.draw do
     resources :guides, controller: 'user_guides', only: :index
     #nested user
     resources :solved_exercises, controller: 'user_solved_exercises', only: :index
-    member do
-      get :following, :followers
-    end
-
-    resources :relationships, only: [:create, :destroy]
 
     # Current user
     resources :submissions, only: :index
