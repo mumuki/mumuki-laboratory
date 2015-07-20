@@ -25,11 +25,13 @@ AceEditorBuilder.prototype = {
     this.editor.setFontSize(13);
   },
   setupSubmit: function () {
-    var self = this;
+    var textarea = this.textarea;
+    var form = this.form;
+    var editor = this.editor;
     this.form.addEventListener("submit", function () {
-      self.textarea.style.visibility = "hidden";//FIXME
-      self.textarea.value = self.editor.getValue();
-      self.form.appendChild(self.textarea)
+      textarea.style.visibility = "hidden";//FIXME
+      textarea.value = editor.getValue();
+      form.appendChild(textarea)
     });
   },
   build: function () {
