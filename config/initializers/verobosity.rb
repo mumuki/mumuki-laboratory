@@ -5,7 +5,7 @@ module Verbosity
       expectation_results
     end
 
-    def render_feedback?(feedback)
+    def self.render_feedback?(feedback)
       feedback.present?
     end
   end
@@ -15,7 +15,7 @@ module Verbosity
       expectation_results.select { |it| it[:result] == :failed }
     end
 
-    def render_feedback?(feedback)
+    def self.render_feedback?(feedback)
       feedback.present?
     end
   end
@@ -25,7 +25,7 @@ module Verbosity
       []
     end
 
-    def render_feedback?(feedback)
+    def self.render_feedback?(feedback)
       false
     end
   end

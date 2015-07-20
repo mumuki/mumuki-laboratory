@@ -15,6 +15,8 @@ describe Verbosity do
 
   describe Verbosity::Silent do
     it { expect(Verbosity::Silent.visible_expectation_results(results)).to be_empty }
+    it { expect(Verbosity::Silent.render_feedback?(Object.new)).to be false }
+
   end
 
 end
