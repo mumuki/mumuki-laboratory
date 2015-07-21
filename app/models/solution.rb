@@ -3,6 +3,7 @@ require 'securerandom'
 class Solution < ActiveRecord::Base
   include WithTestRunning
   include WithStatus
+  include WithEarnedPoints
 
   belongs_to :exercise
   belongs_to :submitter, class_name: 'User'
