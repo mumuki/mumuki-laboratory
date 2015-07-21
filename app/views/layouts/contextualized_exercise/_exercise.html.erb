@@ -7,8 +7,12 @@
     <a href="<%= exercise_path(exercise) %>"><%= exercise.title %></a>
   </td>
   <td>
+    <%= exercise.submissions_for(user).last.try(&:earned_points) || 0 %> / <%= exercise.max_points  %>
+  </td>
+  <td>
     <%= exercise.submissions_count_for(user) %>
   </td>
+
   <td>
     <%= time_ago_in_words_or_never exercise.last_submission_date_for(user)  %>
   </td>
