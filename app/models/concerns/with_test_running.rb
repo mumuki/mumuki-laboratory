@@ -3,6 +3,7 @@ module WithTestRunning
     run_update! do
       language.run_tests!(new_test_server_request).except(:response_type)
     end
+    EventSubscriber.notify_submission!(self)
   end
 
   def new_test_server_request
