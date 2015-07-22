@@ -7,7 +7,7 @@ class EventSubscriber < ActiveRecord::Base
             submission.to_json,
             content_type: :json))
 
-    if response != {status: 'ok'}
+    if response != {'status' => 'ok'}
       Rails.logger.info "response from server #{response}"
     end
   end
