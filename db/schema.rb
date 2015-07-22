@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714000532) do
+ActiveRecord::Schema.define(version: 20150722003532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,13 @@ ActiveRecord::Schema.define(version: 20150714000532) do
   end
 
   add_index "contributors", ["guide_id", "user_id"], name: "index_contributors_on_guide_id_and_user_id", unique: true, using: :btree
+
+  create_table "event_subscribers", force: true do |t|
+    t.string   "url"
+    t.boolean  "enabled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "exercises", force: true do |t|
     t.string   "title"
