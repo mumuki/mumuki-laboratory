@@ -1,21 +1,23 @@
 class EventSubscriber < ActiveRecord::Base
 
   def notify_submission!(submission)
-    response = JSON.parse(
-        RestClient.post(
-            "#{url}/events/submissions",
-            submission.to_json,
-            content_type: :json))
-
-    if response != {'status' => 'ok'}
-      Rails.logger.info "response from server #{response}"
-    end
+    notify(submission.to_json, 'events/submissions')
   end
 
   def self.notify_submission(submission)
-    all.where(enabled:true).each do |it|
+    all.where(enabled: true).each do |it|
       it.notify_submission!(submission)
     end
   end
 
+  private
+
+  def notify(event, path)
+    response = JSON.parse(RestClient.post("#{url}/#{path}", event, content_type: :json))
+    validate_response(response)
+  end
+
+  def validate_response(response)
+    Rails.logger.info "response from server #{response}" if response != {'status' => 'ok'}
+  end
 end
