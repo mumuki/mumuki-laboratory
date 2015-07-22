@@ -1,10 +1,11 @@
 class EventSubscriber < ActiveRecord::Base
+  validates_presence_of :url
 
   def notify_submission!(submission)
     notify(submission.to_json, 'events/submissions')
   end
 
-  def self.notify_submission(submission)
+  def self.notify_submission!(submission)
     all.where(enabled: true).each do |it|
       it.notify_submission!(submission)
     end
@@ -13,8 +14,12 @@ class EventSubscriber < ActiveRecord::Base
   private
 
   def notify(event, path)
-    response = JSON.parse(RestClient.post("#{url}/#{path}", event, content_type: :json))
+    response = JSON.parse(do_request(event, path))
     validate_response(response)
+  end
+
+  def do_request(event, path)
+    RestClient.post("#{url}/#{path}", event, content_type: :json)
   end
 
   def validate_response(response)
