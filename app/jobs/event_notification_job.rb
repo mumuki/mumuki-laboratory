@@ -1,13 +1,5 @@
-class EventNotificationJob
-  include SuckerPunch::Job
-
-  def perform(json)
-    Rails.logger.info("Notifying #{json}")
-
-    ::EventSubscriber.notify_submission!(json)
-  end
-
-  def self.run_async(submission)
-    new.async.perform(submission.to_json)
+class EventNotificationJob < ActiveRecordJob
+  def perform_with_connection(params)
+    ::EventSubscriber.find(params.subscriber_id).post_json(params.event_json, params.event_path)
   end
 end
