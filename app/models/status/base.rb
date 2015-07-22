@@ -26,4 +26,8 @@ module Status::Base
   def iconize
     group.iconize
   end
+
+  def as_json(options={})
+    to_s
+  end
 end

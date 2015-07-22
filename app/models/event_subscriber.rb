@@ -1,13 +1,13 @@
 class EventSubscriber < ActiveRecord::Base
   validates_presence_of :url
 
-  def notify_submission!(submission)
-    notify(submission.to_json, 'events/submissions')
+  def notify_submission!(json)
+    notify(json, 'events/submissions')
   end
 
-  def self.notify_submission!(submission)
+  def self.notify_submission!(json)
     all.where(enabled: true).each do |it|
-      it.notify_submission!(submission)
+      it.notify_submission!(json)
     end
   end
 
