@@ -17,4 +17,5 @@ class EventSubscriber < ActiveRecord::Base
       it.notify_submission!(submission)
     end
   end
+
 end
