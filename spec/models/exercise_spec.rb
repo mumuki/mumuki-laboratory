@@ -38,7 +38,7 @@ describe Exercise do
       let!(:alternative_exercise) { create(:exercise, guide: guide, position: 3) }
       let(:guide) { create(:guide) }
 
-      before { user.submissions.create!(exercise: alternative_exercise, content: 'foo') }
+      before { alternative_exercise.submit_solution(user, content: 'foo') }
 
       it do
         expect(exercise_with_guide.guide).to eq guide

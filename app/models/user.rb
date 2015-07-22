@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   has_many :submitted_paths, -> { uniq }, through: :submitted_guides, class_name: 'Path', source: :path
 
   has_many :solved_exercises,
-           -> { where('submissions.status' => Status::Passed.to_i) },
+           -> { where('solutions.status' => Status::Passed.to_i) },
            through: :solutions,
            class_name: 'Exercise',
            source: :exercise

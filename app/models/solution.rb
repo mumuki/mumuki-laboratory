@@ -58,6 +58,10 @@ class Solution < ActiveRecord::Base
         "update exercises
          set submissions_count = submissions_count + 1
         where id = #{exercise.id}")
+    self.class.connection.execute(
+        "update solutions
+         set submissions_count = submissions_count + 1
+        where id = #{id}")
     exercise.reload
   end
 
