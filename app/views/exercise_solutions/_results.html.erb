@@ -4,39 +4,39 @@
 %>
 
 
-<div class="bs-callout bs-callout-<%= class_for_status submission.status %>">
+<div class="bs-callout bs-callout-<%= class_for_status solution.status %>">
   <h4>
-    <strong><%= fa_icon icon_type_for_status(submission.status) %> <%= t(submission.status) %></strong>
+    <strong><%= fa_icon icon_type_for_status(solution.status) %> <%= t(solution.status) %></strong>
   </h4>
 
-  <% if submission.results_visible? %>
+  <% if solution.results_visible? %>
     <div>
-      <% if submission.expectation_results_visible? %>
+      <% if solution.expectation_results_visible? %>
         <div class="results-item">
           <strong><%= t :unmeet_expectations %>:</strong>
           <ul class="results-list">
-            <% submission.visible_expectation_results.each do |it| %>
+            <% solution.visible_expectation_results.each do |it| %>
               <li><%= status_icon(it[:result]) %> <%= t_expectation_result it[:binding], it[:inspection] %></li>
             <% end %>
           </ul>
         </div>
       <% end %>
-      <% if render_feedback?(submission) %>
+      <% if render_feedback?(solution) %>
         <div class="results-item">
           <strong><%= t :feedback %>:</strong>
 
           <div>
-            <%= submission.feedback_html %>
+            <%= solution.feedback_html %>
           </div>
           <a data-toggle="collapse" href="#results-section" class="text-danger">
             <%= fa_icon 'question-circle' %> <%= t :details %>
           </a>
         </div>
       <% end %>
-      <div id="results-section" class="<%= 'collapse' if render_feedback?(submission) %> results-item">
+      <div id="results-section" class="<%= 'collapse' if render_feedback?(solution) %> results-item">
         <strong><%= t :test_results %>:</strong>
 
-        <%= render_test_results submission %>
+        <%= render_test_results solution %>
       </div>
     </div>
   <% else %>
@@ -45,14 +45,14 @@
     </div>
   <% end %>
 
-  <%= corollary_box @exercise unless submission.should_retry? %>
+  <%= corollary_box @exercise unless solution.should_retry? %>
 
 </div>
 
 <div class="actions">
-  <%= mail_to submission.exercise.author.email,
+  <%= mail_to solution.exercise.author.email,
               fa_icon(:bug, text: t(:notify_problem_to_author)),
-              subject: t(:problem_with_exercise, title: submission.exercise.title),
+              subject: t(:problem_with_exercise, title: solution.exercise.title),
               class: 'text-warning warning pull-left' %>
   <%= next_button(@exercise) %>
 

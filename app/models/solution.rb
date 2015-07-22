@@ -1,4 +1,4 @@
-class Submission < ActiveRecord::Base
+class Solution < ActiveRecord::Base
   include WithTestRunning
   include WithStatus
 
@@ -12,8 +12,8 @@ class Submission < ActiveRecord::Base
   serialize :expectation_results
   serialize :test_results
 
-  after_create :update_submissions_count!
-  after_create :update_last_submission!
+  after_save :update_submissions_count!
+  after_save :update_last_submission!
 
   delegate :language, :title, to: :exercise
   delegate :output_content_type, to: :language
@@ -33,10 +33,6 @@ class Submission < ActiveRecord::Base
 
   def result_preview
     result.truncate(100) if should_retry?
-  end
-
-  def eligible_for_run?
-    exercise.submissions_for(submitter).last == self
   end
 
   def result_html #TODO move rendering logic to helpers
@@ -69,6 +65,3 @@ class Submission < ActiveRecord::Base
     submitter.update!(last_submission_date: created_at, last_exercise: exercise)
   end
 end
-
-
-

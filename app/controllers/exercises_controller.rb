@@ -5,11 +5,11 @@ class ExercisesController < ApplicationController
   before_action :set_exercises, only: [:index]
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
   before_action :set_guide, only: [:show]
-  before_action :set_previous_submission_content, only: :show
+  before_action :set_previous_solution_content, only: :show
   before_action :authorize_edition!, only: [:edit, :update]
 
   def show
-    @submission = @exercise.submissions.build if current_user?
+    @solution = @exercise.solutions.build if current_user?
   end
 
   def index
@@ -49,8 +49,8 @@ class ExercisesController < ApplicationController
 
   private
 
-  def set_previous_submission_content
-    @previous_submission_content = @exercise.default_content_for(current_user) if current_user?
+  def set_previous_solution_content
+    @previous_solution_content = @exercise.default_content_for(current_user) if current_user?
   end
 
 

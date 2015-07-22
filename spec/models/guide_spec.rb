@@ -80,9 +80,9 @@ describe Guide do
     end
     context 'when there are submissions' do
       before do
-        guide.exercises.first.submissions.create!(submitter: extra_user, content: 'foo1')
-        guide.exercises.first.submissions.create!(submitter: extra_user, content: 'foo2')
-        guide.exercises.second.submissions.create!(submitter: extra_user, content: 'bar')
+        guide.exercises.first.submit_solution(extra_user, content: 'foo1')
+        guide.exercises.first.submit_solution(extra_user, content: 'foo2')
+        guide.exercises.second.submit_solution(extra_user, content: 'bar')
       end
       it { expect(guide.submission_contents_for(extra_user)).to eq %w(foo2 bar) }
     end

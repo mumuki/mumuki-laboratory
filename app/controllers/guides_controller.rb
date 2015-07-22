@@ -1,7 +1,7 @@
 class GuidesController < ApplicationController
 
   before_action :authenticate!, except: [:index, :show]
-  before_action :set_guide, only: [:show, :edit, :details, :update, :collaborators_refresh, :submissions_dump]
+  before_action :set_guide, only: [:show, :edit, :details, :update, :collaborators_refresh, :solutions_dump]
 
   def new
     @guide = Guide.new(name: params[:q])
@@ -53,7 +53,7 @@ class GuidesController < ApplicationController
     redirect_to edit_guide_path(@guide), notice: t(:collaborators_refreshed)
   end
 
-  def submissions_dump
+  def solutions_dump
     @submissions = @guide.submission_contents_for(current_user)
 
     stream = render_to_string layout: false, formats: [:text]

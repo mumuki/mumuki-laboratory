@@ -6,7 +6,7 @@ module WithIcons
 
   def exercise_status_icon(exercise)
     link_to exercise_status_fa_icon(exercise),
-            exercise_submissions_path(exercise) if current_user?
+            exercise_path(exercise) if current_user?
   end
 
   def language_icon(language, options={})

@@ -1,9 +1,9 @@
 <% if current_user? %>
-  <%= form_for([@exercise, @submission], remote: true, html: {role: 'form'}) do |f| %>
+  <%= form_for([@exercise, @solution], remote: true, html: {role: 'form'}) do |f| %>
     <div class="field form-group">
       <%= f.editor :content, 'dynamic',
                       class: "form-control #{'editor' if editor_visible }",
-                      value: @previous_submission_content,
+                      value: @previous_solution_content,
                       style: 'display: none' %>
       <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
     </div>

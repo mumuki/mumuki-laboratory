@@ -4,7 +4,7 @@ describe Exercise do
   let(:exercise) { create(:exercise) }
   let(:user) { create(:user) }
 
-  before { I18n.locale = :en  }
+  before { I18n.locale = :en }
 
   describe '#next_for' do
     context 'when exercise has no guide' do
@@ -28,7 +28,7 @@ describe Exercise do
       let!(:alternative_exercise) { create(:exercise, guide: guide) }
       let(:guide) { create(:guide) }
 
-      before { user.submissions.create!(exercise: alternative_exercise, content: 'foo', status: :passed) }
+      before { alternative_exercise.submit_solution(user, content: 'foo', status: :passed) }
 
       it { expect(exercise_with_guide.next_for(user)).to be nil }
     end
@@ -53,7 +53,7 @@ describe Exercise do
     end
   end
 
-  describe '#previous_for'do
+  describe '#previous_for' do
     context 'when exercise belongs to a guide with two exercises' do
       let!(:exercise_with_guide) { create(:exercise, guide: guide, position: 3) }
       let!(:alternative_exercise) { create(:exercise, guide: guide, position: 2) }
@@ -63,7 +63,7 @@ describe Exercise do
     end
   end
 
-  describe '#extra_code'do
+  describe '#extra_code' do
     context 'when exercise has no extra code' do
       it { expect(exercise.extra_code).to eq '' }
     end
@@ -92,7 +92,7 @@ describe Exercise do
 
   describe '#submitted_by?' do
     context 'when user did a submission' do
-      before { exercise.submissions.create(submitter: user) }
+      before { exercise.submit_solution(user) }
       it { expect(exercise.submitted_by? user).to be true }
     end
     context 'when user did no submission' do
@@ -105,19 +105,19 @@ describe Exercise do
       it { expect(exercise.solved_by? user).to be false }
     end
     context 'when user did a successful submission' do
-      before { exercise.submissions.create(submitter: user, status: :passed) }
+      before { exercise.submit_solution(user, status: :passed) }
 
       it { expect(exercise.solved_by? user).to be true }
     end
     context 'when user did a pending submission' do
-      before { exercise.submissions.create(submitter: user) }
+      before { exercise.submit_solution(user) }
 
       it { expect(exercise.solved_by? user).to be false }
     end
     context 'when user did both successful and failed submissions' do
       before do
-        exercise.submissions.create(submitter: user)
-        exercise.submissions.create(submitter: user, status: :passed)
+        exercise.submit_solution(user)
+        exercise.submit_solution(user, status: :passed)
       end
 
       it { expect(exercise.solved_by? user).to be true }
@@ -130,18 +130,18 @@ describe Exercise do
     end
 
     context 'when there are submissions' do
-      let!(:submission) { create(:submission, exercise: exercise) }
+      let!(:solution) { create(:solution, exercise: exercise) }
       before { exercise.destroy! }
-      it { expect { Submission.find(submission.id) }.to raise_error(ActiveRecord::RecordNotFound) }
+      it { expect { Solution.find(solution.id) }.to raise_error(ActiveRecord::RecordNotFound) }
     end
 
   end
 
   describe '#default_content_for' do
     context 'when user has a single submission for the exercise' do
-      let!(:submission) { exercise.submissions.create!(submitter: user, content: 'foo') }
+      let!(:solution) { exercise.submit_solution(user, content: 'foo') }
 
-      it { expect(exercise.default_content_for(user)).to eq submission.content }
+      it { expect(exercise.default_content_for(user)).to eq solution.content }
     end
 
     context 'when user has no submissions for the exercise' do
@@ -150,8 +150,8 @@ describe Exercise do
 
 
     context 'when user has multiple submission for the exercise' do
-      let!(:submissions) { [exercise.submissions.create!(submitter: user, content: 'foo'),
-                            exercise.submissions.create!(submitter: user, content: 'bar')] }
+      let!(:submissions) { [exercise.submit_solution(user, content: 'foo'),
+                            exercise.submit_solution(user, content: 'bar')] }
 
       it { expect(exercise.default_content_for(user)).to eq submissions.last.content }
     end

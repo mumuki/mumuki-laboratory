@@ -10,7 +10,7 @@ class Exercise < ActiveRecord::Base
 
   include WithSearch, WithTeaser,
           WithMarkup, WithAuthor,
-          WithSubmissions, WithGuide,
+          WithSolutions, WithGuide,
           WithLocale, WithExpectations
 
   acts_as_taggable
