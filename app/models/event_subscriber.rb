@@ -13,7 +13,7 @@ class EventSubscriber < ActiveRecord::Base
   end
 
   def self.notify_submission(submission)
-    all.each do |it|
+    all.where(enabled:true).each do |it|
       it.notify_submission!(submission)
     end
   end
