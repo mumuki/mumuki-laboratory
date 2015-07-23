@@ -29,8 +29,8 @@
       <li <%= active_if :overview %>>
         <%= link_to fa_icon('code',  text: t(:overview)), @guide %>
       </li>
-      <li <%= active_if :progress %>>
-        <%= link_to fa_icon('trophy', text: t(:progress)), guide_exercises_path(@guide) %>
+      <li <%= active_if :exercises %>>
+        <%= link_to fa_icon('trophy', text: t(:exercises)), guide_exercises_path(@guide) %>
       </li>
       <li <%= active_if :contributors %>>
         <%= link_to fa_icon('user',text: t(:contributors)), guide_contributors_path(@guide) %>

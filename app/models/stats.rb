@@ -36,7 +36,11 @@ class Stats
   end
 
   def passed_ratio
-    100 * resolved / total
+    100 * passed / total
+  end
+
+  def passed_with_warnings_ratio
+    100 * passed_with_warnings / total
   end
 
   def failed_ratio

@@ -45,16 +45,7 @@
     </div>
 
     <% if @stats %>
-      <div class="progress">
-        <a id="passed-progress-bar" href="<%= guide_path(@exercise.guide)%>"
-          class="progress-bar progress-bar-success"
-          style="width: <%= @stats.passed_ratio %>%;">
-        </a>
-        <a id="failed-progress-bar" href="<%= guide_path(@exercise.guide)%>"
-          class="progress-bar progress-bar-danger"
-          style="width: <%= @stats.failed_ratio %>%;">
-        </a>
-      </div>
+      <%= render partial: 'layouts/progress_bar', locals: { guide: @exercise.guide, stats: @stats } %>
     <% else %>
       <hr>
     <% end %>

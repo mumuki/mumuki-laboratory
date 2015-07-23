@@ -29,8 +29,14 @@
   </div>
 
   <div>
-    <h1><%= t(:activity) %></h1>
-    <%= line_chart [{name: t(:passed), data: @user.passed_submissions_count_per_week},
-                    {name: t(:failed), data: @user.failed_submissions_count_per_week}], colors: %w(green red) %>
+    <h1><%= t(:progress) %></h1>
+
+    <% @user.submitted_guides.group_by(&:path).each do |category, guides| %>
+      <h3><%= category.try(&:name)|| t(:uncategorized) %></h3>
+      <% guides.each do |guide| %>
+        <h3><%= guide.position %> <%= link_to_guide guide %></h3>
+        <%= render partial: 'layouts/progress_bar', locals: { guide: guide, stats: guide.stats(@user) } %>
+      <% end %>
+    <% end %>
   </div>
 <% end %>
