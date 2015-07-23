@@ -35,17 +35,7 @@
       <h3><%= category.try(&:name)|| 'No categorizado' %></h3>
       <% guides.each do |guide| %>
         <h3><%= guide.position %> <%= link_to_guide guide %></h3>
-
-        <div class="progress">
-          <a id="passed-progress-bar" href="<%= guide_path(guide)%>"
-             class="progress-bar progress-bar-success"
-             style="width: <%= guide.stats(@user).passed_ratio %>%;">
-          </a>
-          <a id="failed-progress-bar" href="<%= guide_path(guide)%>"
-             class="progress-bar progress-bar-danger"
-             style="width: <%= guide.stats(@user).failed_ratio %>%;">
-          </a>
-        </div>
+        <%= render partial: 'layouts/progress_bar', locals: { guide: guide, stats: guide.stats(@user) } %>
       <% end %>
     <% end %>
   </div>
