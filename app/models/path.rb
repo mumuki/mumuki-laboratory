@@ -5,6 +5,10 @@ class Path < ActiveRecord::Base
   belongs_to :language
 
   def name
-    "#{language.name}/#{category.name}"
+    if category.single_path?
+      category.name
+    else
+      "#{category.name} (#{language.name})"
+    end
   end
 end
