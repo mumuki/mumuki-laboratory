@@ -77,4 +77,22 @@ describe Solution do
     it { expect(exercise.reload.submissions_count).to eq(3) }
   end
 
+  describe '#submission_id' do
+    let(:exercise) { create(:exercise) }
+    let(:user) { create(:user) }
+
+    before {  exercise.submit_solution(user, content: 'foo') }
+
+    it do
+      submission_id = exercise.solution_for(user).submission_id
+      expect(submission_id).to be_present
+
+      exercise.submit_solution(user, content: 'bar')
+
+      new_submission_id = exercise.solution_for(user).submission_id
+      expect(new_submission_id).to be_present
+      expect(new_submission_id).to_not eq submission_id
+    end
+  end
+
 end

@@ -35,7 +35,9 @@ module WithSolutions
   end
 
   def submit_solution(user, attributes={})
-    solution_with(user, attributes).tap { |it| it.save! }
+    transaction do
+      solution_with(user, attributes).tap { |it| it.submit! }
+    end
   end
 
   private

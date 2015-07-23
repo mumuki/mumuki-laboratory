@@ -12,10 +12,6 @@ class Solution < ActiveRecord::Base
   serialize :expectation_results
   serialize :test_results
 
-  after_save :update_submissions_count!
-  after_save :update_last_submission!
-  after_save :update_submission_id!
-
   delegate :language, :title, to: :exercise
   delegate :output_content_type, to: :language
   delegate :should_retry?, to: :status
@@ -52,7 +48,9 @@ class Solution < ActiveRecord::Base
     Rails.configuration.verbosity.visible_expectation_results(expectation_results || [])
   end
 
-  private
+  def set_submission_id!
+    self.submission_id = SecureRandom.hex(8)
+  end
 
   def update_submissions_count!
     self.class.connection.execute(
@@ -70,7 +68,11 @@ class Solution < ActiveRecord::Base
     submitter.update!(last_submission_date: created_at, last_exercise: exercise)
   end
 
-  def update_submission_id!
-    update!(submission_id: SecureRandom.hex(8))
+  def submit!
+    set_submission_id!
+    save!
+    update_submissions_count!
+    update_last_submission!
   end
+
 end
