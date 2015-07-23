@@ -148,10 +148,10 @@ describe Exercise do
 
 
     context 'when user has multiple submission for the exercise' do
-      let!(:submissions) { [exercise.submit_solution(user, content: 'foo'),
+      let!(:solutions) { [exercise.submit_solution(user, content: 'foo'),
                             exercise.submit_solution(user, content: 'bar')] }
 
-      it { expect(exercise.default_content_for(user)).to eq submissions.last.content }
+      it { expect(exercise.default_content_for(user)).to eq solutions.last.content }
     end
   end
 

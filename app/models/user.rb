@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   end
 
   def passed_submissions_count
-    passed_submissions.count
+    passed_solutions.count
   end
 
   def submitted_exercises_count
@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
     "#{solved_exercises_count}/#{submitted_exercises_count}"
   end
 
-  def passed_submissions
+  def passed_solutions
     solutions.where(status: Status::Passed.to_i)
   end
 
