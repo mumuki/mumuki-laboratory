@@ -36,15 +36,15 @@ class Stats
   end
 
   def passed_ratio
-    100 * passed / total
+    100 * passed / total.to_f
   end
 
   def passed_with_warnings_ratio
-    100 * passed_with_warnings / total
+    100 * passed_with_warnings / total.to_f
   end
 
   def failed_ratio
-    100 * failed / total
+    100 * failed / total.to_f
   end
 
   def to_h(&key)
