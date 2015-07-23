@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col-md-12 submission-results">
         <% if @exercise.solution_for(current_user) %>
-          <%= render partial: 'exercise_solutions/results', locals: {submission: @exercise.solution_for(current_user)} %>
+          <%= render partial: 'exercise_solutions/results', locals: {solution: @exercise.solution_for(current_user)} %>
         <% end %>
       </div>
     </div>
