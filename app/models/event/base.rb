@@ -8,7 +8,7 @@ class Event::Base
   def notify_async!(subscriber)
     EventNotificationJob.run_async(
         OpenStruct.new(
-            subcriber_id: subscriber.id,
+            subscriber_id: subscriber.id,
             event_json: event_json,
             event_path: event_path))
   end

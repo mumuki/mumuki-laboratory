@@ -10,6 +10,6 @@ describe EventSubscriber do
 
     before { expect_any_instance_of(EventSubscriber).to receive(:do_request).and_return({'status' => 'ok'}.to_json) }
 
-    it { EventSubscriber.notify_submission!(solution) }
+    it { EventSubscriber.notify_sync!(Event::Submission.new(solution)) }
   end
 end
