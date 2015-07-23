@@ -32,7 +32,7 @@
     <h1><%= t(:progress) %></h1>
 
     <% @user.submitted_guides.group_by(&:path).each do |category, guides| %>
-      <h3><%= category.try(&:name)|| 'No categorizado' %></h3>
+      <h3><%= category.try(&:name)|| t(:uncategorized) %></h3>
       <% guides.each do |guide| %>
         <h3><%= guide.position %> <%= link_to_guide guide %></h3>
         <%= render partial: 'layouts/progress_bar', locals: { guide: guide, stats: guide.stats(@user) } %>
