@@ -4,7 +4,8 @@ describe Stats do
 
   context 'with good stats' do
     let(:stats) { Stats.new(passed: 6, passed_with_warnings: 3, failed: 1, unknown: 0) }
-    it { expect(stats.passed_ratio).to eq 90 }
+    it { expect(stats.passed_ratio).to eq 60 }
+    it { expect(stats.passed_with_warnings_ratio).to eq 30 }
     it { expect(stats.failed_ratio).to eq 10 }
     it { expect(stats.resolved).to eq 9 }
     it { expect(stats.good_progress?).to be true }
