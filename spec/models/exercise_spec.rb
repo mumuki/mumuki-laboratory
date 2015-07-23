@@ -130,8 +130,9 @@ describe Exercise do
     end
 
     context 'when there are submissions' do
-      before { create(:submission, exercise: exercise) }
-      it { expect { exercise.destroy! }.to raise_error }
+      let!(:submission) { create(:submission, exercise: exercise) }
+      before { exercise.destroy! }
+      it { expect { Submission.find(submission.id) }.to raise_error(ActiveRecord::RecordNotFound) }
     end
 
   end
