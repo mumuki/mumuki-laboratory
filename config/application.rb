@@ -28,7 +28,7 @@ module Mumuki
     config.autoload_paths += %W(#{config.root}/plugins)
     config.autoload_paths += %W(#{config.root}/app/helpers/concerns)
 
-    config.submission_notification_format = {except: :exercise_id,
+    config.submission_notification_format = {except: [:exercise_id, :id, :submission_id],
                                              include: {
                                                  exercise: {only: [:id, :guide_id]},
                                                  submitter: {only: [:id, :name]}}}

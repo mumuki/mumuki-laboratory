@@ -8,6 +8,6 @@ class Event::Submission < Event::Base
   end
 
   def event_json
-    @solution.to_json(Rails.configuration.submission_notification_format)
+    @solution.as_json(Rails.configuration.submission_notification_format).merge(id: @solution.submission_id)
   end
 end

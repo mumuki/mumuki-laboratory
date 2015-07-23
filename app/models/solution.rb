@@ -1,8 +1,8 @@
+require 'securerandom'
+
 class Solution < ActiveRecord::Base
   include WithTestRunning
   include WithStatus
-
-  extend WithAsyncAction
 
   belongs_to :exercise
   belongs_to :submitter, class_name: 'User'
@@ -14,6 +14,7 @@ class Solution < ActiveRecord::Base
 
   after_save :update_submissions_count!
   after_save :update_last_submission!
+  after_save :update_submission_id!
 
   delegate :language, :title, to: :exercise
   delegate :output_content_type, to: :language
@@ -67,5 +68,9 @@ class Solution < ActiveRecord::Base
 
   def update_last_submission!
     submitter.update!(last_submission_date: created_at, last_exercise: exercise)
+  end
+
+  def update_submission_id!
+    update!(submission_id: SecureRandom.hex(8))
   end
 end
