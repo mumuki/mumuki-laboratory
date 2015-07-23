@@ -40,16 +40,14 @@ describe Exercise do
 
       before { alternative_exercise.submit_solution(user, content: 'foo') }
 
-      it do
-        expect(exercise_with_guide.guide).to eq guide
-        expect(guide.exercises).to_not eq []
-        expect(guide.exercises.at_locale).to_not eq []
-        expect(guide.pending_exercises(user)).to_not eq []
-        expect(guide.pending_exercises(user)).to include(exercise_with_guide)
-        expect(guide.pending_exercises(user)).to include(alternative_exercise)
-        expect(guide.next_exercise(user)).to_not be nil
-        expect(exercise_with_guide.next_for(user)).to eq alternative_exercise
-      end
+      it { expect(guide.exercises.at_locale).to_not eq [] }
+      it { expect(guide.pending_exercises(user)).to_not eq [] }
+      it { expect(guide.next_exercise(user)).to_not be nil }
+      it { expect(guide.pending_exercises(user)).to include(alternative_exercise) }
+      it { expect(exercise_with_guide.next_for(user)).to eq alternative_exercise }
+      it { expect(guide.exercises).to_not eq [] }
+      it { expect(exercise_with_guide.guide).to eq guide }
+      it { expect(guide.pending_exercises(user)).to include(exercise_with_guide) }
     end
   end
 
