@@ -29,8 +29,5 @@
   </div>
 
   <div>
-    <h1><%= t(:activity) %></h1>
-    <%= line_chart [{name: t(:passed), data: @user.passed_submissions_count_per_week},
-                    {name: t(:failed), data: @user.failed_submissions_count_per_week}], colors: %w(green red) %>
   </div>
 <% end %>

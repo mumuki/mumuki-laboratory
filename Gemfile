@@ -57,8 +57,6 @@ gem 'nprogress-rails'
 
 gem 'yaml_db'
 
-gem 'groupdate'
-
 gem 'mumukit-inspection', :github => 'uqbar-project/mumukit-inspection', :branch => 'master'
 gem 'mumukit-bridge',     :github => 'uqbar-project/mumukit-bridge', :tag => 'v0.2.0'
 

@@ -45,14 +45,6 @@ class User < ActiveRecord::Base
     passed_submissions.count
   end
 
-  def passed_submissions_count_per_week
-    passed_submissions.group_by_week(:created_at).count
-  end
-
-  def failed_submissions_count_per_week
-    submissions.where(status: Status::Failed.to_i).group_by_week(:created_at).count
-  end
-
   def submitted_exercises_count
     submitted_exercises.count
   end
