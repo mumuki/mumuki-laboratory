@@ -1,6 +1,8 @@
-class SubmissionsController < ApplicationController #FIXME remove
+class SubmissionsController < ApplicationController
+  include NestedInUser
+
   before_action :authenticate!
   def index
-    @submissions = paginated current_user.submissions
+    @submissions = paginated @user.submissions.order(updated_at: :desc), 50
   end
 end

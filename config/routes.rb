@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :categories, only: :index
+  resources :paths, only: :show
+  resources :submissions, only: :index
 
   # All users
   resources :exercises do
