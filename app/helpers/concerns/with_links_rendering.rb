@@ -15,4 +15,7 @@ module WithLinksRendering
     link_to user.name, user
   end
 
+  def link_to_path(path)
+    link_to path.name, path
+  end
 end
