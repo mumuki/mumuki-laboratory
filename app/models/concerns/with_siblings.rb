@@ -16,5 +16,13 @@ module WithSiblings
   def orphan?
     parent.nil?
   end
+
+  def contextualized_name
+    if parent
+      "#{position}. #{name}"
+    else
+      name
+    end
+  end
 end
 
