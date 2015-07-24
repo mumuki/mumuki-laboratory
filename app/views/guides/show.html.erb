@@ -27,9 +27,9 @@
         </p>
 
         <p>
-          <%= raw t :passed_exercises_stats, count: stats(@stats, :passed) %>
-          <%= raw t :failed_exercises_stats, count: stats(@stats, :failed) %>
-          <%= raw t :unknown_exercises_stats, count: stats(@stats, :unknown) %>
+          <%= raw t :passed_exercises_stats, count: stats_html(@stats, :passed) %>
+          <%= raw t :failed_exercises_stats, count: stats_html(@stats, :failed) %>
+          <%= raw t :unknown_exercises_stats, count: stats_html(@stats, :unknown) %>
         </p>
 
         <p>

@@ -1,4 +1,4 @@
-<% @stats = @exercise.guide.stats(current_user) if current_user && @exercise.guide %>
+<% @stats = @exercise.guide.stats_for(current_user) if current_user && @exercise.guide %>
 
 
 <div class="row">

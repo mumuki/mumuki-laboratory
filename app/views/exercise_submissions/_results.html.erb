@@ -1,6 +1,6 @@
 <%
    @guide = @exercise.guide
-   @stats = @guide.stats(current_user) if @guide
+   @stats = @guide.stats_for(current_user) if @guide
 %>
 
 
