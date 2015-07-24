@@ -4,6 +4,8 @@ class Path < ActiveRecord::Base
   belongs_to :category
   belongs_to :language
 
+  has_many :exercises, through: :guides
+
   def name
     if category.single_path?
       category.name

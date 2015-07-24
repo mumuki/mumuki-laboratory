@@ -6,7 +6,7 @@ class Category < ActiveRecord::Base
 
   validates_presence_of :name, :description, :image_url
 
-  markup_on :description
+  markup_on :description, :long_description, :links
 
   def single_path?
     paths.size == 1
