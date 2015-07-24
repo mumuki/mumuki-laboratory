@@ -31,15 +31,14 @@ module ApplicationHelper
   end
 
   def next_guides_box(guide, options={})
+    return if guide.path.blank?
+
     suggested = guide.next_guides
     if suggested.empty?
-      nil
-    elsif suggested.size == 1 || options[:only_first]
-      link_to t(:next_guide), suggested.first, class: 'btn btn-success'
+      raw t :path_finished, path: link_to_path(guide.path)
     else
-      ('<ul class="list-group text-center">' +
-      suggested.map {|it| "<li class=\"list-group-item\">#{link_to_guide(it)}</li>"}.join("\n")  +
-      '</ul>').html_safe
+      "<h4>#{raw t :see_next_guides, path: link_to_path(guide.path)}</h4>" +
+      "#{link_to t(:next_guide), suggested.first, class: 'btn btn-success'}"
     end
   end
 
