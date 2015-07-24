@@ -11,7 +11,7 @@
     <% if @guide.path %>
       <p>
         <%= previous_nav_button(@guide) %>
-        <span><%= @guide.path.name %></span>
+        <span><%= link_to_path @guide.path %></span>
         <%= next_nav_button(@guide) %>
       </p>
     <% end%>

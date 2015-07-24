@@ -9,15 +9,12 @@
     <div class="col-md-12">
       <div>
         <h3><%= t :about_this_guide %></h3>
-
-        <p>
-          <%= @guide.description_html %>
-        </p>
+        <%= @guide.description_html %>
       </div>
     </div>
   </div>
 
-  <% if current_user? %>
+  <% if current_user? && @stats.started? %>
     <div class="row">
       <div class="col-md-5">
         <h3><%= t :stats %></h3>
@@ -35,12 +32,8 @@
         <p>
           <% if @stats.done? %>
             ¡Eso significa que <strong>ya terminaste esta guía</strong>! ¡Bien hecho!
-            Tenemos más guías para vos:
-            <%= next_guides_box @guide %>
           <% elsif @stats.good_progress? %>
             <%= raw t :good_progress_in_guide %>
-          <% elsif !@stats.started? %>
-            <%= raw t :not_started_guide %>
           <% elsif @stats.stuck? %>
             <%= raw t :stuck_in_guide %>
           <% end %>
@@ -52,7 +45,7 @@
       </div>
     </div>
 
-  <% else %>
+  <% elsif !current_user?  %>
 
     <div class="row">
       <div class="col-md-12">
@@ -70,11 +63,16 @@
 
   <% end %>
 
-  <% unless @stats.try :done? %>
+  <% if @stats.try :done? %>
+    <%= corollary_box(@guide) %>
+    <div>
+      <%= next_guides_box @guide %>
+    </div>
+  <% else %>
     <div class="row">
       <div class="col-md-12">
         <div class="actions">
-          <% if @next_exercise  %>
+          <% if @next_exercise %>
             <%= link_to t(practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-primary' %>
           <% end %>
         </div>
