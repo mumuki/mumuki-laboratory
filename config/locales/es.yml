@@ -1,6 +1,6 @@
 ---
 es:
-  about_this_guide: Sobre esta guía
+  about_this_guide: Introducción
   aborted: Ups, no pudimos evaluar tu solución
   actions: Acciones
   activity: Actividad
@@ -94,7 +94,6 @@ es:
   no_guides: Nadie creó una guía para tu búsqueda aún. <a href="%{create_path}">¡Sé el primero!</a>
   no_permissions: No tenés suficientes permisos sobre el repositorio
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio aún!
-  not_started_guide: Eso significa que aún no empezaste con esta guía. <strong>¡Comenzá ahora mismo!</strong>
   notify_problem_to_author: Notificar problema al autor
   output: Salida
   overview: Vista general
@@ -112,7 +111,7 @@ es:
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
   running: procesando
   search: 'Buscá, por ejemplo: polimorfismo, haskell o competenciaDeSaltos'
-  see_next_guides: ¿Querés seguir practicando? ¡tenemos más guías para vos!
+  see_next_guides: ¿Querés seguir aprendiendo más sobre %{path}? ¡tenemos más guías para vos!
   show: Mostrar
   sign_in: Iniciá sesion
   sign_in_action: iniciar sesión
@@ -163,3 +162,6 @@ es:
     classroom: "Dentro y fuera del aula"
     classroom_description: "Ya sea que sea un autodidacta que está buscando aprender a programar en Internet, o un alumno de un curso de programación presencial, Mumuki te será útil"
   uncategorized: "No categorizado"
+  recent_activity: "Actividad Reciente"
+  created_exercises: "Ejercicios Creados"
+  created_guides: "Guías Creadas"
