@@ -35,10 +35,10 @@ module ApplicationHelper
 
     suggested = guide.next_guides
     if suggested.empty?
-      raw t :path_finished, path: link_to_path(guide.path)
+      t :path_finished, path: link_to_path(guide.path)
     else
-      "<h4>#{raw t :see_next_guides, path: link_to_path(guide.path)}</h4>" +
-      "#{link_to t(:next_guide), suggested.first, class: 'btn btn-success'}"
+      ("<h4>#{raw t :see_next_guides, path: link_to_path(guide.path)}</h4>" +
+      "#{link_to t(:next_guide, name: suggested.first.name), suggested.first, class: 'btn btn-success'}").html_safe
     end
   end
 

@@ -89,7 +89,7 @@ es:
   new_import: ¡Importar ahora!
   new_submission: Nueva Solución
   next_exercise: Siguiente
-  next_guide: Siguiente Guía
+  next_guide: "Siguiente Guía: %{name}"
   no_exercises: Nadie creó un ejercicio para tu búsqueda aún. <a href="%{create_path}">¡Sé el primero!</a>
   no_guides: Nadie creó una guía para tu búsqueda aún. <a href="%{create_path}">¡Sé el primero!</a>
   no_permissions: No tenés suficientes permisos sobre el repositorio
@@ -165,3 +165,4 @@ es:
   recent_activity: "Actividad Reciente"
   created_exercises: "Ejercicios Creados"
   created_guides: "Guías Creadas"
+  path_finished: "¡Terminaste esta categoría! ¡Felicitaciones!"
