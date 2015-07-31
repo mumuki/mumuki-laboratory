@@ -111,7 +111,6 @@ es:
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
   running: procesando
   search: 'Buscá, por ejemplo: polimorfismo, haskell o competenciaDeSaltos'
-  see_next_guides: ¿Querés seguir aprendiendo más sobre %{path}? ¡tenemos más guías para vos!
   show: Mostrar
   sign_in: Iniciá sesion
   sign_in_action: iniciar sesión

@@ -136,5 +136,4 @@ en:
   need_a_hint: "Do you need a hint?"
   about: "About"
   sending_solution: "Sending solution"
-  see_next_guides: "Do you want to learn more about %{path}? We have more guides for you!"
   path_finished: "You have finished this path!"
