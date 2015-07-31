@@ -70,6 +70,7 @@ class GuidesController < ApplicationController
     params.require(:guide).permit(
         :github_repository,
         :name, :description,
+        :corollary,
         :locale, :learning,
         :beta,
         :original_id_format, :language_id, suggested_guide_ids: [])

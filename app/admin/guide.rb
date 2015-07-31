@@ -1,6 +1,7 @@
 ActiveAdmin.register Guide do
 
-  permit_params :name, :author_id, :description, :locale, :learning, :beta, :corollary, :github_repository, :position, :path_id, :extra_code
+  permit_params :name, :author_id, :description, :locale,
+                :learning, :beta, :corollary, :github_repository, :position, :path_id, :extra_code
 
   filter :name
   filter :description

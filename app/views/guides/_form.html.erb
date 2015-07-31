@@ -11,6 +11,8 @@
       <%= bootstrap_form_for(@guide, html: {role: 'form'}) do |f| %>
         <%= f.editor :description, :markdown %>
 
+        <%= f.editor :corollary, :markdown %>
+
         <%= f.select(:locale, Locale.all, {}, class: 'form-control') %>
 
         <%= f.collection_select(:language_id, Language.all, :id, :name, {}, class: 'form-control') %>
