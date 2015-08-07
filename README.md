@@ -63,7 +63,7 @@ We would like to add support for Clojure, Mongo queries and SQL in the short ter
 1. Create exercises! 
 1. Create a guide! A guide is a set of exercises
 1. Are you a UI designer? We want Mumuki to look great. 
-1. And spread the word. We belive that knowleadge is not complete free if tools and content aren't. That is why Mumuki Platform and Mumuki Project are here.  
+1. And spread the word. We belive that knowledge is not complete free if tools and content aren't. That is why Mumuki Platform and Mumuki Project are here.  
 
 ## Who sponors this platform?
 
