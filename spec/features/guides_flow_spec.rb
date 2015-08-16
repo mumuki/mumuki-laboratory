@@ -41,6 +41,10 @@ feature 'Search Flow' do
 
     click_on 'Sign in with Github'
 
+    within '.guide-nav' do
+      click_on 'Exercises'
+    end
+
     expect(page).to have_text('Foo')
     expect(page).to have_text('Bar')
     expect(page).to have_text('Baz')

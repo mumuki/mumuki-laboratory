@@ -20,13 +20,15 @@ module Authentication
   end
 
   def authenticate!
+    unauthenticated! unless current_user?
+  end
+
+  def unauthenticated!
     message = t :you_must, action: login_anchor(title: :sign_in_action)
-    unless current_user?
-      session[:redirect_after_login] = request.fullpath
-      redirect_to :back, alert: message
-    end
+
+    redirect_to :back, alert: message
   rescue ActionController::RedirectBackError
-    redirect_to root_path, alert: message unless current_user?
+    redirect_to root_path, alert: message
   end
 
   def restricted_to_author(authored)
@@ -47,7 +49,9 @@ module Authentication
 
   def login_anchor(options={})
     options[:title] ||= :sign_in
-    session[:redirect_after_login] ||= request.fullpath
+
+    session[:redirect_after_login] = request.fullpath
+
     %Q{<a href="#" class="#{options[:class]}" data-toggle="modal" data-target="#login-modal">#{I18n.t(options[:title])}</a>}.html_safe
   end
 end
