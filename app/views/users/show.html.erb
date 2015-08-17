@@ -29,14 +29,13 @@
   </div>
 
   <div>
-    <h1><%= t(:progress) %></h1>
-
-    <% @user.submitted_guides.group_by(&:path).each do |category, guides| %>
-      <h3><%= category.try(&:name)|| t(:uncategorized) %></h3>
-      <% guides.each do |guide| %>
-        <h3><%= guide.position %> <%= link_to_guide guide %></h3>
-        <%= render partial: 'layouts/progress_bar', locals: { guide: guide, stats: guide.stats(@user) } %>
+    <h2><%= t(:progress) %></h2>
+    <ul>
+      <% @user.submitted_paths.each do |it| %>
+        <li><%= link_to_path it %>: <%= it.stats_for(@user).passed_ratio %>%
+        </li>
       <% end %>
-    <% end %>
+    </ul>
   </div>
+
 <% end %>

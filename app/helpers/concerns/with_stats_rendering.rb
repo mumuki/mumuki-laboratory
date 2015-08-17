@@ -1,5 +1,5 @@
 module WithStatsRendering
-  def stats(stats, k)
+  def stats_html(stats, k)
     "#{stats.send k} #{status_icon(k)} ".html_safe
   end
 

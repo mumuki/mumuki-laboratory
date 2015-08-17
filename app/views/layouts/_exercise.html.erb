@@ -1,10 +1,10 @@
-<% @stats = @exercise.guide.stats(current_user) if current_user && @exercise.guide %>
+<% @stats = @exercise.guide.stats_for(current_user) if current_user && @exercise.guide %>
 
 
 <div class="row">
   <div class="col-md-12">
     <h1 style="display: inline-block">
-      <%= @exercise.contextualized_title %>
+      <%= @exercise.contextualized_name %>
     </h1>
     <span style="margin-left: 5px">
       <a data-toggle="collapse" href="#about-section" class="text-info">

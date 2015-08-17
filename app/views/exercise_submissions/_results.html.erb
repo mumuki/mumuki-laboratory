@@ -1,6 +1,6 @@
 <%
    @guide = @exercise.guide
-   @stats = @guide.stats(current_user) if @guide
+   @stats = @guide.stats_for(current_user) if @guide
 %>
 
 
@@ -56,7 +56,7 @@
               class: 'text-warning warning pull-left' %>
   <%= next_button(@exercise) %>
 
-  <%= next_guides_box(@guide, only_first: true) if @stats.try &:done? %>
+  <%= next_guides_box(@guide) if @stats.try &:done? %>
 </div>
 
 <script>

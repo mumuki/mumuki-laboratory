@@ -13,7 +13,8 @@ class Guide < ActiveRecord::Base
           WithLocale,
           WithCollaborators,
           WithPath,
-          WithExercises
+          WithExercises,
+          WithStats
 
   #TODO rename name to title. This helps building also generic link_to compoenetns
   has_many :imports, -> { order(created_at: :desc)}
@@ -30,10 +31,6 @@ class Guide < ActiveRecord::Base
   #TODO denormalize
   def search_tags
     exercises.flat_map(&:search_tags).uniq
-  end
-
-  def stats(user)
-    Stats.from_statuses exercises.map { |it| it.status_for(user) }
   end
 
   def github_url

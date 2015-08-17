@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722003532) do
+ActiveRecord::Schema.define(version: 20150724062249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,9 @@ ActiveRecord::Schema.define(version: 20150722003532) do
     t.string   "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "position",    default: 0, null: false
+    t.integer  "position",         default: 0, null: false
+    t.text     "links"
+    t.text     "long_description"
   end
 
   create_table "collaborators", force: true do |t|
@@ -164,6 +166,7 @@ ActiveRecord::Schema.define(version: 20150722003532) do
     t.integer  "output_content_type",    default: 0
     t.string   "test_extension"
     t.string   "highlight_mode"
+    t.text     "description"
   end
 
   add_index "languages", ["extension"], name: "index_languages_on_extension", using: :btree
@@ -178,6 +181,24 @@ ActiveRecord::Schema.define(version: 20150722003532) do
 
   add_index "paths", ["category_id"], name: "index_paths_on_category_id", using: :btree
   add_index "paths", ["language_id"], name: "index_paths_on_language_id", using: :btree
+
+  create_table "solutions", force: true do |t|
+    t.text     "content"
+    t.integer  "exercise_id"
+    t.integer  "status",              default: 0
+    t.text     "result"
+    t.integer  "submitter_id"
+    t.text     "expectation_results"
+    t.text     "feedback"
+    t.text     "test_results"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "submissions_count",   default: 0, null: false
+    t.string   "submission_id"
+  end
+
+  add_index "solutions", ["exercise_id"], name: "index_solutions_on_exercise_id", using: :btree
+  add_index "solutions", ["submitter_id"], name: "index_solutions_on_submitter_id", using: :btree
 
   create_table "submissions", force: true do |t|
     t.text     "content"

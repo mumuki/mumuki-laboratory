@@ -1,8 +1,10 @@
 class Path < ActiveRecord::Base
-  include WithGuides
+  include WithGuides, WithStats
 
   belongs_to :category
   belongs_to :language
+
+  has_many :exercises, through: :guides
 
   def name
     if category.single_path?

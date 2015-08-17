@@ -18,11 +18,14 @@
       <li <%= active_if :overview %>>
         <%= link_to t(:overview), @user %>
       </li>
+      <li <%= active_if :recent_activity %>>
+        <%= link_to t(:recent_activity), user_submissions_path(@user) %>
+      </li>
       <li <%= active_if :exercises %>>
-        <%= link_to t(:exercise).pluralize, user_exercises_path(@user) %>
+        <%= link_to t(:created_exercises), user_exercises_path(@user) %>
       </li>
       <li <%= active_if :guides %>>
-        <%= link_to t(:guide).pluralize, user_guides_path(@user) %>
+        <%= link_to t(:created_guides), user_guides_path(@user) %>
       </li>
     </ul>
   </div>

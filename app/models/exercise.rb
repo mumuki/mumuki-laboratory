@@ -46,14 +46,6 @@ class Exercise < ActiveRecord::Base
     update!(original_id: id) unless original_id
   end
 
-  def contextualized_title
-    if guide
-      "#{position}. #{title}"
-    else
-      title
-    end
-  end
-
   def collaborator?(user)
     guide.present? && guide.authored_by?(user)
   end
@@ -75,5 +67,9 @@ class Exercise < ActiveRecord::Base
 
   def self.default_layout
     layouts.keys[0]
+  end
+
+  def name #FIXME remove
+    title
   end
 end

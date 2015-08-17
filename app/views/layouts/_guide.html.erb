@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-md-12">
     <h1>
-      <%= @guide.name %>
+      <%= @guide.contextualized_name %>
       <small> - <%= @guide.language %></small>
     </h1>
     <h4><%= with_classifications  @guide %></h4>
@@ -11,7 +11,7 @@
     <% if @guide.path %>
       <p>
         <%= previous_nav_button(@guide) %>
-        <span><%= @guide.path.name %></span>
+        <span><%= link_to_path @guide.path %></span>
         <%= next_nav_button(@guide) %>
       </p>
     <% end%>

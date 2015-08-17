@@ -10,7 +10,7 @@ class Language < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
 
-  markup_on :test_syntax_hint
+  markup_on :test_syntax_hint, :description
 
   def run_tests!(request)
     bridge.run_tests!(request)

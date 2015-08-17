@@ -87,12 +87,11 @@ en:
   new_import: Import now!
   new_submission: New Submission
   next_exercise: Next
-  next_guide: Next Guide
+  next_guide: "Next Guide: %{name}"
   no_exercises: Nobody created an exercise for this search yet. <a href="%{create_path}">Be the first!</a>
   no_guides: Nobody created a guide for this search yet. <a href="%{create_path}">Be the first!</a>
   no_permissions: You don't have enough permissions over the repository
   no_submissions: Its seems like you haven't tried to solve this exercise
-  not_started_guide: Which means you haven't started yet. <strong>¡Start practicing now!</strong>
   notify_problem_to_author: Notify problem to author
   output: Output
   overview: Overview
@@ -104,7 +103,7 @@ en:
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'
   processing_you_solution: We are processing you solution
   profile_of: Profile of %{username}
-  progress: Exercises
+  progress: Progresss
   refresh_collaborators: Refresh collaborators!
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   running: running
@@ -137,3 +136,4 @@ en:
   need_a_hint: "Do you need a hint?"
   about: "About"
   sending_solution: "Sending solution"
+  path_finished: "You have finished this path!"

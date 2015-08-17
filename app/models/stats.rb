@@ -35,16 +35,20 @@ class Stats
     submitted > 0
   end
 
+  def resolved_ratio
+    ratio resolved
+  end
+
   def passed_ratio
-    100 * passed / total.to_f
+    ratio passed
   end
 
   def passed_with_warnings_ratio
-    100 * passed_with_warnings / total.to_f
+    ratio passed_with_warnings
   end
 
   def failed_ratio
-    100 * failed / total.to_f
+    ratio failed
   end
 
   def to_h(&key)
@@ -59,5 +63,11 @@ class Stats
       accum[status.group.to_sym] += 1
       accum
     end)
+  end
+
+  private
+
+  def ratio(x)
+    (100 * x / total.to_f).round(2)
   end
 end
