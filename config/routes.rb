@@ -26,7 +26,6 @@ Rails.application.routes.draw do
 
   resources :categories, only: :index
   resources :paths, only: :show
-  resources :submissions, only: :index
 
   # All users
   resources :exercises do
@@ -58,5 +57,7 @@ Rails.application.routes.draw do
     resources :guides, controller: 'user_guides', only: :index
     #nested user
     resources :solved_exercises, controller: 'user_solved_exercises', only: :index
+    #nested user
+    resources :solutions, controller: 'user_solutions', only: :index
   end
 end

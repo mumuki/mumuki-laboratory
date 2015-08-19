@@ -1,4 +1,4 @@
-class SolutionsController < ApplicationController
+class UserSolutionsController < ApplicationController
   include NestedInUser
 
   before_action :authenticate!

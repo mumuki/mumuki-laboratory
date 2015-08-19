@@ -135,10 +135,10 @@ ActiveRecord::Schema.define(version: 20150724062249) do
     t.string   "original_id_format", default: "%05d", null: false
     t.string   "locale",             default: "en"
     t.integer  "language_id"
+    t.text     "extra_code"
     t.integer  "path_id"
     t.integer  "position"
     t.text     "corollary"
-    t.text     "extra_code"
     t.boolean  "learning",           default: false
     t.boolean  "beta",               default: false
   end
