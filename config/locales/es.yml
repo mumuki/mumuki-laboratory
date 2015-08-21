@@ -141,6 +141,7 @@ es:
   you_must: Tenés que %{action} antes de continuar
   you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
   you_must_sign_in_to_see_stats: Necesitás iniciar sesión para ver más estadísticas sobre tu progreso
+  what_exactly_are_expectations_html: ¿Qué son concretamente las <a href="http://www.mumuki.org/expectativas/plataform/2015/06/16/el-lenguaje-de-expectativas/">Expectativas</a>?
   welcome_back_after_redirection: "¡Qué bueno verte de nuevo! Aquí es donde estuviste la última vez"
   need_a_hint: "¿Necesitás ayuda?"
   about: "Detalles"
