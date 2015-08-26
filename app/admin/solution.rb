@@ -8,9 +8,9 @@ ActiveAdmin.register Solution do
 
   index do
     column(:id)
-    column(:exercise_title){|sub| sub.exercise.title}
-    column(:exercise_guide){|sub| sub.exercise.guide.name if sub.exercise.guide}
-    column(:language){|sub| sub.exercise.language.name}
+    column(:exercise) {|sub| sub.exercise.title}
+    column(:exercise) {|sub| sub.exercise.guide.name if sub.exercise.guide}
+    column(:language) {|sub| sub.exercise.language }
     column(:status)
     column(:submitter_name){|sub| sub.submitter.name}
 

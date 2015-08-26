@@ -14,6 +14,8 @@ ActiveAdmin.register Exercise do
 
   filter :title
   filter :author
+  filter :guide
+  filter :language
   filter :locale
   filter :created_at
   filter :updated_at
@@ -22,9 +24,10 @@ ActiveAdmin.register Exercise do
     column(:id)
     column(:title)
     column(:language)
+    column(:guide)
     column(:layout)
     column(:submissions_count)
-    column(:author_name) { |ex| ex.author.name }
+    column(:author)
     column(:locale)
 
     actions

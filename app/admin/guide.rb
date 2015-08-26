@@ -8,6 +8,8 @@ ActiveAdmin.register Guide do
   filter :path
   filter :learning
   filter :beta
+  filter :language
+  filter :path
   filter :created_at
   filter :updated_at
 
@@ -18,7 +20,6 @@ ActiveAdmin.register Guide do
     column(:beta)
     column(:path)
     column(:position)
-    column(:description)
     column(:language)
     column(:github_repository)
 
