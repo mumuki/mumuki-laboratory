@@ -1,8 +1,8 @@
-class Submission < ActiveRecord::Base
+require 'securerandom'
+
+class Solution < ActiveRecord::Base
   include WithTestRunning
   include WithStatus
-
-  extend WithAsyncAction
 
   belongs_to :exercise
   belongs_to :submitter, class_name: 'User'
@@ -11,9 +11,6 @@ class Submission < ActiveRecord::Base
 
   serialize :expectation_results
   serialize :test_results
-
-  after_create :update_submissions_count!
-  after_create :update_last_submission!
 
   delegate :language, :title, to: :exercise
   delegate :output_content_type, to: :language
@@ -35,10 +32,6 @@ class Submission < ActiveRecord::Base
     result.truncate(100) if should_retry?
   end
 
-  def eligible_for_run?
-    exercise.submissions_for(submitter).last == self
-  end
-
   def result_html #TODO move rendering logic to helpers
     output_content_type.to_html(result)
   end
@@ -55,20 +48,31 @@ class Submission < ActiveRecord::Base
     Rails.configuration.verbosity.visible_expectation_results(expectation_results || [])
   end
 
-  private
+  def set_submission_id!
+    self.submission_id = SecureRandom.hex(8)
+  end
 
   def update_submissions_count!
     self.class.connection.execute(
         "update exercises
          set submissions_count = submissions_count + 1
         where id = #{exercise.id}")
+    self.class.connection.execute(
+        "update solutions
+         set submissions_count = submissions_count + 1
+        where id = #{id}")
     exercise.reload
   end
 
   def update_last_submission!
     submitter.update!(last_submission_date: created_at, last_exercise: exercise)
   end
+
+  def submit!
+    set_submission_id!
+    save!
+    update_submissions_count!
+    update_last_submission!
+  end
+
 end
-
-
-

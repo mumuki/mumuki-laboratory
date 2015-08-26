@@ -19,7 +19,7 @@
         <%= link_to t(:overview), @user %>
       </li>
       <li <%= active_if :recent_activity %>>
-        <%= link_to t(:recent_activity), user_submissions_path(@user) %>
+        <%= link_to t(:recent_activity), user_solutions_path(@user) %>
       </li>
       <li <%= active_if :exercises %>>
         <%= link_to t(:created_exercises), user_exercises_path(@user) %>

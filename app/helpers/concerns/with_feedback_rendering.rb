@@ -1,5 +1,5 @@
 module WithFeedbackRendering
-  def render_feedback?(submission)
-    Rails.configuration.verbosity.render_feedback?(submission.feedback)
+  def render_feedback?(solution)
+    Rails.configuration.verbosity.render_feedback?(solution.feedback)
   end
 end

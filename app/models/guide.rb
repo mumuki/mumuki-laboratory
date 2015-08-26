@@ -62,8 +62,8 @@ class Guide < ActiveRecord::Base
     created_at > 7.days.ago
   end
 
-  def submission_contents_for(current_user)
-    exercises.map { |it| it.last_submission(current_user).try &:content }.compact
+  def solution_contents_for(current_user)
+    exercises.map { |it| it.solution_for(current_user).try &:content }.compact
   end
 
   private

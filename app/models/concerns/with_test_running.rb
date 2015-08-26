@@ -3,7 +3,7 @@ module WithTestRunning
     run_update! do
       language.run_tests!(new_test_server_request).except(:response_type)
     end
-    EventNotificationJob.run_async(self.id)
+    EventSubscriber.notify_async!(Event::Submission.new(self))
   end
 
   def new_test_server_request

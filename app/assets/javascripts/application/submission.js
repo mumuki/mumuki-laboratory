@@ -9,8 +9,8 @@ $(document).on('ready page:load', function(){
   if(!resultsBox) return;
 
   var processingTemplate = $('#processing-template');
-  $('form.new_submission').on('ajax:beforeSend',function (event, xhr, settings) {
-    console.log('sending submission')
+  $('form.new_solution').on('ajax:beforeSend',function (event, xhr, settings) {
+    console.log('submitting solution');
     resultsBox.html(processingTemplate.html());
   }).on('ajax:complete',function (xhr, status) {
     var button = $('form button.btn.btn-primary');

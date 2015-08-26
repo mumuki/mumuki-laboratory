@@ -5,11 +5,11 @@ describe WithTestResultsRendering do
   helper WithIcons
   helper WithTestResultsRendering
 
-  let(:html) { render_test_results submission }
+  let(:html) { render_test_results solution }
 
   context 'structured results' do
     context 'when single passed submission' do
-      let(:submission) { OpenStruct.new(
+      let(:solution) { OpenStruct.new(
         test_results: [{title: '2 is 2', status: :passed, result: ''}],
         output_content_type: ContentType::Plain) }
 
@@ -20,7 +20,7 @@ describe WithTestResultsRendering do
 
     context 'when single failed submission' do
       context 'when plain results' do
-        let(:submission) { OpenStruct.new(
+        let(:solution) { OpenStruct.new(
           test_results: [{title: '2 is 2', status: :failed, result: 'something _went_ wrong'}],
           output_content_type: ContentType::Plain) }
 
@@ -30,7 +30,7 @@ describe WithTestResultsRendering do
       end
 
       context 'when markdown results' do
-        let(:submission) { OpenStruct.new(
+        let(:solution) { OpenStruct.new(
           test_results: [{title: '2 is 2', status: :failed, result: 'something went _really_ wrong'}],
           output_content_type: ContentType::Markdown) }
 
@@ -42,7 +42,7 @@ describe WithTestResultsRendering do
   end
 
   context 'unstructured results' do
-    let(:submission) { OpenStruct.new(result_html: '<pre>ooops, something went wrong</pre>'.html_safe) }
+    let(:solution) { OpenStruct.new(result_html: '<pre>ooops, something went wrong</pre>'.html_safe) }
 
     it { expect(html).to be_html_safe }
     it { expect(html).to eq '<pre>ooops, something went wrong</pre>' }

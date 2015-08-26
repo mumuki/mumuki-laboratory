@@ -1,4 +1,4 @@
-ActiveAdmin.register Submission do
+ActiveAdmin.register Solution do
 
   filter :status
   filter :submitter
