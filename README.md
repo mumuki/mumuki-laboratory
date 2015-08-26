@@ -51,7 +51,7 @@ We would like to add support for Clojure, Mongo queries and SQL in the short ter
 ## How can I contribute?
 
 1. Navigate Mumuki at http://mumuki.io, and submit issues for every thing you dislike
-1. Check the current issues, fork the repository, and take any of your interest. Then pull request it.
+1. Check the current issues, fork the repository and take any of your interest. Then check our [contributing guide](https://github.com/mumuki/mumuki-platform/wiki/Contributing) and start a pull request
 1. Choose your preffered language and create your test runner server, or help with existing runners development. Use any of these for inspiration:
   * [mumuki-hspec-server](https://github.com/mumuki/mumuki-hspec-server) (written in Haskell)
   * [mumuki-rspec-server](https://github.com/mumuki/mumuki-rspec-server)  (written in Ruby)
@@ -65,7 +65,7 @@ We would like to add support for Clojure, Mongo queries and SQL in the short ter
 1. Are you a UI designer? We want Mumuki to look great. 
 1. And spread the word. We belive that knowledge is not complete free if tools and content aren't. That is why Mumuki Platform and Mumuki Project are here.  
 
-## Who sponors this platform?
+## Who sponsors this platform?
 
 * The [Mumuki Project](http://mumuki.org)
 * The [Uqbar Project](http://www.uqbar-project.org/). Please support Uqbar too!
