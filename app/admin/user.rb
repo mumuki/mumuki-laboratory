@@ -10,7 +10,7 @@ ActiveAdmin.register User do
     column :created_at
     column :updated_at
     column :sign_in_count
-    column (:submissions_count) {|user| Submission.where(submitter_id: user.id).count}
+    column (:submissions_count) {|user| user.submissions_count }
     column (:exercises_count) {|user| user.exercises.count}
     column (:guides_count) {|user| user.guides.count}
     actions
