@@ -5,6 +5,9 @@ module WithOmniauth
     def omniauth(auth)
       where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
         extract_profile!(auth, user)
+        auth.credentials.expires_at.try do |expiration|
+          user.expires_at = Time.at(expiration)
+        end
         user.save!
       end
     end
@@ -16,7 +19,6 @@ module WithOmniauth
       user.email = auth.info.email
       user.image_url = auth.info.image
       user.token = auth.credentials.token
-      user.expires_at = DateTime.now + 2.month
     end
   end
 end
