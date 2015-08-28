@@ -107,6 +107,7 @@ es:
   profile_of: Perfil de %{username}
   progress: Progreso
   exercises: Ejercicios
+  follow_us: Seguínos
   refresh_collaborators: ¡Actualizá los colaboradores!
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
   running: procesando
