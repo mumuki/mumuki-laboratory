@@ -1,13 +1,13 @@
 class SessionsController < ApplicationController
   def create
     user = User.omniauth(env['omniauth.auth'])
-    session[:user_id] = user.id
+    cookies.permanent.signed[:mumuki_remember_me_token] = user.remember_me_token
 
     redirect_to redirect_after_login_path
   end
 
   def destroy
-    session[:user_id] = nil
+    cookies.permanent.signed[:mumuki_remember_me_token] = nil
     redirect_to root_url
   end
 

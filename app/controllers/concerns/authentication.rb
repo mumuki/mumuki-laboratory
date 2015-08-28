@@ -8,7 +8,7 @@ module Authentication
   end
 
   def current_user_id
-    session[:user_id]
+    User.where(remember_me_token: cookies.permanent.signed[:mumuki_remember_me_token]).first.try(:id)
   end
 
   def current_user?

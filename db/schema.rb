@@ -251,6 +251,7 @@ ActiveRecord::Schema.define(version: 20150905214532) do
     t.datetime "last_submission_date"
     t.string   "image_url"
     t.integer  "last_exercise_id"
+    t.string   "remember_me_token"
   end
 
   add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree
