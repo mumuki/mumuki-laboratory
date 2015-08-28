@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
       }
   }
 
-  include WithSearch, WithOmniauth, WithGitAccess
+  include WithSearch, WithOmniauth, WithGitAccess, WithToken
 
   has_many :solutions, foreign_key: :submitter_id
   has_many :exercises, foreign_key: :author_id
@@ -57,6 +57,11 @@ class User < ActiveRecord::Base
 
   def passed_solutions
     solutions.where(status: Status::Passed.to_i)
+  end
+
+  def create_remember_me_token!
+    self.remember_me_token ||= get_token
+    self.save!
   end
 
 end

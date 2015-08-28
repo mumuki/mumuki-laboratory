@@ -19,6 +19,7 @@ module WithOmniauth
       user.email = auth.info.email
       user.image_url = auth.info.image
       user.token = auth.credentials.token
+      user.create_remember_me_token!
     end
   end
 end
