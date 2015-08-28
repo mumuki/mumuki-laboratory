@@ -1,7 +1,7 @@
 class ExerciseSolutionsController < ApplicationController
-  before_action :authenticate!
+  include NestedInExercise
 
-  before_action :set_exercise, only: [:create]
+  before_action :authenticate!
 
   def create
     @solution = @exercise.submit_solution(current_user, solution_params)
@@ -10,10 +10,6 @@ class ExerciseSolutionsController < ApplicationController
   end
 
   private
-
-  def set_exercise
-    @exercise = Exercise.find(params[:exercise_id])
-  end
 
   def solution_params
     params.require(:solution).permit(:content)

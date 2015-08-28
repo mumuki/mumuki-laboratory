@@ -11,11 +11,12 @@ class Exercise < ActiveRecord::Base
   include WithSearch, WithTeaser,
           WithMarkup, WithAuthor,
           WithSolutions, WithGuide,
-          WithLocale, WithExpectations
+          WithLocale, WithExpectations,
+          WithLanguage,
+          WithQueries
 
   acts_as_taggable
 
-  belongs_to :language
 
   enum layout: [:editor_right, :editor_bottom, :no_editor, :scratchy]
 
@@ -24,13 +25,10 @@ class Exercise < ActiveRecord::Base
   validates_presence_of :title, :description, :language, :test,
                         :submissions_count, :author
 
-  validate :language_consistent_with_guide, if: :guide
-
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
 
   markup_on :description, :hint, :teaser, :corollary
 
-  delegate :visible_success_output, :highlight_mode, to: :language
 
   def self.create_or_update_for_import!(guide, original_id, options)
     exercise = find_or_initialize_by(original_id: original_id, guide_id: guide.id)
@@ -52,12 +50,6 @@ class Exercise < ActiveRecord::Base
 
   def extra_code
     [guide.try(&:extra_code), self[:extra_code]].compact.join("\n")
-  end
-
-  private
-
-  def language_consistent_with_guide
-    errors.add(:base, :same_language_of_guide) if language != guide.language
   end
 
   def defaults
