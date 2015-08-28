@@ -1,20 +1,31 @@
 <% if current_user? %>
-  <%= form_for([@exercise, @solution], remote: true, html: {role: 'form'}) do |f| %>
-    <div class="field form-group">
-      <%= f.editor :content, 'dynamic',
-                      class: "form-control #{'editor' if editor_visible }",
-                      value: @previous_solution_content,
-                      style: 'display: none' %>
-      <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
-    </div>
-    <div class="actions">
-      <%= button_tag (fa_icon :play, text: t(:create_submission)),
-                     class: 'btn btn-primary',
-                     data: {disable_with: "#{fa_icon 'refresh spin', text: t(:sending_solution)}", normal_text: t(:create_submission)} %>
-    </div>
-  <% end %>
 
-  <div class="console">
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="home">
+      <%= form_for([@exercise, @solution], remote: true, html: {role: 'form'}) do |f| %>
+        <div class="field form-group">
+          <%= f.editor :content, 'dynamic',
+                       class: "form-control #{'editor' if editor_visible }",
+                       value: @previous_solution_content,
+                       style: 'display: none' %>
+          <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
+        </div>
+        <div class="actions">
+          <%= button_tag (fa_icon :play, text: t(:create_submission)),
+                         class: 'btn btn-primary',
+                         data: {disable_with: "#{fa_icon 'refresh spin', text: t(:sending_solution)}", normal_text: t(:create_submission)} %>
+        </div>
+      <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="profile">
+      <div class="console">
+      </div>
+    </div>
   </div>
 <% else %>
   <p><%= t :you_must_sign_in_before_submitting %></p>
