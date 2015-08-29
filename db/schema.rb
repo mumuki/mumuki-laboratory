@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829211550) do
+ActiveRecord::Schema.define(version: 20150829215524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,12 +135,13 @@ ActiveRecord::Schema.define(version: 20150829211550) do
     t.string   "original_id_format", default: "%05d", null: false
     t.string   "locale",             default: "en"
     t.integer  "language_id"
-    t.text     "extra_code"
     t.integer  "path_id"
     t.integer  "position"
     t.text     "corollary"
+    t.text     "extra_code"
     t.boolean  "learning",           default: false
     t.boolean  "beta",               default: false
+    t.text     "expectations"
   end
 
   add_index "guides", ["author_id"], name: "index_guides_on_author_id", using: :btree
