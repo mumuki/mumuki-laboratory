@@ -1,30 +1,50 @@
-var mumuki = mumuki || {};
-mumuki.submission = {};
+(function () {
+  function smoothScrollToElement(domElement) {
+    var SPEED = 1000;
+    $('html, body').animate({scrollTop: domElement.offset().top}, SPEED);
+  }
 
-mumuki.submission.smoothScrollToElement = function(domElement) {
-  var SPEED = 1000;
-  $('html, body').animate({scrollTop: domElement.offset().top}, SPEED);
-}
+  function ResultsBox(submissionsResults) {
+    this.submissionsresultsArea = submissionsResults;
+    this.processingTemplate = $('#processing-template');
+    this.scrollPin = $('.scroll-pin');
+  }
 
-$(document).on('ready page:load', function(){
-  var resultsBox = $('.submission-results');
-  var scrollPin = $('.scroll-pin');
-  if(!resultsBox) return;
-
-  var processingTemplate = $('#processing-template');
-  $('form.new_solution').on('ajax:beforeSend',function (event, xhr, settings) {
-    console.log('submitting solution');
-    resultsBox.html(processingTemplate.html());
-  }).on('ajax:complete',function (xhr, status) {
-    var button = $('form button.btn.btn-primary');
-    button.attr('value', button.attr('data-normal-text'));
-    if(scrollPin.length) {
-      mumuki.submission.smoothScrollToElement(scrollPin);
+  ResultsBox.prototype = {
+    waiting: function () {
+      console.log('submitting solution');
+      this.submissionsresultsArea.html(this.processingTemplate.html());
+    },
+    success: function (data) {
+      this.submissionsresultsArea.html(data);
+    },
+    error: function (error) {
+      this.submissionsresultsArea.html('<pre>' + error + '</pre>');
+    },
+    done: function () {
+      if (this.scrollPin.length) {
+        smoothScrollToElement(this.scrollPin);
+      }
     }
-  }).on('ajax:success',function (xhr, data, status) {
-    resultsBox.html(data);
-  }).on('ajax:error', function (xhr, status, error) {
-    resultsBox.html('<pre>' + error + '</pre>');
+  };
+
+  $(document).on('ready page:load', function () {
+    var submissionsResults = $('.submission-results');
+    if (!submissionsResults) return;
+
+    var submitButton = $('form submitButton.btn.btn-primary');
+    var resultsBox = new ResultsBox(submissionsResults);
+
+    $('form.new_solution').on('ajax:beforeSend',function (event, xhr, settings) {
+      resultsBox.waiting();
+    }).on('ajax:complete',function (xhr, status) {
+      submitButton.attr('value', submitButton.attr('data-normal-text'));
+      resultsBox.done();
+    }).on('ajax:success',function (xhr, data, status) {
+      resultsBox.success(data);
+    }).on('ajax:error', function (xhr, status, error) {
+      resultsBox.error(error);
+    });
+    console.log('submission form setup')
   });
-  console.log('submission form setup')
-});
+})();
