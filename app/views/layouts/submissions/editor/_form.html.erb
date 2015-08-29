@@ -1,12 +1,14 @@
 <% if current_user? %>
 
   <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+    <li role="presentation" class="active">
+      <a href="#editor" aria-controls="editor" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'pencil-square' %> <%= t :editor %></a></li>
+    <li role="presentation">
+      <a href="#console" aria-controls="console" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'terminal' %> <%=  t :console %></a></li>
   </ul>
 
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane fade in active" id="home">
+    <div role="tabpanel" class="tab-pane fade in active" id="editor">
       <%= form_for([@exercise, @solution], remote: true, html: {role: 'form'}) do |f| %>
         <div class="field form-group">
           <%= f.editor :content, 'dynamic',
@@ -22,7 +24,7 @@
         </div>
       <% end %>
     </div>
-    <div role="tabpanel" class="tab-pane fade" id="profile">
+    <div role="tabpanel" class="tab-pane fade" id="console">
       <div class="console">
       </div>
     </div>
