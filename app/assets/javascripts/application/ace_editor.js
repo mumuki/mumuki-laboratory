@@ -1,7 +1,8 @@
 var dynamicEditors;
+var editors;
 
 function setupAceEditors() {
-  var editors = $(".editor").map(function (index, textarea) {
+  editors = $(".editor").map(function (index, textarea) {
     var builder = new AceEditorBuilder(textarea);
     builder.setupEditor();
     builder.setupOptions();
