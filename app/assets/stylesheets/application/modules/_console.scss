@@ -15,7 +15,6 @@ div.console div.jquery-console-inner {
 }
 
 div.console div.jquery-console-prompt-box {
-  color: #3498db;
   font-family: monospace;
 }
 
@@ -41,4 +40,5 @@ div.console div.jquery-console-message-value {
 div.console span.jquery-console-prompt-label {
   font-weight: bold;
   font-family: "AhahaMojimoji", Verdana, Tahoma;
+  color: #3498db;
 }
