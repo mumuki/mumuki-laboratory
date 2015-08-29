@@ -3,13 +3,15 @@ class ExerciseQueryController < ApplicationController
 
   before_action :authenticate!
 
+  protect_from_forgery with: :null_session
+
   def create
     @query = @exercise.submit_query!(query_params)
     @query.run!
-    render partial: 'exercise_queries/results', locals: {query: @query}
+    render json: {result: @query.result, status: @query.status}
   end
 
-  def solution_params
+  def query_params
     params.permit(:content, :query)
   end
 end
