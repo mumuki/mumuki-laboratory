@@ -61,7 +61,7 @@ gem 'nprogress-rails'
 gem 'yaml_db'
 
 gem 'mumukit-inspection', :github => 'uqbar-project/mumukit-inspection', :branch => 'master'
-gem 'mumukit-bridge',     :github => 'uqbar-project/mumukit-bridge', :branch => 'master'
+gem 'mumukit-bridge',     :github => 'uqbar-project/mumukit-bridge', :tag=> 'v0.3.0'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'
