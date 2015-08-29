@@ -1,11 +1,10 @@
 .follow-us-container {
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .follow-us {
   font-size: 32px;
-  color: #428bca;
 }
 
 .social-icon {
@@ -14,15 +13,14 @@
   text-align: center;
   width: 32px;
   height: 32px;
-  border: 2px solid #428bca;
+  border: 2px solid #18bc9c;
   border-radius: 50%;
-  color: #428bca;
   margin: 5px;
+  margin-bottom: 15px;
 }
 
 a.social-icon:hover, a.social-icon:active, a.social-icon:focus {
   text-decoration: none;
-  color: #5bc0de;
-  border-color: #5bc0de;
+  border-color: #39D4B6;
+  color: #39D4B6;
 }
- 
