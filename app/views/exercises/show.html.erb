@@ -1,3 +1,5 @@
+<%= hidden_field_tag :exercise_id, @exercise.id %>
+
 <% content_for :assignment do %>
   <div>
     <%= @exercise.description_html %>
