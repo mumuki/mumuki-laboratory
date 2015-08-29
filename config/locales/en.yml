@@ -37,6 +37,7 @@ en:
   expectations: Expectations
   export_created: Export queued
   extras: Extras
+  follow_us: Follow Us
   facebook_signin_reason: Sign in with Facebook if you just want to start programming
   failed: Oops, something went wrong
   failed_exercises_stats: You tried to <strong>resolve %{count} more exercises</strong>.
