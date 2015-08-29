@@ -1,48 +1,96 @@
 var mumuki = mumuki || {};
-mumuki.console = {};
+(function (mumuki) {
 
-mumuki.console.submitQuery = function(exerciseId, content, query, token, report) {
-  $.ajax({
-    url: '/exercises/' + exerciseId + '/queries',
-    type: 'POST',
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader('X-CSRF-Token', token);
+  function reportValue(message, report) {
+    report([
+      {msg: message, className: 'jquery-console-message-value'}
+    ])
+  }
+
+  function reportError(message, report) {
+    report([
+      {msg: message, className: "jquery-console-message-error"}
+    ])
+  }
+
+  function QueryConsole() {
+    this.exerciseId = $('#exercise_id').val();
+    this.token = $('meta[name="csrf-token"]').attr('content');
+  }
+
+  QueryConsole.prototype = {
+    newQuery: function (line) {
+      return new Query(line, this);
+    }
+  };
+
+  function Query(line, console) {
+    this.console = console;
+    this.line = line;
+  }
+
+  Query.prototype = {
+    get exerciseId() {
+      return this.console.exerciseId;
     },
-    data: {content: content, query: query}}).
-    done(function (response) {
-      console.log(response);
-      var className = response.status === 'passed' ? 'jquery-console-message-value' : 'jquery-console-message-error';
-      report([
-        {msg: response.result,
-          className: className}
-      ])
-    }).fail(function (response) {
-      console.log(response);
-      report([
-        {msg: '' + response.responseText,
-          className: "jquery-console-message-error"}
-      ])
+    get token() {
+      return this.console.token;
+    },
+    get content() {
+      return mumuki.page.editors[0].getValue();
+    },
+    submit: function (report) {
+      var self = this;
+      $.ajax(self._request).
+        done(function (response) {
+          console.log(response);
+          if (response.status === 'passed') {
+            reportValue(response.result, report)
+          } else {
+            reportError(response.result, report)
+          }
+        }).
+        fail(function (response) {
+          console.log(response);
+          reportError(response.responseText, report);
+        });
+    },
+    get _request() {
+      var self = this;
+      return {
+        url: self._requestUrl,
+        type: 'POST',
+        data: self._requestData,
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRF-Token', self.token);
+        }
+      }
+    },
+    get _requestUrl() {
+      return '/exercises/' + this.exerciseId + '/queries';
+    },
+    get _requestData() {
+      return {content: this.content, query: this.line};
+    }
+  };
+
+
+  $(document).on('ready page:load', function () {
+    console.log('loading console');
+    var queryConsole = new QueryConsole();
+
+    $('.console').console({
+      promptLabel: 'ム ',
+      commandValidate: function (line) {
+        return line !== "";
+      },
+      commandHandle: function (line, report) {
+        queryConsole.newQuery(line).submit(report);
+      },
+      autofocus: true,
+      animateScroll: true,
+      promptHistory: true
     });
-};
-
-$(document).on('ready page:load', function () {
-  var token = $('meta[name="csrf-token"]').attr('content');
-
-  console.log('loading console');
-
-  $('.console').console({
-    promptLabel: 'ム ',
-    commandValidate: function (line) {
-      return line !== "";
-    },
-    commandHandle: function (line, report) {
-      var exerciseId = $('#exercise_id').val();
-      var content = mumuki.page.editors[0].getValue();
-
-      mumuki.console.submitQuery(exerciseId, content, line, token, report);
-    },
-    autofocus: true,
-    animateScroll: true,
-    promptHistory: true
   });
-});
+
+})(mumuki);
