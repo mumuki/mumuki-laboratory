@@ -141,3 +141,4 @@ en:
   path_finished: "You have finished this path!"
   editor: "Editor"
   console: "Console"
+  type_expressions_here: "You can type expressions here to test your solution"
