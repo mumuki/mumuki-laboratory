@@ -1,4 +1,6 @@
 $(document).on('ready page:load', function () {
+  var token = $('meta[name="csrf-token"]').attr('content');
+
   console.log('loading console');
 
   $('.console').console({
@@ -9,8 +11,11 @@ $(document).on('ready page:load', function () {
     commandHandle: function (line, report) {
       var exerciseId = $('#exercise_id').val();
       $.ajax({
-        url: '/exercises/'+exerciseId+'/queries',
+        url: '/exercises/' + exerciseId + '/queries',
         type: 'POST',
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRF-Token', token);
+        },
         data: {content: '', query: line}}).
         done(function (response) {
           console.log(response);

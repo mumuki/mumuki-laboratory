@@ -3,8 +3,6 @@ class ExerciseQueryController < ApplicationController
 
   before_action :authenticate!
 
-  protect_from_forgery with: :null_session
-
   def create
     @query = @exercise.submit_query!(query_params)
     @query.run!
