@@ -3,7 +3,7 @@ ActiveAdmin.register Language do
   permit_params :name, :image_url,
                 :extension, :test_extension, :test_runner_url,
                 :visible_success_output, :output_content_type,
-                :highlight_mode
+                :highlight_mode, :queriable
 
   filter :name
   filter :highlight_mode
@@ -31,6 +31,7 @@ ActiveAdmin.register Language do
       f.input :highlight_mode
       f.input :image_url
       f.input :extension
+      f.input :queriable
       f.input :test_extension
       f.input :test_runner_url
       f.input :visible_success_output

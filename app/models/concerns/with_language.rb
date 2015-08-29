@@ -4,7 +4,7 @@ module WithLanguage
   included do
     belongs_to :language
     validate :language_consistent_with_guide, if: :guide
-    delegate :visible_success_output, :highlight_mode, to: :language
+    delegate :visible_success_output, :highlight_mode, :queriable, to: :language
   end
 
   def run_query!(params)
