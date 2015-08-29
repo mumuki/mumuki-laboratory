@@ -1,4 +1,7 @@
-function submitQuery(exerciseId, content, query, token, report) {
+var mumuki = mumuki || {};
+mumuki.console = {};
+
+mumuki.console.submitQuery = function(exerciseId, content, query, token, report) {
   $.ajax({
     url: '/exercises/' + exerciseId + '/queries',
     type: 'POST',
@@ -20,7 +23,7 @@ function submitQuery(exerciseId, content, query, token, report) {
           className: "jquery-console-message-error"}
       ])
     });
-}
+};
 
 $(document).on('ready page:load', function () {
   var token = $('meta[name="csrf-token"]').attr('content');
@@ -34,9 +37,9 @@ $(document).on('ready page:load', function () {
     },
     commandHandle: function (line, report) {
       var exerciseId = $('#exercise_id').val();
-      var content = editors[0].getValue();
+      var content = mumuki.page.editors[0].getValue();
 
-      submitQuery(exerciseId, content, line, token, report);
+      mumuki.console.submitQuery(exerciseId, content, line, token, report);
     },
     autofocus: true,
     animateScroll: true,

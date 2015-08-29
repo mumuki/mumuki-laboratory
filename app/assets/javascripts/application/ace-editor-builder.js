@@ -1,7 +1,12 @@
-function AceEditorBuilder(textarea) {
+var mumuki = mumuki || {};
+mumuki.page = mumuki.page || {};
+mumuki.editor = mumuki.editor || {};
+
+mumuki.editor.AceEditorBuilder = function(textarea) {
   this.textarea = textarea;
-}
-AceEditorBuilder.prototype = {
+};
+
+mumuki.editor.AceEditorBuilder.prototype = {
   setupEditor: function() {
     this.form = this.textarea.form;
     this.editor = ace.edit(this.textarea);
@@ -11,9 +16,9 @@ AceEditorBuilder.prototype = {
   setupLanguage: function () {
     var language = $(this.textarea).data('editor-language');
     if (language === 'dynamic') {
-      dynamicEditors.push(this.editor);
+      mumuki.page.dynamicEditors.push(this.editor);
     } else {
-      setEditorLanguage(this.editor, language);
+      mumuki.editor.setEditorLanguage(this.editor, language);
     }
   },
   setupOptions: function () {

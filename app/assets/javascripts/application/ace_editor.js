@@ -1,9 +1,13 @@
-var dynamicEditors;
-var editors;
+var mumuki = mumuki || {};
+mumuki.page = mumuki.page || {};
 
-function setupAceEditors() {
-  editors = $(".editor").map(function (index, textarea) {
-    var builder = new AceEditorBuilder(textarea);
+mumuki.page.dynamicEditors = [];
+mumuki.page.editors = [];
+
+mumuki.editor = mumuki.editor || {};
+mumuki.editor.setupAceEditors = function () {
+  var editors = $(".editor").map(function (index, textarea) {
+    var builder = new mumuki.editor.AceEditorBuilder(textarea);
     builder.setupEditor();
     builder.setupOptions();
     builder.setupSubmit();
@@ -14,29 +18,27 @@ function setupAceEditors() {
   if (editors[0]) {
     editors[0].focus();
   }
-}
 
-function onSelectUpdateAceEditor() {
-  $("#exercise_language_id").change(updateAceEditorLanguage);
-}
-
-function updateAceEditorLanguage() {
+  mumuki.page.editors = editors;
+};
+mumuki.editor.onSelectUpdateAceEditor = function () {
+  $("#exercise_language_id").change(mumuki.editor.updateAceEditorLanguage);
+};
+mumuki.editor.updateAceEditorLanguage = function () {
   var language = $("#exercise_language_id").find(":selected").html() || $('#exercise_language').val();
   if (language !== undefined) {
-    dynamicEditors.forEach(function (e) {
-      setEditorLanguage(e, language);
+    mumuki.page.dynamicEditors.forEach(function (e) {
+      mumuki.editor.setEditorLanguage(e, language);
     })
   }
-}
-
-function setEditorLanguage(editor, language) {
+};
+mumuki.editor.setEditorLanguage = function(editor, language) {
   editor.getSession().setMode("ace/mode/" + language.toLowerCase())
-}
+};
 
 $(document).on('ready page:load', function () {
-  dynamicEditors = [];
-  setupAceEditors();
-  updateAceEditorLanguage();
-  onSelectUpdateAceEditor();
+  mumuki.editor.setupAceEditors();
+  mumuki.editor.updateAceEditorLanguage();
+  mumuki.editor.onSelectUpdateAceEditor();
 });
 

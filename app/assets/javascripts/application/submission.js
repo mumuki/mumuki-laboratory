@@ -1,4 +1,7 @@
-function smoothScrollToElement(domElement) {
+var mumuki = mumuki || {};
+mumuki.submission = {};
+
+mumuki.submission.smoothScrollToElement = function(domElement) {
   var SPEED = 1000;
   $('html, body').animate({scrollTop: domElement.offset().top}, SPEED);
 }
@@ -16,7 +19,7 @@ $(document).on('ready page:load', function(){
     var button = $('form button.btn.btn-primary');
     button.attr('value', button.attr('data-normal-text'));
     if(scrollPin.length) {
-      smoothScrollToElement(scrollPin);
+      mumuki.submission.smoothScrollToElement(scrollPin);
     }
   }).on('ajax:success',function (xhr, data, status) {
     resultsBox.html(data);
