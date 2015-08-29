@@ -7,8 +7,8 @@ GIT
 
 GIT
   remote: git://github.com/uqbar-project/mumukit-bridge.git
-  revision: 06671e523f106a72cb0c624f49f758dbc8fee86b
-  tag: v0.2.0
+  revision: a2613b5287a391b0c4450e63c87ddcc7462a5135
+  branch: master
   specs:
     mumukit-bridge (0.2.0)
       activesupport
@@ -392,3 +392,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   unicorn-rails
   yaml_db
+
+BUNDLED WITH
+   1.10.6
