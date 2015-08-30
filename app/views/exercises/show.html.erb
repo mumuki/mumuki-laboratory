@@ -1,3 +1,5 @@
+<%= hidden_field_tag :exercise_id, @exercise.id %>
+
 <% content_for :assignment do %>
   <div>
     <%= @exercise.description_html %>
@@ -40,7 +42,6 @@
     <%= t :refresh_or_wait %>
   </div>
 </div>
-
 
 <%= content_for :no_container do %>
   <div class="modal fade" id="guide-done" tabindex="-1" role="dialog" aria-hidden="true">

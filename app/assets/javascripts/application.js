@@ -27,4 +27,5 @@
 //= require nprogress-turbolinks
 //= require nprogress-ajax
 //= require chartkick
+//= require jquery-console
 //= require_tree ./application

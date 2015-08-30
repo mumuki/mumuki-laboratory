@@ -167,3 +167,6 @@ es:
   created_exercises: "Ejercicios Creados"
   created_guides: "Guías Creadas"
   path_finished: "¡Terminaste esta categoría! ¡Felicitaciones!"
+  editor: "Editor"
+  console: "Consola"
+  type_expressions_here: "Acá podés escribir expresiones para probar tu solución"

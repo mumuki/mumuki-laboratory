@@ -1,0 +1,44 @@
+div.console {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+div.console div.jquery-console-inner {
+  padding: 0.5em;
+  overflow: auto
+}
+
+.jquery-console-inner {
+  height: 220px;
+  overflow: auto;
+  word-wrap: break-word;
+}
+
+div.console div.jquery-console-prompt-box {
+  font-family: monospace;
+}
+
+div.console div.jquery-console-focus span.jquery-console-cursor {
+  background: #aaa;
+  color: #eee;
+  font-weight: bold
+}
+
+div.console div.jquery-console-message-error {
+  color: #d62c1a;
+  font-family: sans-serif;
+  font-weight: bold;
+  padding: 0.1em;
+}
+
+div.console div.jquery-console-message-value {
+  color: #1ad027;
+  font-family: monospace;
+  padding: 0.1em;
+}
+
+div.console span.jquery-console-prompt-label {
+  font-weight: bold;
+  font-family: "AhahaMojimoji", Verdana, Tahoma;
+  color: #3498db;
+}

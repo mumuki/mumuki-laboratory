@@ -12,9 +12,7 @@ class Language < ActiveRecord::Base
 
   markup_on :test_syntax_hint, :description
 
-  def run_tests!(request)
-    bridge.run_tests!(request)
-  end
+  delegate :run_tests!, :run_query!, to: :bridge
 
   def bridge
     Mumukit::Bridge::Bridge.new(test_runner_url)
