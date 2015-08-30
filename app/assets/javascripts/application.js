@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.console
 //= require bootstrap
 //= require bootstrap-tagsinput
 //= require ace/ace
@@ -28,4 +27,5 @@
 //= require nprogress-turbolinks
 //= require nprogress-ajax
 //= require chartkick
+//= require jquery-console
 //= require_tree ./application
