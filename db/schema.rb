@@ -114,14 +114,6 @@ ActiveRecord::Schema.define(version: 20150829211550) do
   add_index "exercises", ["guide_id"], name: "index_exercises_on_guide_id", using: :btree
   add_index "exercises", ["language_id"], name: "index_exercises_on_language_id", using: :btree
 
-  create_table "expectations", force: true do |t|
-    t.integer  "exercise_id"
-    t.string   "binding"
-    t.string   "inspection"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "exports", force: true do |t|
     t.integer  "guide_id"
     t.datetime "created_at"
@@ -191,13 +183,6 @@ ActiveRecord::Schema.define(version: 20150829211550) do
   add_index "paths", ["category_id"], name: "index_paths_on_category_id", using: :btree
   add_index "paths", ["language_id"], name: "index_paths_on_language_id", using: :btree
 
-  create_table "relationships", force: true do |t|
-    t.integer  "follower_id"
-    t.integer  "followed_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "solutions", force: true do |t|
     t.text     "content"
     t.integer  "exercise_id"
@@ -215,21 +200,6 @@ ActiveRecord::Schema.define(version: 20150829211550) do
 
   add_index "solutions", ["exercise_id"], name: "index_solutions_on_exercise_id", using: :btree
   add_index "solutions", ["submitter_id"], name: "index_solutions_on_submitter_id", using: :btree
-
-  create_table "submissions", force: true do |t|
-    t.text     "content"
-    t.integer  "exercise_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "status",              default: 0
-    t.text     "result"
-    t.integer  "submitter_id"
-    t.text     "expectation_results"
-    t.text     "feedback"
-    t.text     "test_results"
-  end
-
-  add_index "submissions", ["submitter_id"], name: "index_submissions_on_submitter_id", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
