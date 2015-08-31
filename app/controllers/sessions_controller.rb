@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
 
   def destroy
     cookies.permanent.signed[:mumuki_remember_me_token] = nil
+    cookies.delete :mumuki_remember_me_token
     redirect_to root_url
   end
 
