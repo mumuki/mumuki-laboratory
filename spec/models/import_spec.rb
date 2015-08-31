@@ -58,7 +58,6 @@ describe Import do
         it { expect(imported_exercise.corollary).to eq "And the corollary is...\n" }
       end
 
-
       context 'when importing with layout' do
         let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 4) }
 
@@ -83,6 +82,24 @@ describe Import do
       it { expect(guide.learning).to be true }
       it { expect(guide.beta).to eq true }
       it { expect(guide.extra_code).to eq "A guide's extra code\n" }
+    end
+
+    context 'when optional properties are specified' do
+      before do
+        import.read_guide! 'spec/data/full-guide'
+        guide.reload
+      end
+
+      context 'when removing that properties and reimporting the guide' do
+        before do
+          import.read_guide! 'spec/data/simple-guide'
+          guide.reload
+        end
+
+        it { expect(guide.original_id_format).to eq '%05d' }
+        it { expect(guide.learning).to be false }
+        it { expect(guide.beta).to be false }
+      end
     end
   end
 end

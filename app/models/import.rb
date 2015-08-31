@@ -42,16 +42,16 @@ class Import < RepositoryOperation
 
     guide.language = Language.find_by_ignore_case! :name, meta['language']
     guide.locale = meta['locale']
-    read_optional! meta, 'original_id_format'
-    read_optional! meta, 'learning'
-    read_optional! meta, 'beta'
+    read_optional! meta, 'original_id_format', '%05d'
+    read_optional! meta, 'learning', false
+    read_optional! meta, 'beta', false
     guide.save!
 
     meta['order']
   end
 
-  def read_optional!(meta, key)
-    meta[key].try { |value| guide[key] = value }
+  def read_optional!(meta, key, default)
+    guide[key] = meta[key] || default
   end
 
   def read_exercises!(dir, order = nil)
