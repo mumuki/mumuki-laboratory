@@ -23,7 +23,9 @@ feature 'Users listing' do
   scenario 'go to user from listing' do
     visit '/users'
 
-    click_on 'foobar'
+    within('.container#wrap') do
+      click_on 'foobar'
+    end
 
     expect(page).to have_text('foobar')
     expect(page).to have_text('Overview')
