@@ -26,3 +26,4 @@ ActiveAdmin.register Guide do
     actions
   end
 end
+ 

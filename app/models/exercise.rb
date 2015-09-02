@@ -1,4 +1,10 @@
 class Exercise < ActiveRecord::Base
+	extend FriendlyId
+  friendly_id :generate_custom_slug, use: :slugged
+#  	friendly_id :name, use: :slugged
+#friendly_id :slug_candidates, use: :slugged
+
+  #we are saying that we want to use
   INDEXED_ATTRIBUTES = {
       against: [:title, :description],
       associated_against: {
@@ -73,5 +79,16 @@ class Exercise < ActiveRecord::Base
 
   def guide_expectations
     if guide.present? then guide.expectations else [] end
+  end
+
+  def slug_candidates
+    [
+      :name,
+      [:name, guide_id]
+    ]
+  end
+
+  def generate_custom_slug
+    "#{name}-#{guide_id}"
   end
 end

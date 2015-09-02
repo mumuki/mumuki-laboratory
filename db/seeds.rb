@@ -26,4 +26,6 @@ Language.create!(name: 'gobstones',
 
 functional = Category.create!(name: 'Programación Funcional', locale: :es, description: 'Programación Funcional', image_url: 'http://mumuki.io/favicon')
 
+
 Path.create(category: functional, language: haskell)
+

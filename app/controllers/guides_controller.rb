@@ -63,7 +63,7 @@ class GuidesController < ApplicationController
   private
 
   def set_guide
-    @guide = Guide.find(params[:id])
+    @guide = Guide.friendly.find(params[:id])
   end
 
   def guide_params
