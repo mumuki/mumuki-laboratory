@@ -52,6 +52,12 @@ class Exercise < ActiveRecord::Base
     [guide.try(&:extra_code), self[:extra_code]].compact.join("\n")
   end
 
+  def expectations
+    super + guide_expectations
+  end
+
+  private
+
   def defaults
     self.submissions_count = 0
     self.layout = Exercise.default_layout
@@ -63,5 +69,9 @@ class Exercise < ActiveRecord::Base
 
   def name #FIXME remove
     title
+  end
+
+  def guide_expectations
+    if guide.present? then guide.expectations else [] end
   end
 end
