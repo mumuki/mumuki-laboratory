@@ -14,7 +14,8 @@ gem 'therubyracer', platforms: :ruby
 gem 'turbolinks'
 
 gem 'sass-rails'
-
+gem 'execjs'
+gem 'friendly_id', '~> 5.0.0'
 gem 'activeadmin', '~> 1.0.0.pre1'
 gem 'devise'
 
@@ -79,6 +80,8 @@ end
 gem 'codeclimate-test-reporter', :group => :test, :require => nil
 
 gem 'sitemap_generator'
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

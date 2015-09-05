@@ -1,5 +1,6 @@
 class Exercise < ActiveRecord::Base
   INDEXED_ATTRIBUTES = {
+
       against: [:title, :description],
       associated_against: {
           language: [:name],
@@ -14,6 +15,9 @@ class Exercise < ActiveRecord::Base
           WithLocale, WithExpectations,
           WithLanguage,
           WithQueries
+  extend FriendlyId
+
+  friendly_id :generate_custom_slug, use: [:slugged, :finders]
 
   acts_as_taggable
 
@@ -73,5 +77,14 @@ class Exercise < ActiveRecord::Base
 
   def guide_expectations
     if guide.present? then guide.expectations else [] end
+  end
+
+
+  def generate_custom_slug
+    if guide
+      "#{guide.name}-#{position}-#{name}"
+    else
+      name
+    end
   end
 end
