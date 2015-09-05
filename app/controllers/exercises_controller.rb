@@ -55,7 +55,7 @@ class ExercisesController < ApplicationController
 
 
   def set_exercise
-    @exercise = Exercise.friendly.find(params[:id])
+    @exercise = Exercise.find(params[:id])
   end
 
 
