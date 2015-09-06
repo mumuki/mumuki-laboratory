@@ -28,4 +28,20 @@ describe 'api controller' do
       end
     end
   end
+
+  describe Api::GuidesController do
+    context 'when there are no guides ' do
+      before { get :index }
+      it { expect(response.body).to eq '{"guides":[]}' }
+    end
+
+    context 'when there are guides' do
+      let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: 1) }
+
+      describe 'when not using filters' do
+        before { get :index }
+        it { expect(response.body).to eq '{"guides":[{"id":1,"github_repository":"flbulgarelli/mumuki-sample-exercises","name":"guide_1","language_id":1,"path_id":null,"position":null}]}' }
+      end
+    end
+  end
 end
