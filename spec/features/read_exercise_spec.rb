@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Read Exercise Flow' do
-  let!(:exercise) { create(:exercise, tag_list: ['haskell'], title: 'Foo', description: 'an awesome problem description') }
+  let!(:exercise) { create(:exercise, tag_list: ['haskell'], name: 'Foo', description: 'an awesome problem description') }
 
   scenario 'show exercise from search' do
     visit '/exercises'

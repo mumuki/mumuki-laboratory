@@ -52,7 +52,7 @@
 <div class="actions">
   <%= mail_to solution.exercise.author.email,
               fa_icon(:bug, text: t(:notify_problem_to_author)),
-              subject: t(:problem_with_exercise, title: solution.exercise.title),
+              subject: t(:problem_with_exercise, title: solution.exercise.name),
               class: 'text-warning warning pull-left' %>
   <%= next_button(@exercise) %>
 

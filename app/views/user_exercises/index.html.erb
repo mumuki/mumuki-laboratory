@@ -5,7 +5,7 @@
     <tr>
       <th><%= t :language %></th>
       <th><%= t :submissions_count %></th>
-      <th><%= t :title %></th>
+      <th><%= t :name %></th>
       <th></th>
       <th><%= t :tag %></th>
       <th><%= t :created %></th>
@@ -24,7 +24,7 @@
         </td>
         <td>
           <%= exercise_status_icon(exercise) %>
-          <%= link_to exercise.title, exercise %>
+          <%= link_to exercise.name, exercise %>
         </td>
         <td><%= exercise.tag_list %></td>
         <td>

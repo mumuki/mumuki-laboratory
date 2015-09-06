@@ -8,7 +8,7 @@ ActiveAdmin.register Solution do
 
   index do
     column(:id)
-    column(:exercise) {|sub| sub.exercise.title}
+    column(:exercise) {|sub| sub.exercise.name}
     column(:exercise) {|sub| sub.exercise.guide.name if sub.exercise.guide}
     column(:language) {|sub| sub.exercise.language }
     column(:status)

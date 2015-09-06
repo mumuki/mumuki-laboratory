@@ -5,11 +5,11 @@ feature 'Search Flow' do
   let(:ruby) { create(:language, name: 'Ruby') }
 
   let!(:exercises) {
-    create(:exercise, tag_list: ['haskell'], title: 'Foo', description: 'an awesome problem description')
-    create(:exercise, tag_list: [], title: 'Bar', language: haskell)
-    create(:exercise, tag_list: [], title: 'haskelloid')
-    create(:exercise, tag_list: [], title: 'Baz', description: 'do it in haskell')
-    create(:exercise, tag_list: [], title: 'nothing', guide: guide)
+    create(:exercise, tag_list: ['haskell'], name: 'Foo', description: 'an awesome problem description')
+    create(:exercise, tag_list: [], name: 'Bar', language: haskell)
+    create(:exercise, tag_list: [], name: 'haskelloid')
+    create(:exercise, tag_list: [], name: 'Baz', description: 'do it in haskell')
+    create(:exercise, tag_list: [], name: 'nothing', guide: guide)
   }
   let(:guide) { create(:guide, language: ruby, name: 'awesomeRubyGuide', description: 'rubist baz guide') }
 
@@ -70,7 +70,7 @@ feature 'Search Flow' do
 
     expect(page).to have_text('New Exercise')
 
-    expect(find_field('exercise_title').value).to eq 'nonExistingExercise'
+    expect(find_field('exercise_name').value).to eq 'nonExistingExercise'
   end
 
 end

@@ -4,7 +4,7 @@
   </td>
   <td>
     <%= exercise_status_icon(exercise) %>
-    <a href="<%= exercise_path(exercise) %>"><%= exercise.title %></a>
+    <a href="<%= exercise_path(exercise) %>"><%= exercise.name %></a>
   </td>
   <td>
     <%= exercise.submissions_count_for(user) %>

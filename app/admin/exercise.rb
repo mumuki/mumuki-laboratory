@@ -3,7 +3,7 @@ ActiveAdmin.register Exercise do
   permit_params :author_id,
                 :language_id,
                 :guide_id,
-                :title,
+                :name,
                 :layout,
                 :description,
                 :test,
@@ -12,7 +12,7 @@ ActiveAdmin.register Exercise do
                 :corollary,
                 :locale
 
-  filter :title
+  filter :name
   filter :author
   filter :guide
   filter :language
@@ -22,7 +22,7 @@ ActiveAdmin.register Exercise do
 
   index do
     column(:id)
-    column(:title)
+    column(:name)
     column(:language)
     column(:guide)
     column(:layout)
