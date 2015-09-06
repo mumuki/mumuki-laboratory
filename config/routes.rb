@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :exercises, only: :index
     resources :users, only: :index
+    resources :guides, only: :index
   end
 
   root to: 'home#index'
