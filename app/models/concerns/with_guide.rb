@@ -19,6 +19,10 @@ module WithGuide
     guide.pending_exercises(user).where(query, position: position).order(order).first  if guide
   end
 
+  def first_for(user)
+    guide.pending_exercises(user).order(position: :asc).first if guide
+  end
+
   def siblings
     guide.exercises
   end
