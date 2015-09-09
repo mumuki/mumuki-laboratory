@@ -33,11 +33,11 @@ module ApplicationHelper
   def next_guides_box(guide, options={})
     return if guide.path.blank?
 
-    suggested = guide.next_guides
-    if suggested.empty?
+    suggested = guide.next_for(current_user)
+    if suggested.nil?
       t :path_finished, path: link_to_path(guide.path)
     else
-      link_to t(:next_guide, name: suggested.first.name), suggested.first, class: 'btn btn-success'
+      link_to t(:next_guide, name: suggested.name), suggested, class: 'btn btn-success'
     end
   end
 

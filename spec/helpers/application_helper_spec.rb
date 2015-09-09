@@ -4,6 +4,10 @@ describe ApplicationHelper do
   helper ApplicationHelper
   helper FontAwesome::Rails::IconHelper
 
+  def current_user
+    
+  end
+
   before { I18n.locale = :en }
 
   describe '#language_icon' do

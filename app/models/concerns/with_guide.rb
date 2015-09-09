@@ -7,20 +7,8 @@ module WithGuide
     belongs_to :guide
   end
 
-  def next_for(user)
-    sibling_for user, 'exercises.position > :position', 'exercises.position asc'
-  end
-
-  def previous_for(user)
-    sibling_for user, 'exercises.position < :position', 'exercises.position desc'
-  end
-
-  def sibling_for(user, query, order)
-    guide.pending_exercises(user).where(query, position: position).order(order).first  if guide
-  end
-
-  def first_for(user)
-    guide.pending_exercises(user).order(position: :asc).first if guide
+  def siblings_for(user)
+    guide.pending_exercises(user)
   end
 
   def siblings
