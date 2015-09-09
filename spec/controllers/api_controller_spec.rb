@@ -40,7 +40,7 @@ describe 'api controller' do
 
       describe 'when not using filters' do
         before { get :index }
-        it { expect(response.body).to eq '{"guides":[{"id":1,"github_repository":"flbulgarelli/mumuki-sample-exercises","name":"guide_1","language_id":1,"path_id":null,"position":null}]}' }
+        it { expect(response.body).to eq '{"guides":[{"id":1,"github_repository":"flbulgarelli/mumuki-sample-exercises","name":"guide_1","language_id":1,"path_id":null,"position":null,"exercises":[]}]}' }
       end
     end
   end
