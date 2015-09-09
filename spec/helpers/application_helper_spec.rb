@@ -4,11 +4,11 @@ describe ApplicationHelper do
   helper ApplicationHelper
   helper FontAwesome::Rails::IconHelper
 
+  before { I18n.locale = :en }
+
   def current_user
     
   end
-
-  before { I18n.locale = :en }
 
   describe '#language_icon' do
     let(:haskell) { create(:language, name: 'Haskell', image_url: 'https://foo/foo.png') }
