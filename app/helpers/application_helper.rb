@@ -31,7 +31,11 @@ module ApplicationHelper
   end
 
   def next_guides_box(guide, options={})
+    return next_button(guide)
+
     return if guide.path.blank?
+
+
 
     suggested = guide.next_for(current_user)
     if suggested.nil?

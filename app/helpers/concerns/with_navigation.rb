@@ -1,7 +1,7 @@
 module WithNavigation
   def next_button(navigable) #TODO duplicated logic with next_guides_box
     sibling_button(navigable.next_for(current_user), :next_exercise, 'chevron-right', 'btn btn-success', true) ||
-        sibling_button(navigable.first_for(current_user), :repeat_pending, :repeat, 'btn btn-warning', false)
+        sibling_button(navigable.first_for(current_user), :repeat_pending, :repeat, 'btn btn-warning')
   end
 
   def next_nav_button(navigable)
