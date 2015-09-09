@@ -17,7 +17,7 @@ class ExercisesController < ApplicationController
   end
 
   def new
-    @exercise = Exercise.new(locale: I18n.locale, title: params[:q])
+    @exercise = Exercise.new(locale: I18n.locale, name: params[:q])
   end
 
   def edit
@@ -65,7 +65,7 @@ class ExercisesController < ApplicationController
 
   def exercise_params
     params.require(:exercise).
-        permit(:title, :description, :locale, :test,
+        permit(:name, :description, :locale, :test,
                :extra_code, :language_id, :hint, :tag_list,
                :guide_id, :position,
                :layout, :expectations_yaml)

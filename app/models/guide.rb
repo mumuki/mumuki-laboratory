@@ -21,7 +21,6 @@ class Guide < ActiveRecord::Base
 
   friendly_id :name, use: [:slugged, :finders]
 
-  #TODO rename name to title. This helps building also generic link_to compoenetns
   has_many :imports, -> { order(created_at: :desc)}
   has_many :exports
 

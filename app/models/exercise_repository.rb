@@ -12,17 +12,17 @@ class ExerciseRepository
   ## Process files in the repository, logging errors
   ## to a given ImportLog, and yields each processed root
   def process_files(log)
-    each_exercise_file do |root, position, original_id, title|
+    each_exercise_file do |root, position, original_id, name|
 
-      description = markdown(root, 'description') || (log.no_description title; next)
+      description = markdown(root, 'description') || (log.no_description name; next)
 
       hint = markdown(root, 'hint')
 
       corollary = markdown(root, 'corollary')
 
-      meta = meta(root) || (log.no_meta(title); next)
+      meta = meta(root) || (log.no_meta(name); next)
 
-      test_code = test_code(root) || (log.no_test title; next)
+      test_code = test_code(root) || (log.no_test name; next)
 
       extra_code = extra_code(root)
 
@@ -31,7 +31,7 @@ class ExerciseRepository
       end
 
       yield original_id,
-          {title: title,
+          {name: name,
            description: description,
            hint: hint,
            corollary: corollary,

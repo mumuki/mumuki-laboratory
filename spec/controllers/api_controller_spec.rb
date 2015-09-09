@@ -14,17 +14,17 @@ describe 'api controller' do
     end
 
     context 'when there are exercises' do
-      let!(:exercise_1) { create(:exercise, title: 'exercise_1', id: 1) }
-      let!(:exercise_2) { create(:exercise, title: 'exercise_2', id: 2) }
+      let!(:exercise_1) { create(:exercise, name: 'exercise_1', id: 1) }
+      let!(:exercise_2) { create(:exercise, name: 'exercise_2', id: 2) }
 
       describe 'when not using filters' do
         before { get :index }
-        it { expect(response.body).to eq '{"exercises":[{"id":1,"title":"exercise_1"},{"id":2,"title":"exercise_2"}]}' }
+        it { expect(response.body).to eq '{"exercises":[{"id":1,"name":"exercise_1"},{"id":2,"name":"exercise_2"}]}' }
       end
 
       describe 'when using filters' do
         before { get :index, exercises: [1, 5, 8] }
-        it { expect(response.body).to eq '{"exercises":[{"id":1,"title":"exercise_1"}]}' }
+        it { expect(response.body).to eq '{"exercises":[{"id":1,"name":"exercise_1"}]}' }
       end
     end
   end

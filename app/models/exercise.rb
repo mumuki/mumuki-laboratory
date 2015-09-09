@@ -1,7 +1,7 @@
 class Exercise < ActiveRecord::Base
   INDEXED_ATTRIBUTES = {
 
-      against: [:title, :description],
+      against: [:name, :description],
       associated_against: {
           language: [:name],
           tags: [:name],
@@ -26,7 +26,7 @@ class Exercise < ActiveRecord::Base
 
   after_initialize :defaults, if: :new_record?
 
-  validates_presence_of :title, :description, :language, :test,
+  validates_presence_of :name, :description, :language, :test,
                         :submissions_count, :author
 
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
@@ -69,10 +69,6 @@ class Exercise < ActiveRecord::Base
 
   def self.default_layout
     layouts.keys[0]
-  end
-
-  def name #FIXME remove
-    title
   end
 
   def guide_expectations

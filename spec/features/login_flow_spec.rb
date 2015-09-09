@@ -25,7 +25,7 @@ feature 'Login Flow' do
   scenario 'login on authentication request' do
     visit "/exercises/#{exercise.id}"
 
-    expect(page).to have_text(exercise.title)
+    expect(page).to have_text(exercise.name)
 
     click_on 'Sign in with Github'
     expect(page).to have_text('Sign Out')

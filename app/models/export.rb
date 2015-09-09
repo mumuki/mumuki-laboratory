@@ -26,11 +26,11 @@ class Export < RepositoryOperation
   end
 
   def write_exercise!(dir, e)
-    Rails.logger.info "Exporting exercise #{e.title} of guide #{guide.id}"
+    Rails.logger.info "Exporting exercise #{e.name} of guide #{guide.id}"
 
     e.generate_original_id!
 
-    dirname = File.join dir, "#{guide.format_original_id(e)}_#{e.title}"
+    dirname = File.join dir, "#{guide.format_original_id(e)}_#{e.name}"
 
     FileUtils.mkdir_p dirname
 

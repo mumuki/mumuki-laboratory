@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'Standard Flow' do
   let(:haskell) { create(:haskell) }
   let!(:exercises) {
-    create(:exercise, title: 'Succ', guide: guide, position: 1, description: 'Description of foo')
+    create(:exercise, name: 'Succ', guide: guide, position: 1, description: 'Description of foo')
   }
   let!(:category) { create(:category, name: 'Functional Programming') }
   let!(:path) { create(:path, category: category, language: haskell) }

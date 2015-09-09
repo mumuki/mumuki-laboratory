@@ -4,13 +4,13 @@ describe Export do
   let(:committer) { create(:user, token: '123456') }
   let(:haskell) { create(:haskell) }
   let!(:exercise_1) { create(:exercise, guide: guide,
-                             title: 'foo', original_id: 100, position: 1,
+                             name: 'foo', original_id: 100, position: 1,
                              locale: 'en', tag_list: %w(foo bar),
                              language: haskell, extra_code: 'foobar',
                              expectations: [{binding: 'bar', inspection: 'HasBinding'}]) }
   let!(:exercise_2) { create(:exercise, guide: guide,
                              description: 'a description',
-                             title: 'bar', tag_list: %w(baz bar), original_id: 200, position: 2,
+                             name: 'bar', tag_list: %w(baz bar), original_id: 200, position: 2,
                              language: haskell, test: 'foo bar') }
   let(:guide) { create(:guide, description: 'Baz', github_repository: 'flbulgarelli/never-existent-repo', language: haskell, locale: 'en', extra_code: 'Foo') }
   let(:export) { guide.exports.create!(committer: committer) }

@@ -12,7 +12,7 @@ class Solution < ActiveRecord::Base
   serialize :expectation_results
   serialize :test_results
 
-  delegate :language, :title, to: :exercise
+  delegate :language, :name, to: :exercise
   delegate :output_content_type, to: :language
   delegate :should_retry?, to: :status
 

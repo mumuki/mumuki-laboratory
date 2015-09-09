@@ -30,7 +30,7 @@ describe Import do
 
         it { expect(imported_exercise).to_not be nil }
         it { expect(imported_exercise.author).to eq guide.author }
-        it { expect(imported_exercise.title).to eq 'sample_title' }
+        it { expect(imported_exercise.name).to eq 'sample_title' }
         it { expect(imported_exercise.description).to eq '##Sample Description' }
         it { expect(imported_exercise.test).to eq 'pending' }
         it { expect(imported_exercise.extra_code).to eq "extra\n" }

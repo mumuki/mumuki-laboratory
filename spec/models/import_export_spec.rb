@@ -3,9 +3,9 @@ require 'spec_helper'
 describe 'import-export' do
   let(:committer) { create(:user, token: '123456') }
   let(:haskell) { create(:haskell) }
-  let!(:exercise_1) { create(:exercise, guide: guide, title: 'Foo', position: 2,
+  let!(:exercise_1) { create(:exercise, guide: guide, name: 'Foo', position: 2,
                              locale: 'en', tag_list: %w(foo bar), language: haskell) }
-  let!(:exercise_2) { create(:exercise, guide: guide, title: 'Bar', position: 1,
+  let!(:exercise_2) { create(:exercise, guide: guide, name: 'Bar', position: 1,
                              description: 'a description', test: 'foo bar',
                              tag_list: %w(baz bar),
                              language: haskell,
@@ -29,8 +29,8 @@ describe 'import-export' do
   end
 
   it { expect(guide.exercises.length).to eq 2 }
-  it { expect(guide.exercises.first.title).to eq 'Bar' }
-  it { expect(guide.exercises.second.title).to eq 'Foo' }
+  it { expect(guide.exercises.first.name).to eq 'Bar' }
+  it { expect(guide.exercises.second.name).to eq 'Foo' }
   it { expect(guide.exercises.first.layout).to eq 'no_editor' }
   it { expect(guide.exercises.second.layout).to eq 'editor_right' }
 

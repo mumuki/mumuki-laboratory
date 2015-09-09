@@ -1,6 +1,6 @@
 module WithLinksRendering
   def link_to_exercise(exercise)
-    link_to exercise.title, exercise
+    link_to exercise.name, exercise
   end
 
   def link_to_guide(guide, options={})
