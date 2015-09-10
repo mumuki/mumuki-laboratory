@@ -26,7 +26,7 @@ describe WithNavigation do
       context 'when user did not submit any solution' do
         it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success\" href=\"/exercises/my-guide-2-exercise-2\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
         it { expect(next_button(exercise_2)).to eq "<a class=\"btn btn-success\" href=\"/exercises/my-guide-3-exercise-3\">Next: exercise 3 <i class=\"fa fa-chevron-right\"></i></a>" }
-        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning\" href=\"/exercises/my-guide-1-exercise-1\"><i class=\"fa fa-repeat\"></i> Finish pending: exercise 1</a>" }
+        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning\" href=\"/exercises/my-guide-1-exercise-1\">Next pending: exercise 1 <i class=\"fa fa-chevron-right\"></i></a>" }
       end
 
       context 'when on last unresolved exercise' do
@@ -37,7 +37,7 @@ describe WithNavigation do
 
         it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success\" href=\"/exercises/my-guide-2-exercise-2\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
         it { expect(next_button(exercise_2)).to be nil }
-        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning\" href=\"/exercises/my-guide-2-exercise-2\"><i class=\"fa fa-repeat\"></i> Finish pending: exercise 2</a>" }
+        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning\" href=\"/exercises/my-guide-2-exercise-2\">Next pending: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
       end
 
       context 'when user did submit a solution' do
@@ -47,7 +47,7 @@ describe WithNavigation do
 
         it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success\" href=\"/exercises/my-guide-2-exercise-2\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
         it { expect(next_button(exercise_2)).to eq "<a class=\"btn btn-success\" href=\"/exercises/my-guide-3-exercise-3\">Next: exercise 3 <i class=\"fa fa-chevron-right\"></i></a>" }
-        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning\" href=\"/exercises/my-guide-2-exercise-2\"><i class=\"fa fa-repeat\"></i> Finish pending: exercise 2</a>" }
+        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning\" href=\"/exercises/my-guide-2-exercise-2\">Next pending: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
       end
     end
 

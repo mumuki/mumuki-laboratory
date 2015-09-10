@@ -173,4 +173,4 @@ es:
   navigation_continue: 'Siguiente: %{sibling}'
   navigation_previous: 'Anterior'
   navigation_next: 'Siguiente'
-  navigation_revisit: 'Terminar pendiente: %{sibling}'
+  navigation_revisit: 'Siguiente pendiente: %{sibling}'

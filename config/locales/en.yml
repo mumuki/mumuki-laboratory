@@ -145,4 +145,4 @@ en:
   navigation_continue: 'Next: %{sibling}'
   navigation_previous: 'Previous'
   navigation_next: 'Next'
-  navigation_revisit: 'Finish pending: %{sibling}'
+  navigation_revisit: 'Next pending: %{sibling}'

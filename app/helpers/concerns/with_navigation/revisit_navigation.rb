@@ -1,8 +1,11 @@
 module WithNavigation
   class RevisitNavigation < Navigation
+    def right
+      true
+    end
 
     def icon
-      :repeat
+      'chevron-right'
     end
 
     def key
