@@ -6,7 +6,7 @@ module WithNavigation
     end
 
     def key
-      :repeat_pending
+      :navigation_revisit
     end
 
     def clazz

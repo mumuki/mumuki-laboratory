@@ -8,7 +8,7 @@ module WithPath
   end
 
   def siblings_for(user)
-    siblings
+    path.pending_guides(user)
   end
 
   def siblings

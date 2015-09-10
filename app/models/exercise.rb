@@ -21,7 +21,6 @@ class Exercise < ActiveRecord::Base
 
   acts_as_taggable
 
-
   enum layout: [:editor_right, :editor_bottom, :no_editor, :scratchy]
 
   after_initialize :defaults, if: :new_record?
@@ -32,7 +31,6 @@ class Exercise < ActiveRecord::Base
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
 
   markup_on :description, :hint, :teaser, :corollary
-
 
   def self.create_or_update_for_import!(guide, original_id, options)
     exercise = find_or_initialize_by(original_id: original_id, guide_id: guide.id)
@@ -74,7 +72,6 @@ class Exercise < ActiveRecord::Base
   def guide_expectations
     if guide.present? then guide.expectations else [] end
   end
-
 
   def generate_custom_slug
     if guide

@@ -6,11 +6,11 @@ module WithNavigation
 
     def button(navigable)
       sibling = sibling_for(navigable)
-      link_to link_icon, sibling, class: clazz if sibling
+      link_to link_icon(sibling), sibling, class: clazz if sibling
     end
 
-    def link_icon
-      fa_icon(icon, text: I18n.t(key), right: right)
+    def link_icon(sibling)
+      fa_icon(icon, text: I18n.t(key, sibling: sibling.name), right: right)
     end
 
     def right

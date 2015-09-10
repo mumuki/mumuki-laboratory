@@ -66,7 +66,7 @@
   <% if @stats.try :done? %>
     <%= corollary_box(@guide) %>
     <div class="actions">
-      <%= next_guides_box @guide %>
+      <%= next_button @guide %>
     </div>
   <% else %>
     <div class="row">

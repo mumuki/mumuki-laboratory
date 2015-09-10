@@ -166,8 +166,11 @@ es:
   recent_activity: "Actividad Reciente"
   created_exercises: "Ejercicios Creados"
   created_guides: "Guías Creadas"
-  path_finished: "¡Terminaste esta categoría! ¡Felicitaciones!"
+  path_finished_html: "¡Terminaste %{path}! ¡Felicitaciones!"
   editor: "Editor"
   console: "Consola"
   type_expressions_here: "Acá podés escribir expresiones para probar tu solución"
-  repeat_pending: "Terminar pendientes"
+  navigation_continue: 'Siguiente: %{sibling}'
+  navigation_previous: 'Anterior'
+  navigation_next: 'Siguiente'
+  navigation_revisit: 'Terminar pendiente: %{sibling}'

@@ -30,19 +30,8 @@ module ApplicationHelper
         '</ul>').html_safe
   end
 
-  def next_guides_box(guide, options={})
-    return next_button(guide)
-
-    return if guide.path.blank?
-
-
-
-    suggested = guide.next_for(current_user)
-    if suggested.nil?
-      t :path_finished, path: link_to_path(guide.path)
-    else
-      link_to t(:next_guide, name: suggested.name), suggested, class: 'btn btn-success'
-    end
+  def path_finished(guide)
+    t :path_finished_html, path: link_to_path(@guide.path) if @guide.path
   end
 
   def corollary_box(with_corollary)

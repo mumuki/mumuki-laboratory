@@ -11,7 +11,7 @@ module WithNavigation
     end
 
     def key
-      :next_exercise
+      :navigation_next
     end
 
     def sibling_for(navigable)

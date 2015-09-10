@@ -9,7 +9,7 @@ module WithNavigation
     end
 
     def key
-      :next_exercise
+      :navigation_continue
     end
 
     def clazz

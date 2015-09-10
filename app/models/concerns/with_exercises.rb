@@ -11,7 +11,6 @@ module WithExercises
 
   def pending_exercises(user)
     exercises.
-        at_locale.
         joins("left join solutions
                 on solutions.exercise_id = exercises.id
                 and solutions.submitter_id = #{user.id}

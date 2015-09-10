@@ -138,8 +138,11 @@ en:
   need_a_hint: "Do you need a hint?"
   about: "About"
   sending_solution: "Sending solution"
-  path_finished: "You have finished this path!"
+  path_finished_html: "You have finished %{path}!"
   editor: "Editor"
   console: "Console"
   type_expressions_here: "You can type expressions here to test your solution"
-  repeat_pending: "Finish pending"
+  navigation_continue: 'Next: %{sibling}'
+  navigation_previous: 'Previous'
+  navigation_next: 'Next'
+  navigation_revisit: 'Finish pending: %{sibling}'
