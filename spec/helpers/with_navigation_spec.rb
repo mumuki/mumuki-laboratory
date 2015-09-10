@@ -29,6 +29,17 @@ describe WithNavigation do
         it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning\" href=\"/exercises/my-guide-1-exercise-1\"><i class=\"fa fa-repeat\"></i> Finish pending: exercise 1</a>" }
       end
 
+      context 'when on last unresolved exercise' do
+        before do
+          exercise_1.submit_solution(current_user, status: :passed)
+          exercise_3.submit_solution(current_user, status: :passed)
+        end
+
+        it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success\" href=\"/exercises/my-guide-2-exercise-2\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise_2)).to be nil }
+        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning\" href=\"/exercises/my-guide-2-exercise-2\"><i class=\"fa fa-repeat\"></i> Finish pending: exercise 2</a>" }
+      end
+
       context 'when user did submit a solution' do
         before do
           exercise_1.submit_solution(current_user, status: :passed)
