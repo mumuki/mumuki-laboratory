@@ -44,7 +44,7 @@ module WithSiblings
   private
 
   def qualified_position
-    "#{self.class.name.downcase.pluralize}.position"
+    "#{self.class.table_name}.position"
   end
 end
 
