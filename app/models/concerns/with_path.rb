@@ -7,10 +7,9 @@ module WithPath
     belongs_to :path
   end
 
-  def next_guides
-   path ? siblings.where('guides.position > :position', position: position).order('guides.position asc') : []
+  def siblings_for(user)
+    path.pending_guides(user)
   end
-
 
   def siblings
     path.guides

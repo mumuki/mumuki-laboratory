@@ -61,7 +61,7 @@
             </div>
             <div class="row">
               <div class="col-md-12 text-center">
-                <%= next_guides_box(@guide) %>
+                <%= next_button(@guide) || path_finished(@guide) %>
               </div>
             </div>
           </div>
@@ -69,4 +69,4 @@
       </div>
     </div>
   </div>
-<% end if @guide %>
+<% end if @guide && current_user? %>
