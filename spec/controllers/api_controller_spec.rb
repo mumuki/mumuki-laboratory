@@ -1,4 +1,11 @@
 require 'spec_helper'
+require 'rspec/expectations'
+
+RSpec::Matchers.define :json_eq do |expected_json_hash|
+  match do |actual_json|
+    expected_json_hash.with_indifferent_access == ActiveSupport::JSON.decode(actual_json)
+  end
+end
 
 describe 'api controller' do
   include AuthHelper
@@ -54,10 +61,10 @@ describe 'api controller' do
               { id: 1, name: 'exercise_1', position: 1 }
             ]
           }
-        ]}.with_indifferent_access
+        ]}
       }
 
-      it { expect(ActiveSupport::JSON.decode response.body).to eq expected_json }
+      it { expect(response.body).to json_eq expected_json }
     end
 
     context 'when there are guides with no exercises' do
@@ -77,9 +84,10 @@ describe 'api controller' do
               position: nil,
               exercises: []
             }
-          ]}.with_indifferent_access
+          ]}
         }
-        it { expect(ActiveSupport::JSON.decode response.body).to eq expected_json }
+
+        it { expect(response.body).to json_eq expected_json }
       end
     end
   end
