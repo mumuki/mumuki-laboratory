@@ -36,20 +36,50 @@ describe 'api controller' do
     end
 
     context 'when there are guides with exercises' do
-      let!(:language_1) { create(:language, id: 1) }
+      let!(:language_1) { create(:language, id: 1, name: 'language_1') }
       let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: language_1.id) }
       let!(:exercise_1) { create(:exercise, name: 'exercise_1', id: 1, language_id: language_1.id, guide_id: guide_1.id) }
 
       before { get :index }
-      it { expect(response.body).to eq '{"guides":[{"id":1,"github_repository":"flbulgarelli/mumuki-sample-exercises","name":"guide_1","language_id":1,"path_id":null,"position":null,"exercises":[{"id":1,"name":"exercise_1","position":1}]}]}' }
+      let(:expected_json) {
+        { guides: [
+          {
+            id: 1,
+            github_repository: 'flbulgarelli/mumuki-sample-exercises',
+            name: 'guide_1',
+            language: { id: 1, name: 'language_1' },
+            path_id: nil,
+            position: nil,
+            exercises: [
+              { id: 1, name: 'exercise_1', position: 1 }
+            ]
+          }
+        ]}.with_indifferent_access
+      }
+
+      it { expect(ActiveSupport::JSON.decode response.body).to eq expected_json }
     end
 
     context 'when there are guides with no exercises' do
-      let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: 1) }
+      let!(:language_1) { create(:language, id: 1, name: 'language_1') }
+      let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: language_1.id) }
 
       describe 'when not using filters' do
         before { get :index }
-        it { expect(response.body).to eq '{"guides":[{"id":1,"github_repository":"flbulgarelli/mumuki-sample-exercises","name":"guide_1","language_id":1,"path_id":null,"position":null,"exercises":[]}]}' }
+        let(:expected_json) {
+          { guides: [
+            {
+              id: 1,
+              github_repository: 'flbulgarelli/mumuki-sample-exercises',
+              name: 'guide_1',
+              language: { id: 1, name: 'language_1' },
+              path_id: nil,
+              position: nil,
+              exercises: []
+            }
+          ]}.with_indifferent_access
+        }
+        it { expect(ActiveSupport::JSON.decode response.body).to eq expected_json }
       end
     end
   end
