@@ -10,12 +10,15 @@
     add '/guides', changefreq: 'daily', priority: 0.7
     add '/users', changefreq: 'daily', priority: 0.1
 
-    Exercise.at_locale(locale).pluck(:id).each do |id|
-      add "/exercises/#{id}", changefreq: 'daily', priority: 0.5
+    Exercise.at_locale(locale).each do |e|
+      add "/exercises/#{e.slug}", changefreq: 'daily', priority: 0.55
+      add "/exercises/#{e.id}", changefreq: 'daily', priority: 0.1
+
     end
 
-    Guide.at_locale(locale).pluck(:id).each do |id|
-      add "/guides/#{id}", changefreq: 'daily', priority: 0.3
+    Guide.at_locale(locale).each do |g|
+      add "/guides/#{g.slug}", changefreq: 'daily', priority: 0.55
+      add "/guides/#{g.id}", changefreq: 'daily', priority: 0.1
     end
 
     User.all.pluck(:id).each do |id|
