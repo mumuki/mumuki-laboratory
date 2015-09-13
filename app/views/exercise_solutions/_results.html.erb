@@ -55,7 +55,7 @@
               subject: t(:problem_with_exercise, title: solution.exercise.name),
               class: 'text-warning warning pull-left' %>
 
-  <%= next_button(@exercise) || next_button(@guide)  %>
+  <%= next_button(@exercise) || next_button(@guide) if @guide %>
 </div>
 
 <script>
