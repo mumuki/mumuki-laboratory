@@ -14,7 +14,8 @@ es:
   expectation_HasRedundantIf: '%{binding} tiene ifs innecesarios'
   expectation_HasRedundantLambda: '%{binding} tiene lambdas innecesarias'
   expectation_HasRedundantParameter: '%{binding} tiene parámetros innecesarios (se pueden eliminar mediante point-free)'
-  expectation_HasRepeatOf: '%{binding} %{must} usar una repetición simple de %{target}'
+  expectation_HasRepeat: '%{binding} %{must} usar una repetición simple (sentencia <i>repeat</i>)'
+  expectation_HasRepeatOf: '%{binding} %{must} usar una repetición simple (sentencia <i>repeat</i>) de %{target}'
   expectation_HasTypeDeclaration: '%{must} existir una declaración para el sinónimo de tipo %{binding}'
   expectation_HasTypeSignature: La firma para %{binding} %{must} ser declarada
   expectation_HasUsage: '%{binding} %{must} utilizar %{target}'

@@ -14,10 +14,11 @@ en:
   expectation_HasRedundantIf: '%{binding} has redundant ifs'
   expectation_HasRedundantLambda: '%{binding} has redundant lambdas'
   expectation_HasRedundantParameter: '%{binding} has redundant parameters - you may avoid them using point-free'
-  expectation_HasRepeatOf: '%{binding} %{must} use a simple repetition of %{target}'
+  expectation_HasRepeat: '%{binding} %{must} use a simple repetition (<i>repeat</i> statement)'
+  expectation_HasRepeatOf: '%{binding} %{must} use a simple repetition (<i>repeat</i> sentence) of %{target}'
   expectation_HasTypeDeclaration: type %{binding} %{must} be defined
   expectation_HasTypeSignature: Signature for %{binding} %{must} be declared
   expectation_HasUsage: '%{binding} %{must} use %{target}'
-  expectation_HasWhile: '%{binding} %{must} use conditional repetition (<i>while</i> sentence)'
+  expectation_HasWhile: '%{binding} %{must} use conditional repetition (<i>while</i> statement)'
   expectation_must: must
   expectation_must_not: must not
