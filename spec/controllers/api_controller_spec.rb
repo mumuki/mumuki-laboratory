@@ -55,7 +55,6 @@ describe 'api controller' do
             github_repository: 'flbulgarelli/mumuki-sample-exercises',
             name: 'guide_1',
             language: { id: 1, name: 'language_1' },
-            path_id: nil,
             position: nil,
             exercises: [
               { id: 1, name: 'exercise_1', position: 1 }
@@ -80,7 +79,6 @@ describe 'api controller' do
               github_repository: 'flbulgarelli/mumuki-sample-exercises',
               name: 'guide_1',
               language: { id: 1, name: 'language_1' },
-              path_id: nil,
               position: nil,
               exercises: []
             }
@@ -89,6 +87,31 @@ describe 'api controller' do
 
         it { expect(response.body).to json_eq expected_json }
       end
+    end
+
+    context 'when the guide belongs to a path' do
+      let!(:category_1) { create(:category, name: 'category_1')  }
+      let!(:path_1) { create(:path, id: 1, category_id: category_1.id) }
+      let!(:language_1) { create(:language, id: 1, name: 'language_1') }
+      let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: language_1.id, path_id: path_1.id, position: 1) }
+
+      before { get :index }
+
+      let(:expected_json) {
+        { guides: [
+          {
+            id: 1,
+            github_repository: 'flbulgarelli/mumuki-sample-exercises',
+            name: 'guide_1',
+            language: { id: 1, name: 'language_1' },
+            path: { id: 1, name: 'category_1' },
+            position: 1,
+            exercises: []
+          }
+        ]}
+      }
+
+      it { expect(response.body).to json_eq expected_json }
     end
   end
 end
