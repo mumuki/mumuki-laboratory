@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
   belongs_to :last_exercise, class_name: 'Exercise'
   has_one :last_guide, through: :last_exercise, source: :guide
 
+  after_create :notify_registration!
+
   def last_submission_date
     solutions.last.try(&:created_at)
   end
@@ -57,6 +59,12 @@ class User < ActiveRecord::Base
 
   def passed_solutions
     solutions.where(status: Status::Passed.to_i)
+  end
+
+  private
+
+  def notify_registration!
+    EventSubscriber.notify_async!(Event::Registration.new(self))
   end
 
 end

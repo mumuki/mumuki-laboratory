@@ -32,6 +32,7 @@ module Mumuki
                                              include: {
                                                  exercise: {only: [:id, :guide_id]},
                                                  submitter: {only: [:id, :name]}}}
+    config.registration_notification_format = {only: [:id, :name, :email, :image_url]}
 
     config.action_dispatch.rescue_responses.merge!(
         'AuthorizationError' => :unauthorized
