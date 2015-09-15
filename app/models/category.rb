@@ -8,11 +8,18 @@ class Category < ActiveRecord::Base
 
   markup_on :description, :long_description, :links
 
+  def valid_paths
+    paths.select{|it| it.first_guide.present? }
+  end
+
   def single_path?
-    paths.size == 1
+    self.valid_paths.size ==1
   end
 
   def single_path
-    paths.first
+    self.valid_paths.first
   end
+
+
+
 end
