@@ -6,7 +6,7 @@ GIT
     rouge (1.9.0)
 
 GIT
-  remote: git://github.com/uqbar-project/mumukit-bridge.git
+  remote: git://github.com/mumuki/mumukit-bridge.git
   revision: 4c178dd71c6f38e93f2cfdca0db14226d777b6c3
   tag: v0.3.0
   specs:
@@ -15,8 +15,8 @@ GIT
       rest-client
 
 GIT
-  remote: git://github.com/uqbar-project/mumukit-inspection.git
-  revision: 7c29d27aaaa52b021a9d6c7ad0e9c7b4b39fa205
+  remote: git://github.com/mumuki/mumukit-inspection.git
+  revision: 11f0a129b18138336a2d2b1c9b72b97b2f34b208
   branch: master
   specs:
     mumukit-inspection (0.0.1)
