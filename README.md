@@ -77,7 +77,7 @@ Check:
 
  * The wiki
  * Spanish resources:
-    * https://www.facebook.com/mumukiapp
+    * https://www.facebook.com/MumukiProject
     * https://twitter.com/MumukiProject
     * The Mumuki Project page
     * Our mailing List
