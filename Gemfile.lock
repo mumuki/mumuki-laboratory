@@ -366,7 +366,7 @@ DEPENDENCIES
   git
   i18n-tasks (~> 0.8.3)
   jquery-rails
-  kaminari
+  kaminari (~> 0.16.3)
   md_emoji
   mumukit-bridge!
   mumukit-inspection!
