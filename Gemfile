@@ -4,10 +4,10 @@ ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 
-gem 'pg'
-gem 'pg_search'
+gem 'pg', '~> 0.18.0'
+gem 'pg_search', '~> 1.0'
 
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '~> 2.7'
 
 gem 'therubyracer', platforms: :ruby
 
@@ -29,7 +29,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-vertical-tabs'
 end
 
-gem 'chartkick'
+gem 'chartkick', '~> 1.4'
 
 gem 'omniauth-github'
 gem 'omniauth-facebook'
@@ -37,17 +37,17 @@ gem 'omniauth-facebook'
 gem 'font-awesome-rails'
 
 gem 'rouge', :github => 'jneen/rouge', :ref => 'dbdd4e7d249606543831dba63efc2737b7d6ad90'
-gem 'redcarpet'
+gem 'redcarpet', '~> 3.3.2'
 gem 'md_emoji'
 
-gem 'ace-rails-ap'
+gem 'ace-rails-ap', '~> 4.0'
 
 gem 'unicorn-rails'
 
 gem 'acts-as-taggable-on', '~> 3.4'
 
 gem 'git'
-gem 'octokit'
+gem 'octokit', '~> 4.1'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
@@ -66,8 +66,8 @@ gem 'mumukit-bridge',     :github => 'uqbar-project/mumukit-bridge', :tag=> 'v0.
 group :test do
   gem 'rspec-rails', '~> 2.14'
   gem 'factory_girl_rails'
-  gem 'rake'
-  gem 'faker'
+  gem 'rake', '10.4.2'
+  gem 'faker', '~> 1.5'
   gem 'capybara', '2.3.0'
 end
 
