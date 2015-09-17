@@ -8,7 +8,9 @@ module Authentication
   end
 
   def current_user_id
-    User.where(remember_me_token: cookies.permanent.signed[:mumuki_remember_me_token]).first.try(:id)
+    cookies.permanent.signed[:mumuki_remember_me_token].try do |token |
+      User.where(remember_me_token: token).first.try(:id)
+    end
   end
 
   def current_user?
