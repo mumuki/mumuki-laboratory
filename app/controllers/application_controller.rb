@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Authentication
+  include WithRememberMeToken
   include Pagination
 
   before_action :set_locale
