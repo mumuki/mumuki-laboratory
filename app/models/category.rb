@@ -13,7 +13,7 @@ class Category < ActiveRecord::Base
   end
 
   def single_path?
-    self.valid_paths.size ==1
+    self.valid_paths.size <=1
   end
 
   def single_path

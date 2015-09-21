@@ -8,7 +8,6 @@ class Path < ActiveRecord::Base
 
   def name
 
-
     if category.single_path?
       category.name
     else
