@@ -15,6 +15,7 @@ describe Path do
     let!(:js) { create(:language, name: 'js') }
     let!(:functional_js) { create(:path, category: functional, language: js) }
 
-   it { expect(functional_haskell.name).to eq 'Functional Programming (haskell)' }
+ #  it { expect(functional_haskell.name).to eq 'Functional Programming (haskell)' }
+    it { expect(functional_haskell.nameWithAllPaths).to eq 'Functional Programming (haskell)' }
   end
 end
