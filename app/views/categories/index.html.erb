@@ -3,7 +3,8 @@
 <br>
 
 <div class="row">
-  <% @categories.each do |it| %>
+
+  <% @categories.select{|i| i.valid_paths}.each do |it| %>
     <div class="col-md-6">
       <div class="panel panel-default exercise-panel">
         <div class="panel-body text-center category-panel">
@@ -14,7 +15,7 @@
           <p>
             <%= it.description_html %>
           </p>
-          <% if it.single_path? %>
+           <% if it.single_path? %>
             <a href="<%= guide_path(it.single_path.first_guide) %>"
                class="btn btn-success">
                 <%= image_tag it.single_path.language.image_url, height: 32 %>
