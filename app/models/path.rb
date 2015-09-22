@@ -16,13 +16,7 @@ class Path < ActiveRecord::Base
 
   end
 
-  def nameWithAllPaths #the ones that has guides attached and the ones that doesn't
-    if category.all_Single_path?
-      category.name
-    else
-      "#{category.name} (#{language.name})"
 
-    end
-  end
+
 end
 
