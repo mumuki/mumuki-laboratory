@@ -37,7 +37,11 @@ var mumuki = mumuki || {};
       return this.console.token;
     },
     get content() {
-      return mumuki.page.editors[0].getValue();
+      var firstEditor = mumuki.page.editors[0];
+      if (firstEditor)
+        return firstEditor.getValue();
+      else
+        return '';
     },
     submit: function (report) {
       var self = this;
