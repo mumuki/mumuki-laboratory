@@ -50,6 +50,10 @@ class Exercise < ActiveRecord::Base
     guide.present? && guide.authored_by?(user)
   end
 
+  def guide_done_for?(user)
+    guide.present? && guide.done_for?(user)
+  end
+
   def extra_code
     [guide.try(&:extra_code), self[:extra_code]].compact.join("\n")
   end
