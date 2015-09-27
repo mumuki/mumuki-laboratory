@@ -70,6 +70,10 @@ class Guide < ActiveRecord::Base
     exercises.map { |it| it.solution_for(current_user).try &:content }.compact
   end
 
+  def done_for?(user)
+    stats_for(user).done?
+  end
+
   private
 
   def user_resources_to_users(resources)

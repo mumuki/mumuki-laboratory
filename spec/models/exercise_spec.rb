@@ -207,6 +207,37 @@ describe Exercise do
     end
   end
 
+  describe '#guide_done_for?' do
+
+    context 'when it does not belong to a guide' do
+      it { expect(exercise.guide_done_for?(user)).to be false }
+    end
+
+    context 'when it belongs to a guide unfinished' do
+      let!(:guide) { create(:guide) }
+      let!(:exercise_unfinished) { create(:exercise, guide: guide) }
+      let!(:exercise_finished) { create(:exercise, guide: guide) }
+
+      before do
+        exercise_finished.submit_solution(user, content: 'foo', status: :passed)
+      end
+
+      it { expect(exercise_finished.guide_done_for?(user)).to be false }
+    end
+
+    context 'when it belongs to a guide unfinished' do
+      let!(:guide) { create(:guide) }
+      let!(:exercise_finished) { create(:exercise, guide: guide) }
+      let!(:exercise_finished2) { create(:exercise, guide: guide) }
+
+      before do
+        exercise_finished.submit_solution(user, content: 'foo', status: :passed)
+        exercise_finished2.submit_solution(user, content: 'foo', status: :passed)
+      end
+
+      it { expect(exercise_finished.guide_done_for?(user)).to be true }
+    end
+  end
 
   describe '#language' do
     let(:guide) { create(:guide) }
