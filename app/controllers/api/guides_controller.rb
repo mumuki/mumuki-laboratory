@@ -6,7 +6,7 @@ class Api::GuidesController < Api::BaseController
         only: [:id, :name, :github_repository, :position],
         include: {
           exercises: { only: [:id, :name, :position] },
-          language: { only: [:id, :name] },
+          language: { only: [:id, :name, :image_url] },
           path: { only: [:id], methods: [:name] }
         }
       )
