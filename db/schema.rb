@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 20150905214532) do
     t.integer  "layout",            default: 0,    null: false
     t.text     "expectations"
     t.string   "slug"
+    t.integer  "max_points",        default: 10
   end
 
   add_index "exercises", ["author_id"], name: "index_exercises_on_author_id", using: :btree
