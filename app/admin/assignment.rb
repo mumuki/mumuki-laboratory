@@ -1,4 +1,4 @@
-ActiveAdmin.register Solution do
+ActiveAdmin.register Assignment do
 
   filter :status
   filter :submitter

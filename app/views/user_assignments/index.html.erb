@@ -4,13 +4,13 @@
   <div>
     <h2><%= t(:recent_activity) %></h2>
     <ul>
-      <% @solutions.each do |it| %>
+      <% @assignments.each do |it| %>
         <li><%= time_ago_in_words it.updated_at %>: <%= status_icon it %> <%= exercise_breadcrumb it.exercise %></li>
       <% end %>
     </ul>
   </div>
 
-  <%= paginate @solutions %>
+  <%= paginate @assignments %>
 
 
 <% end %>

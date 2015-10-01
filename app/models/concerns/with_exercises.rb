@@ -11,11 +11,11 @@ module WithExercises
 
   def pending_exercises(user)
     exercises.
-        joins("left join solutions
-                on solutions.exercise_id = exercises.id
-                and solutions.submitter_id = #{user.id}
-                and solutions.status = #{Status::Passed.to_i}").
-        where('solutions.id is null')
+        joins("left join assignments
+                on assignments.exercise_id = exercises.id
+                and assignments.submitter_id = #{user.id}
+                and assignments.status = #{Status::Passed.to_i}").
+        where('assignments.id is null')
   end
 
   def next_exercise(user)

@@ -11,7 +11,7 @@ class Exercise < ActiveRecord::Base
 
   include WithSearch, WithTeaser,
           WithMarkup, WithAuthor,
-          WithSolutions, WithGuide,
+          WithAssignments, WithGuide,
           WithLocale, WithExpectations,
           WithLanguage,
           WithQueries
