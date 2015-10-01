@@ -35,7 +35,7 @@ module WithSiblings
 
   def contextualized_name
     if parent
-      "#{position}. #{name}"
+      "#{parent.name}. #{position}. #{name}"
     else
       name
     end
