@@ -6,7 +6,7 @@ module WithAssignments
   end
 
   def previous_solution_for(user)
-    assignment_for(user).try(&:content) || ''
+    assignment_for(user).try(&:solution) || ''
   end
 
   def assignment_for(user)
@@ -33,9 +33,9 @@ module WithAssignments
     assignment_for(user).try(&:submissions_count) || 0
   end
 
-  def submit_solution(user, attributes={})
+  def submit_solution(user, solution={})
     transaction do
-      assignment_with(user, attributes).tap { |it| it.submit! }
+      assignment_with(user, solution: solution[:content]).tap { |it| it.submit! }
     end
   end
 

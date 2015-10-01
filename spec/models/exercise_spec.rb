@@ -103,7 +103,7 @@ describe Exercise do
       it { expect(exercise.solved_by? user).to be false }
     end
     context 'when user did a successful submission' do
-      before { exercise.submit_solution(user, status: :passed) }
+      before { exercise.submit_solution(user).passed! }
 
       it { expect(exercise.solved_by? user).to be true }
     end
@@ -115,7 +115,7 @@ describe Exercise do
     context 'when user did both successful and failed submissions' do
       before do
         exercise.submit_solution(user)
-        exercise.submit_solution(user, status: :passed)
+        exercise.submit_solution(user).passed!
       end
 
       it { expect(exercise.solved_by? user).to be true }
@@ -139,7 +139,7 @@ describe Exercise do
     context 'when user has a single submission for the exercise' do
       let!(:assignment) { exercise.submit_solution(user, content: 'foo') }
 
-      it { expect(exercise.previous_solution_for(user)).to eq assignment.content }
+      it { expect(exercise.previous_solution_for(user)).to eq assignment.solution }
     end
 
     context 'when user has no submissions for the exercise' do
@@ -151,7 +151,7 @@ describe Exercise do
       let!(:assignments) { [exercise.submit_solution(user, content: 'foo'),
                             exercise.submit_solution(user, content: 'bar')] }
 
-      it { expect(exercise.previous_solution_for(user)).to eq assignments.last.content }
+      it { expect(exercise.previous_solution_for(user)).to eq assignments.last.solution }
     end
   end
 

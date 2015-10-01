@@ -50,3 +50,10 @@ end
 
 #Start codeclimate test reporter
 CodeClimate::TestReporter.start
+
+Assignment.class_eval do
+  def passed!
+    update_attributes!(status: Status::Passed)
+  end
+
+end
