@@ -1,6 +1,6 @@
 require 'securerandom'
 
-class Solution < ActiveRecord::Base
+class Assignment < ActiveRecord::Base
   include WithTestRunning
   include WithStatus
 
@@ -58,7 +58,7 @@ class Solution < ActiveRecord::Base
          set submissions_count = submissions_count + 1
         where id = #{exercise.id}")
     self.class.connection.execute(
-        "update solutions
+        "update assignments 
          set submissions_count = submissions_count + 1
         where id = #{id}")
     exercise.reload
@@ -75,4 +75,8 @@ class Solution < ActiveRecord::Base
     update_last_submission!
   end
 
+
+  def assignment
+    content
+  end
 end

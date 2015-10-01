@@ -54,7 +54,7 @@ class GuidesController < ApplicationController
   end
 
   def solutions_dump
-    @solutions = @guide.solution_contents_for(current_user)
+    @assignments = @guide.solutions_for(current_user)
 
     stream = render_to_string layout: false, formats: [:text]
     send_data(stream, type: 'text/plain', filename: "guide.#{@guide.language.extension}")

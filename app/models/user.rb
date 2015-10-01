@@ -8,19 +8,19 @@ class User < ActiveRecord::Base
 
   include WithSearch, WithOmniauth, WithGitAccess, WithToken
 
-  has_many :solutions, foreign_key: :submitter_id
+  has_many :assignments, foreign_key: :submitter_id
   has_many :exercises, foreign_key: :author_id
   has_many :guides, foreign_key: :author_id
 
-  has_many :submitted_exercises, through: :solutions, class_name: 'Exercise', source: :exercise
+  has_many :submitted_exercises, through: :assignments, class_name: 'Exercise', source: :exercise
 
   has_many :submitted_guides, -> { uniq }, through: :submitted_exercises, class_name: 'Guide', source: :guide
 
   has_many :submitted_paths, -> { uniq }, through: :submitted_guides, class_name: 'Path', source: :path
 
   has_many :solved_exercises,
-           -> { where('solutions.status' => Status::Passed.to_i) },
-           through: :solutions,
+           -> { where('assignments.status' => Status::Passed.to_i) },
+           through: :assignments,
            class_name: 'Exercise',
            source: :exercise
 
@@ -30,15 +30,15 @@ class User < ActiveRecord::Base
   after_create :notify_registration!
 
   def last_submission_date
-    solutions.last.try(&:created_at)
+    assignments.last.try(&:updated_at)
   end
 
   def submissions_count
-    solutions.pluck(:submissions_count).sum
+    assignments.pluck(:submissions_count).sum
   end
 
   def passed_submissions_count
-    passed_solutions.count
+    passed_assignments.count
   end
 
   def submitted_exercises_count
@@ -57,8 +57,8 @@ class User < ActiveRecord::Base
     "#{solved_exercises_count}/#{submitted_exercises_count}"
   end
 
-  def passed_solutions
-    solutions.where(status: Status::Passed.to_i)
+  def passed_assignments
+    assignments.where(status: Status::Passed.to_i)
   end
 
   def create_remember_me_token!

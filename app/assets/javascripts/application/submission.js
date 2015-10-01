@@ -35,7 +35,7 @@
     var submitButton = $('form submitButton.btn.btn-primary');
     var resultsBox = new ResultsBox(submissionsResults);
 
-    $('form.new_solution').on('ajax:beforeSend',function (event, xhr, settings) {
+    $('form.new_assignment').on('ajax:beforeSend',function (event, xhr, settings) {
       resultsBox.waiting();
     }).on('ajax:complete',function (xhr, status) {
       submitButton.attr('value', submitButton.attr('data-normal-text'));

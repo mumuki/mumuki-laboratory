@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   # All users
   resources :exercises do
     # Current user
-    resources :solutions, controller: 'exercise_solutions', only: :create
+    resources :assignments, controller: 'exercise_assignments', only: :create
     resources :queries, controller: 'exercise_query', only: :create
   end
 
@@ -60,6 +60,6 @@ Rails.application.routes.draw do
     #nested user
     resources :solved_exercises, controller: 'user_solved_exercises', only: :index
     #nested user
-    resources :solutions, controller: 'user_solutions', only: :index
+    resources :assignments, controller: 'user_assignments', only: :index
   end
 end

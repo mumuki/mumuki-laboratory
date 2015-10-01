@@ -128,30 +128,30 @@ describe Exercise do
     end
 
     context 'when there are submissions' do
-      let!(:solution) { create(:solution, exercise: exercise) }
+      let!(:assignment) { create(:assignment, exercise: exercise) }
       before { exercise.destroy! }
-      it { expect { Solution.find(solution.id) }.to raise_error(ActiveRecord::RecordNotFound) }
+      it { expect { Assignment.find(assignment.id) }.to raise_error(ActiveRecord::RecordNotFound) }
     end
 
   end
 
   describe '#default_content_for' do
     context 'when user has a single submission for the exercise' do
-      let!(:solution) { exercise.submit_solution(user, content: 'foo') }
+      let!(:assignment) { exercise.submit_solution(user, content: 'foo') }
 
-      it { expect(exercise.default_content_for(user)).to eq solution.content }
+      it { expect(exercise.previous_solution_for(user)).to eq assignment.content }
     end
 
     context 'when user has no submissions for the exercise' do
-      it { expect(exercise.default_content_for(user)).to eq '' }
+      it { expect(exercise.previous_solution_for(user)).to eq '' }
     end
 
 
     context 'when user has multiple submission for the exercise' do
-      let!(:solutions) { [exercise.submit_solution(user, content: 'foo'),
+      let!(:assignments) { [exercise.submit_solution(user, content: 'foo'),
                             exercise.submit_solution(user, content: 'bar')] }
 
-      it { expect(exercise.default_content_for(user)).to eq solutions.last.content }
+      it { expect(exercise.previous_solution_for(user)).to eq assignments.last.content }
     end
   end
 
