@@ -9,7 +9,7 @@ class ExercisesController < ApplicationController
   before_action :authorize_edition!, only: [:edit, :update]
 
   def show
-    @assignment = @exercise.assignments.build if current_user?
+    @solution = Solution.new if current_user?
   end
 
   def index

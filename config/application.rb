@@ -27,6 +27,7 @@ module Mumuki
 
     config.autoload_paths += %W(#{config.root}/plugins)
     config.autoload_paths += %W(#{config.root}/app/helpers/concerns)
+    config.autoload_paths += %W(#{config.root}/app/models/submission)
 
     config.registration_notification_format = {only: [:id, :name, :email, :image_url]}
 

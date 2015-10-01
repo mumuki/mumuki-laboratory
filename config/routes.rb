@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   # All users
   resources :exercises do
     # Current user
-    resources :assignments, controller: 'exercise_assignments', only: :create
+    resources :solutions, controller: 'exercise_solutions', only: :create
     resources :queries, controller: 'exercise_query', only: :create
   end
 

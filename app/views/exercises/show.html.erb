@@ -24,7 +24,7 @@
     <div class="row">
       <div class="col-md-12 submission-results">
          <% if @exercise.assignment_for(current_user) %>
-          <%= render partial: 'exercise_assignments/results', locals: {assignment: @exercise.assignment_for(current_user), guide_finished_by_solution: false} %>
+          <%= render partial: 'exercise_solutions/results', locals: {assignment: @exercise.assignment_for(current_user), guide_finished_by_solution: false} %>
         <% end %>
       </div>
     </div>
