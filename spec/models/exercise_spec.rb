@@ -231,8 +231,8 @@ describe Exercise do
       let!(:exercise_finished2) { create(:exercise, guide: guide) }
 
       before do
-        exercise_finished.submit_solution(user, content: 'foo', status: :passed)
-        exercise_finished2.submit_solution(user, content: 'foo', status: :passed)
+        exercise_finished.submit_solution(user, content: 'foo').passed!
+        exercise_finished2.submit_solution(user, content: 'foo').passed!
       end
 
       it { expect(exercise_finished.guide_done_for?(user)).to be true }
