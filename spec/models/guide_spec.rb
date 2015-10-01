@@ -44,6 +44,18 @@ describe Guide do
     end
   end
 
+  describe '#contextualized_name' do
+    let(:path) { create(:path) }
+    context 'when guide is not in path' do
+      it { expect(guide.contextualized_name).to be guide.name }
+    end
+    context 'when guide is in path' do
+      let!(:guide_in_path) { create(:guide, path: path, position: 2) }
+
+      it { expect(guide_in_path.contextualized_name).to eq "#{path.name}. 2. #{guide_in_path.name}" }
+    end
+  end
+
   describe 'contributors' do
     let(:contributors_resource) {
       [{type: 'User', login: 'foo'}, {type: 'User', login: 'ignatiusReilly'}, {type: 'User', login: 'rigoberto88'}]
