@@ -6,7 +6,7 @@ feature 'Users listing' do
   let(:exercise) { create(:exercise) }
 
   before do
-    exercise.submit_solution(user_with_submissions, status: :failed, content: '')
+    exercise.submit_solution!(user_with_submissions, content: '').failed!
   end
 
   scenario 'list users' do

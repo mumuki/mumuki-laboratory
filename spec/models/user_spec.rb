@@ -20,10 +20,10 @@ describe User do
 
     context 'when there are submissions from orphan exercise' do
       let!(:assignment_for) do
-        exercise_1.submit_solution(user, content: '')
-        exercise_1.submit_solution(user, content: '').passed!
-        exercise_2.submit_solution(user, content: '').passed!
-        exercise_3.submit_solution(user, content: '')
+        exercise_1.submit_solution!(user, content: '')
+        exercise_1.submit_solution!(user, content: '').passed!
+        exercise_2.submit_solution!(user, content: '').passed!
+        exercise_3.submit_solution!(user, content: '')
       end
 
       it { expect(user.reload.last_submission_date).to eq Assignment.last.updated_at }
@@ -41,7 +41,7 @@ describe User do
       let!(:exercise_4) { create(:exercise, guide: guide) }
 
       let!(:assignment_for) do
-        exercise_4.submit_solution(user, status: :failed, content: '')
+        exercise_4.submit_solution!(user, content: '').failed!
       end
 
       it { expect(user.reload.last_exercise).to eq exercise_4 }

@@ -69,9 +69,9 @@ describe Assignment do
     let(:user) { create(:user) }
 
     before do
-      exercise.submit_solution(user)
-      exercise.submit_solution(user)
-      exercise.submit_solution(user)
+      exercise.submit_solution!(user)
+      exercise.submit_solution!(user)
+      exercise.submit_solution!(user)
     end
 
     it { expect(exercise.reload.submissions_count).to eq(3) }
@@ -81,13 +81,13 @@ describe Assignment do
     let(:exercise) { create(:exercise) }
     let(:user) { create(:user) }
 
-    before {  exercise.submit_solution(user, content: 'foo') }
+    before {  exercise.submit_solution!(user, content: 'foo') }
 
     it do
       submission_id = exercise.assignment_for(user).submission_id
       expect(submission_id).to be_present
 
-      exercise.submit_solution(user, content: 'bar')
+      exercise.submit_solution!(user, content: 'bar')
 
       new_submission_id = exercise.assignment_for(user).submission_id
       expect(new_submission_id).to be_present

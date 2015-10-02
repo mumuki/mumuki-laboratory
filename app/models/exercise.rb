@@ -14,6 +14,7 @@ class Exercise < ActiveRecord::Base
           WithAssignments, WithGuide,
           WithLocale, WithExpectations,
           WithLanguage,
+          Submittable,
           Queriable,
           Solvable
   extend FriendlyId

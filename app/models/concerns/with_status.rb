@@ -11,13 +11,25 @@ module WithStatus
   end
 
   def run_update!
-    update! status: Status::Running
+    running!
     begin
       update! yield
     rescue => e
-      update! result: e.message, status: Status::Errored
+      errored! e.message
       raise e
     end
+  end
+
+  def passed!
+    update! status: Status::Passed
+  end
+
+  def running!
+    update! status: Status::Running
+  end
+
+  def errored!(message)
+    update! result: message, status: Status::Errored
   end
 
 end

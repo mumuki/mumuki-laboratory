@@ -17,7 +17,7 @@ module WithAssignments
     !!assignment_for(user).try(&:passed?)
   end
 
-  def submitted_by?(user)
+  def assigned_to?(user)
     assignment_for(user).present?
   end
 
@@ -26,21 +26,18 @@ module WithAssignments
   end
 
   def last_submission_date_for(user)
-    assignment_for(user).try(&:created_at)
+    assignment_for(user).try(&:updated_at)
   end
 
   def submissions_count_for(user)
     assignment_for(user).try(&:submissions_count) || 0
   end
 
-
-  private
-
-  def assignment_with(user, attributes)
-    if submitted_by?(user)
-      assignment_for(user).tap { |it| it.assign_attributes attributes }
+  def find_or_init_assignment_for(user)
+    if assigned_to?(user)
+      assignment_for(user)
     else
-      user.assignments.build({exercise: self}.merge(attributes))
+      user.assignments.build(exercise: self)
     end
   end
 end

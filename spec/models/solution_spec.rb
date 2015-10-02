@@ -3,14 +3,13 @@ require 'spec_helper'
 describe Solution do
 
   describe '#run_tests!' do
-    let(:solution) { Solution.new(assignment: assignment) }
     let(:exercise) { create(:x_equal_5_exercise) }
     let(:exercise_with_expectations) {
       create(:x_equal_5_exercise, expectations: [{binding: :foo, inspection: :HasComposition}]) }
     let(:user) { exercise.author }
 
     before { expect_any_instance_of(Language).to receive(:run_tests!).and_return(bridge_response) }
-    before { solution.run! }
+    before { exercise.submit_solution! user }
 
     context 'when results have no expectation' do
       let(:assignment) { create(:assignment, exercise: exercise) }

@@ -52,8 +52,8 @@ end
 CodeClimate::TestReporter.start
 
 Assignment.class_eval do
-  def passed!
-    update_attributes!(status: Status::Passed)
+  def failed!
+    update_attributes!(status: Status::Failed)
   end
 
 end
