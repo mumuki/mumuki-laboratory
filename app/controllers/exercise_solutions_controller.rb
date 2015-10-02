@@ -5,10 +5,10 @@ class ExerciseSolutionsController < ApplicationController
 
   def create
     guide_previously_done = @exercise.guide_done_for?(current_user)
-    @assignment = @exercise.submit_solution(current_user, solution_params)
-    @assignment.run_tests!
+    @solution = @exercise.submit_solution(current_user, solution_params)
+    @solution.run!
     guide_finished_by_solution = !guide_previously_done && @exercise.guide_done_for?(current_user)
-    render partial: 'exercise_solutions/results', locals: {assignment: @assignment, guide_finished_by_solution: guide_finished_by_solution}
+    render partial: 'exercise_solutions/results', locals: {assignment: @solution.assignment, guide_finished_by_solution: guide_finished_by_solution}
   end
 
   private

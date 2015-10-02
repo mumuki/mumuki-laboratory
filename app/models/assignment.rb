@@ -1,7 +1,6 @@
 require 'securerandom'
 
 class Assignment < ActiveRecord::Base
-  include WithTestRunning
   include WithStatus
 
   belongs_to :exercise
