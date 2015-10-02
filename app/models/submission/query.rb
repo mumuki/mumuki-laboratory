@@ -1,11 +1,7 @@
 class Query
-  attr_accessor :query, :content, :exercise, :status, :result
+  include ActiveModel::Model
 
-  def initialize(query, content, exercise)
-    @query = query
-    @content = content
-    @exercise = exercise
-  end
+  attr_accessor :query, :content, :exercise, :status, :result
 
   def run!
     response = exercise.run_query!(content: content, query: query)
