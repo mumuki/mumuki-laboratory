@@ -47,7 +47,7 @@ class Assignment < ActiveRecord::Base
 
   def accept_new_submission!(submission)
     transaction do
-      self.submission_id = submission.id
+      update! submission_id: submission.id
       update_submissions_count!
       update_last_submission!
     end

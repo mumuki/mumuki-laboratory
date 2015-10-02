@@ -7,9 +7,21 @@ class Evaluation
   end
 
   def run!
-    submission.setup_assignment! assignment
-    results = submission.evaluate_against! assignment.exercise
+    setup_assignment!
+    evaluate!.tap do |results|
+      save_results! results
+    end
+  end
+
+  def save_results!(results)
     submission.save_results! results, assignment
-    results
+  end
+
+  def evaluate!
+    submission.evaluate_against! assignment.exercise
+  end
+
+  def setup_assignment!
+    submission.setup_assignment! assignment
   end
 end

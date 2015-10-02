@@ -4,9 +4,7 @@ class Query < Submission
   attr_accessor :query, :content
 
   def try_evaluate_against!(exercise)
-    exercise.run_query!(content: content, query: query)
-  end
-
-  def save_results!(results, assignment)
+    r = exercise.run_query!(content: content, query: query)
+    {result: r[:result], status: Status.from_sym(r[:status])}
   end
 end

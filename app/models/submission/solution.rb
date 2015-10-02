@@ -8,13 +8,14 @@ class Solution < Submission
   end
 
   def setup_assignment!(assignment)
+    assignment.running!
     assignment.solution = content
     super
-    assignment.accept_new_submission!(self)
+    assignment.accept_new_submission! self
   end
 
   def save_results!(results, assignment)
     assignment.update! results
-    EventSubscriber.notify_async!(Event::Submission.new(assignment))
+    EventSubscriber.notify_async! Event::Submission.new(assignment)
   end
 end

@@ -14,4 +14,7 @@ class Submission
   rescue => e
     {status: :errored, result: e.message}
   end
+
+  def save_results!(results, assignment)
+  end
 end
