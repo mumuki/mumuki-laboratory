@@ -1,6 +1,6 @@
 <% if current_user? %>
 
-  <% if @exercise.queriable %>
+  <% if @exercise.queriable? %>
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active">
         <a href="#editor" aria-controls="editor" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'pencil-square' %> <%= t :editor %></a>
