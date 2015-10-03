@@ -13,7 +13,7 @@ FactoryGirl.define do
     name 'haskell'
   end
 
-  factory :exercise do
+  factory :exercise, class: Problem do
     name 'Exercise 1'
     description 'Simple exercise'
     language { guide ? guide.language : create(:language) }

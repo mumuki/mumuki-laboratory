@@ -43,6 +43,7 @@ class ExerciseRepository
            author: @author,
            test: test_code,
            extra_code: extra_code,
+           type: (meta['type'] || 'problem').camelize,
            position: position}
     end
   end

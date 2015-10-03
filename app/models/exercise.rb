@@ -16,12 +16,10 @@ class Exercise < ActiveRecord::Base
           WithAssignments,
           WithGuide,
           WithLocale,
-          WithExpectations,
           WithLanguage,
           WithLayout,
           Submittable,
-          Queriable,
-          Solvable
+          Queriable
   extend FriendlyId
 
   friendly_id :generate_custom_slug, use: [:slugged, :finders]
@@ -30,7 +28,7 @@ class Exercise < ActiveRecord::Base
 
   after_initialize :defaults, if: :new_record?
 
-  validates_presence_of :name, :description, :language, :test,
+  validates_presence_of :name, :description, :language,
                         :submissions_count, :author
 
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
@@ -38,7 +36,8 @@ class Exercise < ActiveRecord::Base
   markup_on :description, :hint, :teaser, :corollary
 
   def self.create_or_update_for_import!(guide, original_id, options)
-    exercise = find_or_initialize_by(original_id: original_id, guide_id: guide.id)
+    clazz = Kernel.const_get(options[:type])
+    exercise = find_or_initialize_by(original_id: original_id, guide_id: guide.id).becomes(clazz)
     exercise.assign_attributes(options)
     exercise.save!
   end
@@ -59,10 +58,6 @@ class Exercise < ActiveRecord::Base
     [guide.try(&:extra_code), self[:extra_code]].compact.join("\n")
   end
 
-  def expectations
-    super + guide_expectations
-  end
-
   private
 
   def defaults
@@ -72,10 +67,6 @@ class Exercise < ActiveRecord::Base
 
   def self.default_layout
     layouts.keys[0]
-  end
-
-  def guide_expectations
-    if guide.present? then guide.expectations else [] end
   end
 
   def generate_custom_slug
