@@ -9,11 +9,16 @@ class Exercise < ActiveRecord::Base
       },
   }
 
-  include WithSearch, WithTeaser,
-          WithMarkup, WithAuthor,
-          WithAssignments, WithGuide,
-          WithLocale, WithExpectations,
+  include WithSearch,
+          WithTeaser,
+          WithMarkup,
+          WithAuthor,
+          WithAssignments,
+          WithGuide,
+          WithLocale,
+          WithExpectations,
           WithLanguage,
+          WithLayout,
           Submittable,
           Queriable,
           Solvable
@@ -22,8 +27,6 @@ class Exercise < ActiveRecord::Base
   friendly_id :generate_custom_slug, use: [:slugged, :finders]
 
   acts_as_taggable
-
-  enum layout: [:editor_right, :editor_bottom, :no_editor, :scratchy]
 
   after_initialize :defaults, if: :new_record?
 
