@@ -52,5 +52,4 @@ module ApplicationHelper
   def classification_label(style, icon, key)
     %Q{<span class="label label-#{style}">#{fa_icon icon} #{t key}</span>}
   end
-
 end
