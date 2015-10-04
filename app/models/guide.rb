@@ -19,7 +19,7 @@ class Guide < ActiveRecord::Base
           WithStats
   extend FriendlyId
 
-  friendly_id :name, use: [:slugged, :finders]
+  friendly_id :contextualized_name, use: [:slugged, :finders]
 
   has_many :imports, -> { order(created_at: :desc)}
   has_many :exports
