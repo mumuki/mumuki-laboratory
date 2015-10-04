@@ -15,11 +15,8 @@ class Guide < ActiveRecord::Base
           WithPath,
           WithExercises,
           WithStats,
-          WithExpectations
-          WithStats
-  extend FriendlyId
-
-  friendly_id :contextualized_name, use: [:slugged, :finders]
+          WithExpectations,
+          WithSlug
 
   has_many :imports, -> { order(created_at: :desc)}
   has_many :exports
@@ -72,6 +69,10 @@ class Guide < ActiveRecord::Base
 
   def done_for?(user)
     stats_for(user).done?
+  end
+
+  def generate_custom_slug
+    contextualized_name
   end
 
   private

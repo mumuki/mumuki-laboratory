@@ -18,11 +18,9 @@ class Exercise < ActiveRecord::Base
           WithLocale,
           WithLanguage,
           WithLayout,
+          WithSlug,
           Submittable,
           Queriable
-  extend FriendlyId
-
-  friendly_id :generate_custom_slug, use: [:slugged, :finders]
 
   acts_as_taggable
 

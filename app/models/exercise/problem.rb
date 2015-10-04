@@ -4,9 +4,6 @@ class Problem < Exercise
 
   validates_presence_of :test
 
-  extend FriendlyId
-  friendly_id :generate_custom_slug, use: [:slugged, :finders]
-
   def self.model_name
     Exercise.model_name
   end
