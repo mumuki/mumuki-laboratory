@@ -56,6 +56,25 @@ describe Guide do
     end
   end
 
+  describe '#slug' do
+    context 'when guide is not in path' do
+      let(:guide_not_in_path) { create(:guide, name: 'Una Guia') }
+      it { expect(guide_not_in_path.slug).to eq 'una-guia' }
+    end
+    context 'when guide is in path' do
+      let(:path) { create(:path) }
+      let(:guide_in_path) { create(:guide, name: 'Una Guia', path: path, position: 3) }
+
+      before do
+        def path.name
+          'Fundamentos de Programacion'
+        end
+      end
+
+      it { expect(guide_in_path.slug).to eq 'fundamentos-de-programacion-3-una-guia' }
+    end
+  end
+
   describe 'contributors' do
     let(:contributors_resource) {
       [{type: 'User', login: 'foo'}, {type: 'User', login: 'ignatiusReilly'}, {type: 'User', login: 'rigoberto88'}]
