@@ -27,11 +27,8 @@ module Mumuki
 
     config.autoload_paths += %W(#{config.root}/plugins)
     config.autoload_paths += %W(#{config.root}/app/helpers/concerns)
+    config.autoload_paths += %W(#{config.root}/app/models/submission)
 
-    config.submission_notification_format = {except: [:exercise_id, :id, :submission_id],
-                                             include: {
-                                                 exercise: {only: [:id, :guide_id]},
-                                                 submitter: {only: [:id, :name]}}}
     config.registration_notification_format = {only: [:id, :name, :email, :image_url]}
 
     config.action_dispatch.rescue_responses.merge!(

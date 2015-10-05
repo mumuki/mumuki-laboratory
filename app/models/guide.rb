@@ -67,7 +67,7 @@ class Guide < ActiveRecord::Base
   end
 
   def solutions_for(current_user)
-    exercises.map { |it| it.assignment_for(current_user).try &:content }.compact
+    exercises.map { |it| it.assignment_for(current_user).try &:solution }.compact
   end
 
   def done_for?(user)

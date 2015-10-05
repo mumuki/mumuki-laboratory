@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001143118) do
+ActiveRecord::Schema.define(version: 20151001183858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20151001143118) do
   end
 
   create_table "assignments", force: true do |t|
-    t.text     "content"
+    t.text     "solution"
     t.integer  "exercise_id"
     t.integer  "status",              default: 0
     t.text     "result"

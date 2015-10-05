@@ -13,7 +13,7 @@
 
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane editor-pane fade in active" id="editor">
-      <%= form_for([@exercise, @assignment], remote: true, html: {role: 'form'}) do |f| %>
+      <%= form_for([@exercise, @solution], remote: true, html: {role: 'form'}) do |f| %>
         <div class="field form-group">
           <%= f.editor :content, 'dynamic',
                        class: "form-control #{'editor' if editor_visible }",
