@@ -14,7 +14,7 @@ module WithSlug
     def make_slugged(clazz)
       clazz.class_eval do
         extend FriendlyId
-        friendly_id :generate_custom_slug, use: [:slugged, :finders]
+        friendly_id :generate_custom_slug, use: [:slugged, :finders] rescue nil
       end
     end
   end

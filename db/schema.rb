@@ -126,7 +126,6 @@ ActiveRecord::Schema.define(version: 20151003003856) do
     t.text     "corollary"
     t.integer  "layout",            default: 0,         null: false
     t.text     "expectations"
-    t.integer  "max_points",        default: 10
     t.string   "slug"
     t.string   "type",              default: "Problem", null: false
   end
