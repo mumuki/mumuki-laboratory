@@ -28,7 +28,7 @@ describe 'import-export' do
     guide.exports.create!(committer: committer).write_guide! dir
     guide.exercises.delete_all
     guide.update!(description: '***', locale: 'es', language: nil)
-    guide.imports.create!(committer:committer).read_guide! dir
+    @log = guide.imports.create!(committer: committer).read_guide! dir
     guide.reload
   end
 
@@ -36,9 +36,11 @@ describe 'import-export' do
     FileUtils.rm_rf dir
   end
 
+  it { expect(@log.to_s).to eq '' }
   it { expect(guide.exercises.length).to eq 3 }
   it { expect(guide.exercises.first.name).to eq 'Bar' }
   it { expect(guide.exercises.second.name).to eq 'Foo' }
+  it { expect(guide.exercises.third.name).to eq 'Baz' }
   it { expect(guide.exercises.first.layout).to eq 'no_editor' }
   it { expect(guide.exercises.second.layout).to eq 'editor_right' }
 

@@ -20,6 +20,6 @@ describe ImportLog do
       problem.save
       log.saved(problem)
     end
-    it { expect(log.to_s).to eq 'Description does not exist for isEven, Meta does not exist for isEven' }
+    it { expect(log.to_s).to eq 'Saving A problem produced Test can\'t be blank' }
   end
 end

@@ -71,7 +71,7 @@ class Export < RepositoryOperation
   private
 
   def metadata_yaml(e)
-    {'tags' => e.tag_list.to_a, 'locale' => e.locale, 'layout' => e.layout}.to_yaml
+    {'tags' => e.tag_list.to_a, 'locale' => e.locale, 'layout' => e.layout, 'type' => e.class.name.underscore}.to_yaml
   end
 
   def expectations_yaml(e)

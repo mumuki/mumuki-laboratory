@@ -33,7 +33,8 @@ class ExerciseReader
   end
 end
 
-class ExerciseRepository
+
+class GuideReader
 
   attr_reader :reader
 
@@ -46,36 +47,22 @@ class ExerciseRepository
 
   ## Process files in the repository, logging errors
   ## to a given ImportLog, and yields each processed root
-  def process_files(log)
+  def read_exercises(log)
     each_exercise_file do |root, position, original_id, name|
-      description = reader.markdown(root, 'description') || (log.no_description name; next)
-      meta = reader.meta(root) || (log.no_meta(name); next)
-
-      hint = reader.markdown(root, 'hint')
-      corollary = reader.markdown(root, 'corollary')
-
-      test_code = reader.test_code(root)
-      extra_code = reader.extra_code(root)
-
-      expectations = (reader.expectations(root).try { |it| it['expectations'] } || []).map do |e|
-        {binding: e['binding'], inspection: e['inspection']}
-      end
-
-      yield original_id,
-          {name: name,
-           description: description,
-           hint: hint,
-           corollary: corollary,
-           tag_list: meta['tags'],
-           locale: meta['locale'],
-           layout: meta['layout'] || Exercise.default_layout,
-           language: @language,
-           expectations: expectations,
-           author: @author,
-           test: test_code,
-           extra_code: extra_code,
-           type: (meta['type'] || 'problem').camelize,
-           position: position}
+      builder = ExerciseBuilder.new
+      builder.meta = reader.meta(root) || (log.no_meta(name); next)
+      builder.original_id = original_id
+      builder.name = name
+      builder.description = reader.markdown(root, 'description') || (log.no_description name; next)
+      builder.position = position
+      builder.hint = reader.markdown(root, 'hint')
+      builder.corollary = reader.markdown(root, 'corollary')
+      builder.test = reader.test_code(root)
+      builder.extra_code = reader.extra_code(root)
+      builder.language = @language
+      builder.author = @author
+      builder.expectations = reader.expectations(root).try { |it| it['expectations'] }
+      yield builder
     end
   end
 
