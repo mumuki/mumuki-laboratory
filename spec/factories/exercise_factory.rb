@@ -6,6 +6,7 @@ FactoryGirl.define do
 
     test_runner_url { Faker::Internet.url }
     image_url { Faker::Internet.url }
+    queriable true
   end
 
   factory :haskell, parent: :language do
@@ -13,15 +14,26 @@ FactoryGirl.define do
     name 'haskell'
   end
 
-  factory :exercise, class: Problem do
-    name 'Exercise 1'
-    description 'Simple exercise'
+
+  factory :problem do
+    name 'A problem'
+    description 'Simple problem'
     language { guide ? guide.language : create(:language) }
     test 'dont care'
     author { create(:user) }
     locale :en
     position 1
   end
+
+  factory :playground do
+    name 'A Playground'
+    description 'Simple playground'
+    language { guide ? guide.language : create(:language) }
+    author { create(:user) }
+    locale :en
+  end
+
+  factory :exercise, parent: :problem
 
   factory :x_equal_5_exercise, parent: :exercise do
     test <<-EOT

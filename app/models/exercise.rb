@@ -33,11 +33,15 @@ class Exercise < ActiveRecord::Base
 
   markup_on :description, :hint, :teaser, :corollary
 
-  def self.create_or_update_for_import!(guide, original_id, options)
+  def self.create_or_update_for_import(guide, original_id, options)
     clazz = Kernel.const_get(options[:type])
-    exercise = find_or_initialize_by(original_id: original_id, guide_id: guide.id).becomes(clazz)
+    exercise = clazz.find_or_initialize_by(original_id: original_id, guide_id: guide.id)
     exercise.assign_attributes(options)
-    exercise.save!
+    exercise.save
+    exercise
+  rescue => e
+    exercise.errors.add :base, e.message
+    exercise
   end
 
   def search_tags
