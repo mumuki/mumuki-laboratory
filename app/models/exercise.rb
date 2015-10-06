@@ -14,7 +14,9 @@ class Exercise < ActiveRecord::Base
           WithAssignments, WithGuide,
           WithLocale, WithExpectations,
           WithLanguage,
-          WithQueries
+          Submittable,
+          Queriable,
+          Solvable
   extend FriendlyId
 
   friendly_id :generate_custom_slug, use: [:slugged, :finders]

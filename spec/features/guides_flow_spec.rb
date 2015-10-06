@@ -55,11 +55,11 @@ feature 'Search Flow' do
 
     click_on 'Sign in with Github'
 
-    exercises[0].submit_solution(user, status: :passed)
-    exercises[1].submit_solution(user, status: :passed)
-    exercises[2].submit_solution(user, status: :passed)
+    exercises[0].submit_solution!(user).passed!
+    exercises[1].submit_solution!(user).passed!
+    exercises[2].submit_solution!(user).passed!
 
-    exercises[2].submit_solution(user, status: :failed)
+    exercises[2].submit_solution!(user).failed!
 
     visit "/guides/#{guide.id}"
 

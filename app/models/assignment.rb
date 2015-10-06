@@ -1,7 +1,4 @@
-require 'securerandom'
-
 class Assignment < ActiveRecord::Base
-  include WithTestRunning
   include WithStatus
 
   belongs_to :exercise
@@ -48,9 +45,15 @@ class Assignment < ActiveRecord::Base
     Rails.configuration.verbosity.visible_expectation_results(expectation_results || [])
   end
 
-  def set_submission_id!
-    self.submission_id = SecureRandom.hex(8)
+  def accept_new_submission!(submission)
+    transaction do
+      update! submission_id: submission.id
+      update_submissions_count!
+      update_last_submission!
+    end
   end
+
+  private
 
   def update_submissions_count!
     self.class.connection.execute(
@@ -66,12 +69,5 @@ class Assignment < ActiveRecord::Base
 
   def update_last_submission!
     submitter.update!(last_submission_date: created_at, last_exercise: exercise)
-  end
-
-  def submit!
-    set_submission_id!
-    save!
-    update_submissions_count!
-    update_last_submission!
   end
 end

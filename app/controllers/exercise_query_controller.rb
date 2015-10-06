@@ -4,9 +4,8 @@ class ExerciseQueryController < ApplicationController
   before_action :authenticate!
 
   def create
-    @query = @exercise.submit_query!(query_params)
-    @query.run!
-    render json: {result: @query.result, status: @query.status}
+    results = @exercise.submit_query! current_user, query_params
+    render json: results
   end
 
   def query_params

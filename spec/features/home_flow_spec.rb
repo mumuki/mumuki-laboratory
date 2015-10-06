@@ -52,7 +52,7 @@ feature 'Home Flow' do
     before do
       visit '/'
       click_on 'Sign in with Github'
-      exercise.submit_solution(user, status: :passed)
+      exercise.submit_solution!(user).passed!
     end
 
     scenario 'from outside' do

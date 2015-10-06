@@ -17,7 +17,7 @@ feature 'Progress Flow' do
   end
 
   scenario 'user progress, not logged in, with submissions' do
-    exercise.submit_solution(user, content: 'foo', status: :failed)
+    exercise.submit_solution!(user, content: 'foo').failed!
 
     visit "/users/#{user.id}"
 
