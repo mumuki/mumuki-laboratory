@@ -9,7 +9,6 @@ class Solution < Submission
 
   def setup_assignment!(assignment)
     assignment.running!
-    assignment.solution = content
     super
     assignment.accept_new_submission! self
   end

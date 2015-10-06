@@ -1,11 +1,14 @@
 require 'securerandom'
 
 class Submission
+  attr_accessor :content
+
   def id
     @id ||= SecureRandom.hex(8)
   end
 
   def setup_assignment!(assignment)
+    assignment.solution = content
     assignment.save!
   end
 
