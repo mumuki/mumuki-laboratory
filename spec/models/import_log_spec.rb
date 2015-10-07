@@ -20,6 +20,6 @@ describe ImportLog do
       problem.save
       log.saved(problem)
     end
-    it { expect(log.to_s).to eq 'Saving A problem produced Test can\'t be blank' }
+    it { expect(log.to_s).to eq 'Saving A problem produced You need to provide either a test or an expectations file' }
   end
 end

@@ -21,6 +21,11 @@ es:
     errors:
       messages:
         same_language_of_guide: El lenguaje del ejercicio debe coincidir con el de su guía
+      models:
+        exercise:
+          attributes:
+            base:
+              evaluation_criteria_required:  'Tenés que proveer al menos un test o un archivo de expectativas'
     models:
       exercise:
         one: Ejercicio

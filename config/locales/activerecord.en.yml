@@ -4,3 +4,9 @@ en:
     errors:
       messages:
         same_language_of_guide: Must be of same language of guide
+
+      models:
+        exercise:
+          attributes:
+            base:
+              evaluation_criteria_required:  'You need to provide either a test or an expectations file'
