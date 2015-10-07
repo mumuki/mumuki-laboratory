@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe Path do
-  let!(:functional) { create(:category, name: 'Functional Programming') }
-  let!(:haskell) { create(:language, name: 'haskell') }
-  let(:guide) { create(:guide, github_repository: 'flbulgarelli/mumuki-sample-exercises', author: 'author',path: functional_haskell) }
-  let!(:functional_haskell) { create(:path, category: functional, language: haskell) }
+  let!(:functional) { build(:category, name: 'Functional Programming') }
+  let!(:haskell) { build(:language, name: 'haskell') }
+  let(:guide) { build(:guide, github_repository: 'flbulgarelli/mumuki-sample-exercises', author: 'author',path: functional_haskell) }
+  let!(:functional_haskell) { build(:path, category: functional, language: haskell) }
 
 
 

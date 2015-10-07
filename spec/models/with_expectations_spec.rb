@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe WithExpectations do
-  let(:exercise) { create(:exercise) }
+  let(:exercise) { build(:exercise) }
 
   context 'when setting empty list' do
     before { exercise.expectations = [] }
