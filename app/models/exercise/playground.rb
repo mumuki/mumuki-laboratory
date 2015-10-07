@@ -6,6 +6,14 @@ class Playground < Exercise
     Exercise.model_name
   end
 
+  def setup_query_assignment!(assignment)
+    assignment.running!
+  end
+
+  def save_query_results!(assignment)
+    assignment.passed!
+  end
+
   private
 
   def ensure_queriable_language

@@ -8,6 +8,12 @@ class Problem < Exercise
     Exercise.model_name
   end
 
+  def setup_query_assignment!(assignment)
+  end
+
+  def save_query_results!(assignment)
+  end
+
   def expectations
     super + guide_expectations
   end
