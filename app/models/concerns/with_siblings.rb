@@ -34,14 +34,19 @@ module WithSiblings
   end
 
   def contextualized_name
+    with_parent_name { "#{position}. #{name}" }
+  end
+
+  private
+
+  def with_parent_name
     if parent
-      "#{parent.name}. #{position}. #{name}"
+      yield
     else
       name
     end
   end
 
-  private
 
   def qualified_position
     "#{self.class.table_name}.position"

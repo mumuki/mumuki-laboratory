@@ -59,12 +59,4 @@ class Exercise < ActiveRecord::Base
   def self.default_layout
     layouts.keys[0]
   end
-
-  def generate_custom_slug
-    if guide
-      "#{guide.name}-#{position}-#{name}"
-    else
-      name
-    end
-  end
 end

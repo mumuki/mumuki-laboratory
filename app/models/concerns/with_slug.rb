@@ -5,6 +5,10 @@ module WithSlug
     make_slugged(self)
   end
 
+  def slugged_name
+    with_parent_name { "#{parent.name} - #{position}. #{name}" }
+  end
+
   module ClassMethods
     def inherited(subclass)
       super
@@ -14,7 +18,7 @@ module WithSlug
     def make_slugged(clazz)
       clazz.class_eval do
         extend FriendlyId
-        friendly_id :generate_custom_slug, use: [:slugged, :finders] rescue nil
+        friendly_id :slugged_name, use: [:slugged, :finders] rescue nil
       end
     end
   end

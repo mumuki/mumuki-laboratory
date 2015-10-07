@@ -71,10 +71,6 @@ class Guide < ActiveRecord::Base
     stats_for(user).done?
   end
 
-  def generate_custom_slug
-    contextualized_name
-  end
-
   private
 
   def user_resources_to_users(resources)
