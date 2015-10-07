@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :solution do
+  factory :assignment do
     status Status::Pending
     exercise
     submitter { create(:user) }

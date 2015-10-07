@@ -41,7 +41,7 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
-  config.order = "random"
+  config.order = "1"
 
   config.include FactoryGirl::Syntax::Methods
 
@@ -50,3 +50,21 @@ end
 
 #Start codeclimate test reporter
 CodeClimate::TestReporter.start
+
+class NoopEvaluation < Evaluation
+  def evaluate!
+    {status: Status::Failed, result: 'no evaluation!'}
+  end
+end
+
+class Exercise
+  def evaluation_class
+    NoopEvaluation
+  end
+end
+
+Assignment.class_eval do
+  def failed!
+    update_attributes!(status: Status::Failed)
+  end
+end

@@ -31,8 +31,8 @@ describe WithNavigation do
 
       context 'when on last unresolved exercise' do
         before do
-          exercise_1.submit_solution(current_user, status: :passed)
-          exercise_3.submit_solution(current_user, status: :passed)
+          exercise_1.submit_solution!(current_user).passed!
+          exercise_3.submit_solution!(current_user).passed!
         end
 
         it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success\" href=\"/exercises/my-guide-2-exercise-2\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
@@ -42,7 +42,7 @@ describe WithNavigation do
 
       context 'when user did submit a solution' do
         before do
-          exercise_1.submit_solution(current_user, status: :passed)
+          exercise_1.submit_solution!(current_user).passed!
         end
 
         it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success\" href=\"/exercises/my-guide-2-exercise-2\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
@@ -59,7 +59,7 @@ describe WithNavigation do
         let(:guide) { create(:guide, position: 1, path: path, name: 'Guide A') }
         let(:exercise) { create(:exercise, position: 1, guide: guide) }
 
-        before { exercise.submit_solution(current_user, status: :passed) }
+        before { exercise.submit_solution!(current_user).passed! }
 
         it { expect(next_button(guide)).to be nil }
       end

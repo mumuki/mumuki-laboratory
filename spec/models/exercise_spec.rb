@@ -28,7 +28,7 @@ describe Exercise do
       let!(:alternative_exercise) { create(:exercise, guide: guide) }
       let(:guide) { create(:guide) }
 
-      before { alternative_exercise.submit_solution(user, content: 'foo', status: :passed) }
+      before { alternative_exercise.submit_solution!(user, content: 'foo').passed! }
 
       it { expect(exercise_with_guide.next_for(user)).to be nil }
     end
@@ -38,7 +38,7 @@ describe Exercise do
       let!(:alternative_exercise) { create(:exercise, guide: guide, position: 3) }
       let(:guide) { create(:guide) }
 
-      before { alternative_exercise.submit_solution(user, content: 'foo') }
+      before { alternative_exercise.submit_solution!(user, content: 'foo') }
 
       it { expect(guide.exercises.at_locale).to_not eq [] }
       it { expect(guide.pending_exercises(user)).to_not eq [] }
@@ -90,11 +90,11 @@ describe Exercise do
 
   describe '#submitted_by?' do
     context 'when user did a submission' do
-      before { exercise.submit_solution(user) }
-      it { expect(exercise.submitted_by? user).to be true }
+      before { exercise.submit_solution!(user) }
+      it { expect(exercise.assigned_to? user).to be true }
     end
     context 'when user did no submission' do
-      it { expect(exercise.submitted_by? user).to be false }
+      it { expect(exercise.assigned_to? user).to be false }
     end
   end
 
@@ -103,19 +103,19 @@ describe Exercise do
       it { expect(exercise.solved_by? user).to be false }
     end
     context 'when user did a successful submission' do
-      before { exercise.submit_solution(user, status: :passed) }
+      before { exercise.submit_solution!(user).passed! }
 
       it { expect(exercise.solved_by? user).to be true }
     end
     context 'when user did a pending submission' do
-      before { exercise.submit_solution(user) }
+      before { exercise.submit_solution!(user) }
 
       it { expect(exercise.solved_by? user).to be false }
     end
     context 'when user did both successful and failed submissions' do
       before do
-        exercise.submit_solution(user)
-        exercise.submit_solution(user, status: :passed)
+        exercise.submit_solution!(user)
+        exercise.submit_solution!(user).passed!
       end
 
       it { expect(exercise.solved_by? user).to be true }
@@ -128,30 +128,30 @@ describe Exercise do
     end
 
     context 'when there are submissions' do
-      let!(:solution) { create(:solution, exercise: exercise) }
+      let!(:assignment) { create(:assignment, exercise: exercise) }
       before { exercise.destroy! }
-      it { expect { Solution.find(solution.id) }.to raise_error(ActiveRecord::RecordNotFound) }
+      it { expect { Assignment.find(assignment.id) }.to raise_error(ActiveRecord::RecordNotFound) }
     end
 
   end
 
   describe '#default_content_for' do
     context 'when user has a single submission for the exercise' do
-      let!(:solution) { exercise.submit_solution(user, content: 'foo') }
+      let!(:assignment) { exercise.submit_solution!(user, content: 'foo') }
 
-      it { expect(exercise.default_content_for(user)).to eq solution.content }
+      it { expect(exercise.previous_solution_for(user)).to eq assignment.solution }
     end
 
     context 'when user has no submissions for the exercise' do
-      it { expect(exercise.default_content_for(user)).to eq '' }
+      it { expect(exercise.previous_solution_for(user)).to eq '' }
     end
 
 
     context 'when user has multiple submission for the exercise' do
-      let!(:solutions) { [exercise.submit_solution(user, content: 'foo'),
-                            exercise.submit_solution(user, content: 'bar')] }
+      let!(:assignments) { [exercise.submit_solution!(user, content: 'foo'),
+                            exercise.submit_solution!(user, content: 'bar')] }
 
-      it { expect(exercise.default_content_for(user)).to eq solutions.last.content }
+      it { expect(exercise.previous_solution_for(user)).to eq assignments.last.solution }
     end
   end
 
@@ -219,7 +219,7 @@ describe Exercise do
       let!(:exercise_finished) { create(:exercise, guide: guide) }
 
       before do
-        exercise_finished.submit_solution(user, content: 'foo', status: :passed)
+        exercise_finished.submit_solution!(user, content: 'foo').passed!
       end
 
       it { expect(exercise_finished.guide_done_for?(user)).to be false }
@@ -231,8 +231,8 @@ describe Exercise do
       let!(:exercise_finished2) { create(:exercise, guide: guide) }
 
       before do
-        exercise_finished.submit_solution(user, content: 'foo', status: :passed)
-        exercise_finished2.submit_solution(user, content: 'foo', status: :passed)
+        exercise_finished.submit_solution!(user, content: 'foo').passed!
+        exercise_finished2.submit_solution!(user, content: 'foo').passed!
       end
 
       it { expect(exercise_finished.guide_done_for?(user)).to be true }

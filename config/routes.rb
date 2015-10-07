@@ -60,6 +60,6 @@ Rails.application.routes.draw do
     #nested user
     resources :solved_exercises, controller: 'user_solved_exercises', only: :index
     #nested user
-    resources :solutions, controller: 'user_solutions', only: :index
+    resources :assignments, controller: 'user_assignments', only: :index
   end
 end

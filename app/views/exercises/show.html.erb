@@ -23,8 +23,8 @@
   <% if current_user? %>
     <div class="row">
       <div class="col-md-12 submission-results">
-        <% if @exercise.solution_for(current_user) %>
-          <%= render partial: 'exercise_solutions/results', locals: {solution: @exercise.solution_for(current_user), guide_finished_by_solution: false} %>
+         <% if @exercise.assignment_for(current_user) %>
+          <%= render partial: 'exercise_solutions/results', locals: {assignment: @exercise.assignment_for(current_user), guide_finished_by_solution: false} %>
         <% end %>
       </div>
     </div>

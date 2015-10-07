@@ -11,10 +11,12 @@ class Exercise < ActiveRecord::Base
 
   include WithSearch, WithTeaser,
           WithMarkup, WithAuthor,
-          WithSolutions, WithGuide,
+          WithAssignments, WithGuide,
           WithLocale, WithExpectations,
           WithLanguage,
-          WithQueries
+          Submittable,
+          Queriable,
+          Solvable
   extend FriendlyId
 
   friendly_id :generate_custom_slug, use: [:slugged, :finders]

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150905214532) do
+ActiveRecord::Schema.define(version: 20151001183858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,24 @@ ActiveRecord::Schema.define(version: 20150905214532) do
     t.datetime "updated_at"
     t.string   "client_id",     null: false
   end
+
+  create_table "assignments", force: true do |t|
+    t.text     "solution"
+    t.integer  "exercise_id"
+    t.integer  "status",              default: 0
+    t.text     "result"
+    t.integer  "submitter_id"
+    t.text     "expectation_results"
+    t.text     "feedback"
+    t.text     "test_results"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "submissions_count",   default: 0, null: false
+    t.string   "submission_id"
+  end
+
+  add_index "assignments", ["exercise_id"], name: "index_assignments_on_exercise_id", using: :btree
+  add_index "assignments", ["submitter_id"], name: "index_assignments_on_submitter_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -108,7 +126,9 @@ ActiveRecord::Schema.define(version: 20150905214532) do
     t.text     "corollary"
     t.integer  "layout",            default: 0,    null: false
     t.text     "expectations"
+    t.integer  "max_points",        default: 10
     t.string   "slug"
+    t.string   "type"
   end
 
   add_index "exercises", ["author_id"], name: "index_exercises_on_author_id", using: :btree
@@ -200,24 +220,6 @@ ActiveRecord::Schema.define(version: 20150905214532) do
 
   add_index "paths", ["category_id"], name: "index_paths_on_category_id", using: :btree
   add_index "paths", ["language_id"], name: "index_paths_on_language_id", using: :btree
-
-  create_table "solutions", force: true do |t|
-    t.text     "content"
-    t.integer  "exercise_id"
-    t.integer  "status",              default: 0
-    t.text     "result"
-    t.integer  "submitter_id"
-    t.text     "expectation_results"
-    t.text     "feedback"
-    t.text     "test_results"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "submissions_count",   default: 0, null: false
-    t.string   "submission_id"
-  end
-
-  add_index "solutions", ["exercise_id"], name: "index_solutions_on_exercise_id", using: :btree
-  add_index "solutions", ["submitter_id"], name: "index_solutions_on_submitter_id", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

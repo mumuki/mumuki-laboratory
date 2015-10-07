@@ -17,7 +17,7 @@
         <div class="field form-group">
           <%= f.editor :content, 'dynamic',
                        class: "form-control #{'editor' if editor_visible }",
-                       value: @previous_solution_content,
+                       value: @previous_solution,
                        style: 'display: none' %>
           <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
         </div>
