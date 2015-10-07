@@ -12,8 +12,12 @@ class ImportLog
     @messages << "Meta does not exist for #{name}"
   end
 
-  def no_test(name)
-    @messages << "There must be exactly 1 test file for #{name}"
+  def saved(exercise)
+    if exercise.errors.present?
+      exercise.errors.full_messages.each do |message|
+        @messages << "Saving #{exercise.name} produced #{message}"
+      end
+    end
   end
 
   def to_s

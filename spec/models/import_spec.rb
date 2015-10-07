@@ -15,15 +15,17 @@ describe Import do
     let!(:haskell) { create(:haskell) }
 
     context 'when guide is ok' do
+      let!(:log) { import.read_guide! 'spec/data/simple-guide' }
+
       before do
-        import.read_guide! 'spec/data/simple-guide'
         guide.reload
       end
 
-      it { expect(Exercise.count).to eq 3 }
+      it { expect(Exercise.count).to eq 4 }
       it { expect(guide.description).to eq "Awesome guide\n" }
       it { expect(guide.language).to eq haskell }
       it { expect(guide.locale).to eq 'en' }
+      it { expect(log.to_s).to eq 'Description does not exist for sample_broken' }
 
       context 'when importing basic exercise' do
         let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 1) }
@@ -63,6 +65,14 @@ describe Import do
 
         it { expect(imported_exercise).to_not be nil }
         it { expect(imported_exercise.layout).to eq 'editor_bottom' }
+      end
+
+      context 'when importing playground' do
+        let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 5) }
+
+        it { expect(imported_exercise).to_not be nil }
+        it { expect(imported_exercise).to be_kind_of Playground }
+
       end
     end
     context 'when guide is incomplete' do

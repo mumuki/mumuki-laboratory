@@ -135,7 +135,7 @@ describe Exercise do
 
   end
 
-  describe '#default_content_for' do
+  describe '#previous_solution_for' do
     context 'when user has a single submission for the exercise' do
       let!(:assignment) { exercise.submit_solution!(user, content: 'foo') }
 
@@ -155,7 +155,6 @@ describe Exercise do
     end
   end
 
-
   describe '#by_tag' do
     let!(:tagged_exercise) { create(:exercise, tag_list: 'foo') }
     let!(:untagged_exercise) { create(:exercise) }
@@ -167,7 +166,6 @@ describe Exercise do
 
     it { expect(Exercise.by_tag(nil)).to include(tagged_exercise, untagged_exercise) }
   end
-
 
   describe '#original_id' do
     let(:exercise) { create(:exercise) }
@@ -256,5 +254,10 @@ describe Exercise do
       before { exercise_with_guide.language = other_language }
       it { expect(exercise_with_guide.valid?).to be false }
     end
+  end
+
+  describe '#slug' do
+    it { expect(Exercise.find(exercise.slug)).to eq exercise }
+    it { expect(Problem.find(exercise.slug)).to eq exercise }
   end
 end

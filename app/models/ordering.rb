@@ -9,8 +9,8 @@ class FixedOrdering
     @order = order
   end
 
-  def with_position(original_id, attributes)
-    attributes.merge(position: position_for(original_id))
+  def with_position(original_id, builder)
+    builder.position = position_for(original_id)
   end
 
   def position_for(original_id)
@@ -19,7 +19,6 @@ class FixedOrdering
 end
 
 module NaturalOrdering
-  def self.with_position(_original_id, attributes)
-    attributes
+  def self.with_position(_original_id, _builder)
   end
 end

@@ -1,4 +1,4 @@
-ActiveAdmin.register Exercise do
+ActiveAdmin.register Problem do
 
   permit_params :author_id,
                 :language_id,

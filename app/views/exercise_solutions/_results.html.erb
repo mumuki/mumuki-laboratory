@@ -39,10 +39,12 @@
         <%= render_test_results assignment %>
       </div>
     </div>
-  <% else %>
+  <% elsif assignment.passed? %>
     <div>
       <h4><%= t(:exercise_done) %></h4>
     </div>
+  <% else %>
+    <div></div>
   <% end %>
 
   <%= corollary_box @exercise unless assignment.should_retry? %>

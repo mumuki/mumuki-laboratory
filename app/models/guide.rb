@@ -15,11 +15,8 @@ class Guide < ActiveRecord::Base
           WithPath,
           WithExercises,
           WithStats,
-          WithExpectations
-          WithStats
-  extend FriendlyId
-
-  friendly_id :contextualized_name, use: [:slugged, :finders]
+          WithExpectations,
+          WithSlug
 
   has_many :imports, -> { order(created_at: :desc)}
   has_many :exports

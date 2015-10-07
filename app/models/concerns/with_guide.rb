@@ -7,6 +7,10 @@ module WithGuide
     belongs_to :guide
   end
 
+  def guide_done_for?(user)
+    guide.present? && guide.done_for?(user)
+  end
+
   def siblings_for(user)
     guide.pending_exercises(user)
   end
