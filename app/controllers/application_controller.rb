@@ -14,7 +14,8 @@ class ApplicationController < ActionController::Base
                 :login_github_path, :login_facebook_path,
                 :login_anchor,
                 :restricted_to_author, :restricted_to_current_user,
-                :restricted_to_other_user
+                :restricted_to_other_user,
+                :subject
 
   def set_locale
     I18n.locale = subdomain_locale || params[:locale] ||  I18n.default_locale
@@ -32,4 +33,9 @@ class ApplicationController < ActionController::Base
     @subdomain_locale
   end
 
+  private
+
+  def subject
+    nil
+  end
 end

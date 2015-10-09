@@ -4,6 +4,14 @@ module ApplicationHelper
   include WithIcons
   include WithNavigation
 
+  def page_title(subject)
+    if subject && !subject.new_record?
+      "Mumuki - #{subject.slugged_name}"
+    else
+      "Mumuki - #{t :mumuki_catchphrase}"
+    end
+  end
+
   def paginate(object, options={})
     "<div class=\"text-center\">#{super(object, {theme: 'twitter-bootstrap-3'}.merge(options))}</div>".html_safe
   end
@@ -39,7 +47,6 @@ module ApplicationHelper
       "<div><h3>#{t :corollary}</h3><p>#{with_corollary.corollary_html}</p></div>".html_safe
     end
   end
-
 
   def with_classifications(classifiable)
     classifications = [

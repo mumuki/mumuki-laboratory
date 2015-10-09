@@ -49,6 +49,10 @@ class ExercisesController < ApplicationController
 
   private
 
+  def subject
+    @exercise
+  end
+
   def set_previous_solution
     @previous_solution = @exercise.previous_solution_for(current_user) if current_user?
   end

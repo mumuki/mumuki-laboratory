@@ -6,6 +6,15 @@ describe ApplicationHelper do
 
   before { I18n.locale = :en }
 
+  describe 'page_title' do
+    let(:guide) { create(:guide, name: 'A Guide')}
+    let(:exercise) { create(:exercise, name: 'An Exercise', guide: guide, position: 2) }
+
+    it { expect(page_title nil).to eq 'Mumuki - Improve your programming skills' }
+    it { expect(page_title Problem.new).to eq 'Mumuki - Improve your programming skills' }
+    it { expect(page_title exercise).to eq 'Mumuki - A Guide - 2. An Exercise' }
+  end
+
   describe '#language_icon' do
     let(:haskell) { create(:language, name: 'Haskell', image_url: 'https://foo/foo.png') }
     let(:haskell_img_tag) { '<img alt="Haskell" class="special-icon" height="16" src="https://foo/foo.png" />' }
