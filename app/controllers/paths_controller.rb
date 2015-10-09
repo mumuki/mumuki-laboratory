@@ -4,4 +4,8 @@ class PathsController < ApplicationController
   def show
     @path = Path.find(params[:id])
   end
+
+  def subject
+    @path
+  end
 end
