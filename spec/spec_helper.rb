@@ -53,7 +53,7 @@ CodeClimate::TestReporter.start
 
 class NoopEvaluation < Evaluation
   def evaluate!
-    {status: Status::Failed, result: 'no evaluation!'}
+    {status: Status::Failed, result: 'noop result'}
   end
 end
 

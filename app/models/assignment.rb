@@ -53,6 +53,17 @@ class Assignment < ActiveRecord::Base
     end
   end
 
+  def rerun!
+    transaction do
+      clear!
+      running!
+    end
+  end
+
+  def clear!
+    update! status: :pending, result: nil, test_results: nil, expectation_results: []
+  end
+
   private
 
   def update_submissions_count!

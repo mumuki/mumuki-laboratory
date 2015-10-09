@@ -8,7 +8,7 @@ class Solution < Submission
   end
 
   def setup_assignment!(assignment)
-    assignment.running!
+    assignment.rerun!
     super
     assignment.accept_new_submission! self
   end
