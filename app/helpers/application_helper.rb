@@ -6,7 +6,7 @@ module ApplicationHelper
 
   def page_title(subject)
     if subject && !subject.new_record?
-      "Mumuki - #{subject.slugged_name}"
+      "#{subject.slugged_name} - Mumuki"
     else
       "Mumuki - #{t :mumuki_catchphrase}"
     end

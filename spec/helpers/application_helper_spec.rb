@@ -12,7 +12,7 @@ describe ApplicationHelper do
 
     it { expect(page_title nil).to eq 'Mumuki - Improve your programming skills' }
     it { expect(page_title Problem.new).to eq 'Mumuki - Improve your programming skills' }
-    it { expect(page_title exercise).to eq 'Mumuki - A Guide - 2. An Exercise' }
+    it { expect(page_title exercise).to eq 'A Guide - An Exercise - Mumuki' }
   end
 
   describe '#language_icon' do
@@ -30,8 +30,8 @@ describe ApplicationHelper do
       let(:guide) { create(:guide, name: 'bar') }
       let(:exercise) { create(:exercise, name: 'foo', guide: guide, id: 1, position: 3) }
 
-      it { expect(link_to_exercise(exercise, plain: true)).to eq '<a href="/exercises/bar-3-foo">foo</a>' }
-      it { expect(link_to_exercise(exercise)).to eq '<a href="/exercises/bar-3-foo">bar - 3. foo</a>' }
+      it { expect(link_to_exercise(exercise, plain: true)).to eq '<a href="/exercises/bar-foo">foo</a>' }
+      it { expect(link_to_exercise(exercise)).to eq '<a href="/exercises/bar-foo">bar - foo</a>' }
     end
   end
 
