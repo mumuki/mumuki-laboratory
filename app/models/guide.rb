@@ -71,6 +71,10 @@ class Guide < ActiveRecord::Base
     stats_for(user).done?
   end
 
+  def slugged_name
+    with_parent_name { "#{parent.slugged_name}: #{name}" }
+  end
+
   private
 
   def user_resources_to_users(resources)

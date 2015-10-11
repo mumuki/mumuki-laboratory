@@ -7,16 +7,15 @@ class Path < ActiveRecord::Base
   has_many :exercises, through: :guides
 
   def name
-
     if category.single_path?
       category.name
     else
       "#{category.name} (#{language.name})"
     end
-
   end
 
-
-
+  def slugged_name
+    name
+  end
 end
 

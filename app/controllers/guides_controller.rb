@@ -62,6 +62,11 @@ class GuidesController < ApplicationController
 
   private
 
+  def subject
+    @guide
+  end
+
+
   def set_guide
     @guide = Guide.find(params[:id])
   end

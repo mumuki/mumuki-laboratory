@@ -7,4 +7,8 @@ module NestedInGuide
   def set_guide
     @guide = Guide.find(params[:guide_id])
   end
+
+  def subject
+    @guide
+  end
 end

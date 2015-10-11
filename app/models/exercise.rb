@@ -49,6 +49,10 @@ class Exercise < ActiveRecord::Base
     [guide.try(&:extra_code), self[:extra_code]].compact.join("\n")
   end
 
+  def slugged_name
+    with_parent_name { "#{parent.slugged_name} - #{name}" }
+  end
+
   private
 
   def defaults

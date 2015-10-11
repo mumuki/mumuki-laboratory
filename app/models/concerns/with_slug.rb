@@ -5,10 +5,6 @@ module WithSlug
     make_slugged(self)
   end
 
-  def slugged_name
-    with_parent_name { "#{parent.name} - #{position}. #{name}" }
-  end
-
   module ClassMethods
     def inherited(subclass)
       super
