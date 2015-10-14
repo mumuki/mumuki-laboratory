@@ -128,7 +128,7 @@ describe Import do
 
       it 'should update slug' do
         expect(imported_exercise.name).to eq 'updated_title'
-        expect(imported_exercise.slug).to eq "#{guide.name}-1-updated_title"
+        expect(imported_exercise.slug).to eq "#{guide.name}-updated_title"
       end
     end
   end
