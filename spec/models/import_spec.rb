@@ -111,5 +111,25 @@ describe Import do
         it { expect(guide.beta).to be false }
       end
     end
+
+    context 'when importing the guide and the title changed' do
+      let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 1) }
+      let(:dir) { 'spec/data/title_changed' }
+
+      before do
+        import.read_guide! 'spec/data/simple-guide'
+        guide.reload
+
+        imported_exercise.update!(name:'updated_title')
+        guide.exports.build.write_guide! dir
+        guide.imports.build.read_guide! dir
+        guide.reload
+      end
+
+      it 'should update slug' do
+        expect(imported_exercise.name).to eq 'updated_title'
+        expect(imported_exercise.slug).to eq "#{guide.name}-1-updated_title"
+      end
+    end
   end
 end
