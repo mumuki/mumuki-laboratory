@@ -9,19 +9,6 @@ describe Guide do
 
   it { expect(guide.github_repository_name).to eq 'mumuki-sample-exercises' }
 
-  describe 'collaborators' do
-    let(:collaborators_resource) {
-      [{type: 'User', login: 'foo'}, {type: 'User', login: 'rigoberto88'}]
-    }
-    before do
-      allow_any_instance_of(WithGitAccess).to receive(:collaborators).and_return(collaborators_resource)
-      guide.update_collaborators!
-    end
-
-    it { expect(guide.collaborators).to eq [author] }
-
-  end
-
   describe '#next_for' do
     let(:path) { create(:path) }
     context 'when guide is not in path' do
@@ -86,19 +73,6 @@ describe Guide do
       it { expect(guide_in_path.slug).to eq 'fundamentos-de-programacion-una-guia' }
     end
   end
-
-  describe 'contributors' do
-    let(:contributors_resource) {
-      [{type: 'User', login: 'foo'}, {type: 'User', login: 'ignatiusReilly'}, {type: 'User', login: 'rigoberto88'}]
-    }
-    before do
-      allow_any_instance_of(WithGitAccess).to receive(:contributors).and_return(contributors_resource)
-      guide.update_contributors!
-    end
-
-    it { expect(guide.contributors).to eq [extra_user, author] }
-  end
-
 
   describe '#new?' do
     context 'when just created' do
