@@ -46,8 +46,6 @@ gem 'unicorn-rails'
 
 gem 'acts-as-taggable-on', '~> 3.4'
 
-gem 'git'
-gem 'octokit', '~> 4.1'
 gem 'kaminari', '~> 0.16.3'
 gem 'bootstrap-kaminari-views'
 

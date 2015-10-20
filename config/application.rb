@@ -37,5 +37,6 @@ module Mumuki
         'AuthorizationError' => :unauthorized
     )
 
+    config.content_server_url = 'http://content.mumuki.io'
   end
 end
