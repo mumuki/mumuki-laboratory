@@ -1,7 +1,5 @@
 <%= bootstrap_form_for(@guide, html: {role: 'form'}) do |f| %>
-  <%= f.text_field :name %>
-
-  <%= f.text_field :github_repository, placeholder: t(:github_url_hint) %>
+  <%= f.text_field :original_id %>
 
   <div class="actions form-group">
     <%= f.submit class: 'btn btn-primary' %>
