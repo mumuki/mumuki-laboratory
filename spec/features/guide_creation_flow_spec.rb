@@ -12,7 +12,7 @@ feature 'Create guide flow' do
 
     click_on 'New Guide'
 
-    fill_in 'guide_original_id', with: 'd6af7358e195e8be'
+    fill_in 'url', with: 'http://content.mumuki.io/d6af7358e195e8be'
 
     click_on 'Create Guide'
 

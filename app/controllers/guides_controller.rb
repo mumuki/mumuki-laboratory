@@ -1,18 +1,10 @@
 class GuidesController < ApplicationController
 
   before_action :authenticate!, except: [:index, :show]
-  before_action :set_guide, only: [:show, :edit, :details, :update, :collaborators_refresh, :solutions_dump]
+  before_action :set_guide, only: [:show, :solutions_dump]
 
   def new
     @guide = Guide.new(name: params[:q])
-  end
-
-  def update
-    if @guide.update(guide_params)
-      redirect_to edit_guide_path(@guide), notice: 'Guide was successfully updated.'
-    else
-      render :edit
-    end
   end
 
   def create
@@ -39,18 +31,9 @@ class GuidesController < ApplicationController
     end
   end
 
-  def details
-  end
-
   def index
     @q = params[:q]
     @guides = paginated Guide.by_full_text(@q).at_locale
-  end
-
-  def collaborators_refresh
-    #FIXME should be done in a job
-    @guide.update_collaborators!
-    redirect_to edit_guide_path(@guide), notice: t(:collaborators_refreshed)
   end
 
   def solutions_dump
@@ -72,12 +55,6 @@ class GuidesController < ApplicationController
   end
 
   def guide_params
-    params.require(:guide).permit(
-        :github_repository,
-        :name, :description,
-        :corollary,
-        :locale, :learning,
-        :beta,
-        :original_id_format, :language_id, suggested_guide_ids: [])
+    params.require(:guide).permit(:url)
   end
 end

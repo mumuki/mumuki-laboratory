@@ -25,29 +25,13 @@ class Guide < ActiveRecord::Base
 
   belongs_to :language
 
-  validates_presence_of :github_repository, :name, :author
+  validates_presence_of :url, :name, :author
 
   markup_on :description, :teaser, :corollary
 
   #TODO denormalize
   def search_tags
     exercises.flat_map(&:search_tags).uniq
-  end
-
-  def github_url
-    "https://github.com/#{github_repository}"
-  end
-
-  def github_repository_name
-    github_repo_owner_and_name[1]
-  end
-
-  def github_repository_owner
-    github_repo_owner_and_name[0]
-  end
-
-  def github_repo_owner_and_name
-    github_repository.split('/')
   end
 
   def format_original_id(exercise)

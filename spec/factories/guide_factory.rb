@@ -5,7 +5,7 @@ FactoryGirl.define do
     locale 'en'
     description 'A Guide'
     author { create(:user) }
-    github_repository 'flbulgarelli/mumuki-sample-exercises'
+    url 'http://guides.mumuki.io/flbulgarelli/mumuki-sample-exercises'
     language
   end
 

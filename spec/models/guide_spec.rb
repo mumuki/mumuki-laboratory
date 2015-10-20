@@ -3,11 +3,7 @@ require 'spec_helper'
 describe Guide do
   let(:author) { create(:user, name: 'rigoberto88') }
   let!(:extra_user) { create(:user, name: 'ignatiusReilly') }
-  let(:guide) { create(:guide, github_repository: 'flbulgarelli/mumuki-sample-exercises', author: author) }
-
-  it { expect(guide.github_url).to eq 'https://github.com/flbulgarelli/mumuki-sample-exercises' }
-
-  it { expect(guide.github_repository_name).to eq 'mumuki-sample-exercises' }
+  let(:guide) { create(:guide, author: author) }
 
   describe '#next_for' do
     let(:path) { create(:path) }

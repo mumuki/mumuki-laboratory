@@ -39,7 +39,7 @@ describe WithExpectations do
 
   context 'when the guide has expectations' do
     let(:author) { create(:user, name: 'rigoberto88') }
-    let(:guide) { create(:guide, github_repository: 'flbulgarelli/mumuki-sample-exercises', author: author) }
+    let(:guide) { create(:guide, author: author) }
 
     before do
       exercise.language = guide.language
@@ -51,7 +51,7 @@ describe WithExpectations do
 
     it {
       expect(exercise.expectations)
-        .to eq [{'binding' => 'foo', 'inspection' => 'HasBinding'}, {'binding' => 'bar', 'inspection' => 'HasBinding'}]
+      .to eq [{'binding' => 'foo', 'inspection' => 'HasBinding'}, {'binding' => 'bar', 'inspection' => 'HasBinding'}]
     }
   end
 end

@@ -36,7 +36,5 @@ module Mumuki
     config.action_dispatch.rescue_responses.merge!(
         'AuthorizationError' => :unauthorized
     )
-
-    config.content_server_url = 'http://content.mumuki.io'
   end
 end

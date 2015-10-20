@@ -1,15 +1,11 @@
-class Guide
-
-end
-
-class Import < RepositoryOperation
-  include WithFileReading
+class Import < ActiveRecord::Base
+  extend WithAsyncAction
 
   schedule_on_create ImportGuideJob
 
   def run_import!
     run_update! do
-      guide_json = RestClient.get("#{Rails.configuration.content_server_url}/guides/#{guide.original_id}")
+      guide_json = RestClient.get(guide.url)
       read_from_json guide_json
     end
   end

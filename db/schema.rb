@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003003856) do
+ActiveRecord::Schema.define(version: 20151020145904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 20151003003856) do
     t.text     "corollary"
     t.integer  "layout",            default: 0,         null: false
     t.text     "expectations"
+    t.integer  "max_points",        default: 10
     t.string   "slug"
     t.string   "type",              default: "Problem", null: false
   end
@@ -160,23 +161,22 @@ ActiveRecord::Schema.define(version: 20151003003856) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "guides", force: true do |t|
-    t.string   "github_repository"
     t.string   "name"
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
-    t.string   "original_id_format", default: "%05d", null: false
-    t.string   "locale",             default: "en"
+    t.string   "locale",       default: "en"
     t.integer  "language_id"
     t.text     "extra_code"
     t.integer  "path_id"
     t.integer  "position"
     t.text     "corollary"
-    t.boolean  "learning",           default: false
-    t.boolean  "beta",               default: false
+    t.boolean  "learning",     default: false
+    t.boolean  "beta",         default: false
     t.string   "slug"
     t.text     "expectations"
+    t.string   "url",          default: "",    null: false
   end
 
   add_index "guides", ["author_id"], name: "index_guides_on_author_id", using: :btree

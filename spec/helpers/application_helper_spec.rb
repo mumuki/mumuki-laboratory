@@ -40,11 +40,6 @@ describe ApplicationHelper do
     it { expect(link_to_guide(guide)).to start_with '<a href="/guides/foo">foo' }
   end
 
-  describe '#link_to_github' do
-    let(:guide) { create(:guide, github_repository: 'foo/bar') }
-    it { expect(link_to_github(guide)).to eq '<a href="https://github.com/foo/bar">foo/bar</a>' }
-  end
-
   describe '#status_icon' do
     let(:passed_submission) { create(:assignment, status: :passed, expectation_results: []) }
     let(:failed_submission) { create(:assignment, status: :failed) }
