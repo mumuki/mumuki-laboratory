@@ -10,13 +10,8 @@ class GuidesController < ApplicationController
   def create
     @guide = Guide.new(guide_params.merge(author: current_user))
     if @guide.save
-      begin
-        current_user.ensure_repo_exists! @guide
-        current_user.register_post_commit_hook!(@guide, guide_imports_url(@guide))
-        redirect_to edit_guide_path(@guide), notice: t(:guide_created)
-      rescue
-        redirect_to edit_guide_path(@guide), alert: t(:no_permissions)
-      end
+      @guide.imports.create!
+      redirect_to guide_path(@guide)
     else
       render :new
     end
