@@ -33,4 +33,8 @@ class Language < ActiveRecord::Base
   def to_s
     name
   end
+
+  def self.for_name(name)
+    find_by_ignore_case!(:name, name)
+  end
 end
