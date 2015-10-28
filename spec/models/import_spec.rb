@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Import do
 
-  let!(:hasell) { create(:haskell) }
+  let!(:haskell) { create(:haskell) }
   let(:guide) { create(:guide) }
   let(:import) { Import.new guide: guide }
 
@@ -23,14 +23,17 @@ describe Import do
           original_id: 1},
 
          {type: 'playground',
+          description: 'lorem ipsum',
           name: 'Foo',
           tag_list: %w(foo bar),
           original_id: 4},
 
          {name: 'Baz',
+          description: 'lorem ipsum',
           tag_list: %w(baz bar),
           layout: 'editor_bottom',
           type: 'problem',
+          expectations: [{inspection: 'HasBinding', binding: 'foo'}],
           original_id: 2}]}.deep_stringify_keys }
 
   before do
@@ -40,7 +43,13 @@ describe Import do
 
   it { expect(guide).to_not be nil }
   it { expect(guide.name).to eq 'sample guide' }
+  it { expect(guide.language).to eq haskell }
+  it { expect(guide.description).to eq 'Baz' }
+
   it { expect(guide.exercises.count).to eq 3 }
   it { expect(guide.exercises.first.language).to eq haskell }
+
+  it { expect(guide.exercises.pluck(:name)).to eq %w(Bar Foo Baz) }
+
 
 end
