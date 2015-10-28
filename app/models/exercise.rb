@@ -60,6 +60,10 @@ class Exercise < ActiveRecord::Base
     self.layout = Exercise.default_layout
   end
 
+  def self.class_for(type)
+    Kernel.const_get(type.camelcase)
+  end
+
   def self.default_layout
     layouts.keys[0]
   end

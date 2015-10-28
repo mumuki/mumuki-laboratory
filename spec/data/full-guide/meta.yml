@@ -1,7 +1,0 @@
-name: Name from meta.yml
-language: Haskell
-locale: en
-learning: true
-beta: true
-order:
-- 1

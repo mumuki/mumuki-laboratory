@@ -25,17 +25,13 @@ class Guide < ActiveRecord::Base
 
   belongs_to :language
 
-  validates_presence_of :url, :name, :author
+  validates_presence_of :url, :author
 
   markup_on :description, :teaser, :corollary
 
   #TODO denormalize
   def search_tags
     exercises.flat_map(&:search_tags).uniq
-  end
-
-  def format_original_id(exercise)
-    original_id_format % exercise.original_id
   end
 
   def update_contributors!
