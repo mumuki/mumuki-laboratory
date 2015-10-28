@@ -60,6 +60,7 @@ GEM
       tzinfo (~> 1.1)
     acts-as-taggable-on (3.5.0)
       activerecord (>= 3.2, < 5)
+    addressable (2.3.8)
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (5.0.1.20140414130214)
@@ -337,6 +338,7 @@ DEPENDENCIES
   ace-rails-ap (~> 4.0)
   activeadmin (~> 1.0.0.pre1)
   acts-as-taggable-on (~> 3.4)
+  addressable
   better_errors
   binding_of_caller
   bootstrap-kaminari-views

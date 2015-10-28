@@ -58,6 +58,8 @@ gem 'nprogress-rails'
 
 gem 'yaml_db'
 
+gem 'addressable'
+
 gem 'mumukit-inspection', :github => 'mumuki/mumukit-inspection', :branch => 'master'
 gem 'mumukit-bridge',     :github => 'mumuki/mumukit-bridge', :tag=> 'v0.3.0'
 
