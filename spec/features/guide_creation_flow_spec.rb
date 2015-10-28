@@ -12,15 +12,11 @@ feature 'Create guide flow' do
 
     click_on 'New Guide'
 
-    fill_in 'url', with: 'http://content.mumuki.io/d6af7358e195e8be'
+    fill_in 'guide_url', with: 'http://content.mumuki.io/d6af7358e195e8be'
 
     click_on 'Create Guide'
 
     expect(page).to have_text('Guide created successfully')
-
-    expect(page).to have_text('Import/Export')
-    expect(page).to have_text('Info')
-    expect(page).to have_text('Basic')
   end
 
 

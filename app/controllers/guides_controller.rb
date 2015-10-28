@@ -11,7 +11,7 @@ class GuidesController < ApplicationController
     @guide = Guide.new(guide_params.merge(author: current_user))
     if @guide.save
       @guide.imports.create!
-      redirect_to guide_path(@guide)
+      redirect_to guide_path(@guide), notice: t(:guide_created)
     else
       render :new
     end
