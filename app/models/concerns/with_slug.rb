@@ -15,6 +15,10 @@ module WithSlug
       clazz.class_eval do
         extend FriendlyId
         friendly_id :slugged_name, use: [:slugged, :finders] rescue nil
+
+        def should_generate_new_friendly_id?
+          slug.blank? || name_changed?
+        end
       end
     end
   end

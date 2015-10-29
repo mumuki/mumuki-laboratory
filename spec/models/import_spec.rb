@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Import do
 
   let!(:haskell) { create(:haskell) }
-  let(:guide) { create(:guide) }
+  let(:guide) { create(:guide, exercises: [create(:exercise)]) }
   let(:import) { Import.new guide: guide }
 
   let(:guide_json) {
@@ -45,9 +45,11 @@ describe Import do
   it { expect(guide.name).to eq 'sample guide' }
   it { expect(guide.language).to eq haskell }
   it { expect(guide.description).to eq 'Baz' }
+  it { expect(guide.slug).to eq 'sample-guide' }
 
   it { expect(guide.exercises.count).to eq 3 }
   it { expect(guide.exercises.first.language).to eq haskell }
+  it { expect(guide.exercises.first.slug).to eq 'sample-guide-bar' }
 
   it { expect(guide.exercises.pluck(:name)).to eq %w(Bar Foo Baz) }
 

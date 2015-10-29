@@ -67,8 +67,4 @@ class Exercise < ActiveRecord::Base
   def self.default_layout
     layouts.keys[0]
   end
-
-  def should_generate_new_friendly_id?
-    slug.blank? || name_changed?
-  end
 end
