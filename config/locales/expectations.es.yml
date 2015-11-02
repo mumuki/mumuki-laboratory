@@ -6,6 +6,7 @@ es:
   expectation_HasComprehension: '%{binding} %{must} emplear listas por comprensión'
   expectation_HasConditional: '%{binding} %{must} utilizar condicionales (guardas/if)'
   expectation_HasDirectRecursion: '%{binding} %{must} emplear recursión'
+  expectation_HasForeach: '%{binding} %{must} usar una repetición indexada (sentencia <i>foreach</i>)'
   expectation_HasGuards: '%{binding} %{must} usar guardas'
   expectation_HasIf: '%{binding} %{must} usar if'
   expectation_HasLambda: '%{binding} %{must} emplear expresiones lambda'

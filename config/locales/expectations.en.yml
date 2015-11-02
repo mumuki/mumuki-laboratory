@@ -6,6 +6,7 @@ en:
   expectation_HasComprehension: '%{binding} %{must} use list comprehensions'
   expectation_HasConditional: '%{binding} %{must} use conditionals'
   expectation_HasDirectRecursion: '%{binding} %{must} use recursion'
+  expectation_HasForeach: '%{binding} %{must} use an indexed repetition (<i>foreach</i> statement)'
   expectation_HasGuards: '%{binding} %{must} use guards'
   expectation_HasIf: '%{binding} %{must} use if'
   expectation_HasLambda: '%{binding} %{must} use lambda expressions'
