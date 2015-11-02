@@ -20,6 +20,7 @@ en:
   expectation_HasTypeDeclaration: type %{binding} %{must} be defined
   expectation_HasTypeSignature: Signature for %{binding} %{must} be declared
   expectation_HasUsage: '%{binding} %{must} use %{target}'
+  expectation_HasVariable: '%{binding} %{must} use variables'
   expectation_HasWhile: '%{binding} %{must} use conditional repetition (<i>while</i> statement)'
   expectation_must: must
   expectation_must_not: must not

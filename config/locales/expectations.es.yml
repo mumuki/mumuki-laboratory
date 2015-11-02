@@ -20,6 +20,7 @@ es:
   expectation_HasTypeDeclaration: '%{must} existir una declaración para el sinónimo de tipo %{binding}'
   expectation_HasTypeSignature: La firma para %{binding} %{must} ser declarada
   expectation_HasUsage: '%{binding} %{must} utilizar %{target}'
+  expectation_HasVariable: '%{binding} %{must} utilizar variables'
   expectation_HasWhile: '%{binding} %{must} utilizar repetición condicional (sentencia <i>while</i>)'
   expectation_must: debe
   expectation_must_not: no debe
