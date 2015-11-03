@@ -15,7 +15,7 @@ describe WithTestResultsRendering do
 
       it { expect(html).to be_html_safe }
       it { expect(html).to include "<i class=\"fa fa-check text-success special-icon\"></i>" }
-      it { expect(html).to include "<span class=\"example-title text-success\">2 is 2</span>" }
+      it { expect(html).to include "2 is 2" }
     end
 
     context 'when single failed submission' do

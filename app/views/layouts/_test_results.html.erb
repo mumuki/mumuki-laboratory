@@ -14,7 +14,7 @@
         </a>
       <% end %>
 
-      <div class="example-result collapse in" id="example-result-<%= index %>">
+      <div class="example-result collapse <%= 'in' if visible_success_output %>" id="example-result-<%= index %>">
         <%= output_content_type.to_html test_result[:result] %>
       </div>
     </li>

@@ -9,7 +9,7 @@ class Assignment < ActiveRecord::Base
   serialize :expectation_results
   serialize :test_results
 
-  delegate :language, :name, to: :exercise
+  delegate :language, :name, :visible_success_output?, to: :exercise
   delegate :output_content_type, to: :language
   delegate :should_retry?, to: :status
 
@@ -22,7 +22,7 @@ class Assignment < ActiveRecord::Base
   }
 
   def results_visible?
-    exercise.visible_success_output? || should_retry?
+    visible_success_output? || should_retry?
   end
 
   def result_preview
