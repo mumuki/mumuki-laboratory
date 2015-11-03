@@ -15,50 +15,51 @@
     <span style="margin-left: 8px">
       <%= language_icon @exercise.language %> <%= @exercise.language %>
     </span>
-
-    <div id="about-section" class="collapse">
-      <ul>
-        <li><%= t :language %>: <%= @exercise.language %></li>
-        <li><%= t :created_at %>: <%= time_ago_in_words @exercise.created_at %></li>
-        <li><%= t :status %>: <%= exercise_status_icon(@exercise) %></li>
-        <li><%= t :tag %>: <%= link_to_tag_list(@exercise.tag_list) %></li>
-        <% restricted_to_author @exercise do %>
-          <li><%= t :edit %>: <%= link_to fa_icon('pencil'), edit_exercise_path(@exercise), title: t(:edit) %></li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="row">
-      <div class="col-md-5">
-        <% if @exercise.guide %>
-          <p>
-            <%= previous_nav_button(@exercise) %>
-            <span data-toggle="popover"
-                  title="<%= @exercise.guide.name %>"
-                  data-content="<%= @exercise.guide.description_html.to_str %>">
-              <%= link_to_guide(@exercise.guide) %>
-            </span>
-            <%= next_nav_button(@exercise) %>
-          </p>
-        <% else %>
-          <p>
-            <%= raw t :authored_by, author: link_to(@exercise.author.name, user_path(@exercise.author)) %>
-          </p>
-        <% end %>
-      </div>
-    </div>
-
-    <% if @stats %>
-      <%= render partial: 'layouts/progress_bar', locals: { guide: @exercise.guide, stats: @stats } %>
-    <% else %>
-      <hr>
-    <% end %>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <%= yield %>
+<div>
+  <div id="about-section" class="collapse">
+    <ul>
+      <li><%= t :language %>: <%= @exercise.language %></li>
+      <li><%= t :created_at %>: <%= time_ago_in_words @exercise.created_at %></li>
+      <li><%= t :status %>: <%= exercise_status_icon(@exercise) %></li>
+      <li><%= t :tag %>: <%= link_to_tag_list(@exercise.tag_list) %></li>
+      <% restricted_to_author @exercise do %>
+        <li><%= t :edit %>: <%= link_to fa_icon('pencil'), edit_exercise_path(@exercise), title: t(:edit) %></li>
+      <% end %>
+    </ul>
   </div>
+</div>
+
+<div>
+  <% if @exercise.guide %>
+    <p>
+      <%= previous_nav_button(@exercise) %>
+      <span data-toggle="popover"
+            title="<%= @exercise.guide.name %>"
+            data-content="<%= @exercise.guide.description_html.to_str %>">
+              <%= link_to_guide(@exercise.guide) %>
+            </span>
+      <%= next_nav_button(@exercise) %>
+    </p>
+  <% else %>
+    <p>
+      <%= raw t :authored_by, author: link_to(@exercise.author.name, user_path(@exercise.author)) %>
+    </p>
+  <% end %>
+</div>
+
+
+<div>
+  <% if @stats %>
+    <%= render partial: 'layouts/progress_bar', locals: {guide: @exercise.guide, stats: @stats} %>
+  <% else %>
+    <hr>
+  <% end %>
+</div>
+
+<div>
+  <%= yield %>
 </div>
 
