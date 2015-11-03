@@ -5,6 +5,7 @@
   <div class="col-md-12">
     <h1 style="display: inline-block">
       <%= @exercise.contextualized_name %>
+      <%= language_icon @exercise.language %>
     </h1>
     <span style="margin-left: 5px">
       <a data-toggle="collapse" href="#about-section" class="text-info">
@@ -12,9 +13,6 @@
       </a>
     </span>
 
-    <span style="margin-left: 8px">
-      <%= language_icon @exercise.language %> <%= @exercise.language %>
-    </span>
   </div>
 </div>
 
