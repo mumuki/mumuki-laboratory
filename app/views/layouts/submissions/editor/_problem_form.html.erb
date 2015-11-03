@@ -12,13 +12,17 @@
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane editor-pane fade in active" id="editor">
     <%= form_for([@exercise, @solution], remote: true, html: {role: 'form'}) do |f| %>
-      <div class="field form-group">
-        <%= f.editor :content, 'dynamic',
-                     class: 'form-control editor',
-                     value: @previous_solution,
-                     style: 'display: none' %>
-        <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
-      </div>
+      <% if editor_visible %>
+        <div class="field form-group">
+          <%= f.editor :content, 'dynamic',
+                       class: 'form-control editor',
+                       value: @previous_solution,
+                       style: 'display: none' %>
+          <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
+        </div>
+      <% else %>
+        <%= f.hidden_field :content, value: '' %>
+      <% end %>
       <div class="actions">
         <%= button_tag (fa_icon :play, text: t(:create_submission)),
                        class: 'btn btn-primary',

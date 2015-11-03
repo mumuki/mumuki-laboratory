@@ -1,6 +1,6 @@
 <% if current_user? %>
-  <div style="<%= 'display:none' unless editor_visible %>">
-    <%= exercise_form @exercise %>
+  <div>
+    <%= exercise_form @exercise, editor_visible %>
   </div>
 <% else %>
   <p><%= t :you_must_sign_in_before_submitting %></p>
