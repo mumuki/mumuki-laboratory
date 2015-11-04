@@ -81,3 +81,7 @@ Check:
     * https://twitter.com/MumukiProject
     * The Mumuki Project page
     * Our mailing List
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mumuki/mumuki-platform/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
