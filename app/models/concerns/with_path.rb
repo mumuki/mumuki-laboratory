@@ -4,7 +4,8 @@ module WithPath
   included do
     include WithSiblings
 
-    belongs_to :path
+    has_one :path_rule
+    has_one :path, through: :path_rule
   end
 
   def siblings_for(user)

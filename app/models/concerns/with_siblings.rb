@@ -6,11 +6,11 @@ module WithSiblings
   end
 
   def next
-    siblings.where(position: position + 1).first unless orphan?
+    siblings.select { |it| it.position == position + 1 }.first unless orphan?
   end
 
   def previous
-    siblings.where(position: position - 1).first unless orphan?
+    siblings.select { |it| it.position == position - 1 }.first unless orphan?
   end
 
   def next_for(user)

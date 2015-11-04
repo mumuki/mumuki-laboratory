@@ -29,6 +29,8 @@ class Guide < ActiveRecord::Base
 
   markup_on :description, :teaser, :corollary
 
+  has_one :path_rule
+  
   def import!
     imports.create!
   end
@@ -57,6 +59,10 @@ class Guide < ActiveRecord::Base
 
   def slugged_name
     with_parent_name { "#{parent.slugged_name}: #{name}" }
+  end
+
+  def position
+    path_rule.try(&:position)
   end
 
   private

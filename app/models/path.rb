@@ -1,5 +1,5 @@
 class Path < ActiveRecord::Base
-  include WithGuides, WithStats
+  include WithPathRules, WithStats
 
   belongs_to :category
   belongs_to :language

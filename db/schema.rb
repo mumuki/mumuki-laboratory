@@ -169,7 +169,6 @@ ActiveRecord::Schema.define(version: 20151020145904) do
     t.integer  "language_id"
     t.text     "extra_code"
     t.integer  "path_id"
-    t.integer  "position"
     t.text     "corollary"
     t.boolean  "learning",     default: false
     t.boolean  "beta",         default: false

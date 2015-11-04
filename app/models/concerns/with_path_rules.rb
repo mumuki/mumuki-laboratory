@@ -1,9 +1,9 @@
-module WithGuides
+module WithPathRules
   extend ActiveSupport::Concern
 
   included do
-    has_many :didactic_rules
-    has_many :guides, -> { order(:position) }
+    has_many :path_rules, -> { order(:position) }
+    has_many :guides, through: :path_rules
   end
 
   def pending_guides(user)
