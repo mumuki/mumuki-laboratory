@@ -209,6 +209,14 @@ ActiveRecord::Schema.define(version: 20151020145904) do
   add_index "languages", ["extension"], name: "index_languages_on_extension", using: :btree
   add_index "languages", ["name"], name: "index_languages_on_name", unique: true, using: :btree
 
+  create_table "path_rules", force: true do |t|
+    t.integer  "guide_id"
+    t.integer  "path_id"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "paths", force: true do |t|
     t.integer  "category_id"
     t.integer  "language_id"

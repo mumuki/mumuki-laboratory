@@ -2,6 +2,7 @@ module WithGuides
   extend ActiveSupport::Concern
 
   included do
+    has_many :didactic_rules
     has_many :guides, -> { order(:position) }
   end
 
