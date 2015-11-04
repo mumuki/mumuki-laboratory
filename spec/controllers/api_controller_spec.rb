@@ -90,10 +90,12 @@ describe 'api controller' do
     end
 
     context 'when the guide belongs to a path' do
-      let!(:category_1) { create(:category, name: 'category_1')  }
-      let!(:path_1) { create(:path, id: 1, category_id: category_1.id) }
+      let!(:category_1) { create(:category, name: 'category_1') }
+      let!(:path_1) { create(:path, id: 1, category: category_1) }
       let!(:language_1) { create(:language, id: 1, name: 'language_1', image_url: 'lang1.jpeg') }
-      let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: language_1.id, path_id: path_1.id, position: 1) }
+      let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: language_1.id) }
+
+      before { path_1.rebuild!([guide_1]) }
 
       before { get :index }
 
