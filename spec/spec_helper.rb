@@ -29,23 +29,8 @@ RSpec.configure do |config|
 end
 
 require_relative './apartment_helper'
+require_relative './capybara_helper'
+require_relative './evaluation_helper'
 
 CodeClimate::TestReporter.start
 
-class NoopEvaluation < Evaluation
-  def evaluate!
-    {status: Status::Failed, result: 'noop result'}
-  end
-end
-
-class Exercise
-  def evaluation_class
-    NoopEvaluation
-  end
-end
-
-Assignment.class_eval do
-  def failed!
-    update_attributes!(status: Status::Failed)
-  end
-end
