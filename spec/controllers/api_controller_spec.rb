@@ -55,7 +55,6 @@ describe 'api controller' do
             url: 'http://guides.mumuki.io/flbulgarelli/mumuki-sample-exercises',
             name: 'guide_1',
             language: { id: 1, name: 'language_1', image_url: 'lang1.jpeg' },
-            position: nil,
             exercises: [
               { id: 1, name: 'exercise_1', position: 1 }
             ]
@@ -79,7 +78,6 @@ describe 'api controller' do
               url: 'http://guides.mumuki.io/flbulgarelli/mumuki-sample-exercises',
               name: 'guide_1',
               language: { id: 1, name: 'language_1', image_url: 'lang1.jpeg' },
-              position: nil,
               exercises: []
             }
           ]}
@@ -107,7 +105,6 @@ describe 'api controller' do
             name: 'guide_1',
             language: { id: 1, name: 'language_1', image_url: 'lang1.jpeg' },
             path: { id: 1, name: 'category_1' },
-            position: 1,
             exercises: []
           }
         ]}
