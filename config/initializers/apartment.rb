@@ -2,10 +2,9 @@ require 'apartment/elevators/first_subdomain'
 
 Apartment.configure do |config|
 
-  config.excluded_models = %w{ User Assignment Exercise Export Guide Import Language  }
+  config.excluded_models = %w{ User Assignment Exercise Export Guide Import Language Tenant  }
 
-  config.tenant_names = ['haskell', 'gobstones']
-  #config.tenant_names = lambda { ToDo_Tenant_Or_User_Model.pluck :database }
+  config.tenant_names = lambda { Tenant.pluck :name }
 
 
   # Apartment can be forced to use raw SQL dumps instead of schema.rb for creating new schemas.

@@ -239,6 +239,12 @@ ActiveRecord::Schema.define(version: 20151020145904) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
+  create_table "tenants", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "provider"
     t.string   "uid"
