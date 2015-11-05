@@ -66,8 +66,11 @@ describe WithNavigation do
       end
 
       context 'when guide has one suggestion' do
-        let!(:suggested_guide) { create(:guide, position: 2, path: path) }
-        let(:guide) { create(:guide, position: 1, path: path) }
+        let!(:suggested_guide) { create(:guide) }
+        let(:guide) { create(:guide) }
+
+        before { path.rebuild!([guide, guide, suggested_guide])}
+
         it { expect(next_button(guide)).to include "<a class=\"btn btn-success\" href=\"/guides/#{suggested_guide.slug}\">Next: #{suggested_guide.name} <i class=\"fa fa-chevron-right\"></i></a>" }
       end
 

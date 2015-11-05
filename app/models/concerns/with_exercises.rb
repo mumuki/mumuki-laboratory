@@ -11,7 +11,7 @@ module WithExercises
 
   def pending_exercises(user)
     exercises.
-        joins("left join assignments
+        joins("left join public.assignments assignments
                 on assignments.exercise_id = exercises.id
                 and assignments.submitter_id = #{user.id}
                 and assignments.status = #{Status::Passed.to_i}").
@@ -19,7 +19,7 @@ module WithExercises
   end
 
   def next_exercise(user)
-    pending_exercises(user).order('exercises.position asc').first
+    pending_exercises(user).order('public.exercises.position asc').first
   end
 
   def first_exercise
