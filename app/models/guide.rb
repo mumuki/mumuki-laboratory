@@ -15,8 +15,7 @@ class Guide < ActiveRecord::Base
           WithPath,
           WithExercises,
           WithStats,
-          WithExpectations,
-          WithSlug
+          WithExpectations
 
   has_many :imports, -> { order(created_at: :desc)}
   has_many :exports
@@ -63,6 +62,10 @@ class Guide < ActiveRecord::Base
 
   def position
     path_rule.try(&:position)
+  end
+
+  def to_param
+    path_rule.slug
   end
 
   private

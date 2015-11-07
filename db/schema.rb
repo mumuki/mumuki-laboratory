@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104220859) do
+ActiveRecord::Schema.define(version: 20151107232242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -171,14 +171,12 @@ ActiveRecord::Schema.define(version: 20151104220859) do
     t.text     "corollary"
     t.boolean  "learning",     default: false
     t.boolean  "beta",         default: false
-    t.string   "slug"
     t.text     "expectations"
     t.string   "url",          default: "",    null: false
   end
 
   add_index "guides", ["author_id"], name: "index_guides_on_author_id", using: :btree
   add_index "guides", ["name"], name: "index_guides_on_name", using: :btree
-  add_index "guides", ["slug"], name: "index_guides_on_slug", unique: true, using: :btree
 
   create_table "imports", force: true do |t|
     t.integer  "guide_id"
@@ -213,6 +211,7 @@ ActiveRecord::Schema.define(version: 20151104220859) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   create_table "paths", force: true do |t|
