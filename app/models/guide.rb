@@ -65,7 +65,11 @@ class Guide < ActiveRecord::Base
   end
 
   def to_param
-    path_rule.slug
+    slug
+  end
+
+  def slug
+    path_rule.try(&:slug) || name
   end
 
   private
