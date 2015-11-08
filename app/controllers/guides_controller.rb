@@ -46,7 +46,7 @@ class GuidesController < ApplicationController
 
 
   def set_guide
-    @guide = PathRule.find(params[:id]).guide
+    @guide = Guide.find(params[:id])
   end
 
   def guide_params

@@ -15,7 +15,6 @@ gem 'turbolinks'
 
 gem 'sass-rails'
 gem 'execjs'
-gem 'friendly_id', '~> 5.0.0'
 gem 'activeadmin', '~> 1.0.0.pre1'
 gem 'devise'
 

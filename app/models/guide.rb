@@ -15,9 +15,10 @@ class Guide < ActiveRecord::Base
           WithPath,
           WithExercises,
           WithStats,
-          WithExpectations
+          WithExpectations,
+          Slugged
 
-  has_many :imports, -> { order(created_at: :desc)}
+  has_many :imports, -> { order(created_at: :desc) }
   has_many :exports
 
   has_and_belongs_to_many :contributors, class_name: 'User', join_table: 'contributors'
@@ -64,21 +65,13 @@ class Guide < ActiveRecord::Base
     path_rule.try(&:position)
   end
 
-  def to_param
-    slug
-  end
-
-  def slug
-    path_rule.try(&:slug) || name
-  end
-
   private
 
   def user_resources_to_users(resources)
     resources.
-        select{|it| it[:type] = 'User'}.
-        map {|it|it[:login]}.
-        map {|it| User.find_by_name(it) }.
+        select { |it| it[:type] = 'User' }.
+        map { |it| it[:login] }.
+        map { |it| User.find_by_name(it) }.
         compact
   end
 

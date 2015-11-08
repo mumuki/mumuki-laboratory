@@ -18,9 +18,9 @@ class Exercise < ActiveRecord::Base
           WithLocale,
           WithLanguage,
           WithLayout,
-          WithSlug,
           Submittable,
-          Queriable
+          Queriable,
+          Slugged
 
   acts_as_taggable
 

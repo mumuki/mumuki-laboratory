@@ -69,20 +69,20 @@ describe Guide do
 
   describe '#slug' do
     context 'when guide is not in path' do
-      let(:guide_not_in_path) { create(:guide, name: 'Una Guia') }
-      it { expect(guide_not_in_path.slug).to eq 'una-guia' }
+      let(:guide_not_in_path) { create(:guide, name: 'Una Guia', id: 80) }
+      it { expect(guide_not_in_path.slug).to eq '80-una-guia' }
     end
     context 'when guide is in path' do
       let(:category) { create(:category, name: 'Fundamentos de Programacion') }
       let(:path) { create(:path, category: category) }
-      let(:guide_in_path) { create(:guide, name: 'Una Guia') }
+      let(:guide_in_path) { create(:guide, name: 'Una Guia', id: 180) }
 
       before do
         path.rebuild!([create(:guide), create(:guide), guide_in_path])
       end
 
       it { expect(guide_in_path.path).to eq path }
-      it { expect(guide_in_path.slug).to eq 'fundamentos-de-programacion-una-guia' }
+      it { expect(guide_in_path.slug).to eq '180-fundamentos-de-programacion-una-guia' }
     end
   end
 
