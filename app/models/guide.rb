@@ -29,6 +29,10 @@ class Guide < ActiveRecord::Base
 
   markup_on :description, :teaser, :corollary
 
+  def import!
+    imports.create!
+  end
+
   #TODO denormalize
   def search_tags
     exercises.flat_map(&:search_tags).uniq

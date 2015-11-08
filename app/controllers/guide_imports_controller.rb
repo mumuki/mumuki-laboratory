@@ -6,7 +6,7 @@ class GuideImportsController < ApplicationController
   respond_to :json, :html
 
   def create
-    @import = @guide.imports.create!
+    @import = @guide.import!
     flash[:notice] = t(:import_created)
     respond_with @import, location: guide_path(@guide)
   end
