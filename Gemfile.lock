@@ -58,8 +58,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    acts-as-taggable-on (3.5.0)
-      activerecord (>= 3.2, < 5)
     addressable (2.3.8)
     apartment (1.0.2)
       activerecord (>= 3.1.2, < 5.0)
@@ -338,7 +336,6 @@ PLATFORMS
 DEPENDENCIES
   ace-rails-ap (~> 4.0)
   activeadmin (~> 1.0.0.pre1)
-  acts-as-taggable-on (~> 3.4)
   addressable
   apartment
   better_errors

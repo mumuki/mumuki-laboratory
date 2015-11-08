@@ -2,7 +2,7 @@ require 'apartment/elevators/first_subdomain'
 
 Apartment.configure do |config|
 
-  config.excluded_models = %w{ User Assignment Exercise Guide Import Language Tenant ActsAsTaggableOn::Tagging  }
+  config.excluded_models = %w{ User Assignment Exercise Guide Import Language Tenant }
 
   config.tenant_names = lambda { Tenant.pluck :name }
 

@@ -43,8 +43,6 @@ gem 'ace-rails-ap', '~> 4.0'
 
 gem 'unicorn-rails'
 
-gem 'acts-as-taggable-on', '~> 3.4'
-
 gem 'kaminari', '~> 0.16.3'
 gem 'bootstrap-kaminari-views'
 
