@@ -12,7 +12,7 @@ describe Export do
                              description: 'a description',
                              name: 'bar', tag_list: %w(baz bar), original_id: 200, position: 2,
                              language: haskell, test: 'foo bar') }
-  let(:guide) { create(:guide, description: 'Baz', github_repository: 'flbulgarelli/never-existent-repo', language: haskell, locale: 'en', extra_code: 'Foo') }
+  let(:guide) { create(:guide, name: 'foo', description: 'Baz', github_repository: 'flbulgarelli/never-existent-repo', language: haskell, locale: 'en', extra_code: 'Foo') }
   let(:export) { guide.exports.create!(committer: committer) }
 
 
@@ -30,7 +30,7 @@ describe Export do
       before { export.write_meta! dir }
 
       it { expect(File.exist? 'spec/data/export/meta.yml').to be true }
-      it { expect(File.read 'spec/data/export/meta.yml').to eq "---\nlocale: en\nlearning: false\nbeta: false\nlanguage: haskell\noriginal_id_format: '%05d'\norder:\n- 100\n- 200\n" }
+      it { expect(File.read 'spec/data/export/meta.yml').to eq "---\nname: foo\nlocale: en\nlearning: false\nbeta: false\nlanguage: haskell\noriginal_id_format: '%05d'\norder:\n- 100\n- 200\n" }
     end
 
     describe '#write_description' do

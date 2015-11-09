@@ -1,3 +1,4 @@
+name: Name from meta.yml
 language: Haskell
 locale: en
 learning: true

@@ -11,7 +11,7 @@ describe Import do
 
 
   describe '#read_guide!' do
-    let(:guide) { create(:guide) }
+    let(:guide) { create(:guide, name: 'A standard name') }
     let!(:haskell) { create(:haskell) }
 
     context 'when guide is ok' do
@@ -22,6 +22,7 @@ describe Import do
       end
 
       it { expect(Exercise.count).to eq 4 }
+      it { expect(guide.name).to eq 'A standard name' }
       it { expect(guide.description).to eq "Awesome guide\n" }
       it { expect(guide.language).to eq haskell }
       it { expect(guide.locale).to eq 'en' }
@@ -88,6 +89,7 @@ describe Import do
       end
 
       it { expect(guide.exercises_count).to eq 1 }
+      it { expect(guide.name).to eq 'Name from meta.yml' }
       it { expect(guide.corollary).to eq "A guide's corollary\n" }
       it { expect(guide.learning).to be true }
       it { expect(guide.beta).to eq true }
@@ -106,6 +108,7 @@ describe Import do
           guide.reload
         end
 
+        it { expect(guide.name).to eq 'Name from meta.yml' }
         it { expect(guide.original_id_format).to eq '%05d' }
         it { expect(guide.learning).to be false }
         it { expect(guide.beta).to be false }
