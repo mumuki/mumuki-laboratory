@@ -13,28 +13,4 @@ describe EventSubscriber do
     it { EventSubscriber.notify_sync!(Event::Submission.new(assignment)) }
   end
 
-  describe Event::Submission do
-    let(:user) { create(:user, id: 2, name: 'foo') }
-    let(:assignment) { create(:assignment,
-                              solution: 'x = 2',
-                              status: Status::Passed,
-                              submissions_count: 2,
-                              submitter: user,
-                              submission_id: 'abcd1234') }
-    let(:event) { Event::Submission.new(assignment) }
-
-    it { expect(event.as_json).to eq({'status' => Status::Passed,
-                                      'result' => nil,
-                                      'expectation_results' => nil,
-                                      'feedback' => nil,
-                                      'test_results' => nil,
-                                      'submissions_count' => 2,
-                                      'exercise' => {'id' => assignment.exercise.id, 'guide_id' => nil},
-                                      'submitter' => {'id' => 2, 'name' => 'foo'},
-                                      'id' => 'abcd1234',
-                                      'created_at' => assignment.updated_at,
-                                      'content' => 'x = 2'
-                                     }) }
-  end
-
 end

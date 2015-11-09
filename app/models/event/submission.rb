@@ -7,11 +7,7 @@ class Event::Submission < Event::Base
     'events/submissions'
   end
 
-  def to_json
-    as_json.to_json
-  end
-
-  def as_json
+  def as_json(options={})
     @assignment.
       as_json(except: [:exercise_id, :submission_id, :id, :submitter_id, :solution, :created_at, :updated_at],
               include: {

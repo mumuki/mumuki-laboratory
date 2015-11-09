@@ -7,7 +7,7 @@ class Event::Registration < Event::Base
     'events/registration'
   end
 
-  def event_json
-    @user.as_json(Rails.configuration.registration_notification_format).to_json
+  def as_json(options={})
+    @user.as_json(Rails.configuration.registration_notification_format)
   end
 end
