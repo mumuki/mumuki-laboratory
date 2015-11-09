@@ -42,6 +42,7 @@ class Import < RepositoryOperation
 
     guide.language = Language.find_by_ignore_case! :name, meta['language']
     guide.locale = meta['locale']
+    read_optional! meta, 'name', guide.name
     read_optional! meta, 'original_id_format', '%05d'
     read_optional! meta, 'learning', false
     read_optional! meta, 'beta', false

@@ -15,6 +15,7 @@ describe 'import-export' do
                              language: haskell,
                              layout: :editor_bottom) }
   let(:guide) { create(:guide,
+                       name: 'A name',
                        description: 'Baz',
                        github_repository: 'flbulgarelli/never-existent-repo',
                        language: haskell,
@@ -27,7 +28,7 @@ describe 'import-export' do
 
     guide.exports.create!(committer: committer).write_guide! dir
     guide.exercises.delete_all
-    guide.update!(description: '***', locale: 'es', language: nil)
+    guide.update!(name: '***', description: '***', locale: 'es', language: nil)
     @log = guide.imports.create!(committer: committer).read_guide! dir
     guide.reload
   end
@@ -47,6 +48,7 @@ describe 'import-export' do
   it { expect(guide.language).to eq haskell }
   it { expect(guide.locale).to eq 'en' }
   it { expect(guide.description).to eq 'Baz' }
+  it { expect(guide.name).to eq 'A name' }
 
 
 end
