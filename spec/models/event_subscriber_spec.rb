@@ -4,7 +4,7 @@ require 'rspec/mocks'
 
 describe EventSubscriber do
 
-  describe '#notify_submission!' do
+  describe '#notify_sync!' do
     let!(:subscriber) { EventSubscriber.create!(enabled: true, url: 'http://localhost:80') }
     let!(:assignment) { create(:assignment) }
 
@@ -12,7 +12,6 @@ describe EventSubscriber do
 
     it { EventSubscriber.notify_sync!(Event::Submission.new(assignment)) }
   end
-
 
   describe Event::Submission do
     let(:user) { create(:user, id: 2, name: 'foo') }

@@ -6,11 +6,13 @@ class Event::Base
   end
 
   def notify_async!(subscriber)
-    EventNotificationJob.run_async(
-        OpenStruct.new(
-            subscriber_id: subscriber.id,
-            to_json: to_json,
-            event_path: event_path))
+    EventNotificationJob.run_async(to_job_params(subscriber))
   end
 
+  def to_job_params(subscriber)
+    OpenStruct.new(
+        subscriber_id: subscriber.id,
+        event_json: event_json,
+        event_path: event_path)
+  end
 end
