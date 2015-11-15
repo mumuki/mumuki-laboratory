@@ -9,10 +9,6 @@ module WithLinksRendering
     link_to name, guide, options
   end
 
-  def link_to_github(guide)
-    link_to guide.github_repository, guide.github_url
-  end
-
   def link_to_user(user)
     link_to user.name, user
   end

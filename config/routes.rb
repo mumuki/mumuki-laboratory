@@ -36,9 +36,8 @@ Rails.application.routes.draw do
   end
 
   # All users
-  resources :guides, only: [:new, :create, :show, :edit, :index, :update] do
+  resources :guides, only: [:new, :create, :show, :index] do
     # All users
-    resources :contributors, controller: 'guide_contributors', only: [:index]
     member do
       post :collaborators_refresh
       get :details

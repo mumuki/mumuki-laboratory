@@ -1,138 +1,57 @@
 require 'spec_helper'
 
 describe Import do
-  let(:import) { guide.imports.build }
 
-  describe '#status' do
-    let(:guide) { create(:guide) }
+  let!(:haskell) { create(:haskell) }
+  let(:guide) { create(:guide, exercises: [create(:exercise)]) }
+  let(:import) { Import.new guide: guide }
 
-    it { expect(import.status).to eq Status::Pending }
+  let(:guide_json) {
+    {name: 'sample guide',
+     description: 'Baz',
+     github_repository: 'flbulgarelli/sample-guide',
+     language: 'haskell',
+     locale: 'en',
+     original_id_format: '%05d',
+     exercises: [
+         {type: 'problem',
+          name: 'Bar',
+          description: 'a description',
+          test: 'foo bar',
+          tag_list: %w(baz bar),
+          layout: 'no_editor',
+          original_id: 1},
+
+         {type: 'playground',
+          description: 'lorem ipsum',
+          name: 'Foo',
+          tag_list: %w(foo bar),
+          original_id: 4},
+
+         {name: 'Baz',
+          description: 'lorem ipsum',
+          tag_list: %w(baz bar),
+          layout: 'editor_bottom',
+          type: 'problem',
+          expectations: [{inspection: 'HasBinding', binding: 'foo'}],
+          original_id: 2}]}.deep_stringify_keys }
+
+  before do
+    import.read_from_json(guide_json)
+    guide.reload
   end
 
+  it { expect(guide).to_not be nil }
+  it { expect(guide.name).to eq 'sample guide' }
+  it { expect(guide.language).to eq haskell }
+  it { expect(guide.description).to eq 'Baz' }
+  it { expect(guide.slug).to eq 'sample-guide' }
 
-  describe '#read_guide!' do
-    let(:guide) { create(:guide, name: 'A standard name') }
-    let!(:haskell) { create(:haskell) }
+  it { expect(guide.exercises.count).to eq 3 }
+  it { expect(guide.exercises.first.language).to eq haskell }
+  it { expect(guide.exercises.first.slug).to eq 'sample-guide-bar' }
 
-    context 'when guide is ok' do
-      let!(:log) { import.read_guide! 'spec/data/simple-guide' }
+  it { expect(guide.exercises.pluck(:name)).to eq %w(Bar Foo Baz) }
 
-      before do
-        guide.reload
-      end
 
-      it { expect(Exercise.count).to eq 4 }
-      it { expect(guide.name).to eq 'A standard name' }
-      it { expect(guide.description).to eq "Awesome guide\n" }
-      it { expect(guide.language).to eq haskell }
-      it { expect(guide.locale).to eq 'en' }
-      it { expect(log.to_s).to eq 'Description does not exist for sample_broken' }
-
-      context 'when importing basic exercise' do
-        let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 1) }
-
-        it { expect(imported_exercise).to_not be nil }
-        it { expect(imported_exercise.author).to eq guide.author }
-        it { expect(imported_exercise.name).to eq 'sample_title' }
-        it { expect(imported_exercise.description).to eq '##Sample Description' }
-        it { expect(imported_exercise.test).to eq 'pending' }
-        it { expect(imported_exercise.extra_code).to eq "extra\n" }
-        it { expect(imported_exercise.hint).to be nil }
-        it { expect(imported_exercise.corollary).to be nil }
-        it { expect(imported_exercise.language).to eq haskell }
-        it { expect(imported_exercise.expectations.size).to eq 2 }
-        it { expect(imported_exercise.tag_list).to include *%w(foo bar baz) }
-        it { expect(guide.description).to eq "Awesome guide\n" }
-        it { expect(imported_exercise.layout).to eq 'editor_right' }
-
-      end
-
-      context 'when importing exercise with errors' do
-        let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 2) }
-
-        it { expect(imported_exercise).to be nil }
-      end
-
-      context 'when importing exercise with hint and corollary' do
-        let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 3) }
-
-        it { expect(imported_exercise).to_not be nil }
-        it { expect(imported_exercise.hint).to eq "Try this: blah blah\n" }
-        it { expect(imported_exercise.corollary).to eq "And the corollary is...\n" }
-      end
-
-      context 'when importing with layout' do
-        let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 4) }
-
-        it { expect(imported_exercise).to_not be nil }
-        it { expect(imported_exercise.layout).to eq 'editor_bottom' }
-      end
-
-      context 'when importing playground' do
-        let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 5) }
-
-        it { expect(imported_exercise).to_not be nil }
-        it { expect(imported_exercise).to be_kind_of Playground }
-
-      end
-    end
-    context 'when guide is incomplete' do
-      it 'fails an does not update guide' do
-        expect { import.read_guide! 'spec/data/incompelete-guide' }.to raise_exception
-        expect(guide.exercises_count).to eq 0
-      end
-    end
-    context 'when guide has full data' do
-      before do
-        import.read_guide! 'spec/data/full-guide'
-        guide.reload
-      end
-
-      it { expect(guide.exercises_count).to eq 1 }
-      it { expect(guide.name).to eq 'Name from meta.yml' }
-      it { expect(guide.corollary).to eq "A guide's corollary\n" }
-      it { expect(guide.learning).to be true }
-      it { expect(guide.beta).to eq true }
-      it { expect(guide.extra_code).to eq "A guide's extra code\n" }
-    end
-
-    context 'when optional properties are specified' do
-      before do
-        import.read_guide! 'spec/data/full-guide'
-        guide.reload
-      end
-
-      context 'when removing that properties and reimporting the guide' do
-        before do
-          import.read_guide! 'spec/data/simple-guide'
-          guide.reload
-        end
-
-        it { expect(guide.name).to eq 'Name from meta.yml' }
-        it { expect(guide.original_id_format).to eq '%05d' }
-        it { expect(guide.learning).to be false }
-        it { expect(guide.beta).to be false }
-      end
-    end
-
-    context 'when importing the guide and the title changed' do
-      let(:imported_exercise) { Exercise.find_by(guide_id: guide.id, original_id: 1) }
-      let(:dir) { 'spec/data/title_changed' }
-
-      before do
-        import.read_guide! 'spec/data/simple-guide'
-        guide.reload
-
-        imported_exercise.update!(name:'updated_title')
-        guide.exports.build.write_guide! dir
-        guide.imports.build.read_guide! dir
-        guide.reload
-      end
-
-      it 'should update slug' do
-        expect(imported_exercise.name).to eq 'updated_title'
-        expect(imported_exercise.slug).to eq "#{guide.name.downcase.gsub(' ','-')}-updated_title"
-      end
-    end
-  end
 end

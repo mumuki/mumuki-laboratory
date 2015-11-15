@@ -6,9 +6,9 @@ class GuideImportsController < ApplicationController
   respond_to :json, :html
 
   def create
-    @import = @guide.imports.create!(committer: @guide.author) #FIXME use current user
+    @import = @guide.import!
     flash[:notice] = t(:import_created)
-    respond_with @import, location: edit_guide_path(@guide)
+    respond_with @import, location: guide_path(@guide)
   end
 
   def index

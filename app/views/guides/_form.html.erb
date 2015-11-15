@@ -1,50 +1,8 @@
-<div role="tabpanel">
-  <br>
-  <%= tab_list [:basic, :info, :import_export] %>
-  <br>
+<%= bootstrap_form_for(@guide, html: {role: 'form'}) do |f| %>
+  <%= f.text_field :url %>
 
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="basic-panel">
-      <%= render 'basic_form' %>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="info-panel">
-      <%= bootstrap_form_for(@guide, html: {role: 'form'}) do |f| %>
-        <%= f.editor :description, :markdown %>
-
-        <%= f.editor :corollary, :markdown %>
-
-        <%= f.select(:locale, Locale.all, {}, class: 'form-control') %>
-
-        <%= f.collection_select(:language_id, Language.all, :id, :name, {}, class: 'form-control') %>
-
-        <%= f.text_field :original_id_format %>
-
-        <%= f.check_box :learning %>
-
-        <%= f.check_box :beta %>
-
-        <div class="actions form-group">
-          <%= f.submit class: 'btn btn-primary' %>
-          <%= link_to t('cancel'), :back, class: 'btn btn-default' %>
-        </div>
-      <% end %>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="import_export-panel">
-      <div class="text-center">
-        <%= form_tag guide_exports_path(@guide), method: :post do %>
-          <%= submit_tag t(:new_export), class: 'btn btn-primary' %>
-        <% end %>
-        <br>
-        <%= form_tag guide_imports_path(@guide), method: :post do %>
-          <%= submit_tag t(:new_import), class: 'btn btn-primary' %>
-        <% end %>
-        <br>
-        <%= form_tag  collaborators_refresh_guide_path(@guide), method: :post do %>
-          <%= submit_tag t(:refresh_collaborators), class: 'btn btn-primary' %>
-        <% end %>
-      </div>
-    </div>
+  <div class="actions form-group">
+    <%= f.submit class: 'btn btn-primary' %>
+    <%= link_to t('cancel'), :back, class: 'btn btn-default' %>
   </div>
-
-
-</div>
+<% end %>

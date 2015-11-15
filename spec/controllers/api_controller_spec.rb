@@ -52,7 +52,7 @@ describe 'api controller' do
         { guides: [
           {
             id: 1,
-            github_repository: 'flbulgarelli/mumuki-sample-exercises',
+            url: 'http://guides.mumuki.io/flbulgarelli/mumuki-sample-exercises',
             name: 'guide_1',
             language: { id: 1, name: 'language_1', image_url: 'lang1.jpeg' },
             position: nil,
@@ -76,7 +76,7 @@ describe 'api controller' do
           { guides: [
             {
               id: 1,
-              github_repository: 'flbulgarelli/mumuki-sample-exercises',
+              url: 'http://guides.mumuki.io/flbulgarelli/mumuki-sample-exercises',
               name: 'guide_1',
               language: { id: 1, name: 'language_1', image_url: 'lang1.jpeg' },
               position: nil,
@@ -101,7 +101,7 @@ describe 'api controller' do
         { guides: [
           {
             id: 1,
-            github_repository: 'flbulgarelli/mumuki-sample-exercises',
+            url: 'http://guides.mumuki.io/flbulgarelli/mumuki-sample-exercises',
             name: 'guide_1',
             language: { id: 1, name: 'language_1', image_url: 'lang1.jpeg' },
             path: { id: 1, name: 'category_1' },

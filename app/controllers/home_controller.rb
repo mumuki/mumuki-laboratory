@@ -1,5 +1,6 @@
-class HomeController < ApplicationController
+require 'addressable/uri'
 
+class HomeController < ApplicationController
   before_action :redirect_to_last_guide
 
   def index

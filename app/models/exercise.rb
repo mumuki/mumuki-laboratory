@@ -27,7 +27,7 @@ class Exercise < ActiveRecord::Base
   after_initialize :defaults, if: :new_record?
 
   validates_presence_of :name, :description, :language,
-                        :submissions_count, :author
+                        :submissions_count
 
   scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
 
@@ -60,11 +60,11 @@ class Exercise < ActiveRecord::Base
     self.layout = Exercise.default_layout
   end
 
-  def self.default_layout
-    layouts.keys[0]
+  def self.class_for(type)
+    Kernel.const_get(type.camelcase)
   end
 
-  def should_generate_new_friendly_id?
-    slug.blank? || name_changed?
+  def self.default_layout
+    layouts.keys[0]
   end
 end

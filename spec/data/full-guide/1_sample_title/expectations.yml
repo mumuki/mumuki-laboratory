@@ -1,5 +1,0 @@
-expectations:
-  - binding: foo
-    inspection: HasComposition
-  - binding: bar
-    inspection: HasGuards

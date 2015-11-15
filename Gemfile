@@ -46,8 +46,6 @@ gem 'unicorn-rails'
 
 gem 'acts-as-taggable-on', '~> 3.4'
 
-gem 'git'
-gem 'octokit', '~> 4.1'
 gem 'kaminari', '~> 0.16.3'
 gem 'bootstrap-kaminari-views'
 
@@ -59,6 +57,8 @@ gem 'rails-i18n', '~> 4.0.0'
 gem 'nprogress-rails'
 
 gem 'yaml_db'
+
+gem 'addressable'
 
 gem 'mumukit-inspection', :github => 'mumuki/mumukit-inspection', :branch => 'master'
 gem 'mumukit-bridge',     :github => 'mumuki/mumukit-bridge', :tag=> 'v0.3.0'

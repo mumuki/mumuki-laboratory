@@ -36,6 +36,5 @@ module Mumuki
     config.action_dispatch.rescue_responses.merge!(
         'AuthorizationError' => :unauthorized
     )
-
   end
 end

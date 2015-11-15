@@ -1,7 +1,7 @@
 ActiveAdmin.register Guide do
 
   permit_params :name, :author_id, :description, :locale, :language_id,
-                :learning, :beta, :corollary, :github_repository, :position, :path_id, :extra_code
+                :learning, :beta, :corollary, :url, :position, :path_id, :extra_code
 
   filter :name
   filter :description
@@ -21,9 +21,9 @@ ActiveAdmin.register Guide do
     column(:path)
     column(:position)
     column(:language)
-    column(:github_repository)
+    column(:url)
 
     actions
   end
 end
- 
+
