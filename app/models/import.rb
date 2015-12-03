@@ -15,7 +15,6 @@ class Import < ActiveRecord::Base
   end
 
   def read_from_json(json)
-    guide.slug = nil
     guide.assign_attributes json.except('exercises', 'language', 'original_id_format', 'github_repository')
     guide.language = Language.for_name(json['language'])
     guide.save!
@@ -27,7 +26,6 @@ class Import < ActiveRecord::Base
       exercise.assign_attributes(e.except('type'))
       exercise.language = guide.language
       exercise.locale = guide.locale
-      exercise.slug = nil
       exercise.save!
     end
   end
