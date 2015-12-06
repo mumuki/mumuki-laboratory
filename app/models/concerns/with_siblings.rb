@@ -6,27 +6,23 @@ module WithSiblings
   end
 
   def next
-    siblings.where(position: position + 1).first unless orphan?
+    siblings.select { |it| it.position == position + 1 }.first unless orphan?
   end
 
   def previous
-    siblings.where(position: position - 1).first unless orphan?
+    siblings.select { |it| it.position == position - 1 }.first unless orphan?
   end
 
   def next_for(user)
-    sibling_for user, "#{qualified_position} > :position", "#{qualified_position} asc"
+    siblings_for(user).select { |it| it.position > position }.sort_by(&:position).first unless orphan?
   end
 
   def previous_for(user)
-    sibling_for user, "#{qualified_position} < :position", "#{qualified_position} desc"
-  end
-
-  def sibling_for(user, query, order)
-    siblings_for(user).where(query, position: position).order(order).first if parent
+    siblings_for(user).select { |it| it.position < position }.sort_by(&:position).last unless orphan?
   end
 
   def first_for(user)
-    siblings_for(user).order(position: :asc).first if parent
+    siblings_for(user).sort_by(&:position).first unless orphan?
   end
 
   def orphan?

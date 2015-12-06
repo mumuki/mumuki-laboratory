@@ -15,7 +15,6 @@ gem 'turbolinks'
 
 gem 'sass-rails'
 gem 'execjs'
-gem 'friendly_id', '~> 5.0.0'
 gem 'activeadmin', '~> 1.0.0.pre1'
 gem 'devise'
 
@@ -44,8 +43,6 @@ gem 'ace-rails-ap', '~> 4.0'
 
 gem 'unicorn-rails'
 
-gem 'acts-as-taggable-on', '~> 3.4'
-
 gem 'kaminari', '~> 0.16.3'
 gem 'bootstrap-kaminari-views'
 
@@ -59,6 +56,7 @@ gem 'nprogress-rails'
 gem 'yaml_db'
 
 gem 'addressable'
+gem 'apartment'
 
 gem 'mumukit-inspection', :github => 'mumuki/mumukit-inspection', :branch => 'master'
 gem 'mumukit-bridge',     :github => 'mumuki/mumukit-bridge', :tag=> 'v0.3.0'

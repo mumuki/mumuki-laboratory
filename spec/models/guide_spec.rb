@@ -7,21 +7,32 @@ describe Guide do
 
   describe '#next_for' do
     let(:path) { create(:path) }
+
     context 'when guide is not in path' do
       it { expect(guide.next_for(extra_user)).to be nil }
     end
     context 'when guide is in path' do
-      let(:guide_in_path) { create(:guide, path: path, position: 2) }
+      let(:guide_in_path) { create(:guide) }
+
       context 'when it is single' do
+        before { path.rebuild!([create(:guide), guide_in_path]) }
+
         it { expect(guide_in_path.next_for(extra_user)).to be nil }
+        it { expect(guide_in_path.path).to eq path }
       end
+
       context 'when there is a next guide' do
-        let!(:other_guide) { create(:guide, path: path, position: 3) }
+        let!(:other_guide) { create(:guide) }
+        before { path.rebuild!([create(:guide), guide_in_path, other_guide]) }
+
         it { expect(guide_in_path.next_for(extra_user)).to eq other_guide }
       end
       context 'when there are many next guides at same level' do
-        let!(:other_guide_1) { create(:guide, path: path, position: 3) }
-        let!(:other_guide_2) { create(:guide, path: path, position: 4) }
+        let!(:other_guide_1) { create(:guide) }
+        let!(:other_guide_2) { create(:guide) }
+
+        before { path.rebuild!([create(:guide), guide_in_path, other_guide_1, other_guide_2]) }
+
         it { expect(guide_in_path.next_for(extra_user)).to eq other_guide_1 }
       end
     end
@@ -33,7 +44,8 @@ describe Guide do
       it { expect(guide.contextualized_name).to be guide.name }
     end
     context 'when guide is in path' do
-      let!(:guide_in_path) { create(:guide, path: path, position: 2) }
+      let!(:guide_in_path) { create(:guide) }
+      before { path.rebuild! [create(:guide), guide_in_path] }
 
       it { expect(guide_in_path.contextualized_name).to eq "2. #{guide_in_path.name}" }
     end
@@ -45,7 +57,11 @@ describe Guide do
       it { expect(guide.slugged_name).to be guide.name }
     end
     context 'when guide is in path' do
-      let!(:guide_in_path) { create(:guide, path: path, position: 2) }
+      let(:guide_in_path) { create(:guide) }
+
+      before do
+        path.rebuild!([create(:guide), guide_in_path])
+      end
 
       it { expect(guide_in_path.slugged_name).to eq "#{path.name}: #{guide_in_path.name}" }
     end
@@ -53,20 +69,20 @@ describe Guide do
 
   describe '#slug' do
     context 'when guide is not in path' do
-      let(:guide_not_in_path) { create(:guide, name: 'Una Guia') }
-      it { expect(guide_not_in_path.slug).to eq 'una-guia' }
+      let(:guide_not_in_path) { create(:guide, name: 'Una Guia', id: 80) }
+      it { expect(guide_not_in_path.slug).to eq '80-una-guia' }
     end
     context 'when guide is in path' do
-      let(:path) { create(:path) }
-      let(:guide_in_path) { create(:guide, name: 'Una Guia', path: path, position: 3) }
+      let(:category) { create(:category, name: 'Fundamentos de Programacion') }
+      let(:path) { create(:path, category: category) }
+      let(:guide_in_path) { create(:guide, name: 'Una Guia', id: 180) }
 
       before do
-        def path.name
-          'Fundamentos de Programacion'
-        end
+        path.rebuild!([create(:guide), create(:guide), guide_in_path])
       end
 
-      it { expect(guide_in_path.slug).to eq 'fundamentos-de-programacion-una-guia' }
+      it { expect(guide_in_path.path).to eq path }
+      it { expect(guide_in_path.slug).to eq '180-fundamentos-de-programacion-una-guia' }
     end
   end
 

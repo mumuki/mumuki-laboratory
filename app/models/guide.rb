@@ -16,9 +16,9 @@ class Guide < ActiveRecord::Base
           WithExercises,
           WithStats,
           WithExpectations,
-          WithSlug
+          Slugged
 
-  has_many :imports, -> { order(created_at: :desc)}
+  has_many :imports, -> { order(created_at: :desc) }
   has_many :exports
 
   has_and_belongs_to_many :contributors, class_name: 'User', join_table: 'contributors'
@@ -29,6 +29,8 @@ class Guide < ActiveRecord::Base
 
   markup_on :description, :teaser, :corollary
 
+  has_one :path_rule
+  
   def import!
     imports.create!
   end
@@ -59,13 +61,17 @@ class Guide < ActiveRecord::Base
     with_parent_name { "#{parent.slugged_name}: #{name}" }
   end
 
+  def position
+    path_rule.try(&:position)
+  end
+
   private
 
   def user_resources_to_users(resources)
     resources.
-        select{|it| it[:type] = 'User'}.
-        map {|it|it[:login]}.
-        map {|it| User.find_by_name(it) }.
+        select { |it| it[:type] = 'User' }.
+        map { |it| it[:login] }.
+        map { |it| User.find_by_name(it) }.
         compact
   end
 

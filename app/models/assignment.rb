@@ -68,11 +68,11 @@ class Assignment < ActiveRecord::Base
 
   def update_submissions_count!
     self.class.connection.execute(
-        "update exercises
+        "update public.exercises
          set submissions_count = submissions_count + 1
         where id = #{exercise.id}")
     self.class.connection.execute(
-        "update assignments
+        "update public.assignments
          set submissions_count = submissions_count + 1
         where id = #{id}")
     exercise.reload

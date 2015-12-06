@@ -5,8 +5,10 @@ feature 'Progress Flow' do
   let!(:functional) { create(:category, name: 'Functional Programming') }
   let!(:haskell) { create(:haskell) }
   let!(:functional_haskell) { create(:path, language: haskell, category: functional) }
-  let!(:first_guide) { create(:guide, path: functional_haskell, name: 'HS Functional Programming First Guide', position: 1) }
+  let!(:first_guide) { create(:guide, name: 'HS Functional Programming First Guide') }
   let!(:exercise) { create(:exercise, guide: first_guide) }
+
+  before { functional_haskell.rebuild!([first_guide]) }
 
 
   scenario 'user progress, not logged in, no submissions' do

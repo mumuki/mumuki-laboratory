@@ -1,6 +1,6 @@
 ActiveAdmin.register Path do
 
-  permit_params :category_id, :guide_id, :language_id
+  permit_params :category_id, :language_id
 
   filter :category
   filter :language
@@ -10,7 +10,6 @@ ActiveAdmin.register Path do
   index do
     column(:id)
     column(:category)
-    column(:guide)
     column(:language)
 
     actions

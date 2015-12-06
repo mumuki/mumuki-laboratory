@@ -24,9 +24,11 @@ describe WithBreadcrumbs do
 
   context 'exercise in path' do
     let(:exercise) { create(:exercise, name: 'my exercise', guide: guide, position: 1) }
-    let(:guide) { create(:guide, name: 'my guide', path: path, position: 1) }
+    let(:guide) { create(:guide, name: 'my guide') }
     let(:path) { create(:path, category: category) }
     let(:category) { create(:category, name: 'my category') }
+
+    before { path.rebuild!([guide]) }
 
     it { expect(breadcrumb).to include('my exercise') }
     it { expect(breadcrumb).to include('my guide') }

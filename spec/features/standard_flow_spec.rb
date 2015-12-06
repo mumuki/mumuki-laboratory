@@ -7,8 +7,9 @@ feature 'Standard Flow' do
   }
   let!(:category) { create(:category, name: 'Functional Programming') }
   let!(:path) { create(:path, category: category, language: haskell) }
-  let!(:guide) { create(:guide, name: 'getting-started', description: 'An awesome guide',
-                        language: haskell, position: 1, path: path) }
+  let!(:guide) { create(:guide, name: 'getting-started', description: 'An awesome guide', language: haskell) }
+
+  before { path.rebuild!([guide]) }
 
 
   before do
@@ -33,8 +34,9 @@ feature 'Standard Flow' do
   context 'multiple paths' do
     let(:js) { create(:language, name: 'js') }
     let!(:path_js) { create(:path, category: category, language: js) }
-    let!(:guide_js) { create(:guide, name: 'getting-started-js', description: 'An awesome JS guide',
-                             language: js, position: 1, path: path_js) }
+    let!(:guide_js) { create(:guide, name: 'getting-started-js', description: 'An awesome JS guide', language: js) }
+
+    before { path_js.rebuild!([guide_js]) }
 
     scenario 'do a guide for first time, starting from home' do
       within('.jumbotron') do

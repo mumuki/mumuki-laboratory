@@ -24,20 +24,20 @@ describe ApplicationHelper do
   describe '#link_to_exercise' do
     context 'when exercise has no guide' do
       let(:exercise) { create(:exercise, name: 'foo', id: 1) }
-      it { expect(link_to_exercise(exercise)).to eq '<a href="/exercises/foo">foo</a>' }
+      it { expect(link_to_exercise(exercise)).to eq '<a href="/exercises/1-foo">foo</a>' }
     end
     context 'when exercise has guide' do
       let(:guide) { create(:guide, name: 'bar') }
       let(:exercise) { create(:exercise, name: 'foo', guide: guide, id: 1, position: 3) }
 
-      it { expect(link_to_exercise(exercise, plain: true)).to eq '<a href="/exercises/bar-foo">foo</a>' }
-      it { expect(link_to_exercise(exercise)).to eq '<a href="/exercises/bar-foo">bar - foo</a>' }
+      it { expect(link_to_exercise(exercise, plain: true)).to eq '<a href="/exercises/1-bar-foo">foo</a>' }
+      it { expect(link_to_exercise(exercise)).to eq '<a href="/exercises/1-bar-foo">bar - foo</a>' }
     end
   end
 
   describe '#link_to_guide' do
     let(:guide) { create(:guide, name: 'foo', id: 1) }
-    it { expect(link_to_guide(guide)).to start_with '<a href="/guides/foo">foo' }
+    it { expect(link_to_guide(guide)).to start_with '<a href="/guides/1-foo">foo' }
   end
 
   describe '#status_icon' do

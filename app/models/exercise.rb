@@ -1,10 +1,9 @@
 class Exercise < ActiveRecord::Base
   INDEXED_ATTRIBUTES = {
 
-      against: [:name, :description],
+      against: [:name, :description, :tag_list],
       associated_against: {
           language: [:name],
-          tags: [:name],
           guide: [:name]
       },
   }
@@ -18,18 +17,14 @@ class Exercise < ActiveRecord::Base
           WithLocale,
           WithLanguage,
           WithLayout,
-          WithSlug,
           Submittable,
-          Queriable
-
-  acts_as_taggable
+          Queriable,
+          Slugged
 
   after_initialize :defaults, if: :new_record?
 
   validates_presence_of :name, :description, :language,
                         :submissions_count
-
-  scope :by_tag, lambda { |tag| tagged_with(tag) if tag.present? }
 
   markup_on :description, :hint, :teaser, :corollary
 
@@ -46,7 +41,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def extra_code
-    [guide.try(&:extra_code), self[:extra_code]].compact.join("\n")
+    [guide.try(&:extra), self[:extra_code]].compact.join("\n")
   end
 
   def slugged_name
