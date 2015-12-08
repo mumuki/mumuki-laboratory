@@ -20,4 +20,7 @@ class Tenant < ActiveRecord::Base
     end
   end
 
+  def self.on_public?
+    Apartment::Tenant.current == 'public'
+  end
 end
