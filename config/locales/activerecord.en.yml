@@ -2,9 +2,6 @@
 en:
   activerecord:
     errors:
-      messages:
-        same_language_of_guide: Must be of same language of guide
-
       models:
         exercise:
           attributes:

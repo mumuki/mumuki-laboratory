@@ -249,11 +249,6 @@ describe Exercise do
     context 'when has guide and is consistent' do
       it { expect(exercise_with_guide.valid?).to be true }
     end
-
-    context 'when has guide and is not consistent' do
-      before { exercise_with_guide.language = other_language }
-      it { expect(exercise_with_guide.valid?).to be false }
-    end
   end
 
   describe '#slug' do
