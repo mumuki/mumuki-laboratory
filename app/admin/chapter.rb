@@ -1,6 +1,6 @@
-ActiveAdmin.register Category do
+ActiveAdmin.register Chapter do
 
-  permit_params :name, :position, :description, :locale, :image_url
+  permit_params :name, :number, :description, :locale
 
   filter :name
   filter :description
@@ -11,10 +11,9 @@ ActiveAdmin.register Category do
   index do
     column(:id)
     column(:name)
-    column(:position)
+    column(:number)
     column(:description)
     column(:locale)
-    column(:image_url)
 
     actions
   end

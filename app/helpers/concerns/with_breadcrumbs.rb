@@ -10,14 +10,14 @@ module WithBreadcrumbs
 
   def guide_breadcrumb(g)
     base = link_to_guide g, plain: true
-    if g.path
-      "#{path_breadcrumb(g.path)}/#{base}".html_safe
+    if g.chapter
+      "#{path_breadcrumb(g.chapter)}/#{base}".html_safe
     else
       base
     end
   end
 
   def path_breadcrumb(p)
-    link_to_path p
+    link_to_chapter p
   end
 end

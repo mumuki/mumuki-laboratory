@@ -76,7 +76,7 @@ class ExercisesController < ApplicationController
   end
 
   def exercises
-    Exercise.at_locale
+    Exercise.all
   end
 
 

@@ -1,12 +1,6 @@
 require 'spec_helper'
 require 'rspec/expectations'
 
-RSpec::Matchers.define :json_eq do |expected_json_hash|
-  match do |actual_json|
-    expected_json_hash.with_indifferent_access == ActiveSupport::JSON.decode(actual_json)
-  end
-end
-
 describe 'api controller' do
   include AuthHelper
 
@@ -87,13 +81,12 @@ describe 'api controller' do
       end
     end
 
-    context 'when the guide belongs to a path' do
-      let!(:category_1) { create(:category, name: 'category_1') }
-      let!(:path_1) { create(:path, id: 1, category: category_1) }
+    context 'when the guide belongs to a chapter' do
+      let!(:chapter_1) { create(:chapter, id: 1,  name: 'chapter_1') }
       let!(:language_1) { create(:language, id: 1, name: 'language_1', image_url: 'lang1.jpeg') }
       let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: language_1.id) }
 
-      before { path_1.rebuild!([guide_1]) }
+      before { chapter_1.rebuild!([guide_1]) }
 
       before { get :index }
 
@@ -104,7 +97,7 @@ describe 'api controller' do
             url: 'http://guides.mumuki.io/flbulgarelli/mumuki-sample-exercises',
             name: 'guide_1',
             language: { id: 1, name: 'language_1', image_url: 'lang1.jpeg' },
-            path: { id: 1, name: 'category_1' },
+            chapter: { id: 1, name: 'chapter_1' },
             exercises: []
           }
         ]}

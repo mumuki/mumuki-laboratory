@@ -15,7 +15,7 @@ if Tenant.on_public?
   Tenant.create!(name: 'central').switch!
 else
   haskell = Language.for_name 'haskell'
-  functional = Category.create!(name: 'Programación Funcional',
+  functional = Chapter.create!(name: 'Programación Funcional',
                                 locale: :es,
                                 description: 'Programación Funcional',
                                 image_url: 'http://mumuki.io/favicon')

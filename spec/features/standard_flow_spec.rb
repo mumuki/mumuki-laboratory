@@ -5,52 +5,26 @@ feature 'Standard Flow' do
   let!(:exercises) {
     create(:exercise, name: 'Succ', guide: guide, position: 1, description: 'Description of foo')
   }
-  let!(:category) { create(:category, name: 'Functional Programming') }
-  let!(:path) { create(:path, category: category, language: haskell) }
+  let!(:chapter) { create(:chapter, name: 'Functional Programming') }
   let!(:guide) { create(:guide, name: 'getting-started', description: 'An awesome guide', language: haskell) }
 
-  before { path.rebuild!([guide]) }
-
+  before { chapter.rebuild!([guide]) }
 
   before do
     visit '/'
   end
 
-  context 'single path' do
-    scenario 'do a guide for first time, starting from home' do
-      within('.jumbotron') do
-        click_on 'Start Practicing!'
-      end
-
-      within('.category-panel') do
-        click_on 'Start Practicing!'
-      end
-
+  scenario 'do a guide for first time, starting from home' do
+    within('.jumbotron') do
       click_on 'Start Practicing!'
-      expect(page).to have_text('Succ')
     end
-  end
 
-  context 'multiple paths' do
-    let(:js) { create(:language, name: 'js') }
-    let!(:path_js) { create(:path, category: category, language: js) }
-    let!(:guide_js) { create(:guide, name: 'getting-started-js', description: 'An awesome JS guide', language: js) }
-
-    before { path_js.rebuild!([guide_js]) }
-
-    scenario 'do a guide for first time, starting from home' do
-      within('.jumbotron') do
-        click_on 'Start Practicing!'
-      end
-
-      within('.category-panel') do
-        click_on 'haskell'
-      end
-
+    within('.chapter-panel') do
       click_on 'Start Practicing!'
-      expect(page).to have_text('Succ')
     end
-  end
 
+    click_on 'Start Practicing!'
+    expect(page).to have_text('Succ')
+  end
 
 end

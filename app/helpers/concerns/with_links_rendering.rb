@@ -13,8 +13,8 @@ module WithLinksRendering
     link_to user.name, user
   end
 
-  def link_to_path(path)
-    link_to path.name, path
+  def link_to_chapter(chapter)
+    link_to chapter.name, chapter
   end
 
   private

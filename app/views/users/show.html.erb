@@ -31,8 +31,8 @@
   <div>
     <h2><%= t(:progress) %></h2>
     <ul>
-      <% @user.submitted_paths.each do |it| %>
-        <li><%= link_to_path it %>: <%= it.stats_for(@user).passed_ratio %>%
+      <% @user.submitted_chapters.each do |it| %>
+        <li><%= link_to_chapter it %>: <%= it.stats_for(@user).passed_ratio %>%
         </li>
       <% end %>
     </ul>

@@ -1,4 +1,4 @@
-module WithGuide
+module OnGuide
   extend ActiveSupport::Concern
 
   included do

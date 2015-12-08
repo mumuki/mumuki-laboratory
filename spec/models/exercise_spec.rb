@@ -40,7 +40,6 @@ describe Exercise do
 
       before { alternative_exercise.submit_solution!(user, content: 'foo') }
 
-      it { expect(guide.exercises.at_locale).to_not eq [] }
       it { expect(guide.pending_exercises(user)).to_not eq [] }
       it { expect(guide.next_exercise(user)).to_not be nil }
       it { expect(guide.pending_exercises(user)).to include(alternative_exercise) }

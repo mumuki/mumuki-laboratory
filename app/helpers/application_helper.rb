@@ -39,7 +39,7 @@ module ApplicationHelper
   end
 
   def path_finished(guide)
-    t :path_finished_html, path: link_to_path(@guide.path) if @guide.path
+    t :path_finished_html, chapter: link_to_chapter(@guide.chapter) if @guide.chapter
   end
 
   def corollary_box(with_corollary)
