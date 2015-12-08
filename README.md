@@ -1,7 +1,7 @@
-[![Stories in Ready](https://badge.waffle.io/mumuki/mumuki-platform.png?label=ready&title=Ready)](https://waffle.io/mumuki/mumuki-platform)
-[![Build Status](https://travis-ci.org/mumuki/mumuki-platform.svg?branch=master)](https://travis-ci.org/mumuki/mumuki-platform)
-[![Code Climate](https://codeclimate.com/github/mumuki/mumuki-platform/badges/gpa.svg)](https://codeclimate.com/github/mumuki/mumuki-platform)
-[![Test Coverage](https://codeclimate.com/github/mumuki/mumuki-platform/badges/coverage.svg)](https://codeclimate.com/github/mumuki/mumuki-platform)
+[![Stories in Ready](https://badge.waffle.io/mumuki/mumuki-atheneum.png?label=ready&title=Ready)](https://waffle.io/mumuki/mumuki-atheneum)
+[![Build Status](https://travis-ci.org/mumuki/mumuki-atheneum.svg?branch=master)](https://travis-ci.org/mumuki/mumuki-atheneum)
+[![Code Climate](https://codeclimate.com/github/mumuki/mumuki-atheneum/badges/gpa.svg)](https://codeclimate.com/github/mumuki/mumuki-atheneum)
+[![Test Coverage](https://codeclimate.com/github/mumuki/mumuki-atheneum/badges/coverage.svg)](https://codeclimate.com/github/mumuki/mumuki-atheneum)
 
 Mumuki Platform
 ================
@@ -51,7 +51,7 @@ We would like to add support for Clojure, Mongo queries and SQL in the short ter
 ## How can I contribute?
 
 1. Navigate Mumuki at http://mumuki.io, and submit issues for every thing you dislike
-1. Check the current issues, fork the repository and take any of your interest. Then check our [contributing guide](https://github.com/mumuki/mumuki-platform/wiki/Contributing) and start a pull request
+1. Check the current issues, fork the repository and take any of your interest. Then check our [contributing guide](https://github.com/mumuki/mumuki-atheneum/wiki/Contributing) and start a pull request
 1. Choose your preffered language and create your test runner server, or help with existing runners development. Use any of these for inspiration:
   * [mumuki-hspec-server](https://github.com/mumuki/mumuki-hspec-server) (written in Haskell)
   * [mumuki-rspec-server](https://github.com/mumuki/mumuki-rspec-server)  (written in Ruby)
