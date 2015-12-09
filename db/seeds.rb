@@ -20,7 +20,7 @@ else
                                 description: 'Programación Funcional',
                                 image_url: 'http://mumuki.io/favicon')
 
-  Path.create!(category: functional, language: haskell).rebuild!(Guide.all)
+  Path.create!(chapter: functional, language: haskell).rebuild!(Guide.all)
 end
 
 
