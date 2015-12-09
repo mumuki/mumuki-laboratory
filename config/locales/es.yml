@@ -13,9 +13,8 @@ es:
   belongs_to_guide: Pertenece a la guía %{guide}
   beta: Beta
   cancel: Cancelar
-  categories_index_title: ¿Qué te gustaría aprender?
-  category: Categoría
-  category_languages_availability: ¡Elegí el lenguaje que querés usar!
+  chapters_index_title: ¿Qué te gustaría aprender?
+  chapter: Chapter
   collaborators_refreshed: Lista de collaboradores actualizada
   comma_or_tab_separated: Separados por tab o coma!
   continue_practicing: ¡Seguí practicando!
@@ -166,7 +165,7 @@ es:
   recent_activity: "Actividad Reciente"
   created_exercises: "Ejercicios Creados"
   created_guides: "Guías Creadas"
-  path_finished_html: "¡Terminaste %{path}! ¡Felicitaciones!"
+  chapter_finished_html: "¡Terminaste %{chapter}! ¡Felicitaciones!"
   editor: "Editor"
   console: "Consola"
   type_expressions_here: "Acá podés escribir expresiones para probar tu solución"

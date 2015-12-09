@@ -1,4 +1,4 @@
-ActiveAdmin.register PathRule do
+ActiveAdmin.register ChapterGuide do
 
   permit_params :path_id, :guide_id, :position
 

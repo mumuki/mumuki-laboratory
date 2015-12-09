@@ -28,7 +28,7 @@ class GuidesController < ApplicationController
 
   def index
     @q = params[:q]
-    @guides = paginated Guide.by_full_text(@q).at_locale
+    @guides = paginated Guide.by_full_text(@q)
   end
 
   def solutions_dump

@@ -52,14 +52,14 @@ describe WithNavigation do
     end
 
     context 'with guides' do
-      let(:path) { create(:path) }
+      let(:chapter) { create(:chapter) }
       let!(:current_user) { create(:user) }
 
       context 'when guide has no suggestions' do
         let(:guide) { create(:guide,  name: 'Guide A') }
         let(:exercise) { create(:exercise, position: 1, guide: guide) }
 
-        before { path.rebuild!([guide]) }
+        before { chapter.rebuild!([guide]) }
         before { exercise.submit_solution!(current_user).passed! }
 
         it { expect(next_button(guide)).to be nil }
@@ -69,7 +69,7 @@ describe WithNavigation do
         let!(:suggested_guide) { create(:guide) }
         let(:guide) { create(:guide) }
 
-        before { path.rebuild!([guide, guide, suggested_guide])}
+        before { chapter.rebuild!([guide, guide, suggested_guide])}
 
         it { expect(next_button(guide)).to include "<a class=\"btn btn-success\" href=\"/guides/#{suggested_guide.slug}\">Next: #{suggested_guide.name} <i class=\"fa fa-chevron-right\"></i></a>" }
       end
@@ -79,7 +79,7 @@ describe WithNavigation do
         let!(:suggested_guide_2) { create(:guide) }
         let(:guide) { create(:guide) }
 
-        before { path.rebuild!([guide, suggested_guide_1, suggested_guide_2])}
+        before { chapter.rebuild!([guide, suggested_guide_1, suggested_guide_2])}
 
         it { expect(next_button(guide)).to include "<a class=\"btn btn-success\" href=\"/guides/#{suggested_guide_1.slug}\">Next: #{suggested_guide_1.name} <i class=\"fa fa-chevron-right\"></i></a>" }
         it { expect(next_button(guide)).to be_html_safe }

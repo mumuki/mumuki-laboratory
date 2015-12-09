@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   has_many :submitted_guides, -> { uniq }, through: :submitted_exercises, class_name: 'Guide', source: :guide
 
-  has_many :submitted_paths, -> { uniq }, through: :submitted_guides, class_name: 'Path', source: :path
+  has_many :submitted_chapters, -> { uniq }, through: :submitted_guides, class_name: 'Chapter', source: :chapter
 
   has_many :solved_exercises,
            -> { where('assignments.status' => Status::Passed.to_i) },

@@ -1,0 +1,24 @@
+<h1><%= @chapter.name %></h1>
+<%= @chapter.long_description_html %>
+
+<div>
+  <% if current_user? %>
+    <h2><%= t(:progress) %>
+      <small> <%= @chapter.stats_for(current_user).passed_ratio %>%</small></h2>
+  <% else %>
+    <h2><%= t(:progress) %>
+      <small> <%= @chapter.stats_for(current_user).passed_ratio %>%</small></h2>
+  <% end %>
+
+  <% @chapter.guides.each do |guide| %>
+    <h3><%= guide.position %> <%= link_to_guide guide %></h3>
+    <%= render partial: 'layouts/progress_bar', locals: {guide: guide, stats: guide.stats_for(current_user)} if current_user? %>
+  <% end %>
+</div>
+
+<% if @chapter.links.present? %>
+  <div>
+    <h2><%= "Más información" %></h2>
+    <%= @chapter.links_html %>
+  </div>
+<% end %>

@@ -6,83 +6,82 @@ describe Guide do
   let(:guide) { create(:guide, author: author) }
 
   describe '#next_for' do
-    let(:path) { create(:path) }
+    let(:chapter) { create(:chapter) }
 
-    context 'when guide is not in path' do
+    context 'when guide is not in chapter' do
       it { expect(guide.next_for(extra_user)).to be nil }
     end
-    context 'when guide is in path' do
-      let(:guide_in_path) { create(:guide) }
+    context 'when guide is in chapter' do
+      let(:guide_in_chapter) { create(:guide) }
 
       context 'when it is single' do
-        before { path.rebuild!([create(:guide), guide_in_path]) }
+        before { chapter.rebuild!([create(:guide), guide_in_chapter]) }
 
-        it { expect(guide_in_path.next_for(extra_user)).to be nil }
-        it { expect(guide_in_path.path).to eq path }
+        it { expect(guide_in_chapter.next_for(extra_user)).to be nil }
+        it { expect(guide_in_chapter.chapter).to eq chapter }
       end
 
       context 'when there is a next guide' do
         let!(:other_guide) { create(:guide) }
-        before { path.rebuild!([create(:guide), guide_in_path, other_guide]) }
+        before { chapter.rebuild!([create(:guide), guide_in_chapter, other_guide]) }
 
-        it { expect(guide_in_path.next_for(extra_user)).to eq other_guide }
+        it { expect(guide_in_chapter.next_for(extra_user)).to eq other_guide }
       end
       context 'when there are many next guides at same level' do
         let!(:other_guide_1) { create(:guide) }
         let!(:other_guide_2) { create(:guide) }
 
-        before { path.rebuild!([create(:guide), guide_in_path, other_guide_1, other_guide_2]) }
+        before { chapter.rebuild!([create(:guide), guide_in_chapter, other_guide_1, other_guide_2]) }
 
-        it { expect(guide_in_path.next_for(extra_user)).to eq other_guide_1 }
+        it { expect(guide_in_chapter.next_for(extra_user)).to eq other_guide_1 }
       end
     end
   end
 
   describe '#contextualized_name' do
-    let(:path) { create(:path) }
-    context 'when guide is not in path' do
+    let(:chapter) { create(:chapter) }
+    context 'when guide is not in chapter' do
       it { expect(guide.contextualized_name).to be guide.name }
     end
-    context 'when guide is in path' do
-      let!(:guide_in_path) { create(:guide) }
-      before { path.rebuild! [create(:guide), guide_in_path] }
+    context 'when guide is in chapter' do
+      let!(:guide_in_chapter) { create(:guide) }
+      before { chapter.rebuild! [create(:guide), guide_in_chapter] }
 
-      it { expect(guide_in_path.contextualized_name).to eq "2. #{guide_in_path.name}" }
+      it { expect(guide_in_chapter.contextualized_name).to eq "2. #{guide_in_chapter.name}" }
     end
   end
 
   describe '#slugged_name' do
-    let(:path) { create(:path) }
-    context 'when guide is not in path' do
+    let(:chapter) { create(:chapter) }
+    context 'when guide is not in chapter' do
       it { expect(guide.slugged_name).to be guide.name }
     end
-    context 'when guide is in path' do
-      let(:guide_in_path) { create(:guide) }
+    context 'when guide is in chapter' do
+      let(:guide_in_chapter) { create(:guide) }
 
       before do
-        path.rebuild!([create(:guide), guide_in_path])
+        chapter.rebuild!([create(:guide), guide_in_chapter])
       end
 
-      it { expect(guide_in_path.slugged_name).to eq "#{path.name}: #{guide_in_path.name}" }
+      it { expect(guide_in_chapter.slugged_name).to eq "#{chapter.name}: #{guide_in_chapter.name}" }
     end
   end
 
   describe '#slug' do
-    context 'when guide is not in path' do
-      let(:guide_not_in_path) { create(:guide, name: 'Una Guia', id: 80) }
-      it { expect(guide_not_in_path.slug).to eq '80-una-guia' }
+    context 'when guide is not in chapter' do
+      let(:guide_not_in_chapter) { create(:guide, name: 'Una Guia', id: 80) }
+      it { expect(guide_not_in_chapter.slug).to eq '80-una-guia' }
     end
-    context 'when guide is in path' do
-      let(:category) { create(:category, name: 'Fundamentos de Programacion') }
-      let(:path) { create(:path, category: category) }
-      let(:guide_in_path) { create(:guide, name: 'Una Guia', id: 180) }
+    context 'when guide is in chapter' do
+      let(:chapter) { create(:chapter, name: 'Fundamentos de Programacion') }
+      let(:guide_in_chapter) { create(:guide, name: 'Una Guia', id: 180) }
 
       before do
-        path.rebuild!([create(:guide), create(:guide), guide_in_path])
+        chapter.rebuild!([create(:guide), create(:guide), guide_in_chapter])
       end
 
-      it { expect(guide_in_path.path).to eq path }
-      it { expect(guide_in_path.slug).to eq '180-fundamentos-de-programacion-una-guia' }
+      it { expect(guide_in_chapter.chapter).to eq chapter }
+      it { expect(guide_in_chapter.slug).to eq '180-fundamentos-de-programacion-una-guia' }
     end
   end
 

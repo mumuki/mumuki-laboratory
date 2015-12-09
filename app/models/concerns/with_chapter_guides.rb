@@ -1,9 +1,9 @@
-module WithPathRules
+module WithChapterGuides
   extend ActiveSupport::Concern
 
   included do
-    has_many :path_rules
-    has_many :guides, -> { order('path_rules.position') }, through: :path_rules
+    has_many :chapter_guides
+    has_many :guides, -> { order('chapter_guides.position') }, through: :chapter_guides
   end
 
   def pending_guides(user)
@@ -15,7 +15,7 @@ module WithPathRules
                 and assignments.submitter_id = #{user.id}
                 and assignments.status = #{Status::Passed.to_i}").
         where('assignments.id is null').
-        group('public.guides.id', 'path_rules.position')
+        group('public.guides.id', 'chapter_guides.position')
   end
 
   def first_guide

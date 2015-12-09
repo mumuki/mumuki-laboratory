@@ -1,0 +1,25 @@
+<h2 class="text-center"><%= t :chapters_index_title %></h2>
+
+<br>
+
+<div class="row">
+
+  <% @chapters.each do |it| %>
+    <div class="col-md-6">
+      <div class="panel panel-default exercise-panel">
+        <div class="panel-body text-center chapter-panel">
+          <h3><%= it.name %></h3>
+
+          <hr>
+
+          <p>
+            <%= it.description_html %>
+          </p>
+          <a href="<%= guide_path(it.first_guide) %>" class="btn btn-success">
+            <%= t(:start_practicing) %>
+          </a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

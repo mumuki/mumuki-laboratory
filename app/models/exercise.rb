@@ -13,7 +13,7 @@ class Exercise < ActiveRecord::Base
           WithMarkup,
           WithAuthor,
           WithAssignments,
-          WithGuide,
+          OnGuide,
           WithLocale,
           WithLanguage,
           WithLayout,

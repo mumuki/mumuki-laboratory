@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151206072741) do
+ActiveRecord::Schema.define(version: 20151208231749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,14 +75,23 @@ ActiveRecord::Schema.define(version: 20151206072741) do
   add_index "assignments", ["exercise_id"], name: "index_assignments_on_exercise_id", using: :btree
   add_index "assignments", ["submitter_id"], name: "index_assignments_on_submitter_id", using: :btree
 
-  create_table "categories", force: true do |t|
+  create_table "chapter_guides", force: true do |t|
+    t.integer  "guide_id"
+    t.integer  "chapter_id"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+  end
+
+  create_table "chapters", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.string   "locale"
     t.string   "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "position",         default: 0, null: false
+    t.integer  "number",           default: 0, null: false
     t.text     "links"
     t.text     "long_description"
   end
@@ -192,15 +201,6 @@ ActiveRecord::Schema.define(version: 20151206072741) do
 
   add_index "languages", ["extension"], name: "index_languages_on_extension", using: :btree
   add_index "languages", ["name"], name: "index_languages_on_name", unique: true, using: :btree
-
-  create_table "path_rules", force: true do |t|
-    t.integer  "guide_id"
-    t.integer  "path_id"
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "slug"
-  end
 
   create_table "paths", force: true do |t|
     t.integer  "category_id"
