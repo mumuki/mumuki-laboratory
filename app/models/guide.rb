@@ -25,7 +25,7 @@ class Guide < ActiveRecord::Base
 
   belongs_to :language
 
-  validates_presence_of :url
+  validates_presence_of :slug
 
   markup_on :description, :teaser, :corollary
 
