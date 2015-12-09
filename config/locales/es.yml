@@ -165,7 +165,7 @@ es:
   recent_activity: "Actividad Reciente"
   created_exercises: "Ejercicios Creados"
   created_guides: "Guías Creadas"
-  path_finished_html: "¡Terminaste %{chapter}! ¡Felicitaciones!"
+  chapter_finished_html: "¡Terminaste %{chapter}! ¡Felicitaciones!"
   editor: "Editor"
   console: "Consola"
   type_expressions_here: "Acá podés escribir expresiones para probar tu solución"

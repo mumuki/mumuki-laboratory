@@ -137,7 +137,7 @@ en:
   need_a_hint: "Do you need a hint?"
   about: "About"
   sending_solution: "Sending solution"
-  path_finished_html: "You have finished %{chapter}!"
+  chapter_finished_html: "You have finished %{chapter}!"
   editor: "Editor"
   console: "Console"
   type_expressions_here: "You can type expressions here to test your solution"
