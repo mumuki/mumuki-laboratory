@@ -38,7 +38,7 @@ module ApplicationHelper
         '</ul>').html_safe
   end
 
-  def path_finished(guide)
+  def chapter_finished(guide)
     t :path_finished_html, chapter: link_to_chapter(@guide.chapter) if @guide.chapter
   end
 
