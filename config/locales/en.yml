@@ -13,7 +13,7 @@ en:
   belongs_to_guide: Belongs to guide %{guide}
   beta: Beta
   cancel: Cancel
-  categories_index_title: What do you want to learn?
+  chapters_index_title: What do you want to learn?
   chapter: Capítulo
   collaborators_refreshed: Collaborators list refreshed
   comma_or_tab_separated: Comma or tab separated!
@@ -137,8 +137,8 @@ en:
   need_a_hint: "Do you need a hint?"
   about: "About"
   sending_solution: "Sending solution"
-  chapter_finished_html: "You have finished %{chapter}!"
   editor: "Editor"
+  chapter_finished_html: "You have finished %{chapter}!"
   console: "Console"
   type_expressions_here: "You can type expressions here to test your solution"
   navigation_continue: 'Next: %{sibling}'

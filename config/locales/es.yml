@@ -13,7 +13,7 @@ es:
   belongs_to_guide: Pertenece a la guía %{guide}
   beta: Beta
   cancel: Cancelar
-  categories_index_title: ¿Qué te gustaría aprender?
+  chapters_index_title: ¿Qué te gustaría aprender?
   chapter: Chapter
   collaborators_refreshed: Lista de collaboradores actualizada
   comma_or_tab_separated: Separados por tab o coma!
