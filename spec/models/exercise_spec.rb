@@ -250,8 +250,8 @@ describe Exercise do
     end
   end
 
-  describe '#slug' do
-    it { expect(Exercise.find(exercise.slug)).to eq exercise }
-    it { expect(Problem.find(exercise.slug)).to eq exercise }
+  describe '#friendly_name' do
+    it { expect(Exercise.find(exercise.friendly_name)).to eq exercise }
+    it { expect(Problem.find(exercise.friendly_name)).to eq exercise }
   end
 end

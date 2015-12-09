@@ -19,7 +19,7 @@ class Exercise < ActiveRecord::Base
           WithLayout,
           Submittable,
           Queriable,
-          Slugged
+          FriendlyName
 
   after_initialize :defaults, if: :new_record?
 
@@ -44,8 +44,8 @@ class Exercise < ActiveRecord::Base
     [guide.try(&:extra), self[:extra_code]].compact.join("\n")
   end
 
-  def slugged_name
-    with_parent_name { "#{parent.slugged_name} - #{name}" }
+  def friendly
+    with_parent_name { "#{parent.friendly} - #{name}" }
   end
 
   private

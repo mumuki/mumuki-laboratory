@@ -9,7 +9,7 @@ if Tenant.on_public?
    'pdep-utn/mumuki-funcional-guia-1',
    'pdep-utn/mumuki-funcional-guia-2-orden-superior'].each do |slug|
     puts "Importing #{slug}"
-    Guide.create!(url: "http://bibliotheca.mumuki.io/guides/#{slug}").import!
+    Guide.create!(slug: slug).import!
   end
 
   Tenant.create!(name: 'central').switch!

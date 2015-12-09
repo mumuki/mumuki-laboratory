@@ -16,7 +16,7 @@ class Guide < ActiveRecord::Base
           WithExercises,
           WithStats,
           WithExpectations,
-          Slugged
+          FriendlyName
 
   has_many :imports, -> { order(created_at: :desc) }
   has_many :exports
@@ -57,8 +57,8 @@ class Guide < ActiveRecord::Base
     stats_for(user).done?
   end
 
-  def slugged_name
-    with_parent_name { "#{parent.slugged_name}: #{name}" }
+  def friendly
+    with_parent_name { "#{parent.friendly}: #{name}" }
   end
 
   def position

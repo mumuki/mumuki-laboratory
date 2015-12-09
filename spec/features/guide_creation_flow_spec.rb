@@ -12,7 +12,7 @@ feature 'Create guide flow' do
 
     click_on 'New Guide'
 
-    fill_in 'guide_url', with: 'http://content.mumuki.io/d6af7358e195e8be'
+    fill_in 'guide_slug', with: 'mumuki/mumuki-guia-funcional-0'
 
     click_on 'Create Guide'
 

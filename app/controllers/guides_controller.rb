@@ -50,6 +50,6 @@ class GuidesController < ApplicationController
   end
 
   def guide_params
-    params.require(:guide).permit(:url)
+    params.require(:guide).permit(:slug)
   end
 end

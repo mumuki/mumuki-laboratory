@@ -46,7 +46,7 @@ describe 'api controller' do
         { guides: [
           {
             id: 1,
-            slug: 'http://guides.mumuki.io/flbulgarelli/mumuki-sample-exercises',
+            slug: 'flbulgarelli/mumuki-sample-exercises',
             name: 'guide_1',
             language: { id: 1, name: 'language_1', image_url: 'lang1.jpeg' },
             exercises: [
@@ -68,7 +68,7 @@ describe 'api controller' do
           { guides: [
             {
               id: 1,
-              slug: 'http://guides.mumuki.io/flbulgarelli/mumuki-sample-exercises',
+              slug: 'flbulgarelli/mumuki-sample-exercises',
               name: 'guide_1',
               language: { id: 1, name: 'language_1', image_url: 'lang1.jpeg' },
               exercises: []
@@ -93,7 +93,7 @@ describe 'api controller' do
         { guides: [
           {
             id: 1,
-            slug: 'http://guides.mumuki.io/flbulgarelli/mumuki-sample-exercises',
+            slug: 'flbulgarelli/mumuki-sample-exercises',
             name: 'guide_1',
             language: { id: 1, name: 'language_1', image_url: 'lang1.jpeg' },
             chapter: { id: 1, name: 'chapter_1' },

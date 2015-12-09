@@ -5,7 +5,7 @@ FactoryGirl.define do
     locale 'en'
     description 'A Guide'
     author { create(:user) }
-    slug 'http://bibliotheca.mumuki.io/flbulgarelli/mumuki-sample-exercises'
+    slug 'flbulgarelli/mumuki-sample-exercises'
     language
   end
 

@@ -4,7 +4,7 @@ class Api::GuidesController < Api::BaseController
     @guides = Guide.all
     render json: { guides:
       @guides.as_json(
-        only: [:id, :name, :url, :position],
+        only: [:id, :name, :slug, :position],
         include: {
           exercises: { only: [:id, :name, :position] },
           language: { only: [:id, :name, :image_url] },
@@ -23,7 +23,7 @@ class Api::GuidesController < Api::BaseController
   private
 
   def guide_params
-    params.permit(:url, :beta, :learning, :name, :description, :corollary, :locale, :expectations, :language,
+    params.permit(:slug, :beta, :learning, :name, :description, :corollary, :locale, :expectations, :language,
       exercises: [:type, :tag_list, :layout, :name, :description, :hint, :corollary, :test, :expectations, :original_id])
   end
 
