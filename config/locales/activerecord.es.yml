@@ -28,6 +28,9 @@ es:
       exercise:
         one: Ejercicio
         other: Ejercicios
+      chapter:
+        one: Capítulo
+        other: Capítulos
       guide: Guía
       import: Importación
       language: Lenguaje
