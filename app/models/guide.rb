@@ -61,6 +61,30 @@ class Guide < ActiveRecord::Base
     with_parent_name { "#{parent.slugged_name}: #{name}" }
   end
 
+  def position
+    path_rule.try(&:position)
+  end
+
+  def url
+    "bibliotheca.mumuki.io/guides/#{slug}"
+  end
+
+  def read_from_json(json)
+    self.assign_attributes json.except('exercises', 'language', 'original_id_format', 'github_repository')
+    self.language = Language.for_name(json['language'])
+    self.save!
+
+    json['exercises'].each_with_index do |e, i|
+      position = i + 1
+      exercise = Exercise.class_for(e['type']).find_or_initialize_by(position: position, guide_id: self.id)
+      exercise.position = position
+      exercise.assign_attributes(e.except('type'))
+      exercise.language = self.language
+      exercise.locale = self.locale
+      exercise.save!
+    end
+  end
+
   private
 
   def user_resources_to_users(resources)
