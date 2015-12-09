@@ -6,9 +6,11 @@ class Tenant < ActiveRecord::Base
   end
 
   def destroy!
-    transaction do
-      super
+    super
+    begin
       Apartment::Tenant.drop name
+    rescue Apartment::TenantNotFound => _e
+      Rails.logger.warn("Tenant #{name} not found")
     end
   end
 

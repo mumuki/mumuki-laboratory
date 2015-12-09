@@ -46,15 +46,12 @@ if Tenant.on_public?
     Guide.create!(slug: slug).import!
   end
 
-  Tenant.create!(name: 'central').switch!
+  Tenant.create!(name: 'central', locale: 'es').switch!
 else
-  haskell = Language.for_name 'haskell'
-  functional = Chapter.create!(name: 'Programación Funcional',
-                                locale: :es,
-                                description: 'Programación Funcional',
-                                image_url: 'http://mumuki.io/favicon')
-
-  Path.create!(chapter: functional, language: haskell).rebuild!(Guide.all)
+  Chapter.create!(name: 'Programación Funcional',
+                  locale: :es,
+                  description: 'Programación Funcional',
+                  image_url: 'http://mumuki.io/favicon').rebuild!(Guide.all)
 end
 
 
