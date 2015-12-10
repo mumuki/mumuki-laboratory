@@ -10,7 +10,7 @@ class Chapter < ActiveRecord::Base
 
   has_many :exercises, through: :guides
 
-  def slugged_name
+  def friendly
     name
   end
 

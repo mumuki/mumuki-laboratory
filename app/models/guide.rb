@@ -62,7 +62,7 @@ class Guide < ActiveRecord::Base
   end
 
   def position
-    path_rule.try(&:position)
+    chapter_guide.try(&:position)
   end
 
   def url

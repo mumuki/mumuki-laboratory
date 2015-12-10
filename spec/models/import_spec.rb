@@ -49,7 +49,7 @@ describe Import do
 
   it { expect(guide.exercises.count).to eq 3 }
   it { expect(guide.exercises.first.language).to eq haskell }
-  it { puts expect(guide.exercises.first.friendly_name).to include 'sample-guide-bar' }
+  it { expect(guide.exercises.first.friendly_name).to include 'sample-guide-bar' }
 
   it { expect(guide.exercises.pluck(:name)).to eq %W(Bar Foo Baz) }
 
