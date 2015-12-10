@@ -2,7 +2,6 @@ FactoryGirl.define do
 
   factory :language do
     sequence(:name) {|n| "lang#{n}"}
-    sequence(:extension) {|n| "ext#{n}"}
 
     test_runner_url { Faker::Internet.url }
     image_url { Faker::Internet.url }
@@ -10,7 +9,6 @@ FactoryGirl.define do
   end
 
   factory :haskell, parent: :language do
-    extension 'hs'
     name 'haskell'
   end
 
