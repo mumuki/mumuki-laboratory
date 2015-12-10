@@ -18,19 +18,7 @@ class ApplicationController < ActionController::Base
                 :subject
 
   def set_locale
-    I18n.locale = subdomain_locale || params[:locale] ||  I18n.default_locale
-  end
-
-  def default_url_options
-    subdomain_locale ? {} : { locale: I18n.locale }
-  end
-
-  def subdomain_locale
-    unless @subdomain_locale
-      parsed_locale = request.subdomains.first
-      @subdomain_locale = I18n.available_locales.map(&:to_s).include?(parsed_locale) ? parsed_locale : nil
-    end
-    @subdomain_locale
+    I18n.locale = Tenant.current.locale
   end
 
   private

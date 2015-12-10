@@ -1,6 +1,6 @@
 RSpec.configure do |config|
   config.before(:suite) do
-    Apartment::Tenant.drop 'test' rescue nil
+    Tenant.all.each(&:destroy!)
     Tenant.create!(name: 'test')
   end
 
