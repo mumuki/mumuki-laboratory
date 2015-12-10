@@ -51,10 +51,10 @@ describe Guide do
     end
   end
 
-  describe '#slugged_name' do
+  describe '#friendly' do
     let(:chapter) { create(:chapter) }
     context 'when guide is not in chapter' do
-      it { expect(guide.slugged_name).to be guide.name }
+      it { expect(guide.friendly).to be guide.name }
     end
     context 'when guide is in chapter' do
       let(:guide_in_chapter) { create(:guide) }
@@ -63,14 +63,14 @@ describe Guide do
         chapter.rebuild!([create(:guide), guide_in_chapter])
       end
 
-      it { expect(guide_in_chapter.slugged_name).to eq "#{chapter.name}: #{guide_in_chapter.name}" }
+      it { expect(guide_in_chapter.friendly).to eq "#{chapter.name}: #{guide_in_chapter.name}" }
     end
   end
 
-  describe '#slug' do
+  describe '#friendly_name' do
     context 'when guide is not in chapter' do
       let(:guide_not_in_chapter) { create(:guide, name: 'Una Guia', id: 80) }
-      it { expect(guide_not_in_chapter.slug).to eq '80-una-guia' }
+      it { expect(guide_not_in_chapter.friendly_name).to eq '80-una-guia' }
     end
     context 'when guide is in chapter' do
       let(:chapter) { create(:chapter, name: 'Fundamentos de Programacion') }
@@ -81,7 +81,7 @@ describe Guide do
       end
 
       it { expect(guide_in_chapter.chapter).to eq chapter }
-      it { expect(guide_in_chapter.slug).to eq '180-fundamentos-de-programacion-una-guia' }
+      it { expect(guide_in_chapter.friendly_name).to eq '180-fundamentos-de-programacion-una-guia' }
     end
   end
 

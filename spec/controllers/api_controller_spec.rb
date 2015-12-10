@@ -46,7 +46,7 @@ describe 'api controller' do
         { guides: [
           {
             id: 1,
-            url: 'http://guides.mumuki.io/flbulgarelli/mumuki-sample-exercises',
+            slug: 'flbulgarelli/mumuki-sample-exercises',
             name: 'guide_1',
             language: { id: 1, name: 'language_1', image_url: 'lang1.jpeg' },
             exercises: [
@@ -55,7 +55,6 @@ describe 'api controller' do
           }
         ]}
       }
-
       it { expect(response.body).to json_eq expected_json }
     end
 
@@ -69,7 +68,7 @@ describe 'api controller' do
           { guides: [
             {
               id: 1,
-              url: 'http://guides.mumuki.io/flbulgarelli/mumuki-sample-exercises',
+              slug: 'flbulgarelli/mumuki-sample-exercises',
               name: 'guide_1',
               language: { id: 1, name: 'language_1', image_url: 'lang1.jpeg' },
               exercises: []
@@ -94,7 +93,7 @@ describe 'api controller' do
         { guides: [
           {
             id: 1,
-            url: 'http://guides.mumuki.io/flbulgarelli/mumuki-sample-exercises',
+            slug: 'flbulgarelli/mumuki-sample-exercises',
             name: 'guide_1',
             language: { id: 1, name: 'language_1', image_url: 'lang1.jpeg' },
             chapter: { id: 1, name: 'chapter_1' },

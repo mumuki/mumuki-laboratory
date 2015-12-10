@@ -45,13 +45,13 @@ describe Import do
   it { expect(guide.name).to eq 'sample guide' }
   it { expect(guide.language).to eq haskell }
   it { expect(guide.description).to eq 'Baz' }
-  it { expect(guide.slug).to include 'sample-guide' }
+  it { expect(guide.friendly_name).to include 'sample-guide' }
 
   it { expect(guide.exercises.count).to eq 3 }
   it { expect(guide.exercises.first.language).to eq haskell }
-  it { expect(guide.exercises.first.slug).to include 'sample-guide-bar' }
+  it { expect(guide.exercises.first.friendly_name).to include 'sample-guide-bar' }
 
-  it { expect(guide.exercises.pluck(:name)).to eq %w(Bar Foo Baz) }
+  it { expect(guide.exercises.pluck(:name)).to eq %W(Bar Foo Baz) }
 
 
 end

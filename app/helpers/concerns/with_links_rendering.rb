@@ -21,6 +21,6 @@ module WithLinksRendering
 
   def extract_name(named, options)
     plain = options.delete(:plain)
-    plain ? named.name : named.slugged_name
+    plain ? named.name : named.friendly
   end
 end
