@@ -16,7 +16,7 @@ class Api::GuidesController < Api::BaseController
 
   def create
     guide = Guide.find_or_create_by(slug: params[:slug])
-    guide.read_from_json(guide_params)
+    guide.import_from_json!(guide_params)
     render json: { guide: guide.as_json }
   end
 

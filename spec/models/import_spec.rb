@@ -37,7 +37,7 @@ describe Import do
           original_id: 2}]}.deep_stringify_keys }
 
   before do
-    import.read_from_json(guide_json)
+    import.import_from_json!(guide_json)
     guide.reload
   end
 
