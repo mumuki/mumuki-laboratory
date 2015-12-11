@@ -42,16 +42,11 @@ Rails.application.routes.draw do
       get :details
     end
     # All users
-    resources :imports, controller: 'guide_imports', only: [:create, :index]
-    resources :exports, controller: 'guide_exports', only: [:create, :index]
-    # All users
     resources :exercises, controller: 'guide_exercises', only: :index
   end
 
   # All users
   resources :users, only: [:show, :index] do
-    # Nested user
-    resources :exercises, controller: 'user_exercises', only: :index
     #nested user
     resources :solved_exercises, controller: 'user_solved_exercises', only: :index
     #nested user
