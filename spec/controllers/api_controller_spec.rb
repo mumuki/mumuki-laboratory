@@ -108,7 +108,7 @@ describe 'api controller' do
     end
 
     describe 'post' do
-      context 'when there are no guides ' do
+      context 'when there are no guides' do
         before { post :create, {
             name: 'sample guide',
             description: 'Baz',
