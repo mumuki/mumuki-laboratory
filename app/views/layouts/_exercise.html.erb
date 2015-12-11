@@ -23,29 +23,20 @@
       <li><%= t :created_at %>: <%= time_ago_in_words @exercise.created_at %></li>
       <li><%= t :status %>: <%= exercise_status_icon(@exercise) %></li>
       <li><%= t :tag %>: <%= link_to_tag_list(@exercise.tag_list) %></li>
-      <% restricted_to_author @exercise do %>
-        <li><%= t :edit %>: <%= link_to fa_icon('pencil'), edit_exercise_path(@exercise), title: t(:edit) %></li>
-      <% end %>
     </ul>
   </div>
 </div>
 
 <div>
-  <% if @exercise.guide %>
-    <p>
-      <%= previous_nav_button(@exercise) %>
-      <span data-toggle="popover"
-            title="<%= @exercise.guide.name %>"
-            data-content="<%= @exercise.guide.description_html.to_str %>">
-              <%= link_to_guide(@exercise.guide) %>
-            </span>
-      <%= next_nav_button(@exercise) %>
-    </p>
-  <% else %>
-    <p>
-      <%= raw t :authored_by, author: link_to(@exercise.author.name, user_path(@exercise.author)) %>
-    </p>
-  <% end %>
+  <p>
+    <%= previous_nav_button(@exercise) %>
+    <span data-toggle="popover"
+          title="<%= @exercise.guide.name %>"
+          data-content="<%= @exercise.guide.description_html.to_str %>">
+            <%= link_to_guide(@exercise.guide) %>
+          </span>
+    <%= next_nav_button(@exercise) %>
+  </p>
 </div>
 
 

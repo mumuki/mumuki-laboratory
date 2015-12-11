@@ -8,14 +8,12 @@ en:
   all: All
   all_exercises: All exercises
   are_you_sure: Are you sure?
-  authored_by: Authored by %{author}
   basic: Basic
   belongs_to_guide: Belongs to guide %{guide}
   beta: Beta
   cancel: Cancel
   chapters_index_title: What do you want to learn?
   chapter: Chapter
-  collaborators_refreshed: Collaborators list refreshed
   comma_or_tab_separated: Comma or tab separated!
   continue_practicing: Continue Practicing!
   contributors: Contributors
@@ -104,7 +102,6 @@ en:
   processing_you_solution: We are processing you solution
   profile_of: Profile of %{username}
   progress: Progresss
-  refresh_collaborators: Refresh collaborators!
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   running: running
   search: Search

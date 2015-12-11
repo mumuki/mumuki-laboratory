@@ -36,12 +36,6 @@ Rails.application.routes.draw do
 
   # All users
   resources :guides, only: [:show, :index] do
-    # All users
-    member do
-      post :collaborators_refresh
-      get :details
-    end
-    # All users
     resources :exercises, controller: 'guide_exercises', only: :index
   end
 

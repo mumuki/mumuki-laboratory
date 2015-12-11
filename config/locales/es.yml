@@ -8,14 +8,12 @@ es:
   all: Todos
   all_exercises: Todos los ejercicios
   are_you_sure: ¿Estás seguro?
-  authored_by: Creado por %{author}
   basic: Básico
   belongs_to_guide: Pertenece a la guía %{guide}
   beta: Beta
   cancel: Cancelar
   chapters_index_title: ¿Qué te gustaría aprender?
   chapter: Capítulo
-  collaborators_refreshed: Lista de collaboradores actualizada
   comma_or_tab_separated: Separados por tab o coma!
   continue_practicing: ¡Seguí practicando!
   contributors: Autores
@@ -107,7 +105,6 @@ es:
   progress: Progreso
   exercises: Ejercicios
   follow_us: Seguínos
-  refresh_collaborators: ¡Actualizá los colaboradores!
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
   running: procesando
   search: 'Buscá, por ejemplo: polimorfismo, haskell o competenciaDeSaltos'

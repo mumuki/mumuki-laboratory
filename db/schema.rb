@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151210204646) do
+ActiveRecord::Schema.define(version: 20151211033000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,20 +95,6 @@ ActiveRecord::Schema.define(version: 20151210204646) do
     t.text     "links"
     t.text     "long_description"
   end
-
-  create_table "collaborators", force: true do |t|
-    t.integer "guide_id"
-    t.integer "user_id"
-  end
-
-  add_index "collaborators", ["guide_id", "user_id"], name: "index_collaborators_on_guide_id_and_user_id", unique: true, using: :btree
-
-  create_table "contributors", force: true do |t|
-    t.integer "guide_id"
-    t.integer "user_id"
-  end
-
-  add_index "contributors", ["guide_id", "user_id"], name: "index_contributors_on_guide_id_and_user_id", unique: true, using: :btree
 
   create_table "event_subscribers", force: true do |t|
     t.string   "url"

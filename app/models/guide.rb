@@ -7,11 +7,9 @@ class Guide < ActiveRecord::Base
   }
 
   include WithSearch,
-          WithAuthor,
           WithMarkup,
           WithTeaser,
           WithLocale,
-          WithCollaborators,
           OnChapter,
           WithExercises,
           WithStats,
@@ -20,8 +18,6 @@ class Guide < ActiveRecord::Base
 
   has_many :imports, -> { order(created_at: :desc) }
   has_many :exports
-
-  has_and_belongs_to_many :contributors, class_name: 'User', join_table: 'contributors'
 
   belongs_to :language
 
@@ -38,11 +34,6 @@ class Guide < ActiveRecord::Base
   #TODO denormalize
   def search_tags
     exercises.flat_map(&:search_tags).uniq
-  end
-
-  def update_contributors!
-    self.contributors = user_resources_to_users author.contributors(self)
-    save!
   end
 
   def new?

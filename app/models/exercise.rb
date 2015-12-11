@@ -11,7 +11,6 @@ class Exercise < ActiveRecord::Base
   include WithSearch,
           WithTeaser,
           WithMarkup,
-          WithAuthor,
           WithAssignments,
           OnGuide,
           WithLocale,
@@ -34,10 +33,6 @@ class Exercise < ActiveRecord::Base
 
   def generate_original_id!
     update!(original_id: id) unless original_id
-  end
-
-  def collaborator?(user)
-    guide.present? && guide.authored_by?(user)
   end
 
   def extra_code

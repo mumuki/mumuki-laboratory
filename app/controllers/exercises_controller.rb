@@ -6,7 +6,6 @@ class ExercisesController < ApplicationController
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
   before_action :set_guide, only: [:show]
   before_action :set_previous_solution, only: :show
-  before_action :authorize_edition!, only: [:edit, :update]
 
   def show
     @solution = Solution.new if current_user?
