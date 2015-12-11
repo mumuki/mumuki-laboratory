@@ -102,17 +102,5 @@ describe Guide do
       guide.exercises = [create(:exercise, language: guide.language), create(:exercise, language: guide.language)]
       guide.save!
     end
-
-    context 'when no submission' do
-      it { expect(guide.solutions_for(extra_user)).to eq [] }
-    end
-    context 'when there are submissions' do
-      before do
-        guide.exercises.first.submit_solution!(extra_user, content: 'foo1')
-        guide.exercises.first.submit_solution!(extra_user, content: 'foo2')
-        guide.exercises.second.submit_solution!(extra_user, content: 'bar')
-      end
-      it { expect(guide.solutions_for(extra_user)).to eq %w(foo2 bar) }
-    end
   end
 end

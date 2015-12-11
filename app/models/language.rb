@@ -5,8 +5,7 @@ class Language < ActiveRecord::Base
 
   enum output_content_type: [:plain, :html, :markdown]
 
-  validates_presence_of :test_runner_url,
-                        :extension, :image_url, :output_content_type
+  validates_presence_of :test_runner_url, :image_url, :output_content_type
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
 
@@ -16,10 +15,6 @@ class Language < ActiveRecord::Base
 
   def bridge
     Mumukit::Bridge::Bridge.new(test_runner_url)
-  end
-
-  def test_extension
-    self[:test_extension] || extension
   end
 
   def highlight_mode

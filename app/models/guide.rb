@@ -49,10 +49,6 @@ class Guide < ActiveRecord::Base
     created_at > 7.days.ago
   end
 
-  def solutions_for(current_user)
-    exercises.map { |it| it.assignment_for(current_user).try &:solution }.compact
-  end
-
   def done_for?(user)
     stats_for(user).done?
   end

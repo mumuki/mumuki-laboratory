@@ -1,7 +1,7 @@
 class GuidesController < ApplicationController
 
   before_action :authenticate!, except: [:index, :show]
-  before_action :set_guide, only: [:show, :solutions_dump]
+  before_action :set_guide, only: :show
 
   def new
     @guide = Guide.new(name: params[:q])
@@ -29,13 +29,6 @@ class GuidesController < ApplicationController
   def index
     @q = params[:q]
     @guides = paginated Guide.by_full_text(@q)
-  end
-
-  def solutions_dump
-    @assignments = @guide.solutions_for(current_user)
-
-    stream = render_to_string layout: false, formats: [:text]
-    send_data(stream, type: 'text/plain', filename: "guide.#{@guide.language.extension}")
   end
 
   private
