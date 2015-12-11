@@ -1,9 +1,8 @@
 require 'spec_helper'
 
 describe Guide do
-  let(:author) { create(:user, name: 'rigoberto88') }
   let!(:extra_user) { create(:user, name: 'ignatiusReilly') }
-  let(:guide) { create(:guide, author: author) }
+  let(:guide) { create(:guide) }
 
   describe '#next_for' do
     let(:chapter) { create(:chapter) }

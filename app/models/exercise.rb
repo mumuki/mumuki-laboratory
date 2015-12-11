@@ -23,7 +23,7 @@ class Exercise < ActiveRecord::Base
   after_initialize :defaults, if: :new_record?
 
   validates_presence_of :name, :description, :language,
-                        :submissions_count
+                        :submissions_count, :guide
 
   markup_on :description, :hint, :teaser, :corollary
 

@@ -184,15 +184,6 @@ describe Exercise do
     end
   end
 
-  describe '#authored_by?' do
-    let(:other_user) { create(:user) }
-
-    context 'when it does not belong to a guide' do
-      it { expect(exercise.authored_by?(exercise.author)).to be true }
-      it { expect(exercise.authored_by?(other_user)).to be false }
-    end
-  end
-
   describe '#guide_done_for?' do
 
     context 'when it does not belong to a guide' do

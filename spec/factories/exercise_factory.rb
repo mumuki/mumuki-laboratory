@@ -20,6 +20,7 @@ FactoryGirl.define do
     test 'dont care'
     locale :en
     position 1
+    guide
   end
 
   factory :playground do
