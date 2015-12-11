@@ -72,14 +72,4 @@ class Guide < ActiveRecord::Base
     end
   end
 
-  private
-
-  def user_resources_to_users(resources)
-    resources.
-        select { |it| it[:type] = 'User' }.
-        map { |it| it[:login] }.
-        map { |it| User.find_by_name(it) }.
-        compact
-  end
-
 end
