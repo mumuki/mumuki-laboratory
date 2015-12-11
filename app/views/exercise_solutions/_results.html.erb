@@ -1,6 +1,6 @@
 <%
    @guide = @exercise.guide
-   @stats = @guide.stats_for(current_user) if @guide
+   @stats = @guide.stats_for(current_user)
 %>
 
 
@@ -58,12 +58,11 @@
               body: assignment_help_email_body(assignment),
               class: 'text-warning warning pull-left' %>
 
-  <%= next_button(@exercise) || next_button(@guide) if @guide %>
+  <%= next_button(@exercise) || next_button(@guide) %>
 </div>
 
 <script>
   $('#exercise-status-icon').html("<%= escape_javascript exercise_status_icon(@exercise) %>");
-  <% if @stats %>
 
   $('#failed-progress-bar').css("width", "<%= @stats.failed_ratio %>%");
   $('#passed-progress-bar').css("width", "<%= @stats.passed_ratio %>%");
@@ -73,7 +72,6 @@
   $('#guide-done').modal()
   <% end %>
 
-  <% end %>
 </script>
 
 
