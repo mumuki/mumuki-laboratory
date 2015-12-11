@@ -64,7 +64,7 @@ feature 'Search Flow' do
 
     click_on 'search'
 
-    expect(page).to have_text('Be the first')
+    expect(page).to have_text('Nobody created an exercise for this search yet')
   end
 
 end

@@ -86,8 +86,8 @@ en:
   new_submission: New Submission
   next_exercise: Next
   next_guide: "Next Guide: %{name}"
-  no_exercises: Nobody created an exercise for this search yet. <a href="%{create_path}">Be the first!</a>
-  no_guides: Nobody created a guide for this search yet. <a href="%{create_path}">Be the first!</a>
+  no_exercises: Nobody created an exercise for this search yet
+  no_guides: Nobody created a guide for this search yet
   no_permissions: You don't have enough permissions over the repository
   no_submissions: Its seems like you haven't tried to solve this exercise
   notify_problem_with_exercise: Notify problem with exercise

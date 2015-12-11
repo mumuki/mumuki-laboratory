@@ -8,7 +8,8 @@ describe Playground do
   describe '#create' do
     context 'when language is queriable and exercise is playable' do
       let(:language) { create(:language, queriable: true) }
-      let(:exercise) { build(:playground, language: language, layout: :editor_bottom) }
+      let(:guide) { create(:guide) }
+      let(:exercise) { build(:playground, language: language, layout: :editor_bottom, guide: guide) }
 
       it { expect(exercise.save).to be true }
     end

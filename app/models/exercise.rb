@@ -36,7 +36,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def extra_code
-    [guide.try(&:extra), self[:extra_code]].compact.join("\n")
+    [guide.extra, self[:extra_code]].compact.join("\n")
   end
 
   def friendly

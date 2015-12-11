@@ -8,7 +8,7 @@ module OnGuide
   end
 
   def guide_done_for?(user)
-    guide.present? && guide.done_for?(user)
+    guide.done_for?(user)
   end
 
   def siblings_for(user)
