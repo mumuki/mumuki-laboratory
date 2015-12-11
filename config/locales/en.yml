@@ -90,7 +90,7 @@ en:
   no_guides: Nobody created a guide for this search yet. <a href="%{create_path}">Be the first!</a>
   no_permissions: You don't have enough permissions over the repository
   no_submissions: Its seems like you haven't tried to solve this exercise
-  notify_problem_to_author: Notify problem to author
+  notify_problem_with_exercise: Notify problem with exercise
   output: Output
   overview: Overview
   passed: All right
@@ -112,6 +112,7 @@ en:
   sign_in_with_github: Sign in with Github
   sign_out: Sign Out
   sign_up_date: User since
+  solution: solution
   start_practicing: Start Practicing!
   stats: Some stats
   status: Status

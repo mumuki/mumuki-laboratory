@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151211033000) do
+ActiveRecord::Schema.define(version: 20151211035206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,7 +111,6 @@ ActiveRecord::Schema.define(version: 20151211033000) do
     t.datetime "updated_at"
     t.integer  "language_id",       default: 0
     t.integer  "submissions_count"
-    t.integer  "author_id"
     t.integer  "guide_id"
     t.integer  "original_id"
     t.string   "locale",            default: "en"
@@ -126,7 +125,6 @@ ActiveRecord::Schema.define(version: 20151211033000) do
     t.text     "tag_list",          default: [],                     array: true
   end
 
-  add_index "exercises", ["author_id"], name: "index_exercises_on_author_id", using: :btree
   add_index "exercises", ["guide_id"], name: "index_exercises_on_guide_id", using: :btree
   add_index "exercises", ["language_id"], name: "index_exercises_on_language_id", using: :btree
   add_index "exercises", ["slug"], name: "index_exercises_on_slug", unique: true, using: :btree
@@ -144,7 +142,6 @@ ActiveRecord::Schema.define(version: 20151211033000) do
 
   create_table "guides", force: true do |t|
     t.string   "name"
-    t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
@@ -158,7 +155,6 @@ ActiveRecord::Schema.define(version: 20151211033000) do
     t.string   "slug",         default: "",    null: false
   end
 
-  add_index "guides", ["author_id"], name: "index_guides_on_author_id", using: :btree
   add_index "guides", ["name"], name: "index_guides_on_name", using: :btree
 
   create_table "imports", force: true do |t|
@@ -199,7 +195,8 @@ ActiveRecord::Schema.define(version: 20151211033000) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "locale",     default: "en"
+    t.string   "locale",        default: "en"
+    t.string   "contact_email", default: "info@mumuki.org", null: false
   end
 
   create_table "users", force: true do |t|

@@ -4,6 +4,10 @@ module ApplicationHelper
   include WithIcons
   include WithNavigation
 
+  def contact_email
+    Tenant.current.contact_email
+  end
+
   def page_title(subject)
     if subject && !subject.new_record?
       "#{subject.friendly} - Mumuki"

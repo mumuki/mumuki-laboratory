@@ -91,7 +91,7 @@ es:
   no_guides: Nadie creó una guía para tu búsqueda aún. <a href="%{create_path}">¡Sé el primero!</a>
   no_permissions: No tenés suficientes permisos sobre el repositorio
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio aún!
-  notify_problem_to_author: Notificar problema al autor
+  notify_problem_with_exercise: Notificar problema con el ejercicio
   output: Salida
   overview: Vista general
   passed: Todo en orden
@@ -115,6 +115,7 @@ es:
   sign_in_with_github: Iniciá sesion con Github
   sign_out: Cerrar Sesión
   sign_up_date: Usuario desde
+  solution: solución
   solved_exercises: Ejercicios Resueltos
   start_practicing: ¡Empezá ahora!
   stats: Tu Progreso
