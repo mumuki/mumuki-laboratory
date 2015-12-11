@@ -12,7 +12,6 @@ describe Import do
      slug: 'mumuki/sample-guide',
      language: 'haskell',
      locale: 'en',
-     original_id_format: '%05d',
      exercises: [
          {type: 'problem',
           name: 'Bar',

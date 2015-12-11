@@ -57,7 +57,7 @@ class Guide < ActiveRecord::Base
   end
 
   def import_from_json!(json)
-    self.assign_attributes json.except('exercises', 'language', 'original_id_format', 'github_repository')
+    self.assign_attributes json.except('exercises', 'language', 'original_id_format')
     self.language = Language.for_name(json['language'])
     self.save!
 

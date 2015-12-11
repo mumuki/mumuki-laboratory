@@ -109,13 +109,14 @@ describe 'api controller' do
 
     describe 'post' do
       context 'when there are no guides' do
+        let!(:haskell) { create(:haskell) }
+        let(:imported_guide) { Guide.find_by(slug: 'flbulgarelli/sample-guide') }
         before { post :create, {
             name: 'sample guide',
             description: 'Baz',
             slug: 'flbulgarelli/sample-guide',
             language: 'haskell',
             locale: 'en',
-            original_id_format: '%05d',
             exercises: [
                 {type: 'problem',
                  name: 'Bar',
@@ -126,7 +127,11 @@ describe 'api controller' do
                  original_id: 1}]}
 
         }
-        it { expect(response.body).to eq '{"guides":[]}' }
+        it { expect(response.status).to eq 200 }
+        it { expect(imported_guide).to_not be nil }
+        it { expect(imported_guide.name).to eq 'sample guide' }
+        it { expect(imported_guide.language).to eq haskell }
+        it { expect(imported_guide.exercises.count).to eq 1 }
       end
     end
   end

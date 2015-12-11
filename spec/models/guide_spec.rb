@@ -67,21 +67,15 @@ describe Guide do
   end
 
   describe '#friendly_name' do
-    context 'when guide is not in chapter' do
-      let(:guide_not_in_chapter) { create(:guide, name: 'Una Guia', id: 80) }
-      it { expect(guide_not_in_chapter.friendly_name).to eq '80-una-guia' }
-    end
-    context 'when guide is in chapter' do
-      let(:chapter) { create(:chapter, name: 'Fundamentos de Programacion') }
-      let(:guide_in_chapter) { create(:guide, name: 'Una Guia', id: 180) }
+    let(:chapter) { create(:chapter, name: 'Fundamentos de Programacion') }
+    let(:guide_in_chapter) { create(:guide, name: 'Una Guia') }
 
-      before do
-        chapter.rebuild!([create(:guide), create(:guide), guide_in_chapter])
-      end
-
-      it { expect(guide_in_chapter.chapter).to eq chapter }
-      it { expect(guide_in_chapter.friendly_name).to eq '180-fundamentos-de-programacion-una-guia' }
+    before do
+      chapter.rebuild!([create(:guide), create(:guide), guide_in_chapter])
     end
+
+    it { expect(guide_in_chapter.chapter).to eq chapter }
+    it { expect(guide_in_chapter.friendly_name).to eq "#{guide_in_chapter.id}-fundamentos-de-programacion-una-guia" }
   end
 
   describe '#new?' do
