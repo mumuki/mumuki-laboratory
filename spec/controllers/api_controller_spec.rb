@@ -31,48 +31,75 @@ describe 'api controller' do
   end
 
   describe Api::GuidesController do
-    context 'when there are no guides ' do
-      before { get :index }
-      it { expect(response.body).to eq '{"guides":[]}' }
-    end
+    describe 'get' do
+      context 'when there are no guides ' do
+        before { get :index }
+        it { expect(response.body).to eq '{"guides":[]}' }
+      end
 
-    context 'when there are guides with exercises' do
-      let!(:language_1) { create(:language, id: 1, name: 'language_1', image_url: 'lang1.jpeg') }
-      let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: language_1.id) }
-      let!(:exercise_1) { create(:exercise, name: 'exercise_1', id: 1, language_id: language_1.id, guide_id: guide_1.id) }
+      context 'when there are guides with exercises' do
+        let!(:language_1) { create(:language, id: 1, name: 'language_1', image_url: 'lang1.jpeg') }
+        let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: language_1.id) }
+        let!(:exercise_1) { create(:exercise, name: 'exercise_1', id: 1, language_id: language_1.id, guide_id: guide_1.id) }
 
-      before { get :index }
-      let(:expected_json) {
-        { guides: [
-          {
-            id: 1,
-            slug: 'flbulgarelli/mumuki-sample-exercises',
-            name: 'guide_1',
-            language: { id: 1, name: 'language_1', image_url: 'lang1.jpeg' },
-            exercises: [
-              { id: 1, name: 'exercise_1', position: 1 }
-            ]
-          }
-        ]}
-      }
-      it { expect(response.body).to json_eq expected_json }
-    end
-
-    context 'when there are guides with no exercises' do
-      let!(:language_1) { create(:language, id: 1, name: 'language_1', image_url: 'lang1.jpeg') }
-      let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: language_1.id) }
-
-      describe 'when not using filters' do
         before { get :index }
         let(:expected_json) {
-          { guides: [
-            {
-              id: 1,
-              slug: 'flbulgarelli/mumuki-sample-exercises',
-              name: 'guide_1',
-              language: { id: 1, name: 'language_1', image_url: 'lang1.jpeg' },
-              exercises: []
-            }
+          {guides: [
+              {
+                  id: 1,
+                  slug: 'flbulgarelli/mumuki-sample-exercises',
+                  name: 'guide_1',
+                  language: {id: 1, name: 'language_1', image_url: 'lang1.jpeg'},
+                  exercises: [
+                      {id: 1, name: 'exercise_1', position: 1}
+                  ]
+              }
+          ]}
+        }
+        it { expect(response.body).to json_eq expected_json }
+      end
+
+      context 'when there are guides with no exercises' do
+        let!(:language_1) { create(:language, id: 1, name: 'language_1', image_url: 'lang1.jpeg') }
+        let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: language_1.id) }
+
+        describe 'when not using filters' do
+          before { get :index }
+          let(:expected_json) {
+            {guides: [
+                {
+                    id: 1,
+                    slug: 'flbulgarelli/mumuki-sample-exercises',
+                    name: 'guide_1',
+                    language: {id: 1, name: 'language_1', image_url: 'lang1.jpeg'},
+                    exercises: []
+                }
+            ]}
+          }
+
+          it { expect(response.body).to json_eq expected_json }
+        end
+      end
+
+      context 'when the guide belongs to a chapter' do
+        let!(:chapter_1) { create(:chapter, id: 1, name: 'chapter_1') }
+        let!(:language_1) { create(:language, id: 1, name: 'language_1', image_url: 'lang1.jpeg') }
+        let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: language_1.id) }
+
+        before { chapter_1.rebuild!([guide_1]) }
+
+        before { get :index }
+
+        let(:expected_json) {
+          {guides: [
+              {
+                  id: 1,
+                  slug: 'flbulgarelli/mumuki-sample-exercises',
+                  name: 'guide_1',
+                  language: {id: 1, name: 'language_1', image_url: 'lang1.jpeg'},
+                  chapter: {id: 1, name: 'chapter_1'},
+                  exercises: []
+              }
           ]}
         }
 
@@ -80,29 +107,27 @@ describe 'api controller' do
       end
     end
 
-    context 'when the guide belongs to a chapter' do
-      let!(:chapter_1) { create(:chapter, id: 1,  name: 'chapter_1') }
-      let!(:language_1) { create(:language, id: 1, name: 'language_1', image_url: 'lang1.jpeg') }
-      let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: language_1.id) }
+    describe 'post' do
+      context 'when there are no guides ' do
+        before { post :create, {
+            name: 'sample guide',
+            description: 'Baz',
+            slug: 'flbulgarelli/sample-guide',
+            language: 'haskell',
+            locale: 'en',
+            original_id_format: '%05d',
+            exercises: [
+                {type: 'problem',
+                 name: 'Bar',
+                 description: 'a description',
+                 test: 'foo bar',
+                 tag_list: %w(baz bar),
+                 layout: 'no_editor',
+                 original_id: 1}]}
 
-      before { chapter_1.rebuild!([guide_1]) }
-
-      before { get :index }
-
-      let(:expected_json) {
-        { guides: [
-          {
-            id: 1,
-            slug: 'flbulgarelli/mumuki-sample-exercises',
-            name: 'guide_1',
-            language: { id: 1, name: 'language_1', image_url: 'lang1.jpeg' },
-            chapter: { id: 1, name: 'chapter_1' },
-            exercises: []
-          }
-        ]}
-      }
-
-      it { expect(response.body).to json_eq expected_json }
+        }
+        it { expect(response.body).to eq '{"guides":[]}' }
+      end
     end
   end
 end

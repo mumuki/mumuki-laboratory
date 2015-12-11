@@ -44,6 +44,7 @@ describe Import do
   it { expect(guide).to_not be nil }
   it { expect(guide.name).to eq 'sample guide' }
   it { expect(guide.language).to eq haskell }
+  it { expect(guide.slug).to eq 'flbulgarelli/sample-guide' }
   it { expect(guide.description).to eq 'Baz' }
   it { expect(guide.friendly_name).to include 'sample-guide' }
 
