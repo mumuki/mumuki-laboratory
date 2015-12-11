@@ -3,20 +3,6 @@ class GuidesController < ApplicationController
   before_action :authenticate!, except: [:index, :show]
   before_action :set_guide, only: :show
 
-  def new
-    @guide = Guide.new(name: params[:q])
-  end
-
-  def create
-    @guide = Guide.new(guide_params.merge(author: current_user))
-    if @guide.save
-      @guide.import!
-      redirect_to guide_path(@guide), notice: t(:guide_created)
-    else
-      render :new
-    end
-  end
-
   def show
     if current_user?
       @stats = @guide.stats_for(current_user)

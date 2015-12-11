@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   end
 
   # All users
-  resources :guides, only: [:new, :create, :show, :index] do
+  resources :guides, only: [:show, :index] do
     # All users
     member do
       post :collaborators_refresh
@@ -52,8 +52,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index] do
     # Nested user
     resources :exercises, controller: 'user_exercises', only: :index
-    # Nested user
-    resources :guides, controller: 'user_guides', only: :index
     #nested user
     resources :solved_exercises, controller: 'user_solved_exercises', only: :index
     #nested user
