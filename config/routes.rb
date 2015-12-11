@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :chapters, only: [:index, :show]
 
   # All users
-  resources :exercises do
+  resources :exercises, only: [:show, :index] do
     # Current user
     resources :solutions, controller: 'exercise_solutions', only: :create
     resources :queries, controller: 'exercise_query', only: :create

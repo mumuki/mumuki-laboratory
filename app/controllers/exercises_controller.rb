@@ -3,7 +3,7 @@ class ExercisesController < ApplicationController
 
   before_action :authenticate!, except: [:index, :show]
   before_action :set_exercises, only: [:index]
-  before_action :set_exercise, only: [:show, :edit, :update, :destroy]
+  before_action :set_exercise, only: :show
   before_action :set_guide, only: [:show]
   before_action :set_previous_solution, only: :show
 
@@ -12,38 +12,6 @@ class ExercisesController < ApplicationController
   end
 
   def index
-
-  end
-
-  def new
-    @exercise = Problem.new(locale: I18n.locale, name: params[:q])
-  end
-
-  def edit
-  end
-
-  def create
-    @exercise = current_user.exercises.build(exercise_params)
-
-    if @exercise.save
-      redirect_to @exercise, notice: 'Exercise was successfully created.'
-    else
-      render :new
-    end
-  end
-
-  def update
-    if @exercise.update(exercise_params)
-      redirect_to @exercise, notice: 'Exercise was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    authorize_edition!
-    @exercise.destroy
-    redirect_to exercises_url, notice: 'Exercise was successfully destroyed.'
   end
 
   private
@@ -76,10 +44,5 @@ class ExercisesController < ApplicationController
 
   def exercises
     Exercise.all
-  end
-
-
-  def authorize_edition!
-    raise AuthorizationError.new unless @exercise.authored_by?(current_user)
   end
 end
