@@ -18,7 +18,6 @@ FactoryGirl.define do
     description 'Simple problem'
     language { guide ? guide.language : create(:language) }
     test 'dont care'
-    author { create(:user) }
     locale :en
     position 1
   end
@@ -27,7 +26,6 @@ FactoryGirl.define do
     name 'A Playground'
     description 'Simple playground'
     language { guide ? guide.language : create(:language) }
-    author { create(:user) }
     locale :en
   end
 
