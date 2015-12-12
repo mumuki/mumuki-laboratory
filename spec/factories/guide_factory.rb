@@ -4,7 +4,6 @@ FactoryGirl.define do
     sequence(:name) { |n| "guide#{n}" }
     locale 'en'
     description 'A Guide'
-    author { create(:user) }
     slug 'flbulgarelli/mumuki-sample-exercises'
     language
   end

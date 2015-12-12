@@ -9,8 +9,6 @@ class User < ActiveRecord::Base
   include WithSearch, WithOmniauth, WithToken
 
   has_many :assignments, foreign_key: :submitter_id
-  has_many :exercises, foreign_key: :author_id
-  has_many :guides, foreign_key: :author_id
 
   has_many :submitted_exercises, through: :assignments, class_name: 'Exercise', source: :exercise
 

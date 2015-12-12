@@ -21,12 +21,6 @@
       <li <%= active_if :recent_activity %>>
         <%= link_to t(:recent_activity), user_assignments_path(@user) %>
       </li>
-      <li <%= active_if :exercises %>>
-        <%= link_to t(:created_exercises), user_exercises_path(@user) %>
-      </li>
-      <li <%= active_if :guides %>>
-        <%= link_to t(:created_guides), user_guides_path(@user) %>
-      </li>
     </ul>
   </div>
 </div>

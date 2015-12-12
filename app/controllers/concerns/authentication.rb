@@ -33,10 +33,6 @@ module Authentication
     redirect_to root_path, alert: message
   end
 
-  def restricted_to_author(authored)
-    yield if authored.authored_by? current_user
-  end
-
   def restricted_to_current_user(user)
     yield if user == current_user
   end

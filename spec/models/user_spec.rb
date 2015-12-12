@@ -18,7 +18,7 @@ describe User do
       it { expect(user.reload.last_guide).to be_nil }
     end
 
-    context 'when there are submissions from orphan exercise' do
+    context 'when there are passed submissions' do
       let!(:assignment_for) do
         exercise_1.submit_solution!(user, content: '')
         exercise_1.submit_solution!(user, content: '').passed!
@@ -32,20 +32,20 @@ describe User do
       it { expect(user.submissions_count).to eq 4 }
       it { expect(user.passed_submissions_count).to eq 2 }
       it { expect(user.reload.last_exercise).to eq exercise_3 }
-      it { expect(user.reload.last_guide).to be_nil }
+      it { expect(user.reload.last_guide).to eq exercise_3.guide }
+
     end
 
 
-    context 'when there are submissions from a non orphan guide' do
-      let(:guide) { create(:guide) }
-      let!(:exercise_4) { create(:exercise, guide: guide) }
+    context 'when there are only failed submissions' do
+      let!(:exercise_4) { create(:exercise) }
 
       let!(:assignment_for) do
         exercise_4.submit_solution!(user, content: '').failed!
       end
 
       it { expect(user.reload.last_exercise).to eq exercise_4 }
-      it { expect(user.reload.last_guide).to eq guide }
+      it { expect(user.reload.last_guide).to eq exercise_4.guide }
     end
   end
 end

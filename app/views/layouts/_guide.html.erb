@@ -32,11 +32,6 @@
       <li <%= active_if :exercises %>>
         <%= link_to fa_icon('trophy', text: t(:exercises)), guide_exercises_path(@guide) %>
       </li>
-      <% restricted_to_author @guide do %>
-        <li <%= active_if :history %>>
-          <%= link_to fa_icon('history',text: t(:history)), guide_imports_path(@guide) %>
-        </li>
-      <% end %>
     </ul>
   </div>
 </div>

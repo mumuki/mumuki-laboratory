@@ -1,6 +1,6 @@
 namespace :tenant do
   task :setup, [:name, :admin_email] => :environment do |t, args|
-    tenant = Tenant.create! name: args[:name]
+    tenant = Tenant.create! name: args[:name], contact_email: args[:admin_email]
     tenant.switch!
 
     password = Devise.friendly_token.first(10)

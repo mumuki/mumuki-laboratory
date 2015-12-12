@@ -7,11 +7,9 @@ class Guide < ActiveRecord::Base
   }
 
   include WithSearch,
-          WithAuthor,
           WithMarkup,
           WithTeaser,
           WithLocale,
-          WithCollaborators,
           OnChapter,
           WithExercises,
           WithStats,
@@ -20,8 +18,6 @@ class Guide < ActiveRecord::Base
 
   has_many :imports, -> { order(created_at: :desc) }
   has_many :exports
-
-  has_and_belongs_to_many :contributors, class_name: 'User', join_table: 'contributors'
 
   belongs_to :language
 
@@ -38,11 +34,6 @@ class Guide < ActiveRecord::Base
   #TODO denormalize
   def search_tags
     exercises.flat_map(&:search_tags).uniq
-  end
-
-  def update_contributors!
-    self.contributors = user_resources_to_users author.contributors(self)
-    save!
   end
 
   def new?
@@ -65,8 +56,8 @@ class Guide < ActiveRecord::Base
     "bibliotheca.mumuki.io/guides/#{slug}"
   end
 
-  def read_from_json(json)
-    self.assign_attributes json.except('exercises', 'language', 'original_id_format', 'github_repository')
+  def import_from_json!(json)
+    self.assign_attributes json.except('exercises', 'language', 'original_id_format')
     self.language = Language.for_name(json['language'])
     self.save!
 
@@ -79,16 +70,6 @@ class Guide < ActiveRecord::Base
       exercise.locale = self.locale
       exercise.save!
     end
-  end
-
-  private
-
-  def user_resources_to_users(resources)
-    resources.
-        select { |it| it[:type] = 'User' }.
-        map { |it| it[:login] }.
-        map { |it| User.find_by_name(it) }.
-        compact
   end
 
 end

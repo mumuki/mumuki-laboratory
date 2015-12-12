@@ -38,8 +38,7 @@ describe WithExpectations do
   end
 
   context 'when the guide has expectations' do
-    let(:author) { create(:user, name: 'rigoberto88') }
-    let(:guide) { create(:guide, author: author) }
+    let(:guide) { create(:guide) }
 
     before do
       exercise.language = guide.language

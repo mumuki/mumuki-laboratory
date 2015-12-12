@@ -8,14 +8,12 @@ es:
   all: Todos
   all_exercises: Todos los ejercicios
   are_you_sure: ¿Estás seguro?
-  authored_by: Creado por %{author}
   basic: Básico
   belongs_to_guide: Pertenece a la guía %{guide}
   beta: Beta
   cancel: Cancelar
   chapters_index_title: ¿Qué te gustaría aprender?
   chapter: Capítulo
-  collaborators_refreshed: Lista de collaboradores actualizada
   comma_or_tab_separated: Separados por tab o coma!
   continue_practicing: ¡Seguí practicando!
   contributors: Autores
@@ -89,11 +87,11 @@ es:
   new_submission: Nueva Solución
   next_exercise: Siguiente
   next_guide: "Siguiente Guía: %{name}"
-  no_exercises: Nadie creó un ejercicio para tu búsqueda aún. <a href="%{create_path}">¡Sé el primero!</a>
-  no_guides: Nadie creó una guía para tu búsqueda aún. <a href="%{create_path}">¡Sé el primero!</a>
+  no_exercises: No encontramos ejericios que coincidan con tu busqueda.
+  no_guides: No encontramos guías que coincidan con tu busqueda.
   no_permissions: No tenés suficientes permisos sobre el repositorio
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio aún!
-  notify_problem_to_author: Notificar problema al autor
+  notify_problem_with_exercise: Notificar problema con el ejercicio
   output: Salida
   overview: Vista general
   passed: Todo en orden
@@ -107,7 +105,6 @@ es:
   progress: Progreso
   exercises: Ejercicios
   follow_us: Seguínos
-  refresh_collaborators: ¡Actualizá los colaboradores!
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
   running: procesando
   search: 'Buscá, por ejemplo: polimorfismo, haskell o competenciaDeSaltos'
@@ -118,6 +115,7 @@ es:
   sign_in_with_github: Iniciá sesion con Github
   sign_out: Cerrar Sesión
   sign_up_date: Usuario desde
+  solution: solución
   solved_exercises: Ejercicios Resueltos
   start_practicing: ¡Empezá ahora!
   stats: Tu Progreso

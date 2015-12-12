@@ -19,11 +19,7 @@ class Problem < Exercise
   end
 
   def guide_expectations
-    if guide.present?
-      guide.expectations
-    else
-      []
-    end
+    guide.expectations
   end
 
   def evaluation_criteria?

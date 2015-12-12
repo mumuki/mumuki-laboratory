@@ -60,7 +60,7 @@
 
 
 <div class="text-center">
-  <strong><%= raw t :no_guides, create_path: new_guide_path(q: @q) if @guides.empty? %></strong>
+  <strong><%= raw t :no_guides if @guides.empty? %></strong>
 </div>
 
 

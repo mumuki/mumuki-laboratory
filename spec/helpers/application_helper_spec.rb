@@ -22,10 +22,6 @@ describe ApplicationHelper do
   end
 
   describe '#link_to_exercise' do
-    context 'when exercise has no guide' do
-      let(:exercise) { create(:exercise, name: 'foo', id: 1) }
-      it { expect(link_to_exercise(exercise)).to eq '<a href="/exercises/1-foo">foo</a>' }
-    end
     context 'when exercise has guide' do
       let(:guide) { create(:guide, name: 'bar') }
       let(:exercise) { create(:exercise, name: 'foo', guide: guide, id: 1, position: 3) }

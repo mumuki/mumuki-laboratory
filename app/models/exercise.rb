@@ -11,7 +11,6 @@ class Exercise < ActiveRecord::Base
   include WithSearch,
           WithTeaser,
           WithMarkup,
-          WithAuthor,
           WithAssignments,
           OnGuide,
           WithLocale,
@@ -24,7 +23,7 @@ class Exercise < ActiveRecord::Base
   after_initialize :defaults, if: :new_record?
 
   validates_presence_of :name, :description, :language,
-                        :submissions_count
+                        :submissions_count, :guide
 
   markup_on :description, :hint, :teaser, :corollary
 
@@ -36,12 +35,8 @@ class Exercise < ActiveRecord::Base
     update!(original_id: id) unless original_id
   end
 
-  def collaborator?(user)
-    guide.present? && guide.authored_by?(user)
-  end
-
   def extra_code
-    [guide.try(&:extra), self[:extra_code]].compact.join("\n")
+    [guide.extra, self[:extra_code]].compact.join("\n")
   end
 
   def friendly

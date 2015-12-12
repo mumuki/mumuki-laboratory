@@ -8,14 +8,12 @@ en:
   all: All
   all_exercises: All exercises
   are_you_sure: Are you sure?
-  authored_by: Authored by %{author}
   basic: Basic
   belongs_to_guide: Belongs to guide %{guide}
   beta: Beta
   cancel: Cancel
   chapters_index_title: What do you want to learn?
   chapter: Chapter
-  collaborators_refreshed: Collaborators list refreshed
   comma_or_tab_separated: Comma or tab separated!
   continue_practicing: Continue Practicing!
   contributors: Contributors
@@ -88,11 +86,11 @@ en:
   new_submission: New Submission
   next_exercise: Next
   next_guide: "Next Guide: %{name}"
-  no_exercises: Nobody created an exercise for this search yet. <a href="%{create_path}">Be the first!</a>
-  no_guides: Nobody created a guide for this search yet. <a href="%{create_path}">Be the first!</a>
+  no_exercises: Nobody created an exercise for this search yet
+  no_guides: Nobody created a guide for this search yet
   no_permissions: You don't have enough permissions over the repository
   no_submissions: Its seems like you haven't tried to solve this exercise
-  notify_problem_to_author: Notify problem to author
+  notify_problem_with_exercise: Notify problem with exercise
   output: Output
   overview: Overview
   passed: All right
@@ -104,7 +102,6 @@ en:
   processing_you_solution: We are processing you solution
   profile_of: Profile of %{username}
   progress: Progresss
-  refresh_collaborators: Refresh collaborators!
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   running: running
   search: Search
@@ -115,6 +112,7 @@ en:
   sign_in_with_github: Sign in with Github
   sign_out: Sign Out
   sign_up_date: User since
+  solution: solution
   start_practicing: Start Practicing!
   stats: Some stats
   status: Status

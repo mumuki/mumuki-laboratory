@@ -3,4 +3,5 @@ module ExerciseSolutionsHelper
   include WithTestResultsRendering
   include WithFeedbackRendering
   include WithExerciseFormRendering
+  include WithSolutionEmailFormatting
 end

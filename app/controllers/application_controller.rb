@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
                 :current_user_path,
                 :login_github_path, :login_facebook_path,
                 :login_anchor,
-                :restricted_to_author, :restricted_to_current_user,
+                :restricted_to_current_user,
                 :restricted_to_other_user,
                 :subject
 

@@ -9,10 +9,9 @@ describe Import do
   let(:guide_json) {
     {name: 'sample guide',
      description: 'Baz',
-     github_repository: 'flbulgarelli/sample-guide',
+     slug: 'mumuki/sample-guide',
      language: 'haskell',
      locale: 'en',
-     original_id_format: '%05d',
      exercises: [
          {type: 'problem',
           name: 'Bar',
@@ -37,13 +36,14 @@ describe Import do
           original_id: 2}]}.deep_stringify_keys }
 
   before do
-    import.read_from_json(guide_json)
+    import.import_from_json!(guide_json)
     guide.reload
   end
 
   it { expect(guide).to_not be nil }
   it { expect(guide.name).to eq 'sample guide' }
   it { expect(guide.language).to eq haskell }
+  it { expect(guide.slug).to eq 'mumuki/sample-guide' }
   it { expect(guide.description).to eq 'Baz' }
   it { expect(guide.friendly_name).to include 'sample-guide' }
 
