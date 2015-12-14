@@ -8,8 +8,7 @@ class Import < ActiveRecord::Base
 
   def run_import!
     run_update! do
-      guide_json = JSON.parse RestClient.get(guide.url)
-      import_from_json! guide_json
+      import_from_json! Mumukit::Bridge::Bibliotheca.new.guide(guide.slug)
       {result: '', status: :passed}
     end
   end

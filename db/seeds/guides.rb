@@ -1,6 +1,8 @@
-['pdep-utn/mumuki-funcional-guia-0',
- 'pdep-utn/mumuki-funcional-guia-1',
- 'pdep-utn/mumuki-funcional-guia-2-orden-superior'].each do |slug|
+require 'mumukit/bridge'
+
+Mumukit::Bridge::Bibliotheca.new.guides.each do |g|
+  slug = g['slug']
   puts "Importing #{slug}"
+
   Guide.create!(slug: slug).import!
 end
