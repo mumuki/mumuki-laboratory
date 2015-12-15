@@ -23,7 +23,15 @@ class Tenant < ActiveRecord::Base
   end
 
   def self.on_public?
-    Apartment::Tenant.current == 'public'
+    on? 'public'
+  end
+
+  def self.on_central?
+    on? 'central'
+  end
+
+  def self.on?(name)
+    Apartment::Tenant.current == name
   end
 
   def self.current
