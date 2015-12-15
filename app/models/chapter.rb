@@ -14,13 +14,27 @@ class Chapter < ActiveRecord::Base
     name
   end
 
+  def guides=(guides)
+    self.chapter_guides = guides.each_with_index.map do |it, index|
+      it.positionate! self, index+1
+    end
+  end
+
   def rebuild!(guides)
     transaction do
       chapter_guides.delete_all
-      chapter_guides = guides.each_with_index.map do |it, index|
-        it.positionate! self, index+1
+      self.guides = guides
+      save!
+    end
+  end
+
+  def self.rebuild!(chapters)
+    transaction do
+      delete_all
+      chapters.each_with_index do |it, index|
+        it.number = index + 1
+        it.save!
       end
-      update chapter_guides: chapter_guides
     end
   end
 end
