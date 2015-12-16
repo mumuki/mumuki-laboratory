@@ -38,6 +38,14 @@ class ChapterBuilder
     @slugs << create_slug(slug_part)
   end
 
+  def locale(locale)
+    @locale = locale
+  end
+
+  def description(description)
+    @description = description
+  end
+
   def build
     @chapter.guides = @slugs.map { |it| Guide.find_by(slug: it) }
     @chapter

@@ -1,6 +1,13 @@
 Book.build! do |b|
   b.chapter 'Fundamentos' do |c|
     c.organization 'sagrado-corazon-alcal'
+    c.prefix 'fundamentos'
+    c.locale 'es'
+    c.description "\
+      Aprendé los fundamentos de la programación de la manera más fácil utilizando [Gobstones](http://gobstones.org),\
+      un **innovador lenguaje gráfico** creado en la Universidad de Quilmes, en el que utilizarás un tablero con bolitas\
+      para resolver problemas. Si nunca programaste antes, **te recomendamos que empieces por acá**."
+
     c.guide 'primeros-programas'
     c.guide 'procedimientos'
     c.guide 'repeticion-simple'
@@ -9,6 +16,10 @@ Book.build! do |b|
   b.chapter 'Programacion Funcional' do |c|
     c.organization 'pdep-utn'
     c.prefix 'funcional'
+    c.locale 'es'
+    c.description "\
+      El paradigma funcional es de los más **antiguos**, pero también de los más **simples** y **poderosos**.
+      Si querés abrir tu cabeza y aprender _a dominar el mundo con nada_, seguí por acá."
 
     c.guide 'valores-y-funciones'
     c.guide 'practica-funcional-valores-y-funciones'
@@ -45,6 +56,11 @@ Book.build! do |b|
   b.chapter 'Programación Lógica' do |c|
     c.organization 'pdep-utn'
     c.prefix 'logico'
+    c.locale 'es'
+    c.description "\
+      ¿Querés volar tu cabeza? ¿Querés aprender a programar _enseñándole_ reglas a una computadora, sin\
+      usar `ifs`, `fors` ni operadores lógicos? ¿Querés escribir código que cualquiera puede entender?\
+      Entonces aprendé sobre el paradigma lógico, utilizando su lenguaje más conocido: Prolog."
 
     # A Hechos y Reglas [Base de conocimiento]
     # A Inversibilidad [limites]
@@ -63,9 +79,6 @@ Book.build! do |b|
     # P pdep-utn/mumuki-logico-guia-4
 
     c.guide 'practica-pulp-fiction'
-  end
-
-  b.chapter 'Programación con Objetos' do |c|
   end
 end
 
