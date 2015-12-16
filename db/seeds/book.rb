@@ -59,7 +59,7 @@ class ChapterBuilder
   private
 
   def create_slug(slug_part)
-    "#{@organization}/mumuki-#{I18n.t :guide}-#{@prefix}-#{slug_part}"
+    "#{@organization}/mumuki-#{I18n.transliterate(I18n.t :guide).downcase}-#{@prefix}-#{slug_part}"
   end
 end
 
