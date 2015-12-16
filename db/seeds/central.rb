@@ -22,7 +22,7 @@ Book.build! do |b|
       Si querés abrir tu cabeza y aprender _a dominar el mundo con nada_, seguí por acá."
 
     c.guide 'valores-y-funciones'
-    c.guide 'practica-funcional-valores-y-funciones'
+    c.guide 'practica-valores-y-funciones'
     #p.guide A Tipos Simples
     #P Práctica Tipos Simples
     #A Aplicación Parcial y Funciones de Orden Superior [Currificacion]
@@ -33,8 +33,8 @@ Book.build! do |b|
     #A Listas, Parte 2: Orden superior, map, filter, any, all, zipWith
     #A Tipos Paramétricos
     c.guide 'practica-listas'
-    #A Listas, Parte 3: Compresión
-    c.guide 'practica-listas-por-compresion'
+    #A Listas, Parte 3: Comprensión
+    c.guide 'practica-listas-por-comprension'
     #A Funciones Anónimas
     c.guide 'practica-expresiones-lambda'
 
@@ -70,6 +70,7 @@ Book.build! do |b|
     c.guide 'practica-aritmetica-y-negacion'
 
     c.guide 'functores'
+    c.guide 'practica-functores'
 
     # R(evist) haskell listas
     # A Listas
