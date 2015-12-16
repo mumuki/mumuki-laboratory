@@ -52,7 +52,8 @@ class ChapterBuilder
       raise "Guide #{it} not found!" unless guide
       guide
     end
-
+    @chapter.locale = @locale
+    @chapter.description = @description
     @chapter
   end
 
