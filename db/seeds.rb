@@ -7,7 +7,7 @@ if Tenant.on_public?
 
   Tenant.create!(name: 'central', locale: 'es').switch!
 elsif Tenant.on_central?
-  require_relative '../seeds/central'
+  require_relative './seeds/central'
 end
 
 
