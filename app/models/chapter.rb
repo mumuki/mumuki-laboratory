@@ -3,6 +3,7 @@ class Chapter < ActiveRecord::Base
   include WithMarkup
   include WithChapterGuides
   include WithStats
+  include FriendlyName
 
   validates_presence_of :name, :description
 

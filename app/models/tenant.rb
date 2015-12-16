@@ -25,6 +25,10 @@ class Tenant < ActiveRecord::Base
     find_by name: Apartment::Tenant.current
   end
 
+  def self.central
+    find_by name: 'central'
+  end
+
   private
 
   def teardown_apartment_tenant!
