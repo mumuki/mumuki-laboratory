@@ -47,7 +47,12 @@ class ChapterBuilder
   end
 
   def build
-    @chapter.guides = @slugs.map { |it| Guide.find_by(slug: it) }
+    @chapter.guides = @slugs.map do |it|
+      guide = Guide.find_by(slug: it)
+      raise "Guide #{it} not found!" unless guide
+      guide
+    end
+
     @chapter
   end
 
