@@ -5,6 +5,7 @@ Book.build! do |b|
     c.guide 'procedimientos'
     c.guide 'repeticion-simple'
   end
+
   b.chapter 'Programacion Funcional' do |c|
     c.organization 'pdep-utn'
     c.prefix 'funcional'
@@ -40,32 +41,31 @@ Book.build! do |b|
 
     c.guide 'practica-chocobos'
   end
-  b.chapter 'Programación Lógica' do |p|
 
-=begin
-    Programación Lógica
+  b.chapter 'Programación Lógica' do |c|
+    c.organization 'pdep-utn'
+    c.prefix 'logico'
 
-    A Hechos y Reglas [Base de conocimiento]
-    A Inversibilidad [limites]
-    P pdep-utn/mumuki-logico-guia-1
+    # A Hechos y Reglas [Base de conocimiento]
+    # A Inversibilidad [limites]
+    c.guide 'practica-primeros-pasos'
 
-    A Predicados de Orden Superior
-    P pdep-utn/mumuki-logico-guia-2
+    # A Predicados de Orden Superior
+    c.guide 'practica-aritmetica-y-negacion'
 
-    A Functores
+    c.guide 'functores'
 
-    R(evist) haskell listas
-    A Listas
-    P pdep-utn/mumuki-logico-guia-3
+    # R(evist) haskell listas
+    # A Listas
+    c.guide 'practica-listas'
 
-    A Colectando Soluciones
-    P pdep-utn/mumuki-logico-guia-4
+    # A Colectando Soluciones
+    # P pdep-utn/mumuki-logico-guia-4
 
-    P pulp fiction
-=end
-
+    c.guide 'practica-pulp-fiction'
   end
-  b.chapter 'Programación con Objetos' do |p|
+
+  b.chapter 'Programación con Objetos' do |c|
   end
 end
 
