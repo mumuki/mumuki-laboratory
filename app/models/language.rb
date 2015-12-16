@@ -14,7 +14,7 @@ class Language < ActiveRecord::Base
   delegate :run_tests!, :run_query!, to: :bridge
 
   def bridge
-    Mumukit::Bridge::Bridge.new(test_runner_url)
+    Mumukit::Bridge::Runner.new(test_runner_url)
   end
 
   def highlight_mode

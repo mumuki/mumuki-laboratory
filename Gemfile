@@ -59,7 +59,7 @@ gem 'addressable'
 gem 'apartment'
 
 gem 'mumukit-inspection', :github => 'mumuki/mumukit-inspection', :branch => 'master'
-gem 'mumukit-bridge',     :github => 'mumuki/mumukit-bridge', :tag=> 'v0.3.0'
+gem 'mumukit-bridge',     :github => 'mumuki/mumukit-bridge', :tag=> 'v0.4.0'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'
