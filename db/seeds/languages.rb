@@ -8,7 +8,8 @@ language(name: 'haskell',
          queriable: true)
 language(name: 'gobstones',
          test_runner_url: 'http://mumuki-gobstones-server.herokuapp.com',
-         image_url: 'https://avatars3.githubusercontent.com/u/8825549?v=3&s=30')
+         image_url: 'https://avatars3.githubusercontent.com/u/8825549?v=3&s=30',
+         output_content_type: :html)
 language(name: 'javascript',
          test_runner_url: 'http://mumuki-mocha-server.herokuapp.com',
          image_url: 'http://www.ninjajournal.com/wp-content/uploads/2014/03/javascript_logo_without_title.png')
