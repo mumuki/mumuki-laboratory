@@ -58,7 +58,11 @@ class Guide < ActiveRecord::Base
       position = i + 1
       exercise = Exercise.class_for(e['type']).find_or_initialize_by(position: position, guide_id: self.id)
       exercise.position = position
-      exercise.assign_attributes(e.except('type', 'id'))
+
+      attrs = e.except('type', 'id')
+      attrs = attrs.except('expectations') if e['type'] == 'playground' #FIXME bug in bibliotheca
+
+      exercise.assign_attributes(attrs)
       exercise.language = self.language
       exercise.locale = self.locale
       exercise.save!
