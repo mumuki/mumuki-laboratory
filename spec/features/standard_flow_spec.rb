@@ -19,7 +19,7 @@ feature 'Standard Flow' do
       click_on 'Start Practicing!'
     end
 
-    within('.chapter-panel') do
+    within('.chapter') do
       click_on 'Start Practicing!'
     end
 
