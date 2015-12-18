@@ -16,9 +16,6 @@ class Guide < ActiveRecord::Base
           WithExpectations,
           FriendlyName
 
-  has_many :imports, -> { order(created_at: :desc) }
-  has_many :exports
-
   belongs_to :language
 
   validates_presence_of :slug
@@ -26,10 +23,6 @@ class Guide < ActiveRecord::Base
   markup_on :description, :teaser, :corollary
 
   has_one :chapter_guide
-
-  def import!
-    imports.create!
-  end
 
   #TODO denormalize
   def search_tags
@@ -49,7 +42,11 @@ class Guide < ActiveRecord::Base
   end
 
   def position
-    chapter_guide.try(&:position)
+    chapter_guide.position
+  end
+
+  def import!
+    import_from_json! Mumukit::Bridge::Bibliotheca.new.guide(slug)
   end
 
   def import_from_json!(json)
@@ -66,6 +63,7 @@ class Guide < ActiveRecord::Base
       exercise.locale = self.locale
       exercise.save!
     end
+    reload
   end
 
 end

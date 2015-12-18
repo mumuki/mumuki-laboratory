@@ -53,11 +53,6 @@ en:
   here: here
   history: History
   hottest_exercises: Hottest Exercises
-  import: import
-  import_created: Import enqueued
-  import_date: Date
-  import_export: Import/Export
-  imports: Updates
   language: Language
   last_submission_date: Last submission
   latest_exercises: Latest exercises
@@ -82,7 +77,6 @@ en:
   new_exercise: New Exercise
   new_export: Export now!
   new_guide: New Guide
-  new_import: Import now!
   new_submission: New Submission
   next_exercise: Next
   next_guide: "Next Guide: %{name}"
