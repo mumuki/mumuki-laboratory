@@ -22,5 +22,14 @@ Apartment.configure do |config|
 
 end
 
-Rails.application.config.middleware.use 'Apartment::Elevators::FirstSubdomain'
+class FirstSubdomainWithRescue < Apartment::Elevators::FirstSubdomain
+  def call(*args)
+    begin
+      super
+    rescue Apartment::TenantNotFound
+      return [404, {'Content-Type' => 'text/html'}, ["#{File.read(Rails.root.to_s + "/public/404.#{Tenant.central.locale}.html")}"] ]
+    end
+  end
+end
 
+Rails.application.config.middleware.use 'FirstSubdomainWithRescue'
