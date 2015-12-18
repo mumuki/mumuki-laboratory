@@ -137,3 +137,4 @@ en:
   navigation_previous: 'Previous'
   navigation_next: 'Next'
   navigation_revisit: 'Next pending: %{sibling}'
+  chapter_number: "Chapter %{number} -"

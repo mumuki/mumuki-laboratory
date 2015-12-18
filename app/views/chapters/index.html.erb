@@ -2,24 +2,17 @@
 
 <br>
 
-<div class="row">
+<% @chapters.each do |it| %>
+  <div class="text-center ">
+    <h3><%= t(:chapter_number, number: it.number) %> <%= it.name %></h3>
 
-  <% @chapters.each do |it| %>
-    <div class="col-md-6">
-      <div class="panel panel-default exercise-panel">
-        <div class="panel-body text-center chapter-panel">
-          <h3><%= it.name %></h3>
+    <hr>
 
-          <hr>
-
-          <p>
-            <%= it.description_html %>
-          </p>
-          <a href="<%= guide_path(it.first_guide) %>" class="btn btn-success">
-            <%= t(:start_practicing) %>
-          </a>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
+    <p>
+      <%= it.description_html %>
+    </p>
+    <a href="<%= guide_path(it.first_guide) %>" class="btn btn-success">
+      <%= t(:start_practicing) %>
+    </a>
+  </div>
+<% end %>

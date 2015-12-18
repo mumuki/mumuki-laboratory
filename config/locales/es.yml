@@ -12,7 +12,7 @@ es:
   belongs_to_guide: Pertenece a la guía %{guide}
   beta: Beta
   cancel: Cancelar
-  chapters_index_title: ¿Qué te gustaría aprender?
+  chapters_index_title: Aprendé a programar desde las bases
   chapter: Capítulo
   comma_or_tab_separated: Separados por tab o coma!
   continue_practicing: ¡Seguí practicando!
@@ -166,3 +166,4 @@ es:
   navigation_previous: 'Anterior'
   navigation_next: 'Siguiente'
   navigation_revisit: 'Siguiente pendiente: %{sibling}'
+  chapter_number: "Capítulo %{number}:"
