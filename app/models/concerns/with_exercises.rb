@@ -2,7 +2,7 @@ module WithExercises
   extend ActiveSupport::Concern
 
   included do
-    has_many :exercises, -> { order(position: :asc) }
+    has_many :exercises, -> { order(position: :asc) }, dependent:  :delete_all
   end
 
   def exercises_count
