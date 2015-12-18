@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151211035206) do
+ActiveRecord::Schema.define(version: 20151218172557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,17 +129,6 @@ ActiveRecord::Schema.define(version: 20151211035206) do
   add_index "exercises", ["language_id"], name: "index_exercises_on_language_id", using: :btree
   add_index "exercises", ["slug"], name: "index_exercises_on_slug", unique: true, using: :btree
 
-  create_table "exports", force: true do |t|
-    t.integer  "guide_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "status",       default: 0
-    t.text     "result"
-    t.integer  "committer_id"
-  end
-
-  add_index "exports", ["guide_id"], name: "index_exports_on_guide_id", using: :btree
-
   create_table "guides", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -156,15 +145,6 @@ ActiveRecord::Schema.define(version: 20151211035206) do
   end
 
   add_index "guides", ["name"], name: "index_guides_on_name", using: :btree
-
-  create_table "imports", force: true do |t|
-    t.integer  "guide_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "status",       default: 0
-    t.text     "result"
-    t.integer  "committer_id"
-  end
 
   create_table "languages", force: true do |t|
     t.string   "name"

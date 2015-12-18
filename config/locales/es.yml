@@ -54,10 +54,6 @@ es:
   here: acá
   history: Historial
   hottest_exercises: Ejercicios más usados
-  import_created: Importación encolada
-  import_date: Fecha
-  import_export: Importar/Exportar
-  imports: Actualizaciones
   language: Lenguaje
   languages: Lenguajes
   last_submission_date: Última solucion
@@ -83,7 +79,6 @@ es:
   new_exercise: Nuevo Ejercicio
   new_export: ¡Exportar ahora!
   new_guide: Nueva Guía
-  new_import: ¡Importar ahora!
   new_submission: Nueva Solución
   next_exercise: Siguiente
   next_guide: "Siguiente Guía: %{name}"
