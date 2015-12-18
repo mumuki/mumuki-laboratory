@@ -53,7 +53,7 @@ class Guide < ActiveRecord::Base
   end
 
   def import_from_json!(json)
-    self.assign_attributes json.except('exercises', 'language', 'original_id_format')
+    self.assign_attributes json.except('exercises', 'language', 'original_id_format', 'id')
     self.language = Language.for_name(json['language'])
     self.save!
 
@@ -61,7 +61,7 @@ class Guide < ActiveRecord::Base
       position = i + 1
       exercise = Exercise.class_for(e['type']).find_or_initialize_by(position: position, guide_id: self.id)
       exercise.position = position
-      exercise.assign_attributes(e.except('type'))
+      exercise.assign_attributes(e.except('type', 'id'))
       exercise.language = self.language
       exercise.locale = self.locale
       exercise.save!
