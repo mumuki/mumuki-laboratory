@@ -2,20 +2,30 @@ language: ruby
 cache: bundler
 sudo: false
 rvm:
- - 2.0.0
+- 2.0.0
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - cp config/database.travis.yml config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.travis.yml config/database.yml
 script:
-  - bundle exec rake db:schema:load
-  - bundle exec rake
+- bundle exec rake db:schema:load
+- bundle exec rake
 deploy:
-  provider: heroku
-  app: mumuki
-  run: "rake db:migrate"
-  api_key:
-    secure: gxiVqtd/NH+W4jAsSGuVItq40XW111idGcSr1tyHAKuWSAoaPoQjofqz7u4s6AfkR97hgc3kS7kh2MgymLRITJWvnoYNcepbpoh60875P2nW2QLGOVcDYoB9RkllYHn9rTiYLtqmO+Z8v/XJgc3s9v7Mx90DsL4BI5MspfLEsIg=
+  - provider: openshift
+    tags: true
+    user: flbulgarelli@yahoo.com.ar
+    password:
+      secure: jgsXU+UQUUK2p1ixFW2eAb2Trcwm4rYGFADQoPvllPZa9bR18Kt4DLfLOeZIZBXTHv8MK+4IdAQVFH7M48k5cDuf+JYaYM2paDnk4Q+r+R2uudu0CdzcAFTYLdKrZSqZhp7f5Llu3HAlo1uqYviMsX8nQ0zyRMGnaDsIZFL/Z8Q=
+    app: platform
+    domain: mumuki
+    on:
+      repo: mumuki/mumuki-atheneum
+  - provider: heroku
+    app: mumuki
+    run: "rake db:migrate"
+    api_key:
+      secure: gxiVqtd/NH+W4jAsSGuVItq40XW111idGcSr1tyHAKuWSAoaPoQjofqz7u4s6AfkR97hgc3kS7kh2MgymLRITJWvnoYNcepbpoh60875P2nW2QLGOVcDYoB9RkllYHn9rTiYLtqmO+Z8v/XJgc3s9v7Mx90DsL4BI5MspfLEsIg=
+
 addons:
-    code_climate:
-      repo_token: f3a989f22a2ce6d3dcb0b7cc42671bfb5529508aa8b82ca039bfe0153da0b118
+  code_climate:
+    repo_token: f3a989f22a2ce6d3dcb0b7cc42671bfb5529508aa8b82ca039bfe0153da0b118
 env: CODECLIMATE_REPO_TOKEN=f3a989f22a2ce6d3dcb0b7cc42671bfb5529508aa8b82ca039bfe0153da0b118
