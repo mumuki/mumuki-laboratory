@@ -11,13 +11,13 @@ script:
 - bundle exec rake
 deploy:
   - provider: openshift
-    tags: true
     user: flbulgarelli@yahoo.com.ar
     password:
       secure: jgsXU+UQUUK2p1ixFW2eAb2Trcwm4rYGFADQoPvllPZa9bR18Kt4DLfLOeZIZBXTHv8MK+4IdAQVFH7M48k5cDuf+JYaYM2paDnk4Q+r+R2uudu0CdzcAFTYLdKrZSqZhp7f5Llu3HAlo1uqYviMsX8nQ0zyRMGnaDsIZFL/Z8Q=
     app: platform
     domain: mumuki
     on:
+      tags: true
       repo: mumuki/mumuki-atheneum
   - provider: heroku
     app: mumuki
