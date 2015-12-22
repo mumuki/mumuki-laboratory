@@ -17,3 +17,11 @@ development:
   database: mumuki_development
   pool: 5
   timeout: 5000
+
+production:
+  <<: *common
+  database: <%= ENV['PGDATABASE'] %>
+  username: <%= ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME'] %>
+  password: <%= ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD'] %>
+  host: <%= ENV['OPENSHIFT_POSTGRESQL_DB_HOST'] %>
+  port: <%= ENV['OPENSHIFT_POSTGRESQL_DB_PORT'] %>
