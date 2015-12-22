@@ -10,13 +10,13 @@ describe Exercise do
     context 'when there is default content' do
       let(:exercise) { create(:exercise, default_content: 'foo') }
 
-      it { expect(exercise.new_solution).to eq 'foo' }
+      it { expect(exercise.new_solution.content).to eq 'foo' }
     end
 
     context 'when there is no default content' do
       let(:exercise) { create(:exercise) }
 
-      it { expect(exercise.new_solution).to be_nil }
+      it { expect(exercise.new_solution.content).to be_nil }
     end
   end
 
