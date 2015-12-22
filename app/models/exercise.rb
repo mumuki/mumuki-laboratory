@@ -31,10 +31,6 @@ class Exercise < ActiveRecord::Base
     tag_list + [language.name]
   end
 
-  def generate_original_id!
-    update!(original_id: id) unless original_id
-  end
-
   def extra_code
     [guide.extra, self[:extra_code]].compact.join("\n")
   end

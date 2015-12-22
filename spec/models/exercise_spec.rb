@@ -166,24 +166,6 @@ describe Exercise do
     it { expect(Exercise.full_text_search('foobaz')).to eq [] }
   end
 
-  describe '#original_id' do
-    let(:exercise) { create(:exercise) }
-    context 'no original id' do
-      it { expect(exercise.original_id).to be nil }
-    end
-    context 'after generation' do
-      before { exercise.generate_original_id! }
-      it { expect(exercise.original_id).to eq exercise.id }
-    end
-    context 'after regeneration' do
-      before do
-        exercise.update!(original_id: 1)
-        exercise.generate_original_id!
-      end
-      it { expect(exercise.original_id).to eq 1 }
-    end
-  end
-
   describe '#guide_done_for?' do
 
     context 'when it does not belong to a guide' do
