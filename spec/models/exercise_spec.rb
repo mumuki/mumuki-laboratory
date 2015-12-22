@@ -6,6 +6,20 @@ describe Exercise do
 
   before { I18n.locale = :en }
 
+  describe '#new_solution' do
+    context 'when there is default content' do
+      let(:exercise) { create(:exercise, default_content: 'foo') }
+
+      it { expect(exercise.new_solution).to eq 'foo' }
+    end
+
+    context 'when there is no default content' do
+      let(:exercise) { create(:exercise) }
+
+      it { expect(exercise.new_solution).to be_nil }
+    end
+  end
+
   describe '#next_for' do
     context 'when exercise has no guide' do
       it { expect(exercise.next_for(user)).to be nil }

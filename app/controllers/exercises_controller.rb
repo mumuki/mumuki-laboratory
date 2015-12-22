@@ -8,7 +8,7 @@ class ExercisesController < ApplicationController
   before_action :set_previous_solution, only: :show
 
   def show
-    @solution = Solution.new if current_user?
+    @solution = @exercise.new_solution if current_user?
   end
 
   def index

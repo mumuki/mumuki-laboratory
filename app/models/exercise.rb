@@ -39,6 +39,10 @@ class Exercise < ActiveRecord::Base
     with_parent_name { "#{parent.friendly} - #{name}" }
   end
 
+  def new_solution
+    Solution.new(content: default_content)
+  end
+
   private
 
   def defaults
