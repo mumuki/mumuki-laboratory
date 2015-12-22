@@ -14,7 +14,7 @@ describe WithTestResultsRendering do
         output_content_type: ContentType::Plain) }
 
       it { expect(html).to be_html_safe }
-      it { expect(html).to include "<i class=\"fa fa-check text-success special-icon\"></i>" }
+      it { expect(html).to include "<i class=\"fa fa-check text-success\"></i>" }
       it { expect(html).to include "2 is 2" }
     end
 
@@ -24,7 +24,7 @@ describe WithTestResultsRendering do
           test_results: [{title: '2 is 2', status: :failed, result: 'something _went_ wrong'}],
           output_content_type: ContentType::Plain) }
 
-        it { expect(html).to include "<i class=\"fa fa-times text-danger special-icon\"></i>" }
+        it { expect(html).to include "<i class=\"fa fa-times text-danger\"></i>" }
         it { expect(html).to include "<strong class=\"example-title\">2 is 2</strong>" }
         it { expect(html).to include "<pre>something _went_ wrong</pre>" }
       end
@@ -34,7 +34,7 @@ describe WithTestResultsRendering do
           test_results: [{title: '2 is 2', status: :failed, result: 'something went _really_ wrong'}],
           output_content_type: ContentType::Markdown) }
 
-        it { expect(html).to include "<i class=\"fa fa-times text-danger special-icon\"></i>" }
+        it { expect(html).to include "<i class=\"fa fa-times text-danger\"></i>" }
         it { expect(html).to include "<strong class=\"example-title\">2 is 2</strong>" }
         it { expect(html).to include "<p>something went <em>really</em> wrong</p>" }
       end

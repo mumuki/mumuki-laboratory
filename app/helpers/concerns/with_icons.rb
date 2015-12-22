@@ -10,7 +10,7 @@ module WithIcons
   end
 
   def language_icon(language, options={})
-    options = {alt: language.name, height: 16, class: 'special-icon'}.merge(options)
+    options = {alt: language.name, height: 16 }.merge(options)
     link_to image_tag(language.image_url, options), (options[:link_path] || guides_path(q: language.name))
   end
 
@@ -30,7 +30,7 @@ module WithIcons
 
   def icon_for_status(s)
     iconized = s.iconize
-    [iconized[:type], class: "text-#{iconized[:class]} special-icon"]
+    [iconized[:type], class: "text-#{iconized[:class]}"]
   end
 
 end
