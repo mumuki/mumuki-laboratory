@@ -22,14 +22,18 @@ Apartment.configure do |config|
 
 end
 
-class FirstSubdomainWithRescue < Apartment::Elevators::FirstSubdomain
+class AtheneumElevator < Apartment::Elevators::Subdomain
+  def parse_tenant_name(*)
+    super.try { |it| it.split('.')[0] } || 'central'
+  end
+
   def call(*args)
     begin
       super
     rescue Apartment::TenantNotFound
-      return [404, {'Content-Type' => 'text/html'}, ["#{File.read(Rails.root.to_s + "/public/404.#{Tenant.central.locale}.html")}"] ]
+      return [404, {'Content-Type' => 'text/html'}, ["#{File.read(Rails.root.to_s + "/public/404.#{Tenant.central.locale}.html")}"]]
     end
   end
 end
 
-Rails.application.config.middleware.use 'FirstSubdomainWithRescue'
+Rails.application.config.middleware.use 'AtheneumElevator'
