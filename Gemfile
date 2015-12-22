@@ -9,7 +9,7 @@ gem 'pg_search', '~> 1.0'
 
 gem 'uglifier', '~> 2.7'
 
-gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', :platforms => :ruby
 
 gem 'turbolinks'
 
