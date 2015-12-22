@@ -1,0 +1,5 @@
+pushd ${OPENSHIFT_REPO_DIR} > /dev/null
+bundle exec rake db:migrate RAILS_ENV="production"
+cp public/robots.production.txt public/robots.txt
+popd > /dev/null
+
