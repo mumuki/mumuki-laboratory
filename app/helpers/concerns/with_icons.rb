@@ -10,8 +10,7 @@ module WithIcons
   end
 
   def language_icon(language, options={})
-    options = {alt: language.name, height: 16 }.merge(options)
-    link_to image_tag(language.image_url, options), (options[:link_path] || guides_path(q: language.name))
+    tag('span', class: "fa devicons devicons-#{language.devicon} lang-icon", alt: language.name)
   end
 
   private

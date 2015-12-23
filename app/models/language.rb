@@ -5,7 +5,7 @@ class Language < ActiveRecord::Base
 
   enum output_content_type: [:plain, :html, :markdown]
 
-  validates_presence_of :test_runner_url, :image_url, :output_content_type
+  validates_presence_of :test_runner_url, :devicon, :output_content_type
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
 

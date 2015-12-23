@@ -38,7 +38,7 @@ describe 'api controller' do
       end
 
       context 'when there are guides with exercises' do
-        let!(:language_1) { create(:language, id: 1, name: 'language_1', image_url: 'lang1.jpeg') }
+        let!(:language_1) { create(:language, id: 1, name: 'language_1') }
         let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: language_1.id) }
         let!(:exercise_1) { create(:exercise, name: 'exercise_1', id: 1, language_id: language_1.id, guide_id: guide_1.id) }
 
@@ -49,7 +49,7 @@ describe 'api controller' do
                   id: 1,
                   slug: 'flbulgarelli/mumuki-sample-exercises',
                   name: 'guide_1',
-                  language: {id: 1, name: 'language_1', image_url: 'lang1.jpeg'},
+                  language: {id: 1, name: 'language_1' },
                   exercises: [
                       {id: 1, name: 'exercise_1', position: 1}
                   ]
@@ -60,7 +60,7 @@ describe 'api controller' do
       end
 
       context 'when there are guides with no exercises' do
-        let!(:language_1) { create(:language, id: 1, name: 'language_1', image_url: 'lang1.jpeg') }
+        let!(:language_1) { create(:language, id: 1, name: 'language_1') }
         let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: language_1.id) }
 
         describe 'when not using filters' do
@@ -71,7 +71,7 @@ describe 'api controller' do
                     id: 1,
                     slug: 'flbulgarelli/mumuki-sample-exercises',
                     name: 'guide_1',
-                    language: {id: 1, name: 'language_1', image_url: 'lang1.jpeg'},
+                    language: {id: 1, name: 'language_1'},
                     exercises: []
                 }
             ]}
@@ -83,7 +83,7 @@ describe 'api controller' do
 
       context 'when the guide belongs to a chapter' do
         let!(:chapter_1) { create(:chapter, id: 1, name: 'chapter_1') }
-        let!(:language_1) { create(:language, id: 1, name: 'language_1', image_url: 'lang1.jpeg') }
+        let!(:language_1) { create(:language, id: 1, name: 'language_1') }
         let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: language_1.id) }
 
         before { chapter_1.rebuild!([guide_1]) }
@@ -96,7 +96,7 @@ describe 'api controller' do
                   id: 1,
                   slug: 'flbulgarelli/mumuki-sample-exercises',
                   name: 'guide_1',
-                  language: {id: 1, name: 'language_1', image_url: 'lang1.jpeg'},
+                  language: {id: 1, name: 'language_1'},
                   chapter: {id: 1, name: 'chapter_1'},
                   exercises: []
               }

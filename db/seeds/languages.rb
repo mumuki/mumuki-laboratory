@@ -1,34 +1,26 @@
 def language(attrs)
-  Language.find_or_create_by(name: attrs[:name]).update!(attrs)
+  name = attrs[:name]
+  Language.find_or_create_by(name: name).update!({devicon: name}.merge attrs)
 end
 
 language(name: 'haskell',
          test_runner_url: 'http://mumuki-hspec-server.herokuapp.com',
-         image_url: 'https://www.haskell.org/wikistatic/haskellwiki_logo.png',
          queriable: true)
 language(name: 'gobstones',
          test_runner_url: 'http://mumuki-gobstones-server.herokuapp.com',
-         image_url: 'https://avatars3.githubusercontent.com/u/8825549?v=3&s=30',
          output_content_type: :html)
 language(name: 'javascript',
-         test_runner_url: 'http://mumuki-mocha-server.herokuapp.com',
-         image_url: 'http://www.ninjajournal.com/wp-content/uploads/2014/03/javascript_logo_without_title.png')
+         test_runner_url: 'http://mumuki-mocha-server.herokuapp.com')
 language(name: 'c',
-         test_runner_url: 'http://162.243.111.176:8001',
-         image_url: 'https://www.haskell.org/wikistatic/haskellwiki_logo.png')
+         test_runner_url: 'http://162.243.111.176:8001')
 language(name: 'c++',
-         test_runner_url: 'http://162.243.111.176:8002',
-         image_url: 'https://www.haskell.org/wikistatic/haskellwiki_logo.png')
+         test_runner_url: 'http://162.243.111.176:8002')
 language(name: 'prolog',
-         test_runner_url: 'http://mumuki-plunit-server.herokuapp.com',
-         image_url: '"http://cdn.portableapps.com/SWI-PrologPortable_128.png')
+         test_runner_url: 'http://mumuki-plunit-server.herokuapp.com')
 language(name: 'ruby',
          test_runner_url: 'http://162.243.111.176:8000',
-         image_url: 'http://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/1000px-Ruby_logo.svg.png',
          queriable: true)
 language(name: 'java',
-         test_runner_url: 'http://162.243.111.176:8003',
-         image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Java_logo_and_wordmark.svg/2000px-Java_logo_and_wordmark.svg.png')
+         test_runner_url: 'http://162.243.111.176:8003')
 language(name: 'wollok',
-         test_runner_url: 'http://mumuki-wollok-server.herokuapp.com',
-         image_url: 'https://raw.githubusercontent.com/uqbar-project/wollok/master/org.uqbar.project.wollok.ui/icons/wollok-logo-64.fw.png')
+         test_runner_url: 'http://mumuki-wollok-server.herokuapp.com')

@@ -224,6 +224,7 @@ GEM
       rails-assets-jquery (>= 1.9.1)
     rails-assets-bootstrap-vertical-tabs (1.2.1)
       rails-assets-bootstrap (>= 3.0.0)
+    rails-assets-devicons (1.8.0)
     rails-assets-jquery (2.1.4)
     rails-i18n (4.0.5)
       i18n (~> 0.6)
@@ -362,6 +363,7 @@ DEPENDENCIES
   rails (= 4.1.4)
   rails-assets-bootstrap!
   rails-assets-bootstrap-vertical-tabs!
+  rails-assets-devicons!
   rails-i18n (~> 4.0.0)
   rake (= 10.4.2)
   redcarpet (~> 3.3.2)

@@ -25,6 +25,8 @@ gem 'jquery-rails'
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
   gem 'rails-assets-bootstrap-vertical-tabs'
+  gem 'rails-assets-devicons'
+
 end
 
 gem 'chartkick', '~> 1.4'
