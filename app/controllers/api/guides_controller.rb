@@ -23,8 +23,8 @@ class Api::GuidesController < Api::BaseController
   private
 
   def guide_params
-    params.permit(:slug, :beta, :learning, :name, :description, :corollary, :locale, :expectations, :language,
-      exercises: [:type, :tag_list, :layout, :name, :description, :hint, :corollary, :test, :expectations, :original_id])
+    params.permit(:slug, :beta, :learning, :name, :description, :corollary, :locale, :expectations, :language, :id_format,
+                  exercises: [:type, :tag_list, :layout, :name, :description, :hint, :corollary, :test, :expectations, :id])
   end
 
 end

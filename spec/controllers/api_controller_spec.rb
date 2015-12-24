@@ -124,7 +124,7 @@ describe 'api controller' do
                  test: 'foo bar',
                  tag_list: %w(baz bar),
                  layout: 'no_editor',
-                 original_id: 1}]}
+                 id: 1}]}
 
         }
         it { expect(response.status).to eq 200 }

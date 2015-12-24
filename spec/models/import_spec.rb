@@ -19,13 +19,13 @@ describe Guide do
             test: 'foo bar',
             tag_list: %w(baz bar),
             layout: 'no_editor',
-            original_id: 1},
+            id: 1},
 
            {type: 'playground',
             description: 'lorem ipsum',
             name: 'Foo',
             tag_list: %w(foo bar),
-            original_id: 4},
+            id: 4},
 
            {name: 'Baz',
             description: 'lorem ipsum',
@@ -33,7 +33,7 @@ describe Guide do
             layout: 'editor_bottom',
             type: 'problem',
             expectations: [{inspection: 'HasBinding', binding: 'foo'}],
-            original_id: 2}]}.deep_stringify_keys }
+            id: 2}]}.deep_stringify_keys }
 
     before do
       guide.import_from_json!(guide_json)
