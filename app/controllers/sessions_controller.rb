@@ -1,9 +1,15 @@
 class SessionsController < ApplicationController
-  def create
+  def callback
+    session[:userinfo] = request.env['omniauth.auth']
+
     user = User.omniauth(env['omniauth.auth'])
     remember_me_token.value = user.remember_me_token
 
     redirect_to redirect_after_login_path
+  end
+
+  def failure
+    @error_msg = request.params['message']
   end
 
   def destroy
@@ -11,7 +17,6 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
-  private
 
   def redirect_after_login_path
     redirect_after_login = session[:redirect_after_login] || :back

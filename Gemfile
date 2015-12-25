@@ -31,8 +31,8 @@ end
 
 gem 'chartkick', '~> 1.4'
 
-gem 'omniauth-github'
-gem 'omniauth-facebook'
+gem 'omniauth', '~> 1.2'
+gem 'omniauth-auth0', '~> 1.1'
 
 gem 'font-awesome-rails'
 

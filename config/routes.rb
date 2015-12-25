@@ -1,21 +1,15 @@
 Rails.application.routes.draw do
 
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
   controller :sessions do
-    get 'auth/:provider/callback' => :create
+    get 'auth/auth0/callback' => :callback
+    get 'auth/failure' => :failure
     get 'logout' => :destroy
   end
 
-
-  get '/es/exercises/:id', to: redirect('/exercises/%{id}')
-  get '/en/exercises/:id', to: redirect('/exercises/%{id}')
-  get '/es/guides/:id', to: redirect('/guides/%{id}')
-  get '/en/guides/:id', to: redirect('/guides/%{id}')
-  get '/es/guides', to: redirect('/guides')
-  get '/en/guides', to: redirect('/guides')
-  get '/es/exercises', to: redirect('/exercises')
-  get '/en/exercises', to: redirect('/exercises')
 
   namespace :api do
     resources :exercises, only: :index

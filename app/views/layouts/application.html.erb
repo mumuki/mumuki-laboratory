@@ -6,6 +6,7 @@
   <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
   <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <script src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
 
   <meta property="og:site_name" content="mumuki.io" />
   <meta property="og:title" content="Mumuki" />
@@ -21,6 +22,21 @@
   <%= javascript_include_tag '//www.google.com/jsapi', 'chartkick' %>
 </head>
 <body>
+
+<script type="text/javascript">
+  var lock = new Auth0Lock('<%= ENV['MUMUKI_AUTH0_CLIENT_ID'] %>', '<%= ENV['MUMUKI_AUTH0_DOMAIN'] %>');
+  function signin() {
+    lock.show({
+      callbackURL: '<%= auth_auth0_callback_url %>'
+      , responseType: 'code'
+      , authParams: {
+        scope: 'openid profile'
+      }
+    });
+  }
+</script>
+
+
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -48,38 +64,6 @@
 </div>
 
 <%= yield :no_container %>
-
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title text-center" id="gridSystemModalLabel"><%= t(:sign_in) %></h4>
-      </div>
-      <div class="modal-body">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-6 text-center">
-              <h1><%= fa_icon 'facebook' %></h1>
-              <h3><%= link_to(t(:sign_in_with_facebook), login_facebook_path) %></h3>
-              <p>
-                <em><%= t(:facebook_signin_reason) %></em>
-              </p>
-            </div>
-            <div class="col-md-6 text-center">
-              <h1><%= fa_icon 'github' %></h1>
-              <h3><%= link_to(t(:sign_in_with_github), login_github_path) %></h3>
-              <p>
-                <em><%= t(:github_signin_reason) %></em>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 
 <div class="container" id="wrap">
   <div class="row">
