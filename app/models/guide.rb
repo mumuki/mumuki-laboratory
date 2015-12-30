@@ -24,6 +24,11 @@ class Guide < ActiveRecord::Base
 
   has_one :chapter_guide
 
+  #Deactivate STI, so I can use type attribute
+  self.inheritance_column = nil
+
+  enum type: [ :learning, :practice ]
+
   #TODO denormalize
   def search_tags
     exercises.flat_map(&:search_tags).uniq

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151224174248) do
+ActiveRecord::Schema.define(version: 20151229153839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,10 +138,10 @@ ActiveRecord::Schema.define(version: 20151224174248) do
     t.integer  "language_id"
     t.text     "extra"
     t.text     "corollary"
-    t.boolean  "learning",     default: false
     t.boolean  "beta",         default: false
     t.text     "expectations"
     t.string   "slug",         default: "",    null: false
+    t.integer  "type",         default: 0,     null: false
   end
 
   add_index "guides", ["name"], name: "index_guides_on_name", using: :btree
