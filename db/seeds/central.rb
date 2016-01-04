@@ -11,6 +11,7 @@ Book.build! do |b|
     c.guide 'primeros-programas'
     c.guide 'procedimientos'
     c.guide 'repeticion-simple'
+    c.guide 'alternativa-condicional'
   end
 
   b.chapter 'Programacion Funcional' do |c|
