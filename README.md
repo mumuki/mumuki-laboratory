@@ -7,7 +7,7 @@
 Mumuki Atheneum
 ================
 
-> Exercises Solving Webapp for the Mumuki Platform
+> Exercises Solving Webapp for the Mumuki Platform
 
 # About
 
