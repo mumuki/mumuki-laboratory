@@ -3,6 +3,9 @@
 [![Code Climate](https://codeclimate.com/github/mumuki/mumuki-atheneum/badges/gpa.svg)](https://codeclimate.com/github/mumuki/mumuki-atheneum)
 [![Test Coverage](https://codeclimate.com/github/mumuki/mumuki-atheneum/badges/coverage.svg)](https://codeclimate.com/github/mumuki/mumuki-atheneum)
 
+<a width="150" height="50" href="https://auth0.com/" target="_blank" alt="Single Sign On & Token Based Authentication - Auth0"><img width="150" height="50" alt="JWT Auth for open source projects" src="http://cdn.auth0.com/oss/badges/a0-badge-dark.png"/></a>
+
+
 Mumuki Platform
 ================
 
