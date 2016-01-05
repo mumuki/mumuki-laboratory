@@ -11,7 +11,7 @@ Mumuki Atheneum
 
 # About
 
-Atheneum is a multitenant Rails webapp for solving exercises, organized in terms of chapeters and guides.
+Atheneum is a multitenant Rails webapp for solving exercises, organized in terms of chapters and guides.
 
 ## Authentication Powered by Auth0 
 
