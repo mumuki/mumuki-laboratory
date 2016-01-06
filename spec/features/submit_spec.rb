@@ -19,7 +19,7 @@ feature 'Submit Flow' do
 
 
   scenario 'create submission' do
-    pending 'need to mock this'
+    skip 'need to mock this'
 
     visit "/exercises/#{exercise.id}"
 
@@ -32,7 +32,7 @@ feature 'Submit Flow' do
 
 
   scenario 'create submission and then get another exercise' do
-    pending 'need to mock this'
+    skip 'need to mock this'
 
     visit "/exercises/#{exercise.id}"
 
@@ -48,7 +48,7 @@ feature 'Submit Flow' do
 
 
   scenario 'create submission and then retry exercise' do
-    pending 'need to mock this'
+    skip 'need to mock this'
 
     visit "/exercises/#{exercise.id}"
 
