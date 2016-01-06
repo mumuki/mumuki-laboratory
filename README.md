@@ -9,9 +9,18 @@ Mumuki Atheneum
 
 > Exercises solving webapp for the Mumuki platform
 
-# About
+## About
 
 Atheneum is a multitenant Rails webapp for solving exercises, organized in terms of chapters and guides.
+
+## Running
+
+```bash
+MUMUKI_AUTH0_CLIENT_ID=...\
+MUMUKI_AUTH0_CLIENT_SECRET=... \
+MUMUKI_AUTH0_DOMAIN=... \
+rails s
+```
 
 ## Authentication Powered by Auth0 
 
