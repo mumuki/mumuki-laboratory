@@ -26,17 +26,6 @@ feature 'Progress Flow' do
     expect(page).to have_text('Functional Programming')
   end
 
-  scenario 'chapter progress, logged in' do
-    visit '/'
-    click_on 'Sign in with Github'
-
-    visit "/chapters/#{functional.id}"
-
-    expect(page).to have_text('Progress')
-    expect(page).to have_text('Functional Programming')
-    expect(page).to have_text('HS Functional Programming First Guide')
-  end
-
   scenario 'chapter progress, not logged in' do
     visit "/chapters/#{functional.id}"
 

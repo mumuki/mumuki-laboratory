@@ -29,42 +29,4 @@ feature 'Search Flow' do
 
     expect(page).to have_text('Description of foo')
   end
-
-  scenario 'visits a guide, tries to check progress, signs in, checks progress' do
-    visit "/guides/#{guide.id}"
-
-    within '.guide-nav' do
-      click_on 'Exercises'
-    end
-
-    expect(page).to have_text('You must sign in')
-
-    click_on 'Sign in with Github'
-
-    within '.guide-nav' do
-      click_on 'Exercises'
-    end
-
-    expect(page).to have_text('Foo')
-    expect(page).to have_text('Bar')
-    expect(page).to have_text('Baz')
-  end
-
-  scenario 'resolve an exercise, then make it fail, then visit guide' do
-    visit "/guides/#{guide.id}"
-
-    click_on 'Sign in with Github'
-
-    exercises[0].submit_solution!(user).passed!
-    exercises[1].submit_solution!(user).passed!
-    exercises[2].submit_solution!(user).passed!
-
-    exercises[2].submit_solution!(user).failed!
-
-    visit "/guides/#{guide.id}"
-
-    #FIXME expect(page).to have_text('Continue')
-  end
-
-
 end

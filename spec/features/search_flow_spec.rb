@@ -58,7 +58,7 @@ feature 'Search Flow' do
   scenario 'search by guide when it does not exists' do
     visit '/exercises'
 
-    click_on 'Sign in with Github'
+    click_on 'Sign in'
 
     fill_in 'q', with: 'nonExistingExercise'
 
