@@ -48,29 +48,4 @@ feature 'Home Flow' do
 
   end
 
-  context 'recurrent user' do
-    before do
-      visit '/'
-      click_on 'Sign in'
-      exercise.submit_solution!(user).passed!
-    end
-
-    scenario 'from outside' do
-      Capybara.current_session.driver.header 'Referer', 'http://google.com'
-
-      visit '/'
-
-      expect(page).to_not have_text('Mumuki is a simple, open and collaborative platform')
-      expect(page).to have_text(guide.name)
-      expect(page).to have_text('Nice to see you again! This is where you left last time')
-    end
-
-    scenario 'logged recurrent user' do
-      Capybara.current_session.driver.header 'Referer', 'http://en.mumuki.io/exercises/1'
-
-      visit '/'
-
-      expect(page).to have_text('Mumuki is a simple, open and collaborative platform')
-    end
-  end
 end
