@@ -34,8 +34,6 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
-  OmniAuth.config.test_mode = true
-
   config.verbosity = Verbosity::Verbose
 
   # Raises error for missing translations

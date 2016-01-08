@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
   def callback
-    session[:userinfo] = request.env['omniauth.auth']
-
     user = User.omniauth(env['omniauth.auth'])
     remember_me_token.value = user.remember_me_token
 
