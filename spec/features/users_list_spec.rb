@@ -12,7 +12,7 @@ feature 'Users listing' do
   scenario 'list users' do
     visit '/'
 
-    click_on 'Sign in with Github'
+    click_on 'Sign in'
 
     visit '/users'
 

@@ -28,7 +28,7 @@ feature 'Progress Flow' do
 
   scenario 'chapter progress, logged in' do
     visit '/'
-    click_on 'Sign in with Github'
+    click_on 'Sign in'
 
     visit "/chapters/#{functional.id}"
 

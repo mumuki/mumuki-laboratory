@@ -26,7 +26,7 @@ feature 'Home Flow' do
   context 'new user' do
     before do
       visit '/'
-      click_on 'Sign in with Github'
+      click_on 'Sign in'
     end
 
     scenario 'from outside' do
@@ -51,7 +51,7 @@ feature 'Home Flow' do
   context 'recurrent user' do
     before do
       visit '/'
-      click_on 'Sign in with Github'
+      click_on 'Sign in'
       exercise.submit_solution!(user).passed!
     end
 

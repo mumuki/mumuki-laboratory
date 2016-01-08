@@ -43,7 +43,7 @@ Rails.application.configure do
 
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:auth0] = OmniAuth::AuthHash.new({
-      provider: 'github',
+      provider: 'auth0',
       uid: '123545',
       credentials: {},
       info: {name: 'Test User', nickname: 'testuser'}

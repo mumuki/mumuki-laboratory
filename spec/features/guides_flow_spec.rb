@@ -39,7 +39,7 @@ feature 'Search Flow' do
 
     expect(page).to have_text('You must sign in')
 
-    click_on 'Sign in with Github'
+    click_on 'Sign in'
 
     within '.guide-nav' do
       click_on 'Exercises'
@@ -53,7 +53,7 @@ feature 'Search Flow' do
   scenario 'resolve an exercise, then make it fail, then visit guide' do
     visit "/guides/#{guide.id}"
 
-    click_on 'Sign in with Github'
+    click_on 'Sign in'
 
     exercises[0].submit_solution!(user).passed!
     exercises[1].submit_solution!(user).passed!

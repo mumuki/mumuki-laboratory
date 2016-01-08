@@ -12,7 +12,7 @@ feature 'Submit Flow' do
   scenario 'enter submissions page' do
     visit "/exercises/#{exercise.id}"
 
-    click_on 'Sign in with Github'
+    click_on 'Sign in'
 
     expect(page).to have_selector('#guide-done')
   end
@@ -23,7 +23,7 @@ feature 'Submit Flow' do
 
     visit "/exercises/#{exercise.id}"
 
-    click_on 'Sign in with Github'
+    click_on 'Sign in'
 
     click_on 'Submit'
 

@@ -7,7 +7,7 @@ feature 'Read Exercise Flow' do
     visit '/exercises'
 
     click_on 'Foo'
-    click_on 'Sign in with Github'
+
     expect(page).to have_text('an awesome problem description')
   end
 end
