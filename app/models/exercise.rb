@@ -31,8 +31,8 @@ class Exercise < ActiveRecord::Base
     tag_list + [language.name]
   end
 
-  def extra_code
-    [guide.extra, self[:extra_code]].compact.join("\n")
+  def extra
+    [guide.extra, self[:extra]].compact.join("\n")
   end
 
   def friendly

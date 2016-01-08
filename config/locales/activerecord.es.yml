@@ -4,7 +4,7 @@ es:
     attributes:
       exercise:
         description: Descripción
-        extra_code: Código Adicional
+        extra: Código Adicional
         hint: Ayudas
         language: Lenguaje
         locale: Idioma

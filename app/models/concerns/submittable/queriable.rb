@@ -4,6 +4,6 @@ module Queriable
   end
 
   def run_query!(params)
-    language.run_query!(params.merge(extra: extra_code))
+    language.run_query!(params.merge(extra: extra))
   end
 end

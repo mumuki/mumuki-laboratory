@@ -74,30 +74,30 @@ describe Exercise do
     end
   end
 
-  describe '#extra_code' do
+  describe '#extra' do
     context 'when exercise has no extra code' do
-      it { expect(exercise.extra_code).to eq '' }
+      it { expect(exercise.extra).to eq '' }
     end
 
     context 'when exercise has extra code and has no guide' do
-      let!(:exercise_with_extra_code) { create(:exercise, extra_code: 'exercise extra code') }
+      let!(:exercise_with_extra) { create(:exercise, extra: 'exercise extra code') }
 
-      it { expect(exercise_with_extra_code.extra_code).to eq 'exercise extra code' }
+      it { expect(exercise_with_extra.extra).to eq 'exercise extra code' }
     end
 
     context 'when exercise has extra code and belong to a guide with no extra code' do
-      let!(:exercise_with_extra_code) { create(:exercise, guide: guide, extra_code: 'exercise extra code') }
+      let!(:exercise_with_extra) { create(:exercise, guide: guide, extra: 'exercise extra code') }
       let!(:guide) { create(:guide) }
 
-      it { expect(exercise_with_extra_code.extra_code).to eq 'exercise extra code' }
+      it { expect(exercise_with_extra.extra).to eq 'exercise extra code' }
     end
 
     context 'when exercise has extra code and belong to a guide with extra code' do
-      let!(:exercise_with_extra_code) { create(:exercise, guide: guide, extra_code: 'exercise extra code') }
+      let!(:exercise_with_extra) { create(:exercise, guide: guide, extra: 'exercise extra code') }
       let!(:guide) { create(:guide, extra: 'guide extra code') }
 
-      it { expect(exercise_with_extra_code.extra_code).to eq "guide extra code\nexercise extra code" }
-      it { expect(exercise_with_extra_code[:extra_code]).to eq 'exercise extra code' }
+      it { expect(exercise_with_extra.extra).to eq "guide extra code\nexercise extra code" }
+      it { expect(exercise_with_extra[:extra]).to eq 'exercise extra code' }
     end
   end
 

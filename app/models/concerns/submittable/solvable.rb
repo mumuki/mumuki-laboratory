@@ -8,7 +8,7 @@ module Solvable
     language.run_tests!(
         params.merge(
             test: test,
-            extra: extra_code,
+            extra: extra,
             locale: locale,
             expectations: expectations))
   end
