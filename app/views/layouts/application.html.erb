@@ -24,7 +24,7 @@
 <body>
 
 <script type="text/javascript">
-  var lock = new Auth0Lock('<%= ENV['MUMUKI_AUTH0_CLIENT_ID'] %>', '<%= ENV['MUMUKI_AUTH0_DOMAIN'] %>');
+  var lock = new Auth0Lock('<%= Rails.configuration.auth0_client_id %>', '<%= Rails.configuration.auth0_domain %>');
   function signin() {
     lock.show({
       callbackURL: '<%= auth_auth0_callback_url %>'
