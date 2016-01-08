@@ -42,16 +42,14 @@ Rails.application.configure do
   config.verbosity = Verbosity::Standard
 
   OmniAuth.config.test_mode = true
-  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+  OmniAuth.config.mock_auth[:auth0] = OmniAuth::AuthHash.new({
       provider: 'github',
       uid: '123545',
       credentials: {},
       info: {name: 'Test User', nickname: 'testuser'}
   })
-  OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
-      provider: 'facebook',
-      uid: '123545',
-      credentials: {},
-      info: {name: 'Test User', nickname: 'fbtestuser'}
-  })
+
+  config.auth0_client_id = 'foo id'
+  config.auth0_client_secret = 'foo secret'
+  config.auth0_domain = 'http://foo.com'
 end
