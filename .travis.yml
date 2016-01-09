@@ -27,5 +27,5 @@ deploy:
 
 addons:
   code_climate:
-    repo_token: f3a989f22a2ce6d3dcb0b7cc42671bfb5529508aa8b82ca039bfe0153da0b118
-env: CODECLIMATE_REPO_TOKEN=f3a989f22a2ce6d3dcb0b7cc42671bfb5529508aa8b82ca039bfe0153da0b118
+    repo_token: 820e155f1bff3d5cfcb84eae1caace7cd9ec5a27540f52222620896dc010b3ee
+env: CODECLIMATE_REPO_TOKEN=820e155f1bff3d5cfcb84eae1caace7cd9ec5a27540f52222620896dc010b3ee
