@@ -2,6 +2,7 @@
 [![Build Status](https://travis-ci.org/mumuki/mumuki-atheneum.svg?branch=master)](https://travis-ci.org/mumuki/mumuki-atheneum)
 [![Code Climate](https://codeclimate.com/github/mumuki/mumuki-atheneum/badges/gpa.svg)](https://codeclimate.com/github/mumuki/mumuki-atheneum)
 [![Test Coverage](https://codeclimate.com/github/mumuki/mumuki-atheneum/badges/coverage.svg)](https://codeclimate.com/github/mumuki/mumuki-atheneum)
+[![Issue Count](https://codeclimate.com/github/mumuki/mumuki-atheneum/badges/issue_count.svg)](https://codeclimate.com/github/mumuki/mumuki-atheneum)
 
 
 Mumuki Atheneum
