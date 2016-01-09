@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 20160108215313) do
     t.integer  "guide_id"
     t.string   "locale",            default: "en"
     t.text     "hint"
-    t.text     "extra_code"
+    t.text     "extra"
     t.integer  "position"
     t.text     "corollary"
     t.integer  "layout",            default: 0,         null: false
