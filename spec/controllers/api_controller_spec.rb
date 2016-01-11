@@ -117,6 +117,7 @@ describe 'api controller' do
             slug: 'flbulgarelli/sample-guide',
             language: 'haskell',
             locale: 'en',
+            expectations: [{ inspection: 'HasBinding', binding: 'foo'}],
             exercises: [
                 {type: 'problem',
                  name: 'Bar',
@@ -124,6 +125,7 @@ describe 'api controller' do
                  test: 'foo bar',
                  tag_list: %w(baz bar),
                  layout: 'no_editor',
+                 expectations: [{ inspection: 'HasBinding', binding: 'bar'}],
                  id: 1}]}
 
         }
@@ -132,6 +134,9 @@ describe 'api controller' do
         it { expect(imported_guide.name).to eq 'sample guide' }
         it { expect(imported_guide.language).to eq haskell }
         it { expect(imported_guide.exercises.count).to eq 1 }
+        it { expect(imported_guide.exercises.first.expectations).to eq [
+              { 'inspection' => 'HasBinding', 'binding' => 'bar'},
+              { 'inspection' => 'HasBinding', 'binding' => 'foo'}] }
       end
     end
   end
