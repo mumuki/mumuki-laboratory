@@ -15,11 +15,7 @@
 <div>
   <p>
     <%= previous_nav_button(@exercise) %>
-    <span data-toggle="popover"
-          title="<%= @exercise.guide.name %>"
-          data-content="<%= @exercise.guide.description_html.to_str %>">
-            <%= link_to_guide(@exercise.guide) %>
-          </span>
+    <%= link_to_guide(@exercise.guide) %>
     <%= next_nav_button(@exercise) %>
   </p>
 </div>
