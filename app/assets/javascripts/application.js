@@ -28,3 +28,7 @@
 //= require chartkick
 //= require jquery-console
 //= require_tree ./application
+
+NProgress.configure({
+  showSpinner: false
+});
