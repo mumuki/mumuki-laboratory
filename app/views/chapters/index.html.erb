@@ -1,22 +1,21 @@
-<div class="col-md-offset-2 col-md-8">
-  <h1 class="text-center"><%= t :mumuki_catchphrase %></h1>
+<div class="col-md-offset-2 col-md-7">
+  <h1><%= t :mumuki_catchphrase %></h1>
 
-  <p class="text-center"><%= t :mumuki_short_description %></p>
-
-  <br>
-
+  <p><%= t :mumuki_short_description %></p>
   <% @chapters.each do |it| %>
-    <div class="text-center chapter">
+    <div class="chapter">
       <h3><%= t(:chapter_number, number: it.number) %> <%= it.name %></h3>
-
       <hr>
-
-      <p>
-        <%= it.description_html %>
-      </p>
-      <a href="<%= guide_path(it.first_guide) %>" class="btn btn-success">
-        <%= t(:start_practicing) %>
-      </a>
+      <div class="row">
+        <div class="col-md-9">
+          <%= it.description_html %>
+        </div>
+        <div class="col-md-3">
+          <a href="<%= guide_path(it.first_guide) %>" class="btn btn-success pull-right">
+            <%= t(:start_practicing) %>
+          </a>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>
