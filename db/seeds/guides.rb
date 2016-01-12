@@ -4,5 +4,10 @@ Mumukit::Bridge::Bibliotheca.new.guides.each do |g|
   slug = g['slug']
   puts "Importing #{slug}"
 
-  Guide.find_or_create_by!(slug: slug).import!
+
+  begin
+    Guide.find_or_create_by!(slug: slug).import!
+  rescue => e
+    puts "Ignoring #{slug} because of import error #{e}"
+  end
 end
