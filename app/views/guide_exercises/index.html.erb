@@ -1,5 +1,7 @@
 <%= render layout: 'layouts/guide', locals: {current_tab: :exercises} do %>
 
+  <%= link_to_tag_list @guide.search_tags %>
+
   <div>
     <table class="table table-striped">
       <thead>
