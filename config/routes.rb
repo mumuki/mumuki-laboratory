@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :guides, only: [:index, :create]
   end
 
-  root to: 'home#index'
+  root to: 'chapters#index'
 
   resources :chapters, only: [:index, :show]
 
