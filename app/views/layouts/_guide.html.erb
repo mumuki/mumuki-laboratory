@@ -7,14 +7,6 @@
       <small> - <%= @guide.language %></small>
     </h1>
     <h4><%= with_classifications  @guide %></h4>
-
-    <% if @guide.chapter %>
-      <p>
-        <%= previous_nav_button(@guide) %>
-        <span><%= link_to_chapter @guide.chapter %></span>
-        <%= next_nav_button(@guide) %>
-      </p>
-    <% end%>
   </div>
 </div>
 
