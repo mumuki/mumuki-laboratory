@@ -27,7 +27,7 @@ class EventSubscriber < ActiveRecord::Base
   end
 
   def do_request(event, path)
-    RestClient.post("#{url}/#{path}", event, content_type: :json)
+    RestClient.post("#{Tenant.current.name}.#{url}/#{path}", event, content_type: :json)
   end
 
   def validate_response(response)
