@@ -43,11 +43,6 @@
       <a class="navbar-brand" href="<%= root_path %>"> <span class="ahahamojimoji">ム</span>Mumuki</a>
     </div>
 
-    <ul class="nav navbar-nav navbar-left">
-      <li><a href="<%= guides_path %>"><%= t(:guide).pluralize %></a></li>
-      <li><a href="<%= exercises_path %>"><%= t(:exercise).pluralize %></a></li>
-    </ul>
-
     <ul class="nav navbar-nav navbar-right">
       <% if current_user? %>
         <div class="navbar-text profile-image-nav">
