@@ -43,11 +43,19 @@ class Exercise < ActiveRecord::Base
     Solution.new(content: default_content)
   end
 
+  def import_from_json!(json)
+    attrs = json.except('type', 'id')
+    attrs = attrs.except('expectations') if json['type'] == 'playground' #FIXME bug in bibliotheca
+
+    assign_attributes(attrs)
+    save!
+  end
+
   private
 
   def defaults
     self.submissions_count = 0
-    self.layout = Exercise.default_layout
+    self.layout = self.class.default_layout
   end
 
   def self.class_for(type)
