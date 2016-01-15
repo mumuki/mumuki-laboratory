@@ -103,12 +103,30 @@ describe Guide do
       let(:exercise_1) { create(:exercise, language: language, name: 'Exercise 1', corollary: 'A corollary') }
       let(:guide) { create(:guide, language: language, exercises: [exercise_1]) }
 
-      let(:json) { {'exercises' => [{ 'name' => 'Exercise 2', 'type' => 'problem', 'corollary' => nil }], 'language' => language.name} }
+      context 'when imported corollary is nil' do
+        let(:json) { {
+            'exercises' => [
+                {'name' => 'Exercise 2', 'type' => 'problem', 'corollary' => nil}],
+            'language' => language.name} }
 
-      before { guide.import_from_json! json }
+        before { guide.import_from_json! json }
 
-      it { expect(guide.exercises[0].name).to eq 'Exercise 2' }
-      it { expect(guide.exercises[0].corollary).to eq nil }
+        it { expect(guide.exercises[0].name).to eq 'Exercise 2' }
+        it { expect(guide.exercises[0].corollary).to eq nil }
+      end
+
+
+      context 'when imported corollary is not present' do
+        let(:json) { {
+            'exercises' => [
+                {'name' => 'Exercise 2', 'type' => 'problem'}],
+            'language' => language.name} }
+
+        before { guide.import_from_json! json }
+
+        it { expect(guide.exercises[0].name).to eq 'Exercise 2' }
+        it { expect(guide.exercises[0].corollary).to eq nil }
+      end
     end
   end
 end
