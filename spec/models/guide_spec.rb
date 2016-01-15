@@ -100,23 +100,37 @@ describe Guide do
   describe '#import_from_json!' do
     context 'when exercise already exists' do
       let(:language) { create(:language) }
-      let(:exercise_1) { create(:exercise, language: language, name: 'Exercise 1', corollary: 'A corollary') }
+      let(:exercise_1) { create(:exercise,
+                                language: language,
+                                test: 'test',
+                                name: 'Exercise 1',
+                                corollary: 'A corollary',
+                                extra: 'foo',
+                                hint: 'baz',
+                                expectations: [{binding: 'foo', inspection: 'HasBinding'}]) }
       let(:guide) { create(:guide, language: language, exercises: [exercise_1]) }
 
-      context 'when imported corollary is nil' do
+      context 'when there are nil imported fields' do
         let(:json) { {
             'exercises' => [
-                {'name' => 'Exercise 2', 'type' => 'problem', 'corollary' => nil}],
+                {'name' => 'Exercise 2',
+                 'type' => 'problem',
+                 'corollary' => nil,
+                 'extra' => nil,
+                 'expectations' => []}],
             'language' => language.name} }
 
         before { guide.import_from_json! json }
 
         it { expect(guide.exercises[0].name).to eq 'Exercise 2' }
-        it { expect(guide.exercises[0].corollary).to eq nil }
+        it { expect(guide.exercises[0].corollary).to eq be_blank }
+        it { expect(guide.exercises[0].extra).to be_blank }
+        it { expect(guide.exercises[0].hint).to eq be_blank }
+        it { expect(guide.exercises[0].expectations).to be_blank }
       end
 
 
-      context 'when imported corollary is not present' do
+      context 'when missing imported fields' do
         let(:json) { {
             'exercises' => [
                 {'name' => 'Exercise 2', 'type' => 'problem'}],
@@ -125,7 +139,10 @@ describe Guide do
         before { guide.import_from_json! json }
 
         it { expect(guide.exercises[0].name).to eq 'Exercise 2' }
-        it { expect(guide.exercises[0].corollary).to eq nil }
+        it { expect(guide.exercises[0].corollary).to eq be_blank }
+        it { expect(guide.exercises[0].extra).to be_blank }
+        it { expect(guide.exercises[0].hint).to eq be_blank }
+        it { expect(guide.exercises[0].expectations).to be_blank }
       end
     end
   end
