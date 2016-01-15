@@ -102,46 +102,55 @@ describe Guide do
       let(:language) { create(:language) }
       let(:exercise_1) { create(:exercise,
                                 language: language,
-                                test: 'test',
                                 name: 'Exercise 1',
+                                description: 'description',
+                                test: 'test',
                                 corollary: 'A corollary',
-                                extra: 'foo',
                                 hint: 'baz',
+                                extra: 'foo',
                                 expectations: [{binding: 'foo', inspection: 'HasBinding'}]) }
       let(:guide) { create(:guide, language: language, exercises: [exercise_1]) }
 
       context 'when there are nil imported fields' do
         let(:json) { {
+            'locale' => 'es',
+            'language' => language.name,
             'exercises' => [
                 {'name' => 'Exercise 2',
+                 'description' => 'foo',
+                 'test' => 'test',
                  'type' => 'problem',
                  'corollary' => nil,
+                 'hint' => nil,
                  'extra' => nil,
-                 'expectations' => []}],
-            'language' => language.name} }
+                 'expectations' => []}]} }
 
         before { guide.import_from_json! json }
 
         it { expect(guide.exercises[0].name).to eq 'Exercise 2' }
-        it { expect(guide.exercises[0].corollary).to eq be_blank }
+        it { expect(guide.exercises[0].corollary).to be_blank }
         it { expect(guide.exercises[0].extra).to be_blank }
-        it { expect(guide.exercises[0].hint).to eq be_blank }
+        it { expect(guide.exercises[0].hint).to be_blank }
         it { expect(guide.exercises[0].expectations).to be_blank }
       end
 
 
       context 'when missing imported fields' do
         let(:json) { {
+            'locale' => 'es',
+            'language' => language.name,
             'exercises' => [
-                {'name' => 'Exercise 2', 'type' => 'problem'}],
-            'language' => language.name} }
+                {'name' => 'Exercise 2',
+                 'description' => 'foo',
+                 'test' => 'test',
+                 'type' => 'problem'}]} }
 
         before { guide.import_from_json! json }
 
         it { expect(guide.exercises[0].name).to eq 'Exercise 2' }
-        it { expect(guide.exercises[0].corollary).to eq be_blank }
+        it { expect(guide.exercises[0].corollary).to be_blank }
         it { expect(guide.exercises[0].extra).to be_blank }
-        it { expect(guide.exercises[0].hint).to eq be_blank }
+        it { expect(guide.exercises[0].hint).to be_blank }
         it { expect(guide.exercises[0].expectations).to be_blank }
       end
     end

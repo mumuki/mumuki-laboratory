@@ -44,11 +44,26 @@ class Exercise < ActiveRecord::Base
   end
 
   def import_from_json!(json)
+    self.language = guide.language
+    self.locale = guide.locale
+
+    reset!
+
     attrs = json.except('type', 'id')
     attrs = attrs.except('expectations') if json['type'] == 'playground' #FIXME bug in bibliotheca
 
     assign_attributes(attrs)
     save!
+  end
+
+  def reset!
+    self.name = nil
+    self.description = nil
+    self.corollary = nil
+    self.hint = nil
+    self.extra = nil
+    self.layout = self.class.default_layout
+    self.tag_list = []
   end
 
   private
