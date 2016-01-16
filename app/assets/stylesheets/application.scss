@@ -1,67 +1,7 @@
-@import 'application/overrides';
+@import 'application/colors';
 @import "application/vendor";
+@import "application/hovers";
 @import "application/mixins";
-@import "application/colors";
 @import "application/layout";
 @import "application/modules";
 @import "application/fonts";
-
-.alert-danger a {
-  color: greenyellow;
-}
-
-.progress-listing {
-  -webkit-columns: 200px 3;
-  -moz-columns: 200px 3;
-  columns: 200px 3;
-  list-style: none;
-
-  .status-icon {
-    margin-right: 4px;
-  }
-}
-
-.exercise-search-box {
-  width: 263px;
-  position: fixed
-}
-
-.exercise-panel {
-  background-color: ghostwhite;
-}
-
-.actions {
-  text-align: right;
-}
-
-.pagination-inline {
-  margin: 21px 0;
-}
-
-.profile-image-nav {
-  margin-right: -10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.editor-tab {
-  padding: 5px 10px 5px 10px !important;
-}
-
-.editor-pane {
-  margin-top: 5px;
-}
-
-h1 {
-  margin-top: 10px;
-}
-
-.-text-box { //disabled
-  background-color: rgba(24, 188, 156, 0.06);
-  border-style: solid;
-  border-radius: 10px;
-  border-width: 1px;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-color: rgba(0, 128, 128, 0.48);
-}
