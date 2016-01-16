@@ -1,5 +1,4 @@
 @import "application/vendor";
-
 @import "application/mixins";
 @import "application/colors";
 @import "application/layout";
@@ -7,7 +6,7 @@
 @import "application/fonts";
 
 .alert-danger a {
-    color: greenyellow;
+  color: greenyellow;
 }
 
 .progress-listing {
@@ -35,35 +34,13 @@
 }
 
 .pagination-inline {
-   margin: 21px 0;
+  margin: 21px 0;
 }
 
 .profile-image-nav {
   margin-right: -10px;
   margin-top: 10px;
   margin-bottom: 10px;
-}
-
-body.modal-open #wrap{
-  -webkit-filter: blur(7px);
-  -moz-filter: blur(15px);
-  -o-filter: blur(15px);
-  -ms-filter: blur(15px);
-  filter: blur(15px);
-}
-
-.modal-backdrop {background: #f7f7f7;}
-
-.modal .container {
-  margin-top: 110px;
-}
-
-.modal-open {
-  padding-right: 0px !important;
-}
-
-.submission-results {
-  margin-top: 15px;
 }
 
 a.text-info:hover {
@@ -92,33 +69,10 @@ a.text-danger:hover {
   border-color: #943A15;
 }
 
-.submission-results .panel-heading h4 {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.submission-results .panel-heading {
-  padding-top: 6px;
-  padding-bottom: 6px;
-}
-
-.results-item {
-  margin-top: 10px;
-}
-
-ul.results-list {
-  list-style-type: none;
-  padding-left: 10px;
-}
-
-.results-list pre {
-  margin-left: 15px;
-}
-
 .editor-tab {
- padding: 5px 10px 5px 10px !important;
+  padding: 5px 10px 5px 10px !important;
 }
 
-.editor-pane  {
+.editor-pane {
   margin-top: 5px;
 }
