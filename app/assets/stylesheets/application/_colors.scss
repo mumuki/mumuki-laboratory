@@ -1,2 +1,14 @@
-$info-color: #3498db;
-$blockquote-background: lighten($info-color, 35%);
+$blockquote-background: lighten($brand-info, 35%);
+
+a.text-info:hover {
+  color: #3498db;
+}
+
+
+a.text-warning:hover {
+  color: #f39c12;
+}
+
+a.text-danger:hover {
+  color: #d62c1a;
+}
