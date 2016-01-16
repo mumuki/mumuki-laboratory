@@ -16,15 +16,6 @@
 </div>
 
 <div>
-  <p>
-    <%= previous_nav_button(@exercise) %>
-    <%= link_to_guide(@exercise.guide) %>
-    <%= next_nav_button(@exercise) %>
-  </p>
-</div>
-
-
-<div>
   <% if @stats %>
     <%= render partial: 'layouts/progress_bar', locals: {guide: @exercise.guide, stats: @stats} %>
   <% else %>
