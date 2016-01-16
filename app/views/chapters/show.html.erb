@@ -10,7 +10,7 @@
   <h2><%= t(:progress) %></h2>
 
   <% @chapter.guides.each do |guide| %>
-    <h3><%= guide.position %> <%= link_to_guide guide %></h3>
+    <h3><%= link_to_guide guide, plain: true %></h3>
     <ul class="progress-listing">
       <% guide.exercises.each do |exercise| %>
         <li>
