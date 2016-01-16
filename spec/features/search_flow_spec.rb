@@ -14,10 +14,8 @@ feature 'Search Flow' do
   let(:guide) { create(:guide, language: ruby, name: 'awesomeRubyGuide', description: 'rubist baz guide') }
 
 
-  scenario 'search guides from home, by language' do
-    visit '/'
-
-    click_on 'Guides'
+  scenario 'search guides by language' do
+    visit '/guides'
 
     fill_in 'q', with: 'ruby'
     click_on 'search'
