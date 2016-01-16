@@ -3,28 +3,8 @@
   <%= guide_breadcrumb @guide %>
 </ol>
 
-<div class="row">
-  <div class="col-md-12">
-    <h1>
-      <%= @guide.contextualized_name %>
-      <small> - <%= @guide.language %></small>
-    </h1>
-    <h4><%= with_classifications  @guide %></h4>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-10">
-    <%= yield %>
-  </div>
-  <div class="col-md-2">
-    <ul class="nav nav-tabs tabs-right vertical-text guide-nav">
-      <li <%= active_if :overview %>>
-        <%= link_to fa_icon('code',  text: t(:overview)), @guide %>
-      </li>
-      <li <%= active_if :exercises %>>
-        <%= link_to fa_icon('trophy', text: t(:exercises)), guide_exercises_path(@guide) %>
-      </li>
-    </ul>
-  </div>
-</div>
+<h1>
+  <%= @guide.contextualized_name %>
+  <small> - <%= @guide.language %></small>
+</h1>
+<%= yield %>
