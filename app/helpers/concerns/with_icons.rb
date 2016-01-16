@@ -29,7 +29,7 @@ module WithIcons
 
   def icon_for_status(s)
     iconized = s.iconize
-    [iconized[:type], class: "text-#{iconized[:class]}"]
+    [iconized[:type], class: "text-#{iconized[:class]} status-icon"]
   end
 
 end

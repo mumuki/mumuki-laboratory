@@ -7,55 +7,6 @@
     </div>
   </div>
 
-  <% if current_user? && @stats.started? %>
-    <div class="row">
-      <div class="col-md-5">
-        <h3><%= t :stats %></h3>
-
-        <p>
-          <%= raw t :guide_has_exercises_stats, total: @stats.total %>
-        </p>
-
-        <p>
-          <%= raw t :passed_exercises_stats, count: stats_html(@stats, :passed) %>
-          <%= raw t :failed_exercises_stats, count: stats_html(@stats, :failed) %>
-          <%= raw t :unknown_exercises_stats, count: stats_html(@stats, :unknown) %>
-        </p>
-
-        <p>
-          <% if @stats.done? %>
-            ¡Eso significa que <strong>ya terminaste esta guía</strong>! ¡Bien hecho!
-          <% elsif @stats.good_progress? %>
-            <%= raw t :good_progress_in_guide %>
-          <% elsif @stats.stuck? %>
-            <%= raw t :stuck_in_guide %>
-          <% end %>
-        </p>
-
-      </div>
-      <div class="col-md-7">
-        <%= stats_chart @stats %>
-      </div>
-    </div>
-
-  <% elsif !current_user?  %>
-
-    <div class="row">
-      <div class="col-md-12">
-        <h3><%= t :stats %></h3>
-
-        <p>
-          <%= raw t :guide_has_exercises_stats, total: @guide.exercises_count %>
-        </p>
-
-        <p>
-          <strong><%= t :you_must_sign_in_to_see_stats %></strong>
-        </p>
-      </div>
-    </div>
-
-  <% end %>
-
   <% if @stats.try :done? %>
     <%= corollary_box(@guide) %>
     <div class="actions">
@@ -72,6 +23,18 @@
       </div>
     </div>
   <% end %>
+
+
+  <h2><%= t :progress %></h2>
+  <ul class="progress-listing">
+    <% @guide.exercises.each do |exercise| %>
+      <li>
+        <%= exercise_status_icon exercise %>
+        <%= link_to_exercise(exercise, plain: true) %>
+      </li>
+    <% end %>
+  </ul>
+
 
 <% end %>
 

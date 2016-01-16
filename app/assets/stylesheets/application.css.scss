@@ -14,6 +14,16 @@
   color:white;
 }
 
+.progress-listing {
+  -webkit-columns: 200px 3;
+  -moz-columns: 200px 3;
+  columns: 200px 3;
+  list-style: none;
+
+  .status-icon {
+    margin-right: 2px;
+  }
+}
 
 .ha-bg-parallax {
 
