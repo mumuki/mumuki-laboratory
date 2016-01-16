@@ -56,7 +56,7 @@
               fa_icon(:bug, text: t(:notify_problem_with_exercise)),
               subject: t(:problem_with_exercise, title: assignment.exercise.name),
               body: assignment_help_email_body(assignment),
-              class: 'text-warning warning pull-left' %>
+              class: 'text-info warning pull-left' %>
 
   <%= next_button(@exercise) || next_button(@guide) %>
 </div>

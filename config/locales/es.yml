@@ -86,7 +86,7 @@ es:
   no_guides: No encontramos guías que coincidan con tu busqueda.
   no_permissions: No tenés suficientes permisos sobre el repositorio
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio aún!
-  notify_problem_with_exercise: Notificar problema con el ejercicio
+  notify_problem_with_exercise: ¿Pensás que algo está mal con este ejercicio?
   output: Salida
   overview: Vista general
   passed: Todo en orden
