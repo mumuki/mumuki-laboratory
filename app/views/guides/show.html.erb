@@ -1,41 +1,53 @@
-<%= render layout: 'layouts/guide', locals: {current_tab: :overview} do %>
+<div class="row">
+  <div class="col-md-12">
+    <ol class="breadcrumb">
+      <%= guide_breadcrumb @guide %>
+    </ol>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-11">
+    <h1>
+      <%= @guide.contextualized_name %>
+    </h1>
+  </div>
+  <div class="col-md-1">
+    <h1><%= language_icon @guide.language %></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div>
+      <%= @guide.description_html %>
+    </div>
+  </div>
+</div>
+<% if @stats.try :done? %>
+  <%= corollary_box(@guide) %>
+  <div class="actions">
+    <%= next_button @guide %>
+  </div>
+<% else %>
   <div class="row">
     <div class="col-md-12">
-      <div>
-        <%= @guide.description_html %>
+      <div class="actions">
+        <% if @next_exercise %>
+          <%= link_to t(practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-primary' %>
+        <% end %>
       </div>
     </div>
   </div>
-
-  <% if @stats.try :done? %>
-    <%= corollary_box(@guide) %>
-    <div class="actions">
-      <%= next_button @guide %>
-    </div>
-  <% else %>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="actions">
-          <% if @next_exercise %>
-            <%= link_to t(practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-primary' %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-
-
-  <h2><%= t :progress %></h2>
-  <ul class="progress-listing">
-    <% @guide.exercises.each do |exercise| %>
-      <li>
-        <%= exercise_status_icon exercise %>
-        <%= link_to_exercise(exercise, plain: true) %>
-      </li>
-    <% end %>
-  </ul>
-
-
 <% end %>
+<h2><%= t :progress %></h2>
+<ul class="progress-listing">
+  <% @guide.exercises.each do |exercise| %>
+    <li>
+      <%= exercise_status_icon exercise %>
+      <%= link_to_exercise(exercise, plain: true) %>
+    </li>
+  <% end %>
+</ul>
+
+
 
 
