@@ -10,10 +10,6 @@
     color: greenyellow;
 }
 
-.white-font {
-  color:white;
-}
-
 .progress-listing {
   -webkit-columns: 200px 3;
   -moz-columns: 200px 3;
@@ -25,35 +21,10 @@
   }
 }
 
-.ha-bg-parallax {
-
-    background: image-url('team_picture_shadow.jpg') 50% 0px no-repeat fixed;
-
-    -moz-background-size: cover;
-
-    -o-background-size: cover;
-
-    -webkit-background-size: cover;
-
-    background-size: cover;
-
-    height: 300px;
-
-    margin: 0 auto;
-
-    width: 100%;
-
-    display: table;
-
-    vertical-align: middle;
-
-}
-
 .exercise-search-box {
   width: 263px;
   position: fixed
 }
-
 
 .exercise-panel {
   background-color: ghostwhite;
@@ -87,15 +58,6 @@ body.modal-open #wrap{
   margin-top: 110px;
 }
 
-.popover{
-  width: 700px;
-  max-width: 710px;
-}
-
-#login-modal {
-  padding-right: 0px !important;
-}
-
 .modal-open {
   padding-right: 0px !important;
 }
@@ -104,14 +66,6 @@ body.modal-open #wrap{
   margin-top: 15px;
 }
 
-.mumuki-description .row {
-  margin: 10px 45px 65px 45px;
-}
-
-.mumuki-description .fa {
-  font-size: 80px;
-  margin-top: 50px;
-}
 a.text-info:hover {
   color: #3498db;
 }
