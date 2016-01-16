@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     get 'logout' => :destroy
   end
 
-
   namespace :api do
     resources :exercises, only: :index
     resources :users, only: :index
@@ -29,14 +28,10 @@ Rails.application.routes.draw do
   end
 
   # All users
-  resources :guides, only: [:show, :index] do
-    resources :exercises, controller: 'guide_exercises', only: :index
-  end
+  resources :guides, only: [:show, :index]
 
   # All users
   resources :users, only: [:show, :index] do
-    #nested user
-    resources :solved_exercises, controller: 'user_solved_exercises', only: :index
     #nested user
     resources :assignments, controller: 'user_assignments', only: :index
   end
