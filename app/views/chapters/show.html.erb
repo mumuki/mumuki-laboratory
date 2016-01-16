@@ -1,4 +1,4 @@
-<h1><%= @chapter.name %></h1>
+<h1><%= @chapter.contextualized_name %></h1>
 
 <%= @chapter.long_description_html || @chapter.description_html %>
 
@@ -7,10 +7,10 @@
 </a>
 
 <div>
-  <h2><%= t(:progress) %></h2>
+  <h3><%= t(:progress) %></h3>
 
   <% @chapter.guides.each do |guide| %>
-    <h3><%= link_to_guide guide, plain: true %></h3>
+    <h4><%= link_to_guide guide, plain: true %></h4>
     <ul class="progress-listing">
       <% guide.exercises.each do |exercise| %>
         <li>

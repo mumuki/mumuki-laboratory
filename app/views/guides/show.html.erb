@@ -29,17 +29,7 @@
   </div>
 </div>
 
-
-<% if @stats.try :done? %>
-  <div class="text-box">
-    <%= corollary_box(@guide) %>
-    <div class="actions">
-      <%= next_button @guide %>
-    </div>
-  </div>
-<% end %>
-<h2><%= t :progress %></h2>
-
+<h3><%= t :progress %></h3>
 <ul class="progress-listing">
   <% @guide.exercises.each do |exercise| %>
     <li>
@@ -49,6 +39,14 @@
   <% end %>
 </ul>
 
+<% if @stats.try :done? %>
+  <div class="text-box">
+    <%= corollary_box(@guide) %>
+    <div class="actions">
+      <%= next_button @guide %>
+    </div>
+  </div>
+<% end %>
 
 
 
