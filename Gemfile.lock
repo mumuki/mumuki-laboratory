@@ -65,6 +65,9 @@ GEM
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (5.0.1.20140414130214)
+    autoprefixer-rails (6.2.1)
+      execjs
+      json
     bcrypt (3.1.10)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -75,7 +78,12 @@ GEM
     bootstrap-kaminari-views (0.0.5)
       kaminari (>= 0.13)
       rails (>= 3.1)
+    bootstrap-sass (3.3.6)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     bootstrap_form (2.3.0)
+    bootswatch-rails (3.3.5)
+      railties (>= 3.1)
     bourbon (4.2.4)
       sass (~> 3.4)
       thor (~> 0.19)
@@ -337,7 +345,9 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-kaminari-views
+  bootstrap-sass (~> 3.3.5)
   bootstrap_form
+  bootswatch-rails
   capybara (= 2.3.0)
   chartkick (~> 1.4)
   codeclimate-test-reporter
@@ -358,7 +368,6 @@ DEPENDENCIES
   pg (~> 0.18.0)
   pg_search (~> 1.0)
   rails (= 4.1.4)
-  rails-assets-bootstrap!
   rails-assets-bootstrap-vertical-tabs!
   rails-assets-devicons!
   rails-i18n (~> 4.0.0)
