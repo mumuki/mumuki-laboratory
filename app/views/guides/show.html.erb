@@ -17,28 +17,29 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <div>
+    <div class="text-box">
       <%= @guide.description_html %>
-    </div>
-  </div>
-</div>
-<% if @stats.try :done? %>
-  <%= corollary_box(@guide) %>
-  <div class="actions">
-    <%= next_button @guide %>
-  </div>
-<% else %>
-  <div class="row">
-    <div class="col-md-12">
+
       <div class="actions">
-        <% if @next_exercise %>
+        <% if !@stats.try(:done?) && @next_exercise %>
           <%= link_to t(practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-primary' %>
         <% end %>
       </div>
     </div>
   </div>
+</div>
+
+
+<% if @stats.try :done? %>
+  <div class="text-box">
+    <%= corollary_box(@guide) %>
+    <div class="actions">
+      <%= next_button @guide %>
+    </div>
+  </div>
 <% end %>
 <h2><%= t :progress %></h2>
+
 <ul class="progress-listing">
   <% @guide.exercises.each do |exercise| %>
     <li>
