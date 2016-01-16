@@ -1,10 +1,20 @@
 <% @current_tab = current_tab %>
-<ol class="breadcrumb">
-  <%= guide_breadcrumb @guide %>
-</ol>
+<div class="row">
+  <div class="col-md-12">
+    <ol class="breadcrumb">
+      <%= guide_breadcrumb @guide %>
+    </ol>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-11">
+    <h1>
+      <%= @guide.contextualized_name %>
+    </h1>
+  </div>
+  <div class="col-md-1">
+    <h1><%= language_icon @guide.language %></h1>
+  </div>
+</div>
 
-<h1>
-  <%= @guide.contextualized_name %>
-  <small> - <%= @guide.language %></small>
-</h1>
 <%= yield %>
