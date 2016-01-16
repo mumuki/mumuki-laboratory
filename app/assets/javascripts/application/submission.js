@@ -32,7 +32,7 @@
     var submissionsResults = $('.submission-results');
     if (!submissionsResults) return;
 
-    var submitButton = $('form submitButton.btn.btn-primary');
+    var submitButton = $('form submitButton.btn.btn-success');
     var resultsBox = new ResultsBox(submissionsResults);
 
     $('form.new_solution').on('ajax:beforeSend',function (event, xhr, settings) {

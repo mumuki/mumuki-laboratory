@@ -22,7 +22,7 @@
 
       <div class="actions">
         <% if !@stats.try(:done?) && @next_exercise %>
-          <%= link_to t(practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-primary' %>
+          <%= link_to t(practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-success' %>
         <% end %>
       </div>
     </div>
