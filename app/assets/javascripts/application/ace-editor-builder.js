@@ -23,11 +23,11 @@ var mumuki = mumuki || {};
     },
     setupOptions: function () {
       this.editor.setOptions({
-        minLines: 15,
+        minLines: 17,
         maxLines: Infinity,
         wrap: true
       });
-      this.editor.setFontSize(13);
+      this.editor.setFontSize(14);
     },
     setupSubmit: function () {
       var textarea = this.textarea;

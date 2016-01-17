@@ -93,14 +93,17 @@ h1 {
 }
 
 .text-box {
-  p {
-    line-height: 1.6;
-  }
+  text-align: justify;
 }
 
 .chapter {
   margin: 35px 0;
-  p {
-    line-height: 1.8;
+}
+
+pre {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
   }
 }
