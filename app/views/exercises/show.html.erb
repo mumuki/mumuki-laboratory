@@ -1,7 +1,32 @@
-<%= hidden_field_tag :exercise_id, @exercise.id %>
+<% @stats = @exercise.guide.stats_for(current_user) if current_user && @exercise.guide %>
+
+<div class="row">
+  <div class="col-md-12">
+    <ol class="breadcrumb">
+      <%= exercise_breadcrumb @exercise %>
+    </ol>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-11">
+    <h1>
+      <%= @exercise.contextualized_name %>
+    </h1>
+  </div>
+  <div class="col-md-1">
+    <h1><%= language_icon @exercise.language %></h1>
+  </div>
+</div>
+
+<div>
+  <% if @stats %>
+    <%= render partial: 'layouts/progress_bar', locals: {guide: @exercise.guide, stats: @stats} %>
+  <% end %>
+</div>
+
 
 <% content_for :assignment do %>
-  <div>
+  <div class="text-box">
     <%= @exercise.description_html %>
   </div>
   <div>
@@ -19,10 +44,10 @@
   </div>
 <% end %>
 
-<%= render layout: 'layouts/exercise' do %>
-  <%= render layout: "layouts/submissions/#{@exercise.layout}" do %>
-  <% end %>
+<%= render layout: "layouts/submissions/#{@exercise.layout}" do %>
 <% end %>
+
+<%= hidden_field_tag :exercise_id, @exercise.id %>
 
 <div style="display: none" id="processing-template">
   <div class="bs-callout bs-callout-info">

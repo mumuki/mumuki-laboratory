@@ -29,6 +29,10 @@ class Chapter < ActiveRecord::Base
     end
   end
 
+  def contextualized_name
+    "#{number}. #{name}"
+  end
+
   def self.rebuild!(chapters)
     transaction do
       delete_all

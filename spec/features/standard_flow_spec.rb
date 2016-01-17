@@ -15,15 +15,10 @@ feature 'Standard Flow' do
   end
 
   scenario 'do a guide for first time, starting from home' do
-    within('.jumbotron') do
-      click_on 'Start Practicing!'
-    end
-
-    within('.chapter') do
-      click_on 'Start Practicing!'
-    end
+    click_on 'Start Practicing!'
 
     click_on 'Start Practicing!'
+
     expect(page).to have_text('Succ')
   end
 

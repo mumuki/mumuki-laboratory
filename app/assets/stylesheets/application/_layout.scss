@@ -1,28 +1,42 @@
 html {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
+}
+
+.navbar-brand {
+  font-size: 50px;
+}
+
+.container.full-width {
+  width: 100%;
+}
+
+.breadcrumb {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
 }
 
 body {
-    padding-top: 60px;
-    margin-bottom: 110px;
+  padding-top: 65px;
+  margin-bottom: 110px;
 }
 
 .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 110px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 110px;
 }
 
 .page-header {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .navbar-default {
-    background-image: none;
+  background-image: none;
 }
 
 .alert {
-    margin: 10px 50px 10px 15px;
+  margin: 10px 50px 10px 15px;
 }

@@ -14,13 +14,13 @@ module WithLinksRendering
   end
 
   def link_to_chapter(chapter)
-    link_to chapter.name, chapter
+    link_to chapter.contextualized_name, chapter
   end
 
   private
 
   def extract_name(named, options)
     plain = options.delete(:plain)
-    plain ? named.name : named.friendly
+    plain ? named.contextualized_name : named.friendly
   end
 end

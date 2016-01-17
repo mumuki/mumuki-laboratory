@@ -5,7 +5,7 @@
     <h2><%= t(:recent_activity) %></h2>
     <ul>
       <% @assignments.each do |it| %>
-        <li><%= time_ago_in_words it.updated_at %>: <%= status_icon it %> <%= exercise_breadcrumb it.exercise %></li>
+        <li><%= time_ago_in_words it.updated_at %>: <%= status_icon it %> <%= link_to_exercise it.exercise %></li>
       <% end %>
     </ul>
   </div>

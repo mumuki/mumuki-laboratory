@@ -10,20 +10,14 @@ feature 'Search Flow' do
   let(:guide) { create(:guide, name: 'awesomeGuide', description: 'An awesome guide', language: haskell) }
   let(:user) { User.find_by(name:'testuser') }
 
-  scenario 'visit guides from search page, signs in, and starts practicing' do
-    visit '/'
-
-    within('.jumbotron') do
-      click_on 'Start Practicing!'
-    end
-
-    click_on 'Guides'
+  scenario 'visit guides from search page, and starts practicing' do
+    visit '/guides'
 
     click_on 'awesomeGuide'
 
     expect(page).to have_text('awesomeGuide')
     expect(page).to have_text('An awesome guide')
-    expect(page).to have_text('About this guide')
+    expect(page).to have_text('Progress')
 
     click_on 'Start Practicing'
 

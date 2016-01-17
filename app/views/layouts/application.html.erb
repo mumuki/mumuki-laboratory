@@ -38,16 +38,10 @@
 
 
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
+  <div class="container full-width">
     <div class="navbar-header">
-      <a class="navbar-brand" href="<%= root_path %>"> <span class="ahahamojimoji">ム</span>Mumuki</a>
+      <a class="navbar-brand" href="<%= root_path %>"> <span class="ahahamojimoji">ム</span></a>
     </div>
-
-    <ul class="nav navbar-nav navbar-left">
-      <li><a href="<%= chapters_path %>"><%= t(:chapter).pluralize %></a></li>
-      <li><a href="<%= guides_path %>"><%= t(:guide).pluralize %></a></li>
-      <li><a href="<%= exercises_path %>"><%= t(:exercise).pluralize %></a></li>
-    </ul>
 
     <ul class="nav navbar-nav navbar-right">
       <% if current_user? %>
