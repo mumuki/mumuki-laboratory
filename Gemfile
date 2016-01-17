@@ -23,11 +23,11 @@ gem 'sucker_punch', '~> 1.0'
 gem 'jquery-rails'
 
 source 'https://rails-assets.org' do
-  gem 'rails-assets-bootstrap'
-  gem 'rails-assets-bootstrap-vertical-tabs'
   gem 'rails-assets-devicons'
-
 end
+
+gem 'bootstrap-sass', '~> 3.3.5'
+gem 'bootswatch-rails'
 
 gem 'chartkick', '~> 1.4'
 

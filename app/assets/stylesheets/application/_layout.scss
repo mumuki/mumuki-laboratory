@@ -4,7 +4,9 @@ html {
 }
 
 .navbar-brand {
-  font-size: 50px;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 55px;
 }
 
 .container.full-width {
@@ -39,4 +41,53 @@ body {
 
 .alert {
   margin: 10px 50px 10px 15px;
+}
+
+.alert-danger a {
+  color: greenyellow;
+}
+
+.exercise-search-box {
+  width: 263px;
+  position: fixed
+}
+
+.exercise-panel {
+  background-color: ghostwhite;
+}
+
+.actions {
+  text-align: right;
+}
+
+.pagination-inline {
+  margin: 21px 0;
+}
+
+.profile-image-nav {
+  margin-right: -10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.editor-tab {
+  padding: 5px 10px 5px 10px !important;
+}
+
+.editor-pane {
+  margin-top: 5px;
+}
+
+h1 {
+  margin-top: 10px;
+}
+
+.-text-box { //disabled
+  background-color: rgba(24, 188, 156, 0.06);
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 1px;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-color: rgba(0, 128, 128, 0.48);
 }
