@@ -1,6 +1,6 @@
 module WithBreadcrumbs
   def exercise_breadcrumb(e)
-    base = link_to_exercise e, plain: true
+    base = link_to_path_element e
     if e.guide
       "#{guide_breadcrumb(e.guide)} <li>#{base}</li>".html_safe
     else
@@ -9,7 +9,7 @@ module WithBreadcrumbs
   end
 
   def guide_breadcrumb(g)
-    base = link_to_guide g, plain: true
+    base = link_to_path_element g
     if g.chapter
       "#{path_breadcrumb(g.chapter)} <li>#{base}</li>".html_safe
     else
@@ -18,6 +18,6 @@ module WithBreadcrumbs
   end
 
   def path_breadcrumb(p)
-    "<li>#{link_to_chapter p}</li>".html_safe
+    "<li>#{link_to_path_element p}</li>".html_safe
   end
 end

@@ -17,7 +17,7 @@ feature 'Search Flow' do
 
     expect(page).to have_text('awesomeGuide')
     expect(page).to have_text('An awesome guide')
-    expect(page).to have_text('Progress')
+    expect(page).to have_text('Content')
 
     click_on 'Start Practicing'
 

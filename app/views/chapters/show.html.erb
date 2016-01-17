@@ -1,21 +1,24 @@
-<h1><%= @chapter.contextualized_name %></h1>
-
-<%= @chapter.long_description_html || @chapter.description_html %>
-
-<a href="<%= guide_path(@chapter.first_guide) %>" class="btn btn-success pull-right">
-  <%= t(:start_practicing) %>
-</a>
-
 <div>
-  <h3><%= t(:progress) %></h3>
+  <h1><%= @chapter.contextualized_name %></h1>
+
+  <%= @chapter.long_description_html || @chapter.description_html %>
+
+  <div class="actions">
+    <a href="<%= guide_path(@chapter.first_guide) %>" class="btn btn-success">
+      <%= t(:start_practicing) %>
+    </a>
+  </div>
+</div>
+<div>
+  <h3><%= t(:content) %></h3>
 
   <% @chapter.guides.each do |guide| %>
-    <h4><%= link_to_guide guide, plain: true %></h4>
+    <h4><%= t(:lesson_number, number: guide.position) %>: <%= link_to_path_element guide, mode: :plain %></h4>
     <ul class="progress-listing">
       <% guide.exercises.each do |exercise| %>
         <li>
           <%= exercise_status_icon exercise %>
-          <%= link_to_exercise(exercise, plain: true) %>
+          <%= link_to_path_element(exercise) %>
         </li>
       <% end %>
     </ul>

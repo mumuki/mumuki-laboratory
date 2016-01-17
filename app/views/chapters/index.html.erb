@@ -13,7 +13,8 @@
 
   <% @chapters.each do |it| %>
     <div class="chapter">
-      <h3><%= t(:chapter_number, number: it.number) %> <%= link_to_chapter it %></h3>
+      <h3><%= t(:chapter_number, number: it.number) %> <%= link_to_path_element it, mode: :plain %></h3>
+
       <div class="text-box">
         <%= it.description_html %>
       </div>
