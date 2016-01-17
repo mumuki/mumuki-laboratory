@@ -1,12 +1,9 @@
+<%= content_for :breadcrumbs do %>
+  <%= exercise_breadcrumb @exercise %>
+<% end %>
+
 <% @stats = @exercise.guide.stats_for(current_user) if current_user && @exercise.guide %>
 
-<div class="row">
-  <div class="col-md-12">
-    <ol class="breadcrumb">
-      <%= exercise_breadcrumb @exercise %>
-    </ol>
-  </div>
-</div>
 <div class="row">
   <div class="col-md-11">
     <h1>

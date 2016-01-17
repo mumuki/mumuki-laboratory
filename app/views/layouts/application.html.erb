@@ -27,23 +27,14 @@
   var lock = new Auth0Lock('<%= Rails.configuration.auth0_client_id %>', '<%= Rails.configuration.auth0_domain %>');
   function signin() {
     lock.show({
-      callbackURL: '<%= auth_auth0_callback_url %>'
-      , responseType: 'code'
-      , authParams: {
+      callbackURL: '<%= auth_auth0_callback_url %>', responseType: 'code', authParams: {
         scope: 'openid profile'
       }
     });
   }
 </script>
 
-
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container full-width">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="<%= root_path %>"> <span class="ahahamojimoji">ム</span></a>
-    </div>
-
-    <ul class="nav navbar-nav navbar-right">
+<!--
       <% if current_user? %>
         <div class="navbar-text profile-image-nav">
           <%= link_to image_tag(current_user.image_url, height: 40, class: 'img-circle'), user_path(current_user) %>
@@ -53,24 +44,42 @@
       <% else %>
         <li><%= login_anchor %></li>
       <% end %>
-    </ul>
+-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <ol class="breadcrumb">
+        <%= yield :breadcrumbs %>
+      </ol>
+    </div>
+    <div class="col-md-2">
+      <div class="user-menu">
+        <% if current_user? %>
+          <%= link_to image_tag(current_user.image_url, height: 40, class: 'img-circle'), user_path(current_user) %>
+        <% else %>
+          <%= login_anchor %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
 <%= yield :no_container %>
 
+
 <div class="container" id="wrap">
   <div class="row">
     <% if notice %>
-        <div class="alert alert-success" role="alert">
-          <%= notice.html_safe %>
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-        </div>
+      <div class="alert alert-success" role="alert">
+        <%= notice.html_safe %>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      </div>
     <% elsif alert %>
-        <div class="alert alert-danger" role="alert">
-          <%= alert.html_safe %>
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-        </div>
+      <div class="alert alert-danger" role="alert">
+        <%= alert.html_safe %>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      </div>
     <% end %>
   </div>
 
@@ -85,6 +94,7 @@
       <div class="col-md-4">
         <div class="col-md-12 text-left">
           <p>&copy; Copyright 2015 <a href="http://mumuki.org/">Mumuki Project</a></p>
+
           <p>Sponsored by <a href="http://www.uqbar-project.org/">Uqbar Foundation</a></p>
         </div>
       </div>

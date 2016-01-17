@@ -1,3 +1,7 @@
+<%= content_for :breadcrumbs do %>
+  <%= path_breadcrumb @chapter %>
+<% end %>
+
 <div>
   <h1><%= @chapter.contextualized_name %></h1>
 

@@ -17,10 +17,17 @@ html {
   margin: 10px 0;
   padding: 0;
   background-color: transparent;
+  .ahahamojimoji {
+    font-size: 22px;
+  }
+}
+
+.user-menu {
+  margin: 10px 0;
+  text-align: right;
 }
 
 body {
-  padding-top: 65px;
   margin-bottom: 110px;
 }
 
@@ -103,4 +110,25 @@ h1 {
 pre {
   font-size: 14px;
   line-height: 1.4;
+}
+
+.mumuki {
+  text-align: center;
+  h1 {
+    font-size: 45px;
+    margin: 15px 0px;
+
+    .ahahamojimoji {
+      font-size: 180px;
+    }
+  }
+
+  h2 {
+    margin: 15px 0px;
+    font-size: 35px;
+  }
+
+  .logo {
+    margin-top: -40px;
+  }
 }
