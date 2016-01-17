@@ -9,7 +9,7 @@ es:
   all_exercises: Todos los ejercicios
   are_you_sure: ¿Estás seguro?
   basic: Básico
-  belongs_to_guide: Pertenece a la guía %{guide}
+  belongs_to_guide: Pertenece a la lección %{guide}
   beta: Beta
   cancel: Cancelar
   chapters_index_title: Aprendé a programar desde las bases
@@ -29,7 +29,7 @@ es:
   exercise: Ejercicio
   exercise_count: ejercicios
   exercise_done: ¡Tu solución pasó todas nuestras pruebas!
-  exercise_number: Número
+  exercise_number: Ejercicio %{number}
   exercise_success_rate: Taza de éxito en ejercicios
   exercises_index_title: ¿Buscando algún ejercicio particular?
   expectations: Objetivos
@@ -45,9 +45,9 @@ es:
   github_signin_reason: Logueate con Github si además querés crear tus propios ejercicios
   github_url_hint: usuario/repositorio
   good_progress_in_guide: 'Además <strong>vas muy bien</strong>: la mayoría de las soluciones que enviaste resolvieron los ejercicios adecuadamente. ¡Felicitaciones!'
-  guide: Guía
+  guide: Lección
   guide_created: Guia creada exitosamente
-  guide_finished: Felicitaciones, terminaste la guía %{guide}
+  guide_finished: Felicitaciones, terminaste la lección %{guide}
   guide_has_exercises_stats: Esta guía tiene <strong>%{total} ejercicios </strong>
   guides_index_title: ¿Qué guía querés hacer hoy?
   hello: Hola mundo
@@ -58,11 +58,11 @@ es:
   languages: Lenguajes
   last_submission_date: Última solucion
   latest_exercises: Ultimos ejercicios
-  latest_guides: últimas guías
+  latest_guides: últimas lecciones
   learning: Aprendizaje
   listing_exercises: Listado de ejercicios
   more: mas...
-  more_guides: más guías
+  more_guides: más lecciones
   mumuki_catchphrase: Aprendé a programar
   mumuki_is_collaborative: Mumuki es colaborativo
   mumuki_is_collaborative_description: 'Los ejercicios en Mumuki no son provisto por expertos, sino por la comunidad. No hay diferencia entre un maestro y un estudiante en Mumuki: todos pueden crear ejercicios. Nos encantaría que vos compartas los tuyos.'
@@ -72,18 +72,18 @@ es:
   mumuki_is_simple_description: 'Mumuki es una plataforma simple, que te permite concentrarte en lo que te interesa: mejorar tus habilidades de programación resolviendo problemas. No vamos a imponerte calendarios o exámenes: vos practicás cuando querés y podés.'
   mumuki_short_description: Mumuki es la plataforma libre y gratuita para aprender a programar, de la práctica a la teoría y en tu idioma
   my_exercises: Mis Ejercicios
-  my_guides: Mis Guías
+  my_guides: Mis Lecciones
   my_submissions: Mis Soluciones
   never: nunca
   new: Nuevo
   new_exercise: Nuevo Ejercicio
   new_export: ¡Exportar ahora!
-  new_guide: Nueva Guía
+  new_guide: Nueva Lección
   new_submission: Nueva Solución
   next_exercise: Siguiente
-  next_guide: "Siguiente Guía: %{name}"
+  next_guide: "Siguiente Lección: %{name}"
   no_exercises: No encontramos ejericios que coincidan con tu busqueda.
-  no_guides: No encontramos guías que coincidan con tu busqueda.
+  no_guides: No encontramos lecciones que coincidan con tu busqueda.
   no_permissions: No tenés suficientes permisos sobre el repositorio
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio aún!
   notify_problem_with_exercise: ¿Pensás que algo está mal con este ejercicio?
@@ -115,7 +115,7 @@ es:
   start_practicing: ¡Empezá ahora!
   stats: Tu Progreso
   status: Estado
-  stuck_in_guide: Parecería que te está costando un poco despegar con esta guía. ¡<strong>No te desanimes</strong>, es cuestión de práctica y seguir intentando!
+  stuck_in_guide: Parecería que te está costando un poco despegar con esta lección. ¡<strong>No te desanimes</strong>, es cuestión de práctica y seguir intentando!
   submission: solución
   submission_date: Fecha de envío
   submission_for_exercise: Solucion para ejercicio
@@ -157,15 +157,15 @@ es:
   uncategorized: "No categorizado"
   recent_activity: "Actividad Reciente"
   created_exercises: "Ejercicios Creados"
-  created_guides: "Guías Creadas"
+  created_guides: "Lecciones Creadas"
   chapter_finished_html: "¡Terminaste %{chapter}! ¡Felicitaciones!"
   editor: "Editor"
   console: "Consola"
   type_expressions_here: "Acá podés escribir expresiones para probar tu solución"
-  navigation_continue: 'Siguiente: %{sibling}'
+  navigation_continue: 'Siguiente %{kind}: %{sibling}'
   navigation_previous: 'Anterior'
-  navigation_next: 'Siguiente'
+  navigation_next: 'Siguiente %{kind}'
   navigation_revisit: 'Siguiente pendiente: %{sibling}'
   chapter_number: "Capítulo %{number}:"
   content: "Contenido"
-  lesson_number: "Lección %{number}"
+  guide_number: "Lección %{number}"

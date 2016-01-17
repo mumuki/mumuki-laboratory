@@ -10,7 +10,7 @@ module WithNavigation
     end
 
     def link_icon(sibling)
-      fa_icon(icon, text: I18n.t(key, sibling: sibling.name), right: right)
+      fa_icon(icon, text: I18n.t(key, sibling: sibling.name, kind: I18n.t(sibling.class.model_name.name.downcase)), right: right)
     end
 
     def right

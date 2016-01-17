@@ -139,4 +139,4 @@ en:
   navigation_revisit: 'Next pending: %{sibling}'
   chapter_number: "Chapter %{number} -"
   content: "Content"
-  lesson_number: "Lesson %{number}"
+  guide_number: "Lesson %{number}"

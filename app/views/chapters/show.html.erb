@@ -3,7 +3,7 @@
 <% end %>
 
 <div>
-  <h1><%= @chapter.contextualized_name %></h1>
+  <h1><%= t(:chapter_number, number: @chapter.number) %> <%= @chapter.name %></h1>
 
   <%= @chapter.long_description_html || @chapter.description_html %>
 
@@ -17,7 +17,7 @@
   <h3><%= t(:content) %></h3>
 
   <% @chapter.guides.each do |guide| %>
-    <h4><%= t(:lesson_number, number: guide.position) %>: <%= link_to_path_element guide, mode: :plain %></h4>
+    <h4><%= t(:guide_number, number: guide.position) %>: <%= link_to_path_element guide, mode: :plain %></h4>
     <ul class="progress-listing">
       <% guide.exercises.each do |exercise| %>
         <li>
