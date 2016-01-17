@@ -14,7 +14,7 @@ html {
 }
 
 .breadcrumb {
-  margin: 0;
+  margin: 10px 0;
   padding: 0;
   background-color: transparent;
 }
@@ -90,4 +90,17 @@ h1 {
   padding: 15px;
   margin-bottom: 10px;
   border-color: rgba(0, 128, 128, 0.48);
+}
+
+.text-box {
+  p {
+    line-height: 1.6;
+  }
+}
+
+.chapter {
+  margin: 35px 0;
+  p {
+    line-height: 1.8;
+  }
 }
