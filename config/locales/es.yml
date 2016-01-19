@@ -97,6 +97,7 @@ es:
   problem_with_exercise: '[Mumuki] Error con el ejercicio: %{title}'
   processing_you_solution: Estamos procesando tu solución
   profile_of: Perfil de %{username}
+  profile: Perfil
   progress: Progreso
   exercises: Ejercicios
   follow_us: Seguínos

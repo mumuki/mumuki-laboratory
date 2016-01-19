@@ -1,5 +1,7 @@
 <%= render layout: 'layouts/user', locals: {current_tab: :recent_activity} do %>
-
+  <%= content_for :breadcrumbs do %>
+    <%= home_breadcrumb %>
+  <% end %>
 
   <div>
     <h2><%= t(:recent_activity) %></h2>
