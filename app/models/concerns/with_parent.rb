@@ -58,9 +58,5 @@ module WithParent
       name
     end
   end
-
-  def qualified_number
-    "#{self.class.table_name}.number"
-  end
 end
 
