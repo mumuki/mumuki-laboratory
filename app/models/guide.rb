@@ -9,7 +9,7 @@ class Guide < ActiveRecord::Base
   include WithSearch,
           WithTeaser,
           WithLocale,
-          OnChapter,
+          GuideNavigation,
           WithExercises,
           WithStats,
           WithExpectations,

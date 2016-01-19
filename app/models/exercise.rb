@@ -11,7 +11,7 @@ class Exercise < ActiveRecord::Base
   include WithSearch,
           WithTeaser,
           WithAssignments,
-          OnGuide,
+          ExerciseNavigation,
           WithLocale,
           WithLanguage,
           WithLayout,

@@ -1,7 +1,8 @@
-module OnChapter
+module GuideNavigation
   extend ActiveSupport::Concern
 
   included do
+    include Navigable
     include WithParent
 
     has_one :chapter_guide

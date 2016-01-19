@@ -3,6 +3,7 @@ class Chapter < ActiveRecord::Base
   include WithChapterGuides
   include WithStats
   include FriendlyName
+  include Navigable
 
   has_many :exercises, through: :guides
 
@@ -29,9 +30,5 @@ class Chapter < ActiveRecord::Base
       self.guides = guides
       save!
     end
-  end
-
-  def navigable_name
-    "#{number}. #{name}"
   end
 end
