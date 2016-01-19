@@ -18,7 +18,7 @@ module WithLinksRendering
       when :friendly
         named.friendly
       else
-        named.contextualized_name
+        named.navigable_name
     end
   end
 end

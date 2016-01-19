@@ -45,7 +45,7 @@ module WithParent
     parent.nil?
   end
 
-  def contextualized_name
+  def navigable_name
     with_parent_name { "#{position}. #{name}" }
   end
 

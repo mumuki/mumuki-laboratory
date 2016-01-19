@@ -31,7 +31,7 @@ class Chapter < ActiveRecord::Base
     end
   end
 
-  def contextualized_name
+  def navigable_name
     "#{number}. #{name}"
   end
 end
