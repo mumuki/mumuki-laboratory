@@ -2,7 +2,7 @@ module OnGuide
   extend ActiveSupport::Concern
 
   included do
-    include WithSiblings
+    include WithParent
 
     belongs_to :guide
   end
