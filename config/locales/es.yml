@@ -169,3 +169,4 @@ es:
   chapter_number: "Capítulo %{number}:"
   content: "Contenido"
   guide_number: "Lección %{number}"
+  guide_internal: "guia"

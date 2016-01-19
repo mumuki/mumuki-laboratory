@@ -1,8 +1,12 @@
 class Tenant < ActiveRecord::Base
+  include WithMarkup
+
   validates_presence_of :name, :locale
 
   before_create :setup_apartment_tenant!
   after_destroy :teardown_apartment_tenant!
+
+  markup_on :preface
 
   def switch!
     Apartment::Tenant.switch! name
