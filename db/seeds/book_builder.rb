@@ -15,8 +15,9 @@ class BookBuilder
   end
 
   def build!
-    Book.current.update!(preface: @preface)
-    Chapter.rebuild!(@chapters)
+    book = Book.current
+    book.preface = @preface
+    book.rebuild! @chapters
   end
 
   def self.build!

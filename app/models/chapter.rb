@@ -32,14 +32,4 @@ class Chapter < ActiveRecord::Base
   def contextualized_name
     "#{number}. #{name}"
   end
-
-  def self.rebuild!(chapters)
-    transaction do
-      delete_all
-      chapters.each_with_index do |it, index|
-        it.number = index + 1
-        it.save!
-      end
-    end
-  end
 end

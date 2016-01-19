@@ -12,6 +12,17 @@ class Book < ActiveRecord::Base
     Apartment::Tenant.switch! name
   end
 
+  def rebuild!(chapters)
+    transaction do
+      Chapter.delete_all
+      chapters.each_with_index do |it, index|
+        it.number = index + 1
+        it.save!
+      end
+      save!
+    end
+  end
+
   def self.on_public?
     on? 'public'
   end
