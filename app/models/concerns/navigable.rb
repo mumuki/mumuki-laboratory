@@ -1,5 +1,4 @@
 module Navigable
-
   ## Plain Navigation
 
   def next
@@ -23,6 +22,8 @@ module Navigable
   def first_for(user)
     siblings_for(user).sort_by(&:number).first
   end
+
+  # Names
 
   def navigable_name
     "#{number}. #{name}"

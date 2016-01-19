@@ -2,7 +2,6 @@ module GuideNavigation
   extend ActiveSupport::Concern
 
   included do
-    include Navigable
     include WithParent
 
     has_one :chapter_guide
@@ -21,6 +20,10 @@ module GuideNavigation
 
   def siblings_for(user) #FIXME duplicated code
     chapter.try { |it| it.pending_guides(user) } || []
+  end
+
+  def done_for?(user)
+    stats_for(user).done?
   end
 
   def siblings

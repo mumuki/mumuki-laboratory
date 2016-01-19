@@ -1,5 +1,6 @@
 module WithParent
   extend ActiveSupport::Concern
+  include Navigable
 
   included do
     validates_presence_of :number, unless: :orphan?
@@ -10,7 +11,7 @@ module WithParent
   end
 
   def navigable_name
-    with_parent_name { "#{number}. #{name}" }
+    with_parent_name { super }
   end
 
   private
