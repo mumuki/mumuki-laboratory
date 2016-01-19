@@ -1,4 +1,4 @@
-require_relative './seeds/book'
+require_relative './seeds/book_builder'
 
 if Tenant.on_public?
   puts 'Seeding global'

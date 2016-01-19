@@ -1,4 +1,4 @@
-Book.build! do |b|
+BookBuilder.build! do |b|
   b.preface "\
       ¿Alguna vez te sucedió estar haciendo una tarea tediosa y repetitiva? ¿Te descrubiste a vos mismo cometiendo\
       errores tontos por cansancio o distracción? ¿Te diste cuenta de que estabas perdiendo tiempo valioso en cosas que... podría\

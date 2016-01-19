@@ -1,4 +1,4 @@
-class Book
+class BookBuilder
   def initialize
     @chapters=[]
     @preface = ''
@@ -20,7 +20,7 @@ class Book
   end
 
   def self.build!
-    book = Book.new
+    book = BookBuilder.new
     yield book
     book.build!
   end
