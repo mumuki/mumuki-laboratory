@@ -125,6 +125,40 @@ pre {
   }
 
   .logo {
-    margin-top: -70px;
+    margin-top: -95px;
+  }
+}
+
+
+.user-assignments {
+  margin-top: 20px;
+}
+
+.progress-list-flex {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  a {
+    border-width: 1px;
+    border-color: white;
+    border-style: solid;
+    width: 100px;
+    height: 10px;
+    background-color: $gray-lighter;
+    &:hover {
+      text-decoration: none;
+    }
+    &.active:after {
+      content: '•';
+    }
+  }
+  .success {
+    background-color: $brand-success;
+  }
+  .warning {
+    background-color: $brand-warning;
+  }
+  .danger {
+    background-color: $brand-danger;
   }
 }

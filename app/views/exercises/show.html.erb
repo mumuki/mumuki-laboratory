@@ -17,7 +17,7 @@
 
 <div>
   <% if @stats %>
-    <%= render partial: 'layouts/progress_bar', locals: {guide: @exercise.guide, stats: @stats} %>
+    <%= render partial: 'layouts/progress_bar', locals: {actual: @exercise, guide: @exercise.guide, stats: @stats} %>
   <% end %>
 </div>
 

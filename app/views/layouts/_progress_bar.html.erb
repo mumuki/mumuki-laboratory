@@ -1,14 +1,6 @@
-<div class="progress">
-  <a id="passed-progress-bar" href="<%= guide_path(guide)%>"
-     class="progress-bar progress-bar-success"
-     style="width: <%= stats.passed_ratio %>%;">
-  </a>
-  <a id="passed-with-warnings-progress-bar" href="<%= guide_path(guide)%>"
-     class="progress-bar progress-bar-warning"
-     style="width: <%= stats.passed_with_warnings_ratio %>%;">
-  </a>
-  <a id="failed-progress-bar" href="<%= guide_path(guide)%>"
-     class="progress-bar progress-bar-danger"
-     style="width: <%= stats.failed_ratio %>%;">
-  </a>
+<div class="progress-list-flex">
+  <% guide.exercises.each do |e| %>
+    <a href="<%= exercise_path(e)%>"  class="text-center <%= class_for_bar(e.status_for(current_user))%> <%= active_class(e, actual)%>">
+    </a>
+  <% end %>
 </div>

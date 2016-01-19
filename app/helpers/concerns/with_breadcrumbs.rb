@@ -18,6 +18,10 @@ module WithBreadcrumbs
   end
 
   def path_breadcrumb(p)
-    "<li><span class=\"ahahamojimoji\">#{link_to 'ム', root_path }</span></li><li>#{link_to_path_element p}</li>".html_safe
+    "#{home_breadcrumb}<li>#{link_to_path_element p}</li>".html_safe
+  end
+
+  def home_breadcrumb
+    "<li><span class=\"ahahamojimoji\">#{link_to 'ム', root_path }</span></li>".html_safe
   end
 end
