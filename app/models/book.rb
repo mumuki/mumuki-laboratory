@@ -47,12 +47,10 @@ class Book < ActiveRecord::Base
   private
 
   def teardown_apartment_tenant!
-    Apartment::Tenant.drop name
-  rescue Apartment::TenantNotFound => _e
-    Rails.logger.warn("book #{name} not found")
+    Apartment::Tenant.drop name unless Apartment.connection.schema_exists? name
   end
 
   def setup_apartment_tenant!
-    Apartment::Tenant.create name
+    Apartment::Tenant.create name unless Apartment.connection.schema_exists? name
   end
 end
