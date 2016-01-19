@@ -7,7 +7,6 @@ class Guide < ActiveRecord::Base
   }
 
   include WithSearch,
-          WithMarkup,
           WithTeaser,
           WithLocale,
           OnChapter,
@@ -20,7 +19,7 @@ class Guide < ActiveRecord::Base
 
   validates_presence_of :slug
 
-  markup_on :description, :teaser, :corollary
+  markdown_on :description, :teaser, :corollary
 
   has_one :chapter_guide
 

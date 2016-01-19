@@ -1,13 +1,12 @@
 class Chapter < ActiveRecord::Base
   include WithLocale
-  include WithMarkup
   include WithChapterGuides
   include WithStats
   include FriendlyName
 
   validates_presence_of :name, :description
 
-  markup_on :description, :long_description, :links
+  markdown_on :description, :long_description, :links
 
   has_many :exercises, through: :guides
 

@@ -1,7 +1,7 @@
 require 'mumukit/bridge'
 
 class Language < ActiveRecord::Base
-  include WithMarkup, WithCaseInsensitiveSearch
+  include WithCaseInsensitiveSearch
 
   enum output_content_type: [:plain, :html, :markdown]
 
@@ -9,7 +9,7 @@ class Language < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
 
-  markup_on :test_syntax_hint, :description
+  markdown_on :test_syntax_hint, :description
 
   delegate :run_tests!, :run_query!, to: :bridge
 
