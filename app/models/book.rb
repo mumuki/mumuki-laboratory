@@ -1,12 +1,12 @@
-class Tenant < ActiveRecord::Base
+class Book < ActiveRecord::Base
   include WithMarkup
 
   validates_presence_of :name, :locale
 
+  markup_on :preface
+
   before_create :setup_apartment_tenant!
   after_destroy :teardown_apartment_tenant!
-
-  markup_on :preface
 
   def switch!
     Apartment::Tenant.switch! name
@@ -25,7 +25,7 @@ class Tenant < ActiveRecord::Base
   end
 
   def self.current
-    raise 'tenant not selected' if on_public?
+    raise 'book not selected' if on_public?
     find_by name: Apartment::Tenant.current
   end
 
@@ -38,7 +38,7 @@ class Tenant < ActiveRecord::Base
   def teardown_apartment_tenant!
     Apartment::Tenant.drop name
   rescue Apartment::TenantNotFound => _e
-    Rails.logger.warn("Tenant #{name} not found")
+    Rails.logger.warn("book #{name} not found")
   end
 
   def setup_apartment_tenant!

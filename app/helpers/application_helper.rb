@@ -5,7 +5,7 @@ module ApplicationHelper
   include WithNavigation
 
   def contact_email
-    Tenant.current.contact_email
+    Book.current.contact_email
   end
 
   def page_title(subject)

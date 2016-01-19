@@ -15,7 +15,7 @@ class BookBuilder
   end
 
   def build!
-    Tenant.current.update!(preface: @preface)
+    Book.current.update!(preface: @preface)
     Chapter.rebuild!(@chapters)
   end
 
