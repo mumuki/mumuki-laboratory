@@ -23,20 +23,8 @@ class Book < ActiveRecord::Base
     end
   end
 
-  def self.on_public?
-    on? 'public'
-  end
-
-  def self.on_central?
-    on? 'central'
-  end
-
-  def self.on?(name)
-    Apartment::Tenant.current == name
-  end
-
   def self.current
-    raise 'book not selected' if on_public?
+    raise 'book not selected' if Apartment::Tenant.on? 'public'
     find_by name: Apartment::Tenant.current
   end
 
@@ -47,10 +35,10 @@ class Book < ActiveRecord::Base
   private
 
   def teardown_apartment_tenant!
-    Apartment::Tenant.drop name unless Apartment.connection.schema_exists? name
+    Apartment::Tenant.teardown name
   end
 
   def setup_apartment_tenant!
-    Apartment::Tenant.create name unless Apartment.connection.schema_exists? name
+    Apartment::Tenant.setup name
   end
 end

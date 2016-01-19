@@ -1,6 +1,7 @@
 require_relative './seeds/book_builder'
 
-if Book.on_public?
+if Apartment::Tenant.on? 'public'
+
   puts 'Seeding global'
   require_relative './seeds/languages'
   require_relative './seeds/guides'
@@ -8,8 +9,11 @@ if Book.on_public?
   Book.find_or_create_by(name: 'central') do |it|
     it.locale = 'es'
   end.switch!
-elsif Book.on_central?
+
+elsif Apartment::Tenant.on? 'central'
+
   require_relative './seeds/central'
+
 end
 
 
