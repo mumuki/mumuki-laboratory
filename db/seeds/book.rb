@@ -43,7 +43,7 @@ class ChapterBuilder
   end
 
   def description(description)
-    @description = description.squeeze
+    @description = description.squeeze(' ')
   end
 
   def build

@@ -138,3 +138,5 @@ en:
   navigation_next: 'Next'
   navigation_revisit: 'Next pending: %{sibling}'
   chapter_number: "Chapter %{number} -"
+  content: "Content"
+  lesson_number: "Lesson %{number}"

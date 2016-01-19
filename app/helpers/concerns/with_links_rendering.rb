@@ -1,26 +1,24 @@
 module WithLinksRendering
-  def link_to_exercise(exercise, options={})
-    name = extract_name exercise, options
-    link_to name, exercise, options
-  end
 
-  def link_to_guide(guide, options={})
-    name = extract_name guide, options
-    link_to name, guide, options
+  def link_to_path_element(element, options={})
+    name = extract_name element, options
+    link_to name, element, options
   end
 
   def link_to_user(user)
     link_to user.name, user
   end
 
-  def link_to_chapter(chapter)
-    link_to chapter.contextualized_name, chapter
-  end
-
   private
 
   def extract_name(named, options)
-    plain = options.delete(:plain)
-    plain ? named.contextualized_name : named.friendly
+    case options.delete(:mode)
+      when :plain
+        named.name
+      when :friendly
+        named.friendly
+      else
+        named.contextualized_name
+    end
   end
 end

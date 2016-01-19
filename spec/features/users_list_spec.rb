@@ -10,10 +10,6 @@ feature 'Users listing' do
   end
 
   scenario 'list users' do
-    visit '/'
-
-    click_on 'Sign in'
-
     visit '/users'
 
     expect(page).to have_text('foobar')

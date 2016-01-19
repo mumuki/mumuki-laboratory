@@ -167,3 +167,5 @@ es:
   navigation_next: 'Siguiente'
   navigation_revisit: 'Siguiente pendiente: %{sibling}'
   chapter_number: "Capítulo %{number}:"
+  content: "Contenido"
+  lesson_number: "Lección %{number}"

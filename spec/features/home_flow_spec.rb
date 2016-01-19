@@ -4,6 +4,9 @@ feature 'Home Flow' do
   let(:guide) { create(:guide) }
   let!(:exercise) { create(:exercise, id: 1, guide: guide) }
   let(:user) { User.find_by(name: 'testuser') }
+  let(:chapter) { create(:chapter) }
+
+  before { chapter.rebuild!([guide]) }
 
   context 'anonymous visitor' do
     scenario 'from outside' do

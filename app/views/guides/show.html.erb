@@ -29,12 +29,12 @@
   </div>
 </div>
 
-<h3><%= t :progress %></h3>
+<h3><%= t :content %></h3>
 <ul class="progress-listing">
   <% @guide.exercises.each do |exercise| %>
     <li>
       <%= exercise_status_icon exercise %>
-      <%= link_to_exercise(exercise, plain: true) %>
+      <%= link_to_path_element(exercise) %>
     </li>
   <% end %>
 </ul>

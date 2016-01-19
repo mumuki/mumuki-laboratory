@@ -4,13 +4,13 @@
   text-align: center;
   width: 32px;
   height: 32px;
-  border: 2px solid #18bc9c;
+  border: 2px solid $brand-info;
   border-radius: 50%;
   margin: 5px;
 }
 
 a.social-icon:hover, a.social-icon:active, a.social-icon:focus {
   text-decoration: none;
-  border-color: #39D4B6;
-  color: #39D4B6;
+  border-color: $brand-info-light;
+  color: $brand-info-light;
 }
