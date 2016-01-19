@@ -3,25 +3,25 @@ module Navigable
   ## Plain Navigation
 
   def next
-    siblings.select { |it| it.position == position.next }.first
+    siblings.select { |it| it.number == number.next }.first
   end
 
   def previous
-    siblings.select { |it| it.position == position.pred }.first
+    siblings.select { |it| it.number == number.pred }.first
   end
 
   ## Plain Navigation
 
   def next_for(user)
-    siblings_for(user).select { |it| it.position > position }.sort_by(&:position).first
+    siblings_for(user).select { |it| it.number > number }.sort_by(&:number).first
   end
 
   def previous_for(user)
-    siblings_for(user).select { |it| it.position < position }.sort_by(&:position).last
+    siblings_for(user).select { |it| it.number < number }.sort_by(&:number).last
   end
 
   def first_for(user)
-    siblings_for(user).sort_by(&:position).first
+    siblings_for(user).sort_by(&:number).first
   end
 
   ##
@@ -38,7 +38,7 @@ module WithParent
 
   included do
     include Navigable
-    validates_presence_of :position, unless: :orphan?
+    validates_presence_of :number, unless: :orphan?
   end
 
   def orphan?
@@ -46,7 +46,7 @@ module WithParent
   end
 
   def navigable_name
-    with_parent_name { "#{position}. #{name}" }
+    with_parent_name { "#{number}. #{name}" }
   end
 
   private
@@ -59,8 +59,8 @@ module WithParent
     end
   end
 
-  def qualified_position
-    "#{self.class.table_name}.position"
+  def qualified_number
+    "#{self.class.table_name}.number"
   end
 end
 

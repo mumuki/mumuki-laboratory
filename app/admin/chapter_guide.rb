@@ -1,10 +1,10 @@
 ActiveAdmin.register ChapterGuide do
 
-  permit_params :chapter_id, :guide_id, :position
+  permit_params :chapter_id, :guide_id, :number
 
   filter :chapter
   filter :guide
-  filter :position
+  filter :number
   filter :created_at
   filter :updated_at
 
@@ -12,13 +12,13 @@ ActiveAdmin.register ChapterGuide do
     column(:id)
     column(:chapter)
     column(:guide)
-    column(:position)
+    column(:number)
 
     actions
   end
 
   form do |f|
-    inputs :chapter, :guide, :position
+    inputs :chapter, :guide, :number
     actions
   end
 end

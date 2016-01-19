@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20160120171336) do
   create_table "chapter_guides", force: true do |t|
     t.integer  "guide_id"
     t.integer  "chapter_id"
-    t.integer  "position"
+    t.integer  "number"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 20160120171336) do
     t.string   "locale",            default: "en"
     t.text     "hint"
     t.text     "extra"
-    t.integer  "position"
+    t.integer  "number"
     t.text     "corollary"
     t.integer  "layout",            default: 0,         null: false
     t.text     "expectations"

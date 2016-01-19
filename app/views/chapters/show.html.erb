@@ -17,7 +17,7 @@
   <h3><%= t(:content) %></h3>
 
   <% @chapter.guides.each do |guide| %>
-    <h4><%= t(:guide_number, number: guide.position) %>: <%= link_to_path_element guide, mode: :plain %></h4>
+    <h4><%= t(:guide_number, number: guide.number) %>: <%= link_to_path_element guide, mode: :plain %></h4>
     <ul class="progress-listing">
       <% guide.exercises.each do |exercise| %>
         <li>

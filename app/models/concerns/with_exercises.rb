@@ -2,7 +2,7 @@ module WithExercises
   extend ActiveSupport::Concern
 
   included do
-    has_many :exercises, -> { order(position: :asc) }, dependent:  :delete_all
+    has_many :exercises, -> { order(number: :asc) }, dependent:  :delete_all
   end
 
   def exercises_count
@@ -19,7 +19,7 @@ module WithExercises
   end
 
   def next_exercise(user)
-    pending_exercises(user).order('public.exercises.position asc').first
+    pending_exercises(user).order('public.exercises.number asc').first
   end
 
   def first_exercise

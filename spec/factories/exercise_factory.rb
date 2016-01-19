@@ -19,7 +19,7 @@ FactoryGirl.define do
     language { guide ? guide.language : create(:language) }
     test 'dont care'
     locale :en
-    position 1
+    number 1
     guide
   end
 

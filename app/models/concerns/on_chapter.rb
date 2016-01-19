@@ -8,14 +8,14 @@ module OnChapter
     has_one :chapter, through: :chapter_guide
   end
 
-  def positionate!(chapter, position)
-    self.chapter_guide = ChapterGuide.new chapter: chapter, position: position, guide: self
+  def positionate!(chapter, number)
+    self.chapter_guide = ChapterGuide.new chapter: chapter, number: number, guide: self
     self.chapter = chapter
     self.chapter_guide
   end
 
-  def position
-    chapter_guide.try(&:position)
+  def number
+    chapter_guide.try(&:number)
   end
 
   def siblings_for(user)
