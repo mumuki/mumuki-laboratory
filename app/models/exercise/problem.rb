@@ -14,6 +14,12 @@ class Problem < Exercise
   def save_query_results!(assignment)
   end
 
+  def reset!
+    super
+    self.test = nil
+    self.expectations = []
+  end
+
   def expectations
     super + guide_expectations
   end
