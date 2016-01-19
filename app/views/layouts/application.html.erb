@@ -56,7 +56,15 @@
     <div class="col-md-2">
       <div class="user-menu">
         <% if current_user? %>
-          <%= link_to image_tag(current_user.image_url, height: 40, class: 'img-circle'), user_path(current_user) %>
+          <div class="dropdown">
+            <span id="profileDropdown" data-toggle="dropdown">
+              <%=image_tag(current_user.image_url, height: 40, class: 'img-circle')%>
+            </span>
+            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+              <li><%= link_to t(:profile), user_path(current_user) %></li>
+              <li><%= link_to(t(:sign_out), logout_path) %></li>
+            </ul>
+          </div>
         <% else %>
           <%= login_anchor %>
         <% end %>
