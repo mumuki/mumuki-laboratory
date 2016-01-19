@@ -6,7 +6,7 @@ class ChaptersController < ApplicationController
   end
 
   def index
-    @chapters = Chapter.all.order(:number)
+    @chapters = Chapter.all
   end
 
   def subject

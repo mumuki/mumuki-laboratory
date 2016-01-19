@@ -4,11 +4,14 @@ class Chapter < ActiveRecord::Base
   include WithStats
   include FriendlyName
 
+  has_many :exercises, through: :guides
+
+  default_scope -> { order(:number) }
+
   validates_presence_of :name, :description
 
   markdown_on :description, :long_description, :links
 
-  has_many :exercises, through: :guides
 
   def friendly
     name
