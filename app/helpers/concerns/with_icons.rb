@@ -19,14 +19,6 @@ module WithIcons
     fa_icon(*icon_for_status(exercise.status_for(current_user)))
   end
 
-  def class_for_status(s)
-    s.iconize[:class].to_s
-  end
-
-  def icon_type_for_status(s)
-    s.iconize[:type].to_s
-  end
-
   def icon_for_status(s)
     iconized = s.iconize
     [iconized[:type], class: "text-#{iconized[:class]} status-icon"]

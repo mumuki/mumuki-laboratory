@@ -3,6 +3,7 @@ module ApplicationHelper
   include WithLinksRendering
   include WithIcons
   include WithNavigation
+  include WithStatusRendering
 
   def contact_email
     Book.current.contact_email
