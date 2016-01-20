@@ -1,8 +1,4 @@
 module WithStatsRendering
-  def stats_html(stats, k)
-    "#{stats.send k} #{status_icon(k)} ".html_safe
-  end
-
   def practice_key_for(stats)
     if stats && stats.started?
       :continue_practicing
