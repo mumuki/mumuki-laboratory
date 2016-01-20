@@ -12,7 +12,7 @@ class Book < ActiveRecord::Base
 
   def rebuild!(chapters)
     transaction do
-      Chapter.delete_all
+      Chapter.all_except(chapters).delete_all
       chapters.each_with_index do |it, index|
         it.number = index + 1
         it.save!
