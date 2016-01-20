@@ -13,7 +13,7 @@ module WithProgressBar
     end
   end
 
-  def active_class exercise, actual
+  def active_class(exercise, actual)
     exercise.id == actual.id ? 'active' : ''
   end
 
