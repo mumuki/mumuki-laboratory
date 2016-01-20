@@ -46,7 +46,7 @@ class Guide < ActiveRecord::Base
   end
 
   def position
-    chapter_guide.position
+    chapter_guide.try &:position
   end
 
   def import!
