@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Tenant do
+describe Apartment::Tenant do
   describe '#on?' do
-    it { expect(Tenant.on? 'test').to be true }
-    it { expect(Tenant.on? 'foo').to be false }
+    it { expect(Apartment::Tenant.on? 'test').to be true }
+    it { expect(Apartment::Tenant.on? 'foo').to be false }
   end
 end

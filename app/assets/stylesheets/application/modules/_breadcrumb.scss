@@ -1,0 +1,15 @@
+.breadcrumb {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  .ahahamojimoji {
+    font-size: 44px;
+    a {
+      color: $brand-primary;
+      &:hover, &:focus {
+        text-decoration: none;
+      }
+    }
+
+  }
+}

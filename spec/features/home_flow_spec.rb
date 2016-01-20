@@ -14,7 +14,8 @@ feature 'Home Flow' do
 
       visit '/'
 
-      expect(page).to have_text('Mumuki is a simple, open and collaborative platform')
+      expect(page).to have_text('ム mumuki')
+      expect(page).to have_text('Improve your programming skills')
     end
 
     scenario 'from inside' do
@@ -22,7 +23,8 @@ feature 'Home Flow' do
 
       visit '/'
 
-      expect(page).to have_text('Mumuki is a simple, open and collaborative platform')
+      expect(page).to have_text('ム mumuki')
+      expect(page).to have_text('Improve your programming skills')
     end
   end
 
@@ -37,7 +39,8 @@ feature 'Home Flow' do
 
       visit '/'
 
-      expect(page).to have_text('Mumuki is a simple, open and collaborative platform')
+      expect(page).to have_text('ム mumuki')
+      expect(page).to have_text('Improve your programming skills')
     end
 
 
@@ -46,7 +49,8 @@ feature 'Home Flow' do
 
       visit '/'
 
-      expect(page).to have_text('Mumuki is a simple, open and collaborative platform')
+      expect(page).to have_text('ム mumuki')
+      expect(page).to have_text('Improve your programming skills')
     end
 
   end

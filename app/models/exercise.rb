@@ -10,7 +10,6 @@ class Exercise < ActiveRecord::Base
 
   include WithSearch,
           WithTeaser,
-          WithMarkup,
           WithAssignments,
           OnGuide,
           WithLocale,
@@ -25,7 +24,7 @@ class Exercise < ActiveRecord::Base
   validates_presence_of :name, :description, :language,
                         :submissions_count, :guide
 
-  markup_on :description, :hint, :teaser, :corollary
+  markdown_on :description, :hint, :teaser, :corollary
 
   def search_tags
     tag_list + [language.name]

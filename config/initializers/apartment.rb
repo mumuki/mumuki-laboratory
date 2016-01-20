@@ -2,9 +2,9 @@ require 'apartment/elevators/first_subdomain'
 
 Apartment.configure do |config|
 
-  config.excluded_models = %w{ User Assignment Exercise Guide Language Tenant }
+  config.excluded_models = %w{ User Assignment Exercise Guide Language Book }
 
-  config.tenant_names = lambda { Tenant.pluck :name }
+  config.tenant_names = lambda { Book.pluck :name }
 
 
   # Apartment can be forced to use raw SQL dumps instead of schema.rb for creating new schemas.
@@ -31,7 +31,7 @@ class AtheneumElevator < Apartment::Elevators::Subdomain
     begin
       super
     rescue Apartment::TenantNotFound
-      return [404, {'Content-Type' => 'text/html'}, ["#{File.read(Rails.root.to_s + "/public/404.#{Tenant.central.locale}.html")}"]]
+      return [404, {'Content-Type' => 'text/html'}, ["#{File.read(Rails.root.to_s + "/public/404.#{Book.central.locale}.html")}"]]
     end
   end
 end

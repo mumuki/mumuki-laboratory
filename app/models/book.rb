@@ -1,5 +1,7 @@
-class Tenant < ActiveRecord::Base
+class Book < ActiveRecord::Base
   validates_presence_of :name, :locale
+
+  markdown_on :preface
 
   before_create :setup_apartment_tenant!
   after_destroy :teardown_apartment_tenant!
@@ -8,20 +10,19 @@ class Tenant < ActiveRecord::Base
     Apartment::Tenant.switch! name
   end
 
-  def self.on_public?
-    on? 'public'
-  end
-
-  def self.on_central?
-    on? 'central'
-  end
-
-  def self.on?(name)
-    Apartment::Tenant.current == name
+  def rebuild!(chapters)
+    transaction do
+      Chapter.all_except(chapters).delete_all
+      chapters.each_with_index do |it, index|
+        it.number = index + 1
+        it.save!
+      end
+      save!
+    end
   end
 
   def self.current
-    raise 'tenant not selected' if on_public?
+    raise 'book not selected' if Apartment::Tenant.on? 'public'
     find_by name: Apartment::Tenant.current
   end
 
@@ -32,12 +33,10 @@ class Tenant < ActiveRecord::Base
   private
 
   def teardown_apartment_tenant!
-    Apartment::Tenant.drop name
-  rescue Apartment::TenantNotFound => _e
-    Rails.logger.warn("Tenant #{name} not found")
+    Apartment::Tenant.teardown name
   end
 
   def setup_apartment_tenant!
-    Apartment::Tenant.create name
+    Apartment::Tenant.setup name
   end
 end

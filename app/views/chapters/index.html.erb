@@ -1,7 +1,15 @@
-<div class="col-md-offset-1 col-md-9">
-  <h1><%= t :mumuki_catchphrase %></h1>
+<div class="col-md-offset-2 col-md-8">
+  <div class="mumuki">
+    <h1 class="logo"><span class="ahahamojimoji">ム</span></h1>
 
-  <p><%= t :mumuki_short_description %></p>
+    <h1>mumuki</h1>
+
+    <h2><%= t :mumuki_catchphrase %></h2>
+  </div>
+
+  <div class="text-box">
+    <%= Book.current.preface_html %>
+  </div>
 
   <div class="actions">
     <a href="<%= guide_path(@chapters.first.first_guide) %>" class="btn btn-success">

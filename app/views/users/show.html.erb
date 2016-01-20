@@ -1,5 +1,9 @@
 <%= render layout: 'layouts/user', locals: {current_tab: :overview} do %>
-  <div class="row">
+  <%= content_for :breadcrumbs do %>
+    <%= home_breadcrumb %>
+  <% end %>
+
+  <div class="row user-assignments">
     <div class="col-md-4">
       <%= image_tag @user.image_url, size: '250x250', class: 'img-circle' %>
     </div>

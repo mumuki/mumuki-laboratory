@@ -1,6 +1,11 @@
-class Book
+class BookBuilder
   def initialize
     @chapters=[]
+    @preface = ''
+  end
+
+  def preface(preface)
+    @preface = preface.squeeze(' ')
   end
 
   def chapter(name)
@@ -10,11 +15,13 @@ class Book
   end
 
   def build!
-    Chapter.rebuild!(@chapters)
+    book = Book.current
+    book.preface = @preface
+    book.rebuild! @chapters
   end
 
   def self.build!
-    book = Book.new
+    book = BookBuilder.new
     yield book
     book.build!
   end
@@ -60,7 +67,7 @@ class ChapterBuilder
   private
 
   def create_slug(slug_part)
-    "#{@organization}/mumuki-#{I18n.transliterate(I18n.t :guide).downcase}-#{@prefix}-#{slug_part}"
+    "#{@organization}/mumuki-#{I18n.transliterate(I18n.t :guide_internal).downcase}-#{@prefix}-#{slug_part}"
   end
 end
 

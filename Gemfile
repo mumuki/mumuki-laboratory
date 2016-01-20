@@ -72,6 +72,11 @@ end
 
 group :development do
   gem 'better_errors'
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-remote'
+  gem 'pry-byebug' unless Gem.win_platform?
+  gem 'pry-stack_explorer'
   gem 'binding_of_caller'
 end
 

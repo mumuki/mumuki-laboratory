@@ -1,16 +1,13 @@
+<%= content_for :breadcrumbs do %>
+  <%= exercise_breadcrumb @exercise %>
+<% end %>
+
 <% @stats = @exercise.guide.stats_for(current_user) if current_user && @exercise.guide %>
 
 <div class="row">
-  <div class="col-md-12">
-    <ol class="breadcrumb">
-      <%= exercise_breadcrumb @exercise %>
-    </ol>
-  </div>
-</div>
-<div class="row">
   <div class="col-md-11">
     <h1>
-      <%= @exercise.contextualized_name %>
+      <%= t(:exercise_number, number: @exercise.position) %>: <%= @exercise.name %>
     </h1>
   </div>
   <div class="col-md-1">
@@ -20,7 +17,7 @@
 
 <div>
   <% if @stats %>
-    <%= render partial: 'layouts/progress_bar', locals: {guide: @exercise.guide, stats: @stats} %>
+    <%= render partial: 'layouts/progress_bar', locals: {actual: @exercise, guide: @exercise.guide, stats: @stats} %>
   <% end %>
 </div>
 

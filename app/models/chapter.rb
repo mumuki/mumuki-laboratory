@@ -1,15 +1,17 @@
 class Chapter < ActiveRecord::Base
   include WithLocale
-  include WithMarkup
   include WithChapterGuides
   include WithStats
   include FriendlyName
 
+  has_many :exercises, through: :guides
+
+  default_scope -> { order(:number) }
+
   validates_presence_of :name, :description
 
-  markup_on :description, :long_description, :links
+  markdown_on :description, :long_description, :links
 
-  has_many :exercises, through: :guides
 
   def friendly
     name
@@ -31,15 +33,5 @@ class Chapter < ActiveRecord::Base
 
   def contextualized_name
     "#{number}. #{name}"
-  end
-
-  def self.rebuild!(chapters)
-    transaction do
-      delete_all
-      chapters.each_with_index do |it, index|
-        it.number = index + 1
-        it.save!
-      end
-    end
   end
 end

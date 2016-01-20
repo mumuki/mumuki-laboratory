@@ -1,7 +1,7 @@
 SitemapGenerator::Sitemap.default_host = 'http://mumuki.io'
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 
-Tenant.central.switch!
+Book.central.switch!
 
 SitemapGenerator::Sitemap.create do
   add '/', changefreq: 'daily', priority: 0.9
