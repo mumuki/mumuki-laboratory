@@ -1,5 +1,5 @@
 module WithBreadcrumbs
-  def exercise_breadcrumb(e)
+  def exercise_breadcrumb(e) #FIXME duplicated code
     base = link_to_path_element e
     if e.guide
       "#{guide_breadcrumb(e.guide)} <li>#{base}</li>".html_safe
