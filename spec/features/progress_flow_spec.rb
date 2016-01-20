@@ -29,7 +29,8 @@ feature 'Progress Flow' do
   scenario 'chapter progress, not logged in' do
     visit "/chapters/#{functional.id}"
 
-    expect(page).to have_text('You must sign in before continue')
+    expect(page).to_not have_text('You must sign in before continue')
+    expect(page).to have_text('Functional Programming')
   end
 
 end
