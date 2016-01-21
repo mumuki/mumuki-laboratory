@@ -9,7 +9,7 @@ module GuideNavigation
     has_one :chapter, through: :chapter_guide
   end
 
-  def positionate!(chapter, number)
+  def positionate!(chapter, number) #FIXME stop doing position logic by hand
     self.chapter_guide = ChapterGuide.new chapter: chapter, number: number, guide: self
     self.chapter = chapter
     self.chapter_guide
@@ -19,12 +19,12 @@ module GuideNavigation
     chapter_guide.try(&:number)
   end
 
-  def siblings_for(user)
-    chapter.pending_guides(user)
+  def siblings_for(user) #FIXME duplicated code
+    chapter.try { |it| it.pending_guides(user) } || []
   end
 
   def siblings
-    chapter.guides
+    chapter.try(&:guides) || []
   end
 
   def parent
