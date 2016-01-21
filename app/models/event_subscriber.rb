@@ -27,10 +27,15 @@ class EventSubscriber < ActiveRecord::Base
   end
 
   def do_request(event, path)
-    RestClient.post("#{url}/#{path}", event, content_type: :json)
+    RestClient.post("#{get_url}/#{path}", event, content_type: :json)
   end
 
   def validate_response(response)
     Rails.logger.info "response from server #{response}" if response != {'status' => 'ok'}
   end
+
+  def get_url
+    url
+  end
+
 end

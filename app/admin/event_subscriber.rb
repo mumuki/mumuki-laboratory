@@ -11,4 +11,11 @@ ActiveAdmin.register EventSubscriber do
 
     actions
   end
+
+  controller do
+    def scoped_collection
+      EventSubscriber.unscoped.where(type: 'EventSubscriber')
+    end
+  end
+
 end
