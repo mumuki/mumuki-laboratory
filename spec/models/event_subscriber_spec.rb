@@ -16,7 +16,7 @@ describe EventSubscriber do
   describe 'tenant_url' do
     let!(:tenant_subscriber) { TenantSubscriber.create!(enabled: true, url: 'http://localhost:80') }
 
-    it { expect(tenant_subscriber.tenant_url).to eq('http://test.localhost:80') }
+    it { expect(tenant_subscriber.get_url).to eq('http://test.localhost:80') }
   end
 
 end
