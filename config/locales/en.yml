@@ -1,7 +1,8 @@
 ---
 en:
-  about_this_guide: About this guide
   aborted: Oops, we couldn't evaluate your solution
+  about: About
+  about_this_guide: About this guide
   actions: Actions
   activity: Activity
   add_expectation: Add Expectation
@@ -12,9 +13,13 @@ en:
   belongs_to_guide: Belongs to guide %{guide}
   beta: Beta
   cancel: Cancel
-  chapters_index_title: What do you want to learn?
   chapter: Chapter
+  chapter_finished_html: You have finished %{chapter}!
+  chapter_number: Chapter %{number} -
+  chapters_index_title: What do you want to learn?
   comma_or_tab_separated: Comma or tab separated!
+  console: Console
+  content: Content
   continue_practicing: Continue Practicing!
   contributors: Contributors
   corollary: Corollary
@@ -24,6 +29,7 @@ en:
   destroy: Destroy
   edit: Edit
   edit_exercise: Edit %{exercise}
+  editor: Editor
   errored: Oops, your solution didn't work
   exercise: Exercise
   exercise_count: exercises
@@ -34,12 +40,12 @@ en:
   expectations: Expectations
   export_created: Export queued
   extras: Extras
-  follow_us: Follow Us
   facebook_signin_reason: Sign in with Facebook if you just want to start programming
   failed: Oops, something went wrong
   failed_exercises_stats: You tried to <strong>resolve %{count} more exercises</strong>.
   feedback: Feedback
   follow: Follow!
+  follow_us: Follow Us
   following: Following
   github_signin_reason: Sign in with Github if you also want to create your own exercises
   github_url_hint: username/repository
@@ -48,6 +54,7 @@ en:
   guide_created: Guide created successfully
   guide_finished: Congrants! You completed guide %{guide}
   guide_has_exercises_stats: This guide has <strong>%{total} exercises</strong>
+  guide_number: Lesson %{number}
   guides_index_title: Which guide do you want to do today?
   hello: Hello world
   here: here
@@ -72,6 +79,11 @@ en:
   my_exercises: My Exercises
   my_guides: My Guides
   my_submissions: My Submissions
+  navigation_continue: 'Next: %{sibling}'
+  navigation_next: Next
+  navigation_previous: Previous
+  navigation_revisit: 'Next pending: %{sibling}'
+  need_a_hint: Do you need a hint?
   never: never
   new: New
   new_exercise: New Exercise
@@ -79,7 +91,7 @@ en:
   new_guide: New Guide
   new_submission: New Submission
   next_exercise: Next
-  next_guide: "Next Guide: %{name}"
+  next_guide: 'Next Guide: %{name}'
   no_exercises: Nobody created an exercise for this search yet
   no_guides: Nobody created a guide for this search yet
   no_permissions: You don't have enough permissions over the repository
@@ -94,12 +106,13 @@ en:
   previous_exercise: Previous
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'
   processing_you_solution: We are processing you solution
-  profile_of: Profile of %{username}
   profile: Profile
+  profile_of: Profile of %{username}
   progress: Progresss
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   running: running
   search: Search
+  sending_solution: Sending solution
   show: Show
   sign_in: Sign in
   sign_in_action: sign in
@@ -120,24 +133,11 @@ en:
   submissions_success_rate: Submissions success rate
   tag: Tags
   title: Title
+  type_expressions_here: You can type expressions here to test your solution
   unfollow: Unfollow!
   username: Username
+  welcome_back_after_redirection: Nice to see you again! This is where you left last time
+  what_exactly_are_expectations_html: ¿What exactly are <a href="http://www.mumuki.org/expectativas/plataform/2015/06/16/el-lenguaje-de-expectativas/">Expectations</a>?
   you_can_use_markdown_here_html: You can use <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> here
   you_must: You must %{action} before continue
   you_must_sign_in_before_submitting: You must sign in before submitting your solutions
-  what_exactly_are_expectations_html: ¿What exactly are <a href="http://www.mumuki.org/expectativas/plataform/2015/06/16/el-lenguaje-de-expectativas/">Expectations</a>?
-  welcome_back_after_redirection: "Nice to see you again! This is where you left last time"
-  need_a_hint: "Do you need a hint?"
-  about: "About"
-  sending_solution: "Sending solution"
-  editor: "Editor"
-  chapter_finished_html: "You have finished %{chapter}!"
-  console: "Console"
-  type_expressions_here: "You can type expressions here to test your solution"
-  navigation_continue: 'Next: %{sibling}'
-  navigation_previous: 'Previous'
-  navigation_next: 'Next'
-  navigation_revisit: 'Next pending: %{sibling}'
-  chapter_number: "Chapter %{number} -"
-  content: "Content"
-  guide_number: "Lesson %{number}"
