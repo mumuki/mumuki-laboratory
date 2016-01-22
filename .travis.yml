@@ -9,6 +9,11 @@ before_script:
 script:
 - bundle exec rake db:schema:load
 - bundle exec rake
+after_success:
+- git config --global user.email "travis@localhost.localdomain"
+- git config --global user.name "Travis CI"
+- git add --all
+- git commit -am "Travis change"
 deploy:
   - provider: openshift
     user: flbulgarelli@yahoo.com.ar
