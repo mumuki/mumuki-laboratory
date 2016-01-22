@@ -35,7 +35,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def friendly
-    with_parent_name { "#{parent.friendly} - #{name}" }
+    defaulting_name { "#{parent.friendly} - #{name}" }
   end
 
   def new_solution
