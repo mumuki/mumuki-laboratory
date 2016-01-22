@@ -1,6 +1,5 @@
 module WithParent
   extend ActiveSupport::Concern
-  include Navigable
 
   included do
     validates_presence_of :number, unless: :orphan?

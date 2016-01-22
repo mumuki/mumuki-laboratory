@@ -2,8 +2,6 @@ module ExerciseNavigation
   extend ActiveSupport::Concern
 
   included do
-    include WithParent
-
     belongs_to :guide
   end
 

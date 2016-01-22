@@ -2,8 +2,6 @@ module GuideNavigation
   extend ActiveSupport::Concern
 
   included do
-    include WithParent
-
     has_one :chapter_guide
     has_one :chapter, through: :chapter_guide
   end

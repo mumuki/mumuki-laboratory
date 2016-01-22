@@ -9,11 +9,12 @@ class Guide < ActiveRecord::Base
   include WithSearch,
           WithTeaser,
           WithLocale,
-          GuideNavigation,
-          WithExercises,
           WithStats,
           WithExpectations,
+          WithExercises,
           FriendlyName
+
+  include WithParent, Navigable, GuideNavigation
 
   belongs_to :language
 
