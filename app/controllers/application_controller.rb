@@ -23,7 +23,23 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def subject
+  def subject #TODO may be used to remove breadcrumbs duplication
     nil
+  end
+
+  def visitor_recurrent?
+    current_user? && current_user.last_guide.present?
+  end
+
+  def visitor_comes_from_internet?
+    !request_host_include? %w(mumuki localmumuki)
+  end
+
+  def request_host_include?(hosts)
+    hosts.any? { |host| Addressable::URI.parse(request.referer).host.include? host } rescue false
+  end
+
+  def redirect_to_last_guide
+    redirect_to current_user.last_guide, notice: t(:welcome_back_after_redirection)
   end
 end
