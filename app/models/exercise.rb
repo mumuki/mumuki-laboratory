@@ -11,13 +11,13 @@ class Exercise < ActiveRecord::Base
   include WithSearch,
           WithTeaser,
           WithAssignments,
-          ExerciseNavigation,
           WithLocale,
           WithLanguage,
           WithLayout,
-          Submittable,
-          Queriable,
           FriendlyName
+
+  include Submittable, Queriable
+  include Navigable, WithParent, ExerciseNavigation
 
   after_initialize :defaults, if: :new_record?
 
@@ -35,7 +35,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def friendly
-    with_parent_name { "#{parent.friendly} - #{name}" }
+    defaulting_name { "#{parent.friendly} - #{name}" }
   end
 
   def new_solution

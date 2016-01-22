@@ -1,6 +1,6 @@
 <div class="progress-list-flex">
   <% guide.exercises.each do |e| %>
-    <a href="<%= exercise_path(e)%>"  class="text-center <%= class_for_bar(e.status_for(current_user))%> <%= active_class(e, actual)%>">
+    <a href="<%= exercise_path(e)%>"  class="text-center <%= class_for_status(e.status_for(current_user))%> <%= active_class(e, actual)%>">
     </a>
   <% end %>
 </div>

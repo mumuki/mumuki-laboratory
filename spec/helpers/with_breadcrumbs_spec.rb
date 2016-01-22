@@ -5,7 +5,7 @@ describe WithBreadcrumbs do
   helper WithBreadcrumbs
   helper WithLinksRendering
 
-  let(:breadcrumb) { exercise_breadcrumb(exercise) }
+  let(:breadcrumb) { breadcrumbs(exercise) }
 
   context 'standalone exercise' do
     let(:exercise) { create(:exercise, name: 'my exercise') }

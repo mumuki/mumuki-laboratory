@@ -2,6 +2,11 @@ class BookBuilder
   def initialize
     @chapters=[]
     @preface = ''
+    @locale = 'en'
+  end
+
+  def locale(locale)
+    @locale = locale
   end
 
   def preface(preface)
@@ -17,6 +22,7 @@ class BookBuilder
   def build!
     book = Book.current
     book.preface = @preface
+    book.locale = @locale
     book.rebuild! @chapters
   end
 

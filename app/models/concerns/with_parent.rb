@@ -10,17 +10,13 @@ module WithParent
   end
 
   def navigable_name
-    with_parent_name { "#{number}. #{name}" }
+    defaulting_name { super }
   end
 
   private
 
-  def with_parent_name
-    if orphan?
-      name
-    else
-      yield
-    end
+  def defaulting_name(&block)
+    parent.defaulting(name, &block)
   end
 end
 

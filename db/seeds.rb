@@ -6,9 +6,7 @@ if Apartment::Tenant.on? 'public'
   require_relative './seeds/languages'
   require_relative './seeds/guides'
 
-  Book.find_or_create_by(name: 'central') do |it|
-    it.locale = 'es'
-  end.switch!
+  Book.find_or_create_by(name: 'central').switch!
 
 elsif Apartment::Tenant.on? 'central'
 

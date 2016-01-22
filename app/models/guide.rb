@@ -9,13 +9,13 @@ class Guide < ActiveRecord::Base
   include WithSearch,
           WithTeaser,
           WithLocale,
-          GuideNavigation,
-          WithExercises,
           WithStats,
           WithExpectations,
+          WithExercises,
+          WithLanguage,
           FriendlyName
 
-  belongs_to :language
+  include WithParent, Navigable, GuideNavigation
 
   validates_presence_of :slug
 
@@ -23,7 +23,6 @@ class Guide < ActiveRecord::Base
 
   has_one :chapter_guide
 
-  #Deactivate STI, so I can use type attribute
   self.inheritance_column = nil
 
   enum type: [ :learning, :practice ]
@@ -37,16 +36,8 @@ class Guide < ActiveRecord::Base
     created_at > 7.days.ago
   end
 
-  def done_for?(user)
-    stats_for(user).done?
-  end
-
   def friendly
-    with_parent_name { "#{parent.friendly}: #{name}" }
-  end
-
-  def position
-    chapter_guide.try &:number
+    defaulting_name { "#{parent.friendly}: #{name}" }
   end
 
   def import!
