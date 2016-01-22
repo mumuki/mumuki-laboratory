@@ -9,7 +9,7 @@ class Guide < ActiveRecord::Base
   include WithSearch,
           WithTeaser,
           WithLocale,
-          OnChapter,
+          GuideNavigation,
           WithExercises,
           WithStats,
           WithExpectations,
@@ -46,7 +46,7 @@ class Guide < ActiveRecord::Base
   end
 
   def position
-    chapter_guide.try &:position
+    chapter_guide.try &:number
   end
 
   def import!
@@ -59,8 +59,8 @@ class Guide < ActiveRecord::Base
     self.save!
 
     json['exercises'].each_with_index do |e, i|
-      position = i + 1
-      exercise = Exercise.class_for(e['type']).find_or_initialize_by(position: position, guide_id: self.id)
+      number = i + 1
+      exercise = Exercise.class_for(e['type']).find_or_initialize_by(number: number, guide_id: self.id)
       exercise.import_from_json! e
     end
     reload

@@ -9,9 +9,9 @@ describe WithNavigation do
   describe '#next_button' do
     context 'with exercises' do
       let(:guide) { create(:guide, name: 'my guide') }
-      let!(:exercise_1) { create(:exercise, id: 11, guide: guide, position: 1, name: 'exercise 1') }
-      let!(:exercise_2) { create(:exercise, id: 12, guide: guide, position: 2, name: 'exercise 2') }
-      let!(:exercise_3) { create(:exercise, id: 13, guide: guide, position: 3, name: 'exercise 3') }
+      let!(:exercise_1) { create(:exercise, id: 11, guide: guide, number: 1, name: 'exercise 1') }
+      let!(:exercise_2) { create(:exercise, id: 12, guide: guide, number: 2, name: 'exercise 2') }
+      let!(:exercise_3) { create(:exercise, id: 13, guide: guide, number: 3, name: 'exercise 3') }
       let(:current_user) { create(:user) }
 
 
@@ -57,7 +57,7 @@ describe WithNavigation do
 
       context 'when guide has no suggestions' do
         let(:guide) { create(:guide,  name: 'Guide A') }
-        let(:exercise) { create(:exercise, position: 1, guide: guide) }
+        let(:exercise) { create(:exercise, number: 1, guide: guide) }
 
         before { chapter.rebuild!([guide]) }
         before { exercise.submit_solution!(current_user).passed! }

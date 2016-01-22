@@ -31,8 +31,8 @@ describe Exercise do
       it { expect(exercise_with_guide.next_for(user)).to be nil }
     end
     context 'when exercise belongs to a guide with two exercises' do
-      let!(:exercise_with_guide) { create(:exercise, guide: guide, position: 2) }
-      let!(:alternative_exercise) { create(:exercise, guide: guide, position: 3) }
+      let!(:exercise_with_guide) { create(:exercise, guide: guide, number: 2) }
+      let!(:alternative_exercise) { create(:exercise, guide: guide, number: 3) }
       let!(:guide) { create(:guide) }
 
       it { expect(exercise_with_guide.next_for(user)).to eq alternative_exercise }
@@ -48,8 +48,8 @@ describe Exercise do
     end
 
     context 'when exercise belongs to a guide with two exercises and alternative exercise has being submitted but not solved' do
-      let!(:exercise_with_guide) { create(:exercise, guide: guide, position: 2) }
-      let!(:alternative_exercise) { create(:exercise, guide: guide, position: 3) }
+      let!(:exercise_with_guide) { create(:exercise, guide: guide, number: 2) }
+      let!(:alternative_exercise) { create(:exercise, guide: guide, number: 3) }
       let(:guide) { create(:guide) }
 
       before { alternative_exercise.submit_solution!(user, content: 'foo') }
@@ -66,8 +66,8 @@ describe Exercise do
 
   describe '#previous_for' do
     context 'when exercise belongs to a guide with two exercises' do
-      let!(:exercise_with_guide) { create(:exercise, guide: guide, position: 3) }
-      let!(:alternative_exercise) { create(:exercise, guide: guide, position: 2) }
+      let!(:exercise_with_guide) { create(:exercise, guide: guide, number: 3) }
+      let!(:alternative_exercise) { create(:exercise, guide: guide, number: 2) }
       let!(:guide) { create(:guide) }
 
       it { expect(exercise_with_guide.previous_for(user)).to eq alternative_exercise }

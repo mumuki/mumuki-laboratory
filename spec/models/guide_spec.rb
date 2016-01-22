@@ -37,16 +37,16 @@ describe Guide do
     end
   end
 
-  describe '#contextualized_name' do
+  describe '#navigable_name' do
     let(:chapter) { create(:chapter) }
     context 'when guide is not in chapter' do
-      it { expect(guide.contextualized_name).to be guide.name }
+      it { expect(guide.navigable_name).to be guide.name }
     end
     context 'when guide is in chapter' do
       let!(:guide_in_chapter) { create(:guide) }
       before { chapter.rebuild! [create(:guide), guide_in_chapter] }
 
-      it { expect(guide_in_chapter.contextualized_name).to eq "2. #{guide_in_chapter.name}" }
+      it { expect(guide_in_chapter.navigable_name).to eq "2. #{guide_in_chapter.name}" }
     end
   end
 

@@ -8,7 +8,7 @@ describe ApplicationHelper do
 
   describe 'page_title' do
     let(:guide) { create(:guide, name: 'A Guide')}
-    let(:exercise) { create(:exercise, name: 'An Exercise', guide: guide, position: 2) }
+    let(:exercise) { create(:exercise, name: 'An Exercise', guide: guide, number: 2) }
 
     it { expect(page_title nil).to eq 'Mumuki - Improve your programming skills' }
     it { expect(page_title Problem.new).to eq 'Mumuki - Improve your programming skills' }
@@ -24,7 +24,7 @@ describe ApplicationHelper do
   describe '#link_to_exercise' do
     context 'when exercise has guide' do
       let(:guide) { create(:guide, name: 'bar') }
-      let(:exercise) { create(:exercise, name: 'foo', guide: guide, id: 1, position: 3) }
+      let(:exercise) { create(:exercise, name: 'foo', guide: guide, id: 1, number: 3) }
 
       it { expect(link_to_path_element(exercise, mode: :plain)).to eq '<a href="/exercises/1-bar-foo">foo</a>' }
       it { expect(link_to_path_element(exercise, mode: :friendly)).to eq '<a href="/exercises/1-bar-foo">bar - foo</a>' }

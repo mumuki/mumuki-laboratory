@@ -38,7 +38,7 @@ class ExercisesController < ApplicationController
     params.require(:exercise).
         permit(:name, :description, :locale, :test,
                :extra, :language_id, :hint, :tag_list,
-               :guide_id, :position,
+               :guide_id, :number,
                :layout, :expectations_yaml)
   end
 

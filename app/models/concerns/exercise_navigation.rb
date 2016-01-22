@@ -1,8 +1,9 @@
-module OnGuide
+module ExerciseNavigation
   extend ActiveSupport::Concern
 
   included do
-    include WithSiblings
+    include Navigable
+    include WithParent
 
     belongs_to :guide
   end

@@ -51,7 +51,7 @@ describe 'api controller' do
                   name: 'guide_1',
                   language: {id: 1, name: 'language_1' },
                   exercises: [
-                      {id: 1, name: 'exercise_1', position: 1}
+                      {id: 1, name: 'exercise_1', number: 1}
                   ]
               }
           ]}

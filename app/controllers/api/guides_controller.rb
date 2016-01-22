@@ -4,9 +4,9 @@ class Api::GuidesController < Api::BaseController
     @guides = Guide.all
     render json: { guides:
       @guides.as_json(
-        only: [:id, :name, :slug, :position],
+        only: [:id, :name, :slug, :number],
         include: {
-          exercises: { only: [:id, :name, :position] },
+          exercises: { only: [:id, :name, :number] },
           language: { only: [:id, :name] },
           chapter: { only: [:id], methods: [:name] }
         }
