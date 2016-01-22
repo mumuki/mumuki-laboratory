@@ -12,11 +12,10 @@ class Guide < ActiveRecord::Base
           WithStats,
           WithExpectations,
           WithExercises,
+          WithLanguage,
           FriendlyName
 
   include WithParent, Navigable, GuideNavigation
-
-  belongs_to :language
 
   validates_presence_of :slug
 
