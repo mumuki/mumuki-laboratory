@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     user = User.omniauth(env['omniauth.auth'])
     remember_me_token.value = user.remember_me_token
 
-    redirect_to redirect_after_login_path
+    redirect_after_login
   end
 
   def failure
@@ -16,9 +16,14 @@ class SessionsController < ApplicationController
   end
 
 
-  def redirect_after_login_path
-    redirect_after_login = session[:redirect_after_login] || :back
+  def redirect_after_login
+    path = session[:redirect_after_login] || :back
     session[:redirect_after_login] = nil
-    redirect_after_login
+
+    if visitor_recurrent? && path == root_path
+      redirect_to_last_guide
+    else
+      redirect_to path
+    end
   end
 end
