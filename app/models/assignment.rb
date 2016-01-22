@@ -2,6 +2,8 @@ class Assignment < ActiveRecord::Base
   include WithStatus
 
   belongs_to :exercise
+  has_one :guide, through: :exercise
+
   belongs_to :submitter, class_name: 'User'
 
   validates_presence_of :exercise, :submitter
