@@ -1,5 +1,5 @@
 <%= content_for :breadcrumbs do %>
-  <%= exercise_breadcrumb @exercise %>
+  <%= breadcrumbs @exercise %>
 <% end %>
 
 <% @stats = @exercise.guide.stats_for(current_user) if current_user && @exercise.guide %>
