@@ -23,6 +23,8 @@ BookBuilder.build! do |b|
     c.guide 'procedimientos'
     c.guide 'repeticion-simple'
     c.guide 'alternativa-condicional'
+    c.guide 'practica-procedimientos'
+
   end
 
   b.chapter 'Programacion Funcional' do |c|
