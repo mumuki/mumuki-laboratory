@@ -1,14 +1,14 @@
 BookBuilder.build! do |b|
   b.locale 'es'
   b.preface "\
-      ¿Alguna vez te sucedió estar haciendo una tarea tediosa y repetitiva? ¿Te descrubiste a vos mismo cometiendo\
-      errores tontos por cansancio o distracción? ¿Te diste cuenta de que estabas perdiendo tiempo valioso en cosas que... podría\
-      hacer una máquina?\n\
+      ¿Alguna vez te sucedió estar haciendo una tarea tediosa y repetitiva? ¿Te descrubiste a vos mismo cometiendo \
+      errores por cansancio o distracción? ¿Te diste cuenta de que estabas perdiendo tiempo valioso en cosas que... \
+      podría hacer una máquina?\n\
       \n\
-      Tenemos una buena noticia para vos: ¡la programación puede ayudarte!. Programar es el arte de automatizar:\
-      nosotros usaremos nuestra creatividad e ingenio para pensar soluciones, y la computadora las ejecutará.\n\
+      Tenemos una buena noticia para vos: ¡la programación puede ayudarte! Programar trata de usar nuestra creatividad \
+      e ingenio para resolver problemas y automatizar tareas con la ayuda de una computadora.\n\
       \n\
-      ¿La programación parece una idea poderosa y entretenida, verdad? ¿Querés aprender más? ¡Estás en el lugar correcto: acompañános!"
+      Y por si fuera poco, aprender a programar es fácil y entretenido. ¡Acompañanos!"
 
   b.chapter 'Fundamentos' do |c|
     c.organization 'sagrado-corazon-alcal'
