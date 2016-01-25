@@ -4,10 +4,6 @@ module SiblingsNavigation
     siblings_for(user).select { |it| it.number > number }.sort_by(&:number).first
   end
 
-  def previous_for(user)
-    siblings_for(user).select { |it| it.number < number }.sort_by(&:number).last
-  end
-
   def first_for(user)
     siblings_for(user).sort_by(&:number).first
   end

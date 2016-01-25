@@ -64,16 +64,6 @@ describe Exercise do
     end
   end
 
-  describe '#previous_for' do
-    context 'when exercise belongs to a guide with two exercises' do
-      let!(:exercise_with_guide) { create(:exercise, guide: guide, number: 3) }
-      let!(:alternative_exercise) { create(:exercise, guide: guide, number: 2) }
-      let!(:guide) { create(:guide) }
-
-      it { expect(exercise_with_guide.previous_for(user)).to eq alternative_exercise }
-    end
-  end
-
   describe '#extra' do
     context 'when exercise has no extra code' do
       it { expect(exercise.extra).to eq '' }
