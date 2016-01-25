@@ -46,7 +46,7 @@ describe Event do
                                         'test_results' => nil,
                                         'submissions_count' => 2,
                                         'exercise' => {'id' => assignment.exercise.id, 'name' => assignment.exercise.name},
-                                        'guide' => {'id' => assignment.guide.id, 'name' => assignment.guide.name},
+                                        'guide' => {'slug' => assignment.guide.slug, 'name' => assignment.guide.name},
                                         'submitter' => {'id' => 2, 'name' => 'foo'},
                                         'id' => 'abcd1234',
                                         'created_at' => assignment.updated_at,
