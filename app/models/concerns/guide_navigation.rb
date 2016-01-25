@@ -24,10 +24,6 @@ module GuideNavigation
     chapter.defaulting([]) { |it| it.pending_guides(user) }
   end
 
-  def siblings
-    chapter.defaulting([], &:guides)
-  end
-
   def parent
     chapter
   end

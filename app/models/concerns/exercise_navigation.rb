@@ -13,10 +13,6 @@ module ExerciseNavigation
     guide.pending_exercises(user)
   end
 
-  def siblings
-    guide.exercises
-  end
-
   def parent
     guide
   end
