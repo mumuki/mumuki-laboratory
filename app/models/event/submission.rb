@@ -11,9 +11,11 @@ class Event::Submission < Event::Base
     @assignment.
       as_json(except: [:exercise_id, :submission_id, :id, :submitter_id, :solution, :created_at, :updated_at],
               include: {
-                guide: {only: [:slug, :name]},
+                guide: {only: [:slug, :name],
+                  include: {
+                    chapter: {only: [:id, :name]}}},
                 exercise: {only: [:id, :name]},
-                submitter: {only: [:id, :name]}}).
+                submitter: {only: [:id, :name, :email, :image_url]}}).
       merge('id' => @assignment.submission_id,
             'created_at' => @assignment.updated_at,
             'content' => @assignment.solution)

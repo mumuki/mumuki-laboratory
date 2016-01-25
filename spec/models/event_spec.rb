@@ -47,7 +47,7 @@ describe Event do
                                         'submissions_count' => 2,
                                         'exercise' => {'id' => assignment.exercise.id, 'name' => assignment.exercise.name},
                                         'guide' => {'slug' => assignment.guide.slug, 'name' => assignment.guide.name},
-                                        'submitter' => {'id' => 2, 'name' => 'foo'},
+                                        'submitter' => {'id' => 2, 'name' => 'foo', 'email' => nil, 'image_url' => nil},
                                         'id' => 'abcd1234',
                                         'created_at' => assignment.updated_at,
                                         'content' => 'x = 2'
