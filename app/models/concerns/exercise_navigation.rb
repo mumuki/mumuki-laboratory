@@ -9,7 +9,7 @@ module ExerciseNavigation
     guide.done_for?(user)
   end
 
-  def siblings_for(user)
+  def pending_siblings_for(user)
     guide.pending_exercises(user)
   end
 

@@ -20,7 +20,7 @@ module GuideNavigation
     lesson.try(&:number)
   end
 
-  def siblings_for(user)
+  def pending_siblings_for(user)
     chapter.defaulting([]) { |it| it.pending_guides(user) }
   end
 

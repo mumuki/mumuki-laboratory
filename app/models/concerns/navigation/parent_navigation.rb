@@ -5,6 +5,10 @@ module ParentNavigation
     validates_presence_of :number, unless: :orphan?
   end
 
+  def leave(user)
+    parent.next(user) 
+  end
+
   def orphan?
     parent.nil?
   end
@@ -12,6 +16,8 @@ module ParentNavigation
   def navigable_name
     defaulting_name { super }
   end
+
+  #required :parent
 
   private
 

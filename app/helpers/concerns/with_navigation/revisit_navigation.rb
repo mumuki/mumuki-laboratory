@@ -17,7 +17,7 @@ module WithNavigation
     end
 
     def sibling_for(navigable)
-      navigable.first_for(current_user)
+      navigable.restart(current_user)
     end
   end
 end
