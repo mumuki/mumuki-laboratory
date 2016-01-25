@@ -14,15 +14,6 @@ describe WithNavigation do
       let!(:exercise_3) { create(:exercise, id: 13, guide: guide, number: 3, name: 'exercise 3') }
       let(:current_user) { create(:user) }
 
-
-      it { expect(next_nav_button(exercise_1)).to eq "<a class=\"text-info\" href=\"/exercises/12-my-guide-exercise-2\">Next <i class=\"fa fa-chevron-circle-right\"></i></a>" }
-      it { expect(next_nav_button(exercise_2)).to eq "<a class=\"text-info\" href=\"/exercises/13-my-guide-exercise-3\">Next <i class=\"fa fa-chevron-circle-right\"></i></a>" }
-      it { expect(next_nav_button(exercise_3)).to eq nil }
-
-      it { expect(previous_nav_button(exercise_1)).to eq nil }
-      it { expect(previous_nav_button(exercise_2)).to eq "<a class=\"text-info\" href=\"/exercises/11-my-guide-exercise-1\"><i class=\"fa fa-chevron-circle-left\"></i> Previous</a>" }
-      it { expect(previous_nav_button(exercise_3)).to eq "<a class=\"text-info\" href=\"/exercises/12-my-guide-exercise-2\"><i class=\"fa fa-chevron-circle-left\"></i> Previous</a>" }
-
       context 'when user did not submit any solution' do
         it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success\" href=\"/exercises/12-my-guide-exercise-2\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
         it { expect(next_button(exercise_2)).to eq "<a class=\"btn btn-success\" href=\"/exercises/13-my-guide-exercise-3\">Next: exercise 3 <i class=\"fa fa-chevron-right\"></i></a>" }

@@ -1,15 +1,4 @@
 module Navigable
-  ## Plain Navigation
-
-  def next
-    siblings.select { |it| it.number == number.next }.first
-  end
-
-  def previous
-    siblings.select { |it| it.number == number.pred }.first
-  end
-
-  ## Plain Navigation
 
   def next_for(user)
     siblings_for(user).select { |it| it.number > number }.sort_by(&:number).first

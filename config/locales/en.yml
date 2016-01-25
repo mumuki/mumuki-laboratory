@@ -52,7 +52,6 @@ en:
   my_submissions: My Submissions
   navigation_continue: 'Next: %{sibling}'
   navigation_next: Next
-  navigation_previous: Previous
   navigation_revisit: 'Next pending: %{sibling}'
   need_a_hint: Do you need a hint?
   never: never

@@ -58,7 +58,6 @@ es:
   my_submissions: Mis Soluciones
   navigation_continue: 'Siguiente %{kind}: %{sibling}'
   navigation_next: Siguiente %{kind}
-  navigation_previous: Anterior
   navigation_revisit: 'Siguiente pendiente: %{sibling}'
   need_a_hint: ¿Necesitás ayuda?
   never: nunca
