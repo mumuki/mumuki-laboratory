@@ -1,4 +1,4 @@
-module WithParent
+module ParentNavigation
   extend ActiveSupport::Concern
 
   included do

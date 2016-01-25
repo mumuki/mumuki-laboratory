@@ -17,7 +17,7 @@ class Exercise < ActiveRecord::Base
           FriendlyName
 
   include Submittable, Queriable
-  include Navigable, WithParent, ExerciseNavigation
+  include SiblingsNavigation, ParentNavigation, ExerciseNavigation
 
   after_initialize :defaults, if: :new_record?
 

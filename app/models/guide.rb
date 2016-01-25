@@ -15,7 +15,7 @@ class Guide < ActiveRecord::Base
           WithLanguage,
           FriendlyName
 
-  include WithParent, Navigable, GuideNavigation
+  include ParentNavigation, SiblingsNavigation, GuideNavigation
 
   validates_presence_of :slug
 

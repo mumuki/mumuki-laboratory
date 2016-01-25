@@ -1,4 +1,4 @@
-module Navigable
+module SiblingsNavigation
 
   def next_for(user)
     siblings_for(user).select { |it| it.number > number }.sort_by(&:number).first
