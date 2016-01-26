@@ -14,7 +14,7 @@ class Event::Submission < Event::Base
                 guide: {only: [:slug, :name],
                   include: {
                     chapter: {only: [:id, :name]}}},
-                exercise: {only: [:id, :name]},
+                exercise: {only: [:id, :name, :number]},
                 submitter: {only: [:id, :name, :email, :image_url]}}).
       merge('id' => @assignment.submission_id,
             'created_at' => @assignment.updated_at,
