@@ -6,7 +6,7 @@ class Event::Base
   end
 
   def notify_async!(subscriber)
-    EventNotificationJob.run_async(to_job_params(subscriber)) unless Book.current == 'central'
+    EventNotificationJob.run_async(to_job_params(subscriber)) unless Book.current.name == 'central'
   end
 
   def to_job_params(subscriber)
@@ -14,6 +14,6 @@ class Event::Base
         subscriber_id: subscriber.id,
         event_json: to_json,
         event_path: event_path,
-        current_book: Book.current)
+        current_book: Book.current.name)
   end
 end
