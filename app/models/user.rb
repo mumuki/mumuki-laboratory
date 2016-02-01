@@ -64,6 +64,10 @@ class User < ActiveRecord::Base
     self.save!
   end
 
+  def social_id
+    "#{provider}|#{uid}"
+  end
+
   private
 
   def notify_registration!
