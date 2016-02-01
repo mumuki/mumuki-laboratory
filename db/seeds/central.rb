@@ -37,7 +37,8 @@ BookBuilder.build! do |b|
 
     c.guide 'valores-y-funciones'
     c.guide 'practica-valores-y-funciones'
-    #p.guide A Tipos Simples
+    c.guide 'intoduccion-tipos-de-dato'
+
     #P Práctica Tipos Simples
     #A Aplicación Parcial y Funciones de Orden Superior [Currificacion]
     c.guide 'practica-aplicacion-parcial-y-orden-superior' #+ alguno de orden superior simple
@@ -55,14 +56,12 @@ BookBuilder.build! do |b|
     #p.guide 'modelado'
     #p.guide alguna practica integradora
 
-    #p.guide 'recursividad'
-    c.guide 'practica-recursividad'
-
     #p.guide 'evaluacion-diferida-y-listas-infinitas'
     #A typeclasses: Restricciones de Tipos
     c.guide 'inferencia-de-tipos'
 
-    #A Declaraciones Locales
+    #p.guide 'recursividad'
+    c.guide 'practica-recursividad'
 
     c.guide 'practica-chocobos'
   end
