@@ -30,7 +30,7 @@ describe Event do
   describe '#to_json' do
 
     describe Event::Submission do
-      let(:user) { create(:user, id: 2, name: 'foo') }
+      let(:user) { create(:user, id: 2, name: 'foo', provider: 'github', uid: 'gh1234') }
       let(:assignment) { create(:assignment,
                                 solution: 'x = 2',
                                 status: Status::Passed,
@@ -38,21 +38,33 @@ describe Event do
                                 submitter: user,
                                 submission_id: 'abcd1234') }
       let(:event) { Event::Submission.new(assignment) }
+      let(:json) { event.as_json.deep_symbolize_keys }
 
-      it { expect(event.as_json).to eq({'status' => Status::Passed,
-                                        'result' => nil,
-                                        'expectation_results' => nil,
-                                        'feedback' => nil,
-                                        'test_results' => nil,
-                                        'submissions_count' => 2,
-                                        'exercise' => {'id' => assignment.exercise.id, 'name' => assignment.exercise.name, 'number' => assignment.exercise.number},
-                                        'guide' => {'slug' => assignment.guide.slug, 'name' => assignment.guide.name,
-                                          'language' => { "name" => assignment.guide.language.name}},
-                                        'submitter' => {'id' => 2, 'name' => 'foo', 'email' => nil, 'image_url' => nil},
-                                        'id' => 'abcd1234',
-                                        'created_at' => assignment.updated_at,
-                                        'content' => 'x = 2'
-                                       }) }
+      it do
+        expect(json).to eq(status: Status::Passed,
+                           result: nil,
+                           expectation_results: nil,
+                           feedback: nil,
+                           test_results: nil,
+                           submissions_count: 2,
+                           exercise: {
+                               id: assignment.exercise.id,
+                               name: assignment.exercise.name,
+                               number: assignment.exercise.number},
+                           guide: {
+                               slug: assignment.guide.slug,
+                               name: assignment.guide.name,
+                               language: {
+                                   name: assignment.guide.language.name}},
+                           submitter: {
+                               social_id: 'github|gh1234',
+                               name: 'foo',
+                               email: nil,
+                               image_url: nil},
+                           id: 'abcd1234',
+                           created_at: assignment.updated_at,
+                           content: 'x = 2')
+      end
     end
   end
 

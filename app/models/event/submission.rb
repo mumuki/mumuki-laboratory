@@ -16,7 +16,7 @@ class Event::Submission < Event::Base
                     chapter: {only: [:id, :name]},
                     language: {only: [:name]}}},
                 exercise: {only: [:id, :name, :number]},
-                submitter: {only: [:id, :name, :email, :image_url]}}).
+                submitter: {only: [:name, :email, :image_url], methods: [:social_id]}}).
       merge('id' => @assignment.submission_id,
             'created_at' => @assignment.updated_at,
             'content' => @assignment.solution)
