@@ -30,7 +30,7 @@ describe Event do
   describe '#to_json' do
 
     describe Event::Submission do
-      let(:user) { create(:user, id: 2, name: 'foo', provider: 'github', uid: 'gh1234') }
+      let(:user) { create(:user, id: 2, name: 'foo', provider: 'auth0', uid: 'github|gh1234') }
       let(:assignment) { create(:assignment,
                                 solution: 'x = 2',
                                 status: Status::Passed,

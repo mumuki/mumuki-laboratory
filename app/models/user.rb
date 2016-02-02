@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
   end
 
   def social_id
-    "#{provider}|#{uid}"
+    uid
   end
 
   private
