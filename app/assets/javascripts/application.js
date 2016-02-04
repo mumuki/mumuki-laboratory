@@ -14,12 +14,10 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require ace/ace
-//= require ace/worker-html
 //= require ace/mode-ruby
 //= require ace/mode-haskell
 //= require ace/mode-prolog
 //= require ace/mode-javascript
-//= require ace/mode-yaml
 //= require ace/mode-markdown
 //= require turbolinks
 //= require nprogress
