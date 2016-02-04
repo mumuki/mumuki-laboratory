@@ -18,7 +18,7 @@ GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
   specs:
-    ace-rails-ap (4.0.0)
+    ace-rails-ap (4.0.1)
     actionmailer (4.1.4)
       actionpack (= 4.1.4)
       actionview (= 4.1.4)

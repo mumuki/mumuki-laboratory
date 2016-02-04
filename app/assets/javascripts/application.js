@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require ace/ace
+//= require ace-rails-ap
 //= require ace/mode-ruby
 //= require ace/mode-haskell
 //= require ace/mode-prolog
