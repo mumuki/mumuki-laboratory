@@ -99,7 +99,6 @@ GEM
       xpath (~> 2.0)
     celluloid (0.16.0)
       timers (~> 4.0.0)
-    chartkick (1.4.1)
     codeclimate-test-reporter (0.4.8)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
@@ -366,7 +365,6 @@ DEPENDENCIES
   bootstrap_form
   bootswatch-rails
   capybara (= 2.3.0)
-  chartkick (~> 1.4)
   codeclimate-test-reporter
   devise
   execjs

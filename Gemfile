@@ -29,8 +29,6 @@ end
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootswatch-rails'
 
-gem 'chartkick', '~> 1.4'
-
 gem 'omniauth', '~> 1.2'
 gem 'omniauth-auth0', '~> 1.1'
 
