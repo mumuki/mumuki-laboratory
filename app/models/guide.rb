@@ -57,20 +57,14 @@ class Guide < ActiveRecord::Base
       if search_by_number
         exercise = Exercise.find_by(guide_id: self.id, number: number)
         if exercise
-          if exercise.type == e['type']
-          else
-            exercise = exercise.reclassify!(e['type'])
-          end
+          exercise = exercise.ensure_type!(e['type'])
         else
           exercise = Exercise.class_for(e['type']).new(number: number, guide_id: self.id)
         end
       else
         exercise = Exercise.find_by(guide_id: self.id, bibliotheca_id: e['id'])
         if exercise
-          if exercise.type == e['type']
-          else
-            exercise = exercise.reclassify!(e['type'])
-          end
+          exercise = exercise.ensure_type!(e['type'])
         else
           exercise = Exercise.class_for(e['type']).new(number: number, guide_id: self.id)
         end

@@ -66,6 +66,15 @@ class Exercise < ActiveRecord::Base
     self.tag_list = []
   end
 
+  def ensure_type!(type)
+    if self.type != type
+      reclassify! type
+    else
+      self
+    end
+  end
+
+
   def reclassify!(type)
     update!(type: Exercise.class_for(type).name)
     Exercise.find(id)
