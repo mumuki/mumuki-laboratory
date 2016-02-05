@@ -66,12 +66,18 @@ class Exercise < ActiveRecord::Base
     self.tag_list = []
   end
 
+  def reclassify!(type)
+    update!(type: Exercise.class_for(type).name)
+    Exercise.find(id)
+  end
+
   private
 
   def defaults
     self.submissions_count = 0
     self.layout = self.class.default_layout
   end
+
 
   def self.class_for(type)
     Kernel.const_get(type.camelcase)

@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Guide do
   let(:language) { create(:haskell) }
+  let(:reloaded_exercise_1) { Exercise.find(exercise_1.id) }
 
   let(:guide_json) do
     {name: 'sample guide',
@@ -59,7 +60,6 @@ describe Guide do
     end
     context 'when exercise already exists with bibliotheca_id' do
       let(:guide) { create(:guide, language: language, exercises: [exercise_1]) }
-      let(:reloaded_exercise_1) { Exercise.find(exercise_1.id) }
 
       before do
         guide.import_from_json! guide_json
@@ -77,8 +77,8 @@ describe Guide do
           it { expect(Exercise.count).to eq 3 }
         end
 
-        it { expect(guide.exercises.first).to eq be_instance_of(Playground) }
-        it { expect(guide.exercises.first).to eq exercise_1 }
+        it { expect(guide.exercises.first).to be_instance_of(Problem) }
+        it { expect(guide.exercises.first).to eq reloaded_exercise_1 }
 
       end
       context 'exercises are reordered' do
@@ -124,8 +124,12 @@ describe Guide do
           it { expect(Exercise.count).to eq 3 }
         end
 
-        it { expect(guide.exercises.first).to be_instance_of(Playground) }
-        it { expect(guide.exercises.first).to eq exercise_1 }
+        it { expect(guide.exercises.first).to be_instance_of(Problem) }
+        it { expect(guide.exercises.second).to be_instance_of(Playground) }
+        it { expect(guide.exercises.third).to be_instance_of(Problem) }
+
+        it { expect(guide.exercises.first).to eq reloaded_exercise_1 }
+
         it { expect(guide.exercises.pluck(:bibliotheca_id)).to eq [1, 4, 2] }
       end
       context 'when there are nil imported fields' do
