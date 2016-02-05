@@ -54,23 +54,17 @@ class Guide < ActiveRecord::Base
     json['exercises'].each_with_index do |e, i|
       number = i + 1
 
-      if search_by_number
-        exercise = Exercise.find_by(guide_id: self.id, number: number)
-        if exercise
-          exercise = exercise.ensure_type!(e['type'])
-        else
-          exercise = Exercise.class_for(e['type']).new(number: number, guide_id: self.id)
-        end
-      else
-        exercise = Exercise.find_by(guide_id: self.id, bibliotheca_id: e['id'])
-        if exercise
-          exercise = exercise.ensure_type!(e['type'])
-        else
-          exercise = Exercise.class_for(e['type']).new(number: number, guide_id: self.id)
-        end
-      end
+      exercise = search_by_number ?
+          Exercise.find_by(guide_id: self.id, number: number) :
+          Exercise.find_by(guide_id: self.id, bibliotheca_id: e['id'])
+
+      exercise = exercise ?
+          exercise.ensure_type!(e['type']) :
+          Exercise.class_for(e['type']).new(number: number, guide_id: self.id)
+
       exercise.import_from_json! e
     end
+
     reload
   end
 
