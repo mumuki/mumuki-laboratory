@@ -92,6 +92,7 @@ describe Guide do
                                   extra: 'foo') }
 
         it 'identity should be preserved' do
+          expect(guide.exercises.first).to_not eq reloaded_exercise_1
           expect(guide.exercises.second).to eq reloaded_exercise_1
         end
 
