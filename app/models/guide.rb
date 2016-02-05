@@ -58,29 +58,24 @@ class Guide < ActiveRecord::Base
         exercise = Exercise.find_by(guide_id: self.id, number: number)
         if exercise
           if exercise.type == e['type']
-            exercise.import_from_json! e
           else
             exercise = exercise.reclassify!(e['type'])
-            exercise.import_from_json! e
           end
         else
           exercise = Exercise.class_for(e['type']).new(number: number, guide_id: self.id)
-          exercise.import_from_json! e
         end
       else
         exercise = Exercise.find_by(guide_id: self.id, bibliotheca_id: e['id'])
         if exercise
           if exercise.type == e['type']
-            exercise.import_from_json! e
           else
             exercise = exercise.reclassify!(e['type'])
-            exercise.import_from_json! e
           end
         else
           exercise = Exercise.class_for(e['type']).new(number: number, guide_id: self.id)
-          exercise.import_from_json! e
         end
       end
+      exercise.import_from_json! e
     end
     reload
   end
