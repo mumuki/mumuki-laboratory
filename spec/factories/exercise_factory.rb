@@ -26,8 +26,11 @@ FactoryGirl.define do
   factory :playground do
     name 'A Playground'
     description 'Simple playground'
+    layout 'editor_right'
     language { guide ? guide.language : create(:language) }
     locale :en
+    number 1
+    guide
   end
 
   factory :exercise, parent: :problem

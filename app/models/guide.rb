@@ -25,7 +25,7 @@ class Guide < ActiveRecord::Base
 
   self.inheritance_column = nil
 
-  enum type: [ :learning, :practice ]
+  enum type: [:learning, :practice]
 
   #TODO denormalize
   def search_tags
@@ -49,11 +49,22 @@ class Guide < ActiveRecord::Base
     self.language = Language.for_name(json['language'])
     self.save!
 
+    search_by_number = exercises.first && exercises.first.bibliotheca_id.blank?
+
     json['exercises'].each_with_index do |e, i|
       number = i + 1
-      exercise = Exercise.class_for(e['type']).find_or_initialize_by(number: number, guide_id: self.id)
+
+      exercise = search_by_number ?
+          Exercise.find_by(guide_id: self.id, number: number) :
+          Exercise.find_by(guide_id: self.id, bibliotheca_id: e['id'])
+
+      exercise = exercise ?
+          exercise.ensure_type!(e['type']) :
+          Exercise.class_for(e['type']).new(number: number, guide_id: self.id)
+
       exercise.import_from_json! e
     end
+
     reload
   end
 
