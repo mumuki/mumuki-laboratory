@@ -49,14 +49,12 @@ class Guide < ActiveRecord::Base
     self.language = Language.for_name(json['language'])
     self.save!
 
-    search_by_number = exercises.first && exercises.first.bibliotheca_id.blank?
-
     json['exercises'].each_with_index do |e, i|
       number = i + 1
 
-      exercise = search_by_number ?
-          Exercise.find_by(guide_id: self.id, number: number) :
-          Exercise.find_by(guide_id: self.id, bibliotheca_id: e['id'])
+      exercise = has_bibliotheca_ids? ?
+          Exercise.find_by(guide_id: self.id, bibliotheca_id: e['id']) :
+          Exercise.find_by(guide_id: self.id, number: number)
 
       exercise = exercise ?
           exercise.ensure_type!(e['type']) :
@@ -66,6 +64,10 @@ class Guide < ActiveRecord::Base
     end
 
     reload
+  end
+
+  def has_bibliotheca_ids?
+    exercises.first && exercises.first.bibliotheca_id.present?
   end
 
 end
