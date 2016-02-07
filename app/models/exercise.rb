@@ -49,6 +49,7 @@ class Exercise < ActiveRecord::Base
     reset!
 
     attrs = json.except('type', 'id')
+    attrs['bibliotheca_id'] = json['id']
     attrs = attrs.except('expectations') if json['type'] == 'playground' #FIXME bug in bibliotheca
 
     assign_attributes(attrs)
@@ -65,12 +66,27 @@ class Exercise < ActiveRecord::Base
     self.tag_list = []
   end
 
+  def ensure_type!(type)
+    if self.type != type
+      reclassify! type
+    else
+      self
+    end
+  end
+
+
+  def reclassify!(type)
+    update!(type: Exercise.class_for(type).name)
+    Exercise.find(id)
+  end
+
   private
 
   def defaults
     self.submissions_count = 0
     self.layout = self.class.default_layout
   end
+
 
   def self.class_for(type)
     Kernel.const_get(type.camelcase)
