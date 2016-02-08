@@ -10,19 +10,11 @@ script:
 - bundle exec rake db:schema:load
 - bundle exec rake
 after_success:
-- test ! -z "$TRAVIS_TAG" && git checkout master && git reset --hard $TRAVIS_TAG
-deploy:
-  provider: openshift
-  user: flbulgarelli@yahoo.com.ar
-  password:
-    secure: jgsXU+UQUUK2p1ixFW2eAb2Trcwm4rYGFADQoPvllPZa9bR18Kt4DLfLOeZIZBXTHv8MK+4IdAQVFH7M48k5cDuf+JYaYM2paDnk4Q+r+R2uudu0CdzcAFTYLdKrZSqZhp7f5Llu3HAlo1uqYviMsX8nQ0zyRMGnaDsIZFL/Z8Q=
-  app: platform
-  domain: mumuki
-  on:
-    tags: true
-    repo: mumuki/mumuki-atheneum
-
+- wget https://raw.githubusercontent.com/mumuki/mumuki-escualo/master/travis_deploy && chmod u+x travis_deploy && ./travis_deploy atheneum 162.243.74.77
 addons:
   code_climate:
     repo_token: 820e155f1bff3d5cfcb84eae1caace7cd9ec5a27540f52222620896dc010b3ee
 env: CODECLIMATE_REPO_TOKEN=820e155f1bff3d5cfcb84eae1caace7cd9ec5a27540f52222620896dc010b3ee
+before_install:
+- openssl aes-256-cbc -K $encrypted_81250995bc45_key -iv $encrypted_81250995bc45_iv
+  -in escualo_rsa.enc -out escualo_rsa -d

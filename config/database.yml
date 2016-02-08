@@ -21,7 +21,7 @@ development:
 production:
   <<: *common
   database: <%= ENV['PGDATABASE'] %>
-  username: <%= ENV['OPENSHIFT_POSTGRESQL_DB_USERNAME'] %>
-  password: <%= ENV['OPENSHIFT_POSTGRESQL_DB_PASSWORD'] %>
-  host: <%= ENV['OPENSHIFT_POSTGRESQL_DB_HOST'] %>
-  port: <%= ENV['OPENSHIFT_POSTGRESQL_DB_PORT'] %>
+  username: <%= ENV['POSTGRESQL_DB_USERNAME'] %>
+  password: <%= ENV['POSTGRESQL_DB_PASSWORD'] %>
+  host: <%= ENV['POSTGRESQL_DB_HOST'] %>
+  port: <%= ENV['POSTGRESQL_DB_PORT'] %>
