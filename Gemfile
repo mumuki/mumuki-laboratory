@@ -40,7 +40,7 @@ gem 'md_emoji'
 
 gem 'ace-rails-ap', '~> 4.0'
 
-gem 'unicorn-rails'
+gem 'thin'
 
 gem 'kaminari', '~> 0.16.3'
 gem 'bootstrap-kaminari-views'
