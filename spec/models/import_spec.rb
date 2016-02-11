@@ -67,10 +67,10 @@ describe Guide do
 
       context 'when exercise changes its type' do
         let(:exercise_1) { build(:playground,
-                                  bibliotheca_id: 1,
-                                  language: language,
-                                  name: 'Exercise 1',
-                                  description: 'description') }
+                                 bibliotheca_id: 1,
+                                 language: language,
+                                 name: 'Exercise 1',
+                                 description: 'description') }
 
         describe 'exercises are not duplicated' do
           it { expect(guide.exercises.count).to eq 3 }
@@ -109,12 +109,12 @@ describe Guide do
 
       context 'when exercise changes its type' do
         let(:exercise_1) { build(:playground,
-                                  language: language,
-                                  name: 'Exercise 1',
-                                  description: 'description',
-                                  corollary: 'A corollary',
-                                  hint: 'baz',
-                                  extra: 'foo') }
+                                 language: language,
+                                 name: 'Exercise 1',
+                                 description: 'description',
+                                 corollary: 'A corollary',
+                                 hint: 'baz',
+                                 extra: 'foo') }
 
         before do
           guide.import_from_json! guide_json
@@ -168,7 +168,7 @@ describe Guide do
                                   name: 'Exercise 1',
                                   description: 'description',
                                   hint: 'baz',
-                                  test:'pending',
+                                  test: 'pending',
                                   extra: 'foo') }
         let(:guide_json) { {
             'locale' => 'es',
@@ -192,6 +192,47 @@ describe Guide do
         it { expect(guide.exercises.pluck(:bibliotheca_id)).to eq [1] }
 
       end
+    end
+
+    context 'when many exercises already exists without bibliotheca_id' do
+      let(:guide) { create(:guide, language: language, exercises: [exercise_1, exercise_2]) }
+
+      let(:exercise_1) { build(:problem,
+                               language: language,
+                               name: 'Exercise 1',
+                               number: 2,
+                               description: 'description',
+                               corollary: 'A corollary',
+                               test: 'foo',
+                               hint: 'baz',
+                               extra: 'foo') }
+      let(:exercise_2) { build(:playground,
+                               language: language,
+                               name: 'Exercise 2',
+                               number: 1,
+                               description: 'description',
+                               corollary: 'A corollary',
+                               hint: 'baz',
+                               extra: 'foo') }
+      let(:reloaded_exercise_2) { Exercise.find(exercise_2.id) }
+
+      before do
+        guide.import_from_json! guide_json
+      end
+
+      describe 'exercises are not duplicated' do
+        it { expect(guide.exercises.count).to eq 3 }
+        it { expect(Exercise.count).to eq 3 }
+      end
+
+      it { expect(guide.exercises.first).to be_instance_of(Problem) }
+      it { expect(guide.exercises.second).to be_instance_of(Playground) }
+      it { expect(guide.exercises.third).to be_instance_of(Problem) }
+
+      it { expect(guide.exercises.first).to eq reloaded_exercise_2 }
+      it { expect(guide.exercises.second).to eq reloaded_exercise_1 }
+
+      it { expect(guide.exercises.pluck(:bibliotheca_id)).to eq [1, 4, 2] }
     end
   end
 end

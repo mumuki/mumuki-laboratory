@@ -49,10 +49,11 @@ class Guide < ActiveRecord::Base
     self.language = Language.for_name(json['language'])
     self.save!
 
+    search_by_id = has_bibliotheca_ids?
     json['exercises'].each_with_index do |e, i|
       number = i + 1
 
-      exercise = has_bibliotheca_ids? ?
+      exercise = search_by_id ?
           Exercise.find_by(guide_id: self.id, bibliotheca_id: e['id']) :
           Exercise.find_by(guide_id: self.id, number: number)
 
