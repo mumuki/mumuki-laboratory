@@ -40,7 +40,7 @@ describe 'api controller' do
       context 'when there are guides with exercises' do
         let!(:language_1) { create(:language, id: 1, name: 'language_1') }
         let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: language_1.id) }
-        let!(:exercise_1) { create(:exercise, name: 'exercise_1', id: 1, language_id: language_1.id, guide_id: guide_1.id) }
+        let!(:exercise_1) { create(:exercise, name: 'exercise_1', number: 1, id: 1, language_id: language_1.id, guide_id: guide_1.id) }
 
         before { get :index }
         let(:expected_json) {

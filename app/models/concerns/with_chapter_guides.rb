@@ -2,7 +2,7 @@ module WithChapterGuides
   extend ActiveSupport::Concern
 
   included do
-    has_many :chapter_guides
+    has_many :chapter_guides, -> { order(number: :asc) }
     has_many :guides, -> { order('chapter_guides.number') }, through: :chapter_guides
   end
 

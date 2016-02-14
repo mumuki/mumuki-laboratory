@@ -49,26 +49,17 @@ class Guide < ActiveRecord::Base
     self.language = Language.for_name(json['language'])
     self.save!
 
-    search_by_id = has_bibliotheca_ids?
     json['exercises'].each_with_index do |e, i|
-      number = i + 1
-
-      exercise = search_by_id ?
-          Exercise.find_by(guide_id: self.id, bibliotheca_id: e['id']) :
-          Exercise.find_by(guide_id: self.id, number: number)
+      exercise = Exercise.find_by(guide_id: self.id, bibliotheca_id: e['id'])
 
       exercise = exercise ?
           exercise.ensure_type!(e['type']) :
-          Exercise.class_for(e['type']).new(number: number, guide_id: self.id)
+          Exercise.class_for(e['type']).new(guide_id: self.id, bibliotheca_id: e['id'])
 
-      exercise.import_from_json! e
+      exercise.import_from_json! (i+1), e
     end
 
     reload
-  end
-
-  def has_bibliotheca_ids?
-    exercises.first && exercises.first.bibliotheca_id.present?
   end
 
 end

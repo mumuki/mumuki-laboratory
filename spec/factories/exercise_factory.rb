@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   factory :language do
-    sequence(:name) {|n| "lang#{n}"}
+    sequence(:name) { |n| "lang#{n}" }
 
     test_runner_url { Faker::Internet.url }
     devicon { name }
@@ -12,25 +12,25 @@ FactoryGirl.define do
     name 'haskell'
   end
 
+  factory :exercise_base do
+    sequence(:bibliotheca_id) { |n| n }
+    sequence(:number) { |n| n }
 
-  factory :problem do
-    name 'A problem'
-    description 'Simple problem'
     language { guide ? guide.language : create(:language) }
-    test 'dont care'
+    layout 'editor_right'
     locale :en
-    number 1
     guide
   end
 
-  factory :playground do
+  factory :problem, class: Problem, parent: :exercise_base do
+    name 'A problem'
+    description 'Simple problem'
+    test 'dont care'
+  end
+
+  factory :playground, class: Playground, parent: :exercise_base do
     name 'A Playground'
     description 'Simple playground'
-    layout 'editor_right'
-    language { guide ? guide.language : create(:language) }
-    locale :en
-    number 1
-    guide
   end
 
   factory :exercise, parent: :problem
