@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     resources :queries, controller: 'exercise_query', only: :create
   end
 
+  resource :pdfs
+
   # All users
   resources :guides, only: [:show, :index]
 
