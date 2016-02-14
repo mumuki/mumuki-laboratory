@@ -37,31 +37,32 @@ BookBuilder.build! do |b|
 
     c.guide 'valores-y-funciones'
     c.guide 'practica-valores-y-funciones'
+
     c.guide 'intoduccion-tipos-de-dato'
+    c.guide 'practica-introduccion-tipos-de-dato'
 
-    #P Práctica Tipos Simples
-    #A Aplicación Parcial y Funciones de Orden Superior [Currificacion]
-    c.guide 'practica-aplicacion-parcial-y-orden-superior' #+ alguno de orden superior simple
-    #A Funciones Partidas: Guardas y Pattern Matching [Tuplas]
-    c.guide 'practica-funciones-partidas' #y pdep-utn/mumuki-funcional-guia-2 (1-4)
-    #A Listas, Parte 1: Introducción, length, head, tail, zip
-    #A Listas, Parte 2: Orden superior, map, filter, any, all, zipWith
-    #A Tipos Paramétricos
-    c.guide 'practica-listas'
-    #A Listas, Parte 3: Comprensión
-    c.guide 'practica-listas-por-comprension'
-    #A Funciones Anónimas
-    c.guide 'practica-expresiones-lambda'
+    c.guide 'aplicacion-parcial-y-orden-superior'
+    c.guide 'practica-aplicacion-parcial-y-orden-superior'
 
-    #p.guide 'modelado'
-    #p.guide alguna practica integradora
+    c.guide 'funciones-partidas-pattern-matching-tuplas'
+    c.guide 'practica-funciones-partidas'
 
-    #p.guide 'evaluacion-diferida-y-listas-infinitas'
-    #A typeclasses: Restricciones de Tipos
     c.guide 'inferencia-de-tipos'
 
-    #p.guide 'recursividad'
+    c.guide 'listas'
+    c.guide 'practica-listas'
+    c.guide 'practica-listas-por-comprension'
+
+    c.guide 'practica-expresiones-lambda'
+
+    c.guide 'practica-fold-concatmap'
+
+    c.guide 'pdep-utn/mumuki-guia-practica-evaluacion-diferida'
+
+    c.guide 'recursividad'
     c.guide 'practica-recursividad'
+
+    c.guide 'modelado'
 
     c.guide 'practica-chocobos'
   end
@@ -77,6 +78,7 @@ BookBuilder.build! do |b|
 
     # A Hechos y Reglas [Base de conocimiento]
     # A Inversibilidad [limites]
+    c.guide 'pdep-utn/mumuki-guia-logico-teoria-hechos-y-reglas'
     c.guide 'practica-primeros-pasos'
 
     # A Predicados de Orden Superior
