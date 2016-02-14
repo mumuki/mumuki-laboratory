@@ -34,7 +34,7 @@
         </ul>
       <% end %>
 
-      <% chapter.chapter_guides.each do |lesson| %>
+      <% chapter.guides.each do |lesson| %>
         <div style="page-break-before:always;">
           <h2><%= t(:guide_number, number: lesson.number) %>: <%= lesson.name %></h2>
           <%= lesson.description_html %>
