@@ -9,6 +9,11 @@
   }
 </style>
 <div class="container">
+  <div style="page-break-before:always;">
+    <h1>El libro Mumuki de la Programación</h1>
+    <smal>Libro generado a partir de <a href="http://mumuki.io">Mumuki</a> al <%= Time.new %></smal>
+    <p><strong>Disclaimer</strong>: Todo el contenido aquí presentado pertenece a sus respectivos autores.</p>
+  </div>
 
   <% Chapter.all.each do |chapter| %>
     <div style="page-break-before:always;">
