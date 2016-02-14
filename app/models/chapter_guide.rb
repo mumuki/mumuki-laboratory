@@ -4,4 +4,6 @@ class ChapterGuide < ActiveRecord::Base
   belongs_to :guide
   belongs_to :chapter
 
+  delegate :name, :description_html, :exercises, to: :guide
+
 end
