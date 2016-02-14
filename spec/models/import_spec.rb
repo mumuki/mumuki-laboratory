@@ -58,7 +58,7 @@ describe Guide do
 
       it { expect(guide.exercises.pluck(:name)).to eq %W(Bar Foo Baz) }
     end
-    context 'when exercise already exists with bibliotheca_id' do
+    context 'when exercise already exists' do
       let(:guide) { create(:guide, language: language, exercises: [exercise_1]) }
 
       before do
@@ -104,103 +104,14 @@ describe Guide do
         end
       end
     end
-    context 'when exercise already exists without bibliotheca_id' do
-      let(:guide) { create(:guide, language: language, exercises: [exercise_1]) }
-
-      context 'when exercise changes its type' do
-        let(:exercise_1) { build(:playground,
-                                 language: language,
-                                 name: 'Exercise 1',
-                                 description: 'description',
-                                 corollary: 'A corollary',
-                                 hint: 'baz',
-                                 extra: 'foo') }
-
-        before do
-          guide.import_from_json! guide_json
-        end
-
-        describe 'exercises are not duplicated' do
-          it { expect(guide.exercises.count).to eq 3 }
-          it { expect(Exercise.count).to eq 3 }
-        end
-
-        it { expect(guide.exercises.first).to be_instance_of(Problem) }
-        it { expect(guide.exercises.second).to be_instance_of(Playground) }
-        it { expect(guide.exercises.third).to be_instance_of(Problem) }
-
-        it { expect(guide.exercises.first).to eq reloaded_exercise_1 }
-
-        it { expect(guide.exercises.pluck(:bibliotheca_id)).to eq [1, 4, 2] }
-      end
-      context 'when there are nil imported fields' do
-        let(:exercise_1) { create(:problem,
-                                  language: language,
-                                  name: 'Exercise 1',
-                                  description: 'description',
-                                  extra: 'foo',
-                                  test: 'pending') }
-        let(:guide_json) { {
-            'locale' => 'es',
-            'language' => language.name,
-            'exercises' => [
-                {'name' => 'Exercise 2',
-                 'description' => 'foo',
-                 'test' => 'test',
-                 'type' => 'problem',
-                 'corollary' => nil,
-                 'hint' => nil,
-                 'extra' => nil,
-                 'expectations' => []}]} }
-        before do
-          guide.import_from_json! guide_json
-        end
-
-        it { expect(guide.exercises[0].name).to eq 'Exercise 2' }
-        it { expect(guide.exercises[0].corollary).to be_blank }
-        it { expect(guide.exercises[0].extra).to be_blank }
-        it { expect(guide.exercises[0].hint).to be_blank }
-        it { expect(guide.exercises[0].expectations).to be_blank }
-      end
-      context 'when missing imported fields' do
-        let(:exercise_1) { create(:problem,
-                                  language: language,
-                                  name: 'Exercise 1',
-                                  description: 'description',
-                                  hint: 'baz',
-                                  test: 'pending',
-                                  extra: 'foo') }
-        let(:guide_json) { {
-            'locale' => 'es',
-            'language' => language.name,
-            'exercises' => [
-                {'name' => 'Exercise 2',
-                 'description' => 'foo',
-                 'test' => 'test',
-                 'id' => 1,
-                 'type' => 'problem'}]} }
-
-        before do
-          guide.import_from_json! guide_json
-        end
-
-        it { expect(guide.exercises[0].name).to eq 'Exercise 2' }
-        it { expect(guide.exercises[0].corollary).to be_blank }
-        it { expect(guide.exercises[0].extra).to be_blank }
-        it { expect(guide.exercises[0].hint).to be_blank }
-        it { expect(guide.exercises[0].expectations).to be_blank }
-        it { expect(guide.exercises.pluck(:bibliotheca_id)).to eq [1] }
-
-      end
-    end
-
-    context 'when many exercises already exists without bibliotheca_id' do
+    context 'when many exercises already' do
       let(:guide) { create(:guide, language: language, exercises: [exercise_1, exercise_2]) }
 
       let(:exercise_1) { build(:problem,
                                language: language,
                                name: 'Exercise 1',
-                               number: 2,
+                               bibliotheca_id: 2,
+                               number: 1,
                                description: 'description',
                                corollary: 'A corollary',
                                test: 'foo',
@@ -209,7 +120,8 @@ describe Guide do
       let(:exercise_2) { build(:playground,
                                language: language,
                                name: 'Exercise 2',
-                               number: 1,
+                               bibliotheca_id: 4,
+                               number: 2,
                                description: 'description',
                                corollary: 'A corollary',
                                hint: 'baz',
@@ -229,10 +141,16 @@ describe Guide do
       it { expect(guide.exercises.second).to be_instance_of(Playground) }
       it { expect(guide.exercises.third).to be_instance_of(Problem) }
 
-      it { expect(guide.exercises.first).to eq reloaded_exercise_2 }
-      it { expect(guide.exercises.second).to eq reloaded_exercise_1 }
+      it { expect(guide.exercises.second).to eq reloaded_exercise_2 }
+      it { expect(guide.exercises.third).to eq reloaded_exercise_1 }
+
+      it { expect(guide.exercises.first.number).to eq 1 }
+      it { expect(guide.exercises.second.number).to eq 2 }
+      it { expect(guide.exercises.third.number).to eq 3 }
 
       it { expect(guide.exercises.pluck(:bibliotheca_id)).to eq [1, 4, 2] }
+      it { expect(guide.exercises.pluck(:id).drop(1)).to eq [reloaded_exercise_2.id, reloaded_exercise_1.id] }
+
     end
   end
 end
