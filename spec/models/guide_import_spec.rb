@@ -71,6 +71,7 @@ describe Guide do
 
       it { expect(guide.exercises.pluck(:name)).to eq %W(Bar Foo Baz) }
     end
+
     context 'when exercise already exists' do
       let(:guide) { create(:guide, language: haskell, exercises: [exercise_1]) }
 
@@ -117,7 +118,8 @@ describe Guide do
         end
       end
     end
-    context 'when many exercises already' do
+
+    context 'when many exercises already exist' do
       let(:guide) { create(:guide, language: haskell, exercises: [exercise_1, exercise_2]) }
 
       let(:exercise_1) { build(:problem,
@@ -163,7 +165,6 @@ describe Guide do
 
       it { expect(guide.exercises.pluck(:bibliotheca_id)).to eq [1, 4, 2] }
       it { expect(guide.exercises.pluck(:id).drop(1)).to eq [reloaded_exercise_2.id, reloaded_exercise_1.id] }
-
     end
 
     context 'when new_expecations' do
