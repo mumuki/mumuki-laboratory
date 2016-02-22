@@ -24,7 +24,7 @@ class Exercise < ActiveRecord::Base
   validates_presence_of :name, :description, :language,
                         :submissions_count, :guide
 
-  markdown_on :description, :hint, :teaser, :corollary
+  markdown_on :description, :hint, :teaser, :corollary, :extra_preview
 
   def search_tags
     tag_list + [language.name]
@@ -40,6 +40,10 @@ class Exercise < ActiveRecord::Base
 
   def new_solution
     Solution.new(content: default_content)
+  end
+
+  def extra_preview
+    "```#{language.name}\n#{extra}```"
   end
 
   def import_from_json!(number, json)
