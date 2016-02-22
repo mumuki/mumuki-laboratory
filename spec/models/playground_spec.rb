@@ -23,7 +23,7 @@ describe Playground do
 
     context 'when language is queriable and exercise is not playable' do
       let(:language) { create(:language, queriable: true) }
-      let(:exercise) { build(:playground, language: language, layout: :scratchy) }
+      let(:exercise) { build(:playground, language: language, layout: :no_editor) }
 
       it { expect(exercise.save).to be false }
     end
