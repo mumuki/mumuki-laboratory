@@ -21,7 +21,7 @@ class Guide < ActiveRecord::Base
 
   markdown_on :description, :teaser, :corollary
 
-  has_one :chapter_guide
+  has_one :lesson
 
   self.inheritance_column = nil
 

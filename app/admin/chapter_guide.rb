@@ -1,4 +1,4 @@
-ActiveAdmin.register ChapterGuide do
+ActiveAdmin.register Lesson do
 
   permit_params :chapter_id, :guide_id, :number
 

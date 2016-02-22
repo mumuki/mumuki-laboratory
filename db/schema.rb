@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222165337) do
+ActiveRecord::Schema.define(version: 20160222192958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,15 +82,6 @@ ActiveRecord::Schema.define(version: 20160222165337) do
     t.string   "locale",        default: "en"
     t.string   "contact_email", default: "info@mumuki.org", null: false
     t.text     "preface"
-  end
-
-  create_table "chapter_guides", force: true do |t|
-    t.integer  "guide_id"
-    t.integer  "chapter_id"
-    t.integer  "number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "slug"
   end
 
   create_table "chapters", force: true do |t|
@@ -172,6 +163,15 @@ ActiveRecord::Schema.define(version: 20160222165337) do
   end
 
   add_index "languages", ["name"], name: "index_languages_on_name", unique: true, using: :btree
+
+  create_table "lessons", force: true do |t|
+    t.integer  "guide_id"
+    t.integer  "chapter_id"
+    t.integer  "number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+  end
 
   create_table "paths", force: true do |t|
     t.integer  "category_id"

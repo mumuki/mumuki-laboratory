@@ -2,14 +2,14 @@ module GuideNavigation
   extend ActiveSupport::Concern
 
   included do
-    has_one :chapter_guide
-    has_one :chapter, through: :chapter_guide
+    has_one :lesson
+    has_one :chapter, through: :lesson
   end
 
   def positionate!(chapter, number) #FIXME stop doing position logic by hand
-    self.chapter_guide = ChapterGuide.new chapter: chapter, number: number, guide: self
+    self.lesson = Lesson.new chapter: chapter, number: number, guide: self
     self.chapter = chapter
-    self.chapter_guide
+    self.lesson
   end
 
   def done_for?(user)
@@ -17,7 +17,7 @@ module GuideNavigation
   end
 
   def number
-    chapter_guide.try(&:number)
+    lesson.try(&:number)
   end
 
   def siblings_for(user)

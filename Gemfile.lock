@@ -8,6 +8,17 @@ GIT
       rest-client
 
 GIT
+  remote: git://github.com/mumuki/mumukit-content-type.git
+  revision: cb507b84e2d5817ec30f6a890d3375a820ee4c3a
+  branch: master
+  specs:
+    mumukit-content-type (0.1.0)
+      activesupport
+      md_emoji
+      redcarpet (~> 3.3.2)
+      rouge
+
+GIT
   remote: git://github.com/mumuki/mumukit-inspection.git
   revision: 11f0a129b18138336a2d2b1c9b72b97b2f34b208
   branch: master
@@ -187,7 +198,7 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.6.2)
-    minitest (5.8.0)
+    minitest (5.8.4)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -262,7 +273,7 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.2)
-    redcarpet (3.3.2)
+    redcarpet (3.3.4)
     ref (2.0.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
@@ -371,8 +382,8 @@ DEPENDENCIES
   i18n-tasks (~> 0.8.3)
   jquery-rails
   kaminari (~> 0.16.3)
-  md_emoji
   mumukit-bridge!
+  mumukit-content-type!
   mumukit-inspection!
   nprogress-rails
   omniauth (~> 1.2)
@@ -388,8 +399,6 @@ DEPENDENCIES
   rails-assets-devicons!
   rails-i18n (~> 4.0.0)
   rake (= 10.4.2)
-  redcarpet (~> 3.3.2)
-  rouge
   rspec-rails (~> 2.14)
   sass-rails
   sitemap_generator
