@@ -1,6 +1,6 @@
 class Chapter < ActiveRecord::Base
   include WithLocale
-  include WithChapterGuides
+  include WithLessons
   include WithStats
   include FriendlyName
   include Navigable
@@ -19,14 +19,14 @@ class Chapter < ActiveRecord::Base
   end
 
   def guides=(guides)
-    self.chapter_guides = guides.each_with_index.map do |it, index|
+    self.lessons = guides.each_with_index.map do |it, index|
       it.positionate! self, index+1
     end
   end
 
   def rebuild!(guides)
     transaction do
-      chapter_guides.delete_all
+      lessons.delete_all
       self.guides = guides
       save!
     end

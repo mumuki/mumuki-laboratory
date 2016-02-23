@@ -1,9 +1,9 @@
-module WithChapterGuides
+module WithLessons
   extend ActiveSupport::Concern
 
   included do
-    has_many :chapter_guides, -> { order(number: :asc) }
-    has_many :guides, -> { order('chapter_guides.number') }, through: :chapter_guides
+    has_many :lessons, -> { order(number: :asc) }
+    has_many :guides, -> { order('lessons.number') }, through: :lessons
   end
 
   def pending_guides(user)
@@ -15,7 +15,7 @@ module WithChapterGuides
                 and assignments.submitter_id = #{user.id}
                 and assignments.status = #{Status::Passed.to_i}").
         where('assignments.id is null').
-        group('public.guides.id', 'chapter_guides.number')
+        group('public.guides.id', 'lessons.number')
   end
 
   def first_guide

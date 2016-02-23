@@ -34,10 +34,6 @@ gem 'omniauth-auth0', '~> 1.1'
 
 gem 'font-awesome-rails'
 
-gem 'rouge'
-gem 'redcarpet', '~> 3.3.2'
-gem 'md_emoji'
-
 gem 'ace-rails-ap', '~> 4.0'
 
 gem 'thin'
@@ -57,8 +53,9 @@ gem 'yaml_db'
 gem 'addressable'
 gem 'apartment'
 
-gem 'mumukit-inspection', :github => 'mumuki/mumukit-inspection', :branch => 'master'
-gem 'mumukit-bridge',     :github => 'mumuki/mumukit-bridge', :tag=> 'v0.4.0'
+gem 'mumukit-inspection', github: 'mumuki/mumukit-inspection', :branch => 'master'
+gem 'mumukit-content-type', github: 'mumuki/mumukit-content-type', :branch => 'master', require: 'mumukit/content_type'
+gem 'mumukit-bridge', github: 'mumuki/mumukit-bridge', :tag => 'v0.4.0'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'
@@ -82,7 +79,6 @@ end
 gem 'codeclimate-test-reporter', :group => :test, :require => nil
 
 gem 'sitemap_generator'
-
 
 
 # Use ActiveModel has_secure_password
