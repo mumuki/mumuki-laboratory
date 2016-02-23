@@ -1,11 +1,18 @@
-<% if @exercise.queriable? %>
+<% if @exercise.queriable? || @exercise.extra_visible? %>
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
       <a href="#editor" aria-controls="editor" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'pencil-square' %> <%= t :editor %></a>
     </li>
-    <li role="presentation">
-      <a href="#console" aria-controls="console" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'terminal' %> <%= t :console %></a>
-    </li>
+    <% if @exercise.extra_visible? %>
+      <li role="presentation">
+        <a href="#visible-extra" aria-controls="visible-extra" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'code' %> <%= t 'activerecord.attributes.exercise.extra' %></a>
+      </li>
+    <% end %>
+    <% if @exercise.queriable? %>
+      <li role="presentation">
+        <a href="#console" aria-controls="console" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'terminal' %> <%= t :console %></a>
+      </li>
+    <% end %>
   </ul>
 <% end %>
 
@@ -34,6 +41,9 @@
     <div class="text-info"><%= t(:type_expressions_here) %></div>
     <div class="console">
     </div>
+  </div>
+  <div role="tabpanel" class="tab-pane editor-pane fade" id="visible-extra">
+    <%= @exercise.extra_preview_html %>
   </div>
 </div>
 

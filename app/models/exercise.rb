@@ -24,14 +24,20 @@ class Exercise < ActiveRecord::Base
   validates_presence_of :name, :description, :language,
                         :submissions_count, :guide
 
-  markdown_on :description, :hint, :teaser, :corollary
+  markdown_on :description, :hint, :teaser, :corollary, :extra_preview
 
   def search_tags
     tag_list + [language.name]
   end
 
   def extra
-    [guide.extra, self[:extra]].compact.join("\n")
+    extra_code = [guide.extra, self[:extra]].compact.join("\n")
+    if extra_code.empty? or extra_code.end_with? "\n"
+      extra_code
+    else
+      "#{extra_code}\n"
+    end
+
   end
 
   def friendly
@@ -40,6 +46,10 @@ class Exercise < ActiveRecord::Base
 
   def new_solution
     Solution.new(content: default_content)
+  end
+
+  def extra_preview
+    "```#{language.name}\n#{extra}```"
   end
 
   def import_from_json!(number, json)
