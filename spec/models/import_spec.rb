@@ -10,6 +10,7 @@ describe Guide do
      slug: 'mumuki/sample-guide',
      language: 'haskell',
      locale: 'en',
+     extra: 'bar',
      exercises: [
          {type: 'problem',
           name: 'Bar',
@@ -47,6 +48,7 @@ describe Guide do
       it { expect(guide.name).to eq 'sample guide' }
       it { expect(guide.language).to eq haskell }
       it { expect(guide.slug).to eq 'mumuki/sample-guide' }
+      it { expect(guide.extra).to eq 'bar' }
       it { expect(guide.description).to eq 'Baz' }
       it { expect(guide.friendly_name).to include 'sample-guide' }
 
