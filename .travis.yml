@@ -1,8 +1,6 @@
 language: ruby
 cache: bundler
 sudo: false
-git:
-  depth: 500
 rvm:
 - 2.0.0
 before_script:
