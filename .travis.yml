@@ -2,7 +2,7 @@ language: ruby
 cache: bundler
 sudo: false
 git:
-  depth: 100
+  depth: 500
 rvm:
 - 2.0.0
 before_script:
@@ -14,8 +14,8 @@ script:
 after_success:
 - wget https://raw.githubusercontent.com/mumuki/mumuki-escualo/master/travis_deploy && 
   chmod u+x travis_deploy &&
-  ./travis_deploy atheneum 162.243.74.77 &&
-  ./travis_deploy atheneum 162.243.244.131
+  ./travis_deploy atheneum atheneum1.mumuki.io &&
+  ./travis_deploy atheneum atheneum2.mumuki.io
 addons:
   code_climate:
     repo_token: 820e155f1bff3d5cfcb84eae1caace7cd9ec5a27540f52222620896dc010b3ee
