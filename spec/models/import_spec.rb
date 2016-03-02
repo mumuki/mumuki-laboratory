@@ -18,6 +18,7 @@ describe Guide do
           test: 'foo bar',
           tag_list: %w(baz bar),
           layout: 'no_editor',
+          solution: 'foo',
           id: 1},
 
          {type: 'playground',

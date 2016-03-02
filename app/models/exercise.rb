@@ -58,7 +58,7 @@ class Exercise < ActiveRecord::Base
 
     reset!
 
-    attrs = json.except('type', 'id')
+    attrs = json.except('type', 'id', 'solution')
     attrs['bibliotheca_id'] = json['id']
     attrs['number'] = number
     attrs = attrs.except('expectations') if json['type'] == 'playground' #FIXME bug in bibliotheca
