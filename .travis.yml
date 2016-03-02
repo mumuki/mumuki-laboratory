@@ -12,8 +12,7 @@ script:
 after_success:
 - wget https://raw.githubusercontent.com/mumuki/mumuki-escualo/master/travis_deploy && 
   chmod u+x travis_deploy &&
-  ./travis_deploy atheneum atheneum1.mumuki.io &&
-  ./travis_deploy atheneum atheneum2.mumuki.io
+  ./travis_deploy atheneum atheneum1.mumuki.io atheneum2.mumuki.io
 addons:
   code_climate:
     repo_token: 820e155f1bff3d5cfcb84eae1caace7cd9ec5a27540f52222620896dc010b3ee
