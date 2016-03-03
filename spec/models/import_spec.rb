@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Guide do
   let!(:haskell) { create(:haskell) }
+  let!(:gobstones) { create(:gobstones) }
   let(:reloaded_exercise_1) { Exercise.find(exercise_1.id) }
 
   let(:guide_json) do
@@ -18,6 +19,7 @@ describe Guide do
           test: 'foo bar',
           tag_list: %w(baz bar),
           layout: 'no_editor',
+          language: 'gobstones',
           solution: 'foo',
           id: 1},
 
@@ -53,7 +55,8 @@ describe Guide do
       it { expect(guide.friendly_name).to include 'sample-guide' }
 
       it { expect(guide.exercises.count).to eq 3 }
-      it { expect(guide.exercises.first.language).to eq haskell }
+      it { expect(guide.exercises.first.language).to eq gobstones }
+      it { expect(guide.exercises.second.language).to eq haskell }
       it { expect(guide.exercises.first.friendly_name).to include 'sample-guide-bar' }
 
       it { expect(guide.exercises.last.expectations.first['binding']).to eq 'foo' }

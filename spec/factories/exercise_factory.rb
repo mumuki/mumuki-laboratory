@@ -12,6 +12,10 @@ FactoryGirl.define do
     name 'haskell'
   end
 
+  factory :gobstones, parent: :language do
+    name 'gobstones'
+  end
+
   factory :exercise_base do
     sequence(:bibliotheca_id) { |n| n }
     sequence(:number) { |n| n }
