@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Guide do
-  let(:language) { create(:haskell) }
+  let!(:haskell) { create(:haskell) }
+  let!(:gobstones) { create(:gobstones) }
   let(:reloaded_exercise_1) { Exercise.find(exercise_1.id) }
 
   let(:guide_json) do
@@ -18,6 +19,7 @@ describe Guide do
           test: 'foo bar',
           tag_list: %w(baz bar),
           layout: 'no_editor',
+          language: 'gobstones',
           solution: 'foo',
           id: 1},
 
@@ -38,7 +40,6 @@ describe Guide do
 
   describe '#import_from_json!' do
     context 'when guide is empty' do
-      let!(:haskell) { create(:haskell) }
       let(:guide) { create(:guide, exercises: []) }
 
       before do
@@ -54,7 +55,8 @@ describe Guide do
       it { expect(guide.friendly_name).to include 'sample-guide' }
 
       it { expect(guide.exercises.count).to eq 3 }
-      it { expect(guide.exercises.first.language).to eq haskell }
+      it { expect(guide.exercises.first.language).to eq gobstones }
+      it { expect(guide.exercises.second.language).to eq haskell }
       it { expect(guide.exercises.first.friendly_name).to include 'sample-guide-bar' }
 
       it { expect(guide.exercises.last.expectations.first['binding']).to eq 'foo' }
@@ -62,7 +64,7 @@ describe Guide do
       it { expect(guide.exercises.pluck(:name)).to eq %W(Bar Foo Baz) }
     end
     context 'when exercise already exists' do
-      let(:guide) { create(:guide, language: language, exercises: [exercise_1]) }
+      let(:guide) { create(:guide, language: haskell, exercises: [exercise_1]) }
 
       before do
         guide.import_from_json! guide_json
@@ -71,7 +73,7 @@ describe Guide do
       context 'when exercise changes its type' do
         let(:exercise_1) { build(:playground,
                                  bibliotheca_id: 1,
-                                 language: language,
+                                 language: haskell,
                                  name: 'Exercise 1',
                                  description: 'description') }
 
@@ -87,7 +89,7 @@ describe Guide do
       context 'exercises are reordered' do
         let(:exercise_1) { create(:problem,
                                   bibliotheca_id: 4,
-                                  language: language,
+                                  language: haskell,
                                   name: 'Exercise 1',
                                   description: 'description',
                                   hint: 'baz',
@@ -108,10 +110,10 @@ describe Guide do
       end
     end
     context 'when many exercises already' do
-      let(:guide) { create(:guide, language: language, exercises: [exercise_1, exercise_2]) }
+      let(:guide) { create(:guide, language: haskell, exercises: [exercise_1, exercise_2]) }
 
       let(:exercise_1) { build(:problem,
-                               language: language,
+                               language: haskell,
                                name: 'Exercise 1',
                                bibliotheca_id: 2,
                                number: 1,
@@ -121,7 +123,7 @@ describe Guide do
                                hint: 'baz',
                                extra: 'foo') }
       let(:exercise_2) { build(:playground,
-                               language: language,
+                               language: haskell,
                                name: 'Exercise 2',
                                bibliotheca_id: 4,
                                number: 2,

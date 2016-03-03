@@ -53,12 +53,12 @@ class Exercise < ActiveRecord::Base
   end
 
   def import_from_json!(number, json)
-    self.language = guide.language
+    self.language = Language.for_name(json['language']) || guide.language
     self.locale = guide.locale
 
     reset!
 
-    attrs = json.except('type', 'id', 'solution')
+    attrs = json.except('type', 'id', 'solution', 'language')
     attrs['bibliotheca_id'] = json['id']
     attrs['number'] = number
     attrs = attrs.except('expectations') if json['type'] == 'playground' #FIXME bug in bibliotheca
