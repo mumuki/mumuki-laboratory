@@ -30,6 +30,6 @@ class Language < ActiveRecord::Base
   end
 
   def self.for_name(name)
-    find_by_ignore_case!(:name, name)
+    find_by_ignore_case!(:name, name) if name
   end
 end
