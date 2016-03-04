@@ -3,7 +3,7 @@ FactoryGirl.define do
   factory :language do
     sequence(:name) { |n| "lang#{n}" }
 
-    test_runner_url { Faker::Internet.url }
+    runner_url { Faker::Internet.url }
     devicon { name }
     queriable true
   end
