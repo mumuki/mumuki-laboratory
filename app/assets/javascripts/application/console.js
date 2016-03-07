@@ -86,6 +86,7 @@ var mumuki = mumuki || {};
 
   $(document).on('ready page:load', function () {
     console.log('loading console');
+    var prompt = $('#prompt').attr('value');
     var queryConsole = new QueryConsole();
 
     $('.clear-console').click(function(){
@@ -93,7 +94,7 @@ var mumuki = mumuki || {};
     });
 
     $('.console').console({
-      promptLabel: 'ム ',
+      promptLabel: prompt + ' ',
       commandValidate: function (line) {
         return line !== "";
       },
