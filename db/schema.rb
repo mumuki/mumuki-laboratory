@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(version: 20160512174708) do
     t.string   "highlight_mode"
     t.text     "description"
     t.boolean  "queriable",              default: false
+    t.string   "prompt"
   end
 
   add_index "languages", ["name"], name: "index_languages_on_name", unique: true, using: :btree
