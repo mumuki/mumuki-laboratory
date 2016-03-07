@@ -52,7 +52,6 @@ var mumuki = mumuki || {};
       var self = this;
       $.ajax(self._request).
         done(function (response) {
-          console.log(response);
           if (response.status === 'passed') {
             reportValue(response.result, report)
           } else {
@@ -60,7 +59,6 @@ var mumuki = mumuki || {};
           }
         }).
         fail(function (response) {
-          console.log(response);
           reportError(response.responseText, report);
         });
     },
@@ -85,7 +83,6 @@ var mumuki = mumuki || {};
 
 
   $(document).on('ready page:load', function () {
-    console.log('loading console');
     var prompt = $('#prompt').attr('value');
     var queryConsole = new QueryConsole();
 
