@@ -16,11 +16,16 @@ var mumuki = mumuki || {};
   function QueryConsole() {
     this.exerciseId = $('#exercise_id').val();
     this.token = $('meta[name="csrf-token"]').attr('content');
+    this.lines = [];
   }
 
   QueryConsole.prototype = {
     newQuery: function (line) {
-      return new Query(line, this);
+      this.lines.push(line);
+      return new Query(this.lines.join('\n'), this);
+    },
+    clearState: function() {
+      this.lines = [];
     }
   };
 
@@ -82,6 +87,10 @@ var mumuki = mumuki || {};
   $(document).on('ready page:load', function () {
     console.log('loading console');
     var queryConsole = new QueryConsole();
+
+    $('.clear-console').click(function(){
+      queryConsole.clearState();
+    });
 
     $('.console').console({
       promptLabel: 'ム ',
