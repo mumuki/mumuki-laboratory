@@ -10,7 +10,7 @@ script:
 - bundle exec rake db:schema:load
 - bundle exec rake
 after_success:
-- wget https://raw.githubusercontent.com/mumuki/mumuki-escualo/master/travis_deploy && 
+- wget https://raw.githubusercontent.com/mumuki/mumuki-escualo-deploy/master/travis_deploy && 
   chmod u+x travis_deploy &&
   ./travis_deploy atheneum atheneum1.mumuki.io atheneum2.mumuki.io
 addons:
