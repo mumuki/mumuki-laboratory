@@ -4,9 +4,24 @@ namespace :assignments do
     book.switch!
 
     exercises_ids = Lesson.all.flat_map {|l| l.guide.exercises }.map(&:id)
+    assignments = Assignment.where(exercise_id: exercises_ids)
 
-    Assignment.where(exercise_id: exercises_ids).each do |assignment|
-      EventSubscriber.notify_sync!(Event::Submission.new(assignment))
+    count = assignments.count
+    succeeded = unknown_student = failed = 0
+
+    puts "We will try to send #{count} assignments, please wait..."
+
+    assignments.each do |assignment|
+      begin
+        EventSubscriber.notify_sync!(Event::Submission.new(assignment))
+        succeeded = succeeded + 1
+      rescue RestClient::BadRequest => _
+        unknown_student = unknown_student + 1
+      rescue Exception => _
+        failed = failed + 1
+      end
     end
+
+    puts "Finished! Of #{count} assignments, #{succeeded} succeeded, #{unknown_student} belonged to unknown students and #{failed} failed for other reasons."
   end
 end
