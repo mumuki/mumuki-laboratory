@@ -27,6 +27,9 @@ describe Guide do
           description: 'lorem ipsum',
           name: 'Foo',
           tag_list: %w(foo bar),
+          extra: 'an extra code',
+          extra_visible: true,
+          default_content: 'a default content',
           id: 4},
 
          {name: 'Baz',
@@ -56,7 +59,10 @@ describe Guide do
 
       it { expect(guide.exercises.count).to eq 3 }
       it { expect(guide.exercises.first.language).to eq gobstones }
+      it { expect(guide.exercises.first.extra_visible).to be false }
       it { expect(guide.exercises.second.language).to eq haskell }
+      it { expect(guide.exercises.second.default_content).to eq 'a default content' }
+      it { expect(guide.exercises.second.extra_visible).to be true }
       it { expect(guide.exercises.first.friendly_name).to include 'sample-guide-bar' }
 
       it { expect(guide.exercises.last.expectations.first['binding']).to eq 'foo' }
