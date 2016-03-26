@@ -5,7 +5,7 @@ class ExercisesController < ApplicationController
   before_action :set_exercises, only: [:index]
   before_action :set_exercise, only: :show
   before_action :set_guide, only: [:show]
-  before_action :set_previous_solution, only: :show
+  before_action :set_default_content, only: :show
 
   def show
     @solution = @exercise.new_solution if current_user?
@@ -20,8 +20,8 @@ class ExercisesController < ApplicationController
     @exercise
   end
 
-  def set_previous_solution
-    @previous_solution = @exercise.previous_solution_for(current_user) if current_user?
+  def set_default_content
+    @default_content = @exercise.default_content_for(current_user) if current_user?
   end
 
 

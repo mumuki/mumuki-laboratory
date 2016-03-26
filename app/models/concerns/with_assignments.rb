@@ -5,8 +5,8 @@ module WithAssignments
     has_many :assignments, dependent: :destroy
   end
 
-  def previous_solution_for(user)
-    assignment_for(user).try(&:solution) || ''
+  def default_content_for(user)
+    assignment_for(user).try(&:solution) || default_content || ''
   end
 
   def assignment_for(user)
