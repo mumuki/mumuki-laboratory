@@ -24,7 +24,6 @@ feature 'Users listing' do
     end
 
     expect(page).to have_text('foobar')
-    expect(page).to have_text('Overview')
   end
 
 end

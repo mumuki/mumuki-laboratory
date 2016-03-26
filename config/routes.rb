@@ -31,8 +31,5 @@ Rails.application.routes.draw do
   resources :guides, only: [:show, :index]
 
   # All users
-  resources :users, only: [:show, :index] do
-    #nested user
-    resources :assignments, controller: 'user_assignments', only: :index
-  end
+  resources :users, only: [:show, :index]
 end

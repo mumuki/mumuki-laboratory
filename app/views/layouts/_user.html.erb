@@ -1,5 +1,3 @@
-<% @current_tab = current_tab %>
-
 <div class="row">
   <div class="col-md-12">
     <h1>
@@ -8,15 +6,6 @@
     <hr>
   </div>
 </div>
-
-<ul class="nav nav-tabs">
-  <li <%= active_if :overview %>>
-    <%= link_to t(:overview), @user %>
-  </li>
-  <li <%= active_if :recent_activity %>>
-    <%= link_to t(:recent_activity), user_assignments_path(@user) %>
-  </li>
-</ul>
 
 <%= yield %>
 
