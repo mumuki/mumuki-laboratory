@@ -123,6 +123,8 @@ describe 'api controller' do
                  name: 'Bar',
                  description: 'a description',
                  test: 'foo bar',
+                 default_content: 'foo',
+                 extra_visible: true,
                  tag_list: %w(baz bar),
                  layout: 'no_editor',
                  expectations: [{ inspection: 'HasBinding', binding: 'bar'}],
@@ -134,6 +136,8 @@ describe 'api controller' do
         it { expect(imported_guide.name).to eq 'sample guide' }
         it { expect(imported_guide.language).to eq haskell }
         it { expect(imported_guide.exercises.count).to eq 1 }
+        it { expect(imported_guide.exercises.first.default_content).to eq 'foo' }
+        it { expect(imported_guide.exercises.first.extra_visible).to be true }
         it { expect(imported_guide.exercises.first.expectations).to eq [
               { 'inspection' => 'HasBinding', 'binding' => 'bar'},
               { 'inspection' => 'HasBinding', 'binding' => 'foo'}] }

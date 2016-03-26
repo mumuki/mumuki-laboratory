@@ -44,6 +44,8 @@ class Api::GuidesController < Api::BaseController
                     :test,
                     :id,
                     :extra,
+                    :extra_visible,
+                    :default_content,
                     expectations: [ :binding, :inspection ]
                   ])
   end
