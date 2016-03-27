@@ -7,8 +7,16 @@ feature 'Search Flow' do
     create(:exercise, name: 'Bar',        guide: guide, number: 2),
     create(:exercise, name: 'Baz',        guide: guide, number: 4)
   ]}
-  let(:guide) { create(:guide, name: 'awesomeGuide', description: 'An awesome guide', language: haskell) }
+  let!(:guide) { create(:guide, name: 'awesomeGuide', description: 'An awesome guide', language: haskell, slug: 'foo/bar') }
   let(:user) { User.find_by(name:'testuser') }
+
+  scenario 'visit guide by slug' do
+    visit '/guides/foo/bar'
+
+    expect(page).to have_text('awesomeGuide')
+    expect(page).to have_text('An awesome guide')
+    expect(page).to have_text('Content')
+  end
 
   scenario 'visit guides from search page, and starts practicing' do
     visit '/guides'

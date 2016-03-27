@@ -32,4 +32,7 @@ Rails.application.routes.draw do
 
   # All users
   resources :users, only: [:show, :index]
+
+  #Alternate guide route
+  get '/guides/:organization/:repository' => 'guides#show_by_slug'
 end

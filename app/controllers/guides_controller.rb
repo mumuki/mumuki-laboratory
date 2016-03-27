@@ -1,6 +1,5 @@
 class GuidesController < ApplicationController
 
-  before_action :authenticate!, except: [:index, :show]
   before_action :set_guide, only: :show
 
   def show
@@ -10,6 +9,10 @@ class GuidesController < ApplicationController
     else
       @next_exercise = @guide.first_exercise
     end
+  end
+
+  def show_by_slug
+    redirect_to Guide.find_by(slug: "#{params[:organization]}/#{params[:repository]}")
   end
 
   def index
