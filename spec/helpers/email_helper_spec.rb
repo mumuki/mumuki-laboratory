@@ -9,9 +9,8 @@ describe ApplicationHelper do
     let(:user) { create(:user) }
     let(:guide) { create(:guide, name: 'A Guide') }
     let(:exercise) { create(:problem, name: 'An Exercise', guide: guide, number: 2) }
-    let(:assignment) { exercise.submit_solution!(user) }
+    let(:assignment) { exercise.submit_solution!(user, content: 'foo') }
 
-    it { expect(assignment_help_email_body assignment).to eq "Exercise:\nAn Exercise\n\nsolution:\n\n\nStatus:\nfailed" }
+    it { expect(assignment_help_email_body assignment).to eq "Exercise: An Exercise\n\nSolution:\nfoo\n\nStatus: failed\n\nSee http://test.host/guides/flbulgarelli/mumuki-sample-exercises\n" }
   end
-
 end

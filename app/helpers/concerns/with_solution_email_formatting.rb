@@ -1,5 +1,14 @@
 module WithSolutionEmailFormatting
   def assignment_help_email_body(assignment)
-    "#{t :exercise}:\n#{assignment.exercise.name}\n\n#{t :solution}:\n#{assignment.solution}\n\n#{t :status}:\n#{assignment.status}"
+<<EOM
+#{t :exercise}: #{assignment.exercise.name}
+
+#{t :solution}:
+#{assignment.solution}
+
+#{t :status}: #{assignment.status}
+
+See #{guide_by_slug_url(assignment.exercise.guide.org_and_repo)}
+EOM
   end
 end

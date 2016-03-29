@@ -32,6 +32,12 @@ class Guide < ActiveRecord::Base
     exercises.flat_map(&:search_tags).uniq
   end
 
+  #TODO use mumukit slug
+  def org_and_repo
+    org, repo = slug.split('/')
+    {organization: org, repository: repo}
+  end
+
   def new?
     created_at > 7.days.ago
   end

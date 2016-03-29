@@ -34,5 +34,5 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index]
 
   #Alternate guide route
-  get '/guides/:organization/:repository' => 'guides#show_by_slug'
+  get '/guides/:organization/:repository' => 'guides#show_by_slug', as: :guide_by_slug
 end
