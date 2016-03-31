@@ -32,13 +32,19 @@
     var submissionsResults = $('.submission-results');
     if (!submissionsResults) return;
 
-    var submitButton = $('form submitButton.btn.btn-success');
+    var submitButton = $('.btn-submit');
+    var submissionControls = $('.submission-control');
+
     var resultsBox = new ResultsBox(submissionsResults);
 
     $('form.new_solution').on('ajax:beforeSend',function (event, xhr, settings) {
+      document.prevSubmitState = submitButton.html();
+      submitButton.html('<i class="fa fa-refresh fa-spin"></i> ' + submitButton.attr('data-waiting'));
+      submissionControls.attr('disabled', 'disabled');
       resultsBox.waiting();
     }).on('ajax:complete',function (xhr, status) {
-      submitButton.attr('value', submitButton.attr('data-normal-text'));
+      submitButton.html(document.prevSubmitState);
+      submissionControls.removeAttr('disabled');
       resultsBox.done();
     }).on('ajax:success',function (xhr, data, status) {
       resultsBox.success(data);
