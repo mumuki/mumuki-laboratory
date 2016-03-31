@@ -3,7 +3,7 @@
     <%= yield :assignment %>
   </div>
   <div class="col-md-6 ace-editor-col">
-    <%= render partial: 'layouts/submissions/editor/form', locals: {editor_visible: true} %>
+    <%= render partial: 'layouts/submissions/editor/form', locals: {editor_mode: :visible} %>
   </div>
 </div>
 

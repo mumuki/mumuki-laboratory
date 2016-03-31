@@ -1,6 +1,6 @@
 <% if current_user? %>
   <div>
-    <%= exercise_form @exercise, editor_visible %>
+    <%= exercise_form @exercise, local_assigns %>
   </div>
 <% else %>
   <p><%= t :you_must_sign_in_before_submitting %></p>

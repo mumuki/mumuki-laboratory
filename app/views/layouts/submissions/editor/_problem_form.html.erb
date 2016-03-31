@@ -1,4 +1,4 @@
-<% if @exercise.queriable? || @exercise.extra_visible? %>
+<% if (@exercise.queriable? || @exercise.extra_visible?) && editor_mode!= :upload %>
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
       <a href="#editor" aria-controls="editor" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'pencil-square' %> <%= t :editor %></a>
@@ -18,8 +18,12 @@
 
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane editor-pane fade in active" id="editor">
+    <% if editor_mode == :upload %>
+      <input type="file" id="upload" class="upload submission-control"/>
+    <% end %>
+
     <%= form_for([@exercise, @solution], remote: true, html: {role: 'form'}) do |f| %>
-      <% if editor_visible %>
+      <% if editor_mode == :visible %>
         <div class="field form-group">
           <%= f.editor :content, 'dynamic',
                        class: 'form-control editor',
@@ -30,11 +34,22 @@
       <% else %>
         <%= f.hidden_field :content, value: '' %>
       <% end %>
-      <div class="actions">
-        <%= button_tag (fa_icon :play, text: t(:create_submission)),
-                       class: 'btn btn-success btn-block',
-                       data: {disable_with: "#{fa_icon 'refresh spin', text: t(:sending_solution)}", normal_text: t(:create_submission)} %>
-      </div>
+      <% if editor_mode == :upload %>
+        <label
+        for="upload"
+        class="btn btn-success btn-block btn-submit"
+        data-waiting="<%= t(:uploading_solution) %>">
+          <%= fa_icon :upload %> <%= t :upload_solution %>
+        </label>
+      <% else %>
+        <div class="actions">
+          <button
+          class="btn btn-success btn-block btn-submit submission-control"
+          data-waiting="<%= t(:sending_solution) %>">
+            <%= fa_icon :play, text: t(:create_submission) %>
+          </button>
+        </div>
+      <% end %>
     <% end %>
   </div>
   <div role="tabpanel" class="tab-pane editor-pane fade" id="console">
