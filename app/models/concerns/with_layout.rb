@@ -2,7 +2,7 @@ module WithLayout
   extend ActiveSupport::Concern
 
   included do
-    enum layout: [:editor_right, :editor_bottom, :no_editor]
+    enum layout: [:editor_right, :editor_bottom, :no_editor, :upload]
   end
 
   def playable_layout?
