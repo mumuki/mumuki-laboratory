@@ -3,6 +3,7 @@ class Assignment < ActiveRecord::Base
 
   belongs_to :exercise
   has_one :guide, through: :exercise
+  has_many :comments
 
   belongs_to :submitter, class_name: 'User'
 
