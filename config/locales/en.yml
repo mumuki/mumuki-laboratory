@@ -5,9 +5,12 @@ en:
   actions: Actions
   activity: Activity
   all: All
+  author: Author
   chapter: Chapter
   chapter_finished_html: You have finished %{chapter}!
   chapter_number: Chapter %{number} -
+  comment: Comment
+  comments: Comments
   console: Console
   content: Content
   continue_practicing: Continue Practicing!
@@ -15,6 +18,7 @@ en:
   corollary: Corollary
   create_submission: Submit
   created_at: Created at
+  date: Date
   destroy: Destroy
   editor: Editor
   errored: Oops, your solution didn't work
@@ -70,6 +74,7 @@ en:
   profile: Profile
   profile_of: Profile of %{username}
   progress: Progresss
+  readed: Readed
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   running: running
   search: Search
