@@ -10,7 +10,7 @@ module WithAssignments
   end
 
   def comments_for(user)
-    assignment_for(user).try(&:comments) || []
+    assignment_for(user).try(&:comments).try(:order, 'date') || []
   end
 
   def assignment_for(user)

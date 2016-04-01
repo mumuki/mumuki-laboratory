@@ -2,44 +2,68 @@
   <%= content_for :breadcrumbs do %>
     <%= home_breadcrumb %>
   <% end %>
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#info" aria-controls="info" role="tab" data-toggle="tab"><%= t :info =%></a>
+    </li>
+    <li role="presentation">
+      <a href="#comments" aria-controls="comments" role="tab" data-toggle="tab"><%= t :comment =%></a>
+    </li>
+  </ul>
 
-  <div class="row user-assignments">
-    <div class="col-md-4">
-      <%= image_tag @user.image_url, size: '250x250', class: 'img-circle' %>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="info">
+      <div class="row user-assignments">
+        <div class="col-md-4">
+          <%= image_tag @user.image_url, size: '250x250', class: 'img-circle' %>
+        </div>
+        <div class="col-md-8">
+          <table class="table table-striped">
+            <tbody>
+            <tr>
+              <th><%= t :submissions_success_rate %></th>
+              <td><%= @user.submissions_success_rate %></td>
+            </tr>
+            <tr>
+              <th><%= t :exercise_success_rate %></th>
+              <td><%= @user.exercises_success_rate %></td>
+            </tr>
+            <tr>
+              <th><%= t :last_submission_date %></th>
+              <td><%= time_ago_in_words_or_never @user.last_submission_date %></td>
+            </tr>
+            <tr>
+              <th><%= t :sign_up_date %></th>
+              <td><%= time_ago_in_words @user.created_at %></td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+
+      <div>
+        <h2><%= t(:progress) %></h2>
+        <ul>
+          <% @user.submitted_chapters.each do |it| %>
+            <li><%= link_to_path_element it %>: <%= it.stats_for(@user).passed_ratio %>%
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-    <div class="col-md-8">
+
+    <div role="tabpanel" class="tab-pane" id="comments">
       <table class="table table-striped">
-        <tbody>
-        <tr>
-          <th><%= t :submissions_success_rate %></th>
-          <td><%= @user.submissions_success_rate %></td>
-        </tr>
-        <tr>
-          <th><%= t :exercise_success_rate %></th>
-          <td><%= @user.exercises_success_rate %></td>
-        </tr>
-        <tr>
-          <th><%= t :last_submission_date %></th>
-          <td><%= time_ago_in_words_or_never @user.last_submission_date %></td>
-        </tr>
-        <tr>
-          <th><%= t :sign_up_date %></th>
-          <td><%= time_ago_in_words @user.created_at %></td>
-        </tr>
-        </tbody>
+        <% @comments.each do |comment| %>
+          <tr>
+            <td><%= icon_for_readed(comment.readed) %></td>
+            <td><%= link_to comment.exercise.name, exercise_path(comment.exercise.id) %></td>
+            <td><%= mail_to comment.author %></td>
+            <td><%= time_ago_in_words comment.date %></td>
+          </tr>
+        <% end %>
       </table>
-
     </div>
-  </div>
-
-  <div>
-    <h2><%= t(:progress) %></h2>
-    <ul>
-      <% @user.submitted_chapters.each do |it| %>
-        <li><%= link_to_path_element it %>: <%= it.stats_for(@user).passed_ratio %>%
-        </li>
-      <% end %>
-    </ul>
-  </div>
 
 <% end %>

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: :show
 
   def show
+    @comments = Assignment.where(submitter_id: @user.id).try(:flat_map, &:comments) || []
   end
 
   def index
