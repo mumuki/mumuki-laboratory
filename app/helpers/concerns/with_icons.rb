@@ -24,4 +24,8 @@ module WithIcons
     [iconized[:type], class: "text-#{iconized[:class]} status-icon"]
   end
 
+  def icon_for_readed(readed)
+    tag('i', class: "fa fa-envelope#{readed ? '-o' : ''}")
+  end
+
 end

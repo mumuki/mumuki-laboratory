@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
                 :login_anchor,
                 :restricted_to_current_user,
                 :restricted_to_other_user,
+                :comments_count,
+                :has_comments?,
                 :subject
 
   def set_locale
@@ -37,6 +39,14 @@ class ApplicationController < ActionController::Base
 
   def request_host_include?(hosts)
     hosts.any? { |host| Addressable::URI.parse(request.referer).host.include? host } rescue false
+  end
+
+  def has_comments?
+    comments_count > 0
+  end
+
+  def comments_count
+    Assignment.where(submitter_id: current_user.id).try(:flat_map, &:comments).try(:reject, &:readed).count
   end
 
   def redirect_to_last_guide
