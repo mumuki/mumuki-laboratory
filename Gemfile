@@ -50,6 +50,8 @@ gem 'nprogress-rails'
 
 gem 'yaml_db'
 
+gem 'bunny'
+
 gem 'addressable'
 gem 'apartment'
 
