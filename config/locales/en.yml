@@ -74,7 +74,7 @@ en:
   profile: Profile
   profile_of: Profile of %{username}
   progress: Progresss
-  readed: Readed
+  read: Read
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   running: running
   search: Search

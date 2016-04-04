@@ -13,8 +13,8 @@ class Comment < ActiveRecord::Base
     comment_json.merge(comment)
   end
 
-  def mark_as_readed
-    self.readed = true
+  def read!
+    self.read = true
     save!
   end
 

@@ -27,7 +27,7 @@ class ExercisesController < ApplicationController
 
   def set_comments
     @comments = @exercise.comments_for(current_user) if current_user?
-    @comments.try(:each, &:mark_as_readed)
+    @comments.try(:each, &:read!)
   end
 
   def set_exercise

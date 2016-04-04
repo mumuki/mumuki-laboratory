@@ -57,7 +57,7 @@
       <table class="table table-striped">
         <% @comments.each do |comment| %>
           <tr>
-            <td><%= icon_for_readed(comment.readed) %></td>
+            <td><%= icon_for_read(comment.read) %></td>
             <td><%= link_to comment.exercise.name, exercise_path(comment.exercise.id) %></td>
             <td><%= mail_to comment.author %></td>
             <td><%= time_ago_in_words comment.date %></td>

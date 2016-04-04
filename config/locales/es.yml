@@ -80,7 +80,7 @@ es:
   profile: Perfil
   profile_of: Perfil de %{username}
   progress: Progreso
-  readed: Leido
+  read: Leido
   recent_activity: Actividad Reciente
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
   running: procesando
