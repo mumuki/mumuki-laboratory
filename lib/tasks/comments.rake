@@ -27,6 +27,8 @@ namespace :comments do
         Comment.create! comment_data
 
         ch.ack(delivery_info.delivery_tag)
+
+        conn.close
       end
     rescue Interrupt => _
       conn.close
