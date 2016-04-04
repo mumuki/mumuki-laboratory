@@ -70,11 +70,7 @@
 </div>
 
 <script>
-  $('#exercise-status-icon').html("<%= escape_javascript exercise_status_icon(@exercise) %>");
-
-  $('#failed-progress-bar').css("width", "<%= @stats.failed_ratio %>%");
-  $('#passed-progress-bar').css("width", "<%= @stats.passed_ratio %>%");
-  $('#passed-with-warnings-progress-bar').css("width", "<%= @stats.passed_with_warnings_ratio %>%");
+  $('.progress-list-item.active').attr('class', "<%= class_for_progress_list_item(@exercise, true) %>");
 
   <% if guide_finished_by_solution %>
   $('#guide-done').modal()

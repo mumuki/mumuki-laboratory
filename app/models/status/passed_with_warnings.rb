@@ -10,6 +10,6 @@ module Status::PassedWithWarnings
   end
 
   def self.iconize
-    {class: :warning, type: :exclamation}
+    {class: :warning, type: 'exclamation-circle'}
   end
 end
