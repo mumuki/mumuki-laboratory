@@ -20,9 +20,7 @@ namespace :comments do
       q.subscribe(:manual_ack => true, :block => true) do |delivery_info, properties, body|
         comment_data = JSON.parse(body).first
 
-        comment = comment_data.delete('comment')
-        comment['author'] = comment.delete('email')
-        comment_data.merge!(comment)
+        comment_data = Comment.parse_json(comment_data)
 
         Book.find_by(name: comment_data.delete('tenant')).switch!
 
