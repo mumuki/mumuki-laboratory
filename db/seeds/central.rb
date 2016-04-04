@@ -57,7 +57,7 @@ BookBuilder.build! do |b|
 
     c.guide 'practica-fold-concatmap'
 
-    c.guide 'pdep-utn/mumuki-guia-practica-evaluacion-diferida'
+    c.guide 'practica-evaluacion-diferida'
 
     c.guide 'recursividad'
     c.guide 'practica-recursividad'
@@ -78,7 +78,7 @@ BookBuilder.build! do |b|
 
     # A Hechos y Reglas [Base de conocimiento]
     # A Inversibilidad [limites]
-    c.guide 'pdep-utn/mumuki-guia-logico-teoria-hechos-y-reglas'
+    c.guide 'pdep-utn/mumuki-guia-logico-hechos-y-reglas'
     c.guide 'practica-primeros-pasos'
 
     # A Predicados de Orden Superior
