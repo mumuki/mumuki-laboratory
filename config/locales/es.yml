@@ -5,9 +5,12 @@ es:
   actions: Acciones
   activity: Actividad
   all: Todos
+  author: Autor
   chapter: Capítulo
   chapter_finished_html: ¡Terminaste %{chapter}! ¡Felicitaciones!
   chapter_number: 'Capítulo %{number}:'
+  comment: Comentario
+  comments: Comentarios
   console: Consola
   content: Contenido
   continue_practicing: ¡Seguí aprendiendo!
@@ -17,6 +20,7 @@ es:
   created_at: Creado
   created_exercises: Ejercicios Creados
   created_guides: Lecciones Creadas
+  date: Fecha
   destroy: Eliminar
   details: Detalles
   editor: Editor
@@ -76,6 +80,7 @@ es:
   profile: Perfil
   profile_of: Perfil de %{username}
   progress: Progreso
+  read: Leido
   recent_activity: Actividad Reciente
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
   running: procesando

@@ -9,6 +9,10 @@ module WithAssignments
     assignment_for(user).try(&:solution) || default_content || ''
   end
 
+  def comments_for(user)
+    assignment_for(user).try(&:comments) || []
+  end
+
   def assignment_for(user)
     assignments.find_by(submitter_id: user.id)
   end

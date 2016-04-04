@@ -1,0 +1,14 @@
+production:
+  host: <%=ENV['MUMUKI_RABBIT_HOST']%>
+  port: <%=ENV['MUMUKI_RABBIT_PORT']%>
+  user: <%=ENV['MUMUKI_RABBIT_USERNAME']%>
+  password: <%=ENV['MUMUKI_RABBIT_PASSWORD']%>
+  database: <%=ENV['MUMUKI_RABBIT_DATABASE']%>
+
+development:
+  host: localhost
+  port: 5672
+
+test:
+  host: <%=ENV['RABBIT_PORT_5672_TCP_ADDR'] || 'localhost'%>
+  port: <%=ENV['RABBIT_PORT_5672_TCP_PORT'] || 5672%>

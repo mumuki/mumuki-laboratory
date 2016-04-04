@@ -51,6 +51,15 @@
 
 </div>
 
+<% @comments.each do |comment| %>
+  <div class="bs-callout bs-callout-<%= comment.type %>">
+    <h6> <%= comment.author %></h6>
+    <div>
+      <%= comment.content%>
+    </div>
+  </div>
+<% end %>
+
 <div class="row">
   <div class="col-md-12">
     <%= mail_to contact_email,
