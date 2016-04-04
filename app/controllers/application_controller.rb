@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
   end
 
   def comments_count
-    Assignment.where(submitter_id: current_user.id).try(:flat_map, &:comments).try(:reject, &:read).count
+    current_user.try(:unread_comments).try(:count) || 0
   end
 
   def redirect_to_last_guide

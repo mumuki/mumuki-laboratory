@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   has_many :assignments, foreign_key: :submitter_id
 
+  has_many :comments, through: :assignments
+
   has_many :submitted_exercises, through: :assignments, class_name: 'Exercise', source: :exercise
 
   has_many :submitted_guides, -> { uniq }, through: :submitted_exercises, class_name: 'Guide', source: :guide
@@ -66,6 +68,10 @@ class User < ActiveRecord::Base
 
   def social_id
     uid
+  end
+
+  def unread_comments
+    comments.where(read: false)
   end
 
   private
