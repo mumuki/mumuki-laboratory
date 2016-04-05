@@ -5,7 +5,6 @@ namespace :comments do
         with_indifferent_access[ENV["RAILS_ENV"] || 'development']
 
     conn = Bunny.new(host: config[:host],
-              port: config[:port],
               user: config[:user],
               password: config[:password])
 
