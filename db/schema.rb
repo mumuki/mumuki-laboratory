@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404214826) do
+ActiveRecord::Schema.define(version: 20160405184624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 20160404214826) do
 
   create_table "comments", force: true do |t|
     t.integer  "exercise_id"
-    t.integer  "submission_id"
+    t.string   "submission_id"
     t.string   "type"
     t.string   "content"
     t.string   "author"

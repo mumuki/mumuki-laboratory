@@ -3,7 +3,6 @@ class Assignment < ActiveRecord::Base
 
   belongs_to :exercise
   has_one :guide, through: :exercise
-  has_many :comments, -> { order :date }, foreign_key: :submission_id
 
   belongs_to :submitter, class_name: 'User'
 
@@ -65,6 +64,10 @@ class Assignment < ActiveRecord::Base
 
   def clear!
     update! status: :pending, result: nil, test_results: nil, expectation_results: []
+  end
+
+  def comments
+    Comment.where(submission_id: submission_id).order('date')
   end
 
   private

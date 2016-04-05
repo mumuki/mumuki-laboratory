@@ -2,7 +2,6 @@ class Comment < ActiveRecord::Base
 
   self.inheritance_column = :_type_disabled
 
-  belongs_to :assignment, foreign_key: :submission_id
   belongs_to :exercise
 
   validates_presence_of :exercise_id, :submission_id, :type, :content, :author, :date
@@ -18,5 +17,8 @@ class Comment < ActiveRecord::Base
     save!
   end
 
+  def assignment
+    Assignment.find_by(submission_id: submission_id)
+  end
 
 end
