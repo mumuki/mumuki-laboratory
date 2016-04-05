@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
   end
 
   def unread_comments
-    comments.try(:where, read: false)
+    comments.reject(&:read)
   end
 
   private

@@ -67,7 +67,7 @@ class Assignment < ActiveRecord::Base
   end
 
   def comments
-    Comment.where(submission_id: submission_id).order('date')
+    Comment.where(submission_id: submission_id).order('date DESC')
   end
 
   private
