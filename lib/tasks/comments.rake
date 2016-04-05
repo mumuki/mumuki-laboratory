@@ -2,7 +2,7 @@ namespace :comments do
   task listen: :environment do
 
     config ||= YAML.load(ERB.new(File.read(File.expand_path '../../../config/rabbit.yml', __FILE__)).result).
-        with_indifferent_access[ENV['RACK_ENV'] || 'development']
+        with_indifferent_access[ENV["RAILS_ENV"] || 'development']
 
     conn = Bunny.new(host: config[:host],
               port: config[:port],
