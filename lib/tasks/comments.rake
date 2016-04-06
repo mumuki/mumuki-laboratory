@@ -23,7 +23,7 @@ namespace :comments do
 
         Book.find_by(name: comment_data.delete('tenant')).switch!
 
-        Comment.create! comment_data
+        Comment.create! comment_data if comment_data["submission_id"].present?
 
         ch.ack(delivery_info.delivery_tag)
       end
