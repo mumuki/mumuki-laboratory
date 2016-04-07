@@ -6,8 +6,18 @@ namespace :assignments do
     book.switch!
 
     exercises_ids = Lesson.all.flat_map {|l| l.guide.exercises }.map(&:id)
-    assignments = Assignment.where(exercise_id: exercises_ids).where('updated_at >= ?', Date.parse(args[:date_since]))
 
+    notify Assignment.where(exercise_id: exercises_ids).where('updated_at >= ?', Date.parse(args[:date_since]))
+  end
+
+  task :notify_user, [:user_uid] => :environment do |t, args|
+    user = User.find_by(uid: args[:user_uid])
+    puts "Found user #{user.name}."
+
+    notify Assignment.where(submitter_id: user.id)
+  end
+
+  def notify(assignments)
     count = assignments.count
     succeeded = unknown_student = failed = 0
 
