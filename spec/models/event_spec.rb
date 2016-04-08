@@ -31,12 +31,14 @@ describe Event do
 
     describe Event::Submission do
       let(:user) { create(:user, id: 2, name: 'foo', provider: 'auth0', uid: 'github|gh1234') }
+      let(:lesson) { create(:lesson, number: 4) }
       let(:assignment) { create(:assignment,
                                 solution: 'x = 2',
                                 status: Status::Passed,
                                 submissions_count: 2,
                                 submitter: user,
-                                submission_id: 'abcd1234') }
+                                submission_id: 'abcd1234',
+                                exercise: create(:exercise, guide: create(:guide, lesson: lesson))) }
       let(:event) { Event::Submission.new(assignment) }
       let(:json) { event.as_json.deep_symbolize_keys }
 
@@ -54,6 +56,13 @@ describe Event do
                            guide: {
                                slug: assignment.guide.slug,
                                name: assignment.guide.name,
+                               chapter: {
+                                 id: assignment.guide.chapter.id,
+                                 name: assignment.guide.chapter.name
+                               },
+                               lesson: {
+                                 number: 4,
+                               },
                                language: {
                                    name: assignment.guide.language.name}},
                            submitter: {
