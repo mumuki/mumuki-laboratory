@@ -19,3 +19,15 @@ ul.results-list {
 .results-list pre {
   margin-left: 15px;
 }
+
+.example-see-more {
+  font-size: $font-size-base * 0.65;
+  background: lighten($brand-complementary, 10%);
+  border-radius: 6px;
+  padding: 2px 5px;
+  color: white;
+
+  &:hover, &:focus {
+    color: white;
+  }
+}

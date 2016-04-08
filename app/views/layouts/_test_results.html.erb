@@ -3,15 +3,16 @@
     <li>
       <% if test_result[:status] == :failed %>
 
-        <a data-toggle="collapse" href="#example-result-<%= index %>" class="text-danger">
+        <span class="text-danger">
           <%= status_icon(test_result[:status]) %>
           <strong class="example-title"><%= test_result[:title] %></strong>
-        </a>
+          <a data-toggle="collapse" href="#example-result-<%= index %>"  class="example-see-more">Ver detalles</a>
+        </span>
       <% else %>
-        <a data-toggle="collapse" href="#example-result-<%= index %>" class="text-success example-title">
+        <span class="text-success example-title">
           <%= status_icon(test_result[:status]) %>
           <%= test_result[:title] %>
-        </a>
+        </span>
       <% end %>
 
       <div class="example-result collapse <%= 'in' if visible_success_output %>" id="example-result-<%= index %>">
