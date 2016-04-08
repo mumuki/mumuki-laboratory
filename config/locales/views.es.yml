@@ -1,0 +1,9 @@
+---
+es:
+  views:
+    pagination:
+      truncate: ...
+      next: '»'
+      last: 'Última'
+      first: 'Primera'
+      previous: '«'
