@@ -25,6 +25,14 @@ GIT
   specs:
     mumukit-inspection (0.0.1)
 
+GIT
+  remote: git://github.com/mumuki/mumukit-nuntius.git
+  revision: 6f354a497e790dc936d808ec6f6eecdc015c3e73
+  branch: master
+  specs:
+    mumukit-nuntius (0.1.0)
+      bunny
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -389,6 +397,7 @@ DEPENDENCIES
   mumukit-bridge!
   mumukit-content-type!
   mumukit-inspection!
+  mumukit-nuntius!
   nprogress-rails
   omniauth (~> 1.2)
   omniauth-auth0 (~> 1.1)
