@@ -14,6 +14,7 @@ class Event::Submission < Event::Base
                 guide: {only: [:slug, :name],
                   include: {
                     chapter: {only: [:id, :name]},
+                    lesson: {only: [:number]},
                     language: {only: [:name]}}},
                 exercise: {only: [:id, :name, :number]},
                 submitter: {only: [:name, :email, :image_url], methods: [:social_id]}}).
