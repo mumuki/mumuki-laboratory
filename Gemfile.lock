@@ -27,8 +27,8 @@ GIT
 
 GIT
   remote: git://github.com/mumuki/mumukit-nuntius.git
-  revision: 6f354a497e790dc936d808ec6f6eecdc015c3e73
-  branch: master
+  revision: 2e4f88b6151a7a9c8f8acf4fd213ed87b4f5deb8
+  tag: v0.0.1
   specs:
     mumukit-nuntius (0.1.0)
       bunny
