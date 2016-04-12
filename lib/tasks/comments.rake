@@ -1,34 +1,16 @@
 namespace :comments do
   task listen: :environment do
 
-    config ||= YAML.load(ERB.new(File.read(File.expand_path '../../../config/rabbit.yml', __FILE__)).result).
-        with_indifferent_access[ENV["RAILS_ENV"] || 'development']
+    Mumukit::Nuntius::Consumer.start "comments" do |delivery_info, properties, body|
+      comment_data = Comment.parse_json JSON.parse(body).first
 
-    conn = Bunny.new(host: config[:host],
-              user: config[:user],
-              password: config[:password])
+      Book.find_by(name: comment_data.delete('tenant')).switch!
 
-    conn.start
-
-    ch   = conn.create_channel
-    q    = ch.queue("comments", :durable => true)
-
-    ch.prefetch(1)
-
-    begin
-      q.subscribe(:manual_ack => true, :block => true) do |delivery_info, properties, body|
-        comment_data = JSON.parse(body).first
-
-        comment_data = Comment.parse_json(comment_data)
-
-        Book.find_by(name: comment_data.delete('tenant')).switch!
-
+      begin
         Comment.create! comment_data if comment_data["submission_id"].present?
-
-        ch.ack(delivery_info.delivery_tag)
+      rescue ActiveRecord::RecordInvalid => e
+        Rails.logger.info e
       end
-    ensure
-      conn.close
     end
   end
 end
