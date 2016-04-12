@@ -27,7 +27,7 @@ class EventSubscriber < ActiveRecord::Base
   end
 
   def do_request(event, path)
-    RestClient.post("#{get_url}/#{path}", event, content_type: :json)
+    Mumukit::Nuntius::Publisher.publish_submissions event
   end
 
   def validate_response(response)
