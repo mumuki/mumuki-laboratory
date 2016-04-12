@@ -72,7 +72,8 @@ describe Event do
                                image_url: nil},
                            id: 'abcd1234',
                            created_at: assignment.updated_at,
-                           content: 'x = 2')
+                           content: 'x = 2',
+                           tenant: 'test')
       end
     end
   end
