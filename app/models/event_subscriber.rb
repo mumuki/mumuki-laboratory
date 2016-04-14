@@ -5,8 +5,8 @@ class EventSubscriber < ActiveRecord::Base
     enabled
   end
 
-  def post_json(event, path)
-    response = JSON.parse(do_request(event, path))
+  def post_json(event)
+    response = JSON.parse(do_request(event))
     validate_response(response)
   end
 
@@ -26,16 +26,12 @@ class EventSubscriber < ActiveRecord::Base
     end
   end
 
-  def do_request(event, path)
+  def do_request(event)
     Mumukit::Nuntius::Publisher.publish_submissions event
   end
 
   def validate_response(response)
     Rails.logger.info "response from server #{response}" if response != {'status' => 'ok'}
-  end
-
-  def get_url
-    url
   end
 
 end
