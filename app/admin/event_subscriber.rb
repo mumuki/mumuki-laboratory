@@ -1,12 +1,10 @@
 ActiveAdmin.register EventSubscriber do
 
-  permit_params :enabled, :url
+  permit_params :enabled
 
-  filter :url
   filter :enabled
 
   index do
-    column :url
     column :enabled
 
     actions

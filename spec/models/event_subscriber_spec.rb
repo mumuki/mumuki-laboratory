@@ -12,11 +12,8 @@ describe EventSubscriber do
     it { EventSubscriber.notify_sync!(Event::Submission.new(assignment)) }
   end
 
-  describe 'tenant_url' do
-    let!(:tenant_subscriber) { TenantSubscriber.create!(enabled: true, url: 'http://localhost:80') }
+  describe 'protect in central book' do
     let!(:book) { Book.find_or_create_by(name: 'central') }
-
-    it { expect(tenant_subscriber.get_url).to eq('http://test.localhost:80') }
 
     it 'EventSubscriber does not send event when book is central' do
       book.switch!

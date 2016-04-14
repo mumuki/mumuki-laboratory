@@ -2,7 +2,7 @@ namespace :comments do
   task listen: :environment do
 
     Mumukit::Nuntius::Consumer.start "comments" do |delivery_info, properties, body|
-      comment_data = Comment.parse_json JSON.parse(body).first
+      comment_data = Comment.parse_json body
 
       Book.find_by(name: comment_data.delete('tenant')).switch!
 

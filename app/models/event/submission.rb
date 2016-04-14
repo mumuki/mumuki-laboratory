@@ -20,6 +20,7 @@ class Event::Submission < Event::Base
                 submitter: {only: [:name, :email, :image_url], methods: [:social_id]}}).
       merge('id' => @assignment.submission_id,
             'created_at' => @assignment.updated_at,
-            'content' => @assignment.solution)
+            'content' => @assignment.solution,
+            'tenant' => Book.current.name)
   end
 end
