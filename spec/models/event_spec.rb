@@ -12,7 +12,6 @@ describe Event do
 
       it { expect(job_params.subscriber_id).to eq 2 }
       it { expect(job_params.event_json).to_not include 'token' }
-      it { expect(job_params.event_path).to eq 'events/registration' }
     end
 
     describe Event::Submission do
@@ -22,7 +21,6 @@ describe Event do
 
       it { expect(job_params.subscriber_id).to eq 2 }
       it { expect(job_params.event_json).to include '"status":"failed"' }
-      it { expect(job_params.event_path).to eq 'events/submissions' }
     end
 
   end
