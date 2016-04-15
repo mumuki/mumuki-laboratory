@@ -7,13 +7,6 @@ describe Event do
     let(:user) { create(:user) }
     let(:job_params) { event.to_job_params(subscriber) }
 
-    describe Event::Registration do
-      let(:event) { Event::Registration.new(user) }
-
-      it { expect(job_params.subscriber_id).to eq 2 }
-      it { expect(job_params.event_json).to_not include 'token' }
-    end
-
     describe Event::Submission do
       let(:assignment) { create(:exercise).submit_solution!(user) }
 
