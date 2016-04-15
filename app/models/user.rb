@@ -25,8 +25,6 @@ class User < ActiveRecord::Base
   belongs_to :last_exercise, class_name: 'Exercise'
   has_one :last_guide, through: :last_exercise, source: :guide
 
-  after_create :notify_registration!
-
   def last_submission_date
     assignments.last.try(&:updated_at)
   end
@@ -77,9 +75,5 @@ class User < ActiveRecord::Base
   end
 
   private
-
-  def notify_registration!
-    EventSubscriber.notify_async!(Event::Registration.new(self))
-  end
 
 end
