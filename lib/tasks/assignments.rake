@@ -14,28 +14,10 @@ namespace :assignments do
   end
 
   def notify(assignments)
-    count = assignments.count
-    succeeded = unknown_student = 0
-    failures = []
-
-    puts "We will try to send #{count} assignments, please wait..."
+    puts "We will try to send #{assignments.count} assignments, please wait..."
 
     assignments.each do |assignment|
-      begin
-        EventSubscriber.notify_sync!(Event::Submission.new(assignment))
-        succeeded = succeeded + 1
-      rescue RestClient::BadRequest => _
-        unknown_student = unknown_student + 1
-      rescue Exception => e
-        failures << e.message
-      end
-    end
-
-    puts "Finished! Of #{count} assignments, #{succeeded} succeeded, #{unknown_student} belonged to unknown students and #{failures.size} failed for other reasons."
-
-    unless failures.empty?
-      puts "Failures:"
-      puts failures
+      EventSubscriber.notify_async!(Event::Submission.new(assignment))
     end
   end
 
