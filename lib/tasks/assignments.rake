@@ -15,7 +15,8 @@ namespace :assignments do
 
   def notify(assignments)
     count = assignments.count
-    succeeded = unknown_student = failed = 0
+    succeeded = unknown_student = 0
+    failures = []
 
     puts "We will try to send #{count} assignments, please wait..."
 
@@ -25,12 +26,17 @@ namespace :assignments do
         succeeded = succeeded + 1
       rescue RestClient::BadRequest => _
         unknown_student = unknown_student + 1
-      rescue Exception => _
-        failed = failed + 1
+      rescue Exception => e
+        failures << e.message
       end
     end
 
-    puts "Finished! Of #{count} assignments, #{succeeded} succeeded, #{unknown_student} belonged to unknown students and #{failed} failed for other reasons."
+    puts "Finished! Of #{count} assignments, #{succeeded} succeeded, #{unknown_student} belonged to unknown students and #{failures.size} failed for other reasons."
+
+    unless failures.empty?
+      puts "Failures:"
+      puts failures
+    end
   end
 
   # This task should not be called directly (because it "does nothing"), it's just a prerrequisite for the others.
