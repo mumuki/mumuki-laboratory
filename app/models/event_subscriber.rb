@@ -5,11 +5,6 @@ class EventSubscriber < ActiveRecord::Base
     enabled
   end
 
-  def post_json(event)
-    response = JSON.parse(do_request(event))
-    validate_response(response)
-  end
-
   def self.notify_sync!(event)
     notify! :sync, event
   end
@@ -28,10 +23,6 @@ class EventSubscriber < ActiveRecord::Base
 
   def do_request(event)
     Mumukit::Nuntius::Publisher.publish_submissions event
-  end
-
-  def validate_response(response)
-    Rails.logger.info "response from server #{response}" if response != {'status' => 'ok'}
   end
 
 end

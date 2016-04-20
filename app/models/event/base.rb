@@ -2,7 +2,7 @@ require 'ostruct'
 
 class Event::Base
   def notify_sync!(subscriber)
-    subscriber.post_json(to_json)
+    subscriber.do_request(to_json)
   end
 
   def notify_async!(subscriber)
