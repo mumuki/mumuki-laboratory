@@ -111,7 +111,8 @@ describe 'api controller' do
       context 'when there are no guides' do
         let!(:haskell) { create(:haskell) }
         let(:imported_guide) { Guide.find_by(slug: 'flbulgarelli/sample-guide') }
-        before { post :create, {
+        let(:guide_json) {
+          {
             name: 'sample guide',
             description: 'Baz',
             slug: 'flbulgarelli/sample-guide',
@@ -129,8 +130,10 @@ describe 'api controller' do
                  layout: 'no_editor',
                  expectations: [{ inspection: 'HasBinding', binding: 'bar'}],
                  id: 1}]}
-
         }
+        before { allow_any_instance_of(Mumukit::Bridge::Bibliotheca).to receive(:guide).and_return(guide_json.deep_stringify_keys) }
+        before { post :create, guide_json }
+
         it { expect(response.status).to eq 200 }
         it { expect(imported_guide).to_not be nil }
         it { expect(imported_guide.name).to eq 'sample guide' }
