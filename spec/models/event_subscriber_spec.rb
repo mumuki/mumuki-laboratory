@@ -22,4 +22,14 @@ describe EventSubscriber do
     end
   end
 
+  describe 'test event subscriber api' do
+    before { expect_any_instance_of(EventSubscriber).to receive(:do_request).and_return({'status' => 'ok'}.to_json) }
+    let(:user) { create(:user) }
+    let(:exercise) { create(:x_equal_5_exercise) }
+
+    it 'run notifier when submit a solution' do
+      expect { exercise.submit_solution! user }.to_not raise_error
+    end
+  end
+
 end
