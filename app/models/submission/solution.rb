@@ -15,6 +15,6 @@ class Solution < Submission
 
   def save_results!(results, assignment)
     assignment.update! results
-    EventSubscriber.notify_async! Event::Submission.new(assignment)
+    EventSubscriber.notify! Event::Submission.new(assignment)
   end
 end
