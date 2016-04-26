@@ -163,5 +163,34 @@ describe Guide do
       it { expect(guide.exercises.pluck(:id).drop(1)).to eq [reloaded_exercise_2.id, reloaded_exercise_1.id] }
 
     end
+
+    context 'when new_expecations' do
+      let(:guide) { create(:guide, language: haskell) }
+      let(:guide_json) do
+        {name: 'sample guide',
+         description: 'Baz',
+         slug: 'mumuki/sample-guide',
+         language: 'haskell',
+         locale: 'en',
+         extra: 'bar',
+         exercises: [
+             {name: 'Baz',
+              description: 'lorem ipsum',
+              tag_list: %w(baz bar),
+              layout: 'editor_bottom',
+              test: 'foo bar',
+              type: 'problem',
+              expectations: [{inspection: 'HasBinding', binding: 'foo'}],
+              new_expectations: true,
+              id: 2}]}.deep_stringify_keys
+      end
+
+      before do
+        guide.import_from_json! guide_json
+      end
+
+      it { expect(guide.exercises.first.new_expectations).to be_truthy }
+      it { expect(guide.exercises.first.expectations).to eq [] }
+    end
   end
 end
