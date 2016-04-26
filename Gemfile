@@ -18,8 +18,6 @@ gem 'execjs'
 gem 'activeadmin', '~> 1.0.0.pre1'
 gem 'devise'
 
-gem 'sucker_punch', '~> 1.0'
-
 gem 'jquery-rails'
 
 source 'https://rails-assets.org' do
