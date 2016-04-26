@@ -5,8 +5,8 @@ class EventSubscriber < ActiveRecord::Base
     enabled
   end
 
-  def do_request(event)
-    Mumukit::Nuntius::Publisher.publish_submissions event
+  def do_request(event, queue_name)
+    Mumukit::Nuntius::Publisher.send "publish_#{queue_name}", event
   end
 
   def self.notify!(event)

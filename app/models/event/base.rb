@@ -2,7 +2,7 @@ require 'ostruct'
 
 class Event::Base
   def notify!(subscriber)
-    subscriber.do_request(to_json)
+    subscriber.do_request(to_json, queue_name)
   end
 
   def to_job_params(subscriber)
