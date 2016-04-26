@@ -17,7 +17,7 @@ namespace :assignments do
     puts "We will try to send #{assignments.count} assignments, please wait..."
 
     assignments.each do |assignment|
-      EventSubscriber.notify_async!(Event::Submission.new(assignment))
+      EventSubscriber.notify!(Event::Submission.new(assignment))
     end
   end
 

@@ -5,23 +5,13 @@ class EventSubscriber < ActiveRecord::Base
     enabled
   end
 
-  def self.notify_sync!(event)
-    notify! :sync, event
+  def do_request(event, queue_name)
+    Mumukit::Nuntius::Publisher.send "publish_#{queue_name}", event
   end
 
-  def self.notify_async!(event)
-    notify! :async, event
-  end
-
-  def do_request(event)
-    Mumukit::Nuntius::Publisher.publish_submissions event
-  end
-
-  private
-
-  def self.notify!(mode, event)
+  def self.notify!(event)
     EventSubscriber.all.select { |it| it.subscribed_to? event }.each do |it|
-      event.send "notify_#{mode}!", it
+      event.notify! it
     end
   end
 

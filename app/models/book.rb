@@ -30,6 +30,10 @@ class Book < ActiveRecord::Base
     find_by name: 'central'
   end
 
+  def self.central?
+    current.name == 'central'
+  end
+
   private
 
   def teardown_apartment_tenant!

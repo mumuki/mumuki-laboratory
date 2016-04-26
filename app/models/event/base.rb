@@ -1,12 +1,8 @@
 require 'ostruct'
 
 class Event::Base
-  def notify_sync!(subscriber)
-    subscriber.do_request(to_json)
-  end
-
-  def notify_async!(subscriber)
-    EventNotificationJob.run_async(to_job_params(subscriber)) unless Book.current.name == 'central'
+  def notify!(subscriber)
+    subscriber.do_request(to_json, queue_name)
   end
 
   def to_job_params(subscriber)

@@ -3,8 +3,8 @@ class Event::Submission < Event::Base
     @assignment = assignment
   end
 
-  def event_path
-    'events/submissions'
+  def queue_name
+    'submissions'
   end
 
   def as_json(options={})
