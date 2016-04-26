@@ -61,7 +61,7 @@ class Exercise < ActiveRecord::Base
     attrs = json.except('type', 'id', 'solution', 'language')
     attrs['bibliotheca_id'] = json['id']
     attrs['number'] = number
-    attrs = attrs.except('expectations') if json['type'] == 'playground' #FIXME bug in bibliotheca
+    attrs = attrs.except('expectations') if json['type'] == 'playground' || json['new_expectations'] #FIXME bug in bibliotheca
 
     assign_attributes(attrs)
     save!
