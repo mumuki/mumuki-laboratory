@@ -22,20 +22,20 @@ describe Exercise do
 
   describe '#next_for' do
     context 'when exercise has no guide' do
-      it { expect(exercise.next_for(user)).to be nil }
+      it { expect(exercise.next(user)).to be nil }
     end
     context 'when exercise belong to a guide with a single exercise' do
       let(:exercise_with_guide) { create(:exercise, guide: guide) }
       let(:guide) { create(:guide) }
 
-      it { expect(exercise_with_guide.next_for(user)).to be nil }
+      it { expect(exercise_with_guide.next(user)).to be nil }
     end
     context 'when exercise belongs to a guide with two exercises' do
       let!(:exercise_with_guide) { create(:exercise, guide: guide, number: 2) }
       let!(:alternative_exercise) { create(:exercise, guide: guide, number: 3) }
       let!(:guide) { create(:guide) }
 
-      it { expect(exercise_with_guide.next_for(user)).to eq alternative_exercise }
+      it { expect(exercise_with_guide.next(user)).to eq alternative_exercise }
     end
     context 'when exercise belongs to a guide with two exercises and alternative exercise has being solved' do
       let(:exercise_with_guide) { create(:exercise, guide: guide) }
@@ -44,7 +44,7 @@ describe Exercise do
 
       before { alternative_exercise.submit_solution!(user, content: 'foo').passed! }
 
-      it { expect(exercise_with_guide.next_for(user)).to be nil }
+      it { expect(exercise_with_guide.next(user)).to be nil }
     end
 
     context 'when exercise belongs to a guide with two exercises and alternative exercise has being submitted but not solved' do
@@ -57,20 +57,10 @@ describe Exercise do
       it { expect(guide.pending_exercises(user)).to_not eq [] }
       it { expect(guide.next_exercise(user)).to_not be nil }
       it { expect(guide.pending_exercises(user)).to include(alternative_exercise) }
-      it { expect(exercise_with_guide.next_for(user)).to eq alternative_exercise }
+      it { expect(exercise_with_guide.next(user)).to eq alternative_exercise }
       it { expect(guide.exercises).to_not eq [] }
       it { expect(exercise_with_guide.guide).to eq guide }
       it { expect(guide.pending_exercises(user)).to include(exercise_with_guide) }
-    end
-  end
-
-  describe '#previous_for' do
-    context 'when exercise belongs to a guide with two exercises' do
-      let!(:exercise_with_guide) { create(:exercise, guide: guide, number: 3) }
-      let!(:alternative_exercise) { create(:exercise, guide: guide, number: 2) }
-      let!(:guide) { create(:guide) }
-
-      it { expect(exercise_with_guide.previous_for(user)).to eq alternative_exercise }
     end
   end
 

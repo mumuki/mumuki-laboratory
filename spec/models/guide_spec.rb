@@ -8,7 +8,7 @@ describe Guide do
     let(:chapter) { create(:chapter) }
 
     context 'when guide is not in chapter' do
-      it { expect(guide.next_for(extra_user)).to be nil }
+      it { expect(guide.next(extra_user)).to be nil }
     end
     context 'when guide is in chapter' do
       let(:guide_in_chapter) { create(:guide) }
@@ -16,7 +16,7 @@ describe Guide do
       context 'when it is single' do
         before { chapter.rebuild!([create(:guide), guide_in_chapter]) }
 
-        it { expect(guide_in_chapter.next_for(extra_user)).to be nil }
+        it { expect(guide_in_chapter.next(extra_user)).to be nil }
         it { expect(guide_in_chapter.chapter).to eq chapter }
       end
 
@@ -24,7 +24,7 @@ describe Guide do
         let!(:other_guide) { create(:guide) }
         before { chapter.rebuild!([create(:guide), guide_in_chapter, other_guide]) }
 
-        it { expect(guide_in_chapter.next_for(extra_user)).to eq other_guide }
+        it { expect(guide_in_chapter.next(extra_user)).to eq other_guide }
       end
       context 'when there are many next guides at same level' do
         let!(:other_guide_1) { create(:guide) }
@@ -32,7 +32,7 @@ describe Guide do
 
         before { chapter.rebuild!([create(:guide), guide_in_chapter, other_guide_1, other_guide_2]) }
 
-        it { expect(guide_in_chapter.next_for(extra_user)).to eq other_guide_1 }
+        it { expect(guide_in_chapter.next(extra_user)).to eq other_guide_1 }
       end
     end
   end

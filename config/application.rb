@@ -16,6 +16,7 @@ module Mumuki
     config.autoload_paths += %W(#{config.root}/app/models/exercise)
     config.autoload_paths += %W(#{config.root}/app/models/submission)
     config.autoload_paths += %W(#{config.root}/app/models/concerns/submittable)
+    config.autoload_paths += %W(#{config.root}/app/models/concerns/navigation)
 
     config.registration_notification_format = {only: [:id, :name, :email, :image_url]}
     config.action_dispatch.perform_deep_munge = false

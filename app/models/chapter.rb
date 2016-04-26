@@ -3,7 +3,9 @@ class Chapter < ActiveRecord::Base
   include WithLessons
   include WithStats
   include FriendlyName
-  include Navigable
+
+
+  include SiblingsNavigation, ChildrenNavigation
 
   has_many :exercises, through: :guides
 

@@ -17,7 +17,7 @@ module WithNavigation
     end
 
     def sibling_for(navigable)
-      navigable.next_for(current_user)
+      navigable.next(current_user)
     end
   end
 end
