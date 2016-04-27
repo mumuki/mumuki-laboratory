@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
                 :subject
 
   def set_locale
-    I18n.locale = Book.current.locale
+    I18n.locale = Organization.current.locale
   end
 
   private

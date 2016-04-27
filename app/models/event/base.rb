@@ -9,6 +9,6 @@ class Event::Base
     OpenStruct.new(
         subscriber_id: subscriber.id,
         event_json: to_json,
-        current_book: Book.current.name)
+        current_book: Organization.current.name)
   end
 end

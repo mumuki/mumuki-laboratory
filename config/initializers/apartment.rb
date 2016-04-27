@@ -2,7 +2,7 @@ require 'apartment/elevators/first_subdomain'
 
 Apartment.configure do |config|
 
-  config.excluded_models = %w{ User Assignment Exercise Guide Language Book }
+  config.excluded_models = %w{ User Assignment Exercise Guide Language Book Organization }
 
   config.tenant_names = lambda { Book.pluck :name }
 

@@ -20,7 +20,7 @@ class BookBuilder
   end
 
   def build!
-    book = Book.current
+    book = Organization.current.book
     book.preface = @preface
     book.locale = @locale
     book.rebuild! @chapters
