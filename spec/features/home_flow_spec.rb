@@ -1,10 +1,12 @@
 require 'spec_helper'
 
 feature 'Home Flow' do
-  let(:guide) { create(:guide) }
   let!(:exercise) { create(:exercise, id: 1, guide: guide) }
-  let(:user) { User.find_by(name: 'testuser') }
+  let(:guide) { create(:guide) }
   let(:chapter) { create(:chapter) }
+  let(:book) { Organization.current.book }
+
+  let(:user) { User.find_by(name: 'testuser') }
 
   before { chapter.rebuild!([guide]) }
 

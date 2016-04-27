@@ -25,6 +25,7 @@ describe Book do
       it { expect(book.reload.preface_html).to eq "<h1>foo</h1>\n" }
 
       it { expect(Chapter.all).to eq [chapter_1, chapter_2] }
+      it { expect(Organization.current.book.chapters).to eq [chapter_1, chapter_2] }
       it { expect(chapter_1.guides).to eq [guide_1, guide_2] }
       it { expect(chapter_2.guides).to eq [guide_3] }
     end
@@ -45,6 +46,7 @@ describe Book do
       it { expect(book.reload.preface_html).to eq "<h1>foo</h1>\n" }
 
       it { expect(Chapter.all).to eq [chapter_1, chapter_2] }
+      it { expect(Organization.current.book.chapters).to eq [chapter_1, chapter_2] }
       it { expect(chapter_1.guides).to eq [guide_1, guide_2] }
       it { expect(chapter_2.guides).to eq [guide_3] }
     end
@@ -62,6 +64,8 @@ describe Book do
       it { expect(book.reload.preface_html).to eq "<h1>foo</h1>\n" }
 
       it { expect(Chapter.all).to eq [chapter_1, chapter_2] }
+      it { expect(Organization.current.book.chapters).to eq [chapter_1, chapter_2] }
+
       it { expect(chapter_1.guides).to eq [guide_1, guide_2] }
       it { expect(chapter_2.guides).to eq [guide_3] }
     end

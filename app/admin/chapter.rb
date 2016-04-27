@@ -1,12 +1,13 @@
 ActiveAdmin.register Chapter do
 
-  permit_params :name, :number, :description, :locale
+  permit_params :name, :number, :description, :locale, :book
 
   filter :name
   filter :description
   filter :locale
   filter :created_at
   filter :updated_at
+  filter :book
 
   index do
     column(:id)
@@ -14,6 +15,7 @@ ActiveAdmin.register Chapter do
     column(:number)
     column(:description)
     column(:locale)
+    column(:book)
 
     actions
   end
