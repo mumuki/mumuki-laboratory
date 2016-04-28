@@ -1,10 +1,5 @@
-module WithLessons
+module TopicNavigation
   extend ActiveSupport::Concern
-
-  included do
-    has_many :lessons, -> { order(number: :asc) }
-    has_many :guides, -> { order('lessons.number') }, through: :lessons
-  end
 
   def pending_guides(user)
     guides.

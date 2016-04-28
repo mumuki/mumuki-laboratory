@@ -1,6 +1,5 @@
 class Chapter < ActiveRecord::Base
   include WithLocale
-  include WithLessons
   include WithStats
   include FriendlyName
 
@@ -9,21 +8,20 @@ class Chapter < ActiveRecord::Base
 
   include SiblingsNavigation, ChildrenNavigation
 
-  has_many :exercises, through: :guides
-
   default_scope -> { order(:number) }
 
   validates_presence_of :name, :description
 
   markdown_on :description, :long_description, :links
 
+  delegate :lessons, :pending_guides, :first_guide, :guides, :exercises, to: :topic
 
   def friendly
     name
   end
 
   def guides=(guides)
-    self.lessons = guides.each_with_index.map do |it, index|
+    self.topic.lessons = guides.each_with_index.map do |it, index|
       it.positionate! self, index+1
     end
   end
