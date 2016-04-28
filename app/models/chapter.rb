@@ -5,6 +5,7 @@ class Chapter < ActiveRecord::Base
   include FriendlyName
 
   belongs_to :book
+  belongs_to :topic
 
   include SiblingsNavigation, ChildrenNavigation
 
