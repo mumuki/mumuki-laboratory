@@ -11,5 +11,5 @@ class Topic < ActiveRecord::Base
 
   include TopicNavigation
 
-
+  has_many :chapters
 end
