@@ -1,11 +1,11 @@
 RSpec.configure do |config|
   config.before(:suite) do
-    Book.all.each(&:destroy!)
-    Book.create!(name: 'test')
+    Organization.all.each(&:destroy!)
+    Organization.create!(name: 'test', book: Book.new(name: 'test'))
   end
 
   config.before(:each) do
-    Book.find_by(name: 'test').switch!
+    Organization.find_by(name: 'test').switch!
   end
 
   config.after(:each) do

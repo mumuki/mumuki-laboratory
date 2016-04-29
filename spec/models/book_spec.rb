@@ -1,10 +1,7 @@
 require 'spec_helper'
 
 describe Book do
-  let(:book) { Book.find_by(name: 'test') }
-
-  it { expect(book).to_not be nil }
-  it { expect(book).to eq Book.current }
+  let(:book) { Organization.current.book }
 
   describe '#rebuild!' do
     let(:chapter_1) { build(:chapter) }

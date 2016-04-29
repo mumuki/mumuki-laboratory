@@ -15,10 +15,10 @@ describe EventSubscriber do
   end
 
   describe 'protect in central book' do
-    let!(:book) { Book.find_or_create_by(name: 'central') }
+    let!(:organization) { Organization.find_or_create_by(name: 'central') }
 
     it 'EventSubscriber does not send event when book is central' do
-      book.switch!
+      organization.switch!
       expect_any_instance_of(EventSubscriber).not_to receive(:do_request)
       EventSubscriber.notify!(Event::Submission.new(assignment))
     end

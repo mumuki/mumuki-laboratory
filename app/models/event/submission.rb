@@ -21,6 +21,6 @@ class Event::Submission < Event::Base
       merge('id' => @assignment.submission_id,
             'created_at' => @assignment.updated_at,
             'content' => @assignment.solution,
-            'tenant' => Book.current.name)
+            'tenant' => Organization.current.name)
   end
 end
