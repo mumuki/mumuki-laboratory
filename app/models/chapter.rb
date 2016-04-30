@@ -2,6 +2,7 @@ class Chapter < ActiveRecord::Base
   include WithLocale
   include WithStats
   include FriendlyName
+  include TopicContainer
 
   belongs_to :book
   belongs_to :topic
@@ -13,8 +14,6 @@ class Chapter < ActiveRecord::Base
   validates_presence_of :name, :description
 
   markdown_on :description, :long_description, :links
-
-  delegate :lessons, :pending_guides, :first_guide, :guides, :exercises, to: :topic
 
   def friendly
     name
