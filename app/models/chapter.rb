@@ -4,6 +4,7 @@ class Chapter < ActiveRecord::Base
   include WithStats
   include FriendlyName
 
+  belongs_to :book
 
   include SiblingsNavigation, ChildrenNavigation
 

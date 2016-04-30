@@ -8,7 +8,7 @@ class ChaptersController < ApplicationController
   end
 
   def index
-    @chapters = Chapter.all
+    @chapters = Organization.current.book.chapters
   end
 
   def subject
