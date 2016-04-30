@@ -2,13 +2,13 @@ module GuideNavigation
   extend ActiveSupport::Concern
 
   included do
-    has_one :lesson
-    has_one :chapter, through: :lesson
+    has_one :lesson #FIXME
+    has_one :topic, through: :lesson
   end
 
   def positionate!(chapter, number) #FIXME stop doing position logic by hand
-    self.lesson = Lesson.new chapter: chapter, number: number, guide: self
-    self.chapter = chapter
+    self.lesson = Lesson.new topic: chapter.topic, number: number, guide: self
+    self.topic = chapter.topic
     self.lesson
   end
 
@@ -26,6 +26,11 @@ module GuideNavigation
 
   def parent
     chapter
+  end
+
+  def chapter
+    Rails.logger.warn 'deprecated, remove apartement first'
+    topic.try { |it| it.chapters.first } #FIXME
   end
 
 end

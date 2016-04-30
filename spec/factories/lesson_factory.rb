@@ -2,7 +2,7 @@ FactoryGirl.define do
 
   factory :lesson do
     sequence(:number)
-    chapter
+    topic
     guide
   end
 

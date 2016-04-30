@@ -23,6 +23,7 @@ describe Event do
     describe Event::Submission do
       let(:user) { create(:user, id: 2, name: 'foo', provider: 'auth0', uid: 'github|gh1234') }
       let(:lesson) { create(:lesson, number: 4) }
+      let!(:chapter) { create(:chapter, topic: lesson.topic) }
       let(:assignment) { create(:assignment,
                                 solution: 'x = 2',
                                 status: Status::Passed,
