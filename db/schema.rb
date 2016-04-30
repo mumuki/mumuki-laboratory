@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160429181825) do
+ActiveRecord::Schema.define(version: 20160430225048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +109,16 @@ ActiveRecord::Schema.define(version: 20160429181825) do
     t.datetime "updated_at"
     t.boolean  "read",          default: false
   end
+
+  create_table "complements", force: true do |t|
+    t.integer  "guide_id"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "complements", ["book_id"], name: "index_complements_on_book_id", using: :btree
+  add_index "complements", ["guide_id"], name: "index_complements_on_guide_id", using: :btree
 
   create_table "event_subscribers", force: true do |t|
     t.string   "url"
