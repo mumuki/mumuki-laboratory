@@ -1,5 +1,7 @@
 class Exam < ActiveRecord::Base
-  validates_presence_of :duration, :guide, :start_time, :end_time
+  include GuideContainer
+
+  validates_presence_of :duration, :start_time, :end_time
 
   belongs_to :guide
   belongs_to :organization
