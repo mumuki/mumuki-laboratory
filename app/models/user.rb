@@ -25,6 +25,8 @@ class User < ActiveRecord::Base
   belongs_to :last_exercise, class_name: 'Exercise'
   has_one :last_guide, through: :last_exercise, source: :guide
 
+  has_and_belongs_to_many :exams
+
   def last_submission_date
     assignments.last.try(&:updated_at)
   end
