@@ -2,6 +2,7 @@ class Book < ActiveRecord::Base
   validates_presence_of :name, :locale
 
   has_many :chapters
+  has_many :complements
 
   markdown_on :preface
 
