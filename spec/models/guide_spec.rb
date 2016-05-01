@@ -96,18 +96,6 @@ describe Guide do
     it { expect(guide_in_chapter.friendly_name).to eq "#{guide_in_chapter.id}-fundamentos-de-programacion-una-guia" }
   end
 
-  describe '#new?' do
-    context 'when just created' do
-      it { expect(guide.new?).to be true }
-    end
-    context 'when created a month ago' do
-      before { guide.update!(created_at: 1.month.ago) }
-
-      it { expect(guide.new?).to be false }
-    end
-  end
-
-
   describe '#submission_contents_for' do
     before do
       guide.exercises = [create(:exercise, language: guide.language), create(:exercise, language: guide.language)]

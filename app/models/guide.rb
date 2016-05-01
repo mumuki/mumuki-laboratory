@@ -38,10 +38,6 @@ class Guide < ActiveRecord::Base
     {organization: org, repository: repo}
   end
 
-  def new?
-    created_at > 7.days.ago
-  end
-
   def friendly
     defaulting_name { "#{parent.friendly}: #{name}" }
   end
