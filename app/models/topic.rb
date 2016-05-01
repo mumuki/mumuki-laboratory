@@ -22,4 +22,7 @@ class Topic < ActiveRecord::Base
       save!
     end
   end
+
+  has_many :usages, as: :item
+
 end
