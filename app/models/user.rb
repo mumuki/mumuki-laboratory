@@ -74,6 +74,4 @@ class User < ActiveRecord::Base
     comments.reject(&:read)
   end
 
-  private
-
 end
