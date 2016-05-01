@@ -9,7 +9,7 @@ module WithIcons
             exercise_path(exercise) if current_user?
   end
 
-  def language_icon(language, options={})
+  def language_icon(language)
     tag('span', class: "fa devicons devicons-#{language.devicon} lang-icon", alt: language.name)
   end
 

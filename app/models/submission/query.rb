@@ -14,7 +14,7 @@ class Query < Submission
     super
   end
 
-  def save_results!(results, assignment)
+  def save_results!(_results, assignment)
     assignment.exercise.save_query_results!(assignment)
   end
 end

@@ -4,7 +4,7 @@ namespace :guides do
       begin
         guide.import!
       rescue Exception => e
-        puts "Could not import guide #{guide.id}"
+        puts "Could not import guide #{guide.id}. Reason #{e}"
       end
     end
   end
