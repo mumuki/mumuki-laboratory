@@ -62,7 +62,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'rake', '10.4.2'
   gem 'faker', '~> 1.5'
-  gem 'capybara', '2.3.0'
+  gem 'capybara', '~> 2.3.0'
 end
 
 group :development do

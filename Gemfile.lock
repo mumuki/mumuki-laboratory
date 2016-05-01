@@ -205,14 +205,14 @@ GEM
       redcarpet (>= 2.0)
     method_source (0.8.2)
     mime-types (2.99.1)
-    mini_portile (0.6.2)
+    mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     netrc (0.11.0)
-    nokogiri (1.6.6.2)
-      mini_portile (~> 0.6.0)
+    nokogiri (1.6.7.2)
+      mini_portile2 (~> 2.0.0.rc2)
     nprogress-rails (0.1.6.7)
     oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
@@ -374,7 +374,7 @@ DEPENDENCIES
   bootstrap_form
   bootswatch-rails
   bunny
-  capybara (= 2.3.0)
+  capybara (~> 2.3.0)
   codeclimate-test-reporter
   devise
   execjs
