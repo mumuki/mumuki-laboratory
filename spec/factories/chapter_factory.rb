@@ -7,6 +7,7 @@ FactoryGirl.define do
     book { Organization.current.book }
     locale :en
     image_url 'http://localhost:3000/image'
-  end
 
+    topic
+  end
 end
