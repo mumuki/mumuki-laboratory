@@ -49,7 +49,7 @@ describe 'api controller' do
                   id: 1,
                   slug: 'flbulgarelli/mumuki-sample-exercises',
                   name: 'guide_1',
-                  language: {id: 1, name: 'language_1' },
+                  language: {id: 1, name: 'language_1'},
                   exercises: [
                       {id: 1, name: 'exercise_1', number: 1}
                   ]
@@ -82,11 +82,11 @@ describe 'api controller' do
       end
 
       context 'when the guide belongs to a chapter' do
-        let!(:chapter_1) { create(:chapter, id: 1, name: 'chapter_1') }
         let!(:language_1) { create(:language, id: 1, name: 'language_1') }
-        let!(:guide_1) { create(:guide, name: 'guide_1', id: 1, language_id: language_1.id) }
 
-        before { chapter_1.rebuild!([guide_1]) }
+        let!(:chapter_1) {
+          create(:chapter, id: 1, name: 'chapter_1', lessons: [
+              create(:lesson, guide: create(:guide, name: 'guide_1', id: 1, language: language_1))]) }
 
         before { get :index }
 
@@ -113,23 +113,23 @@ describe 'api controller' do
         let(:imported_guide) { Guide.find_by(slug: 'flbulgarelli/sample-guide') }
         let(:guide_json) {
           {
-            name: 'sample guide',
-            description: 'Baz',
-            slug: 'flbulgarelli/sample-guide',
-            language: 'haskell',
-            locale: 'en',
-            expectations: [{ inspection: 'HasBinding', binding: 'foo'}],
-            exercises: [
-                {type: 'problem',
-                 name: 'Bar',
-                 description: 'a description',
-                 test: 'foo bar',
-                 default_content: 'foo',
-                 extra_visible: true,
-                 tag_list: %w(baz bar),
-                 layout: 'no_editor',
-                 expectations: [{ inspection: 'HasBinding', binding: 'bar'}],
-                 id: 1}]}
+              name: 'sample guide',
+              description: 'Baz',
+              slug: 'flbulgarelli/sample-guide',
+              language: 'haskell',
+              locale: 'en',
+              expectations: [{inspection: 'HasBinding', binding: 'foo'}],
+              exercises: [
+                  {type: 'problem',
+                   name: 'Bar',
+                   description: 'a description',
+                   test: 'foo bar',
+                   default_content: 'foo',
+                   extra_visible: true,
+                   tag_list: %w(baz bar),
+                   layout: 'no_editor',
+                   expectations: [{inspection: 'HasBinding', binding: 'bar'}],
+                   id: 1}]}
         }
         before { allow_any_instance_of(Mumukit::Bridge::Bibliotheca).to receive(:guide).and_return(guide_json.deep_stringify_keys) }
         before { post :create, guide_json }

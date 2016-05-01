@@ -6,16 +6,13 @@ class Book < ActiveRecord::Base
 
   markdown_on :preface
 
+  numbered :chapters
+
   def rebuild!(chapters)
     transaction do
-      self.chapters.all_except(chapters).delete_all
-      chapters.each_with_index do |it, index|
-        it.number = index + 1
-        it.save!
-      end
+      self.chapters.delete_all
+      self.chapters = chapters
       save!
     end
   end
-
-
 end

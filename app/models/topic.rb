@@ -11,5 +11,15 @@ class Topic < ActiveRecord::Base
 
   include TopicNavigation
 
-  has_many :chapters
+  markdown_on :description, :long_description, :links
+
+  numbered :lessons
+
+  def rebuild!(lessons)
+    transaction do
+      self.lessons.delete_all
+      self.lessons = lessons
+      save!
+    end
+  end
 end

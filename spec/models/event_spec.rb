@@ -22,8 +22,16 @@ describe Event do
 
     describe Event::Submission do
       let(:user) { create(:user, id: 2, name: 'foo', provider: 'auth0', uid: 'github|gh1234') }
-      let(:lesson) { create(:lesson, number: 4) }
-      let!(:chapter) { create(:chapter, topic: lesson.topic) }
+
+      let(:chapter) {
+        create(:chapter, lessons: [
+            create(:lesson),
+            create(:lesson),
+            create(:lesson),
+            create(:lesson)]) }
+
+      let(:lesson) { chapter.lessons.fourth }
+
       let(:assignment) { create(:assignment,
                                 solution: 'x = 2',
                                 status: Status::Passed,
@@ -34,6 +42,7 @@ describe Event do
       let(:event) { Event::Submission.new(assignment) }
       let(:json) { event.as_json.deep_symbolize_keys }
 
+      it { expect(lesson.number).to eq 4 }
       it do
         expect(json).to eq(status: Status::Passed,
                            result: nil,

@@ -1,14 +1,15 @@
 require 'spec_helper'
 
 feature 'Home Flow' do
-  let!(:exercise) { create(:exercise, id: 1, guide: guide) }
+  let!(:exercise) { build(:exercise) }
   let(:guide) { create(:guide) }
-  let(:chapter) { create(:chapter) }
+  let!(:chapter) {
+    create(:chapter, lessons: [
+        create(:lesson, guide: guide)]) }
   let(:book) { Organization.current.book }
 
   let(:user) { User.find_by(name: 'testuser') }
 
-  before { chapter.rebuild!([guide]) }
 
   context 'anonymous visitor' do
     scenario 'from outside' do

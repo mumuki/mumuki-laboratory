@@ -6,12 +6,6 @@ module GuideNavigation
     has_one :topic, through: :lesson
   end
 
-  def positionate!(chapter, number) #FIXME stop doing position logic by hand
-    self.lesson = Lesson.new topic: chapter.topic, number: number, guide: self
-    self.topic = chapter.topic
-    self.lesson
-  end
-
   def done_for?(user)
     stats_for(user).done?
   end

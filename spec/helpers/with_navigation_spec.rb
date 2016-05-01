@@ -47,33 +47,34 @@ describe WithNavigation do
       let!(:current_user) { create(:user) }
 
       context 'when guide has no suggestions' do
-        let(:guide) { create(:guide,  name: 'Guide A') }
-        let(:exercise) { create(:exercise, number: 1, guide: guide) }
+        let(:exercise) { build(:exercise) }
+        let!(:lesson) { create(:lesson, name: 'Guide A', exercises: [exercise]) }
 
-        before { chapter.rebuild!([guide]) }
+        before { chapter.rebuild!([lesson]) }
         before { exercise.submit_solution!(current_user).passed! }
 
-        it { expect(next_button(guide)).to be nil }
+        it { expect(next_button(lesson.guide)).to be nil }
       end
 
       context 'when guide has one suggestion' do
-        let!(:suggested_guide) { create(:guide) }
-        let(:guide) { create(:guide) }
+        let!(:suggested_lesson) { create(:lesson, name: 'l3') }
+        let(:lesson) { create(:lesson, name: 'l2') }
+        let(:another_lesson) { create(:lesson, name: 'l1') }
 
-        before { chapter.rebuild!([guide, guide, suggested_guide])}
+        before { chapter.rebuild!([another_lesson, lesson, suggested_lesson]) }
 
-        it { expect(next_button(guide)).to include "<a class=\"btn btn-success\" href=\"/guides/#{suggested_guide.friendly_name}\">Next: #{suggested_guide.name} <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(lesson.guide)).to include "<a class=\"btn btn-success\" href=\"/guides/#{suggested_lesson.friendly_name}\">Next: #{suggested_lesson.name} <i class=\"fa fa-chevron-right\"></i></a>" }
       end
 
       context 'when guide has many suggestions' do
-        let!(:suggested_guide_1) { create(:guide) }
-        let!(:suggested_guide_2) { create(:guide) }
-        let(:guide) { create(:guide) }
+        let!(:suggested_lesson_1) { create(:lesson) }
+        let!(:suggested_lesson_2) { create(:lesson) }
+        let(:lesson) { create(:lesson) }
 
-        before { chapter.rebuild!([guide, suggested_guide_1, suggested_guide_2])}
+        before { chapter.rebuild!([lesson, suggested_lesson_1, suggested_lesson_2]) }
 
-        it { expect(next_button(guide)).to include "<a class=\"btn btn-success\" href=\"/guides/#{suggested_guide_1.friendly_name}\">Next: #{suggested_guide_1.name} <i class=\"fa fa-chevron-right\"></i></a>" }
-        it { expect(next_button(guide)).to be_html_safe }
+        it { expect(next_button(lesson.guide)).to include "<a class=\"btn btn-success\" href=\"/guides/#{suggested_lesson_1.friendly_name}\">Next: #{suggested_lesson_1.name} <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(lesson.guide)).to be_html_safe }
       end
     end
   end
