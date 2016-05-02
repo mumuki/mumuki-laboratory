@@ -10,9 +10,10 @@ Rails.application.routes.draw do
     get 'logout' => :destroy
   end
 
-  root to: 'chapters#index'
+  root to: 'book#show'
 
-  resources :chapters, only: [:index, :show]
+  resources :book, only: [:show]
+  resources :chapters, only: [:show]
 
   # All users
   resources :exercises, only: [:show, :index] do
@@ -28,5 +29,5 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index]
 
   # Guide route
-  get '/guides/:organization/:repository' => 'guides#show'
+  get '/guides/:organization/:repository' => 'guides#show', as: :guide_by_slug
 end

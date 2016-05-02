@@ -40,7 +40,7 @@ es:
   guide_created: Guia creada exitosamente
   guide_finished: Felicitaciones, terminaste la lección %{guide}
   guide_internal: guia
-  guide_number: Lección %{number}
+  lesson_number: Lección %{number}
   guides_index_title: ¿Qué guía querés hacer hoy?
   here: acá
   history: Historial

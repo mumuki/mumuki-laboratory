@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :exams
 
+  def last_lesson
+    last_guide.lesson
+  end
+
   def last_submission_date
     assignments.last.try(&:updated_at)
   end

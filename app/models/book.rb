@@ -17,6 +17,10 @@ class Book < ActiveRecord::Base
     self
   end
 
+  def first_chapter
+    chapters.first
+  end
+
   def rebuild!(chapters)
     transaction do
       self.chapters.delete_all

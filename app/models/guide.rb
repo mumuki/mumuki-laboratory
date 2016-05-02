@@ -32,6 +32,10 @@ class Guide < ActiveRecord::Base
     Lesson.where(guide_id: id).first #FIXME use usages and consider exams and complements
   end
 
+  def exercises_count
+    exercises.count
+  end
+
   def pending_exercises(user)
     exercises.
         joins("left join public.assignments assignments

@@ -8,7 +8,7 @@
   <%= @chapter.long_description_html || @chapter.description_html %>
 
   <div class="actions">
-    <a href="<%= guide_path(@chapter.first_guide) %>" class="btn btn-success">
+    <a href="<%= lesson_path(@chapter.first_lesson) %>" class="btn btn-success">
       <%= t(:start_practicing) %>
     </a>
   </div>
@@ -16,10 +16,10 @@
 <div>
   <h3><%= t(:content) %></h3>
 
-  <% @chapter.guides.each do |guide| %>
-    <h4><%= t(:guide_number, number: guide.number) %>: <%= link_to_path_element guide, mode: :plain %></h4>
+  <% @chapter.lessons.each do |lesson| %>
+    <h4><%= t(:lesson_number, number: lesson.number) %>: <%= link_to_path_element lesson, mode: :plain %></h4>
     <ul class="progress-listing">
-      <% guide.exercises.each do |exercise| %>
+      <% lesson.exercises.each do |exercise| %>
         <li>
           <%= exercise_status_icon exercise %>
           <%= link_to_path_element(exercise) %>

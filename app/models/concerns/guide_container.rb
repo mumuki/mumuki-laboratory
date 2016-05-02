@@ -4,7 +4,12 @@ module GuideContainer
   included do
     validates_presence_of :guide
 
-    delegate :exercises, :name, to: :guide
+    delegate :name,
+             :language,
+             :teaser_html,
+             :search_tags,
+             :exercises,
+             :exercises_count, to: :guide
   end
 
   def friendly

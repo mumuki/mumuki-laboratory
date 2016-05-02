@@ -35,7 +35,7 @@ en:
   guide: Guide
   guide_created: Guide created successfully
   guide_finished: Congrants! You completed guide %{guide}
-  guide_number: Lesson %{number}
+  lesson_number: Lesson %{number}
   guides_index_title: Which guide do you want to do today?
   here: here
   history: History
