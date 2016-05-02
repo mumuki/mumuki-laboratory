@@ -5,6 +5,17 @@
 <% @stats = @exercise.guide.stats_for(current_user) if current_user && @exercise.guide %>
 
 <div class="row">
+  <div class="col-md-3 col-md-offset-5">
+    <div id="timer" class="text-center"></div>
+    <script>
+      countdown( new Date(2016, 4, 3) ,
+        function(ts) { $("#timer").text(ts); },
+        countdown.HOURS|countdown.MINUTES);
+    </script>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-md-11">
     <h1>
       <%= t(:exercise_number, number: @exercise.number) %>: <%= @exercise.name %>
