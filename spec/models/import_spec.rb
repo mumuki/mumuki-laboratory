@@ -45,7 +45,8 @@ describe Guide do
 
   describe '#import_from_json!' do
     context 'when guide is empty' do
-      let(:guide) { create(:guide, exercises: []) }
+      let(:lesson) { create(:lesson, guide: create(:guide, exercises: [])) }
+      let(:guide) { lesson.guide }
 
       before do
         guide.import_from_json!(guide_json)

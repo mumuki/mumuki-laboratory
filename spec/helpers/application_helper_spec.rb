@@ -40,8 +40,8 @@ describe ApplicationHelper do
   end
 
   describe '#link_to_guide' do
-    let(:lesson) { create(:lesson, guide: create(:guide, name: 'foo', id: 1)) }
-    it { expect(link_to_path_element(lesson)).to start_with '<a href="/guides/1-foo">foo' }
+    let(:lesson) { create(:lesson, id: 1, name: 'foo') }
+    it { expect(link_to_path_element(lesson)).to start_with '<a href="/lessons/1-foo">foo' }
   end
 
   describe '#status_icon' do

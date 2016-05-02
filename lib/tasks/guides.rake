@@ -1,4 +1,4 @@
-namespace :guides do
+namespace :lessons do
   task import_all: :environment do
     Guide.all.each do |guide|
       begin

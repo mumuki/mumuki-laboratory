@@ -22,11 +22,11 @@ Rails.application.routes.draw do
   end
 
   # All users
-  resources :guides, only: [:show, :index]
+  resources :lessons, only: [:show, :index]
 
   # All users
   resources :users, only: [:show, :index]
 
-  #Alternate guide route
-  get '/guides/:organization/:repository' => 'guides#show_by_slug', as: :guide_by_slug
+  # Guide route
+  get '/guides/:organization/:repository' => 'guides#show'
 end

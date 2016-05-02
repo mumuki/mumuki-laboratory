@@ -1,7 +1,7 @@
 module NestedInGuide
   extend ActiveSupport::Concern
   included do
-    before_action :set_guide
+    before_action :set_lesson
   end
 
   def set_guide

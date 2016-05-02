@@ -30,8 +30,8 @@ class Topic < ActiveRecord::Base
         group('public.guides.id', 'lessons.number').map(&:lesson)
   end
 
-  def first_guide
-    guides.first
+  def first_lesson
+    lessons.first
   end
 
   def rebuild!(lessons)

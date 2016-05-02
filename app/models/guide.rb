@@ -1,13 +1,5 @@
 class Guide < ActiveRecord::Base
-  INDEXED_ATTRIBUTES = {
-      against: [:name, :description],
-      associated_against: {
-          language: [:name]
-      }
-  }
-
-  include WithSearch,
-          WithTeaser,
+  include WithTeaser,
           WithLocale,
           WithStats,
           WithExpectations,
@@ -33,7 +25,7 @@ class Guide < ActiveRecord::Base
   end
 
   def chapter
-    lesson.chapter #FIXME temporary
+    lesson.try(:chapter) #FIXME temporary
   end
 
   def usage_in_organization

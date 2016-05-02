@@ -4,26 +4,26 @@ feature 'Search Flow' do
   let(:haskell) { create(:language, name: 'Haskell') }
   let(:ruby) { create(:language, name: 'Ruby') }
 
-  let(:exercises) {
-    create(:exercise, tag_list: ['haskell'], name: 'Foo', description: 'an awesome problem description')
-    create(:exercise, tag_list: [], name: 'Bar', language: haskell)
-    create(:exercise, tag_list: [], name: 'haskelloid')
-    create(:exercise, tag_list: [], name: 'Baz', description: 'do it in haskell')
-    create(:exercise, tag_list: [], name: 'nothing', guide: guide)
-  }
-  let(:guide) { create(:guide, language: ruby, name: 'awesomeRubyGuide', description: 'rubist baz guide') }
-  let!(:lesson) { create(:lesson, guide: guide) }
+  let!(:lesson) {
+    create(:lesson, language: ruby, name: 'awesomeRubyGuide', description: 'rubist baz guide', exercises: [
+        create(:exercise, tag_list: [], name: 'nothing')
+    ]) }
+  let!(:other_lesson) {
+    create(:lesson, language: ruby, name: 'the other guide', description: 'yet another guide', exercises: [
+        create(:exercise, tag_list: ['haskell'], name: 'Foo', description: 'an awesome problem description'),
+        create(:exercise, tag_list: [], name: 'Bar', language: haskell),
+        create(:exercise, tag_list: [], name: 'haskelloid'),
+        create(:exercise, tag_list: [], name: 'Baz', description: 'do it in haskell'),
+    ]) }
 
-  scenario 'search guides by language' do
-    visit '/guides'
+  scenario 'search lessons by language' do
+    visit '/lessons'
 
     fill_in 'q', with: 'ruby'
     click_on 'search'
 
     expect(page).to have_text('awesomeRubyGuide')
-
   end
-
 
   scenario 'search by language' do
     visit '/exercises'

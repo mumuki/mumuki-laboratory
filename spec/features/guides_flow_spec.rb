@@ -21,7 +21,7 @@ feature 'Search Flow' do
   end
 
   scenario 'visit guides from search page, and starts practicing' do
-    visit '/guides'
+    visit '/lessons'
 
     click_on 'awesomeGuide'
 

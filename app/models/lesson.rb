@@ -1,6 +1,13 @@
 class Lesson < ActiveRecord::Base
-  include WithNumber
+  INDEXED_ATTRIBUTES = {
+      against: [:name, :description],
+      associated_against: {
+          language: [:name]
+      }
+  }
 
+  include WithNumber
+  include WithSearch
   include FriendlyName
 
   include GuideContainer
@@ -9,6 +16,10 @@ class Lesson < ActiveRecord::Base
   belongs_to :guide
 
   include ParentNavigation, SiblingsNavigation
+
+  def chapter
+    navigable_parent #FIXME
+  end
 
   def pending_siblings_for(user)
     topic.pending_lessons(user)

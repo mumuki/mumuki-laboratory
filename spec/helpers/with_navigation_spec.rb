@@ -8,10 +8,16 @@ describe WithNavigation do
 
   describe '#next_button' do
     context 'with exercises' do
-      let(:guide) { create(:guide, name: 'my guide') }
-      let!(:exercise_1) { create(:exercise, id: 11, guide: guide, number: 1, name: 'exercise 1') }
-      let!(:exercise_2) { create(:exercise, id: 12, guide: guide, number: 2, name: 'exercise 2') }
-      let!(:exercise_3) { create(:exercise, id: 13, guide: guide, number: 3, name: 'exercise 3') }
+      let(:lesson) { create(:lesson, name: 'my guide', exercises: [
+          create(:exercise, id: 11, name: 'exercise 1'),
+          create(:exercise, id: 12, name: 'exercise 2'),
+          create(:exercise, id: 13, name: 'exercise 3')
+      ]) }
+
+      let!(:exercise_1) { lesson.exercises.first }
+      let!(:exercise_2) { lesson.exercises.second }
+      let!(:exercise_3) { lesson.exercises.third }
+
       let(:current_user) { create(:user) }
 
       context 'when user did not submit any solution' do
@@ -63,7 +69,7 @@ describe WithNavigation do
 
         before { chapter.rebuild!([another_lesson, lesson, suggested_lesson]) }
 
-        it { expect(next_button(lesson)).to include "<a class=\"btn btn-success\" href=\"/guides/#{suggested_lesson.friendly_name}\">Next: #{suggested_lesson.name} <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(lesson)).to include "<a class=\"btn btn-success\" href=\"/lessons/#{suggested_lesson.friendly_name}\">Next: #{suggested_lesson.name} <i class=\"fa fa-chevron-right\"></i></a>" }
       end
 
       context 'when guide has many suggestions' do
@@ -73,7 +79,7 @@ describe WithNavigation do
 
         before { chapter.rebuild!([lesson, suggested_lesson_1, suggested_lesson_2]) }
 
-        it { expect(next_button(lesson)).to include "<a class=\"btn btn-success\" href=\"/guides/#{suggested_lesson_1.friendly_name}\">Next: #{suggested_lesson_1.name} <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(lesson)).to include "<a class=\"btn btn-success\" href=\"/lessons/#{suggested_lesson_1.friendly_name}\">Next: #{suggested_lesson_1.name} <i class=\"fa fa-chevron-right\"></i></a>" }
         it { expect(next_button(lesson)).to be_html_safe }
       end
     end
