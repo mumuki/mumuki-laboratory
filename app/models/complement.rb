@@ -1,5 +1,6 @@
 class Complement < ActiveRecord::Base
   include GuideContainer
+  include FriendlyName
 
   validates_presence_of :book
 

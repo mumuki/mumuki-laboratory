@@ -2,7 +2,7 @@ module WithBreadcrumbs
   def breadcrumbs(e)
     base = link_to_path_element e
     if e.respond_to?(:orphan?) && !e.orphan?
-      "#{breadcrumbs(e.parent)} <li>#{base}</li>".html_safe
+      "#{breadcrumbs(e.navigable_parent)} <li>#{base}</li>".html_safe
     else
       "#{home_breadcrumb}<li>#{base}</li>".html_safe
     end

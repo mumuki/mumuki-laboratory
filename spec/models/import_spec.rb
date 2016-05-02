@@ -57,7 +57,6 @@ describe Guide do
       it { expect(guide.slug).to eq 'mumuki/sample-guide' }
       it { expect(guide.extra).to eq 'bar' }
       it { expect(guide.description).to eq 'Baz' }
-      it { expect(guide.friendly_name).to include 'sample-guide' }
 
       it { expect(guide.exercises.count).to eq 3 }
       it { expect(guide.exercises.first.language).to eq gobstones }

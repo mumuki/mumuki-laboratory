@@ -13,9 +13,11 @@ class Event::Submission < Event::Base
               include: {
                 guide: {only: [:slug, :name],
                   include: {
-                    chapter: {only: [:id], methods: [:name]},
                     lesson: {only: [:number]},
-                    language: {only: [:name]}}},
+                    language: {only: [:name]}},
+                  methods: {
+                    chapter: {only: [:id], methods: [:name]}
+                  }},
                 exercise: {only: [:id, :name, :number]},
                 submitter: {only: [:name, :email, :image_url], methods: [:social_id]}}).
       merge('id' => @assignment.submission_id,

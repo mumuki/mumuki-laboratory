@@ -7,8 +7,10 @@ describe ApplicationHelper do
   before { I18n.locale = :en }
 
   describe 'page_title' do
-    let(:guide) { create(:guide, name: 'A Guide')}
-    let(:exercise) { create(:exercise, name: 'An Exercise', guide: guide, number: 2) }
+    let(:lesson) {
+      create(:lesson, name: 'A Guide', exercises: [
+          create(:exercise, name: 'An Exercise')]) }
+    let(:exercise) { lesson.exercises.first }
 
     it { expect(page_title nil).to eq 'Mumuki - Improve your programming skills' }
     it { expect(page_title Problem.new).to eq 'Mumuki - Improve your programming skills' }
@@ -23,18 +25,23 @@ describe ApplicationHelper do
 
   describe '#link_to_exercise' do
     context 'when exercise has guide' do
-      let(:guide) { create(:guide, name: 'bar') }
-      let(:exercise) { create(:exercise, name: 'foo', guide: guide, id: 1, number: 3) }
+      let(:lesson) {
+        create(:lesson, name: 'bar', exercises: [
+            create(:exercise, name: 'foo2', id: 10),
+            create(:exercise, name: 'foo2', id: 20),
+            create(:exercise, name: 'foo3', id: 30)
+        ]) }
+      let(:exercise) { lesson.exercises.third }
 
-      it { expect(link_to_path_element(exercise, mode: :plain)).to eq '<a href="/exercises/1-bar-foo">foo</a>' }
-      it { expect(link_to_path_element(exercise, mode: :friendly)).to eq '<a href="/exercises/1-bar-foo">bar - foo</a>' }
-      it { expect(link_to_path_element(exercise)).to eq '<a href="/exercises/1-bar-foo">3. foo</a>' }
+      it { expect(link_to_path_element(exercise, mode: :plain)).to eq '<a href="/exercises/30-bar-foo3">foo3</a>' }
+      it { expect(link_to_path_element(exercise, mode: :friendly)).to eq '<a href="/exercises/30-bar-foo3">bar - foo3</a>' }
+      it { expect(link_to_path_element(exercise)).to eq '<a href="/exercises/30-bar-foo3">3. foo3</a>' }
     end
   end
 
   describe '#link_to_guide' do
-    let(:guide) { create(:guide, name: 'foo', id: 1) }
-    it { expect(link_to_path_element(guide)).to start_with '<a href="/guides/1-foo">foo' }
+    let(:lesson) { create(:lesson, guide: create(:guide, name: 'foo', id: 1)) }
+    it { expect(link_to_path_element(lesson)).to start_with '<a href="/guides/1-foo">foo' }
   end
 
   describe '#status_icon' do

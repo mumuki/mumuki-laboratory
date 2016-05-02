@@ -3,17 +3,36 @@ class Topic < ActiveRecord::Base
 
   validates_presence_of :name, :description
 
-  has_many :chapters
-  has_many :lessons, -> { order(number: :asc) }
+  numbered :lessons
+  has_many :lessons, -> { order(number: :asc) }, dependent:  :delete_all
+  has_many :usages, as: :item
 
   has_many :guides, -> { order('lessons.number') }, through: :lessons
-  has_many :exercises, through: :guides
+  has_many :exercises, -> { order('exercises.number') }, through: :guides
 
-  include TopicNavigation
+  include ChildrenNavigation
 
   markdown_on :description, :long_description, :links
 
-  numbered :lessons
+  def usage_in_organization
+    Chapter.where(topic_id: id).first #FIXME
+  end
+
+  def pending_lessons(user)
+    guides.
+        joins('left join public.exercises exercises
+                on exercises.guide_id = guides.id').
+        joins("left join public.assignments assignments
+                on assignments.exercise_id = exercises.id
+                and assignments.submitter_id = #{user.id}
+                and assignments.status = #{Status::Passed.to_i}").
+        where('assignments.id is null').
+        group('public.guides.id', 'lessons.number').map(&:lesson)
+  end
+
+  def first_guide
+    guides.first
+  end
 
   def rebuild!(lessons)
     transaction do
@@ -23,6 +42,5 @@ class Topic < ActiveRecord::Base
     end
   end
 
-  has_many :usages, as: :item
 
 end

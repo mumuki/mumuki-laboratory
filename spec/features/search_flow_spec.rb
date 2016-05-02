@@ -4,7 +4,7 @@ feature 'Search Flow' do
   let(:haskell) { create(:language, name: 'Haskell') }
   let(:ruby) { create(:language, name: 'Ruby') }
 
-  let!(:exercises) {
+  let(:exercises) {
     create(:exercise, tag_list: ['haskell'], name: 'Foo', description: 'an awesome problem description')
     create(:exercise, tag_list: [], name: 'Bar', language: haskell)
     create(:exercise, tag_list: [], name: 'haskelloid')
@@ -12,7 +12,7 @@ feature 'Search Flow' do
     create(:exercise, tag_list: [], name: 'nothing', guide: guide)
   }
   let(:guide) { create(:guide, language: ruby, name: 'awesomeRubyGuide', description: 'rubist baz guide') }
-
+  let!(:lesson) { create(:lesson, guide: guide) }
 
   scenario 'search guides by language' do
     visit '/guides'

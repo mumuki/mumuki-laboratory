@@ -14,11 +14,6 @@ module SiblingsNavigation
     "#{number}. #{name}"
   end
 
-  ##
-  # Answers a - maybe empty - list of siblings
-  #required :siblings
-
-  ##
   # Answers a - maybe empty - list of pending siblings for the given user
-  #required :siblings_for
+  #required :pending_siblings_for
 end

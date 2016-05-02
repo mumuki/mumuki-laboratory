@@ -9,6 +9,7 @@ class GuidesController < ApplicationController
     else
       @next_exercise = @guide.first_exercise
     end
+    @lesson = @guide.lesson
   end
 
   def show_by_slug

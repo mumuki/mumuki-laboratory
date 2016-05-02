@@ -8,7 +8,8 @@ class Exercise < ActiveRecord::Base
       },
   }
 
-  include WithSearch,
+  include WithNumber,
+          WithSearch,
           WithTeaser,
           WithAssignments,
           WithLocale,
@@ -17,7 +18,9 @@ class Exercise < ActiveRecord::Base
           FriendlyName
 
   include Submittable, Queriable
-  include SiblingsNavigation, ParentNavigation, ExerciseNavigation
+  include SiblingsNavigation, ParentNavigation
+
+  belongs_to :guide
 
   after_initialize :defaults, if: :new_record?
 
@@ -25,6 +28,18 @@ class Exercise < ActiveRecord::Base
                         :submissions_count, :guide
 
   markdown_on :description, :hint, :teaser, :corollary, :extra_preview
+
+  def pending_siblings_for(user)
+    guide.pending_exercises(user)
+  end
+
+  def structural_parent
+    guide
+  end
+
+  def guide_done_for?(user)
+    guide.done_for?(user)
+  end
 
   def search_tags
     tag_list + [language.name]
@@ -41,7 +56,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def friendly
-    defaulting_name { "#{parent.friendly} - #{name}" }
+    defaulting_name { "#{navigable_parent.friendly} - #{name}" }
   end
 
   def new_solution

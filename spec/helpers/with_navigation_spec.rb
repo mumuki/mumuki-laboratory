@@ -53,7 +53,7 @@ describe WithNavigation do
         before { chapter.rebuild!([lesson]) }
         before { exercise.submit_solution!(current_user).passed! }
 
-        it { expect(next_button(lesson.guide)).to be nil }
+        it { expect(next_button(lesson)).to be nil }
       end
 
       context 'when guide has one suggestion' do
@@ -63,7 +63,7 @@ describe WithNavigation do
 
         before { chapter.rebuild!([another_lesson, lesson, suggested_lesson]) }
 
-        it { expect(next_button(lesson.guide)).to include "<a class=\"btn btn-success\" href=\"/guides/#{suggested_lesson.friendly_name}\">Next: #{suggested_lesson.name} <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(lesson)).to include "<a class=\"btn btn-success\" href=\"/guides/#{suggested_lesson.friendly_name}\">Next: #{suggested_lesson.name} <i class=\"fa fa-chevron-right\"></i></a>" }
       end
 
       context 'when guide has many suggestions' do
@@ -73,8 +73,8 @@ describe WithNavigation do
 
         before { chapter.rebuild!([lesson, suggested_lesson_1, suggested_lesson_2]) }
 
-        it { expect(next_button(lesson.guide)).to include "<a class=\"btn btn-success\" href=\"/guides/#{suggested_lesson_1.friendly_name}\">Next: #{suggested_lesson_1.name} <i class=\"fa fa-chevron-right\"></i></a>" }
-        it { expect(next_button(lesson.guide)).to be_html_safe }
+        it { expect(next_button(lesson)).to include "<a class=\"btn btn-success\" href=\"/guides/#{suggested_lesson_1.friendly_name}\">Next: #{suggested_lesson_1.name} <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(lesson)).to be_html_safe }
       end
     end
   end

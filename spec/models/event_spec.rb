@@ -28,9 +28,11 @@ describe Event do
             create(:lesson),
             create(:lesson),
             create(:lesson),
-            create(:lesson)]) }
+            create(:lesson, exercises: [create(:exercise)])]) }
 
       let(:lesson) { chapter.lessons.fourth }
+      let(:guide) { lesson.guide }
+      let(:exercise) { lesson.exercises.first }
 
       let(:assignment) { create(:assignment,
                                 solution: 'x = 2',
@@ -38,7 +40,7 @@ describe Event do
                                 submissions_count: 2,
                                 submitter: user,
                                 submission_id: 'abcd1234',
-                                exercise: create(:exercise, guide: create(:guide, lesson: lesson))) }
+                                exercise: exercise) }
       let(:event) { Event::Submission.new(assignment) }
       let(:json) { event.as_json.deep_symbolize_keys }
 
@@ -51,21 +53,21 @@ describe Event do
                            test_results: nil,
                            submissions_count: 2,
                            exercise: {
-                               id: assignment.exercise.id,
-                               name: assignment.exercise.name,
-                               number: assignment.exercise.number},
+                               id: exercise.id,
+                               name: exercise.name,
+                               number: exercise.number},
                            guide: {
-                               slug: assignment.guide.slug,
-                               name: assignment.guide.name,
+                               slug: guide.slug,
+                               name: guide.name,
                                chapter: {
-                                 id: assignment.guide.chapter.id,
-                                 name: assignment.guide.chapter.name
+                                   id: guide.chapter.id,
+                                   name: guide.chapter.name
                                },
                                lesson: {
-                                 number: 4,
+                                   number: 4,
                                },
                                language: {
-                                   name: assignment.guide.language.name}},
+                                   name: guide.language.name}},
                            submitter: {
                                social_id: 'github|gh1234',
                                name: 'foo',

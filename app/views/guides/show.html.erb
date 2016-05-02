@@ -1,11 +1,11 @@
 <%= content_for :breadcrumbs do %>
-  <%= breadcrumbs @guide %>
+  <%= breadcrumbs @lesson %>
 <% end %>
 
 <div class="row">
   <div class="col-md-11">
     <h1>
-      <%= t(:guide_number, number: @guide.number) %>: <%= @guide.name %>
+      <%= t(:guide_number, number: @lesson.number) %>: <%= @lesson.name %>
     </h1>
   </div>
   <div class="col-md-1">
