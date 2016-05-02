@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-md-3 col-md-offset-5">
+    <div id="timer" class="text-center"></div>
+    <script>
+      countdown( new Date(<%= date %>),
+        function(ts) { $("#timer").text(ts); },
+        countdown.HOURS|countdown.MINUTES);
+    </script>
+  </div>
+</div>
