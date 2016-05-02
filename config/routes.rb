@@ -10,12 +10,6 @@ Rails.application.routes.draw do
     get 'logout' => :destroy
   end
 
-  namespace :api do
-    resources :exercises, only: :index
-    resources :users, only: :index
-    resources :guides, only: [:index, :create]
-  end
-
   root to: 'chapters#index'
 
   resources :chapters, only: [:index, :show]
