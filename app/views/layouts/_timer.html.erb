@@ -2,7 +2,11 @@
   <div class="col-md-3 col-md-offset-5">
     <div id="timer" class="text-center"></div>
     <script>
-      countdown( new Date(<%= date %>),
+        countdown.setLabels(
+          ' || <%= t :minute %>| <%= t :hour %>| <%= t :day %>||||||',
+          ' || <%= t :minutes %>| <%= t :hours %>| <%= t :days %>||||||',
+          ' <%= t :and %> ');
+        countdown( new Date(<%= date %>),
         function(ts) { $("#timer").text(ts); },
         countdown.HOURS|countdown.MINUTES);
     </script>
