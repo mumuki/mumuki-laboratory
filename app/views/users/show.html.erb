@@ -4,10 +4,10 @@
   <% end %>
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
-      <a href="#info" aria-controls="info" role="tab" data-toggle="tab"><%= t :info =%></a>
+      <a href="#info" aria-controls="info" role="tab" data-toggle="tab"><%= t :info %></a>
     </li>
     <li role="presentation">
-      <a href="#comments" aria-controls="comments" role="tab" data-toggle="tab"><%= t :comments =%></a>
+      <a href="#comments" aria-controls="comments" role="tab" data-toggle="tab"><%= t :comments %></a>
     </li>
   </ul>
 
@@ -40,16 +40,6 @@
           </table>
 
         </div>
-      </div>
-
-      <div>
-        <h2><%= t(:progress) %></h2>
-        <ul>
-          <% @user.submitted_chapters.each do |it| %>
-            <li><%= link_to_path_element it %>: <%= it.stats_for(@user).passed_ratio %>%
-            </li>
-          <% end %>
-        </ul>
       </div>
     </div>
 
