@@ -1,10 +1,6 @@
 module ParentNavigation
   extend ActiveSupport::Concern
 
-  included do
-    validates_presence_of :number, unless: :orphan?
-  end
-
   def leave(user)
     navigable_parent.next(user)
   end

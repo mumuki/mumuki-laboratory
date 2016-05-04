@@ -10,9 +10,27 @@ class ActiveRecord::Base
     self
   end
 
+  def self.aggregate_of(association)
+    class_eval do
+      define_method(:rebuild!) do |children|
+        transaction do
+          self.send(association).all_except(children).delete_all
+          self.update! association => children
+          children.each &:save!
+        end
+        reload
+      end
+    end
+  end
+
   def self.numbered(*associations)
-    associations.each do |it|
-      before_validation { send(it).merge_numbers! }
+    class_eval do
+      associations.each do |it|
+        define_method("#{it}=") do |e|
+          e.merge_numbers!
+          super(e)
+        end
+      end
     end
   end
 end

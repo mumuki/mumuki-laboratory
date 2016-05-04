@@ -2,6 +2,8 @@ class Book < ActiveRecord::Base
   validates_presence_of :name, :locale
 
   numbered :chapters
+  aggregate_of :chapters
+
   has_many :chapters, -> { order(number: :asc) }, dependent:  :delete_all
   has_many :complements, dependent:  :delete_all
 
@@ -19,13 +21,5 @@ class Book < ActiveRecord::Base
 
   def first_chapter
     chapters.first
-  end
-
-  def rebuild!(chapters)
-    transaction do
-      self.chapters.delete_all
-      self.chapters = chapters
-      save!
-    end
   end
 end

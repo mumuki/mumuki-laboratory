@@ -4,6 +4,8 @@ class Topic < ActiveRecord::Base
   validates_presence_of :name, :description
 
   numbered :lessons
+  aggregate_of :lessons
+
   has_many :lessons, -> { order(number: :asc) }, dependent:  :delete_all
   has_many :usages, as: :item
 
@@ -33,14 +35,4 @@ class Topic < ActiveRecord::Base
   def first_lesson
     lessons.first
   end
-
-  def rebuild!(lessons)
-    transaction do
-      self.lessons.delete_all
-      self.lessons = lessons
-      save!
-    end
-  end
-
-
 end
