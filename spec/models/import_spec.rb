@@ -12,6 +12,7 @@ describe Guide do
      language: 'haskell',
      locale: 'en',
      extra: 'bar',
+     teacher_info: 'an info',
      exercises: [
          {type: 'problem',
           name: 'Bar',
@@ -173,6 +174,7 @@ describe Guide do
          language: 'haskell',
          locale: 'en',
          extra: 'bar',
+         teacher_info: 'an info',
          exercises: [
              {name: 'Baz',
               description: 'lorem ipsum',
