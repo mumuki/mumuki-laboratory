@@ -12,6 +12,7 @@ describe Guide do
      language: 'haskell',
      locale: 'en',
      extra: 'bar',
+     teacher_info: 'an info',
      exercises: [
          {type: 'problem',
           name: 'Bar',
@@ -19,6 +20,7 @@ describe Guide do
           test: 'foo bar',
           tag_list: %w(baz bar),
           layout: 'no_editor',
+          teacher_info: 'an info',
           language: 'gobstones',
           solution: 'foo',
           id: 1},
@@ -173,6 +175,7 @@ describe Guide do
          language: 'haskell',
          locale: 'en',
          extra: 'bar',
+         teacher_info: 'an info',
          exercises: [
              {name: 'Baz',
               description: 'lorem ipsum',
