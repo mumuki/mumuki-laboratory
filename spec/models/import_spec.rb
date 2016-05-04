@@ -20,6 +20,7 @@ describe Guide do
           test: 'foo bar',
           tag_list: %w(baz bar),
           layout: 'no_editor',
+          teacher_info: 'an info',
           language: 'gobstones',
           solution: 'foo',
           id: 1},
