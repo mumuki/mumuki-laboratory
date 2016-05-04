@@ -6,7 +6,9 @@
         <span class="text-danger">
           <%= status_icon(test_result[:status]) %>
           <strong class="example-title"><%= test_result[:title] %></strong>
-          <a data-toggle="collapse" href="#example-result-<%= index %>"  class="example-see-more">Ver detalles</a>
+          <% unless visible_success_output %>
+            <a data-toggle="collapse" href="#example-result-<%= index %>"  class="example-see-more">Ver detalles</a>
+          <% end %>
         </span>
       <% else %>
         <span class="text-success example-title">
