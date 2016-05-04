@@ -1,5 +1,13 @@
 class Guide < ActiveRecord::Base
-  include WithTeaser,
+  INDEXED_ATTRIBUTES = {
+      against: [:name, :description],
+      associated_against: {
+          language: [:name]
+      }
+  }
+
+  include WithSearch,
+          WithTeaser,
           WithLocale,
           WithStats,
           WithExpectations,

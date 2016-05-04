@@ -1,5 +1,8 @@
 class Topic < ActiveRecord::Base
-  include WithLocale
+  INDEXED_ATTRIBUTES = { against: [:name, :description, :long_description] }
+
+  include WithSearch,
+          WithLocale
 
   validates_presence_of :name, :description
 

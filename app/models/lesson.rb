@@ -1,13 +1,5 @@
 class Lesson < ActiveRecord::Base
-  INDEXED_ATTRIBUTES = {
-      against: [:name, :description],
-      associated_against: {
-          language: [:name]
-      }
-  }
-
   include WithNumber
-  include WithSearch
   include FriendlyName
 
   include GuideContainer
@@ -27,5 +19,9 @@ class Lesson < ActiveRecord::Base
 
   def structural_parent
     topic
+  end
+
+  def self.by_full_text(q)
+    Guide.by_full_text(q).map(&:lesson).compact
   end
 end
