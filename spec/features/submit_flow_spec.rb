@@ -2,16 +2,20 @@ require 'spec_helper'
 
 feature 'Submit Flow' do
   let(:haskell) { create(:haskell) }
-  let!(:exercise1) { create(:problem, name: 'Succ1', guide: guide, number: 1, description: 'Description of foo', layout: :editor_right) }
-  let!(:exercise2) { create(:problem, name: 'Succ2', guide: guide, number: 1, description: 'Description of foo', layout: :no_editor) }
-  let!(:exercise3) { create(:problem, name: 'Succ3', guide: guide, number: 1, description: 'Description of foo', layout: :upload) }
 
-  let!(:chapter) { create(:chapter, name: 'Functional Programming') }
-  let!(:guide) { create(:guide, name: 'getting-started', description: 'An awesome guide', language: haskell) }
+  let!(:exercise1) { build(:problem, name: 'Succ1', description: 'Description of foo', layout: :editor_right) }
+  let!(:exercise2) { build(:problem, name: 'Succ2', description: 'Description of foo', layout: :no_editor) }
+  let!(:exercise3) { build(:problem, name: 'Succ3', description: 'Description of foo', layout: :upload) }
+
+  let!(:chapter) {
+    create(:chapter, name: 'Functional Programming', lessons: [
+        create(:lesson, name: 'getting-started', description: 'An awesome guide', language: haskell, exercises: [
+            exercise1, exercise2, exercise3
+        ])
+    ]) }
 
   let(:user) { create(:user) }
 
-  before { chapter.rebuild!([guide]) }
 
   context 'logged user' do
     before { allow_any_instance_of(ApplicationController).to receive(:current_user_id).and_return(user.id) }

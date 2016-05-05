@@ -2,13 +2,13 @@ require 'spec_helper'
 
 feature 'Standard Flow' do
   let(:haskell) { create(:haskell) }
-  let!(:exercises) {
-    create(:exercise, name: 'Succ', guide: guide, number: 1, description: 'Description of foo')
-  }
-  let!(:chapter) { create(:chapter, name: 'Functional Programming') }
-  let!(:guide) { create(:guide, name: 'getting-started', description: 'An awesome guide', language: haskell) }
 
-  before { chapter.rebuild!([guide]) }
+  let!(:chapter) {
+    create(:chapter, name: 'Functional Programming', lessons: [
+        create(:lesson, name: 'getting-started', description: 'An awesome guide', language: haskell, exercises: [
+            create(:exercise, name: 'Succ', description: 'Description of foo')
+        ])
+    ]) }
 
   before do
     visit '/'

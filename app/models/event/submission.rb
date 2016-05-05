@@ -13,7 +13,7 @@ class Event::Submission < Event::Base
               include: {
                 guide: {only: [:slug, :name],
                   include: {
-                    chapter: {only: [:id, :name]},
+                    chapter: {only: [:id], methods: [:name]},
                     lesson: {only: [:number]},
                     language: {only: [:name]}}},
                 exercise: {only: [:id, :name, :number]},

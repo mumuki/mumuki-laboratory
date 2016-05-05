@@ -21,7 +21,7 @@ class Guide < ActiveRecord::Base
 
   markdown_on :description, :teaser, :corollary
 
-  has_one :lesson
+  has_one :lesson #FIXME
 
   self.inheritance_column = nil
 

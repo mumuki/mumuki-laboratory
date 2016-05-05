@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160430225048) do
+ActiveRecord::Schema.define(version: 20160501003355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,10 +85,6 @@ ActiveRecord::Schema.define(version: 20160430225048) do
   end
 
   create_table "chapters", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "locale"
-    t.string   "image_url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "number",           default: 0, null: false
@@ -211,7 +207,6 @@ ActiveRecord::Schema.define(version: 20160430225048) do
 
   create_table "lessons", force: true do |t|
     t.integer  "guide_id"
-    t.integer  "chapter_id"
     t.integer  "number"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -246,6 +241,7 @@ ActiveRecord::Schema.define(version: 20160430225048) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "long_description"
   end
 
   create_table "users", force: true do |t|
