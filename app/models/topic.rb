@@ -42,7 +42,7 @@ class Topic < ActiveRecord::Base
 
   def import_from_json!(json)
     self.assign_attributes json.except('lessons', 'id')
-    rebuild! json['lessons'].map { |it| Guide.find_by_slug(slug: it['slug']).to_lesson }
+    rebuild! json['lessons'].map { |it| Guide.find_by(slug: it).to_lesson }
   end
 
   def to_chapter

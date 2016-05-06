@@ -27,6 +27,6 @@ class Book < ActiveRecord::Base
 
   def import_from_json!(json)
     self.assign_attributes json.except('chapters', 'id')
-    rebuild! json['chapters'].map { |it| Topic.find_by_slug(slug: it['slug']).to_chapter }
+    rebuild! json['chapters'].map { |it| Topic.find_by(slug: it).to_chapter }
   end
 end
