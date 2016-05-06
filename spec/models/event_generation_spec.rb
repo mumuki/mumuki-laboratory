@@ -2,24 +2,7 @@ require 'spec_helper'
 
 describe Event do
 
-  describe '#to_job_params!' do
-    let(:subscriber) { EventSubscriber.create!(id: 2, enabled: true, url: 'http://localhost:80') }
-    let(:user) { create(:user) }
-    let(:job_params) { event.to_job_params(subscriber) }
-
-    describe Event::Submission do
-      let(:assignment) { create(:exercise).submit_solution!(user) }
-
-      let(:event) { Event::Submission.new(assignment) }
-
-      it { expect(job_params.subscriber_id).to eq 2 }
-      it { expect(job_params.event_json).to include '"status":"failed"' }
-    end
-
-  end
-
   describe '#to_json' do
-
     describe Event::Submission do
       let(:user) { create(:user, id: 2, name: 'foo', provider: 'auth0', uid: 'github|gh1234') }
 

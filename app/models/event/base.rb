@@ -1,14 +1,13 @@
-require 'ostruct'
-
 class Event::Base
-  def notify!(subscriber)
-    subscriber.do_request(to_json, queue_name)
+  def notify!
+    publish! queue_name, as_json unless Organization.current.silent?
   end
 
-  def to_job_params(subscriber)
-    OpenStruct.new(
-        subscriber_id: subscriber.id,
-        event_json: to_json,
-        current_book: Organization.current.name)
+  def as_json(_options={})
+    event_json.deep_merge('tenant' => Organization.current.name)
+  end
+
+  def publish!(queue_name, event)
+    Mumukit::Nuntius::Publisher.publish queue_name, event
   end
 end
