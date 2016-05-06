@@ -1,13 +1,13 @@
 namespace :organizations do
-  task :setup, [:name, :admin_email, :locale] => :environment do |t, args|
+  task :setup, [:name, :admin_email, :locale, :book_slug] => :environment do |t, args|
     args.with_defaults(locale: 'es')
 
-    organization = Organization.create! name: args[:name], contact_email: args[:admin_email], locale: args[:locale]
+    organization = Organization.create! name: args[:name],
+                                        contact_email: args[:admin_email],
+                                        locale: args[:locale],
+                                        book: Book.find_by(slug: args[:book_slug])
     organization.switch!
 
-    password = Devise.friendly_token.first(10)
-    AdminUser.create! email: args[:admin_email], password: password, password_confirmation: password
-
-    puts "Congrats. A new organization has been created. Please enter to admin panel with generated password #{password}"
+    puts 'Congrats. A new organization has been created'
   end
 end
