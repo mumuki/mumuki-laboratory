@@ -15,7 +15,7 @@ describe EventSubscriber do
   end
 
   describe 'protect in central book' do
-    let!(:organization) { Organization.find_or_create_by(name: 'central') }
+    let!(:organization) { Organization.create!(name: 'central', contact_email: 'bar@baz.com') }
 
     it 'EventSubscriber does not send event when book is central' do
       organization.switch!

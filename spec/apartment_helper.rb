@@ -1,7 +1,7 @@
 RSpec.configure do |config|
   config.before(:suite) do
     Organization.all.each(&:destroy!)
-    Organization.create!(name: 'test', book: Book.new(name: 'test'))
+    Organization.create!(name: 'test', book: Book.new(name: 'test'), contact_email: 'foo@bar.com')
   end
 
   config.before(:each) do
