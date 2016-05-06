@@ -14,8 +14,6 @@ gem 'turbolinks'
 
 gem 'sass-rails'
 gem 'execjs'
-gem 'activeadmin', '~> 1.0.0.pre1'
-gem 'devise'
 
 gem 'jquery-rails'
 
