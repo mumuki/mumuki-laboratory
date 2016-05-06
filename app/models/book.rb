@@ -1,6 +1,8 @@
 class Book < ActiveRecord::Base
   validates_presence_of :name, :locale
 
+  include WithSlug
+
   numbered :chapters
   aggregate_of :chapters
 
@@ -21,5 +23,10 @@ class Book < ActiveRecord::Base
 
   def first_chapter
     chapters.first
+  end
+
+  def import_from_json!(json)
+    self.assign_attributes json.except('chapters', 'id')
+    rebuild! json['chapters'].map { |it| Topic.find_by_slug(slug: it['slug']).to_chapter }
   end
 end

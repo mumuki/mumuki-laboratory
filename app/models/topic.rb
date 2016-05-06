@@ -2,7 +2,8 @@ class Topic < ActiveRecord::Base
   INDEXED_ATTRIBUTES = { against: [:name, :description, :long_description] }
 
   include WithSearch,
-          WithLocale
+          WithLocale,
+          WithSlug
 
   validates_presence_of :name, :description
 
@@ -37,5 +38,14 @@ class Topic < ActiveRecord::Base
 
   def first_lesson
     lessons.first
+  end
+
+  def import_from_json!(json)
+    self.assign_attributes json.except('lessons', 'id')
+    rebuild! json['lessons'].map { |it| Guide.find_by_slug(slug: it['slug']).to_lesson }
+  end
+
+  def to_chapter
+    usage_in_organization || Chapter.new(topic: self)
   end
 end

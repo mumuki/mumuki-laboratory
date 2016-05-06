@@ -11,11 +11,10 @@ class Guide < ActiveRecord::Base
           WithLocale,
           WithStats,
           WithExpectations,
-          WithLanguage
+          WithLanguage,
+          WithSlug
 
   include ChildrenNavigation
-
-  validates_presence_of :slug
 
   markdown_on :description, :teaser, :corollary
 
@@ -66,18 +65,8 @@ class Guide < ActiveRecord::Base
     exercises.flat_map(&:search_tags).uniq
   end
 
-  #TODO use mumukit slug
-  def org_and_repo
-    org, repo = slug.split('/')
-    {organization: org, repository: repo}
-  end
-
   def done_for?(user)
     stats_for(user).done?
-  end
-
-  def import!
-    import_from_json! Mumukit::Bridge::Bibliotheca.new.guide(slug)
   end
 
   def import_from_json!(json)
@@ -96,6 +85,10 @@ class Guide < ActiveRecord::Base
     end
 
     reload
+  end
+
+  def to_lesson
+    usage_in_organization || Lesson.new(guide: self)
   end
 
 end
