@@ -9,7 +9,7 @@ class Book < ActiveRecord::Base
   has_many :chapters, -> { order(number: :asc) }, dependent:  :delete_all
   has_many :complements, dependent:  :delete_all
 
-  markdown_on :preface
+  markdown_on :description
 
   include ChildrenNavigation
 

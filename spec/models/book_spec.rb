@@ -17,15 +17,15 @@ describe Book do
 
     context 'when chapter is rebuilt after book rebuilt' do
       before do
-        book.preface = '#foo'
+        book.description = '#foo'
         book.rebuild!([chapter_1, chapter_2])
 
         chapter_1.rebuild!([lesson_1, lesson_2])
         chapter_2.rebuild!([lesson_3])
       end
 
-      it { expect(book.preface).to eq '#foo' }
-      it { expect(book.preface_html).to eq "<h1>foo</h1>\n" }
+      it { expect(book.description).to eq '#foo' }
+      it { expect(book.description_html).to eq "<h1>foo</h1>\n" }
 
       it { expect(Chapter.count).to eq 2 }
       it { expect(book.chapters).to eq [chapter_1, chapter_2] }
@@ -38,15 +38,15 @@ describe Book do
     context 'when some chapters are orphan' do
       let(:orphan_chapter) { build(:chapter, book: nil) }
       before do
-        book.preface = '#foo'
+        book.description = '#foo'
         book.rebuild!([chapter_1, orphan_chapter, chapter_2])
 
         chapter_1.rebuild!([lesson_1, lesson_2])
         chapter_2.rebuild!([lesson_3])
       end
 
-      it { expect(book.preface).to eq '#foo' }
-      it { expect(book.preface_html).to eq "<h1>foo</h1>\n" }
+      it { expect(book.description).to eq '#foo' }
+      it { expect(book.description_html).to eq "<h1>foo</h1>\n" }
 
       it { expect(Chapter.count).to eq 3 }
       it { expect(book.chapters).to eq [chapter_1, orphan_chapter, chapter_2] }
@@ -63,15 +63,15 @@ describe Book do
         chapter_1.save!
         chapter_2.save!
 
-        book.preface = '#foo'
+        book.description = '#foo'
         book.rebuild!([chapter_1, chapter_2])
 
         chapter_1.rebuild!([lesson_1, lesson_2])
         chapter_2.rebuild!([lesson_3])
       end
 
-      it { expect(book.preface).to eq '#foo' }
-      it { expect(book.preface_html).to eq "<h1>foo</h1>\n" }
+      it { expect(book.description).to eq '#foo' }
+      it { expect(book.description_html).to eq "<h1>foo</h1>\n" }
 
       it { expect(Chapter.count).to eq 2 }
       it { expect(book.chapters).to eq [chapter_1, chapter_2] }
@@ -86,12 +86,12 @@ describe Book do
         chapter_1.rebuild!([lesson_1, lesson_2])
         chapter_2.rebuild!([lesson_3])
 
-        book.preface = '#foo'
+        book.description = '#foo'
         book.rebuild!([chapter_1, chapter_2])
       end
 
-      it { expect(book.preface).to eq '#foo' }
-      it { expect(book.preface_html).to eq "<h1>foo</h1>\n" }
+      it { expect(book.description).to eq '#foo' }
+      it { expect(book.description_html).to eq "<h1>foo</h1>\n" }
 
       it { expect(Chapter.count).to eq 2 }
       it { expect(book.chapters).to eq [chapter_1, chapter_2] }
