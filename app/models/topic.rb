@@ -1,5 +1,5 @@
 class Topic < ActiveRecord::Base
-  INDEXED_ATTRIBUTES = { against: [:name, :description, :long_description] }
+  INDEXED_ATTRIBUTES = {against: [:name, :description, :long_description]}
 
   include WithSearch,
           WithLocale,
@@ -10,7 +10,7 @@ class Topic < ActiveRecord::Base
   numbered :lessons
   aggregate_of :lessons
 
-  has_many :lessons, -> { order(number: :asc) }, dependent:  :delete_all
+  has_many :lessons, -> { order(number: :asc) }, dependent: :delete_all
   has_many :usages, as: :item
 
   has_many :guides, -> { order('lessons.number') }, through: :lessons
