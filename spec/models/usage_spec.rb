@@ -38,10 +38,14 @@ describe Usage, clean: true do
     it { expect(programming.chapters).to eq [fundamentals, functional_programming, oop, logic_programming] }
 
     it { expect(fundamentals.usage_in_organization).to_not be_nil }
+    it { expect(fundamentals.usage_in_organization.number).to eq 1 }
 
     it { expect(functional_programming.usage_in_organization).to_not be_nil }
     it { expect(functional_programming.usage_in_organization).to be_a(Chapter) }
     it { expect(functional_programming.usage_in_organization.number).to eq 2 }
+    it { expect(logic_programming.usage_in_organization.number).to eq 3 }
+    it { expect(oop.usage_in_organization.number).to eq 4 }
+
   end
 
   context 'on pdep' do
@@ -63,5 +67,8 @@ describe Usage, clean: true do
     it { expect(functional_programming.usage_in_organization).to_not be_nil }
     it { expect(functional_programming.usage_in_organization).to be_a(Chapter) }
     it { expect(functional_programming.usage_in_organization.number).to eq 1 }
+    it { expect(logic_programming.usage_in_organization.number).to eq 2 }
+    it { expect(oop.usage_in_organization.number).to eq 3 }
+
   end
 end
