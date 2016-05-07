@@ -31,11 +31,16 @@ require_relative './capybara_helper'
 require_relative './evaluation_helper'
 
 RSpec.configure do |config|
-  config.before do
-    Organization.create!(name: 'test',
-                         book: Book.new(name: 'test', slug: 'mumuki/mumuki-the-book'),
-                         contact_email: 'foo@bar.com')
-    Organization.find_by(name: 'test').switch!
+  config.before(:each) do
+    unless example.metadata[:clean]
+      create(:organization,
+             name: 'test',
+             book: create(:book, name: 'test', slug: 'mumuki/mumuki-the-book')).switch!
+    end
+  end
+
+  config.after(:each) do
+    Organization.current = nil
   end
 end
 
