@@ -11,18 +11,13 @@ class Topic < ActiveRecord::Base
   aggregate_of :lessons
 
   has_many :lessons, -> { order(number: :asc) }, dependent: :delete_all
-  has_many :usages, as: :item
 
   has_many :guides, -> { order('lessons.number') }, through: :lessons
   has_many :exercises, -> { order('exercises.number') }, through: :guides
 
-  include ChildrenNavigation
+  include WithUsages, ChildrenNavigation
 
   markdown_on :description, :long_description, :links
-
-  def usage_in_organization
-    Chapter.where(topic_id: id).first #FIXME
-  end
 
   def pending_lessons(user)
     guides.
@@ -42,10 +37,17 @@ class Topic < ActiveRecord::Base
 
   def import_from_json!(json)
     self.assign_attributes json.except('lessons', 'id')
-    rebuild! json['lessons'].map { |it| Guide.find_by(slug: it).to_lesson }
+    rebuild! json['lessons'].map { |it| Guide.find_by(slug: it).as_lesson_of(self) }
+    Organization.all.each { |org| org.reindex_usages! }
   end
 
-  def to_chapter
-    usage_in_organization || Chapter.new(topic: self)
+  def index_usages!(organization)
+    lessons.each do |lesson|
+      organization.index_usage! lesson.guide, lesson
+    end
+  end
+
+  def as_chapter_of(book)
+    book.chapters.find_by(topic_id: id) || Chapter.new(topic: self, book: book)
   end
 end

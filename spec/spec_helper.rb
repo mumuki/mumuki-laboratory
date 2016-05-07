@@ -44,6 +44,10 @@ RSpec.configure do |config|
   end
 end
 
+def reindex_current_book!
+  Organization.current.book.reload
+  Organization.current.reindex_usages!
+end
 
 RSpec::Matchers.define :json_eq do |expected_json_hash|
   match do |actual_json|

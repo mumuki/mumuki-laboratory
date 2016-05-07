@@ -10,6 +10,9 @@ feature 'Search Flow' do
   let(:guide) { create(:guide, name: 'awesomeGuide', description: 'An awesome guide', language: haskell, slug: 'foo/bar') }
   let!(:lesson) { create(:lesson, guide: guide) }
 
+  let!(:chapter) { create(:chapter, name: 'C1', lessons: [lesson]) }
+  before { reindex_current_book! }
+
   let(:user) { User.find_by(name:'testuser') }
 
   scenario 'visit guide by slug' do

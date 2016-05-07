@@ -6,16 +6,18 @@ describe Event do
     describe Event::Submission do
       let(:user) { create(:user, id: 2, name: 'foo', provider: 'auth0', uid: 'github|gh1234') }
 
-      let(:chapter) {
-        create(:chapter, lessons: [
-            create(:lesson),
-            create(:lesson),
-            create(:lesson),
-            create(:lesson, exercises: [create(:exercise)])]) }
 
       let(:lesson) { chapter.lessons.fourth }
       let(:guide) { lesson.guide }
       let(:exercise) { lesson.exercises.first }
+      let!(:chapter) {
+        create(:chapter, lessons: [
+        create(:lesson),
+        create(:lesson),
+        create(:lesson),
+        create(:lesson, exercises: [create(:exercise)])]) }
+
+      before { reindex_current_book! }
 
       let(:assignment) { create(:assignment,
                                 solution: 'x = 2',

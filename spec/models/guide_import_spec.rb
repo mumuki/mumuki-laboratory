@@ -106,7 +106,6 @@ describe Guide do
       it { expect(guide.exercises.second.language).to eq haskell }
       it { expect(guide.exercises.second.default_content).to eq 'a default content' }
       it { expect(guide.exercises.second.extra_visible).to be true }
-      it { expect(guide.exercises.first.friendly_name).to include 'sample-guide-bar' }
 
       it { expect(guide.exercises.last.expectations.first['binding']).to eq 'foo' }
 

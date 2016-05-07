@@ -35,7 +35,7 @@ describe Usage, clean: true do
     it { expect(central.book).to eq programming }
 
     it { expect(programming.chapters.count).to eq 4 }
-    it { expect(programming.chapters).to eq [fundamentals, functional_programming, oop, logic_programming] }
+    it { expect(programming.chapters.map(&:topic)).to eq [fundamentals, functional_programming, oop, logic_programming] }
 
     it { expect(fundamentals.usage_in_organization).to_not be_nil }
     it { expect(fundamentals.usage_in_organization.number).to eq 1 }
@@ -43,8 +43,10 @@ describe Usage, clean: true do
     it { expect(functional_programming.usage_in_organization).to_not be_nil }
     it { expect(functional_programming.usage_in_organization).to be_a(Chapter) }
     it { expect(functional_programming.usage_in_organization.number).to eq 2 }
-    it { expect(logic_programming.usage_in_organization.number).to eq 3 }
-    it { expect(oop.usage_in_organization.number).to eq 4 }
+    it { expect(oop.usage_in_organization.number).to eq 3 }
+    it { expect(logic_programming.usage_in_organization.number).to eq 4 }
+
+    it { expect(Usage.in_organization.count).to eq 4  }
 
   end
 
@@ -60,7 +62,7 @@ describe Usage, clean: true do
     it { expect(pdep.book).to eq paradigms }
 
     it { expect(paradigms.chapters.count).to eq 3 }
-    it { expect(paradigms.chapters).to eq [functional_programming, logic_programming, oop] }
+    it { expect(paradigms.chapters.map(&:topic)).to eq [functional_programming, logic_programming, oop] }
 
     it { expect(fundamentals.usage_in_organization).to be_nil }
 
@@ -70,5 +72,6 @@ describe Usage, clean: true do
     it { expect(logic_programming.usage_in_organization.number).to eq 2 }
     it { expect(oop.usage_in_organization.number).to eq 3 }
 
+    it { expect(Usage.in_organization.count).to eq 3  }
   end
 end
