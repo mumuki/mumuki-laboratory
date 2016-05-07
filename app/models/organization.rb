@@ -3,27 +3,11 @@ class Organization < ActiveRecord::Base
 
   delegate :locale, to: :book
 
-  before_create :setup_apartment_tenant!
-  after_destroy :teardown_apartment_tenant!
-
   validates_presence_of :name, :contact_email
   validates_uniqueness_of :name
 
   def switch!
-    Apartment::Tenant.switch! name
-  end
-
-  def self.current
-    raise 'book not selected' if Apartment::Tenant.on? 'public'
-    find_by name: Apartment::Tenant.current
-  end
-
-  def self.central
-    find_by name: 'central'
-  end
-
-  def self.central?
-    current.central?
+    self.class.current = self
   end
 
   def central?
@@ -38,14 +22,21 @@ class Organization < ActiveRecord::Base
     central? || test?
   end
 
-  private
+  class << self
+    attr_writer :current
 
-  def teardown_apartment_tenant!
-    Apartment::Tenant.teardown name
-  end
+    def current
+      raise 'book not selected' unless @current
+      @current
+    end
 
-  def setup_apartment_tenant!
-    Apartment::Tenant.setup name
+    def central
+      find_by name: 'central'
+    end
+
+    def central?
+      current.central?
+    end
   end
 
 end
