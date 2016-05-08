@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   factory :chapter do
-    number { Faker::Number.digit }
+    number { Faker::Number.between(1, 40) }
     book { Organization.current.book }
 
     transient do

@@ -1,3 +1,3 @@
-module GuidesHelper
+module LessonsHelper
   include WithStatsRendering
 end

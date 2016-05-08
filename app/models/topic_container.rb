@@ -10,9 +10,10 @@ module TopicContainer
              :long_description_html,
              :rebuild!,
              :lessons,
-             :pending_guides,
-             :first_guide,
              :guides,
+             :pending_guides,
+             :lessons,
+             :first_lesson,
              :locale,
              :exercises, to: :topic
   end

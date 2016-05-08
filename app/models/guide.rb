@@ -11,21 +11,55 @@ class Guide < ActiveRecord::Base
           WithLocale,
           WithStats,
           WithExpectations,
-          WithExercises,
-          WithLanguage,
-          FriendlyName
+          WithLanguage
 
-  include ParentNavigation, SiblingsNavigation, ChildrenNavigation, GuideNavigation
+  include ChildrenNavigation
 
   validates_presence_of :slug
 
   markdown_on :description, :teaser, :corollary
 
-  has_one :lesson #FIXME
+  numbered :exercises
+  has_many :exercises, -> { order(number: :asc) }, dependent:  :delete_all
+  has_many :usages, as: :item
 
   self.inheritance_column = nil
 
   enum type: [:learning, :practice]
+
+  def lesson
+    #FIXME temporary
+    usage_in_organization
+  end
+
+  def chapter
+    lesson.try(:chapter) #FIXME temporary
+  end
+
+  def usage_in_organization
+    Lesson.where(guide_id: id).first #FIXME use usages and consider exams and complements
+  end
+
+  def exercises_count
+    exercises.count
+  end
+
+  def pending_exercises(user)
+    exercises.
+        joins("left join public.assignments assignments
+                on assignments.exercise_id = exercises.id
+                and assignments.submitter_id = #{user.id}
+                and assignments.status = #{Status::Passed.to_i}").
+        where('assignments.id is null')
+  end
+
+  def next_exercise(user)
+    pending_exercises(user).order('public.exercises.number asc').first
+  end
+
+  def first_exercise
+    exercises.first
+  end
 
   #TODO denormalize
   def search_tags
@@ -38,12 +72,8 @@ class Guide < ActiveRecord::Base
     {organization: org, repository: repo}
   end
 
-  def new?
-    created_at > 7.days.ago
-  end
-
-  def friendly
-    defaulting_name { "#{parent.friendly}: #{name}" }
+  def done_for?(user)
+    stats_for(user).done?
   end
 
   def import!

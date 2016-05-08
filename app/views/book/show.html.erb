@@ -8,18 +8,18 @@
   </div>
 
   <div class="text-box">
-    <%= Organization.current.book.preface_html %>
+    <%= @book.preface_html %>
   </div>
 
   <div class="actions">
-    <a href="<%= guide_path(@chapters.first.first_guide) %>" class="btn btn-success">
+    <a href="<%= lesson_path(@book.first_chapter.first_lesson) %>" class="btn btn-success">
       <%= t(:start_practicing) %>
     </a>
   </div>
 
   <h2><%= t(:content) %></h2>
 
-  <% @chapters.each do |it| %>
+  <% @book.chapters.each do |it| %>
     <div class="chapter">
       <h3><%= t(:chapter_number, number: it.number) %> <%= link_to_path_element it, mode: :plain %></h3>
 

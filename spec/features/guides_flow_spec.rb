@@ -7,7 +7,9 @@ feature 'Search Flow' do
     create(:exercise, name: 'Bar',        guide: guide, number: 2),
     create(:exercise, name: 'Baz',        guide: guide, number: 4)
   ]}
-  let!(:guide) { create(:guide, name: 'awesomeGuide', description: 'An awesome guide', language: haskell, slug: 'foo/bar') }
+  let(:guide) { create(:guide, name: 'awesomeGuide', description: 'An awesome guide', language: haskell, slug: 'foo/bar') }
+  let!(:lesson) { create(:lesson, guide: guide) }
+
   let(:user) { User.find_by(name:'testuser') }
 
   scenario 'visit guide by slug' do
@@ -19,7 +21,7 @@ feature 'Search Flow' do
   end
 
   scenario 'visit guides from search page, and starts practicing' do
-    visit '/guides'
+    visit '/lessons'
 
     click_on 'awesomeGuide'
 

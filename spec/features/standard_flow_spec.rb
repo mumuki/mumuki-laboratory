@@ -5,8 +5,8 @@ feature 'Standard Flow' do
 
   let!(:chapter) {
     create(:chapter, name: 'Functional Programming', lessons: [
-        create(:lesson, name: 'getting-started', description: 'An awesome guide', language: haskell, exercises: [
-            create(:exercise, name: 'Succ', description: 'Description of foo')
+        create(:lesson, name: 'Values and Functions', language: haskell, description: 'Values are everywhere...', exercises: [
+            create(:exercise, name: 'The Basic Values', description: "Let's say we want to declare a variable...")
         ])
     ]) }
 
@@ -15,11 +15,19 @@ feature 'Standard Flow' do
   end
 
   scenario 'do a guide for first time, starting from home' do
+    expect(page).to have_text('Functional Programming')
     click_on 'Start Practicing!'
 
+    expect(page).to have_text('Values and Functions')
+    expect(page).to have_text('The Basic Values')
+    expect(page).to have_text('Values are everywhere')
+    expect(page).to_not have_text('we want to declare a variable')
     click_on 'Start Practicing!'
 
-    expect(page).to have_text('Succ')
+    expect(page).to have_text('Values and Functions')
+    expect(page).to have_text('The Basic Values')
+    expect(page).to have_text('we want to declare a variable')
+    expect(page).to_not have_text('Values are everywhere')
   end
 
 end

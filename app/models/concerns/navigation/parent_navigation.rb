@@ -1,28 +1,28 @@
 module ParentNavigation
   extend ActiveSupport::Concern
 
-  included do
-    validates_presence_of :number, unless: :orphan?
-  end
-
   def leave(user)
-    parent.next(user) 
+    navigable_parent.next(user)
   end
 
   def orphan?
-    parent.nil?
+    navigable_parent.nil?
   end
 
   def navigable_name
     defaulting_name { super }
   end
 
-  #required :parent
+  def navigable_parent
+    structural_parent.usage_in_organization
+  end
+
+  #required :structural_parent
 
   private
 
   def defaulting_name(&block)
-    parent.defaulting(name, &block)
+    navigable_parent.defaulting(name, &block)
   end
 end
 

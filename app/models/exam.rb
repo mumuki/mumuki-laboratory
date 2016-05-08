@@ -1,5 +1,6 @@
 class Exam < ActiveRecord::Base
   include GuideContainer
+  include FriendlyName
 
   validates_presence_of :duration, :start_time, :end_time
 
