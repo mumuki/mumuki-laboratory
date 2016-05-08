@@ -44,6 +44,47 @@ describe Guide do
   end
 
   describe '#import_from_json!' do
+    context 'when an exercise is deleted' do
+      let(:guide) { create(:guide, exercises: [exercise_1, exercise_2, exercise_3, exercise_4]) }
+
+      let(:exercise_1) { build(:problem,
+                               language: haskell,
+                               name: 'Exercise 1',
+                               bibliotheca_id: 1,
+                               number: 1) }
+
+      let(:exercise_2) { build(:playground,
+                               language: haskell,
+                               name: 'Exercise 2',
+                               bibliotheca_id: 4,
+                               number: 2) }
+
+      let(:exercise_3) { build(:problem,
+                               language: haskell,
+                               name: 'Exercise 3',
+                               bibliotheca_id: 2,
+                               number: 3) }
+
+      let(:exercise_4) { create(:problem,
+                               language: haskell,
+                               name: 'Exercise 4',
+                               bibliotheca_id: 8,
+                               number: 4) }
+
+      before do
+        guide.import_from_json!(guide_json)
+      end
+
+      describe 'it is removed from the guide' do
+        it { expect(guide.exercises.count).to eq 3 }
+        it { expect(guide.exercises).not_to include exercise_4 }
+      end
+
+      describe 'it is deleted from the database' do
+        it { expect { Exercise.find(exercise_4.id) }.to raise_error }
+      end
+    end
+
     context 'when guide is empty' do
       let(:lesson) { create(:lesson, guide: create(:guide, exercises: [])) }
       let(:guide) { lesson.guide }
@@ -71,6 +112,7 @@ describe Guide do
 
       it { expect(guide.exercises.pluck(:name)).to eq %W(Bar Foo Baz) }
     end
+
     context 'when exercise already exists' do
       let(:guide) { create(:guide, language: haskell, exercises: [exercise_1]) }
 
@@ -117,7 +159,8 @@ describe Guide do
         end
       end
     end
-    context 'when many exercises already' do
+
+    context 'when many exercises already exist' do
       let(:guide) { create(:guide, language: haskell, exercises: [exercise_1, exercise_2]) }
 
       let(:exercise_1) { build(:problem,
@@ -163,7 +206,6 @@ describe Guide do
 
       it { expect(guide.exercises.pluck(:bibliotheca_id)).to eq [1, 4, 2] }
       it { expect(guide.exercises.pluck(:id).drop(1)).to eq [reloaded_exercise_2.id, reloaded_exercise_1.id] }
-
     end
 
     context 'when new_expecations' do

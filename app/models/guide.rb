@@ -84,6 +84,7 @@ class Guide < ActiveRecord::Base
       exercise.import_from_json! (i+1), e
     end
 
+    self.exercises.where('number > ?', json['exercises'].size).destroy_all
     reload
   end
 
