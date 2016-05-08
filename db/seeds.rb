@@ -1,4 +1,3 @@
-require_relative './seeds/book_builder'
 require_relative './seeds/import'
 
 require_relative './seeds/languages'
