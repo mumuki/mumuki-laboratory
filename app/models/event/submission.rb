@@ -7,7 +7,7 @@ class Event::Submission < Event::Base
     'submissions'
   end
 
-  def as_json(_options={})
+  def event_json
     @assignment.
       as_json(except: [:exercise_id, :submission_id, :id, :submitter_id, :solution, :created_at, :updated_at],
               include: {
@@ -23,7 +23,6 @@ class Event::Submission < Event::Base
             'id' => @assignment.submission_id,
             'created_at' => @assignment.updated_at,
             'content' => @assignment.solution,
-            'tenant' => Organization.current.name,
             'guide' => {'chapter' => @assignment.guide.chapter.as_json(only: [:id], methods: [:name])})
   end
 end

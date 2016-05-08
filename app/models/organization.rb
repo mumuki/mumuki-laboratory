@@ -23,7 +23,19 @@ class Organization < ActiveRecord::Base
   end
 
   def self.central?
-    current.name == 'central'
+    current.central?
+  end
+
+  def central?
+    name == 'central'
+  end
+
+  def test?
+    name == 'test'
+  end
+
+  def silent?
+    central? || test?
   end
 
   private

@@ -1,9 +1,0 @@
----
-es:
-  devise:
-    failure:
-      admin_user:
-        unauthenticated: Usuario no autenticado
-    sessions:
-      admin_user:
-        signed_in: Ha ingresado

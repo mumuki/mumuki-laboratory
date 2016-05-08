@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-
   controller :sessions do
     get 'auth/auth0/callback' => :callback
     get 'auth/failure' => :failure
