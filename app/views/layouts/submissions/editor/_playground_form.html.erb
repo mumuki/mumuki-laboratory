@@ -1,5 +1,5 @@
 <div class="console">
 </div>
 <div class="pull-right">
-  <%= next_button(@exercise) || next_button(@exercise.guide) if @exercise.guide %>
+  <%= next_button(@exercise) || next_button(@exercise.guide.lesson) %>
 </div>
