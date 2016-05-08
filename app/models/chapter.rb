@@ -10,6 +10,7 @@ class Chapter < ActiveRecord::Base
   belongs_to :topic
 
   include ParentNavigation, SiblingsNavigation
+  include TerminalNavigation
 
   def pending_siblings_for(user)
     book.pending_chapters(user)
