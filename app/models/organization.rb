@@ -6,7 +6,7 @@ class Organization < ActiveRecord::Base
   before_create :setup_apartment_tenant!
   after_destroy :teardown_apartment_tenant!
 
-  validates_presence_of :name
+  validates_presence_of :name, :contact_email
   validates_uniqueness_of :name
 
   def switch!

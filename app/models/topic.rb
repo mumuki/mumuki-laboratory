@@ -1,15 +1,16 @@
 class Topic < ActiveRecord::Base
-  INDEXED_ATTRIBUTES = { against: [:name, :description, :long_description] }
+  INDEXED_ATTRIBUTES = {against: [:name, :description, :long_description]}
 
   include WithSearch,
-          WithLocale
+          WithLocale,
+          WithSlug
 
   validates_presence_of :name, :description
 
   numbered :lessons
   aggregate_of :lessons
 
-  has_many :lessons, -> { order(number: :asc) }, dependent:  :delete_all
+  has_many :lessons, -> { order(number: :asc) }, dependent: :delete_all
   has_many :usages, as: :item
 
   has_many :guides, -> { order('lessons.number') }, through: :lessons
@@ -37,5 +38,14 @@ class Topic < ActiveRecord::Base
 
   def first_lesson
     lessons.first
+  end
+
+  def import_from_json!(json)
+    self.assign_attributes json.except('lessons', 'id')
+    rebuild! json['lessons'].map { |it| Guide.find_by(slug: it).to_lesson }
+  end
+
+  def to_chapter
+    usage_in_organization || Chapter.new(topic: self)
   end
 end

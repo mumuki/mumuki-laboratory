@@ -1,17 +1,17 @@
 require_relative './seeds/book_builder'
+require_relative './seeds/import'
 
 if Apartment::Tenant.on? 'public'
 
   puts 'Seeding global'
   require_relative './seeds/languages'
-  require_relative './seeds/guides'
+  import_resource! :guide
+  import_resource! :topic
+  import_resource! :books
 
-  Book.find_or_create_by(name: 'central').switch!
-
-elsif Apartment::Tenant.on? 'central'
-
-  require_relative './seeds/central'
-
+  Organization.create! name: 'central',
+                       contact_email: 'issues@mumuki.org',
+                       book: Book.find_by(slug: 'mumuki/mumuki-libro-programacion')
 end
 
 

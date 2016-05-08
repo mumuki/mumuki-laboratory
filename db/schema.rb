@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160501071847) do
+ActiveRecord::Schema.define(version: 20160506041446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,8 +81,11 @@ ActiveRecord::Schema.define(version: 20160501071847) do
     t.datetime "updated_at"
     t.string   "locale",        default: "en"
     t.string   "contact_email", default: "info@mumuki.org", null: false
-    t.text     "preface"
+    t.text     "description"
+    t.string   "slug"
   end
+
+  add_index "books", ["slug"], name: "index_books_on_slug", unique: true, using: :btree
 
   create_table "chapters", force: true do |t|
     t.datetime "created_at"
@@ -210,7 +213,6 @@ ActiveRecord::Schema.define(version: 20160501071847) do
     t.integer  "number"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
     t.integer  "topic_id"
   end
 
@@ -242,7 +244,10 @@ ActiveRecord::Schema.define(version: 20160501071847) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "long_description"
+    t.string   "slug"
   end
+
+  add_index "topics", ["slug"], name: "index_topics_on_slug", unique: true, using: :btree
 
   create_table "usages", force: true do |t|
     t.integer  "organization_id"
