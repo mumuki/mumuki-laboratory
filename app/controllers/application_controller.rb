@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
                 :subject
 
   def set_organization
-    Organization.find_by!(name: request.first_subdomain).switch!
+    Organization.find_by!(name: request.organization_name).switch!
   end
 
   def set_locale

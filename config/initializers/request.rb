@@ -6,6 +6,10 @@ module Rack
       @env['rack.env.subdomains'] ||= extract_subdomains
     end
 
+    def organization_name
+      first_subdomain || 'central'
+    end
+
     private
 
     def extract_subdomains
