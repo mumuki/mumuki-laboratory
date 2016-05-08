@@ -9,9 +9,7 @@ class Lesson < ActiveRecord::Base
 
   include ParentNavigation, SiblingsNavigation
 
-  def chapter
-    navigable_parent #FIXME
-  end
+  alias_method :chapter, :navigable_parent
 
   def pending_siblings_for(user)
     topic.pending_lessons(user)

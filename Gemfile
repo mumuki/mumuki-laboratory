@@ -48,7 +48,6 @@ gem 'yaml_db'
 gem 'bunny'
 
 gem 'addressable'
-gem 'apartment'
 
 gem 'mumukit-inspection', github: 'mumuki/mumukit-inspection', :branch => 'master'
 gem 'mumukit-content-type', github: 'mumuki/mumukit-content-type', :branch => 'master', require: 'mumukit/content_type'

@@ -7,7 +7,7 @@ describe 'events' do
   let(:exercise) { create(:x_equal_5_exercise) }
 
   describe '#notify!' do
-    let!(:organization) { Organization.create!(name: 'pdep', contact_email: 'bar@baz.com') }
+    let!(:organization) { create(:organization, name: 'pdep') }
     before { expect_any_instance_of(Event::Base).to receive(:publish!) }
     before { organization.switch! }
 
@@ -15,7 +15,7 @@ describe 'events' do
   end
 
   describe 'protect in central book' do
-    let!(:organization) { Organization.create!(name: 'central', contact_email: 'bar@baz.com') }
+    let!(:organization) { create(:organization, name: 'central') }
     before { expect_any_instance_of(Event::Base).to_not receive(:publish!) }
     before { organization.switch! }
 
@@ -23,7 +23,7 @@ describe 'events' do
   end
 
   describe 'submit_solution!' do
-    let!(:organization) { Organization.create!(name: 'pdep', contact_email: 'bar@baz.com') }
+    let!(:organization) { create(:organization, name: 'pdep') }
     before { expect_any_instance_of(Event::Base).to receive(:publish!) }
     before { organization.switch! }
 

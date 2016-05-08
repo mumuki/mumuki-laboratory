@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include WithRememberMeToken
   include Pagination
 
+  before_action :set_organization
   before_action :set_locale
 
   # Prevent CSRF attacks by raising an exception.
@@ -18,6 +19,10 @@ class ApplicationController < ActionController::Base
                 :comments_count,
                 :has_comments?,
                 :subject
+
+  def set_organization
+    Organization.find_by!(name: request.first_subdomain).switch!
+  end
 
   def set_locale
     I18n.locale = Organization.current.locale

@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   # All users
   resources :lessons, only: [:show, :index]
+  resources :complements, only: [:show] #FIXME
+  resources :exams, only: [:show]       #FIXME
 
   # All users
   resources :users, only: [:show, :index]

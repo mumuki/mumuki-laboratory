@@ -1,12 +1,11 @@
 module ParentNavigation
-  extend ActiveSupport::Concern
 
   def leave(user)
     navigable_parent.next(user)
   end
 
-  def orphan?
-    navigable_parent.nil?
+  def navigation_end?
+    false
   end
 
   def navigable_name

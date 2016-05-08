@@ -16,6 +16,9 @@ feature 'Search Flow' do
         create(:exercise, tag_list: [], name: 'Baz', description: 'do it in haskell'),
     ]) }
 
+  let!(:chapter) { create(:chapter, name: 'C1', lessons: [lesson, other_lesson]) }
+  before { reindex_current_book! }
+
   scenario 'search lessons by language' do
     visit '/lessons'
 

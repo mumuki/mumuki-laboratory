@@ -21,9 +21,9 @@ describe WithNavigation do
       let(:current_user) { create(:user) }
 
       context 'when user did not submit any solution' do
-        it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success\" href=\"/exercises/12-my-guide-exercise-2\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
-        it { expect(next_button(exercise_2)).to eq "<a class=\"btn btn-success\" href=\"/exercises/13-my-guide-exercise-3\">Next: exercise 3 <i class=\"fa fa-chevron-right\"></i></a>" }
-        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning\" href=\"/exercises/11-my-guide-exercise-1\">Next pending: exercise 1 <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success\" href=\"/exercises/12-exercise-2\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise_2)).to eq "<a class=\"btn btn-success\" href=\"/exercises/13-exercise-3\">Next: exercise 3 <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning\" href=\"/exercises/11-exercise-1\">Next pending: exercise 1 <i class=\"fa fa-chevron-right\"></i></a>" }
       end
 
       context 'when on last unresolved exercise' do
@@ -32,9 +32,9 @@ describe WithNavigation do
           exercise_3.submit_solution!(current_user).passed!
         end
 
-        it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success\" href=\"/exercises/12-my-guide-exercise-2\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success\" href=\"/exercises/12-exercise-2\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
         it { expect(next_button(exercise_2)).to be nil }
-        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning\" href=\"/exercises/12-my-guide-exercise-2\">Next pending: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning\" href=\"/exercises/12-exercise-2\">Next pending: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
       end
 
       context 'when user did submit a solution' do
@@ -42,21 +42,21 @@ describe WithNavigation do
           exercise_1.submit_solution!(current_user).passed!
         end
 
-        it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success\" href=\"/exercises/12-my-guide-exercise-2\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
-        it { expect(next_button(exercise_2)).to eq "<a class=\"btn btn-success\" href=\"/exercises/13-my-guide-exercise-3\">Next: exercise 3 <i class=\"fa fa-chevron-right\"></i></a>" }
-        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning\" href=\"/exercises/12-my-guide-exercise-2\">Next pending: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success\" href=\"/exercises/12-exercise-2\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise_2)).to eq "<a class=\"btn btn-success\" href=\"/exercises/13-exercise-3\">Next: exercise 3 <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning\" href=\"/exercises/12-exercise-2\">Next pending: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
       end
     end
 
     context 'with guides' do
-      let(:chapter) { create(:chapter) }
       let!(:current_user) { create(:user) }
 
       context 'when guide has no suggestions' do
         let(:exercise) { build(:exercise) }
-        let!(:lesson) { create(:lesson, name: 'Guide A', exercises: [exercise]) }
+        let(:lesson) { create(:lesson, name: 'Guide A', exercises: [exercise]) }
+        let(:chapter) { create(:chapter, lessons: [lesson]) }
 
-        before { chapter.rebuild!([lesson]) }
+        before { reindex_current_book! }
         before { exercise.submit_solution!(current_user).passed! }
 
         it { expect(next_button(lesson)).to be nil }
@@ -64,10 +64,11 @@ describe WithNavigation do
 
       context 'when guide has one suggestion' do
         let!(:suggested_lesson) { create(:lesson, name: 'l3') }
-        let(:lesson) { create(:lesson, name: 'l2') }
-        let(:another_lesson) { create(:lesson, name: 'l1') }
+        let!(:lesson) { create(:lesson, name: 'l2') }
+        let!(:another_lesson) { create(:lesson, name: 'l1') }
+        let!(:chapter) { create(:chapter, lessons: [another_lesson, lesson, suggested_lesson]) }
 
-        before { chapter.rebuild!([another_lesson, lesson, suggested_lesson]) }
+        before { reindex_current_book! }
 
         it { expect(next_button(lesson)).to include "<a class=\"btn btn-success\" href=\"/lessons/#{suggested_lesson.friendly_name}\">Next: #{suggested_lesson.name} <i class=\"fa fa-chevron-right\"></i></a>" }
       end
@@ -75,9 +76,10 @@ describe WithNavigation do
       context 'when guide has many suggestions' do
         let!(:suggested_lesson_1) { create(:lesson) }
         let!(:suggested_lesson_2) { create(:lesson) }
-        let(:lesson) { create(:lesson) }
+        let!(:lesson) { create(:lesson) }
+        let!(:chapter) { create(:chapter, lessons: [lesson, suggested_lesson_1, suggested_lesson_2])}
 
-        before { chapter.rebuild!([lesson, suggested_lesson_1, suggested_lesson_2]) }
+        before { reindex_current_book! }
 
         it { expect(next_button(lesson)).to include "<a class=\"btn btn-success\" href=\"/lessons/#{suggested_lesson_1.friendly_name}\">Next: #{suggested_lesson_1.name} <i class=\"fa fa-chevron-right\"></i></a>" }
         it { expect(next_button(lesson)).to be_html_safe }

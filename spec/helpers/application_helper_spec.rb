@@ -7,14 +7,19 @@ describe ApplicationHelper do
   before { I18n.locale = :en }
 
   describe 'page_title' do
-    let(:lesson) {
-      create(:lesson, name: 'A Guide', exercises: [
-          create(:exercise, name: 'An Exercise')]) }
-    let(:exercise) { lesson.exercises.first }
+    context 'in path' do
+      let(:exercise) { lesson.exercises.first }
+      let(:lesson) {
+        create(:lesson, name: 'A Guide', exercises: [
+            create(:exercise, name: 'An Exercise')]) }
+      let!(:chapter) { create(:chapter, name: 'C1', lessons: [lesson]) }
 
-    it { expect(page_title nil).to eq 'Mumuki - Improve your programming skills' }
-    it { expect(page_title Problem.new).to eq 'Mumuki - Improve your programming skills' }
-    it { expect(page_title exercise).to eq 'A Guide - An Exercise - Mumuki' }
+      before { reindex_current_book! }
+
+      it { expect(page_title nil).to eq 'Mumuki - Improve your programming skills' }
+      it { expect(page_title Problem.new).to eq 'Mumuki - Improve your programming skills' }
+      it { expect(page_title exercise).to eq 'C1: A Guide - An Exercise - Mumuki' }
+    end
   end
 
   describe '#language_icon' do
@@ -24,19 +29,20 @@ describe ApplicationHelper do
   end
 
   describe '#link_to_exercise' do
-    context 'when exercise has guide' do
-      let(:lesson) {
-        create(:lesson, name: 'bar', exercises: [
-            create(:exercise, name: 'foo2', id: 10),
-            create(:exercise, name: 'foo2', id: 20),
-            create(:exercise, name: 'foo3', id: 30)
-        ]) }
-      let(:exercise) { lesson.exercises.third }
+    let(:exercise) { lesson.exercises.third }
+    let(:lesson) {
+      create(:lesson, name: 'bar', exercises: [
+          create(:exercise, name: 'foo2', id: 10),
+          create(:exercise, name: 'foo2', id: 20),
+          create(:exercise, name: 'foo3', id: 30)
+      ]) }
+    let!(:chapter) { create(:chapter, name: 'C1', lessons: [lesson]) }
 
-      it { expect(link_to_path_element(exercise, mode: :plain)).to eq '<a href="/exercises/30-bar-foo3">foo3</a>' }
-      it { expect(link_to_path_element(exercise, mode: :friendly)).to eq '<a href="/exercises/30-bar-foo3">bar - foo3</a>' }
-      it { expect(link_to_path_element(exercise)).to eq '<a href="/exercises/30-bar-foo3">3. foo3</a>' }
-    end
+    before { reindex_current_book! }
+
+    it { expect(link_to_path_element(exercise, mode: :plain)).to eq '<a href="/exercises/30-c1-bar-foo3">foo3</a>' }
+    it { expect(link_to_path_element(exercise, mode: :friendly)).to eq '<a href="/exercises/30-c1-bar-foo3">C1: bar - foo3</a>' }
+    it { expect(link_to_path_element(exercise)).to eq '<a href="/exercises/30-c1-bar-foo3">3. foo3</a>' }
   end
 
   describe '#link_to_guide' do

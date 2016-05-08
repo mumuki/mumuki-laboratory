@@ -14,6 +14,8 @@ feature 'Submit Flow' do
         ])
     ]) }
 
+  before { reindex_current_book! }
+
   let(:user) { create(:user) }
 
 

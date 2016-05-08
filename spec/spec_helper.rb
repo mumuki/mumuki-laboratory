@@ -1,14 +1,13 @@
-# This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../../config/environment", __FILE__)
-require 'minitest/autorun'
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../../config/environment', __FILE__)
+
 require 'rspec/rails'
 require 'rspec/autorun'
-require "codeclimate-test-reporter"
+require 'codeclimate-test-reporter'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -20,7 +19,7 @@ RSpec.configure do |config|
 
   config.infer_base_class_for_anonymous_controllers = false
 
-  config.order = "1"
+  config.order = '1'
 
   config.include FactoryGirl::Syntax::Methods
 
@@ -28,15 +27,32 @@ RSpec.configure do |config|
 
 end
 
-require_relative './apartment_helper'
 require_relative './capybara_helper'
 require_relative './evaluation_helper'
 
-CodeClimate::TestReporter.start
+RSpec.configure do |config|
+  config.before(:each) do
+    unless example.metadata[:clean]
+      create(:organization,
+             name: 'test',
+             book: create(:book, name: 'test', slug: 'mumuki/mumuki-the-book')).switch!
+    end
+  end
 
+  config.after(:each) do
+    Organization.current = nil
+  end
+end
+
+def reindex_current_book!
+  Organization.current.book.reload
+  Organization.current.reindex_usages!
+end
 
 RSpec::Matchers.define :json_eq do |expected_json_hash|
   match do |actual_json|
     expected_json_hash.with_indifferent_access == ActiveSupport::JSON.decode(actual_json)
   end
 end
+
+CodeClimate::TestReporter.start

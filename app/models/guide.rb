@@ -14,13 +14,12 @@ class Guide < ActiveRecord::Base
           WithLanguage,
           WithSlug
 
-  include ChildrenNavigation
+  include WithUsages, ChildrenNavigation
 
   markdown_on :description, :teaser, :corollary
 
   numbered :exercises
   has_many :exercises, -> { order(number: :asc) }, dependent:  :delete_all
-  has_many :usages, as: :item
 
   self.inheritance_column = nil
 
@@ -33,10 +32,6 @@ class Guide < ActiveRecord::Base
 
   def chapter
     lesson.try(:chapter) #FIXME temporary
-  end
-
-  def usage_in_organization
-    Lesson.where(guide_id: id).first #FIXME use usages and consider exams and complements
   end
 
   def exercises_count
@@ -88,8 +83,8 @@ class Guide < ActiveRecord::Base
     reload
   end
 
-  def to_lesson
-    usage_in_organization || Lesson.new(guide: self)
+  def as_lesson_of(topic)
+    topic.lessons.find_by(guide_id: id) || Lesson.new(guide: self, topic: topic)
   end
 
 end
