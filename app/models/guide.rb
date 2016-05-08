@@ -26,8 +26,7 @@ class Guide < ActiveRecord::Base
   enum type: [:learning, :practice]
 
   def lesson
-    #FIXME temporary
-    usage_in_organization
+    usage_in_organization_of_type Lesson
   end
 
   def chapter
