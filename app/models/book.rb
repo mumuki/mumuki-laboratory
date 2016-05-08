@@ -1,7 +1,7 @@
 class Book < ActiveRecord::Base
   validates_presence_of :name, :locale
 
-  include WithSlug
+  include WithSlug, WithTerminalName
 
   numbered :chapters
   aggregate_of :chapters
@@ -12,10 +12,6 @@ class Book < ActiveRecord::Base
   markdown_on :description
 
   include ChildrenNavigation
-
-  def navigable_name
-    name
-  end
 
   def usage_in_organization
     self
