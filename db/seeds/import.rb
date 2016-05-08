@@ -6,7 +6,9 @@ def import_resource!(resource)
     clazz = resource.to_s.classify.constantize
     puts "Importing #{resource} #{slug}"
     begin
-      clazz.find_or_create_by!(slug: slug).import!
+      item = clazz.find_or_initialize_by(slug: slug)
+      item.save(validate: false)
+      item.import!
     rescue => e
       puts "Ignoring #{slug} because of import error #{e}"
     end
