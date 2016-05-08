@@ -1,6 +1,10 @@
 class ActiveRecord::Base
   def self.all_except(others)
-    where.not(id: [others.map(&:id)])
+    if others.present?
+      where.not(id: [others.map(&:id)])
+    else
+      all
+    end
   end
 
   def save(*)

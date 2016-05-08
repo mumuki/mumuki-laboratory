@@ -87,4 +87,8 @@ class Guide < ActiveRecord::Base
     topic.lessons.find_by(guide_id: id) || Lesson.new(guide: self, topic: topic)
   end
 
+  def as_complement_of(book) #FIXME duplication
+    book.complements.find_by(guide_id: id) || Complement.new(guide: self, book: book)
+  end
+
 end
