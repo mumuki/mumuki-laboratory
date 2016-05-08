@@ -5,7 +5,7 @@ module WithUsages
     has_many :usages, as: :item
   end
 
-  def usage_in_organization
-    usages.in_organization.first.try(:parent_item)
+  def usage_in_organization(organization = Organization.current)
+    usages.in_organization(organization).first.try(:parent_item)
   end
 end
