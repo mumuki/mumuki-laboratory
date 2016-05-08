@@ -31,7 +31,7 @@ class AtheneumElevator < Apartment::Elevators::Subdomain
     begin
       super
     rescue Apartment::TenantNotFound
-      return [404, {'Content-Type' => 'text/html'}, ["#{File.read(Rails.root.to_s + "/public/404.#{Book.central.locale}.html")}"]]
+      return [404, {'Content-Type' => 'text/html'}, ["#{File.read(Rails.root.to_s + "/public/404.#{Organization.central.locale}.html")}"]]
     end
   end
 end
