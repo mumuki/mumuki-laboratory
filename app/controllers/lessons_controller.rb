@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
 
-  before_action :set_lesson, only: :show
+  before_action :set_lesson
 
   def show
     if current_user?
@@ -9,11 +9,6 @@ class LessonsController < ApplicationController
     else
       @next_exercise = @guide.first_exercise
     end
-  end
-
-  def index
-    @q = params[:q]
-    @lessons = paginated Lesson.by_full_text(@q)
   end
 
   private

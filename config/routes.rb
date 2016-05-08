@@ -18,13 +18,14 @@ Rails.application.routes.draw do
   end
 
   # All users
-  resources :lessons, only: [:show, :index]
+  resources :guides, only: [:show, :index]
+  resources :lessons, only: [:show]
   resources :complements, only: [:show]
-  resources :exams, only: [:show]       #FIXME
+  resources :exams, only: [:show] #FIXME
 
   # All users
   resources :users, only: [:show, :index]
 
   # Guide route
-  get '/guides/:organization/:repository' => 'guides#show', as: :guide_by_slug
+  get '/guides/:organization/:repository' => 'guides#show_by_slug', as: :guide_by_slug
 end

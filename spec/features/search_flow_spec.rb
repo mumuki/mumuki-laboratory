@@ -16,16 +16,30 @@ feature 'Search Flow' do
         create(:exercise, tag_list: [], name: 'Baz', description: 'do it in haskell'),
     ]) }
 
+  let!(:complement) { create(:complement, name: 'a complement', exercises: [
+      create(:exercise, name: 'complementary exercise 1'),
+      create(:exercise, name: 'complementary exercise 2')
+  ]) }
+
   let!(:chapter) { create(:chapter, name: 'C1', lessons: [lesson, other_lesson]) }
   before { reindex_current_book! }
 
-  scenario 'search lessons by language' do
-    visit '/lessons'
+  scenario 'search guides by language' do
+    visit '/guides'
 
     fill_in 'q', with: 'ruby'
     click_on 'search'
 
     expect(page).to have_text('awesomeRubyGuide')
+  end
+
+  scenario 'search all' do
+    visit '/guides'
+
+    click_on 'search'
+
+    expect(page).to have_text('awesomeRubyGuide')
+    expect(page).to have_text('a complement')
   end
 
   scenario 'search by language' do

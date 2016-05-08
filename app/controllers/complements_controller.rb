@@ -1,6 +1,6 @@
 class ComplementsController < ApplicationController
 
-  before_action :set_complement, only: :show
+  before_action :set_complement
 
   def show
     if current_user?

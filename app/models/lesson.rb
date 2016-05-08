@@ -18,8 +18,4 @@ class Lesson < ActiveRecord::Base
   def structural_parent
     topic
   end
-
-  def self.by_full_text(q)
-    Guide.by_full_text(q).map(&:lesson).compact
-  end
 end

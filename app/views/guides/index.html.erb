@@ -4,7 +4,7 @@
 <%# TODO duplicated code with exercise index %>
 <div class="row">
   <div class="col-md-12">
-    <%= bootstrap_form_tag url: lessons_path, method: :get do |f| %>
+    <%= bootstrap_form_tag url: guides_path, method: :get do |f| %>
 
       <div class="form-group">
         <div class="input-group">
@@ -19,7 +19,7 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <% @lessons.each do |it| %>
+    <% @items.each do |it| %>
       <div class="panel panel-default exercise-panel">
         <div class="panel-body">
           <div class="row">
@@ -58,12 +58,12 @@
 
 
 <div class="text-center">
-  <strong><%= raw t :no_guides if @lessons.empty? %></strong>
+  <strong><%= raw t :no_guides if @items.empty? %></strong>
 </div>
 
 
 <div class="row">
-  <%= paginate @lessons %>
+  <%= paginate @items %>
   <br>
 </div>
 

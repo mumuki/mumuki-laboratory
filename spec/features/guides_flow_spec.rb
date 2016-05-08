@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Search Flow' do
+feature 'Guides Flow' do
   let(:haskell) { create(:haskell) }
   let!(:exercises) {[
     create(:exercise, name: 'Foo',        guide: guide, number: 1, description: 'Description of foo'),
@@ -9,11 +9,32 @@ feature 'Search Flow' do
   ]}
   let(:guide) { create(:guide, name: 'awesomeGuide', description: 'An awesome guide', language: haskell, slug: 'foo/bar') }
   let!(:lesson) { create(:lesson, guide: guide) }
-
   let!(:chapter) { create(:chapter, name: 'C1', lessons: [lesson]) }
+
+
+  let!(:complement) { create(:complement, name: 'a complement', exercises: [
+      create(:exercise, name: 'complementary exercise 1'),
+      create(:exercise, name: 'complementary exercise 2')
+  ]) }
+
   before { reindex_current_book! }
 
   let(:user) { User.find_by(name:'testuser') }
+
+  scenario 'visit complement by guide by id' do
+    visit "/guides/#{complement.guide.id}"
+
+    expect(page).to have_text('a complement')
+    expect(page).to have_text('Content')
+  end
+
+  scenario 'visit lesson by guide by id' do
+    visit "/guides/#{lesson.guide.id}"
+
+    expect(page).to have_text('awesomeGuide')
+    expect(page).to have_text('Content')
+  end
+
 
   scenario 'visit guide by slug' do
     visit '/guides/foo/bar'
@@ -24,7 +45,7 @@ feature 'Search Flow' do
   end
 
   scenario 'visit guides from search page, and starts practicing' do
-    visit '/lessons'
+    visit '/guides'
 
     click_on 'awesomeGuide'
 
