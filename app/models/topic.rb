@@ -37,7 +37,7 @@ class Topic < ActiveRecord::Base
 
   def import_from_json!(json)
     self.assign_attributes json.except('lessons', 'id')
-    rebuild! json['lessons'].map { |it| Guide.find_by(slug: it).as_lesson_of(self) }
+    rebuild! json['lessons'].map { |it| lesson_for(it) }
     Organization.all.each { |org| org.reindex_usages! }
   end
 
@@ -49,5 +49,13 @@ class Topic < ActiveRecord::Base
 
   def as_chapter_of(book)
     book.chapters.find_by(topic_id: id) || Chapter.new(topic: self, book: book)
+  end
+
+  private
+
+  def lesson_for(slug)
+    Guide.find_by!(slug: slug).as_lesson_of(self)
+  rescue ActiveRecord::RecordNotFound
+    raise "Guide for slug #{slug} could not be found"
   end
 end

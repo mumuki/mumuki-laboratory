@@ -7,7 +7,7 @@ import_resource! :books
 
 Organization.find_or_create_by!(name: 'central') do |org|
   org.contact_email = 'issues@mumuki.org'
-  org.book = Book.find_by(slug: 'mumuki/mumuki-libro-programacion')
+  org.book = Book.find_by!(slug: 'mumuki/mumuki-libro-programacion')
 end
 
 

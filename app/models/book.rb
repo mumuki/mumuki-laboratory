@@ -23,7 +23,7 @@ class Book < ActiveRecord::Base
 
   def import_from_json!(json)
     self.assign_attributes json.except('chapters', 'id')
-    rebuild! json['chapters'].map { |it| Topic.find_by(slug: it).as_chapter_of(self) }
+    rebuild! json['chapters'].map { |it| Topic.find_by!(slug: it).as_chapter_of(self) }
     Organization.all.each { |org| org.reindex_usages! }
   end
 
