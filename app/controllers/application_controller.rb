@@ -50,6 +50,6 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_last_guide
-    redirect_to current_user.last_guide, notice: t(:welcome_back_after_redirection)
+    #redirect_to current_user.last_guide, notice: t(:welcome_back_after_redirection)
   end
 end
