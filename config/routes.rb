@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   root to: 'book#show'
 
+  namespace :api do
+    resources :guides, only: [:create]
+  end
+
   resources :book, only: [:show]
   resources :chapters, only: [:show]
 
