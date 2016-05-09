@@ -23,4 +23,9 @@ class Comment < ActiveRecord::Base
     Assignment.find_by(submission_id: submission_id)
   end
 
+  def self.import_from_json!(json)
+    comment_data = Comment.parse_json json
+    Organization.find_by!(name: comment_data.delete('tenant')).switch!
+    Comment.create! comment_data if comment_data['submission_id'].present?
+  end
 end
