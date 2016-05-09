@@ -19,7 +19,6 @@ es:
   create_submission: Enviar
   created_at: Creado
   created_exercises: Ejercicios Creados
-  created_guides: Lecciones Creadas
   date: Fecha
   destroy: Eliminar
   details: Detalles
@@ -36,10 +35,11 @@ es:
   export_created: Exportación encolada
   failed: Ups, algo no anduvo bien
   feedback: Problemas que encontramos
-  guide: Lección
+  guide: Guía
   guide_created: Guia creada exitosamente
-  guide_finished: Felicitaciones, terminaste la lección %{guide}
+  guide_finished: Felicitaciones, terminaste la guía %{guide}
   guide_internal: guia
+  lesson: 'Lección'
   lesson_number: Lección %{number}
   guides_index_title: ¿Qué guía querés hacer hoy?
   here: acá
@@ -48,13 +48,12 @@ es:
   languages: Lenguajes
   last_submission_date: Última solucion
   latest_exercises: Ultimos ejercicios
-  latest_guides: últimas lecciones
+  latest_guides: últimas guías
   learning: Aprendizaje
   listing_exercises: Listado de ejercicios
   mumuki_catchphrase: Aprendé a programar
   mumuki_short_description: Mumuki es la plataforma libre y gratuita para aprender a programar, de la práctica a la teoría y en tu idioma
   my_exercises: Mis Ejercicios
-  my_guides: Mis Lecciones
   my_submissions: Mis Soluciones
   navigation_continue: 'Siguiente %{kind}: %{sibling}'
   navigation_next: Siguiente %{kind}
@@ -63,9 +62,9 @@ es:
   never: nunca
   new: Nuevo
   next_exercise: Siguiente
-  next_guide: 'Siguiente Lección: %{name}'
+  next_lesson: 'Siguiente Lección: %{name}'
   no_exercises: No encontramos ejericios que coincidan con tu busqueda.
-  no_guides: No encontramos lecciones que coincidan con tu busqueda.
+  no_guides: No encontramos guías que coincidan con tu busqueda.
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio aún!
   notify_problem_with_exercise: ¿Pensás que algo está mal con este ejercicio?
   output: Salida

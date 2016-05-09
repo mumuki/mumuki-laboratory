@@ -48,7 +48,6 @@ en:
   mumuki_catchphrase: Improve your programming skills
   mumuki_short_description: Mumuki is a simple, open and collaborative platform for sharing and solving programming exercises. It is aimed to help people with learning and teaching programing languages and paradigms
   my_exercises: My Exercises
-  my_guides: My Guides
   my_submissions: My Submissions
   navigation_continue: 'Next: %{sibling}'
   navigation_next: Next
@@ -57,7 +56,7 @@ en:
   never: never
   new: New
   next_exercise: Next
-  next_guide: 'Next Guide: %{name}'
+  next_lesson: 'Next Guide: %{name}'
   no_exercises: Nobody created an exercise for this search yet
   no_guides: Nobody created a guide for this search yet
   no_submissions: Its seems like you haven't tried to solve this exercise
