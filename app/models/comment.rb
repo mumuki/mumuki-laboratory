@@ -25,7 +25,7 @@ class Comment < ActiveRecord::Base
 
   def self.import_from_json!(json)
     comment_data = Comment.parse_json json
-    Book.find_by(name: comment_data.delete('tenant')).switch!
+    Organization.find_by!(name: comment_data.delete('tenant')).switch!
     Comment.create! comment_data if comment_data['submission_id'].present?
   end
 end
