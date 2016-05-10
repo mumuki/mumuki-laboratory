@@ -2,6 +2,28 @@ require 'spec_helper'
 
 describe User do
 
+  describe '#recurrent?' do
+
+    context 'when fresh new user' do
+      let(:user) { create(:user) }
+      it { expect(user.recurrent?).to be false }
+    end
+
+    context 'when already did a guide' do
+      let(:exercise) { create(:exercise) }
+      let(:user) { create(:user, last_exercise: exercise, last_organization: Organization.current) }
+
+      it { expect(user.recurrent?).to be true }
+    end
+
+    context 'when already did a guide, but no org has being set' do
+      let(:guide) { create(:guide) }
+      let(:user) { create(:user, last_guide: guide) }
+
+      it { expect(user.recurrent?).to be false }
+    end
+  end
+
   describe '#submissions_count' do
     let!(:exercise_1) { create(:exercise) }
     let!(:exercise_2) { create(:exercise) }
