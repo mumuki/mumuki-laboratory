@@ -27,11 +27,12 @@ GIT
 
 GIT
   remote: git://github.com/mumuki/mumukit-nuntius.git
-  revision: a11c00a8800fa369cdcd12e15bc5e37e57c8da2c
-  tag: v0.0.2
+  revision: 56c6763451c4dfdb3869d9dea2d5628928035540
+  tag: v0.2.2
   specs:
-    mumukit-nuntius (0.1.0)
-      bunny
+    mumukit-nuntius (0.2.2)
+      activesupport (~> 4.1)
+      bunny (~> 2.3)
 
 GEM
   remote: https://rubygems.org/
