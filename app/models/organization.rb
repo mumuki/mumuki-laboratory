@@ -39,7 +39,7 @@ class Organization < ActiveRecord::Base
   end
 
   def silent?
-    central? || test?
+    test?
   end
 
   def private?

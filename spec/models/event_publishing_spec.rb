@@ -16,7 +16,7 @@ describe 'events' do
 
   describe 'protect in central book' do
     let!(:organization) { create(:organization, name: 'central') }
-    before { expect_any_instance_of(Event::Base).to_not receive(:publish!) }
+    before { expect_any_instance_of(Event::Base).to receive(:publish!) }
     before { organization.switch! }
 
     it { expect { Event::Submission.new(assignment).notify! }.to_not raise_error }
