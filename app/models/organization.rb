@@ -20,6 +20,15 @@ class Organization < ActiveRecord::Base
     name == 'test'
   end
 
+  def notify_recent_assignments!(date)
+    notify! assignments.where('updated_at > ?', date)
+  end
+
+  def notify_assignments_by!(submitter)
+    notify assignments.where(submitter_id: submitter.id)
+  end
+
+
   def silent?
     central? || test?
   end
@@ -37,6 +46,13 @@ class Organization < ActiveRecord::Base
 
   def index_usage!(item, parent)
     Usage.create! organization: self, item: item, parent_item: parent
+  end
+
+  private
+
+  def notify!(assignments)
+    puts "We will try to send #{assignments.count} assignments, please wait..."
+    assignments.each { |assignment| Event::Submission.new(assignment).notify! }
   end
 
   class << self
