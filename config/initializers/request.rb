@@ -16,6 +16,7 @@ module Rack
       raise 'no host set' unless host
       raise 'set hostname first!' if /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.match(host)
       (host.split('.') - ['mumuki', 'io'])[0]
+      return nil if host == 'localhost'
     end
   end
 end
