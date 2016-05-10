@@ -50,6 +50,11 @@ module Authentication
 
     session[:redirect_after_login] = request.fullpath
 
-    %Q{<a href="#" class="#{options[:class]}" onclick="window.signin();">#{I18n.t(options[:title])}</a>}.html_safe
+    link = if Rails.configuration.offline_mode
+      then 'href="auth/developer"'
+      else 'href="#" onclick="window.signin();"'
+      end
+
+    %Q{<a class="#{options[:class]}" #{link}>#{I18n.t(options[:title])}</a>}.html_safe
   end
 end
