@@ -1,5 +1,6 @@
 class Organization < ActiveRecord::Base
   belongs_to :book
+  has_many :usages
 
   delegate :locale, to: :book
 
@@ -7,6 +8,10 @@ class Organization < ActiveRecord::Base
   validates_uniqueness_of :name
 
   after_create :reindex_usages!
+
+  def in_path?(item)
+    usages.exists?(item: item) || usages.exists?(parent_item: item)
+  end
 
   def switch!
     self.class.current = self
@@ -28,7 +33,6 @@ class Organization < ActiveRecord::Base
     notify assignments.where(submitter_id: submitter.id)
   end
 
-
   def silent?
     central? || test?
   end
@@ -41,7 +45,7 @@ class Organization < ActiveRecord::Base
   end
 
   def drop_usage_indices!
-    Usage.in_organization(self).destroy_all
+    usages.destroy_all
   end
 
   def index_usage!(item, parent)
