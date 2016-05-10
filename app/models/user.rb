@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
            class_name: 'Exercise',
            source: :exercise
 
+  belongs_to :last_organization, class_name: 'User'
   belongs_to :last_exercise, class_name: 'Exercise'
   has_one :last_guide, through: :last_exercise, source: :guide
 
