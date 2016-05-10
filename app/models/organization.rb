@@ -9,6 +9,10 @@ class Organization < ActiveRecord::Base
 
   after_create :reindex_usages!
 
+  has_many :guides, through: 'usages', source: 'item', source_type: 'Guide'
+  has_many :exercises, through: :guides
+  has_many :assignments, through: :exercises
+
   def in_path?(item)
     usages.exists?(item: item) || usages.exists?(parent_item: item)
   end
@@ -26,11 +30,11 @@ class Organization < ActiveRecord::Base
   end
 
   def notify_recent_assignments!(date)
-    notify! assignments.where('updated_at > ?', date)
+    notify! assignments.where('assignments.updated_at > ?', date)
   end
 
   def notify_assignments_by!(submitter)
-    notify assignments.where(submitter_id: submitter.id)
+    notify! assignments.where(submitter_id: submitter.id)
   end
 
   def silent?
