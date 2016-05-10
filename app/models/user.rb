@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     last_guide.present? && last_organization == Organization.current
   end
 
+  def wrong_place?
+    last_organization.present? && last_organization != Organization.current
+  end
+
   def last_lesson
     last_guide.lesson
   end

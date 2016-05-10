@@ -22,7 +22,7 @@ describe Exercise do
 
   describe '#submit_solution!' do
     context 'when exercise has no guide' do
-      before { expect(exercise.submit_solution!(user, content: '')) }
+      before { exercise.submit_solution!(user, content: '') }
 
       it { expect(user.last_guide).to eq exercise.guide }
       it { expect(user.last_organization).to eq Organization.current }

@@ -3,7 +3,6 @@ require 'spec_helper'
 describe User do
 
   describe '#recurrent?' do
-
     context 'when fresh new user' do
       let(:user) { create(:user) }
       it { expect(user.recurrent?).to be false }
@@ -22,6 +21,19 @@ describe User do
 
       it { expect(user.recurrent?).to be false }
     end
+  end
+
+  describe '#wrong_place?' do
+    let(:other_organization) { create(:organization) }
+
+    let(:recurrent_user) { create(:user, last_organization: nil) }
+    let(:recurrent_user) { create(:user, last_organization: Organization.current) }
+    let(:lost_user) { create(:user, last_organization: other_organization) }
+
+    it { expect(new_user.wrong_place?).to be false }
+    it { expect(recurrent_user.wrong_place?).to be false }
+    it { expect(lost_user.wrong_place?).to be true }
+
   end
 
   describe '#submissions_count' do
