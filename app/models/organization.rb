@@ -4,7 +4,7 @@ class Organization < ActiveRecord::Base
 
   delegate :locale, to: :book
 
-  validates_presence_of :name, :contact_email
+  validates_presence_of :name, :contact_email, :private
   validates_uniqueness_of :name
 
   after_create :reindex_usages!
@@ -39,6 +39,10 @@ class Organization < ActiveRecord::Base
 
   def silent?
     central? || test?
+  end
+
+  def private?
+    private
   end
 
   def reindex_usages!
