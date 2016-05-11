@@ -36,7 +36,7 @@ class Topic < ActiveRecord::Base
   end
 
   def import_from_json!(json)
-    self.assign_attributes json.except('lessons', 'id', 'description')
+    self.assign_attributes json.except('lessons', 'id', 'description', 'teacher_info')
     self.description = json['description'].squeeze(' ')
     rebuild! json['lessons'].map { |it| lesson_for(it) }
     Organization.all.each { |org| org.reindex_usages! }
