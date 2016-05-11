@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/mumuki/mumukit-auth.git
+  revision: 2b183826ed6606f6f7e4e189b8f4a7de29b2c454
+  tag: v0.0.1
+  specs:
+    mumukit-auth (0.1.0)
+      activesupport
+      jwt
+
+GIT
   remote: git://github.com/mumuki/mumukit-bridge.git
   revision: 4522dcf124ec1fefaac0d6e9dc9790f09d511057
   tag: v1.1.0
@@ -327,6 +336,7 @@ DEPENDENCIES
   i18n-tasks (~> 0.8.3)
   jquery-rails
   kaminari (~> 0.16.3)
+  mumukit-auth!
   mumukit-bridge!
   mumukit-content-type!
   mumukit-inspection!
