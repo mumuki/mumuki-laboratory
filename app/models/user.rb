@@ -76,4 +76,8 @@ class User < ActiveRecord::Base
     comments.reject(&:read)
   end
 
+  def can_visit?
+    Mumukit::Auth::User.can_visit? Organization.current.name
+  end
+
 end

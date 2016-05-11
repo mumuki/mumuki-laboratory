@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include Pagination
 
   before_action :set_organization
+  before_action :validate_user
   before_action :set_locale
 
   # Prevent CSRF attacks by raising an exception.
@@ -19,6 +20,10 @@ class ApplicationController < ActionController::Base
                 :comments_count,
                 :has_comments?,
                 :subject
+
+  def validate_user
+    Organization.current.private? && current_user? && current_user.can_visit?
+  end
 
   def set_organization
     Organization.find_by!(name: request.organization_name).switch!
