@@ -20,6 +20,15 @@ describe Exercise do
     end
   end
 
+  describe '#submit_solution!' do
+    context 'when exercise has no guide' do
+      before { exercise.submit_solution!(user, content: '') }
+
+      it { expect(user.last_guide).to eq exercise.guide }
+      it { expect(user.last_organization).to eq Organization.current }
+    end
+  end
+
   describe '#next_for' do
     context 'when exercise has no guide' do
       it { expect(exercise.next(user)).to be nil }

@@ -8,10 +8,6 @@ class BookController < ApplicationController
   private
 
   def redirect_to_last_guide_if_possible
-    redirect_to_last_guide if should_redirect?
-  end
-
-  def should_redirect?
-    visitor_recurrent? && visitor_comes_from_internet?
+    redirect_to_last_guide if should_redirect_to_last_guide?
   end
 end

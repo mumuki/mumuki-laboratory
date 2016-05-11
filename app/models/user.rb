@@ -18,10 +18,19 @@ class User < ActiveRecord::Base
            class_name: 'Exercise',
            source: :exercise
 
+  belongs_to :last_organization, class_name: 'Organization'
   belongs_to :last_exercise, class_name: 'Exercise'
   has_one :last_guide, through: :last_exercise, source: :guide
 
   has_and_belongs_to_many :exams
+
+  def recurrent?
+    last_guide.present? && last_organization == Organization.current
+  end
+
+  def wrong_place?
+    last_organization.present? && last_organization != Organization.current
+  end
 
   def last_lesson
     last_guide.lesson

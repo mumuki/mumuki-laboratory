@@ -20,6 +20,10 @@ class SessionsController < ApplicationController
     path = session[:redirect_after_login] || :back
     session[:redirect_after_login] = nil
 
-    redirect_to path
+    if should_redirect_to_last_guide? && path == root_path
+      redirect_to_last_guide
+    else
+      redirect_to path
+    end
   end
 end

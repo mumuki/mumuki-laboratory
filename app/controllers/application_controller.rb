@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   def visitor_recurrent?
-    current_user? && current_user.last_guide.present?
+    current_user? && current_user.recurrent?
   end
 
   def visitor_comes_from_internet?
@@ -55,6 +55,10 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_last_guide
-    #redirect_to current_user.last_guide, notice: t(:welcome_back_after_redirection)
+    redirect_to current_user.last_guide, notice: t(:welcome_back_after_redirection)
+  end
+
+  def should_redirect_to_last_guide?
+    visitor_recurrent? && visitor_comes_from_internet?
   end
 end

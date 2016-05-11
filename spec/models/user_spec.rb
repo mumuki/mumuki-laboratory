@@ -2,6 +2,40 @@ require 'spec_helper'
 
 describe User do
 
+  describe '#recurrent?' do
+    context 'when fresh new user' do
+      let(:user) { create(:user) }
+      it { expect(user.recurrent?).to be false }
+    end
+
+    context 'when already did a guide' do
+      let(:exercise) { create(:exercise) }
+      let(:user) { create(:user, last_exercise: exercise, last_organization: Organization.current) }
+
+      it { expect(user.recurrent?).to be true }
+    end
+
+    context 'when already did a guide, but no org has being set' do
+      let(:guide) { create(:guide) }
+      let(:user) { create(:user, last_guide: guide) }
+
+      it { expect(user.recurrent?).to be false }
+    end
+  end
+
+  describe '#wrong_place?' do
+    let(:other_organization) { create(:organization) }
+
+    let(:recurrent_user) { create(:user, last_organization: nil) }
+    let(:recurrent_user) { create(:user, last_organization: Organization.current) }
+    let(:lost_user) { create(:user, last_organization: other_organization) }
+
+    it { expect(new_user.wrong_place?).to be false }
+    it { expect(recurrent_user.wrong_place?).to be false }
+    it { expect(lost_user.wrong_place?).to be true }
+
+  end
+
   describe '#submissions_count' do
     let!(:exercise_1) { create(:exercise) }
     let!(:exercise_2) { create(:exercise) }
