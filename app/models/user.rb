@@ -77,7 +77,10 @@ class User < ActiveRecord::Base
   end
 
   def can_visit?
-    Mumukit::Auth::User.can_visit? Organization.current.name
+    Mumukit::Auth::Permissions
+      .load(Mumukit::Auth::User.new(social_id)
+      .permissions_for('atheneum'))
+      .allows?("#{Organization.current.name}/atheneo")
   end
 
 end
