@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api::GuidesController do
+describe Api::TopicsController do
   describe 'post' do
     let!(:haskell) { create(:haskell) }
     let(:imported_guide) { Guide.find_by(slug: 'flbulgarelli/sample-guide') }
