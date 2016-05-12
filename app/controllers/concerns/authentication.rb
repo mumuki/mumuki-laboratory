@@ -47,19 +47,19 @@ module Authentication
 
   def validate_user
     render file: 'layouts/login' and return if must_login
-    raise_routing_error unless from_auth0?
+    render_not_found unless from_auth0?
   end
 
-  def raise_routing_error
+  def render_not_found
     raise ActionController::RoutingError.new('Not Found') unless can_visit?
   end
 
   def can_visit?
-    Organization.current.public? || private_and_can
+    Organization.current.public? || logged_and_can_visit?
   end
 
-  def private_and_can
-    Organization.current.private? && current_user? && current_user.can_visit?
+  def logged_and_can_visit?
+    current_user? && current_user.can_visit?
   end
 
   def must_login

@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def callback
     user = User.omniauth(env['omniauth.auth'])
     remember_me_token.value = user.remember_me_token
-    raise_routing_error unless can_visit?
+    render_not_found unless can_visit?
 
     redirect_after_login
   end
