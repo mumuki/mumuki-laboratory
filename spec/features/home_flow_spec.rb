@@ -19,7 +19,7 @@ feature 'Home Flow' do
       visit '/'
 
       expect(page).to have_text('ム mumuki')
-      expect(page).to have_text('Improve your programming skills')
+      expect(page).to have_text(Organization.current.book.name)
     end
 
     scenario 'from inside' do
@@ -28,7 +28,7 @@ feature 'Home Flow' do
       visit '/'
 
       expect(page).to have_text('ム mumuki')
-      expect(page).to have_text('Improve your programming skills')
+      expect(page).to have_text(Organization.current.book.name)
     end
   end
 
@@ -44,7 +44,7 @@ feature 'Home Flow' do
       visit '/'
 
       expect(page).to have_text('ム mumuki')
-      expect(page).to have_text('Improve your programming skills')
+      expect(page).to have_text(Organization.current.book.name)
     end
 
 
@@ -54,7 +54,7 @@ feature 'Home Flow' do
       visit '/'
 
       expect(page).to have_text('ム mumuki')
-      expect(page).to have_text('Improve your programming skills')
+      expect(page).to have_text(Organization.current.book.name)
     end
 
   end
