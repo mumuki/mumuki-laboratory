@@ -176,6 +176,7 @@ ActiveRecord::Schema.define(version: 20160512174708) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "logo_url"
+    t.boolean  "private",       default: false
   end
 
   add_index "organizations", ["book_id"], name: "index_organizations_on_book_id", using: :btree

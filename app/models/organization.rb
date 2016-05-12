@@ -41,6 +41,14 @@ class Organization < ActiveRecord::Base
     central? || test?
   end
 
+  def private?
+    private
+  end
+
+  def public?
+   !private
+  end
+
   def reindex_usages!
     transaction do
       drop_usage_indices!

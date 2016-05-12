@@ -45,6 +45,31 @@ module Authentication
     user_path(current_user)
   end
 
+  def validate_user
+    render file: 'layouts/login' and return if must_login
+    render_not_found unless from_auth0?
+  end
+
+  def render_not_found
+    raise ActionController::RoutingError.new('Not Found') unless can_visit?
+  end
+
+  def can_visit?
+    Organization.current.public? || logged_and_can_visit?
+  end
+
+  def logged_and_can_visit?
+    current_user? && current_user.can_visit?
+  end
+
+  def must_login
+    Organization.current.private? && (!current_user? && !from_auth0?)
+  end
+
+  def from_auth0?
+    params['controller'] == 'sessions' && params['action'] == 'callback'
+  end
+
   def login_anchor(options={})
     options[:title] ||= :sign_in
 
