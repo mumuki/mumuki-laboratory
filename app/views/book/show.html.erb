@@ -3,8 +3,13 @@
     <h1>ム mumuki</h1>
 
     <img src="<%= Organization.current.logo_url %>" alt="<%= Organization.current.name %> - Mumuki">
-
     <h2><%= @book.name %></h2>
+
+    <% unless Organization.central? %>
+      <h3>
+        <small>por <span class="ahahamojimoji">ム</span> mumuki</small>
+      </h3>
+    <% end %>
   </div>
 
   <div class="text-box">
