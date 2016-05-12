@@ -21,12 +21,6 @@ class ApplicationController < ActionController::Base
                 :has_comments?,
                 :subject
 
-  def validate_user
-    raise ActionController::RoutingError.new('Not Found') unless can_visit?
-    render file: 'layouts/login' if must_login
-  end
-
-
   def set_locale
     I18n.locale = Organization.current.locale
   end
@@ -59,18 +53,6 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_last_guide
     #redirect_to current_user.last_guide, notice: t(:welcome_back_after_redirection)
-  end
-
-  def can_visit?
-    Organization.current.public? || private_and_can
-  end
-
-  def private_and_can
-    Organization.current.private? && current_user? && current_user.can_visit?
-  end
-
-  def must_login
-    Organization.current.private? && !current_user?
   end
 
   def set_organization
