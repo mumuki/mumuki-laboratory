@@ -50,13 +50,6 @@ module Authentication
 
     session[:redirect_after_login] = request.fullpath
 
-    link =
-      if_online -> {
-        'href="#" onclick="window.signin();"'
-      }, -> {
-        'href="auth/developer"'
-      }
-
-    %Q{<a class="#{options[:class]}" #{link}>#{I18n.t(options[:title])}</a>}.html_safe
+    %Q{<a class="#{options[:class]}" #{current_mode.auth_link}>#{I18n.t(options[:title])}</a>}.html_safe
   end
 end
