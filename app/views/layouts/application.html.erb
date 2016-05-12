@@ -5,9 +5,9 @@
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
-  <% if not Rails.configuration.offline_mode %>
+  <% if_online -> { %>
     <script src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
-  <% end %>
+  <% } %>
 
   <meta property="og:site_name" content="mumuki.io" />
   <meta property="og:title" content="Mumuki" />
@@ -23,7 +23,7 @@
 </head>
 <body>
 
-<% if not Rails.configuration.offline_mode %>
+<% if_online -> { %>
   <script type="text/javascript">
     var lock = new Auth0Lock('<%= Rails.configuration.auth0_client_id %>', '<%= Rails.configuration.auth0_domain %>');
     function signin() {
@@ -34,7 +34,7 @@
       });
     }
   </script>
-<% end %>
+<% } %>
 
 <div class="container">
   <div class="row">
@@ -100,11 +100,11 @@
         </div>
       </div>
 
-      <% if not Rails.configuration.offline_mode %>
+      <% if_online -> { %>
         <div class="col-md-4 text-center">
           <a width="150" height="50" href="https://auth0.com/" target="_blank" alt="Single Sign On & Token Based Authentication - Auth0"><img width="150" height="50" alt="JWT Auth for open source projects" src="//cdn.auth0.com/oss/badges/a0-badge-light.png"/></a>
-        </div>>
-      <% end %>
+        </div>
+      <% } %>
 
       <div class="col-md-4">
         <div class="text-right">
