@@ -4,7 +4,7 @@ class Organization < ActiveRecord::Base
 
   delegate :locale, to: :book
 
-  validates_presence_of :name, :contact_email, :private
+  validates_presence_of :name, :contact_email
   validates_uniqueness_of :name
 
   after_create :reindex_usages!
