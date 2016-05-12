@@ -1,8 +1,8 @@
 <div class="col-md-offset-2 col-md-8">
-  <div class="mumuki <%= current_user?? '' : 'logged'%>">
-    <h1 class="logo"><span class="ahahamojimoji">ム</span></h1>
+  <div class="book-header <%= current_user?? '' : 'logged'%>">
+    <h1>ム mumuki</h1>
 
-    <h1>mumuki</h1>
+    <img src="<%= Organization.current.logo_url %>">
 
     <h2><%= @book.name %></h2>
   </div>
