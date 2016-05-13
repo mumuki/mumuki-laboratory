@@ -41,12 +41,17 @@ RSpec.configure do |config|
 
   config.after(:each) do
     Organization.current = nil
+    set_subdomain_host 'test'
   end
 end
 
 def reindex_current_book!
   Organization.current.book.reload
   Organization.current.reindex_usages!
+end
+
+def set_subdomain_host(subdomain)
+  Capybara.app_host = "http://#{subdomain}.mumuki.io"
 end
 
 RSpec::Matchers.define :json_eq do |expected_json_hash|

@@ -22,7 +22,7 @@ class Book < ActiveRecord::Base
   end
 
   def import_from_json!(json)
-    self.assign_attributes json.except('chapters', 'complements', 'id', 'description')
+    self.assign_attributes json.except('chapters', 'complements', 'id', 'description', 'teacher_info')
     self.description = json['description'].squeeze(' ')
 
     rebuild! json['chapters'].map { |it| Topic.find_by!(slug: it).as_chapter_of(self) }

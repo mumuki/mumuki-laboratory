@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/mumuki/mumukit-auth.git
+  revision: 50c84859e1f003cf87aff95eb3d29d923d53ced5
+  tag: v0.1.1
+  specs:
+    mumukit-auth (0.1.1)
+      activesupport
+      auth0
+      jwt
+
+GIT
   remote: git://github.com/mumuki/mumukit-bridge.git
   revision: 4522dcf124ec1fefaac0d6e9dc9790f09d511057
   tag: v1.1.0
@@ -27,11 +37,12 @@ GIT
 
 GIT
   remote: git://github.com/mumuki/mumukit-nuntius.git
-  revision: a11c00a8800fa369cdcd12e15bc5e37e57c8da2c
-  tag: v0.0.2
+  revision: 56c6763451c4dfdb3869d9dea2d5628928035540
+  tag: v0.2.2
   specs:
-    mumukit-nuntius (0.1.0)
-      bunny
+    mumukit-nuntius (0.2.2)
+      activesupport (~> 4.1)
+      bunny (~> 2.3)
 
 GEM
   remote: https://rubygems.org/
@@ -67,6 +78,8 @@ GEM
     addressable (2.3.8)
     amq-protocol (2.0.1)
     arel (5.0.1.20140414130214)
+    auth0 (4.0.0)
+      httmultiparty (~> 0.3.16)
     autoprefixer-rails (6.2.1)
       execjs
       json
@@ -136,8 +149,15 @@ GEM
       railties (>= 3.2, < 5.0)
     hashie (3.4.2)
     highline (1.7.3)
+    httmultiparty (0.3.16)
+      httparty (>= 0.7.3)
+      mimemagic
+      multipart-post
     http-cookie (1.0.2)
       domain_name (~> 0.5)
+    httparty (0.13.7)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.7.0)
     i18n-tasks (0.8.7)
       activesupport (>= 2.3.18)
@@ -163,6 +183,7 @@ GEM
       redcarpet (>= 2.0)
     method_source (0.8.2)
     mime-types (2.99.1)
+    mimemagic (0.3.1)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.2)
@@ -326,6 +347,7 @@ DEPENDENCIES
   i18n-tasks (~> 0.8.3)
   jquery-rails
   kaminari (~> 0.16.3)
+  mumukit-auth!
   mumukit-bridge!
   mumukit-content-type!
   mumukit-inspection!

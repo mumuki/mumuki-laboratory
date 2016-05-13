@@ -9,12 +9,12 @@
     <script src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
   <% end %>
 
-  <meta property="og:site_name" content="mumuki.io" />
-  <meta property="og:title" content="Mumuki" />
+  <meta property="og:site_name" content="mumuki" />
+  <meta property="og:title" content="<%= t :mumuki_catchphrase %>" />
   <meta property="og:description" content="<%= t :mumuki_short_description %>"/>
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="<%= image_url 'logo.png' %>" />
-  <meta property="og:url" content="http://es.mumuki.io/" />
+  <meta property="og:image" content="<%= image_url 'logo-alt.png' %>" />
+  <meta property="og:url" content="http://mumuki.io/" />
 
   <meta name="description" content="<%= t :mumuki_short_description %>"/>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -96,7 +96,7 @@
     <div class="row">
       <div class="col-md-4">
         <div class="col-md-12 text-left">
-          <p>&copy; Copyright 2015-<%= DateTime.now.year %> <a href="http://mumuki.org/">Mumuki Project</a></p>
+          <p>&copy; Copyright 2015-<%= DateTime.now.year %> <a href="http://mumuki.org/"><span class="ahahamojimoji">ム</span> Mumuki Project</a></p>
         </div>
       </div>
 
