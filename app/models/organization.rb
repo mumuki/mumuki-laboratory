@@ -1,5 +1,6 @@
 class Organization < ActiveRecord::Base
   belongs_to :book
+  has_many :usages
 
   delegate :locale, to: :book
 
@@ -7,6 +8,14 @@ class Organization < ActiveRecord::Base
   validates_uniqueness_of :name
 
   after_create :reindex_usages!
+
+  has_many :guides, through: 'usages', source: 'item', source_type: 'Guide'
+  has_many :exercises, through: :guides
+  has_many :assignments, through: :exercises
+
+  def in_path?(item)
+    usages.exists?(item: item) || usages.exists?(parent_item: item)
+  end
 
   def switch!
     self.class.current = self
@@ -20,8 +29,24 @@ class Organization < ActiveRecord::Base
     name == 'test'
   end
 
+  def notify_recent_assignments!(date)
+    notify! assignments.where('assignments.updated_at > ?', date)
+  end
+
+  def notify_assignments_by!(submitter)
+    notify! assignments.where(submitter_id: submitter.id)
+  end
+
   def silent?
     central? || test?
+  end
+
+  def private?
+    private
+  end
+
+  def public?
+   !private
   end
 
   def reindex_usages!
@@ -32,11 +57,18 @@ class Organization < ActiveRecord::Base
   end
 
   def drop_usage_indices!
-    Usage.in_organization(self).destroy_all
+    usages.destroy_all
   end
 
   def index_usage!(item, parent)
     Usage.create! organization: self, item: item, parent_item: parent
+  end
+
+  private
+
+  def notify!(assignments)
+    puts "We will try to send #{assignments.count} assignments, please wait..."
+    assignments.each { |assignment| Event::Submission.new(assignment).notify! }
   end
 
   class << self

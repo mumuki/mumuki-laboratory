@@ -1,0 +1,16 @@
+<script type="text/javascript">
+  (function() {
+    var lock = new Auth0Lock('<%= Rails.configuration.auth0_client_id %>', '<%= Rails.configuration.auth0_domain %>');
+    function specialSignin() {
+      lock.showSignin({
+        closable: false,
+        dict: '<%= I18n.locale %>',
+        icon: '/logo-alt.png',
+        callbackURL: '<%= auth_auth0_callback_url %>', responseType: 'code', authParams: {
+          scope: 'openid profile'
+        }
+      });
+    }
+    specialSignin();
+  })()
+</script>

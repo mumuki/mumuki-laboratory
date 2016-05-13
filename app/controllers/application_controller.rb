@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include Pagination
 
   before_action :set_organization
+  before_action :validate_user
   before_action :set_locale
 
   # Prevent CSRF attacks by raising an exception.
@@ -20,10 +21,6 @@ class ApplicationController < ActionController::Base
                 :comments_count,
                 :has_comments?,
                 :subject
-
-  def set_organization
-    Organization.find_by!(name: request.organization_name).switch!
-  end
 
   def set_locale
     I18n.locale = Organization.current.locale
@@ -57,5 +54,9 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_last_guide
     #redirect_to current_user.last_guide, notice: t(:welcome_back_after_redirection)
+  end
+
+  def set_organization
+    Organization.find_by!(name: request.organization_name).switch!
   end
 end
