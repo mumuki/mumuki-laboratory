@@ -71,7 +71,7 @@ module Authentication
   end
 
   def set_permissions
-    session[:atheneum_permissions] = Mumukit::Auth::Token.new(env['omniauth.auth']['extra']['raw_info']).permissions('atheneum')
+    session[:atheneum_permissions] = Mumukit::Auth::Token.new(env['omniauth.auth']['extra']['raw_info']).permissions('atheneum').to_s
   end
 
   def login_anchor(options={})
