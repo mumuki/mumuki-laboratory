@@ -54,8 +54,8 @@ describe ApplicationHelper do
     let(:passed_submission) { create(:assignment, status: :passed, expectation_results: []) }
     let(:failed_submission) { create(:assignment, status: :failed) }
 
-    it { expect(status_icon(passed_submission)).to eq '<i class="fa fa-check text-success status-icon"></i>' }
-    it { expect(status_icon(failed_submission)).to eq '<i class="fa fa-times text-danger status-icon"></i>' }
+    it { expect(status_icon(passed_submission)).to eq '<i class="fa fa-check-circle text-success status-icon"></i>' }
+    it { expect(status_icon(failed_submission)).to eq '<i class="fa fa-times-circle text-danger status-icon"></i>' }
   end
 
 end

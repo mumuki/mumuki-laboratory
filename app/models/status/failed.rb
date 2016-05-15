@@ -6,6 +6,6 @@ module Status::Failed
   end
 
   def self.iconize
-    {class: :danger, type: :times}
+    {class: :danger, type: 'times-circle'}
   end
 end

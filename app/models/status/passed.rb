@@ -10,6 +10,6 @@ module Status::Passed
   end
 
   def self.iconize
-    {class: :success, type: :check}
+    {class: :success, type: 'check-circle'}
   end
 end
