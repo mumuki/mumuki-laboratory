@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :exams
 
+  after_initialize :init
+
   def last_lesson
     last_guide.lesson
   end
@@ -80,6 +82,12 @@ class User < ActiveRecord::Base
     Mumukit::Auth::Permissions
       .load(permissions)
       .allows?("#{Organization.current.name}/atheneum")
+  end
+
+  private
+
+  def init
+    self.image_url ||= "user_shape.png"
   end
 
 end

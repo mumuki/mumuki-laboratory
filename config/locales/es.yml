@@ -19,6 +19,7 @@ es:
   create_submission: Enviar
   created_at: Creado
   created_exercises: Ejercicios Creados
+  created_guides: Lecciones Creadas
   date: Fecha
   destroy: Eliminar
   details: Detalles
@@ -28,32 +29,32 @@ es:
   exercise_count: ejercicios
   exercise_done: ¡Tu solución pasó todas nuestras pruebas!
   exercise_number: Ejercicio %{number}
-  exercise_success_rate: Taza de éxito en ejercicios
+  exercise_success_rate: Tasa de éxito en ejercicios
   exercises: Ejercicios
   exercises_index_title: ¿Buscando algún ejercicio particular?
   expectations: Objetivos
   export_created: Exportación encolada
   failed: Ups, algo no anduvo bien
   feedback: Problemas que encontramos
-  guide: Guía
-  guide_created: Guia creada exitosamente
-  guide_finished: Felicitaciones, terminaste la guía %{guide}
+  guide: Lección
+  guide_created: Guía creada exitosamente
+  guide_finished: Felicitaciones, terminaste la lección %{guide}
   guide_internal: guia
-  lesson: 'Lección'
   lesson_number: Lección %{number}
   guides_index_title: ¿Qué guía querés hacer hoy?
   here: acá
   history: Historial
   language: Lenguaje
   languages: Lenguajes
-  last_submission_date: Última solucion
-  latest_exercises: Ultimos ejercicios
-  latest_guides: últimas guías
+  last_submission_date: Última solución
+  latest_exercises: Últimos ejercicios
+  latest_guides: últimas lecciones
   learning: Aprendizaje
   listing_exercises: Listado de ejercicios
   mumuki_catchphrase: Aprendé a programar
   mumuki_short_description: Mumuki es la plataforma libre y gratuita para aprender a programar, de la práctica a la teoría y en tu idioma
   my_exercises: Mis Ejercicios
+  my_guides: Mis Lecciones
   my_submissions: Mis Soluciones
   navigation_continue: 'Siguiente %{kind}: %{sibling}'
   navigation_next: Siguiente %{kind}
@@ -62,9 +63,9 @@ es:
   never: nunca
   new: Nuevo
   next_exercise: Siguiente
-  next_lesson: 'Siguiente Lección: %{name}'
-  no_exercises: No encontramos ejericios que coincidan con tu busqueda.
-  no_guides: No encontramos guías que coincidan con tu busqueda.
+  next_guide: 'Siguiente Lección: %{name}'
+  no_exercises: No encontramos ejercicios que coincidan con tu búsqueda.
+  no_guides: No encontramos lecciones que coincidan con tu búsqueda.
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio aún!
   notify_problem_with_exercise: ¿Pensás que algo está mal con este ejercicio?
   output: Salida
@@ -85,7 +86,7 @@ es:
   search: 'Buscá, por ejemplo: polimorfismo, haskell o competenciaDeSaltos'
   sending_solution: Enviando solución
   show: Mostrar
-  sign_in: Iniciá sesion
+  sign_in: Iniciá sesión
   sign_in_action: iniciar sesión
   sign_out: Cerrar Sesión
   sign_up_date: Usuario desde
@@ -100,7 +101,7 @@ es:
   submissions: Soluciones
   submissions_count: Soluciones
   submissions_for: Soluciones para %{exercise}
-  submissions_success_rate: Taza de éxito en soluciones
+  submissions_success_rate: Tasa de éxito en soluciones
   tag: Etiquetas
   test_results: Resultados de las pruebas
   title: Título
