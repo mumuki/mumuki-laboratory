@@ -12,15 +12,31 @@ var mumuki = mumuki || {};
       {msg: message, className: "jquery-console-message-error"}
     ])
   }
+  function clearConsole() {
+      $('.jquery-console-message-error').remove();
+      $('.jquery-console-message-value').remove();
+      $('.jquery-console-prompt-box:not(:last)').remove()
+  }
 
   function QueryConsole() {
     this.exerciseId = $('#exercise_id').val();
     this.token = $('meta[name="csrf-token"]').attr('content');
+    this.statefulConsole = JSON.parse($('#stateful_console').val());
+    this.lines = [];
   }
 
   QueryConsole.prototype = {
     newQuery: function (line) {
-      return new Query(line, this);
+      if(this.statefulConsole) {
+        this.lines.push(line);
+        return new Query(this.lines.join('\n'), this);
+      } else {
+          return new Query(line, this);
+      }
+    },
+    clearState: function() {
+      this.lines = [];
+      clearConsole();
     }
   };
 
@@ -47,7 +63,6 @@ var mumuki = mumuki || {};
       var self = this;
       $.ajax(self._request).
         done(function (response) {
-          console.log(response);
           if (response.status === 'passed') {
             reportValue(response.result, report)
           } else {
@@ -55,7 +70,6 @@ var mumuki = mumuki || {};
           }
         }).
         fail(function (response) {
-          console.log(response);
           reportError(response.responseText, report);
         });
     },
@@ -80,11 +94,15 @@ var mumuki = mumuki || {};
 
 
   $(document).on('ready page:load', function () {
-    console.log('loading console');
+    var prompt = $('#prompt').attr('value');
     var queryConsole = new QueryConsole();
 
+    $('.clear-console').click(function(){
+      queryConsole.clearState();
+    });
+
     $('.console').console({
-      promptLabel: 'ム ',
+      promptLabel: prompt + ' ',
       commandValidate: function (line) {
         return line !== "";
       },

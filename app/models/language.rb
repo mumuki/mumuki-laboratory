@@ -13,6 +13,10 @@ class Language < ActiveRecord::Base
 
   delegate :run_tests!, :run_query!, to: :bridge
 
+  def prompt
+    self[:prompt] || 'ム '
+  end
+
   def bridge
     Mumukit::Bridge::Runner.new(test_runner_url)
   end

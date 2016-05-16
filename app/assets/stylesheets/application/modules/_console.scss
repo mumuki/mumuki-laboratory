@@ -47,3 +47,7 @@ div.console span.jquery-console-prompt-label {
   font-family: "AhahaMojimoji", Verdana, Tahoma;
   color: #3498db;
 }
+
+div#console .clear-console {
+  cursor: pointer;
+}
