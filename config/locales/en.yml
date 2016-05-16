@@ -9,6 +9,7 @@ en:
   chapter: Chapter
   chapter_finished_html: You have finished %{chapter}!
   chapter_number: Chapter %{number} -
+  clear_console: Clear console
   comment: Comment
   comments: Comments
   console: Console
