@@ -52,4 +52,5 @@ Rails.application.configure do
   config.auth0_client_id = 'foo id'
   config.auth0_client_secret = 'foo secret'
   config.auth0_domain = 'http://foo.com'
+  config.offline_mode = 'false'
 end
