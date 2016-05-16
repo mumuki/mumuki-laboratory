@@ -21,7 +21,7 @@ var mumuki = mumuki || {};
   function QueryConsole() {
     this.exerciseId = $('#exercise_id').val();
     this.token = $('meta[name="csrf-token"]').attr('content');
-    this.statefulConsole = JSON.parse($('#stateful_console').val());
+    this.statefulConsole = $('#stateful_console').val() === "true";
     this.lines = [];
   }
 
