@@ -12,6 +12,11 @@ var mumuki = mumuki || {};
       {msg: message, className: "jquery-console-message-error"}
     ])
   }
+  function clearConsole() {
+      $('.jquery-console-message-error').remove();
+      $('.jquery-console-message-value').remove();
+      $('.jquery-console-prompt-box:not(:last)').remove()
+  }
 
   function QueryConsole() {
     this.exerciseId = $('#exercise_id').val();
@@ -26,6 +31,7 @@ var mumuki = mumuki || {};
     },
     clearState: function() {
       this.lines = [];
+      clearConsole();
     }
   };
 
