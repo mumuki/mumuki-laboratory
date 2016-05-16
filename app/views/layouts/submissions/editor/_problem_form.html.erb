@@ -30,6 +30,7 @@
                        value: @default_content,
                        style: 'display: none' %>
           <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
+          <%= hidden_field_tag(:stateful_console, @exercise.stateful_console?) %>
           <%= hidden_field_tag(:prompt, @exercise.prompt) %>
         </div>
       <% else %>

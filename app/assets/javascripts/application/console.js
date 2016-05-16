@@ -21,13 +21,18 @@ var mumuki = mumuki || {};
   function QueryConsole() {
     this.exerciseId = $('#exercise_id').val();
     this.token = $('meta[name="csrf-token"]').attr('content');
+    this.statefulConsole = JSON.parse($('#stateful_console').val());
     this.lines = [];
   }
 
   QueryConsole.prototype = {
     newQuery: function (line) {
-      this.lines.push(line);
-      return new Query(this.lines.join('\n'), this);
+      if(this.statefulConsole) {
+        this.lines.push(line);
+        return new Query(this.lines.join('\n'), this);
+      } else {
+          return new Query(line, this);
+      }
     },
     clearState: function() {
       this.lines = [];
