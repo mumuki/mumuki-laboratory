@@ -34,6 +34,28 @@ describe Exam do
         it { expect(exam.accesible_by? user).to be true }
         it { expect(exam.accesible_by? other_user).to be false }
       end
+
+      context 'import_from_json' do
+        let(:user) { create(:user, uid: 'auth0|1') }
+        let(:user2) { create(:user, uid: 'auth0|2') }
+        let(:guide) { create(:guide) }
+        let(:exam_json) { { classroom_id: 1, slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
+        before { Exam.import_from_json! exam_json }
+
+        context 'new exam' do
+          it { expect(Exam.count).to eq 1 }
+          it { expect(Exam.find_by(classroom_id: 1).accesible_by? user).to be true }
+        end
+
+        context 'existing exam' do
+          let(:exam_json2) { { classroom_id: 1, slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user2.uid], tenant: 'test' }.stringify_keys }
+          before { Exam.import_from_json! exam_json2 }
+
+          it { expect(Exam.count).to eq 1 }
+          it { expect(Exam.find_by(classroom_id: 1).accesible_by? user).to be true }
+          it { expect(Exam.find_by(classroom_id: 1).accesible_by? user2).to be true }
+        end
+      end
     end
   end
 end
