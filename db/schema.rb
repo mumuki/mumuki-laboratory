@@ -84,8 +84,10 @@ ActiveRecord::Schema.define(version: 20160520141716) do
     t.integer  "duration",        null: false
     t.datetime "start_time",      null: false
     t.datetime "end_time",        null: false
+    t.integer  "classroom_id"
   end
 
+  add_index "exams", ["classroom_id"], name: "index_exams_on_classroom_id", unique: true, using: :btree
   add_index "exams", ["guide_id"], name: "index_exams_on_guide_id", using: :btree
   add_index "exams", ["organization_id"], name: "index_exams_on_organization_id", using: :btree
 
