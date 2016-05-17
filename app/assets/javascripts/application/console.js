@@ -28,10 +28,11 @@ var mumuki = mumuki || {};
   QueryConsole.prototype = {
     newQuery: function (line) {
       if(this.statefulConsole) {
-        this.lines.push(line);
-        return new Query(this.lines.join('\n'), this);
+        var cookie = this.lines;
+        this.lines = this.lines.concat([line]);
+        return new Query(line, cookie, this);
       } else {
-          return new Query(line, this);
+          return new Query(line, [], this);
       }
     },
     clearState: function() {
@@ -40,9 +41,10 @@ var mumuki = mumuki || {};
     }
   };
 
-  function Query(line, console) {
+  function Query(line, cookie, console) {
     this.console = console;
     this.line = line;
+    this.cookie = cookie;
   }
 
   Query.prototype = {
@@ -88,7 +90,7 @@ var mumuki = mumuki || {};
       return '/exercises/' + this.exerciseId + '/queries';
     },
     get _requestData() {
-      return {content: this.content, query: this.line};
+      return {content: this.content, query: this.line, cookie: this.cookie};
     }
   };
 
