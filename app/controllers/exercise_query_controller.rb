@@ -9,6 +9,6 @@ class ExerciseQueryController < ApplicationController
   end
 
   def query_params
-    params.permit(:content, :query)
+    params.permit(:content, :query, cookie: [])
   end
 end
