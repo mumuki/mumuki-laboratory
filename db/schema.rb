@@ -76,6 +76,14 @@ ActiveRecord::Schema.define(version: 20160520141716) do
   add_index "complements", ["book_id"], name: "index_complements_on_book_id", using: :btree
   add_index "complements", ["guide_id"], name: "index_complements_on_guide_id", using: :btree
 
+  create_table "exam_authorizations", id: false, force: true do |t|
+    t.integer "exam_id"
+    t.integer "user_id"
+  end
+
+  add_index "exam_authorizations", ["exam_id"], name: "index_exam_authorizations_on_exam_id", using: :btree
+  add_index "exam_authorizations", ["user_id"], name: "index_exam_authorizations_on_user_id", using: :btree
+
   create_table "exams", force: true do |t|
     t.integer  "organization_id"
     t.integer  "guide_id"
@@ -90,14 +98,6 @@ ActiveRecord::Schema.define(version: 20160520141716) do
   add_index "exams", ["classroom_id"], name: "index_exams_on_classroom_id", unique: true, using: :btree
   add_index "exams", ["guide_id"], name: "index_exams_on_guide_id", using: :btree
   add_index "exams", ["organization_id"], name: "index_exams_on_organization_id", using: :btree
-
-  create_table "exams_users", id: false, force: true do |t|
-    t.integer "exam_id"
-    t.integer "user_id"
-  end
-
-  add_index "exams_users", ["exam_id"], name: "index_exams_users_on_exam_id", using: :btree
-  add_index "exams_users", ["user_id"], name: "index_exams_users_on_user_id", using: :btree
 
   create_table "exercises", force: true do |t|
     t.string   "name"
