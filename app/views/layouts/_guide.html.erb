@@ -2,6 +2,10 @@
     <%= breadcrumbs subject %>
 <% end %>
 
+<% if subject.exam? %>
+    <%= render partial: "layouts/timer", locals: { end_time: subject.end_time } %>
+<% end %>
+
 <div class="row">
   <div class="col-md-11">
     <h1>
