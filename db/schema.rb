@@ -77,8 +77,10 @@ ActiveRecord::Schema.define(version: 20160520141716) do
   add_index "complements", ["guide_id"], name: "index_complements_on_guide_id", using: :btree
 
   create_table "exam_authorizations", id: false, force: true do |t|
-    t.integer "exam_id"
-    t.integer "user_id"
+    t.integer  "exam_id"
+    t.integer  "user_id"
+    t.boolean  "started",    default: false
+    t.datetime "started_at"
   end
 
   add_index "exam_authorizations", ["exam_id"], name: "index_exam_authorizations_on_exam_id", using: :btree
