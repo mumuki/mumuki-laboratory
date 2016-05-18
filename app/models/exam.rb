@@ -39,6 +39,18 @@ class Exam < ActiveRecord::Base
     true
   end
 
+  def authorization_for(user)
+    exam_authorizations.find_by(user_id: user.id)
+  end
+
+  def start! user
+    authorization_for(user).start!
+  end
+
+  def started? user
+    authorization_for(user).started?
+  end
+
   def self.import_from_json!(json)
     Organization.find_by!(name: json.delete('tenant')).switch!
     exam_data = Exam.parse_json json
