@@ -5,6 +5,7 @@ class ExercisesController < ApplicationController
   before_action :set_guide, only: :show
   before_action :set_default_content, only: :show
   before_action :set_comments, only: :show
+  before_action :start!, only: :show, if: :from_exam?
 
   def show
     @solution = @exercise.new_solution if current_user?
@@ -17,6 +18,14 @@ class ExercisesController < ApplicationController
 
   def subject
     @exercise ||= Exercise.find_by(id: params[:id])
+  end
+
+  def start!
+    @exercise.navigable_parent.start!
+  end
+
+  def from_exam?
+    @exercise.from_exam?
   end
 
   def set_default_content
