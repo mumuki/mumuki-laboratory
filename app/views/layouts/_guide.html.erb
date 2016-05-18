@@ -1,0 +1,46 @@
+<%= content_for :breadcrumbs do %>
+    <%= breadcrumbs subject %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-11">
+    <h1>
+      <%= subject.name %>
+    </h1>
+  </div>
+  <div class="col-md-1">
+    <h1><%= language_icon @guide.language %></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="text-box">
+      <%= @guide.description_html %>
+
+      <div class="actions">
+        <% if !@stats.try(:done?) && @next_exercise %>
+            <%= link_to t(practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-success' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3><%= t :content %></h3>
+<ul class="progress-listing">
+  <% @guide.exercises.each do |exercise| %>
+      <li>
+        <%= exercise_status_icon exercise %>
+        <%= link_to_path_element(exercise) %>
+      </li>
+  <% end %>
+</ul>
+
+<% if @stats.try :done? %>
+    <div class="text-box">
+      <%= corollary_box(@guide) %>
+    </div>
+<% end %>
+
+
+

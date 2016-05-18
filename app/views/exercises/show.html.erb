@@ -4,7 +4,9 @@
 
 <% @stats = @exercise.guide.stats_for(current_user) if current_user && @exercise.guide %>
 
-<%= render partial: "layouts/timer", locals: { date: Date.today } %>
+<% if @exam %>
+  <%= render partial: "layouts/timer", locals: { end_time: @exam.end_time } %>
+<% end %>
 
 <div class="row">
   <div class="col-md-11">

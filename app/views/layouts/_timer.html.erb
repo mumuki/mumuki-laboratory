@@ -6,8 +6,10 @@
           ' || <%= t :minute %>| <%= t :hour %>| <%= t :day %>||||||',
           ' || <%= t :minutes %>| <%= t :hours %>| <%= t :days %>||||||',
           ' <%= t :and %> ');
-        countdown( new Date(<%= date %>),
-        function(ts) { $("#timer").text(ts); },
+        countdown( new Date('<%= end_time %>'),
+        function(ts) {
+          console.log(ts);$("#timer").text(ts);
+        },
         countdown.HOURS|countdown.MINUTES);
     </script>
   </div>
