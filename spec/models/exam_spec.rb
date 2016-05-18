@@ -45,6 +45,7 @@ describe Exam do
         context 'new exam' do
           it { expect(Exam.count).to eq 1 }
           it { expect(Exam.find_by(classroom_id: 1).accesible_by? user).to be true }
+          it { expect(guide.usage_in_organization).to be_a Exam }
         end
 
         context 'existing exam' do

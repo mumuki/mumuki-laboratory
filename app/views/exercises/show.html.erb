@@ -4,8 +4,8 @@
 
 <% @stats = @exercise.guide.stats_for(current_user) if current_user && @exercise.guide %>
 
-<% if @exam %>
-  <%= render partial: "layouts/timer", locals: { end_time: @exam.end_time } %>
+<% if @exercise.from_exam? %>
+  <%= render partial: "layouts/timer", locals: { end_time: @exercise.navigable_parent.end_time } %>
 <% end %>
 
 <div class="row">

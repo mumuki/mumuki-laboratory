@@ -8,7 +8,6 @@ class ExercisesController < ApplicationController
 
   def show
     @solution = @exercise.new_solution if current_user?
-    @exam = Exam.find(params[:exam_id]) if params[:exam_id]
   end
 
   def index
