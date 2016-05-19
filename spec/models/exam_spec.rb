@@ -39,7 +39,7 @@ describe Exam do
         let(:user) { create(:user, uid: 'auth0|1') }
         let(:user2) { create(:user, uid: 'auth0|2') }
         let(:guide) { create(:guide) }
-        let(:exam_json) { { classroom_id: 1, slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
+        let(:exam_json) { { id: 1, slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
         before { Exam.import_from_json! exam_json }
 
         context 'new exam' do
@@ -49,7 +49,7 @@ describe Exam do
         end
 
         context 'existing exam' do
-          let(:exam_json2) { { classroom_id: 1, slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user2.uid], tenant: 'test' }.stringify_keys }
+          let(:exam_json2) { { id: 1, slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user2.uid], tenant: 'test' }.stringify_keys }
           before { Exam.import_from_json! exam_json2 }
 
           it { expect(Exam.count).to eq 1 }
@@ -61,7 +61,7 @@ describe Exam do
       context 'duration' do
         let(:user) { create(:user, uid: 'auth0|1') }
         let(:guide) { create(:guide) }
-        let(:exam_json) { { classroom_id: 1, slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
+        let(:exam_json) { { id: 1, slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
         let(:exam) { Exam.import_from_json! exam_json }
         before { exam.start! user }
 

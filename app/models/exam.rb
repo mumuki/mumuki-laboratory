@@ -16,8 +16,14 @@ class Exam < ActiveRecord::Base
     organization == self.organization
   end
 
+  after_create :index_usage!
+
   def self.index_usages!(organization)
     organization.exams.each { |exam| organization.index_usage! exam.guide, exam }
+  end
+
+  def index_usage!
+    Organization.current.index_usage! guide, self
   end
 
   def enabled?
@@ -76,9 +82,8 @@ class Exam < ActiveRecord::Base
     Organization.find_by!(name: json.delete('tenant')).switch!
     exam_data = Exam.parse_json json
     users = exam_data.delete('users')
-    e = Exam.where(classroom_id: exam_data.delete('classroom_id')).first_or_create exam_data
+    e = Exam.where(classroom_id: exam_data.delete('id')).first_or_create exam_data
     users.map { |user| e.authorize! user}
-    Organization.current.index_usage! e.guide, e
     e
   end
 
