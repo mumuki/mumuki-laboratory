@@ -4,7 +4,7 @@ class ExamAuthorization < ActiveRecord::Base
   belongs_to :exam
 
   def start!
-    update!(started: true, started_at: Time.now)
+    update!(started: true, started_at: Time.now) unless started?
   end
 
 end
