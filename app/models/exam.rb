@@ -82,9 +82,18 @@ class Exam < ActiveRecord::Base
     Organization.find_by!(name: json.delete('tenant')).switch!
     exam_data = Exam.parse_json json
     users = exam_data.delete('users')
-    e = Exam.where(classroom_id: exam_data.delete('id')).first_or_create exam_data
-    users.map { |user| e.authorize! user}
-    e
+    exam = Exam.where(classroom_id: exam_data.delete('id')).first_or_create exam_data
+    exam.process_users users
+    exam
+  end
+
+  def process_users(users)
+    clean_authorizations
+    users.map { |user| authorize! user}
+  end
+
+  def clean_authorizations
+    exam_authorizations.clear
   end
 
   def self.parse_json(exam_json)

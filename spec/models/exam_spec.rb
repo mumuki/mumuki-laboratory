@@ -53,7 +53,7 @@ describe Exam do
           before { Exam.import_from_json! exam_json2 }
 
           it { expect(Exam.count).to eq 1 }
-          it { expect(Exam.find_by(classroom_id: 1).accesible_by? user).to be true }
+          it { expect(Exam.find_by(classroom_id: 1).accesible_by? user).to be false }
           it { expect(Exam.find_by(classroom_id: 1).accesible_by? user2).to be true }
         end
       end
