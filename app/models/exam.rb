@@ -79,6 +79,7 @@ class Exam < ActiveRecord::Base
     e = Exam.where(classroom_id: exam_data.delete('classroom_id')).first_or_create exam_data
     users.map { |user| e.authorize! user}
     Organization.current.index_usage! e.guide, e
+    e
   end
 
   def self.parse_json(exam_json)
