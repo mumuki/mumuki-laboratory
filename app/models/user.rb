@@ -20,7 +20,6 @@ class User < ActiveRecord::Base
 
   belongs_to :last_exercise, class_name: 'Exercise'
   has_one :last_guide, through: :last_exercise, source: :guide
-  has_many :exam_authorizations
 
   has_and_belongs_to_many :exams
 
