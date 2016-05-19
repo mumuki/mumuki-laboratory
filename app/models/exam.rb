@@ -16,6 +16,10 @@ class Exam < ActiveRecord::Base
     organization == self.organization
   end
 
+  def self.index_usages!(organization)
+    organization.exams.each { |exam| organization.index_usage! exam.guide, exam }
+  end
+
   def enabled?
     enabled_range.cover? DateTime.now
   end

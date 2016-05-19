@@ -12,6 +12,7 @@ class Organization < ActiveRecord::Base
   has_many :guides, through: 'usages', source: 'item', source_type: 'Guide'
   has_many :exercises, through: :guides
   has_many :assignments, through: :exercises
+  has_many :exams
 
   def in_path?(item)
     usages.exists?(item: item) || usages.exists?(parent_item: item)
@@ -53,6 +54,7 @@ class Organization < ActiveRecord::Base
     transaction do
       drop_usage_indices!
       book.index_usages! self
+      Exam.index_usages! self
     end
   end
 
