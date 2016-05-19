@@ -8,7 +8,7 @@ class ExamsController < ComplementsController
   end
 
   def set_item
-    @exam = Exam.find_by(id: params[:id])
+    @exam = Exam.find_by(classroom_id: params[:id])
     @guide = @exam.guide
   end
 
