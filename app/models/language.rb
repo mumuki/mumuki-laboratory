@@ -1,5 +1,17 @@
 require 'mumukit/bridge'
 
+class Mumukit::Bridge::Runner
+  def post_to_server(request, route)
+    JSON.parse RestClient::Request.new(
+                   method: :post,
+                   url: "#{test_runner_url}/#{route}",
+                   payload: request.to_json,
+                   timeout: 10,
+                   headers: {content_type: :json}).execute()
+  end
+end
+
+
 class Language < ActiveRecord::Base
   include WithCaseInsensitiveSearch
 
