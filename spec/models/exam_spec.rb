@@ -65,7 +65,7 @@ describe Exam do
         let(:exam) { Exam.import_from_json! exam_json }
         before { exam.start! user }
 
-        it { expect(exam.duration_minutes).to eq(9000) }
+        it { expect(exam.duration_time(user)).to eq(exam.started_at(user) + exam.duration.minutes) }
         it { expect(exam.real_end_time user).to eq(exam.end_time) }
         it { expect(exam.started? user).to be_truthy }
 

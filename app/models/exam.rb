@@ -67,15 +67,11 @@ class Exam < ActiveRecord::Base
   end
 
   def duration_time(user)
-    started_at(user) + duration_minutes
+    started_at(user) + duration.minutes
   end
 
   def started_at(user)
     authorization_for(user).started_at
-  end
-
-  def duration_minutes
-    duration * 60
   end
 
   def self.import_from_json!(json)
