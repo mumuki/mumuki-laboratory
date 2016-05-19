@@ -7,6 +7,7 @@ class Mumukit::Bridge::Runner
                    url: "#{test_runner_url}/#{route}",
                    payload: request.to_json,
                    timeout: 10,
+                   open_timeout: 10,
                    headers: {content_type: :json}).execute()
   end
 end
