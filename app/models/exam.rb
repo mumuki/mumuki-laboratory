@@ -8,6 +8,7 @@ class Exam < ActiveRecord::Base
   belongs_to :organization
 
   has_many :exam_authorizations
+  has_many :users, through: :exam_authorizations
 
   include TerminalNavigation
 
@@ -43,12 +44,28 @@ class Exam < ActiveRecord::Base
     exam_authorizations.find_by(user_id: user.id)
   end
 
-  def start! user
-    authorization_for(user).start! unless started?
+  def start!(user)
+    authorization_for(user).start! unless started? user
   end
 
-  def started? user
+  def started?(user)
     authorization_for(user).started?
+  end
+
+  def real_end_time(user)
+    started?(user) ? [duration_time(user), end_time].min : end_time
+  end
+
+  def duration_time(user)
+    started_at(user) + duration_minutes
+  end
+
+  def started_at(user)
+    authorization_for(user).started_at
+  end
+
+  def duration_minutes
+    duration * 60
   end
 
   def self.import_from_json!(json)

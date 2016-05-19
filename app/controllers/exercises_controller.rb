@@ -21,7 +21,7 @@ class ExercisesController < ApplicationController
   end
 
   def start!
-    @exercise.navigable_parent.start!
+    @exercise.navigable_parent.start! current_user
   end
 
   def from_exam?
