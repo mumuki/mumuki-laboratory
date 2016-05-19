@@ -8,7 +8,7 @@
           ' <%= t :and %> ');
         countdown( new Date('<%= end_time %>'),
         function(ts) {
-          console.log(ts);$("#timer").text(ts);
+          $("#timer").text(ts);
         },
         countdown.HOURS|countdown.MINUTES);
     </script>
