@@ -13,11 +13,7 @@ class ComplementsController < ApplicationController
 
   private
 
-  def subject
-    @complement ||= Complement.find_by(id: params[:id])
-  end
-
   def set_guide
-    @guide = @complement.guide
+    @guide = subject.guide
   end
 end
