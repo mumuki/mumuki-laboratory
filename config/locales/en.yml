@@ -94,6 +94,7 @@ en:
   submissions_for: Submissions for %{exercise}
   submissions_success_rate: Submissions success rate
   tag: Tags
+  time_left: You have
   title: Title
   type_expressions_here: You can type expressions here to test your solution
   username: Username

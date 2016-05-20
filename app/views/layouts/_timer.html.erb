@@ -1,6 +1,8 @@
 <div class="row">
   <div class="col-md-3 col-md-offset-5">
-    <div id="timer" class="text-center"></div>
+    <i class="timer text-center fa fa-clock-o"></i>
+    <i class="timer timer-text text-center"><%= t :time_left %></i>
+    <i id="timer" class="timer timer-text text-center"></i>
     <script>
         countdown.setLabels(
           ' || <%= t :minute %>| <%= t :hour %>| <%= t :day %>||||||',
@@ -8,7 +10,7 @@
           ' <%= t :and %> ');
         countdown( new Date('<%= end_time %>'),
         function(ts) {
-          $("#timer").text(ts);
+          $("#timer.timer-text").text(ts);
         },
         countdown.HOURS|countdown.MINUTES);
     </script>
