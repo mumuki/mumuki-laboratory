@@ -9,13 +9,13 @@ feature 'When public org' do
 end
 
 feature 'When private org' do
-  before {
+  before do
     create(:organization,
-         name: 'private',
-         private: true,
-         book: create(:book, name: 'private', slug: 'mumuki/mumuki-the-private-book'))
+           name: 'private',
+           private: true,
+           book: create(:book, name: 'private', slug: 'mumuki/mumuki-the-private-book'))
     set_subdomain_host 'private'
-  }
+  end
 
   scenario 'should not access' do
     visit '/guides'
