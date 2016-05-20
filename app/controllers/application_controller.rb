@@ -15,8 +15,6 @@ class ApplicationController < ActionController::Base
                 :current_user_id,
                 :current_user_path,
                 :login_anchor,
-                :restricted_to_current_user,
-                :restricted_to_other_user,
                 :comments_count,
                 :has_comments?,
                 :subject
