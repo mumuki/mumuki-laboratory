@@ -31,7 +31,7 @@ module Authentication
 
   def validate_user
     render file: 'layouts/login' and return if must_login
-    render_not_found if !from_auth0?  && !can_visit?
+    render_not_found if !from_login_callback?  && !can_visit?
   end
 
   def render_not_found
@@ -51,10 +51,10 @@ module Authentication
   end
 
   def must_login
-    Organization.current.private? && (!current_user? && !from_auth0?)
+    Organization.current.private? && (!current_user? && !from_login_callback?)
   end
 
-  def from_auth0?
+  def from_login_callback?
     params['controller'] == 'sessions' && params['action'] == 'callback'
   end
 
