@@ -100,7 +100,7 @@ class Exam < ActiveRecord::Base
     exam = exam_json.except('name', 'language')
     exam['guide_id'] = Guide.find_by(slug: exam.delete('slug')).id
     exam['organization_id'] = Organization.current.id
-    exam['users'] = exam.delete('social_ids').map { |sid| User.find_by(uid: sid) }
+    exam['users'] = exam.delete('social_ids').map { |sid| User.find_by(uid: sid) }.compact
     ['start_time', 'end_time'].each { |param| exam[param] = exam[param].to_time }
     exam
   end
