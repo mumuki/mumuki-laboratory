@@ -6,4 +6,8 @@ class String
         squish.
         gsub(' ', '-')
   end
+
+  def markdown_paragraphs
+    split(/\n\s*\n/)
+  end
 end

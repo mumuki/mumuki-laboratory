@@ -17,7 +17,11 @@ class Topic < ActiveRecord::Base
 
   include WithUsages, ChildrenNavigation
 
-  markdown_on :description, :long_description, :links
+  markdown_on :description, :description_teaser, :long_description, :links
+
+  def description_teaser
+    description.markdown_paragraphs.first
+  end
 
   def pending_lessons(user)
     guides.

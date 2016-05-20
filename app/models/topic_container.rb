@@ -6,6 +6,7 @@ module TopicContainer
     delegate :name,
              :description,
              :description_html,
+             :description_teaser_html,
              :long_description,
              :long_description_html,
              :rebuild!,
