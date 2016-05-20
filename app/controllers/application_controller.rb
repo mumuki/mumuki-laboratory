@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :current_user?,
                 :current_user_id,
                 :current_user_path,
-                :login_github_path, :login_facebook_path,
                 :login_anchor,
                 :restricted_to_current_user,
                 :restricted_to_other_user,

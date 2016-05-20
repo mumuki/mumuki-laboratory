@@ -1,12 +1,4 @@
 module Authentication
-  def login_github_path
-    '/auth/github'
-  end
-
-  def login_facebook_path
-    '/auth/facebook'
-  end
-
   def current_user_id
     remember_me_token.value.try do |token |
       User.where(remember_me_token: token).first.try(:id)
