@@ -1,5 +1,5 @@
 class Topic < ActiveRecord::Base
-  INDEXED_ATTRIBUTES = {against: [:name, :description, :long_description]}
+  INDEXED_ATTRIBUTES = {against: [:name, :description]}
 
   include WithSearch,
           WithLocale,
@@ -17,7 +17,7 @@ class Topic < ActiveRecord::Base
 
   include WithUsages, ChildrenNavigation
 
-  markdown_on :description, :description_teaser, :long_description, :links
+  markdown_on :description, :description_teaser
 
   def description_teaser
     description.markdown_paragraphs.first

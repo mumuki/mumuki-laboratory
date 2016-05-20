@@ -5,7 +5,7 @@
 <div>
   <h1><%= t(:chapter_number, number: @chapter.number) %> <%= @chapter.name %></h1>
 
-  <%= @chapter.long_description_html || @chapter.description_html %>
+  <%= @chapter.description_html %>
 
   <div class="actions">
     <% if @chapter.lessons.present? %>
@@ -32,11 +32,4 @@
     </ul>
   <% end %>
 </div>
-<% end %>
-
-<% if @chapter.links.present? %>
-  <div>
-    <h2><%= "Más información" %></h2>
-    <%= @chapter.links_html %>
-  </div>
 <% end %>
