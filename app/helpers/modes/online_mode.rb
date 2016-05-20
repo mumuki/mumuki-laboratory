@@ -20,4 +20,8 @@ class OnlineMode
     yield
   end
 
+  def if_offline
+
+  end
+
 end

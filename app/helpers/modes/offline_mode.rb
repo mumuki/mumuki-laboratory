@@ -13,7 +13,11 @@ class OfflineMode
   end
 
   def if_online
-    # nothing!
+
+  end
+
+  def if_offline
+    yield
   end
 
 end
