@@ -78,9 +78,9 @@ class User < ActiveRecord::Base
     comments.reject(&:read)
   end
 
-  def can_visit?
+  def can_visit?(permissions)
     Mumukit::Auth::Permissions
-      .load(Mumukit::Auth::User.new(social_id).permissions_for('atheneum'))
+      .load(permissions)
       .allows?("#{Organization.current.name}/atheneum")
   end
 

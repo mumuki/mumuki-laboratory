@@ -10,7 +10,7 @@ describe Query do
   end
 
   describe '#submit_query!' do
-    let!(:results) { exercise.submit_query!(user, query: 'foo', content: 'bar') }
+    let!(:results) { exercise.submit_query!(user, query: 'foo', content: 'bar', cookie: ['foo', 'bar']) }
     let(:assignment) { exercise.assignment_for user }
 
     it { expect(results[:status]).to eq Status::Passed }

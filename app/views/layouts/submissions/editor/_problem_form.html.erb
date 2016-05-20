@@ -29,7 +29,6 @@
                        class: 'form-control editor',
                        value: @default_content,
                        style: 'display: none' %>
-          <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
         </div>
       <% else %>
         <%= f.hidden_field :content, value: '' %>
@@ -56,6 +55,7 @@
     <div class="text-info"><%= t(:type_expressions_here) %></div>
     <div class="console">
     </div>
+    <div class="btn btn-info clear-console col-xs-12"> <%= t :clear_console %></div>
   </div>
   <div role="tabpanel" class="tab-pane editor-pane fade" id="visible-extra">
     <%= @exercise.extra_preview_html %>

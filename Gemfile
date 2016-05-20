@@ -31,7 +31,7 @@ gem 'font-awesome-rails'
 
 gem 'ace-rails-ap', '~> 4.0'
 
-gem 'thin'
+gem 'puma'
 
 gem 'kaminari', '~> 0.16.3'
 gem 'bootstrap-kaminari-views'

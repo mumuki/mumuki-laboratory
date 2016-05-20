@@ -9,6 +9,7 @@ es:
   chapter: Capítulo
   chapter_finished_html: ¡Terminaste %{chapter}! ¡Felicitaciones!
   chapter_number: 'Capítulo %{number}:'
+  clear_console: Reinicar consola
   comment: Comentario
   comments: Comentarios
   console: Consola

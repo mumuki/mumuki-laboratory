@@ -29,6 +29,8 @@ class Exercise < ActiveRecord::Base
 
   markdown_on :description, :hint, :teaser, :corollary, :extra_preview
 
+  delegate :stateful_console?, to: :language
+
   def pending_siblings_for(user)
     guide.pending_exercises(user)
   end

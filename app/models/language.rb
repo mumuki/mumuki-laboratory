@@ -1,5 +1,18 @@
 require 'mumukit/bridge'
 
+class Mumukit::Bridge::Runner
+  def post_to_server(request, route)
+    JSON.parse RestClient::Request.new(
+                   method: :post,
+                   url: "#{test_runner_url}/#{route}",
+                   payload: request.to_json,
+                   timeout: 10,
+                   open_timeout: 10,
+                   headers: {content_type: :json}).execute()
+  end
+end
+
+
 class Language < ActiveRecord::Base
   include WithCaseInsensitiveSearch
 
@@ -12,6 +25,10 @@ class Language < ActiveRecord::Base
   markdown_on :test_syntax_hint, :description
 
   delegate :run_tests!, :run_query!, to: :bridge
+
+  def prompt
+    self[:prompt] || 'ム '
+  end
 
   def bridge
     Mumukit::Bridge::Runner.new(test_runner_url)

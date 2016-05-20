@@ -12,21 +12,39 @@ var mumuki = mumuki || {};
       {msg: message, className: "jquery-console-message-error"}
     ])
   }
+  function clearConsole() {
+      $('.jquery-console-message-error').remove();
+      $('.jquery-console-message-value').remove();
+      $('.jquery-console-prompt-box:not(:last)').remove()
+  }
 
   function QueryConsole() {
     this.exerciseId = $('#exercise_id').val();
     this.token = $('meta[name="csrf-token"]').attr('content');
+    this.statefulConsole = $('#stateful_console').val() === "true";
+    this.lines = [];
   }
 
   QueryConsole.prototype = {
     newQuery: function (line) {
-      return new Query(line, this);
+      if(this.statefulConsole) {
+        var cookie = this.lines;
+        this.lines = this.lines.concat([line]);
+        return new Query(line, cookie, this);
+      } else {
+          return new Query(line, [], this);
+      }
+    },
+    clearState: function() {
+      this.lines = [];
+      clearConsole();
     }
   };
 
-  function Query(line, console) {
+  function Query(line, cookie, console) {
     this.console = console;
     this.line = line;
+    this.cookie = cookie;
   }
 
   Query.prototype = {
@@ -47,7 +65,6 @@ var mumuki = mumuki || {};
       var self = this;
       $.ajax(self._request).
         done(function (response) {
-          console.log(response);
           if (response.status === 'passed') {
             reportValue(response.result, report)
           } else {
@@ -55,7 +72,6 @@ var mumuki = mumuki || {};
           }
         }).
         fail(function (response) {
-          console.log(response);
           reportError(response.responseText, report);
         });
     },
@@ -74,17 +90,21 @@ var mumuki = mumuki || {};
       return '/exercises/' + this.exerciseId + '/queries';
     },
     get _requestData() {
-      return {content: this.content, query: this.line};
+      return {content: this.content, query: this.line, cookie: this.cookie};
     }
   };
 
 
   $(document).on('ready page:load', function () {
-    console.log('loading console');
+    var prompt = $('#prompt').attr('value');
     var queryConsole = new QueryConsole();
 
+    $('.clear-console').click(function(){
+      queryConsole.clearState();
+    });
+
     $('.console').console({
-      promptLabel: 'ム ',
+      promptLabel: prompt + ' ',
       commandValidate: function (line) {
         return line !== "";
       },

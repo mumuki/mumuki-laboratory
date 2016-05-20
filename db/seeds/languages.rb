@@ -10,7 +10,7 @@ language(name: 'gobstones',
          test_runner_url: 'http://gobstones.runners.mumuki.io',
          output_content_type: :html)
 language(name: 'javascript',
-         test_runner_url: 'http://mumuki-mocha-server.herokuapp.com')
+         test_runner_url: 'http://javascript.runners.mumuki.io')
 language(name: 'c',
          test_runner_url: 'http://c.runners.mumuki.io')
 language(name: 'c++',
@@ -24,6 +24,6 @@ language(name: 'ruby',
 language(name: 'java',
          test_runner_url: 'http://162.243.111.176:8003')
 language(name: 'wollok',
-         test_runner_url: 'http://mumuki-wollok-server.herokuapp.com')
+         test_runner_url: 'http://wollok.runners.mumuki.io')
 language(name: 'text',
          test_runner_url: 'http://text.runners.mumuki.io')

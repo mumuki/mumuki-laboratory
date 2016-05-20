@@ -59,7 +59,7 @@ module Authentication
   end
 
   def logged_and_can_visit?
-    current_user? && current_user.can_visit?
+    current_user? && current_user.can_visit?(session[:atheneum_permissions])
   end
 
   def must_login
@@ -68,6 +68,10 @@ module Authentication
 
   def from_auth0?
     params['controller'] == 'sessions' && params['action'] == 'callback'
+  end
+
+  def set_permissions
+    session[:atheneum_permissions] = Mumukit::Auth::Token.new(env['omniauth.auth']['extra']['raw_info']).permissions('atheneum').to_s
   end
 
   def login_anchor(options={})
