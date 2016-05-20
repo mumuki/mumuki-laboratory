@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :guides, only: [:create]
+    resources :topics, only: [:create]
+    resources :books, only: [:create]
   end
 
   resources :book, only: [:show]
