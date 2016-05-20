@@ -26,7 +26,7 @@ describe Api::GuidesController do
                id: 1}]}
     }
     before { allow_any_instance_of(Mumukit::Bridge::Bibliotheca).to receive(:guide).and_return(guide_json.deep_stringify_keys) }
-    before { post :create, guide_json }
+    before { post :create, {slug: 'flbulgarelli/sample-guide'} }
 
     it { expect(response.status).to eq 200 }
     it { expect(imported_guide).to_not be nil }

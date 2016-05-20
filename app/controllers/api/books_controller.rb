@@ -1,7 +1,6 @@
 class Api::BooksController < Api::BaseController
   def create
-    book = Book.find_or_create_by(slug: params[:slug])
-    book.import!
+    book = Book.import!(params[:slug])
     render json: { topic: book.as_json }
   end
 end
