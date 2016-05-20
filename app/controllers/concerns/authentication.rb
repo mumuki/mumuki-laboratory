@@ -25,10 +25,6 @@ module Authentication
     redirect_to root_path, alert: message
   end
 
-  def current_user_path
-    user_path(current_user)
-  end
-
   def validate_user
     render file: 'layouts/login' and return if must_login
     render_not_found if !from_login_callback?  && !can_visit?
@@ -51,7 +47,7 @@ module Authentication
   end
 
   def must_login
-    Organization.current.private? && (!current_user? && !from_login_callback?)
+    Organization.current.private? && !current_user? && !from_login_callback?
   end
 
   def from_login_callback?

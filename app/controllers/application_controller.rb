@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :current_user?,
                 :current_user_id,
-                :current_user_path,
                 :login_anchor,
                 :comments_count,
                 :has_comments?,
