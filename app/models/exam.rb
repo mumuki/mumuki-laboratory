@@ -35,7 +35,7 @@ class Exam < ActiveRecord::Base
   end
 
   def authorize!(user)
-    users << user
+    users << user unless authorized?(user)
   end
 
   def authorized?(user)
@@ -52,6 +52,10 @@ class Exam < ActiveRecord::Base
 
   def authorization_for(user)
     exam_authorizations.find_by(user_id: user.id)
+  end
+
+  def authorizations_for(users)
+    exam_authorizations.where(user_id: users.map(&:id))
   end
 
   def start!(user)
@@ -84,12 +88,12 @@ class Exam < ActiveRecord::Base
   end
 
   def process_users(users)
-    clean_authorizations
     users.map { |user| authorize! user}
+    clean_authorizations users
   end
 
-  def clean_authorizations
-    exam_authorizations.clear
+  def clean_authorizations(users)
+    exam_authorizations.all_except(authorizations_for(users)).destroy_all
   end
 
   def self.parse_json(exam_json)

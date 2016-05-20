@@ -70,6 +70,19 @@ describe Exam do
         it { expect(exam.started? user).to be_truthy }
 
       end
+
+      context 'update exam does not change user started_at' do
+        let(:user) { create(:user, uid: 'auth0|1') }
+        let(:guide) { create(:guide) }
+        let(:exam_json) { { id: 1, slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
+        let(:exam) { Exam.import_from_json! exam_json }
+        let(:authorization1) { exam.authorization_for(user).id }
+        before { exam.start! user }
+        before { Exam.import_from_json! exam_json.merge('tenant' => 'test') }
+
+        it { expect(exam.started?(user)).to be true }
+
+      end
     end
   end
 end
