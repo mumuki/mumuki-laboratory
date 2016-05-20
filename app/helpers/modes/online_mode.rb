@@ -12,6 +12,10 @@ class OnlineMode
     'href="#" onclick="window.signin();"'
   end
 
+  def logo_url
+    Organization.current.logo_url
+  end
+
   def protect_from_forgery(controller)
     controller.protect_from_forgery with: :exception
   end

@@ -5,11 +5,15 @@ class OfflineMode
   end
 
   def auth_link
-    'href="auth/developer"'
+    'href="http://localhost:3000/auth/developer"'
   end
 
   def protect_from_forgery(controller)
     # not needed!
+  end
+
+  def logo_url
+    "logo-alt-large.png"
   end
 
   def if_online
