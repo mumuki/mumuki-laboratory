@@ -39,29 +39,29 @@ describe Exam do
         let(:user) { create(:user, uid: 'auth0|1') }
         let(:user2) { create(:user, uid: 'auth0|2') }
         let(:guide) { create(:guide) }
-        let(:exam_json) { { id: 1, slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
+        let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
         before { Exam.import_from_json! exam_json }
 
         context 'new exam' do
           it { expect(Exam.count).to eq 1 }
-          it { expect(Exam.find_by(classroom_id: 1).accesible_by? user).to be true }
+          it { expect(Exam.find_by(classroom_id: '1').accesible_by? user).to be true }
           it { expect(guide.usage_in_organization).to be_a Exam }
         end
 
         context 'existing exam' do
-          let(:exam_json2) { { id: 1, slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user2.uid], tenant: 'test' }.stringify_keys }
+          let(:exam_json2) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user2.uid], tenant: 'test' }.stringify_keys }
           before { Exam.import_from_json! exam_json2 }
 
           it { expect(Exam.count).to eq 1 }
-          it { expect(Exam.find_by(classroom_id: 1).accesible_by? user).to be false }
-          it { expect(Exam.find_by(classroom_id: 1).accesible_by? user2).to be true }
+          it { expect(Exam.find_by(classroom_id: '1').accesible_by? user).to be false }
+          it { expect(Exam.find_by(classroom_id: '1').accesible_by? user2).to be true }
         end
       end
 
       context 'duration' do
         let(:user) { create(:user, uid: 'auth0|1') }
         let(:guide) { create(:guide) }
-        let(:exam_json) { { id: 1, slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
+        let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
         let(:exam) { Exam.import_from_json! exam_json }
         before { exam.start! user }
 
@@ -74,7 +74,7 @@ describe Exam do
       context 'update exam does not change user started_at' do
         let(:user) { create(:user, uid: 'auth0|1') }
         let(:guide) { create(:guide) }
-        let(:exam_json) { { id: 1, slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
+        let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
         let(:exam) { Exam.import_from_json! exam_json }
         before { exam.start! user }
         before { Exam.import_from_json! exam_json.merge('tenant' => 'test') }
@@ -85,7 +85,7 @@ describe Exam do
 
       context 'create exam with non existing user' do
         let(:guide) { create(:guide) }
-        let(:exam_json) { { id: 1, slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
+        let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
         let(:exam) { Exam.import_from_json! exam_json }
 
         it { expect { Exam.import_from_json! exam_json.merge('tenant' => 'test') }.not_to raise_error}
