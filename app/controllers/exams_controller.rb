@@ -1,4 +1,5 @@
 class ExamsController < ComplementsController
+  include WithExamsValidations
 
   before_action :validate_user, only: :show
 
@@ -14,7 +15,7 @@ class ExamsController < ComplementsController
   end
 
   def validate_user
-    redirect_to :root unless @exam.accesible_by?(current_user)
+    validate_user_in_exam @exam
   end
 
 end

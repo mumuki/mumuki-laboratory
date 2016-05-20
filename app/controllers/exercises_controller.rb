@@ -1,5 +1,6 @@
 class ExercisesController < ApplicationController
   include WithExerciseIndex
+  include WithExamsValidations
 
   before_action :set_exercises, only: :index
   before_action :set_guide, only: :show
@@ -22,7 +23,7 @@ class ExercisesController < ApplicationController
   end
 
   def validate_user
-    redirect_to :root unless @exercise.navigable_parent.accesible_by?(current_user)
+    validate_user_in_exam @exercise.navigable_parent
   end
 
   def start!
