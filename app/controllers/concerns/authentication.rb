@@ -59,6 +59,10 @@ module Authentication
   end
 
   def logged_and_can_visit?
+    current_mode.if_offline do
+      return current_user?
+    end
+
     current_user? && current_user.can_visit?(session[:atheneum_permissions])
   end
 
@@ -71,7 +75,9 @@ module Authentication
   end
 
   def set_permissions
-    session[:atheneum_permissions] = Mumukit::Auth::Token.new(env['omniauth.auth']['extra']['raw_info']).permissions('atheneum').to_s
+    current_mode.if_online do
+      session[:atheneum_permissions] = Mumukit::Auth::Token.new(env['omniauth.auth']['extra']['raw_info']).permissions('atheneum').to_s
+    end
   end
 
   def login_anchor(options={})
@@ -79,6 +85,6 @@ module Authentication
 
     session[:redirect_after_login] = request.fullpath
 
-    %Q{<a href="#" class="#{options[:class]}" onclick="window.signin();">#{I18n.t(options[:title])}</a>}.html_safe
+    %Q{<a class="#{options[:class]}" #{current_mode.auth_link}>#{I18n.t(options[:title])}</a>}.html_safe
   end
 end

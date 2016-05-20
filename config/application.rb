@@ -13,6 +13,7 @@ module Mumuki
 
     config.autoload_paths += %W(#{config.root}/plugins)
     config.autoload_paths += %W(#{config.root}/app/helpers/concerns)
+    config.autoload_paths += %W(#{config.root}/app/helpers/modes)
     config.autoload_paths += %W(#{config.root}/app/models/exercise)
     config.autoload_paths += %W(#{config.root}/app/models/submission)
     config.autoload_paths += %W(#{config.root}/app/models/concerns/submittable)

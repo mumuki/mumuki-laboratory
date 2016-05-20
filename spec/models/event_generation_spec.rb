@@ -57,7 +57,7 @@ describe Event do
                                social_id: 'github|gh1234',
                                name: 'foo',
                                email: nil,
-                               image_url: nil},
+                               image_url: 'user_shape.png'},
                            id: 'abcd1234',
                            created_at: assignment.updated_at,
                            content: 'x = 2',

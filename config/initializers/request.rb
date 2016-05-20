@@ -15,6 +15,7 @@ module Rack
     def extract_subdomains
       raise 'no host set' unless host
       raise 'set hostname first!' if /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.match(host)
+      return nil if host == 'localhost'
       (host.split('.') - ['mumuki', 'io'])[0]
     end
   end
