@@ -8,11 +8,15 @@
   <%= @chapter.long_description_html || @chapter.description_html %>
 
   <div class="actions">
-    <a href="<%= lesson_path(@chapter.first_lesson) %>" class="btn btn-success">
-      <%= t(:start_practicing) %>
-    </a>
+    <% if @chapter.lessons.present? %>
+      <a href="<%= lesson_path(@chapter.first_lesson) %>" class="btn btn-success">
+        <%= t(:start_practicing) %>
+      </a>
+    <% end %>
   </div>
 </div>
+
+<% if @chapter.lessons.present? %>
 <div>
   <h3><%= t(:content) %></h3>
 
@@ -28,6 +32,7 @@
     </ul>
   <% end %>
 </div>
+<% end %>
 
 <% if @chapter.links.present? %>
   <div>
