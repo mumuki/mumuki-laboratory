@@ -5,6 +5,7 @@ class ExercisesController < ApplicationController
   before_action :set_guide, only: :show
   before_action :set_default_content, only: :show
   before_action :set_comments, only: :show
+  before_action :validate_user, only: :show, if: :from_exam?
   before_action :start!, only: :show, if: :from_exam?
 
   def show
@@ -18,6 +19,10 @@ class ExercisesController < ApplicationController
 
   def subject
     @exercise ||= Exercise.find_by(id: params[:id])
+  end
+
+  def validate_user
+    redirect_to :root unless @exercise.navigable_parent.accesible_by?(current_user)
   end
 
   def start!

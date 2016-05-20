@@ -26,12 +26,12 @@ class Exam < ActiveRecord::Base
     Organization.current.index_usage! guide, self
   end
 
-  def enabled?
-    enabled_range.cover? DateTime.now
+  def enabled?(user)
+    enabled_range(user).cover? DateTime.now
   end
 
   def accesible_by?(user)
-    enabled? && authorized?(user)
+    enabled?(user) && authorized?(user)
   end
 
   def authorize!(user)
@@ -42,8 +42,8 @@ class Exam < ActiveRecord::Base
     users.include? user
   end
 
-  def enabled_range
-    start_time..end_time
+  def enabled_range(user)
+    start_time..real_end_time(user)
   end
 
   def exam?
