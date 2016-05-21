@@ -1,10 +1,9 @@
 class ExercisesController < ApplicationController
   include WithExerciseIndex
 
-  before_action :authenticate!, except: [:index, :show]
-  before_action :set_exercises, only: [:index]
+  before_action :set_exercises, only: :index
   before_action :set_exercise, only: :show
-  before_action :set_guide, only: [:show]
+  before_action :set_guide, only: :show
   before_action :set_default_content, only: :show
   before_action :set_comments, only: :show
 
