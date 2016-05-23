@@ -34,13 +34,7 @@ class Book < ActiveRecord::Base
     reload
   end
 
-  def index_usages!(organization)
-    chapters.each do |chapter|
-      organization.index_usage! chapter.topic, chapter
-      chapter.topic.index_usages! organization
-    end
-    complements.each do |complement|
-      organization.index_usage! complement.guide, complement
-    end
+  def index_usage!(organization)
+    [chapters, complements].flatten.each { |item| item.index_usage! organization }
   end
 end

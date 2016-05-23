@@ -15,6 +15,10 @@ module GuideContainer
              :exercises_count, to: :guide
   end
 
+  def index_usage!(organization = Organization.current)
+    organization.index_usage_of! guide, self
+  end
+
   def friendly
     defaulting_name { "#{navigable_parent.friendly}: #{name}" }
   end

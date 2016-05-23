@@ -18,14 +18,6 @@ class Exam < ActiveRecord::Base
 
   after_create :index_usage!
 
-  def self.index_usages!(organization)
-    organization.exams.each { |exam| organization.index_usage! exam.guide, exam }
-  end
-
-  def index_usage!
-    Organization.current.index_usage! guide, self
-  end
-
   def enabled?
     enabled_range.cover? DateTime.now
   end
