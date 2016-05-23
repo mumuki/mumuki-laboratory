@@ -1,5 +1,5 @@
 module WithExamsValidations
-  def validate_user_in_exam(exam)
-    redirect_to :root unless exam.accesible_by?(current_user)
+  def validate_accessible(item)
+    redirect_to :root unless item.accessible_by?(current_user)
   end
 end

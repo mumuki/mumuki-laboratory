@@ -73,10 +73,6 @@ class Exercise < ActiveRecord::Base
     "```#{language.name}\n#{extra}```"
   end
 
-  def from_exam?
-    navigable_parent.try(:exam?)
-  end
-
   def import_from_json!(number, json)
     self.language = Language.for_name(json['language']) || guide.language
     self.locale = guide.locale

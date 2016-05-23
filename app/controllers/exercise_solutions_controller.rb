@@ -5,7 +5,7 @@ class ExerciseSolutionsController < ApplicationController
   before_action :authenticate!
   before_action :set_guide_previously_done
   before_action :set_comments, only: :create
-  before_action :validate_user, only: :create, if: :from_exam?
+  before_action :validate_user, only: :create
 
   def create
     assignment = @exercise.submit_solution!(current_user, solution_params)
@@ -17,11 +17,7 @@ class ExerciseSolutionsController < ApplicationController
   private
 
   def validate_user
-    validate_user_in_exam @exercise.navigable_parent
-  end
-
-  def from_exam?
-    @exercise.from_exam?
+    validate_accessible @exercise.navigable_parent
   end
 
   def guide_finished_by_solution?

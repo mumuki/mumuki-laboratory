@@ -1,9 +1,9 @@
 <%= content_for :breadcrumbs do %>
-    <%= breadcrumbs subject %>
+  <%= breadcrumbs subject %>
 <% end %>
 
-<% if subject.try(:exam?) && subject.started?(current_user) %>
-    <%= render partial: "layouts/timer", locals: { end_time: subject.real_end_time(current_user) } %>
+<% if subject.is_a?(Exam) && subject.started?(current_user) %>
+  <%= render partial: "layouts/timer", locals: {end_time: subject.real_end_time(current_user)} %>
 <% end %>
 
 <div class="row">
@@ -23,7 +23,7 @@
 
       <div class="actions">
         <% if !@stats.try(:done?) && @next_exercise %>
-            <%= link_to t(practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-success' %>
+          <%= link_to t(practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-success' %>
         <% end %>
       </div>
     </div>
@@ -33,17 +33,17 @@
 <h3><%= t :content %></h3>
 <ul class="progress-listing">
   <% @guide.exercises.each do |exercise| %>
-      <li>
-        <%= exercise_status_icon exercise %>
-        <%= link_to_path_element(exercise) %>
-      </li>
+    <li>
+      <%= exercise_status_icon exercise %>
+      <%= link_to_path_element(exercise) %>
+    </li>
   <% end %>
 </ul>
 
 <% if @stats.try :done? %>
-    <div class="text-box">
-      <%= corollary_box(@guide) %>
-    </div>
+  <div class="text-box">
+    <%= corollary_box(@guide) %>
+  </div>
 <% end %>
 
 

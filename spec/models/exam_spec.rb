@@ -11,7 +11,7 @@ describe Exam do
       it { expect(exam.enabled?).to be false }
 
       context 'not authorized' do
-        it { expect(exam.accesible_by? user).to be false }
+        it { expect(exam.accessible_by? user).to be false }
       end
 
       context 'authorized' do
@@ -25,14 +25,14 @@ describe Exam do
       it { expect(exam.enabled?).to be true }
 
       context 'not authorized' do
-        it { expect(exam.accesible_by? user).to be false }
+        it { expect(exam.accessible_by? user).to be false }
       end
 
       context 'authorized' do
         before { exam.authorize! user }
 
-        it { expect(exam.accesible_by? user).to be true }
-        it { expect(exam.accesible_by? other_user).to be false }
+        it { expect(exam.accessible_by? user).to be true }
+        it { expect(exam.accessible_by? other_user).to be false }
       end
 
       context 'import_from_json' do
@@ -44,7 +44,7 @@ describe Exam do
 
         context 'new exam' do
           it { expect(Exam.count).to eq 1 }
-          it { expect(Exam.find_by(classroom_id: '1').accesible_by? user).to be true }
+          it { expect(Exam.find_by(classroom_id: '1').accessible_by? user).to be true }
           it { expect(guide.usage_in_organization).to be_a Exam }
         end
 
@@ -53,8 +53,8 @@ describe Exam do
           before { Exam.import_from_json! exam_json2 }
 
           it { expect(Exam.count).to eq 1 }
-          it { expect(Exam.find_by(classroom_id: '1').accesible_by? user).to be false }
-          it { expect(Exam.find_by(classroom_id: '1').accesible_by? user2).to be true }
+          it { expect(Exam.find_by(classroom_id: '1').accessible_by? user).to be false }
+          it { expect(Exam.find_by(classroom_id: '1').accessible_by? user2).to be true }
         end
       end
 

@@ -6,8 +6,8 @@ class ExercisesController < ApplicationController
   before_action :set_guide, only: :show
   before_action :set_default_content, only: :show
   before_action :set_comments, only: :show
-  before_action :validate_user, only: :show, if: :from_exam?
-  before_action :start!, only: :show, if: :from_exam?
+  before_action :validate_user, only: :show
+  before_action :start!, only: :show
 
   def show
     @solution = @exercise.new_solution if current_user?
@@ -23,15 +23,11 @@ class ExercisesController < ApplicationController
   end
 
   def validate_user
-    validate_user_in_exam @exercise.navigable_parent
+    validate_accessible @exercise.navigable_parent
   end
 
   def start!
     @exercise.navigable_parent.start! current_user
-  end
-
-  def from_exam?
-    @exercise.from_exam?
   end
 
   def set_default_content

@@ -38,7 +38,7 @@ class Exam < ActiveRecord::Base
     enabled_range_for(user).cover? DateTime.now
   end
 
-  def accesible_by?(user)
+  def accessible_by?(user)
     enabled_for?(user) && authorized?(user)
   end
 
@@ -52,10 +52,6 @@ class Exam < ActiveRecord::Base
 
   def enabled_range_for(user)
     start_time..real_end_time(user)
-  end
-
-  def exam?
-    true
   end
 
   def authorization_for(user)

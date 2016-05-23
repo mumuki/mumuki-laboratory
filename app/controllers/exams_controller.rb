@@ -10,7 +10,7 @@ class ExamsController < GuideContainerController
   end
 
   def validate_user
-    validate_user_in_exam @exam
+    validate_accessible @exam
   end
 
 end
