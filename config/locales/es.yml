@@ -5,6 +5,7 @@ es:
   actions: Acciones
   activity: Actividad
   all: Todos
+  and: y
   author: Autor
   chapter: Capítulo
   chapter_finished_html: ¡Terminaste %{chapter}! ¡Felicitaciones!
@@ -21,6 +22,8 @@ es:
   created_at: Creado
   created_exercises: Ejercicios Creados
   created_guides: Lecciones Creadas
+  day: Día
+  days: Días
   date: Fecha
   destroy: Eliminar
   details: Detalles
@@ -45,6 +48,8 @@ es:
   guides_index_title: ¿Qué guía querés hacer hoy?
   here: acá
   history: Historial
+  hour: hora
+  hours: horas
   language: Lenguaje
   languages: Lenguajes
   last_submission_date: Última solución
@@ -52,6 +57,8 @@ es:
   latest_guides: últimas lecciones
   learning: Aprendizaje
   listing_exercises: Listado de ejercicios
+  minute: minuto
+  minutes: minutos
   mumuki_catchphrase: Aprendé a programar
   mumuki_short_description: Mumuki es la plataforma libre y gratuita para aprender a programar, de la práctica a la teoría y en tu idioma
   my_exercises: Mis Ejercicios
@@ -105,6 +112,7 @@ es:
   submissions_success_rate: Tasa de éxito en soluciones
   tag: Etiquetas
   test_results: Resultados de las pruebas
+  time_left: Te quedan
   title: Título
   type_expressions_here: Acá podés escribir expresiones para probar tu solución
   uncategorized: No categorizado

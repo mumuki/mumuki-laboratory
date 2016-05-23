@@ -9,10 +9,20 @@ module GuideContainer
              :teaser_html,
              :search_tags,
              :exercises,
+             :first_exercise,
+             :next_exercise,
+             :stats_for,
              :exercises_count, to: :guide
   end
 
   def friendly
     defaulting_name { "#{navigable_parent.friendly}: #{name}" }
+  end
+
+  def accessible_by?(user)
+    true
+  end
+
+  def start!(user)
   end
 end
