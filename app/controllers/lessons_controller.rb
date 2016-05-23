@@ -1,4 +1,4 @@
-class LessonsController < ComplementsController
+class LessonsController < GuideContainerController
 
   private
 
