@@ -9,7 +9,7 @@ class GuidesController < ApplicationController
   end
 
   def redirect_to_usage(guide)
-    redirect_to guide.usage_in_organization
+    guide.try(:usage_in_organization).try { |usage| redirect_to usage } || render_not_found
   end
 
   def index

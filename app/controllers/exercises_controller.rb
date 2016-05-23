@@ -1,10 +1,8 @@
 class ExercisesController < ApplicationController
   include WithExerciseIndex
 
-  before_action :authenticate!, except: [:index, :show]
-  before_action :set_exercises, only: [:index]
-  before_action :set_exercise, only: :show
-  before_action :set_guide, only: [:show]
+  before_action :set_exercises, only: :index
+  before_action :set_guide, only: :show
   before_action :set_default_content, only: :show
   before_action :set_comments, only: :show
 
@@ -18,7 +16,7 @@ class ExercisesController < ApplicationController
   private
 
   def subject
-    @exercise
+    @exercise ||= Exercise.find_by(id: params[:id])
   end
 
   def set_default_content
@@ -29,11 +27,6 @@ class ExercisesController < ApplicationController
     @comments = @exercise.comments_for(current_user) if current_user?
     @comments.try(:each, &:read!)
   end
-
-  def set_exercise
-    @exercise = Exercise.find(params[:id])
-  end
-
 
   def set_guide
     @guide = @exercise.guide

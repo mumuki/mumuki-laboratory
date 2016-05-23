@@ -8,5 +8,8 @@ class Complement < ActiveRecord::Base
   belongs_to :book
 
   include TerminalNavigation
-  include WithTerminalName
+
+  def used_in?(organization)
+    organization.book == book
+  end
 end

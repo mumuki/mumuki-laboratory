@@ -15,7 +15,7 @@ class Topic < ActiveRecord::Base
   has_many :guides, -> { order('lessons.number') }, through: :lessons
   has_many :exercises, -> { order('exercises.number') }, through: :guides
 
-  include WithUsages, ChildrenNavigation
+  include WithUsages
 
   markdown_on :description, :description_teaser
 

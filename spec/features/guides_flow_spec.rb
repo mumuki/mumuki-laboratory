@@ -8,6 +8,8 @@ feature 'Guides Flow' do
     create(:exercise, name: 'Baz',        guide: guide, number: 4)
   ]}
   let(:guide) { create(:guide, name: 'awesomeGuide', description: 'An awesome guide', language: haskell, slug: 'foo/bar') }
+  let(:guide_not_in_path) { create(:guide) }
+
   let!(:lesson) { create(:lesson, guide: guide) }
   let!(:chapter) { create(:chapter, name: 'C1', lessons: [lesson]) }
 
@@ -42,6 +44,22 @@ feature 'Guides Flow' do
     expect(page).to have_text('awesomeGuide')
     expect(page).to have_text('An awesome guide')
     expect(page).to have_text('Content')
+  end
+
+  scenario 'visit guide by slug, not in path' do
+    expect { visit "/guides/#{guide_not_in_path.slug}" }.to raise_error(ActionController::RoutingError)
+  end
+
+  scenario 'visit guide by slug, unknown guide' do
+    expect { visit '/guides/goo/baz' }.to raise_error(ActionController::RoutingError)
+  end
+
+  scenario 'visit guide by id, not in path' do
+    expect { visit "/guides/#{guide_not_in_path.id}" }.to raise_error(ActionController::RoutingError)
+  end
+
+  scenario 'visit guide by id, unknown guide' do
+    expect { visit '/guides/900000' }.to raise_error(ActionController::RoutingError)
   end
 
   scenario 'visit guides from search page, and starts practicing' do

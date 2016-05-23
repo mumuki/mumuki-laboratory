@@ -1,12 +1,4 @@
 module Authentication
-  def login_github_path
-    '/auth/github'
-  end
-
-  def login_facebook_path
-    '/auth/facebook'
-  end
-
   def current_user_id
     remember_me_token.value.try do |token |
       User.where(remember_me_token: token).first.try(:id)
@@ -33,25 +25,13 @@ module Authentication
     redirect_to root_path, alert: message
   end
 
-  def restricted_to_current_user(user)
-    yield if user == current_user
-  end
-
-  def restricted_to_other_user(user)
-    yield if current_user && user != current_user
-  end
-
-  def current_user_path
-    user_path(current_user)
-  end
-
   def validate_user
     render file: 'layouts/login' and return if must_login
-    render_not_found unless from_auth0?
+    render_not_found if !from_login_callback?  && !can_visit?
   end
 
   def render_not_found
-    raise ActionController::RoutingError.new('Not Found') unless can_visit?
+    raise ActionController::RoutingError.new('Not Found')
   end
 
   def can_visit?
@@ -67,10 +47,10 @@ module Authentication
   end
 
   def must_login
-    Organization.current.private? && (!current_user? && !from_auth0?)
+    Organization.current.private? && !current_user? && !from_login_callback?
   end
 
-  def from_auth0?
+  def from_login_callback?
     params['controller'] == 'sessions' && params['action'] == 'callback'
   end
 

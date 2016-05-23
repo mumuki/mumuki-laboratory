@@ -1,6 +1,6 @@
 class ComplementsController < ApplicationController
 
-  before_action :set_complement
+  before_action :set_guide
 
   def show
     if current_user?
@@ -14,11 +14,10 @@ class ComplementsController < ApplicationController
   private
 
   def subject
-    @complement
+    @complement ||= Complement.find_by(id: params[:id])
   end
 
-  def set_complement
-    @complement = Complement.find(params[:id])
+  def set_guide
     @guide = @complement.guide
   end
 end
