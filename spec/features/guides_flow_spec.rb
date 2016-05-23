@@ -47,31 +47,19 @@ feature 'Guides Flow' do
   end
 
   scenario 'visit guide by slug, not in path' do
-    visit "/guides/#{guide_not_in_path.slug}"
-
-    expect(page).to have_text('Not found')
-    expect(page).to have_text('404')
+    expect { visit "/guides/#{guide_not_in_path.slug}" }.to raise_error(ActionController::RoutingError)
   end
 
   scenario 'visit guide by slug, unknown guide' do
-    visit '/guides/goo/baz'
-
-    expect(page).to have_text('Not found')
-    expect(page).to have_text('404')
+    expect { visit '/guides/goo/baz' }.to raise_error(ActionController::RoutingError)
   end
 
   scenario 'visit guide by id, not in path' do
-    visit "/guides/#{guide_not_in_path.id}"
-
-    expect(page).to have_text('Not found')
-    expect(page).to have_text('404')
+    expect { visit "/guides/#{guide_not_in_path.id}" }.to raise_error(ActionController::RoutingError)
   end
 
   scenario 'visit guide by id, unknown guide' do
-    visit '/guides/900000'
-
-    expect(page).to have_text('Not found')
-    expect(page).to have_text('404')
+    expect { visit '/guides/900000' }.to raise_error(ActionController::RoutingError)
   end
 
   scenario 'visit guides from search page, and starts practicing' do

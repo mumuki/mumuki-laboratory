@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
 
-  before_action :set_lesson
+  before_action :set_guide
 
   def show
     if current_user?
@@ -14,11 +14,10 @@ class LessonsController < ApplicationController
   private
 
   def subject
-    @lesson
+    @lesson ||= Lesson.find_by(id: params[:id])
   end
 
-  def set_lesson
-    @lesson = Lesson.find(params[:id])
+  def set_guide
     @guide = @lesson.guide
   end
 

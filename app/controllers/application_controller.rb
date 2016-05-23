@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :set_organization
   before_action :validate_user
   before_action :set_locale
+  before_action :check_subject_accessible!
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -23,6 +24,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def check_subject_accessible!
+    render_not_found if subject && !subject.used_in?(Organization.current)
+  end
 
   def subject #TODO may be used to remove breadcrumbs duplication
     nil

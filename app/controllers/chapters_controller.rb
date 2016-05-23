@@ -2,10 +2,9 @@ require 'addressable/uri'
 
 class ChaptersController < ApplicationController
   def show
-    @chapter = Chapter.find(params[:id])
   end
 
   def subject
-    @chapter
+    @chapter ||= Chapter.find_by(id: params[:id])
   end
 end
