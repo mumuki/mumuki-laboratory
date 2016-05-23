@@ -45,9 +45,13 @@ RSpec.configure do |config|
   end
 end
 
+def reindex_book!(organization)
+  organization.reload
+  organization.reindex_usages!
+end
+
 def reindex_current_book!
-  Organization.current.book.reload
-  Organization.current.reindex_usages!
+  reindex_book! Organization.current
 end
 
 def set_subdomain_host(subdomain)

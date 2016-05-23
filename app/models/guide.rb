@@ -14,7 +14,7 @@ class Guide < ActiveRecord::Base
           WithLanguage,
           WithSlug
 
-  include WithUsages, ChildrenNavigation
+  include WithUsages
 
   markdown_on :description, :teaser, :corollary
 

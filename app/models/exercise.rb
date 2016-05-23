@@ -31,6 +31,10 @@ class Exercise < ActiveRecord::Base
 
   delegate :stateful_console?, to: :language
 
+  def used_in?(organization)
+    guide.usage_in_organization(organization).present?
+  end
+
   def pending_siblings_for(user)
     guide.pending_exercises(user)
   end

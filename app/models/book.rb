@@ -1,7 +1,7 @@
 class Book < ActiveRecord::Base
   validates_presence_of :name, :locale
 
-  include WithSlug, WithTerminalName
+  include WithSlug
 
   numbered :chapters
   aggregate_of :chapters
@@ -10,12 +10,6 @@ class Book < ActiveRecord::Base
   has_many :complements, dependent: :delete_all
 
   markdown_on :description
-
-  include ChildrenNavigation
-
-  def usage_in_organization
-    self
-  end
 
   def first_chapter
     chapters.first

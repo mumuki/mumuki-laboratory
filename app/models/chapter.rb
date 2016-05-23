@@ -9,19 +9,14 @@ class Chapter < ActiveRecord::Base
   belongs_to :book
   belongs_to :topic
 
-  include ParentNavigation, SiblingsNavigation
+  include SiblingsNavigation
   include TerminalNavigation
+
+  def used_in?(organization)
+    organization.book == self.book
+  end
 
   def pending_siblings_for(user)
     book.pending_chapters(user)
   end
-
-  def structural_parent
-    book
-  end
-
-  def friendly
-    name
-  end
-
 end
