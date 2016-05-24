@@ -25,6 +25,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def render_not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
+  def from_login_callback?
+    params['controller'] == 'sessions' && params['action'] == 'callback'
+  end
+
   def validate_subject_accessible!
     render_not_found if subject && !subject.used_in?(Organization.current)
   end

@@ -30,10 +30,6 @@ module Authentication
     render_not_found if !from_login_callback?  && !can_visit?
   end
 
-  def render_not_found
-    raise ActionController::RoutingError.new('Not Found')
-  end
-
   def can_visit?
     Organization.current.public? || logged_and_can_visit?
   end
@@ -48,10 +44,6 @@ module Authentication
 
   def must_login
     Organization.current.private? && !current_user? && !from_login_callback?
-  end
-
-  def from_login_callback?
-    params['controller'] == 'sessions' && params['action'] == 'callback'
   end
 
   def set_permissions
