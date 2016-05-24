@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include Pagination
   include Recurrence
   include Notifications
+  include Accessibility
 
   before_action :set_organization
   before_action :set_locale
@@ -22,11 +23,12 @@ class ApplicationController < ActionController::Base
                 :has_comments?,
                 :subject
 
+  private
+
   def set_locale
     I18n.locale = Organization.current.locale
   end
 
-  private
 
   def render_not_found
     raise ActionController::RoutingError.new('Not Found')
@@ -34,10 +36,6 @@ class ApplicationController < ActionController::Base
 
   def from_login_callback?
     params['controller'] == 'sessions' && params['action'] == 'callback'
-  end
-
-  def validate_subject_accessible!
-    render_not_found if subject && !subject.used_in?(Organization.current)
   end
 
   def subject #TODO may be used to remove breadcrumbs duplication
