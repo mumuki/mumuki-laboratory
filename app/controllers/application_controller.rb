@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include WithRememberMeToken
   include Pagination
   include Recurrence
+  include Notifications
 
   before_action :set_organization
   before_action :validate_user
@@ -40,14 +41,6 @@ class ApplicationController < ActionController::Base
 
   def subject #TODO may be used to remove breadcrumbs duplication
     nil
-  end
-
-  def has_comments?
-    comments_count > 0
-  end
-
-  def comments_count
-    current_user.try(:unread_comments).try(:count) || 0
   end
 
   def redirect_to_last_guide
