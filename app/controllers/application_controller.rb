@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
   include Notifications
 
   before_action :set_organization
-  before_action :validate_user
   before_action :set_locale
+  before_action :authorize!
   before_action :validate_subject_accessible!
 
   # Prevent CSRF attacks by raising an exception.
