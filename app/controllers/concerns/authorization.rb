@@ -19,4 +19,10 @@ module Authorization
   def must_login
     Organization.current.private? && !current_user? && !from_login_callback?
   end
+
+  def set_permissions
+    current_mode.if_online do
+      session[:atheneum_permissions] = Mumukit::Auth::Token.from_env(env).permissions('atheneum').to_s
+    end
+  end
 end

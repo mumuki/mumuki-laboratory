@@ -25,12 +25,6 @@ module Authentication
     redirect_to root_path, alert: message
   end
 
-  def set_permissions
-    current_mode.if_online do
-      session[:atheneum_permissions] = Mumukit::Auth::Token.new(env['omniauth.auth']['extra']['raw_info']).permissions('atheneum').to_s
-    end
-  end
-
   def login_anchor(options={})
     options[:title] ||= :sign_in
 
