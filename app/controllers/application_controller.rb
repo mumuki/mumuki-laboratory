@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Authentication
+  include Authorization
   include WithRememberMeToken
   include Pagination
   include Recurrence
