@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include Authentication
   include WithRememberMeToken
   include Pagination
+  include Recurrence
 
   before_action :set_organization
   before_action :validate_user
@@ -39,18 +40,6 @@ class ApplicationController < ActionController::Base
 
   def subject #TODO may be used to remove breadcrumbs duplication
     nil
-  end
-
-  def visitor_recurrent?
-    current_user? && current_user.last_guide.present?
-  end
-
-  def visitor_comes_from_internet?
-    !request_host_include? %w(mumuki localmumuki)
-  end
-
-  def request_host_include?(hosts)
-    hosts.any? { |host| Addressable::URI.parse(request.referer).host.include? host } rescue false
   end
 
   def has_comments?
