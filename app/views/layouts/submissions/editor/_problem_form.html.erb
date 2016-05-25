@@ -1,4 +1,4 @@
-<% if (@exercise.queriable? || @exercise.extra_visible?) && editor_mode!= :upload %>
+<% if (@exercise.queriable? || @exercise.extra_visible?) && ![:upload, :hidden].include?(editor_mode) %>
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
       <a href="#editor" aria-controls="editor" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'pencil-square' %> <%= t :editor %></a>
