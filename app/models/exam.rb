@@ -2,7 +2,7 @@ class Exam < ActiveRecord::Base
   include GuideContainer
   include FriendlyName
 
-  validates_presence_of :duration, :start_time, :end_time
+  validates_presence_of :start_time, :end_time
 
   belongs_to :guide
   belongs_to :organization
@@ -71,11 +71,11 @@ class Exam < ActiveRecord::Base
   end
 
   def real_end_time(user)
-    started?(user) ? [duration_time(user), end_time].min : end_time
-  end
-
-  def duration_time(user)
-    started_at(user) + duration.minutes
+    if duration.present? && started?(user)
+      [started_at(user) + duration.minutes, end_time].min
+    else
+      end_time
+    end
   end
 
   def started_at(user)
@@ -86,7 +86,7 @@ class Exam < ActiveRecord::Base
     Organization.find_by!(name: json.delete('tenant')).switch!
     exam_data = Exam.parse_json json
     users = exam_data.delete('users')
-    exam = Exam.where(classroom_id: exam_data.delete('id')).first_or_create exam_data
+    exam = Exam.where(classroom_id: exam_data.delete('id')).first_or_create! exam_data
     exam.process_users users
     exam
   end
