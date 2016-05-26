@@ -23,6 +23,10 @@ module GuideContainer
     true
   end
 
+  def timed?
+    false
+  end
+
   def start!(user)
   end
 end

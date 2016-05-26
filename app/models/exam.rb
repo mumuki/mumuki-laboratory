@@ -42,6 +42,10 @@ class Exam < ActiveRecord::Base
     enabled_for?(user) && authorized?(user)
   end
 
+  def timed?
+    duration.present?
+  end
+
   def authorize!(user)
     users << user unless authorized?(user)
   end

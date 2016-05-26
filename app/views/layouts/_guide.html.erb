@@ -2,7 +2,7 @@
   <%= breadcrumbs subject %>
 <% end %>
 
-<% if subject.is_a?(Exam) && subject.started?(current_user) %>
+<% if subject.timed? && subject.started?(current_user) %>
   <%= render partial: "layouts/timer", locals: {end_time: subject.real_end_time(current_user)} %>
 <% end %>
 
