@@ -33,7 +33,7 @@ describe Organization do
     let!(:orphan_exercise) { create(:exercise) }
     let!(:orphan_guide) { orphan_exercise.guide }
 
-    before { reindex_current_book! }
+    before { reindex_current_organization! }
 
     it { expect(Organization.current.in_path? orphan_guide).to be false }
     it { expect(Organization.current.in_path? orphan_exercise).to be false }

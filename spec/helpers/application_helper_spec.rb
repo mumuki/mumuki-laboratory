@@ -14,7 +14,7 @@ describe ApplicationHelper do
             create(:exercise, name: 'An Exercise')]) }
       let!(:chapter) { create(:chapter, name: 'C1', lessons: [lesson]) }
 
-      before { reindex_current_book! }
+      before { reindex_current_organization! }
 
       it { expect(page_title nil).to eq 'Mumuki - Improve your programming skills' }
       it { expect(page_title Problem.new).to eq 'Mumuki - Improve your programming skills' }
@@ -38,7 +38,7 @@ describe ApplicationHelper do
       ]) }
     let!(:chapter) { create(:chapter, name: 'C1', lessons: [lesson]) }
 
-    before { reindex_current_book! }
+    before { reindex_current_organization! }
 
     it { expect(link_to_path_element(exercise, mode: :plain)).to eq '<a href="/exercises/30-c1-bar-foo3">foo3</a>' }
     it { expect(link_to_path_element(exercise, mode: :friendly)).to eq '<a href="/exercises/30-c1-bar-foo3">C1: bar - foo3</a>' }

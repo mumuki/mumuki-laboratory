@@ -10,7 +10,7 @@ feature 'Standard Flow' do
         ])
     ]) }
 
-  before { reindex_current_book! }
+  before { reindex_current_organization! }
 
   before do
     visit '/'

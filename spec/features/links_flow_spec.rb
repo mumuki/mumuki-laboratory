@@ -14,8 +14,8 @@ feature 'Lessons Flow' do
   let!(:other_lesson) { create(:lesson, exercises: [other_exercise]) }
   let!(:other_chapter) { create(:chapter, lessons: [other_lesson], book: other_book) }
 
-  before { reindex_current_book! }
-  before { reindex_book! other_organization }
+  before { reindex_current_organization! }
+  before { reindex_organization! other_organization }
 
   scenario 'visit lesson in path' do
     visit "/lessons/#{lesson.id}"

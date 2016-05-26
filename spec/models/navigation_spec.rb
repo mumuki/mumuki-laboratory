@@ -39,8 +39,8 @@ describe 'Navigation' do
   let(:exercise_1) { lesson_1.exercises.first }
   let(:exercise_2) { lesson_2.exercises.first }
 
-  before { reindex_book! organization_1 }
-  before { reindex_book! organization_2 }
+  before { reindex_organization! organization_1 }
+  before { reindex_organization! organization_2 }
 
   it { expect(book_1.complements.first.used_in? Organization.current).to be false }
   it { expect(book_1.complements.first.used_in? organization_1).to be true }

@@ -31,7 +31,8 @@ class Exam < ActiveRecord::Base
   end
 
   def accessible_by?(user)
-    enabled_for?(user) && authorized?(user)
+    #FIXME see with @aguspina
+    user && enabled_for?(user) && authorized?(user)
   end
 
   def timed?

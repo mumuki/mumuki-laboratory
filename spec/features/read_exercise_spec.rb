@@ -8,7 +8,7 @@ feature 'Read Exercise Flow' do
 
   let(:user) { User.find_by(name: 'testuser') }
 
-  before { reindex_current_book! }
+  before { reindex_current_organization! }
 
   scenario 'show exercise from search' do
     visit '/exercises'

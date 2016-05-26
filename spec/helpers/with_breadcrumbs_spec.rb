@@ -13,7 +13,7 @@ describe WithBreadcrumbs do
     ]) }
     let(:exercise) { complement.exercises.first }
 
-    before { reindex_current_book! }
+    before { reindex_current_organization! }
 
     it { expect(breadcrumb).to include('my exercise') }
     it { expect(breadcrumb).to include('my guide') }
@@ -28,7 +28,7 @@ describe WithBreadcrumbs do
     ]) }
     let(:exercise) { chapter.first_lesson.exercises.first }
 
-    before { reindex_current_book! }
+    before { reindex_current_organization! }
 
     it { expect(breadcrumb).to include('my exercise') }
     it { expect(breadcrumb).to include('my lesson') }

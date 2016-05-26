@@ -56,7 +56,7 @@ describe WithNavigation do
         let(:lesson) { create(:lesson, name: 'Guide A', exercises: [exercise]) }
         let(:chapter) { create(:chapter, lessons: [lesson]) }
 
-        before { reindex_current_book! }
+        before { reindex_current_organization! }
         before { exercise.submit_solution!(current_user).passed! }
 
         it { expect(next_button(lesson)).to be nil }
@@ -68,7 +68,7 @@ describe WithNavigation do
         let!(:another_lesson) { create(:lesson, name: 'l1') }
         let!(:chapter) { create(:chapter, lessons: [another_lesson, lesson, suggested_lesson]) }
 
-        before { reindex_current_book! }
+        before { reindex_current_organization! }
 
         it { expect(next_button(lesson)).to include "<a class=\"btn btn-success\" href=\"/lessons/#{suggested_lesson.friendly_name}\">Next: #{suggested_lesson.name} <i class=\"fa fa-chevron-right\"></i></a>" }
       end
@@ -79,7 +79,7 @@ describe WithNavigation do
         let!(:lesson) { create(:lesson) }
         let!(:chapter) { create(:chapter, lessons: [lesson, suggested_lesson_1, suggested_lesson_2])}
 
-        before { reindex_current_book! }
+        before { reindex_current_organization! }
 
         it { expect(next_button(lesson)).to include "<a class=\"btn btn-success\" href=\"/lessons/#{suggested_lesson_1.friendly_name}\">Next: #{suggested_lesson_1.name} <i class=\"fa fa-chevron-right\"></i></a>" }
         it { expect(next_button(lesson)).to be_html_safe }
