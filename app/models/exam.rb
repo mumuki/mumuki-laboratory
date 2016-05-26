@@ -2,7 +2,7 @@ class Exam < ActiveRecord::Base
   include GuideContainer
   include FriendlyName
 
-  validates_presence_of :duration, :start_time, :end_time
+  validates_presence_of :start_time, :end_time
 
   belongs_to :guide
   belongs_to :organization
