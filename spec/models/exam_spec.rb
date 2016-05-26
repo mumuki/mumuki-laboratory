@@ -4,7 +4,7 @@ describe Exam do
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }
 
-  describe '#accesible_by?' do
+  describe '#accessible_by?' do
     context 'not enabled' do
       let(:exam) { create(:exam, start_time: 5.minutes.since, end_time: 10.minutes.since) }
 

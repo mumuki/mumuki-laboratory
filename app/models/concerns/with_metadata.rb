@@ -8,4 +8,5 @@ module WithMetadata
 
     delegate :student?, :teacher?, :admin?, to: :metadata
   end
+
 end
