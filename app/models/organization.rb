@@ -66,6 +66,10 @@ class Organization < ActiveRecord::Base
     Usage.create! organization: self, item: item, parent_item: parent
   end
 
+  def slug
+    "#{name}/atheneum"
+  end
+
   private
 
   def notify!(assignments)
