@@ -86,7 +86,7 @@ class Exam < ActiveRecord::Base
     Organization.find_by!(name: json.delete('tenant')).switch!
     exam_data = Exam.parse_json json
     users = exam_data.delete('users')
-    exam = Exam.where(classroom_id: exam_data.delete('id')).first_or_create exam_data
+    exam = Exam.where(classroom_id: exam_data.delete('id')).first_or_create! exam_data
     exam.process_users users
     exam
   end
