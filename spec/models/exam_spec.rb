@@ -73,14 +73,18 @@ describe Exam do
 
         context 'with duration' do
           let(:duration) { 150 }
-          it { expect(exam.duration_time(user)).to eq(exam.started_at(user) + exam.duration.minutes) }
           it { expect(exam.real_end_time user).to eq(exam.end_time) }
+          it { expect(exam.started? user).to be_truthy }
+        end
+
+        context 'with short duration' do
+          let(:duration) { 3 }
+          it { expect(exam.real_end_time user).to eq(exam.started_at(user) + 3.minutes) }
           it { expect(exam.started? user).to be_truthy }
         end
 
         context 'no duration' do
           let(:duration) { nil }
-          it { expect(exam.duration_time(user)).to be nil }
           it { expect(exam.real_end_time user).to eq(exam.end_time) }
           it { expect(exam.started? user).to be_truthy }
         end

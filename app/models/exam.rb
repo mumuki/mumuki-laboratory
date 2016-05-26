@@ -71,11 +71,11 @@ class Exam < ActiveRecord::Base
   end
 
   def real_end_time(user)
-    started?(user) ? [duration_time(user), end_time].compact.min : end_time
-  end
-
-  def duration_time(user)
-    started_at(user) + duration.minutes if duration
+    if duration.present? && started?(user)
+      [started_at(user) + duration.minutes, end_time].min
+    else
+      end_time
+    end
   end
 
   def started_at(user)
