@@ -9,7 +9,7 @@ namespace :assignments do
     user = User.find_by(uid: args[:user_uid])
     puts "Found user #{user.name}."
 
-    Organization.current.notify_assignments_by! user.id
+    Organization.current.notify_assignments_by! user
   end
 
   # This task should not be called directly (because it "does nothing"), it's just a prerrequisite for the others.
