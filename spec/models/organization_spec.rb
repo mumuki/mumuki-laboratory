@@ -5,6 +5,7 @@ describe Organization do
   let(:user) { create(:user) }
 
   it { expect(organization).to_not be nil }
+  it { expect(organization.slug).to eq 'test/atheneum' }
   it { expect(organization).to eq Organization.current }
 
   describe '#notify_recent_assignments!' do
@@ -32,7 +33,7 @@ describe Organization do
     let!(:orphan_exercise) { create(:exercise) }
     let!(:orphan_guide) { orphan_exercise.guide }
 
-    before { reindex_current_book! }
+    before { reindex_current_organization! }
 
     it { expect(Organization.current.in_path? orphan_guide).to be false }
     it { expect(Organization.current.in_path? orphan_exercise).to be false }

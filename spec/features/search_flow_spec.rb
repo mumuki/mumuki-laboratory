@@ -22,7 +22,7 @@ feature 'Search Flow' do
   ]) }
 
   let!(:chapter) { create(:chapter, name: 'C1', lessons: [lesson, other_lesson]) }
-  before { reindex_current_book! }
+  before { reindex_current_organization! }
 
   scenario 'search guides by language' do
     visit '/guides'

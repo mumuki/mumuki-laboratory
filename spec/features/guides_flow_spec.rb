@@ -19,7 +19,7 @@ feature 'Guides Flow' do
       create(:exercise, name: 'complementary exercise 2')
   ]) }
 
-  before { reindex_current_book! }
+  before { reindex_current_organization! }
 
   let(:user) { User.find_by(name:'testuser') }
 

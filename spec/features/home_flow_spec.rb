@@ -10,7 +10,7 @@ feature 'Home Flow' do
 
   let(:user) { User.find_by(name: 'testuser') }
 
-  before { reindex_current_book! }
+  before { reindex_current_organization! }
 
   context 'anonymous visitor' do
     scenario 'from outside' do

@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
       }
   }
 
-  include WithSearch, WithOmniauth, WithToken
+  include WithSearch, WithOmniauth, WithToken, WithMetadata
 
   has_many :assignments, foreign_key: :submitter_id
 
@@ -76,12 +76,6 @@ class User < ActiveRecord::Base
 
   def unread_comments
     comments.reject(&:read)
-  end
-
-  def can_visit?(permissions)
-    Mumukit::Auth::Permissions
-      .load(permissions)
-      .allows?("#{Organization.current.name}/atheneum")
   end
 
   private

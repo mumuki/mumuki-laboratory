@@ -1,11 +1,15 @@
 class ApplicationController < ActionController::Base
   include Authentication
+  include Authorization
   include WithRememberMeToken
   include Pagination
+  include Recurrence
+  include Notifications
+  include Accessibility
 
   before_action :set_organization
-  before_action :validate_user
   before_action :set_locale
+  before_action :authorize!
   before_action :validate_subject_accessible!
 
   # Prevent CSRF attacks by raising an exception.
@@ -19,38 +23,23 @@ class ApplicationController < ActionController::Base
                 :has_comments?,
                 :subject
 
+  private
+
   def set_locale
     I18n.locale = Organization.current.locale
   end
 
-  private
 
-  def validate_subject_accessible!
-    render_not_found if subject && !subject.used_in?(Organization.current)
+  def render_not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
+  def from_login_callback?
+    params['controller'] == 'sessions' && params['action'] == 'callback'
   end
 
   def subject #TODO may be used to remove breadcrumbs duplication
     nil
-  end
-
-  def visitor_recurrent?
-    current_user? && current_user.last_guide.present?
-  end
-
-  def visitor_comes_from_internet?
-    !request_host_include? %w(mumuki localmumuki)
-  end
-
-  def request_host_include?(hosts)
-    hosts.any? { |host| Addressable::URI.parse(request.referer).host.include? host } rescue false
-  end
-
-  def has_comments?
-    comments_count > 0
-  end
-
-  def comments_count
-    current_user.try(:unread_comments).try(:count) || 0
   end
 
   def redirect_to_last_guide

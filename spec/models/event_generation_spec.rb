@@ -17,7 +17,7 @@ describe Event do
         create(:lesson),
         create(:lesson, exercises: [create(:exercise)])]) }
 
-      before { reindex_current_book! }
+      before { reindex_current_organization! }
 
       let(:assignment) { create(:assignment,
                                 solution: 'x = 2',
