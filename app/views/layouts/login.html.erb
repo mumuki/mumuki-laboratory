@@ -4,6 +4,7 @@
     function specialSignin() {
       lock.showSignin({
         closable: false,
+        disableResetAction: false,
         dict: '<%= I18n.locale %>',
         icon: '/logo-alt.png',
         callbackURL: '<%= auth_auth0_callback_url %>', responseType: 'code', authParams: {
