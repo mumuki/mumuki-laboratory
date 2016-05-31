@@ -7,8 +7,8 @@ class Exam < ActiveRecord::Base
   belongs_to :guide
   belongs_to :organization
 
-  has_many :exam_authorizations
-  has_many :users, through: :exam_authorizations
+  has_many :authorizations, class_name: 'ExamAuthorization'
+  has_many :users, through: :authorizations
 
   include TerminalNavigation
 
@@ -17,14 +17,6 @@ class Exam < ActiveRecord::Base
   end
 
   after_create :index_usage!
-
-  def self.index_usages!(organization)
-    organization.exams.each { |exam| organization.index_usage! exam.guide, exam }
-  end
-
-  def index_usage!
-    Organization.current.index_usage! guide, self
-  end
 
   def enabled?
     enabled_range.cover? DateTime.now
@@ -59,11 +51,11 @@ class Exam < ActiveRecord::Base
   end
 
   def authorization_for(user)
-    exam_authorizations.find_by(user_id: user.id)
+    authorizations.find_by(user_id: user.id)
   end
 
   def authorizations_for(users)
-    exam_authorizations.where(user_id: users.map(&:id))
+    authorizations.where(user_id: users.map(&:id))
   end
 
   def start!(user)
@@ -101,7 +93,7 @@ class Exam < ActiveRecord::Base
   end
 
   def clean_authorizations(users)
-    exam_authorizations.all_except(authorizations_for(users)).destroy_all
+    authorizations.all_except(authorizations_for(users)).destroy_all
   end
 
   def self.parse_json(exam_json)

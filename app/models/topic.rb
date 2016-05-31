@@ -46,12 +46,6 @@ class Topic < ActiveRecord::Base
     Organization.all.each { |org| org.reindex_usages! }
   end
 
-  def index_usages!(organization)
-    lessons.each do |lesson|
-      organization.index_usage! lesson.guide, lesson
-    end
-  end
-
   def as_chapter_of(book)
     book.chapters.find_by(topic_id: id) || Chapter.new(topic: self, book: book)
   end

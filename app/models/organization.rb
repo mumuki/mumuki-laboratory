@@ -53,8 +53,8 @@ class Organization < ActiveRecord::Base
   def reindex_usages!
     transaction do
       drop_usage_indices!
-      book.index_usages! self
-      Exam.index_usages! self
+      book.index_usage! self
+      exams.each { |exam| exam.index_usage! self }
     end
   end
 
@@ -62,7 +62,7 @@ class Organization < ActiveRecord::Base
     usages.destroy_all
   end
 
-  def index_usage!(item, parent)
+  def index_usage_of!(item, parent)
     Usage.create! organization: self, item: item, parent_item: parent
   end
 
