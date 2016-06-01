@@ -92,6 +92,14 @@ h1 {
 
 .text-box {
   text-align: justify;
+
+  .table {
+    width: inherit;
+    max-width: inherit;
+    td {
+      vertical-align: middle;
+    }
+  }
 }
 
 .chapter {

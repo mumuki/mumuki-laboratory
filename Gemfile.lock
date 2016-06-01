@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: git://github.com/mumuki/mumukit-content-type.git
-  revision: cb507b84e2d5817ec30f6a890d3375a820ee4c3a
+  revision: bbaa8de40ddbe6ea73ad6807a7407ad8022128f1
   branch: master
   specs:
     mumukit-content-type (0.1.0)
@@ -183,7 +183,7 @@ GEM
     mime-types (2.99.1)
     mimemagic (0.3.1)
     mini_portile2 (2.0.0)
-    minitest (5.8.4)
+    minitest (5.9.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
