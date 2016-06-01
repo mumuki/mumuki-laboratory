@@ -110,6 +110,25 @@ describe Exam do
         it { expect { Exam.import_from_json! exam_json.merge('tenant' => 'test') }.not_to raise_error}
 
       end
+
+      context 'teacher does not start exams' do
+        let(:teacher) { create(:user, uid: 'auth0|1') }
+        let(:guide) { create(:guide) }
+        let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [], tenant: 'test' }.stringify_keys }
+        let(:exam) { Exam.import_from_json! exam_json }
+
+        context 'exam_authorization do not receive start method' do
+          before { expect(teacher).to receive(:teacher?).with(guide.slug).and_return(true) }
+          before { expect_any_instance_of(ExamAuthorization).to_not receive(:start!) }
+          it { expect { exam.start!(teacher) }.to_not raise_error }
+
+        end
+
+        context 'exam is not started by a teacher' do
+          it { expect(exam.started?(teacher)).to be_falsey }
+        end
+
+      end
     end
   end
 end
