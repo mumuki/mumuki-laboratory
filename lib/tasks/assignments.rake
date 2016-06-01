@@ -1,7 +1,6 @@
 namespace :assignments do
   task :notify_all, [:organization_name, :date_since] => :select_organization do |t, args|
     args.with_defaults(date_since: '2014-01-01')
-
     Organization.current.notify_recent_assignments! Date.parse(args[:date_since])
   end
 
