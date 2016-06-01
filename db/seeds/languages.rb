@@ -10,7 +10,8 @@ language(name: 'gobstones',
          test_runner_url: 'http://gobstones.runners.mumuki.io',
          output_content_type: :html)
 language(name: 'javascript',
-         test_runner_url: 'http://javascript.runners.mumuki.io')
+         test_runner_url: 'http://javascript.runners.mumuki.io',
+         queriable: true)
 language(name: 'c',
          test_runner_url: 'http://c.runners.mumuki.io')
 language(name: 'c++',
