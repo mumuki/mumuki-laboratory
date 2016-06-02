@@ -17,7 +17,7 @@ language(name: 'c',
 language(name: 'c++',
          test_runner_url: 'http://162.243.111.176:8002')
 language(name: 'prolog',
-         test_runner_url: 'http://mumuki-plunit-server.herokuapp.com',
+         test_runner_url: 'http://prolog.runners.mumuki.io',
          queriable: true)
 language(name: 'ruby',
          test_runner_url: 'http://ruby.runners.mumuki.io',
