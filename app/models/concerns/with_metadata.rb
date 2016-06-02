@@ -6,7 +6,11 @@ module WithMetadata
 
     validates_presence_of :metadata
 
-    delegate :student?, :teacher?, :admin?, to: :metadata
+    delegate :student?, :admin?, to: :metadata
+
+    def teacher?(slug) ## BIG FIX ME
+      metadata.permissions('classroom').present?
+    end
   end
 
 end
