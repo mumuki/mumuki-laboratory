@@ -19,10 +19,10 @@ GIT
 
 GIT
   remote: git://github.com/mumuki/mumukit-content-type.git
-  revision: bbaa8de40ddbe6ea73ad6807a7407ad8022128f1
-  branch: master
+  revision: a1d018f3aab610ca799762b24e2cbbfd22f4160a
+  tag: v0.2.0
   specs:
-    mumukit-content-type (0.1.0)
+    mumukit-content-type (0.2.0)
       activesupport
       md_emoji
       redcarpet (~> 3.3.2)
