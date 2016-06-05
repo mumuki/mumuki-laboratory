@@ -1,0 +1,16 @@
+<div class="error-message">
+  <div class="header">
+    <img src="/astor.png" width="80%">
+  </div>
+  <div class="body">
+    <h1> <%= t(:something_went_wrong) %> </h1>
+
+    <p>
+      <%= t(:something_went_wrong, issues: link_to_issues(:tell_us_how)) %>
+      <a href="https://github.com/mumuki/mumuki-atheneum/issues/new"></a>
+    </p>
+  </div>
+  <p>
+    <a class="primary" href="/"> <%= t(:back_to_mumuki) %> </a></strong>
+  </p>
+</div>

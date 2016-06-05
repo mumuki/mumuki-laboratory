@@ -9,6 +9,14 @@ module WithLinksRendering
     link_to user.name, user
   end
 
+  def link_to_error_404
+    "<a href='https://es.wikipedia.org/wiki/Error_404'> #{I18n.t(:error_404)} </a>"
+  end
+
+  def link_to_issues(translation)
+    "<a href='https://github.com/mumuki/mumuki-atheneum/issues/new'> #{I18n.t(translation)} </a>"
+  end
+
   private
 
   def extract_name(named, options)

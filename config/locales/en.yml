@@ -6,6 +6,7 @@ en:
   activity: Activity
   all: All
   author: Author
+  back_to_mumuki: Back to Mumuki!
   chapter: Chapter
   chapter_finished_html: You have finished %{chapter}!
   chapter_number: Chapter %{number} -
@@ -31,12 +32,14 @@ en:
   exercises_index_title: Looking for a specific exercise?
   expectations: Expectations
   export_created: Export queued
+  error_404: 404 error
   failed: Oops, something went wrong
   feedback: Feedback
   guide: Guide
   guide_created: Guide created successfully
   guide_finished: Congrants! You completed guide %{guide}
   lesson_number: Lesson %{number}
+  let_us_know: please let us know!
   guides_index_title: Which guide do you want to do today?
   here: here
   history: History
@@ -63,6 +66,7 @@ en:
   no_guides: Nobody created a guide for this search yet
   no_submissions: Its seems like you haven't tried to solve this exercise
   notify_problem_with_exercise: Notify problem with exercise
+  not_found_explanation: 'You may have mistyped the address or the page may have moved. If you think this is our fault, %{issues}'
   output: Output
   overview: Overview
   passed: All right
@@ -85,6 +89,8 @@ en:
   sign_out: Sign Out
   sign_up_date: User since
   solution: Solution
+  something_went_wrong: Something went wrong!
+  something_went_wrong: Something is broken in Mumuki. And we need to solve this as soon as possible.
   start_practicing: Start Practicing!
   stats: Some stats
   status: Status
@@ -95,6 +101,7 @@ en:
   submissions_for: Submissions for %{exercise}
   submissions_success_rate: Submissions success rate
   tag: Tags
+  tell_us_how: Please tell us how this happened!
   time_left: You have
   title: Title
   type_expressions_here: You can type expressions here to test your solution

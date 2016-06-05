@@ -1,0 +1,17 @@
+<%= content_for :breadcrumbs do %>
+    <%= home_breadcrumb %>
+<% end %>
+
+<div class="error-message">
+    <div class="header">
+        <img src="/astor.png" width="80%">
+    </div>
+    <div class="body">
+        <p>
+            <%= t(:not_found_explanation, error: link_to_error_404, issues: link_to_issues(:let_us_know)).html_safe %>
+        </p>
+    </div>
+    <p>
+      <a class="primary" href="/"> <%= t(:back_to_mumuki) %> </a></strong>
+    </p>
+</div>

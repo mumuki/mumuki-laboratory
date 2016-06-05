@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   include Recurrence
   include Notifications
   include Accessibility
+  include WithDynamicErrors
 
   before_action :set_organization
   before_action :set_locale
@@ -31,7 +32,7 @@ class ApplicationController < ActionController::Base
 
 
   def render_not_found
-    raise ActionController::RoutingError.new('Not Found')
+    raise ActionController::RoutingError
   end
 
   def from_login_callback?
