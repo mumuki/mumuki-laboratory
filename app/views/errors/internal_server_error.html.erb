@@ -3,11 +3,8 @@
     <img src="/astor.png" width="80%">
   </div>
   <div class="body">
-    <h1> <%= t(:something_went_wrong) %> </h1>
-
     <p>
-      <%= t(:something_went_wrong, issues: link_to_issues(:tell_us_how)) %>
-      <a href="https://github.com/mumuki/mumuki-atheneum/issues/new"></a>
+      <%= t(:something_went_wrong_explanation, issues: link_to_issues(:tell_us_how)).html_safe %>
     </p>
   </div>
   <p>
