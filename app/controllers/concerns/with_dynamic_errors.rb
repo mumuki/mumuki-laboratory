@@ -6,6 +6,7 @@ module WithDynamicErrors
     rescue_from ActionController::RoutingError, with: :not_found
     rescue_from Exceptions::OrganizationPrivateException, with: :unauthorized
     rescue_from Exceptions::ExamForbiddenException, with: :forbidden
+    rescue_from Exceptions::ExamGoneException, with: :gone
     # rescue_from StandardError, with: :internal_server_error
   end
 
@@ -25,6 +26,10 @@ module WithDynamicErrors
 
   def forbidden
     render 'errors/forbidden', status: 403
+  end
+
+  def gone
+    render 'errors/gone', status: 410
   end
 
 end

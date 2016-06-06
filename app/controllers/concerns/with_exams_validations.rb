@@ -4,6 +4,6 @@ module WithExamsValidations
   end
 
   def item_authorized?(item)
-    item.accessible_by?(current_user) || (current_user? && current_user.teacher?)
+    item.access!(current_user) unless (current_user? && current_user.teacher?)
   end
 end

@@ -43,9 +43,11 @@ es:
   error_401: error 401
   error_403: error 403
   error_404: error 404
+  error_410: error 410
   failed: Ups, algo no anduvo bien
   feedback: Problemas que encontramos
   forbidden_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no estás autorizado a ver este contenido.
+  gone_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que ya no podés ver éste examen.
   guide: Lección
   guide_created: Guía creada exitosamente
   guide_finished: Felicitaciones, terminaste la lección %{guide}

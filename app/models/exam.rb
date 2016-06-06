@@ -30,9 +30,11 @@ class Exam < ActiveRecord::Base
     enabled_range_for(user).cover? DateTime.now
   end
 
-  def accessible_by?(user)
-    #FIXME see with @aguspina
-    user && enabled_for?(user) && authorized?(user)
+  def access!(user)
+    if user
+      raise Exceptions::ExamForbiddenException unless authorized?(user)
+      raise Exceptions::ExamGoneException unless enabled_for?(user)
+    end
   end
 
   def timed?
