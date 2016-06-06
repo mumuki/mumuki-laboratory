@@ -8,10 +8,10 @@
   </div>
   <div class="body">
     <p>
-      <%= t(:unauthorized_explanation, error: link_to_status_codes).html_safe %>
+      <%= t(:forbidden_explanation, error: link_to_status_codes(403)).html_safe %>
     </p>
   </div>
   <p>
-    <%= t(:contact_administrator, link: mail_to_administrator).html_safe %>
+    <a class="btn btn-success" href="/"> <%= t(:back_to_mumuki) %> </a>
   </p>
 </div>

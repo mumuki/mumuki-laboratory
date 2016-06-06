@@ -34,9 +34,11 @@ en:
   expectations: Expectations
   export_created: Export queued
   error_401: 401 error
+  error_403: 403 error
   error_404: 404 error
   failed: Oops, something went wrong
   feedback: Feedback
+  forbidden_explanation: You are not allowed to see this content.
   guide: Guide
   guide_created: Guide created successfully
   guide_finished: Congrants! You completed guide %{guide}

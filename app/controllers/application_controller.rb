@@ -36,7 +36,15 @@ class ApplicationController < ActionController::Base
   end
 
   def from_login_callback?
-    params['controller'] == 'sessions' && params['action'] == 'callback'
+    from_sessions? && params['action'] == 'callback'
+  end
+
+  def from_logout?
+    from_sessions? && params['action'] == 'destroy'
+  end
+
+  def from_sessions?
+    params['controller'] == 'sessions'
   end
 
   def subject #TODO may be used to remove breadcrumbs duplication

@@ -17,8 +17,8 @@ module WithLinksRendering
     "<a href='https://github.com/mumuki/mumuki-atheneum/issues/new'> #{I18n.t(translation)} </a>"
   end
 
-  def link_to_error_401
-    "<a href='https://es.wikipedia.org/wiki/Anexo:C%C3%B3digos_de_estado_HTTP'> #{I18n.t(:error_401)} </a>"
+  def link_to_status_codes(code)
+    "<a href='https://es.wikipedia.org/wiki/Anexo:C%C3%B3digos_de_estado_HTTP'> #{I18n.t("error_#{code}")} </a>"
   end
 
   def mail_to_administrator
