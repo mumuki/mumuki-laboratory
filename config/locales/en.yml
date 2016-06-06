@@ -14,6 +14,7 @@ en:
   comment: Comment
   comments: Comments
   console: Console
+  contact_administrator: 'If you think this is not supposed to happened, please contact the admin: %{link}'
   content: Content
   continue_practicing: Continue Practicing!
   contributors: Contributors
@@ -32,6 +33,7 @@ en:
   exercises_index_title: Looking for a specific exercise?
   expectations: Expectations
   export_created: Export queued
+  error_401: 401 error
   error_404: 404 error
   failed: Oops, something went wrong
   feedback: Feedback
@@ -72,6 +74,7 @@ en:
   passed: All right
   passed_with_warnings: It worked, but you can do it better
   pending: pending
+  permissions: Permissions
   previous_exercise: Previous
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'
   processing_you_solution: We are processing you solution
@@ -90,7 +93,7 @@ en:
   sign_up_date: User since
   solution: Solution
   something_went_wrong: Something went wrong!
-  something_went_wrong: Something is broken in Mumuki. And we need to solve this as soon as possible.
+  something_went_wrong_explanation: Something is broken in Mumuki. And we need to solve this as soon as possible, %{issues}.
   start_practicing: Start Practicing!
   stats: Some stats
   status: Status
@@ -109,6 +112,8 @@ en:
   welcome_back_after_redirection: Nice to see you again! This is where you left last time
   you_must: You must %{action} before continue
   you_must_sign_in_before_submitting: You must sign in before submitting your solutions
+  unauthorized_explanation: You have no permissions for this content. Maybe you logged in with another account.
   uploading_solution: "Uploading solution"
   upload_solution: Upload Solution
+  want_permissions: The next user requires permissions
   item_not_accessible: "You are not permitted to access this content"

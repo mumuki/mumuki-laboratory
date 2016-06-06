@@ -15,6 +15,7 @@ es:
   comment: Comentario
   comments: Comentarios
   console: Consola
+  contact_administrator: 'Si pensás que es un error, comunicate con el administrador: %{link}'
   content: Contenido
   continue_practicing: ¡Seguí aprendiendo!
   contributors: Autores
@@ -39,6 +40,7 @@ es:
   exercises_index_title: ¿Buscando algún ejercicio particular?
   expectations: Objetivos
   export_created: Exportación encolada
+  error_401: error 401
   error_404: error 404
   failed: Ups, algo no anduvo bien
   feedback: Problemas que encontramos
@@ -87,6 +89,7 @@ es:
   passed: Todo en orden
   passed_with_warnings: Funcionó, pero hay cosas para mejorar
   pending: pendiente
+  permissions: Permisos
   previous_exercise: Anterior
   problem_with_exercise: '[Mumuki] Error con el ejercicio: %{title}'
   processing_you_solution: Estamos procesando tu solución
@@ -131,6 +134,8 @@ es:
   welcome_back_after_redirection: ¡Qué bueno verte de nuevo! Acá es donde estuviste la última vez
   you_must: Tenés que %{action} antes de continuar
   you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
+  unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no estas autorizado para ver este contenido. Revisá que hayas iniciado sesión con el usuario que corresponde.
   uploading_solution: "Subiendo solución"
   upload_solution: "Subir solución"
+  want_permissions: El siguiente usuario requiere permisos
   item_not_accessible: "No tenés permisos para acceder a este contenido"
