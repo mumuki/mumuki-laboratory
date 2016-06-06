@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
 
 
   def render_not_found
-    raise ActionController::RoutingError
+    raise ActionController::RoutingError.new('Not found')
   end
 
   def from_login_callback?

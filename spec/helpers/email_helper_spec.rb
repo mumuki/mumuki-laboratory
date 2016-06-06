@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ApplicationHelper do
-  helper ExerciseSolutionsHelper
+  helper UserHelper
 
   before { I18n.locale = :en }
 

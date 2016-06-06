@@ -13,7 +13,8 @@ feature 'Exams Flow' do
   before { reindex_current_organization! }
 
   scenario 'visit exam not in path, by id, anonymous' do
-    expect { visit "/exams/#{other_exam.id}" }.to raise_error ActionController::RoutingError
+   visit "/exams/#{other_exam.id}"
+    expect(page).to have_text('You may have mistyped the address or the page may have moved')
   end
 
   scenario 'visit exam in path, by id, anonymous' do
