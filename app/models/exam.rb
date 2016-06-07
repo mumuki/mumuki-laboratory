@@ -31,8 +31,12 @@ class Exam < ActiveRecord::Base
   end
 
   def access!(user)
-    raise Exceptions::ExamForbiddenException unless authorized?(user)
-    raise Exceptions::ExamGoneException unless enabled_for?(user)
+    if user.present?
+      raise Exceptions::ExamForbiddenException unless authorized?(user)
+      raise Exceptions::ExamGoneException unless enabled_for?(user)
+    else
+      raise Exceptions::ExamForbiddenException
+    end
   end
 
   def timed?
