@@ -20,12 +20,23 @@ feature 'Exams Flow' do
   scenario 'visit exam in path, by id, anonymous' do
     visit "/exams/#{exam.id}"
 
-    expect(page).to have_text('You are not permitted to access this content')
+    expect(page).to have_text('You are not allowed to see this content.')
   end
 
   scenario 'visit exam in path, by classroom id, anonymous' do
     visit "/exams/#{exam.classroom_id}"
 
-    expect(page).to have_text('You are not permitted to access this content')
+    expect(page).to have_text('You are not allowed to see this content')
+  end
+
+  scenario 'visit exam in path, when there is no more time' do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user?).and_return(true)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    exam.authorize!(user)
+    expect_any_instance_of(Exam).to receive(:enabled_for?).and_return(false)
+    visit "/exams/#{exam.classroom_id}"
+
+    expect(page).to have_text('This exam is no longer available.')
   end
 end
