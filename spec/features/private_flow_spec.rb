@@ -24,14 +24,14 @@ feature 'When private org' do
     expect(page).not_to have_text('Nobody created a guide for this search yet')
   end
 
-  scenario 'should raise routing error' do
+  scenario 'should raise forbidden error' do
     create(:user)
     expect_any_instance_of(ApplicationController).to receive(:must_login).and_return(false)
-    expect_any_instance_of(ApplicationController).to receive(:from_login_callback?).and_return(false)
     expect_any_instance_of(ApplicationController).to receive(:can_visit?).and_return(false)
-    expect_any_instance_of(ApplicationController).to receive(:current_user).and_return(User.first)
+    expect_any_instance_of(ApplicationController).to receive(:from_login_callback?).and_return(false)
+    expect_any_instance_of(ApplicationController).to receive(:from_logout?).and_return(false)
 
     visit '/guides'
-    expect(page).to have_text('You have no permissions for this content. Maybe you logged in with another account.')
+    expect(page).to have_text('You are not allowed to see this content.')
   end
 end
