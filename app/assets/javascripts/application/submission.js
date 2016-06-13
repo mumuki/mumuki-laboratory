@@ -49,7 +49,8 @@
     }).on('ajax:success',function (xhr, data, status) {
       resultsBox.success(data);
     }).on('ajax:error', function (xhr, status, error) {
-      resultsBox.error(error);
+      var message = error === "error" ? 'Network error :( Please check your internet connection and try again' : error;
+      resultsBox.error(message);
     });
     console.log('submission form setup')
   });
