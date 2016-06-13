@@ -6,7 +6,12 @@ module WithMetadata
 
     validates_presence_of :metadata
 
-    delegate :student?, :teacher?, :admin?, to: :metadata
+    [:student?, :teacher?, :admin?].each do |selector|
+      define_method(selector) do |organization = Organization.current|
+        metadata.send selector, organization.name
+      end
+    end
   end
+
 
 end

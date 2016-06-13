@@ -5,7 +5,6 @@ describe Organization do
   let(:user) { create(:user) }
 
   it { expect(organization).to_not be nil }
-  it { expect(organization.slug).to eq 'test/atheneum' }
   it { expect(organization).to eq Organization.current }
 
   describe '#notify_recent_assignments!' do
