@@ -33,6 +33,9 @@ Rails.application.routes.draw do
   # All users
   resources :users, only: [:show, :index]
 
+  # Current user
+  resources :comments, only: :index
+
   # Guide route
   get '/guides/:organization/:repository' => 'guides#show_by_slug', as: :guide_by_slug
 end
