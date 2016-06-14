@@ -2,8 +2,8 @@
   <%= breadcrumbs subject %>
 <% end %>
 
-<% if subject.timed? && subject.started?(current_user) && !current_user.teacher?(@guide.slug) %>
-  <%= render partial: "layouts/timer", locals: {end_time: subject.real_end_time(current_user)} %>
+<% if subject.timed? && subject.started?(current_user) && !current_user.teacher? %>
+  <%= render partial: 'layouts/timer', locals: {end_time: subject.real_end_time(current_user)} %>
 <% end %>
 
 <div class="row">

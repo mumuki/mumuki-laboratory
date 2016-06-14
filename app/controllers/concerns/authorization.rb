@@ -13,7 +13,7 @@ module Authorization
       return current_user?
     end
 
-    current_user? && current_user.student?(Organization.current.slug)
+    current_user? && current_user.student?
   end
 
   def must_login

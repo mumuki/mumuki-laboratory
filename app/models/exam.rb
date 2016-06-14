@@ -60,7 +60,7 @@ class Exam < ActiveRecord::Base
   end
 
   def start!(user)
-    authorization_for(user).start! unless user.teacher?(guide.slug)
+    authorization_for(user).start! unless user.teacher?
   end
 
   def started?(user)

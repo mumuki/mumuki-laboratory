@@ -2,6 +2,23 @@ require 'spec_helper'
 
 describe User do
 
+  describe 'roles' do
+    let(:other) { create(:organization, name: 'pdep') }
+    let(:user) { create(:user,
+                        metadata: Mumukit::Auth::Metadata.new(
+                            atheneum: {permissions: 'pdep/k2001'},
+                            classroom: {permissions: 'test/all'})) }
+
+    it { expect(user.student?).to be false }
+    it { expect(user.student? other).to be true }
+
+    it { expect(user.teacher?).to be true }
+    it { expect(user.teacher? other).to be false }
+
+    it { expect(user.admin?).to be false }
+    it { expect(user.admin? other).to be false }
+  end
+
   describe '#submissions_count' do
     let!(:exercise_1) { create(:exercise) }
     let!(:exercise_2) { create(:exercise) }

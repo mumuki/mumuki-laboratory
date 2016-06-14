@@ -4,7 +4,7 @@
 
 <% @stats = @exercise.guide.stats_for(current_user) if current_user && @exercise.guide %>
 
-<% if @exercise.navigable_parent.timed? && !current_user.teacher?(@exercise.guide.slug) %>
+<% if @exercise.navigable_parent.timed? && !current_user.teacher? %>
   <%= render partial: 'layouts/timer', locals: {end_time: @exercise.navigable_parent.real_end_time(current_user)} %>
 <% end %>
 
