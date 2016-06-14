@@ -29,6 +29,14 @@
   };
 
   $(document).on('ready page:load', function () {
+    var token = new mumuki.CsrfToken();
+    setInterval(function () {
+      $.ajax(token.newRequest({
+        url: '/comments',
+        type: 'GET'
+      }));
+    }, 10000);
+
     var submissionsResults = $('.submission-results');
     if (!submissionsResults) return;
 
