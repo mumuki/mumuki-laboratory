@@ -20,13 +20,13 @@ feature 'Exams Flow' do
   scenario 'visit exam in path, by id, anonymous' do
     visit "/exams/#{exam.id}"
 
-    expect(page).to have_text('You are not allowed to see this content.')
+    expect(page).to have_text('You have no permissions for this content.')
   end
 
   scenario 'visit exam in path, by classroom id, anonymous' do
     visit "/exams/#{exam.classroom_id}"
 
-    expect(page).to have_text('You are not allowed to see this content')
+    expect(page).to have_text('You have no permissions for this content.')
   end
 
   scenario 'visit exam in path, when there is no more time' do

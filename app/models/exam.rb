@@ -35,7 +35,7 @@ class Exam < ActiveRecord::Base
       raise Exceptions::ForbiddenError unless authorized?(user)
       raise Exceptions::GoneError unless enabled_for?(user)
     else
-      raise Exceptions::ForbiddenError
+      raise Exceptions::UnauthorizedError
     end
   end
 

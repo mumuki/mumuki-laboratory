@@ -8,6 +8,7 @@ module WithDynamicErrors
     rescue_from Exceptions::NotFoundError, with: :not_found
     rescue_from Exceptions::OrganizationPrivateError, with: :forbidden
     rescue_from Exceptions::ForbiddenError, with: :forbidden
+    rescue_from Exceptions::UnauthorizedError, with: :unauthorized
     rescue_from Exceptions::GoneError, with: :gone
   end
 

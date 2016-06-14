@@ -14,7 +14,7 @@ EOM
 
   def permissions_help_email_body(user)
 <<EOM
-#{t :want_permissions}: #{user.uid} - #{user.try(:email)}
+#{t :want_permissions}: #{user.try(:uid)} - #{user.try(:email)}
 EOM
   end
 end
