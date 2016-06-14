@@ -32,10 +32,10 @@ class Exam < ActiveRecord::Base
 
   def access!(user)
     if user.present?
-      raise Exceptions::ExamForbiddenException unless authorized?(user)
-      raise Exceptions::ExamGoneException unless enabled_for?(user)
+      raise Exceptions::ForbiddenError unless authorized?(user)
+      raise Exceptions::GoneError unless enabled_for?(user)
     else
-      raise Exceptions::ExamForbiddenException
+      raise Exceptions::ForbiddenError
     end
   end
 

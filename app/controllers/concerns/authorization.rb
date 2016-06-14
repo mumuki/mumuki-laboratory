@@ -1,7 +1,7 @@
 module Authorization
   def authorize!
     render file: 'layouts/login' and return if must_login
-    raise Exceptions::OrganizationPrivateException if !from_login_callback? && !can_visit? && !from_logout?
+    raise Exceptions::OrganizationPrivateError if !from_login_callback? && !can_visit? && !from_logout?
   end
 
   def can_visit?

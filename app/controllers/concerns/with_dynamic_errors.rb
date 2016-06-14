@@ -6,9 +6,9 @@ module WithDynamicErrors
     rescue_from ActionController::RoutingError, with: :not_found
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
     rescue_from Exceptions::NotFoundError, with: :not_found
-    rescue_from Exceptions::OrganizationPrivateException, with: :forbidden
-    rescue_from Exceptions::ExamForbiddenException, with: :forbidden
-    rescue_from Exceptions::ExamGoneException, with: :gone
+    rescue_from Exceptions::OrganizationPrivateError, with: :forbidden
+    rescue_from Exceptions::ForbiddenError, with: :forbidden
+    rescue_from Exceptions::GoneError, with: :gone
   end
 
   private
