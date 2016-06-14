@@ -15,6 +15,6 @@ var mumuki = mumuki || {};
         fail(function(_error) {
           //ignoring error, not important
         });
-    }, 20000);
+    }, 60000);
   });
 })(mumuki);
