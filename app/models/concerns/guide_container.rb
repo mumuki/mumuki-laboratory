@@ -23,8 +23,7 @@ module GuideContainer
     defaulting_name { "#{navigable_parent.friendly}: #{name}" }
   end
 
-  def accessible_by?(user)
-    true
+  def access!(user)
   end
 
   def timed?

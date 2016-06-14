@@ -24,7 +24,8 @@ feature 'Lessons Flow' do
   end
 
   scenario 'visit lesson not in path' do
-    expect { visit "/lessons/#{other_lesson.id}" }.to raise_error(ActionController::RoutingError)
+    visit "/lessons/#{other_lesson.id}"
+    expect(page).to have_text('You may have mistyped the address or the page may have moved')
   end
 
   scenario 'visit chapter in path' do
@@ -34,7 +35,8 @@ feature 'Lessons Flow' do
   end
 
   scenario 'visit chapter not in path' do
-    expect { visit "/chapters/#{other_chapter.id}" }.to raise_error(ActionController::RoutingError)
+    visit "/chapters/#{other_chapter.id}"
+    expect(page).to have_text('You may have mistyped the address or the page may have moved')
   end
 
   scenario 'visit exercise in path' do
@@ -44,7 +46,8 @@ feature 'Lessons Flow' do
   end
 
   scenario 'visit exercise not in path' do
-    expect { visit "/exercises/#{other_exercise.id}" }.to raise_error(ActionController::RoutingError)
+    visit "/exercises/#{other_exercise.id}"
+    expect(page).to have_text('You may have mistyped the address or the page may have moved')
   end
 
   scenario 'visit exercise in path' do
@@ -54,6 +57,7 @@ feature 'Lessons Flow' do
   end
 
   scenario 'visit exercise not in path' do
-    expect { visit "/complements/#{other_complement.id}" }.to raise_error(ActionController::RoutingError)
+    visit "/complements/#{other_complement.id}"
+    expect(page).to have_text('You may have mistyped the address or the page may have moved')
   end
 end

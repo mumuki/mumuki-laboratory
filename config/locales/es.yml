@@ -7,6 +7,7 @@ es:
   all: Todos
   and: y
   author: Autor
+  back_to_mumuki: ¡Volvé a Mumuki!
   chapter: Capítulo
   chapter_finished_html: ¡Terminaste %{chapter}! ¡Felicitaciones!
   chapter_number: 'Capítulo %{number}:'
@@ -14,6 +15,7 @@ es:
   comment: Comentario
   comments: Comentarios
   console: Consola
+  contact_administrator: 'Si pensás que es un error, comunicate con el administrador: %{link}'
   content: Contenido
   continue_practicing: ¡Seguí aprendiendo!
   contributors: Autores
@@ -38,13 +40,20 @@ es:
   exercises_index_title: ¿Buscando algún ejercicio particular?
   expectations: Objetivos
   export_created: Exportación encolada
+  error_401: error 401
+  error_403: error 403
+  error_404: error 404
+  error_410: error 410
   failed: Ups, algo no anduvo bien
   feedback: Problemas que encontramos
+  forbidden_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no estás autorizado a ver este contenido.
+  gone_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que ya no podés ver éste examen.
   guide: Lección
   guide_created: Guía creada exitosamente
   guide_finished: Felicitaciones, terminaste la lección %{guide}
   guide_internal: guia
   lesson_number: Lección %{number}
+  let_us_know: ¡Por favor avisanos!
   guides_index_title: ¿Qué guía querés hacer hoy?
   here: acá
   history: Historial
@@ -76,12 +85,15 @@ es:
   no_exercises: No encontramos ejercicios que coincidan con tu búsqueda.
   no_guides: No encontramos lecciones que coincidan con tu búsqueda.
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio aún!
+  not_found: ¡La página que buscaste no existe!
+  not_found_explanation: '¡Ups! Esto es lo que se conoce como %{error}: fijate si escribiste bien la dirección. Peeeeero, si pensás que es un error nuestro, %{issues}'
   notify_problem_with_exercise: ¿Pensás que algo está mal con este ejercicio?
   output: Salida
   overview: Vista general
   passed: Todo en orden
   passed_with_warnings: Funcionó, pero hay cosas para mejorar
   pending: pendiente
+  permissions: Permisos
   previous_exercise: Anterior
   problem_with_exercise: '[Mumuki] Error con el ejercicio: %{title}'
   processing_you_solution: Estamos procesando tu solución
@@ -101,6 +113,8 @@ es:
   sign_up_date: Usuario desde
   solution: Solución
   solved_exercises: Ejercicios Resueltos
+  something_went_wrong: ¡Ups!, algo no anduvo bien....
+  something_went_wrong_explanation: Algo se rompió feo en Mumuki. Y necesitamos solucionarlo urgentemente, %{issues}
   start_practicing: ¡Empezá ahora!
   stats: Tu Progreso
   status: Estado
@@ -112,6 +126,7 @@ es:
   submissions_for: Soluciones para %{exercise}
   submissions_success_rate: Tasa de éxito en soluciones
   tag: Etiquetas
+  tell_us_how: ¡Contanos cómo te pasó esto!
   test_results: Resultados de las pruebas
   time_left: Te quedan
   title: Título
@@ -123,6 +138,8 @@ es:
   welcome_back_after_redirection: ¡Qué bueno verte de nuevo! Acá es donde estuviste la última vez
   you_must: Tenés que %{action} antes de continuar
   you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
+  unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no estas autorizado para ver este contenido. Revisá que hayas iniciado sesión con el usuario que corresponde.
   uploading_solution: "Subiendo solución"
   upload_solution: "Subir solución"
+  want_permissions: El siguiente usuario requiere permisos
   item_not_accessible: "No tenés permisos para acceder a este contenido"

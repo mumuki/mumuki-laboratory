@@ -1,0 +1,11 @@
+<%= render layout: 'layouts/error' do %>
+    <div class="body">
+      <p>
+        <%= t(:unauthorized_explanation, error: link_to_status_codes(401)).html_safe %>
+      </p>
+    </div>
+    <p>
+      <%= t(:contact_administrator, link: mail_to_administrator).html_safe %>
+    </p>
+<% end %>
+

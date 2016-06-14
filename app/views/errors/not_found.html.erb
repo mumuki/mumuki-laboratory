@@ -1,0 +1,10 @@
+<%= render layout: 'layouts/error' do %>
+    <div class="body">
+      <p>
+        <%= t(:not_found_explanation, error: link_to_error_404, issues: link_to_issues(:let_us_know)).html_safe %>
+      </p>
+    </div>
+    <p>
+      <a class="btn btn-success" href="/"> <%= t(:back_to_mumuki) %> </a>
+    </p>
+<% end %>

@@ -3,9 +3,11 @@ class ApplicationController < ActionController::Base
   include Authorization
   include WithRememberMeToken
   include Pagination
+  include Referer
   include Recurrence
   include Notifications
   include Accessibility
+  include WithDynamicErrors
 
   before_action :set_organization
   before_action :set_locale
@@ -27,15 +29,6 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = Organization.current.locale
-  end
-
-
-  def render_not_found
-    raise ActionController::RoutingError.new('Not Found')
-  end
-
-  def from_login_callback?
-    params['controller'] == 'sessions' && params['action'] == 'callback'
   end
 
   def subject #TODO may be used to remove breadcrumbs duplication
