@@ -2,7 +2,7 @@ module WithDynamicErrors
   extend ActiveSupport::Concern
 
   included do
-    # rescue_from Exception, with: :internal_server_error
+    rescue_from Exception, with: :internal_server_error
     rescue_from ActionController::RoutingError, with: :not_found
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
     rescue_from Exceptions::NotFoundError, with: :not_found
