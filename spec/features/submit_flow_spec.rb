@@ -20,7 +20,7 @@ feature 'Submit Flow' do
 
 
   context 'logged user' do
-    before { allow_any_instance_of(ApplicationController).to receive(:current_user_id).and_return(user.id) }
+    before { set_current_user! user }
 
     scenario 'Editor Right exercises' do
       visit "/exercises/#{exercise1.id}"

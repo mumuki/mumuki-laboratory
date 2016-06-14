@@ -14,7 +14,7 @@ feature 'When private org' do
            name: 'private',
            private: true,
            book: create(:book, name: 'private', slug: 'mumuki/mumuki-the-private-book'))
-    set_subdomain_host 'private'
+    set_subdomain_host! 'private'
   end
 
   scenario 'should not access' do
