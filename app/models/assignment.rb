@@ -70,6 +70,10 @@ class Assignment < ActiveRecord::Base
     Comment.where(submission_id: submission_id).order('date DESC')
   end
 
+  def comment!(comment_data)
+    Comment.create! comment_data.merge(submission_id: submission_id)
+  end
+
   private
 
   def update_submissions_count!
