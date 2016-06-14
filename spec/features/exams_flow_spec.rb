@@ -31,7 +31,7 @@ feature 'Exams Flow' do
 
   scenario 'visit exam in path, when there is no more time' do
     user = create(:user)
-    allow_any_instance_of(ApplicationController).to receive(:current_user_id).and_return(user.id)
+    set_current_user! user
     exam.authorize!(user)
     expect_any_instance_of(Exam).to receive(:enabled_for?).and_return(false)
     visit "/exams/#{exam.classroom_id}"
