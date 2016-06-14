@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     user.update metadata: Mumukit::Auth::Token.from_env(env).metadata
 
     remember_me_token.value = user.remember_me_token
-    render_not_found unless can_visit?
+    raise Exceptions::NotFoundError unless can_visit?
 
     redirect_after_login
   end

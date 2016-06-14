@@ -5,6 +5,7 @@ module WithDynamicErrors
     # rescue_from Exception, with: :internal_server_error
     rescue_from ActionController::RoutingError, with: :not_found
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
+    rescue_from Exceptions::NotFoundError, with: :not_found
     rescue_from Exceptions::OrganizationPrivateException, with: :forbidden
     rescue_from Exceptions::ExamForbiddenException, with: :forbidden
     rescue_from Exceptions::ExamGoneException, with: :gone

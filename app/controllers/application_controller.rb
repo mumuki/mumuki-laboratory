@@ -31,11 +31,6 @@ class ApplicationController < ActionController::Base
     I18n.locale = Organization.current.locale
   end
 
-
-  def render_not_found
-    raise ActionController::RoutingError.new('Not found')
-  end
-
   def subject #TODO may be used to remove breadcrumbs duplication
     nil
   end
