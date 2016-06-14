@@ -1,13 +1,10 @@
-<div class="error-message">
-  <div class="header">
-    <img src="/astor.png" width="80%">
-  </div>
-  <div class="body">
+<%= render layout: 'layouts/error' do %>
+    <div class="body">
+      <p>
+        <%= t(:something_went_wrong_explanation, issues: link_to_issues(:tell_us_how)).html_safe %>
+      </p>
+    </div>
     <p>
-      <%= t(:something_went_wrong_explanation, issues: link_to_issues(:tell_us_how)).html_safe %>
+      <a class="btn btn-success" href="/"> <%= t(:back_to_mumuki) %> </a></strong>
     </p>
-  </div>
-  <p>
-    <a class="btn btn-success" href="/"> <%= t(:back_to_mumuki) %> </a></strong>
-  </p>
-</div>
+<% end %>

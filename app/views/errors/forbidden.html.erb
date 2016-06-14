@@ -1,17 +1,12 @@
-<%= content_for :breadcrumbs do %>
-    <%= home_breadcrumb %>
+<%= render layout: 'layouts/error' do %>
+    <div class="body">
+      <p>
+        <%= t(:forbidden_explanation, error: link_to_status_codes(403)).html_safe %>
+      </p>
+    </div>
+    <p>
+      <a class="btn btn-success" href="/"> <%= t(:back_to_mumuki) %> </a>
+    </p>
 <% end %>
 
-<div class="error-message">
-  <div class="header">
-    <img src="/astor.png" width="80%">
-  </div>
-  <div class="body">
-    <p>
-      <%= t(:forbidden_explanation, error: link_to_status_codes(403)).html_safe %>
-    </p>
-  </div>
-  <p>
-    <a class="btn btn-success" href="/"> <%= t(:back_to_mumuki) %> </a>
-  </p>
-</div>
+

@@ -1,17 +1,11 @@
-<%= content_for :breadcrumbs do %>
-    <%= home_breadcrumb %>
+<%= render layout: 'layouts/error' do %>
+    <div class="body">
+      <p>
+        <%= t(:unauthorized_explanation, error: link_to_status_codes(401)).html_safe %>
+      </p>
+    </div>
+    <p>
+      <%= t(:contact_administrator, link: mail_to_administrator).html_safe %>
+    </p>
 <% end %>
 
-<div class="error-message">
-  <div class="header">
-    <img src="/astor.png" width="80%">
-  </div>
-  <div class="body">
-    <p>
-      <%= t(:unauthorized_explanation, error: link_to_status_codes(401)).html_safe %>
-    </p>
-  </div>
-  <p>
-    <%= t(:contact_administrator, link: mail_to_administrator).html_safe %>
-  </p>
-</div>
