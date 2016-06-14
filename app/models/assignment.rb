@@ -71,7 +71,7 @@ class Assignment < ActiveRecord::Base
   end
 
   def comment!(comment_data)
-    Comment.create! comment_data.merge(submission_id: submission_id)
+    Comment.create! comment_data.merge(submission_id: submission_id, exercise_id: exercise_id)
   end
 
   private

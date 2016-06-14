@@ -7,8 +7,7 @@ describe CommentsController do
   before do
     assignment = exercise.submit_solution! user, content: ''
     10.times do
-      assignment.comment! exercise_id: 1,
-                          content: 'a',
+      assignment.comment! content: 'a',
                           type: 'success',
                           date: '1/1/1',
                           author: 'aguspina87@gmail.com'

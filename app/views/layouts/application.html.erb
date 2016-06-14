@@ -50,13 +50,11 @@
         <% if current_user? %>
           <div class="dropdown">
             <span id="profileDropdown" data-toggle="dropdown">
-              <%=image_tag(current_user.image_url, height: 40, class: 'img-circle')%>
+              <%= image_tag(current_user.image_url, height: 40, class: 'img-circle') %>
             </span>
-            <% if has_comments? %>
-              <a href=<%= "#{user_path(current_user)}#comments"%>>
-                <span class="badge badge-comments"><%= comments_count %></span>
-              </a>
-            <% end %>
+            <a class="comments-box <%= has_comments? ? '' : 'comments-box-empty' %>" href=<%= "#{user_path(current_user)}#comments" %>>
+              <span class="badge badge-comments"><%= comments_count %></span>
+            </a>
             <ul class="dropdown-menu" aria-labelledby="profileDropdown">
               <li><%= link_to t(:profile), user_path(current_user) %></li>
               <li><%= link_to(t(:sign_out), logout_path) %></li>
