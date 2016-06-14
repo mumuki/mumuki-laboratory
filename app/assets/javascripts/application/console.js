@@ -20,7 +20,7 @@ var mumuki = mumuki || {};
 
   function QueryConsole() {
     this.exerciseId = $('#exercise_id').val();
-    this.token = $('meta[name="csrf-token"]').attr('content');
+    this.token = new mumuki.CsrfToken();
     this.statefulConsole = $('#stateful_console').val() === "true";
     this.lines = [];
   }
@@ -77,14 +77,11 @@ var mumuki = mumuki || {};
     },
     get _request() {
       var self = this;
-      return {
+      return self.token.newRequest({
         url: self._requestUrl,
         type: 'POST',
-        data: self._requestData,
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader('X-CSRF-Token', self.token);
-        }
-      }
+        data: self._requestData
+      })
     },
     get _requestUrl() {
       return '/exercises/' + this.exerciseId + '/queries';
