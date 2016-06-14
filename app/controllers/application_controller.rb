@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include Authorization
   include WithRememberMeToken
   include Pagination
+  include Referer
   include Recurrence
   include Notifications
   include Accessibility
@@ -33,18 +34,6 @@ class ApplicationController < ActionController::Base
 
   def render_not_found
     raise ActionController::RoutingError.new('Not found')
-  end
-
-  def from_login_callback?
-    from_sessions? && params['action'] == 'callback'
-  end
-
-  def from_logout?
-    from_sessions? && params['action'] == 'destroy'
-  end
-
-  def from_sessions?
-    params['controller'] == 'sessions'
   end
 
   def subject #TODO may be used to remove breadcrumbs duplication

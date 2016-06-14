@@ -12,6 +12,6 @@ class BookController < ApplicationController
   end
 
   def should_redirect?
-    visitor_recurrent? && visitor_comes_from_internet?
+    visitor_recurrent? && from_internet?
   end
 end
