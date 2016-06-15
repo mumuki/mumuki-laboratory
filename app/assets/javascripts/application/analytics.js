@@ -6,5 +6,4 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 $(document).on('ready page:load', function(){
   ga('create', 'UA-58353823-1', 'auto');
   ga('send', 'pageview');
-  console.log('pageview sent')
 });

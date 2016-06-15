@@ -52,6 +52,5 @@
       var message = error === "error" ? 'Network error :( Please check your internet connection and try again' : error;
       resultsBox.error(message);
     });
-    console.log('submission form setup')
   });
 })();
