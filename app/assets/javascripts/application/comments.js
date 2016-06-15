@@ -1,7 +1,7 @@
-/*var mumuki = mumuki || {};
+var mumuki = mumuki || {};
 
 (function (mumuki) {
-  $(document).on('ready page:load', function () {
+  $(function () {
     var token = new mumuki.CsrfToken();
     setInterval(function () {
       $.ajax(token.newRequest({
@@ -17,4 +17,4 @@
         });
     }, 60000);
   });
-})(mumuki);*/
+})(mumuki);
