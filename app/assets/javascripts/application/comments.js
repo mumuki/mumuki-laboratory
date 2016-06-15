@@ -1,4 +1,4 @@
-var mumuki = mumuki || {};
+/*var mumuki = mumuki || {};
 
 (function (mumuki) {
   $(document).on('ready page:load', function () {
@@ -17,4 +17,4 @@ var mumuki = mumuki || {};
         });
     }, 60000);
   });
-})(mumuki);
+})(mumuki);*/
