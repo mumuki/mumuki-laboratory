@@ -138,7 +138,7 @@ es:
   welcome_back_after_redirection: ¡Qué bueno verte de nuevo! Acá es donde estuviste la última vez
   you_must: Tenés que %{action} antes de continuar
   you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
-  unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no estas autorizado para ver este contenido. Revisá que hayas iniciado sesión con el usuario que corresponde.
+  unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no iniciaste sesión.
   uploading_solution: "Subiendo solución"
   upload_solution: "Subir solución"
   want_permissions: El siguiente usuario requiere permisos
