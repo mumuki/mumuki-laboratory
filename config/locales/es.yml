@@ -46,7 +46,7 @@ es:
   error_410: error 410
   failed: Ups, algo no anduvo bien
   feedback: Problemas que encontramos
-  forbidden_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no estás autorizado a ver este contenido.
+  forbidden_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no estás autorizado a ver este contenido. ¿Puede que hayas ingresado con una cuenta incorrecta?
   gone_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que ya no podés ver éste examen.
   guide: Lección
   guide_created: Guía creada exitosamente
