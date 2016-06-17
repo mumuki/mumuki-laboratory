@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160526182119) do
+ActiveRecord::Schema.define(version: 20160617195350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -235,7 +235,7 @@ ActiveRecord::Schema.define(version: 20160526182119) do
     t.string   "image_url"
     t.integer  "last_exercise_id"
     t.string   "remember_me_token"
-    t.string   "metadata",             default: "{}", null: false
+    t.text     "metadata",             default: "{}", null: false
   end
 
 end
