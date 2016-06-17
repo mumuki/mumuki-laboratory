@@ -1,6 +1,13 @@
 require 'spec_helper'
 
 describe User do
+  describe '#visit!' do
+    let(:user) { create(:user) }
+
+    before { user.visit! Organization.current }
+
+    it { expect(user.last_organization).to eq Organization.current }
+  end
 
   describe 'roles' do
     let(:other) { create(:organization, name: 'pdep') }

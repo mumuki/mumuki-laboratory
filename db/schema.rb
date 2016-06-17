@@ -236,6 +236,9 @@ ActiveRecord::Schema.define(version: 20160617195350) do
     t.integer  "last_exercise_id"
     t.string   "remember_me_token"
     t.text     "metadata",             default: "{}", null: false
+    t.integer  "last_organization_id"
   end
+
+  add_index "users", ["last_organization_id"], name: "index_users_on_last_organization_id", using: :btree
 
 end

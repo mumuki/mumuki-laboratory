@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
            source: :exercise
 
   belongs_to :last_exercise, class_name: 'Exercise'
+  belongs_to :last_organization, class_name: 'Organization'
+
   has_one :last_guide, through: :last_exercise, source: :guide
 
   has_and_belongs_to_many :exams
@@ -76,6 +78,10 @@ class User < ActiveRecord::Base
 
   def unread_comments
     comments.reject(&:read)
+  end
+
+  def visit!(organization)
+    update!(last_organization: organization) if organization != last_organization
   end
 
   private
