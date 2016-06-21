@@ -12,7 +12,8 @@ var mumuki = mumuki || {};
     });
 
     if (editors[0]) {
-      editors[0].focus();
+      if(!$('#solution_editor_bottom').val())
+        editors[0].focus();
     }
     return editors;
   }
