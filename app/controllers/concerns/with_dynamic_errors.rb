@@ -14,7 +14,8 @@ module WithDynamicErrors
 
   private
 
-  def internal_server_error
+  def internal_server_error(exception)
+    Rails.logger.error "Internal server error: #{exception} \n#{exception.backtrace.join("\n")}"
     render 'errors/internal_server_error', status: 500
   end
 
