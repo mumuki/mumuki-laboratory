@@ -20,12 +20,12 @@ class OnlineMode
     controller.protect_from_forgery with: :exception
   end
 
-  def if_online
-    yield
+  def can_visit?(user)
+    user.student?
   end
 
-  def if_offline
-
+  def if_online
+    yield
   end
 
 end
