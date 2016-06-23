@@ -84,6 +84,10 @@ class User < ActiveRecord::Base
     update!(last_organization: organization) if organization != last_organization
   end
 
+  def to_s
+    "#{id}:#{name}:#{uid}"
+  end
+
   private
 
   def init

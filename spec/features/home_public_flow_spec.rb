@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Home Flow' do
+feature 'public org' do
   let!(:exercise) { build(:exercise) }
   let(:guide) { create(:guide) }
   let!(:chapter) {
