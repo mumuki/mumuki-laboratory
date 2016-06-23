@@ -1,6 +1,6 @@
 module Authentication
   def current_user_id
-    remember_me_token.value.try do |token |
+    @current_user_id ||= remember_me_token.value.try do |token |
       User.where(remember_me_token: token).first.try(:id)
     end
   end
@@ -10,7 +10,7 @@ module Authentication
   end
 
   def current_user
-    User.find(current_user_id) if current_user?
+    @current_user ||= User.find(current_user_id) if current_user?
   end
 
   def authenticate!
