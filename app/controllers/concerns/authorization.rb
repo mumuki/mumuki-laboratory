@@ -1,22 +1,17 @@
 module Authorization
   def authorize!
-    render file: 'layouts/login' and return if must_login
-    raise Exceptions::OrganizationPrivateError if !from_login_callback? && !can_visit? && !from_logout?
+    return if Organization.current.public?
+    return if from_login_callback?
+
+    render file: 'layouts/login' and return unless current_user?
+    raise Exceptions::OrganizationPrivateError if !current_user_can_visit? && !from_logout?
   end
 
-  def can_visit?
-    Organization.current.public? || logged_and_can_visit?
-  end
-
-  def logged_and_can_visit?
+  def current_user_can_visit?
     current_mode.if_offline do
-      return current_user?
+      return true
     end
 
-    current_user? && current_user.student?
-  end
-
-  def must_login
-    Organization.current.private? && !current_user? && !from_login_callback?
+    current_user.student?
   end
 end
