@@ -30,6 +30,8 @@
                        value: @default_content,
                        style: 'display: none' %>
         </div>
+        <%= f.hidden_field :editor_bottom, value: defined?(editor_bottom) %>
+
       <% else %>
         <%= f.hidden_field :content, value: '' %>
       <% end %>

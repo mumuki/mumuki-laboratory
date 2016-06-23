@@ -108,7 +108,7 @@ var mumuki = mumuki || {};
       commandHandle: function (line, report) {
         queryConsole.newQuery(line).submit(report);
       },
-      autofocus: true,
+      autofocus: !!$('#solution_editor_bottom').val(),
       animateScroll: true,
       promptHistory: true
     });
