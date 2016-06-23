@@ -37,20 +37,25 @@ feature 'private org' do
 
       visit '/guides'
       expect(page).to have_text('You are not allowed to see this content.')
+      expect(visitor.reload.last_organization).to be nil
     end
 
     scenario 'student should access' do
       set_current_user! student
 
       visit '/guides'
-      expect(page).to_not have_text('You are not allowed to see this content.')
+
+      expect(page).to have_text('Which guide do you want to do today?')
+      expect(student.reload.last_organization).to eq Organization.current
     end
 
     scenario 'teacher should access' do
       set_current_user! teacher
 
       visit '/guides'
-      expect(page).to_not have_text('You are not allowed to see this content.')
+
+      expect(page).to have_text('Which guide do you want to do today?')
+      expect(teacher.reload.last_organization).to eq Organization.current
     end
   end
 end

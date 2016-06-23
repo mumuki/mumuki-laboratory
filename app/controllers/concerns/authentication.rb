@@ -6,11 +6,11 @@ module Authentication
   end
 
   def current_user?
-    !current_user_id.nil?
+    current_user_id.present?
   end
 
   def current_user
-    @current_user ||= User.find(current_user_id).tap { |it| it.visit!(Organization.current) } if current_user?
+    @current_user ||= User.find(current_user_id) if current_user?
   end
 
   def authenticate!

@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :authorize!
   before_action :validate_subject_accessible!
+  before_action :visit_organization!, if: :current_user?
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -41,5 +42,9 @@ class ApplicationController < ActionController::Base
 
   def set_organization
     Organization.find_by!(name: request.organization_name).switch!
+  end
+
+  def visit_organization!
+    current_user.visit!(Organization.current)
   end
 end
