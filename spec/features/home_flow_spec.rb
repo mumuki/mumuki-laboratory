@@ -8,8 +8,6 @@ feature 'Home Flow' do
         create(:lesson, guide: guide)]) }
   let(:book) { Organization.current.book }
 
-  let(:user) { User.find_by(name: 'testuser') }
-
   before { reindex_current_organization! }
 
   context 'anonymous visitor' do
@@ -32,31 +30,59 @@ feature 'Home Flow' do
     end
   end
 
-  context 'new user' do
-    before do
-      visit '/'
-      click_on 'Sign in'
+  context 'logged visitor' do
+    let(:user) { create(:user) }
+    before { set_current_user! user }
+
+    context 'new user' do
+      before { user.visit! nil }
+
+      scenario 'from outside' do
+        Capybara.current_session.driver.header 'Referer', 'http://google.com'
+
+        visit '/'
+
+        expect(page).to have_text('ム mumuki')
+        expect(page).to have_text(Organization.current.book.name)
+        expect(user.reload.last_organization).to eq Organization.current
+      end
+
+      scenario 'from inside' do
+        Capybara.current_session.driver.header 'Referer', 'http://en.mumuki.io/exercises/1'
+
+        visit '/'
+
+        expect(page).to have_text('ム mumuki')
+        expect(page).to have_text(Organization.current.book.name)
+        expect(user.reload.last_organization).to eq Organization.current
+      end
     end
 
-    scenario 'from outside' do
-      Capybara.current_session.driver.header 'Referer', 'http://google.com'
+    context 'recurrent user' do
+      let(:other_organization) { create(:organization, name: 'virtualdojo') }
+      before { user.visit! other_organization }
 
-      visit '/'
+      scenario 'from outside' do
+        Capybara.current_session.driver.header 'Referer', 'http://google.com'
 
-      expect(page).to have_text('ム mumuki')
-      expect(page).to have_text(Organization.current.book.name)
+        visit '/'
+
+        expect(page).to have_text('ム mumuki')
+        expect(page).to have_text(Organization.current.book.name)
+        expect(user.reload.last_organization).to eq Organization.current
+      end
+
+      scenario 'from inside' do
+        Capybara.current_session.driver.header 'Referer', 'http://en.mumuki.io/exercises/1'
+
+        visit '/'
+
+        expect(page).to have_text('ム mumuki')
+        expect(page).to have_text(Organization.current.book.name)
+        expect(user.reload.last_organization).to eq Organization.current
+      end
     end
-
-
-    scenario 'from inside' do
-      Capybara.current_session.driver.header 'Referer', 'http://en.mumuki.io/exercises/1'
-
-      visit '/'
-
-      expect(page).to have_text('ム mumuki')
-      expect(page).to have_text(Organization.current.book.name)
-    end
-
   end
+
 
 end
