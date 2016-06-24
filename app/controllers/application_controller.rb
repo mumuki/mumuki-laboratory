@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include WithOrganization
+
   include Authentication
   include Authorization
   include WithRememberMeToken
@@ -9,10 +11,11 @@ class ApplicationController < ActionController::Base
   include Accessibility
   include WithDynamicErrors
 
-  before_action :set_organization
-  before_action :set_locale
+  before_action :set_organization!
+  before_action :set_locale!
   before_action :authorize!
   before_action :validate_subject_accessible!
+  before_action :visit_organization!, if: :current_user?
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -27,7 +30,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def set_locale
+  def set_locale!
     I18n.locale = Organization.current.locale
   end
 
@@ -37,9 +40,5 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_last_guide
     #redirect_to current_user.last_guide, notice: t(:welcome_back_after_redirection)
-  end
-
-  def set_organization
-    Organization.find_by!(name: request.organization_name).switch!
   end
 end

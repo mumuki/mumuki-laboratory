@@ -16,12 +16,10 @@ class OfflineMode
     "logo-alt-large.png"
   end
 
+  def can_visit?(user)
+    true
+  end
+
   def if_online
-
   end
-
-  def if_offline
-    yield
-  end
-
 end

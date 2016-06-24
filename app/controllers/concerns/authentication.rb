@@ -6,7 +6,7 @@ module Authentication
   end
 
   def current_user?
-    !current_user_id.nil?
+    current_user_id.present?
   end
 
   def current_user
