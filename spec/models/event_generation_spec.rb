@@ -42,17 +42,24 @@ describe Event do
                                name: exercise.name,
                                number: exercise.number},
                            guide: {
-                               slug: guide.slug,
                                name: guide.name,
-                               chapter: {
-                                   id: guide.chapter.id,
-                                   name: guide.chapter.name
-                               },
+                               slug: guide.slug,
                                lesson: {
-                                   number: 4,
+                                 number: 4,
                                },
                                language: {
-                                   name: guide.language.name}},
+                                 name: guide.language.name
+                               },
+                               parent: {
+                                 type: 'Lesson',
+                                 name:  guide.name,
+                                 position: 4,
+                                 chapter: {
+                                   id: guide.chapter.id,
+                                   name: guide.chapter.name
+                                 }
+                               }
+                           },
                            submitter: {
                                social_id: 'github|gh1234',
                                name: 'foo',
