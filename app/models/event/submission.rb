@@ -25,7 +25,7 @@ class Event::Submission < Event::Base
             'content' => @assignment.solution,
             'guide' => { 'parent' => {
                           'type' => @assignment.exercise.navigable_parent.class.to_s,
-                          'name' => @assignment.exercise.navigable_parent.name,
+                          'name' => @assignment.exercise.navigable_parent.try(:name),
                           'position' => @assignment.exercise.navigable_parent.try(:number),
                           'chapter' => @assignment.guide.chapter.as_json(only: [:id], methods: [:name])
                         }})
