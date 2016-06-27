@@ -39,6 +39,10 @@ class Exam < ActiveRecord::Base
     end
   end
 
+  def accessible_for?(user)
+    authorized?(user) && enabled_for?(user)
+  end
+
   def timed?
     duration.present?
   end

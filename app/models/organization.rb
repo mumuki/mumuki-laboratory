@@ -70,6 +70,10 @@ class Organization < ActiveRecord::Base
     name
   end
 
+  def accessible_exams_for(user)
+    exams.select { |exam| exam.accessible_for?(user) }
+  end
+
   private
 
   def notify!(assignments)
