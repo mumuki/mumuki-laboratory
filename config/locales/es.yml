@@ -31,6 +31,8 @@ es:
   details: Detalles
   editor: Editor
   errored: Ups, tu solución no funcionó
+  exam_number: 'Examen %{number}:'
+  exams: Exámenes
   exercise: Ejercicio
   exercise_count: ejercicios
   exercise_done: ¡Tu solución pasó todas nuestras pruebas!

@@ -29,6 +29,10 @@ class Guide < ActiveRecord::Base
     usage_in_organization_of_type Lesson
   end
 
+  def description_teaser_html
+    description.markdown_paragraphs.first
+  end
+
   def chapter
     lesson.try(:chapter) #FIXME temporary
   end

@@ -3,6 +3,7 @@ require 'spec_helper'
 feature 'public org' do
   let!(:exercise) { build(:exercise) }
   let(:guide) { create(:guide) }
+  let(:exam) { create(:exam) }
   let!(:chapter) {
     create(:chapter, lessons: [
         create(:lesson, guide: guide)]) }
@@ -18,6 +19,7 @@ feature 'public org' do
 
       expect(page).to have_text('ム mumuki')
       expect(page).to have_text(Organization.current.book.name)
+      expect(page).not_to have_text('Exams')
     end
 
     scenario 'from inside' do
@@ -33,6 +35,7 @@ feature 'public org' do
   context 'logged visitor' do
     let(:user) { create(:user) }
     before { set_current_user! user }
+    before { exam.authorize! user }
 
     context 'new user' do
       before { user.visit! nil }
@@ -45,6 +48,7 @@ feature 'public org' do
         expect(page).to have_text('ム mumuki')
         expect(page).to have_text(Organization.current.book.name)
         expect(user.reload.last_organization).to eq Organization.current
+        expect(page).to have_text('Exams')
       end
 
       scenario 'from inside' do

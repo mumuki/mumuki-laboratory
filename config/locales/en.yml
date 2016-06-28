@@ -25,6 +25,8 @@ en:
   destroy: Destroy
   editor: Editor
   errored: Oops, your solution didn't work
+  exam_number: 'Exam %{number}:'
+  exams: Exams
   exercise: Exercise
   exercise_count: exercises
   exercise_done: All our tests passed!
