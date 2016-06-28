@@ -1,6 +1,7 @@
 FactoryGirl.define do
 
   factory :complement, traits: [:guide_container] do
-    book { Organization.book rescue nil }
+    book { Organization.current.book rescue nil }
+    guide
   end
 end
