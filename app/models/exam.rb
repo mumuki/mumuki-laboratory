@@ -91,7 +91,7 @@ class Exam < ActiveRecord::Base
     users = exam_data.delete('users')
     exam = Exam.where(classroom_id: exam_data.delete('id')).update_or_create! exam_data
     exam.process_users users
-    index_usage! organization
+    exam.index_usage! organization
     exam
   end
 
