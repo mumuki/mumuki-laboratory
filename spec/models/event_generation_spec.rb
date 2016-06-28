@@ -84,7 +84,6 @@ describe Event do
                                   exercise: exercise) }
         let(:event) { Event::Submission.new(assignment) }
         let(:json) { event.as_json.deep_symbolize_keys }
-        before { puts exercise.navigable_parent }
 
         it do
           expect(json).to eq(status: Status::Passed,
