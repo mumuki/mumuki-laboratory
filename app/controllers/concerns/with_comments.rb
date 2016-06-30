@@ -1,4 +1,4 @@
-module Notifications
+module WithComments
   def has_comments?
     comments_count > 0
   end

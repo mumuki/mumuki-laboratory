@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   include Pagination
   include Referer
   include Recurrence
-  include Notifications
+  include WithComments
   include Accessibility
   include WithDynamicErrors
 
