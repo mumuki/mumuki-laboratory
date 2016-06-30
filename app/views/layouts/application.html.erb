@@ -5,7 +5,7 @@
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
-  <% current_mode.if_online do %>
+  <% UserMode.current.if_multiuser do %>
     <script src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
   <% end %>
 
@@ -23,7 +23,7 @@
 </head>
 <body>
 
-<% current_mode.if_online do %>
+<% UserMode.current.if_multiuser do %>
   <script type="text/javascript">
     var lock = new Auth0Lock('<%= Rails.configuration.auth0_client_id %>', '<%= Rails.configuration.auth0_domain %>');
     function signin() {
@@ -101,7 +101,7 @@
         </div>
       </div>
 
-      <% current_mode.if_online do %>
+      <% UserMode.current.if_multiuser do %>
         <div class="col-md-4 text-center">
           <a width="150" height="50" href="https://auth0.com/" target="_blank" alt="Single Sign On & Token Based Authentication - Auth0"><img width="150" height="50" alt="JWT Auth for open source projects" src="//cdn.auth0.com/oss/badges/a0-badge-light.png"/></a>
         </div>

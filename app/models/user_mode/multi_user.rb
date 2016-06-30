@@ -1,4 +1,4 @@
-class OnlineMode
+class UserMode::MultiUser
 
   def set_auth_provider(omniauth)
     omniauth.provider :auth0,
@@ -24,7 +24,7 @@ class OnlineMode
     user.student?
   end
 
-  def if_online
+  def if_multiuser
     yield
   end
 

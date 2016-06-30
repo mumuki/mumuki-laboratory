@@ -1,4 +1,4 @@
-class OfflineMode
+class UserMode::SingleUser
 
   def set_auth_provider(omniauth)
     omniauth.provider :developer
@@ -13,13 +13,13 @@ class OfflineMode
   end
 
   def logo_url
-    "logo-alt-large.png"
+    'logo-alt-large.png'
   end
 
   def can_visit?(user)
     true
   end
 
-  def if_online
+  def if_multiuser
   end
 end

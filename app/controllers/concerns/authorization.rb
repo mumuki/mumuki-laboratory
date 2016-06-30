@@ -4,6 +4,6 @@ module Authorization
     return if from_login_callback?
 
     render file: 'layouts/login' and return unless current_user?
-    raise Exceptions::OrganizationPrivateError if !current_mode.can_visit?(current_user) && !from_logout?
+    raise Exceptions::OrganizationPrivateError if !UserMode.current.can_visit?(current_user) && !from_logout?
   end
 end
