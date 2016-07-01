@@ -34,14 +34,14 @@ describe Organization do
 
     before { reindex_current_organization! }
 
-    it { expect(Organization.current.in_path? orphan_guide).to be false }
-    it { expect(Organization.current.in_path? orphan_exercise).to be false }
+    it { expect(Organization.in_path? orphan_guide).to be false }
+    it { expect(Organization.in_path? orphan_exercise).to be false }
 
-    it { expect(Organization.current.in_path? chapter_in_path).to be true }
-    it { expect(Organization.current.in_path? topic_in_path).to be true }
-    it { expect(Organization.current.in_path? lesson_in_path).to be true }
-    it { expect(Organization.current.in_path? guide_in_path).to be true }
-    pending { expect(Organization.current.in_path? exercise_in_path).to be true }
+    it { expect(Organization.in_path? chapter_in_path).to be true }
+    it { expect(Organization.in_path? topic_in_path).to be true }
+    it { expect(Organization.in_path? lesson_in_path).to be true }
+    it { expect(Organization.in_path? guide_in_path).to be true }
+    pending { expect(Organization.in_path? exercise_in_path).to be true }
   end
 
 end

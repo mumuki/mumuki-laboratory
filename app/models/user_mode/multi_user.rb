@@ -1,4 +1,4 @@
-class OnlineMode
+class UserMode::MultiUser
 
   def set_auth_provider(omniauth)
     omniauth.provider :auth0,
@@ -13,7 +13,7 @@ class OnlineMode
   end
 
   def logo_url
-    Organization.current.logo_url
+    Organization.logo_url
   end
 
   def protect_from_forgery(controller)
@@ -24,7 +24,7 @@ class OnlineMode
     user.student?
   end
 
-  def if_online
+  def if_multiuser
     yield
   end
 

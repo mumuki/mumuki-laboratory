@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   include Pagination
   include Referer
   include Recurrence
-  include Notifications
+  include WithComments
   include Accessibility
   include WithDynamicErrors
 
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  current_mode.protect_from_forgery self
+  UserMode.protect_from_forgery self
 
   helper_method :current_user, :current_user?,
                 :current_user_id,
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   private
 
   def set_locale!
-    I18n.locale = Organization.current.locale
+    I18n.locale = Organization.locale
   end
 
   def subject #TODO may be used to remove breadcrumbs duplication

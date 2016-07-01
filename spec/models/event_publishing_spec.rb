@@ -8,7 +8,7 @@ describe 'events' do
 
   describe '#notify!' do
     let!(:organization) { create(:organization, name: 'pdep') }
-    before { expect_any_instance_of(Event::Base).to receive(:publish!) }
+    before { expect_any_instance_of(NotificationMode::Nuntius).to receive(:notify!) }
     before { organization.switch! }
 
     it { expect { Event::Submission.new(assignment).notify! }.to_not raise_error }
@@ -16,7 +16,7 @@ describe 'events' do
 
   describe 'protect in central book' do
     let!(:organization) { create(:organization, name: 'central') }
-    before { expect_any_instance_of(Event::Base).to receive(:publish!) }
+    before { expect_any_instance_of(NotificationMode::Nuntius).to receive(:notify!) }
     before { organization.switch! }
 
     it { expect { Event::Submission.new(assignment).notify! }.to_not raise_error }
@@ -24,7 +24,7 @@ describe 'events' do
 
   describe 'submit_solution!' do
     let!(:organization) { create(:organization, name: 'pdep') }
-    before { expect_any_instance_of(Event::Base).to receive(:publish!) }
+    before { expect_any_instance_of(NotificationMode::Nuntius).to receive(:notify!) }
     before { organization.switch! }
 
     it { expect { exercise.submit_solution! user }.to_not raise_error }

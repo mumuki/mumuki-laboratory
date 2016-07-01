@@ -7,7 +7,7 @@ feature 'public org' do
   let!(:chapter) {
     create(:chapter, lessons: [
         create(:lesson, guide: guide)]) }
-  let(:book) { Organization.current.book }
+  let(:book) { Organization.book }
 
   before { reindex_current_organization! }
 
@@ -18,7 +18,7 @@ feature 'public org' do
       visit '/'
 
       expect(page).to have_text('ム mumuki')
-      expect(page).to have_text(Organization.current.book.name)
+      expect(page).to have_text(Organization.book.name)
       expect(page).not_to have_text('Exams')
     end
 
@@ -28,7 +28,7 @@ feature 'public org' do
       visit '/'
 
       expect(page).to have_text('ム mumuki')
-      expect(page).to have_text(Organization.current.book.name)
+      expect(page).to have_text(Organization.book.name)
     end
   end
 
@@ -46,7 +46,7 @@ feature 'public org' do
         visit '/'
 
         expect(page).to have_text('ム mumuki')
-        expect(page).to have_text(Organization.current.book.name)
+        expect(page).to have_text(Organization.book.name)
         expect(user.reload.last_organization).to eq Organization.current
         expect(page).to have_text('Exams')
       end
@@ -57,7 +57,7 @@ feature 'public org' do
         visit '/'
 
         expect(page).to have_text('ム mumuki')
-        expect(page).to have_text(Organization.current.book.name)
+        expect(page).to have_text(Organization.book.name)
         expect(user.reload.last_organization).to eq Organization.current
       end
     end
@@ -72,7 +72,7 @@ feature 'public org' do
         visit '/'
 
         expect(page).to have_text('ム mumuki')
-        expect(page).to have_text(Organization.current.book.name)
+        expect(page).to have_text(Organization.book.name)
         expect(user.reload.last_organization).to eq Organization.current
       end
 
@@ -82,7 +82,7 @@ feature 'public org' do
         visit '/'
 
         expect(page).to have_text('ム mumuki')
-        expect(page).to have_text(Organization.current.book.name)
+        expect(page).to have_text(Organization.book.name)
         expect(user.reload.last_organization).to eq Organization.current
       end
     end
