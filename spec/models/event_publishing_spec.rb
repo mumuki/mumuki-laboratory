@@ -29,6 +29,8 @@ describe 'events' do
     let!(:organization) { create(:organization, name: 'pdep') }
     before { expect_any_instance_of(NotificationMode::Nuntius).to receive(:notify!) }
     before { organization.switch! }
+    let(:user) { create(:user) }
+
     it { expect { exercise.submit_solution! user }.to_not raise_error }
   end
 end
