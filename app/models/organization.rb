@@ -6,7 +6,7 @@ class Organization < ActiveRecord::Base
 
   delegate :locale, to: :book
 
-  validates_presence_of :name, :contact_email
+  validates_presence_of :name, :contact_email, :login_methods
   validates_uniqueness_of :name
 
   after_create :reindex_usages!

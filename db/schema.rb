@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160617195350) do
+ActiveRecord::Schema.define(version: 20160701195105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,6 +181,7 @@ ActiveRecord::Schema.define(version: 20160617195350) do
     t.datetime "updated_at"
     t.boolean  "private",       default: false
     t.string   "logo_url"
+    t.string   "login_methods", default: ["facebook", "github", "google-oauth2", "twitter", "Username-Password-Authentication"], null: false, array: true
   end
 
   add_index "organizations", ["book_id"], name: "index_organizations_on_book_id", using: :btree
