@@ -5,6 +5,8 @@
       lock.showSignin({
         closable: false,
         disableResetAction: false,
+        connections: <%= raw Organization.current.login_methods %>,
+        socialBigButtons: true,
         dict: '<%= I18n.locale %>',
         icon: '/logo-alt.png',
         callbackURL: '<%= auth_auth0_callback_url %>', responseType: 'code', authParams: {

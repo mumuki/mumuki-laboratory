@@ -29,7 +29,9 @@
     function signin() {
       lock.show({
         dict: '<%= I18n.locale %>',
+        connections: <%= raw Organization.current.login_methods %>,
         icon: '/logo-alt.png',
+        socialBigButtons: true,
         callbackURL: '<%= auth_auth0_callback_url %>', responseType: 'code', authParams: {
           scope: 'openid profile'
         }
