@@ -1,6 +1,6 @@
 class Event::Base
   def notify!
-    NotificationMode.current.notify! queue_name, as_json unless Organization.current.silent?
+    NotificationMode.notify! queue_name, as_json unless Organization.silent?
   end
 
   def as_json(_options={})

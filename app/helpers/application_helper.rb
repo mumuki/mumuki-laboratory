@@ -6,7 +6,7 @@ module ApplicationHelper
   include WithStatusRendering
 
   def contact_email
-    Organization.current.contact_email
+    Organization.contact_email
   end
 
   def page_title(subject)

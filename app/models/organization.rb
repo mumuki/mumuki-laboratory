@@ -1,4 +1,6 @@
 class Organization < ActiveRecord::Base
+  extend ConfigurableGlobal
+
   belongs_to :book
   has_many :usages
 
@@ -91,10 +93,6 @@ class Organization < ActiveRecord::Base
 
     def central
       find_by name: 'central'
-    end
-
-    def central?
-      current.central?
     end
   end
 

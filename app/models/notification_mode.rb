@@ -1,5 +1,7 @@
 module NotificationMode
-  def self.current
-    @current_mode ||= Rails.configuration.offline_mode ? NotificationMode::Deaf.new : NotificationMode::Nuntius.new
+  extend ConfigurableGlobal
+
+  def self.get_current
+    Rails.configuration.offline_mode ? NotificationMode::Deaf.new : NotificationMode::Nuntius.new
   end
 end

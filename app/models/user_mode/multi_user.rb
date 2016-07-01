@@ -13,7 +13,7 @@ class UserMode::MultiUser
   end
 
   def logo_url
-    Organization.current.logo_url
+    Organization.logo_url
   end
 
   def protect_from_forgery(controller)

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Book do
-  let(:book) { Organization.current.book }
+  let(:book) { Organization.book }
 
   describe '#rebuild!' do
     let(:chapter_1) { build(:chapter, number: 10) }
