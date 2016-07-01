@@ -76,6 +76,10 @@ class Organization < ActiveRecord::Base
     exams.select { |exam| exam.accessible_for?(user) }
   end
 
+  def few_login_methods?
+    Mumukit::Auth::LoginMethods.new(login_methods).has_few_methods?
+  end
+
   private
 
   def notify!(assignments)

@@ -18,14 +18,36 @@ class Mumukit::Auth::LoginMethods
       'google-oauth2'
     end
 
-    def auth0
+    def user_pass
       'Username-Password-Authentication'
     end
 
     def defaults
-      [facebook, github, google, twitter, auth0]
+      [facebook, github, google, twitter, user_pass]
     end
 
+  end
+
+  def initialize(methods)
+    @methods = methods
+  end
+
+  def has_few_methods?
+    !(user_pass? && social_methods > 1)
+  end
+
+  private
+
+  def user_pass?
+    @methods.include? user_pass
+  end
+
+  def user_pass
+    self.class.user_pass
+  end
+
+  def social_methods
+    (@methods - [user_pass]).size
   end
 
 end

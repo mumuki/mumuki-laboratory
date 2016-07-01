@@ -31,7 +31,7 @@
         dict: '<%= I18n.locale %>',
         connections: <%= raw Organization.current.login_methods %>,
         icon: '/logo-alt.png',
-        socialBigButtons: true,
+        socialBigButtons: <%= Organization.current.few_login_methods? %>,
         callbackURL: '<%= auth_auth0_callback_url %>', responseType: 'code', authParams: {
           scope: 'openid profile'
         }
