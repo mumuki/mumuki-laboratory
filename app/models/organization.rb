@@ -77,7 +77,7 @@ class Organization < ActiveRecord::Base
   end
 
   def few_login_methods?
-    Mumukit::Auth::LoginMethods.new(login_methods).has_few_methods?
+    Mumukit::Auth::LoginSettings.new(login_methods).has_few_methods?
   end
 
   private

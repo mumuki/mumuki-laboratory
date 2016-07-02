@@ -1,4 +1,4 @@
-class Mumukit::Auth::LoginMethods
+class Mumukit::Auth::LoginSettings
 
   class << self
 
