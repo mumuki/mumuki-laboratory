@@ -181,7 +181,7 @@ ActiveRecord::Schema.define(version: 20160701195105) do
     t.datetime "updated_at"
     t.boolean  "private",       default: false
     t.string   "logo_url"
-    t.string   "login_methods", default: ["facebook", "github", "google-oauth2", "twitter", "Username-Password-Authentication"], null: false, array: true
+    t.string   "login_methods", default: ["facebook", "github", "google", "twitter", "user_pass"], null: false, array: true
   end
 
   add_index "organizations", ["book_id"], name: "index_organizations_on_book_id", using: :btree

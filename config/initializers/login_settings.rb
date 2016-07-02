@@ -1,68 +1,49 @@
 class Mumukit::Auth::LoginSettings
+  LOCK_LOGIN_METHODS = {
+      facebook: 'facebook',
+      github: 'github',
+      google: 'google-oauth2',
+      twitter: 'twitter',
+      user_pass: 'Username-Password-Authentication'
+  }
 
   attr_accessor :login_methods
 
+  def initialize(login_methods)
+    @login_methods = login_methods.map(&:to_sym)
+  end
+
+  def many_methods?
+    user_pass? && social_login_methods.size > 1
+  end
+
+  def user_pass?
+    login_methods.include? :user_pass
+  end
+
+  def social_login_methods
+    login_methods - [:user_pass]
+  end
+
   def to_lock_json(callback_url, options={})
     {dict: I18n.locale,
-     connections: login_methods,
+     connections: lock_login_methods,
      icon: '/logo-alt.png',
-     socialBigButtons: has_few_methods?,
+     socialBigButtons: !many_methods?,
      callbackURL: callback_url,
      responseType: 'code',
      authParams: {scope: 'openid profile'},
      disableResetAction: false}
     .merge(options)
     .to_json
+    .html_safe
   end
 
-  class << self
-
-    def facebook
-      'facebook'
-    end
-
-    def github
-      'github'
-    end
-
-    def twitter
-      'twitter'
-    end
-
-    def google
-      'google-oauth2'
-    end
-
-    def user_pass
-      'Username-Password-Authentication'
-    end
-
-    def defaults
-      [facebook, github, google, twitter, user_pass]
-    end
-
+  def lock_login_methods
+    login_methods.map { |it| LOCK_LOGIN_METHODS[it] }
   end
 
-  def initialize(methods)
-    @methods = methods
+  def self.login_methods
+    LOCK_LOGIN_METHODS.keys
   end
-
-  def has_few_methods?
-    !(user_pass? && social_methods > 1)
-  end
-
-  private
-
-  def user_pass?
-    @methods.include? user_pass
-  end
-
-  def user_pass
-    self.class.user_pass
-  end
-
-  def social_methods
-    (@methods - [user_pass]).size
-  end
-
 end
