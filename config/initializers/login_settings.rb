@@ -1,5 +1,20 @@
 class Mumukit::Auth::LoginSettings
 
+  attr_accessor :login_methods
+
+  def to_lock_json(callback_url, options={})
+    {dict: I18n.locale,
+     connections: login_methods,
+     icon: '/logo-alt.png',
+     socialBigButtons: has_few_methods?,
+     callbackURL: callback_url,
+     responseType: 'code',
+     authParams: {scope: 'openid profile'},
+     disableResetAction: false}
+    .merge(options)
+    .to_json
+  end
+
   class << self
 
     def facebook
