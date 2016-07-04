@@ -7,7 +7,7 @@ class Playground < Exercise
   end
 
   def setup_query_assignment!(assignment)
-    assignment.rerun!
+    assignment.running!
   end
 
   def save_query_results!(assignment)
