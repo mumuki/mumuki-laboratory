@@ -55,17 +55,6 @@ class Assignment < ActiveRecord::Base
     end
   end
 
-  def rerun!
-    transaction do
-      clear!
-      running!
-    end
-  end
-
-  def clear!
-    update! status: :pending, result: nil, test_results: nil, expectation_results: []
-  end
-
   def comments
     Comment.where(submission_id: submission_id).order('date DESC')
   end
