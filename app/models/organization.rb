@@ -6,7 +6,7 @@ class Organization < ActiveRecord::Base
 
   delegate :locale, to: :book
 
-  validates_presence_of :name, :contact_email
+  validates_presence_of :name, :contact_email, :login_methods
   validates_uniqueness_of :name
 
   after_create :reindex_usages!
@@ -74,6 +74,10 @@ class Organization < ActiveRecord::Base
 
   def accessible_exams_for(user)
     exams.select { |exam| exam.accessible_for?(user) }
+  end
+
+  def login_settings
+    @login_settings ||= Mumukit::Auth::LoginSettings.new(login_methods)
   end
 
   private

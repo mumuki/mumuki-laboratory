@@ -27,13 +27,7 @@
   <script type="text/javascript">
     var lock = new Auth0Lock('<%= Rails.configuration.auth0_client_id %>', '<%= Rails.configuration.auth0_domain %>');
     function signin() {
-      lock.show({
-        dict: '<%= I18n.locale %>',
-        icon: '/logo-alt.png',
-        callbackURL: '<%= auth_auth0_callback_url %>', responseType: 'code', authParams: {
-          scope: 'openid profile'
-        }
-      });
+      lock.show(<%= Organization.login_settings.to_lock_json(auth_auth0_callback_url) %>);
     }
   </script>
 <% end %>
