@@ -80,4 +80,8 @@ class Assignment < ActiveRecord::Base
   def update_last_submission!
     submitter.update!(last_submission_date: created_at, last_exercise: exercise)
   end
+
+  def status_message
+    I18n.t(status.passed? && exercise.navigable_parent.is_a?(Exam) ? :teacher_evaluation_pending : status)
+  end
 end
