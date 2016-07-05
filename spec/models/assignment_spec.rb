@@ -2,6 +2,14 @@ require 'spec_helper'
 
 describe Assignment do
 
+  describe 'manual evaluation' do
+    let(:user) { create(:user) }
+    let(:exercise) { create(:exercise, manual_evaluation: true) }
+    let(:assignment) { exercise.submit_solution!(user, content: '') }
+
+    it { expect(assignment.status).to be Status::ManualEvaluationPending }
+  end
+
   describe '#results_visible?' do
     let(:gobstones) { create(:language, visible_success_output: true) }
     let(:gobstones_exercise) { create(:exercise, language: gobstones) }

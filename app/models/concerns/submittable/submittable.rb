@@ -1,14 +1,22 @@
 module Submittable
   def submit!(user, submission)
     assignment = find_or_init_assignment_for user
-    create_evaluation(assignment, submission).run!
-  end
-
-  def create_evaluation(assignment, submission)
-    evaluation_class.new(assignment, submission)
+    evaluation_class.new(assignment, submission).run!
   end
 
   def evaluation_class
-    Evaluation
+    if manual_evaluation?
+      manual_evaluation_class
+    else
+      automated_evaluation_class
+    end
+  end
+
+  def manual_evaluation_class
+    ManualEvaluation
+  end
+
+  def automated_evaluation_class
+    AutomatedEvaluation
   end
 end

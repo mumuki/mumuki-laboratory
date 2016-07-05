@@ -17,10 +17,6 @@ class Evaluation
     submission.save_results! results, assignment
   end
 
-  def evaluate!
-    submission.evaluate_against! assignment.exercise
-  end
-
   def setup_assignment!
     submission.setup_assignment! assignment
   end
