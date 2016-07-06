@@ -87,6 +87,7 @@ class Exam < ActiveRecord::Base
 
   def self.import_from_json!(json)
     organization = Organization.find_by!(name: json.delete('tenant'))
+    organization.switch!
     exam_data = Exam.parse_json json
     users = exam_data.delete('users')
     exam = Exam.where(classroom_id: exam_data.delete('id')).update_or_create! exam_data
