@@ -16,8 +16,6 @@ class Exam < ActiveRecord::Base
     organization == self.organization
   end
 
-  after_create :index_usage!
-
   def enabled?
     enabled_range.cover? DateTime.now
   end
@@ -88,11 +86,12 @@ class Exam < ActiveRecord::Base
   end
 
   def self.import_from_json!(json)
-    Organization.find_by!(name: json.delete('tenant')).switch!
+    organization = Organization.find_by!(name: json.delete('tenant'))
     exam_data = Exam.parse_json json
     users = exam_data.delete('users')
     exam = Exam.where(classroom_id: exam_data.delete('id')).update_or_create! exam_data
     exam.process_users users
+    exam.index_usage! organization
     exam
   end
 

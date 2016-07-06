@@ -2,9 +2,12 @@ require 'spec_helper'
 require 'rspec/mocks'
 
 describe 'events' do
-  let!(:assignment) { create(:assignment) }
-  let(:user) { create(:user) }
-  let(:exercise) { create(:x_equal_5_exercise) }
+  let(:exercise) { create(:exercise) }
+  let(:assignment) { create(:assignment, exercise: exercise) }
+
+  before { organization.switch! }
+  before { create(:chapter, lessons: [ create(:lesson, exercises: [ exercise ]) ]) }
+  before { reindex_current_organization! }
 
   describe '#notify!' do
     let!(:organization) { create(:organization, name: 'pdep') }
@@ -26,6 +29,7 @@ describe 'events' do
     let!(:organization) { create(:organization, name: 'pdep') }
     before { expect_any_instance_of(NotificationMode::Nuntius).to receive(:notify!) }
     before { organization.switch! }
+    let(:user) { create(:user) }
 
     it { expect { exercise.submit_solution! user }.to_not raise_error }
   end
