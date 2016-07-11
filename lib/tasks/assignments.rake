@@ -11,6 +11,14 @@ namespace :assignments do
     Organization.notify_assignments_by! user
   end
 
+  task :notify_recent, [:organization_name] => :select_organization do |t, args|
+    Organization.
+        assignments.
+        where(submitter: User.where(last_organization: Organization.current)).
+        where('assignments.created_at > ?', 1.month.ago).
+        each { |it| Event::Submission.new(it).notify! }
+  end
+
   # This task should not be called directly (because it "does nothing"), it's just a prerrequisite for the others.
   task :select_organization, [:organization_name] => :environment do |t, args|
     Organization.find_by!(name: args[:organization_name]).switch!
