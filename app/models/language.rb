@@ -1,24 +1,11 @@
 require 'mumukit/bridge'
 
-class Mumukit::Bridge::Runner
-  def post_to_server(request, route)
-    JSON.parse RestClient::Request.new(
-                   method: :post,
-                   url: "#{test_runner_url}/#{route}",
-                   payload: request.to_json,
-                   timeout: 10,
-                   open_timeout: 10,
-                   headers: {content_type: :json}).execute()
-  end
-end
-
-
 class Language < ActiveRecord::Base
   include WithCaseInsensitiveSearch
 
   enum output_content_type: [:plain, :html, :markdown]
 
-  validates_presence_of :test_runner_url, :devicon, :output_content_type
+  validates_presence_of :runner_url, :devicon, :output_content_type
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
 
@@ -26,12 +13,8 @@ class Language < ActiveRecord::Base
 
   delegate :run_tests!, :run_query!, to: :bridge
 
-  def prompt
-    self[:prompt] || 'ム '
-  end
-
   def bridge
-    Mumukit::Bridge::Runner.new(test_runner_url)
+    Mumukit::Bridge::Runner.new(runner_url)
   end
 
   def highlight_mode
@@ -48,5 +31,23 @@ class Language < ActiveRecord::Base
 
   def self.for_name(name)
     find_by_ignore_case!(:name, name) if name
+  end
+
+  def import!
+    import_from_json! Mumukit::Bridge::Runner.new(runner_url).info
+  end
+
+  def import_from_json!(json)
+    raise 'Only devicons supported' if json.dig('language', 'icon', 'type') != 'devicon'
+
+    assign_attributes name: json['name'],
+                      devicon: json.dig('language', 'icon', 'name'),
+                      highlight_mode: json.dig('language', 'ace_mode'),
+                      visible_success_output: json.dig('language', 'graphic').present?,
+                      prompt: (json.dig('language', 'prompt') || 'ム')  + ' ',
+                      output_content_type: json['output_content_type'],
+                      queriable: json.dig('features', 'query'),
+                      stateful_console: json.dig('features', 'stateful').present?
+    save!
   end
 end
