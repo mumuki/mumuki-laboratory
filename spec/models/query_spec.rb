@@ -5,7 +5,7 @@ describe Query do
   let(:user) { create(:user) }
 
   before do
-    expect_any_instance_of(Exercise).to receive(:evaluation_class).and_return(Evaluation)
+    expect_any_instance_of(Exercise).to receive(:automated_evaluation_class).and_return(AutomatedEvaluation)
     allow_any_instance_of(Language).to receive(:run_query!).and_return(status: :passed, result: '5')
   end
 

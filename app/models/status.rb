@@ -1,5 +1,5 @@
 module Status
-  STATUSES = [Pending, Running, Passed, Failed, Errored, Aborted, PassedWithWarnings]
+  STATUSES = [Pending, Running, Passed, Failed, Errored, Aborted, PassedWithWarnings, ManualEvaluationPending]
 
   def self.load(i)
     STATUSES[i]

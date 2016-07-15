@@ -5,7 +5,7 @@ describe Solution do
   describe '#run_tests!' do
     let(:user) { create(:user) }
 
-    before { expect_any_instance_of(Exercise).to receive(:evaluation_class).and_return(Evaluation) }
+    before { expect_any_instance_of(Exercise).to receive(:automated_evaluation_class).and_return(AutomatedEvaluation) }
     before { expect_any_instance_of(Language).to receive(:run_tests!).and_return(bridge_response) }
 
     context 'when results have no expectation' do
