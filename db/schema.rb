@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160715001254) do
+ActiveRecord::Schema.define(version: 20160729194600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 20160715001254) do
     t.string   "slug"
     t.string   "type",              default: "Problem", null: false
     t.text     "tag_list",          default: [],                     array: true
-    t.string   "default_content"
+    t.text     "default_content"
     t.integer  "bibliotheca_id",                        null: false
     t.boolean  "extra_visible",     default: false
     t.boolean  "new_expectations",  default: false
