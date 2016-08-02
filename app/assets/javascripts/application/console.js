@@ -27,13 +27,8 @@ var mumuki = mumuki || {};
 
   QueryConsole.prototype = {
     newQuery: function (line) {
-      if(this.statefulConsole) {
-        var cookie = this.lines;
-        this.lines = this.lines.concat([line]);
-        return new Query(line, cookie, this);
-      } else {
-          return new Query(line, [], this);
-      }
+        var cookies = this.statefulConsole ? this.lines : [];
+        return new Query(line, cookies, this);
     },
     clearState: function() {
       this.lines = [];
@@ -61,15 +56,15 @@ var mumuki = mumuki || {};
       else
         return '';
     },
-    submit: function (report) {
+    submit: function (report, queryConsole, line) {
       var self = this;
       $.ajax(self._request).
         done(function (response) {
-          if (response.status === 'passed') {
-            reportValue(response.result, report)
-          } else {
-            reportError(response.result, report)
+          if (response.status !== 'errored') {
+            queryConsole.lines.push(line);
+            if (response.status === 'passed') return reportValue(response.result, report);
           }
+          reportError(response.result, report);
         }).
         fail(function (response) {
           reportError(response.responseText, report);
@@ -106,7 +101,7 @@ var mumuki = mumuki || {};
         return line !== "";
       },
       commandHandle: function (line, report) {
-        queryConsole.newQuery(line).submit(report);
+        queryConsole.newQuery(line).submit(report, queryConsole, line);
       },
       autofocus: !!$('#solution_editor_bottom').val(),
       animateScroll: true,
