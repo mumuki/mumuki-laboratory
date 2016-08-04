@@ -88,6 +88,10 @@ class User < ActiveRecord::Base
     "#{id}:#{name}:#{uid}"
   end
 
+  def accessible_organizations
+    metadata.accessible_organizations.map {|org| Organization.find_by(name: org)}
+  end
+
   private
 
   def init
