@@ -155,6 +155,22 @@ describe Exercise do
       it { expect(exercise.default_content_for(user)).to eq '' }
     end
 
+    context 'when default content has an interpolation' do
+      let!(:chapter) {
+        create(:chapter, lessons: [
+          create(:lesson, exercises: [
+            previous_exercise,
+            exercise
+          ])]) }
+
+      let(:previous_exercise) { create(:exercise) }
+      let(:exercise) { create(:exercise, default_content: '/*...previousContent...*/') }
+
+      before { reindex_current_organization! }
+      before { previous_exercise.submit_solution!(user, content: 'foobar') }
+
+      it { expect(exercise.default_content_for(user)).to eq 'foobar' }
+    end
 
     context 'when user has multiple submission for the exercise' do
       let!(:assignments) { [exercise.submit_solution!(user, content: 'foo'),
