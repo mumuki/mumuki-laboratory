@@ -80,8 +80,12 @@ class Organization < ActiveRecord::Base
     @login_settings ||= Mumukit::Auth::LoginSettings.new(login_methods)
   end
 
-  def link_to
-    "http://#{name}.mumuki.io"
+  def absolute_link
+    "http://#{relative_link}"
+  end
+
+  def relative_link
+    "#{name}.mumuki.io"
   end
 
   private
