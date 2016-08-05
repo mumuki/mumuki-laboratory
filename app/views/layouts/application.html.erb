@@ -22,6 +22,36 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>
+<div class="modal fade" id="redirect" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title text-center" id="gridSystemModalLabel">capo</h3>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <% current_user.accessible_organizations.each do |org| %>
+            <div class="row">
+              <div class="col-md-6 organization-row">
+                <%= image_tag(org.logo_url, height: 50) %>
+              </div>
+              <div class="col-md-6 organization-row">
+                <%= link_to(org.link_to, org.link_to, class: 'organization-link') %>
+              </div>
+            </div>
+          <% end %>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  <% if ask_redirect? %>
+    $("#redirect").modal();
+  <% end %>
+</script>
 
 <% UserMode.if_multiuser do %>
   <script type="text/javascript">
