@@ -16,7 +16,7 @@ module Referer
   end
 
   def request_host_include?(hosts)
-    hosts.any? { |host| Addressable::URI.parse(request.referer).host.include? host } rescue false
+    hosts.any? { |host| URI.parse(request.referer).host.include? host } rescue false
   end
 
 end
