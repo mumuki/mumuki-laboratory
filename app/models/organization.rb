@@ -80,6 +80,10 @@ class Organization < ActiveRecord::Base
     @login_settings ||= Mumukit::Auth::LoginSettings.new(login_methods)
   end
 
+  def link_to
+    "http://#{name}.mumuki.io"
+  end
+
   private
 
   def notify!(assignments)
