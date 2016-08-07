@@ -22,13 +22,16 @@
       <input type="file" id="upload" class="upload submission-control"/>
     <% end %>
 
-    <%= form_for([@exercise, @solution], remote: true, html: {role: 'form'}) do |f| %>
+    <%= form_for([@exercise, @solution], remote: true, html: {role: 'form', class: 'editor-overlap'}) do |f| %>
       <% if editor_mode == :visible %>
         <div class="field form-group">
           <%= f.editor :content, 'dynamic',
                        class: 'form-control editor',
                        value: @default_content,
                        style: 'display: none' %>
+        </div>
+        <div class="editor-overlapped">
+          <a class="editor-trash"><%= fa_icon('trash-o', text: 'borrar')%></a>
         </div>
         <%= f.hidden_field :editor_bottom, value: defined?(editor_bottom) %>
 
