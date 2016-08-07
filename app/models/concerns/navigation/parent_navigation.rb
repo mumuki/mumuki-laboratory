@@ -1,7 +1,7 @@
 module ParentNavigation
 
   def leave(user)
-    navigable_parent.next(user)
+    navigable_parent.next_for(user)
   end
 
   def navigation_end?

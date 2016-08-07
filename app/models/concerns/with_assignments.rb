@@ -11,7 +11,7 @@ module WithAssignments
   end
 
   def interpolated_default_content_for(user)
-    (default_content || '').gsub('/*...previousContent...*/') { previous(user).default_content_for(user) }
+    (default_content || '').gsub('/*...previousContent...*/') { previous.default_content_for(user) }
   end
 
   def comments_for(user)

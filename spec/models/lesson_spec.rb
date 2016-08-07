@@ -53,7 +53,7 @@ describe Lesson do
 
       before { reindex_current_organization! }
 
-      it { expect(lesson.next(user)).to be nil }
+      it { expect(lesson.next_for(user)).to be nil }
     end
 
     context 'when there is a next guide' do
@@ -67,7 +67,7 @@ describe Lesson do
 
       before { reindex_current_organization! }
 
-      it { expect(lesson.next(user)).to eq other_lesson }
+      it { expect(lesson.next_for(user)).to eq other_lesson }
     end
     context 'when there are many next guides at same level' do
       let!(:chapter) {
@@ -84,7 +84,7 @@ describe Lesson do
 
       before { reindex_current_organization! }
 
-      it { expect(lesson.next(user)).to eq other_lesson_1 }
+      it { expect(lesson.next_for(user)).to eq other_lesson_1 }
     end
   end
 end

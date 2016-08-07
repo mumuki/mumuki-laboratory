@@ -47,6 +47,10 @@ class Exercise < ActiveRecord::Base
     guide.done_for?(user)
   end
 
+  def previous
+    guide.exercises.find_by(number: number.pred)
+  end
+
   def search_tags
     tag_list + [language.name]
   end
