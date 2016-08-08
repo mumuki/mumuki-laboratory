@@ -1,7 +1,7 @@
 module WithRedirect
 
   def ask_redirect?
-    current_user? && from_internet? && (Organization.central? || !UserMode.can_visit?(current_user))
+    current_user? && from_internet? && implicit_central?
   end
 
 end

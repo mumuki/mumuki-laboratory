@@ -6,4 +6,8 @@ module WithOrganization
   def visit_organization!
     current_user.visit!(Organization.current)
   end
+
+  def implicit_central?
+    !(request.first_subdomain == 'central') && Organization.central?
+  end
 end
