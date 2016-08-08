@@ -130,6 +130,7 @@ es:
   submissions_count: Soluciones
   submissions_for: Soluciones para %{exercise}
   submissions_success_rate: Tasa de éxito en soluciones
+  stay_here: No, quiero quedarme acá
   tag: Etiquetas
   tell_us_how: ¡Contanos cómo te pasó esto!
   test_results: Resultados de las pruebas
