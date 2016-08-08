@@ -23,39 +23,7 @@
 </head>
 <body>
 <% if ask_redirect? %>
-  <div class="modal fade" id="redirect" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <p class="modal-title text-center title-font" id="gridSystemModalLabel"><%= t :explain_redirect %></p>
-          <p class="modal-title text-center title-font" id="gridSystemModalLabel"><%= t :ask_redirect %></p>
-        </div>
-        <div class="modal-body">
-          <div class="container-fluid">
-            <% current_user.accessible_organizations.each do |org| %>
-                <div class="row">
-                  <div class="col-md-6 organization-row no-padding-sides">
-                    <%= image_tag(org.logo_url, height: 50, class: 'pull-left') %>
-                  </div>
-                  <div class="col-md-6 organization-row no-padding-sides">
-                    <%= link_to("Ir a #{org.relative_link}", org.absolute_link, class: 'btn btn-success pull-right') %>
-                  </div>
-                </div>
-            <% end %>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <div class="row">
-            <div class="col-md-12 pull-right">
-              <a data-dismiss="modal" aria-label="Close">
-                No, quiero quedarme acá
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render partial: 'layouts/redirect' %>
   <script>
     $("#redirect").modal({
       backdrop: 'static',
