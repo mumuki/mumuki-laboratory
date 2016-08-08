@@ -1,6 +1,29 @@
 require 'spec_helper'
 
 describe User do
+  describe '#accessible_organizations' do
+    context 'when one organizations' do
+      let(:user) { create(:user,
+                          metadata: Mumukit::Auth::Metadata.new( atheneum: {permissions: 'pdep/*'}))}
+      it { expect(user.accessible_organizations.size).to be 1}
+    end
+    context 'when two organizations' do
+      let(:user) { create(:user,
+                          metadata: Mumukit::Auth::Metadata.new( atheneum: {permissions: 'pdep/*:alcal/*'}))}
+      it { expect(user.accessible_organizations.size).to be 2 }
+    end
+    context 'when all grant present organizations' do
+      let(:user) { create(:user,
+                          metadata: Mumukit::Auth::Metadata.new( atheneum: {permissions: 'pdep/*:*'}))}
+      it { expect(user.accessible_organizations.size).to be 1 }
+    end
+    context 'when one organization appears twice' do
+      let(:user) { create(:user,
+                          metadata: Mumukit::Auth::Metadata.new( atheneum: {permissions: 'pdep/*:pdep/*'}))}
+      it { expect(user.accessible_organizations.size).to be 1 }
+    end
+  end
+
   describe '#visit!' do
     let(:user) { create(:user) }
 
