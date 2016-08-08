@@ -13,6 +13,7 @@ describe Guide do
      locale: 'en',
      extra: 'bar',
      teacher_info: 'an info',
+     authors: 'Foo Bar',
      exercises: [
          {type: 'problem',
           name: 'Bar',
@@ -217,6 +218,7 @@ describe Guide do
          locale: 'en',
          extra: 'bar',
          teacher_info: 'an info',
+         authors: 'Foo Bar',
          exercises: [
              {name: 'Baz',
               description: 'lorem ipsum',
