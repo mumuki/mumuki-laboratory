@@ -22,14 +22,7 @@
 
   <% @chapter.lessons.each do |lesson| %>
     <h4><%= t(:lesson_number, number: lesson.number) %>: <%= link_to_path_element lesson, mode: :plain %></h4>
-    <ul class="progress-listing">
-      <% lesson.exercises.each do |exercise| %>
-        <li>
-          <%= exercise_status_icon exercise %>
-          <%= link_to_path_element(exercise) %>
-        </li>
-      <% end %>
-    </ul>
+    <%= render partial: 'layouts/progress_listing', locals: {exercises: lesson.exercises} %>
   <% end %>
 </div>
 <% end %>

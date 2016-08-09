@@ -31,7 +31,7 @@ module WithAssignments
   end
 
   def status_for(user)
-    assignment_for(user).try(&:status) || Status::Unknown
+    assignment_for(user).defaulting(Status::Unknown, &:status) if user
   end
 
   def last_submission_date_for(user)
