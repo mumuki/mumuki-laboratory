@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe User do
   describe '#accessible_organizations' do
+    before { create(:organization, name: 'pdep', book: create(:book, name: 'pdep', slug: 'mumuki/mumuki-the-pdep-book')) }
     context 'when one organizations' do
       let(:user) { create(:user,
                           metadata: Mumukit::Auth::Metadata.new( atheneum: {permissions: 'pdep/*'}))}
@@ -10,6 +11,7 @@ describe User do
     context 'when two organizations' do
       let(:user) { create(:user,
                           metadata: Mumukit::Auth::Metadata.new( atheneum: {permissions: 'pdep/*:alcal/*'}))}
+      before { create(:organization, name: 'alcal', book: create(:book, name: 'alcal', slug: 'mumuki/mumuki-the-alcal-book')) }
       it { expect(user.accessible_organizations.size).to be 2 }
     end
     context 'when all grant present organizations' do

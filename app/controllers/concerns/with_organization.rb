@@ -7,7 +7,4 @@ module WithOrganization
     current_user.visit!(Organization.current)
   end
 
-  def implicit_central?
-    request.empty_subdomain? && Organization.central?
-  end
 end
