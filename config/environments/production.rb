@@ -91,6 +91,7 @@ Rails.application.configure do
   config.auth0_domain = ENV['MUMUKI_AUTH0_DOMAIN']
 
   config.offline_mode = ENV['OFFLINE_MODE']
+  config.domain_url = ENV['DOMAIN_URL'] || 'mumuki.io'
   config.queueless_mode = ENV['QUEUELESS_MODE']
 
 end

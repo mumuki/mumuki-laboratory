@@ -54,5 +54,6 @@ Rails.application.configure do
   config.auth0_domain = 'http://foo.com'
 
   config.offline_mode = false
+  config.domain_url = 'localmumuki.io:3000'
   config.queueless_mode = false
 end

@@ -85,7 +85,7 @@ class Organization < ActiveRecord::Base
   end
 
   def relative_link
-    "#{name}.mumuki.io"
+    "#{name}.#{Rails.configuration.domain_url}"
   end
 
   private
