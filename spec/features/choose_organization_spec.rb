@@ -1,0 +1,36 @@
+require 'spec_helper'
+
+feature 'Choose organization Flow' do
+
+  let(:user) { create(:user,
+                      metadata: Mumukit::Auth::Metadata.new( atheneum: {permissions: 'pdep/*'}))}
+  let(:organization) { create(:organization, name: 'central', book: create(:book, name: 'central', slug: 'mumuki/mumuki-the-book')).switch! }
+  before { create(:organization, name: 'pdep', book: create(:book, name: 'pdep', slug: 'mumuki/mumuki-the-pdep-book')) }
+  before { create(:organization, name: 'central', book: create(:book, name: 'central', slug: 'mumuki/mumuki-the-central-book')).switch! }
+  before { set_current_user! user }
+
+  scenario 'when visit implicit central' do
+    set_implicit_central!
+
+    visit '/'
+
+    expect(page).to have_text('Do you want to go there?')
+    expect(page).to have_text('pdep')
+  end
+
+  scenario 'when visit explicit central' do
+    set_subdomain_host!('central')
+
+    visit '/'
+
+    expect(page).not_to have_text('Do you want to go there?')
+    expect(page).not_to have_text('pdep')
+  end
+
+  scenario 'when visit test subdomain' do
+    visit '/'
+
+    expect(page).not_to have_text('Do you want to go there?')
+    expect(page).not_to have_text('pdep')
+  end
+end
