@@ -8,6 +8,6 @@ module WithOrganization
   end
 
   def implicit_central?
-    !(request.first_subdomain == 'central') && Organization.central?
+    request.empty_subdomain? && Organization.central?
   end
 end
