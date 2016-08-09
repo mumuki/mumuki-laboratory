@@ -4,6 +4,8 @@ feature 'Choose organization Flow' do
 
   let(:user) { create(:user,
                       metadata: Mumukit::Auth::Metadata.new( atheneum: {permissions: 'pdep/*'}))}
+  let(:user2) { create(:user,
+                      metadata: Mumukit::Auth::Metadata.new( atheneum: {permissions: ''}))}
   let(:organization) { create(:organization, name: 'central', book: create(:book, name: 'central', slug: 'mumuki/mumuki-the-book')).switch! }
   before { create(:organization, name: 'pdep', book: create(:book, name: 'pdep', slug: 'mumuki/mumuki-the-pdep-book')) }
   before { create(:organization, name: 'central', book: create(:book, name: 'central', slug: 'mumuki/mumuki-the-central-book')).switch! }
@@ -32,5 +34,13 @@ feature 'Choose organization Flow' do
 
     expect(page).not_to have_text('Do you want to go there?')
     expect(page).not_to have_text('pdep')
+  end
+
+  scenario 'when user does not have any permission' do
+    set_current_user! user2
+    set_implicit_central!
+    visit '/'
+
+    expect(page).not_to have_text('Do you want to go there?')
   end
 end
