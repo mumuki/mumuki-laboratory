@@ -22,7 +22,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>
-<% if ask_redirect? %>
+<% if should_choose_organization? %>
   <%= render partial: 'layouts/redirect' %>
   <script>
     $("#redirect").modal({

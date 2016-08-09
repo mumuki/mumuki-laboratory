@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
                 :comments_count,
                 :has_comments?,
                 :subject,
-                :ask_redirect?
+                :should_choose_organization?
 
   private
 
