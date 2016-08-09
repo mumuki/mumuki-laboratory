@@ -24,12 +24,6 @@
 <body>
 <% if should_choose_organization? %>
   <%= render partial: 'layouts/redirect' %>
-  <script>
-    $("#redirect").modal({
-      backdrop: 'static',
-      keyboard: false
-    });
-  </script>
 <% end %>
 
 <% UserMode.if_multiuser do %>
