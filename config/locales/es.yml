@@ -6,6 +6,7 @@ es:
   activity: Actividad
   all: Todos
   and: y
+  ask_redirect: ¿Querés que te llevemos ahí?
   author: Autor
   back_to_mumuki: ¡Volvé a Mumuki!
   chapter: Capítulo
@@ -41,6 +42,7 @@ es:
   exercises: Ejercicios
   exercises_index_title: ¿Buscando algún ejercicio particular?
   expectations: Objetivos
+  explain_redirect: Notamos que te registraste en otra organización.
   export_created: Exportación encolada
   error_401: error 401
   error_403: error 403
@@ -128,6 +130,7 @@ es:
   submissions_count: Soluciones
   submissions_for: Soluciones para %{exercise}
   submissions_success_rate: Tasa de éxito en soluciones
+  stay_here: No, quiero quedarme acá
   tag: Etiquetas
   tell_us_how: ¡Contanos cómo te pasó esto!
   test_results: Resultados de las pruebas

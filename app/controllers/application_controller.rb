@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   include WithComments
   include Accessibility
   include WithDynamicErrors
+  include WithRedirect
 
   before_action :set_organization!
   before_action :set_locale!
@@ -26,7 +27,8 @@ class ApplicationController < ActionController::Base
                 :login_anchor,
                 :comments_count,
                 :has_comments?,
-                :subject
+                :subject,
+                :should_choose_organization?
 
   private
 

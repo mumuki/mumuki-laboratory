@@ -22,6 +22,9 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>
+<% if should_choose_organization? %>
+  <%= render partial: 'layouts/redirect' %>
+<% end %>
 
 <% UserMode.if_multiuser do %>
   <script type="text/javascript">

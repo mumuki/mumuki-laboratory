@@ -80,6 +80,14 @@ class Organization < ActiveRecord::Base
     @login_settings ||= Mumukit::Auth::LoginSettings.new(login_methods)
   end
 
+  def absolute_link
+    "http://#{relative_link}"
+  end
+
+  def relative_link
+    "#{name}.#{Rails.configuration.domain_url}"
+  end
+
   private
 
   def notify!(assignments)

@@ -6,4 +6,5 @@ module WithOrganization
   def visit_organization!
     current_user.visit!(Organization.current)
   end
+
 end
