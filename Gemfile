@@ -52,9 +52,9 @@ gem 'addressable'
 gem 'mumukit-content-type', '~> 0.2', require: 'mumukit/content_type'
 gem 'mumukit-auth', '~> 0.2'
 gem 'mumukit-core', '~> 0.1'
+gem 'mumukit-bridge', '~> 1.3'
 
 gem 'mumukit-inspection', github: 'mumuki/mumukit-inspection', :branch => 'master'
-gem 'mumukit-bridge', github: 'mumuki/mumukit-bridge', :tag => 'v1.3.0'
 gem 'mumukit-nuntius', github: 'mumuki/mumukit-nuntius', :tag => 'v0.2.2'
 
 group :test do

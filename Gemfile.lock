@@ -1,13 +1,4 @@
 GIT
-  remote: git://github.com/mumuki/mumukit-bridge.git
-  revision: 5a29aca198b205dc4648b33f63f255c136bdbb50
-  tag: v1.3.0
-  specs:
-    mumukit-bridge (1.3.0)
-      activesupport
-      rest-client
-
-GIT
   remote: git://github.com/mumuki/mumukit-inspection.git
   revision: 11f0a129b18138336a2d2b1c9b72b97b2f34b208
   branch: master
@@ -170,6 +161,9 @@ GEM
       auth0
       jwt
       mumukit-core (~> 0.1)
+    mumukit-bridge (1.3.1)
+      mumukit-core (~> 0.1)
+      rest-client
     mumukit-content-type (0.2.1)
       md_emoji
       mumukit-core (~> 0.1)
@@ -334,7 +328,7 @@ DEPENDENCIES
   jquery-rails
   kaminari (~> 0.16.3)
   mumukit-auth (~> 0.2)
-  mumukit-bridge!
+  mumukit-bridge (~> 1.3)
   mumukit-content-type (~> 0.2)
   mumukit-core (~> 0.1)
   mumukit-inspection!
