@@ -4,7 +4,7 @@ describe Assignment do
 
   describe 'manual evaluation' do
     let(:user) { create(:user) }
-    let(:exercise) { create(:exercise, manual_evaluation: true) }
+    let(:exercise) { create(:exercise, manual_evaluation: true, test: nil, expectations: []) }
     let(:assignment) { exercise.submit_solution!(user, content: '') }
 
     it { expect(assignment.status).to be Status::ManualEvaluationPending }
