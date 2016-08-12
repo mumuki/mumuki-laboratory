@@ -9,7 +9,7 @@ class Mumukit::Auth::LoginSettings
 
   attr_accessor :login_methods
 
-  def initialize(login_methods)
+  def initialize(login_methods={})
     @login_methods = login_methods.map(&:to_sym)
   end
 

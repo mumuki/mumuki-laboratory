@@ -16,7 +16,7 @@ describe Mumukit::Auth::LoginSettings do
     end
 
     context 'with many methods' do
-      let(:settings) { Mumukit::Auth::LoginSettings.new(Mumukit::Auth::LoginSettings.login_methods) }
+      let(:settings) { build(:all_login_settings) }
       it { expect(settings.login_methods.size).to eq 5 }
       it { expect(settings.social_login_methods.size).to eq 4 }
       it { expect(settings.many_methods?).to eq true }
