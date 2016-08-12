@@ -46,4 +46,8 @@ class Mumukit::Auth::LoginSettings
   def self.login_methods
     LOCK_LOGIN_METHODS.keys
   end
+
+  def self.default_methods
+    [:user_pass]
+  end
 end

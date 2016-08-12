@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe Mumukit::Auth::LoginSettings do
-  let(:defaults) { Mumukit::Auth::LoginSettings.login_methods }
+  let(:defaults) { Mumukit::Auth::LoginSettings.default_methods }
   let(:facebook_and_user_pass) { [:facebook, :user_pass] }
 
   it { expect(Organization.login_settings.login_methods).to eq defaults }
-  it { expect(Organization.login_settings.social_login_methods).to eq [:facebook, :github, :google, :twitter] }
+  it { expect(Organization.login_settings.social_login_methods).to eq [] }
   it { expect(Organization.login_settings.to_lock_json('/foo')).to be_html_safe }
 
   describe '#social_methods' do
@@ -16,7 +16,7 @@ describe Mumukit::Auth::LoginSettings do
     end
 
     context 'with many methods' do
-      let(:settings) { Mumukit::Auth::LoginSettings.new(defaults) }
+      let(:settings) { Mumukit::Auth::LoginSettings.new(Mumukit::Auth::LoginSettings.login_methods) }
       it { expect(settings.login_methods.size).to eq 5 }
       it { expect(settings.social_login_methods.size).to eq 4 }
       it { expect(settings.many_methods?).to eq true }
