@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
     assignments.last.try(&:updated_at)
   end
 
+  def last_submitted_exercise
+    assignments.last.try(&:exercise)
+  end
+
   def submissions_count
     assignments.pluck(:submissions_count).sum
   end
