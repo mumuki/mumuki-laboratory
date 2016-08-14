@@ -16,11 +16,13 @@
     <%= @book.description_html %>
   </div>
 
-  <div class="actions">
-    <a href="<%= exercise_path(@next_exercise) %>" class="btn btn-success">
-      <%= @last_submitted_exercise.present?? t(:continue_practicing) : t(:start_practicing) %>
-    </a>
-  </div>
+  <% if @next_exercise.present? %>
+    <div class="actions">
+      <a href="<%= exercise_path(@next_exercise) %>" class="btn btn-success">
+        <%= @last_submitted_exercise.present?? t(:continue_practicing) : t(:start_practicing) %>
+      </a>
+    </div>
+  <% end %>
 
   <h2><%= t(:content) %></h2>
 
