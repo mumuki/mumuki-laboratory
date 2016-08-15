@@ -15,6 +15,14 @@ class Book < ActiveRecord::Base
     chapters.first
   end
 
+  def first_exercise
+    first_chapter.first_lesson.first_exercise
+  end
+
+  def next_exercise_for(user)
+    user.try(&:last_exercise) || first_exercise
+  end
+
   def import_from_json!(json)
     self.assign_attributes json.except('chapters', 'complements', 'id', 'description', 'teacher_info')
     self.description = json['description'].squeeze(' ')

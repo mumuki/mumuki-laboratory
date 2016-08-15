@@ -7,13 +7,6 @@
 
   <%= @chapter.description_html %>
 
-  <div class="actions">
-    <% if @chapter.lessons.present? %>
-      <a href="<%= lesson_path(@chapter.first_lesson) %>" class="btn btn-success">
-        <%= t(:start_practicing) %>
-      </a>
-    <% end %>
-  </div>
 </div>
 
 <% if @chapter.lessons.present? %>
