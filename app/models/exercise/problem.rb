@@ -29,14 +29,10 @@ class Problem < Exercise
   end
 
   def evaluation_criteria?
-    !manual_evaluation? ? has_tests_or_expectations? : !has_tests_or_expectations?
+    manual_evaluation? || expectations.present? || test.present?
   end
 
   private
-
-  def has_tests_or_expectations?
-    expectations.present? || test.present?
-  end
 
   def ensure_evaluation_criteria
     errors.add :base, :evaluation_criteria_required unless evaluation_criteria?
