@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :guides, only: [:create]
     resources :topics, only: [:create]
     resources :books, only: [:create]
+    resources :organizations, only: [:index]
   end
 
   resources :book, only: [:show]
