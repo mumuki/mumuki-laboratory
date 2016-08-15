@@ -17,7 +17,7 @@ class Topic < ActiveRecord::Base
 
   include WithUsages
 
-  markdown_on :description, :description_teaser
+  markdown_on :appendix, :description, :description_teaser
 
   def description_teaser
     description.markdown_paragraphs.first

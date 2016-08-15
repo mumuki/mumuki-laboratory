@@ -4,6 +4,8 @@ module TopicContainer
     validates_presence_of :topic
 
     delegate :name,
+             :appendix,
+             :appendix_html,
              :description,
              :description_html,
              :description_teaser_html,

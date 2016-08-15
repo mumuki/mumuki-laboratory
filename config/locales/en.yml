@@ -127,3 +127,5 @@ en:
   upload_solution: Upload Solution
   want_permissions: The next user requires permissions
   item_not_accessible: "You are not permitted to access this content"
+  appendix: "Appendix"
+  appendix_teaser: Do you want to learn more? <a href="%{link}">Check this chapter's appendix</a>"
