@@ -26,17 +26,20 @@ class Mumukit::Auth::LoginSettings
   end
 
   def to_lock_json(callback_url, options={})
+    lock_json
+    .merge(callbackURL: callback_url, authParams: {scope: 'openid profile'})
+    .merge(options)
+    .to_json
+    .html_safe
+  end
+
+  def lock_json
     {dict: I18n.locale,
      connections: lock_login_methods,
      icon: '/logo-alt.png',
      socialBigButtons: !many_methods?,
-     callbackURL: callback_url,
      responseType: 'code',
-     authParams: {scope: 'openid profile'},
      disableResetAction: false}
-    .merge(options)
-    .to_json
-    .html_safe
   end
 
   def lock_login_methods
