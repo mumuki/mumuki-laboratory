@@ -93,5 +93,5 @@ Rails.application.configure do
   config.offline_mode = ENV['OFFLINE_MODE']
   config.domain_url = ENV['DOMAIN_URL'] || 'mumuki.io'
   config.queueless_mode = ENV['QUEUELESS_MODE']
-
+  config.cookies_domain = ENV['COOKIES_DOMAIN'] || '.mumuki.io'
 end
