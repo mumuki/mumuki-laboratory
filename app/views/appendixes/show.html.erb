@@ -1,0 +1,7 @@
+<%= content_for :breadcrumbs do %>
+  <%= breadcrumbs @chapter, link_to(t(:appendix), chapter_appendix_path(@chapter)) %>
+<% end %>
+
+<h1><%= t :appendix %></h1>
+
+<%= @chapter.appendix_html %>

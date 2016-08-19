@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   end
 
   resources :book, only: [:show]
-  resources :chapters, only: [:show]
+  resources :chapters, only: [:show] do
+    resource :appendix, only: :show
+  end
 
   # All users
   resources :exercises, only: [:show, :index] do

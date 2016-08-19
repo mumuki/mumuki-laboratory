@@ -5,6 +5,7 @@ es:
   actions: Acciones
   activity: Actividad
   all: Todos
+  appendix: "Apéndice"
   and: y
   ask_redirect: ¿Querés que te llevemos ahí?
   author: Autor
@@ -149,3 +150,4 @@ es:
   upload_solution: "Subir solución"
   want_permissions: El siguiente usuario requiere permisos
   item_not_accessible: "No tenés permisos para acceder a este contenido"
+  appendix_teaser: ¿Querés saber más? <a href="%{link}">Consultá el apéndice de este capítulo</a>
