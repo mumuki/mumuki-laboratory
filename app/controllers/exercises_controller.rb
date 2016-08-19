@@ -4,7 +4,7 @@ class ExercisesController < ApplicationController
 
   before_action :set_exercises, only: :index
   before_action :set_guide, only: :show
-  before_action :set_default_content, only: :show
+  before_action :set_default_content, only: :show, if: :current_user?
   before_action :set_comments, only: :show
   before_action :validate_user, only: :show
   before_action :start!, only: :show
@@ -31,7 +31,8 @@ class ExercisesController < ApplicationController
   end
 
   def set_default_content
-    @default_content = @exercise.default_content_for(current_user) if current_user?
+    @current_content = @exercise.current_content_for(current_user)
+    @default_content = @exercise.default_content_for(current_user)
   end
 
   def set_comments
