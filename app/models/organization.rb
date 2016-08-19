@@ -89,7 +89,7 @@ class Organization < ActiveRecord::Base
   end
 
   def central_url
-    "central.#{Rails.configuration.domain_url}"
+    "http://central.#{Rails.configuration.domain_url}"
   end
 
   private
