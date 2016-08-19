@@ -22,10 +22,7 @@
       <div class="modal-footer">
         <div class="row">
           <div class="col-md-12 pull-right">
-            <a data-dismiss="modal" aria-label="Close">
-              <%= t :stay_here %>
-
-            </a>
+            <%= link_to t(:stay_here), Organization.central_url %>
           </div>
         </div>
       </div>

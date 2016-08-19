@@ -88,6 +88,10 @@ class Organization < ActiveRecord::Base
     "#{name}.#{Rails.configuration.domain_url}"
   end
 
+  def central_url
+    "central.#{Rails.configuration.domain_url}"
+  end
+
   private
 
   def notify!(assignments)
