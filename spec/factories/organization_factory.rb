@@ -1,14 +1,15 @@
 FactoryGirl.define do
 
   factory :organization do
-    private false
-    login_methods Mumukit::Auth::LoginSettings.login_methods
     contact_email { Faker::Internet.email }
     book
   end
 
-  factory :private_organization, class: Organization do
-    contact_email { Faker::Internet.email }
-    book
+  factory :public_organization, parent: :organization do
+    private false
+    login_methods Mumukit::Auth::LoginSettings.login_methods
+  end
+
+  factory :private_organization, parent: :organization do
   end
 end

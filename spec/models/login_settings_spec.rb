@@ -2,11 +2,12 @@ require 'spec_helper'
 
 describe Mumukit::Auth::LoginSettings do
   let(:defaults) { Mumukit::Auth::LoginSettings.default_methods }
+  let(:fresh_organization) { create(:organization, name: 'foo') }
   let(:facebook_and_user_pass) { [:facebook, :user_pass] }
 
-  it { expect(Organization.login_settings.login_methods).to eq defaults }
-  it { expect(Organization.login_settings.social_login_methods).to eq [] }
-  it { expect(Organization.login_settings.to_lock_json('/foo')).to be_html_safe }
+  it { expect(fresh_organization.login_settings.login_methods).to eq defaults }
+  it { expect(fresh_organization.login_settings.social_login_methods).to eq [] }
+  it { expect(fresh_organization.login_settings.to_lock_json('/foo')).to be_html_safe }
 
   describe '#social_methods' do
     context 'with few methods' do
