@@ -39,4 +39,7 @@ Rails.application.routes.draw do
 
   # Guide route
   get '/guides/:organization/:repository' => 'guides#show_by_slug', as: :guide_by_slug
+
+  #Rescue not found routes
+  get '*not_found', to: 'application#not_found'
 end

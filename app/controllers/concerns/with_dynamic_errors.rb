@@ -3,13 +3,19 @@ module WithDynamicErrors
 
   included do
     rescue_from Exception, with: :internal_server_error
-    rescue_from ActionController::RoutingError, with: :not_found
+    unless Rails.application.config.consider_all_requests_local
+      rescue_from ActionController::RoutingError, with: :not_found
+    end
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
     rescue_from Exceptions::NotFoundError, with: :not_found
     rescue_from Exceptions::OrganizationPrivateError, with: :forbidden
     rescue_from Exceptions::ForbiddenError, with: :forbidden
     rescue_from Exceptions::UnauthorizedError, with: :unauthorized
     rescue_from Exceptions::GoneError, with: :gone
+  end
+
+  def not_found
+    render 'errors/not_found', status: 404
   end
 
   private
@@ -19,9 +25,6 @@ module WithDynamicErrors
     render 'errors/internal_server_error', status: 500
   end
 
-  def not_found
-    render 'errors/not_found', status: 404
-  end
 
   def unauthorized
     render 'errors/unauthorized', status: 401
