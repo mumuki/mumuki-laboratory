@@ -3,6 +3,16 @@ require 'spec_helper'
 describe Book do
   let(:book) { Organization.book }
 
+  describe '#next_lesson_for' do
+    let!(:chapter) { create(:chapter, lessons: [create(:lesson)]) }
+    let(:fresh_user) { create(:user) }
+
+    before { reindex_current_organization! }
+
+    it { expect(book.next_lesson_for(nil)).to be book.first_lesson }
+    it { expect(book.next_lesson_for(fresh_user)).to be book.first_lesson }
+  end
+
   describe '#rebuild!' do
     let(:chapter_1) { build(:chapter, number: 10) }
     let(:chapter_2) { build(:chapter, number: 8) }

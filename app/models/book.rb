@@ -11,16 +11,14 @@ class Book < ActiveRecord::Base
 
   markdown_on :description
 
+  delegate :first_lesson, to: :first_chapter
+
   def first_chapter
     chapters.first
   end
 
-  def first_exercise
-    first_chapter.first_lesson.first_exercise
-  end
-
-  def next_exercise_for(user)
-    user.try(&:last_exercise) || first_exercise
+  def next_lesson_for(user)
+    user.try(:last_lesson)|| first_lesson
   end
 
   def import_from_json!(json)

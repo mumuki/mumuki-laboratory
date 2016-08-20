@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   after_initialize :init
 
   def last_lesson
-    last_guide.lesson
+    last_guide.try(:lesson)
   end
 
   def last_submission_date
