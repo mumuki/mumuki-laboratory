@@ -17,7 +17,8 @@ en:
   console: Console
   contact_administrator: 'If you think this is not supposed to happen, please contact the admin: %{link}'
   content: Content
-  continue_practicing: Continue Practicing!
+  continue_practicing: Continue practicing!
+  continue_lesson: Continue this lesson!
   contributors: Contributors
   corollary: Corollary
   create_submission: Submit
@@ -105,6 +106,7 @@ en:
   something_went_wrong: Something went wrong!
   something_went_wrong_explanation: Something is broken in Mumuki. And we need to solve this as soon as possible, %{issues}.
   start_practicing: Start Practicing!
+  start_lesson: Start this lesson!
   stats: Some stats
   status: Status
   submission: submission

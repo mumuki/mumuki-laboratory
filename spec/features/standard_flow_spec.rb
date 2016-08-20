@@ -25,7 +25,7 @@ feature 'Standard Flow' do
     expect(page).to have_text('Values are everywhere...')
     expect(page).to have_text('Content')
     expect(page).to have_text('The Basic Values')
-    expect(page).to have_text('Start Practicing!')
+    expect(page).to have_text('Start this lesson!')
     expect(page).to_not have_text("Let's say we")
   end
 

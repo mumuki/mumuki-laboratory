@@ -1,3 +1,3 @@
-module LessonsHelper
+module BooksHelper
   include WithProgressRendering
 end

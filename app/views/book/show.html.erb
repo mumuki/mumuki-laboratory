@@ -19,7 +19,7 @@
   <% @book.next_lesson_for(current_user).try do |lesson| %>
     <div class="actions">
       <a href="<%= lesson_path(lesson) %>" class="btn btn-success">
-        <%= current_user.try(&:last_exercise).present?? t(:continue_practicing) : t(:start_practicing) %>
+        <%= t book_practice_key_for(current_user) %>
       </a>
     </div>
   <% end %>
