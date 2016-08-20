@@ -18,14 +18,15 @@ feature 'Standard Flow' do
 
   scenario 'do an exercise for first time, starting from home' do
     expect(page).to have_text('Functional Programming')
+
     click_on 'Start Practicing!'
 
     expect(page).to have_text('Values and Functions')
+    expect(page).to have_text('Values are everywhere...')
+    expect(page).to have_text('Content')
     expect(page).to have_text('The Basic Values')
-    expect(page).to have_text("Let's say we want to declare a variable")
-    expect(page).to have_text('we want to declare a variable')
-    expect(page).to_not have_text('Values are everywhere...')
-    expect(page).to_not have_text('Start Practicing!')
+    expect(page).to have_text('Start Practicing!')
+    expect(page).to_not have_text("Let's say we")
   end
 
 end

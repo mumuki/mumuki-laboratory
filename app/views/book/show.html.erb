@@ -16,9 +16,9 @@
     <%= @book.description_html %>
   </div>
 
-  <% if @book.next_exercise_for(current_user).present? %>
+  <% @book.next_lesson_for(current_user).try do |lesson| %>
     <div class="actions">
-      <a href="<%= exercise_path(@book.next_exercise_for current_user) %>" class="btn btn-success">
+      <a href="<%= lesson_path(lesson) %>" class="btn btn-success">
         <%= current_user.try(&:last_exercise).present?? t(:continue_practicing) : t(:start_practicing) %>
       </a>
     </div>
