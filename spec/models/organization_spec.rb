@@ -1,27 +1,48 @@
 require 'spec_helper'
 
 describe Organization do
-  let(:organization) { Organization.find_by(name: 'test') }
   let(:user) { create(:user) }
 
-  it { expect(organization).to_not be nil }
-  it { expect(organization).to eq Organization.current }
+  describe '.current' do
+    let(:organization) { Organization.find_by(name: 'test') }
+    it { expect(organization).to_not be nil }
+    it { expect(organization).to eq Organization.current }
+  end
+
+  describe 'defaults' do
+    let(:fresh_organization) { create(:organization, name: 'bar') }
+    it { expect(fresh_organization.private?).to be true }
+    it { expect(fresh_organization.customized_login_methods?).to be true }
+  end
 
   describe '#notify_recent_assignments!' do
-    it { expect { organization.notify_recent_assignments! 1.minute.ago }.to_not raise_error }
+    it { expect { Organization.notify_recent_assignments! 1.minute.ago }.to_not raise_error }
+  end
+
+  describe 'restricter_login_methods?' do
+    let(:private_organization) { create(:private_organization, name: 'digitaldojo') }
+    let(:public_organization) { create(:public_organization, name: 'guolok') }
+
+    it { expect(private_organization.customized_login_methods?).to be true }
+    it { expect(private_organization.private?).to be true }
+
+    it { expect { private_organization.update! private: false }.to raise_error('Validation failed: A public organization can not restrict login methods') }
+
+    it { expect(public_organization.customized_login_methods?).to be false }
+    it { expect(public_organization.private?).to be false }
   end
 
   describe '#notify_assignments_by!' do
-    it { expect { organization.notify_assignments_by! user }.to_not raise_error }
+    it { expect { Organization.notify_assignments_by! user }.to_not raise_error }
   end
 
   describe '#in_path?' do
     let!(:chapter_in_path) { create(:chapter, lessons: [
-        create(:lesson, exercises: [
-            create(:exercise),
-            create(:exercise)
-        ]),
-        create(:lesson)
+      create(:lesson, exercises: [
+        create(:exercise),
+        create(:exercise)
+      ]),
+      create(:lesson)
     ]) }
     let(:topic_in_path) { chapter_in_path.lessons.first }
     let(:topic_in_path) { chapter_in_path.topic }

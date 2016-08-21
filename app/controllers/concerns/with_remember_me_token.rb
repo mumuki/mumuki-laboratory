@@ -16,12 +16,15 @@ module WithRememberMeToken
     end
 
     def value=(v)
-      permanent_signed_cookies[key] = v
+      permanent_signed_cookies[key] = {
+        value: v,
+        domain: Rails.configuration.cookies_domain
+      }
     end
 
     def clear!
       self.value = nil
-      cookies.delete key
+      cookies.delete key, Rails.configuration.cookies_domain
     end
 
     private

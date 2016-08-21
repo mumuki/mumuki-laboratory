@@ -22,3 +22,5 @@
 public/sitemap.xml.gz
 public/assets
 coverage/
+
+vendor/cache/**
