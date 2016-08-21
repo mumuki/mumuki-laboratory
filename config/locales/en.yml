@@ -92,6 +92,7 @@ en:
   progress: Progresss
   read: Read
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
+  reset: reset
   running: running
   search: Search
   sending_solution: Sending solution

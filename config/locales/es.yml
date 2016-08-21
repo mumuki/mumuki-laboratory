@@ -109,6 +109,7 @@ es:
   read: Leido
   recent_activity: Actividad Reciente
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
+  reset: reinicar
   running: procesando
   search: 'Buscá, por ejemplo: polimorfismo, haskell o competenciaDeSaltos'
   sending_solution: Enviando solución
