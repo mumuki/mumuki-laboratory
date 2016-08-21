@@ -1,8 +1,8 @@
 <div class="console">
+  <div class="editor-overlapped">
+    <a class="clear-console"><%= fa_icon('trash-o', text: 'borrar')%></a>
+  </div>
 </div>
-<div class="pull-left">
-  <div class="btn btn-info clear-console"> <%= t :clear_console %></div>
-</div>
-<div class="pull-right">
+<div class="actions">
   <%= next_button(@exercise) || next_button(@exercise.guide.lesson) %>
 </div>

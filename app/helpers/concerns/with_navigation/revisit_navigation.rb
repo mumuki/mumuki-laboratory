@@ -13,7 +13,7 @@ module WithNavigation
     end
 
     def clazz
-      'btn btn-warning'
+      'btn btn-warning btn-block'
     end
 
     def sibling_for(navigable)
