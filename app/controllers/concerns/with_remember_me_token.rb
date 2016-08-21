@@ -24,7 +24,7 @@ module WithRememberMeToken
 
     def clear!
       self.value = nil
-      cookies.delete key, Rails.configuration.cookies_domain
+      cookies.delete key, domain: Rails.configuration.cookies_domain
     end
 
     private
