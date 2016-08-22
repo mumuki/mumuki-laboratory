@@ -31,7 +31,7 @@
                        style: 'display: none' %>
         </div>
         <div class="editor-overlapped">
-          <a class="editor-trash"><%= fa_icon('trash-o', text: t(:reset))%></a>
+          <a class="editor-reset"><%= fa_icon('trash-o', text: t(:reset))%></a>
         </div>
         <%= f.hidden_field :editor_bottom, value: defined?(editor_bottom) %>
 
@@ -60,7 +60,7 @@
     <div class="text-info"><%= t(:type_expressions_here) %></div>
     <div class="console">
     </div>
-    <div class="btn btn-info clear-console col-xs-12"> <%= t :clear_console %></div>
+    <div class="btn btn-info console-reset col-xs-12"> <%= t :clear_console %></div>
   </div>
   <div role="tabpanel" class="tab-pane editor-pane fade" id="visible-extra">
     <%= @exercise.extra_preview_html %>
