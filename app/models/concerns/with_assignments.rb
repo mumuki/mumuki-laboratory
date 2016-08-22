@@ -5,13 +5,13 @@ module WithAssignments
     has_many :assignments, dependent: :destroy
   end
 
-  def default_content_for(user)
+  def current_content_for(user)
     assignment_for(user).try(&:solution) ||
-      interpolated_default_content_for(user)
+      default_content_for(user)
   end
 
-  def interpolated_default_content_for(user)
-    (default_content || '').gsub('/*...previousContent...*/') { previous.default_content_for(user) }
+  def default_content_for(user)
+    (default_content || '').gsub('/*...previousContent...*/') { previous.current_content_for(user) }
   end
 
   def comments_for(user)

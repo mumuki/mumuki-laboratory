@@ -48,6 +48,13 @@ div.console span.jquery-console-prompt-label {
   color: #3498db;
 }
 
-div#console .clear-console {
+.console-reset {
   cursor: pointer;
+}
+
+.console-overlapped {
+  margin: -45px 5px 10px 0;
+  z-index: 10;
+  position: relative;
+  text-align: right;
 }

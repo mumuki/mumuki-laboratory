@@ -22,6 +22,16 @@ var mumuki = mumuki || {};
     $("#exercise_language_id").change(updateAceEditorLanguage);
   }
 
+  function resetEditor() {
+    mumuki.page.dynamicEditors.forEach(function (e) {
+      setDefaultContent(e, $('#default_content').val());
+    })
+  }
+
+  function setDefaultContent(editor, content) {
+    editor.setValue(content, 1);
+  }
+
   function updateAceEditorLanguage() {
     var language = $("#exercise_language_id").find(":selected").html() || $('#exercise_language').val();
     if (language !== undefined) {
@@ -46,5 +56,9 @@ var mumuki = mumuki || {};
     mumuki.page.editors = createAceEditors();
     updateAceEditorLanguage();
     onSelectUpdateAceEditor();
+
+    $('.editor-reset').click(function(){
+      resetEditor();
+    });
   });
 })(mumuki);

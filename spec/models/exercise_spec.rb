@@ -148,11 +148,11 @@ describe Exercise do
     context 'when user has a single submission for the exercise' do
       let!(:assignment) { exercise.submit_solution!(user, content: 'foo') }
 
-      it { expect(exercise.default_content_for(user)).to eq assignment.solution }
+      it { expect(exercise.current_content_for(user)).to eq assignment.solution }
     end
 
     context 'when user has no submissions for the exercise' do
-      it { expect(exercise.default_content_for(user)).to eq '' }
+      it { expect(exercise.current_content_for(user)).to eq '' }
     end
 
     context 'when default content has an interpolation' do
@@ -170,11 +170,11 @@ describe Exercise do
 
       context 'has previous submission' do
         before { previous_exercise.submit_solution!(user, content: 'foobar') }
-        it { expect(exercise.default_content_for(user)).to eq 'foobar' }
+        it { expect(exercise.current_content_for(user)).to eq 'foobar' }
       end
 
       context 'does not have previous submission' do
-        it { expect(exercise.default_content_for(user)).to eq '' }
+        it { expect(exercise.current_content_for(user)).to eq '' }
       end
     end
 
@@ -182,13 +182,13 @@ describe Exercise do
       let!(:assignments) { [exercise.submit_solution!(user, content: 'foo'),
                             exercise.submit_solution!(user, content: 'bar')] }
 
-      it { expect(exercise.default_content_for(user)).to eq assignments.last.solution }
+      it { expect(exercise.current_content_for(user)).to eq assignments.last.solution }
     end
 
     context 'when user has no solution and exercise has default content' do
       let(:exercise) { create(:exercise, default_content: '#write here...') }
 
-      it { expect(exercise.default_content_for(user)).to eq '#write here...' }
+      it { expect(exercise.current_content_for(user)).to eq '#write here...' }
     end
   end
 

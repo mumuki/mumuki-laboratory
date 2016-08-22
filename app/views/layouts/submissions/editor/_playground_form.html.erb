@@ -1,8 +1,8 @@
 <div class="console">
 </div>
-<div class="pull-left">
-  <div class="btn btn-info clear-console"> <%= t :clear_console %></div>
+<div class="console-overlapped">
+  <a class="console-reset"><%= reset_button %></a>
 </div>
-<div class="pull-right">
+<div class="actions">
   <%= next_button(@exercise) || next_button(@exercise.guide.lesson) %>
 </div>

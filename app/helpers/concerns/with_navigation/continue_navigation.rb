@@ -13,7 +13,7 @@ module WithNavigation
     end
 
     def clazz
-      'btn btn-success'
+      'btn btn-success btn-block'
     end
 
     def sibling_for(navigable)
