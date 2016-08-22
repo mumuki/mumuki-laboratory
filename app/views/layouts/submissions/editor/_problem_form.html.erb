@@ -22,7 +22,7 @@
       <input type="file" id="upload" class="upload submission-control"/>
     <% end %>
 
-    <%= form_for([@exercise, @solution], remote: true, html: {role: 'form', class: 'editor-overlap'}) do |f| %>
+    <%= form_for([@exercise, @solution], remote: true, html: {role: 'form', class: 'new_solution editor-overlap'}) do |f| %>
       <% if editor_mode == :visible %>
         <div class="field form-group">
           <%= f.editor :content, 'dynamic',
