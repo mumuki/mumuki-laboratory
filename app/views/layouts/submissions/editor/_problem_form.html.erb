@@ -30,8 +30,8 @@
                        value: @current_content,
                        style: 'display: none' %>
         </div>
-        <div class="editor-overlapped">
-          <a class="editor-reset"><%= reset_button %></a>
+        <div class="submission-overlapped">
+          <a class="submission-reset"><%= reset_button %></a>
         </div>
         <%= f.hidden_field :editor_bottom, value: defined?(editor_bottom) %>
 
@@ -60,8 +60,8 @@
     <div class="text-info"><%= t(:type_expressions_here) %></div>
     <div class="console">
     </div>
-    <div class="console-overlapped">
-      <a class="console-reset"><%= reset_button %></a>
+    <div class="submission-overlapped">
+      <a class="submission-reset"><%= reset_button %></a>
     </div>
   </div>
   <div role="tabpanel" class="tab-pane editor-pane fade" id="visible-extra">
