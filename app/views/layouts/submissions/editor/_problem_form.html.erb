@@ -31,7 +31,7 @@
                        style: 'display: none' %>
         </div>
         <div class="editor-overlapped">
-          <a class="editor-reset"><%= fa_icon('trash-o', text: t(:reset))%></a>
+          <a class="editor-reset"><%= reset_button %></a>
         </div>
         <%= f.hidden_field :editor_bottom, value: defined?(editor_bottom) %>
 

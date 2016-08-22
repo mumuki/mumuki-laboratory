@@ -4,6 +4,7 @@ module ApplicationHelper
   include WithIcons
   include WithNavigation
   include WithStatusRendering
+  include WithResetButton
 
   def contact_email
     Organization.contact_email
