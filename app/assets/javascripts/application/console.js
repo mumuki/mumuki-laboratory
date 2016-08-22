@@ -91,7 +91,7 @@ var mumuki = mumuki || {};
     var prompt = $('#prompt').attr('value');
     var queryConsole = new QueryConsole();
 
-    $('.clear-console').click(function(){
+    $('.console-reset').click(function(){
       queryConsole.clearState();
     });
 

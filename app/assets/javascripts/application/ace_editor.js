@@ -57,7 +57,7 @@ var mumuki = mumuki || {};
     updateAceEditorLanguage();
     onSelectUpdateAceEditor();
 
-    $('.editor-trash').click(function(){
+    $('.editor-reset').click(function(){
       resetEditor();
     });
   });
