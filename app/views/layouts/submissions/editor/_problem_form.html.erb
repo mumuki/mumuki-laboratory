@@ -60,7 +60,9 @@
     <div class="text-info"><%= t(:type_expressions_here) %></div>
     <div class="console">
     </div>
-    <div class="btn btn-info console-reset col-xs-12"> <%= t :clear_console %></div>
+    <div class="console-overlapped">
+      <a class="console-reset"><%= reset_button %></a>
+    </div>
   </div>
   <div role="tabpanel" class="tab-pane editor-pane fade" id="visible-extra">
     <%= @exercise.extra_preview_html %>
