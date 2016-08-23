@@ -34,17 +34,21 @@ module ApplicationHelper
     date ? time_ago_in_words(date) : t(:never)
   end
 
-  def chapter_finished(guide)
-    t :chapter_finished_html, chapter: link_to_path_element(guide.chapter) if guide.chapter
-  end
-
   def corollary_box(with_corollary)
     if with_corollary.corollary.present?
       "<div><h3>#{t :corollary}</h3><p>#{with_corollary.corollary_html}</p></div>".html_safe
     end
   end
 
-  def next_lesson(guide)
-    (guide.lesson && next_button(guide.lesson)) || chapter_finished(guide)
+  def chapter_finished(chapter)
+    t :chapter_finished_html, chapter: link_to_path_element(chapter)
+  end
+
+  def next_lesson_button(guide)
+    next_button(guide.lesson) || chapter_finished(guide.chapter)
+  end
+
+  def next_exercise_button(exercise)
+    next_button(exercise) || next_button(exercise.guide.lesson)
   end
 end
