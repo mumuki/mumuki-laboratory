@@ -36,6 +36,9 @@
 <% if @stats.try :done? %>
   <div class="text-box">
     <%= corollary_box(@guide) %>
+    <div class="actions">
+      <%= next_lesson @guide %>
+    </div>
   </div>
 <% end %>
 

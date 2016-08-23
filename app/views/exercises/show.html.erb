@@ -76,7 +76,7 @@
             </div>
             <div class="row">
               <div class="col-md-12 text-center">
-                <%= (@guide.lesson && next_button(@guide.lesson)) || chapter_finished(@guide) %>
+                <%= next_lesson @guide %>
               </div>
             </div>
           </div>

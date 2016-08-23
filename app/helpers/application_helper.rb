@@ -43,4 +43,8 @@ module ApplicationHelper
       "<div><h3>#{t :corollary}</h3><p>#{with_corollary.corollary_html}</p></div>".html_safe
     end
   end
+
+  def next_lesson(guide)
+    (guide.lesson && next_button(guide.lesson)) || chapter_finished(guide)
+  end
 end
