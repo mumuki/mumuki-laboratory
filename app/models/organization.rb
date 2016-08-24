@@ -79,8 +79,8 @@ class Organization < ActiveRecord::Base
   end
 
 
-  def absolute_link
-    "http://#{relative_link}"
+  def absolute_link(path)
+    "http://#{relative_link}#{path}"
   end
 
   def relative_link
