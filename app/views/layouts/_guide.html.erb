@@ -42,5 +42,9 @@
   </div>
 <% end %>
 
+<% if @guide.authors %>
+  <h3><%= t :authoring %></h3>
+  <%= render partial: 'layouts/authoring', locals: {guide: @guide} %>
+<% end %>
 
 
