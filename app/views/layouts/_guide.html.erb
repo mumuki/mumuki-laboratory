@@ -42,7 +42,7 @@
   </div>
 <% end %>
 
-<% if @guide.authors %>
+<% if @guide.authors.present? %>
   <%= render partial: 'layouts/authoring', locals: {guide: @guide} %>
 <% end %>
 
