@@ -155,3 +155,4 @@ es:
   item_not_accessible: "No tenés permisos para acceder a este contenido"
   appendix_teaser: ¿Querés saber más? <a href="%{link}">Consultá el apéndice de este capítulo</a>
   authoring: "Autores"
+  authoring_note: El contenido de esta guía fue desarrollado por %{authors}, bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/">Licencia Creative Commons Compartir-Igual, 4.0</a>.
