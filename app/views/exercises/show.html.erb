@@ -2,6 +2,8 @@
   <%= breadcrumbs @exercise %>
 <% end %>
 
+<%= render partial: 'layouts/authoring', locals: {guide: @guide} %>
+
 <% @stats = @exercise.guide.stats_for(current_user) if current_user && @exercise.guide %>
 
 <% if @exercise.navigable_parent.timed? && !current_user.teacher? %>
