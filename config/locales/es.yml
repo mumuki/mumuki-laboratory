@@ -20,6 +20,7 @@ es:
   contact_administrator: 'Si pensás que es un error, comunicate con el administrador: %{link}'
   content: Contenido
   continue_practicing: ¡Seguí aprendiendo!
+  continue_lesson: ¡Continuá esta lección!
   contributors: Autores
   corollary: Para pensar
   create_submission: Enviar
@@ -123,6 +124,7 @@ es:
   something_went_wrong: ¡Ups!, algo no anduvo bien....
   something_went_wrong_explanation: Algo se rompió feo en Mumuki. Y necesitamos solucionarlo urgentemente, %{issues}
   start_practicing: ¡Empezá ahora!
+  start_lesson: ¡Comenzá esta lección!
   stats: Tu Progreso
   status: Estado
   submission: solución

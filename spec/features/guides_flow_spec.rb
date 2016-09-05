@@ -75,7 +75,7 @@ feature 'Guides Flow' do
     expect(page).to have_text('An awesome guide')
     expect(page).to have_text('Content')
 
-    click_on 'Start Practicing'
+    click_on 'Start this lesson'
 
     expect(page).to have_text('Description of foo')
   end
