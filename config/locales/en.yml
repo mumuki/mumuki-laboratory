@@ -132,3 +132,5 @@ en:
   item_not_accessible: "You are not permitted to access this content"
   appendix: "Appendix"
   appendix_teaser: Do you want to learn more? <a href="%{link}">Check this chapter's appendix</a>"
+  authoring: "Authoring"
+  authoring_note: This guide's content was developed by %{authors}, under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons License Share-Alike, 4.0</a>

@@ -1,0 +1,7 @@
+<% if guide.authors.present? %>
+  <%= content_for :authoring do %>
+    <p class="small">
+      <%= raw t :authoring_note, authors: guide.authors, collaborators: "https://raw.githubusercontent.com/#{guide.slug}/master/COLLABORATORS.txt" %>
+    </p>
+  <% end %>
+<% end %>

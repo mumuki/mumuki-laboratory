@@ -90,27 +90,30 @@
 <footer class="footer">
   <div class="container">
     <hr>
+
     <div class="row">
-      <div class="col-md-4">
-        <div class="col-md-12 text-left">
-          <p>&copy; Copyright 2015-<%= DateTime.now.year %>
-            <a href="http://mumuki.org/"><span class="ahahamojimoji">ム</span> Mumuki Project</a></p>
-        </div>
+      <div class="col-md-12">
+        <%= yield :authoring %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 text-left">
+        <p>&copy; Copyright 2015-<%= DateTime.now.year %>
+          <a href="http://mumuki.org/"><span class="ahahamojimoji">ム</span> Mumuki Project</a></p>
       </div>
 
       <% UserMode.if_multiuser do %>
         <div class="col-md-4 text-center">
-          <a width="150" height="50" href="https://auth0.com/" target="_blank" alt="Single Sign On & Token Based Authentication - Auth0"><img width="150" height="50" alt="JWT Auth for open source projects" src="//cdn.auth0.com/oss/badges/a0-badge-light.png"/></a>
+          <a href="https://auth0.com/" target="_blank"><img height="40" alt="JWT Auth for open source projects" src="//cdn.auth0.com/oss/badges/a0-badge-light.png"/></a>
         </div>
       <% end %>
 
-      <div class="col-md-4">
-        <div class="text-right">
-          <a class="fa fa-facebook social-icon" href="https://www.facebook.com/MumukiProject" target="_blank"></a>
-          <a class="fa fa-twitter social-icon" href="https://twitter.com/MumukiProject" target="_blank"></a>
-          <a class="fa fa-github social-icon" href="https://github.com/mumuki" target="_blank"></a>
-          <a class="fa fa-linkedin social-icon" href="https://www.linkedin.com/company/mumuki-project" target="_blank"></a>
-        </div>
+      <div class="col-md-4 text-right">
+        <a class="fa fa-facebook social-icon" href="https://www.facebook.com/MumukiProject" target="_blank"></a>
+        <a class="fa fa-twitter social-icon" href="https://twitter.com/MumukiProject" target="_blank"></a>
+        <a class="fa fa-github social-icon" href="https://github.com/mumuki" target="_blank"></a>
+        <a class="fa fa-linkedin social-icon" href="https://www.linkedin.com/company/mumuki-project" target="_blank"></a>
       </div>
 
     </div>
