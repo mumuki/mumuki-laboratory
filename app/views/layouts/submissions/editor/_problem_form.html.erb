@@ -4,14 +4,10 @@
       <a href="#editor" aria-controls="editor" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'pencil-square' %> <%= t :editor %></a>
     </li>
     <% if @exercise.extra_visible? %>
-      <li role="presentation">
-        <a href="#visible-extra" aria-controls="visible-extra" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'code' %> <%= t 'activerecord.attributes.exercise.extra' %></a>
-      </li>
+        <%= extra_code_tab %>
     <% end %>
     <% if @exercise.queriable? %>
-      <li role="presentation">
-        <a href="#console" aria-controls="console" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'terminal' %> <%= t :console %></a>
-      </li>
+        <%= console_tab %>
     <% end %>
   </ul>
 <% end %>

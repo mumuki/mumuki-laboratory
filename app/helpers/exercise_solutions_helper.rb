@@ -4,4 +4,5 @@ module ExerciseSolutionsHelper
   include WithFeedbackRendering
   include WithExerciseFormRendering
   include WithProgressBar
+  include WithEditorTabs
 end
