@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   resources :guides, only: [:show, :index]
   resources :lessons, only: [:show]
   resources :complements, only: [:show]
-  resources :exams, only: [:show] #FIXME
+  resources :exams, only: [:show]
 
   # All users
   resources :users, only: [:show, :index]
