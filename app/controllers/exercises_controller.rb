@@ -16,6 +16,10 @@ class ExercisesController < ApplicationController
   def index
   end
 
+  def show_by_slug
+    redirect_to Guide.by_organization_and_repository!(params).exercises.find_by!(bibliotheca_id: params[:bibliotheca_id])
+  end
+
   private
 
   def subject

@@ -24,5 +24,10 @@ module WithSlug
         item.import!
       end
     end
+
+    def by_organization_and_repository!(args)
+      #FIXME use mumuki
+      find_by!(slug: "#{args[:organization]}/#{args[:repository]}")
+    end
   end
 end
