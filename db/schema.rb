@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830160937) do
+ActiveRecord::Schema.define(version: 20160907010315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,7 +117,6 @@ ActiveRecord::Schema.define(version: 20160830160937) do
     t.text     "corollary"
     t.integer  "layout",            default: 0,         null: false
     t.text     "expectations"
-    t.string   "slug"
     t.string   "type",              default: "Problem", null: false
     t.text     "tag_list",          default: [],                     array: true
     t.text     "default_content"
@@ -129,7 +128,6 @@ ActiveRecord::Schema.define(version: 20160830160937) do
 
   add_index "exercises", ["guide_id"], name: "index_exercises_on_guide_id", using: :btree
   add_index "exercises", ["language_id"], name: "index_exercises_on_language_id", using: :btree
-  add_index "exercises", ["slug"], name: "index_exercises_on_slug", unique: true, using: :btree
 
   create_table "guides", force: true do |t|
     t.string   "name"
