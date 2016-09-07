@@ -19,6 +19,9 @@
   <meta name="description" content="<%= t :mumuki_short_description %>"/>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript">
+    window.mumukiLocale = <%= raw Organization.locale_json %>;
+  </script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>

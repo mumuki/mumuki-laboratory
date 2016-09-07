@@ -35,6 +35,10 @@ class Organization < ActiveRecord::Base
     name == 'test'
   end
 
+  def locale_json
+    Locale::LOCALES[locale].to_json
+  end
+
   def notify_recent_assignments!(date)
     notify_assignments! assignments.where('assignments.updated_at > ?', date)
   end

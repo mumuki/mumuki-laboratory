@@ -1,5 +1,6 @@
 module Locale
-  def self.all
-    [['English', :en], ['Español', :es]]
-  end
+  LOCALES ={
+    en: {facebook_code: :en_US, name: 'English'},
+    es: {facebook_code: :es_LA, name: 'Español'}
+  }.with_indifferent_access
 end
