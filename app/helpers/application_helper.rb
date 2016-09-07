@@ -41,7 +41,7 @@ module ApplicationHelper
   end
 
   def chapter_finished(chapter)
-    t :chapter_finished_html, chapter: link_to_path_element(chapter)
+    t :chapter_finished_html, chapter: link_to_path_element(chapter) if chapter
   end
 
   def next_lesson_button(guide)
