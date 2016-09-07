@@ -11,7 +11,7 @@ module WithSlug
   end
 
   #TODO use mumukit slug
-  def org_and_repo
+  def organization_and_repository
     org, repo = slug.split('/')
     {organization: org, repository: repo}
   end
