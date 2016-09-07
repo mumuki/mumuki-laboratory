@@ -59,6 +59,10 @@ class Exercise < ActiveRecord::Base
     "#{guide.slug}/#{bibliotheca_id}"
   end
 
+  def slug_parts
+    guide.slug_parts.merge(bibliotheca_id: bibliotheca_id)
+  end
+
   def extra
     extra_code = [guide.extra, self[:extra]].compact.join("\n")
     if extra_code.empty? or extra_code.end_with? "\n"

@@ -4,7 +4,7 @@ class GuidesController < ApplicationController
   end
 
   def show_by_slug
-    redirect_to_usage Guide.by_organization_and_repository!(params)
+    redirect_to_usage Guide.by_slug_parts!(params)
   end
 
   def redirect_to_usage(guide)
