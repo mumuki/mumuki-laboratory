@@ -6,6 +6,12 @@ describe Exercise do
 
   before { I18n.locale = :en }
 
+  describe '#slug' do
+    let(:guide) { create(:guide, slug: 'foo/bar') }
+    let(:exercise) { create(:exercise, guide: guide, bibliotheca_id: 4) }
+    it { expect(exercise.slug).to eq 'foo/bar/4' }
+  end
+
   describe '#new_solution' do
     context 'when there is default content' do
       let(:exercise) { create(:exercise, default_content: 'foo') }
