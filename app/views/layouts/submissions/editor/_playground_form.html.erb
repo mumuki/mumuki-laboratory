@@ -1,11 +1,9 @@
-<% if (@exercise.queriable? || @exercise.extra_visible?) && ![:upload, :hidden].include?(editor_mode) %>
-    <ul class="nav nav-tabs" role="tablist">
-      <%= console_tab %>
-      <% if @exercise.extra_visible? %>
-        <%= extra_code_tab %>
-      <% end %>
-    </ul>
-<% end %>
+<ul class="nav nav-tabs" role="tablist">
+  <%= console_tab %>
+  <% if @exercise.extra_visible? %>
+    <%= extra_code_tab %>
+  <% end %>
+</ul>
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane editor-pane in active fade" id="console">
     <div class="console">
