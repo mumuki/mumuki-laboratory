@@ -8,7 +8,7 @@ module WithEmailFormatting
 
 #{t :status}: #{assignment.status}
 
-See #{guide_by_slug_url(assignment.exercise.guide.org_and_repo)}
+See #{exercise_by_slug_url(assignment.exercise.slug_parts)}
 EOM
   end
 
