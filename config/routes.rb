@@ -39,8 +39,9 @@ Rails.application.routes.draw do
   # Current user
   resources :comments, only: :index
 
-  # Guide route
+  # Routes by slug
   get '/guides/:organization/:repository' => 'guides#show_by_slug', as: :guide_by_slug
+  get '/exercises/:organization/:repository/:bibliotheca_id' => 'exercises#show_by_slug', as: :exercise_by_slug
 
   #Rescue not found routes
   get '*not_found', to: 'application#not_found'
