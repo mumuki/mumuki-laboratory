@@ -31,7 +31,7 @@ class Assignment < ActiveRecord::Base
     result.truncate(100) if should_retry?
   end
 
-  def result_html #TODO move rendering logic to helpers
+  def result_html
     output_content_type.to_html(result)
   end
 

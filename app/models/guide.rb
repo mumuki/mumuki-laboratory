@@ -58,7 +58,6 @@ class Guide < ActiveRecord::Base
     exercises.first
   end
 
-  #TODO denormalize
   def search_tags
     exercises.flat_map(&:search_tags).uniq
   end

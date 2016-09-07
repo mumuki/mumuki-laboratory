@@ -10,8 +10,7 @@ var mumuki = mumuki || {};
     setupEditor: function () {
       this.form = this.textarea.form;
       this.editor = ace.edit(this.textarea);
-      this.editor.container.id = "editor-container";//FIXME
-
+      this.editor.container.id = "editor-container";
     },
     setupLanguage: function () {
       var language = $(this.textarea).data('editor-language');
@@ -34,7 +33,7 @@ var mumuki = mumuki || {};
       var form = this.form;
       var editor = this.editor;
       this.form.addEventListener("submit", function () {
-        textarea.style.visibility = "hidden";//FIXME
+        textarea.style.visibility = "hidden";
         textarea.value = editor.getValue();
         form.appendChild(textarea)
       });
