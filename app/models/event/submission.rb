@@ -18,7 +18,7 @@ class Event::Submission < Event::Base
                     lesson: {only: [:number]},
                     language: {only: [:name]}},
                   },
-                exercise: {only: [:id, :name, :number]},
+                exercise: {only: [:id, :bibliotheca_id, :name, :number]},
                 submitter: {only: [:name, :email, :image_url], methods: [:social_id]}}).
       deep_merge(
             'id' => @assignment.submission_id,

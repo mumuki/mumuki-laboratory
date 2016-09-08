@@ -38,6 +38,7 @@ describe Event do
                              submissions_count: 2,
                              exercise: {
                                id: exercise.id,
+                               bibliotheca_id: exercise.bibliotheca_id,
                                name: exercise.name,
                                number: exercise.number},
                              guide: {
@@ -94,6 +95,7 @@ describe Event do
                              submissions_count: 2,
                              exercise: {
                                id: exercise.id,
+                               bibliotheca_id: exercise.bibliotheca_id,
                                name: exercise.name,
                                number: exercise.number},
                              guide: {
@@ -145,6 +147,7 @@ describe Event do
                              submissions_count: 2,
                              exercise: {
                                id: exercise.id,
+                               bibliotheca_id: exercise.bibliotheca_id,
                                name: exercise.name,
                                number: exercise.number},
                              guide: {
