@@ -1,25 +1,7 @@
-class Mumukit::Inspection::NegatedInspection
-  def must
-    'must_not'
-  end
-end
-
-class Mumukit::Inspection::PositiveInspection
-  def must
-    'must'
-  end
-end
+require 'mumukit/inspection'
 
 module WithExpectationsTranslate
-
-  def t_expectation_result(binding, inspection)
-    inspection = Mumukit::Inspection.parse inspection
-    raw t "expectation_#{inspection.type}", binding: "<strong>#{binding}</strong>", target: "<strong>#{inspection.target}</strong>", must: t_must(inspection)
-  rescue
-    '<unknown expectation>'
-  end
-
-  def t_must(parsed)
-    t("expectation_#{parsed.must}")
+  def t_expectation(expectation)
+    raw Mumukit::Inspection::I18n.t expectation
   end
 end
