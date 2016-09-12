@@ -114,3 +114,15 @@ pre {
 hr {
   margin: 15px 0;
 }
+
+/* TODO: move to mumuki-styles */
+.mu-inline-block-left {
+  margin-left: 15px;
+}
+
+.mu-inline-block-right {
+  float: right !important;
+  display: inline-block;
+  margin-right: 15px;
+  margin-left: 10px;
+}
