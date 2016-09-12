@@ -1,6 +1,22 @@
+.breadcrumb-left {
+  margin-left: 15px;
+}
+
+.breadcrumb-right {
+  float: right !important;
+  display: inline-block;
+  margin-right: 15px;
+  margin-left: 10px;
+}
+
 .breadcrumb {
   margin: 0;
   padding: 0;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
   background-color: transparent;
   .ahahamojimoji {
     font-size: 44px;
@@ -10,6 +26,8 @@
         text-decoration: none;
       }
     }
-
   }
+
+  li { display: inline; }
+
 }

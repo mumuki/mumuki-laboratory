@@ -37,12 +37,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-10">
-      <ol class="breadcrumb">
-        <%= yield :breadcrumbs %>
-      </ol>
-    </div>
-    <div class="col-md-2">
+    <div class="breadcrumb-right">
       <div class="user-menu">
         <% if current_user? %>
           <div class="dropdown">
@@ -61,6 +56,11 @@
           <%= login_anchor %>
         <% end %>
       </div>
+    </div>
+    <div class="breadcrumb-left">
+      <ol class="breadcrumb">
+        <%= yield :breadcrumbs %>
+      </ol>
     </div>
   </div>
 </div>
