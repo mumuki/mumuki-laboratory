@@ -5,6 +5,7 @@ describe Comment do
     let(:data) {
       {'exercise_id' => 1,
        'submission_id' => 'abcdef1',
+       'social_id' => 'auth0|dfdsfsdfsd',
        'comment' => {
            'email' => 'aguspina87@gmail.com',
            'content' => 'a',
@@ -33,6 +34,7 @@ describe Comment do
       let!(:data) {
         {'exercise_id' => problem.id,
          'submission_id' => assignment.submission_id,
+         'social_id' => 'auth0|dfdsfsdfsd',
          'tenant' => Organization.current.name,
          'comment' => {
              'email' => 'teacher@mumuki.org',

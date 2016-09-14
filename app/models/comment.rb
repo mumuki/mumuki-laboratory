@@ -11,7 +11,9 @@ class Comment < ActiveRecord::Base
   def self.parse_json(comment_json)
     comment = comment_json.delete('comment')
     comment['author'] = comment.delete('email')
-    comment_json.merge(comment)
+    comment_json
+      .except('social_id')
+      .merge(comment)
   end
 
   def read!
