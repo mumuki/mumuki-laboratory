@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   include WithComments
   include Accessibility
   include WithDynamicErrors
-  include WithRedirect
+  include WithOrganizationChooser
 
   before_action :set_organization!
   before_action :set_locale!
