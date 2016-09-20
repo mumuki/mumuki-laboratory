@@ -1,12 +1,5 @@
 class User < ActiveRecord::Base
-  INDEXED_ATTRIBUTES = {
-      against: [:name],
-      using: {
-          tsearch: {any_word: true}
-      }
-  }
-
-  include WithSearch, WithOmniauth, WithToken, WithMetadata
+  include WithOmniauth, WithToken, WithMetadata, WithUserNavigation
 
   has_many :assignments, foreign_key: :submitter_id
 
@@ -88,13 +81,6 @@ class User < ActiveRecord::Base
     "#{id}:#{name}:#{uid}"
   end
 
-  def accessible_organizations
-    metadata.accessible_organizations.map {|org| Organization.find_by(name: org)}.compact
-  end
-
-  def has_accessible_organizations?
-    accessible_organizations.present?
-  end
 
   private
 

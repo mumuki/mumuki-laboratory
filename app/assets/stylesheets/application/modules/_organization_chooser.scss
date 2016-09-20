@@ -1,15 +1,16 @@
+
 .organization-row {
   height: 50px;
   margin-bottom: 20px;
+
+  .mu-organization-chooser & {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
 
 .organization-link {
   line-height: 50px;
-}
-
-.no-padding-sides {
-  padding-right: 0;
-  padding-left: 0;
 }
 
 .title-font {

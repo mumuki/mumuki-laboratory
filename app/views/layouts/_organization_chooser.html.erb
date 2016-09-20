@@ -1,4 +1,4 @@
-<div class="modal fade" id="redirect" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade mu-organization-chooser" id="redirect" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -7,16 +7,7 @@
       </div>
       <div class="modal-body">
         <div class="container-fluid">
-          <% current_user.accessible_organizations.each do |org| %>
-              <div class="row">
-                <div class="col-md-6 organization-row no-padding-sides">
-                  <%= image_tag(org.logo_url, height: 50, class: 'pull-left') %>
-                </div>
-                <div class="col-md-6 organization-row no-padding-sides">
-                  <%= link_to("Ir a #{org.relative_link}", org.absolute_link(request.path), class: 'btn btn-success pull-right') %>
-                </div>
-              </div>
-          <% end %>
+          <%= render partial: 'layouts/organizations_listing' %>
         </div>
       </div>
       <div class="modal-footer">

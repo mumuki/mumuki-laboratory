@@ -5,14 +5,9 @@ class UsersController < ApplicationController
     @comments = current_user.try(:comments) || []
   end
 
-  def index
-    @q = params[:q]
-    @users = paginated User.by_full_text(@q).order('last_submission_date desc nulls last'), 30
-  end
-
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = current_user
   end
 end

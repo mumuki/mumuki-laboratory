@@ -13,5 +13,11 @@ module WithMetadata
     end
   end
 
+  def accessible_organizations
+    metadata.accessible_organizations.map {|org| Organization.find_by(name: org)}.compact
+  end
 
+  def has_accessible_organizations?
+    accessible_organizations.present?
+  end
 end
