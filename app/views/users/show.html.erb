@@ -1,60 +1,71 @@
-<%= render layout: 'layouts/user', locals: {current_tab: :overview} do %>
-  <%= content_for :breadcrumbs do %>
-    <%= home_breadcrumb %>
-  <% end %>
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active">
-      <a href="#info" aria-controls="info" role="tab" data-toggle="tab"><%= t :info %></a>
-    </li>
-    <li role="presentation">
-      <a href="#comments" aria-controls="comments" role="tab" data-toggle="tab"><%= t :comments %></a>
-    </li>
-  </ul>
+<%= content_for :breadcrumbs do %>
+    <%= breadcrumbs @user %>
+<% end %>
 
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="info">
-      <div class="row user-assignments">
-        <div class="col-md-4">
-          <%= image_tag @user.image_url, size: '250x250', class: 'img-circle' %>
-        </div>
-        <div class="col-md-8">
-          <table class="table table-striped">
-            <tbody>
-            <tr>
-              <th><%= t :submissions_success_rate %></th>
-              <td><%= @user.submissions_success_rate %></td>
-            </tr>
-            <tr>
-              <th><%= t :exercise_success_rate %></th>
-              <td><%= @user.exercises_success_rate %></td>
-            </tr>
-            <tr>
-              <th><%= t :last_submission_date %></th>
-              <td><%= time_ago_in_words_or_never @user.last_submission_date %></td>
-            </tr>
-            <tr>
-              <th><%= t :sign_up_date %></th>
-              <td><%= time_ago_in_words @user.created_at %></td>
-            </tr>
-            </tbody>
-          </table>
+<div>
+  <h1><%= @user.name %></h1>
+</div>
 
-        </div>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active">
+    <a href="#info" aria-controls="info" role="tab" data-toggle="tab"><%= t :profile %></a>
+  </li>
+  <li role="presentation">
+    <a href="#organizations" aria-controls="organizations" role="tab" data-toggle="tab"><%= t :organizations %></a>
+  </li>
+  <li role="presentation">
+    <a href="#comments" aria-controls="comments" role="tab" data-toggle="tab"><%= t :comments %></a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="info">
+    <div class="row mu-tab-body">
+      <div class="col-md-4">
+        <%= image_tag @user.image_url, size: '250x250', class: 'img-circle' %>
+      </div>
+      <div class="col-md-8">
+        <table class="table table-striped">
+          <tbody>
+          <tr>
+            <th><%= t :submissions_success_rate %></th>
+            <td><%= @user.submissions_success_rate %></td>
+          </tr>
+          <tr>
+            <th><%= t :exercise_success_rate %></th>
+            <td><%= @user.exercises_success_rate %></td>
+          </tr>
+          <tr>
+            <th><%= t :last_submission_date %></th>
+            <td><%= time_ago_in_words_or_never @user.last_submission_date %></td>
+          </tr>
+          <tr>
+            <th><%= t :sign_up_date %></th>
+            <td><%= time_ago_in_words @user.created_at %></td>
+          </tr>
+          </tbody>
+        </table>
+
       </div>
     </div>
-
-    <div role="tabpanel" class="tab-pane" id="comments">
-      <table class="table table-striped">
-        <% @comments.each do |comment| %>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="organizations">
+    <div class="row mu-tab-body">
+      <div class="col-md-12">
+        <%= render partial: 'layouts/organizations_listing' %>
+      </div>
+    </div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="comments">
+    <table class="table table-striped">
+      <% @comments.each do |comment| %>
           <tr>
             <td><%= icon_for_read(comment.read) %></td>
             <td><%= link_to comment.exercise.name, exercise_path(comment.exercise.id) %></td>
             <td><%= mail_to comment.author %></td>
             <td><%= time_ago_in_words comment.date %></td>
           </tr>
-        <% end %>
-      </table>
-    </div>
+      <% end %>
+    </table>
   </div>
-
-<% end %>
+</div>

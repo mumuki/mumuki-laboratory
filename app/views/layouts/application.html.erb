@@ -23,7 +23,7 @@
 </head>
 <body>
 <% if should_choose_organization? %>
-  <%= render partial: 'layouts/redirect' %>
+  <%= render partial: 'layouts/organization_chooser' %>
 <% end %>
 
 <% UserMode.if_multiuser do %>
@@ -44,11 +44,11 @@
             <span id="profileDropdown" data-toggle="dropdown">
               <%= image_tag(current_user.image_url, height: 40, class: 'img-circle') %>
             </span>
-            <a class="comments-box <%= has_comments? ? '' : 'comments-box-empty' %>" href=<%= "#{user_path(current_user)}#comments" %>>
+            <a class="comments-box <%= has_comments? ? '' : 'comments-box-empty' %>" href=<%= "#{user_path}#comments" %>>
               <span class="badge badge-comments"><%= comments_count %></span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-              <li><%= link_to t(:profile), user_path(current_user) %></li>
+              <li><%= link_to t(:profile), user_path %></li>
               <li><%= link_to(t(:sign_out), logout_path) %></li>
             </ul>
           </div>

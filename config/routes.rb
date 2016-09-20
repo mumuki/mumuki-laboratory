@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   resources :exams, only: [:show]
 
   # All users
-  resources :users, only: [:show, :index]
+  resource :user, only: [:show]
 
   # Current user
   resources :comments, only: :index
