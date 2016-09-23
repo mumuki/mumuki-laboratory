@@ -1,4 +1,4 @@
-class Command::Exam
+class Atheneum::Command::UpsertExam
   def self.execute!(body)
     import_from_json! body
   end
