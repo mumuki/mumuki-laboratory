@@ -24,10 +24,6 @@ class User < ActiveRecord::Base
     last_guide.try(:lesson)
   end
 
-  def last_submission_date
-    assignments.last.try(&:updated_at)
-  end
-
   def submissions_count
     assignments.pluck(:submissions_count).sum
   end

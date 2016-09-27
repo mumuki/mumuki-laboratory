@@ -71,14 +71,17 @@ describe User do
       let!(:assignment_for) do
         exercise_1.submit_solution!(user, content: '')
         exercise_1.submit_solution!(user, content: '').passed!
+
         exercise_2.submit_solution!(user, content: '').passed!
+
+        exercise_3.submit_solution!(user, content: '')
         exercise_3.submit_solution!(user, content: '')
       end
 
-      it { expect(user.reload.last_submission_date).to eq Assignment.last.updated_at }
+      it { expect(user.reload.last_submission_date).to be > Assignment.last.created_at }
       it { expect(user.submitted_exercises_count).to eq 3 }
       it { expect(user.solved_exercises_count).to eq 2 }
-      it { expect(user.submissions_count).to eq 4 }
+      it { expect(user.submissions_count).to eq 5 }
       it { expect(user.passed_submissions_count).to eq 2 }
       it { expect(user.reload.last_exercise).to eq exercise_3 }
       it { expect(user.reload.last_guide).to eq exercise_3.guide }

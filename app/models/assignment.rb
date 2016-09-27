@@ -78,6 +78,6 @@ class Assignment < ActiveRecord::Base
   end
 
   def update_last_submission!
-    submitter.update!(last_submission_date: created_at, last_exercise: exercise)
+    submitter.update!(last_submission_date: DateTime.now, last_exercise: exercise)
   end
 end
