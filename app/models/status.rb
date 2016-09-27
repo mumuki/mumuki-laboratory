@@ -10,7 +10,7 @@ module Status
   end
 
   def self.from_sym(status)
-    Kernel.const_get("Status::#{status.to_s.camelize}")
+    "Status::#{status.to_s.camelize}".constantize
   end
 
   def self.coerce(status_like)

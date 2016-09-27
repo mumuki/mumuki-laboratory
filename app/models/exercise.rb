@@ -133,7 +133,7 @@ class Exercise < ActiveRecord::Base
 
 
   def self.class_for(type)
-    Kernel.const_get(type.camelcase)
+    type.camelcase.constantize
   end
 
   def self.default_layout
