@@ -41,7 +41,7 @@ describe Exam do
         let(:guide) { create(:guide) }
         let(:duration) { 150 }
         let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: duration, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
-        before { Command::UpsertExam.execute! exam_json }
+        before { Atheneum::Command::UpsertExam.execute! exam_json }
 
         context 'new exam' do
           it { expect(Exam.count).to eq 1 }
@@ -56,7 +56,7 @@ describe Exam do
 
         context 'existing exam' do
           let(:exam_json2) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user2.uid], tenant: 'test' }.stringify_keys }
-          before { Command::UpsertExam.execute! exam_json2 }
+          before { Atheneum::Command::UpsertExam.execute! exam_json2 }
 
           it { expect(Exam.count).to eq 1 }
           it { expect{Exam.find_by(classroom_id: '1').access! user}.to raise_error(Exceptions::ForbiddenError) }
@@ -68,7 +68,7 @@ describe Exam do
         let(:user) { create(:user, uid: 'auth0|1') }
         let(:guide) { create(:guide) }
         let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: duration, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
-        let(:exam) { Command::UpsertExam.execute! exam_json }
+        let(:exam) { Atheneum::Command::UpsertExam.execute! exam_json }
         before { exam.start! user }
 
         context 'with duration' do
@@ -94,9 +94,9 @@ describe Exam do
         let(:user) { create(:user, uid: 'auth0|1') }
         let(:guide) { create(:guide) }
         let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
-        let(:exam) { Command::UpsertExam.execute! exam_json }
+        let(:exam) { Atheneum::Command::UpsertExam.execute! exam_json }
         before { exam.start! user }
-        before { Command::UpsertExam.execute! exam_json.merge('tenant' => 'test') }
+        before { Atheneum::Command::UpsertExam.execute! exam_json.merge('tenant' => 'test') }
 
         it { expect(exam.started?(user)).to be true }
 
@@ -105,9 +105,9 @@ describe Exam do
       context 'create exam with non existing user' do
         let(:guide) { create(:guide) }
         let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
-        let(:exam) { Command::UpsertExam.execute! exam_json }
+        let(:exam) { Atheneum::Command::UpsertExam.execute! exam_json }
 
-        it { expect { Command::UpsertExam.execute! exam_json.merge('tenant' => 'test') }.not_to raise_error}
+        it { expect { Atheneum::Command::UpsertExam.execute! exam_json.merge('tenant' => 'test') }.not_to raise_error}
 
       end
 
@@ -115,7 +115,7 @@ describe Exam do
         let(:teacher) { create(:user, uid: 'auth0|1') }
         let(:guide) { create(:guide) }
         let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [], tenant: 'test' }.stringify_keys }
-        let(:exam) { Command::UpsertExam.execute! exam_json }
+        let(:exam) { Atheneum::Command::UpsertExam.execute! exam_json }
 
         context 'exam_authorization do not receive start method' do
           before { expect(teacher).to receive(:teacher?).and_return(true) }
