@@ -159,7 +159,7 @@ GEM
       rack (~> 1.5)
     mumukit-inspection (0.1.1)
       mumukit-core (~> 0.2)
-    mumukit-nuntius (0.3.0)
+    mumukit-nuntius (0.3.2)
       activesupport (~> 4.1)
       bunny (~> 2.3)
     netrc (0.11.0)
@@ -322,7 +322,7 @@ DEPENDENCIES
   mumukit-content-type (~> 0.2)
   mumukit-core (~> 0.1)
   mumukit-inspection (~> 0.1)
-  mumukit-nuntius (~> 0.3)
+  mumukit-nuntius (= 0.3.2)
   nprogress-rails
   omniauth (~> 1.2)
   omniauth-auth0 (~> 1.1)

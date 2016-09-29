@@ -12,6 +12,7 @@ class Organization < ActiveRecord::Base
   validates_uniqueness_of :name
 
   after_create :reindex_usages!
+  after_save :notify!
 
   has_many :guides, through: 'usages', source: 'item', source_type: 'Guide'
   has_many :exercises, through: :guides
@@ -35,11 +36,11 @@ class Organization < ActiveRecord::Base
   end
 
   def notify_recent_assignments!(date)
-    notify! assignments.where('assignments.updated_at > ?', date)
+    notify_assignments! assignments.where('assignments.updated_at > ?', date)
   end
 
   def notify_assignments_by!(submitter)
-    notify! assignments.where(submitter_id: submitter.id)
+    notify_assignments! assignments.where(submitter_id: submitter.id)
   end
 
   def silent?
@@ -91,9 +92,17 @@ class Organization < ActiveRecord::Base
     "http://central.#{Rails.configuration.domain_url}"
   end
 
+  def notify!
+    NotificationMode.command_notify! 'classroom', as_complete_json, 'UpsertOrganization'
+  end
+
+  def as_complete_json
+    as_json(except: [:login_methods]).merge(locale: locale, lock_json: login_settings.lock_json)
+  end
+
   private
 
-  def notify!(assignments)
+  def notify_assignments!(assignments)
     puts "We will try to send #{assignments.count} assignments, please wait..."
     assignments.each { |assignment| Event::Submission.new(assignment).notify! }
   end
