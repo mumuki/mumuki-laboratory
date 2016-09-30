@@ -55,7 +55,7 @@ gem 'mumukit-core', '~> 0.1'
 gem 'mumukit-bridge', '~> 1.3'
 gem 'mumukit-inspection', '~> 0.1'
 
-gem 'mumukit-nuntius', '0.3.2'
+gem 'mumukit-nuntius', '~> 0.3'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'
