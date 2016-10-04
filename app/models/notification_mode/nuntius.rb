@@ -3,7 +3,7 @@ class NotificationMode::Nuntius
     Mumukit::Nuntius::Publisher.publish queue_name, event
   end
 
-  def command_notify!(queue_name, data, type)
+  def notify_command!(queue_name, data, type)
     Mumukit::Nuntius::CommandPublisher.publish queue_name, data, type
   end
 end
