@@ -9,21 +9,21 @@ describe Playground do
     context 'when language is queriable and exercise is playable' do
       let(:language) { create(:language, queriable: true) }
       let(:guide) { create(:guide) }
-      let(:exercise) { build(:playground, language: language, layout: :editor_bottom, guide: guide, number: 1) }
+      let(:exercise) { build(:playground, language: language, layout: :input_bottom, guide: guide, number: 1) }
 
       it { expect(exercise.save).to be true }
     end
 
     context 'when language is not queriable and exercise is playable' do
       let(:language) { create(:language, queriable: false) }
-      let(:exercise) { build(:playground, language: language, layout: :editor_bottom) }
+      let(:exercise) { build(:playground, language: language, layout: :input_bottom) }
 
       it { expect(exercise.save).to be false }
     end
 
     context 'when language is queriable and exercise is not playable' do
       let(:language) { create(:language, queriable: true) }
-      let(:exercise) { build(:playground, language: language, layout: :no_editor) }
+      let(:exercise) { build(:playground, language: language, layout: :no_input) }
 
       it { expect(exercise.save).to be false }
     end
