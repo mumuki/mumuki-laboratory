@@ -1,9 +1,12 @@
-<ul class="nav nav-tabs" role="tablist">
-  <%= console_tab %>
-  <% if @exercise.extra_visible? %>
-    <%= extra_code_tab %>
-  <% end %>
-</ul>
+<% if @exercise.extra_visible? %>
+  <ul class="nav nav-tabs" role="tablist">
+    <%= console_tab %>
+    <% if @exercise.extra_visible? %>
+      <%= extra_code_tab %>
+    <% end %>
+  </ul>
+<% end %>
+
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane editor-pane in active fade" id="console">
     <div class="console">
