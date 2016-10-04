@@ -57,10 +57,6 @@ class User < ActiveRecord::Base
     self.save!
   end
 
-  def revoke!
-    self.update!(remember_me_token: nil)
-  end
-
   def social_id
     uid
   end

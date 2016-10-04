@@ -55,7 +55,7 @@ Rails.application.configure do
 
   config.offline_mode = false
   config.domain_url = 'localmumuki.io:3000'
-  config.queueless_mode = true
+  config.queueless_mode = false
 
   config.cookies_domain = '.localmumuki.io'
 end

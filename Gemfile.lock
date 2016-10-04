@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/mumuki/mumukit-nuntius.git
+  revision: 56c6763451c4dfdb3869d9dea2d5628928035540
+  tag: v0.2.2
+  specs:
+    mumukit-nuntius (0.2.2)
+      activesupport (~> 4.1)
+      bunny (~> 2.3)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -53,7 +62,7 @@ GEM
     bootswatch-rails (3.3.5)
       railties (>= 3.1)
     builder (3.2.2)
-    bunny (2.5.1)
+    bunny (2.3.1)
       amq-protocol (>= 2.0.1)
     byebug (2.7.0)
       columnize (~> 0.3)
@@ -136,7 +145,7 @@ GEM
     mime-types (2.99.1)
     mimemagic (0.3.2)
     mini_portile2 (2.0.0)
-    minitest (5.9.1)
+    minitest (5.9.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -159,9 +168,6 @@ GEM
       rack (~> 1.5)
     mumukit-inspection (0.1.1)
       mumukit-core (~> 0.2)
-    mumukit-nuntius (0.3.6)
-      activesupport (~> 4.1)
-      bunny (~> 2.3)
     netrc (0.11.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
@@ -322,7 +328,7 @@ DEPENDENCIES
   mumukit-content-type (~> 0.2)
   mumukit-core (~> 0.1)
   mumukit-inspection (~> 0.1)
-  mumukit-nuntius (~> 0.3)
+  mumukit-nuntius!
   nprogress-rails
   omniauth (~> 1.2)
   omniauth-auth0 (~> 1.1)
@@ -346,8 +352,5 @@ DEPENDENCIES
   uglifier (~> 2.7)
   yaml_db
 
-RUBY VERSION
-   ruby 2.0.0p481
-
 BUNDLED WITH
-   1.12.5
+   1.11.2
