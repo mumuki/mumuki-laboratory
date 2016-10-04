@@ -2,7 +2,7 @@ module WithEditor
   extend ActiveSupport::Concern
 
   included do
-    enum editor: [:code, :upload, :text, :single_choice, :multiple_choice]
+    enum editor: [:code, :upload, :text, :single_choice, :multiple_choice, :hidden]
     validate :ensure_choice_has_options, if: :choice_editor?
   end
 
@@ -11,7 +11,7 @@ module WithEditor
   end
 
   def editor_with_defaults?
-    editor.to_sym == :code
+    code?
   end
 
   private

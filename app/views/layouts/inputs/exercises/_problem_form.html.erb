@@ -1,55 +1,33 @@
-<% if (@exercise.queriable? || @exercise.extra_visible?) && ![:upload, :hidden].include?(editor_mode) %>
+<% if (@exercise.queriable? || @exercise.extra_visible?) && input_visible %>
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
       <a data-target="#editor" aria-controls="editor" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'pencil-square' %> <%= t :editor %></a>
     </li>
     <% if @exercise.extra_visible? %>
-        <%= extra_code_tab %>
+      <%= extra_code_tab %>
     <% end %>
     <% if @exercise.queriable? %>
-        <%= console_tab %>
+      <%= console_tab %>
     <% end %>
   </ul>
 <% end %>
 
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane editor-pane fade in active" id="editor">
-    <% if editor_mode == :upload %>
-      <input type="file" id="upload" class="upload submission-control"/>
-    <% end %>
-
     <%= form_for([@exercise, @solution], remote: true, html: {role: 'form', class: 'new_solution editor-overlap'}) do |f| %>
-      <% if editor_mode == :visible %>
-        <div class="field form-group">
-          <%= f.editor :content, 'dynamic',
-                       class: 'form-control editor',
-                       value: @current_content,
-                       style: 'display: none' %>
-        </div>
-        <div class="submission-overlapped">
-          <a class="editor-reset submission-reset"><%= reset_button %></a>
-        </div>
-        <%= f.hidden_field :input_bottom, value: defined?(input_bottom) %>
+      <%= editor_form @exercise %>
 
-      <% else %>
-        <%= f.hidden_field :content, value: '' %>
-      <% end %>
-      <% if editor_mode == :upload %>
-        <label
-        for="upload"
-        class="btn btn-success btn-block btn-submit"
-        data-waiting="<%= t(:uploading_solution) %>">
-          <%= fa_icon :upload %> <%= t :upload_solution %>
-        </label>
-      <% else %>
-        <div class="actions">
-          <button
-          class="btn btn-success btn-block btn-submit submission-control"
-          data-waiting="<%= t(:sending_solution) %>">
+      <div class="actions">
+        <% if @exercise.upload? %>
+          <label for="upload" class="btn btn-success btn-block btn-submit" data-waiting="<%= t(:uploading_solution) %>">
+            <%= fa_icon :upload %> <%= t :upload_solution %>
+          </label>
+        <% else %>
+          <button class="btn btn-success btn-block btn-submit submission-control" data-waiting="<%= t(:sending_solution) %>">
             <%= fa_icon :play, text: t(:create_submission) %>
           </button>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
   <div role="tabpanel" class="tab-pane editor-pane fade" id="console">
