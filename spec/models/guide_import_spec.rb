@@ -20,7 +20,7 @@ describe Guide do
           description: 'a description',
           test: 'foo bar',
           tag_list: %w(baz bar),
-          layout: 'no_input',
+          layout: 'input_bottom',
           teacher_info: 'an info',
           language: 'gobstones',
           solution: 'foo',

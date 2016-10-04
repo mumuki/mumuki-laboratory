@@ -6,8 +6,8 @@ feature 'Exercise Flow' do
   let(:haskell) { create(:haskell) }
 
   let!(:problem_1) { build(:problem, name: 'Succ1', description: 'Description of Succ1', layout: :input_right, hint: 'lala') }
-  let!(:problem_2) { build(:problem, name: 'Succ2', description: 'Description of Succ2', layout: :no_input) }
-  let!(:problem_3) { build(:problem, name: 'Succ3', description: 'Description of Succ3', layout: :upload, hint: 'lele') }
+  let!(:problem_2) { build(:problem, name: 'Succ2', description: 'Description of Succ2', layout: :input_right, editor: :hidden) }
+  let!(:problem_3) { build(:problem, name: 'Succ3', description: 'Description of Succ3', layout: :input_right, editor: :upload, hint: 'lele') }
   let!(:problem_4) { build(:problem, name: 'Succ4', description: 'Description of Succ4', layout: :input_bottom, extra: 'x = 2') }
   let!(:playground_1) { build(:playground, name: 'Succ5', description: 'Description of Succ4', layout: :input_right) }
   let!(:playground_2) { build(:playground, name: 'Succ6', description: 'Description of Succ4', layout: :input_right, extra: 'x = 4') }
