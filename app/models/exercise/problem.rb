@@ -1,5 +1,6 @@
 class Problem < Exercise
   include WithExpectations,
+          WithEditor,
           Solvable
 
   validate :ensure_evaluation_criteria
