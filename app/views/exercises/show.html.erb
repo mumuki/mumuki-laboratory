@@ -47,7 +47,7 @@
   </div>
 <% end %>
 
-<%= render layout: "layouts/submissions/#{@exercise.layout}" do %>
+<%= render_exercise_input_layout(@exercise) do %>
 <% end %>
 
 <%= hidden_field_tag :exercise_id, @exercise.id %>

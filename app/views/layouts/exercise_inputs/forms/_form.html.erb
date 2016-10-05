@@ -3,7 +3,7 @@
   <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
   <%= hidden_field_tag(:prompt, @exercise.prompt) %>
   <div>
-    <%= exercise_form @exercise, local_assigns %>
+    <%= render_exercise_input_form @exercise %>
   </div>
 <% else %>
   <p><%= t :you_must_sign_in_before_submitting %></p>
