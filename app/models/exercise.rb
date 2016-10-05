@@ -84,7 +84,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def extra_preview
-    "```#{language.name}\n#{extra}```"
+    Mumukit::ContentType::Markdown.highlighted_code(language.name, extra)
   end
 
   def import_from_json!(number, json)

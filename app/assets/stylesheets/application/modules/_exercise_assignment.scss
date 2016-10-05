@@ -11,6 +11,17 @@
   position: relative;
 }
 
-.mu-editor .form-group {
-  margin: 10px 0;
+.mu-editor {
+  .form-group {
+    margin: 10px 0;
+  }
+  input[type=radio] {
+    margin: 4px;
+    & + label {
+      font-weight: normal;
+    }
+  }
+  label p {
+    margin: 0;
+  }
 }
