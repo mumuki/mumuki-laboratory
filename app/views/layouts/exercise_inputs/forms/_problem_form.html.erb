@@ -1,4 +1,4 @@
-<% if (@exercise.queriable? || @exercise.extra_visible?) && input_visible %>
+<% if @exercise.queriable? || @exercise.extra_visible? %>
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
       <a data-target="#editor" aria-controls="editor" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'pencil-square' %> <%= t :editor %></a>
@@ -15,7 +15,7 @@
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane editor-pane fade in active" id="editor">
     <%= form_for([@exercise, @solution], remote: true, html: {role: 'form', class: 'new_solution editor-overlap'}) do |f| %>
-      <%= editor_form @exercise %>
+      <%= render_exercise_input_editor f, @exercise %>
 
       <div class="actions">
         <% if @exercise.upload? %>
