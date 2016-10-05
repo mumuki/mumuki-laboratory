@@ -13,8 +13,8 @@
 <% end %>
 
 <div class="tab-content">
-  <div role="tabpanel" class="tab-pane editor-pane fade in active" id="editor">
-    <%= form_for([@exercise, @solution], remote: true, html: {role: 'form', class: 'new_solution editor-overlap'}) do |f| %>
+  <div role="tabpanel" class="tab-pane mu-input-panel fade in active" id="editor">
+    <%= form_for([@exercise, @solution], remote: true, html: {role: 'form', class: 'new_solution mu-editor mu-editor-overlap'}) do |f| %>
       <%= render_exercise_input_editor f, @exercise %>
 
       <div class="actions">
@@ -30,7 +30,7 @@
       </div>
     <% end %>
   </div>
-  <div role="tabpanel" class="tab-pane editor-pane fade" id="console">
+  <div role="tabpanel" class="tab-pane mu-input-panel fade" id="console">
     <div class="text-info"><%= t(:type_expressions_here) %></div>
     <div class="console">
     </div>
@@ -38,7 +38,7 @@
       <a class="console-reset submission-reset"><%= reset_button %></a>
     </div>
   </div>
-  <div role="tabpanel" class="tab-pane editor-pane fade" id="visible-extra">
+  <div role="tabpanel" class="tab-pane mu-input-panel fade" id="visible-extra">
     <%= @exercise.extra_preview_html %>
   </div>
 </div>

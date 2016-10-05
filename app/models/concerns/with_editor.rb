@@ -3,10 +3,10 @@ module WithEditor
 
   included do
     enum editor: [:code, :upload, :text, :single_choice, :multiple_choice, :hidden]
-    validate :ensure_choice_has_options, if: :choice_editor?
+    validate :ensure_has_choices, if: :choice?
   end
 
-  def choice_editor?
+  def choice?
     [:single_choice, :multiple_choice].include? editor.to_sym
   end
 
@@ -16,7 +16,7 @@ module WithEditor
 
   private
 
-  def ensure_choice_has_options
-    errors.add(:base, :choice_has_no_options) if options.blank?
+  def ensure_has_choices
+    errors.add(:base, :choice_problem_has_no_choices) if choices.blank?
   end
 end
