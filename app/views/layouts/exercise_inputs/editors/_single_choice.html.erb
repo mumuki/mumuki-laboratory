@@ -1,0 +1,9 @@
+<div class="form-group">
+  <% @exercise.choices.each_with_index do |choice, index| %>
+    <div>
+      <% choice_id = "content_option_#{index}" %>
+      <%= radio_button_tag(:content, choice, id: choice_id) %>
+      <%= label_tag(choice_id, choice) %>
+    </div>
+  <% end %>
+</div>
