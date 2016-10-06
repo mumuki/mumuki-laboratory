@@ -20,4 +20,5 @@ module WithMetadata
   def has_accessible_organizations?
     accessible_organizations.present?
   end
+
 end

@@ -100,4 +100,12 @@ describe User do
       it { expect(user.reload.last_guide).to eq exercise_4.guide }
     end
   end
+
+  describe '#revoke!' do
+    let(:user) { create(:user) }
+    before { user.create_remember_me_token! }
+    before { user.revoke! }
+
+    it { expect(user.remember_me_token).to be_nil }
+  end
 end
