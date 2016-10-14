@@ -7,6 +7,7 @@ class Atheneum::Command::UpsertExam
     organization = Organization.find_by!(name: json.delete('tenant'))
     organization.switch!
     exam_data = parse_json json
+    validate_repeated_exam exam_data['id'], exam_data['guide_id']
     users = exam_data.delete('users')
     exam = Exam.where(classroom_id: exam_data.delete('id')).update_or_create! exam_data
     exam.process_users users
@@ -21,5 +22,11 @@ class Atheneum::Command::UpsertExam
     exam['users'] = exam.delete('social_ids').map { |sid| User.find_by(uid: sid) }.compact
     ['start_time', 'end_time'].each { |param| exam[param] = exam[param].to_time }
     exam
+  end
+
+  def self.validate_repeated_exam(id, guide_id)
+    if Exam.find_by(classroom_id: id).blank? && Exam.find_by(guide_id: guide_id)
+      Exam.find_by(guide_id: guide_id).destroy!
+    end
   end
 end
