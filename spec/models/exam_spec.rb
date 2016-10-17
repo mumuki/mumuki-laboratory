@@ -5,12 +5,12 @@ describe Exam do
   let(:other_user) { create(:user) }
 
   describe '#upsert' do
-    let!(:guide) { create(:guide) }
-    let!(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [], tenant: 'test' }.stringify_keys }
+    let(:guide) { create(:guide) }
+    let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [], tenant: 'test' }.stringify_keys }
     let!(:exam) { Atheneum::Command::UpsertExam.execute! exam_json }
     context 'when new exam and the guide is the same' do
-      let!(:guide2) { create(:guide) }
-      let!(:exam_json2) { { id: '2', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [], tenant: 'test' }.stringify_keys }
+      let(:guide2) { create(:guide) }
+      let(:exam_json2) { { id: '2', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [], tenant: 'test' }.stringify_keys }
       let!(:exam2) { Atheneum::Command::UpsertExam.execute! exam_json2 }
       context 'and the organization is the same' do
         it { expect(Exam.count).to eq 1 }
