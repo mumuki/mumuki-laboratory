@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   include WithOmniauth, WithToken, WithMetadata, WithUserNavigation
 
   has_many :assignments, foreign_key: :submitter_id
+  has_many :comments, foreign_key: :recipient_id
 
   has_many :submitted_exercises, through: :assignments, class_name: 'Exercise', source: :exercise
 
@@ -61,12 +62,8 @@ class User < ActiveRecord::Base
     uid
   end
 
-  def comments
-    assignments.flat_map(&:comments)
-  end
-
   def unread_comments
-    comments.reject(&:read)
+    comments.where(read: false)
   end
 
   def visit!(organization)
