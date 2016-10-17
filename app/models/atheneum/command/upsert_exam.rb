@@ -24,7 +24,7 @@ class Atheneum::Command::UpsertExam
     exam
   end
 
-  def self.validate_repeated_exam(id, guide_id)
+  def self.remove_previous_version(id, guide_id)
     if Exam.find_by(classroom_id: id).blank? && Exam.find_by(guide_id: guide_id)
       Exam.find_by(guide_id: guide_id).destroy!
     end
