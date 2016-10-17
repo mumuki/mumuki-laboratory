@@ -7,6 +7,7 @@ class Atheneum::Command::UpsertExam
     organization = Organization.find_by!(name: json.delete('tenant'))
     organization.switch!
     exam_data = parse_json json
+    remove_previous_version exam_data['id'], exam_data['guide_id']
     users = exam_data.delete('users')
     exam = Exam.where(classroom_id: exam_data.delete('id')).update_or_create! exam_data
     exam.process_users users
@@ -21,5 +22,11 @@ class Atheneum::Command::UpsertExam
     exam['users'] = exam.delete('social_ids').map { |sid| User.find_by(uid: sid) }.compact
     ['start_time', 'end_time'].each { |param| exam[param] = exam[param].to_time }
     exam
+  end
+
+  def self.remove_previous_version(id, guide_id)
+    unless Exam.exists?(classroom_id: id)
+      Exam.where(guide_id: guide_id).destroy_all
+    end
   end
 end

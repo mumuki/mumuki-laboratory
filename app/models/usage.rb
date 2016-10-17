@@ -8,6 +8,10 @@ class Usage < ActiveRecord::Base
 
   before_save :set_slug
 
+  def self.destroy_usages_for(record)
+    Usage.where(parent_item_id: record.id).destroy_all
+  end
+
   private
 
   def set_slug

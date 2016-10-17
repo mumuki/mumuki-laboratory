@@ -7,8 +7,10 @@ class Exam < ActiveRecord::Base
   belongs_to :guide
   belongs_to :organization
 
-  has_many :authorizations, class_name: 'ExamAuthorization'
+  has_many :authorizations, class_name: 'ExamAuthorization', dependent: :delete_all
   has_many :users, through: :authorizations
+
+  after_destroy { |record| Usage.destroy_usages_for record }
 
   include TerminalNavigation
 
