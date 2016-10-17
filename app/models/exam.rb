@@ -10,7 +10,7 @@ class Exam < ActiveRecord::Base
   has_many :authorizations, class_name: 'ExamAuthorization', dependent: :delete_all
   has_many :users, through: :authorizations
 
-  after_destroy { |record| Usage.where(parent_item_id: record.id).destroy_all }
+  after_destroy { |record| Usage.destroy_usages_for record }
 
   include TerminalNavigation
 
