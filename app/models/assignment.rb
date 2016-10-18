@@ -40,7 +40,7 @@ class Assignment < ActiveRecord::Base
   end
 
   def expectation_results_visible?
-    visible_expectation_results.present?
+    visible_expectation_results.present? && !errored?
   end
 
   def visible_expectation_results
