@@ -10,15 +10,18 @@
   <% end %>
 
   <meta property="og:site_name" content="mumuki"/>
-  <meta property="og:title" content="<%= t :mumuki_catchphrase %>"/>
+  <meta property="og:title" content="<%= page_title subject %>"/>
   <meta property="og:description" content="<%= t :mumuki_short_description %>"/>
   <meta property="og:type" content="website"/>
   <meta property="og:image" content="http://mumuki.io/logo-alt.png"/>
-  <meta property="og:url" content="http://mumuki.io/"/>
+  <meta property="og:url" content="<%= request.original_url %>"/>
 
   <meta name="description" content="<%= t :mumuki_short_description %>"/>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript">
+    window.mumukiLocale = <%= raw Organization.locale_json %>;
+  </script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>

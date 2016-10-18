@@ -48,7 +48,7 @@ en:
   gone_explanation: This exam is no longer available.
   guide: Guide
   guide_created: Guide created successfully
-  guide_finished: Congrants! You completed guide %{guide}
+  guide_finished: You completed %{guide}!
   lesson_number: Lesson %{number}
   let_us_know: please let us know!
   guides_index_title: Which guide do you want to do today?
