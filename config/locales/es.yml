@@ -56,7 +56,7 @@ es:
   gone_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que ya no podés ver éste examen.
   guide: Lección
   guide_created: Guía creada exitosamente
-  guide_finished: Felicitaciones, terminaste la lección %{guide}
+  guide_finished: ¡Terminaste %{guide}!
   guide_internal: guia
   lesson_number: Lección %{number}
   let_us_know: ¡Por favor avisanos!
