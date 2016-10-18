@@ -17,6 +17,7 @@ module WithEditor
   def pretty_choices
     choices.each_with_index.map do |choice, index|
       struct id: "content_choice_#{index}",
+             index: index,
              value: choice,
              text: Mumukit::ContentType::Markdown.to_html(choice_text(choice))
     end
