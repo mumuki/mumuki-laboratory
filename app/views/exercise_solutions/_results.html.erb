@@ -62,8 +62,7 @@
 
 <div class="notify-problem-box">
   <span>
-    <%= link_to fa_icon(:download, text: 'Descargá tu solución'),
-                "data:application/octet-stream,#{URI.encode (assignment.solution)}", download: "solution.#{@exercise.language.extension}" %>
+    <%= solution_download_link assignment%>
   </span>
   <span>
     <%= mail_to contact_email,
