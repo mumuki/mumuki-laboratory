@@ -40,9 +40,6 @@ module ApplicationHelper
       <div>
         <h3>#{t :corollary}</h3>
         <p>#{with_corollary.corollary_html}</p>
-        <div class="fb-share-box">
-          <div class="fb-share-button" data-href="#{request.original_url}" data-layout="button"></div>
-        </div>
       </div>
 }.html_safe
     end
