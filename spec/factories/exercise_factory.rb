@@ -14,6 +14,7 @@ FactoryGirl.define do
 
   factory :gobstones, parent: :language do
     name 'gobstones'
+    queriable false
   end
 
   factory :exercise_base do
