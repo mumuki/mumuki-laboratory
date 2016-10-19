@@ -20,6 +20,25 @@ var mumuki = mumuki || {};
         mumuki.editor.setEditorLanguage(this.editor, language);
       }
     },
+    setupPlaceholder: function() {
+      var self = this;
+      function update() {
+        var shouldShow = !self.editor.session.getValue().length;
+        var node = self.editor.renderer.emptyMessageNode;
+        if (!shouldShow && node) {
+          self.editor.renderer.scroller.removeChild(self.editor.renderer.emptyMessageNode);
+          self.editor.renderer.emptyMessageNode = null;
+        } else if (shouldShow && !node) {
+          node = self.editor.renderer.emptyMessageNode = document.createElement("div");
+          node.textContent = "...escribí tu solución acá....";
+          node.className = "ace_invisible mu-empty-placeholder";
+          self.editor.renderer.scroller.appendChild(node);
+        }
+      }
+      this.editor.on("input", update);
+      setTimeout(update, 100);
+    },
+
     setupOptions: function (minLines) {
       this.editor.setOptions({
         maxLines: Infinity,

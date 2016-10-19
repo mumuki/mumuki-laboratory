@@ -6,6 +6,7 @@ var mumuki = mumuki || {};
       var builder = new mumuki.editor.AceEditorBuilder(textarea);
       builder.setupEditor();
       builder.setupOptions($(textarea).data('lines'));
+      builder.setupPlaceholder();
       builder.setupSubmit();
       builder.setupLanguage();
       return builder.build();
