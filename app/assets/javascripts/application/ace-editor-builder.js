@@ -20,14 +20,18 @@ var mumuki = mumuki || {};
         mumuki.editor.setEditorLanguage(this.editor, language);
       }
     },
-    setupOptions: function () {
+    setupOptions: function (minLines) {
       this.editor.setOptions({
-        minLines: 17,
         maxLines: Infinity,
         showPrintMargin: false,
+        selectionStyle: 'text',
+        minLines: minLines,
+        showGutter: minLines > 1,
+        cursorStyle: minLines > 1 ? 'ace' : 'slim',
+        highlightActiveLine: minLines > 1,
         wrap: true
       });
-      this.editor.setFontSize(14);
+      this.editor.setFontSize(17);
     },
     setupSubmit: function () {
       var textarea = this.textarea;

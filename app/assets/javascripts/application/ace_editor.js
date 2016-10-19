@@ -5,7 +5,7 @@ var mumuki = mumuki || {};
     var editors = $(".editor").map(function (index, textarea) {
       var builder = new mumuki.editor.AceEditorBuilder(textarea);
       builder.setupEditor();
-      builder.setupOptions();
+      builder.setupOptions($(textarea).data('lines'));
       builder.setupSubmit();
       builder.setupLanguage();
       return builder.build();
