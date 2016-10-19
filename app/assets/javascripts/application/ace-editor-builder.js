@@ -24,6 +24,7 @@ var mumuki = mumuki || {};
       this.editor.setOptions({
         minLines: 17,
         maxLines: Infinity,
+        showPrintMargin: false,
         wrap: true
       });
       this.editor.setFontSize(14);
