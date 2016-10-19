@@ -32,7 +32,6 @@ es:
   date: Fecha
   destroy: Eliminar
   details: Detalles
-  editor: Editor
   errored: Ups, tu solución no funcionó
   exam_number: 'Examen %{number}:'
   exams: Exámenes

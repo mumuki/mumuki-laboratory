@@ -31,7 +31,7 @@ feature 'Exercise Flow' do
 
       expect(page).to have_text('Succ1')
       expect(page).to_not have_text('Console')
-      expect(page).to_not have_text('Editor')
+      expect(page).to_not have_text('Solution')
       expect(page).to have_text('need a hint?')
       expect(page).to have_text('Description of Succ1')
     end
@@ -41,7 +41,7 @@ feature 'Exercise Flow' do
 
       expect(page).to have_text('Succ1')
       expect(page).to_not have_text('Console')
-      expect(page).to_not have_text('Editor')
+      expect(page).to_not have_text('Solution')
       expect(page).to have_text('need a hint?')
       expect(page).to have_text('Description of Succ1')
     end
@@ -51,7 +51,7 @@ feature 'Exercise Flow' do
 
       expect(page).to have_text('Succ3')
       expect(page).to_not have_text('Console')
-      expect(page).to_not have_text('Editor')
+      expect(page).to_not have_text('Solution')
       expect(page).to have_text('need a hint?')
       expect(page).to_not have_selector('.upload')
     end
@@ -75,7 +75,7 @@ feature 'Exercise Flow' do
 
       expect(page).to have_text('Succ1')
       expect(page).to have_text('Console')
-      expect(page).to have_text('Editor')
+      expect(page).to have_text('Solution')
       expect(page).to have_text('need a hint?')
       expect(page).to_not have_selector('.upload')
     end
@@ -85,7 +85,7 @@ feature 'Exercise Flow' do
 
       expect(page).to have_text('Succ2')
       expect(page).to_not have_text('Console')
-      expect(page).to_not have_text('Editor')
+      expect(page).to_not have_text('Solution')
       expect(page).to_not have_text('need a hint?')
       expect(page).to_not have_selector('.upload')
     end
@@ -95,7 +95,7 @@ feature 'Exercise Flow' do
 
       expect(page).to have_text('Succ3')
       expect(page).to have_text('Console')
-      expect(page).to have_text('Editor')
+      expect(page).to have_text('Solution')
       expect(page).to have_text('need a hint?')
       expect(page).to have_selector('.upload')
     end
@@ -105,7 +105,6 @@ feature 'Exercise Flow' do
 
       expect(page).to have_text('Succ5')
       expect(page).to_not have_text('Console')
-      expect(page).to_not have_text('Editor')
       expect(page).to have_text('need a hint?')
       expect(page).to have_selector('.upload')
     end
@@ -116,7 +115,7 @@ feature 'Exercise Flow' do
       expect(page).to have_text('Succ4')
       expect(page).to have_text('x = 2')
       expect(page).to have_text('Console')
-      expect(page).to have_text('Editor')
+      expect(page).to have_text('Solution')
       expect(page).to_not have_text('need a hint?')
       expect(page).to_not have_selector('.upload')
     end
@@ -126,7 +125,7 @@ feature 'Exercise Flow' do
 
       expect(page).to have_text('Succ5')
       expect(page).to_not have_text('Console')
-      expect(page).to_not have_text('Editor')
+      expect(page).to_not have_text('Solution')
       expect(page).to_not have_text('need a hint?')
       expect(page).to_not have_selector('.upload')
     end
@@ -136,7 +135,7 @@ feature 'Exercise Flow' do
 
       expect(page).to have_text('Succ6')
       expect(page).to_not have_text('Console')
-      expect(page).to_not have_text('Editor')
+      expect(page).to_not have_text('Solution')
       expect(page).to_not have_text('need a hint?')
       expect(page).to have_text('x = 4')
       expect(page).to_not have_selector('.upload')
