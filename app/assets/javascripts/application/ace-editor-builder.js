@@ -20,7 +20,7 @@ var mumuki = mumuki || {};
         mumuki.editor.setEditorLanguage(this.editor, language);
       }
     },
-    setupPlaceholder: function() {
+    setupPlaceholder: function(text) {
       var self = this;
       function update() {
         var shouldShow = !self.editor.session.getValue().length;
@@ -30,7 +30,7 @@ var mumuki = mumuki || {};
           self.editor.renderer.emptyMessageNode = null;
         } else if (shouldShow && !node) {
           node = self.editor.renderer.emptyMessageNode = document.createElement("div");
-          node.textContent = "...escribí tu solución acá....";
+          node.textContent = text;
           node.className = "ace_invisible mu-empty-placeholder";
           self.editor.renderer.scroller.appendChild(node);
         }
