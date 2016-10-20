@@ -20,6 +20,8 @@ class Exercise < ActiveRecord::Base
   include Submittable, Queriable
   include SiblingsNavigation, ParentNavigation
 
+  scope :currently_used, -> (q='') { by_full_text(q).order('submissions_count desc').select(&:used_in?) }
+
   belongs_to :guide
 
   after_initialize :defaults, if: :new_record?
@@ -31,7 +33,7 @@ class Exercise < ActiveRecord::Base
 
   delegate :stateful_console?, to: :language
 
-  def used_in?(organization)
+  def used_in?(organization=Organization.current)
     guide.usage_in_organization(organization).present?
   end
 

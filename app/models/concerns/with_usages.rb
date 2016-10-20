@@ -3,6 +3,7 @@ module WithUsages
 
   included do
     has_many :usages, as: :item
+    scope :currently_used, -> (q) { by_full_text(q='').map(&:usage_in_organization).compact }
   end
 
   def usage_in_organization(organization = Organization.current)
