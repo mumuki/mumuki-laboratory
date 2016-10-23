@@ -23,6 +23,18 @@ describe Assignment do
     it { expect(failed_submission.results_visible?).to be true }
     it { expect(passed_submission_with_visible_output_language.results_visible?).to be true }
   end
+  describe '#expectation_results_visible?' do
+    let(:haskell) { create(:language, visible_success_output: true) }
+    let(:exercise) { create(:exercise)}
+    context 'should show expectation' do
+      let(:failed_submission) { create(:assignment, status: :failed, expectation_results: [{:binding=>"foo", :inspection=>"HasBinding", :result=>:failed}]) }
+      it { expect(failed_submission.expectation_results_visible?).to be true }
+    end
+    context 'should not show expectation' do
+      let(:errored_submission) { create(:assignment, status: :errored, expectation_results: [{:binding=>"foo", :inspection=>"HasBinding", :result=>:failed}]) }
+      it { expect(errored_submission.expectation_results_visible?).to be false }
+    end
+  end
   describe '#run_update!' do
     let(:assignment) { create(:assignment) }
     context 'when run passes unstructured' do

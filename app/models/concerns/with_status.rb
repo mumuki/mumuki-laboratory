@@ -10,6 +10,10 @@ module WithStatus
     status.passed?
   end
 
+  def errored?
+    status.errored?
+  end
+
   def run_update!
     running!
     begin
