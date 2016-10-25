@@ -55,8 +55,4 @@ class ExercisesController < ApplicationController
                :guide_id, :number,
                :layout, :expectations_yaml)
   end
-
-  def exercises
-    Exercise.all
-  end
 end

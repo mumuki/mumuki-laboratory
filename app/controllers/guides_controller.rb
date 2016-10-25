@@ -13,7 +13,7 @@ class GuidesController < ApplicationController
 
   def index
     @q = params[:q]
-    @items = paginated Guide.by_full_text(@q).map { |it| it.usage_in_organization }.compact
+    @items = paginated Guide.currently_used(@q)
   end
 
 end
