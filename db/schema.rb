@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160907010315) do
+ActiveRecord::Schema.define(version: 20161017222112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(version: 20160907010315) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "read",          default: false
+    t.integer  "assignment_id"
+    t.integer  "recipient_id"
   end
 
   create_table "complements", force: true do |t|
@@ -124,6 +126,8 @@ ActiveRecord::Schema.define(version: 20160907010315) do
     t.boolean  "extra_visible",     default: false
     t.boolean  "new_expectations",  default: false
     t.boolean  "manual_evaluation", default: false
+    t.integer  "editor",            default: 0,         null: false
+    t.string   "choices",           default: [],        null: false, array: true
   end
 
   add_index "exercises", ["guide_id"], name: "index_exercises_on_guide_id", using: :btree

@@ -5,12 +5,12 @@ feature 'Exercise Flow' do
 
   let(:haskell) { create(:haskell) }
 
-  let!(:problem_1) { build(:problem, name: 'Succ1', description: 'Description of Succ1', layout: :editor_right, hint: 'lala') }
-  let!(:problem_2) { build(:problem, name: 'Succ2', description: 'Description of Succ2', layout: :no_editor) }
-  let!(:problem_3) { build(:problem, name: 'Succ3', description: 'Description of Succ3', layout: :upload, hint: 'lele') }
-  let!(:problem_4) { build(:problem, name: 'Succ4', description: 'Description of Succ4', layout: :editor_bottom, extra: 'x = 2') }
-  let!(:playground_1) { build(:playground, name: 'Succ5', description: 'Description of Succ4', layout: :editor_right) }
-  let!(:playground_2) { build(:playground, name: 'Succ6', description: 'Description of Succ4', layout: :editor_right, extra: 'x = 4') }
+  let!(:problem_1) { build(:problem, name: 'Succ1', description: 'Description of Succ1', layout: :input_right, hint: 'lala') }
+  let!(:problem_2) { build(:problem, name: 'Succ2', description: 'Description of Succ2', layout: :input_right, editor: :hidden) }
+  let!(:problem_3) { build(:problem, name: 'Succ3', description: 'Description of Succ3', layout: :input_right, editor: :upload, hint: 'lele') }
+  let!(:problem_4) { build(:problem, name: 'Succ4', description: 'Description of Succ4', layout: :input_bottom, extra: 'x = 2') }
+  let!(:playground_1) { build(:playground, name: 'Succ5', description: 'Description of Succ4', layout: :input_right) }
+  let!(:playground_2) { build(:playground, name: 'Succ6', description: 'Description of Succ4', layout: :input_right, extra: 'x = 4') }
 
   let!(:chapter) {
     create(:chapter, name: 'Functional Programming', lessons: [
@@ -98,7 +98,7 @@ feature 'Exercise Flow' do
       expect(page).to have_selector('.upload')
     end
 
-    scenario 'visit exercise by id, editor_bottom layout, extra, no hint' do
+    scenario 'visit exercise by id, input_bottom layout, extra, no hint' do
       visit "/exercises/#{problem_4.id}"
 
       expect(page).to have_text('Succ4')

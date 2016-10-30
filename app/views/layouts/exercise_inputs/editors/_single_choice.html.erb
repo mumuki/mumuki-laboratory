@@ -1,0 +1,8 @@
+<div class="form-group">
+  <% @exercise.pretty_choices.each do |choice| %>
+    <div class="field">
+      <%= form.radio_button(:content, choice.value, id: choice.id) %>
+      <%= label_tag(choice.id, choice.text) %>
+    </div>
+  <% end %>
+</div>
