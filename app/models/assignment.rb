@@ -44,7 +44,7 @@ class Assignment < ActiveRecord::Base
   end
 
   def visible_expectation_results
-    Rails.configuration.verbosity.visible_expectation_results(expectation_results || [])
+    StatusRenderingVerbosity.visible_expectation_results(expectation_results || [])
   end
 
   def accept_new_submission!(submission)

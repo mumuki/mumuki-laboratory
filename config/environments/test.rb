@@ -39,7 +39,7 @@ Rails.application.configure do
 
   config.i18n.default_locale = :en
 
-  config.verbosity = Verbosity::Standard
+  config.status_rendering_verbosity = :standard
 
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:auth0] = OmniAuth::AuthHash.new({

@@ -34,7 +34,7 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
-  config.verbosity = Verbosity::Verbose
+  config.status_rendering_verbosity = :verbose
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

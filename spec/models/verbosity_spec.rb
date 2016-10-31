@@ -1,21 +1,21 @@
 require 'spec_helper'
 
-describe Verbosity do
+describe StatusRenderingVerbosity do
   let(:results) { [{result: :passed, inspection: 'HasBinding', binding: 'foo'},
                    {result: :failed, inspection: 'HasBinding', binding: 'bar'}] }
 
-  describe Verbosity::Verbose do
-    it { expect(Verbosity::Verbose.visible_expectation_results(results)).to eq (results) }
+  describe StatusRenderingVerbosity::Verbose do
+    it { expect(StatusRenderingVerbosity::Verbose.visible_expectation_results(results)).to eq (results) }
   end
 
-  describe Verbosity::Standard do
-    it { expect(Verbosity::Standard.visible_expectation_results(results)).to eq ([
+  describe StatusRenderingVerbosity::Standard do
+    it { expect(StatusRenderingVerbosity::Standard.visible_expectation_results(results)).to eq ([
         {result: :failed, inspection: 'HasBinding', binding: 'bar'}]) }
   end
 
-  describe Verbosity::Silent do
-    it { expect(Verbosity::Silent.visible_expectation_results(results)).to be_empty }
-    it { expect(Verbosity::Silent.render_feedback?(Object.new)).to be false }
+  describe StatusRenderingVerbosity::Silent do
+    it { expect(StatusRenderingVerbosity::Silent.visible_expectation_results(results)).to be_empty }
+    it { expect(StatusRenderingVerbosity::Silent.render_feedback?(Object.new)).to be false }
 
   end
 

@@ -1,4 +1,9 @@
-module Verbosity
+module StatusRenderingVerbosity
+  extend ConfigurableGlobal
+
+  def self.get_current
+    "StatusRenderingVerbosity::#{Rails.configuration.status_rendering_verbosity.capitalize}".constantize
+  end
 
   module Verbose
     def self.visible_expectation_results(expectation_results)
