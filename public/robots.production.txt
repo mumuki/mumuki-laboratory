@@ -1,1 +1,1 @@
-Sitemap: http://mumuki.io/sitemap.xml.gz
+Sitemap: http://INSERT_DOMAIN_URL_HERE/sitemap.xml.gz
