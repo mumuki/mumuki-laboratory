@@ -40,11 +40,11 @@ class Assignment < ActiveRecord::Base
   end
 
   def expectation_results_visible?
-    visible_expectation_results.present? && !errored?
+    visible_expectation_results.present?
   end
 
   def visible_expectation_results
-    StatusRenderingVerbosity.visible_expectation_results(expectation_results || [])
+    StatusRenderingVerbosity.visible_expectation_results(status, expectation_results || [])
   end
 
   def accept_new_submission!(submission)

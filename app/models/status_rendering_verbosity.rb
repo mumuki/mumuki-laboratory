@@ -6,7 +6,7 @@ module StatusRenderingVerbosity
   end
 
   module Verbose
-    def self.visible_expectation_results(expectation_results)
+    def self.visible_expectation_results(_status, expectation_results)
       expectation_results
     end
 
@@ -16,8 +16,12 @@ module StatusRenderingVerbosity
   end
 
   module Standard
-    def self.visible_expectation_results(expectation_results)
-      expectation_results.select { |it| it[:result] == :failed }
+    def self.visible_expectation_results(status, expectation_results)
+      if status.errored?
+        []
+      else
+        expectation_results.select { |it| it[:result] == :failed }
+      end
     end
 
     def self.render_feedback?(feedback)
@@ -26,11 +30,11 @@ module StatusRenderingVerbosity
   end
 
   module Silent
-    def self.visible_expectation_results(expectation_results)
+    def self.visible_expectation_results(_status, _expectation_results)
       []
     end
 
-    def self.render_feedback?(feedback)
+    def self.render_feedback?(_feedback)
       false
     end
   end
