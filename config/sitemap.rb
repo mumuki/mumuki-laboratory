@@ -1,4 +1,4 @@
-SitemapGenerator::Sitemap.default_host = 'http://mumuki.io'
+SitemapGenerator::Sitemap.default_host = "http://#{Rails.configuration.mumuki_url}"
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 
 Book.central.switch!

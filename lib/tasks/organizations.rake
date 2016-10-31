@@ -1,6 +1,6 @@
 namespace :organizations do
   task :setup, [:name, :contact_email, :book_slug, :logo_url] => :environment do |t, args|
-    args.with_defaults(logo_url: 'http://mumuki.io/logo-alt-large.png')
+    args.with_defaults(logo_url: "http://#{Rails.configuration.domain_url}/logo-alt-large.png")
 
     organization = Organization.create! name: args[:name],
                                         contact_email: args[:contact_email],
