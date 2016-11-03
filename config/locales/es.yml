@@ -52,7 +52,7 @@ es:
   failed: Ups, algo no anduvo bien
   feedback: Problemas que encontramos
   forbidden_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no estás autorizado a ver este contenido. ¿Puede que hayas ingresado con una cuenta incorrecta?
-  gone_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que ya no podés ver éste examen.
+  gone_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que ya no podés ver este examen.
   guide: Lección
   guide_created: Guía creada exitosamente
   guide_finished: ¡Terminaste %{guide}!
@@ -120,7 +120,7 @@ es:
   sign_up_date: Usuario desde
   solution: Solución
   solved_exercises: Ejercicios Resueltos
-  something_went_wrong: ¡Ups!, algo no anduvo bien....
+  something_went_wrong: ¡Ups!, algo no anduvo bien...
   something_went_wrong_explanation: Algo se rompió feo en Mumuki. Y necesitamos solucionarlo urgentemente, %{issues}
   start_practicing: ¡Empezá ahora!
   start_lesson: ¡Comenzá esta lección!
@@ -157,4 +157,4 @@ es:
   organizations: Organizaciones
   authoring_note: Esta guía fue desarrollada por %{authors} y <a href="%{collaborators}" target="_blank">muchas personas más</a>, bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia Creative Commons Compartir-Igual, 4.0</a>.
   download: "Descargá tu solución"
-  editor_placeholder: "...escribí tu solución acá...."
+  editor_placeholder: "...escribí tu solución acá..."
