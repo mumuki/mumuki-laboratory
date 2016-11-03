@@ -1,6 +1,6 @@
 <%
-   @guide = @exercise.guide
-   @stats = @guide.stats_for(current_user)
+  @guide = @exercise.guide
+  @stats = @guide.stats_for(current_user)
 %>
 
 
@@ -60,14 +60,17 @@
   </div>
 <% end %>
 
-<div class="row notify-problem-box">
-  <div class="col-md-12">
+<div class="notify-problem-box">
+  <span>
     <%= mail_to contact_email,
                 fa_icon(:bug, text: t(:notify_problem_with_exercise)),
                 subject: t(:problem_with_exercise, title: assignment.exercise.name),
                 body: assignment_help_email_body(assignment),
-                class: 'text-info warning pull-left' %>
-  </div>
+                class: 'text-info warning' %>
+  </span>
+  <span>
+    <%= solution_download_link assignment %>
+  </span>
 </div>
 
 <div class="row">

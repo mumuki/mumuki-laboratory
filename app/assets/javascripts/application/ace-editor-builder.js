@@ -20,13 +20,37 @@ var mumuki = mumuki || {};
         mumuki.editor.setEditorLanguage(this.editor, language);
       }
     },
-    setupOptions: function () {
+    setupPlaceholder: function(text) {
+      var self = this;
+      function update() {
+        var shouldShow = !self.editor.session.getValue().length;
+        var node = self.editor.renderer.emptyMessageNode;
+        if (!shouldShow && node) {
+          self.editor.renderer.scroller.removeChild(self.editor.renderer.emptyMessageNode);
+          self.editor.renderer.emptyMessageNode = null;
+        } else if (shouldShow && !node) {
+          node = self.editor.renderer.emptyMessageNode = document.createElement("div");
+          node.textContent = text;
+          node.className = "ace_invisible mu-empty-placeholder";
+          self.editor.renderer.scroller.appendChild(node);
+        }
+      }
+      this.editor.on("input", update);
+      setTimeout(update, 100);
+    },
+
+    setupOptions: function (minLines) {
       this.editor.setOptions({
-        minLines: 17,
         maxLines: Infinity,
+        showPrintMargin: false,
+        selectionStyle: 'text',
+        minLines: minLines,
+        showGutter: minLines > 1,
+        cursorStyle: minLines > 1 ? 'ace' : 'slim',
+        highlightActiveLine: minLines > 1,
         wrap: true
       });
-      this.editor.setFontSize(14);
+      this.editor.setFontSize(17);
     },
     setupSubmit: function () {
       var textarea = this.textarea;

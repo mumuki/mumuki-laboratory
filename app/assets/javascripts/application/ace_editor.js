@@ -3,9 +3,12 @@ var mumuki = mumuki || {};
 (function (mumuki) {
   function createAceEditors() {
     var editors = $(".editor").map(function (index, textarea) {
+      var $textarea = $(textarea);
       var builder = new mumuki.editor.AceEditorBuilder(textarea);
       builder.setupEditor();
-      builder.setupOptions();
+      builder.setupOptions($textarea.data('lines'));
+      console.log($textarea.data())
+      builder.setupPlaceholder($textarea.data('placeholder'));
       builder.setupSubmit();
       builder.setupLanguage();
       return builder.build();

@@ -1,0 +1,10 @@
+<div class="field form-group">
+  <%= form.editor :content, 'dynamic',
+                  class: 'form-control editor',
+                  value: @current_content,
+                  style: 'display: none',
+                  data: {lines: 17} %>
+</div>
+<div class="submission-overlapped">
+  <a class="editor-reset submission-reset"><%= reset_button %></a>
+</div>

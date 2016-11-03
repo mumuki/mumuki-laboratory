@@ -21,7 +21,7 @@ describe Api::GuidesController do
                default_content: 'foo',
                extra_visible: true,
                tag_list: %w(baz bar),
-               layout: 'no_editor',
+               layout: 'input_bottom',
                expectations: [{inspection: 'HasBinding', binding: 'bar'}],
                id: 1}]}
     }

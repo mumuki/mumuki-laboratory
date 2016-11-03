@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160907010315) do
+ActiveRecord::Schema.define(version: 20161018142147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,8 @@ ActiveRecord::Schema.define(version: 20160907010315) do
     t.boolean  "extra_visible",     default: false
     t.boolean  "new_expectations",  default: false
     t.boolean  "manual_evaluation", default: false
+    t.integer  "editor",            default: 0,         null: false
+    t.string   "choices",           default: [],        null: false, array: true
   end
 
   add_index "exercises", ["guide_id"], name: "index_exercises_on_guide_id", using: :btree
@@ -161,6 +163,7 @@ ActiveRecord::Schema.define(version: 20160907010315) do
     t.boolean  "queriable",              default: false
     t.string   "prompt"
     t.boolean  "stateful_console",       default: false
+    t.string   "extension",              default: "",    null: false
   end
 
   add_index "languages", ["name"], name: "index_languages_on_name", unique: true, using: :btree

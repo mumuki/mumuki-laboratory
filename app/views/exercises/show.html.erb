@@ -32,7 +32,7 @@
   <div class="text-box">
     <%= @exercise.description_html %>
   </div>
-  <div>
+  <div class="hint-box">
     <% if @exercise.hint.present? %>
       <a data-toggle="collapse" href="#hint-section" class="text-info">
         <%= fa_icon 'lightbulb-o' %> <%= t :need_a_hint %>
@@ -47,7 +47,7 @@
   </div>
 <% end %>
 
-<%= render layout: "layouts/submissions/#{@exercise.layout}" do %>
+<%= render_exercise_input_layout(@exercise) do %>
 <% end %>
 
 <%= hidden_field_tag :exercise_id, @exercise.id %>

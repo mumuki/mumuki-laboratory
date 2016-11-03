@@ -78,7 +78,7 @@ body {
   padding: 5px 10px 5px 10px !important;
 }
 
-.editor-pane {
+.mu-input-panel {
   margin-top: 5px;
 }
 
@@ -96,6 +96,10 @@ h1 {
       vertical-align: middle;
     }
   }
+}
+
+.hint-box {
+  margin-bottom: 20px;
 }
 
 .chapter {

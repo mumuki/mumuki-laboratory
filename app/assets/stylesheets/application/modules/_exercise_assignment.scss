@@ -6,7 +6,28 @@
   margin: 10px 0;
 }
 
-.editor-overlap {
+.mu-editor-overlap {
   z-index: 0;
   position: relative;
+}
+
+.mu-editor {
+  .form-group {
+    margin: 10px 0;
+  }
+  input[type=radio] {
+    margin: 4px;
+    & + label {
+      font-weight: normal;
+    }
+  }
+  label p {
+    margin: 0;
+  }
+}
+
+.mu-editor-one-liner {
+  .ace_content, .mu-empty-placeholder {
+    margin: 4px 0 !important;
+  }
 }

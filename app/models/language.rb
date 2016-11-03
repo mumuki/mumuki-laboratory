@@ -47,7 +47,8 @@ class Language < ActiveRecord::Base
                       prompt: (json.dig('language', 'prompt') || 'ム')  + ' ',
                       output_content_type: json['output_content_type'],
                       queriable: json.dig('features', 'query'),
-                      stateful_console: json.dig('features', 'stateful').present?
+                      stateful_console: json.dig('features', 'stateful').present?,
+                      extension: json.dig('language','extension')
     save!
   end
 end

@@ -63,6 +63,10 @@ class Assignment < ActiveRecord::Base
     Comment.create! comment_data.merge(submission_id: submission_id, exercise_id: exercise_id)
   end
 
+  def extension
+    exercise.language.extension
+  end
+
   private
 
   def update_submissions_count!

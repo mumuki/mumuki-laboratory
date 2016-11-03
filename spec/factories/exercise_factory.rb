@@ -14,6 +14,7 @@ FactoryGirl.define do
 
   factory :gobstones, parent: :language do
     name 'gobstones'
+    queriable false
   end
 
   factory :exercise_base do
@@ -21,7 +22,7 @@ FactoryGirl.define do
     sequence(:number) { |n| n }
 
     language { guide ? guide.language : create(:language) }
-    layout 'editor_right'
+    layout 'input_right'
     locale :en
     guide
   end
