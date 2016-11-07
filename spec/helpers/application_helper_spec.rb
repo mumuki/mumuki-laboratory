@@ -23,7 +23,7 @@ describe ApplicationHelper do
   end
 
   describe '#language_icon' do
-    let(:haskell) { create(:language, name: 'Haskell', devicon: 'haskell') }
+    let(:haskell) { create(:language, name: 'Haskell') }
     let(:haskell_img_tag) { '<span alt="Haskell" class="fa devicons devicons-haskell lang-icon" />' }
     it { expect(language_icon(haskell)).to include haskell_img_tag }
   end

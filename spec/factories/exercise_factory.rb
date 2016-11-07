@@ -4,7 +4,6 @@ FactoryGirl.define do
     sequence(:name) { |n| "lang#{n}" }
 
     runner_url { Faker::Internet.url }
-    devicon { name }
     queriable true
   end
 
