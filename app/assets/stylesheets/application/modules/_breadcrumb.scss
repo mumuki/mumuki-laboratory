@@ -8,12 +8,11 @@
 
   background-color: transparent;
   .brand {
-    font-size: 44px;
-    a {
-      color: $brand-primary;
-      &:hover, &:focus {
-        text-decoration: none;
-      }
+    font-size: 38px;
+    padding: 8px 3px 0;
+    color: $brand-primary;
+    &:hover, &:focus {
+      text-decoration: none;
     }
   }
 
