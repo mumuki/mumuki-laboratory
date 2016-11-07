@@ -42,8 +42,6 @@ class Language < ActiveRecord::Base
   end
 
   def import_from_json!(json)
-    raise 'Only devicons supported' if json.dig('language', 'icon', 'type') != 'devicon'
-
     assign_attributes name: json['name'],
                       highlight_mode: json.dig('language', 'ace_mode'),
                       visible_success_output: json.dig('language', 'graphic').present?,

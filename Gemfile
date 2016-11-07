@@ -18,7 +18,7 @@ gem 'execjs'
 gem 'jquery-rails'
 
 source 'https://rails-assets.org' do
-  gem 'rails-assets-devicons'
+  gem 'rails-assets-dev-awesome'
 end
 
 gem 'bootstrap-sass', '~> 3.3.5'
