@@ -11,6 +11,6 @@ module WithBreadcrumbs
   end
 
   def home_breadcrumb
-    "<li><span class=\"ahahamojimoji\">#{link_to 'ム', root_path }</span></li>".html_safe
+    "<li>#{link_to '<i class="brand da da-mumuki"></i>'.html_safe, root_path }</li>".html_safe
   end
 end
