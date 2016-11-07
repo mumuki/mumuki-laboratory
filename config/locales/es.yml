@@ -158,3 +158,4 @@ es:
   authoring_note: Esta guía fue desarrollada por %{authors} y <a href="%{collaborators}" target="_blank">muchas personas más</a>, bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia Creative Commons Compartir-Igual, 4.0</a>.
   download: "Descargá tu solución"
   editor_placeholder: "...escribí tu solución acá..."
+  powered_by_mumuki: "por <span class=\"da da-mumuki-circle\"></span> mumuki"
