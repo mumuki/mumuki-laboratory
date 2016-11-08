@@ -1,5 +1,5 @@
 module Mumukit::ContentType::Markdown
-  def self.highlighted_code(code, language)
+  def self.highlighted_code(language, code)
     "```#{language}\n#{code}```"
   end
 
