@@ -103,6 +103,19 @@ describe Exercise do
     end
   end
 
+  describe '#extra_preview' do
+    let(:haskell) { create(:haskell) }
+    let(:guide) { create(:guide,
+                         extra: 'f x = 1',
+                         language: haskell,
+                         exercises: [create(:exercise,
+                                            extra: 'g y = y + 3',
+                                            language: haskell)]) }
+    let(:exercise) { guide.exercises.first }
+
+    it { expect(exercise.extra_preview).to eq "```haskell\nf x = 1\ng y = y + 3\n```" }
+  end
+
   describe '#submitted_by?' do
     context 'when user did a submission' do
       before { exercise.submit_solution!(user) }
