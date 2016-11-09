@@ -10,18 +10,20 @@ Mumuki Atheneum [![btn_donate_lg](https://cloud.githubusercontent.com/assets/103
 > Code assement web application for the Mumuki platform
 
 ## About
-
 Atheneum is a multitenant Rails webapp for solving exercises, organized in terms of chapters and guides.
 
 ## Installing
 
 ### 1. Install essentials and base libraries
 
+> First, we need to install some software: [PostgreSQL](https://www.postgresql.org) database, [RabbitMQ](https://www.rabbitmq.com/) queue, and some common Ruby on Rails native dependencies
+
 ```bash
-sudo apt-get install autoconf curl git build-essential libssl-dev autoconf bison libreadline6 libreadline6-dev zlib1g zlib1g-dev libsqlite3-dev sqlite3 postgresql libpq-dev rabbitmq-server  
+sudo apt-get install autoconf curl git build-essential libssl-dev autoconf bison libreadline6 libreadline6-dev zlib1g zlib1g-dev postgresql libpq-dev rabbitmq-server  
 ```
 
 ### 2. Install rbenv
+> [rbenv](https://github.com/rbenv/rbenv) is a ruby versions manager, similar to rvm, nvm, and so on. 
 
 ```bash
 curl https://raw.githubusercontent.com/fesplugas/rbenv-installer/master/bin/rbenv-installer | bash
@@ -31,11 +33,14 @@ echo 'eval "$(rbenv init -)"' >> ~/.bashrc # or .bash_profile
 
 ### 3. Install ruby
 
+> Now we have rbenv installed, we can install ruby and [bundler](http://bundler.io/)
+
 ```bash
 rbenv install 2.0.0-p481
 rbenv global 2.0.0-p481
 rbenv rehash
 gem install bundler
+gem install escualo
 ```
 
 ### 4. Set development variables
@@ -46,14 +51,26 @@ echo "MUMUKI_AUTH0_CLIENT_ID=... \
       MUMUKI_AUTH0_DOMAIN=..." >> ~/.bashrc # or .bash_profile
 ```
 
-### 5. Clone this repository
+### 5. Create database user
+
+> We need to create a PostgreSQL role - AKA a user - who will be used by Atheneum to create and access the database
+
+```bash
+sudo -u postgres psql <<EOF
+  create role mumuki with createdb login password 'mumuki';
+EOF
+```
+
+### 6. Clone this repository
+
+> Because, err... we need to clone this repostory before developing it :stuck_out_tongue:
 
 ```bash
 git clone https://github.com/mumuki/mumuki-atheneum
 cd mumuki-atheneum
 ```
 
-### 6. Install and setup database 
+### 7. Install and setup database 
 
 ```bash
 bundle install
