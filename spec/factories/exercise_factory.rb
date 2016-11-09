@@ -12,6 +12,10 @@ FactoryGirl.define do
     name 'haskell'
   end
 
+  factory :text, parent: :language do
+    name 'text'
+  end
+
   factory :gobstones, parent: :language do
     name 'gobstones'
     queriable false
