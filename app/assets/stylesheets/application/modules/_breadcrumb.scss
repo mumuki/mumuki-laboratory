@@ -7,13 +7,12 @@
   white-space: nowrap;
 
   background-color: transparent;
-  .ahahamojimoji {
-    font-size: 44px;
-    a {
-      color: $brand-primary;
-      &:hover, &:focus {
-        text-decoration: none;
-      }
+  .brand {
+    font-size: 38px;
+    padding: 8px 3px 0;
+    color: $brand-primary;
+    &:hover, &:focus {
+      text-decoration: none;
     }
   }
 

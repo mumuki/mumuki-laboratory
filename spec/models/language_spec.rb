@@ -29,10 +29,6 @@ describe Language do
           'language' => {
               'prompt' => '>',
               'name' => 'ruby',
-              'icon' => {
-                  'type' => 'devicon',
-                  'name' => 'ruby'
-              },
               'version' => '2.0',
               'extension' => 'rb',
               'ace_mode' => 'ruby'
@@ -79,10 +75,6 @@ describe Language do
           },
           'language' => {
               'name' => 'gobstones',
-              'icon' => {
-                  'type' => 'devicon',
-                  'name' => 'gobstones'
-              },
               'graphic' => true,
               'version' => '1.4.1',
               'extension' => 'gbs',

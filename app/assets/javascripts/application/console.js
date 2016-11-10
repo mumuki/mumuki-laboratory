@@ -1,16 +1,26 @@
 var mumuki = mumuki || {};
 (function (mumuki) {
+  function renderPrompt() {
+    if ($('#prompt').attr('value').indexOf('ム') >= 0) {
+      $('.jquery-console-prompt-label')
+        .html('')
+        .append('<i class="text-primary da da-mumuki"></i>')
+        .append('<span>&nbsp;&nbsp;</span>');
+    }
+  }
 
   function reportValue(message, report) {
     report([
       {msg: message, className: 'jquery-console-message-value'}
-    ])
+    ]);
+    renderPrompt();
   }
 
   function reportError(message, report) {
     report([
       {msg: message, className: "jquery-console-message-error"}
-    ])
+    ]);
+    renderPrompt();
   }
   function clearConsole() {
       $('.jquery-console-message-error').remove();
@@ -107,6 +117,9 @@ var mumuki = mumuki || {};
       animateScroll: true,
       promptHistory: true
     });
+
+    renderPrompt();
+
   });
 
 })(mumuki);
