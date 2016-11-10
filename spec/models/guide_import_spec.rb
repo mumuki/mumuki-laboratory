@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Guide do
   let!(:haskell) { create(:haskell) }
-  let!(:text) { create(:text) }
+  let!(:text) { create(:text_language) }
   let!(:gobstones) { create(:gobstones) }
   let(:reloaded_exercise_1) { Exercise.find(exercise_1.id) }
 

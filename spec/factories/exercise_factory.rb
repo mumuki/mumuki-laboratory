@@ -12,7 +12,7 @@ FactoryGirl.define do
     name 'haskell'
   end
 
-  factory :text, parent: :language do
+  factory :text_language, parent: :language do
     name 'text'
   end
 
