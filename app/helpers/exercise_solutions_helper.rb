@@ -5,4 +5,5 @@ module ExerciseSolutionsHelper
   include WithExerciseInputRendering
   include WithProgressBar
   include WithEditorTabs
+  include WithChoices
 end
