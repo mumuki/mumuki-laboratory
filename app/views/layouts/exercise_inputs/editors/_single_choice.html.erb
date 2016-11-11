@@ -1,7 +1,7 @@
 <div class="form-group">
   <% @exercise.pretty_choices.each do |choice| %>
     <div class="field">
-      <%= form.radio_button(:content, choice.value, id: choice.id, required: true) %>
+      <%= form.radio_button(:content, choice.value, checked: checked(choice, @current_content), id: choice.id, required: true) %>
       <%= label_tag(choice.id, choice.text) %>
     </div>
   <% end %>
