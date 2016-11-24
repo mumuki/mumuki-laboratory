@@ -14,14 +14,23 @@ Atheneum is a multitenant Rails webapp for solving exercises, organized in terms
 
 ## Installing
 
-### TL;DR
-Install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads), and run: `vagrant up`. Then, if you `vagrant ssh` your virtual machine, you'll have a machine that has all the preconditions to develop here. Just run:
+For development, you've to add to your `/etc/hosts` file:
 ```
+127.0.0.1 localmumuki.io
+127.0.0.1 central.localmumuki.io
+127.0.0.1 central.classroom.localmumuki.io
+```
+
+### TL;DR install
+Install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads), clone the repository and run: `vagrant up`. Then, if you do `vagrant ssh` you'll be connected to a machine that has all the preconditions to run the development server. Just run:
+```bash
 cd /vagrant
-export QUEUELESS_MODE=true
-export OFFLINE_MODE=true # or setup Auth0 config (see step 4)
+# export MUMUKI_AUTH0_... environment variables (see step 4)
 rails s
+# http://central.localmumuki.io:3000
 ```
+
+### Full install
 
 ### 1. Install essentials and base libraries
 
