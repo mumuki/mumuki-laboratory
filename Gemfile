@@ -12,6 +12,7 @@ gem 'therubyracer', platforms: :ruby
 
 gem 'turbolinks'
 
+
 gem 'sass-rails'
 gem 'execjs'
 
@@ -19,6 +20,7 @@ gem 'jquery-rails'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-dev-awesome'
+  gem 'rails-assets-awesome-bootstrap-checkbox'
 end
 
 gem 'bootstrap-sass', '~> 3.3.5'

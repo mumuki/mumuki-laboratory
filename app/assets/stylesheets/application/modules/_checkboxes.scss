@@ -1,0 +1,21 @@
+.complementary label::after {
+  background-color: $brand-complementary;
+  color: white;
+  top: 6px;
+}
+
+.complementary label::before {
+  bottom: 7px;
+}
+
+.complementary-checkbox label::after {
+  width: 17px;
+  height: 17px;
+  line-height: 14px;
+  border-radius: 3px;
+  border: 1px solid $brand-complementary;
+}
+.complementary-radio label::after {
+  top: 9px;
+}
+
