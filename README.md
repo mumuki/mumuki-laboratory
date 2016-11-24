@@ -14,16 +14,25 @@ Atheneum is a multitenant Rails webapp for solving exercises, organized in terms
 
 ## Installing
 
+### TL;DR
+Install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads), and run: `vagrant up`. Then, if you `vagrant ssh` your virtual machine, you'll have a machine that has all the preconditions to develop here. Just run:
+```
+cd /vagrant
+export QUEUELESS_MODE=true
+export OFFLINE_MODE=true # or setup Auth0 config (see step 4)
+rails s
+```
+
 ### 1. Install essentials and base libraries
 
 > First, we need to install some software: [PostgreSQL](https://www.postgresql.org) database, [RabbitMQ](https://www.rabbitmq.com/) queue, and some common Ruby on Rails native dependencies
 
 ```bash
-sudo apt-get install autoconf curl git build-essential libssl-dev autoconf bison libreadline6 libreadline6-dev zlib1g zlib1g-dev postgresql libpq-dev rabbitmq-server  
+sudo apt-get install autoconf curl git build-essential libssl-dev autoconf bison libreadline6 libreadline6-dev zlib1g zlib1g-dev postgresql libpq-dev rabbitmq-server
 ```
 
 ### 2. Install rbenv
-> [rbenv](https://github.com/rbenv/rbenv) is a ruby versions manager, similar to rvm, nvm, and so on. 
+> [rbenv](https://github.com/rbenv/rbenv) is a ruby versions manager, similar to rvm, nvm, and so on.
 
 ```bash
 curl https://raw.githubusercontent.com/fesplugas/rbenv-installer/master/bin/rbenv-installer | bash
@@ -70,26 +79,26 @@ git clone https://github.com/mumuki/mumuki-atheneum
 cd mumuki-atheneum
 ```
 
-### 7. Install and setup database 
+### 7. Install and setup database
 
 ```bash
 bundle install
 bundle exec rake db:create db:schema:load db:seed
 ```
 
-### Running 
+### Running
 
 ```bash
 rails s
 ```
 
-### Deploying into production 
+### Deploying into production
 
 ```bash
 gem install escualo
 escualo script atheneum.yml # see https://github.com/mumuki/escualo.rb
 ```
 
-## Authentication Powered by Auth0 
+## Authentication Powered by Auth0
 
 <a width="150" height="50" href="https://auth0.com/" target="_blank" alt="Single Sign On & Token Based Authentication - Auth0"><img width="150" height="50" alt="JWT Auth for open source projects" src="http://cdn.auth0.com/oss/badges/a0-badge-dark.png"/></a>
