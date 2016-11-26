@@ -43,12 +43,13 @@ Rails.application.configure do
   config.auth0_client_secret = ENV['MUMUKI_AUTH0_CLIENT_SECRET']
   config.auth0_domain = ENV['MUMUKI_AUTH0_DOMAIN']
 
-  config.offline_mode = ENV['MUMUKI_OFFLINE_MODE']
-  config.queueless_mode = ENV['MUMUKI_QUEUELESS_MODE']
-
   config.thesaurus_url = ENV['MUMUKI_THESAURUS_URL'] || 'http://thesaurus.mumuki.io'
   config.bibliotheca_url = ENV['MUMUKI_BIBLIOTHECA_URL'] || 'http://bibliotheca.mumuki.io'
 
-  config.domain_url = ENV['MUMUKI_DOMAIN_URL'] || 'localmumuki.io:3000'
-  config.cookies_domain = ENV['MUMUKI_COOKIES_DOMAIN'] || '.localmumuki.io'
+  config.single_user_mode = ENV['MUMUKI_SINGLE_USER_MODE']
+  config.queueless_mode = ENV['MUMUKI_QUEUELESS_MODE']
+
+  config.domain = ENV['MUMUKI_DOMAIN'] || 'localmumuki.io'
+  config.base_url = ENV['MUMUKI_BASE_URL'] || "http://#{config.domain}:3000"
+  config.cookies_domain = ENV['MUMUKI_COOKIES_DOMAIN'] || ".#{config.domain}"
 end

@@ -84,16 +84,12 @@ class Organization < ActiveRecord::Base
   end
 
 
-  def absolute_link(path)
-    "http://#{relative_link}#{path}"
+  def url_for(path)
+    URI.join(Rails.configuration.base_url.subdominate('central'), path)
   end
 
-  def relative_link
-    "#{name}.#{Rails.configuration.domain_url}"
-  end
-
-  def central_url
-    "http://central.#{Rails.configuration.domain_url}"
+  def domain
+    "#{name}.#{Rails.configuration.domain}"
   end
 
   def notify!
@@ -102,6 +98,10 @@ class Organization < ActiveRecord::Base
 
   def as_complete_json
     as_json(except: [:login_methods]).merge(locale: locale, lock_json: login_settings.lock_json)
+  end
+
+  def self.central_url
+    Rails.configuration.base_url.subdominate 'central'
   end
 
   private

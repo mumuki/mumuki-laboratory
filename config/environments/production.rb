@@ -93,8 +93,10 @@ Rails.application.configure do
   config.thesaurus_url = ENV['MUMUKI_THESAURUS_URL']
   config.bibliotheca_url = ENV['MUMUKI_BIBLIOTHECA_URL']
 
-  config.offline_mode = ENV['MUMUKI_OFFLINE_MODE']
-  config.domain_url = ENV['MUMUKI_DOMAIN_URL']
+  config.single_user_mode = ENV['MUMUKI_SINGLE_USER_MODE']
   config.queueless_mode = ENV['MUMUKI_QUEUELESS_MODE']
-  config.cookies_domain = ENV['MUMUKI_COOKIES_DOMAIN'] || ".#{config.domain_url}"
+
+  config.domain = ENV['MUMUKI_DOMAIN']
+  config.base_url = ENV['MUMUKI_BASE_URL'] || "http://#{config.domain}"
+  config.cookies_domain = ENV['MUMUKI_COOKIES_DOMAIN'] || ".#{config.domain}"
 end

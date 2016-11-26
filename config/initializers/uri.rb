@@ -11,3 +11,10 @@ class URI::HTTP
                     query: query)
   end
 end
+
+
+class String
+  def subdominate(subdomain)
+    URI(self).add_subdomain(subdomain).to_s
+  end
+end
