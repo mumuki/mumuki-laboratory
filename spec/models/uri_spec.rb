@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 def add_extra_subdomain(original_url)
-  URI(original_url).add_subdomain('extra').to_s
+  URI(original_url).subdominate('extra').to_s
 end
 
 describe URI do

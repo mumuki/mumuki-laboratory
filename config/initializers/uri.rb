@@ -1,5 +1,5 @@
 class URI::HTTP
-  def add_subdomain(subdomain)
+  def subdominate(subdomain)
     if host.start_with? 'www.'
       new_host = host.gsub('www.', "www.#{subdomain}.")
     else
@@ -12,9 +12,3 @@ class URI::HTTP
   end
 end
 
-
-class String
-  def subdominate(subdomain)
-    URI(self).add_subdomain(subdomain).to_s
-  end
-end

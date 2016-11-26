@@ -85,7 +85,7 @@ class Organization < ActiveRecord::Base
 
 
   def url_for(path)
-    URI.join(Rails.configuration.base_url.subdominate('central'), path)
+    URI.join(central_uri_object, path).to_s
   end
 
   def domain
@@ -101,10 +101,14 @@ class Organization < ActiveRecord::Base
   end
 
   def self.central_url
-    Rails.configuration.base_url.subdominate 'central'
+    central_uri_object.to_s
   end
 
   private
+
+  def central_uri_object
+    URI(Rails.configuration.base_url).subdominate('central')
+  end
 
   def notify_assignments!(assignments)
     puts "We will try to send #{assignments.count} assignments, please wait..."
