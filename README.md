@@ -22,15 +22,11 @@ For development, you've to add to your `/etc/hosts` file:
 ```
 
 ### TL;DR install
-Install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads), clone the repository and run: `vagrant up`. Then, if you do `vagrant ssh` you'll be connected to a machine that has all the preconditions to run the development server. Just run:
-```bash
-cd /vagrant
-# export MUMUKI_AUTH0_... environment variables (see step 4)
-rails s
-# http://central.localmumuki.io:3000
-```
 
-### Full install
+1. Install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+2. Run `curl https://raw.githubusercontent.com/mumuki/mumuki-development-installer/master/install.sh | bash`
+3. `cd mumuki && vagrant ssh` and then  `cd vagrant/atheneum`
+4. Go to step 7
 
 ### 1. Install essentials and base libraries
 

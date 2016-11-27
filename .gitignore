@@ -19,10 +19,6 @@
 
 .idea
 
-# Vagrant
-.vagrant
-mpapis.asc
-
 # Others
 public/sitemap.xml.gz
 public/assets
