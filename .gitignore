@@ -19,6 +19,7 @@
 
 .idea
 
+# Others
 public/sitemap.xml.gz
 public/assets
 coverage/
