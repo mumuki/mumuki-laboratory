@@ -36,8 +36,8 @@ echo 'eval "$(rbenv init -)"' >> ~/.bashrc # or .bash_profile
 > Now we have rbenv installed, we can install ruby and [bundler](http://bundler.io/)
 
 ```bash
-rbenv install 2.0.0-p481
-rbenv global 2.0.0-p481
+rbenv install 2.3.1
+rbenv global 2.3.1
 rbenv rehash
 gem install bundler
 gem install escualo
