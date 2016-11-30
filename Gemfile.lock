@@ -126,7 +126,7 @@ GEM
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    libv8 (3.16.14.11)
+    libv8 (3.16.14.17)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
     md_emoji (1.0.2)
