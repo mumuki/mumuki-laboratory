@@ -4,7 +4,7 @@ var mumuki = mumuki || {};
   $(function () {
     var token = new mumuki.CsrfToken();
     setInterval(function () {
-      if ($('.badge-comments').length == 0) {
+      if ($('.badge-comments').length === 0) {
         return;
       }
       $.ajax(token.newRequest({
