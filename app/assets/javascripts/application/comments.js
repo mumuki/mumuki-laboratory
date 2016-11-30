@@ -20,4 +20,4 @@ var mumuki = mumuki || {};
         });
     }, 60000);
   });
-})(mumuki);
+}(mumuki));

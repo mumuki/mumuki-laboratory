@@ -15,4 +15,4 @@ var mumuki = mumuki || {};
   };
 
   mumuki.CsrfToken = CsrfToken;
-})(mumuki);
+}(mumuki));

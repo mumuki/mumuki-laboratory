@@ -64,4 +64,4 @@ var mumuki = mumuki || {};
       resetEditor();
     });
   });
-})(mumuki);
+}(mumuki));

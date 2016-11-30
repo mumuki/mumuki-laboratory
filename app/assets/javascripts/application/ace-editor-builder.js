@@ -69,4 +69,4 @@ var mumuki = mumuki || {};
 
   mumuki.editor = mumuki.editor || {};
   mumuki.editor.AceEditorBuilder = AceEditorBuilder;
-})(mumuki);
+}(mumuki));
