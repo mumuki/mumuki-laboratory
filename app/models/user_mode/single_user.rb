@@ -5,7 +5,7 @@ class UserMode::SingleUser
   end
 
   def auth_link
-    'href="http://localhost:3000/auth/developer"'
+    "href='#{Organization.absolute_link('/auth/developer')}'"
   end
 
   def protect_from_forgery(controller)
