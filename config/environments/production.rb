@@ -80,7 +80,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.verbosity = Verbosity::Standard
+  config.status_rendering_verbosity = :standard
 
   config.i18n.default_locale = :es
 
@@ -90,8 +90,13 @@ Rails.application.configure do
   config.auth0_client_secret = ENV['MUMUKI_AUTH0_CLIENT_SECRET']
   config.auth0_domain = ENV['MUMUKI_AUTH0_DOMAIN']
 
-  config.offline_mode = ENV['OFFLINE_MODE']
-  config.domain_url = ENV['DOMAIN_URL'] || 'mumuki.io'
-  config.queueless_mode = ENV['QUEUELESS_MODE']
-  config.cookies_domain = ENV['COOKIES_DOMAIN'] || '.mumuki.io'
+  config.thesaurus_url = ENV['MUMUKI_THESAURUS_URL']
+  config.bibliotheca_url = ENV['MUMUKI_BIBLIOTHECA_URL']
+
+  config.single_user_mode = ENV['MUMUKI_SINGLE_USER_MODE']
+  config.queueless_mode = ENV['MUMUKI_QUEUELESS_MODE']
+
+  config.domain = ENV['MUMUKI_DOMAIN']
+  config.base_url = ENV['MUMUKI_BASE_URL'] || "http://#{config.domain}"
+  config.cookies_domain = ENV['MUMUKI_COOKIES_DOMAIN'] || ".#{config.domain}"
 end

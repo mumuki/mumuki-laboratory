@@ -84,16 +84,12 @@ class Organization < ActiveRecord::Base
   end
 
 
-  def absolute_link(path)
-    "http://#{relative_link}#{path}"
+  def url_for(path)
+    URI.join(central_uri_object, path).to_s
   end
 
-  def relative_link
-    "#{name}.#{Rails.configuration.domain_url}"
-  end
-
-  def central_url
-    "http://central.#{Rails.configuration.domain_url}"
+  def domain
+    "#{name}.#{Rails.configuration.domain}"
   end
 
   def notify!
@@ -104,7 +100,15 @@ class Organization < ActiveRecord::Base
     as_json(except: [:login_methods]).merge(locale: locale, lock_json: login_settings.lock_json)
   end
 
+  def self.central_url
+    central_uri_object.to_s
+  end
+
   private
+
+  def central_uri_object
+    URI(Rails.configuration.base_url).subdominate('central')
+  end
 
   def notify_assignments!(assignments)
     puts "We will try to send #{assignments.count} assignments, please wait..."

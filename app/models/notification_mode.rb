@@ -8,6 +8,6 @@ module NotificationMode
   private
 
   def self.deaf?
-    Rails.configuration.offline_mode || Rails.configuration.queueless_mode
+    Rails.configuration.queueless_mode
   end
 end
