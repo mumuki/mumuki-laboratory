@@ -83,13 +83,12 @@ class Organization < ActiveRecord::Base
     exams.select { |exam| exam.accessible_for?(user) }
   end
 
-
   def url_for(path)
-    URI.join(central_uri_object, path).to_s
+    URI.join(uri_object, path).to_s
   end
 
   def domain
-    "#{name}.#{Rails.configuration.domain}"
+    uri_object.host
   end
 
   def notify!
@@ -100,15 +99,12 @@ class Organization < ActiveRecord::Base
     as_json(except: [:login_methods]).merge(locale: locale, lock_json: login_settings.lock_json)
   end
 
-  def self.central_url
-    central_uri_object.to_s
-  end
-
   private
 
-  def central_uri_object
-    URI(Rails.configuration.base_url).subdominate('central')
+  def uri_object
+    URI(Rails.configuration.base_url).subdominate(name)
   end
+
 
   def notify_assignments!(assignments)
     puts "We will try to send #{assignments.count} assignments, please wait..."
@@ -125,6 +121,14 @@ class Organization < ActiveRecord::Base
 
     def central
       find_by name: 'central'
+    end
+
+    def central_url
+      central_uri_object.to_s
+    end
+
+    def central_uri_object
+      URI(Rails.configuration.base_url).subdominate('central')
     end
   end
 
