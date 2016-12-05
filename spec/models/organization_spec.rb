@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Organization do
   let(:user) { create(:user) }
+  let(:central) { create(:organization, name: 'central') }
 
   describe '.current' do
     let(:organization) { Organization.find_by(name: 'test') }
@@ -30,6 +31,16 @@ describe Organization do
 
     it { expect(public_organization.customized_login_methods?).to be false }
     it { expect(public_organization.private?).to be false }
+  end
+
+  describe '#url_for' do
+    it { expect(Organization.url_for 'zaraza').to eq 'http://test.localmumuki.io/zaraza' }
+    it { expect(central.url_for 'zaraza').to eq 'http://central.localmumuki.io/zaraza' }
+  end
+
+  describe '#domain' do
+    it { expect(Organization.domain).to eq 'test.localmumuki.io' }
+    it { expect(central.domain).to eq 'central.localmumuki.io' }
   end
 
   describe '#notify_assignments_by!' do
