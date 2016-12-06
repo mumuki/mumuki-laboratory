@@ -169,8 +169,11 @@ GEM
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
-    pg (0.18.4)
-    pg_search (1.0.6)
+    omniauth-saml (1.4.2)
+      omniauth (~> 1.1)
+      ruby-saml (~> 1.1, >= 1.1.1)
+    pg (0.18.3)
+    pg_search (1.0.5)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
       arel
@@ -237,9 +240,8 @@ GEM
       rspec-core (~> 2.99.0)
       rspec-expectations (~> 2.99.0)
       rspec-mocks (~> 2.99.0)
-    sass (3.4.23)
-    sass-rails (5.0.6)
-      railties (>= 4.0.0, < 6)
+    ruby-saml (1.4.1)
+      nokogiri (>= 1.5.10)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
@@ -319,6 +321,7 @@ DEPENDENCIES
   nprogress-rails
   omniauth (~> 1.2)
   omniauth-auth0 (~> 1.1)
+  omniauth-saml
   pg (~> 0.18.0)
   pg_search (~> 1.0)
   pry
