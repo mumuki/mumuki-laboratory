@@ -5,7 +5,7 @@ class UserMode::MultiUser
       when 'saml'
         SamlAuthStrategy.new
       when 'auth0'
-        Auth0AuthStrategys.new
+        Auth0AuthStrategy.new
       else
         raise 'Unknown auth_strategy "#{auth_strategy}"'
       end
