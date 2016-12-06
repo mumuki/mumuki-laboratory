@@ -1,10 +1,13 @@
 class UserMode::SamlAuthStrategy < UserMode::MultiUser
   def set_auth_provider(omniauth)
     omniauth.provider :saml,
-      :assertion_consumer_service_url     => "http://central.localmumuki.io:3000/auth/saml/callback",
+      # TODO: change the :assertion_consumer_service_url:
+      # =>  1. we can not call any Organization method since there is none instantiated yet and
+      # =>  2. we must use the absolut path to generate the right SAML metadata to set up the federation with the IdP
+      :assertion_consumer_service_url     => "http://central.#{Rails.configuration.domain_url}/auth/saml/callback",
       :issuer                             => "Mumuki",
-      :idp_sso_target_url                 => "http://localhost:9999/simplesaml/saml2/idp/SSOService.php",
-      :idp_cert                           => "-----BEGIN CERTIFICATE-----\nMIICgTCCAeoCCQCbOlrWDdX7FTANBgkqhkiG9w0BAQUFADCBhDELMAkGA1UEBhMCTk8xGDAWBgNVBAgTD0FuZHJlYXMgU29sYmVyZzEMMAoGA1UEBxMDRm9vMRAwDgYDVQQKEwdVTklORVRUMRgwFgYDVQQDEw9mZWlkZS5lcmxhbmcubm8xITAfBgkqhkiG9w0BCQEWEmFuZHJlYXNAdW5pbmV0dC5ubzAeFw0wNzA2MTUxMjAxMzVaFw0wNzA4MTQxMjAxMzVaMIGEMQswCQYDVQQGEwJOTzEYMBYGA1UECBMPQW5kcmVhcyBTb2xiZXJnMQwwCgYDVQQHEwNGb28xEDAOBgNVBAoTB1VOSU5FVFQxGDAWBgNVBAMTD2ZlaWRlLmVybGFuZy5ubzEhMB8GCSqGSIb3DQEJARYSYW5kcmVhc0B1bmluZXR0Lm5vMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDivbhR7P516x/S3BqKxupQe0LONoliupiBOesCO3SHbDrl3+q9IbfnfmE04rNuMcPsIxB161TdDpIesLCn7c8aPHISKOtPlAeTZSnb8QAu7aRjZq3+PbrP5uW3TcfCGPtKTytHOge/OlJbo078dVhXQ14d1EDwXJW1rRXuUt4C8QIDAQABMA0GCSqGSIb3DQEBBQUAA4GBACDVfp86HObqY+e8BUoWQ9+VMQx1ASDohBjwOsg2WykUqRXF+dLfcUH9dWR63CtZIKFDbStNomPnQz7nbK+onygwBspVEbnHuUihZq3ZUdmumQqCw4Uvs/1Uvq3orOo/WJVhTyvLgFVK2QarQ4/67OZfHd7R+POBXhophSMv1ZOo\n-----END CERTIFICATE-----"
+      :idp_sso_target_url                 => Rails.configuration.saml_idp_sso_target_url,
+      :idp_cert                           => File.read('./saml.crt')
   end
 
   def protect_from_forgery(controller)
@@ -12,7 +15,7 @@ class UserMode::SamlAuthStrategy < UserMode::MultiUser
   end
 
   def auth_link
-    'href="http://central.localmumuki.io:3000/auth/saml/"'
+    'href="' + Organization.absolute_link('/auth/saml/') + '"'
   end
 
 end
