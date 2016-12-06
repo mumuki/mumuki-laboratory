@@ -1,4 +1,4 @@
-class UserMode::Auth0AuthStrategy
+class UserMode::Auth0AuthStrategy < UserMode::MultiUser
   def set_auth_provider(omniauth)
     omniauth.provider :auth0,
                       Rails.configuration.auth0_client_id,
@@ -7,7 +7,7 @@ class UserMode::Auth0AuthStrategy
                       callback_path: '/auth/auth0/callback'
   end
 
-  def init_partial
+  def auth_init_partial
     'layouts/auth_partials/auth0.init.html.erb'
   end
 
@@ -15,11 +15,8 @@ class UserMode::Auth0AuthStrategy
     '<a href="https://auth0.com/" target="_blank"><img height="40" alt="JWT Auth for open source projects" src="//cdn.auth0.com/oss/badges/a0-badge-light.png"/></a>'.html_safe
   end
 
-  def should_be_forgery_protected?
-    true
-  end
-
   def auth_link
     'href="#" onclick="window.signin();"'
   end
+
 end

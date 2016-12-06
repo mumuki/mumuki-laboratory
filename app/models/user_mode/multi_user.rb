@@ -1,30 +1,18 @@
 class UserMode::MultiUser
-
-  def initialize(auth_strategy)
-    @auth_strategy=case auth_strategy.downcase
-      when 'saml'
-        SamlAuthStrategy.new
-      when 'auth0'
-        Auth0AuthStrategy.new
-      else
-        raise 'Unknown auth_strategy "#{auth_strategy}"'
-      end
-  end
-
   def set_auth_provider(omniauth)
-    @auth_strategy.set_auth_provider omniauth
+    raise 'This method should be overwritten'
   end
 
   def auth_init_partial
-    @auth_strategy.init_partial
+    'layouts/auth_partials/null_partial.html.erb'
   end
 
   def html_badge
-    @auth_strategy.html_badge
+    ''
   end
 
   def auth_link
-    @auth_strategy.auth_link
+    raise 'This method should be overwritten'
   end
 
   def logo_url
@@ -32,9 +20,7 @@ class UserMode::MultiUser
   end
 
   def protect_from_forgery(controller)
-    if @auth_strategy.should_be_forgery_protected?
-      controller.protect_from_forgery with: :exception
-    end
+    controller.protect_from_forgery with: :exception
   end
 
   def can_visit?(user)
