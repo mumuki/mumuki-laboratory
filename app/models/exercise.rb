@@ -143,17 +143,3 @@ class Exercise < ActiveRecord::Base
     layouts.keys[0]
   end
 end
-
-module Mumukit::ContentType::Markdown
-  def self.to_html(content)
-    replace_mu_logo(content).html_safe if content
-  end
-
-  def self.replace_mu_logo(content)
-    mumuki_logo = '<i class="text-primary da da-mumuki"></i>'
-    @@markdown
-      .render(content)
-      .gsub('<span class="err">ム</span>', mumuki_logo)
-      .gsub('ム', mumuki_logo)
-  end
-end

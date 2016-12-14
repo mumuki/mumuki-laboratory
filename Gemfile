@@ -51,7 +51,7 @@ gem 'bunny'
 
 gem 'addressable'
 
-gem 'mumukit-content-type', '~> 0.2', require: 'mumukit/content_type'
+gem 'mumukit-content-type', '~> 0.4', require: 'mumukit/content_type'
 gem 'mumukit-auth', '~> 0.2'
 gem 'mumukit-core', '~> 0.1'
 gem 'mumukit-bridge', '~> 1.3'
