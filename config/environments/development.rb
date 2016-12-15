@@ -44,7 +44,7 @@ Rails.application.configure do
   config.auth0_domain = ENV['MUMUKI_AUTH0_DOMAIN']
 
   config.thesaurus_url = ENV['MUMUKI_THESAURUS_URL'] || 'http://thesaurus.mumuki.io'
-  config.bibliotheca_url = ENV['MUMUKI_BIBLIOTHECA_URL'] || 'http://bibliotheca.mumuki.io'
+  config.bibliotheca_url = ENV['MUMUKI_BIBLIOTHECA_URL'] || 'http://bibliotheca-api.mumuki.io'
 
   config.single_user_mode = ENV['MUMUKI_SINGLE_USER_MODE']
   config.queueless_mode = ENV['MUMUKI_QUEUELESS_MODE']
