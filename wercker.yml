@@ -1,0 +1,22 @@
+box: ruby:2.3.1
+
+services:
+- id: postgresql
+
+build:
+  steps:
+  - script:
+    name: Clear bundle cache
+    code: rm -rf /pipeline/cache/bundle-install/ruby/2.3.1/cache/bundler/git/*
+  - bundle-install
+  - script:
+      name: rspec
+      code: bundle exec rspec
+
+deploy:
+  escualo:
+  - add-ssh-key:
+      keyname: ESCUALO_RSA
+  - script:
+      name: deploy
+      code: wget https://raw.githubusercontent.com/mumuki/mumuki-escualo-deploy/master/wercker_deploy && chmod u+x wercker_deploy && ./wercker_deploy atheneum
