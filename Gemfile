@@ -52,12 +52,12 @@ gem 'bunny'
 gem 'addressable'
 
 gem 'mumukit-content-type', '~> 0.4', require: 'mumukit/content_type'
-gem 'mumukit-auth', '~> 0.2'
-gem 'mumukit-core', '~> 0.1'
+gem 'mumukit-auth', '~> 2.2'
+gem 'mumukit-core', '~> 0.4'
 gem 'mumukit-bridge', '~> 1.3'
 gem 'mumukit-inspection', '~> 0.1'
 
-gem 'mumukit-nuntius', '~> 1.0.0'
+gem 'mumukit-nuntius', '~> 1.0'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'
