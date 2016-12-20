@@ -14,10 +14,12 @@ class SessionsController < ApplicationController
     remember_me_token.clear!
     # TODO: desharcode URL
     # TODO: redirect to /spslo ONLY if using saml_auth_strategy. Otherwise, redirect to root_url
-    redirect_to 'http://central.localmumuki.io:3000/auth/saml/spslo'
-#    redirect_to root_url
+    redirect_to UserMode.logout_redirection_url self
   end
 
+  def after_logout_redirection_url
+    root_url
+  end
 
   def redirect_after_login
     path = session[:redirect_after_login] || :back

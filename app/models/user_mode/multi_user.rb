@@ -19,6 +19,10 @@ class UserMode::MultiUser
     Organization.logo_url
   end
 
+  def logout_redirection_url(controller)
+    controller.after_logout_redirection_url
+  end
+
   def protect_from_forgery(controller)
     controller.protect_from_forgery with: :exception
   end

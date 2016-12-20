@@ -32,4 +32,8 @@ class UserMode::SamlAuthStrategy < UserMode::MultiUser
     'href="http://central.' + Rails.configuration.domain + ':3000/auth/saml/"'
   end
 
+  def logout_redirection_url(controller)
+    "http://central.localmumuki.io:3000/auth/saml/spslo"
+  end
+
 end
