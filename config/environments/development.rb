@@ -44,6 +44,7 @@ Rails.application.configure do
   config.auth0_domain = ENV['MUMUKI_AUTH0_DOMAIN']
   config.auth_provider = ENV['MUMUKI_AUTHORIZATION_PROVIDER'] # auth0 or saml (case insensitive)
   config.saml_idp_sso_target_url = ENV['MUMUKI_SAML_IDP_SSO_TARGET_URL'] # provided by the SAML IdP
+  config.saml_idp_slo_target_url = ENV['MUMUKI_SAML_IDP_SLO_TARGET_URL'] # provided by the SAML IdP
 
   config.thesaurus_url = ENV['MUMUKI_THESAURUS_URL'] || 'http://thesaurus.mumuki.io'
   config.bibliotheca_url = ENV['MUMUKI_BIBLIOTHECA_URL'] || 'http://bibliotheca-api.mumuki.io'

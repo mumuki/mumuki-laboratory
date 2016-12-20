@@ -1,12 +1,14 @@
 class UserMode::SamlAuthStrategy < UserMode::MultiUser
   def set_auth_provider(omniauth)
     omniauth.provider :saml,
-      # TODO: change the :assertion_consumer_service_url:
+      # TODO: change the :assertion_consumer_service_url, the :issuer and the :slo_default_relay_state:
       # =>  1. we can not call any Organization method since there is none instantiated yet and
       # =>  2. we must use the absolut path to generate the right SAML metadata to set up the federation with the IdP
       :assertion_consumer_service_url     => "http://central.#{Rails.configuration.domain}:3000/auth/saml/callback",
       :issuer                             => "http://central.#{Rails.configuration.domain}:3000/auth/saml",
       :idp_sso_target_url                 => Rails.configuration.saml_idp_sso_target_url,
+      :idp_slo_target_url                 => Rails.configuration.saml_idp_slo_target_url,
+      :slo_default_relay_state            => "http://central.#{Rails.configuration.domain}:3000",
       :idp_cert                           => File.read('./saml.crt'),
       :attribute_service_name             => 'Mumuki',
       :request_attributes                 => [

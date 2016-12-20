@@ -12,7 +12,10 @@ class SessionsController < ApplicationController
 
   def destroy
     remember_me_token.clear!
-    redirect_to root_url
+    # TODO: desharcode URL
+    # TODO: redirect to /spslo ONLY if using saml_auth_strategy. Otherwise, redirect to root_url
+    redirect_to 'http://central.localmumuki.io:3000/auth/saml/spslo'
+#    redirect_to root_url
   end
 
 
