@@ -4,11 +4,12 @@ class UserMode::SamlAuthStrategy < UserMode::MultiUser
       # TODO: change the :assertion_consumer_service_url, the :issuer and the :slo_default_relay_state:
       # =>  1. we can not call any Organization method since there is none instantiated yet and
       # =>  2. we must use the absolut path to generate the right SAML metadata to set up the federation with the IdP
-      :assertion_consumer_service_url     => "http://central.#{Rails.configuration.domain}:3000/auth/saml/callback",
-      :issuer                             => "http://central.#{Rails.configuration.domain}:3000/auth/saml",
+      :assertion_consumer_service_url     => "http://#{Rails.configuration.domain}:3000/auth/saml/callback",
+      :single_logout_service_url          => "http://#{Rails.configuration.domain}:3000/auth/saml/slo",
+      :issuer                             => "http://#{Rails.configuration.domain}:3000/auth/saml",
       :idp_sso_target_url                 => Rails.configuration.saml_idp_sso_target_url,
       :idp_slo_target_url                 => Rails.configuration.saml_idp_slo_target_url,
-      :slo_default_relay_state            => "http://central.#{Rails.configuration.domain}:3000",
+      :slo_default_relay_state            => "http://#{Rails.configuration.domain}:3000",
       :idp_cert                           => File.read('./saml.crt'),
       :attribute_service_name             => 'Mumuki',
       :request_attributes                 => [
@@ -28,12 +29,11 @@ class UserMode::SamlAuthStrategy < UserMode::MultiUser
   end
 
   def auth_link
-    # Was using Organization.url_for('/auth/saml/') but the port got lost (is it a bug?)
-    'href="http://central.' + Rails.configuration.domain + ':3000/auth/saml/"'
+    "href=#{Organization.url_for('/auth/saml/')}"
   end
 
   def logout_redirection_url(controller)
-    "http://central.localmumuki.io:3000/auth/saml/spslo"
+    Organization.url_for('/auth/saml/spslo')
   end
 
 end
