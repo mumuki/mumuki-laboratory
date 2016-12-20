@@ -17,9 +17,9 @@ class UserMode::SamlAuthStrategy < UserMode::MultiUser
         { :name => 'image', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic', :friendly_name => 'Avatar image' }
       ],
       :attribute_statements               => {
-        name: ["name"],
-        email: ["email"],
-        image: ["image"]
+        name: [Rails.configuration.saml_translation_name || "name"],
+        email: [Rails.configuration.saml_translation_email || "email"],
+        image: [Rails.configuration.saml_translation_image || "image"]
       }
   end
 
