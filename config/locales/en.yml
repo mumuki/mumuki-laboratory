@@ -77,7 +77,7 @@ en:
   no_exercises: Nobody created an exercise for this search yet
   no_guides: Nobody created a guide for this search yet
   no_submissions: Its seems like you haven't tried to solve this exercise
-  notify_problem_with_exercise: Notify problem with exercise
+  notify_problem_with_exercise: Do you think something is wrong with this exercise?
   not_found_explanation: 'You may have mistyped the address or the page may have moved. If you think this is our fault, %{issues}'
   output: Output
   overview: Overview
