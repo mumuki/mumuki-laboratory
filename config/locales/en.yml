@@ -25,7 +25,7 @@ en:
   created_at: Created at
   date: Date
   destroy: Destroy
-  download_solution: Download your solution
+  download: Download your solution
   errored: Oops, your solution didn't work
   exam_number: 'Exam %{number}:'
   exams: Exams
@@ -82,7 +82,7 @@ en:
   output: Output
   overview: Overview
   passed: All right
-  passed_with_warnings: It worked, but you can do it better
+  passed_with_warnings: It worked, but you can do better
   pending: pending
   permissions: Permissions
   previous_exercise: Previous
@@ -126,6 +126,7 @@ en:
   welcome_back_after_redirection: Nice to see you again! This is where you left last time
   you_must: You must %{action} before continue
   you_must_sign_in_before_submitting: You must sign in before submitting your solutions
+  unmeet_expectations: "Goals that weren't met"
   unauthorized_explanation: You have no permissions for this content. Maybe you logged in with another account.
   uploading_solution: "Uploading solution"
   upload_solution: Upload Solution
