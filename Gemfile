@@ -10,7 +10,7 @@ gem 'uglifier', '~> 2.7'
 
 gem 'therubyracer', platforms: :ruby
 
-gem 'turbolinks'
+gem 'turbolinks', '~> 2.5'
 
 
 gem 'sass-rails'

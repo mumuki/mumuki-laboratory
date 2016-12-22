@@ -63,6 +63,13 @@ GEM
     codeclimate-test-reporter (1.0.3)
       simplecov
     coderay (1.1.1)
+    coffee-rails (4.2.1)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0, < 5.2.x)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.0.3)
     daybreak (0.3.0)
     debug_inspector (0.0.2)
@@ -123,7 +130,7 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    mumukit-auth (3.1.0)
+    mumukit-auth (3.3.1)
       daybreak
       jwt
       mumukit-core (~> 0.4)
@@ -264,9 +271,8 @@ GEM
     thread_safe (0.3.5)
     tilt (2.0.5)
     tins (1.13.0)
-    turbolinks (5.0.1)
-      turbolinks-source (~> 5)
-    turbolinks-source (5.0.0)
+    turbolinks (2.5.3)
+      coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -330,7 +336,7 @@ DEPENDENCIES
   sass-rails
   sitemap_generator
   therubyracer
-  turbolinks
+  turbolinks (~> 2.5)
   uglifier (~> 2.7)
   yaml_db
 
