@@ -9,11 +9,11 @@ module WithPermissions
   end
 
   def set_permissions!(permissions)
-    Mumukit::Auth::Store.set! self.email, permissions
+    Mumukit::Auth::Store.set! self.uid, permissions
   end
 
   def permissions
-    Mumukit::Auth::Store.get self.email
+    Mumukit::Auth::Store.get self.uid
   end
 
   def accessible_organizations
