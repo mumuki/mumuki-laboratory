@@ -11,10 +11,11 @@ module WithOmniauth
 
     def extract_profile!(auth, user)
       user.provider = auth.provider
-      user.uid = auth.uid
+      user.social_id = auth.uid
 
       user.name = auth.info.nickname || auth.info.name
       user.email = auth.info.email
+      user.uid = user.email || user.social_id
       user.image_url = auth.info.image
       user.create_remember_me_token!
     end

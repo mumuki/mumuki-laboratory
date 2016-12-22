@@ -61,10 +61,6 @@ class User < ActiveRecord::Base
     self.update!(remember_me_token: nil)
   end
 
-  def social_id
-    uid
-  end
-
   def comments
     assignments.flat_map(&:comments)
   end
