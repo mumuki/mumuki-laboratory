@@ -49,12 +49,14 @@ Rails.application.configure do
       info: {name: 'Test User', nickname: 'testuser'}
   })
 
-  config.auth0_client_id = 'foo id'
-  config.auth0_client_secret = 'foo secret'
-  config.auth0_domain = 'http://foo.com'
+  config.auth_client_id = 'foo id'
+  config.auth_client_secret = 'foo secret'
+  config.auth_domain = 'http://foo.com'
 
   config.single_user_mode = false
   config.queueless_mode = true
+
+  config.daybreak_name = 'test'
 
   config.domain = 'localmumuki.io'
   config.base_url = 'http://localmumuki.io:3000'

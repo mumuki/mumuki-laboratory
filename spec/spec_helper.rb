@@ -42,6 +42,7 @@ RSpec.configure do |config|
   config.after(:each) do
     Organization.current = nil
     set_subdomain_host! 'test'
+    FileUtils.rm ["#{Mumukit::Auth.config.daybreak_name}.db"], force: true
   end
 end
 
@@ -73,4 +74,4 @@ RSpec::Matchers.define :json_eq do |expected_json_hash|
   end
 end
 
-CodeClimate::TestReporter.start
+SimpleCov.start
