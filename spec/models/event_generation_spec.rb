@@ -4,7 +4,7 @@ describe Event do
 
   describe '#to_json' do
     describe Event::Submission do
-      let(:user) { create(:user, id: 2, name: 'foo', provider: 'auth0', uid: 'github|gh1234') }
+      let(:user) { create(:user, id: 2, email: 'foo@bar.com', name: 'foo', provider: 'auth0', uid: 'github|gh1234') }
       describe 'lesson type' do
         let(:lesson) { chapter.lessons.fourth }
         let(:guide) { lesson.guide }
@@ -63,7 +63,7 @@ describe Event do
                              submitter: {
                                social_id: 'github|gh1234',
                                name: 'foo',
-                               email: nil,
+                               email: 'foo@bar.com',
                                image_url: 'user_shape.png'},
                              id: 'abcd1234',
                              created_at: assignment.updated_at,
@@ -113,7 +113,7 @@ describe Event do
                              },
                              submitter: {
                                name: 'foo',
-                               email: nil,
+                               email: 'foo@bar.com',
                                image_url: 'user_shape.png',
                                social_id: 'github|gh1234'},
                              id: 'abcd1234',
@@ -165,7 +165,7 @@ describe Event do
                              },
                              submitter: {
                                name: 'foo',
-                               email: nil,
+                               email: 'foo@bar.com',
                                image_url: 'user_shape.png',
                                social_id: 'github|gh1234'},
                              id: 'abcd1234',

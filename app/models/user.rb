@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  include WithOmniauth, WithToken, WithMetadata, WithUserNavigation
+  include WithOmniauth, WithToken, WithPermissions, WithUserNavigation
 
   has_many :assignments, foreign_key: :submitter_id
 

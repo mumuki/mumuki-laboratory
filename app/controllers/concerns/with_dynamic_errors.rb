@@ -31,7 +31,7 @@ module WithDynamicErrors
   end
 
   def forbidden
-    Rails.logger.info "Access to organization #{Organization.current} was forbidden to user #{current_user} with permissions #{current_user.metadata.to_json}"
+    Rails.logger.info "Access to organization #{Organization.current} was forbidden to user #{current_user} with permissions #{current_user.permissions}"
     render 'errors/forbidden', status: 403
   end
 

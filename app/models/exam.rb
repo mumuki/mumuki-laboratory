@@ -68,7 +68,7 @@ class Exam < ActiveRecord::Base
   end
 
   def start!(user)
-    authorization_for(user).start! unless user.teacher?
+    authorization_for(user).start! unless user.teacher?(Mumukit::Auth::Slug.join_s(Organization.current.name))
   end
 
   def started?(user)

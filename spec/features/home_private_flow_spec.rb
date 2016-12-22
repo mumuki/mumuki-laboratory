@@ -21,13 +21,12 @@ feature 'private org' do
 
   context 'logged user' do
     let(:visitor) { create(:user) }
-    let(:student) { create(:user, metadata: Mumukit::Auth::Metadata.new(
-        {atheneum: {permissions: 'private/*'}}.stringify_keys)) }
-    let(:teacher) { create(:user, metadata: Mumukit::Auth::Metadata.new(
-        {classroom: {permissions: 'private/*'},
-         atheneum: {permissions: 'private/*'}}.stringify_keys)) }
+    let(:student) { create(:user) }
+    let(:teacher) { create(:user) }
 
     before do
+      student.set_permissions! student: 'private/*'
+      teacher.set_permissions! student: 'private/*', teacher: 'private/*'
       allow_any_instance_of(ApplicationController).to receive(:from_login_callback?).and_return(false)
       allow_any_instance_of(ApplicationController).to receive(:from_logout?).and_return(false)
     end
