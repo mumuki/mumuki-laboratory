@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161107171305) do
+ActiveRecord::Schema.define(version: 20161222182724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -228,7 +228,7 @@ ActiveRecord::Schema.define(version: 20161107171305) do
 
   create_table "users", force: true do |t|
     t.string   "provider"
-    t.string   "uid"
+    t.string   "social_id"
     t.string   "name"
     t.string   "token"
     t.datetime "expires_at"
@@ -241,6 +241,7 @@ ActiveRecord::Schema.define(version: 20161107171305) do
     t.string   "remember_me_token"
     t.text     "metadata",             default: "{}", null: false
     t.integer  "last_organization_id"
+    t.string   "uid"
   end
 
   add_index "users", ["last_organization_id"], name: "index_users_on_last_organization_id", using: :btree
