@@ -92,7 +92,7 @@ class Organization < ActiveRecord::Base
   end
 
   def notify!
-    NotificationMode.notify_command! 'classroom', 'UpsertOrganization', as_complete_json
+    NotificationMode.notify_event! as_complete_json, 'UpsertOrganization'
   end
 
   def as_complete_json
