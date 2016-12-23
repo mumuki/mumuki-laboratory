@@ -77,6 +77,12 @@ class User < ActiveRecord::Base
     "#{id}:#{name}:#{uid}"
   end
 
+  def import_from_json!(body)
+    body[:name] = "#{body.delete(:first_name)} #{body.delete(:last_name)}"
+    user = User.where(uid: body[:uid]).first_or_create(body.except(:permissions, :id))
+    user.set_permissions! body[:permissions]
+  end
+
 
   private
 
