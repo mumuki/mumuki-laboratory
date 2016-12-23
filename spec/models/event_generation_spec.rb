@@ -64,6 +64,7 @@ describe Event do
                                social_id: 'github|gh1234',
                                name: 'foo',
                                email: 'foo@bar.com',
+                               uid: assignment.submitter.uid,
                                image_url: 'user_shape.png'},
                              id: 'abcd1234',
                              created_at: assignment.updated_at,
@@ -95,9 +96,9 @@ describe Event do
                              submissions_count: 2,
                              exercise: {
                                id: exercise.id,
-                               bibliotheca_id: exercise.bibliotheca_id,
                                name: exercise.name,
-                               number: exercise.number},
+                               number: exercise.number,
+                             bibliotheca_id: exercise.bibliotheca_id},
                              guide: {
                                name: guide.name,
                                slug: guide.slug,
@@ -112,10 +113,11 @@ describe Event do
                                }
                              },
                              submitter: {
+                               social_id: 'github|gh1234',
                                name: 'foo',
                                email: 'foo@bar.com',
                                image_url: 'user_shape.png',
-                               social_id: 'github|gh1234'},
+                               uid: assignment.submitter.uid},
                              id: 'abcd1234',
                              created_at: assignment.updated_at,
                              content: 'x = 2',
@@ -167,6 +169,7 @@ describe Event do
                                name: 'foo',
                                email: 'foo@bar.com',
                                image_url: 'user_shape.png',
+                               uid: assignment.submitter.uid,
                                social_id: 'github|gh1234'},
                              id: 'abcd1234',
                              created_at: assignment.updated_at,
