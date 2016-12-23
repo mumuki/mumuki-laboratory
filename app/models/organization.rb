@@ -111,6 +111,10 @@ class Organization < ActiveRecord::Base
     assignments.each { |assignment| Event::Submission.new(assignment).notify! }
   end
 
+  def slug
+    Mumukit::Auth::Slug.join_s name
+  end
+
   class << self
     attr_writer :current
 

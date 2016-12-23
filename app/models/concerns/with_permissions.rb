@@ -2,9 +2,8 @@ module WithPermissions
   extend ActiveSupport::Concern
 
   included do
-    Mumukit::Auth::Roles::ROLES.each do |selector|
-      role = "#{selector}?"
-      define_method(role.to_sym) {|resource_slug| permissions.send role, resource_slug}
+    [:student?, :teacher?].each do |role|
+      define_method(role) { permissions.send role, Organization.slug}
     end
   end
 

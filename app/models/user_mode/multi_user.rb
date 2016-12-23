@@ -21,7 +21,7 @@ class UserMode::MultiUser
   end
 
   def can_visit?(user)
-    user.student? Mumukit::Auth::Slug.join_s(Organization.current.name)
+    user.student?
   end
 
   def if_multiuser
