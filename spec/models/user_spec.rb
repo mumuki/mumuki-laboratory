@@ -5,20 +5,20 @@ describe User do
     before { create(:organization, name: 'pdep', book: create(:book, name: 'pdep', slug: 'mumuki/mumuki-the-pdep-book')) }
     let(:user) { create :user }
     context 'when one organizations' do
-      before { user.set_permissions! student: 'pdep/_' }
+      before { user.set_permissions! student: 'pdep/*' }
       it { expect(user.accessible_organizations.size).to eq 1}
     end
     context 'when two organizations' do
-      before { user.set_permissions! student: 'pdep/_:alcal/_' }
+      before { user.set_permissions! student: 'pdep/*:alcal/*' }
       before { create(:organization, name: 'alcal', book: create(:book, name: 'alcal', slug: 'mumuki/mumuki-the-alcal-book')) }
       it { expect(user.accessible_organizations.size).to eq 2 }
     end
     context 'when all grant present organizations' do
-      before { user.set_permissions! student: 'pdep/_:*' }
+      before { user.set_permissions! student: 'pdep/*:*' }
       it { expect(user.accessible_organizations.size).to eq 1 }
     end
     context 'when one organization appears twice' do
-      before { user.set_permissions! student: 'pdep/_:pdep/_' }
+      before { user.set_permissions! student: 'pdep/*:pdep/*' }
       it { expect(user.accessible_organizations.size).to eq 1 }
     end
   end

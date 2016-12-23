@@ -5,7 +5,7 @@ feature 'Choose organization Flow' do
   let(:user) { create(:user)}
   let(:user2) { create(:user)}
   before do
-    user.set_permissions! student: 'pdep/_'
+    user.set_permissions! student: 'pdep/*'
     user2.set_permissions! student: ''
   end
   let(:organization) { create(:organization, name: 'central', book: create(:book, name: 'central', slug: 'mumuki/mumuki-the-book')).switch! }
