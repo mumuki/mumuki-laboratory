@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
   def callback
     user = User.omniauth(env['omniauth.auth'])
-    user.update! metadata: Mumukit::Auth::Token.from_env(env).metadata
 
     remember_me_token.value = user.remember_me_token
     redirect_after_login

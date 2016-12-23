@@ -2,7 +2,15 @@ module WithOmniauth
   extend ActiveSupport::Concern
 
   module ClassMethods
-    def omniauth(auth)
+    def omniauth(omniauth)
+      auth = {
+        provider: omniauth.provider,
+        name: omniauth.info.nickname || omniauth.info.name,
+        social_id: omniauth.uid,
+        email: omniauth.info.email,
+        uid: omniauth.info.email || omniauth.uid,
+        image_url: omniauth.info.image
+      }
       find_by_auth(auth).first_or_initialize.tap do |user|
         extract_profile!(auth, user)
         user.save!
@@ -10,18 +18,12 @@ module WithOmniauth
     end
 
     def extract_profile!(auth, user)
-      user.provider = auth.provider
-      user.social_id = auth.uid
-
-      user.name = auth.info.nickname || auth.info.name
-      user.email = auth.info.email
-      user.uid = user.email || user.social_id
-      user.image_url = auth.info.image
+      user.assign_attributes(auth)
       user.create_remember_me_token!
     end
 
     def find_by_auth(auth)
-      where('(provider = ? and uid = ?) or email = ?', auth.provider, auth.uid, auth.info.email)
+      where(uid: auth[:uid])
     end
   end
 end
