@@ -1,10 +1,12 @@
 module WithPermissions
   extend ActiveSupport::Concern
 
-  included do
-    [:student?, :teacher?].each do |role|
-      define_method(role) { permissions.send role, Organization.slug}
-    end
+  def student?
+    permissions.student? Organization.slug
+  end
+
+  def teacher?
+    permissions.teacher? Organization.slug
   end
 
   def set_permissions!(permissions)
