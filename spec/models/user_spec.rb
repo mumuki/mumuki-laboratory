@@ -15,7 +15,7 @@ describe User do
     end
     context 'when all grant present organizations' do
       before { user.set_permissions! student: 'pdep/*:*' }
-      it { expect(user.accessible_organizations.size).to eq 1 }
+      it { expect(user.accessible_organizations.size).to eq 0 }
     end
     context 'when one organization appears twice' do
       before { user.set_permissions! student: 'pdep/*:pdep/*' }
