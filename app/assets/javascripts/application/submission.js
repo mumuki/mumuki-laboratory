@@ -53,4 +53,4 @@
       resultsBox.error(message);
     });
   });
-})();
+}());
