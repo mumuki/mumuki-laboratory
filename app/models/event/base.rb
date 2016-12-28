@@ -1,6 +1,6 @@
 class Event::Base
   def notify!
-    NotificationMode.notify! queue_name, as_json unless Organization.silent?
+    Mumukit::Nuntius.notify! queue_name, as_json unless Organization.silent?
   end
 
   def as_json(_options={})
