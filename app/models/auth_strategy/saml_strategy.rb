@@ -25,8 +25,7 @@ class AuthStrategy::SamlStrategy < AuthStrategy
   end
 
   def auth_link
-    #TODO why is this link absolute?
-    "href=#{Organization.url_for('/auth/saml/')}"
+    "href='/auth/saml/'"
   end
 
   def protect_from_forgery(controller)
