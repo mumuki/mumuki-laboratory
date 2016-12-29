@@ -10,7 +10,7 @@ module UserMode
         when 'auth0'
           UserMode::Auth0AuthStrategy.new
         else
-          raise 'Unknown auth_strategy "#{auth_strategy}"'
+          raise "Unknown auth_strategy `#{auth_strategy}`"
         end
       end
   end
