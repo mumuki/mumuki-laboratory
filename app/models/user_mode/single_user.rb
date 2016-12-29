@@ -11,10 +11,6 @@ class UserMode::SingleUser
     # not needed!
   end
 
-  def logo_url
-    'logo-alt-large.png'
-  end
-
   def logout_redirection_url(controller)
     controller.after_logout_redirection_url
   end
