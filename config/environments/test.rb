@@ -54,6 +54,7 @@ Rails.application.configure do
   config.auth0_client_secret = 'foo secret'
   config.auth0_domain = 'http://foo.com'
 
+  config.auth_provider = 'developer'
   config.queueless_mode = true
 
   config.daybreak_name = 'test'

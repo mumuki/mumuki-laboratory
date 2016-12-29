@@ -2,7 +2,8 @@ module UserMode
   extend ConfigurableGlobal
 
   def self.get_current
-    case Rails.configuration.auth_provider.downcase
+    auth_strategy = Rails.configuration.auth_provider.downcase
+    case auth_strategy
       when 'developer'
         UserMode::SingleUser.new
       when 'saml'

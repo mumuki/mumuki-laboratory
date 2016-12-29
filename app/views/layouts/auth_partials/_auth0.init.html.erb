@@ -2,6 +2,6 @@
 <script type="text/javascript">
 var lock = new Auth0Lock('<%= Rails.configuration.auth0_client_id %>', '<%= Rails.configuration.auth0_domain %>');
 function signin() {
-  lock.show(<%= Organization.login_settings.to_lock_json(auth_auth0_callback_url) %>);
+  lock.show(<%= Organization.login_settings.to_lock_json(auth_callback_url(:auth0)) %>);
 }
 </script>
