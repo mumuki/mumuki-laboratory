@@ -15,10 +15,6 @@ class UserMode::SingleUser
     controller.after_logout_redirection_url
   end
 
-  def can_visit?(user)
-    true
-  end
-
   def html_badge
     ''
   end
