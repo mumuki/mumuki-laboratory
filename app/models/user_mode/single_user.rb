@@ -24,6 +24,11 @@ class UserMode::SingleUser
     true
   end
 
-  def if_multiuser
+  def html_badge
+    ''
+  end
+
+  def auth_init_partial
+    'layouts/auth_partials/null_partial.html.erb'
   end
 end

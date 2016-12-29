@@ -94,9 +94,7 @@
       </div>
 
       <div class="col-md-4 text-center">
-        <% UserMode.if_multiuser do %>
-          <%= UserMode.html_badge %>
-        <% end %>
+        <%= UserMode.html_badge %>
       </div>
 
       <div class="col-md-4 text-right">
@@ -109,8 +107,6 @@
     </div>
   </div>
 </footer>
-<% UserMode.if_multiuser do %>
 <%= render partial: UserMode.auth_init_partial %>
-<% end %>
 </body>
 </html>

@@ -3,10 +3,6 @@ class UserMode::MultiUser
     raise 'This method should be overwritten'
   end
 
-  def auth_init_partial
-    'layouts/auth_partials/null_partial.html.erb'
-  end
-
   def html_badge
     ''
   end
@@ -30,9 +26,4 @@ class UserMode::MultiUser
   def can_visit?(user)
     user.student?
   end
-
-  def if_multiuser
-    yield
-  end
-
 end

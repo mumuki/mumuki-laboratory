@@ -36,4 +36,7 @@ class UserMode::SamlAuthStrategy < UserMode::MultiUser
     Organization.url_for('/auth/saml/spslo')
   end
 
+  def auth_init_partial
+    'layouts/auth_partials/null_partial.html.erb'
+  end
 end
