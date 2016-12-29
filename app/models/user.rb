@@ -19,6 +19,11 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :exams
 
   after_initialize :init
+  after_save :notify_image_changed!, if: :image_url_changed?
+
+  def notify_image_changed!
+    Mumukit::Nuntius.notify_event!({user: {uid: uid, image_url: image_url}}, 'UserChanged')
+  end
 
   def last_lesson
     last_guide.try(:lesson)
