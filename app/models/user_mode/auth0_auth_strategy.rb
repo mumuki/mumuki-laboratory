@@ -7,6 +7,18 @@ class UserMode::Auth0AuthStrategy < UserMode::MultiUser
                       callback_path: '/auth/auth0/callback'
   end
 
+  def auth_link
+    'href="#" onclick="window.signin();"'
+  end
+
+  def protect_from_forgery(controller)
+    controller.protect_from_forgery with: :exception
+  end
+
+  def logout_redirection_url(controller)
+    controller.after_logout_redirection_url
+  end
+
   def auth_init_partial
     'layouts/auth_partials/auth0.init.html.erb'
   end
@@ -15,8 +27,5 @@ class UserMode::Auth0AuthStrategy < UserMode::MultiUser
     '<a href="https://auth0.com/" target="_blank"><img height="40" alt="JWT Auth for open source projects" src="//cdn.auth0.com/oss/badges/a0-badge-light.png"/></a>'.html_safe
   end
 
-  def auth_link
-    'href="#" onclick="window.signin();"'
-  end
 
 end

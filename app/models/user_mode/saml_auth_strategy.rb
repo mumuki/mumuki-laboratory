@@ -24,12 +24,13 @@ class UserMode::SamlAuthStrategy < UserMode::MultiUser
       }
   end
 
-  def protect_from_forgery(controller)
-    # Do nothing (do not protect): the IdP calls the assertion_url via POST and without the CSRF token
-  end
-
   def auth_link
     "href=#{Organization.url_for('/auth/saml/')}"
+  end
+
+  def protect_from_forgery(controller)
+    # FIXME this is big security issue
+    # Do nothing (do not protect): the IdP calls the assertion_url via POST and without the CSRF token
   end
 
   def logout_redirection_url(controller)
@@ -38,5 +39,9 @@ class UserMode::SamlAuthStrategy < UserMode::MultiUser
 
   def auth_init_partial
     'layouts/auth_partials/null_partial.html.erb'
+  end
+
+  def html_badge
+    ''
   end
 end

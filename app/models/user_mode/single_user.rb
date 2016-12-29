@@ -1,5 +1,4 @@
 class UserMode::SingleUser
-
   def set_auth_provider(omniauth)
     omniauth.provider :developer
   end
