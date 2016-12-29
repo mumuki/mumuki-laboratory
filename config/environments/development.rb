@@ -52,7 +52,6 @@ Rails.application.configure do
   config.thesaurus_url = ENV['MUMUKI_THESAURUS_URL'] || 'http://thesaurus.mumuki.io'
   config.bibliotheca_url = ENV['MUMUKI_BIBLIOTHECA_URL'] || 'http://bibliotheca-api.mumuki.io'
 
-  config.single_user_mode = ENV['MUMUKI_SINGLE_USER_MODE']
   config.queueless_mode = ENV['MUMUKI_QUEUELESS_MODE']
   config.daybreak_name = ENV['MUMUKI_DAYBREAK_NAME'] || 'permissions'
 

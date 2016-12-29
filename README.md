@@ -70,15 +70,21 @@ echo "MUMUKI_AUTH0_CLIENT_ID=... \
 
 ### 5. Configure authentication provider
 
-> **Note:** the following instructions only make sense in the case that `MUMUKI_SINGLE_USER_MODE` _environment variable_ is not _truthy_.
+The `MUMUKI_AUTHORIZATION_PROVIDER` _environment variable_ can take any of the following values:
 
-The `MUMUKI_AUTHORIZATION_PROVIDER` _environment variable_ could be either "_auth0_" or "_saml_" (case insensitive).
+* `developer`
+* `auth0`
+" `saml`
 
-#### 5.1 Auth0
+#### 5.1 Developer
+
+The developer mode does not need any extra configuration
+
+#### 5.2 Auth0
 
 Just configure the `MUMUKI_AUTH0_CLIENT_ID`, `MUMUKI_AUTH0_CLIENT_SECRET` and `MUMUKI_AUTH0_DOMAIN` _environment variables_ with the values provided by [auth0](https://auth0.com/).
 
-#### 5.2 SAML
+#### 5.3 SAML
 
 First, configure the `MUMUKI_SAML_IDP_SSO_TARGET_URL` _environment variable_ with the "_single sign on URL_" provided by your _SAML IdP_.
 
