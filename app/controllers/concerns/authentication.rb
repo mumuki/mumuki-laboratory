@@ -30,6 +30,6 @@ module Authentication
 
     session[:redirect_after_login] = request.fullpath
 
-    %Q{<a class="#{options[:class]}" #{UserMode.auth_link}>#{I18n.t(options[:title])}</a>}.html_safe
+    %Q{<a class="#{options[:class]}" #{AuthStrategy.auth_link}>#{I18n.t(options[:title])}</a>}.html_safe
   end
 end

@@ -1,4 +1,4 @@
-class UserMode::SamlAuthStrategy < UserMode
+class AuthStrategy::SamlStrategy < AuthStrategy
   def set_auth_provider(omniauth)
     omniauth.provider :saml,
       # TODO: change the :assertion_consumer_service_url, the :issuer and the :slo_default_relay_state:

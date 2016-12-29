@@ -1,4 +1,4 @@
-class UserMode
+class AuthStrategy
   extend ConfigurableGlobal
 
   def protect_from_forgery(controller)
@@ -21,11 +21,11 @@ class UserMode
     auth_strategy = Rails.configuration.auth_provider.downcase
     case auth_strategy
       when 'developer'
-        UserMode::SingleUser.new
+        AuthStrategy::DeveloperStrategy.new
       when 'saml'
-        UserMode::SamlAuthStrategy.new
+        AuthStrategy::SamlStrategy.new
       when 'auth0'
-        UserMode::Auth0AuthStrategy.new
+        AuthStrategy::Auth0Strategy.new
       else
         raise "Unknown auth_strategy `#{auth_strategy}`"
     end

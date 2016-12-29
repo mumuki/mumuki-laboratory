@@ -1,4 +1,4 @@
-class UserMode::Auth0AuthStrategy < UserMode
+class AuthStrategy::Auth0Strategy < AuthStrategy
   def set_auth_provider(omniauth)
     omniauth.provider :auth0,
                       Rails.configuration.auth0_client_id,

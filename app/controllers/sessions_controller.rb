@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     remember_me_token.clear!
     # TODO: desharcode URL
     # TODO: redirect to /spslo ONLY if using saml_auth_strategy. Otherwise, redirect to root_url
-    redirect_to UserMode.logout_redirection_url self
+    redirect_to AuthStrategy.logout_redirection_url self
   end
 
   def after_logout_redirection_url

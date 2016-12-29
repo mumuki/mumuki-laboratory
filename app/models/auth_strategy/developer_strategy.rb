@@ -1,4 +1,4 @@
-class UserMode::SingleUser < UserMode
+class AuthStrategy::DeveloperStrategy < AuthStrategy
 
   def set_auth_provider(omniauth)
     omniauth.provider :developer
