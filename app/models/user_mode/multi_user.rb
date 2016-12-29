@@ -1,2 +1,0 @@
-class UserMode::MultiUser
-end

@@ -1,4 +1,4 @@
-class UserMode::SamlAuthStrategy < UserMode::MultiUser
+class UserMode::SamlAuthStrategy < UserMode
   def set_auth_provider(omniauth)
     omniauth.provider :saml,
       # TODO: change the :assertion_consumer_service_url, the :issuer and the :slo_default_relay_state:
@@ -36,13 +36,5 @@ class UserMode::SamlAuthStrategy < UserMode::MultiUser
 
   def logout_redirection_url(controller)
     Organization.url_for('/auth/saml/spslo')
-  end
-
-  def auth_init_partial
-    'layouts/auth_partials/null_partial.html.erb'
-  end
-
-  def html_badge
-    ''
   end
 end
