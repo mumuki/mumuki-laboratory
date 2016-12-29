@@ -4,20 +4,20 @@ class AuthStrategy::SamlStrategy < AuthStrategy
       # TODO: change the :assertion_consumer_service_url, the :issuer and the :slo_default_relay_state:
       # =>  1. we can not call any Organization method since there is none instantiated yet and
       # =>  2. we must use the absolut path to generate the right SAML metadata to set up the federation with the IdP
-      :assertion_consumer_service_url     => "http://#{Rails.configuration.domain}:3000/auth/saml/callback",
-      :single_logout_service_url          => "http://#{Rails.configuration.domain}:3000/auth/saml/slo",
-      :issuer                             => "http://#{Rails.configuration.domain}:3000/auth/saml",
-      :idp_sso_target_url                 => Rails.configuration.saml_idp_sso_target_url,
-      :idp_slo_target_url                 => Rails.configuration.saml_idp_slo_target_url,
-      :slo_default_relay_state            => "http://#{Rails.configuration.domain}:3000",
-      :idp_cert                           => File.read('./saml.crt'),
-      :attribute_service_name             => 'Mumuki',
-      :request_attributes                 => [
-        { :name => 'email', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic', :friendly_name => 'Email address' },
-        { :name => 'name', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic', :friendly_name => 'Full name' },
-        { :name => 'image', :name_format => 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic', :friendly_name => 'Avatar image' }
+      assertion_consumer_service_url: "http://#{Rails.configuration.domain}:3000/auth/saml/callback",
+      single_logout_service_url: "http://#{Rails.configuration.domain}:3000/auth/saml/slo",
+      issuer: "http://#{Rails.configuration.domain}:3000/auth/saml",
+      idp_sso_target_url: Rails.configuration.saml_idp_sso_target_url,
+      idp_slo_target_url: Rails.configuration.saml_idp_slo_target_url,
+      slo_default_relay_state: "http://#{Rails.configuration.domain}:3000",
+      idp_cert: File.read('./saml.crt'),
+      attribute_service_name: 'Mumuki',
+      request_attributes: [
+        {name: 'email', name_format: 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic', friendly_name: 'Email address'},
+        {name: 'name', name_format: 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic', friendly_name: 'Full name'},
+        {name: 'image', name_format: 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic', friendly_name: 'Avatar image'}
       ],
-      :attribute_statements               => {
+      attribute_statements: {
         name: [Rails.configuration.saml_translation_name || "name"],
         email: [Rails.configuration.saml_translation_email || "email"],
         image: [Rails.configuration.saml_translation_image || "image"]
