@@ -25,6 +25,7 @@ class UserMode::SamlAuthStrategy < UserMode::MultiUser
   end
 
   def auth_link
+    #TODO why is this link absolute?
     "href=#{Organization.url_for('/auth/saml/')}"
   end
 
