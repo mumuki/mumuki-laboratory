@@ -101,10 +101,11 @@ describe User do
     it { expect(user.remember_me_token).to be_nil }
   end
 
-  describe '#notify_image_changed!' do
+  describe '#notify_changed!' do
     let(:user) { create(:user) }
     before { expect_any_instance_of(Mumukit::Nuntius::NotificationMode::Deaf).to receive(:notify_event!).exactly(2).times }
-    it { expect(user.update! image_url: 'http://foo.com').to_not raise_error }
+    it { expect { user.update! image_url: 'http://foo.com' }.to_not raise_error }
+    it { expect { user.update! social_id: 'auth|foo' }.to_not raise_error }
 
   end
 end
