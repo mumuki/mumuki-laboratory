@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  include WithOmniauth, WithToken, WithMetadata, WithUserNavigation
+  include WithOmniauth, WithToken, WithPermissions, WithUserNavigation
 
   has_many :assignments, foreign_key: :submitter_id
 
@@ -19,6 +19,15 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :exams
 
   after_initialize :init
+  after_save :notify_changed!, if: Proc.new {|user| user.image_url_changed? || user.social_id_changed? }
+
+  def notify_changed!
+    Mumukit::Nuntius.notify_event!({user: event_json}, 'UserChanged')
+  end
+
+  def event_json
+    as_json(only: [:uid, :social_id, :image_url], methods: [:permissions])
+  end
 
   def last_lesson
     last_guide.try(:lesson)
@@ -61,10 +70,6 @@ class User < ActiveRecord::Base
     self.update!(remember_me_token: nil)
   end
 
-  def social_id
-    uid
-  end
-
   def comments
     assignments.flat_map(&:comments)
   end
@@ -81,6 +86,11 @@ class User < ActiveRecord::Base
     "#{id}:#{name}:#{uid}"
   end
 
+  def self.import_from_json!(body)
+    body[:name] = "#{body.delete(:first_name)} #{body.delete(:last_name)}"
+    user = User.where(uid: body[:uid]).first_or_create(body.except(:permissions, :id))
+    user.set_permissions! body[:permissions]
+  end
 
   private
 

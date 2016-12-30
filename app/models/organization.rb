@@ -92,7 +92,7 @@ class Organization < ActiveRecord::Base
   end
 
   def notify!
-    NotificationMode.notify_command! 'classroom', 'UpsertOrganization', as_complete_json
+    Mumukit::Nuntius.notify_event! as_complete_json, 'UpsertOrganization'
   end
 
   def as_complete_json
@@ -109,6 +109,10 @@ class Organization < ActiveRecord::Base
   def notify_assignments!(assignments)
     puts "We will try to send #{assignments.count} assignments, please wait..."
     assignments.each { |assignment| Event::Submission.new(assignment).notify! }
+  end
+
+  def slug
+    Mumukit::Auth::Slug.join_s name
   end
 
   class << self

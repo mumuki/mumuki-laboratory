@@ -16,6 +16,7 @@
 /log/*.log
 **/*~
 /tmp
+*.db
 
 .idea
 

@@ -10,7 +10,7 @@ gem 'uglifier', '~> 2.7'
 
 gem 'therubyracer', platforms: :ruby
 
-gem 'turbolinks'
+gem 'turbolinks', '~> 2.5'
 
 
 gem 'sass-rails'
@@ -52,12 +52,12 @@ gem 'bunny'
 gem 'addressable'
 
 gem 'mumukit-content-type', '~> 0.4', require: 'mumukit/content_type'
-gem 'mumukit-auth', '~> 0.2'
-gem 'mumukit-core', '~> 0.1'
+gem 'mumukit-auth', '~> 3.1'
+gem 'mumukit-core', '~> 0.4'
 gem 'mumukit-bridge', '~> 1.3'
 gem 'mumukit-inspection', '~> 0.1'
 
-gem 'mumukit-nuntius', '~> 0.3'
+gem 'mumukit-nuntius', '~> 2.0'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'

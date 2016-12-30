@@ -95,6 +95,7 @@ Rails.application.configure do
 
   config.single_user_mode = ENV['MUMUKI_SINGLE_USER_MODE']
   config.queueless_mode = ENV['MUMUKI_QUEUELESS_MODE']
+  config.daybreak_name = ENV['MUMUKI_DAYBREAK_NAME'] || 'permissions'
 
   config.domain = ENV['MUMUKI_DOMAIN']
   config.base_url = ENV['MUMUKI_BASE_URL'] || "http://#{config.domain}"

@@ -1,5 +1,5 @@
 module Atheneum
-  module Command
+  module Event
     class UpsertExam
       def self.execute!(body)
         import_from_json! body

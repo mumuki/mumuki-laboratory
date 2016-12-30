@@ -2,9 +2,9 @@ class UserMode::MultiUser
 
   def set_auth_provider(omniauth)
     omniauth.provider :auth0,
-                      Rails.configuration.auth0_client_id,
-                      Rails.configuration.auth0_client_secret,
-                      Rails.configuration.auth0_domain,
+                      Rails.configuration.auth_client_id,
+                      Rails.configuration.auth_client_secret,
+                      Rails.configuration.auth_domain,
                       callback_path: '/auth/auth0/callback'
   end
 

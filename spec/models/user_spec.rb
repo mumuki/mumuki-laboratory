@@ -3,26 +3,23 @@ require 'spec_helper'
 describe User do
   describe '#accessible_organizations' do
     before { create(:organization, name: 'pdep', book: create(:book, name: 'pdep', slug: 'mumuki/mumuki-the-pdep-book')) }
+    let(:user) { create :user }
     context 'when one organizations' do
-      let(:user) { create(:user,
-                          metadata: Mumukit::Auth::Metadata.new( atheneum: {permissions: 'pdep/*'}))}
-      it { expect(user.accessible_organizations.size).to be 1}
+      before { user.set_permissions! student: 'pdep/*' }
+      it { expect(user.accessible_organizations.size).to eq 1}
     end
     context 'when two organizations' do
-      let(:user) { create(:user,
-                          metadata: Mumukit::Auth::Metadata.new( atheneum: {permissions: 'pdep/*:alcal/*'}))}
+      before { user.set_permissions! student: 'pdep/*:alcal/*' }
       before { create(:organization, name: 'alcal', book: create(:book, name: 'alcal', slug: 'mumuki/mumuki-the-alcal-book')) }
-      it { expect(user.accessible_organizations.size).to be 2 }
+      it { expect(user.accessible_organizations.size).to eq 2 }
     end
     context 'when all grant present organizations' do
-      let(:user) { create(:user,
-                          metadata: Mumukit::Auth::Metadata.new( atheneum: {permissions: 'pdep/*:*'}))}
-      it { expect(user.accessible_organizations.size).to be 1 }
+      before { user.set_permissions! student: 'pdep/*:*' }
+      it { expect(user.accessible_organizations.size).to eq 0 }
     end
     context 'when one organization appears twice' do
-      let(:user) { create(:user,
-                          metadata: Mumukit::Auth::Metadata.new( atheneum: {permissions: 'pdep/*:pdep/*'}))}
-      it { expect(user.accessible_organizations.size).to be 1 }
+      before { user.set_permissions! student: 'pdep/*:pdep/*' }
+      it { expect(user.accessible_organizations.size).to eq 1 }
     end
   end
 
@@ -36,19 +33,14 @@ describe User do
 
   describe 'roles' do
     let(:other) { create(:organization, name: 'pdep') }
-    let(:user) { create(:user,
-                        metadata: Mumukit::Auth::Metadata.new(
-                            atheneum: {permissions: 'pdep/k2001'},
-                            classroom: {permissions: 'test/all'})) }
+    let(:user) { create :user }
+    before { user.set_permissions! student: 'pdep/k2001', teacher: 'test/all' }
 
-    it { expect(user.student?).to be false }
-    it { expect(user.student? other).to be true }
+    it { expect(user.permissions.student? 'test/all').to be false }
+    it { expect(user.permissions.student? 'pdep/k2001').to be true }
 
-    it { expect(user.teacher?).to be true }
-    it { expect(user.teacher? other).to be false }
-
-    it { expect(user.admin?).to be false }
-    it { expect(user.admin? other).to be false }
+    it { expect(user.permissions.teacher? 'test/all').to be true }
+    it { expect(user.permissions.teacher? 'pdep/k2001').to be false }
   end
 
   describe '#submissions_count' do
@@ -107,5 +99,13 @@ describe User do
     before { user.revoke! }
 
     it { expect(user.remember_me_token).to be_nil }
+  end
+
+  describe '#notify_changed!' do
+    let(:user) { create(:user) }
+    before { expect_any_instance_of(Mumukit::Nuntius::NotificationMode::Deaf).to receive(:notify_event!).exactly(2).times }
+    it { expect { user.update! image_url: 'http://foo.com' }.to_not raise_error }
+    it { expect { user.update! social_id: 'auth|foo' }.to_not raise_error }
+
   end
 end
