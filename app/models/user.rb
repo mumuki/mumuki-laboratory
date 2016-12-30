@@ -19,10 +19,10 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :exams
 
   after_initialize :init
-  after_save :notify_image_changed!, if: :image_url_changed?
+  after_save :notify_changed!, if: proc {|user| user.image_url_changed? || user.social_id_changed? }
 
-  def notify_image_changed!
-    Mumukit::Nuntius.notify_event!({user: {uid: uid, image_url: image_url}}, 'UserChanged')
+  def notify_changed!
+    Mumukit::Nuntius.notify_event!({user: as_json(only: [:uid, :social_id, :image_url])}, 'UserChanged')
   end
 
   def last_lesson
