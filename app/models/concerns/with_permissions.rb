@@ -1,6 +1,12 @@
 module WithPermissions
   extend ActiveSupport::Concern
 
+  included do
+    serialize :permissions, Mumukit::Auth::Permissions
+
+    validates_presence_of :permissions
+  end
+
   def student?
     permissions.student? Organization.slug
   end
