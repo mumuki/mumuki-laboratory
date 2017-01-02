@@ -36,11 +36,11 @@ describe User do
     let(:user) { create :user }
     before { user.set_permissions! student: 'pdep/k2001', teacher: 'test/all' }
 
-    it { expect(user.permissions.student? 'test/all').to be false }
-    it { expect(user.permissions.student? 'pdep/k2001').to be true }
+    it { expect(user.mumukit_permissions.student? 'test/all').to be true }
+    it { expect(user.mumukit_permissions.student? 'pdep/k2001').to be true }
 
-    it { expect(user.permissions.teacher? 'test/all').to be true }
-    it { expect(user.permissions.teacher? 'pdep/k2001').to be false }
+    it { expect(user.mumukit_permissions.teacher? 'test/all').to be true }
+    it { expect(user.mumukit_permissions.teacher? 'pdep/k2001').to be false }
   end
 
   describe '#submissions_count' do
