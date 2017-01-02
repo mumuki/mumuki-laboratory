@@ -1,6 +1,6 @@
-class PermissionsPersistence
+class PermissionsPersistence::Postgres
 
-  def self.from_env
+  def self.from_config
     new
   end
 
@@ -17,4 +17,5 @@ class PermissionsPersistence
 
   def clean_env!
   end
+
 end

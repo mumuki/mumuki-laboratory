@@ -5,7 +5,8 @@ Rails.application.initialize!
 Mumukit::Auth.configure do |c|
   c.client_id = Rails.configuration.auth0_client_id
   c.client_secret = Rails.configuration.auth0_client_secret
-  c.persistence_strategy = PermissionsPersistence.new
+  c.daybreak_name = Rails.configuration.daybreak_name
+  c.persistence_strategy = PermissionsPersistence::Postgres.new c.daybreak_name
 end
 
 Mumukit::Nuntius.configure do |c|
