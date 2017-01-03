@@ -1,17 +1,17 @@
-[![Stories in Ready](https://badge.waffle.io/mumuki/mumuki-atheneum.png?label=ready&title=Ready)](https://waffle.io/mumuki/mumuki-atheneum)
-[![Build Status](https://travis-ci.org/mumuki/mumuki-atheneum.svg?branch=master)](https://travis-ci.org/mumuki/mumuki-atheneum)
-[![Code Climate](https://codeclimate.com/github/mumuki/mumuki-atheneum/badges/gpa.svg)](https://codeclimate.com/github/mumuki/mumuki-atheneum)
-[![Test Coverage](https://codeclimate.com/github/mumuki/mumuki-atheneum/badges/coverage.svg)](https://codeclimate.com/github/mumuki/mumuki-atheneum)
-[![Issue Count](https://codeclimate.com/github/mumuki/mumuki-atheneum/badges/issue_count.svg)](https://codeclimate.com/github/mumuki/mumuki-atheneum)
+[![Stories in Ready](https://badge.waffle.io/mumuki/mumuki-laboratory.png?label=ready&title=Ready)](https://waffle.io/mumuki/mumuki-laboratory)
+[![Build Status](https://travis-ci.org/mumuki/mumuki-laboratory.svg?branch=master)](https://travis-ci.org/mumuki/mumuki-laboratory)
+[![Code Climate](https://codeclimate.com/github/mumuki/mumuki-laboratory/badges/gpa.svg)](https://codeclimate.com/github/mumuki/mumuki-laboratory)
+[![Test Coverage](https://codeclimate.com/github/mumuki/mumuki-laboratory/badges/coverage.svg)](https://codeclimate.com/github/mumuki/mumuki-laboratory)
+[![Issue Count](https://codeclimate.com/github/mumuki/mumuki-laboratory/badges/issue_count.svg)](https://codeclimate.com/github/mumuki/mumuki-laboratory)
 
 
-Mumuki Atheneum [![btn_donate_lg](https://cloud.githubusercontent.com/assets/1039278/16535119/386d7be2-3fbb-11e6-9ee5-ecde4cef142a.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KCZ5AQR53CH26)
+Mumuki Laboratory [![btn_donate_lg](https://cloud.githubusercontent.com/assets/1039278/16535119/386d7be2-3fbb-11e6-9ee5-ecde4cef142a.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KCZ5AQR53CH26)
 ================
 
 > Code assement web application for the Mumuki Platform
 
 ## About
-Atheneum is a multitenant Rails webapp for solving exercises, organized in terms of chapters and guides.
+Laboratory is a multitenant Rails webapp for solving exercises, organized in terms of chapters and guides.
 
 ## Installing
 
@@ -26,7 +26,7 @@ For development, you've to add to your `/etc/hosts` file:
 
 1. Install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 2. Run `curl https://raw.githubusercontent.com/mumuki/mumuki-development-installer/master/install.sh | bash`
-3. `cd mumuki && vagrant ssh` and then - **inside Vagrant VM** - `cd /vagrant/atheneum`
+3. `cd mumuki && vagrant ssh` and then - **inside Vagrant VM** - `cd /vagrant/laboratory`
 4. Go to step 7
 
 ### 1. Install essentials and base libraries
@@ -68,7 +68,7 @@ echo "MUMUKI_AUTH0_CLIENT_ID=... \
 
 ### 5. Create database user
 
-> We need to create a PostgreSQL role - AKA a user - who will be used by Atheneum to create and access the database
+> We need to create a PostgreSQL role - AKA a user - who will be used by Laboratory to create and access the database
 
 ```bash
 sudo -u postgres psql <<EOF
@@ -81,8 +81,8 @@ EOF
 > Because, err... we need to clone this repostory before developing it :stuck_out_tongue:
 
 ```bash
-git clone https://github.com/mumuki/mumuki-atheneum
-cd mumuki-atheneum
+git clone https://github.com/mumuki/mumuki-laboratory
+cd mumuki-laboratory
 ```
 
 ### 7. Install and setup database
@@ -96,13 +96,6 @@ bundle exec rake db:create db:schema:load db:seed
 
 ```bash
 rails s
-```
-
-### Deploying into production
-
-```bash
-gem install escualo
-escualo script atheneum.yml # see https://github.com/mumuki/escualo.rb
 ```
 
 ## Authentication Powered by Auth0
