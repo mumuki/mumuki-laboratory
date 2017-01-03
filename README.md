@@ -1,4 +1,3 @@
-[![Stories in Ready](https://badge.waffle.io/mumuki/mumuki-laboratory.png?label=ready&title=Ready)](https://waffle.io/mumuki/mumuki-laboratory)
 [![Build Status](https://travis-ci.org/mumuki/mumuki-laboratory.svg?branch=master)](https://travis-ci.org/mumuki/mumuki-laboratory)
 [![Code Climate](https://codeclimate.com/github/mumuki/mumuki-laboratory/badges/gpa.svg)](https://codeclimate.com/github/mumuki/mumuki-laboratory)
 [![Test Coverage](https://codeclimate.com/github/mumuki/mumuki-laboratory/badges/coverage.svg)](https://codeclimate.com/github/mumuki/mumuki-laboratory)
