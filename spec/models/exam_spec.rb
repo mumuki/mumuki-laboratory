@@ -6,11 +6,11 @@ describe Exam do
 
   describe '#upsert' do
     let(:guide) { create(:guide) }
-    let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [], tenant: 'test' }.stringify_keys }
+    let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', uids: [], tenant: 'test' }.stringify_keys }
     let!(:exam) { Atheneum::Event::UpsertExam.execute! exam_json }
     context 'when new exam and the guide is the same' do
       let(:guide2) { create(:guide) }
-      let(:exam_json2) { { id: '2', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [], tenant: 'test' }.stringify_keys }
+      let(:exam_json2) { { id: '2', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', uids: [], tenant: 'test' }.stringify_keys }
       let!(:exam2) { Atheneum::Event::UpsertExam.execute! exam_json2 }
       context 'and the organization is the same' do
         it { expect(Exam.count).to eq 1 }
@@ -57,7 +57,7 @@ describe Exam do
         let(:user2) { create(:user, uid: 'auth0|2') }
         let(:guide) { create(:guide) }
         let(:duration) { 150 }
-        let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: duration, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
+        let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: duration, language: 'haskell', name: 'foo', uids: [user.uid], tenant: 'test' }.stringify_keys }
         before { Atheneum::Event::UpsertExam.execute! exam_json }
 
         context 'new exam' do
@@ -72,7 +72,7 @@ describe Exam do
         end
 
         context 'existing exam' do
-          let(:exam_json2) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user2.uid], tenant: 'test' }.stringify_keys }
+          let(:exam_json2) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', uids: [user2.uid], tenant: 'test' }.stringify_keys }
           before { Atheneum::Event::UpsertExam.execute! exam_json2 }
 
           it { expect(Exam.count).to eq 1 }
@@ -84,7 +84,7 @@ describe Exam do
       context 'real_end_time' do
         let(:user) { create(:user, uid: 'auth0|1') }
         let(:guide) { create(:guide) }
-        let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: duration, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
+        let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: duration, language: 'haskell', name: 'foo', uids: [user.uid], tenant: 'test' }.stringify_keys }
         let(:exam) { Atheneum::Event::UpsertExam.execute! exam_json }
         before { exam.start! user }
 
@@ -110,7 +110,7 @@ describe Exam do
       context 'update exam does not change user started_at' do
         let(:user) { create(:user, uid: 'auth0|1') }
         let(:guide) { create(:guide) }
-        let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
+        let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', uids: [user.uid], tenant: 'test' }.stringify_keys }
         let(:exam) { Atheneum::Event::UpsertExam.execute! exam_json }
         before { exam.start! user }
         before { Atheneum::Event::UpsertExam.execute! exam_json.merge('tenant' => 'test') }
@@ -121,7 +121,7 @@ describe Exam do
 
       context 'create exam with non existing user' do
         let(:guide) { create(:guide) }
-        let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [user.uid], tenant: 'test' }.stringify_keys }
+        let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', uids: [user.uid], tenant: 'test' }.stringify_keys }
         let(:exam) { Atheneum::Event::UpsertExam.execute! exam_json }
 
         it { expect { Atheneum::Event::UpsertExam.execute! exam_json.merge('tenant' => 'test') }.not_to raise_error}
@@ -131,7 +131,7 @@ describe Exam do
       context 'teacher does not start exams' do
         let(:teacher) { create(:user, uid: 'auth0|1') }
         let(:guide) { create(:guide) }
-        let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', social_ids: [], tenant: 'test' }.stringify_keys }
+        let(:exam_json) { { id: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', uids: [], tenant: 'test' }.stringify_keys }
         let(:exam) { Atheneum::Event::UpsertExam.execute! exam_json }
 
         context 'exam_authorization do not receive start method' do
