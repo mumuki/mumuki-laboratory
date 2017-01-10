@@ -2,7 +2,7 @@ module Atheneum
   module Event
     class UpsertExam
       def self.execute!(body)
-        import_from_json! body.except(:sender)
+        import_from_json! body.except(:social_ids, :sender)
       end
 
       def self.import_from_json!(json)
