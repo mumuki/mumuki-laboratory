@@ -10,7 +10,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
@@ -45,6 +45,7 @@ Rails.application.configure do
   config.auth0_client_secret = ENV['MUMUKI_AUTH0_CLIENT_SECRET']
   config.auth0_domain = ENV['MUMUKI_AUTH0_DOMAIN']
 
+  config.saml_idp_cert = ENV['MUMUKI_SAML_IDP_CERT']
   config.saml_idp_sso_target_url = ENV['MUMUKI_SAML_IDP_SSO_TARGET_URL']
   config.saml_idp_slo_target_url = ENV['MUMUKI_SAML_IDP_SLO_TARGET_URL']
   config.saml_translation_name = ENV['MUMUKI_SAML_TRANSLATION_NAME']
