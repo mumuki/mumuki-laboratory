@@ -86,7 +86,7 @@ Rails.application.configure do
 
   config.i18n.available_locales = [:es, :en]
 
-  config.auth_provider = ENV['MUMUKI_AUTHORIZATION_PROVIDER']
+  config.auth_provider = ENV['MUMUKI_AUTHORIZATION_PROVIDER'] || 'developer'
 
   config.auth0_client_id = ENV['MUMUKI_AUTH0_CLIENT_ID']
   config.auth0_client_secret = ENV['MUMUKI_AUTH0_CLIENT_SECRET']
