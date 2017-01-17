@@ -18,7 +18,7 @@ class AuthStrategy
   end
 
   def self.get_current
-    auth_strategy = Rails.configuration.auth_provider.downcase
+    auth_strategy = Rails.configuration.auth_provider
     case auth_strategy
       when 'developer'
         AuthStrategy::DeveloperStrategy.new
