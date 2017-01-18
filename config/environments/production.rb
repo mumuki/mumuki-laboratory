@@ -92,6 +92,10 @@ Rails.application.configure do
   config.auth0_client_secret = ENV['MUMUKI_AUTH0_CLIENT_SECRET']
   config.auth0_domain = ENV['MUMUKI_AUTH0_DOMAIN']
 
+  config.domain = ENV['MUMUKI_DOMAIN']
+  config.base_url = ENV['MUMUKI_BASE_URL'] || "http://#{config.domain}"
+  config.cookies_domain = ENV['MUMUKI_COOKIES_DOMAIN'] || ".#{config.domain}"
+
   config.saml_idp_cert = ENV['MUMUKI_SAML_IDP_CERT']
   config.saml_idp_sso_target_url = ENV['MUMUKI_SAML_IDP_SSO_TARGET_URL']
   config.saml_idp_slo_target_url = ENV['MUMUKI_SAML_IDP_SLO_TARGET_URL']
@@ -106,7 +110,4 @@ Rails.application.configure do
   config.queueless_mode = ENV['MUMUKI_QUEUELESS_MODE']
   config.daybreak_name = ENV['MUMUKI_DAYBREAK_NAME'] || 'permissions'
 
-  config.domain = ENV['MUMUKI_DOMAIN']
-  config.base_url = ENV['MUMUKI_BASE_URL'] || "http://#{config.domain}"
-  config.cookies_domain = ENV['MUMUKI_COOKIES_DOMAIN'] || ".#{config.domain}"
 end
