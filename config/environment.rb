@@ -1,5 +1,6 @@
 # Load the Rails application.
 require File.expand_path('../application', __FILE__)
+File.open('../../saml.crt', 'w') { |file| file.write(Rails.configuration.saml_idp_cert.gsub("\\n", "\n")) }
 Rails.application.initialize!
 
 Mumukit::Auth.configure do |c|
