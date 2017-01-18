@@ -51,6 +51,7 @@ Rails.application.configure do
   config.saml_translation_name = ENV['MUMUKI_SAML_TRANSLATION_NAME']
   config.saml_translation_email = ENV['MUMUKI_SAML_TRANSLATION_EMAIL']
   config.saml_translation_image = ENV['MUMUKI_SAML_TRANSLATION_IMAGE']
+  config.saml_base_url = ENV['MUMUKI_SAML_BASE_URL'] || "http://central.#{Rails.configuration.domain}:3000"
 
   config.thesaurus_url = ENV['MUMUKI_THESAURUS_URL'] || 'http://thesaurus.mumuki.io'
   config.bibliotheca_url = ENV['MUMUKI_BIBLIOTHECA_URL'] || 'http://bibliotheca-api.mumuki.io'
