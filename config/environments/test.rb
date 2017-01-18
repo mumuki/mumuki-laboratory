@@ -13,11 +13,11 @@ Rails.application.configure do
   config.eager_load = false
 
   # Configure static asset server for tests with Cache-Control for performance.
-  config.serve_static_assets  = true
+  config.serve_static_assets = true
   config.static_cache_control = 'public, max-age=3600'
 
   # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
 
   # Raise exceptions instead of rendering exception templates.
@@ -43,11 +43,11 @@ Rails.application.configure do
 
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:auth0] = OmniAuth::AuthHash.new({
-      provider: 'auth0',
-      uid: '123545',
-      credentials: {},
-      info: {name: 'Test User', nickname: 'testuser'}
-  })
+                                                               provider: 'auth0',
+                                                               uid: '123545',
+                                                               credentials: {},
+                                                               info: {name: 'Test User', nickname: 'testuser'}
+                                                             })
 
   config.auth0_client_id = 'foo id'
   config.auth0_client_secret = 'foo secret'
@@ -58,6 +58,7 @@ Rails.application.configure do
 
   config.daybreak_name = 'test'
 
+  config.bibliotheca_url = 'http://bibliotheca-api.mumuki.io'
   config.domain = 'localmumuki.io'
   config.base_url = 'http://localmumuki.io:3000'
   config.cookies_domain = '.localmumuki.io'
