@@ -10,7 +10,7 @@ class AuthStrategy::SamlStrategy < AuthStrategy
                       idp_sso_target_url: Rails.configuration.saml_idp_sso_target_url,
                       idp_slo_target_url: Rails.configuration.saml_idp_slo_target_url,
                       slo_default_relay_state: Rails.configuration.saml_base_url,
-                      idp_cert: Rails.configuration.saml_idp_cert.gsub("\\n", "\n") || File.read('./saml.crt'),
+                      idp_cert: File.read('./saml.crt'),
                       attribute_service_name: 'Mumuki',
                       request_attributes: [
                         {name: 'email', name_format: 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic', friendly_name: 'Email address'},
