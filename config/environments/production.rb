@@ -96,7 +96,6 @@ Rails.application.configure do
   config.base_url = ENV['MUMUKI_BASE_URL'] || "http://#{config.domain}"
   config.cookies_domain = ENV['MUMUKI_COOKIES_DOMAIN'] || ".#{config.domain}"
 
-  config.saml_idp_cert = ENV['MUMUKI_SAML_IDP_CERT']
   config.saml_idp_sso_target_url = ENV['MUMUKI_SAML_IDP_SSO_TARGET_URL']
   config.saml_idp_slo_target_url = ENV['MUMUKI_SAML_IDP_SLO_TARGET_URL']
   config.saml_translation_name = ENV['MUMUKI_SAML_TRANSLATION_NAME']
