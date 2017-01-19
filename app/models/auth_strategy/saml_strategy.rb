@@ -1,5 +1,6 @@
 class AuthStrategy::SamlStrategy < AuthStrategy
   def set_auth_provider(omniauth)
+    File.open('./saml.crt', 'w') { |file| file.write(Rails.configuration.saml_idp_cert.gsub("\\n", "\n")) }
     omniauth.provider :saml,
                       # TODO: change the :assertion_consumer_service_url, the :issuer and the :slo_default_relay_state:
                       # =>  1. we can not call any Organization method since there is none instantiated yet and
