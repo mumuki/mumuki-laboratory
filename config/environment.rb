@@ -1,9 +1,9 @@
 # Load the Rails application.
 require File.expand_path('../application', __FILE__)
-unless Rails.env.test?
+Rails.application.initialize!
+if !Rails.env.test? && Rails.configuration.saml_idp_cert.present?
   File.open('../../saml.crt', 'w') { |file| file.write(Rails.configuration.saml_idp_cert.gsub("\\n", "\n")) }
 end
-Rails.application.initialize!
 
 Mumukit::Auth.configure do |c|
   unless Rails.env.test?
