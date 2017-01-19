@@ -43,8 +43,6 @@ Rails.application.configure do
   config.base_url = ENV['MUMUKI_BASE_URL'] || "http://#{config.domain}:3000"
   config.cookies_domain = ENV['MUMUKI_COOKIES_DOMAIN'] || ".#{config.domain}"
 
-  config.saml_idp_cert = ENV['MUMUKI_SAML_IDP_CERT']
-
   config.thesaurus_url = ENV['MUMUKI_THESAURUS_URL'] || 'http://thesaurus.mumuki.io'
   config.bibliotheca_url = ENV['MUMUKI_BIBLIOTHECA_URL'] || 'http://bibliotheca-api.mumuki.io'
 
