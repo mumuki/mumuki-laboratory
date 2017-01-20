@@ -116,12 +116,20 @@ class Mumukit::Auth::LoginProvider::Base
     action_controller.protect_from_forgery with: :exception
   end
 
+  def auth_path
+    "/auth/#{name}"
+  end
+
+  def callback_path
+    "/auth/#{name}/callback"
+  end
+
   def logout_redirection_path
     '/'
   end
 
   def button_html(title, clazz)
-    %Q{<a class="#{clazz}" href="/auth/#{name}">#{title}</a>}.html_safe
+    %Q{<a class="#{clazz}" href="#{auth_path}">#{title}</a>}.html_safe
   end
 
   def footer_html
@@ -140,9 +148,9 @@ class Mumukit::Auth::LoginProvider::Saml < Mumukit::Auth::LoginProvider::Base
                       # TODO: change the :assertion_consumer_service_url, the :issuer and the :slo_default_relay_state:
                       # =>  1. we can not call any Organization method since there is none instantiated yet and
                       # =>  2. we must use the absolut path to generate the right SAML metadata to set up the federation with the IdP
-                      assertion_consumer_service_url: "#{Rails.configuration.saml_base_url}/auth/saml/callback",
-                      single_logout_service_url: "#{Rails.configuration.saml_base_url}/auth/saml/slo",
-                      issuer: "#{Rails.configuration.saml_base_url}/auth/saml",
+                      assertion_consumer_service_url: "#{Rails.configuration.saml_base_url}#{callback_path}",
+                      single_logout_service_url: "#{Rails.configuration.saml_base_url}#{auth_path}/slo",
+                      issuer: "#{Rails.configuration.saml_base_url}#{auth_path}",
                       idp_sso_target_url: Rails.configuration.saml_idp_sso_target_url,
                       idp_slo_target_url: Rails.configuration.saml_idp_slo_target_url,
                       slo_default_relay_state: Rails.configuration.saml_base_url,
@@ -166,7 +174,7 @@ class Mumukit::Auth::LoginProvider::Saml < Mumukit::Auth::LoginProvider::Base
   end
 
   def logout_redirection_path
-    '/auth/saml/spslo'
+    "#{auth_path}/spslo"
   end
 end
 
@@ -176,9 +184,8 @@ class Mumukit::Auth::LoginProvider::Auth0 < Mumukit::Auth::LoginProvider::Base
                       Rails.configuration.auth0_client_id,
                       Rails.configuration.auth0_client_secret,
                       Rails.configuration.auth0_domain,
-                      callback_path: '/auth/auth0/callback'
+                      callback_path: callback_path
   end
-
 
   def button_html(title, clazz)
     %Q{<a class="#{clazz}" href="#" onclick="window.signin();">#{title}</a>}.html_safe
@@ -190,7 +197,7 @@ class Mumukit::Auth::LoginProvider::Auth0 < Mumukit::Auth::LoginProvider::Base
     #FIXME remove organization reference
     auth_client_id = Rails.configuration.auth0_client_id
     auth_domain = Rails.configuration.auth0_domain
-    lock_settings = Organization.login_settings.to_lock_json(auth_callback_url(:auth0))
+    lock_settings = Organization.login_settings.to_lock_json(callback_path)
     html = <<HTML
 <script src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
 <script type="text/javascript">
