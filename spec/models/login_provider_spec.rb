@@ -17,9 +17,10 @@ describe Mumukit::Auth::LoginProvider do
 
   describe Mumukit::Auth::LoginProvider::Auth0 do
     let(:provider) { Mumukit::Auth::LoginProvider::Auth0.new }
+    let(:login_settings) { Mumukit::Auth::LoginSettings.new }
 
     it { expect(provider.button_html('login', 'clazz')).to eq '<a class="clazz" href="#" onclick="window.signin();">login</a>' }
-    it { expect(provider.header_html).to be_present }
+    it { expect(provider.header_html(login_settings)).to be_present }
     it { expect(provider.footer_html).to be_present }
   end
 

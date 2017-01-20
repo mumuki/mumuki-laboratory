@@ -61,8 +61,14 @@ module Mumukit::Auth::Login
   ## Visual components ##
   #######################
 
-  def self.header_html
-    provider.header_html
+  # HTML <HEAD> customizations. Send this message
+  # in order to add login provider-specific code - like CSS and JS -
+  # to your page header
+  #
+  # @param [Mumukit::Auth::LoginSettings] login_settings
+  #
+  def self.header_html(login_settings)
+    provider.header_html(login_settings)
   end
 
   def self.button_html(title, clazz)
@@ -138,7 +144,7 @@ class Mumukit::Auth::LoginProvider::Base
     nil
   end
 
-  def header_html
+  def header_html(*)
     nil
   end
 end
@@ -203,12 +209,12 @@ class Mumukit::Auth::LoginProvider::Auth0 < Mumukit::Auth::LoginProvider::Base
     %Q{<a class="#{clazz}" href="#" onclick="window.signin();">#{title}</a>}.html_safe
   end
 
-  def header_html
+  def header_html(login_settings)
     #FIXME remove rails settings
     #FIXME remove organization reference
     auth_client_id = Rails.configuration.auth0_client_id
     auth_domain = Rails.configuration.auth0_domain
-    lock_settings = Organization.login_settings.to_lock_json(callback_path)
+    lock_settings = login_settings.to_lock_json(callback_path)
     html = <<HTML
 <script src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
 <script type="text/javascript">
@@ -233,7 +239,7 @@ class Mumukit::Auth::LoginProvider::Developer < Mumukit::Auth::LoginProvider::Ba
     omniauth.provider :developer
   end
 
-  def configure_forgery_protection!(_)
+  def configure_forgery_protection!(*)
   end
 end
 
