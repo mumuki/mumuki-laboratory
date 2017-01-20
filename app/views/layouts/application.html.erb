@@ -94,7 +94,7 @@
       </div>
 
       <div class="col-md-4 text-center">
-        <%= AuthStrategy.html_badge %>
+        <%= Mumukit::Auth.config.login_provider.html_badge %>
       </div>
 
       <div class="col-md-4 text-right">
@@ -107,6 +107,6 @@
     </div>
   </div>
 </footer>
-<%= render partial: AuthStrategy.auth_init_partial %>
+<%= render partial: Mumukit::Auth.config.login_provider.auth_init_partial %>
 </body>
 </html>

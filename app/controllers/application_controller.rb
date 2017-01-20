@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   before_action :validate_subject_accessible!
   before_action :visit_organization!, if: :current_user?
 
-  AuthStrategy.protect_from_forgery self
+  Mumukit::Auth.config.login_provider.protect_from_forgery self
 
   helper_method :current_user, :current_user?,
                 :current_user_id,
