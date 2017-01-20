@@ -1,13 +1,32 @@
 module Mumukit::Auth::LoginProvider
   def self.from_env
-    AuthStrategy.get_current
+    parse_login_provider(login_provider_string)
+  end
+
+  def self.login_provider_string
+    if ENV['MUMUKI_LOGIN_PROVIDER'].blank? || ENV['RACK_ENV'] == 'test' || ENV['RAILS_ENV'] == 'test'
+      'developer'
+    else
+      ENV['MUMUKI_LOGIN_PROVIDER']
+    end
+  end
+
+  def self.parse_login_provider(login_provider)
+    case login_provider
+      when 'developer'
+        AuthStrategy::DeveloperStrategy.new
+      when 'saml'
+        AuthStrategy::SamlStrategy.new
+      when 'auth0'
+        AuthStrategy::Auth0Strategy.new
+      else
+        raise "Unknown login_provider `#{login_provider}`"
+    end
   end
 end
 
 
 class AuthStrategy
-  extend ConfigurableGlobal
-
   def protect_from_forgery(controller)
     controller.protect_from_forgery with: :exception
   end
@@ -22,25 +41,6 @@ class AuthStrategy
 
   def auth_init_partial
     'layouts/auth_partials/null_partial.html.erb'
-  end
-
-  def self.get_current
-    if ENV['MUMUKI_LOGIN_PROVIDER'].blank? || ENV['RACK_ENV'] == 'test' || ENV['RAILS_ENV'] == 'test'
-      auth_strategy = 'developer'
-    else
-      auth_strategy = ENV['MUMUKI_LOGIN_PROVIDER']
-    end
-
-    case auth_strategy
-      when 'developer'
-        AuthStrategy::DeveloperStrategy.new
-      when 'saml'
-        AuthStrategy::SamlStrategy.new
-      when 'auth0'
-        AuthStrategy::Auth0Strategy.new
-      else
-        raise "Unknown auth_strategy `#{auth_strategy}`"
-    end
   end
 end
 
