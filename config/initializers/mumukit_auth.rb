@@ -66,7 +66,7 @@ module Mumukit::Auth::Login
   end
 
   def self.button_html(title, clazz)
-    %Q{<a class="#{clazz}" #{provider.auth_link}>#{title}</a>}.html_safe
+    provider.button_html title, clazz
   end
 
   def self.footer_html
@@ -108,12 +108,20 @@ module Mumukit::Auth::LoginProvider
 end
 
 class Mumukit::Auth::LoginProvider::Base
+  def name
+    @name ||= self.class.name.demodulize.downcase
+  end
+
   def configure_forgery_protection!(action_controller)
     action_controller.protect_from_forgery with: :exception
   end
 
   def logout_redirection_path
     '/'
+  end
+
+  def button_html(title, clazz)
+    %Q{<a class="#{clazz}" href="/auth/#{name}">#{title}</a>}.html_safe
   end
 
   def footer_html
@@ -157,10 +165,6 @@ class Mumukit::Auth::LoginProvider::Saml < Mumukit::Auth::LoginProvider::Base
     # Do nothing (do not protect): the IdP calls the assertion_url via POST and without the CSRF token
   end
 
-  def auth_link
-    "href='/auth/saml/'"
-  end
-
   def logout_redirection_path
     '/auth/saml/spslo'
   end
@@ -175,20 +179,24 @@ class Mumukit::Auth::LoginProvider::Auth0 < Mumukit::Auth::LoginProvider::Base
                       callback_path: '/auth/auth0/callback'
   end
 
-  def auth_link
-    'href="#" onclick="window.signin();"'
+
+  def button_html(title, clazz)
+    %Q{<a class="#{clazz}" href="#" onclick="window.signin();">#{title}</a>}.html_safe
   end
 
   def header_html
     #FIXME auth_callback_url is not available here
     #FIXME remove rails settings
     #FIXME remove organization reference
+    auth_client_id = Rails.configuration.auth0_client_id
+    auth_domain = Rails.configuration.auth0_domain
+    lock_settings = Organization.login_settings.to_lock_json(auth_callback_url(:auth0))
     html = <<HTML
 <script src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
 <script type="text/javascript">
-var lock = new Auth0Lock('#{Rails.configuration.auth0_client_id}', '#{Rails.configuration.auth0_domain}');
+var lock = new Auth0Lock('#{auth_client_id}', '#{auth_domain}');
 function signin() {
-  lock.show(#{Organization.login_settings.to_lock_json(auth_callback_url(:auth0))});
+  lock.show(#{lock_settings});
 }
 </script>
 HTML
@@ -205,11 +213,6 @@ end
 class Mumukit::Auth::LoginProvider::Developer < Mumukit::Auth::LoginProvider::Base
   def configure_omniauth!(omniauth)
     omniauth.provider :developer
-  end
-
-  def auth_link
-    #FIXME this is not a link
-    "href='/auth/developer'"
   end
 
   def configure_forgery_protection!(_)
