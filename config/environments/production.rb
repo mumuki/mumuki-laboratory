@@ -95,12 +95,6 @@ Rails.application.configure do
   config.cookies_domain = ENV['MUMUKI_COOKIES_DOMAIN'] || ".#{config.domain}"
 
   config.saml_idp_cert = ENV['MUMUKI_SAML_IDP_CERT']
-  config.saml_idp_sso_target_url = ENV['MUMUKI_SAML_IDP_SSO_TARGET_URL']
-  config.saml_idp_slo_target_url = ENV['MUMUKI_SAML_IDP_SLO_TARGET_URL']
-  config.saml_translation_name = ENV['MUMUKI_SAML_TRANSLATION_NAME']
-  config.saml_translation_email = ENV['MUMUKI_SAML_TRANSLATION_EMAIL']
-  config.saml_translation_image = ENV['MUMUKI_SAML_TRANSLATION_IMAGE']
-  config.saml_base_url = ENV['MUMUKI_SAML_BASE_URL'] || "http://central.#{config.domain}"
 
   config.thesaurus_url = ENV['MUMUKI_THESAURUS_URL']
   config.bibliotheca_url = ENV['MUMUKI_BIBLIOTHECA_URL']

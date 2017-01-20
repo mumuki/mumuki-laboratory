@@ -144,18 +144,28 @@ class Mumukit::Auth::LoginProvider::Base
 end
 
 class Mumukit::Auth::LoginProvider::Saml < Mumukit::Auth::LoginProvider::Base
+  def saml_config
+    @saml_config ||= struct base_url: ENV['MUMUKI_SAML_BASE_URL'],
+                            idp_sso_target_url: ENV['MUMUKI_SAML_IDP_SSO_TARGET_URL'],
+                            idp_slo_target_url: ENV['MUMUKI_SAML_IDP_SLO_TARGET_URL'],
+                            translation_name: ENV['MUMUKI_SAML_TRANSLATION_NAME'] || 'name',
+                            translation_email: ENV['MUMUKI_SAML_TRANSLATION_EMAIL'] || 'email',
+                            translation_image: ENV['MUMUKI_SAML_TRANSLATION_IMAGE'] || 'image'
+  end
+
+
   def configure_omniauth!(omniauth)
     File.open('./saml.crt', 'w') { |file| file.write(Rails.configuration.saml_idp_cert.gsub("\\n", "\n")) }
     omniauth.provider :saml,
                       # TODO: change the :assertion_consumer_service_url, the :issuer and the :slo_default_relay_state:
                       # =>  1. we can not call any Organization method since there is none instantiated yet and
                       # =>  2. we must use the absolut path to generate the right SAML metadata to set up the federation with the IdP
-                      assertion_consumer_service_url: "#{Rails.configuration.saml_base_url}#{callback_path}",
-                      single_logout_service_url: "#{Rails.configuration.saml_base_url}#{auth_path}/slo",
-                      issuer: "#{Rails.configuration.saml_base_url}#{auth_path}",
-                      idp_sso_target_url: Rails.configuration.saml_idp_sso_target_url,
-                      idp_slo_target_url: Rails.configuration.saml_idp_slo_target_url,
-                      slo_default_relay_state: Rails.configuration.saml_base_url,
+                      assertion_consumer_service_url: "#{saml_config.base_url}#{callback_path}",
+                      single_logout_service_url: "#{saml_config.base_url}#{auth_path}/slo",
+                      issuer: "#{saml_config.base_url}#{auth_path}",
+                      idp_sso_target_url: saml_config.idp_sso_target_url,
+                      idp_slo_target_url: saml_config.idp_slo_target_url,
+                      slo_default_relay_state: saml_config.base_url,
                       idp_cert: File.read('./saml.crt'),
                       attribute_service_name: 'Mumuki',
                       request_attributes: [
@@ -164,9 +174,9 @@ class Mumukit::Auth::LoginProvider::Saml < Mumukit::Auth::LoginProvider::Base
                         {name: 'image', name_format: 'urn:oasis:names:tc:SAML:2.0:attrname-format:basic', friendly_name: 'Avatar image'}
                       ],
                       attribute_statements: {
-                        name: [Rails.configuration.saml_translation_name || "name"],
-                        email: [Rails.configuration.saml_translation_email || "email"],
-                        image: [Rails.configuration.saml_translation_image || "image"]
+                        name: [saml_config.translaton_name],
+                        email: [saml_config.translaton_email],
+                        image: [saml_config.translaton_image]
                       }
   end
 
