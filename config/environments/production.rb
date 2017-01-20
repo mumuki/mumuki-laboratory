@@ -104,8 +104,4 @@ Rails.application.configure do
 
   config.thesaurus_url = ENV['MUMUKI_THESAURUS_URL']
   config.bibliotheca_url = ENV['MUMUKI_BIBLIOTHECA_URL']
-
-  config.queueless_mode = ENV['MUMUKI_QUEUELESS_MODE']
-  config.daybreak_name = ENV['MUMUKI_DAYBREAK_NAME'] || 'permissions'
-
 end

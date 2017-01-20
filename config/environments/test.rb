@@ -52,10 +52,6 @@ Rails.application.configure do
   config.auth0_client_secret = 'foo secret'
   config.auth0_domain = 'http://foo.com'
 
-  config.queueless_mode = true
-
-  config.daybreak_name = 'test'
-
   config.bibliotheca_url = 'http://bibliotheca-api.mumuki.io'
   config.domain = 'localmumuki.io'
   config.base_url = 'http://localmumuki.io:3000'
