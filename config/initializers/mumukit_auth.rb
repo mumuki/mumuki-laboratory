@@ -112,6 +112,8 @@ class Mumukit::Auth::LoginProvider::Base
     @name ||= self.class.name.demodulize.downcase
   end
 
+  required :configure_omniauth!
+
   def configure_forgery_protection!(action_controller)
     action_controller.protect_from_forgery with: :exception
   end
@@ -192,7 +194,6 @@ class Mumukit::Auth::LoginProvider::Auth0 < Mumukit::Auth::LoginProvider::Base
   end
 
   def header_html
-    #FIXME auth_callback_url is not available here
     #FIXME remove rails settings
     #FIXME remove organization reference
     auth_client_id = Rails.configuration.auth0_client_id
