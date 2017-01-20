@@ -9,6 +9,15 @@ module Mumukit::Auth::Login
     provider.configure_forgery_protection!(action_controller)
   end
 
+  # Configures omniauth. This method typically configures
+  # and sets the omniauth provider
+  #
+  # @param [OmniAuth::Builder] omniauth
+  #
+  def self.configure_omniauth!(omniauth)
+    provider.configure_omniauth! omniauth
+  end
+
   private
 
   def self.provider
@@ -20,8 +29,6 @@ end
 # login_footer_html
 # login_header_html
 # login_button_html
-
-# configure_omniauth
 
 # logout_redirection_path
 
@@ -72,7 +79,7 @@ class AuthStrategy
 end
 
 class AuthStrategy::SamlStrategy < AuthStrategy
-  def set_auth_provider(omniauth)
+  def configure_omniauth!(omniauth)
     File.open('./saml.crt', 'w') { |file| file.write(Rails.configuration.saml_idp_cert.gsub("\\n", "\n")) }
     omniauth.provider :saml,
                       # TODO: change the :assertion_consumer_service_url, the :issuer and the :slo_default_relay_state:
@@ -113,7 +120,7 @@ class AuthStrategy::SamlStrategy < AuthStrategy
 end
 
 class AuthStrategy::Auth0Strategy < AuthStrategy
-  def set_auth_provider(omniauth)
+  def configure_omniauth!(omniauth)
     omniauth.provider :auth0,
                       Rails.configuration.auth0_client_id,
                       Rails.configuration.auth0_client_secret,
@@ -135,7 +142,7 @@ class AuthStrategy::Auth0Strategy < AuthStrategy
 end
 class AuthStrategy::DeveloperStrategy < AuthStrategy
 
-  def set_auth_provider(omniauth)
+  def configure_omniauth!(omniauth)
     omniauth.provider :developer
   end
 
@@ -149,7 +156,7 @@ end
 
 
 class AuthStrategy::Auth0Strategy < AuthStrategy
-  def set_auth_provider(omniauth)
+  def configure_omniauth!(omniauth)
     omniauth.provider :auth0,
                       Rails.configuration.auth0_client_id,
                       Rails.configuration.auth0_client_secret,
