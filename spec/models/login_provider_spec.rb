@@ -6,6 +6,7 @@ describe Mumukit::Auth::LoginProvider do
   describe Mumukit::Auth::LoginProvider::Developer do
     let(:provider) { Mumukit::Auth::LoginProvider::Developer.new }
     it { expect(provider.auth_link).to include '/auth/developer' }
+    it { expect(provider.header_html).to be_blank }
     it { expect(provider.footer_html).to be_blank }
   end
 
