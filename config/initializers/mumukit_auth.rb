@@ -48,7 +48,7 @@ module Mumukit::Auth::Login
   #######################
 
   def self.header_html
-    provider.auth_init_partial
+    provider.header_html
   end
 
   def self.button_html(title, clazz)
@@ -56,7 +56,7 @@ module Mumukit::Auth::Login
   end
 
   def self.footer_html
-    provider.html_badge
+    provider.footer_html
   end
 
   private
@@ -102,11 +102,11 @@ class Mumukit::Auth::LoginProvider::Base
     '/'
   end
 
-  def html_badge
+  def footer_html
     nil
   end
 
-  def auth_init_partial
+  def header_html
     nil
   end
 end
@@ -138,13 +138,13 @@ class Mumukit::Auth::LoginProvider::Saml < Mumukit::Auth::LoginProvider::Base
                       }
   end
 
-  def auth_link
-    "href='/auth/saml/'"
-  end
-
   def configure_forgery_protection!(_action_controller)
     # FIXME this is big security issue
     # Do nothing (do not protect): the IdP calls the assertion_url via POST and without the CSRF token
+  end
+
+  def auth_link
+    "href='/auth/saml/'"
   end
 
   def logout_redirection_path
@@ -165,8 +165,7 @@ class Mumukit::Auth::LoginProvider::Auth0 < Mumukit::Auth::LoginProvider::Base
     'href="#" onclick="window.signin();"'
   end
 
-  def auth_init_partial
-    #FIXME rename
+  def header_html
     #FIXME auth_callback_url is not available here
     #FIXME remove rails settings
     #FIXME remove organization reference
@@ -182,7 +181,7 @@ HTML
     html.html_safe
   end
 
-  def html_badge
+  def footer_html
     '<a href="https://auth0.com/" target="_blank"><img height="40" alt="JWT Auth for open source projects" src="//cdn.auth0.com/oss/badges/a0-badge-light.png"/></a>'.html_safe
   end
 end
@@ -193,6 +192,7 @@ class Mumukit::Auth::LoginProvider::Developer < Mumukit::Auth::LoginProvider::Ba
   end
 
   def auth_link
+    #FIXME this is not a link
     "href='/auth/developer'"
   end
 
