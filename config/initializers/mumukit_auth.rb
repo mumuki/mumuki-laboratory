@@ -25,7 +25,12 @@ class AuthStrategy
   end
 
   def self.get_current
-    auth_strategy = Rails.configuration.auth_provider
+    if ENV['MUMUKI_LOGIN_PROVIDER'].blank? || ENV['RACK_ENV'] == 'test' || ENV['RAILS_ENV'] == 'test'
+      auth_strategy = 'developer'
+    else
+      auth_strategy = ENV['MUMUKI_LOGIN_PROVIDER']
+    end
+
     case auth_strategy
       when 'developer'
         AuthStrategy::DeveloperStrategy.new
