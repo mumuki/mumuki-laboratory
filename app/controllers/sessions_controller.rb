@@ -14,11 +14,7 @@ class SessionsController < ApplicationController
     remember_me_token.clear!
     # TODO: desharcode URL
     # TODO: redirect to /spslo ONLY if using saml_auth_strategy. Otherwise, redirect to root_url
-    redirect_to Mumukit::Auth.config.login_provider.logout_redirection_url self
-  end
-
-  def after_logout_redirection_url
-    root_url
+    redirect_to Mumukit::Auth::Login.logout_redirection_path
   end
 
   def redirect_after_login

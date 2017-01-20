@@ -1,5 +1,10 @@
 module Mumukit::Auth::Login
 
+  ##########################
+  ## Server configuration ##
+  ##########################
+
+
   # Configures forgery protection.
   # This method is Rails-specific
   #
@@ -22,6 +27,26 @@ module Mumukit::Auth::Login
     provider.configure_omniauth! omniauth
   end
 
+  ############
+  ## Routes ##
+  ############
+
+  # Path - relative to current domain - to which
+  # app must redirect after a successful logout
+  #
+  # This is not the same as the logout callback - this route
+  # should point to a safe point that won't fail without authentication with
+  # a visual message to the user stating that she
+  # has logged out
+  #
+  def self.logout_redirection_path
+    provider.logout_redirection_path
+  end
+
+  #######################
+  ## Visual components ##
+  #######################
+
   def self.header_html
     provider.auth_init_partial
   end
@@ -40,10 +65,6 @@ module Mumukit::Auth::Login
     Mumukit::Auth.config.login_provider
   end
 end
-
-
-# logout_redirection_path
-
 
 module Mumukit::Auth::LoginProvider
   def self.from_env
@@ -77,8 +98,8 @@ class Mumukit::Auth::LoginProvider::Base
     action_controller.protect_from_forgery with: :exception
   end
 
-  def logout_redirection_url(controller)
-    controller.after_logout_redirection_url
+  def logout_redirection_path
+    '/'
   end
 
   def html_badge
@@ -126,8 +147,8 @@ class Mumukit::Auth::LoginProvider::Saml < Mumukit::Auth::LoginProvider::Base
     # Do nothing (do not protect): the IdP calls the assertion_url via POST and without the CSRF token
   end
 
-  def logout_redirection_url(controller)
-    Organization.url_for('/auth/saml/spslo')
+  def logout_redirection_path
+    '/auth/saml/spslo'
   end
 end
 
@@ -167,7 +188,6 @@ HTML
 end
 
 class Mumukit::Auth::LoginProvider::Developer < Mumukit::Auth::LoginProvider::Base
-
   def configure_omniauth!(omniauth)
     omniauth.provider :developer
   end
@@ -179,7 +199,6 @@ class Mumukit::Auth::LoginProvider::Developer < Mumukit::Auth::LoginProvider::Ba
   def configure_forgery_protection!(_)
   end
 end
-
 
 class PostgresPermissionsPersistence
   def self.from_config
