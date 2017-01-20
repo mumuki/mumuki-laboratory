@@ -12,8 +12,6 @@ class SessionsController < ApplicationController
 
   def destroy
     remember_me_token.clear!
-    # TODO: desharcode URL
-    # TODO: redirect to /spslo ONLY if using saml_auth_strategy. Otherwise, redirect to root_url
     redirect_to Mumukit::Auth::Login.logout_redirection_path
   end
 
