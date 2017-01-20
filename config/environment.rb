@@ -12,5 +12,5 @@ end
 
 Mumukit::Nuntius.configure do |c|
   c.app_name = 'atheneum'
-  c.notification_mode = Rails.env.test? ? Mumukit::Nuntius::NotificationMode::Deaf.new : Mumukit::Nuntius::NotificationMode.from_env
+  c.notification_mode = Mumukit::Nuntius::NotificationMode.from_env
 end
