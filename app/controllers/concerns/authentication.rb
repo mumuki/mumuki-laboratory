@@ -27,9 +27,7 @@ module Authentication
 
   def login_anchor(options={})
     options[:title] ||= :sign_in
-
     session[:redirect_after_login] = request.fullpath
-
-    %Q{<a class="#{options[:class]}" #{Mumukit::Auth.config.login_provider.auth_link}>#{I18n.t(options[:title])}</a>}.html_safe
+    Mumukit::Auth::Login.button_html I18n.t(options[:title]), options[:class]
   end
 end

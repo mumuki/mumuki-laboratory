@@ -10,12 +10,28 @@ module Mumukit::Auth::Login
   end
 
   # Configures omniauth. This method typically configures
-  # and sets the omniauth provider
+  # and sets the omniauth provider. Typical config should look like this
+  #
+  #   Rails.application.config.middleware.use OmniAuth::Builder do
+  #    Mumukit::Auth::Login.configure_omniauth! self
+  #   end
   #
   # @param [OmniAuth::Builder] omniauth
   #
   def self.configure_omniauth!(omniauth)
     provider.configure_omniauth! omniauth
+  end
+
+  def self.header_html
+    provider.auth_init_partial
+  end
+
+  def self.button_html(title, clazz)
+    %Q{<a class="#{clazz}" #{provider.auth_link}>#{title}</a>}.html_safe
+  end
+
+  def self.footer_html
+    provider.html_badge
   end
 
   private
@@ -70,11 +86,11 @@ class AuthStrategy
   end
 
   def html_badge
-    ''
+    nil
   end
 
   def auth_init_partial
-    'layouts/auth_partials/null_partial.html.erb'
+    nil
   end
 end
 
@@ -133,7 +149,20 @@ class AuthStrategy::Auth0Strategy < AuthStrategy
   end
 
   def auth_init_partial
-    'layouts/auth_partials/auth0.init.html.erb'
+    #FIXME rename
+    #FIXME auth_callback_url is not available here
+    #FIXME remove rails settings
+    #FIXME remove organization reference
+    html = <<HTML
+<script src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
+<script type="text/javascript">
+var lock = new Auth0Lock('#{Rails.configuration.auth0_client_id}', '#{Rails.configuration.auth0_domain}');
+function signin() {
+  lock.show(#{Organization.login_settings.to_lock_json(auth_callback_url(:auth0))});
+}
+</script>
+HTML
+    html.html_safe
   end
 
   def html_badge
