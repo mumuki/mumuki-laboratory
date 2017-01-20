@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
   controller :sessions do
-    match 'auth/:provider/callback' => :callback, via: [:get, :post], as: 'auth_callback'
-    get 'auth/failure' => :failure
-    get 'logout' => :destroy
+    Mumukit::Auth::Login.configure_session_controller_routes! self
   end
 
   root to: 'book#show'

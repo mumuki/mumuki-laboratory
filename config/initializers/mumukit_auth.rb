@@ -4,6 +4,20 @@ module Mumukit::Auth::Login
   ## Server configuration ##
   ##########################
 
+  # Configures the login routes.
+  # This method is rails-specific, and should be used this way:
+  #
+  #  controller :sessions do
+  #    Mumukit::Auth::Login.configure_session_controller_routes! self
+  #  end
+  #
+  # @param [RailsRouter] rails_router
+  #
+  def self.configure_session_controller_routes!(rails_router)
+    rails_router.match 'auth/:provider/callback' => :callback, via: [:get, :post], as: 'auth_callback'
+    rails_router.get 'auth/failure' => :failure
+    rails_router.get 'logout' => :destroy
+  end
 
   # Configures forgery protection.
   # This method is Rails-specific
