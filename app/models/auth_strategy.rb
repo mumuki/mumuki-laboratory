@@ -1,3 +1,10 @@
+module Mumukit::Auth::LoginProvider
+  def self.from_env
+    AuthStrategy.get_current
+  end
+end
+
+
 class AuthStrategy
   extend ConfigurableGlobal
 
