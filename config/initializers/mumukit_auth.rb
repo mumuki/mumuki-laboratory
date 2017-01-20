@@ -1,3 +1,31 @@
+module Mumukit::Auth::Login
+
+  # Configures forgery protection.
+  # This method is Rails-specific
+  #
+  # @param [ActionController] action_controller
+  #
+  def self.configure_forgery_protection!(action_controller)
+    provider.configure_forgery_protection!(action_controller)
+  end
+
+  private
+
+  def self.provider
+    Mumukit::Auth.config.login_provider
+  end
+end
+
+
+# login_footer_html
+# login_header_html
+# login_button_html
+
+# configure_omniauth
+
+# logout_redirection_path
+
+
 module Mumukit::Auth::LoginProvider
   def self.from_env
     parse_login_provider(login_provider_string)
@@ -25,10 +53,9 @@ module Mumukit::Auth::LoginProvider
   end
 end
 
-
 class AuthStrategy
-  def protect_from_forgery(controller)
-    controller.protect_from_forgery with: :exception
+  def configure_forgery_protection!(action_controller)
+    action_controller.protect_from_forgery with: :exception
   end
 
   def logout_redirection_url(controller)
@@ -75,7 +102,7 @@ class AuthStrategy::SamlStrategy < AuthStrategy
     "href='/auth/saml/'"
   end
 
-  def protect_from_forgery(controller)
+  def configure_forgery_protection!(_action_controller)
     # FIXME this is big security issue
     # Do nothing (do not protect): the IdP calls the assertion_url via POST and without the CSRF token
   end
@@ -116,7 +143,7 @@ class AuthStrategy::DeveloperStrategy < AuthStrategy
     "href='/auth/developer'"
   end
 
-  def protect_from_forgery(_controller)
+  def configure_forgery_protection!(_)
   end
 end
 
