@@ -63,9 +63,12 @@ module Mumukit::Auth::Login
 
   # HTML <HEAD> customizations. Send this message
   # in order to add login provider-specific code - like CSS and JS -
-  # to your page header
+  # to your page header.
   #
-  # @param [Mumukit::Auth::LoginSettings] login_settings
+  # This method should configure the login button using the given login settings
+  # customizations, if possible
+  #
+  # @param [Mumukit::Auth::LoginSettings] login_settings customizations for the login UI
   #
   def self.header_html(login_settings)
     provider.header_html(login_settings)
@@ -79,6 +82,15 @@ module Mumukit::Auth::Login
     provider.footer_html
   end
 
+  # Tells the controller to ask the user for authentication, by wither rendering
+  # the login or redirecting to it
+  #
+  # This method is Rails-specific, and should be called from a controller action
+  # or action filter.
+  #
+  # @param [ActionController] controller a Rails controller
+  # @param [Mumukit::Auth::LoginSettings] login_settings customizations for the login UI
+  #
   def self.request_authentication!(controller, login_settings)
     provider.request_authentication!(controller, login_settings)
   end
