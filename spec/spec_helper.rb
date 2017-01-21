@@ -32,7 +32,7 @@ require_relative './evaluation_helper'
 
 RSpec.configure do |config|
   config.before(:each) do
-    unless example.metadata[:clean]
+    unless RSpec.current_example.metadata[:clean]
       create(:public_organization,
              name: 'test',
              book: create(:book, name: 'test', slug: 'mumuki/mumuki-the-book')).switch!
