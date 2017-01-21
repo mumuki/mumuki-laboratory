@@ -1,5 +1,18 @@
 module Mumukit::Auth::Login
 
+  #############
+  ## Profile ##
+  #############
+
+  def self.normalized_omniauth_profile(omniauth)
+    struct provider: omniauth.provider,
+           name: omniauth.info.nickname || omniauth.info.name,
+           social_id: omniauth.uid,
+           email: omniauth.info.email,
+           uid: omniauth.info.email || omniauth.uid,
+           image_url: omniauth.info.image
+  end
+
   ##########################
   ## Server configuration ##
   ##########################
@@ -41,6 +54,23 @@ module Mumukit::Auth::Login
     provider.configure_omniauth! omniauth
   end
 
+  ###############################
+  ## Triggering Authentication ##
+  ###############################
+
+  # Tells the controller to ask the user for authentication, by wither rendering
+  # the login or redirecting to it
+  #
+  # This method is Rails-specific, and should be called from a controller action
+  # or action filter.
+  #
+  # @param [ActionController] controller a Rails controller
+  # @param [Mumukit::Auth::LoginSettings] login_settings customizations for the login UI
+  #
+  def self.request_authentication!(controller, login_settings)
+    provider.request_authentication!(controller, login_settings)
+  end
+
   ############
   ## Routes ##
   ############
@@ -80,19 +110,6 @@ module Mumukit::Auth::Login
 
   def self.footer_html
     provider.footer_html
-  end
-
-  # Tells the controller to ask the user for authentication, by wither rendering
-  # the login or redirecting to it
-  #
-  # This method is Rails-specific, and should be called from a controller action
-  # or action filter.
-  #
-  # @param [ActionController] controller a Rails controller
-  # @param [Mumukit::Auth::LoginSettings] login_settings customizations for the login UI
-  #
-  def self.request_authentication!(controller, login_settings)
-    provider.request_authentication!(controller, login_settings)
   end
 
   private
