@@ -22,10 +22,10 @@ module Mumukit::Auth::Login
   # Configures forgery protection.
   # This method is Rails-specific
   #
-  # @param [ActionController] action_controller
+  # @param [ActionController::Class] controller_class
   #
-  def self.configure_forgery_protection!(action_controller)
-    provider.configure_forgery_protection!(action_controller)
+  def self.configure_forgery_protection!(controller_class)
+    provider.configure_forgery_protection!(controller_class)
   end
 
   # Configures omniauth. This method typically configures
@@ -79,6 +79,10 @@ module Mumukit::Auth::Login
     provider.footer_html
   end
 
+  def self.request_authentication!(controller, login_settings)
+    provider.request_authentication!(controller, login_settings)
+  end
+
   private
 
   def self.provider
@@ -122,6 +126,10 @@ class Mumukit::Auth::LoginProvider::Base
 
   def configure_forgery_protection!(action_controller)
     action_controller.protect_from_forgery with: :exception
+  end
+
+  def request_authentication!(controller, *)
+    controller.redirect auth_path
   end
 
   def auth_path
@@ -207,6 +215,24 @@ class Mumukit::Auth::LoginProvider::Auth0 < Mumukit::Auth::LoginProvider::Base
 
   def button_html(title, clazz)
     %Q{<a class="#{clazz}" href="#" onclick="window.signin();">#{title}</a>}.html_safe
+  end
+
+  def request_authentication!(controller, login_settings)
+    auth_client_id = Rails.configuration.auth0_client_id
+    auth_domain = Rails.configuration.auth0_domain
+    lock_settings = login_settings.to_lock_json(callback_path, closable: false)
+    html = <<HTML
+<script type="text/javascript">
+  (function () {
+    var lock = new Auth0Lock('#{auth_client_id}', '#{auth_domain}');
+    function specialSignin() {
+      lock.show(#{lock_settings});
+    }
+    specialSignin();
+  })()
+</script>
+HTML
+    render html: html.html_safe
   end
 
   def header_html(login_settings)
