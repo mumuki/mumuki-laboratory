@@ -225,32 +225,21 @@ class Mumukit::Auth::LoginProvider::Auth0 < Mumukit::Auth::LoginProvider::Base
   end
 
   def request_authentication!(controller, login_settings)
-    auth_client_id = auth0_config.client_id
-    auth_domain = auth0_config.domain
     lock_settings = login_settings.to_lock_json(callback_path, closable: false)
     html = <<HTML
 <script type="text/javascript">
-  (function () {
-    var lock = new Auth0Lock('#{auth_client_id}', '#{auth_domain}');
-    function specialSignin() {
-      lock.show(#{lock_settings});
-    }
-    specialSignin();
-  })()
+    new Auth0Lock('#{auth0_config.client_id}', '#{auth0_config.domain}').show(#{lock_settings});
 </script>
 HTML
     render html: html.html_safe
   end
 
   def header_html(login_settings)
-    #FIXME remove rails settings
-    auth_client_id = auth0_config.client_id
-    auth_domain = auth0_config.domain
     lock_settings = login_settings.to_lock_json(callback_path)
     html = <<HTML
 <script src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
 <script type="text/javascript">
-var lock = new Auth0Lock('#{auth_client_id}', '#{auth_domain}');
+var lock = new Auth0Lock('#{auth0_config.client_id}', '#{auth0_config.domain}');
 function signin() {
   lock.show(#{lock_settings});
 }
