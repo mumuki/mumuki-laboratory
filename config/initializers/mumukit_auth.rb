@@ -169,6 +169,7 @@ class Mumukit::Auth::LoginProvider::Saml < Mumukit::Auth::LoginProvider::Base
 
 
   def configure_omniauth!(omniauth)
+    #FIXME is this file here ok?
     File.open('./saml.crt', 'w') { |file| file.write(Rails.configuration.saml_idp_cert.gsub("\\n", "\n")) }
     omniauth.provider :saml,
                       # TODO: change the :assertion_consumer_service_url, the :issuer and the :slo_default_relay_state:
@@ -205,11 +206,17 @@ class Mumukit::Auth::LoginProvider::Saml < Mumukit::Auth::LoginProvider::Base
 end
 
 class Mumukit::Auth::LoginProvider::Auth0 < Mumukit::Auth::LoginProvider::Base
+  def auth0_config
+    @auth0_config ||= struct client_id: Rails.configuration.auth0_client_id,
+                             client_secret: Rails.configuration.auth0_client_secret,
+                             domain: Rails.configuration.auth0_domain
+  end
+
   def configure_omniauth!(omniauth)
     omniauth.provider :auth0,
-                      Rails.configuration.auth0_client_id,
-                      Rails.configuration.auth0_client_secret,
-                      Rails.configuration.auth0_domain,
+                      auth0_config.client_id,
+                      auth0_config.client_secret,
+                      auth0_config.domain,
                       callback_path: callback_path
   end
 
@@ -218,8 +225,8 @@ class Mumukit::Auth::LoginProvider::Auth0 < Mumukit::Auth::LoginProvider::Base
   end
 
   def request_authentication!(controller, login_settings)
-    auth_client_id = Rails.configuration.auth0_client_id
-    auth_domain = Rails.configuration.auth0_domain
+    auth_client_id = auth0_config.client_id
+    auth_domain = auth0_config.domain
     lock_settings = login_settings.to_lock_json(callback_path, closable: false)
     html = <<HTML
 <script type="text/javascript">
@@ -237,9 +244,8 @@ HTML
 
   def header_html(login_settings)
     #FIXME remove rails settings
-    #FIXME remove organization reference
-    auth_client_id = Rails.configuration.auth0_client_id
-    auth_domain = Rails.configuration.auth0_domain
+    auth_client_id = auth0_config.client_id
+    auth_domain = auth0_config.domain
     lock_settings = login_settings.to_lock_json(callback_path)
     html = <<HTML
 <script src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
