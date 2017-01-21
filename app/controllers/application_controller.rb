@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::Base
   include WithOrganization
 
-  include Authentication
-  include Authorization
+  include WithAuthentication
+  include WithAuthorization
   include WithRememberMeToken
-  include Pagination
-  include Referer
+  include WithPagination
+  include WithReferer
   include WithComments
-  include Accessibility
+  include Accessible
   include WithDynamicErrors
   include WithOrganizationChooser
 

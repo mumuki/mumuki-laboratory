@@ -1,4 +1,4 @@
-module Authentication
+module WithAuthentication
   def current_user_id
     @current_user_id ||= remember_me_token.value.try do |token |
       User.where(remember_me_token: token).first.try(:id)
