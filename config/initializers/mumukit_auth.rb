@@ -207,9 +207,9 @@ end
 
 class Mumukit::Auth::LoginProvider::Auth0 < Mumukit::Auth::LoginProvider::Base
   def auth0_config
-    @auth0_config ||= struct client_id: Rails.configuration.auth0_client_id,
-                             client_secret: Rails.configuration.auth0_client_secret,
-                             domain: Rails.configuration.auth0_domain
+    @auth0_config ||= struct client_id: ENV['MUMUKI_AUTH0_CLIENT_ID'],
+                             client_secret: ENV['MUMUKI_AUTH0_CLIENT_SECRET'],
+                             domain: ENV['MUMUKI_AUTH0_DOMAIN']
   end
 
   def configure_omniauth!(omniauth)
@@ -288,10 +288,4 @@ end
 Mumukit::Auth.configure do |c|
   c.login_provider = Mumukit::Auth::LoginProvider.from_env
   c.persistence_strategy = PostgresPermissionsPersistence.new
-
-  # TODO remove those lines
-  unless Rails.env.test?
-    c.client_id = Rails.configuration.auth0_client_id
-    c.client_secret = Rails.configuration.auth0_client_secret
-  end
 end

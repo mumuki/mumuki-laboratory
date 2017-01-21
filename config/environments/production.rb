@@ -86,10 +86,6 @@ Rails.application.configure do
 
   config.i18n.available_locales = [:es, :en]
 
-  config.auth0_client_id = ENV['MUMUKI_AUTH0_CLIENT_ID']
-  config.auth0_client_secret = ENV['MUMUKI_AUTH0_CLIENT_SECRET']
-  config.auth0_domain = ENV['MUMUKI_AUTH0_DOMAIN']
-
   config.domain = ENV['MUMUKI_DOMAIN']
   config.base_url = ENV['MUMUKI_BASE_URL'] || "http://#{config.domain}"
   config.cookies_domain = ENV['MUMUKI_COOKIES_DOMAIN'] || ".#{config.domain}"

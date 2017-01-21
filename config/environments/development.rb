@@ -39,10 +39,6 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  config.auth0_client_id = ENV['MUMUKI_AUTH0_CLIENT_ID']
-  config.auth0_client_secret = ENV['MUMUKI_AUTH0_CLIENT_SECRET']
-  config.auth0_domain = ENV['MUMUKI_AUTH0_DOMAIN']
-
   config.domain = ENV['MUMUKI_DOMAIN'] || 'localmumuki.io'
   config.base_url = ENV['MUMUKI_BASE_URL'] || "http://#{config.domain}:3000"
   config.cookies_domain = ENV['MUMUKI_COOKIES_DOMAIN'] || ".#{config.domain}"
