@@ -2,12 +2,9 @@ require 'spec_helper'
 
 feature 'Choose organization Flow' do
 
-  let(:user) { create(:user)}
-  let(:user2) { create(:user)}
-  before do
-    user.set_permissions! student: 'pdep/*'
-    user2.set_permissions! student: ''
-  end
+  let(:user) { create(:user, permissions: {student: 'pdep/*'}) }
+  let(:user2) { create(:user, permissions: {student: ''}) }
+
   let(:organization) { create(:organization, name: 'central', book: create(:book, name: 'central', slug: 'mumuki/mumuki-the-book')).switch! }
   before { create(:organization, name: 'pdep', book: create(:book, name: 'pdep', slug: 'mumuki/mumuki-the-pdep-book')) }
   before { create(:organization, name: 'central', book: create(:book, name: 'central', slug: 'mumuki/mumuki-the-central-book')).switch! }

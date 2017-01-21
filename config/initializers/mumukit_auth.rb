@@ -293,28 +293,8 @@ class Mumukit::Auth::LoginProvider::Developer < Mumukit::Auth::LoginProvider::Ba
   end
 end
 
-class PostgresPermissionsPersistence
-  def self.from_config
-    new
-  end
-
-  def set!(uid, permissions)
-    User.find_by(uid: uid).update!(permissions: permissions)
-  end
-
-  def get(uid)
-    User.find_by(uid: uid)&.permissions || Mumukit::Auth::Permissions.parse({})
-  end
-
-  def close
-  end
-
-  def clean_env!
-  end
-end
-
-
 Mumukit::Auth.configure do |c|
+  # We are not using tokens, so implementing this strategy is meaningless
+  c.persistence_strategy = nil
   c.login_provider = Mumukit::Auth::LoginProvider.from_env
-  c.persistence_strategy = PostgresPermissionsPersistence.new
 end

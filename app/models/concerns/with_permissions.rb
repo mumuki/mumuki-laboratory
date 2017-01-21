@@ -8,23 +8,19 @@ module WithPermissions
   end
 
   def student?
-    mumukit_permissions.student? Organization.slug
+    permissions.student? Organization.slug
   end
 
   def teacher?
-    mumukit_permissions.teacher? Organization.slug
+    permissions.teacher? Organization.slug
   end
 
-  def set_permissions!(permissions)
-    Mumukit::Auth::Store.set! self.uid, permissions
-  end
-
-  def mumukit_permissions
-    Mumukit::Auth::Store.get self.uid
+  def update_permissions!(permissions)
+    update!(permissions: permissions)
   end
 
   def accessible_organizations
-    mumukit_permissions.accessible_organizations.map {|org| Organization.find_by(name: org)}.compact
+    permissions.accessible_organizations.map {|org| Organization.find_by(name: org)}.compact
   end
 
   def has_accessible_organizations?

@@ -21,12 +21,10 @@ feature 'private org' do
 
   context 'logged user' do
     let(:visitor) { create(:user) }
-    let(:student) { create(:user) }
-    let(:teacher) { create(:user) }
+    let(:student) { create(:user, permissions: {student: 'private/*'}) }
+    let(:teacher) { create(:user, permissions: {student: 'private/*', teacher: 'private/*'}) }
 
     before do
-      student.set_permissions! student: 'private/*'
-      teacher.set_permissions! student: 'private/*', teacher: 'private/*'
       allow_any_instance_of(ApplicationController).to receive(:from_login_callback?).and_return(false)
       allow_any_instance_of(ApplicationController).to receive(:from_logout?).and_return(false)
     end
