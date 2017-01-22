@@ -69,5 +69,9 @@ def set_current_user!(user)
   allow_any_instance_of(ApplicationController).to receive(:current_user_id).and_return(user.id)
 end
 
+Mumukit::Login.configure do |config|
+  config.auth0 = struct
+  config.saml = struct
+end
 
 SimpleCov.start
