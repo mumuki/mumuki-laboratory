@@ -292,6 +292,10 @@ class Mumukit::Login::Provider::Base
   def header_html(*)
     nil
   end
+
+  def url_for(controller, path)
+    URI.join(controller.env['HTTP_HOST'], path).to_s
+  end
 end
 
 class Mumukit::Login::Provider::Saml < Mumukit::Login::Provider::Base
@@ -343,12 +347,6 @@ class Mumukit::Login::Provider::Saml < Mumukit::Login::Provider::Base
 end
 
 class Mumukit::Login::Provider::Auth0 < Mumukit::Login::Provider::Base
-  def auth0_config
-    @auth0_config ||= struct client_id: ENV['MUMUKI_AUTH0_CLIENT_ID'],
-                             client_secret: ENV['MUMUKI_AUTH0_CLIENT_SECRET'],
-                             domain: ENV['MUMUKI_AUTH0_DOMAIN']
-  end
-
   def configure_omniauth!(omniauth)
     omniauth.provider :auth0,
                       auth0_config.client_id,
@@ -362,22 +360,22 @@ class Mumukit::Login::Provider::Auth0 < Mumukit::Login::Provider::Base
   end
 
   def request_authentication!(controller, login_settings)
-    lock_settings = login_settings.to_lock_json(callback_path, closable: false)
+    settings = lock_settings(controller, login_settings, {closable: false})
     controller.render_html! <<HTML
 <script type="text/javascript">
-    new Auth0Lock('#{auth0_config.client_id}', '#{auth0_config.domain}').show(#{lock_settings});
+    new Auth0Lock('#{auth0_config.client_id}', '#{auth0_config.domain}').show(#{settings});
 </script>
 HTML
   end
 
   def header_html(controller, login_settings)
-    lock_settings = login_settings.to_lock_json(callback_path)
+    settings = lock_settings(controller, login_settings, {})
     <<HTML
 <script src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
 <script type="text/javascript">
 var lock = new Auth0Lock('#{auth0_config.client_id}', '#{auth0_config.domain}');
 function signin() {
-  lock.show(#{lock_settings});
+  lock.show(#{settings});
 }
 </script>
 HTML
@@ -387,6 +385,18 @@ HTML
     '<a href="https://auth0.com/" target="_blank">
         <img height="40" alt="JWT Auth for open source projects" src="//cdn.auth0.com/oss/badges/a0-badge-light.png"/>
      </a>'
+  end
+
+  private
+
+  def auth0_config
+    @auth0_config ||= struct client_id: ENV['MUMUKI_AUTH0_CLIENT_ID'],
+                             client_secret: ENV['MUMUKI_AUTH0_CLIENT_SECRET'],
+                             domain: ENV['MUMUKI_AUTH0_DOMAIN']
+  end
+
+  def lock_settings(controller, login_settings, options)
+    login_settings.to_lock_json(url_for(controller, callback_path), options)
   end
 end
 

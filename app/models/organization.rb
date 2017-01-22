@@ -83,12 +83,13 @@ class Organization < ActiveRecord::Base
     exams.select { |exam| exam.accessible_for?(user) }
   end
 
+
   def url_for(path)
-    URI.join(uri_object, path).to_s
+    ApplicationRoot.url_for(name, path)
   end
 
   def domain
-    uri_object.host
+    ApplicationRoot.subdominated(name).host
   end
 
   def notify!
@@ -100,10 +101,6 @@ class Organization < ActiveRecord::Base
   end
 
   private
-
-  def uri_object
-    URI(Rails.configuration.base_url).subdominate(name)
-  end
 
 
   def notify_assignments!(assignments)
@@ -128,12 +125,7 @@ class Organization < ActiveRecord::Base
     end
 
     def central_url
-      central_uri_object.to_s
-    end
-
-    def central_uri_object
-      URI(Rails.configuration.base_url).subdominate('central')
+      ApplicationRoot.subdominated('central').to_s
     end
   end
-
 end

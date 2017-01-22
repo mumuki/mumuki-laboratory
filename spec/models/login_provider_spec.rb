@@ -15,11 +15,12 @@ describe Mumukit::Login::Form do
 
   let(:builder) { Mumukit::Login::Form.new(provider, controller, login_settings) }
 
+  before { allow(controller).to receive(:env).and_return('HTTP_HOST' => 'http://localmumuki.io' )}
+
   it { expect(builder.footer_html).to be_html_safe }
   it { expect(builder.header_html).to be_html_safe }
   it { expect(builder.button_html('login', 'clazz')).to be_html_safe }
 end
-
 
 describe Mumukit::Login::Provider do
   let(:provider) { Mumukit::Login.config.provider }
@@ -39,8 +40,11 @@ describe Mumukit::Login::Provider do
   describe Mumukit::Login::Provider::Auth0 do
     let(:provider) { Mumukit::Login::Provider::Auth0.new }
 
+    before { allow(controller).to receive(:env).and_return('HTTP_HOST' => 'http://localmumuki.io' )}
+
     it { expect(provider.button_html(controller, 'login', 'clazz')).to eq '<a class="clazz" href="#" onclick="window.signin();">login</a>' }
     it { expect(provider.header_html(controller, login_settings)).to be_present }
+    it { expect(provider.header_html(controller, login_settings)).to include 'http://localmumuki.io/auth/auth0/callback' }
 
     it { expect(provider.footer_html(controller)).to be_present }
     it { expect(provider.footer_html(controller)).to include '//cdn.auth0.com/oss/badges/a0-badge-light.png' }
