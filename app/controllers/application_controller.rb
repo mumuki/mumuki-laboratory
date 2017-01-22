@@ -26,13 +26,15 @@ class ApplicationController < ActionController::Base
                 :has_comments?,
                 :subject,
                 :should_choose_organization?,
-                :mumukit_controller
+                :login_form
 
   private
 
-  def mumukit_controller
-    @mumukit_controller ||= Mumukit::Login::Controller::Rails.new self
+  def login_form
+    @login_builder ||= Mumukit::Login.new_form Mumukit::Login::Controller::Rails.new(self),
+                                               Organization.login_settings
   end
+
 
   def set_locale!
     I18n.locale = Organization.locale

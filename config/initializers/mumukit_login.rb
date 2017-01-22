@@ -92,7 +92,63 @@ module Mumukit::Login::Controller
   end
 end
 
+class Mumukit::Login::Form
+
+  #######################
+  ## Visual components ##
+  #######################
+
+  # This object will configure the login button using the given login settings
+  # customizations, if possible
+  #
+  # @param [Mumukit::Login::Controller] controller a Mumukit::Login::Controller
+  # @param [Mumukit::Login::Settings] login_settings customizations for the login UI
+  def initialize(provider, controller, login_settings)
+    @provider = provider
+    @controller = controller
+    @login_settings = login_settings
+  end
+
+  # HTML <HEAD> customizations. Send this message
+  # in order to add login provider-specific code - like CSS and JS -
+  # to your page header.
+  #
+  def header_html
+    @provider.header_html(@controller, @login_settings)&.html_safe
+  end
+
+  def button_html(title, clazz)
+    @provider.button_html(@controller, title, clazz)&.html_safe
+  end
+
+  def footer_html
+    @provider.footer_html(@controller)&.html_safe
+  end
+
+  ###############################
+  ## Triggering Authentication ##
+  ###############################
+
+  # Ask the user for authentication, by either rendering
+  # the login form or redirecting to it
+  #
+  # This method should be called from a controller action
+  # or action filter.
+  #
+  def show!
+    @provider.request_authentication!(@controller, @login_settings)
+  end
+end
+
 module Mumukit::Login
+
+  ##########
+  ## Form ##
+  ##########
+
+  def self.new_form(controller, login_settings)
+    Mumukit::Login::Form.new(provider, controller, login_settings)
+  end
 
   #############
   ## Profile ##
@@ -148,23 +204,6 @@ module Mumukit::Login
     provider.configure_omniauth! omniauth
   end
 
-  ###############################
-  ## Triggering Authentication ##
-  ###############################
-
-  # Tells the controller to ask the user for authentication, by wither rendering
-  # the login or redirecting to it
-  #
-  # This method should be called from a controller action
-  # or action filter.
-  #
-  # @param [Mumukit::Login::Controller] controller a Mumukit::Login::Controller
-  # @param [Mumukit::Login::Settings] login_settings customizations for the login UI
-  #
-  def self.request_authentication!(controller, login_settings)
-    provider.request_authentication!(controller, login_settings)
-  end
-
   ############
   ## Routes ##
   ############
@@ -179,34 +218,6 @@ module Mumukit::Login
   #
   def self.logout_redirection_path
     provider.logout_redirection_path
-  end
-
-  #######################
-  ## Visual components ##
-  #######################
-
-  # HTML <HEAD> customizations. Send this message
-  # in order to add login provider-specific code - like CSS and JS -
-  # to your page header.
-  #
-  # This method should configure the login button using the given login settings
-  # customizations, if possible
-  #
-  # @param [Mumukit::Login::Controller] controller a Mumukit::Login::Controller
-  # @param [Mumukit::Login::Settings] login_settings customizations for the login UI
-  #
-  def self.header_html(controller, login_settings)
-    provider.header_html(controller, login_settings)&.html_safe
-  end
-
-  # @param [Mumukit::Login::Controller] controller a Mumukit::Login::Controller
-  def self.button_html(controller, title, clazz)
-    provider.button_html(controller, title, clazz)&.html_safe
-  end
-
-  # @param [Mumukit::Login::Controller] controller a Mumukit::Login::Controller
-  def self.footer_html(controller)
-    provider.footer_html(controller)&.html_safe
   end
 
   private

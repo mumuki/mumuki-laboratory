@@ -1,6 +1,6 @@
 module WithAuthentication
   def current_user_id
-    @current_user_id ||= remember_me_token.value.try do |token |
+    @current_user_id ||= remember_me_token.value.try do |token|
       User.where(remember_me_token: token).first.try(:id)
     end
   end
@@ -28,6 +28,6 @@ module WithAuthentication
   def login_anchor(options={})
     options[:title] ||= :sign_in
     session[:redirect_after_login] = request.fullpath
-    Mumukit::Login.button_html mumukit_controller, I18n.t(options[:title]), options[:class]
+    login_form.button_html I18n.t(options[:title]), options[:class]
   end
 end

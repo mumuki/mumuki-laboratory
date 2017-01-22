@@ -1,14 +1,32 @@
 require 'spec_helper'
 
+describe Mumukit::Login do
+  let(:provider) { Mumukit::Login.config.provider }
+
+  it { expect(provider).to be_a Mumukit::Login::Provider::Developer }
+  it { expect(provider.name).to eq 'developer' }
+end
+
+
+describe Mumukit::Login::Form do
+  let(:controller) { double(:controller) }
+  let(:login_settings) { Mumukit::Login::Settings.new }
+  let(:provider) { Mumukit::Login::Provider::Auth0.new }
+
+  let(:builder) { Mumukit::Login::Form.new(provider, controller, login_settings) }
+
+  it { expect(builder.footer_html).to be_html_safe }
+  it { expect(builder.header_html).to be_html_safe }
+  it { expect(builder.button_html('login', 'clazz')).to be_html_safe }
+end
+
+
 describe Mumukit::Login::Provider do
   let(:provider) { Mumukit::Login.config.provider }
   let(:controller) { double(:controller) }
   let(:login_settings) { Mumukit::Login::Settings.new }
 
-  it { expect(provider).to be_a Mumukit::Login::Provider::Developer }
-  it { expect(provider.name).to eq 'developer' }
-
-  it { expect(Mumukit::Login.button_html(controller, 'login', 'clazz')).to be_html_safe }
+  it { expect(Mumukit::Login.new_form(controller, login_settings).button_html('login', 'clazz')).to be_html_safe }
 
   describe Mumukit::Login::Provider::Developer do
     let(:provider) { Mumukit::Login::Provider::Developer.new }
