@@ -25,9 +25,14 @@ class ApplicationController < ActionController::Base
                 :comments_count,
                 :has_comments?,
                 :subject,
-                :should_choose_organization?
+                :should_choose_organization?,
+                :mumukit_controller
 
   private
+
+  def mumukit_controller
+    @mumukit_controller ||= Mumukit::Auth::Controller::Rails.new self
+  end
 
   def set_locale!
     I18n.locale = Organization.locale

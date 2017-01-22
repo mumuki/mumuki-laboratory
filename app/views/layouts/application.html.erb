@@ -19,7 +19,7 @@
     window.mumukiLocale = <%= raw Organization.locale_json %>;
   </script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= Mumukit::Auth::Login.header_html Organization.login_settings %>
+  <%= Mumukit::Auth::Login.header_html mumukit_controller, Organization.login_settings %>
 </head>
 <body>
 <% if should_choose_organization? %>
@@ -95,7 +95,7 @@
       </div>
 
       <div class="col-md-4 text-center">
-        <%= Mumukit::Auth::Login.footer_html %>
+        <%= Mumukit::Auth::Login.footer_html mumukit_controller %>
       </div>
 
       <div class="col-md-4 text-right">

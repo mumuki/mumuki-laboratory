@@ -1,3 +1,23 @@
+module Mumukit::Auth::Controller
+  class Rails
+    def initialize(rails_controller)
+      @rails_controller = rails_controller
+    end
+
+    def env
+      @rails_controller.request.env
+    end
+
+    def redirect!(path)
+      @rails_controller.redirect path
+    end
+
+    def render_html!(content)
+      @rails_controller.render html: content.html_safe
+    end
+  end
+end
+
 module Mumukit::Auth::Login
 
   #############
@@ -61,10 +81,10 @@ module Mumukit::Auth::Login
   # Tells the controller to ask the user for authentication, by wither rendering
   # the login or redirecting to it
   #
-  # This method is Rails-specific, and should be called from a controller action
+  # This method should be called from a controller action
   # or action filter.
   #
-  # @param [ActionController] controller a Rails controller
+  # @param [Mumukit::Auth::Controller] controller a Mumukit::Auth::Controller
   # @param [Mumukit::Auth::LoginSettings] login_settings customizations for the login UI
   #
   def self.request_authentication!(controller, login_settings)
@@ -98,18 +118,21 @@ module Mumukit::Auth::Login
   # This method should configure the login button using the given login settings
   # customizations, if possible
   #
+  # @param [Mumukit::Auth::Controller] controller a Mumukit::Auth::Controller
   # @param [Mumukit::Auth::LoginSettings] login_settings customizations for the login UI
   #
-  def self.header_html(login_settings)
-    provider.header_html(login_settings)
+  def self.header_html(controller, login_settings)
+    provider.header_html(controller, login_settings)&.html_safe
   end
 
-  def self.button_html(title, clazz)
-    provider.button_html title, clazz
+  # @param [Mumukit::Auth::Controller] controller a Mumukit::Auth::Controller
+  def self.button_html(controller, title, clazz)
+    provider.button_html(controller, title, clazz)&.html_safe
   end
 
-  def self.footer_html
-    provider.footer_html
+  # @param [Mumukit::Auth::Controller] controller a Mumukit::Auth::Controller
+  def self.footer_html(controller)
+    provider.footer_html(controller)&.html_safe
   end
 
   private
@@ -158,7 +181,7 @@ class Mumukit::Auth::LoginProvider::Base
   end
 
   def request_authentication!(controller, *)
-    controller.redirect auth_path
+    controller.redirect! auth_path
   end
 
   def auth_path
@@ -173,11 +196,11 @@ class Mumukit::Auth::LoginProvider::Base
     '/'
   end
 
-  def button_html(title, clazz)
-    %Q{<a class="#{clazz}" href="#{auth_path}">#{title}</a>}.html_safe
+  def button_html(_, title, clazz)
+    %Q{<a class="#{clazz}" href="#{auth_path}">#{title}</a>}
   end
 
-  def footer_html
+  def footer_html(*)
     nil
   end
 
@@ -224,7 +247,7 @@ class Mumukit::Auth::LoginProvider::Saml < Mumukit::Auth::LoginProvider::Base
                       }
   end
 
-  def configure_forgery_protection!(_action_controller)
+  def configure_forgery_protection!(_controller_class)
     # FIXME this is big security issue
     # Do nothing (do not protect): the IdP calls the assertion_url via POST and without the CSRF token
   end
@@ -249,23 +272,22 @@ class Mumukit::Auth::LoginProvider::Auth0 < Mumukit::Auth::LoginProvider::Base
                       callback_path: callback_path
   end
 
-  def button_html(title, clazz)
-    %Q{<a class="#{clazz}" href="#" onclick="window.signin();">#{title}</a>}.html_safe
+  def button_html(_, title, clazz)
+    %Q{<a class="#{clazz}" href="#" onclick="window.signin();">#{title}</a>}
   end
 
   def request_authentication!(controller, login_settings)
     lock_settings = login_settings.to_lock_json(callback_path, closable: false)
-    html = <<HTML
+    controller.render_html! <<HTML
 <script type="text/javascript">
     new Auth0Lock('#{auth0_config.client_id}', '#{auth0_config.domain}').show(#{lock_settings});
 </script>
 HTML
-    render html: html.html_safe
   end
 
-  def header_html(login_settings)
+  def header_html(controller, login_settings)
     lock_settings = login_settings.to_lock_json(callback_path)
-    html = <<HTML
+    <<HTML
 <script src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
 <script type="text/javascript">
 var lock = new Auth0Lock('#{auth0_config.client_id}', '#{auth0_config.domain}');
@@ -274,13 +296,12 @@ function signin() {
 }
 </script>
 HTML
-    html.html_safe
   end
 
-  def footer_html
+  def footer_html(*)
     '<a href="https://auth0.com/" target="_blank">
         <img height="40" alt="JWT Auth for open source projects" src="//cdn.auth0.com/oss/badges/a0-badge-light.png"/>
-     </a>'.html_safe
+     </a>'
   end
 end
 

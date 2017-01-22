@@ -28,6 +28,6 @@ module WithAuthentication
   def login_anchor(options={})
     options[:title] ||= :sign_in
     session[:redirect_after_login] = request.fullpath
-    Mumukit::Auth::Login.button_html I18n.t(options[:title]), options[:class]
+    Mumukit::Auth::Login.button_html mumukit_controller, I18n.t(options[:title]), options[:class]
   end
 end
