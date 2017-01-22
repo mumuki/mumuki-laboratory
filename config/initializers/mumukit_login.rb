@@ -7,6 +7,15 @@ module Mumukit::Login
   def self.defaults
     struct.tap do |config|
       config.provider = Mumukit::Login::Provider.from_env
+      config.saml = struct base_url: ENV['MUMUKI_SAML_BASE_URL'],
+                           idp_sso_target_url: ENV['MUMUKI_SAML_IDP_SSO_TARGET_URL'],
+                           idp_slo_target_url: ENV['MUMUKI_SAML_IDP_SLO_TARGET_URL'],
+                           translation_name: ENV['MUMUKI_SAML_TRANSLATION_NAME'] || 'name',
+                           translation_email: ENV['MUMUKI_SAML_TRANSLATION_EMAIL'] || 'email',
+                           translation_image: ENV['MUMUKI_SAML_TRANSLATION_IMAGE'] || 'image'
+      config.auth0 = struct client_id: ENV['MUMUKI_AUTH0_CLIENT_ID'],
+                            client_secret: ENV['MUMUKI_AUTH0_CLIENT_SECRET'],
+                            domain: ENV['MUMUKI_AUTH0_DOMAIN']
     end
   end
 
@@ -300,12 +309,7 @@ end
 
 class Mumukit::Login::Provider::Saml < Mumukit::Login::Provider::Base
   def saml_config
-    @saml_config ||= struct base_url: ENV['MUMUKI_SAML_BASE_URL'],
-                            idp_sso_target_url: ENV['MUMUKI_SAML_IDP_SSO_TARGET_URL'],
-                            idp_slo_target_url: ENV['MUMUKI_SAML_IDP_SLO_TARGET_URL'],
-                            translation_name: ENV['MUMUKI_SAML_TRANSLATION_NAME'] || 'name',
-                            translation_email: ENV['MUMUKI_SAML_TRANSLATION_EMAIL'] || 'email',
-                            translation_image: ENV['MUMUKI_SAML_TRANSLATION_IMAGE'] || 'image'
+    Mumukit::Login.config.saml
   end
 
 
@@ -390,9 +394,7 @@ HTML
   private
 
   def auth0_config
-    @auth0_config ||= struct client_id: ENV['MUMUKI_AUTH0_CLIENT_ID'],
-                             client_secret: ENV['MUMUKI_AUTH0_CLIENT_SECRET'],
-                             domain: ENV['MUMUKI_AUTH0_DOMAIN']
+    Mumukit::Login.config.auth0
   end
 
   def lock_settings(controller, login_settings, options)
