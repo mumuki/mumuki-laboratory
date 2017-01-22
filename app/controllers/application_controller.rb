@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   before_action :validate_subject_accessible!
   before_action :visit_organization!, if: :current_user?
 
-  Mumukit::Auth::Login.configure_forgery_protection! self
+  Mumukit::Login.configure_forgery_protection! self
 
   helper_method :current_user, :current_user?,
                 :current_user_id,
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   private
 
   def mumukit_controller
-    @mumukit_controller ||= Mumukit::Auth::Controller::Rails.new self
+    @mumukit_controller ||= Mumukit::Login::Controller::Rails.new self
   end
 
   def set_locale!

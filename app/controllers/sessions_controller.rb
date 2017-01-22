@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
   def destroy
     remember_me_token.clear!
-    redirect_to Mumukit::Auth::Login.logout_redirection_path
+    redirect_to Mumukit::Login.logout_redirection_path
   end
 
   def redirect_after_login

@@ -3,7 +3,7 @@ module WithOmniauth
 
   module ClassMethods
     def omniauth(omniauth)
-      profile = Mumukit::Auth::Login.normalized_omniauth_profile omniauth
+      profile = Mumukit::Login.normalized_omniauth_profile omniauth
 
       find_by_auth(profile).first_or_initialize.tap do |user|
         user.assign_attributes(profile.to_h)
