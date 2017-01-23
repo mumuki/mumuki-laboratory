@@ -97,6 +97,8 @@ class Mumukit::Login::Controller
   end
 
   class RailsFramework
+
+    # @param [ActionController::Base] rails_controller
     def initialize(rails_controller)
       @rails_controller = rails_controller
     end
@@ -169,9 +171,30 @@ module Mumukit::Login
   ## Form ##
   ##########
 
+  # Creates a new Mumukit::Login::Form using the
+  # global Mumukit::Login.config.login_provider. 
+  #
+  # @param [Mumukit::Login::Controller] controller
+  # @param [Mumukit::Login::Settings] login_settings
   def self.new_form(controller, login_settings)
     Mumukit::Login::Form.new(provider, controller, login_settings)
   end
+
+
+  # Creates a new Mumukit::Login::Form using the
+  # global Mumukit::Login.config.login_provider.
+  #
+  # This method is Rails-specific, since it takes a
+  # Rails controller object instead of a generic
+  # Mumukit::Login::Controller
+  #
+  # @param [ActionController::Base] rails_controller
+  # @param [Mumukit::Login::Settings] login_settings
+  def self.new_rails_form(rails_controller, login_settings)
+    controller = Mumukit::Login::Controller.new(Mumukit::Login::Controller::RailsFramework.new(rails_controller))
+    new_form controller, login_settings
+  end
+
 
   #############
   ## Profile ##
@@ -199,7 +222,7 @@ module Mumukit::Login
   #
   # @param [RailsRouter] rails_router
   #
-  def self.configure_session_controller_routes!(rails_router)
+  def self.configure_rails_routes!(rails_router)
     rails_router.match 'auth/:provider/callback' => :callback, via: [:get, :post], as: 'auth_callback'
     rails_router.get 'auth/failure' => :failure
     rails_router.get 'logout' => :destroy
@@ -208,10 +231,10 @@ module Mumukit::Login
   # Configures forgery protection.
   # This method is Rails-specific
   #
-  # @param [ActionController::Class] controller_class
+  # @param [ActionController::Base::Class] controller_class
   #
-  def self.configure_forgery_protection!(controller_class)
-    provider.configure_forgery_protection!(controller_class)
+  def self.configure_rails_forgery_protection!(controller_class)
+    provider.configure_rails_forgery_protection!(controller_class)
   end
 
   # Configures omniauth. This method typically configures
@@ -284,7 +307,7 @@ class Mumukit::Login::Provider::Base
 
   required :configure_omniauth!
 
-  def configure_forgery_protection!(action_controller)
+  def configure_rails_forgery_protection!(action_controller)
     action_controller.protect_from_forgery with: :exception
   end
 
@@ -322,7 +345,6 @@ class Mumukit::Login::Provider::Saml < Mumukit::Login::Provider::Base
     Mumukit::Login.config.saml
   end
 
-
   def configure_omniauth!(omniauth)
     omniauth.provider :saml,
                       # TODO: change the :assertion_consumer_service_url, the :issuer and the :slo_default_relay_state:
@@ -348,7 +370,7 @@ class Mumukit::Login::Provider::Saml < Mumukit::Login::Provider::Base
                       }
   end
 
-  def configure_forgery_protection!(_controller_class)
+  def configure_rails_forgery_protection!(_controller_class)
     # FIXME this is big security issue
     # Do nothing (do not protect): the IdP calls the assertion_url via POST and without the CSRF token
   end
@@ -424,7 +446,7 @@ class Mumukit::Login::Provider::Developer < Mumukit::Login::Provider::Base
     omniauth.provider :developer
   end
 
-  def configure_forgery_protection!(*)
+  def configure_rails_forgery_protection!(*)
   end
 end
 
