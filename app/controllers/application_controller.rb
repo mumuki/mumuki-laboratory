@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :current_user?,
                 :current_user_id,
-                :login_anchor,
+                :login_button,
                 :comments_count,
                 :has_comments?,
                 :subject,

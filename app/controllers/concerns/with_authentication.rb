@@ -17,7 +17,7 @@ module WithAuthentication
     login_form.show! unless current_user?
   end
 
-  def login_anchor(options={})
+  def login_button(options={})
     session[:redirect_after_login] = request.fullpath
     login_form.button_html I18n.t(:sign_in), options[:class]
   end
