@@ -18,8 +18,7 @@ module WithAuthentication
   end
 
   def login_anchor(options={})
-    options[:title] ||= :sign_in
     session[:redirect_after_login] = request.fullpath
-    login_form.button_html I18n.t(options[:title]), options[:class]
+    login_form.button_html I18n.t(:sign_in), options[:class]
   end
 end
