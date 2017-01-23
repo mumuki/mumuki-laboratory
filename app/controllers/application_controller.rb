@@ -31,10 +31,13 @@ class ApplicationController < ActionController::Base
   private
 
   def login_form
-    @login_builder ||= Mumukit::Login.new_form Mumukit::Login::Controller::Rails.new(self),
+    @login_builder ||= Mumukit::Login.new_form mumukit_controller,
                                                Organization.login_settings
   end
 
+  def mumukit_controller
+    Mumukit::Login::Controller.new Mumukit::Login::Controller::RailsFramework.new(self)
+  end
 
   def set_locale!
     I18n.locale = Organization.locale

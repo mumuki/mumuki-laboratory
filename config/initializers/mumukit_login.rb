@@ -81,9 +81,22 @@ class Mumukit::Login::Settings
 end
 
 
-module Mumukit::Login::Controller
+class Mumukit::Login::Controller
+  delegate :env, :redirect!, :render_html!, to: :@framework
 
-  class Rails
+  def initialize(framework)
+    @framework = framework
+  end
+
+  def request
+    Rack::Request.new(env)
+  end
+
+  def url_for(path)
+    URI.join(request.base_url, path).to_s
+  end
+
+  class RailsFramework
     def initialize(rails_controller)
       @rails_controller = rails_controller
     end
@@ -302,11 +315,6 @@ class Mumukit::Login::Provider::Base
   def header_html(*)
     nil
   end
-
-  def url_for(controller, path)
-    base_url = Rack::Request.new(controller.env).base_url
-    URI.join(base_url, path).to_s
-  end
 end
 
 class Mumukit::Login::Provider::Saml < Mumukit::Login::Provider::Base
@@ -400,7 +408,7 @@ HTML
   end
 
   def lock_settings(controller, login_settings, options)
-    login_settings.to_lock_json(url_for(controller, callback_path), options)
+    login_settings.to_lock_json(controller.url_for(callback_path), options)
   end
 end
 
