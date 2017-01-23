@@ -7,7 +7,6 @@ describe Mumukit::Login do
   it { expect(provider.name).to eq 'developer' }
 end
 
-
 describe Mumukit::Login::Form do
   let(:controller) { double(:controller) }
   let(:login_settings) { Mumukit::Login::Settings.new }
@@ -15,8 +14,9 @@ describe Mumukit::Login::Form do
 
   let(:builder) { Mumukit::Login::Form.new(provider, controller, login_settings) }
 
-  before { allow(controller).to receive(:env).and_return('HTTP_HOST' => 'http://localmumuki.io' )}
-
+  before { allow(controller).to receive(:env).and_return('HTTP_HOST' => 'localmumuki.io',
+                                                         'rack.url_scheme' => 'http',
+                                                         'SERVER_PORT' => '80') }
   it { expect(builder.footer_html).to be_html_safe }
   it { expect(builder.header_html).to be_html_safe }
   it { expect(builder.button_html('login', 'clazz')).to be_html_safe }
@@ -40,7 +40,9 @@ describe Mumukit::Login::Provider do
   describe Mumukit::Login::Provider::Auth0 do
     let(:provider) { Mumukit::Login::Provider::Auth0.new }
 
-    before { allow(controller).to receive(:env).and_return('HTTP_HOST' => 'http://localmumuki.io' )}
+    before { allow(controller).to receive(:env).and_return('HTTP_HOST' => 'localmumuki.io',
+                                                           'rack.url_scheme' => 'http',
+                                                           'SERVER_PORT' => '80') }
 
     it { expect(provider.button_html(controller, 'login', 'clazz')).to eq '<a class="clazz" href="#" onclick="window.signin();">login</a>' }
     it { expect(provider.header_html(controller, login_settings)).to be_present }
@@ -48,6 +50,8 @@ describe Mumukit::Login::Provider do
 
     it { expect(provider.footer_html(controller)).to be_present }
     it { expect(provider.footer_html(controller)).to include '//cdn.auth0.com/oss/badges/a0-badge-light.png' }
+
+    it { expect(provider.url_for(controller, '/foo/bar')).to eq 'http://localmumuki.io/foo/bar' }
   end
 
   describe Mumukit::Login::Provider::Saml do

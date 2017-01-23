@@ -82,6 +82,7 @@ end
 
 
 module Mumukit::Login::Controller
+
   class Rails
     def initialize(rails_controller)
       @rails_controller = rails_controller
@@ -303,7 +304,8 @@ class Mumukit::Login::Provider::Base
   end
 
   def url_for(controller, path)
-    URI.join(controller.env['HTTP_HOST'], path).to_s
+    base_url = Rack::Request.new(controller.env).base_url
+    URI.join(base_url, path).to_s
   end
 end
 
