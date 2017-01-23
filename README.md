@@ -91,11 +91,15 @@ bundle install
 bundle exec rake db:create db:schema:load db:seed
 ```
 
-### Running
+### Starting the server
 
 ```bash
 rails s
 ```
+
+### Running
+
+> Hit http://central.localmumuki.io:3000/ on your browser and have fun!
 
 ## Authentication Powered by Auth0
 
