@@ -48,12 +48,13 @@ Rails.application.configure do
                                                                credentials: {},
                                                                info: {name: 'Test User', nickname: 'testuser'}
                                                              })
+  config.auth_provider = 'auth0'
 
   config.auth0_client_id = 'foo id'
   config.auth0_client_secret = 'foo secret'
   config.auth0_domain = 'http://foo.com'
 
-  config.single_user_mode = false
+  config.auth_provider = 'developer'
   config.queueless_mode = true
 
   config.daybreak_name = 'test'

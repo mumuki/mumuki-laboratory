@@ -11,6 +11,9 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+# Ignore de SAML public cert
+saml.crt
+
 # Ignore all logfiles and tempfiles.
 *.log
 /log/*.log

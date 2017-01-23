@@ -28,6 +28,7 @@ gem 'bootswatch-rails'
 
 gem 'omniauth', '~> 1.2'
 gem 'omniauth-auth0', '~> 1.1'
+gem 'omniauth-saml', '~> 1.6'
 
 gem 'font-awesome-rails'
 

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+
   controller :sessions do
-    get 'auth/auth0/callback' => :callback
-    post 'auth/developer/callback' => :callback
+    match '/auth/:provider/callback' => :callback, via: [:get, :post], as: 'auth_callback'
     get 'auth/failure' => :failure
     get 'logout' => :destroy
   end

@@ -12,9 +12,14 @@ class SessionsController < ApplicationController
 
   def destroy
     remember_me_token.clear!
-    redirect_to root_url
+    # TODO: desharcode URL
+    # TODO: redirect to /spslo ONLY if using saml_auth_strategy. Otherwise, redirect to root_url
+    redirect_to AuthStrategy.logout_redirection_url self
   end
 
+  def after_logout_redirection_url
+    root_url
+  end
 
   def redirect_after_login
     path = session[:redirect_after_login] || :back
