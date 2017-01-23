@@ -1,22 +1,3 @@
-GIT
-  remote: git://github.com/mumuki/mumukit-auth.git
-  revision: 0839cc43badaa4dd4572701d93e50ea3a306a73b
-  branch: feature-generic-session-and-login
-  specs:
-    mumukit-auth (4.0.0)
-      daybreak
-      jwt
-      mumukit-core (~> 0.5)
-
-GIT
-  remote: git://github.com/mumuki/mumukit-nuntius.git
-  revision: ec88c785e7f9d10ead981e6eb056eb8c266e5c97
-  branch: master
-  specs:
-    mumukit-nuntius (2.4.3)
-      bunny (~> 2.3)
-      mumukit-core (~> 0.5)
-
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -149,6 +130,10 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
+    mumukit-auth (5.0.0)
+      daybreak
+      jwt
+      mumukit-core (~> 0.5)
     mumukit-bridge (1.3.1)
       mumukit-core (~> 0.1)
       rest-client
@@ -163,6 +148,9 @@ GEM
       rack (>= 1.5)
     mumukit-inspection (0.1.1)
       mumukit-core (~> 0.2)
+    mumukit-nuntius (3.0.0)
+      bunny (~> 2.3)
+      mumukit-core (~> 0.5)
     netrc (0.11.0)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
@@ -327,12 +315,12 @@ DEPENDENCIES
   i18n-tasks (~> 0.8.3)
   jquery-rails
   kaminari (~> 0.16.3)
-  mumukit-auth!
+  mumukit-auth (~> 5.0)
   mumukit-bridge (~> 1.3)
   mumukit-content-type (~> 0.4)
   mumukit-core (~> 0.5)
   mumukit-inspection (~> 0.1)
-  mumukit-nuntius!
+  mumukit-nuntius (~> 3.0)
   nprogress-rails
   omniauth (~> 1.2)
   omniauth-auth0 (~> 1.1)
