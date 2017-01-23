@@ -14,15 +14,7 @@ module WithAuthentication
   end
 
   def authenticate!
-    unauthenticated! unless current_user?
-  end
-
-  def unauthenticated!
-    message = t :you_must, action: login_anchor(title: :sign_in_action)
-
-    redirect_to :back, alert: message
-  rescue ActionController::RedirectBackError
-    redirect_to root_path, alert: message
+    login_form.show! unless current_user?
   end
 
   def login_anchor(options={})
