@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   after_save :notify_changed!, if: Proc.new {|user| user.image_url_changed? || user.social_id_changed? }
 
   def notify_changed!
-    Mumukit::Nuntius.notify_event!({user: event_json}, 'UserChanged')
+    Mumukit::Nuntius.notify_event! 'UserChanged', user: event_json
   end
 
   def event_json

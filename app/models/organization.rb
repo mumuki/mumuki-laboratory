@@ -93,7 +93,7 @@ class Organization < ActiveRecord::Base
   end
 
   def notify!
-    Mumukit::Nuntius.notify_event! as_complete_json, 'UpsertOrganization'
+    Mumukit::Nuntius.notify_event! 'UpsertOrganization', as_complete_json
   end
 
   def as_complete_json

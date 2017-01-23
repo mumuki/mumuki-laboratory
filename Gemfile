@@ -53,12 +53,13 @@ gem 'bunny'
 gem 'addressable'
 
 gem 'mumukit-content-type', '~> 0.4', require: 'mumukit/content_type'
-gem 'mumukit-auth', '~> 3.1'
+gem 'mumukit-auth', github: 'mumuki/mumukit-auth', branch: 'feature-generic-session-and-login'
+#gem 'mumukit-auth', '~> 3.3'
 gem 'mumukit-core', '~> 0.5'
 gem 'mumukit-bridge', '~> 1.3'
 gem 'mumukit-inspection', '~> 0.1'
-
-gem 'mumukit-nuntius', '~> 2.4'
+gem 'mumukit-nuntius', github: 'mumuki/mumukit-nuntius', branch: 'master'
+#gem 'mumukit-nuntius', '~> 2.4'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'
