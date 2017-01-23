@@ -275,7 +275,9 @@ end
 
 module Mumukit::Login::Provider
   def self.from_env
-    parse_login_provider(login_provider_string)
+    parse_login_provider(login_provider_string).tap do |provider|
+      puts "[Mumukit::Login] Using #{provider} as login provider"
+    end
   end
 
   def self.login_provider_string
