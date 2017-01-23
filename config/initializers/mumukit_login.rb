@@ -106,7 +106,7 @@ class Mumukit::Login::Controller
     end
 
     def redirect!(path)
-      @rails_controller.redirect path
+      @rails_controller.redirect_to path
     end
 
     def render_html!(content)
