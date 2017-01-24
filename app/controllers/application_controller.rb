@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   Mumukit::Login.configure_rails_forgery_protection! self
 
   helper_method :current_user, :current_user?,
-                :current_user_id,
+                :current_user_uid,
                 :login_button,
                 :comments_count,
                 :has_comments?,

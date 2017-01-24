@@ -54,7 +54,7 @@ gem 'addressable'
 
 gem 'mumukit-content-type', '~> 0.4', require: 'mumukit/content_type'
 gem 'mumukit-auth', '~> 5.0'
-gem 'mumukit-core', '~> 0.5'
+gem 'mumukit-core', '~> 0.6'
 gem 'mumukit-bridge', '~> 1.3'
 gem 'mumukit-inspection', '~> 0.1'
 gem 'mumukit-nuntius', '~> 3.0'

@@ -1,5 +1,9 @@
 require 'spec_helper'
 
+describe Mumukit::Login::User do
+  it { expect(Mumukit::Login::User).to be User }
+end
+
 describe Mumukit::Login do
   let(:provider) { Mumukit::Login.config.provider }
 

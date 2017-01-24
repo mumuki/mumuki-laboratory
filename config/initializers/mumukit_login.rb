@@ -172,7 +172,7 @@ module Mumukit::Login
   ##########
 
   # Creates a new Mumukit::Login::Form using the
-  # global Mumukit::Login.config.login_provider. 
+  # global Mumukit::Login.config.login_provider.
   #
   # @param [Mumukit::Login::Controller] controller
   # @param [Mumukit::Login::Settings] login_settings
@@ -452,5 +452,52 @@ class Mumukit::Login::Provider::Developer < Mumukit::Login::Provider::Base
   end
 end
 
-Mumukit::Login.configure do |c|
+
+module Mumukit::Login
+  def self.const_missing(name)
+    if name == :User
+      config.user_class.tap do |user_class|
+        raise 'You must configure the Mumukit::Login.config.user_class first' unless user_class
+        Mumukit::Login.const_set 'User', user_class
+      end
+    else
+      super
+    end
+  end
+end
+
+module Mumukit::Login::SessionControllerHelpers
+  def user_for_omniauth_profile
+    User.for_profile Mumukit::Login.normalized_omniauth_profile(env['omniauth.auth'])
+  end
+end
+
+module Mumukit::Login::AuthenticationHelpers
+  def authenticate!
+    login_form.show! unless current_user?
+  end
+
+  def current_user?
+    current_user_uid.present?
+  end
+
+  def current_user
+    @current_user ||= Mumukit::Login::User.find_by_uid!(current_user_uid) if current_user?
+  end
+
+  def login_form
+    @login_builder ||= Mumukit::Login.new_form mumukit_controller, login_settings
+  end
+
+  required :current_user_uid
+
+  required :mumukit_controller
+  required :login_settings
+end
+
+Mumukit::Login.configure do |config|
+  # User class must understand
+  #     find_by_uid!
+  #     for_profile
+  config.user_class = User
 end

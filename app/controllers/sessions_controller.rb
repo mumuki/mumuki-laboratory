@@ -1,9 +1,15 @@
 class SessionsController < ApplicationController
+  include Mumukit::Login::SessionControllerHelpers
+
   def callback
-    user = User.omniauth(env['omniauth.auth'])
+    user = user_for_omniauth_profile
 
     remember_me_token.value = user.remember_me_token
-    redirect_after_login
+
+    path = session[:redirect_after_login] || :back
+    session[:redirect_after_login] = nil
+
+    redirect_to path
   end
 
   def failure
@@ -15,10 +21,4 @@ class SessionsController < ApplicationController
     redirect_to Mumukit::Login.logout_redirection_path
   end
 
-  def redirect_after_login
-    path = session[:redirect_after_login] || :back
-    session[:redirect_after_login] = nil
-
-    redirect_to path
-  end
 end
