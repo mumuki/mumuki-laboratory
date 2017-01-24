@@ -7,11 +7,11 @@ module LoginCustomization
   end
 
   def login_settings
-    @login_settings ||= Mumukit::Auth::LoginSettings.new(login_methods)
+    @login_settings ||= Mumukit::Login::Settings.new(login_methods)
   end
 
   def customized_login_methods?
-    login_methods.size < Mumukit::Auth::LoginSettings.login_methods.size
+    login_methods.size < Mumukit::Login::Settings.login_methods.size
   end
 
   private

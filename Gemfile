@@ -28,6 +28,7 @@ gem 'bootswatch-rails'
 
 gem 'omniauth', '~> 1.2'
 gem 'omniauth-auth0', '~> 1.1'
+gem 'omniauth-saml', '~> 1.6'
 
 gem 'font-awesome-rails'
 
@@ -52,12 +53,11 @@ gem 'bunny'
 gem 'addressable'
 
 gem 'mumukit-content-type', '~> 0.4', require: 'mumukit/content_type'
-gem 'mumukit-auth', '~> 3.1'
-gem 'mumukit-core', '~> 0.4'
+gem 'mumukit-auth', '~> 5.0'
+gem 'mumukit-core', '~> 0.5'
 gem 'mumukit-bridge', '~> 1.3'
 gem 'mumukit-inspection', '~> 0.1'
-
-gem 'mumukit-nuntius', '~> 2.0'
+gem 'mumukit-nuntius', '~> 3.0'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'
@@ -77,7 +77,6 @@ group :development do
   gem 'binding_of_caller'
 end
 
-#Add integration of test coverage with Code Climate
 gem 'codeclimate-test-reporter', :group => :test, :require => nil
 
 gem 'sitemap_generator'

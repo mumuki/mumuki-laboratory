@@ -42,21 +42,11 @@ Rails.application.configure do
   config.status_rendering_verbosity = :standard
 
   OmniAuth.config.test_mode = true
-  OmniAuth.config.mock_auth[:auth0] = OmniAuth::AuthHash.new({
-                                                               provider: 'auth0',
-                                                               uid: '123545',
-                                                               credentials: {},
-                                                               info: {name: 'Test User', nickname: 'testuser'}
-                                                             })
-
-  config.auth0_client_id = 'foo id'
-  config.auth0_client_secret = 'foo secret'
-  config.auth0_domain = 'http://foo.com'
-
-  config.single_user_mode = false
-  config.queueless_mode = true
-
-  config.daybreak_name = 'test'
+  OmniAuth.config.mock_auth[:developer] =
+    OmniAuth::AuthHash.new provider: 'developer',
+                           uid: 'johndoe@test.com',
+                           credentials: {},
+                           info: {name: 'John Doe', nickname: 'johndoe'}
 
   config.bibliotheca_url = 'http://bibliotheca-api.mumuki.io'
   config.domain = 'localmumuki.io'

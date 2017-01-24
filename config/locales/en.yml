@@ -124,7 +124,6 @@ en:
   type_expressions_here: You can type expressions here to test your solution
   username: Username
   welcome_back_after_redirection: Nice to see you again! This is where you left last time
-  you_must: You must %{action} before continue
   you_must_sign_in_before_submitting: You must sign in before submitting your solutions
   unmeet_expectations: "Goals that weren't met"
   unauthorized_explanation: You have no permissions for this content. Maybe you logged in with another account.

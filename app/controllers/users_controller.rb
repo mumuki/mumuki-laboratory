@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: :show
+  before_action :authenticate!
+  before_action :set_user
 
   def show
     @comments = current_user.try(:comments) || []

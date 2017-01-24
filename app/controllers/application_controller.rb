@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::Base
   include WithOrganization
 
-  include Authentication
-  include Authorization
+  include WithAuthentication
+  include WithAuthorization
   include WithRememberMeToken
-  include Pagination
-  include Referer
+  include WithPagination
+  include WithReferer
   include WithComments
-  include Accessibility
+  include Accessible
   include WithDynamicErrors
   include WithOrganizationChooser
 
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   before_action :validate_subject_accessible!
   before_action :visit_organization!, if: :current_user?
 
-  UserMode.protect_from_forgery self
+  Mumukit::Login.configure_forgery_protection! self
 
   helper_method :current_user, :current_user?,
                 :current_user_id,
@@ -25,9 +25,19 @@ class ApplicationController < ActionController::Base
                 :comments_count,
                 :has_comments?,
                 :subject,
-                :should_choose_organization?
+                :should_choose_organization?,
+                :login_form
 
   private
+
+  def login_form
+    @login_builder ||= Mumukit::Login.new_form mumukit_controller,
+                                               Organization.login_settings
+  end
+
+  def mumukit_controller
+    Mumukit::Login::Controller.new Mumukit::Login::Controller::RailsFramework.new(self)
+  end
 
   def set_locale!
     I18n.locale = Organization.locale

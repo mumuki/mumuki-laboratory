@@ -7,7 +7,7 @@ FactoryGirl.define do
 
   factory :public_organization, parent: :organization do
     private false
-    login_methods Mumukit::Auth::LoginSettings.login_methods
+    login_methods Mumukit::Login::Settings.login_methods
   end
 
   factory :private_organization, parent: :organization do

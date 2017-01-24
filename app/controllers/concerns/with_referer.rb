@@ -1,4 +1,4 @@
-module Referer
+module WithReferer
   def from_sessions?
     params['controller'] == 'sessions'
   end

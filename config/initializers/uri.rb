@@ -8,7 +8,8 @@ class URI::HTTP
     URI::HTTP.build(scheme: scheme,
                     host: new_host,
                     path: path,
-                    query: query)
+                    query: query,
+                    port: port)
   end
 end
 

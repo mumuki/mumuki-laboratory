@@ -5,10 +5,6 @@
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
-  <% UserMode.if_multiuser do %>
-    <script src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
-  <% end %>
-
   <meta property="og:site_name" content="mumuki"/>
   <meta property="og:title" content="<%= page_title subject %>"/>
   <meta property="og:description" content="<%= t :mumuki_short_description %>"/>
@@ -23,19 +19,11 @@
     window.mumukiLocale = <%= raw Organization.locale_json %>;
   </script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= login_form.header_html %>
 </head>
 <body>
 <% if should_choose_organization? %>
   <%= render partial: 'layouts/organization_chooser' %>
-<% end %>
-
-<% UserMode.if_multiuser do %>
-  <script type="text/javascript">
-    var lock = new Auth0Lock('<%= Rails.configuration.auth0_client_id %>', '<%= Rails.configuration.auth0_domain %>');
-    function signin() {
-      lock.show(<%= Organization.login_settings.to_lock_json(auth_auth0_callback_url) %>);
-    }
-  </script>
 <% end %>
 
 <div class="container">
@@ -106,11 +94,9 @@
           <a href="http://mumuki.org/" class="mu-org-link"><span class="da da-mumuki-circle"></span> Mumuki Project</a></p>
       </div>
 
-      <% UserMode.if_multiuser do %>
-        <div class="col-md-4 text-center">
-          <a href="https://auth0.com/" target="_blank"><img height="40" alt="JWT Auth for open source projects" src="//cdn.auth0.com/oss/badges/a0-badge-light.png"/></a>
-        </div>
-      <% end %>
+      <div class="col-md-4 text-center">
+        <%= login_form.footer_html %>
+      </div>
 
       <div class="col-md-4 text-right">
         <a class="fa fa-facebook social-icon" href="https://www.facebook.com/MumukiProject" target="_blank"></a>
@@ -122,6 +108,5 @@
     </div>
   </div>
 </footer>
-
 </body>
 </html>

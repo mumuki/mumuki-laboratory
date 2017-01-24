@@ -4,6 +4,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'codeclimate-test-reporter'
+require 'mumukit/core/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -32,7 +33,7 @@ require_relative './evaluation_helper'
 
 RSpec.configure do |config|
   config.before(:each) do
-    unless example.metadata[:clean]
+    unless RSpec.current_example.metadata[:clean]
       create(:public_organization,
              name: 'test',
              book: create(:book, name: 'test', slug: 'mumuki/mumuki-the-book')).switch!
@@ -68,10 +69,9 @@ def set_current_user!(user)
   allow_any_instance_of(ApplicationController).to receive(:current_user_id).and_return(user.id)
 end
 
-RSpec::Matchers.define :json_eq do |expected_json_hash|
-  match do |actual_json|
-    expected_json_hash.with_indifferent_access == ActiveSupport::JSON.decode(actual_json)
-  end
+Mumukit::Login.configure do |config|
+  config.auth0 = struct
+  config.saml = struct
 end
 
 SimpleCov.start

@@ -12,9 +12,8 @@ class SessionsController < ApplicationController
 
   def destroy
     remember_me_token.clear!
-    redirect_to root_url
+    redirect_to Mumukit::Login.logout_redirection_path
   end
-
 
   def redirect_after_login
     path = session[:redirect_after_login] || :back

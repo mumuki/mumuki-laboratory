@@ -10,7 +10,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
@@ -39,18 +39,11 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  config.auth0_client_id = ENV['MUMUKI_AUTH0_CLIENT_ID']
-  config.auth0_client_secret = ENV['MUMUKI_AUTH0_CLIENT_SECRET']
-  config.auth0_domain = ENV['MUMUKI_AUTH0_DOMAIN']
+  config.domain = ENV['MUMUKI_DOMAIN'] || 'localmumuki.io'
+  config.base_url = ENV['MUMUKI_BASE_URL'] || "http://#{config.domain}:3000"
+  config.cookies_domain = ENV['MUMUKI_COOKIES_DOMAIN'] || ".#{config.domain}"
 
   config.thesaurus_url = ENV['MUMUKI_THESAURUS_URL'] || 'http://thesaurus.mumuki.io'
   config.bibliotheca_url = ENV['MUMUKI_BIBLIOTHECA_URL'] || 'http://bibliotheca-api.mumuki.io'
 
-  config.single_user_mode = ENV['MUMUKI_SINGLE_USER_MODE']
-  config.queueless_mode = ENV['MUMUKI_QUEUELESS_MODE']
-  config.daybreak_name = ENV['MUMUKI_DAYBREAK_NAME'] || 'permissions'
-
-  config.domain = ENV['MUMUKI_DOMAIN'] || 'localmumuki.io'
-  config.base_url = ENV['MUMUKI_BASE_URL'] || "http://#{config.domain}:3000"
-  config.cookies_domain = ENV['MUMUKI_COOKIES_DOMAIN'] || ".#{config.domain}"
 end

@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   after_save :notify_changed!, if: Proc.new {|user| user.image_url_changed? || user.social_id_changed? }
 
   def notify_changed!
-    Mumukit::Nuntius.notify_event!({user: event_json}, 'UserChanged')
+    Mumukit::Nuntius.notify_event! 'UserChanged', user: event_json
   end
 
   def event_json
@@ -88,8 +88,7 @@ class User < ActiveRecord::Base
 
   def self.import_from_json!(body)
     body[:name] = "#{body.delete(:first_name)} #{body.delete(:last_name)}"
-    user = User.where(uid: body[:uid]).first_or_create(body.except(:permissions, :id))
-    user.set_permissions! body[:permissions]
+    user = User.where(uid: body[:uid]).first_or_create(body.except(:id))
   end
 
   private

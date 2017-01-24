@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Mumukit::Auth::LoginSettings do
-  let(:defaults) { Mumukit::Auth::LoginSettings.default_methods }
+describe Mumukit::Login::Settings do
+  let(:defaults) { Mumukit::Login::Settings.default_methods }
   let(:fresh_organization) { create(:organization, name: 'foo') }
   let(:facebook_and_user_pass) { [:facebook, :user_pass] }
 
@@ -11,7 +11,7 @@ describe Mumukit::Auth::LoginSettings do
 
   describe '#social_methods' do
     context 'with few methods' do
-      let(:settings) { Mumukit::Auth::LoginSettings.new(facebook_and_user_pass) }
+      let(:settings) { Mumukit::Login::Settings.new(facebook_and_user_pass) }
       it { expect(settings.social_login_methods.size).to eq 1 }
       it { expect(settings.many_methods?).to eq false }
     end
@@ -24,7 +24,7 @@ describe Mumukit::Auth::LoginSettings do
     end
 
     context 'without user_pass' do
-      let(:settings) { Mumukit::Auth::LoginSettings.new([:facebook, :twitter]) }
+      let(:settings) { Mumukit::Login::Settings.new([:facebook, :twitter]) }
       it { expect(settings.social_login_methods.size).to eq 2 }
       it { expect(settings.many_methods?).to eq false }
     end
