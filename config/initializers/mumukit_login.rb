@@ -112,7 +112,7 @@ class Mumukit::Login::Controller
     end
 
     def render_html!(content)
-      @rails_controller.render html: content.html_safe
+      @rails_controller.render html: content.html_safe, layout: true
     end
   end
 end
