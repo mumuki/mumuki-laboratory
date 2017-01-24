@@ -165,6 +165,53 @@ class Mumukit::Login::Form
   end
 end
 
+module Mumukit::Login::Rails
+
+  # Configures the login routes.
+  # This method should be used this way:
+  #
+  #  controller :sessions do
+  #    Mumukit::Login.configure_session_controller_routes! self
+  #  end
+  #
+  # @param [RailsRouter] rails_router
+  #
+  def self.configure_session_routes!(rails_router)
+    rails_router.match 'auth/:provider/callback' => :callback, via: [:get, :post], as: 'auth_callback'
+    rails_router.get 'auth/failure' => :failure
+    rails_router.get 'logout' => :destroy
+  end
+
+  def self.configure_session_controller!(controller_class)
+    controller_class.class_eval do
+      include Mumukit::Login::SessionControllerHelpers
+    end
+  end
+
+  # Configures forgery protection and mixes authentication methods.
+  #
+  # @param [ActionController::Base::Class] controller_class
+  #
+  def self.configure_controller!(controller_class)
+    Mumukit::Login.config.provider.configure_rails_forgery_protection!(controller_class)
+    controller_class.class_eval do
+      include Mumukit::Login::AuthenticationHelpers
+
+      helper_method :current_user,
+                    :current_user?,
+                    :current_user_uid,
+                    :mumukit_controller,
+                    :login_form
+
+      private
+
+      def mumukit_controller
+        Mumukit::Login::Controller.new Mumukit::Login::Controller::RailsFramework.new(self)
+      end
+    end
+  end
+end
+
 module Mumukit::Login
 
   ##########
@@ -181,21 +228,6 @@ module Mumukit::Login
   end
 
 
-  # Creates a new Mumukit::Login::Form using the
-  # global Mumukit::Login.config.login_provider.
-  #
-  # This method is Rails-specific, since it takes a
-  # Rails controller object instead of a generic
-  # Mumukit::Login::Controller
-  #
-  # @param [ActionController::Base] rails_controller
-  # @param [Mumukit::Login::Settings] login_settings
-  def self.new_rails_form(rails_controller, login_settings)
-    controller = Mumukit::Login::Controller.new(Mumukit::Login::Controller::RailsFramework.new(rails_controller))
-    new_form controller, login_settings
-  end
-
-
   #############
   ## Profile ##
   #############
@@ -209,33 +241,6 @@ module Mumukit::Login
            image_url: omniauth.info.image
   end
 
-  ##########################
-  ## Server configuration ##
-  ##########################
-
-  # Configures the login routes.
-  # This method is rails-specific, and should be used this way:
-  #
-  #  controller :sessions do
-  #    Mumukit::Login.configure_session_controller_routes! self
-  #  end
-  #
-  # @param [RailsRouter] rails_router
-  #
-  def self.configure_rails_routes!(rails_router)
-    rails_router.match 'auth/:provider/callback' => :callback, via: [:get, :post], as: 'auth_callback'
-    rails_router.get 'auth/failure' => :failure
-    rails_router.get 'logout' => :destroy
-  end
-
-  # Configures forgery protection.
-  # This method is Rails-specific
-  #
-  # @param [ActionController::Base::Class] controller_class
-  #
-  def self.configure_rails_forgery_protection!(controller_class)
-    provider.configure_rails_forgery_protection!(controller_class)
-  end
 
   # Configures omniauth. This method typically configures
   # and sets the omniauth provider. Typical config should look like this

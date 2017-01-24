@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  include Mumukit::Login::SessionControllerHelpers
+  Mumukit::Login::Rails.configure_session_controller! self
 
   def callback
     user = user_for_omniauth_profile
