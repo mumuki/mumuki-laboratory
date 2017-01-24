@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::Base
   include WithOrganization
 
-  include Authentication
-  include Authorization
+  include WithAuthentication
+  include WithAuthorization
   include WithRememberMeToken
-  include Pagination
-  include Referer
+  include WithPagination
+  include WithReferer
   include WithComments
-  include Accessibility
+  include Accessible
   include WithDynamicErrors
   include WithOrganizationChooser
 
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   before_action :validate_subject_accessible!
   before_action :visit_organization!, if: :current_user?
 
-  UserMode.protect_from_forgery self
+  Mumukit::Auth::Login.configure_forgery_protection! self
 
   helper_method :current_user, :current_user?,
                 :current_user_id,

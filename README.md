@@ -62,10 +62,37 @@ gem install escualo
 ```bash
 echo "MUMUKI_AUTH0_CLIENT_ID=... \
       MUMUKI_AUTH0_CLIENT_SECRET=... \
-      MUMUKI_AUTH0_DOMAIN=..." >> ~/.bashrc # or .bash_profile
+      MUMUKI_AUTH0_DOMAIN=...\
+      MUMUKI_AUTHORIZATION_PROVIDER=...\
+      MUMUKI_SAML_IDP_SSO_TARGET_URL=...\
+      " >> ~/.bashrc # or .bash_profile
 ```
 
-### 5. Create database user
+### 5. Configure authentication provider
+
+The `MUMUKI_AUTHORIZATION_PROVIDER` _environment variable_ can take any of the following values:
+
+* `developer`
+* `auth0`
+" `saml`
+
+#### 5.1 Developer
+
+The developer mode does not need any extra configuration
+
+#### 5.2 Auth0
+
+Just configure the `MUMUKI_AUTH0_CLIENT_ID`, `MUMUKI_AUTH0_CLIENT_SECRET` and `MUMUKI_AUTH0_DOMAIN` _environment variables_ with the values provided by [auth0](https://auth0.com/).
+
+#### 5.3 SAML
+
+First, configure the `MUMUKI_SAML_IDP_SSO_TARGET_URL` _environment variable_ with the "_single sign on URL_" provided by your _SAML IdP_.
+
+Then copy in the root of this project, the _public key certificate_ (also provided by your _SAML IdP_) and save it as `saml.crt`. Check its _permitions_ so _rails_ can read it.
+
+Last, you have to ask your _SAML IdP_ to federate your _SP_. Start _rails_ and send the _XML_ available at `{YOUR_DOMAIN}/auth/saml/metadata` to your _SAML IdP_.
+
+### 6. Create database user
 
 > We need to create a PostgreSQL role - AKA a user - who will be used by Laboratory to create and access the database
 
@@ -75,7 +102,7 @@ sudo -u postgres psql <<EOF
 EOF
 ```
 
-### 6. Clone this repository
+### 7. Clone this repository
 
 > Because, err... we need to clone this repostory before developing it :stuck_out_tongue:
 
@@ -84,7 +111,7 @@ git clone https://github.com/mumuki/mumuki-laboratory
 cd mumuki-laboratory
 ```
 
-### 7. Install and setup database
+### 8. Install and setup database
 
 ```bash
 bundle install

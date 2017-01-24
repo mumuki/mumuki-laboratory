@@ -11,7 +11,7 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
@@ -86,18 +86,12 @@ Rails.application.configure do
 
   config.i18n.available_locales = [:es, :en]
 
-  config.auth0_client_id = ENV['MUMUKI_AUTH0_CLIENT_ID']
-  config.auth0_client_secret = ENV['MUMUKI_AUTH0_CLIENT_SECRET']
-  config.auth0_domain = ENV['MUMUKI_AUTH0_DOMAIN']
-
-  config.thesaurus_url = ENV['MUMUKI_THESAURUS_URL']
-  config.bibliotheca_url = ENV['MUMUKI_BIBLIOTHECA_URL']
-
-  config.single_user_mode = ENV['MUMUKI_SINGLE_USER_MODE']
-  config.queueless_mode = ENV['MUMUKI_QUEUELESS_MODE']
-  config.daybreak_name = ENV['MUMUKI_DAYBREAK_NAME'] || 'permissions'
-
   config.domain = ENV['MUMUKI_DOMAIN']
   config.base_url = ENV['MUMUKI_BASE_URL'] || "http://#{config.domain}"
   config.cookies_domain = ENV['MUMUKI_COOKIES_DOMAIN'] || ".#{config.domain}"
+
+  config.saml_idp_cert = ENV['MUMUKI_SAML_IDP_CERT']
+
+  config.thesaurus_url = ENV['MUMUKI_THESAURUS_URL']
+  config.bibliotheca_url = ENV['MUMUKI_BIBLIOTHECA_URL']
 end
