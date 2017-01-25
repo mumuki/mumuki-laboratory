@@ -52,11 +52,11 @@ class Organization < ActiveRecord::Base
   end
 
   def private?
-    private
+    !public?
   end
 
   def public?
-    !private
+    public
   end
 
   def reindex_usages!

@@ -6,7 +6,7 @@ namespace :organizations do
                                         contact_email: args[:contact_email],
                                         book: Book.find_by(slug: args[:book_slug]),
                                         logo_url: args[:logo_url],
-                                        private: true
+                                        public: false
     organization.switch!
 
     puts 'Congrats. A new organization has been created'

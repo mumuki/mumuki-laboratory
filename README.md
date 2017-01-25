@@ -128,6 +128,18 @@ rails s
 
 > Hit http://central.localmumuki.io:3000/ on your browser and have fun!
 
+### Running the tests
+
+>To prepare the db:
+```bash
+RAILS_ENV=test bundle exec rake db:create db:migrate
+```
+
+>To run the tests: 
+```
+RAILS_ENV=test bundle exec rake
+```
+
 ## Authentication Powered by Auth0
 
 <a width="150" height="50" href="https://auth0.com/" target="_blank" alt="Single Sign On & Token Based Authentication - Auth0"><img width="150" height="50" alt="JWT Auth for open source projects" src="http://cdn.auth0.com/oss/badges/a0-badge-dark.png"/></a>
