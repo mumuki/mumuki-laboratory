@@ -96,6 +96,10 @@ class Mumukit::Login::Controller
     URI.join(request.base_url, path).to_s
   end
 
+  def session
+    request.session
+  end
+
   class RailsFramework
 
     # @param [ActionController::Base] rails_controller
@@ -472,12 +476,23 @@ module Mumukit::Login
 end
 
 module Mumukit::Login::SessionControllerHelpers
+
   def user_for_omniauth_profile
     User.for_profile Mumukit::Login.normalized_omniauth_profile(env['omniauth.auth'])
   end
+
+  def redirect_after_login!
+    mumukit_controller.redirect!(mumukit_controller.session[:redirect_after_login] || '/')
+  end
+
+  def redirect_after_logout!
+    mumukit_controller.redirect! Mumukit::Login.logout_redirection_path
+  end
+
 end
 
 module Mumukit::Login::AuthenticationHelpers
+
   def authenticate!
     login_form.show! unless current_user?
   end
@@ -490,14 +505,14 @@ module Mumukit::Login::AuthenticationHelpers
     @current_user ||= Mumukit::Login::User.find_by_uid!(current_user_uid) if current_user?
   end
 
+  def set_after_login_redirection!
+    mumukit_controller.session[:redirect_after_login] = mumukit_controller.request.url
+  end
+
   def login_form
     @login_builder ||= Mumukit::Login.new_form mumukit_controller, login_settings
   end
 
-  required :current_user_uid
-
-  required :mumukit_controller
-  required :login_settings
 end
 
 Mumukit::Login.configure do |config|

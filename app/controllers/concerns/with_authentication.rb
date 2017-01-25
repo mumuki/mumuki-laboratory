@@ -8,7 +8,7 @@ module WithAuthentication
   end
 
   def login_button(options={})
-    session[:redirect_after_login] = request.fullpath
+    set_after_login_redirection!
     login_form.button_html I18n.t(:sign_in), options[:class]
   end
 end

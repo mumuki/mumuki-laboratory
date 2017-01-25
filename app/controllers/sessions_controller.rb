@@ -6,10 +6,7 @@ class SessionsController < ApplicationController
 
     remember_me_token.value = user.remember_me_token
 
-    path = session[:redirect_after_login] || :back
-    session[:redirect_after_login] = nil
-
-    redirect_to path
+    redirect_after_login!
   end
 
   def failure
@@ -18,7 +15,6 @@ class SessionsController < ApplicationController
 
   def destroy
     remember_me_token.clear!
-    redirect_to Mumukit::Login.logout_redirection_path
+    redirect_after_logout!
   end
-
 end
