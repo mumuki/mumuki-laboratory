@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   end
 
   def event_json
-    as_json(only: [:uid, :social_id, :image_url], methods: [:mumukit_permissions])
+    as_json(only: [:uid, :social_id, :image_url], methods: [:permissions])
   end
 
   def last_lesson
