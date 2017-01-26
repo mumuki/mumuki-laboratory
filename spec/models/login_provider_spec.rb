@@ -36,7 +36,7 @@ end
 
 describe Mumukit::Login::Controller do
   let(:framework) { double(:framework) }
-  let(:controller) { Mumukit::Login::Controller.new framework }
+  let(:controller) { Mumukit::Login::Controller.new framework, nil }
 
   before { allow(framework).to receive(:env).and_return('HTTP_HOST' => 'localmumuki.io',
                                                         'rack.url_scheme' => 'http',

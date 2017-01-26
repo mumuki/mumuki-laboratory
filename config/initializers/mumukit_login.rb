@@ -103,10 +103,21 @@ class Mumukit::Login::OriginRedirector
 end
 
 class Mumukit::Login::Controller
-  delegate :env, :redirect!, :render_html!, to: :@framework
-
-  def initialize(framework)
+  def initialize(framework, native)
     @framework = framework
+    @native = native
+  end
+
+  def env
+    @framework.env @native
+  end
+
+  def redirect!(path)
+    @framework.redirect!(path, @native)
+  end
+
+  def render_html!(html)
+    @framework.render_html!(html, @native)
   end
 
   def request
@@ -170,29 +181,21 @@ class Mumukit::Login::Form
   end
 end
 
-module Mumukit::Login::Rails
+module Mumukit::Login::Framework
+end
 
-  class Controller
-    # @param [ActionController::Base] rails_controller
-    def initialize(rails_controller)
-      @rails_controller = rails_controller
-    end
+module Mumukit::Login::Framework::Rails
 
-    def env
-      @rails_controller.request.env
-    end
-
-    def redirect!(path)
-      @rails_controller.redirect_to path
-    end
-
-    def render_html!(content)
-      @rails_controller.render html: content.html_safe, layout: true
-    end
+  def self.env(rails_controller)
+    rails_controller.request.env
   end
 
-  def self.new_controller(rails_controller)
-    Mumukit::Login::Rails::Controller.new rails_controller
+  def self.redirect!(path, rails_controller)
+    rails_controller.redirect_to path
+  end
+
+  def self.render_html!(content, rails_controller)
+    rails_controller.render html: content.html_safe, layout: true
   end
 
   # Configures the login routes.
@@ -489,7 +492,7 @@ module Mumukit::Login::AuthenticationHelpers
   private
 
   def mumukit_controller
-    @mumukit_controller ||= Mumukit::Login::Controller.new Mumukit::Login.config.framework.new_controller(self)
+    @mumukit_controller ||= Mumukit::Login::Controller.new Mumukit::Login.config.framework, self
   end
 
   def login_form
@@ -506,5 +509,5 @@ Mumukit::Login.configure do |config|
   #     find_by_uid!
   #     for_profile
   config.user_class = User
-  config.framework = Mumukit::Login::Rails
+  config.framework = Mumukit::Login::Framework::Rails
 end
