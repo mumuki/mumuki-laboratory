@@ -8,9 +8,11 @@ en:
   ask_redirect: Do you want to go there?
   author: Author
   back_to_mumuki: Back to Mumuki!
+  bibliotheca: Bibliotheca
   chapter: Chapter
   chapter_finished_html: You have finished %{chapter}!
   chapter_number: Chapter %{number} -
+  classroom: Classroom
   clear_console: Clear console
   comment: Comment
   comments: Comments
@@ -79,6 +81,7 @@ en:
   no_submissions: Its seems like you haven't tried to solve this exercise
   notify_problem_with_exercise: Do you think something is wrong with this exercise?
   not_found_explanation: 'You may have mistyped the address or the page may have moved. If you think this is our fault, %{issues}'
+  office: Office
   output: Output
   overview: Overview
   passed: All right
