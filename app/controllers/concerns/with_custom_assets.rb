@@ -6,4 +6,5 @@ module WithCustomAssets
   def extension_javascript_url
     Organization.extension_javascript_url
   end
+
 end
