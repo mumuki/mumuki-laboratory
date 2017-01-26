@@ -1,8 +1,7 @@
 require 'spec_helper'
 
-describe Office::Event::OrganizationChanged do
+describe 'Organization events' do
   before { create :book, slug: 'a-book', id: 8 }
-  before { create :organization, name: 'test-orga', id: 2 }
 
   let(:organization) { Organization.find_by(name: 'test-orga') }
   let(:organization_json) {
@@ -22,10 +21,7 @@ describe Office::Event::OrganizationChanged do
     }}
   }
 
-  context 'when the message is received' do
-    before { Office::Event::OrganizationChanged.execute! organization_json }
-
-    it { expect(organization.id).to eq 2 }
+  shared_examples 'a task that persists an organization' do
     it { expect(organization.name).to eq 'test-orga' }
     it { expect(organization.contact_email).to eq 'issues@mumuki.io' }
     it { expect(organization.book_id).to eq 8 }
@@ -38,5 +34,25 @@ describe Office::Event::OrganizationChanged do
     it { expect(organization.terms_of_service).to eq 'TOS' }
     it { expect(organization.theme_stylesheet_url).to eq 'http://mumuki.io/theme.css' }
     it { expect(organization.extension_javascript_url).to eq 'http://mumuki.io/scripts.js' }
+  end
+
+  context Office::Event::OrganizationChanged do
+    before { create :organization, name: 'test-orga', id: 55 }
+
+    context 'when a message is received' do
+      before { Office::Event::OrganizationChanged.execute! organization_json }
+
+      it { expect(organization.id).to eq 55 }
+      it_behaves_like 'a task that persists an organization'
+    end
+  end
+
+  describe Office::Event::OrganizationCreated do
+    context 'when a message is received' do
+      before { Office::Event::OrganizationCreated.execute! organization_json }
+
+      it { expect(organization.id).not_to eq 998 }
+      it_behaves_like 'a task that persists an organization'
+    end
   end
 end
