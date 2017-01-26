@@ -142,11 +142,12 @@ class Organization < ActiveRecord::Base
     end
 
     def parse_json(json)
-      book_ids = json[:books].map { |it| Book.find_by!(slug: it).id }
+      book_ids = json[:books].map { |it| Book.find_by!(slug: it).id.to_i }
 
-      json.merge book_ids: book_ids,
-                 book_id: book_ids.first
-          .except(:id, :books)
+      json.merge(
+        book_ids: book_ids,
+        book_id: book_ids.first # TODO: Support multiple books
+      ).except :id, :books
     end
   end
 end

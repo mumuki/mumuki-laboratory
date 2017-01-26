@@ -4,7 +4,7 @@ class AddNewFieldsOnOrganization < ActiveRecord::Migration
 
     change_table :organizations do |t|
       t.rename :private, :public
-      t.text :book_ids, array: true, default: []
+      t.integer :book_ids, array: true, default: []
 
       t.string :terms_of_service
       t.string :locale

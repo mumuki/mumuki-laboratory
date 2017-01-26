@@ -185,7 +185,7 @@ ActiveRecord::Schema.define(version: 20170125185150) do
     t.boolean  "public",                   default: false
     t.string   "logo_url"
     t.string   "login_methods",            default: ["user_pass"], null: false, array: true
-    t.text     "book_ids",                 default: [],                         array: true
+    t.integer  "book_ids",                 default: [],                         array: true
     t.string   "terms_of_service"
     t.string   "locale"
     t.string   "theme_stylesheet_url"
