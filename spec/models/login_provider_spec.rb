@@ -1,5 +1,18 @@
 require 'spec_helper'
 
+describe Rack::Request do
+  let(:rack_request) { Rack::Request.new 'HTTP_HOST' => 'foo.bar.baz.com',
+                                         'rack.url_scheme' => 'http',
+                                         'SERVER_PORT' => '80' }
+
+  it { expect(rack_request.first_subdomain_after('baz.com')).to eq 'foo' }
+  it { expect(rack_request.first_subdomain_after('bar.baz.com')).to eq 'foo' }
+  it { expect(rack_request.first_subdomain_after('foo.bar.baz.com')).to be nil }
+
+  it { expect(rack_request.empty_subdomain_after?('bar.baz.com')).to be false }
+  it { expect(rack_request.empty_subdomain_after?('foo.bar.baz.com')).to be true }
+end
+
 describe Mumukit::Login::User do
   it { expect(Mumukit::Login::User).to be User }
 end
@@ -18,7 +31,7 @@ describe Mumukit::Login::Form do
 
   let(:builder) { Mumukit::Login::Form.new(provider, controller, login_settings) }
 
-  before { allow(controller).to receive(:url_for).and_return('http://localmumuki.io/foo') }
+  before { allow(controller).to receive(:request).and_return(struct path: 'http://localmumuki.io/foo') }
 
   it { expect(builder.footer_html).to be_html_safe }
   it { expect(builder.header_html).to be_html_safe }
@@ -42,12 +55,13 @@ describe Mumukit::Login::Provider do
   let(:provider) { Mumukit::Login.config.provider }
   let(:login_settings) { Mumukit::Login::Settings.new }
 
+  before { allow(controller).to receive(:request).and_return(struct path: '/foo') }
   it { expect(Mumukit::Login.new_form(controller, login_settings).button_html('login', 'clazz')).to be_html_safe }
 
   describe Mumukit::Login::Provider::Developer do
     let(:provider) { Mumukit::Login::Provider::Developer.new }
 
-    it { expect(provider.button_html(controller, 'login', 'clazz')).to eq '<a class="clazz" href="/auth/developer">login</a>' }
+    it { expect(provider.button_html(controller, 'login', 'clazz')).to eq '<a class="clazz" href="/login?origin=/foo">login</a>' }
     it { expect(provider.header_html(controller)).to be_blank }
     it { expect(provider.footer_html(controller)).to be_blank }
   end
@@ -55,11 +69,13 @@ describe Mumukit::Login::Provider do
   describe Mumukit::Login::Provider::Auth0 do
     let(:provider) { Mumukit::Login::Provider::Auth0.new }
 
+
     before { allow(controller).to receive(:url_for).with('/auth/auth0/callback').and_return('http://localmumuki.io/auth/auth0/callback') }
 
-    it { expect(provider.button_html(controller, 'login', 'clazz')).to eq '<a class="clazz" href="#" onclick="window.signin();">login</a>' }
+    it { expect(provider.button_html(controller, 'login', 'clazz')).to eq '<a class="clazz" href="/login?origin=/foo">login</a>' }
     it { expect(provider.header_html(controller, login_settings)).to be_present }
-    it { expect(provider.header_html(controller, login_settings)).to include 'http://localmumuki.io/auth/auth0/callback' }
+    it { expect(provider.header_html(controller, login_settings)).to include 'https://cdn.auth0.com/js/lock-7.12.min.js' }
+    it { expect(provider.header_html(controller, login_settings)).to_not include 'http://localmumuki.io/auth/auth0/callback' }
 
     it { expect(provider.footer_html(controller)).to be_present }
     it { expect(provider.footer_html(controller)).to include '//cdn.auth0.com/oss/badges/a0-badge-light.png' }
@@ -69,7 +85,7 @@ describe Mumukit::Login::Provider do
   describe Mumukit::Login::Provider::Saml do
     let(:provider) { Mumukit::Login::Provider::Saml.new }
 
-    it { expect(provider.button_html(controller, 'login', 'clazz')).to eq '<a class="clazz" href="/auth/saml">login</a>' }
+    it { expect(provider.button_html(controller, 'login', 'clazz')).to eq '<a class="clazz" href="/login?origin=/foo">login</a>' }
     it { expect(provider.header_html(controller)).to be_blank }
     it { expect(provider.footer_html(controller)).to be_blank }
   end

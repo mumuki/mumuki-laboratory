@@ -1,3 +1,5 @@
+require 'addressable/uri'
+
 module Mumukit::Login
   def self.configure
     @config ||= defaults
@@ -184,6 +186,7 @@ module Mumukit::Login::Rails
     rails_router.match 'auth/:provider/callback' => :callback, via: [:get, :post], as: 'auth_callback'
     rails_router.get 'auth/failure' => :failure
     rails_router.get 'logout' => :destroy
+    rails_router.get 'login' => :login
   end
 
   def self.configure_session_controller!(controller_class)
@@ -323,7 +326,11 @@ class Mumukit::Login::Provider::Base
   end
 
   def request_authentication!(controller, *)
-    controller.redirect! auth_path
+    controller.redirect! login_path(controller)
+  end
+
+  def login_path(controller)
+    "/login?origin=#{controller.request.path}"
   end
 
   def auth_path
@@ -338,8 +345,8 @@ class Mumukit::Login::Provider::Base
     '/'
   end
 
-  def button_html(_, title, clazz)
-    %Q{<a class="#{clazz}" href="#{auth_path}">#{title}</a>}
+  def button_html(controller, title, clazz)
+    %Q{<a class="#{clazz}" href="#{login_path(controller)}">#{title}</a>}
   end
 
   def footer_html(*)
@@ -400,37 +407,18 @@ class Mumukit::Login::Provider::Auth0 < Mumukit::Login::Provider::Base
                       callback_path: callback_path
   end
 
-  def button_html(_, title, clazz)
-    %Q{<a class="#{clazz}" href="#" onclick="window.signin();">#{title}</a>}
-  end
-
   def request_authentication!(controller, login_settings)
     settings = lock_settings(controller, login_settings, {closable: false})
     controller.render_html! <<HTML
-<!DOCTYPE html>
-<html>
-<head>
-  <script src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
-
-</head>
-<body>
  <script type="text/javascript">
       new Auth0Lock('#{auth0_config.client_id}', '#{auth0_config.domain}').show(#{settings});
   </script>
-</body>
-</html>
 HTML
   end
 
-  def header_html(controller, login_settings)
-    settings = lock_settings(controller, login_settings, {})
+  def header_html(*)
     <<HTML
 <script src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
-<script type="text/javascript">
-var lock = new Auth0Lock('#{auth0_config.client_id}', '#{auth0_config.domain}');
-function signin() {
-  lock.show(#{settings});
-}
 </script>
 HTML
   end
@@ -478,7 +466,7 @@ end
 module Mumukit::Login::SessionControllerHelpers
 
   def user_for_omniauth_profile
-    User.for_profile Mumukit::Login.normalized_omniauth_profile(env['omniauth.auth'])
+    Mumukit::Login::User.for_profile Mumukit::Login.normalized_omniauth_profile(env['omniauth.auth'])
   end
 
   def redirect_after_login!
@@ -489,6 +477,9 @@ module Mumukit::Login::SessionControllerHelpers
     mumukit_controller.redirect! Mumukit::Login.logout_redirection_path
   end
 
+  def redirect_to_auth!
+    mumukit_controller.redirect! Mumukit::Login.config.provider.auth_path
+  end
 end
 
 module Mumukit::Login::AuthenticationHelpers
@@ -506,7 +497,9 @@ module Mumukit::Login::AuthenticationHelpers
   end
 
   def set_after_login_redirection!
-    mumukit_controller.session[:redirect_after_login] = mumukit_controller.request.url
+
+    after_login = Addressable::URI.heuristic_parse(mumukit_controller.request.params['origin']).path
+    mumukit_controller.session[:redirect_after_login] = after_login
   end
 
   def login_form

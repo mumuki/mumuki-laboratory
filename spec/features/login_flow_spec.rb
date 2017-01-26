@@ -20,7 +20,18 @@ feature 'Login Flow' do
     expect(page).to have_text('Content')
     expect(page).to have_text('Chapter')
     expect(page).to_not have_text('Sign in')
-    expect(page).to have_text('Sign out')
+    expect(page).to have_text('Sign Out')
+  end
+
+  scenario 'can login and keeps session' do
+    visit '/'
+
+    click_on 'Sign in'
+
+    visit '/'
+
+    expect(page).to_not have_text('Sign in')
+    expect(page).to have_text('Sign Out')
   end
 
   scenario 'can login in non root' do
@@ -28,14 +39,18 @@ feature 'Login Flow' do
 
     click_on 'Sign in'
 
-    expect(page).to have_text('Nobody created an exercise for this search yet')
+    expect(page).to_not have_text('Sign in')
+    expect(page).to have_text('Sign Out')
+    expect(page).to have_text('awesomeRubyGuide')
   end
 
   scenario 'can logout' do
     visit '/'
 
     click_on 'Sign in'
-    click_on 'Sign out'
+
+    expect(page).to have_text('Sign Out')
+    click_on 'Sign Out'
 
     expect(page).to have_text('Content')
     expect(page).to have_text('Chapter')
@@ -44,4 +59,11 @@ feature 'Login Flow' do
     expect(page).to_not have_text('Sign out')
   end
 
+  scenario 'user can be prompted for login' do
+    visit '/user'
+
+    expect(page).to_not have_text('Sign in')
+    expect(page).to have_text('Sign Out')
+    expect(page).to have_text('Profile')
+  end
 end

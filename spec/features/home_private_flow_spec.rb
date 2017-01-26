@@ -25,8 +25,7 @@ feature 'private org' do
     let(:teacher) { create(:user, permissions: {student: 'private/*', teacher: 'private/*'}) }
 
     before do
-      allow_any_instance_of(ApplicationController).to receive(:from_login_callback?).and_return(false)
-      allow_any_instance_of(ApplicationController).to receive(:from_logout?).and_return(false)
+      allow_any_instance_of(ApplicationController).to receive(:from_sessions?).and_return(false)
     end
 
     scenario 'visitor should raise forbidden error' do

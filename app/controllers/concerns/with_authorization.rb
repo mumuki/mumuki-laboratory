@@ -1,10 +1,11 @@
 module WithAuthorization
   def authorize!
-    return if Organization.public?
-    return if from_login_callback?
+    return if Organization.public? || from_sessions?
 
-    login_form.show! and return unless current_user?
-    #FIXME we should use auth protect! here
-    raise Exceptions::OrganizationPrivateError if !current_user.student? && !from_logout?
+    if current_user?
+      current_user.permissions.protect! :student, Organization.slug
+    else
+      authenticate!
+    end
   end
 end
