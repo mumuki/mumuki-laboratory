@@ -4,6 +4,7 @@
   <title><%= page_title subject %></title>
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="<%= theme_stylesheet_url %>">
 
   <meta property="og:site_name" content="mumuki"/>
   <meta property="og:title" content="<%= page_title subject %>"/>
@@ -19,6 +20,7 @@
     window.mumukiLocale = <%= raw Organization.locale_json %>;
   </script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script type="text/javascript" src="<%= extension_javascript_url %>" defer></script>
   <%= login_form.header_html %>
 </head>
 <body>
