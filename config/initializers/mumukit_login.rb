@@ -204,16 +204,18 @@ module Mumukit::Login::Rails
   #
   # @param [RailsRouter] rails_router
   #
-  def self.configure_session_routes!(rails_router)
-    rails_router.match 'auth/:provider/callback' => :callback, via: [:get, :post], as: 'auth_callback'
-    rails_router.get 'auth/failure' => :failure
-    rails_router.get 'logout' => :destroy
-    rails_router.get 'login' => :login
+  def self.configure_login_routes!(rails_router)
+    rails_router.controller :login do
+      rails_router.match 'auth/:provider/callback' => :callback, via: [:get, :post], as: 'auth_callback'
+      rails_router.get 'auth/failure' => :failure
+      rails_router.get 'logout' => :destroy
+      rails_router.get 'login' => :login
+    end
   end
 
-  def self.configure_session_controller!(controller_class)
+  def self.configure_login_controller!(controller_class)
     controller_class.class_eval do
-      include Mumukit::Login::SessionControllerHelpers
+      include Mumukit::Login::LoginControllerHelpers
     end
   end
 
@@ -251,12 +253,12 @@ module Mumukit::Login
     provider.configure_omniauth! omniauth
   end
 
-  def self.configure_session_routes!(native)
-    framework.configure_session_routes! native
+  def self.configure_login_routes!(native)
+    framework.configure_login_routes! native
   end
 
-  def self.configure_session_controller!(native)
-    framework.configure_session_controller!(native)
+  def self.configure_login_controller!(native)
+    framework.configure_login_controller!(native)
   end
 
   def self.configure_controller!(native)
@@ -450,7 +452,7 @@ class Mumukit::Login::Provider::Developer < Mumukit::Login::Provider::Base
   end
 end
 
-module Mumukit::Login::SessionControllerHelpers
+module Mumukit::Login::LoginControllerHelpers
 
   def login
     origin_redirector.save_location!

@@ -1,5 +1,5 @@
-class SessionsController < ApplicationController
-  Mumukit::Login.configure_session_controller! self
+class LoginController < ApplicationController
+  Mumukit::Login.configure_login_controller! self
 
   def failure
     @error_msg = request.params['message']
@@ -14,5 +14,4 @@ class SessionsController < ApplicationController
   def save_session_user_uid!(user)
     remember_me_token.value = user.remember_me_token
   end
-
 end

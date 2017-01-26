@@ -1,6 +1,6 @@
 module WithAuthorization
   def from_sessions?
-    params['controller'] == 'sessions'
+    params['controller'] == 'login'
   end
 
   def authorize!

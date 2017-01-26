@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  controller :sessions do
-    Mumukit::Login.configure_session_routes! self
-  end
+  Mumukit::Login.configure_login_routes! self
 
   root to: 'book#show'
 
