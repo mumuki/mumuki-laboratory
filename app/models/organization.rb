@@ -127,5 +127,26 @@ class Organization < ActiveRecord::Base
     def central_url
       ApplicationRoot.laboratory.subdominated_url('central')
     end
+
+    def create_from_json!(json)
+      organization_json = parse_json json
+      Organization.create! organization_json
+    end
+
+    def update_from_json!(json)
+      organization_json = parse_json json
+
+      organization = Organization.find_by! name: organization_json['name']
+      organization.update_attributes organization_json
+      organization.save!
+    end
+
+    def parse_json(json)
+      book_ids = json[:books].map { |it| Book.find_by!(slug: it).id }
+
+      json.merge book_ids: book_ids,
+                 book_id: book_ids.first
+          .except(:id, :books)
+    end
   end
 end
