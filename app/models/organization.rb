@@ -129,16 +129,14 @@ class Organization < ActiveRecord::Base
     end
 
     def create_from_json!(json)
-      organization_json = parse_json json
-      Organization.create! organization_json
+      Organization.create! parse_json json
     end
 
     def update_from_json!(json)
       organization_json = parse_json json
 
       organization = Organization.find_by! name: organization_json[:name]
-      organization.update_attributes organization_json
-      organization.save!
+      organization.update! organization_json
     end
 
     def parse_json(json)
