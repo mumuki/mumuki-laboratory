@@ -166,7 +166,7 @@ class Mumukit::Login::Form
   # or action filter.
   #
   def show!
-    @provider.request_authentication!(@controller, @login_settings)
+    @controller.redirect! @provider.login_path(@controller)
   end
 end
 
@@ -324,12 +324,12 @@ class Mumukit::Login::Provider::Base
 
   required :configure_omniauth!
 
-  def configure_rails_forgery_protection!(action_controller)
-    action_controller.protect_from_forgery with: :exception
+  def request_authentication!(controller, _login_settings)
+    controller.redirect! auth_path
   end
 
-  def request_authentication!(controller, *)
-    controller.redirect! login_path(controller)
+  def configure_rails_forgery_protection!(action_controller)
+    action_controller.protect_from_forgery with: :exception
   end
 
   def login_path(controller)
@@ -456,7 +456,7 @@ module Mumukit::Login::LoginControllerHelpers
 
   def login
     origin_redirector.save_location!
-    mumukit_controller.redirect! Mumukit::Login.config.provider.auth_path
+    Mumukit::Login.config.provider.request_authentication! mumukit_controller, login_settings
   end
 
   def callback
