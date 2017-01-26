@@ -82,6 +82,26 @@ class Mumukit::Login::Settings
   end
 end
 
+class Mumukit::Login::OriginRedirector
+  def initialize(controller)
+    @controller = controller
+  end
+
+  def redirect!
+    @controller.redirect!(@controller.session[:redirect_after_login] || '/')
+  end
+
+  def save_location!
+    @controller.session[:redirect_after_login] = Addressable::URI.heuristic_parse(origin).path
+  end
+
+  private
+
+  def origin
+    @controller.request.params['origin']
+  end
+end
+
 
 class Mumukit::Login::Controller
   delegate :env, :redirect!, :render_html!, to: :@framework
@@ -278,6 +298,10 @@ module Mumukit::Login
     provider.logout_redirection_path
   end
 
+  def self.auth_path
+    provider.auth_path
+  end
+
   private
 
   def self.provider
@@ -466,34 +490,19 @@ end
 module Mumukit::Login::SessionControllerHelpers
 
   def login
-    set_after_login_redirection!
-    redirect_to_auth!
+    origin_redirector.save_location!
+    mumukit_controller.redirect! Mumukit::Login.auth_path
   end
 
   def callback
-    save_session_user_uid! user_for_omniauth_profile
-    redirect_after_login!
+    user = Mumukit::Login::User.for_profile Mumukit::Login.normalized_omniauth_profile(env['omniauth.auth'])
+    save_session_user_uid! user
+    origin_redirector.redirect!
   end
 
   def destroy
     destroy_session_user_uid!
-    redirect_after_logout!
-  end
-
-  def user_for_omniauth_profile
-    Mumukit::Login::User.for_profile Mumukit::Login.normalized_omniauth_profile(env['omniauth.auth'])
-  end
-
-  def redirect_after_login!
-    mumukit_controller.redirect!(mumukit_controller.session[:redirect_after_login] || '/')
-  end
-
-  def redirect_after_logout!
     mumukit_controller.redirect! Mumukit::Login.logout_redirection_path
-  end
-
-  def redirect_to_auth!
-    mumukit_controller.redirect! Mumukit::Login.config.provider.auth_path
   end
 end
 
@@ -511,14 +520,12 @@ module Mumukit::Login::AuthenticationHelpers
     @current_user ||= Mumukit::Login::User.find_by_uid!(current_user_uid) if current_user?
   end
 
-  def set_after_login_redirection!
-
-    after_login = Addressable::URI.heuristic_parse(mumukit_controller.request.params['origin']).path
-    mumukit_controller.session[:redirect_after_login] = after_login
-  end
-
   def login_form
     @login_builder ||= Mumukit::Login.new_form mumukit_controller, login_settings
+  end
+
+  def origin_redirector
+    @after_login_redirector ||= Mumukit::Login::OriginRedirector.new mumukit_controller
   end
 
 end
