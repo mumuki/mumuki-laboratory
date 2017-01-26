@@ -136,7 +136,7 @@ class Organization < ActiveRecord::Base
     def update_from_json!(json)
       organization_json = parse_json json
 
-      organization = Organization.find_by! name: organization_json['name']
+      organization = Organization.find_by! name: organization_json[:name]
       organization.update_attributes organization_json
       organization.save!
     end
