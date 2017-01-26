@@ -92,7 +92,7 @@ class Organization < ActiveRecord::Base
     ApplicationRoot.laboratory.subdominated(name).host
   end
 
-  def classroom_url_path
+  def classroom_url
     ApplicationRoot.classroom.subdominated(name).to_s
   end
 

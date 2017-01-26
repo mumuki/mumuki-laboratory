@@ -40,7 +40,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                 <li><%= link_to t(:profile), user_path %></li>
-                <li><%= link_to(t(:classroom), Organization.classroom_url_path) %></li>
+                <li><%= link_to(t(:classroom), Organization.classroom_url) %></li>
                 <li><%= link_to(t(:bibliotheca), ApplicationRoot.bibliotheca.base_url) %></li>
                 <li><%= link_to(t(:office), ApplicationRoot.office.base_url) %></li>
                 <li><%= link_to(t(:sign_out), logout_path) %></li>
