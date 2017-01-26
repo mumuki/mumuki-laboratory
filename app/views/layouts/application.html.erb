@@ -16,14 +16,14 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script type="text/javascript">
-    window.mumukiLocale = <%= raw Organization.locale_json %>;
+      window.mumukiLocale = <%= raw Organization.locale_json %>;
   </script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= login_form.header_html %>
 </head>
 <body>
 <% if should_choose_organization? %>
-  <%= render partial: 'layouts/organization_chooser' %>
+    <%= render partial: 'layouts/organization_chooser' %>
 <% end %>
 
 <div class="container">
@@ -31,20 +31,23 @@
     <div class="mu-inline-block-right">
       <div class="user-menu">
         <% if current_user? %>
-          <div class="dropdown">
+            <div class="dropdown">
             <span id="profileDropdown" data-toggle="dropdown">
               <%= image_tag(current_user.image_url, height: 40, class: 'img-circle') %>
             </span>
-            <a class="comments-box <%= has_comments? ? '' : 'comments-box-empty' %>" href=<%= "#{user_path}#comments" %>>
-              <span class="badge badge-comments"><%= comments_count %></span>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-              <li><%= link_to t(:profile), user_path %></li>
-              <li><%= link_to(t(:sign_out), logout_path) %></li>
-            </ul>
-          </div>
+              <a class="comments-box <%= has_comments? ? '' : 'comments-box-empty' %>" href=<%= "#{user_path}#comments" %>>
+                <span class="badge badge-comments"><%= comments_count %></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                <li><%= link_to t(:profile), user_path %></li>
+                <li><%= link_to(t(:classroom), Organization.classroom_url_path) %></li>
+                <li><%= link_to(t(:bibliotheca), ApplicationRoot.bibliotheca.base_url) %></li>
+                <li><%= link_to(t(:office), ApplicationRoot.office.base_url) %></li>
+                <li><%= link_to(t(:sign_out), logout_path) %></li>
+              </ul>
+            </div>
         <% else %>
-          <%= login_anchor %>
+            <%= login_anchor %>
         <% end %>
       </div>
     </div>
@@ -62,15 +65,15 @@
 <div class="container" id="wrap">
   <div class="row">
     <% if notice %>
-      <div class="alert alert-success" role="alert">
-        <%= notice.html_safe %>
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-      </div>
+        <div class="alert alert-success" role="alert">
+          <%= notice.html_safe %>
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
     <% elsif alert %>
-      <div class="alert alert-danger" role="alert">
-        <%= alert.html_safe %>
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-      </div>
+        <div class="alert alert-danger" role="alert">
+          <%= alert.html_safe %>
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
     <% end %>
   </div>
 
@@ -91,7 +94,8 @@
     <div class="row">
       <div class="col-md-4 text-left">
         <p>&copy; Copyright 2015-<%= DateTime.now.year %>
-          <a href="http://mumuki.org/" class="mu-org-link"><span class="da da-mumuki-circle"></span> Mumuki Project</a></p>
+          <a href="http://mumuki.org/" class="mu-org-link"><span class="da da-mumuki-circle"></span> Mumuki Project</a>
+        </p>
       </div>
 
       <div class="col-md-4 text-center">
