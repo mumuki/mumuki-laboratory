@@ -96,7 +96,7 @@ es:
   not_found: ¡La página que buscaste no existe!
   not_found_explanation: '¡Ups! Esto es lo que se conoce como %{error}: fijate si escribiste bien la dirección. Peeeeero, si pensás que es un error nuestro, %{issues}'
   notify_problem_with_exercise: ¿Pensás que algo está mal con este ejercicio?
-  office: Oficina
+  office: Secretaría
   output: Salida
   overview: Vista general
   passed: Todo en orden
