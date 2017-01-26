@@ -56,7 +56,7 @@ class Organization < ActiveRecord::Base
   end
 
   def public?
-   !private
+    !private
   end
 
   def reindex_usages!
@@ -85,11 +85,15 @@ class Organization < ActiveRecord::Base
 
 
   def url_for(path)
-    ApplicationRoot.url_for(name, path)
+    ApplicationRoot.laboratory.url_for(name, path)
   end
 
   def domain
-    ApplicationRoot.subdominated(name).host
+    ApplicationRoot.laboratory.subdominated(name).host
+  end
+
+  def classroom_url_path
+    ApplicationRoot.classroom.subdominated(name).to_s
   end
 
   def notify!
@@ -125,7 +129,7 @@ class Organization < ActiveRecord::Base
     end
 
     def central_url
-      ApplicationRoot.subdominated('central').to_s
+      ApplicationRoot.laboratory.subdominated('central').to_s
     end
   end
 end
