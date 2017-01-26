@@ -137,7 +137,7 @@ RAILS_ENV=test bundle exec rake db:create db:migrate
 
 >To run the tests: 
 ```
-RAILS_ENV=test bundle exec rake
+bundle exec rspec
 ```
 
 ## Authentication Powered by Auth0
