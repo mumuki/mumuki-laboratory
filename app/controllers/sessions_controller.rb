@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  Mumukit::Login::Rails.configure_session_controller! self
+  Mumukit::Login.configure_session_controller! self
 
   def failure
     @error_msg = request.params['message']

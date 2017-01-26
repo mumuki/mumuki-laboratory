@@ -15,6 +15,7 @@ end
 
 describe Mumukit::Login::User do
   it { expect(Mumukit::Login::User).to be User }
+
 end
 
 describe Mumukit::Login do
@@ -56,7 +57,6 @@ describe Mumukit::Login::Provider do
   let(:login_settings) { Mumukit::Login::Settings.new }
 
   before { allow(controller).to receive(:request).and_return(struct path: '/foo') }
-  it { expect(Mumukit::Login.new_form(controller, login_settings).button_html('login', 'clazz')).to be_html_safe }
 
   describe Mumukit::Login::Provider::Developer do
     let(:provider) { Mumukit::Login::Provider::Developer.new }

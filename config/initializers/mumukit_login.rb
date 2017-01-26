@@ -102,7 +102,6 @@ class Mumukit::Login::OriginRedirector
   end
 end
 
-
 class Mumukit::Login::Controller
   delegate :env, :redirect!, :render_html!, to: :@framework
 
@@ -120,26 +119,6 @@ class Mumukit::Login::Controller
 
   def session
     request.session
-  end
-
-  class RailsFramework
-
-    # @param [ActionController::Base] rails_controller
-    def initialize(rails_controller)
-      @rails_controller = rails_controller
-    end
-
-    def env
-      @rails_controller.request.env
-    end
-
-    def redirect!(path)
-      @rails_controller.redirect_to path
-    end
-
-    def render_html!(content)
-      @rails_controller.render html: content.html_safe, layout: true
-    end
   end
 end
 
@@ -193,6 +172,29 @@ end
 
 module Mumukit::Login::Rails
 
+  class Controller
+    # @param [ActionController::Base] rails_controller
+    def initialize(rails_controller)
+      @rails_controller = rails_controller
+    end
+
+    def env
+      @rails_controller.request.env
+    end
+
+    def redirect!(path)
+      @rails_controller.redirect_to path
+    end
+
+    def render_html!(content)
+      @rails_controller.render html: content.html_safe, layout: true
+    end
+  end
+
+  def self.new_controller(rails_controller)
+    Mumukit::Login::Rails::Controller.new rails_controller
+  end
+
   # Configures the login routes.
   # This method should be used this way:
   #
@@ -230,43 +232,11 @@ module Mumukit::Login::Rails
                     :mumukit_controller,
                     :login_form
 
-      private
-
-      def mumukit_controller
-        Mumukit::Login::Controller.new Mumukit::Login::Controller::RailsFramework.new(self)
-      end
     end
   end
 end
 
 module Mumukit::Login
-
-  ##########
-  ## Form ##
-  ##########
-
-  # Creates a new Mumukit::Login::Form using the
-  # global Mumukit::Login.config.login_provider.
-  #
-  # @param [Mumukit::Login::Controller] controller
-  # @param [Mumukit::Login::Settings] login_settings
-  def self.new_form(controller, login_settings)
-    Mumukit::Login::Form.new(provider, controller, login_settings)
-  end
-
-
-  #############
-  ## Profile ##
-  #############
-
-  def self.normalized_omniauth_profile(omniauth)
-    struct provider: omniauth.provider,
-           name: omniauth.info.nickname || omniauth.info.name,
-           social_id: omniauth.uid,
-           email: omniauth.info.email,
-           uid: omniauth.info.email || omniauth.uid,
-           image_url: omniauth.info.image
-  end
 
 
   # Configures omniauth. This method typically configures
@@ -282,27 +252,23 @@ module Mumukit::Login
     provider.configure_omniauth! omniauth
   end
 
-  ############
-  ## Routes ##
-  ############
-
-  # Path - relative to current domain - to which
-  # app must redirect after a successful logout
-  #
-  # This is not the same as the logout callback - this route
-  # should point to a safe point that won't fail without authentication with
-  # a visual message to the user stating that she
-  # has logged out
-  #
-  def self.logout_redirection_path
-    provider.logout_redirection_path
+  def self.configure_session_routes!(native)
+    framework.configure_session_routes! native
   end
 
-  def self.auth_path
-    provider.auth_path
+  def self.configure_session_controller!(native)
+    framework.configure_session_controller!(native)
+  end
+
+  def self.configure_controller!(native)
+    framework.configure_controller! native
   end
 
   private
+
+  def self.framework
+    Mumukit::Login.config.framework
+  end
 
   def self.provider
     Mumukit::Login.config.provider
@@ -335,6 +301,22 @@ module Mumukit::Login::Provider
       else
         raise "Unknown login_provider `#{login_provider}`"
     end
+  end
+end
+
+module Mumukit::Login::Profile
+
+  #############
+  ## Profile ##
+  #############
+
+  def self.from_omniauth(omniauth)
+    struct provider: omniauth.provider,
+           name: omniauth.info.nickname || omniauth.info.name,
+           social_id: omniauth.uid,
+           email: omniauth.info.email,
+           uid: omniauth.info.email || omniauth.uid,
+           image_url: omniauth.info.image
   end
 end
 
@@ -491,18 +473,18 @@ module Mumukit::Login::SessionControllerHelpers
 
   def login
     origin_redirector.save_location!
-    mumukit_controller.redirect! Mumukit::Login.auth_path
+    mumukit_controller.redirect! Mumukit::Login.config.provider.auth_path
   end
 
   def callback
-    user = Mumukit::Login::User.for_profile Mumukit::Login.normalized_omniauth_profile(env['omniauth.auth'])
+    user = Mumukit::Login::User.for_profile Mumukit::Login::Profile.from_omniauth(env['omniauth.auth'])
     save_session_user_uid! user
     origin_redirector.redirect!
   end
 
   def destroy
     destroy_session_user_uid!
-    mumukit_controller.redirect! Mumukit::Login.logout_redirection_path
+    mumukit_controller.redirect! Mumukit::Login.config.provider.logout_redirection_path
   end
 end
 
@@ -520,8 +502,12 @@ module Mumukit::Login::AuthenticationHelpers
     @current_user ||= Mumukit::Login::User.find_by_uid!(current_user_uid) if current_user?
   end
 
+  def mumukit_controller
+    @mumukit_controller ||= Mumukit::Login::Controller.new Mumukit::Login.config.framework.new_controller(self)
+  end
+
   def login_form
-    @login_builder ||= Mumukit::Login.new_form mumukit_controller, login_settings
+    @login_builder ||= Mumukit::Login::Form.new Mumukit::Login.config.provider, mumukit_controller, login_settings
   end
 
   def origin_redirector
@@ -535,4 +521,5 @@ Mumukit::Login.configure do |config|
   #     find_by_uid!
   #     for_profile
   config.user_class = User
+  config.framework = Mumukit::Login::Rails
 end

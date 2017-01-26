@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   before_action :validate_subject_accessible!
   before_action :visit_organization!, if: :current_user?
 
-  Mumukit::Login::Rails.configure_controller! self
+  Mumukit::Login.configure_controller! self
 
   helper_method :login_button,
                 :comments_count,
