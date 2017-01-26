@@ -26,10 +26,6 @@ end
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootswatch-rails'
 
-gem 'omniauth', '~> 1.2'
-gem 'omniauth-auth0', '~> 1.1'
-gem 'omniauth-saml', '~> 1.6'
-
 gem 'font-awesome-rails'
 
 gem 'ace-rails-ap', '~> 4.0'
@@ -50,14 +46,13 @@ gem 'yaml_db'
 
 gem 'bunny'
 
-gem 'addressable'
-
 gem 'mumukit-content-type', '~> 0.4', require: 'mumukit/content_type'
 gem 'mumukit-auth', '~> 5.0'
 gem 'mumukit-core', '~> 0.6'
 gem 'mumukit-bridge', '~> 1.3'
 gem 'mumukit-inspection', '~> 0.1'
 gem 'mumukit-nuntius', '~> 3.0'
+gem 'mumukit-login', github: 'mumuki/mumukit-login'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'
