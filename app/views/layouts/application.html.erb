@@ -42,9 +42,9 @@
                 <li>
                   <%= link_to fix_fa_icon('user-o', t(:profile)), user_path %>
                 </li>
-                <li><%= link_to fix_fa_icon('graduation-cap', t(:classroom)), Organization.classroom_url %></li>
-                <li><%= link_to fix_fa_icon('book', t(:bibliotheca)), ApplicationRoot.bibliotheca.base_url %></li>
-                <li><%= link_to fix_fa_icon('clipboard', t(:office)), ApplicationRoot.office.base_url %></li>
+                <li><%= link_to fix_fa_icon('graduation-cap', t(:classroom)), Organization.classroom_url if teacher? %></li>
+                <li><%= link_to fix_fa_icon('book', t(:bibliotheca)), ApplicationRoot.bibliotheca.base_url if writer? %></li>
+                <li><%= link_to fix_fa_icon('clipboard', t(:office)), ApplicationRoot.office.base_url if janitor? %></li>
                 <li class="divider"></li>
                 <li><%= link_to(t(:sign_out), logout_path) %></li>
               </ul>
