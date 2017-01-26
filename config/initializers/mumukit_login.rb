@@ -459,7 +459,7 @@ module Mumukit::Login::LoginControllerHelpers
 
   def login
     origin_redirector.save_location!
-    Mumukit::Login.config.provider.request_authentication! mumukit_controller, login_settings
+    login_provider.request_authentication! mumukit_controller, login_settings
   end
 
   def callback
@@ -471,7 +471,19 @@ module Mumukit::Login::LoginControllerHelpers
 
   def destroy
     destroy_session_user_uid!
-    mumukit_controller.redirect! Mumukit::Login.config.provider.logout_redirection_path
+    mumukit_controller.redirect! login_provider.logout_redirection_path
+  end
+
+  private
+
+  # default
+  def destroy_session_user_uid!
+    mumukit_controller.session[:user_uid] = nil
+  end
+
+  # default
+  def save_session_user_uid!(user)
+    mumukit_controller.session[:user_uid] = user.uid
   end
 end
 
@@ -491,16 +503,34 @@ module Mumukit::Login::AuthenticationHelpers
 
   private
 
+  # default
+  def current_user_uid
+    mumukit_controller.session[:user_uid]
+  end
+
+  # default
+  def login_settings
+    Mumukit::Login::Settings.new
+  end
+
   def mumukit_controller
-    @mumukit_controller ||= Mumukit::Login::Controller.new Mumukit::Login.config.framework, self
+    @mumukit_controller ||= Mumukit::Login::Controller.new login_framework, self
   end
 
   def login_form
-    @login_builder ||= Mumukit::Login::Form.new Mumukit::Login.config.provider, mumukit_controller, login_settings
+    @login_builder ||= Mumukit::Login::Form.new login_provider, mumukit_controller, login_settings
   end
 
   def origin_redirector
     @after_login_redirector ||= Mumukit::Login::OriginRedirector.new mumukit_controller
+  end
+
+  def login_framework
+    Mumukit::Login.config.framework
+  end
+
+  def login_provider
+    Mumukit::Login.config.provider
   end
 end
 
