@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   include WithAuthorization
   include WithRememberMeToken
   include WithPagination
-  include WithReferer
   include WithComments
   include Accessible
   include WithDynamicErrors
