@@ -238,7 +238,6 @@ end
 
 module Mumukit::Login
 
-
   # Configures omniauth. This method typically configures
   # and sets the omniauth provider. Typical config should look like this
   #
@@ -305,10 +304,6 @@ module Mumukit::Login::Provider
 end
 
 module Mumukit::Login::Profile
-
-  #############
-  ## Profile ##
-  #############
 
   def self.from_omniauth(omniauth)
     struct provider: omniauth.provider,
@@ -455,20 +450,6 @@ class Mumukit::Login::Provider::Developer < Mumukit::Login::Provider::Base
   end
 end
 
-
-module Mumukit::Login
-  def self.const_missing(name)
-    if name == :User
-      config.user_class.tap do |user_class|
-        raise 'You must configure the Mumukit::Login.config.user_class first' unless user_class
-        Mumukit::Login.const_set 'User', user_class
-      end
-    else
-      super
-    end
-  end
-end
-
 module Mumukit::Login::SessionControllerHelpers
 
   def login
@@ -477,7 +458,8 @@ module Mumukit::Login::SessionControllerHelpers
   end
 
   def callback
-    user = Mumukit::Login::User.for_profile Mumukit::Login::Profile.from_omniauth(env['omniauth.auth'])
+    profile = Mumukit::Login::Profile.from_omniauth(env['omniauth.auth'])
+    user = Mumukit::Login.config.user_class.for_profile profile
     save_session_user_uid! user
     origin_redirector.redirect!
   end
@@ -499,8 +481,10 @@ module Mumukit::Login::AuthenticationHelpers
   end
 
   def current_user
-    @current_user ||= Mumukit::Login::User.find_by_uid!(current_user_uid) if current_user?
+    @current_user ||= Mumukit::Login.config.user_class.find_by_uid!(current_user_uid) if current_user?
   end
+
+  private
 
   def mumukit_controller
     @mumukit_controller ||= Mumukit::Login::Controller.new Mumukit::Login.config.framework.new_controller(self)
@@ -513,7 +497,6 @@ module Mumukit::Login::AuthenticationHelpers
   def origin_redirector
     @after_login_redirector ||= Mumukit::Login::OriginRedirector.new mumukit_controller
   end
-
 end
 
 Mumukit::Login.configure do |config|

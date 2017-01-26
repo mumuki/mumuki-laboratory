@@ -13,11 +13,6 @@ describe Rack::Request do
   it { expect(rack_request.empty_subdomain_after?('foo.bar.baz.com')).to be true }
 end
 
-describe Mumukit::Login::User do
-  it { expect(Mumukit::Login::User).to be User }
-
-end
-
 describe Mumukit::Login do
   let(:provider) { Mumukit::Login.config.provider }
 
