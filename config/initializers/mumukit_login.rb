@@ -465,6 +465,21 @@ end
 
 module Mumukit::Login::SessionControllerHelpers
 
+  def login
+    set_after_login_redirection!
+    redirect_to_auth!
+  end
+
+  def callback
+    save_session_user_uid! user_for_omniauth_profile
+    redirect_after_login!
+  end
+
+  def destroy
+    destroy_session_user_uid!
+    redirect_after_logout!
+  end
+
   def user_for_omniauth_profile
     Mumukit::Login::User.for_profile Mumukit::Login.normalized_omniauth_profile(env['omniauth.auth'])
   end

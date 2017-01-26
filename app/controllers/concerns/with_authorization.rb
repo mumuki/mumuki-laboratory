@@ -1,4 +1,8 @@
 module WithAuthorization
+  def from_sessions?
+    params['controller'] == 'sessions'
+  end
+
   def authorize!
     return if Organization.public? || from_sessions?
 
