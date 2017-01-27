@@ -27,7 +27,7 @@ describe Organization do
     it { expect(private_organization.customized_login_methods?).to be true }
     it { expect(private_organization.private?).to be true }
 
-    it { expect { private_organization.update! private: false }.to raise_error('Validation failed: A public organization can not restrict login methods') }
+    it { expect { private_organization.update! public: true }.to raise_error('Validation failed: A public organization can not restrict login methods') }
 
     it { expect(public_organization.customized_login_methods?).to be false }
     it { expect(public_organization.private?).to be false }

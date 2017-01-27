@@ -4,7 +4,6 @@ feature 'menu bar' do
   let(:private_organization) do
     create(:organization,
            name: 'private',
-           private: true,
            book: create(:book, name: 'private', slug: 'mumuki/mumuki-the-private-book'))
   end
 

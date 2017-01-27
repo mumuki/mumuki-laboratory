@@ -4,7 +4,7 @@ feature 'private org' do
   let(:private_organization) do
     create(:organization,
            name: 'private',
-           private: true,
+           public: false,
            book: create(:book, name: 'private', slug: 'mumuki/mumuki-the-private-book'))
   end
 

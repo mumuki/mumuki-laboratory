@@ -52,11 +52,11 @@ class Organization < ActiveRecord::Base
   end
 
   def private?
-    private
+    !public?
   end
 
   def public?
-    !private
+    public
   end
 
   def reindex_usages!
@@ -126,6 +126,26 @@ class Organization < ActiveRecord::Base
 
     def central_url
       ApplicationRoot.laboratory.subdominated_url('central')
+    end
+
+    def create_from_json!(json)
+      Organization.create! parse_json json
+    end
+
+    def update_from_json!(json)
+      organization_json = parse_json json
+
+      organization = Organization.find_by! name: organization_json[:name]
+      organization.update! organization_json
+    end
+
+    def parse_json(json)
+      book_ids = json[:books].map { |it| Book.find_by!(slug: it).id.to_i }
+
+      json.merge(
+        book_ids: book_ids,
+        book_id: book_ids.first # TODO: Support multiple books
+      ).except :id, :books
     end
   end
 end

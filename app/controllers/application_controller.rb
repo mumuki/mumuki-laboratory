@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   include WithRememberMeToken
   include WithPagination
   include WithComments
+  include WithCustomAssets
   include Accessible
   include WithDynamicErrors
   include WithOrganizationChooser
@@ -23,6 +24,8 @@ class ApplicationController < ActionController::Base
                 :has_comments?,
                 :subject,
                 :should_choose_organization?,
+                :theme_stylesheet_url,
+                :extension_javascript_url
 
   private
 
