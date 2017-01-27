@@ -1,5 +1,5 @@
 module UserHelper
   include WithBreadcrumbs
   include WithEmailFormatting
-  include WithMenuBar
+  include MenuBarHelper
 end

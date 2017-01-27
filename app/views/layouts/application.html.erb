@@ -16,7 +16,7 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script type="text/javascript">
-      window.mumukiLocale = <%= raw Organization.locale_json %>;
+    window.mumukiLocale = <%= raw Organization.locale_json %>;
   </script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= login_form.header_html %>
@@ -40,11 +40,11 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                 <li>
-                  <%= link_to fix_fa_icon('user-o', t(:profile)), user_path %>
+                  <%= link_to fixed_fa_icon('user-o', text: t(:profile)), user_path %>
                 </li>
-                <li><%= link_to fix_fa_icon('graduation-cap', t(:classroom)), Organization.classroom_url if teacher? %></li>
-                <li><%= link_to fix_fa_icon('book', t(:bibliotheca)), ApplicationRoot.bibliotheca.base_url if writer? %></li>
-                <li><%= link_to fix_fa_icon('clipboard', t(:office)), ApplicationRoot.office.base_url if janitor? %></li>
+                <li><%= link_to_classroom %></li>
+                <li><%= link_to_bibliotheca %></li>
+                <li><%= link_to_office %></li>
                 <li class="divider"></li>
                 <li><%= link_to(t(:sign_out), logout_path) %></li>
               </ul>
