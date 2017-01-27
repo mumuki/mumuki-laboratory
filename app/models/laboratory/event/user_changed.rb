@@ -1,4 +1,4 @@
-module Atheneum
+module Laboratory
   module Event
     class UserChanged
       def self.execute!(payload)

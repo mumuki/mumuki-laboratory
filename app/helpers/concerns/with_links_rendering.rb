@@ -14,7 +14,7 @@ module WithLinksRendering
   end
 
   def link_to_issues(translation)
-    "<a href='https://github.com/mumuki/mumuki-atheneum/issues/new'> #{I18n.t(translation)} </a>"
+    "<a href='https://github.com/mumuki/mumuki-laboratory/issues/new'> #{I18n.t(translation)} </a>"
   end
 
   def link_to_status_codes(code)
