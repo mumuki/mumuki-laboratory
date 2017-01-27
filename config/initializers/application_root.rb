@@ -1,9 +1,9 @@
 class ApplicationRoot
 
-  attr_accessor :base_url
+  attr_accessor :url
 
-  def initialize(base_url)
-    @base_url = base_url
+  def initialize(url)
+    @url = url
   end
 
   def url_for(subdomain, path)
@@ -11,11 +11,15 @@ class ApplicationRoot
   end
 
   def uri
-    URI(@base_url)
+    URI(@url)
   end
 
   def subdominated(subdomain)
     uri.subdominate(subdomain)
+  end
+
+  def subdominated_url(subdomain)
+    subdominated(subdomain).to_s
   end
 
   def domain

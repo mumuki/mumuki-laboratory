@@ -92,10 +92,6 @@ class Organization < ActiveRecord::Base
     ApplicationRoot.laboratory.subdominated(name).host
   end
 
-  def classroom_url
-    ApplicationRoot.classroom.subdominated(name).to_s
-  end
-
   def notify!
     Mumukit::Nuntius.notify_event! 'UpsertOrganization', as_complete_json
   end
@@ -129,7 +125,7 @@ class Organization < ActiveRecord::Base
     end
 
     def central_url
-      ApplicationRoot.laboratory.subdominated('central').to_s
+      ApplicationRoot.laboratory.subdominated_url('central')
     end
   end
 end
