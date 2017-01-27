@@ -250,5 +250,6 @@ ActiveRecord::Schema.define(version: 20170125185150) do
   end
 
   add_index "users", ["last_organization_id"], name: "index_users_on_last_organization_id", using: :btree
+  add_index "users", ["uid"], name: "index_users_on_uid", unique: true, using: :btree
 
 end
