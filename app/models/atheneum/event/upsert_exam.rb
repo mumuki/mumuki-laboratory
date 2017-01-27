@@ -27,9 +27,7 @@ module Atheneum
       end
 
       def self.remove_previous_version(id, guide_id)
-        unless Exam.exists?(classroom_id: id)
-          Exam.where(guide_id: guide_id, organization_id: Organization.current.id).destroy_all
-        end
+        Exam.where("guide_id=? and organization_id=? and classroom_id!=?", guide_id, Organization.current.id, id).destroy_all
       end
     end
   end
