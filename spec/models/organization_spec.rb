@@ -75,4 +75,11 @@ describe Organization do
     it { expect(Organization.in_path? guide_in_path).to be true }
   end
 
+
+  describe 'login_settings' do
+    let(:fresh_organization) { create(:organization, name: 'foo') }
+    it { expect(fresh_organization.login_settings.login_methods).to eq Mumukit::Login::Settings.default_methods }
+    it { expect(fresh_organization.login_settings.social_login_methods).to eq [] }
+    it { expect(fresh_organization.login_settings.to_lock_json('/foo')).to be_html_safe }
+  end
 end

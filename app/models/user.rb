@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  include WithOmniauth, WithToken, WithPermissions, WithUserNavigation
+  include WithProfile, WithToken, WithPermissions, WithUserNavigation
 
   has_many :assignments, foreign_key: :submitter_id
 
@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   end
 
   def event_json
-    as_json(only: [:uid, :social_id, :image_url], methods: [:mumukit_permissions])
+    as_json(only: [:uid, :social_id, :image_url], methods: [:permissions])
   end
 
   def last_lesson

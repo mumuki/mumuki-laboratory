@@ -6,9 +6,10 @@ module WithDynamicErrors
     unless Rails.application.config.consider_all_requests_local
       rescue_from ActionController::RoutingError, with: :not_found
     end
+    #FIXME maybe we can user more Mumukit::Auth::Exceptions here
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
+    rescue_from Mumukit::Auth::UnauthorizedAccessError, with: :forbidden
     rescue_from Exceptions::NotFoundError, with: :not_found
-    rescue_from Exceptions::OrganizationPrivateError, with: :forbidden
     rescue_from Exceptions::ForbiddenError, with: :forbidden
     rescue_from Exceptions::UnauthorizedError, with: :unauthorized
     rescue_from Exceptions::GoneError, with: :gone

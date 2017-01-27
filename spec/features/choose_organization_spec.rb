@@ -15,6 +15,7 @@ feature 'Choose organization Flow' do
 
     visit '/'
 
+    expect(page).to have_text('Sign Out')
     expect(page).to have_text('Do you want to go there?')
     expect(page).to have_text('pdep')
   end

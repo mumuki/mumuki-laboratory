@@ -56,17 +56,8 @@ def reindex_current_organization!
   reindex_organization! Organization.current
 end
 
-def set_subdomain_host!(subdomain)
-  Capybara.app_host = "http://#{subdomain}.mumuki.io"
-end
-
-def set_implicit_central!
-  Capybara.app_host = "http://mumuki.io"
-
-end
-
 def set_current_user!(user)
-  allow_any_instance_of(ApplicationController).to receive(:current_user_id).and_return(user.id)
+  allow_any_instance_of(ApplicationController).to receive(:current_user_uid).and_return(user.uid)
 end
 
 Mumukit::Login.configure do |config|

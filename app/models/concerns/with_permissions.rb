@@ -7,6 +7,7 @@ module WithPermissions
     validates_presence_of :permissions
   end
 
+  #FIXME may be able to remove now
   def student?
     permissions.student? Organization.slug
   end
