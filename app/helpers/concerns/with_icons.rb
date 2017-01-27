@@ -4,6 +4,10 @@ module WithIcons
     fa_icon *icon_for_status(Status.coerce(status_like))
   end
 
+  def fixed_fa_icon(name, options={})
+    fa_icon name, options.merge(class: 'fa-fw fixed-icon')
+  end
+
   def exercise_status_icon(exercise)
     link_to exercise_status_fa_icon(exercise),
             exercise_path(exercise) if current_user?

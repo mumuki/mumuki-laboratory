@@ -10,9 +10,11 @@ es:
   ask_redirect: ¿Querés que te llevemos ahí?
   author: Autor
   back_to_mumuki: ¡Volvé a Mumuki!
+  bibliotheca: Biblioteca
   chapter: Capítulo
   chapter_finished_html: ¡Terminaste %{chapter}! ¡Felicitaciones!
   chapter_number: 'Capítulo %{number}:'
+  classroom: Aula
   clear_console: Reiniciar consola
   comment: Comentario
   comments: Comentarios
@@ -94,6 +96,7 @@ es:
   not_found: ¡La página que buscaste no existe!
   not_found_explanation: '¡Ups! Esto es lo que se conoce como %{error}: fijate si escribiste bien la dirección. Peeeeero, si pensás que es un error nuestro, %{issues}'
   notify_problem_with_exercise: ¿Pensás que algo está mal con este ejercicio?
+  office: Secretaría
   output: Salida
   overview: Vista general
   passed: Todo en orden
