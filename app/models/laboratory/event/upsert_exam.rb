@@ -1,4 +1,4 @@
-module Atheneum
+module Laboratory
   module Event
     class UpsertExam
       def self.execute!(body)

@@ -1,4 +1,4 @@
-module Atheneum
+module Laboratory
   module Event
     class OrganizationChanged
       def self.execute!(payload)

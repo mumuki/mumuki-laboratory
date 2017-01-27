@@ -36,20 +36,20 @@ describe 'Organization events' do
     it { expect(organization.extension_javascript_url).to eq 'http://mumuki.io/scripts.js' }
   end
 
-  context Atheneum::Event::OrganizationChanged do
+  context Laboratory::Event::OrganizationChanged do
     before { create :organization, name: 'test-orga', id: 55 }
 
     context 'when a message is received' do
-      before { Atheneum::Event::OrganizationChanged.execute! organization_json }
+      before { Laboratory::Event::OrganizationChanged.execute! organization_json }
 
       it { expect(organization.id).to eq 55 }
       it_behaves_like 'a task that persists an organization'
     end
   end
 
-  describe Atheneum::Event::OrganizationCreated do
+  describe Laboratory::Event::OrganizationCreated do
     context 'when a message is received' do
-      before { Atheneum::Event::OrganizationCreated.execute! organization_json }
+      before { Laboratory::Event::OrganizationCreated.execute! organization_json }
 
       it { expect(organization.id).not_to eq 998 }
       it_behaves_like 'a task that persists an organization'
