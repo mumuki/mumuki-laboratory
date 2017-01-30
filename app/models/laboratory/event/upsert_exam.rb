@@ -27,7 +27,11 @@ module Laboratory
       end
 
       def self.remove_previous_version(id, guide_id)
-        Exam.where("guide_id=? and organization_id=? and classroom_id!=?", guide_id, Organization.current.id, id).destroy_all
+        Rails.logger.info "Looking for"
+        Exam.where("guide_id=? and organization_id=? and classroom_id!=?", guide_id, Organization.current.id, id).tap do |exams|
+          Rails.logger.info "Deleting exams with ORG_ID:#{Organization.current.id} - GUIDE_ID:#{guide_id} - CLASSROOM_ID:#{id}"
+          exams.destroy_all
+        end
       end
     end
   end
