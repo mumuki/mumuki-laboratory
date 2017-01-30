@@ -65,4 +65,10 @@ Mumukit::Login.configure do |config|
   config.saml = struct
 end
 
+class String
+  def parse_json
+    JSON.parse(self, symbolize_names: true)
+  end
+end
+
 SimpleCov.start
