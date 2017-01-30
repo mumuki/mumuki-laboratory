@@ -14,9 +14,17 @@ describe CommentsController do
     end
   end
 
-  before { set_current_user! user }
-  before { get :index }
+  context 'when authenticated' do
+    before { get :index }
 
-  it { expect(response.status).to eq 200 }
-  it { expect(response.body).to json_eq(has_comments: true, comments_count: 10) }
+    it { expect(response.status).to eq 403 }
+  end
+
+  context 'when not authenticated' do
+    before { set_current_user! user }
+    before { get :index }
+
+    it { expect(response.status).to eq 200 }
+    it { expect(response.body.parse_json).to json_like(has_comments: true, comments_count: 10) }
+  end
 end

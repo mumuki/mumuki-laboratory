@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/mumuki/mumukit-login.git
-  revision: e19f7fc80227b9a36b15cfee8f78b320e2a8a7b2
+  revision: f164611241bcda2853219ddd7f3fdfbcb21157c3
   specs:
     mumukit-login (0.1.0)
       addressable

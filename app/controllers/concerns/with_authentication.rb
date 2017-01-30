@@ -10,5 +10,9 @@ module WithAuthentication
   def login_button(options={})
     login_form.button_html I18n.t(:sign_in), options[:class]
   end
+
+  def authenticate_api!
+    head 403 unless current_user?
+  end
 end
 
