@@ -4,13 +4,6 @@ Rails.application.routes.draw do
 
   root to: 'book#show'
 
-  namespace :api do
-    resources :guides, only: [:create]
-    resources :topics, only: [:create]
-    resources :books, only: [:create]
-    resources :organizations, only: [:index]
-  end
-
   resources :book, only: [:show]
   resources :chapters, only: [:show] do
     resource :appendix, only: :show
