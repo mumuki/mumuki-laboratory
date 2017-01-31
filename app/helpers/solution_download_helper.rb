@@ -1,4 +1,4 @@
-module WithSolutionDownload
+module SolutionDownloadHelper
   def solution_download_link(assignment)
     link_to fa_icon(:download, text: t(:download)),
             solution_octet_data(assignment),

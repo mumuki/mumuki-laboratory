@@ -1,11 +1,6 @@
 module ApplicationHelper
-  #FIXME only include what is needed
-  include WithLinksRendering
-  include WithIcons
-  include WithNavigation
-  include WithStatusRendering
-  include WithResetButton
-  include WithSolutionDownload
+  include Mumukit::Navbar::MenuBarHelper
+  include Mumukit::Navbar::BreadcrumbsHelper
 
   def contact_email
     Organization.contact_email

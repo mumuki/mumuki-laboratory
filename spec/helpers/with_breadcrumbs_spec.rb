@@ -3,7 +3,7 @@ require 'spec_helper'
 describe WithBreadcrumbs do
 
   helper WithBreadcrumbs
-  helper WithLinksRendering
+  helper LinksRenderingHelper
 
   let(:breadcrumb) { breadcrumbs(exercise) }
 
