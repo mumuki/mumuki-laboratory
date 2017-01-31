@@ -85,11 +85,11 @@ class Organization < ActiveRecord::Base
 
 
   def url_for(path)
-    Mumukit::Navbar::Application.laboratory.url_for(name, path)
+    Mumukit::Navbar::Application[:laboratory].url_for(name, path)
   end
 
   def domain
-    Mumukit::Navbar::Application.laboratory.subdominated(name).host
+    Mumukit::Navbar::Application[:laboratory].subdominated_url(name).host
   end
 
   def notify!
@@ -125,7 +125,7 @@ class Organization < ActiveRecord::Base
     end
 
     def central_url
-      Mumukit::Navbar::Application.laboratory.subdominated_url('central')
+      Mumukit::Navbar::Application[:laboratory].subdominated_url('central')
     end
 
     def create_from_json!(json)
