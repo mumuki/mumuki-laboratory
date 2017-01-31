@@ -1,3 +1,5 @@
+require 'mumukit/navbar'
+
 module ApplicationHelper
   include Mumukit::Navbar::MenuBarHelper
   include Mumukit::Navbar::BreadcrumbsHelper
