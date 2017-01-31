@@ -4,6 +4,10 @@ module ApplicationHelper
   include Mumukit::Navbar::MenuBarHelper
   include Mumukit::Navbar::BreadcrumbsHelper
 
+  def current_organization
+    Organization.current
+  end
+
   def contact_email
     Organization.contact_email
   end
