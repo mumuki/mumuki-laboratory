@@ -1,4 +1,4 @@
-module WithTestResultsRendering
+module TestResultHelper
   def render_test_results(assignment)
     if assignment.test_results.present?
       render partial: 'layouts/test_results', locals: {

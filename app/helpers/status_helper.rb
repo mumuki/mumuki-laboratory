@@ -1,4 +1,4 @@
-module WithStatusRendering
+module StatusHelper
   def class_for_status(s)
     Status.coerce(s).iconize[:class].to_s
   end

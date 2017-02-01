@@ -1,11 +1,12 @@
+require 'mumukit/navigation'
+
 module ApplicationHelper
-  #FIXME only include what is needed
-  include WithLinksRendering
-  include WithIcons
-  include WithNavigation
-  include WithStatusRendering
-  include WithResetButton
-  include WithSolutionDownload
+  include Mumukit::Navigation::MenuBarHelper
+  include Mumukit::Navigation::BreadcrumbsHelper
+
+  def current_organization
+    Organization.current
+  end
 
   def contact_email
     Organization.contact_email
@@ -48,13 +49,5 @@ module ApplicationHelper
 
   def chapter_finished(chapter)
     t :chapter_finished_html, chapter: link_to_path_element(chapter) if chapter
-  end
-
-  def next_lesson_button(guide)
-    next_button(guide.lesson) || chapter_finished(guide.chapter)
-  end
-
-  def next_exercise_button(exercise)
-    next_button(exercise) || next_button(exercise.guide.lesson)
   end
 end
