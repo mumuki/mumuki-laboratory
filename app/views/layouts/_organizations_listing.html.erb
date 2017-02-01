@@ -4,7 +4,7 @@
         <%= image_tag(org.logo_url, height: 50, class: 'pull-left') %>
       </div>
       <div class="col-md-6 organization-row">
-        <%= link_to("Ir a #{org.domain}", org.url_for(request.path), class: 'btn btn-success pull-right') %>
+        <%= link_to_organization org %>
       </div>
     </div>
 <% end %>

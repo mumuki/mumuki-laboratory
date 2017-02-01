@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Mumukit::Navbar::BreadcrumbsHelper do
-  helper Mumukit::Navbar::BreadcrumbsHelper
+describe Mumukit::Navigation::BreadcrumbsHelper do
+  helper Mumukit::Navigation::BreadcrumbsHelper
   helper LinksHelper
 
   let(:breadcrumb) { breadcrumbs(exercise) }

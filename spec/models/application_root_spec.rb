@@ -1,7 +1,8 @@
 require 'spec_helper'
 
-describe Mumukit::Navbar::Application do
-  it { expect(Mumukit::Navbar::Application[:laboratory].url_for 'foo', '/foo/baz').to eq 'http://foo.localmumuki.io:3000/foo/baz' }
-  it { expect(Mumukit::Navbar::Application[:classroom].url_for 'foo', '/foo/baz').to eq 'http://foo.classroom.mumuki.io/foo/baz' }
-  it { expect(Mumukit::Navbar::Application[:office].url).to eq 'http://office.mumuki.io' }
+describe Mumukit::Navigation::Application do
+  let(:app) { Mumukit::Navigation::Application.new('http://gugle.com') }
+
+  it { expect(app.subdominated_url_for 'foo', '/foo/baz').to eq 'http://foo.gugle.com/foo/baz' }
+  it { expect(app.url).to eq 'http://gugle.com' }
 end

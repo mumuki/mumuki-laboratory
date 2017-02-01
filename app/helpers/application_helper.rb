@@ -1,8 +1,8 @@
-require 'mumukit/navbar'
+require 'mumukit/navigation'
 
 module ApplicationHelper
-  include Mumukit::Navbar::MenuBarHelper
-  include Mumukit::Navbar::BreadcrumbsHelper
+  include Mumukit::Navigation::MenuBarHelper
+  include Mumukit::Navigation::BreadcrumbsHelper
 
   def current_organization
     Organization.current

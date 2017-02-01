@@ -83,15 +83,6 @@ class Organization < ActiveRecord::Base
     exams.select { |exam| exam.accessible_for?(user) }
   end
 
-
-  def url_for(path)
-    Mumukit::Navbar::Application[:laboratory].url_for(name, path)
-  end
-
-  def domain
-    Mumukit::Navbar::Application[:laboratory].subdominated_url(name).host
-  end
-
   def notify!
     Mumukit::Nuntius.notify_event! 'UpsertOrganization', as_complete_json
   end
@@ -125,7 +116,7 @@ class Organization < ActiveRecord::Base
     end
 
     def central_url
-      Mumukit::Navbar::Application[:laboratory].subdominated_url('central')
+      Mumukit::Navigation::Application[:laboratory].subdominated_url('central')
     end
 
     def create_from_json!(json)
