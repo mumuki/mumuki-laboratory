@@ -1,5 +1,4 @@
 module ApplicationHelper
-  #FIXME only include what is needed
   include WithStudentPathNavigation
 
   def contact_email
