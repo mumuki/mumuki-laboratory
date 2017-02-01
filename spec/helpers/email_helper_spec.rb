@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe ApplicationHelper do
-  helper UserHelper
+describe EmailHelper do
+  helper EmailHelper
 
   before { I18n.locale = :en }
 

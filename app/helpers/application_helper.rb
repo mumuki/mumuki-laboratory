@@ -1,11 +1,6 @@
 module ApplicationHelper
   #FIXME only include what is needed
-  include WithLinksRendering
-  include WithIcons
   include WithNavigation
-  include WithStatusRendering
-  include WithResetButton
-  include WithSolutionDownload
 
   def contact_email
     Organization.contact_email

@@ -1,4 +1,4 @@
-module WithIcons
+module IconsHelper
   #FIXME refactor names
   def status_icon(status_like)
     fa_icon *icon_for_status(Status.coerce(status_like))

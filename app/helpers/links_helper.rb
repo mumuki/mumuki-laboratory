@@ -1,4 +1,4 @@
-module WithLinksRendering
+module LinksHelper
 
   def link_to_path_element(element, options={})
     name = extract_name element, options

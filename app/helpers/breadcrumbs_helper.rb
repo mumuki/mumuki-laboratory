@@ -1,4 +1,4 @@
-module WithBreadcrumbs
+module BreadcrumbsHelper
   def breadcrumbs(e, extra=nil)
     return "#{breadcrumbs(e)}<li>#{extra}</li>".html_safe if extra
 

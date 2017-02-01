@@ -1,4 +1,4 @@
-module WithEditorTabs
+module EditorTabsHelper
   def extra_code_tab
 
 "<li role='presentation'> <a data-target='#visible-extra' aria-controls='visible-extra' role='tab' data-toggle='tab' class='editor-tab'>#{fa_icon 'code'} #{t 'activerecord.attributes.exercise.extra'}</a> </li>".html_safe
