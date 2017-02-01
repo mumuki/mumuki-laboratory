@@ -5,10 +5,6 @@ module LinksHelper
     link_to name, element, options
   end
 
-  def link_to_user(user)
-    link_to user.name, user
-  end
-
   def link_to_error_404
     "<a href='https://es.wikipedia.org/wiki/Error_404'> #{I18n.t(:error_404)} </a>"
   end
