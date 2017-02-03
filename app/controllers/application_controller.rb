@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_organization!
   before_action :set_locale!
-  before_action :authorize!
+  before_action :authorize_if_private!
   before_action :validate_subject_accessible!
   before_action :visit_organization!, if: :current_user?
 

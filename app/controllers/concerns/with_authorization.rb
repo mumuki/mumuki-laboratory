@@ -3,13 +3,12 @@ module WithAuthorization
     params['controller'] == 'login'
   end
 
-  def authorize!
+  def authorize_if_private!
     return if Organization.public? || from_sessions?
+    authorize! :student
+  end
 
-    if current_user?
-      current_user.permissions.protect! :student, Organization.slug
-    else
-      authenticate!
-    end
+  def authorization_slug
+    Organization.current.slug
   end
 end
