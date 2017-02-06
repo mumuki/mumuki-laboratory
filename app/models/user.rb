@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   has_one :last_guide, through: :last_exercise, source: :guide
 
-  has_and_belongs_to_many :exams
+  has_many :exam_authorizations
 
   after_initialize :init
   after_save :notify_changed!, if: Proc.new { |user| user.image_url_changed? || user.social_id_changed? }
