@@ -1,8 +1,7 @@
-class ExerciseSolutionsController < ApplicationController
+class ExerciseSolutionsController < AjaxController
   include NestedInExercise
   include WithExamsValidations
 
-  before_action :authenticate_api!
   before_action :set_guide_previously_done
   before_action :set_comments, only: :create
   before_action :validate_user, only: :create
