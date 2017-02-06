@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe User do
+  describe '#clear_progress!' do
+    let(:student) { create :user }
+    let(:more_clauses) { create(:exercise, name: 'More Clauses') }
+
+    before { more_clauses.submit_solution! student, content: 'foo(X) :- not(bar(X))' }
+
+    before { student.reload.clear_progress! }
+
+    it { expect(student.reload.assignments).to be_empty }
+    it { expect(student.never_submitted?).to be true }
+  end
   describe '#transfer_progress_to!' do
 
     let(:codeorga) { create :organization, name: 'Code.Orga' }
@@ -10,8 +21,6 @@ describe User do
     let(:more_clauses) { create(:exercise, name: 'More Clauses') }
 
     let(:two_hours_ago) { 2.hours.ago }
-
-    let(:original_exists) { User.exists? id: original.id }
 
     context 'when final user has less information than original' do
       let!(:submission) { your_first_program.submit_solution! original, content: 'adasdsadas' }

@@ -90,6 +90,13 @@ class User < ActiveRecord::Base
     last_submission_date.nil?
   end
 
+  def clear_progress!
+    transaction do
+      update! last_submission_date: nil, last_exercise: nil
+      assignments.destroy_all
+    end
+  end
+
   def transfer_progress_to!(another)
     transaction do
       assignments.update_all(submitter_id: another.id)
