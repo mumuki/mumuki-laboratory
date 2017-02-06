@@ -86,6 +86,22 @@ class User < ActiveRecord::Base
     "#{id}:#{name}:#{uid}"
   end
 
+  def never_submitted?
+    last_submission_date.nil?
+  end
+
+  def transfer_progress_to!(another)
+    transaction do
+      assignments.update_all(submitter_id: another.id)
+      if another.never_submitted? || last_submission_date.try { |it| it > another.last_submission_date }
+        another.update! last_submission_date: last_submission_date,
+                        last_exercise: last_exercise,
+                        last_organization: last_organization
+      end
+    end
+    reload
+  end
+
   def self.import_from_json!(body)
     body[:name] = "#{body.delete(:first_name)} #{body.delete(:last_name)}"
     User.where(uid: body[:uid]).update_or_create!(body.except(:id))
