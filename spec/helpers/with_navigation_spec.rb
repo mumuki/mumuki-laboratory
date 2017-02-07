@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe WithNavigation do
-  helper WithNavigation
+describe WithStudentPathNavigation do
+  helper WithStudentPathNavigation
   helper FontAwesome::Rails::IconHelper
 
   before { I18n.locale = :en }

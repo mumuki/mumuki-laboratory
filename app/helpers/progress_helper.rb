@@ -1,4 +1,4 @@
-module WithProgressRendering
+module ProgressHelper
   def lesson_practice_key_for(stats)
     if stats.try(:started?)
       :continue_lesson

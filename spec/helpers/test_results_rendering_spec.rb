@@ -1,9 +1,9 @@
 require 'spec_helper'
 require 'ostruct'
 
-describe WithTestResultsRendering do
-  helper WithIcons
-  helper WithTestResultsRendering
+describe AssignmentResultHelper do
+  helper IconsHelper
+  helper AssignmentResultHelper
 
   let(:html) { render_test_results assignment }
 

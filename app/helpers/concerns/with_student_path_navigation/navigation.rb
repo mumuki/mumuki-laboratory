@@ -1,4 +1,4 @@
-module WithNavigation
+module WithStudentPathNavigation
   class Navigation
     def initialize(template)
       @template = template

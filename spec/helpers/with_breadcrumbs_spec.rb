@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe WithBreadcrumbs do
+describe BreadcrumbsHelper do
 
-  helper WithBreadcrumbs
-  helper WithLinksRendering
+  helper BreadcrumbsHelper
+  helper LinksHelper
 
   let(:breadcrumb) { breadcrumbs(exercise) }
 

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe WithChoices do
-  helper WithChoices
+describe ChoicesHelper do
+  helper ChoicesHelper
 
   context 'exercise width choices' do
     let(:checked_content) { struct id: '1', index: 0, value: 'foo', text: 'bar' }

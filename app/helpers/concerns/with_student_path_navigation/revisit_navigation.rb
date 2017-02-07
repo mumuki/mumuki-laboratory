@@ -1,4 +1,4 @@
-module WithNavigation
+module WithStudentPathNavigation
   class RevisitNavigation < Navigation
     def right
       true

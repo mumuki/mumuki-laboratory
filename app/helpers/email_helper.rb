@@ -1,4 +1,4 @@
-module WithEmailFormatting
+module EmailHelper
   def assignment_help_email_body(assignment)
 <<EOM
 #{t :exercise}: #{assignment.exercise.name}
