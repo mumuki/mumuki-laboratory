@@ -2,8 +2,8 @@ module WithDynamicErrors
   extend ActiveSupport::Concern
 
   included do
-    rescue_from Exception, with: :internal_server_error
     unless Rails.application.config.consider_all_requests_local
+      rescue_from Exception, with: :internal_server_error
       rescue_from ActionController::RoutingError, with: :not_found
     end
     #FIXME maybe we can user more Mumukit::Auth::Exceptions here

@@ -1,6 +1,4 @@
-class CommentsController < ApplicationController
-  before_action :authenticate_api!
-
+class CommentsController < AjaxController
   def index
     render json: {has_comments: has_comments?,
                   comments_count: comments_count}

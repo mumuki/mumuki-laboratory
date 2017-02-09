@@ -100,16 +100,16 @@ class Organization < ActiveRecord::Base
     as_json(except: [:login_methods]).merge(locale: locale, lock_json: login_settings.lock_json)
   end
 
+  def slug
+    Mumukit::Auth::Slug.join_s name
+  end
+
   private
 
 
   def notify_assignments!(assignments)
     puts "We will try to send #{assignments.count} assignments, please wait..."
     assignments.each { |assignment| Event::Submission.new(assignment).notify! }
-  end
-
-  def slug
-    Mumukit::Auth::Slug.join_s name
   end
 
   class << self

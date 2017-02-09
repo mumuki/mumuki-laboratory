@@ -24,10 +24,6 @@ module WithPermissions
     permissions.writer? Mumukit::Auth::Slug.any
   end
 
-  def update_permissions!(permissions)
-    update!(permissions: permissions)
-  end
-
   def accessible_organizations
     permissions.accessible_organizations.map { |org| Organization.find_by(name: org) }.compact
   end

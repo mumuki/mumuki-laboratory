@@ -1,11 +1,9 @@
 require 'spec_helper'
 
 feature 'menu bar' do
-  let(:private_organization) do
-    create(:organization,
-           name: 'private',
-           book: create(:book, name: 'private', slug: 'mumuki/mumuki-the-private-book'))
-  end
+  let(:chapter) { create(:chapter, lessons: [create(:lesson)]) }
+  let(:book) { create(:book, chapters: [chapter], name: 'private', slug: 'mumuki/mumuki-the-private-book') }
+  let(:private_organization) { create(:organization, name: 'private', book: book) }
 
   before { set_subdomain_host! private_organization.name }
   before { private_organization.switch! }

@@ -1,17 +1,18 @@
 class LoginController < ApplicationController
   Mumukit::Login.configure_login_controller! self
 
-  def failure
+  private
+
+  def login_failure!
     @error_msg = request.params['message']
   end
 
-  private
 
-  def destroy_session_user_uid!
+  def destroy_current_user_session!
     remember_me_token.clear!
   end
 
-  def save_session_user_uid!(user)
+  def save_current_user_session!(user)
     remember_me_token.value = user.remember_me_token
   end
 end

@@ -1,7 +1,5 @@
-class ExerciseQueryController < ApplicationController
+class ExerciseQueryController < AjaxController
   include NestedInExercise
-
-  before_action :authenticate_api!
 
   def create
     results = @exercise.submit_query! current_user, query_params
