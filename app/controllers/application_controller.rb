@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  Mumukit::Login.configure_controller! self
+
   include WithOrganization
 
   include WithAuthentication
@@ -16,8 +18,6 @@ class ApplicationController < ActionController::Base
   before_action :authorize_if_private!
   before_action :validate_subject_accessible!
   before_action :visit_organization!, if: :current_user?
-
-  Mumukit::Login.configure_controller! self
 
   helper_method :login_button,
                 :comments_count,
