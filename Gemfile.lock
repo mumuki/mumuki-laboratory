@@ -10,6 +10,21 @@ GIT
       omniauth-saml (~> 1.6)
       rack (>= 1.5)
 
+GIT
+  remote: https://github.com/mumuki/mumukit-content-type
+  revision: 2386c4610b221140945fb4438da3eeee9ce57b50
+  specs:
+    mumukit-content-type (0.4.0)
+      md_emoji
+      mumukit-core (~> 0.1)
+      redcarpet (~> 3.3.2)
+
+GIT
+  remote: https://github.com/mumuki/rouge
+  revision: 5b7f5cd3d17c6a54d93bf57a82a0dfc2e03b3ae3
+  specs:
+    rouge (2.0.7)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -149,11 +164,6 @@ GEM
     mumukit-bridge (1.3.1)
       mumukit-core (~> 0.1)
       rest-client
-    mumukit-content-type (0.4.0)
-      md_emoji
-      mumukit-core (~> 0.1)
-      redcarpet (~> 3.3.2)
-      rouge
     mumukit-core (0.6.0)
       activesupport (>= 4.1)
       i18n (~> 0.7)
@@ -236,7 +246,6 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    rouge (2.0.7)
     rspec-collection_matchers (1.1.3)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-core (2.99.2)
@@ -328,7 +337,7 @@ DEPENDENCIES
   kaminari (~> 0.16.3)
   mumukit-auth (~> 5.0)
   mumukit-bridge (~> 1.3)
-  mumukit-content-type (~> 0.4)
+  mumukit-content-type!
   mumukit-core (~> 0.6)
   mumukit-inspection (~> 0.1)
   mumukit-login!
@@ -347,6 +356,7 @@ DEPENDENCIES
   rails-assets-dev-awesome!
   rails-i18n (~> 4.0.0)
   rake (= 10.4.2)
+  rouge!
   rspec-rails (~> 2.14)
   sass-rails
   sitemap_generator
