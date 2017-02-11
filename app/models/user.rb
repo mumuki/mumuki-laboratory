@@ -61,15 +61,6 @@ class User < ActiveRecord::Base
     assignments.where(status: Status::Passed.to_i)
   end
 
-  def create_remember_me_token!
-    self.remember_me_token ||= get_token
-    self.save!
-  end
-
-  def revoke!
-    self.update!(remember_me_token: nil)
-  end
-
   def comments
     assignments.flat_map(&:comments)
   end
