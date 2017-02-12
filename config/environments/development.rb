@@ -39,9 +39,8 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  config.domain = ENV['MUMUKI_DOMAIN'] || 'localmumuki.io'
-  config.base_url = ENV['MUMUKI_BASE_URL'] || "http://#{config.domain}:3000"
-  config.cookies_domain = ENV['MUMUKI_COOKIES_DOMAIN'] || ".#{config.domain}"
+  config.domain = ENV['MUMUKI_LABORATORY_DOMAIN'] || 'laboratory.localmumuki.io'
+  config.base_url = ENV['MUMUKI_LABORATORY_BASE_URL'] || "http://#{config.domain}:3000"
 
   config.thesaurus_url = ENV['MUMUKI_THESAURUS_URL'] || 'http://thesaurus.mumuki.io'
   config.bibliotheca_url = ENV['MUMUKI_BIBLIOTHECA_URL'] || 'http://bibliotheca.mumuki.io'
