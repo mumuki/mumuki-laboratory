@@ -54,7 +54,7 @@ gem 'mumukit-core', '~> 0.6'
 gem 'mumukit-bridge', '~> 1.3'
 gem 'mumukit-inspection', '~> 0.1'
 gem 'mumukit-nuntius', '~> 3.0'
-gem 'mumukit-login', path: '../mumukit-login'
+gem 'mumukit-login', github: 'mumuki/mumukit-login', branch: 'feature-sso'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'
