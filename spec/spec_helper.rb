@@ -63,7 +63,13 @@ end
 Mumukit::Login.configure do |config|
   config.auth0 = struct
   config.saml = struct
+
+  config.mucookie_domain = '.localmumuki.io'
+  config.mucookie_secret_key = 'abcde1213456123456'
+  config.mucookie_secret_salt = 'mucookie test secret salt'
+  config.mucookie_sign_salt = 'mucookie test sign salt'
 end
+
 
 class String
   def parse_json
