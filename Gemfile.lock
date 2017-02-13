@@ -1,18 +1,4 @@
 GIT
-  remote: git://github.com/mumuki/mumukit-login.git
-  revision: dae8a24e69f3ca0c5d5b1016e22e6af95f9b0541
-  branch: feature-sso
-  specs:
-    mumukit-login (1.0.0)
-      addressable
-      mumukit-auth (~> 6.1)
-      mumukit-core (~> 0.5)
-      omniauth (~> 1.2)
-      omniauth-auth0 (~> 1.1)
-      omniauth-saml (~> 1.6)
-      rack (>= 1.5)
-
-GIT
   remote: https://github.com/mumuki/mumukit-content-type
   revision: 2386c4610b221140945fb4438da3eeee9ce57b50
   specs:
@@ -170,6 +156,14 @@ GEM
       rack (>= 1.5)
     mumukit-inspection (0.1.1)
       mumukit-core (~> 0.2)
+    mumukit-login (1.2.0)
+      addressable
+      mumukit-auth (~> 6.1)
+      mumukit-core (~> 0.5)
+      omniauth (~> 1.2)
+      omniauth-auth0 (~> 1.1)
+      omniauth-saml (~> 1.6)
+      rack (>= 1.5)
     mumukit-nuntius (3.0.0)
       bunny (~> 2.3)
       mumukit-core (~> 0.5)
@@ -340,7 +334,7 @@ DEPENDENCIES
   mumukit-content-type!
   mumukit-core (~> 0.6)
   mumukit-inspection (~> 0.1)
-  mumukit-login!
+  mumukit-login (~> 1.2)
   mumukit-nuntius (~> 3.0)
   nprogress-rails
   pg (~> 0.18.0)
