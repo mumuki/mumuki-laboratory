@@ -3,8 +3,6 @@ module WithPermissions
 
   included do
     serialize :permissions, Mumukit::Auth::Permissions
-
-    validates_presence_of :permissions
   end
 
   #FIXME may be able to remove now

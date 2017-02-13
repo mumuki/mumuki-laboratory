@@ -223,14 +223,6 @@ describe User do
     end
   end
 
-  describe '#revoke!' do
-    let(:user) { create(:user) }
-    before { user.create_remember_me_token! }
-    before { user.revoke! }
-
-    it { expect(user.remember_me_token).to be_nil }
-  end
-
   describe '#notify_changed!' do
     let(:user) { create(:user) }
     before { expect_any_instance_of(Mumukit::Nuntius::NotificationMode::Deaf).to receive(:notify_event!).exactly(2).times }

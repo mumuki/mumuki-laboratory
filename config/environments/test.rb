@@ -51,7 +51,6 @@ Rails.application.configure do
   config.bibliotheca_url = 'http://bibliotheca-api.mumuki.io'
   config.domain = 'localmumuki.io'
   config.base_url = 'http://localmumuki.io:3000'
-  config.cookies_domain = '.localmumuki.io'
   config.bibliotheca_url = 'http://bibliotheca.mumuki.io'
   config.bibliotheca_api_url = 'http://bibliotheca-api.mumuki.io'
   config.office_url = 'http://office.mumuki.io'

@@ -49,12 +49,12 @@ gem 'bunny'
 gem 'mumukit-content-type', git: 'https://github.com/mumuki/mumukit-content-type', require: 'mumukit/content_type'
 gem 'rouge', git: 'https://github.com/mumuki/rouge'
 
-gem 'mumukit-auth', '~> 5.0'
+gem 'mumukit-auth', '~> 6.0'
 gem 'mumukit-core', '~> 0.6'
 gem 'mumukit-bridge', '~> 1.3'
 gem 'mumukit-inspection', '~> 0.1'
 gem 'mumukit-nuntius', '~> 3.0'
-gem 'mumukit-login', github: 'mumuki/mumukit-login', tag: 'v1.0.0'
+gem 'mumukit-login', '~> 1.2'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'

@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   include WithAuthentication
   include WithAuthorization
-  include WithRememberMeToken
   include WithPagination
   include WithComments
   include WithCustomAssets

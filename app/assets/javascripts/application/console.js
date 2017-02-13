@@ -1,7 +1,8 @@
 var mumuki = mumuki || {};
 (function (mumuki) {
   function renderPrompt() {
-    if ($('#prompt').attr('value').indexOf('ム') >= 0) {
+      var prompt = $('#prompt').attr('value');
+      if (prompt && prompt.indexOf('ム') >= 0) {
       $('.jquery-console-prompt-label')
         .html('')
         .append('<i class="text-primary da da-mumuki"></i>')
