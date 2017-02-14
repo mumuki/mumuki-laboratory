@@ -1,10 +1,10 @@
 module WithOrganization
   def set_organization!
-    Organization.find_by!(name: first_subdomain).switch!
+    Organization.find_by!(name: organization_name).switch!
   end
 
-  def first_subdomain
-    request.first_subdomain_after(Rails.configuration.domain) || 'central'
+  def organization_name
+    OrganizationMapper.extract_organization_name(request)
   end
 
   def visit_organization!
