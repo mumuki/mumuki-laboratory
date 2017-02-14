@@ -70,7 +70,7 @@ echo "MUMUKI_AUTH0_CLIENT_ID=... \
 
 ### 5. Configure authentication provider
 
-The `MUMUKI_AUTHORIZATION_PROVIDER` _environment variable_ can take any of the following values:
+The `MUMUKI_LOGIN_PROVIDER` _environment variable_ can take any of the following values:
 
 * `developer`
 * `auth0`
