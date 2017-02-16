@@ -1,1 +1,1 @@
-Sitemap: http://<MUMUKI_BASE_URL>/sitemap.xml.gz
+Sitemap: http://<MUMUKI_DOMAIN>/sitemap.xml.gz

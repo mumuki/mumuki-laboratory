@@ -4,7 +4,7 @@ REV=$1
 echo $REV > public/version
 
 echo "[Escualo::Atheneum] Copying robots.txt"
-sed -i -e "s/<MUMUKI_BASE_URL>/$MUMUKI_BASE_URL/g" public/robots.production.txt
+sed -i -e "s/<MUMUKI_DOMAIN>/$MUMUKI_DOMAIN/g" public/robots.production.txt
 mv public/robots.production.txt public/robots.txt
 
 echo "[Escualo::Atheneum] Running Migrations..."
