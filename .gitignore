@@ -13,6 +13,8 @@
 
 # Ignore de SAML public cert
 saml.crt
+saml.key
+saml_idp.crt
 
 # Ignore all logfiles and tempfiles.
 *.log
