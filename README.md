@@ -121,7 +121,7 @@ bundle exec rake db:create db:schema:load db:seed
 ### Starting the server
 
 ```bash
-rails s
+bundle exec rails s
 ```
 
 ### Running
