@@ -164,7 +164,7 @@ GEM
       omniauth-auth0 (~> 1.1)
       omniauth-saml (~> 1.6)
       rack (>= 1.5)
-    mumukit-nuntius (3.1.0)
+    mumukit-nuntius (4.0.0)
       bunny (~> 2.3)
       mumukit-core (~> 0.5)
     netrc (0.11.0)
@@ -335,7 +335,7 @@ DEPENDENCIES
   mumukit-core (~> 0.6)
   mumukit-inspection (~> 0.1)
   mumukit-login (~> 1.2)
-  mumukit-nuntius (~> 3.1)
+  mumukit-nuntius (~> 4.0)
   nprogress-rails
   pg (~> 0.18.0)
   pg_search (~> 1.0)

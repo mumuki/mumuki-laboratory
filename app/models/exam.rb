@@ -97,6 +97,7 @@ class Exam < ActiveRecord::Base
   end
 
   def self.import_from_json!(json)
+    json.except!(:social_ids, :sender)
     organization = Organization.find_by!(name: json.delete(:tenant))
     organization.switch!
     exam_data = parse_json json
@@ -105,6 +106,7 @@ class Exam < ActiveRecord::Base
     exam = where(classroom_id: exam_data.delete(:id)).update_or_create! exam_data
     exam.process_users users
     exam.index_usage! organization
+    exam
   end
 
   def self.parse_json(exam_json)

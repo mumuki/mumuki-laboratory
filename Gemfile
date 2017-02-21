@@ -53,7 +53,7 @@ gem 'mumukit-auth', '~> 6.0'
 gem 'mumukit-core', '~> 0.6'
 gem 'mumukit-bridge', '~> 1.3'
 gem 'mumukit-inspection', '~> 0.1'
-gem 'mumukit-nuntius', '~> 3.1'
+gem 'mumukit-nuntius', '~> 4.0'
 gem 'mumukit-login', '~> 1.2'
 
 group :test do
