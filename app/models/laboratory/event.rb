@@ -1,5 +1,5 @@
 module Laboratory
   module Event
-    extend Mumukit::Nuntius::EventConsumer::Handler
+    extend Mumukit::Nuntius::EventConsumer::HandlerModule
   end
 end
