@@ -88,11 +88,41 @@ class Exam < ActiveRecord::Base
   end
 
   def process_users(users)
-    users.map { |user| authorize! user}
+    users.map { |user| authorize! user }
     clean_authorizations users
   end
 
   def clean_authorizations(users)
     authorizations.all_except(authorizations_for(users)).destroy_all
+  end
+
+  def self.import_from_json!(json)
+    json.except!(:social_ids, :sender)
+    organization = Organization.find_by!(name: json.delete(:tenant))
+    organization.switch!
+    exam_data = parse_json json
+    remove_previous_version exam_data[:id], exam_data[:guide_id]
+    users = exam_data.delete(:users)
+    exam = where(classroom_id: exam_data.delete(:id)).update_or_create! exam_data
+    exam.process_users users
+    exam.index_usage! organization
+    exam
+  end
+
+  def self.parse_json(exam_json)
+    exam = exam_json.except(:name, :language)
+    exam[:guide_id] = Guide.find_by(slug: exam.delete(:slug)).id
+    exam[:organization_id] = Organization.id
+    exam[:users] = exam.delete(:uids).map { |uid| User.find_by(uid: uid) }.compact
+    [:start_time, :end_time].each { |param| exam[param] = exam[param].to_time }
+    exam
+  end
+
+  def self.remove_previous_version(id, guide_id)
+    Rails.logger.info "Looking for"
+    where("guide_id=? and organization_id=? and classroom_id!=?", guide_id, Organization.current.id, id).tap do |exams|
+      Rails.logger.info "Deleting exams with ORG_ID:#{Organization.current.id} - GUIDE_ID:#{guide_id} - CLASSROOM_ID:#{id}"
+      exams.destroy_all
+    end
   end
 end

@@ -4,22 +4,19 @@ describe 'Organization events' do
   before { create :book, slug: 'a-book', id: 8 }
 
   let(:organization) { Organization.find_by(name: 'test-orga') }
-  let(:organization_json) {
-    {organization: {
-      name: 'test-orga',
-      contact_email: 'issues@mumuki.io',
-      books: ['a-book'],
-      locale: 'en',
-      public: false,
-      description: 'Academy',
-      login_methods: %w{facebook twitter google},
-      logo_url: 'http://mumuki.io/logo-alt-large.png',
-      terms_of_service: 'TOS',
-      theme_stylesheet_url: 'http://mumuki.io/theme.css',
-      extension_javascript_url: 'http://mumuki.io/scripts.js',
-      id: 998
-    }}
-  }
+  let(:organization_json) { {
+    name: 'test-orga',
+    contact_email: 'issues@mumuki.io',
+    books: ['a-book'],
+    locale: 'en',
+    public: false,
+    description: 'Academy',
+    login_methods: %w{facebook twitter google},
+    logo_url: 'http://mumuki.io/logo-alt-large.png',
+    terms_of_service: 'TOS',
+    theme_stylesheet_url: 'http://mumuki.io/theme.css',
+    extension_javascript_url: 'http://mumuki.io/scripts.js',
+    id: 998} }
 
   shared_examples 'a task that persists an organization' do
     it { expect(organization.name).to eq 'test-orga' }
@@ -36,20 +33,20 @@ describe 'Organization events' do
     it { expect(organization.extension_javascript_url).to eq 'http://mumuki.io/scripts.js' }
   end
 
-  context Laboratory::Event::OrganizationChanged do
+  describe Organization do
     before { create :organization, name: 'test-orga', id: 55 }
 
     context 'when a message is received' do
-      before { Laboratory::Event::OrganizationChanged.execute! organization_json }
+      before { Organization.update_from_json! organization_json }
 
       it { expect(organization.id).to eq 55 }
       it_behaves_like 'a task that persists an organization'
     end
   end
 
-  describe Laboratory::Event::OrganizationCreated do
+  describe Organization do
     context 'when a message is received' do
-      before { Laboratory::Event::OrganizationCreated.execute! organization_json }
+      before { Organization.create_from_json! organization_json }
 
       it { expect(organization.id).not_to eq 998 }
       it_behaves_like 'a task that persists an organization'
