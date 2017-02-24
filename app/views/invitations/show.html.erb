@@ -8,39 +8,55 @@
 </div>
 
 <%= form_for @user, url: { action: 'join'}, html: {class: 'nifty_form'} do |f| %>
-<div class="tab-content">
-  <div role="tabpanel" class="tab-pane active" id="info">
-    <div class="row mu-tab-body">
-      <div class="col-md-2">
-        <%= image_tag @user.image_url, size: '100x100', class: 'img-circle' %>
-      </div>
-      <div class="col-md-4">
-        <table class="table table-striped">
-          <tbody>
-          <tr>
-            <th><%= t :name %></th>
-            <td><%= f.text_field :name %></td>
-          </tr>
-          <tr>
-            <th><%= t :email %></th>
-            <td><%= f.text_field :email %></td>
-          </tr>
-          </tbody>
-        </table>
 
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="info">
+      <div class="row mu-tab-body">
+        <div class="col-md-2">
+          <%= image_tag @user.image_url, size: '100x100', class: 'img-circle' %>
+        </div>
+        <div class="col-md-4">
+          <table class="table table-striped">
+            <tbody>
+            <tr>
+              <th><%= t :name %></th>
+              <td><%= f.text_field :name %></td>
+            </tr>
+            <tr>
+              <th><%= t :email %></th>
+              <td><%= f.text_field :email %></td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div>
-  <h3><%= t :terms_and_conditions %></h3>
+  <div>
+    <h3><%= t :terms_and_conditions %></h3>
 
-  <pre class="terms-of-service"><%= simple_format @organization.terms_of_service %></pre>
-</div>
+    <pre class="terms-of-service"><%= simple_format @organization.terms_of_service %></pre>
 
-    Leí todo, sí sí <!-- // TODO: Cambiar de acá para abajo -->
-
-<%= f.submit "Vamo" %>
+    <div class="col-md-10">
+      <input id="accept_terms" type="checkbox"> <span><%= t :accept_terms %></span>
+    </div>
+    <div class="col-md-1">
+      <%= f.submit t(:confirm), id: 'confirm_data', disabled: true %>
+    </div>
+  </div>
 
 <% end %>
+
+<script>
+    $(document).ready(function() {
+        $('#accept_terms').click(function() {
+            if ($(this).is(':checked')) {
+                $("#confirm_data").removeAttr('disabled');
+            } else {
+                $("#confirm_data").attr('disabled', 'disabled');
+            }
+        });
+    });
+</script>

@@ -3,6 +3,7 @@ es:
   aborted: Ups, no pudimos evaluar tu solución
   about: Detalles
   ask_community: Preguntá a la comunidad
+  accept_terms: Acepto los términos y condiciones
   actions: Acciones
   activity: Actividad
   all: Todos
@@ -17,6 +18,7 @@ es:
   chapter_number: 'Capítulo %{number}:'
   classroom: Aula
   clear_console: Reiniciar consola
+  confirm: Confirmar
   console: Consola
   contact_administrator: 'Si pensás que es un error, comunicate con la persona que administra esta organización: %{link}'
   content: Contenido

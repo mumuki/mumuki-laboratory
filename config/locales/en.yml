@@ -3,6 +3,7 @@ en:
   aborted: Oops, we couldn't evaluate your solution
   about: About
   ask_community: Ask community for help
+  accept_terms: I accept the terms and conditions
   actions: Actions
   activity: Activity
   all: All
@@ -15,6 +16,7 @@ en:
   chapter_number: Chapter %{number} -
   classroom: Classroom
   clear_console: Clear console
+  confirm: Confirmar
   console: Console
   contact_administrator: 'If you think this is not supposed to happen, please contact the admin: %{link}'
   content: Content
