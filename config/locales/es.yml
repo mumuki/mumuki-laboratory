@@ -34,6 +34,7 @@ es:
   destroy: Eliminar
   details: Detalles
   errored: Ups, tu solución no funcionó
+  email: Email
   exam_number: 'Examen %{number}:'
   exams: Exámenes
   exercise: Ejercicio
@@ -59,6 +60,7 @@ es:
   guide_created: Guía creada exitosamente
   guide_finished: ¡Terminaste %{guide}!
   guide_internal: guia
+  invitation: Invitación a curso
   lesson_number: Lección %{number}
   let_us_know: ¡Por favor avisanos!
   guides_index_title: ¿Qué guía querés hacer hoy?
@@ -66,6 +68,7 @@ es:
   history: Historial
   hour: hora
   hours: horas
+  joining: Estás a punto de unirte a
   language: Lenguaje
   languages: Lenguajes
   last_submission_date: Última solución
@@ -86,6 +89,7 @@ es:
   my_exercises: Mis Ejercicios
   my_guides: Mis Lecciones
   my_submissions: Mis Soluciones
+  name: Nombre
   navigation_continue: 'Siguiente %{kind}: %{sibling}'
   navigation_next: Siguiente %{kind}
   navigation_revisit: 'Siguiente pendiente: %{sibling}'
@@ -112,9 +116,10 @@ es:
   pending_messages: Tenés mensajes sin leer
   pending_messages_explanation: "¡Tu docente te dejó un mensaje! Revisalo antes de seguir enviando soluciones."
   permissions: Permisos
+  please_validate: 'Por favor, validá tus datos antes de continuar:'
   previous_exercise: Anterior
   problem_with_exercise: '[Mumuki] Error con el ejercicio: %{title}'
-  processing_you_solution: Estamos procesando tu solución
+  processing_your_solution: Estamos procesando tu solución
   profile: Perfil
   profile_of: Perfil de %{username}
   progress: Progreso
@@ -150,6 +155,7 @@ es:
   stay_here: No, quiero quedarme acá
   tag: Etiquetas
   tell_us_how: ¡Contanos cómo te pasó esto!
+  terms_and_conditions: Términos y condiciones
   test_results: Resultados de las pruebas
   time_left: Te quedan
   title: Título

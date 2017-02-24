@@ -27,6 +27,7 @@ en:
   date: Date
   destroy: Destroy
   download: Download your solution
+  email: Email
   errored: Oops, your solution didn't work
   exam_number: 'Exam %{number}:'
   exams: Exams
@@ -51,11 +52,13 @@ en:
   guide: Guide
   guide_created: Guide created successfully
   guide_finished: You completed %{guide}!
+  invitation: Invitation to course
   lesson_number: Lesson %{number}
   let_us_know: please let us know!
   guides_index_title: Which guide do you want to do today?
   here: here
   history: History
+  joining: You're about to join
   language: Language
   last_submission_date: Last submission
   latest_exercises: Latest exercises
@@ -72,6 +75,7 @@ en:
   mumuki_short_description: Mumuki is a simple, open and collaborative platform for sharing and solving programming exercises. It is aimed to help people with learning and teaching programing languages and paradigms
   my_exercises: My Exercises
   my_submissions: My Submissions
+  name: Name
   navigation_continue: 'Next: %{sibling}'
   navigation_next: Next
   navigation_revisit: 'Next pending: %{sibling}'
@@ -96,9 +100,10 @@ en:
   pending_messages: You have unread messages
   pending_messages_explanation: You can't send new solutions until you read pending messages
   permissions: Permissions
+  please_validate: 'Please validate your data before continue:'
   previous_exercise: Previous
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'
-  processing_you_solution: We are processing you solution
+  processing_your_solution: We are processing you solution
   profile: Profile
   profile_of: Profile of %{username}
   progress: Progresss
@@ -129,6 +134,7 @@ en:
   stay_here: I want to stay here
   tag: Tags
   tell_us_how: Please tell us how this happened!
+  terms_and_conditions: Terms and conditions
   test_results: Tests results
   time_left: You have
   title: Title
