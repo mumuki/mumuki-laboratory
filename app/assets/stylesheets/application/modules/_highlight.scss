@@ -26,7 +26,7 @@ pre {
 .m, .mf, .mh, .mi, .mo,
 .s, .sb, .sc, .sd, .s2, .se, .sh, .sx, .sr, .s1, .ss,
 .kc,
-.il, .ace_boolean, .ace_numeric, .ace_string {
+.il, .ace_boolean, .ace_numeric, .ace_string, .ace_symbol {
   color: #369434 !important;
 }
 
@@ -69,6 +69,9 @@ pre code {
   color: $brand-primary !important;
   font-weight: normal !important;
 }
+
+
+/** Misc **/
 
 .hll { background-color: #ffffcc }
 .err { color: #a61717; background-color: #e3d2d2 } /* Error */
