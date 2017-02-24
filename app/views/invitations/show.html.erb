@@ -7,13 +7,13 @@
   <span><%= t :please_validate %></span>
 </div>
 
-<%= form_for @user, method: 'post', url: { action: 'join'} do |f| %>
+<%= form_for current_user, method: 'post', url: { action: 'join'} do |f| %>
 
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="info">
       <div class="row mu-tab-body">
         <div class="col-md-2">
-          <%= image_tag @user.image_url, size: '100x100', class: 'img-circle' %>
+          <%= image_tag current_user.image_url, size: '100x100', class: 'img-circle' %>
         </div>
         <div class="col-md-4">
           <table class="table table-striped">

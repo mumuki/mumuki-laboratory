@@ -12,7 +12,7 @@ Mumukit::Nuntius::EventConsumer.handle do
   end
 
   event 'InvitationCreated' do |payload|
-    Invitation.create payload.deep_symbolize_keys[:invitation]
+    Invitation.import_from_json! payload.deep_symbolize_keys[:invitation]
   end
 
   event 'UpsertExam' do |body|
