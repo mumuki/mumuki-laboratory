@@ -11,6 +11,10 @@ Mumukit::Nuntius::EventConsumer.handle do
     Organization.update_from_json! payload.deep_symbolize_keys[:organization]
   end
 
+  event 'InvitationCreated' do |payload|
+    Invitation.create payload.deep_symbolize_keys[:invitation]
+  end
+
   event 'UpsertExam' do |body|
     Exam.import_from_json! body
   end
