@@ -8,6 +8,10 @@ class Invitation < ActiveRecord::Base
     raise RecordNotFound.new('The invitation does not exist or it has expired')
   end
 
+  def self.import_from_json!(json)
+    Invitation.create! json
+  end
+
   def organization
     Organization.find_by! name: Mumukit::Auth::Slug.parse(course).organization
   end
