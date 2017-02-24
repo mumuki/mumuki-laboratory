@@ -26,7 +26,11 @@ pre {
 .m, .mf, .mh, .mi, .mo,
 .s, .sb, .sc, .sd, .s2, .se, .sh, .sx, .sr, .s1, .ss,
 .kc,
-.il, .ace_boolean, .ace_numeric, .ace_string, .ace_symbol {
+.il,
+.ace_boolean, .ace_numeric,
+.ace_string, .ace_symbol,
+.ace_hexadecimal, .ace_character,
+.ace_decimal {
   color: #369434 !important;
 }
 
