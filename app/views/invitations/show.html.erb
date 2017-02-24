@@ -7,7 +7,7 @@
   <span><%= t :please_validate %></span>
 </div>
 
-<%= form_for @user, url: { action: 'join'}, html: {class: 'nifty_form'} do |f| %>
+<%= form_for @user, method: 'post', url: { action: 'join'} do |f| %>
 
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="info">
@@ -28,7 +28,6 @@
             </tr>
             </tbody>
           </table>
-
         </div>
       </div>
     </div>
