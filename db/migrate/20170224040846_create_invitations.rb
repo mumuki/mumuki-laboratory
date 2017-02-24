@@ -1,8 +1,8 @@
 class CreateInvitations < ActiveRecord::Migration
   def change
     create_table :invitations do |t|
-      t.integer :course_id
       t.string :slug
+      t.string :course
       t.date :expiration_date
     end
 
