@@ -7,8 +7,17 @@ module WithPermissions
     delegate :writer?, :janitor?, to: :permissions
   end
 
+  def make_student_of!(slug)
+    permissions.add_permission! :student, slug
+  end
+
+  def student_of?(organization)
+    permissions.student? organization.slug
+  end
+
+  #FIXME may be able to remove now
   def student?
-    permissions.student? Organization.current.slug
+    student_of? Organization
   end
 
   def teacher?
