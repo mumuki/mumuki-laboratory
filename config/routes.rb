@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     # Routes by slug
     get '/guides/:organization/:repository' => 'guides#show_by_slug', as: :guide_by_slug
     get '/exercises/:organization/:repository/:bibliotheca_id' => 'exercises#show_by_slug', as: :exercise_by_slug
+    get '/join/:invitation' => 'invitations#show'
 
     # Route for reading messages
     post '/messages/read_messages/:exercise_id' => 'messages#read_messages', as: :read_messages
