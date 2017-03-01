@@ -24,7 +24,7 @@ class InvitationsController < ApplicationController
   end
 
   def set_invitation!
-    @invitation = Invitation.find_by_slug params[:invitation]
+    @invitation = Invitation.find_by_code params[:code]
     @organization = @invitation.organization
   end
 end

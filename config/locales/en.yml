@@ -60,6 +60,7 @@ en:
   guides_index_title: Which guide do you want to do today?
   here: here
   history: History
+  invitation_for: 'Join %{course}'
   joining: You're about to join
   language: Language
   last_submission_date: Last submission
