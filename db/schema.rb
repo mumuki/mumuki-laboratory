@@ -139,12 +139,12 @@ ActiveRecord::Schema.define(version: 20170621222902) do
   add_index "guides", ["name"], name: "index_guides_on_name", using: :btree
 
   create_table "invitations", force: true do |t|
-    t.string "slug"
+    t.string "code"
     t.string "course"
     t.date   "expiration_date"
   end
 
-  add_index "invitations", ["slug"], name: "index_invitations_on_slug", unique: true, using: :btree
+  add_index "invitations", ["code"], name: "index_invitations_on_code", unique: true, using: :btree
 
   create_table "languages", force: true do |t|
     t.string   "name"
