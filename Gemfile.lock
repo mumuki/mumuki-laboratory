@@ -9,7 +9,8 @@ GIT
 
 GIT
   remote: https://github.com/mumuki/rouge
-  revision: 5b7f5cd3d17c6a54d93bf57a82a0dfc2e03b3ae3
+  revision: 5a8db3387f3a67232569969cd3da40ee04eb9dc3
+  ref: 5a8db3387f3a67232569969cd3da40ee04eb9dc3
   specs:
     rouge (2.0.7)
 

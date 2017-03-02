@@ -47,7 +47,7 @@ gem 'yaml_db'
 gem 'bunny'
 
 gem 'mumukit-content-type', git: 'https://github.com/mumuki/mumukit-content-type', require: 'mumukit/content_type'
-gem 'rouge', git: 'https://github.com/mumuki/rouge'
+gem 'rouge', git: 'https://github.com/mumuki/rouge', ref: '5a8db3387f3a67232569969cd3da40ee04eb9dc3'
 
 gem 'mumukit-auth', '~> 6.0'
 gem 'mumukit-core', '~> 0.6'

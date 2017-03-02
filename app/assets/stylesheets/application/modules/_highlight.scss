@@ -6,6 +6,7 @@ pre {
 
 /* identifier */
 .na, .nb, .nc, .no, .nd, .ni, .bp, .vc, .vg, .vi, .nx, .nv,
+.nn, .nt,
 .ace_function,
 .ace_variable,
 .ace_parameter,
@@ -27,6 +28,7 @@ pre {
 .s, .sb, .sc, .sd, .s2, .se, .sh, .sx, .sr, .s1, .ss,
 .kc,
 .il,
+.l,
 .ace_boolean, .ace_numeric,
 .ace_string, .ace_symbol,
 .ace_hexadecimal, .ace_character,
@@ -74,23 +76,6 @@ pre code {
   font-weight: normal !important;
 }
 
-
-/** Misc **/
-
-.hll { background-color: #ffffcc }
-.err { color: #a61717; background-color: #e3d2d2 } /* Error */
-.gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
-.ge { color: #000000; font-style: italic } /* Generic.Emph */
-.gr { color: #aa0000 } /* Generic.Error */
-.gh { color: #999999 } /* Generic.Heading */
-.gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
-.go { color: #888888 } /* Generic.Output */
-.gp { color: #555555 } /* Generic.Prompt */
-.gs { font-weight: bold } /* Generic.Strong */
-.gu { color: #aaaaaa } /* Generic.Subheading */
-.gt { color: #aa0000 } /* Generic.Traceback */
-.nn { color: #555555 } /* Name.Namespace */
-.nt { color: #000080 } /* Name.Tag */
 .w { color: #bbbbbb } /* Text.Whitespace */
 .si { color: #d01040 } /* Literal.String.Interpol */
 
