@@ -37,7 +37,7 @@ describe Event do
                              test_results: nil,
                              submissions_count: 2,
                              exercise: {
-                               id: exercise.id,
+                               eid: exercise.id,
                                bibliotheca_id: exercise.bibliotheca_id,
                                name: exercise.name,
                                number: exercise.number},
@@ -95,7 +95,7 @@ describe Event do
                              test_results: nil,
                              submissions_count: 2,
                              exercise: {
-                               id: exercise.id,
+                               eid: exercise.id,
                                name: exercise.name,
                                number: exercise.number,
                                bibliotheca_id: exercise.bibliotheca_id},
@@ -148,7 +148,7 @@ describe Event do
                              test_results: nil,
                              submissions_count: 2,
                              exercise: {
-                               id: exercise.id,
+                               eid: exercise.id,
                                bibliotheca_id: exercise.bibliotheca_id,
                                name: exercise.name,
                                number: exercise.number},
