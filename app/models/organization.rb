@@ -93,11 +93,15 @@ class Organization < ActiveRecord::Base
   end
 
   def notify!
-    Mumukit::Nuntius.notify_event! 'UpsertOrganization', as_complete_json
+    Mumukit::Nuntius.notify_event! 'OrganizationChanged', as_complete_json
   end
 
   def as_complete_json
-    as_json(except: [:login_methods]).merge(locale: locale, lock_json: login_settings.lock_json)
+    as_json(except: [:login_methods, :book_id, :book_ids]).merge(locale: locale, lock_json: login_settings.lock_json, book_ids: book_slugs, book_id: book.slug)
+  end
+
+  def book_slugs
+    book_ids.map { |id| Book.find(id).slug }
   end
 
   def slug
