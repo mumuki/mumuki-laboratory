@@ -47,7 +47,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
-    amq-protocol (2.0.1)
+    amq-protocol (2.1.0)
     arel (5.0.1.20140414130214)
     autoprefixer-rails (6.6.1)
       execjs
@@ -67,7 +67,7 @@ GEM
     bootswatch-rails (3.3.5)
       railties (>= 3.1)
     builder (3.2.3)
-    bunny (2.6.3)
+    bunny (2.6.4)
       amq-protocol (>= 2.0.1)
     byebug (9.0.6)
     capybara (2.3.0)
@@ -113,7 +113,7 @@ GEM
     highline (1.7.8)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    i18n (0.7.0)
+    i18n (0.8.1)
     i18n-tasks (0.8.7)
       activesupport (>= 2.3.18)
       easy_translate (>= 0.5.0)
@@ -165,7 +165,7 @@ GEM
       omniauth-auth0 (~> 1.1)
       omniauth-saml (~> 1.6)
       rack (>= 1.5)
-    mumukit-nuntius (4.0.0)
+    mumukit-nuntius (4.1.1)
       bunny (~> 2.3)
       mumukit-core (~> 0.5)
     netrc (0.11.0)
@@ -289,7 +289,7 @@ GEM
       ref
     thor (0.19.4)
     thread (0.2.2)
-    thread_safe (0.3.5)
+    thread_safe (0.3.6)
     tilt (2.0.5)
     tins (1.13.0)
     turbolinks (2.5.3)
@@ -364,4 +364,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.14.3
+   1.14.4

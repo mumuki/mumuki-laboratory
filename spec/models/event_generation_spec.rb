@@ -37,7 +37,7 @@ describe Event do
                              test_results: nil,
                              submissions_count: 2,
                              exercise: {
-                               id: exercise.id,
+                               eid: exercise.id,
                                bibliotheca_id: exercise.bibliotheca_id,
                                name: exercise.name,
                                number: exercise.number},
@@ -52,7 +52,7 @@ describe Event do
                                },
                                parent: {
                                  type: 'Lesson',
-                                 name:  guide.name,
+                                 name: guide.name,
                                  position: 4,
                                  chapter: {
                                    id: guide.chapter.id,
@@ -66,10 +66,10 @@ describe Event do
                                email: 'foo@bar.com',
                                uid: assignment.submitter.uid,
                                image_url: 'user_shape.png'},
-                             id: 'abcd1234',
+                             sid: 'abcd1234',
                              created_at: assignment.updated_at,
                              content: 'x = 2',
-                             tenant: 'test')
+                             organization: 'test')
         end
       end
       describe 'exam type' do
@@ -95,10 +95,10 @@ describe Event do
                              test_results: nil,
                              submissions_count: 2,
                              exercise: {
-                               id: exercise.id,
+                               eid: exercise.id,
                                name: exercise.name,
                                number: exercise.number,
-                             bibliotheca_id: exercise.bibliotheca_id},
+                               bibliotheca_id: exercise.bibliotheca_id},
                              guide: {
                                name: guide.name,
                                slug: guide.slug,
@@ -107,7 +107,7 @@ describe Event do
                                },
                                parent: {
                                  type: 'Exam',
-                                 name:  guide.name,
+                                 name: guide.name,
                                  position: nil,
                                  chapter: nil
                                }
@@ -118,10 +118,10 @@ describe Event do
                                email: 'foo@bar.com',
                                image_url: 'user_shape.png',
                                uid: assignment.submitter.uid},
-                             id: 'abcd1234',
+                             sid: 'abcd1234',
                              created_at: assignment.updated_at,
                              content: 'x = 2',
-                             tenant: 'test')
+                             organization: 'test')
 
         end
       end
@@ -148,7 +148,7 @@ describe Event do
                              test_results: nil,
                              submissions_count: 2,
                              exercise: {
-                               id: exercise.id,
+                               eid: exercise.id,
                                bibliotheca_id: exercise.bibliotheca_id,
                                name: exercise.name,
                                number: exercise.number},
@@ -160,7 +160,7 @@ describe Event do
                                },
                                parent: {
                                  type: 'Complement',
-                                 name:  guide.name,
+                                 name: guide.name,
                                  position: nil,
                                  chapter: nil
                                }
@@ -171,10 +171,10 @@ describe Event do
                                image_url: 'user_shape.png',
                                uid: assignment.submitter.uid,
                                social_id: 'github|gh1234'},
-                             id: 'abcd1234',
+                             sid: 'abcd1234',
                              created_at: assignment.updated_at,
                              content: 'x = 2',
-                             tenant: 'test')
+                             organization: 'test')
 
         end
       end

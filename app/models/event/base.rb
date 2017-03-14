@@ -4,7 +4,7 @@ class Event::Base
   end
 
   def as_json(_options={})
-    event_json.deep_merge('tenant' => Organization.current.name)
+    event_json.deep_merge('organization' => Organization.current.name)
   end
 
 end

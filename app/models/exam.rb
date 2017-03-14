@@ -101,9 +101,9 @@ class Exam < ActiveRecord::Base
     organization = Organization.find_by!(name: json.delete(:tenant))
     organization.switch!
     exam_data = parse_json json
-    remove_previous_version exam_data[:id], exam_data[:guide_id]
+    remove_previous_version exam_data[:eid], exam_data[:guide_id]
     users = exam_data.delete(:users)
-    exam = where(classroom_id: exam_data.delete(:id)).update_or_create! exam_data
+    exam = where(classroom_id: exam_data.delete(:eid)).update_or_create! exam_data
     exam.process_users users
     exam.index_usage! organization
     exam
@@ -118,10 +118,10 @@ class Exam < ActiveRecord::Base
     exam
   end
 
-  def self.remove_previous_version(id, guide_id)
+  def self.remove_previous_version(eid, guide_id)
     Rails.logger.info "Looking for"
-    where("guide_id=? and organization_id=? and classroom_id!=?", guide_id, Organization.current.id, id).tap do |exams|
-      Rails.logger.info "Deleting exams with ORG_ID:#{Organization.current.id} - GUIDE_ID:#{guide_id} - CLASSROOM_ID:#{id}"
+    where("guide_id=? and organization_id=? and classroom_id!=?", guide_id, Organization.current.id, eid).tap do |exams|
+      Rails.logger.info "Deleting exams with ORG_ID:#{Organization.current.id} - GUIDE_ID:#{guide_id} - CLASSROOM_ID:#{eid}"
       exams.destroy_all
     end
   end

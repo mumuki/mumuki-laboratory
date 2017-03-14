@@ -1,11 +1,11 @@
 class Exercise < ActiveRecord::Base
   INDEXED_ATTRIBUTES = {
 
-      against: [:name, :description, :tag_list],
-      associated_against: {
-          language: [:name],
-          guide: [:name]
-      },
+    against: [:name, :description, :tag_list],
+    associated_against: {
+      language: [:name],
+      guide: [:name]
+    },
   }
 
   include WithNumber,
@@ -94,7 +94,7 @@ class Exercise < ActiveRecord::Base
     reset!
 
     attrs = json.except('type', 'id', 'solution', 'language', 'teacher_info', 'choices')
-    attrs['choices'] = json['choices'].map {|choice| choice['value']} if json['choices'].present?
+    attrs['choices'] = json['choices'].map { |choice| choice['value'] } if json['choices'].present?
     attrs['bibliotheca_id'] = json['id']
     attrs['number'] = number
     attrs = attrs.except('expectations') if json['type'] == 'playground' || json['new_expectations'] #FIXME bug in bibliotheca
@@ -125,6 +125,13 @@ class Exercise < ActiveRecord::Base
   def reclassify!(type)
     update!(type: Exercise.class_for(type).name)
     Exercise.find(id)
+  end
+
+  def self.notify_for_classroom_update!
+    all
+      .as_json(only: [:id, :bibliotheca_id], include: {guide: {only: :slug}})
+      .group_by { |it| it['guide']['slug'] }
+      .each { |k, v| Mumukit::Nuntius.notify_event! 'ExerciseChanged', {guide: {slug: k}, exercises: v.as_json(except: 'guide')} }
   end
 
   private

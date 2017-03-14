@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
     comment = comment_json.delete('comment')
     comment['author'] = comment.delete('email')
     comment_json
-      .except('social_id')
+      .except('uid', 'social_id')
       .merge(comment)
   end
 
