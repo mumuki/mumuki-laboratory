@@ -18,7 +18,7 @@ module MenuBarHelper
     return unless current_user&.send(minimal_permissions)
 
     app = ApplicationRoot.send(app_name)
-    url = options[:subdominated] ? app.subdominated_url(Organization.currrent.name) : app.url
+    url = options[:subdominated] ? app.subdominated_url(Organization.current.name) : app.url
 
     link_to fixed_fa_icon(icon, text: t(app_name)), url
   end
