@@ -17,7 +17,7 @@ build:
       name: rspec
       code: bundle exec rspec
 
-deploy:
+ikumi-deploy:
   steps:
   - add-ssh-key:
       keyname: ESCUALO_RSA
