@@ -18,14 +18,14 @@ class Event::Submission < Event::Base
                     lesson: {only: [:number]},
                     language: {only: [:name]}},
                 },
-                exercise: {only: [:bibliotheca_id, :name, :number]},
+                exercise: {only: [:name, :number]},
                 submitter: {only: [:name, :email, :image_url, :social_id, :uid]}}).
       deep_merge(
         'sid' => @assignment.submission_id,
         'created_at' => @assignment.updated_at,
         'content' => @assignment.solution,
         'exercise' => {
-          'eid' => @assignment.exercise.id
+          'eid' => @assignment.exercise.bibliotheca_id
         },
         'guide' => {'parent' => {
           'type' => navigable_parent.class.to_s,
