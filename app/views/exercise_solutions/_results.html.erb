@@ -10,55 +10,46 @@
   </h4>
 
   <% if assignment.results_visible? %>
-    <div>
-      <% if assignment.expectation_results_visible? %>
-        <div class="results-item">
-          <strong><%= t :unmeet_expectations %>:</strong>
-          <ul class="results-list">
-            <% assignment.visible_expectation_results.each do |it| %>
-              <li><%= status_icon(it[:result]) %> <%= t_expectation it %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-      <% if render_feedback?(assignment) %>
-        <div class="results-item">
-          <strong><%= t :feedback %>:</strong>
+      <div>
+        <% if assignment.expectation_results_visible? %>
+            <div class="results-item">
+              <strong><%= t :unmeet_expectations %>:</strong>
+              <ul class="results-list">
+                <% assignment.visible_expectation_results.each do |it| %>
+                    <li><%= status_icon(it[:result]) %> <%= t_expectation it %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+        <% if render_feedback?(assignment) %>
+            <div class="results-item">
+              <strong><%= t :feedback %>:</strong>
 
-          <div>
-            <%= assignment.feedback_html %>
-          </div>
-          <a data-toggle="collapse" href="#results-section" class="text-danger">
-            <%= fa_icon 'question-circle' %> <%= t :details %>
-          </a>
-        </div>
-      <% end %>
-      <div id="results-section" class="<%= 'collapse' if render_feedback?(assignment) %> results-item">
-        <strong><%= t :test_results %>:</strong>
+              <div>
+                <%= assignment.feedback_html %>
+              </div>
+              <a data-toggle="collapse" href="#results-section" class="text-danger">
+                <%= fa_icon 'question-circle' %> <%= t :details %>
+              </a>
+            </div>
+        <% end %>
+        <div id="results-section" class="<%= 'collapse' if render_feedback?(assignment) %> results-item">
+          <strong><%= t :test_results %>:</strong>
 
-        <%= render_test_results assignment %>
+          <%= render_test_results assignment %>
+        </div>
       </div>
-    </div>
   <% elsif assignment.passed? %>
-    <div>
-      <h4><%= t(:exercise_done) %></h4>
-    </div>
+      <div>
+        <h4><%= t(:exercise_done) %></h4>
+      </div>
   <% else %>
-    <div></div>
+      <div></div>
   <% end %>
 
   <%= corollary_box @exercise unless assignment.should_retry? %>
 
 </div>
-
-<% @comments.each do |comment| %>
-  <div class="bs-callout bs-callout-<%= comment.type %>">
-    <h6> <%= comment.author %></h6>
-    <div>
-      <%= comment.content_html %>
-    </div>
-  </div>
-<% end %>
 
 <div class="notify-problem-box">
   <span>
@@ -82,11 +73,11 @@
 </div>
 
 <script>
-  $('.progress-list-item.active').attr('class', "<%= class_for_progress_list_item(@exercise, true) %>");
+    $('.progress-list-item.active').attr('class', "<%= class_for_progress_list_item(@exercise, true) %>");
 
-  <% if guide_finished_by_solution %>
-  $('#guide-done').modal();
-  <% end %>
+    <% if guide_finished_by_solution %>
+    $('#guide-done').modal();
+    <% end %>
 
 </script>
 

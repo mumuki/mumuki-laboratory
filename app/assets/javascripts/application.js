@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require momentjs
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
@@ -28,5 +29,5 @@
 //= require_tree ./application
 
 NProgress.configure({
-  showSpinner: false
+    showSpinner: false
 });

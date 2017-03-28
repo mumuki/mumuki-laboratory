@@ -1,0 +1,16 @@
+<div class="messages">
+  <ol class="chat">
+    <li>
+      <a href="javascript:{}" onclick="submitMessagesForm('<%= @messages_url%>')"><%= t :more_messages %></a>
+    </li>
+    <% messages.each do |message| %>
+        <li class="<%= message.author == current_user_uid ? 'self' : 'other' %>">
+          <div class="msg">
+            <p> <%= message.content_html %></p>
+            <div class="sender"><%= message.author %></div>
+            <time><%= time_ago_in_words message.created_at %></time>
+          </div>
+        </li>
+    <% end %>
+  </ol>
+</div>

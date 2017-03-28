@@ -36,19 +36,7 @@
     <%= @exercise.extra_preview_html %>
   </div>
   <div role="tabpanel" class="tab-pane mu-input-panel fade" id="messages">
-    <div class="messages">
-      <ol class="chat">
-        <% @comments.each do |message| %>
-            <li class="<%= message.author == current_user_uid ? 'self' : 'other' %>">
-              <div class="msg">
-                <p> <%= message.content_html %></p>
-                <div class="sender"><%= message.author %></div>
-                <time><%= time_ago_in_words message.created_at %></time>
-              </div>
-            </li>
-        <% end %>
-      </ol>
-    </div>
+    <%= render partial: 'layouts/messages', locals: {messages: @comments} %>
   </div>
 </div>
 
