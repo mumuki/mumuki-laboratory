@@ -41,7 +41,7 @@ class ExercisesController < ApplicationController
 
   def set_comments
     @comments = @exercise.comments_for(current_user) if current_user?
-    @comments.try(:each, &:read!)
+    # @comments.try(:each, &:read!)
   end
 
   def set_guide
@@ -50,9 +50,9 @@ class ExercisesController < ApplicationController
 
   def exercise_params
     params.require(:exercise).
-        permit(:name, :description, :locale, :test,
-               :extra, :language_id, :hint, :tag_list,
-               :guide_id, :number,
-               :layout, :expectations_yaml)
+      permit(:name, :description, :locale, :test,
+             :extra, :language_id, :hint, :tag_list,
+             :guide_id, :number,
+             :layout, :expectations_yaml)
   end
 end

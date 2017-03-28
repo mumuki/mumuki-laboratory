@@ -1,10 +1,10 @@
 logger = Mumukit::Nuntius::Logger
 
-namespace :comments do
+namespace :messages do
   task listen: :environment do
-    logger.info 'Listening to comments'
+    logger.info 'Listening to messages'
 
-    Mumukit::Nuntius::Consumer.start 'comments', 'comments' do |_delivery_info, _properties, body|
+    Mumukit::Nuntius::Consumer.start 'messages', 'messages' do |_delivery_info, _properties, body|
       begin
         Comment.import_from_json!(body)
       rescue ActiveRecord::RecordInvalid => e

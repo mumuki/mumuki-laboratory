@@ -63,20 +63,20 @@
             <td><%= icon_for_read(comment.read) %></td>
             <td><%= link_to comment.exercise.name, exercise_path(comment.exercise.id) %></td>
             <td><%= mail_to comment.author %></td>
-            <td><%= time_ago_in_words comment.date %></td>
+            <td><%= time_ago_in_words comment.created_at %></td>
           </tr>
       <% end %>
     </table>
   </div>
 </div>
 <script type="text/javascript">
-  $(function() {
-    var hash = document.location.hash;
-    if (hash) {
-      $('.nav-tabs a[data-target='+hash+']').tab('show');
-    }
-    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-      window.location.hash = $(e.target).attr('data-target');
+    $(function () {
+        var hash = document.location.hash;
+        if (hash) {
+            $('.nav-tabs a[data-target=' + hash + ']').tab('show');
+        }
+        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+            window.location.hash = $(e.target).attr('data-target');
+        });
     });
-  });
 </script>

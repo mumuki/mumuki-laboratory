@@ -1,27 +1,27 @@
 <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
-
 <% if should_render_exercise_tabs? @exercise %>
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active">
-      <a data-target="#editor" aria-controls="editor" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'pencil-square' %> <%= t :solution %></a>
-    </li>
-    <% if @exercise.extra_visible? %>
-      <%= extra_code_tab %>
-    <% end %>
-    <% if @exercise.queriable? %>
-      <%= console_tab %>
-    <% end %>
-  </ul>
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+        <a data-target="#editor" aria-controls="editor" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'pencil-square' %> <%= t :solution %></a>
+      </li>
+      <% if @exercise.extra_visible? %>
+          <%= extra_code_tab %>
+      <% end %>
+      <% if @exercise.queriable? %>
+          <%= console_tab %>
+      <% end %>
+      <%= messages_tab %>
+    </ul>
 <% end %>
 
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane mu-input-panel fade in active" id="editor">
     <%= form_for([@exercise, @solution], remote: true, html: {role: 'form', class: 'new_solution mu-editor mu-editor-overlap'}) do |f| %>
-      <%= render_exercise_input_editor f, @exercise %>
+        <%= render_exercise_input_editor f, @exercise %>
 
-      <div class="actions">
-        <%= render_submit_button(@exercise) %>
-      </div>
+        <div class="actions">
+          <%= render_submit_button(@exercise) %>
+        </div>
     <% end %>
   </div>
   <div role="tabpanel" class="tab-pane mu-input-panel fade" id="console">
@@ -35,16 +35,31 @@
   <div role="tabpanel" class="tab-pane mu-input-panel fade" id="visible-extra">
     <%= @exercise.extra_preview_html %>
   </div>
+  <div role="tabpanel" class="tab-pane mu-input-panel fade" id="messages">
+    <div class="messages">
+      <ol class="chat">
+        <% @comments.each do |message| %>
+            <li class="<%= message.author == current_user_uid ? 'self' : 'other' %>">
+              <div class="msg">
+                <p> <%= message.content_html %></p>
+                <div class="sender"><%= message.author %></div>
+                <time><%= time_ago_in_words message.created_at %></time>
+              </div>
+            </li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
 </div>
 
 <% content_for :submission_results do %>
-  <% if current_user? %>
-    <div class="row">
-      <div class="col-md-12 submission-results">
-        <% if @exercise.assignment_for(current_user) %>
-          <%= render partial: 'exercise_solutions/results', locals: {assignment: @exercise.assignment_for(current_user), guide_finished_by_solution: false} %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+    <% if current_user? %>
+        <div class="row">
+          <div class="col-md-12 submission-results">
+            <% if @exercise.assignment_for(current_user) %>
+                <%= render partial: 'exercise_solutions/results', locals: {assignment: @exercise.assignment_for(current_user), guide_finished_by_solution: false} %>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
 <% end %>
