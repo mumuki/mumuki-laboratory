@@ -1,8 +1,9 @@
 GIT
   remote: https://github.com/mumuki/mumukit-content-type
-  revision: 2386c4610b221140945fb4438da3eeee9ce57b50
+  revision: 89fe367a6b631838b8dec34754206f0853f15b40
+  ref: v0.6.0-mumuki-rouge
   specs:
-    mumukit-content-type (0.4.0)
+    mumukit-content-type (0.6.0)
       md_emoji
       mumukit-core (~> 0.1)
       redcarpet (~> 3.3.2)
@@ -364,4 +365,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.14.4
+   1.14.6
