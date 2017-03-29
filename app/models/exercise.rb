@@ -114,6 +114,10 @@ class Exercise < ActiveRecord::Base
     Exercise.find(id)
   end
 
+  def messages_path_for(user)
+    "/api/guides/#{guide.slug}/#{user.uid}/#{bibliotheca_id}/messages"
+  end
+
   def self.notify_for_classroom_update!
     all
       .as_json(only: [:id, :bibliotheca_id], include: {guide: {only: :slug}})

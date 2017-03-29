@@ -41,7 +41,7 @@ class ExercisesController < ApplicationController
 
   def set_comments
     @comments = @exercise.comments_for(current_user) if current_user?
-    @messages_url = "http://prueba.classroom.localmumuki.io:4000/api/guides/#{subject.guide.slug}/#{current_user_uid}/#{subject.bibliotheca_id}/messages"
+    @messages_url = ApplicationRoot.classroom.url_for(Organization.current.name, @exercise.messages_path_for(current_user))
     puts "\n\n\n\n#{@messages_url}\n\n\n\n"
     # @comments.try(:each, &:read!)
   end
