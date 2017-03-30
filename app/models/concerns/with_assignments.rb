@@ -14,8 +14,8 @@ module WithAssignments
     (default_content || '').gsub('/*...previousContent...*/') { previous.current_content_for(user) }
   end
 
-  def comments_for(user)
-    assignment_for(user).try(&:comments) || []
+  def messages_for(user)
+    assignment_for(user).try(&:messages) || []
   end
 
   def assignment_for(user)

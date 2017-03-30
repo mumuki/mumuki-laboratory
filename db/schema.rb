@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170207154702) do
+ActiveRecord::Schema.define(version: 20170330145157) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,18 +52,6 @@ ActiveRecord::Schema.define(version: 20170207154702) do
     t.integer  "number",     default: 0, null: false
     t.integer  "book_id"
     t.integer  "topic_id"
-  end
-
-  create_table "comments", force: true do |t|
-    t.integer  "exercise_id"
-    t.string   "submission_id"
-    t.string   "type"
-    t.text     "content"
-    t.string   "author"
-    t.datetime "date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "read",          default: false
   end
 
   create_table "complements", force: true do |t|
@@ -150,6 +138,14 @@ ActiveRecord::Schema.define(version: 20170207154702) do
 
   add_index "guides", ["name"], name: "index_guides_on_name", using: :btree
 
+  create_table "invitations", force: true do |t|
+    t.string "code"
+    t.string "course"
+    t.date   "expiration_date"
+  end
+
+  add_index "invitations", ["code"], name: "index_invitations_on_code", unique: true, using: :btree
+
   create_table "languages", force: true do |t|
     t.string   "name"
     t.string   "runner_url"
@@ -175,6 +171,18 @@ ActiveRecord::Schema.define(version: 20170207154702) do
     t.integer  "topic_id"
   end
 
+  create_table "messages", force: true do |t|
+    t.integer  "exercise_id"
+    t.string   "submission_id"
+    t.string   "type"
+    t.text     "content"
+    t.string   "sender"
+    t.datetime "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "read",          default: false
+  end
+
   create_table "organizations", force: true do |t|
     t.string   "name"
     t.string   "contact_email"
@@ -186,7 +194,7 @@ ActiveRecord::Schema.define(version: 20170207154702) do
     t.string   "logo_url"
     t.string   "login_methods",            default: ["user_pass"], null: false, array: true
     t.integer  "book_ids",                 default: [],                         array: true
-    t.string   "terms_of_service"
+    t.text     "terms_of_service"
     t.string   "locale"
     t.string   "theme_stylesheet_url"
     t.string   "extension_javascript_url"

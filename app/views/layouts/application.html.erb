@@ -37,8 +37,8 @@
             <span id="profileDropdown" data-toggle="dropdown">
               <%= image_tag(current_user.image_url, height: 40, class: 'img-circle') %>
             </span>
-              <a class="comments-box <%= has_comments? ? '' : 'comments-box-empty' %>" href=<%= "#{user_path}#comments" %>>
-                <span class="badge badge-comments"><%= comments_count %></span>
+              <a class="messages-box <%= has_messages? ? '' : 'messages-box-empty' %>" href=<%= "#{user_path}#messages" %>>
+                <span class="badge badge-messages"><%= messages_count %></span>
               </a>
               <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                 <li>

@@ -65,12 +65,12 @@ class User < ActiveRecord::Base
     assignments.where(status: Status::Passed.to_i)
   end
 
-  def comments
-    assignments.flat_map(&:comments)
+  def messages
+    assignments.flat_map(&:messages)
   end
 
-  def unread_comments
-    comments.reject(&:read)
+  def unread_messages
+    messages.reject(&:read)
   end
 
   def visit!(organization)

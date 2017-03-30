@@ -55,12 +55,12 @@ class Assignment < ActiveRecord::Base
     end
   end
 
-  def comments
-    Comment.where(submission_id: submission_id).order('date DESC')
+  def messages
+    Message.where(submission_id: submission_id).order('date DESC')
   end
 
-  def comment!(comment_data)
-    Comment.create! comment_data.merge(submission_id: submission_id, exercise_id: exercise_id)
+  def message!(message_data)
+    Message.create! message_data.merge(submission_id: submission_id, exercise_id: exercise_id)
   end
 
   def extension
@@ -82,11 +82,11 @@ class Assignment < ActiveRecord::Base
 
   def update_submissions_count!
     self.class.connection.execute(
-        "update public.exercises
+      "update public.exercises
          set submissions_count = submissions_count + 1
         where id = #{exercise.id}")
     self.class.connection.execute(
-        "update public.assignments
+      "update public.assignments
          set submissions_count = submissions_count + 1
         where id = #{id}")
     exercise.reload

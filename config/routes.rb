@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     end
 
     # Current user
-    resources :comments, only: :index
+    resources :messages, only: :index
 
     # Routes by slug
     get '/guides/:organization/:repository' => 'guides#show_by_slug', as: :guide_by_slug

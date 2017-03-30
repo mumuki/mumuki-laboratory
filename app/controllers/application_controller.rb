@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   include WithAuthentication
   include WithAuthorization
   include WithPagination
-  include WithComments
+  include WithMessages
   include WithCustomAssets
   include Accessible
   include WithDynamicErrors
@@ -19,8 +19,8 @@ class ApplicationController < ActionController::Base
   before_action :visit_organization!, if: :current_user?
 
   helper_method :login_button,
-                :comments_count,
-                :has_comments?,
+                :messages_count,
+                :has_messages?,
                 :subject,
                 :should_choose_organization?,
                 :theme_stylesheet_url,

@@ -1,16 +1,16 @@
 require 'spec_helper'
 
-describe CommentsController do
+describe MessagesController do
   let(:user) { create(:user) }
   let(:exercise) { create(:exercise) }
 
   before do
     assignment = exercise.submit_solution! user, content: ''
     10.times do
-      assignment.comment! content: 'a',
+      assignment.message! content: 'a',
                           type: 'success',
                           date: '1/1/1',
-                          author: 'aguspina87@gmail.com'
+                          sender: 'aguspina87@gmail.com'
     end
   end
 
@@ -25,6 +25,6 @@ describe CommentsController do
     before { get :index }
 
     it { expect(response.status).to eq 200 }
-    it { expect(response.body.parse_json).to json_like(has_comments: true, comments_count: 10) }
+    it { expect(response.body.parse_json).to json_like(has_messages: true, messages_count: 10) }
   end
 end

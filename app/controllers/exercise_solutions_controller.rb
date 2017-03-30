@@ -3,7 +3,7 @@ class ExerciseSolutionsController < AjaxController
   include WithExamsValidations
 
   before_action :set_guide_previously_done
-  before_action :set_comments, only: :create
+  before_action :set_messages, only: :create
   before_action :validate_user, only: :create
 
   def create
@@ -27,8 +27,8 @@ class ExerciseSolutionsController < AjaxController
     @guide_previously_done = @exercise.guide_done_for?(current_user)
   end
 
-  def set_comments
-    @comments = @exercise.comments_for(current_user)
+  def set_messages
+    @messages = @exercise.messages_for(current_user)
   end
 
   def solution_params

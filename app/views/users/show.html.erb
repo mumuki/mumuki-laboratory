@@ -14,7 +14,7 @@
     <a data-target="#organizations" aria-controls="organizations" role="tab" data-toggle="tab"><%= t :organizations %></a>
   </li>
   <li role="presentation">
-    <a data-target="#comments" aria-controls="comments" role="tab" data-toggle="tab"><%= t :comments %></a>
+    <a data-target="#messages" aria-controls="messages" role="tab" data-toggle="tab"><%= t :messages %></a>
   </li>
 </ul>
 
@@ -56,14 +56,14 @@
       </div>
     </div>
   </div>
-  <div role="tabpanel" class="tab-pane" id="comments">
+  <div role="tabpanel" class="tab-pane" id="messages">
     <table class="table table-striped">
-      <% @comments.each do |comment| %>
+      <% @messages.each do |message| %>
           <tr>
-            <td><%= icon_for_read(comment.read) %></td>
-            <td><%= link_to comment.exercise.name, exercise_path(comment.exercise.id) %></td>
-            <td><%= mail_to comment.author %></td>
-            <td><%= time_ago_in_words comment.created_at %></td>
+            <td><%= icon_for_read(message.read) %></td>
+            <td><%= link_to message.exercise.name, exercise_path(message.exercise.id) %></td>
+            <td><%= mail_to message.sender %></td>
+            <td><%= time_ago_in_words message.created_at %></td>
           </tr>
       <% end %>
     </table>
