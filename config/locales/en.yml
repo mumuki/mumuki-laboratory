@@ -47,6 +47,7 @@ en:
   failed: Oops, something went wrong
   feedback: Feedback
   forbidden_explanation: You are not allowed to see this content.
+  get_messages: Get messages
   gone_explanation: This exam is no longer available.
   guide: Guide
   guide_created: Guide created successfully
@@ -88,6 +89,7 @@ en:
   passed_with_warnings: It worked, but you can do better
   pending: pending
   pending_messages: You have unread messages
+  pending_messages_explanation: You can't send new solutions until you read pending messages
   permissions: Permissions
   previous_exercise: Previous
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'

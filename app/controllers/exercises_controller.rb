@@ -41,7 +41,6 @@ class ExercisesController < ApplicationController
 
   def set_messages
     @messages = @exercise.messages_for(current_user) if current_user?
-    @unread_messages = @messages&.reject(&:read).present?
     @messages_url = ApplicationRoot.classroom.url_for(Organization.current.name, @exercise.messages_path_for(current_user)) if current_user
   end
 

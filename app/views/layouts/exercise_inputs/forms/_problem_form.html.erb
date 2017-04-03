@@ -16,7 +16,14 @@
 
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane mu-input-panel fade in active" id="editor">
-    <%= form_for([@exercise, @solution], remote: true, html: {role: 'form', class: 'new_solution mu-editor mu-editor-overlap'}) do |f| %>
+    <% if pending_messages? @messages %>
+                  <span class="pending-messages-text"> <%= t :pending_messages_explanation %>.
+                    <a href="javascript:{}" onclick="submitMessagesForm('<%= @messages_url%>')" class="<%= hidden_pending(@messages) %>" data-waiting="<%= t(:sending_solution) %>">
+                      <%= t :get_messages %>
+                    </a>
+                  </span>
+    <% end %>
+    <%= form_for([@exercise, @solution], remote: true, html: {role: 'form', class: "new_solution mu-editor mu-editor-overlap #{pending_messages_filter(@messages)}"}) do |f| %>
         <%= render_exercise_input_editor f, @exercise %>
 
         <div class="actions">

@@ -54,6 +54,7 @@ es:
   failed: Ups, algo no anduvo bien
   feedback: Problemas que encontramos
   forbidden_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no tenés autorización para ver este contenido. ¿Puede que hayas ingresado con una cuenta incorrecta?
+  get_messages: Ver mensajes
   gone_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que ya no podés ver este examen.
   guide: Lección
   guide_created: Guía creada exitosamente
@@ -104,6 +105,7 @@ es:
   passed_with_warnings: Funcionó, pero hay cosas para mejorar
   pending: pendiente
   pending_messages: Tenés mensajes sin leer
+  pending_messages_explanation: No vas a poder enviar nuevas soluciones hasta no leer los mensajes pendientes
   permissions: Permisos
   previous_exercise: Anterior
   problem_with_exercise: '[Mumuki] Error con el ejercicio: %{title}'
