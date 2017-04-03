@@ -87,6 +87,7 @@ en:
   passed: All right
   passed_with_warnings: It worked, but you can do better
   pending: pending
+  pending_messages: You have unread messages
   permissions: Permissions
   previous_exercise: Previous
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'

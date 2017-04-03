@@ -157,7 +157,7 @@
     height: 500px;
 
     .solution {
-      @include display-flex(column, flex-start, flex-start);
+      @include display-flex(column, flex-start, flex-end);
       border: none;
       border-top: 1px solid #cccccc;
       border-radius: 0;
@@ -172,6 +172,7 @@
       }
 
       pre {
+        background: none;
         font-size: 0.7em;
         margin-top: 0;
         border: none;

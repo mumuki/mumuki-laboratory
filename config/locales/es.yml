@@ -77,7 +77,7 @@ es:
   manual_evaluation_pending: ¡Gracias por enviar tu solución! Tus docentes la corregirán pronto
   minute: minuto
   minutes: minutos
-  more_messages: Ver más
+  more_messages: Ver mensajes anteriores
   mumuki_catchphrase: Aprendé a programar
   mumuki_short_description: Mumuki es la plataforma libre y gratuita para aprender a programar, de la práctica a la teoría y en tu idioma
   my_exercises: Mis Ejercicios
@@ -103,6 +103,7 @@ es:
   passed: Todo en orden
   passed_with_warnings: Funcionó, pero hay cosas para mejorar
   pending: pendiente
+  pending_messages: Tenés mensajes sin leer
   permissions: Permisos
   previous_exercise: Anterior
   problem_with_exercise: '[Mumuki] Error con el ejercicio: %{title}'
