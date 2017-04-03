@@ -147,6 +147,15 @@
     display: inline-block;
     margin-right: 4px;
   }
+  .passed {
+    background-color: $brand-success-light;
+  }
+  .failed {
+    background-color: $brand-danger-light;
+  }
+  .passed_with_warning {
+    background-color: $brand-warning-light;
+  }
 }
 
 .view-messages {
@@ -169,6 +178,19 @@
         cursor: pointer;
         top: 0;
         text-decoration: none;
+      }
+
+      div {
+        width: 100%;
+
+        &.magia-no {
+          height: 100px;
+          overflow: auto;
+        }
+
+        &.magia {
+          height: 100%;
+        }
       }
 
       pre {
