@@ -18,3 +18,8 @@
   filter: blur(0.6em);
   pointer-events: none;
 }
+
+#new-message-modal pre {
+  max-height: 300px;
+  overflow: auto;
+}

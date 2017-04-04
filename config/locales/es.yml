@@ -91,6 +91,8 @@ es:
   need_a_hint: ¡Dame una pista!
   never: nunca
   new: Nuevo
+  new_message: Nuevo Mensaje
+  new_message_placeholder: Escribí tu mensaje acá...
   next_exercise: Siguiente
   next_guide: 'Siguiente Lección: %{name}'
   no_exercises: No encontramos ejercicios que coincidan con tu búsqueda.
@@ -121,6 +123,7 @@ es:
   reset: reiniciar
   running: procesando
   search: 'Buscá, por ejemplo: polimorfismo, haskell o competenciaDeSaltos'
+  send: Enviar
   sending_solution: Enviando solución
   show: Mostrar
   sign_in: Iniciá sesión

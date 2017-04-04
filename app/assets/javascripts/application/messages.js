@@ -41,3 +41,7 @@ function submitMessagesForm(url) {
         }
     });
 }
+
+function openNewMessageModal() {
+    $('#new-message-modal').modal();
+}

@@ -76,6 +76,7 @@ en:
   need_a_hint: Do you need a hint?
   never: never
   new: New
+  new_message_placeholder: Escribí tu mensaje acá...
   next_exercise: Next
   next_lesson: 'Next Guide: %{name}'
   no_exercises: Nobody created an exercise for this search yet
