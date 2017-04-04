@@ -44,6 +44,7 @@ en:
   error_403: 403 error
   error_404: 404 error
   error_410: error 410
+  exit: Exit
   failed: Oops, something went wrong
   feedback: Feedback
   forbidden_explanation: You are not allowed to see this content.
@@ -98,6 +99,7 @@ en:
   profile_of: Profile of %{username}
   progress: Progresss
   read: Read
+  read_messages: Mark all as read
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   reset: reset
   running: running

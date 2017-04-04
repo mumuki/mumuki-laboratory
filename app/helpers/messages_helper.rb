@@ -14,4 +14,8 @@ module MessagesHelper
   def pending_messages_filter(messages)
     'pending-messages-filter' if pending_messages?(messages)
   end
+
+  def read_messages_caption(messages)
+    pending_messages?(messages) ? :read_messages : :exit
+  end
 end

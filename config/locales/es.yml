@@ -44,6 +44,7 @@ es:
   exercise_success_rate: Tasa de éxito en ejercicios
   exercises: Ejercicios
   exercises_index_title: ¿Buscando algún ejercicio particular?
+  exit: Salir
   expectations: Objetivos
   explain_redirect: Notamos que te registraste en otra organización.
   export_created: Exportación encolada
@@ -114,6 +115,7 @@ es:
   profile_of: Perfil de %{username}
   progress: Progreso
   read: Leido
+  read_messages: Marcar como leídos
   recent_activity: Actividad Reciente
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
   reset: reiniciar

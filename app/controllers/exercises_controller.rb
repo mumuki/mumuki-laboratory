@@ -5,12 +5,17 @@ class ExercisesController < ApplicationController
   before_action :set_exercises, only: :index
   before_action :set_guide, only: :show
   before_action :set_default_content, only: :show, if: :current_user?
-  before_action :set_messages, only: :show
+  before_action :set_messages, only: [:show, :read_messages]
   before_action :validate_user, only: :show
   before_action :start!, only: :show
 
   def show
     @solution = @exercise.new_solution if current_user?
+  end
+
+  def read_messages
+    @messages.each(&:read!)
+    redirect_to @exercise
   end
 
   def index

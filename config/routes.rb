@@ -40,6 +40,9 @@ Rails.application.routes.draw do
     # Routes by slug
     get '/guides/:organization/:repository' => 'guides#show_by_slug', as: :guide_by_slug
     get '/exercises/:organization/:repository/:bibliotheca_id' => 'exercises#show_by_slug', as: :exercise_by_slug
+
+    # Route for reading messages
+    post '/exercises/:id/read_messages' => 'exercises#read_messages', as: :read_messages
   end
 
   #Rescue not found routes
