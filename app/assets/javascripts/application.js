@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require momentjs
+//= require momentjs/locale/es.js
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap

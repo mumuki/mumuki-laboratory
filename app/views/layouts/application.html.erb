@@ -21,6 +21,9 @@
   </script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <script type="text/javascript" src="<%= extension_javascript_url %>" defer data-turbolinks-track="reload"></script>
+  <script type="text/javascript">
+      moment.locale('<%= Organization.locale %>');
+  </script>
   <%= login_form.header_html %>
 </head>
 <body>
