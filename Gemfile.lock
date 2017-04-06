@@ -156,7 +156,7 @@ GEM
       rack (>= 1.5)
     mumukit-inspection (0.1.1)
       mumukit-core (~> 0.2)
-    mumukit-login (1.2.3)
+    mumukit-login (1.2.2)
       addressable
       mumukit-auth (~> 6.1)
       mumukit-core (~> 0.5)
