@@ -115,7 +115,7 @@
     </div>
     <div class="modal fade" id="new-message-modal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog">
-        <%= form_for(Message.new(submission_id: @exercise.assignment_for(current_user).submission_id), html: {role: 'form'}) do |f| %>
+        <%= form_for(Message.new(submission_id: @exercise.last_submission_id_for(current_user)), html: {role: 'form'}) do |f| %>
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -132,7 +132,7 @@
                   <div class="row">
                     <div class="col-md-12">
                       <%= f.text_area :content, class: 'form-control', placeholder: t(:new_message_placeholder) %>
-                      <%= f.text_field :submission_id, value: @exercise.assignment_for(current_user).submission_id, class: 'hidden' %>
+                      <%= f.text_field :submission_id, value: @exercise.last_submission_id_for(current_user), class: 'hidden' %>
                     </div>
                   </div>
                 </div>

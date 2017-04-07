@@ -138,14 +138,6 @@ ActiveRecord::Schema.define(version: 20170330145157) do
 
   add_index "guides", ["name"], name: "index_guides_on_name", using: :btree
 
-  create_table "invitations", force: true do |t|
-    t.string "code"
-    t.string "course"
-    t.date   "expiration_date"
-  end
-
-  add_index "invitations", ["code"], name: "index_invitations_on_code", unique: true, using: :btree
-
   create_table "languages", force: true do |t|
     t.string   "name"
     t.string   "runner_url"
@@ -194,7 +186,7 @@ ActiveRecord::Schema.define(version: 20170330145157) do
     t.string   "logo_url"
     t.string   "login_methods",            default: ["user_pass"], null: false, array: true
     t.integer  "book_ids",                 default: [],                         array: true
-    t.text     "terms_of_service"
+    t.string   "terms_of_service"
     t.string   "locale"
     t.string   "theme_stylesheet_url"
     t.string   "extension_javascript_url"

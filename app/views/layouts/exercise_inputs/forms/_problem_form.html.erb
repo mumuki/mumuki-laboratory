@@ -10,7 +10,9 @@
       <% if @exercise.queriable? %>
           <%= console_tab %>
       <% end %>
-      <%= messages_tab %>
+      <% unless @exercise.clean_for current_user %>
+          <%= messages_tab %>
+      <% end %>
     </ul>
 <% end %>
 

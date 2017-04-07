@@ -38,8 +38,16 @@ module WithAssignments
     assignment_for(user).try(&:updated_at)
   end
 
+  def last_submission_id_for(user)
+    assignment_for(user)&.submission_id
+  end
+
   def submissions_count_for(user)
     assignment_for(user).try(&:submissions_count) || 0
+  end
+
+  def clean_for(user)
+    submissions_count_for(user).zero?
   end
 
   def find_or_init_assignment_for(user)
