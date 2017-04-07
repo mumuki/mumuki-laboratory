@@ -26,6 +26,13 @@ Rails.application.routes.draw do
     # All users
     resource :user, only: [:show]
 
+    namespace :api do
+      resources :guides, only: [:create]
+      resources :topics, only: [:create]
+      resources :books, only: [:create]
+      resources :organizations, only: [:index]
+    end
+
     # Current user
     resources :comments, only: :index
 
