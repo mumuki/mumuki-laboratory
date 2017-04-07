@@ -46,7 +46,7 @@ module WithAssignments
     assignment_for(user).try(&:submissions_count) || 0
   end
 
-  def clean_for(user)
+  def clean_for?(user)
     submissions_count_for(user).zero?
   end
 
