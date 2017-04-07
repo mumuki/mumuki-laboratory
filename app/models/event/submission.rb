@@ -10,7 +10,7 @@ class Event::Submission < Event::Base
   def event_json
     navigable_parent = @assignment.exercise.navigable_parent
     @assignment.
-      as_json(except: [:exercise_id, :submission_id, :id, :submitter_id, :solution, :created_at, :updated_at],
+      as_json(except: [:exercise_id, :submission_id, :id, :submitter_id, :solution, :has_messages, :created_at, :updated_at],
               include: {
                 guide: {
                   only: [:slug, :name],

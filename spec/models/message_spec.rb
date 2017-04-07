@@ -41,6 +41,7 @@ describe Message do
       it { expect(Message.count).to eq 1 }
       it { expect(Message.first.assignment).to_not be_nil }
       it { expect(Message.first.assignment).to eq assignment }
+      it { expect(Assignment.first.has_messages).to be true }
     end
 
     context 'when not last submission' do
@@ -58,8 +59,8 @@ describe Message do
       before { problem.submit_solution! user, content: 'other solution' }
       before { Message.import_from_json! data }
 
-      it { expect(Message.count).to eq 1 }
-      it { expect(Message.first.assignment).to be_nil }
+      it { expect(Message.count).to eq 0 }
+      it { expect(Assignment.first.has_messages).to be false }
     end
 
   end
