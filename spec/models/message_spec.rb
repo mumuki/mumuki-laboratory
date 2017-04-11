@@ -28,6 +28,7 @@ describe Message do
 
     context 'when last submission' do
       let!(:assignment) { problem.submit_solution! user, content: '' }
+      let(:final_assignment) { Assignment.first }
       let!(:data) {
         {'exercise_id' => problem.id,
          'submission_id' => assignment.submission_id,
@@ -36,11 +37,23 @@ describe Message do
            'sender' => 'teacher@mumuki.org',
            'content' => 'a',
            'created_at' => '1/1/1'}} }
+
       before { Message.import_from_json! data }
+      before do
+        assignment2 = problem.submit_solution! user, content: ''
+        data2 = {'exercise_id' => problem.id,
+                 'submission_id' => assignment2.submission_id,
+                 'organization' => Organization.current.name,
+                 'message' => {
+                   'sender' => 'teacher@mumuki.org',
+                   'content' => 'a',
+                   'created_at' => '1/1/1'}}
+        Message.import_from_json! data2
+      end
 
       it { expect(Message.count).to eq 1 }
       it { expect(Message.first.assignment).to_not be_nil }
-      it { expect(Message.first.assignment).to eq assignment }
+      it { expect(Message.first.assignment).to eq final_assignment }
       it { expect(Assignment.first.has_messages).to be true }
     end
 
