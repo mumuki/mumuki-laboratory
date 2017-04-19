@@ -6,7 +6,7 @@
 
 <div class="bs-callout bs-callout-<%= class_for_status assignment.status %>">
   <h4>
-    <strong><%= fa_icon icon_type_for_status(assignment.status) %> <%= t(assignment.status) %></strong>
+    <strong><%= fa_icon icon_type_for_status(assignment.status) %> <%= assignment.status_message %></strong>
   </h4>
 
   <% if assignment.results_visible? %>
