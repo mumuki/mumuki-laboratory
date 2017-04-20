@@ -98,7 +98,7 @@ class Exam < ActiveRecord::Base
 
   def self.import_from_json!(json)
     json.except!(:social_ids, :sender)
-    organization = Organization.find_by!(name: json.delete(:tenant))
+    organization = Organization.find_by!(name: json.delete(:organization))
     organization.switch!
     exam_data = parse_json json
     remove_previous_version exam_data[:eid], exam_data[:guide_id]
