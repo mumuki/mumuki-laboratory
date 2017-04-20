@@ -67,6 +67,10 @@ class Assignment < ActiveRecord::Base
     exercise.language.extension
   end
 
+  def notify!
+    Event::Submission.new(self).notify!
+  end
+
   private
 
   def update_submissions_count!

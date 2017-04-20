@@ -17,7 +17,7 @@ namespace :assignments do
       .assignments
       .where(submitter: User.where(last_organization: Organization.current))
       .where('assignments.created_at > ?', 1.month.ago)
-      .each { |it| Event::Submission.new(it).notify! }
+      .each(&:notify!)
   end
 
   # This task should not be called directly (because it "does nothing"), it's just a prerrequisite for the others.
