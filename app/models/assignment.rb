@@ -71,6 +71,13 @@ class Assignment < ActiveRecord::Base
     Event::Submission.new(self).notify!
   end
 
+  def notify_to_accessible_organizations!
+    submitter.accessible_organizations.each do |organization|
+      organization.switch!
+      notify!
+    end
+  end
+
   private
 
   def update_submissions_count!
