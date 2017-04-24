@@ -15,6 +15,20 @@ class Message < ActiveRecord::Base
       .merge(message)
   end
 
+  def self.create_and_notify!(data)
+    message = new data
+    message.save!
+    message.notify!
+  end
+
+  def notify!
+    Mumukit::Nuntius.notify! 'student-messages', json_to_notify
+  end
+
+  def json_to_notify
+    as_json(except: [:id, :exercise_id, :type], include: {exercise: {only: [:bibliotheca_id]}}).merge(organization: Organization.current.name)
+  end
+
   def read!
     self.read = true
     save!
