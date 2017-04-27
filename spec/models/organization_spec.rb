@@ -34,8 +34,8 @@ describe Organization do
   end
 
   describe '#url_for' do
-    it { expect(Organization.url_for 'zaraza').to eq 'http://test.localmumuki.io:3000/zaraza' }
-    it { expect(central.url_for 'zaraza').to eq 'http://central.localmumuki.io:3000/zaraza' }
+    it { expect(Organization.url_for 'zaraza').to eq 'http://test.localmumuki.io/zaraza' }
+    it { expect(central.url_for 'zaraza').to eq 'http://central.localmumuki.io/zaraza' }
   end
 
   describe '#domain' do

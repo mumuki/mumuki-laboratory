@@ -1,9 +1,6 @@
 module MenuBarHelper
   def link_to_classroom
-    link_to_application 'graduation-cap',
-                        :classroom,
-                        :teacher?,
-                        subdominated: true
+    link_to_application 'graduation-cap', :classroom, :teacher?
   end
 
   def link_to_bibliotheca
@@ -14,11 +11,11 @@ module MenuBarHelper
     link_to_application :clipboard, :office, :janitor?
   end
 
-  def link_to_application(icon, app_name, minimal_permissions, options={})
+  def link_to_application(icon, app_name, minimal_permissions)
     return unless current_user&.send(minimal_permissions)
 
-    app = ApplicationRoot.send(app_name)
-    url = options[:subdominated] ? app.subdominated_url(Organization.current.name) : app.url
+    app = Mumukit::Platform.application(app_name)
+    url = app.organic_url(Organization.current.name)
 
     link_to fixed_fa_icon(icon, text: t(app_name)), url
   end
