@@ -49,17 +49,20 @@ gem 'bunny'
 gem 'mumukit-content-type',
     git: 'https://github.com/mumuki/mumukit-content-type',
     require: 'mumukit/content_type',
-    ref: 'v0.6.0-mumuki-rouge'
+    ref: 'v1.0.0-mumuki-rouge'
 gem 'rouge',
     git: 'https://github.com/mumuki/rouge',
     ref: '5a8db3387f3a67232569969cd3da40ee04eb9dc3'
 
-gem 'mumukit-auth', '~> 6.0'
-gem 'mumukit-core', '~> 0.6'
-gem 'mumukit-bridge', '~> 1.3'
-gem 'mumukit-inspection', '~> 0.1'
-gem 'mumukit-nuntius', '~> 4.0'
-gem 'mumukit-login', '~> 2.0'
+gem 'mumukit-auth', '~> 7.0'
+gem 'mumukit-core', '~> 1.0'
+gem 'mumukit-bridge', '~> 3.0'
+gem 'mumukit-inspection', '~> 1.0'
+gem 'mumukit-nuntius', '~> 5.0'
+gem 'mumukit-login', '~> 3.0'
+
+gem 'rack', '~> 1.5'
+gem 'omniauth', '~> 1.4.0'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'

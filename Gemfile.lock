@@ -1,11 +1,11 @@
 GIT
   remote: https://github.com/mumuki/mumukit-content-type
-  revision: 89fe367a6b631838b8dec34754206f0853f15b40
-  ref: v0.6.0-mumuki-rouge
+  revision: d9eb505242d3b29a5b61f41022326f56c7c6e5d0
+  ref: v1.0.0-mumuki-rouge
   specs:
-    mumukit-content-type (0.6.0)
+    mumukit-content-type (1.0.0)
       md_emoji
-      mumukit-core (~> 0.1)
+      mumukit-core (~> 1.0)
       redcarpet (~> 3.3.2)
 
 GIT
@@ -64,7 +64,7 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
-    bootstrap_form (2.6.0)
+    bootstrap_form (2.7.0)
     bootswatch-rails (3.3.5)
       railties (>= 3.1)
     builder (3.2.3)
@@ -132,7 +132,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     libv8 (3.16.14.19)
-    mail (2.6.4)
+    mail (2.6.5)
       mime-types (>= 1.16, < 4)
     md_emoji (1.0.2)
       railties (>= 3.1.0)
@@ -146,29 +146,29 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    mumukit-auth (6.1.1)
+    mumukit-auth (7.0.0)
       jwt
-      mumukit-core (~> 0.5)
-    mumukit-bridge (1.3.1)
-      mumukit-core (~> 0.1)
+      mumukit-core (~> 1.0)
+    mumukit-bridge (3.0.0)
+      mumukit-core (~> 1.0)
       rest-client
-    mumukit-core (0.6.0)
+    mumukit-core (1.0.0)
       activesupport (>= 4.1)
       i18n (~> 0.7)
       rack (>= 1.5)
-    mumukit-inspection (0.1.1)
-      mumukit-core (~> 0.2)
-    mumukit-login (2.0.3)
+    mumukit-inspection (1.0.0)
+      mumukit-core (~> 1.0)
+    mumukit-login (3.0.0)
       addressable
-      mumukit-auth (~> 6.1)
-      mumukit-core (~> 0.5)
+      mumukit-auth (~> 7.0)
+      mumukit-core (~> 1.0)
       omniauth (~> 1.2)
       omniauth-auth0 (~> 1.1)
       omniauth-saml (~> 1.6)
       rack (>= 1.5)
-    mumukit-nuntius (4.1.1)
+    mumukit-nuntius (5.0.0)
       bunny (~> 2.3)
-      mumukit-core (~> 0.5)
+      mumukit-core (~> 1.0)
     netrc (0.11.0)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
@@ -238,7 +238,7 @@ GEM
     rake (10.4.2)
     redcarpet (3.3.4)
     ref (2.0.0)
-    rest-client (2.0.1)
+    rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
@@ -331,14 +331,15 @@ DEPENDENCIES
   i18n-tasks (~> 0.8.3)
   jquery-rails
   kaminari (~> 0.16.3)
-  mumukit-auth (~> 6.0)
-  mumukit-bridge (~> 1.3)
+  mumukit-auth (~> 7.0)
+  mumukit-bridge (~> 3.0)
   mumukit-content-type!
-  mumukit-core (~> 0.6)
-  mumukit-inspection (~> 0.1)
-  mumukit-login (~> 2.0)
-  mumukit-nuntius (~> 4.0)
+  mumukit-core (~> 1.0)
+  mumukit-inspection (~> 1.0)
+  mumukit-login (~> 3.0)
+  mumukit-nuntius (~> 5.0)
   nprogress-rails
+  omniauth (~> 1.4.0)
   pg (~> 0.18.0)
   pg_search (~> 1.0)
   pry
@@ -347,6 +348,7 @@ DEPENDENCIES
   pry-remote
   pry-stack_explorer
   puma
+  rack (~> 1.5)
   rails (~> 4.1.14)
   rails-assets-awesome-bootstrap-checkbox!
   rails-assets-dev-awesome!
@@ -365,4 +367,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.14.4
+   1.14.6
