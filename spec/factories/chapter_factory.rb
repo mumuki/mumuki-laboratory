@@ -2,7 +2,7 @@ FactoryGirl.define do
 
   factory :chapter do
     number { Faker::Number.between(1, 40) }
-    book { Organization.book rescue nil }
+    book { Organization.current.book rescue nil }
 
     transient do
       lessons []

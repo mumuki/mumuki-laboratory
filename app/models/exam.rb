@@ -112,7 +112,7 @@ class Exam < ActiveRecord::Base
   def self.parse_json(exam_json)
     exam = exam_json.except(:name, :language)
     exam[:guide_id] = Guide.find_by(slug: exam.delete(:slug)).id
-    exam[:organization_id] = Organization.id
+    exam[:organization_id] = Organization.current.id
     exam[:users] = exam.delete(:uids).map { |uid| User.find_by(uid: uid) }.compact
     [:start_time, :end_time].each { |param| exam[param] = exam[param].to_time }
     exam

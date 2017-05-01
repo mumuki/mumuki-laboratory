@@ -17,7 +17,7 @@ describe Organization do
   end
 
   describe '#notify_recent_assignments!' do
-    it { expect { Organization.notify_recent_assignments! 1.minute.ago }.to_not raise_error }
+    it { expect { Organization.current.notify_recent_assignments! 1.minute.ago }.to_not raise_error }
   end
 
   describe 'restricter_login_methods?' do
@@ -34,20 +34,21 @@ describe Organization do
   end
 
   describe '#url_for' do
-    it { expect(Organization.url_for 'zaraza').to eq 'http://test.localmumuki.io/zaraza' }
+    it { expect(Organization.current.url_for 'zaraza').to eq 'http://test.localmumuki.io/zaraza' }
     it { expect(central.url_for 'zaraza').to eq 'http://central.localmumuki.io/zaraza' }
   end
 
   describe '#domain' do
-    it { expect(Organization.domain).to eq 'test.localmumuki.io' }
+    it { expect(Organization.current.domain).to eq 'test.localmumuki.io' }
     it { expect(central.domain).to eq 'central.localmumuki.io' }
   end
 
   describe '#notify_assignments_by!' do
-    it { expect { Organization.notify_assignments_by! user }.to_not raise_error }
+    it { expect { Organization.current.notify_assignments_by! user }.to_not raise_error }
   end
 
   describe '#in_path?' do
+    let(:organization) { Organization.current }
     let!(:chapter_in_path) { create(:chapter, lessons: [
       create(:lesson, exercises: [
         create(:exercise),
@@ -66,13 +67,13 @@ describe Organization do
 
     before { reindex_current_organization! }
 
-    it { expect(Organization.in_path? orphan_guide).to be false }
-    it { expect(Organization.in_path? orphan_exercise).to be false }
+    it { expect(organization.in_path? orphan_guide).to be false }
+    it { expect(organization.in_path? orphan_exercise).to be false }
 
-    it { expect(Organization.in_path? chapter_in_path).to be true }
-    it { expect(Organization.in_path? topic_in_path).to be true }
-    it { expect(Organization.in_path? lesson_in_path).to be true }
-    it { expect(Organization.in_path? guide_in_path).to be true }
+    it { expect(organization.in_path? chapter_in_path).to be true }
+    it { expect(organization.in_path? topic_in_path).to be true }
+    it { expect(organization.in_path? lesson_in_path).to be true }
+    it { expect(organization.in_path? guide_in_path).to be true }
   end
 
 

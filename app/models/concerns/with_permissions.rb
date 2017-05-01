@@ -7,11 +7,11 @@ module WithPermissions
 
   #FIXME may be able to remove now
   def student?
-    permissions.student? Organization.slug
+    permissions.student? Organization.current.slug
   end
 
   def teacher?
-    permissions.teacher? Organization.slug
+    permissions.teacher? Organization.current.slug
   end
 
   def janitor?
