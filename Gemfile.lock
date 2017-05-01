@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/mumuki/mumukit-platform.git
+  revision: d8fb94619f1e1f5fc08976f0dc37626ec4e7b877
+  specs:
+    mumukit-platform (0.3.0)
+      mumukit-core (~> 1.0)
+
+GIT
   remote: https://github.com/mumuki/mumukit-content-type
   revision: d9eb505242d3b29a5b61f41022326f56c7c6e5d0
   ref: v1.0.0-mumuki-rouge
@@ -169,8 +176,6 @@ GEM
     mumukit-nuntius (5.0.0)
       bunny (~> 2.3)
       mumukit-core (~> 1.0)
-    mumukit-platform (0.3.0)
-      mumukit-core (~> 1.0)
     netrc (0.11.0)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
@@ -340,7 +345,7 @@ DEPENDENCIES
   mumukit-inspection (~> 1.0)
   mumukit-login (~> 3.0)
   mumukit-nuntius (~> 5.0)
-  mumukit-platform (~> 0.3)
+  mumukit-platform!
   nprogress-rails
   omniauth (~> 1.4.0)
   pg (~> 0.18.0)

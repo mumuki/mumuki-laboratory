@@ -1,8 +1,6 @@
 class Organization < ActiveRecord::Base
   include LoginCustomization
 
-  extend ConfigurableGlobal
-
   belongs_to :book
   has_many :usages
 
@@ -24,7 +22,7 @@ class Organization < ActiveRecord::Base
   end
 
   def switch!
-    self.class.current = self
+    Mumukit::Platform::Organization.switch! self
   end
 
   def central?
@@ -117,11 +115,8 @@ class Organization < ActiveRecord::Base
   end
 
   class << self
-    attr_writer :current
-
     def current
-      raise 'organization not selected' unless @current
-      @current
+      Mumukit::Platform::Organization.current
     end
 
     def central
