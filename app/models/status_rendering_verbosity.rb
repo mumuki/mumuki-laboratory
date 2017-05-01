@@ -1,8 +1,10 @@
 module StatusRenderingVerbosity
-  extend ConfigurableGlobal
+  class << self
+    delegate :visible_expectation_results, :render_feedback?, to: :current
+  end
 
-  def self.get_current
-    "StatusRenderingVerbosity::#{Rails.configuration.status_rendering_verbosity.capitalize}".constantize
+  def self.current
+    @current ||=  "StatusRenderingVerbosity::#{Rails.configuration.status_rendering_verbosity.capitalize}".constantize
   end
 
   module Verbose
