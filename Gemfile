@@ -54,13 +54,13 @@ gem 'rouge',
     git: 'https://github.com/mumuki/rouge',
     ref: '5a8db3387f3a67232569969cd3da40ee04eb9dc3'
 
-gem 'mumukit-auth', github: 'mumuki/mumukit-auth'
+gem 'mumukit-auth', '~> 7.1'
 gem 'mumukit-core', '~> 1.0'
 gem 'mumukit-bridge', '~> 3.0'
 gem 'mumukit-inspection', '~> 1.0'
 gem 'mumukit-nuntius', '~> 5.0'
 gem 'mumukit-login', '~> 3.0'
-gem 'mumukit-platform', github: 'mumuki/mumukit-platform'
+gem 'mumukit-platform', '~> 0.4'
 
 gem 'rack', '~> 1.5'
 gem 'omniauth', '~> 1.4.0'
