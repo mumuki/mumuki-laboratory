@@ -8,7 +8,7 @@ module WithSlug
   end
 
   def import!
-    import_from_json! Mumukit::Bridge::Bibliotheca.new(Rails.configuration.bibliotheca_api_url).send(self.class.name.underscore, slug)
+    import_from_json! Mumukit::Bridge::Bibliotheca.new(Mumukit::Platform.bibliotheca_api.url).send(self.class.name.underscore, slug)
   end
 
   def slug_parts

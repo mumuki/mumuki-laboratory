@@ -1,14 +1,12 @@
 require 'capybara/rails'
 require 'capybara/rspec'
 
-Capybara.app_host = "http://test.#{Rails.configuration.domain}"
-Capybara.server_host = "test.#{Rails.configuration.domain}"
-Capybara.server_port = '3000'
+Capybara.app_host = Mumukit::Platform.application.organic_url 'test'
 
 def set_subdomain_host!(subdomain)
-  Capybara.app_host = "http://#{subdomain}.#{Rails.configuration.domain}"
+  Capybara.app_host = Mumukit::Platform.application.organic_url subdomain
 end
 
 def set_implicit_central!
-  Capybara.app_host = "http://#{Rails.configuration.domain}"
+  Capybara.app_host = Mumukit::Platform.application.url
 end

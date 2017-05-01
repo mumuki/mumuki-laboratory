@@ -1,7 +1,7 @@
 require 'mumukit/bridge'
 
 def import_resource!(resource)
-  Mumukit::Bridge::Bibliotheca.new(Rails.configuration.bibliotheca_api_url).send(resource.to_s.pluralize).each do |r|
+  Mumukit::Bridge::Bibliotheca.new(Mumukit::Platform.bibliotheca_api.url).send(resource.to_s.pluralize).each do |r|
     slug = r['slug']
     clazz = resource.to_s.classify.constantize
     puts "Importing #{resource} #{slug}"

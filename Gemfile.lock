@@ -169,7 +169,7 @@ GEM
     mumukit-nuntius (5.0.0)
       bunny (~> 2.3)
       mumukit-core (~> 1.0)
-    mumukit-platform (0.1.0)
+    mumukit-platform (0.3.0)
       mumukit-core (~> 1.0)
     netrc (0.11.0)
     nokogiri (1.7.1)
@@ -340,7 +340,7 @@ DEPENDENCIES
   mumukit-inspection (~> 1.0)
   mumukit-login (~> 3.0)
   mumukit-nuntius (~> 5.0)
-  mumukit-platform (~> 0.1)
+  mumukit-platform (~> 0.3)
   nprogress-rails
   omniauth (~> 1.4.0)
   pg (~> 0.18.0)
