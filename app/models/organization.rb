@@ -124,7 +124,7 @@ class Organization < ActiveRecord::Base
     end
 
     def central_url
-      Mumukit::Platform::laboratory.organic_url('central')
+      Mumukit::Platform.laboratory.organic_url('central')
     end
 
     def create_from_json!(json)
