@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/mumuki/mumukit-auth.git
+  revision: 1dbf108b44924ce2155233fd753f5581f37977c8
+  specs:
+    mumukit-auth (7.0.0)
+      jwt
+      mumukit-core (~> 1.0)
+
+GIT
   remote: git://github.com/mumuki/mumukit-platform.git
   revision: d8fb94619f1e1f5fc08976f0dc37626ec4e7b877
   specs:
@@ -153,9 +161,6 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    mumukit-auth (7.0.0)
-      jwt
-      mumukit-core (~> 1.0)
     mumukit-bridge (3.0.0)
       mumukit-core (~> 1.0)
       rest-client
@@ -338,7 +343,7 @@ DEPENDENCIES
   i18n-tasks (~> 0.8.3)
   jquery-rails
   kaminari (~> 0.16.3)
-  mumukit-auth (~> 7.0)
+  mumukit-auth!
   mumukit-bridge (~> 3.0)
   mumukit-content-type!
   mumukit-core (~> 1.0)

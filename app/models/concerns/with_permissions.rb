@@ -3,23 +3,16 @@ module WithPermissions
 
   included do
     serialize :permissions, Mumukit::Auth::Permissions
+
+    delegate :writer?, :janitor?, to: :permissions
   end
 
-  #FIXME may be able to remove now
   def student?
     permissions.student? Organization.current.slug
   end
 
   def teacher?
     permissions.teacher? Organization.current.slug
-  end
-
-  def janitor?
-    permissions.janitor? Mumukit::Auth::Slug.any
-  end
-
-  def writer?
-    permissions.writer? Mumukit::Auth::Slug.any
   end
 
   def accessible_organizations

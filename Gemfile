@@ -54,7 +54,7 @@ gem 'rouge',
     git: 'https://github.com/mumuki/rouge',
     ref: '5a8db3387f3a67232569969cd3da40ee04eb9dc3'
 
-gem 'mumukit-auth', '~> 7.0'
+gem 'mumukit-auth', github: 'mumuki/mumukit-auth'
 gem 'mumukit-core', '~> 1.0'
 gem 'mumukit-bridge', '~> 3.0'
 gem 'mumukit-inspection', '~> 1.0'
