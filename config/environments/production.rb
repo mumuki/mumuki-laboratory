@@ -85,13 +85,4 @@ Rails.application.configure do
   config.i18n.default_locale = :es
 
   config.i18n.available_locales = [:es, :en]
-
-  config.domain = ENV['MUMUKI_LABORATORY_DOMAIN']
-  config.base_url = ENV['MUMUKI_LABORATORY_BASE_URL'] || "http://#{config.domain}"
-
-  config.thesaurus_url = ENV['MUMUKI_THESAURUS_URL'] || 'http://thesaurus.mumuki.io'
-  config.bibliotheca_url = ENV['MUMUKI_BIBLIOTHECA_URL'] || 'http://bibliotheca.mumuki.io'
-  config.bibliotheca_api_url = ENV['MUMUKI_BIBLIOTHECA_API_URL'] || 'http://bibliotheca-api.mumuki.io'
-  config.office_url = ENV['MUMUKI_OFFICE_URL'] || 'http://office.mumuki.io'
-  config.classroom_url = ENV['MUMUKI_CLASSROOM_URL'] || 'http://classroom.mumuki.io'
 end

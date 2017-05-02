@@ -4,7 +4,7 @@ module WithOrganization
   end
 
   def organization_name
-    OrganizationMapper.extract_organization_name(request)
+    Mumukit::Platform.organization_name(request)
   end
 
   def visit_organization!
