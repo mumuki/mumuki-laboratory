@@ -29,11 +29,11 @@ class ApplicationController < ActionController::Base
   private
 
   def login_settings
-    Organization.login_settings
+    Organization.current.login_settings
   end
 
   def set_locale!
-    I18n.locale = Organization.locale
+    I18n.locale = Organization.current.locale
   end
 
   def subject #TODO may be used to remove breadcrumbs duplication

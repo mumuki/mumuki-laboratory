@@ -4,7 +4,7 @@ module WithAuthorization
   end
 
   def authorize_if_private!
-    return if Organization.public? || from_sessions?
+    return if Organization.current.public? || from_sessions?
     authorize! :student
   end
 

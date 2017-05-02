@@ -2,10 +2,10 @@
   <div class="book-header <%= current_user? ? '' : 'logged' %>">
     <h1>ム mumuki</h1>
 
-    <img src="<%= Organization.logo_url %>" alt="<%= Organization.current.name %> - Mumuki">
+    <img src="<%= Organization.current.logo_url %>" alt="<%= Organization.current.name %> - Mumuki">
     <h2><%= @book.name %></h2>
 
-    <% unless Organization.central? %>
+    <% unless Organization.current.central? %>
       <h3>
         <small><%= raw t :powered_by_mumuki %></small>
       </h3>

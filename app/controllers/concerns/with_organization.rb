@@ -1,6 +1,9 @@
 module WithOrganization
   def set_organization!
     Organization.find_by!(name: organization_name).switch!
+  rescue => e
+    Organization.central.switch!
+    raise e
   end
 
   def organization_name

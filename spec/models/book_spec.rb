@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Book do
-  let(:book) { Organization.book }
+  let(:book) { Organization.current.book }
 
   describe '#next_lesson_for' do
     let!(:chapter) { create(:chapter, lessons: [create(:lesson)]) }

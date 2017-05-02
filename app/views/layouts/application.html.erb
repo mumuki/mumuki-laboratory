@@ -17,7 +17,7 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script type="text/javascript">
-      window.mumukiLocale = <%= raw Organization.locale_json %>;
+      window.mumukiLocale = <%= raw Organization.current.locale_json %>;
   </script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <script type="text/javascript" src="<%= extension_javascript_url %>" defer data-turbolinks-track="reload"></script>

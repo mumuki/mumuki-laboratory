@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
-  include WithProfile, WithToken, WithPermissions, WithUserNavigation, Mumukit::Login::UserPermissionsHelpers
+  include WithProfile,
+          WithToken,
+          WithPermissions,
+          WithUserNavigation,
+          Mumukit::Login::UserPermissionsHelpers
 
   has_many :assignments, foreign_key: :submitter_id
 

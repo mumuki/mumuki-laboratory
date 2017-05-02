@@ -2,7 +2,7 @@ module ApplicationHelper
   include WithStudentPathNavigation
 
   def contact_email
-    Organization.contact_email
+    Organization.current.contact_email
   end
 
   def page_title(subject)

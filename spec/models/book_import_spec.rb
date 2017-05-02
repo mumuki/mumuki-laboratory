@@ -10,7 +10,7 @@ describe Book do
   let!(:topic_1) { create(:topic, name: 'a topic') }
   let!(:topic_2) { create(:topic, name: 'other topic') }
 
-  let(:book) { Organization.book }
+  let(:book) { Organization.current.book }
 
   let(:book_json) do
     {name: 'sample book',

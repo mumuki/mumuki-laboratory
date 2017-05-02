@@ -18,7 +18,10 @@ module LinksHelper
   end
 
   def mail_to_administrator
-    mail_to Organization.contact_email, Organization.contact_email, subject: I18n.t(:permissions), body: permissions_help_email_body(current_user)
+    mail_to Organization.current.contact_email,
+            Organization.current.contact_email,
+            subject: I18n.t(:permissions),
+            body: permissions_help_email_body(current_user)
   end
 
   private

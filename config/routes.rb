@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   Mumukit::Login.configure_login_routes! self
 
-  Mumukit::Platform::map_organization_routes!(self) do
+  Mumukit::Platform.map_organization_routes!(self) do
     root to: 'book#show'
 
     resources :book, only: [:show]
