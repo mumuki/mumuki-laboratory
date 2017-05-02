@@ -46,7 +46,7 @@ class ExercisesController < ApplicationController
 
   def set_messages
     @messages = @exercise.messages_for(current_user) if current_user?
-    @messages_url = ApplicationRoot.classroom.url_for(Organization.current.name, @exercise.messages_path_for(current_user)) if current_user
+    @messages_url = Mumukit::Platform.classroom_api.organic_url_for(Organization.current, @exercise.messages_path_for(current_user)) if current_user
   end
 
   def set_guide
