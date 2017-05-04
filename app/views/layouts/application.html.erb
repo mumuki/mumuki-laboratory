@@ -32,17 +32,25 @@
 <% end %>
 
 <div class="container">
-  <div class="row">
+  <nav class="mu-navbar">
+    <div class="mu-navbar-breadcrumb">
+      <ul class="mu-breadcrumb-list">
+        <%= yield :breadcrumbs %>
+      </ul>
+    </div>
     <div class="mu-inline-block-right">
       <div class="user-menu">
         <% if current_user? %>
             <div class="dropdown">
-            <span id="profileDropdown" data-toggle="dropdown">
-              <%= image_tag(current_user.image_url, height: 40, class: 'img-circle') %>
-            </span>
-              <a class="messages-box <%= has_messages? ? '' : 'messages-box-empty' %>" href=<%= "#{user_path}#messages" %>>
-                <span class="badge badge-messages"><%= messages_count %></span>
-              </a>
+              <span>
+                <i class="fa fa-bell fa-fw fa-lg"></i>
+                <a class="notifications-box <%= !has_messages? ? '' : 'notifications-box-empty' %>" href=<%= "#{user_path}#messages" %>>
+                  <span class="badge badge-notifications"><%= messages_count %></span>
+                </a>
+              </span>
+              <span id="profileDropdown" data-toggle="dropdown">
+                <%= image_tag(current_user.image_url, height: 40, class: 'img-circle') %>
+              </span>
               <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                 <li>
                   <%= link_to fixed_fa_icon('user-o', text: t(:profile)), user_path %>
@@ -59,12 +67,7 @@
         <% end %>
       </div>
     </div>
-    <div class="mu-inline-block-left">
-      <ol class="breadcrumb">
-        <%= yield :breadcrumbs %>
-      </ol>
-    </div>
-  </div>
+  </nav>
 </div>
 
 <%= yield :no_container %>
