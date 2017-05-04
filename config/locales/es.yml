@@ -19,7 +19,7 @@ es:
   comment: Comentario
   comments: Comentarios
   console: Consola
-  contact_administrator: 'Si pensás que es un error, comunicate con el administrador: %{link}'
+  contact_administrator: 'Si pensás que es un error, comunicate con la persona que administra esta organización: %{link}'
   content: Contenido
   continue_practicing: ¡Seguí aprendiendo!
   continue_lesson: ¡Continuá esta lección!
@@ -53,7 +53,7 @@ es:
   error_410: error 410
   failed: Ups, algo no anduvo bien
   feedback: Problemas que encontramos
-  forbidden_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no estás autorizado a ver este contenido. ¿Puede que hayas ingresado con una cuenta incorrecta?
+  forbidden_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no tenés autorización para ver este contenido. ¿Puede que hayas ingresado con una cuenta incorrecta?
   gone_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que ya no podés ver este examen.
   guide: Lección
   guide_created: Guía creada exitosamente
@@ -74,7 +74,7 @@ es:
   learning: Aprendizaje
   lesson: Lección
   listing_exercises: Listado de ejercicios
-  manual_evaluation_pending: ¡Gracias por enviar tu solución! Los docentes del curso estarán corrigiéndola pronto
+  manual_evaluation_pending: ¡Gracias por enviar tu solución! Tus docentes la corregirán pronto
   minute: minuto
   minutes: minutos
   mumuki_catchphrase: Aprendé a programar
