@@ -22,7 +22,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-dev-awesome'
   gem 'rails-assets-awesome-bootstrap-checkbox'
   gem 'rails-assets-momentjs'
-  gem 'rails-assets-mumuki-styles', '1.4.4'
+  gem 'rails-assets-mumuki-styles', '1.4.5'
 end
 
 gem 'bootstrap-sass', '~> 3.3.5'
