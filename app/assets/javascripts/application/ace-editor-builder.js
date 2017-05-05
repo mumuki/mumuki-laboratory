@@ -41,6 +41,8 @@ var mumuki = mumuki || {};
 
     setupOptions: function (minLines) {
       this.editor.setOptions({
+        tabSize: 2,
+        useSoftTabs: true,
         maxLines: Infinity,
         showPrintMargin: false,
         selectionStyle: 'text',
