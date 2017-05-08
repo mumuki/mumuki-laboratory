@@ -123,10 +123,6 @@ class Organization < ActiveRecord::Base
       find_by name: 'central'
     end
 
-    def central_url
-      Mumukit::Platform.laboratory.organic_url('central')
-    end
-
     def create_from_json!(json)
       Organization.create! parse_json json
     end
