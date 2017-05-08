@@ -11,6 +11,10 @@ class MessagesController < AjaxController
     redirect_to @exercise
   end
 
+  def errors
+    render 'messages/errors', layout: false
+  end
+
   private
 
   def set_exercise

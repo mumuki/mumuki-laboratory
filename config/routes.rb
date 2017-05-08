@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
     # Current user
     resources :messages, only: [:index, :create]
+    get '/messages/errors' => 'messages#errors'
 
     # Routes by slug
     get '/guides/:organization/:repository' => 'guides#show_by_slug', as: :guide_by_slug

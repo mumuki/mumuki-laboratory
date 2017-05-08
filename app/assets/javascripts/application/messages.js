@@ -23,13 +23,24 @@ var mumuki = mumuki || {};
 }(mumuki));
 
 function submitMessagesForm(url) {
-    function success(data) {
+    function renderModal(data) {
         $('#view-messages-template').html(data);
         $('#messages-modal').modal();
     }
+    function success(data) {
+        renderModal(data);
+    }
 
     function error(xhr) {
-        console.log(xhr);
+        $.ajax({
+            url: '/messages/errors',
+            success: function(html) {
+                renderModal(html)
+            },
+            xhrFields: {
+                withCredentials: true
+            }
+        });
     }
 
     $.ajax({

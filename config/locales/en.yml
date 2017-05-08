@@ -66,6 +66,7 @@ en:
   lesson: Lesson
   listing_exercises: Listing exercises
   manual_evaluation_pending: Thanks for submitting your solution! It will be revised by the course teachers soon
+  messages_error: Previous messages are unavailable. Please try again later.
   mumuki_catchphrase: Improve your programming skills
   mumuki_short_description: Mumuki is a simple, open and collaborative platform for sharing and solving programming exercises. It is aimed to help people with learning and teaching programing languages and paradigms
   my_exercises: My Exercises
