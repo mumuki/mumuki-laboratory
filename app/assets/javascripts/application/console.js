@@ -97,30 +97,30 @@ var mumuki = mumuki || {};
     }
   };
 
+  function initConsole() {
+      var prompt = $('#prompt').attr('value');
+      var queryConsole = new QueryConsole();
 
-  $(document).on('ready page:load', function () {
-    var prompt = $('#prompt').attr('value');
-    var queryConsole = new QueryConsole();
+      $('.console-reset').click(function(){
+          queryConsole.clearState();
+      });
 
-    $('.console-reset').click(function(){
-      queryConsole.clearState();
-    });
+      $('.console').console({
+          promptLabel: prompt + ' ',
+          commandValidate: function (line) {
+              return line !== "";
+          },
+          commandHandle: function (line, report) {
+              queryConsole.newQuery(line).submit(report, queryConsole, line);
+          },
+          autofocus: !!$('#solution_editor_bottom').val(),
+          animateScroll: true,
+          promptHistory: true
+      });
 
-    $('.console').console({
-      promptLabel: prompt + ' ',
-      commandValidate: function (line) {
-        return line !== "";
-      },
-      commandHandle: function (line, report) {
-        queryConsole.newQuery(line).submit(report, queryConsole, line);
-      },
-      autofocus: !!$('#solution_editor_bottom').val(),
-      animateScroll: true,
-      promptHistory: true
-    });
+      renderPrompt();
+  }
 
-    renderPrompt();
-
-  });
+  mumukiLoad(initconsole);
 
 }(mumuki));

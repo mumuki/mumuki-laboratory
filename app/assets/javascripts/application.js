@@ -27,6 +27,7 @@
 //= require nprogress-ajax
 //= require jquery-console
 //= require countdown
+//= require application/mumuki.js
 //= require_tree ./application
 
 NProgress.configure({

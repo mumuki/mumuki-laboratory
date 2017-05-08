@@ -64,7 +64,6 @@ var mumuki = mumuki || {};
         });
     }
 
-    $(document).on('ready page:load', startAceEditor);
-    $(document).ready(startAceEditor);
+    mumukiLoad(startAceEditor);
 
 }(mumuki));
