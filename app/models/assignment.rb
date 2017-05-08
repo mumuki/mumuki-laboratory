@@ -62,10 +62,10 @@ class Assignment < ActiveRecord::Base
 
   def message!(message_data)
     Message.create! message_data.merge(submission_id: submission_id, exercise_id: exercise_id)
-    update_has_messages!
+    has_messages!
   end
 
-  def update_has_messages!
+  def has_messages!
     update! has_messages: true
   end
 
