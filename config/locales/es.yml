@@ -91,7 +91,7 @@ es:
   need_a_hint: ¡Dame una pista!
   never: nunca
   new: Nuevo
-  new_message: Nuevo Mensaje
+  new_message: ¿Tenés dudas? ¡Levantá la mano!
   new_message_placeholder: Escribí tu mensaje acá...
   next_exercise: Siguiente
   next_guide: 'Siguiente Lección: %{name}'
@@ -108,7 +108,7 @@ es:
   passed_with_warnings: Funcionó, pero hay cosas para mejorar
   pending: pendiente
   pending_messages: Tenés mensajes sin leer
-  pending_messages_explanation: No vas a poder enviar nuevas soluciones hasta no leer los mensajes pendientes
+  pending_messages_explanation: "¡Tu docente te dejó un mensaje! Revisalo antes de seguir enviando soluciones."
   permissions: Permisos
   previous_exercise: Anterior
   problem_with_exercise: '[Mumuki] Error con el ejercicio: %{title}'
