@@ -69,6 +69,10 @@ class Assignment < ActiveRecord::Base
     update! has_messages: true
   end
 
+  def empty_chat?
+    !has_messages
+  end
+
   def extension
     exercise.language.extension
   end

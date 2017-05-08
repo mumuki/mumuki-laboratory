@@ -10,7 +10,7 @@
       <% if @exercise.queriable? %>
           <%= console_tab %>
       <% end %>
-      <%= messages_tab(@exercise.clean_for?(current_user)) %>
+      <%= messages_tab(@exercise.clean_for?(current_user) || @exercise.assignment_for(current_user).empty_chat?) %>
     </ul>
 <% end %>
 
