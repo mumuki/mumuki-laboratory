@@ -3,8 +3,10 @@ class Assignment < ActiveRecord::Base
 
   belongs_to :exercise
   has_one :guide, through: :exercise
+  has_many :messages, foreign_key: :submission_id, through: :submission_id
 
   belongs_to :submitter, class_name: 'User'
+
 
   validates_presence_of :exercise, :submitter
 
@@ -71,6 +73,10 @@ class Assignment < ActiveRecord::Base
 
   def empty_chat?
     !has_messages
+  end
+
+  def pending_messages?
+    messages.where(read: false).present?
   end
 
   def extension

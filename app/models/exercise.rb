@@ -118,6 +118,10 @@ class Exercise < ActiveRecord::Base
     "/api/guides/#{guide.slug}/#{user.uid}/#{bibliotheca_id}/messages"
   end
 
+  def messages_url_for(user)
+    Mumukit::Platform.classroom_api.organic_url_for(Organization.current, messages_path_for(user))
+  end
+
   def self.notify_for_classroom_update!
     all
       .as_json(only: [:id, :bibliotheca_id], include: {guide: {only: :slug}})
