@@ -27,6 +27,7 @@ function submitMessagesForm(url) {
         $('#view-messages-template').html(data);
         $('#messages-modal').modal();
     }
+
     function success(data) {
         renderModal(data);
     }
@@ -34,7 +35,7 @@ function submitMessagesForm(url) {
     function error(xhr) {
         $.ajax({
             url: '/messages/errors',
-            success: function(html) {
+            success: function (html) {
                 renderModal(html)
             },
             xhrFields: {
@@ -54,5 +55,12 @@ function submitMessagesForm(url) {
 }
 
 function openNewMessageModal() {
-    $('#new-message-modal').modal();
+    $('#new-message-modal').modal({backdrop: false, keyboard: false});
+    $('body').addClass("new-message-modal-open");
+    $('body').removeClass("modal-open");
+}
+
+function closeNewMessageModal() {
+    $('#new-message-modal').modal("close");
+    $('body').removeClass("new-message-modal-open");
 }

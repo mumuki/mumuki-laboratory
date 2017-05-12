@@ -1,7 +1,3 @@
-.modal-backdrop {
-  background: #f7f7f7;
-}
-
 .modal .container {
   margin-top: 110px;
 }
@@ -10,10 +6,19 @@
   padding-right: 0px !important;
 }
 
-body.modal-open #wrap{
-  -webkit-filter: blur(7px);
-  -moz-filter: blur(15px);
-  -o-filter: blur(15px);
-  -ms-filter: blur(15px);
-  filter: blur(15px);
+body {
+  &.modal-open #wrap {
+    -webkit-filter: blur(7px);
+    -moz-filter: blur(15px);
+    -o-filter: blur(15px);
+    -ms-filter: blur(15px);
+    filter: blur(15px);
+  }
+  &.new-message-modal-open #wrap {
+    -webkit-filter: blur(0);
+    -moz-filter: blur(0);
+    -o-filter: blur(0);
+    -ms-filter: blur(0);
+    filter: blur(0);
+  }
 }

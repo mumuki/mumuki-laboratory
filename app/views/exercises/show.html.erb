@@ -114,26 +114,24 @@
       </div>
     </div>
     <div class="modal fade" id="new-message-modal" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog mu-new-message-modal">
         <%= form_for(Message.new(submission_id: @exercise.last_submission_id_for(current_user)), html: {role: 'form'}) do |f| %>
             <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
-                <p class="modal-title text-center title-font"> <%= t :new_message %></p>
+              <div class="mu-modal-header">
+                <div>
+                  <%= fa_icon :'envelope-open-o', class: 'mu-modal-close-button' %>
+                </div>
+                <div>
+                  <button type="button" onclick="closeNewMessageModal()" class="mu-modal-close-button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
               </div>
               <div class="modal-body mu-view-messages">
                 <div class="container-fluid">
                   <div class="row">
-                    <div class="col-md-12">
-                      <%= markdown_to_html @exercise.language.name, @current_content %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <%= f.text_area :content, class: 'form-control', placeholder: t(:new_message_placeholder) %>
-                      <%= f.text_field :submission_id, value: @exercise.last_submission_id_for(current_user), class: 'hidden' %>
-                    </div>
+                    <%= f.text_area :content, class: 'form-control', placeholder: t(:new_message_placeholder), class: 'mu-message-textarea' %>
+                    <%= f.text_field :submission_id, value: @exercise.last_submission_id_for(current_user), class: 'hidden' %>
                   </div>
                 </div>
               </div>

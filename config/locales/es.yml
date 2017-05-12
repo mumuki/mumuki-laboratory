@@ -93,7 +93,7 @@ es:
   never: nunca
   new: Nuevo
   new_message: ¿Tenés dudas? ¡Levantá la mano!
-  new_message_placeholder: Escribí tu mensaje acá...
+  new_message_placeholder: Escribí el mensaje para tu docente acá...
   next_exercise: Siguiente
   next_guide: 'Siguiente Lección: %{name}'
   no_exercises: No encontramos ejercicios que coincidan con tu búsqueda.
