@@ -24,19 +24,27 @@ FactoryGirl.define do
     sequence(:bibliotheca_id) { |n| n }
     sequence(:number) { |n| n }
 
-    language { guide ? guide.language : create(:language) }
-    layout 'input_right'
     locale :en
     guide
   end
 
-  factory :problem, class: Problem, parent: :exercise_base do
+  factory :challenge, parent: :exercise_base do
+    language { guide ? guide.language : create(:language) }
+    layout 'input_right'
+  end
+
+  factory :reading, class: Reading, parent: :exercise_base do
+    name 'A reading'
+    description 'Simple reading'
+  end
+
+  factory :problem, class: Problem, parent: :challenge do
     name 'A problem'
     description 'Simple problem'
     test 'dont care'
   end
 
-  factory :playground, class: Playground, parent: :exercise_base do
+  factory :playground, class: Playground, parent: :challenge do
     name 'A Playground'
     description 'Simple playground'
   end

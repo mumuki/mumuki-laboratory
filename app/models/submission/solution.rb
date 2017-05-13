@@ -14,7 +14,7 @@ class Solution < Submission
   end
 
   def save_results!(results, assignment)
-    assignment.update! results
+    super
     assignment.notify!
   end
 end

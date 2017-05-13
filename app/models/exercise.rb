@@ -8,17 +8,21 @@ class Exercise < ActiveRecord::Base
     },
   }
 
+  # Although this is not true for mumuki domain,
+  # it is necessary in order to make full text search work
+  belongs_to :language
+
   include WithNumber,
           WithSearch,
           WithTeaser,
           WithAssignments,
           WithLocale,
-          WithLanguage,
-          WithLayout,
           FriendlyName
 
-  include Submittable, Queriable
-  include SiblingsNavigation, ParentNavigation
+  include Submittable
+
+  include SiblingsNavigation,
+          ParentNavigation
 
   scope :currently_used, -> (q='') { by_full_text(q).order('submissions_count desc').select(&:used_in?) }
 
@@ -26,12 +30,13 @@ class Exercise < ActiveRecord::Base
 
   after_initialize :defaults, if: :new_record?
 
-  validates_presence_of :name, :description, :language,
-                        :submissions_count, :guide
+  validates_presence_of :name, :description,
+                        :submissions_count,
+                        :guide
 
-  markdown_on :description, :hint, :teaser, :corollary, :extra_preview
-
-  delegate :stateful_console?, to: :language
+  markdown_on :description,
+              :teaser,
+              :extra_preview
 
   def used_in?(organization=Organization.current)
     guide.usage_in_organization(organization).present?
@@ -138,7 +143,6 @@ class Exercise < ActiveRecord::Base
 
   def defaults
     self.submissions_count = 0
-    self.layout = self.class.default_layout
   end
 
 

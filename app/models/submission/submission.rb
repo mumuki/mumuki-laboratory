@@ -1,7 +1,7 @@
 require 'securerandom'
 
 class Submission
-  attr_accessor :content
+  required :try_evaluate_against!
 
   def id
     @id ||= SecureRandom.hex(8)
@@ -19,5 +19,6 @@ class Submission
   end
 
   def save_results!(results, assignment)
+    assignment.update! results
   end
 end

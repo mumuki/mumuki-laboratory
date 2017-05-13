@@ -1,4 +1,4 @@
-class Playground < Exercise
+class Playground < Challenge
   validate :ensure_queriable_language
 
   name_model_as Exercise

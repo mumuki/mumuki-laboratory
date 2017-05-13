@@ -1,7 +1,9 @@
-class Problem < Exercise
+class Problem < Challenge
   include WithExpectations,
           WithEditor,
           Solvable
+
+  markdown_on :corollary
 
   validate :ensure_evaluation_criteria
 
