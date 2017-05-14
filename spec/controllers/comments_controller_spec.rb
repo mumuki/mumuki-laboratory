@@ -14,13 +14,13 @@ describe CommentsController do
     end
   end
 
-  context 'when authenticated' do
+  context 'when  not authenticated' do
     before { get :index }
 
     it { expect(response.status).to eq 403 }
   end
 
-  context 'when not authenticated' do
+  context 'when authenticated' do
     before { set_current_user! user }
     before { get :index }
 

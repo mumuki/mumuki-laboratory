@@ -3,6 +3,6 @@ class ExerciseConfirmationsController < AjaxController
 
   def create
     result = @exercise.submit_confirmation! current_user
-    render json: result.status
+    render json: result
   end
 end

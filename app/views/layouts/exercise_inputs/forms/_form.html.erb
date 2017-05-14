@@ -1,7 +1,8 @@
 <% if current_user? %>
-  <%= hidden_field_tag(:stateful_console, @exercise.stateful_console?) %>
-  <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
-  <%= hidden_field_tag(:prompt, @exercise.prompt) %>
+  <% if @exercise.queriable? %>
+    <%= hidden_field_tag(:stateful_console, @exercise.stateful_console?) %>
+    <%= hidden_field_tag(:prompt, @exercise.prompt) %>
+  <% end %>
   <div>
     <%= render_exercise_input_form @exercise %>
   </div>

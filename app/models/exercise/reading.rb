@@ -7,6 +7,10 @@ class Reading < Exercise
     :no_input
   end
 
+  def queriable?
+    false
+  end
+
   def evaluation_class
     NoEvaluation
   end

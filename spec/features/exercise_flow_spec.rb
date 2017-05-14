@@ -14,12 +14,11 @@ feature 'Exercise Flow' do
   let!(:playground_1) { build(:playground, name: 'Succ5', description: 'Description of Succ4', layout: :input_right) }
   let!(:playground_2) { build(:playground, name: 'Succ6', description: 'Description of Succ4', layout: :input_right, extra: 'x = 4') }
   let!(:reading) { build(:reading, name: 'Reading about Succ', description: 'Lets understand succ history') }
-  let!(:last_reading) { build(:reading, name: 'Reading about Succ', description: 'Lets understand succ history') }
 
   let!(:chapter) {
     create(:chapter, name: 'Functional Programming', lessons: [
       create(:lesson, name: 'getting-started', description: 'An awesome guide', language: haskell, exercises: [
-        problem_1, problem_2, problem_3, problem_4, reading, problem_5, playground_1, playground_2, last_reading
+        problem_1, problem_2, problem_3, problem_4, reading, problem_5, playground_1, playground_2
       ])
     ]) }
 
@@ -153,20 +152,6 @@ feature 'Exercise Flow' do
       expect(page).to_not have_text('Solution')
       expect(page).to_not have_text('need a hint?')
       expect(page).to_not have_selector('.upload')
-      expect(page).to have_text('Next Reading...')
-    end
-
-    scenario 'visit last reading by id' do
-      visit "/exercises/#{last_reading.id}"
-
-      expect(page).to have_text('Reading about Succ')
-      expect(page).to have_text('Lets understand succ history')
-
-      expect(page).to_not have_text('Console')
-      expect(page).to_not have_text('Solution')
-      expect(page).to_not have_text('need a hint?')
-      expect(page).to_not have_selector('.upload')
-      expect(page).to have_text('Finish reading...')
     end
   end
 end
