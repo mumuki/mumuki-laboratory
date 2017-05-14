@@ -11,4 +11,9 @@ module WithStudentPathNavigation
   def next_exercise_button(exercise)
     next_button(exercise) || next_button(exercise.guide.lesson)
   end
+
+  def finish_reading_button(reading)
+    next_button(reading)
+    #TODO next_button(reading, ...with an ajax callback...) || ...button with just callback...
+  end
 end

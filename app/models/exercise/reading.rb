@@ -3,6 +3,10 @@ class Reading < Exercise
 
   name_model_as Exercise
 
+  def layout
+    :no_input
+  end
+
   def evaluation_class
     NoEvaluation
   end

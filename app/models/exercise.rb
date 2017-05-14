@@ -35,8 +35,7 @@ class Exercise < ActiveRecord::Base
                         :guide
 
   markdown_on :description,
-              :teaser,
-              :extra_preview
+              :teaser
 
   def used_in?(organization=Organization.current)
     guide.usage_in_organization(organization).present?
@@ -59,7 +58,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def search_tags
-    tag_list + [language.name]
+    [language&.name, *tag_list].compact
   end
 
   def slug
@@ -70,26 +69,12 @@ class Exercise < ActiveRecord::Base
     guide.slug_parts.merge(bibliotheca_id: bibliotheca_id)
   end
 
-  def extra
-    extra_code = [guide.extra, self[:extra]].compact.join("\n")
-    if extra_code.empty? or extra_code.end_with? "\n"
-      extra_code
-    else
-      "#{extra_code}\n"
-    end
-
-  end
-
   def friendly
     defaulting_name { "#{navigable_parent.friendly} - #{name}" }
   end
 
   def new_solution
     Solution.new(content: default_content)
-  end
-
-  def extra_preview
-    Mumukit::ContentType::Markdown.highlighted_code(language.name, extra)
   end
 
   def import_from_json!(number, json)

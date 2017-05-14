@@ -4,7 +4,7 @@ describe Reading do
   let!(:reading) { create(:reading) }
   let!(:user) { create(:user) }
 
-  before { @assignment = reading.submit_confirmation!(user) }
+  let!(:result) { reading.submit_confirmation!(user) }
 
-  it { expect(@assignment.status).to eq Status::Passed }
+  it { expect(result).to eq status: Status::Passed, result: '' }
 end

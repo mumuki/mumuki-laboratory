@@ -14,7 +14,7 @@ module IconsHelper
   end
 
   def language_icon(language)
-    tag('span', class: "fa da da-#{language.devicon} lang-icon", alt: language.name)
+    tag('span', class: "fa da da-#{language.devicon} lang-icon", alt: language.name) if language
   end
 
   private
