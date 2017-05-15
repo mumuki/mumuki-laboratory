@@ -1,9 +1,7 @@
 class Playground < Exercise
   validate :ensure_queriable_language
 
-  def self.model_name
-    Exercise.model_name
-  end
+  name_model_as Exercise
 
   def setup_query_assignment!(assignment)
     assignment.running!

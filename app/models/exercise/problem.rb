@@ -5,9 +5,7 @@ class Problem < Exercise
 
   validate :ensure_evaluation_criteria
 
-  def self.model_name
-    Exercise.model_name
-  end
+  name_model_as Exercise
 
   def setup_query_assignment!(assignment)
   end
