@@ -61,6 +61,5 @@ function openNewMessageModal() {
 }
 
 function closeNewMessageModal() {
-    $('#new-message-modal').modal("close");
     $('body').removeClass("new-message-modal-open");
 }
