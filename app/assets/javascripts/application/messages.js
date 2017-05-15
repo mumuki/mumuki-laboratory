@@ -23,20 +23,23 @@ var mumuki = mumuki || {};
 }(mumuki));
 
 function submitMessagesForm(url) {
-    function renderModal(data) {
-        $('#view-messages-template').html(data);
-        $('#messages-modal').modal();
+    $("a[data-target='#messages']").click();
+    var $container = $('#mu-messages-container');
+
+    function renderHTML(data) {
+        $container.empty();
+        $container.html(data);
     }
 
     function success(data) {
-        renderModal(data);
+        renderHTML(data);
     }
 
     function error(xhr) {
         $.ajax({
             url: '/messages/errors',
             success: function (html) {
-                renderModal(html)
+                renderHTML(html)
             },
             xhrFields: {
                 withCredentials: true
