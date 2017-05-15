@@ -7,7 +7,7 @@ class MessagesController < AjaxController
   end
 
   def create
-    Message.create_and_notify! message_params.merge(sender: current_user_uid, exercise: @exercise, read: true)
+    Message.create_and_notify! message_params.merge(sender: current_user_uid, exercise: @exercise, submission_id: @submission_id, read: true)
     redirect_to @exercise
   end
 
@@ -18,10 +18,11 @@ class MessagesController < AjaxController
   private
 
   def set_exercise
-    @exercise = Assignment.find_by(submission_id: params[:message][:submission_id]).exercise
+    @exercise = Exercise.find(params[:message][:exercise_id])
+    @submission_id = @exercise.last_persisted_submission_id_for current_user
   end
 
   def message_params
-    params.require(:message).permit(:content, :submission_id)
+    params.require(:message).permit(:content)
   end
 end

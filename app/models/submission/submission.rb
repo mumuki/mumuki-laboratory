@@ -3,9 +3,14 @@ require 'securerandom'
 class Submission
   required :try_evaluate_against!
 
+  def self.init_with_empty_content
+    new content: ''
+  end
+
   def id
     @id ||= SecureRandom.hex(8)
   end
+
 
   def setup_assignment!(assignment)
     assignment.solution = content

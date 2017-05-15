@@ -38,8 +38,9 @@ module WithAssignments
     assignment_for(user).try(&:updated_at)
   end
 
-  def last_submission_id_for(user)
-    assignment_for(user)&.submission_id
+  def last_persisted_submission_id_for(user)
+    submit_solution!(user, content: '') if assignment_for(user).blank?
+    assignment_for(user).submission_id
   end
 
   def submissions_count_for(user)
