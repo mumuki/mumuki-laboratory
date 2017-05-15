@@ -21,4 +21,8 @@ class Submission
   def save_results!(results, assignment)
     assignment.update! results
   end
+
+  def notify_results!(results, assignment)
+    assignment.notify!
+  end
 end

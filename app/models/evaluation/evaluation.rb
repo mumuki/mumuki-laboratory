@@ -10,7 +10,12 @@ class Evaluation
     setup_assignment!
     evaluate!.tap do |results|
       save_results! results
+      notify_results! results
     end
+  end
+
+  def notify_results!(results)
+    submission.notify_results! results, assignment
   end
 
   def save_results!(results)
