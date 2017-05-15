@@ -1,16 +1,18 @@
-<div class="mu-messages">
-  <ol class="mu-chat">
-    <li>
-      <a href="javascript:{}" onclick="submitMessagesForm('<%= @messages_url%>')"><%= t :more_messages %></a>
-    </li>
-    <% messages.each do |message| %>
-        <li class="<%= message.sender == current_user_uid ? 'self' : 'other' %>">
-          <div class="message">
-            <p> <%= message.content_html %></p>
-            <div class="sender"><%= message.sender unless message.sender == current_user_uid %></div>
-            <time><%= time_ago_in_words message.created_at %></time>
-          </div>
-        </li>
-    <% end %>
-  </ol>
+<div class="mu-view-messages">
+  <div class="mu-messages">
+    <ol class="mu-chat">
+      <li>
+        <a href="javascript:{}" onclick="submitMessagesForm('<%= @messages_url%>')"><%= t :more_messages %></a>
+      </li>
+      <% messages.each do |message| %>
+          <li class="<%= message.sender == current_user_uid ? 'self' : 'other' %>">
+            <div class="message">
+              <p> <%= message.content_html %></p>
+              <div class="sender"><%= message.sender unless message.sender == current_user_uid %></div>
+              <time><%= time_ago_in_words message.created_at %></time>
+            </div>
+          </li>
+      <% end %>
+    </ol>
+  </div>
 </div>

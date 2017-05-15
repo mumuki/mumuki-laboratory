@@ -24,7 +24,7 @@ var mumuki = mumuki || {};
 
 function submitMessagesForm(url) {
     $("a[data-target='#messages']").click();
-    var $container = $('#mu-messages-container');
+    var $container = $('.mu-view-messages');
 
     function renderHTML(data) {
         $container.empty();
