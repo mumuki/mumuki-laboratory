@@ -74,7 +74,6 @@ group :test do
 end
 
 group :development do
-  gem 'better_errors'
   gem 'pry'
   gem 'pry-rails'
   gem 'pry-remote'
