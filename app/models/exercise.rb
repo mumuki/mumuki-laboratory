@@ -8,16 +8,13 @@ class Exercise < ActiveRecord::Base
     },
   }
 
-  # Although this is not true for mumuki domain,
-  # it is necessary in order to make full text search work
-  belongs_to :language
-
   include WithNumber,
           WithSearch,
           WithTeaser,
           WithAssignments,
           WithLocale,
-          FriendlyName
+          FriendlyName,
+          WithLanguage
 
   include Submittable
 

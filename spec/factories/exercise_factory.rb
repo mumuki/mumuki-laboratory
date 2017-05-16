@@ -21,6 +21,7 @@ FactoryGirl.define do
   end
 
   factory :exercise_base do
+    language { guide ? guide.language : create(:language) }
     sequence(:bibliotheca_id) { |n| n }
     sequence(:number) { |n| n }
 
@@ -29,7 +30,6 @@ FactoryGirl.define do
   end
 
   factory :challenge, parent: :exercise_base do
-    language { guide ? guide.language : create(:language) }
     layout 'input_right'
   end
 

@@ -1,9 +1,6 @@
 class Challenge < Exercise
-  include WithLanguage,
-          WithLayout,
+  include WithLayout,
           Queriable
-
-  validates_presence_of :language
 
   markdown_on :hint,
               :extra_preview
