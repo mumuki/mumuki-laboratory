@@ -66,11 +66,11 @@ class User < ActiveRecord::Base
   end
 
   def messages
-    assignments.flat_map(&:messages)
+    Message.where(submission_id: assignments.pluck(:submission_id)).order('created_at DESC')
   end
 
   def unread_messages
-    messages.reject(&:read)
+    messages.where read: false
   end
 
   def visit!(organization)
