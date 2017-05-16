@@ -7,11 +7,11 @@ describe WithStudentPathNavigation do
   before { I18n.locale = :en }
 
   describe '#next_button' do
-    context 'with exercises' do
+    context 'with problems' do
       let(:lesson) { create(:lesson, name: 'my guide', exercises: [
-          create(:exercise, id: 11, name: 'exercise 1'),
-          create(:exercise, id: 12, name: 'exercise 2'),
-          create(:exercise, id: 13, name: 'exercise 3')
+        create(:exercise, id: 11, name: 'exercise 1'),
+        create(:exercise, id: 12, name: 'exercise 2'),
+        create(:exercise, id: 13, name: 'exercise 3')
       ]) }
 
       let!(:exercise_1) { lesson.exercises.first }
@@ -48,6 +48,33 @@ describe WithStudentPathNavigation do
       end
     end
 
+    context 'with non-terminal readings' do
+      let(:lesson) { create(:lesson, name: 'my guide', exercises: [
+        create(:reading, id: 11, name: 'exercise 1'),
+        create(:exercise, id: 12, name: 'exercise 2')
+      ]) }
+
+      let!(:reading) { lesson.exercises.first }
+      let!(:exercise) { lesson.exercises.second }
+
+      let(:current_user) { create(:user) }
+
+      context 'when user did not submit any exercise' do
+        it { expect(next_button(reading)).to eq "<a class=\"btn-confirmation btn btn-success btn-block\" data-confirmation-url=\"/exercises/11-exercise-1/confirmations\" href=\"/exercises/12-exercise-2\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise)).to eq "<a class=\"btn btn-warning btn-block\" href=\"/exercises/11-exercise-1\">Next pending: exercise 1 <i class=\"fa fa-chevron-right\"></i></a>" }
+      end
+
+      context 'when user finished just reading' do
+        before do
+          reading.submit_confirmation!(current_user)
+        end
+
+        it { expect(next_button(reading)).to eq "<a class=\"btn-confirmation btn btn-success btn-block\" data-confirmation-url=\"/exercises/11-exercise-1/confirmations\" href=\"/exercises/12-exercise-2\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise)).to eq nil }
+      end
+    end
+
+
     context 'with guides' do
       let!(:current_user) { create(:user) }
 
@@ -77,7 +104,7 @@ describe WithStudentPathNavigation do
         let!(:suggested_lesson_1) { create(:lesson) }
         let!(:suggested_lesson_2) { create(:lesson) }
         let!(:lesson) { create(:lesson) }
-        let!(:chapter) { create(:chapter, lessons: [lesson, suggested_lesson_1, suggested_lesson_2])}
+        let!(:chapter) { create(:chapter, lessons: [lesson, suggested_lesson_1, suggested_lesson_2]) }
 
         before { reindex_current_organization! }
 

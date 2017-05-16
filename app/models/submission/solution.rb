@@ -12,9 +12,4 @@ class Solution < Submission
     super
     assignment.accept_new_submission! self
   end
-
-  def save_results!(results, assignment)
-    assignment.update! results
-    assignment.notify!
-  end
 end

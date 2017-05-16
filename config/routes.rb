@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     # All users
     resources :exercises, only: [:show, :index] do
       # Current user
+      resources :confirmations, controller: 'exercise_confirmations', only: :create
       resources :solutions, controller: 'exercise_solutions', only: :create
       resources :queries, controller: 'exercise_query', only: :create
     end

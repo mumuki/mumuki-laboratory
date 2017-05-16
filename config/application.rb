@@ -11,12 +11,16 @@ module Mumuki
     config.generators.test_framework = :rspec
 
     config.autoload_paths += %W(#{config.root}/plugins)
+
     config.autoload_paths += %W(#{config.root}/app/helpers/concerns)
-    config.autoload_paths += %W(#{config.root}/app/helpers/modes)
-    config.autoload_paths += %W(#{config.root}/app/models/exercise)
-    config.autoload_paths += %W(#{config.root}/app/models/submission)
-    config.autoload_paths += %W(#{config.root}/app/models/concerns/submittable)
-    config.autoload_paths += %W(#{config.root}/app/models/concerns/navigation)
+
+    %w(evaluation exercise submission).each do |it|
+      config.autoload_paths += %W(#{config.root}/app/models/#{it})
+    end
+
+    %w(submittable navigation).each do |it|
+      config.autoload_paths += %W(#{config.root}/app/models/concerns/#{it})
+    end
 
     config.registration_notification_format = {only: [:id, :name, :email, :image_url]}
     config.action_dispatch.perform_deep_munge = false

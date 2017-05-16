@@ -6,7 +6,9 @@ module WithStudentPathNavigation
 
     def button(navigable)
       sibling = sibling_for(navigable)
-      link_to link_icon(sibling), sibling, class: clazz if sibling && sibling != navigable
+      link_to link_icon(sibling),
+              sibling,
+              merge_confirmation_classes(navigable, class: clazz) if sibling && sibling != navigable
     end
 
     def link_icon(sibling)
@@ -15,6 +17,15 @@ module WithStudentPathNavigation
 
     def right
       false
+    end
+
+    def merge_confirmation_classes(navigable, base_classes)
+      if navigable.is_a? Reading
+        base_classes.merge class: "btn-confirmation #{base_classes[:class]}",
+                           'data-confirmation-url': exercise_confirmations_path(navigable)
+      else
+        base_classes
+      end
     end
 
     def method_missing(name, *args, &block)

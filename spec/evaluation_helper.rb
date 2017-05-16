@@ -4,7 +4,7 @@ class NoopEvaluation < Evaluation
   end
 end
 
-class Exercise
+class Challenge
   def automated_evaluation_class
     NoopEvaluation
   end

@@ -1,7 +1,7 @@
 class Query < Submission
   include ActiveModel::Model
 
-  attr_accessor :query, :cookie
+  attr_accessor :query, :cookie, :content
 
   def try_evaluate_against!(exercise)
     r = exercise.run_query!(content: content, query: query, cookie: cookie)
@@ -16,5 +16,8 @@ class Query < Submission
 
   def save_results!(_results, assignment)
     assignment.exercise.save_query_results!(assignment)
+  end
+
+  def notify_results!(_results, assignment)
   end
 end
