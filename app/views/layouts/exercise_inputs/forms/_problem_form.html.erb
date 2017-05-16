@@ -18,7 +18,7 @@
   <div role="tabpanel" class="tab-pane mu-input-panel fade in active" id="editor">
     <% if @assignment&.pending_messages? %>
                   <span class="pending-messages-text"> <%= t :pending_messages_explanation %>
-                    <a href="javascript:{}" onclick="submitMessagesForm('<%= @messages_url%>')" class="<%= hidden_pending(@assignment) %>" data-waiting="<%= t(:sending_solution) %>">
+                    <a href="javascript:{}" onclick="MessagesService.submitMessagesForm('<%= @messages_url%>', '<%= read_messages_path(@exercise) %>')" class="<%= hidden_pending(@assignment) %>" data-waiting="<%= t(:sending_solution) %>">
                       <%= t :get_messages %>
                     </a>
                   </span>

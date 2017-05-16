@@ -2,6 +2,8 @@ class Message < ActiveRecord::Base
 
   self.inheritance_column = :_type_disabled
 
+  attr_accessor :read
+
   belongs_to :exercise
 
   validates_presence_of :exercise_id, :submission_id, :content, :sender
@@ -22,6 +24,10 @@ class Message < ActiveRecord::Base
     message.notify!
   end
 
+  def self.read_all
+    update_all read: true
+  end
+
   def notify!
     Mumukit::Nuntius.notify! 'student-messages', json_to_notify
   end
@@ -31,8 +37,7 @@ class Message < ActiveRecord::Base
   end
 
   def read!
-    self.read = true
-    save!
+    update! read: true
   end
 
   def assignment

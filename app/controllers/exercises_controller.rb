@@ -15,11 +15,6 @@ class ExercisesController < ApplicationController
     @solution = @exercise.new_solution if current_user?
   end
 
-  def read_messages
-    @messages.each(&:read!)
-    redirect_to @exercise
-  end
-
   def index
   end
 

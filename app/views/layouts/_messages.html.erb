@@ -2,7 +2,7 @@
   <div class="mu-messages">
     <ol class="mu-chat">
       <li>
-        <a href="javascript:{}" onclick="submitMessagesForm('<%= @messages_url%>')"><%= t :more_messages %></a>
+        <a href="javascript:{}" onclick="MessagesService.submitMessagesForm('<%= @messages_url%>', '<%= read_messages_path(@exercise) %>')"><%= t :more_messages %></a>
       </li>
       <% messages.each do |message| %>
           <li class="<%= message.sender == current_user_uid ? 'self' : 'other' %>">

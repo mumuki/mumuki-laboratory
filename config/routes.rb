@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     get '/exercises/:organization/:repository/:bibliotheca_id' => 'exercises#show_by_slug', as: :exercise_by_slug
 
     # Route for reading messages
-    post '/exercises/:id/read_messages' => 'exercises#read_messages', as: :read_messages
+    post '/messages/read_messages/:exercise_id' => 'messages#read_messages', as: :read_messages
   end
 
   #Rescue not found routes
