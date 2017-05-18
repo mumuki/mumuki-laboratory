@@ -84,7 +84,7 @@ class Exercise < ActiveRecord::Base
     attrs['choices'] = json['choices'].map { |choice| choice['value'] } if json['choices'].present?
     attrs['bibliotheca_id'] = json['id']
     attrs['number'] = number
-    attrs = attrs.except('expectations') if json['type'] == 'playground' || json['new_expectations'] #FIXME bug in bibliotheca
+    attrs = attrs.except('expectations') if json['type'] == 'playground' || json['new_expectations']
 
     assign_attributes(attrs)
     save!
