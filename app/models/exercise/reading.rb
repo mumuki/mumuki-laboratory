@@ -4,7 +4,7 @@ class Reading < Exercise
   name_model_as Exercise
 
   def layout
-    :no_input
+    :input_bottom
   end
 
   def queriable?
