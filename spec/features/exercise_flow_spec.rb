@@ -86,6 +86,9 @@ feature 'Exercise Flow' do
       visit "/exercises/#{problem_2.id}"
 
       expect(page).to have_text('Succ2')
+      expect(page).to have_text('Continue')
+      expect(page).to_not have_text('Submit')
+
       expect(page).to_not have_text('Console')
       expect(page).to_not have_text('Solution')
       expect(page).to_not have_text('need a hint?')
