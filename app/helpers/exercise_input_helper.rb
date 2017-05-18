@@ -14,4 +14,23 @@ module ExerciseInputHelper
   def should_render_exercise_tabs?(exercise)
     !exercise.hidden? && (exercise.queriable? || exercise.extra_visible?)
   end
+
+  def submit_button_options(exercise)
+    if exercise.upload?
+      struct for: :upload,
+             waiting_t: :uploading_solution,
+             fa_icon: :upload,
+             t: :uploading_solution
+    elsif exercise.hidden?
+      struct classes: 'submission_control',
+             waiting_t: :working,
+             fa_icon: :play,
+             t: :continue_exercise
+    else
+      struct classes: 'submission_control',
+             waiting_t: :sending_solution,
+             fa_icon: :play,
+             t: :create_submission
+    end
+  end
 end

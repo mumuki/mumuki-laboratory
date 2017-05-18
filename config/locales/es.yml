@@ -162,3 +162,4 @@ es:
   editor_placeholder: "...escribí tu solución acá..."
   powered_by_mumuki: "por <span class=\"da da-mumuki-circle\"></span> mumuki"
   continue_exercise: "Continuar"
+  working: "Procesando"

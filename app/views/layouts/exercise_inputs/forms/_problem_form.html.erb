@@ -20,17 +20,11 @@
       <%= render_exercise_input_editor f, @exercise %>
 
       <div class="actions">
-        <% if @exercise.upload? %>
-          <label for="upload" class="btn btn-success btn-block btn-submit" data-waiting="<%= t(:uploading_solution) %>">
-            <%= fa_icon :upload %> <%= t :upload_solution %>
-          </label>
-        <% elsif @exercise.hidden? %>
-          <button class="btn btn-success btn-block btn-submit submission-control" data-waiting="<%= t(:sending_solution) %>">
-            <%= fa_icon :play, text: t(:continue_exercise) %>
-          </button>
-        <% else %>
-          <button class="btn btn-success btn-block btn-submit submission-control" data-waiting="<%= t(:sending_solution) %>">
-            <%= fa_icon :play, text: t(:create_submission) %>
+        <% submit_button_options(@exercise).tap do |options| %>
+          <button for="<%= options.for %>"
+                  class="btn btn-success btn-block btn-submit <%= options.classes %>"
+                  data-waiting="<%= t(options.waiting_t) %>">
+            <%= fa_icon options.fa_icon, text: t(options.t) %>
           </button>
         <% end %>
       </div>
