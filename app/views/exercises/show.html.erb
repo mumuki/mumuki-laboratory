@@ -47,8 +47,7 @@
   </div>
 <% end %>
 
-<%= render_exercise_input_layout(@exercise) do %>
-<% end %>
+<%= render_exercise_input_layout(@exercise) %>
 
 <%= hidden_field_tag :exercise_id, @exercise.id %>
 <%= hidden_field_tag :default_content, @default_content %>
