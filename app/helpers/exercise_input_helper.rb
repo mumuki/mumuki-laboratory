@@ -15,6 +15,15 @@ module ExerciseInputHelper
     !exercise.hidden? && (exercise.queriable? || exercise.extra_visible?)
   end
 
+  def render_submit_button(exercise)
+    options = submit_button_options(exercise)
+    %Q{<#{options.tag} for="#{options.for}"
+                       class="btn btn-success btn-block btn-submit #{options.classes}"
+                       data-waiting="#{t(options.waiting_t)}">
+          #{fa_icon options.fa_icon, text: t(options.t)}
+       </#{options.tag}>}.html_safe
+  end
+
   def submit_button_options(exercise)
     if exercise.upload?
       struct for: :upload,

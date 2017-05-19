@@ -20,13 +20,7 @@
       <%= render_exercise_input_editor f, @exercise %>
 
       <div class="actions">
-        <% submit_button_options(@exercise).tap do |options| %>
-          <<%= options.tag %> for="<%= options.for %>"
-                  class="btn btn-success btn-block btn-submit <%= options.classes %>"
-                  data-waiting="<%= t(options.waiting_t) %>">
-            <%= fa_icon options.fa_icon, text: t(options.t) %>
-          </<%= options.tag %>>
-        <% end %>
+        <%= render_submit_button(@exercise) %>
       </div>
     <% end %>
   </div>
