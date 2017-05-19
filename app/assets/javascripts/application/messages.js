@@ -28,7 +28,7 @@ var mumuki = mumuki || {};
             if ($('.badge-messages').length == 0) {
                 return;
             }
-            MessageService.tokenRequest({
+            MessagesService.tokenRequest({
                 url: '/messages',
                 type: 'GET'
             }).done(function (res) {
@@ -47,11 +47,15 @@ var mumuki = mumuki || {};
                 $container.empty();
                 $container.html(data);
                 $("a[data-target='#messages']").click();
+            }
+           
+            function success(data) {
+                renderHTML(data);
                 MessagesService.readMessages(readUrl);
             }
 
             function error(xhr) {
-                MessageService.tokenRequest({
+                MessagesService.tokenRequest({
                     url: '/messages/errors',
                     success: renderHTML,
                     xhrFields: {withCredentials: true}
@@ -60,7 +64,7 @@ var mumuki = mumuki || {};
 
             $.ajax({
                 url: url,
-                success: renderHTML,
+                success: success,
                 error: error,
                 xhrFields: {withCredentials: true}
             })
