@@ -18,16 +18,19 @@ module ExerciseInputHelper
   def submit_button_options(exercise)
     if exercise.upload?
       struct for: :upload,
+             tag: :label,
              waiting_t: :uploading_solution,
              fa_icon: :upload,
              t: :upload_solution
     elsif exercise.hidden?
-      struct classes: 'submission_control',
+      struct tag: :button,
+             classes: 'submission_control',
              waiting_t: :working,
              fa_icon: :play,
              t: :continue_exercise
     else
-      struct classes: 'submission_control',
+      struct tag: :button,
+             classes: 'submission_control',
              waiting_t: :sending_solution,
              fa_icon: :play,
              t: :create_submission

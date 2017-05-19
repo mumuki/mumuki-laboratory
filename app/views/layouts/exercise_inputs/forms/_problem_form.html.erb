@@ -21,11 +21,11 @@
 
       <div class="actions">
         <% submit_button_options(@exercise).tap do |options| %>
-          <button for="<%= options.for %>"
+          <<%= options.tag %> for="<%= options.for %>"
                   class="btn btn-success btn-block btn-submit <%= options.classes %>"
                   data-waiting="<%= t(options.waiting_t) %>">
             <%= fa_icon options.fa_icon, text: t(options.t) %>
-          </button>
+          </<%= options.tag %>>
         <% end %>
       </div>
     <% end %>
