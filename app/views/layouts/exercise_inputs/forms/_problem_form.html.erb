@@ -20,15 +20,7 @@
       <%= render_exercise_input_editor f, @exercise %>
 
       <div class="actions">
-        <% if @exercise.upload? %>
-          <label for="upload" class="btn btn-success btn-block btn-submit" data-waiting="<%= t(:uploading_solution) %>">
-            <%= fa_icon :upload %> <%= t :upload_solution %>
-          </label>
-        <% else %>
-          <button class="btn btn-success btn-block btn-submit submission-control" data-waiting="<%= t(:sending_solution) %>">
-            <%= fa_icon :play, text: t(:create_submission) %>
-          </button>
-        <% end %>
+        <%= render_submit_button(@exercise) %>
       </div>
     <% end %>
   </div>
