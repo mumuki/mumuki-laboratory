@@ -20,7 +20,7 @@ module ExerciseInputHelper
       struct for: :upload,
              waiting_t: :uploading_solution,
              fa_icon: :upload,
-             t: :uploading_solution
+             t: :upload_solution
     elsif exercise.hidden?
       struct classes: 'submission_control',
              waiting_t: :working,
