@@ -90,29 +90,6 @@
         </div>
       </div>
     </div>
-    <div class="modal fade" id="messages-modal" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-            <p class="modal-title text-center title-font"> <%= t :comments %></p>
-          </div>
-          <div class="modal-body mu-view-messages">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-md-12">
-                  <span id="view-messages-template"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <%= button_to t(read_messages_caption(@assignment)), read_messages_path(@exercise), class: "btn btn-success btn-block" %>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="modal fade" id="new-message-modal" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog mu-new-message-modal">
         <%= form_for(Message.new, html: {role: 'form'}) do |f| %>
