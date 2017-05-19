@@ -60,7 +60,7 @@
     <table class="table table-striped">
       <% @messages.each do |message| %>
           <tr>
-            <td><%= icon_for_read(message.read) %></td>
+            <td><%= icon_for_read(message.read?) %></td>
             <td><%= link_to message.exercise.name, exercise_path(message.exercise.id) %></td>
             <td><%= mail_to message.sender %></td>
             <td><%= time_ago_in_words message.created_at %></td>
