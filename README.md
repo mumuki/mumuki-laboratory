@@ -3,15 +3,13 @@
 [![Test Coverage](https://codeclimate.com/github/mumuki/mumuki-laboratory/badges/coverage.svg)](https://codeclimate.com/github/mumuki/mumuki-laboratory)
 [![Issue Count](https://codeclimate.com/github/mumuki/mumuki-laboratory/badges/issue_count.svg)](https://codeclimate.com/github/mumuki/mumuki-laboratory)
 
-
 <img width="60%" src="https://raw.githubusercontent.com/mumuki/mumuki-laboratory/master/laboratory-screenshot.png"></img>
 
 Mumuki Laboratory [![btn_donate_lg](https://cloud.githubusercontent.com/assets/1039278/16535119/386d7be2-3fbb-11e6-9ee5-ecde4cef142a.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KCZ5AQR53CH26)
-================
-
 > Code assement web application for the Mumuki Platform
 
 ## About
+
 Laboratory is a multitenant Rails webapp for solving exercises, organized in terms of chapters and guides.
 
 ## Installing
@@ -23,12 +21,14 @@ For development, you've to add to your `/etc/hosts` file:
 127.0.0.1 central.classroom.localmumuki.io
 ```
 
+## Preparing environment
+
 ### TL;DR install
 
 1. Install [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-2. Run `curl https://raw.githubusercontent.com/mumuki/mumuki-development-installer/master/install.sh | bash`
+2. Run `curl https://raw.githubusercontent.com/mumuki/mumuki-devinstaller/master/install.sh | bash`
 3. `cd mumuki && vagrant ssh` and then - **inside Vagrant VM** - `cd /vagrant/laboratory`
-4. Go to step 7
+4. Go to Install Section
 
 ### 1. Install essentials and base libraries
 
@@ -59,52 +59,7 @@ gem install bundler
 gem install escualo
 ```
 
-### 4. Set development variables
-
-```bash
-echo "MUMUKI_AUTH0_CLIENT_ID=... \
-      MUMUKI_AUTH0_CLIENT_SECRET=... \
-      MUMUKI_AUTH0_DOMAIN=...\
-      MUMUKI_AUTHORIZATION_PROVIDER=...\
-      MUMUKI_SAML_IDP_SSO_TARGET_URL=...\
-      " >> ~/.bashrc # or .bash_profile
-```
-
-### 5. Configure authentication provider
-
-The `MUMUKI_LOGIN_PROVIDER` _environment variable_ can take any of the following values:
-
-* `developer`
-* `auth0`
-" `saml`
-
-#### 5.1 Developer
-
-The developer mode does not need any extra configuration
-
-#### 5.2 Auth0
-
-Just configure the `MUMUKI_AUTH0_CLIENT_ID`, `MUMUKI_AUTH0_CLIENT_SECRET` and `MUMUKI_AUTH0_DOMAIN` _environment variables_ with the values provided by [auth0](https://auth0.com/).
-
-#### 5.3 SAML
-
-First, configure the `MUMUKI_SAML_IDP_SSO_TARGET_URL` _environment variable_ with the "_single sign on URL_" provided by your _SAML IdP_.
-
-Then copy in the root of this project, the _public key certificate_ (also provided by your _SAML IdP_) and save it as `saml.crt`. Check its _permitions_ so _rails_ can read it.
-
-Last, you have to ask your _SAML IdP_ to federate your _SP_. Start _rails_ and send the _XML_ available at `{YOUR_DOMAIN}/auth/saml/metadata` to your _SAML IdP_.
-
-### 6. Create database user
-
-> We need to create a PostgreSQL role - AKA a user - who will be used by Laboratory to create and access the database
-
-```bash
-sudo -u postgres psql <<EOF
-  create role mumuki with createdb login password 'mumuki';
-EOF
-```
-
-### 7. Clone this repository
+### 4. Clone this repository
 
 > Because, err... we need to clone this repostory before developing it :stuck_out_tongue:
 
@@ -113,34 +68,86 @@ git clone https://github.com/mumuki/mumuki-laboratory
 cd mumuki-laboratory
 ```
 
-### 8. Install and setup database
+### 5. Install and setup database
+
+> We need to create a PostgreSQL role - AKA a user - who will be used by Laboratory to create and access the database
 
 ```bash
+# create db user
+sudo -u postgres psql <<EOF
+  create role mumuki with createdb login password 'mumuki';
+EOF
+
+# create schema and initial data
 bundle install
 bundle exec rake db:create db:schema:load db:seed
 ```
 
-### Starting the server
+
+## Installing and Running
+
+### Quick start
+
+If you want to start the server quickly in developer environment,
+you can just do the following:
 
 ```bash
-bundle exec rails s
+./devstart
 ```
 
-### Running
+This will install your dependencies and boot the server.
 
-> Hit http://central.localmumuki.io:3000/ on your browser and have fun!
+### Installing the server
 
-### Running the tests
+If you just want to install dependencies, just do:
 
->To prepare the db:
+```
+bundle install
+```
+
+### Running the server
+
+You can boot the server by using the standard rackup command:
+
+```
+# using defaults from config/puma.rb and rackup default port 9292
+bundle exec rackup
+
+# changing port
+bundle exec rackup -p 8080
+
+# changing threads count
+MUMUKI_LABORATORY_THREADS=30 bundle exec rackup
+
+# changing workers count
+MUMUKI_LABORATORY_WORKERS=4 bundle exec rackup
+```
+
+Or you can also start it with `puma` command, which gives you more control:
+
+```
+# using defaults from config/puma.rb
+bundle exec puma
+
+# changing ports, workers and threads count, using puma-specific options:
+bundle exec puma -w 4 -t 2:30 -p 8080
+
+# changing ports, workers and threads count, using environment variables:
+MUMUKI_LABORATORY_WORKERS=4 MUMUKI_LABORATORY_PORT=8080 MUMUKI_LABORATORY_THREADS=30 bundle exec puma
+```
+
+Finally, you can also start your server using `rails`:
+
 ```bash
-RAILS_ENV=test bundle exec rake db:create db:migrate
+rails s
 ```
 
->To run the tests: 
-```
+## Running tests
+
+```bash
 bundle exec rspec
 ```
+
 
 ## Authentication Powered by Auth0
 
