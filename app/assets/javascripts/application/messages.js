@@ -3,8 +3,18 @@ var mumuki = mumuki || {};
 (function (mumuki) {
 
     MessagesService = {
-        $body: $('body'),
-        $newMessageModal: $('#new-message-modal'),
+        $body: function () {
+            return $('body')
+        },
+        $newMessageModal: function () {
+            return $('.new-message-modal');
+        },
+        $newMessageModalComponents: function () {
+            return MessagesService.$newMessageModal().find('.modal-body, .modal-footer');
+        },
+        collapseNewMessageModal: function () {
+            MessagesService.$newMessageModalComponents().toggleClass('hidden');
+        },
         token: new mumuki.CsrfToken(),
         setMessages: function (data) {
             $('.badge-notifications').html(data.messages_count);
@@ -48,7 +58,7 @@ var mumuki = mumuki || {};
                 $container.html(data);
                 $("a[data-target='#messages']").click();
             }
-           
+
             function success(data) {
                 renderHTML(data);
                 MessagesService.readMessages(readUrl);
@@ -70,15 +80,17 @@ var mumuki = mumuki || {};
             })
         },
         openNewMessageModal: function () {
-            MessagesService.$newMessageModal.modal({backdrop: false, keyboard: false});
-            MessagesService.$body.addClass("new-message-modal-open");
-            MessagesService.$body.removeClass("modal-open");
+            MessagesService.$newMessageModal().modal({backdrop: false, keyboard: false});
+            MessagesService.$body().addClass("new-message-modal-open");
+            MessagesService.$body().removeClass("modal-open");
         },
         closeNewMessageModal: function () {
-            MessagesService.$body.removeClass("new-message-modal-open");
+            MessagesService.$body().removeClass("new-message-modal-open");
         }
     };
 
     MessagesService.setMessagesInterval();
 
 }(mumuki));
+
+
