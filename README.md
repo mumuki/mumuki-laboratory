@@ -12,15 +12,6 @@ Mumuki Laboratory [![btn_donate_lg](https://cloud.githubusercontent.com/assets/1
 
 Laboratory is a multitenant Rails webapp for solving exercises, organized in terms of chapters and guides.
 
-## Installing
-
-For development, you've to add to your `/etc/hosts` file:
-```
-127.0.0.1 localmumuki.io
-127.0.0.1 central.localmumuki.io
-127.0.0.1 central.classroom.localmumuki.io
-```
-
 ## Preparing environment
 
 ### TL;DR install
