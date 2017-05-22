@@ -16,8 +16,6 @@ es:
   chapter_number: 'Capítulo %{number}:'
   classroom: Aula
   clear_console: Reiniciar consola
-  comment: Comentario
-  comments: Comentarios
   console: Consola
   contact_administrator: 'Si pensás que es un error, comunicate con la persona que administra esta organización: %{link}'
   content: Contenido
@@ -77,6 +75,9 @@ es:
   lesson: Lección
   listing_exercises: Listado de ejercicios
   manual_evaluation_pending: ¡Gracias por enviar tu solución! Tus docentes la corregirán pronto
+  message: Mensaje
+  messages: Mensajes
+  comments: Mensajes
   messages_error: Los mensajes anteriores no están disponibles en este momento. ¡Volvé a intentar mas tarde!
   minute: minuto
   minutes: minutos

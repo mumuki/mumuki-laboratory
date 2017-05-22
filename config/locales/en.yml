@@ -14,8 +14,6 @@ en:
   chapter_number: Chapter %{number} -
   classroom: Classroom
   clear_console: Clear console
-  comment: Comment
-  comments: Comments
   console: Console
   contact_administrator: 'If you think this is not supposed to happen, please contact the admin: %{link}'
   content: Content
@@ -66,6 +64,8 @@ en:
   lesson: Lesson
   listing_exercises: Listing exercises
   manual_evaluation_pending: Thanks for submitting your solution! It will be revised by the course teachers soon
+  message: Message
+  messages: Messages
   messages_error: Previous messages are unavailable. Please try again later.
   mumuki_catchphrase: Improve your programming skills
   mumuki_short_description: Mumuki is a simple, open and collaborative platform for sharing and solving programming exercises. It is aimed to help people with learning and teaching programing languages and paradigms
