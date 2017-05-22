@@ -32,18 +32,22 @@
     <div class="text-box">
       <%= @exercise.description_html %>
     </div>
-    <div class="hint-box">
-      <% if @exercise.hint.present? %>
-          <a data-toggle="collapse" href="#hint-section" class="text-info">
-            <%= fa_icon 'lightbulb-o' %> <%= t :need_a_hint %>
-          </a>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="hint-box">
+          <% if @exercise.hint.present? %>
+              <a data-toggle="collapse" href="#hint-section" class="text-info">
+                <%= fa_icon 'lightbulb-o' %> <%= t :need_a_hint %>
+              </a>
 
-          <div id="hint-section" class="collapse">
-            <p>
-              <%= @exercise.hint_html %>
-            </p>
-          </div>
-      <% end %>
+              <div id="hint-section" class="collapse">
+                <p>
+                  <%= @exercise.hint_html %>
+                </p>
+              </div>
+          <% end %>
+        </div>
+      </div>
     </div>
 <% end %>
 
@@ -90,21 +94,28 @@
         </div>
       </div>
     </div>
-    <div class="modal fade" id="new-message-modal" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog mu-new-message-modal">
+    <div class="modal new-message-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display:block">
+      <div class="modal-dialog">
         <%= form_for(Message.new, html: {role: 'form'}) do |f| %>
             <div class="modal-content">
-              <div class="mu-modal-header">
+              <div class="mu-modal-header" onclick="MessagesService.collapseNewMessageModal()">
                 <div>
                   <%= fa_icon :'envelope-open-o', class: 'mu-modal-close-button' %>
                 </div>
+                <div class="mu-modal-header-text">
+                  <small>
+                    <%= t :new_message %>
+                  </small>
+                </div>
                 <div>
-                  <button type="button" onclick="closeNewMessageModal()" class="mu-modal-close-button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                  <small>
+                    <button type="button" class="mu-modal-close-button">
+                      <%= fa_icon :'minus', class: 'fa-fw' %>
+                    </button>
+                  </small>
                 </div>
               </div>
-              <div class="modal-body mu-view-messages">
+              <div class="modal-body hidden mu-view-messages">
                 <div class="container-fluid">
                   <div class="row">
                     <%= f.text_area :content, class: 'form-control', placeholder: t(:new_message_placeholder), class: 'mu-message-textarea' %>
@@ -112,7 +123,7 @@
                   </div>
                 </div>
               </div>
-              <div class="modal-footer">
+              <div class="modal-footer hidden">
                 <button class="btn btn-success btn-block"> <%= t :send %> </button>
               </div>
             </div>

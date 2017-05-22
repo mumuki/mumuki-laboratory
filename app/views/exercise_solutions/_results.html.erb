@@ -52,22 +52,19 @@
 </div>
 
 <div class="notify-problem-box">
-  <span>
-    <%= mail_to contact_email,
-                fa_icon(:bug, text: t(:notify_problem_with_exercise)),
-                subject: t(:problem_with_exercise, title: assignment.exercise.name),
-                body: assignment_help_email_body(assignment),
-                class: 'text-info warning' %>
-  </span>
+  <%= mail_to contact_email,
+              fa_icon(:bug, text: t(:notify_problem_with_exercise)),
+              subject: t(:problem_with_exercise, title: @exercise.name),
+              class: 'warning' %>
   <span>
     <%= solution_download_link assignment %>
   </span>
-</div>
 
-<div class="row">
-  <div class="col-md-12">
-    <div class="actions">
-      <%= next_exercise_button(@exercise) %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="actions">
+        <%= next_exercise_button(@exercise) %>
+      </div>
     </div>
   </div>
 </div>

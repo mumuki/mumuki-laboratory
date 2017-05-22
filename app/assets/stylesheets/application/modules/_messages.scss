@@ -1,18 +1,25 @@
-#new-message-modal {
+.new-message-modal {
+  width: 0px;
   pre {
     max-height: 300px;
     overflow: auto;
   }
-  .mu-new-message-modal {
+  .modal-content {
+    width: 400px;
+  }
+  .modal-dialog {
     position: fixed;
-    right: 30px;
+    right: -50px;
     bottom: -30px;
   }
   .mu-modal-header {
     @include display-flex(row nowrap, space-between);
     height: 40px;
-    background-color: $brand-primary;
+    background-color: $brand-info;
     padding: 0 15px 0 15px;
+    .mu-modal-header-text {
+      color: white;
+    }
     .mu-modal-close-button {
       background-color: transparent;
       color: white;
@@ -32,3 +39,4 @@
     width: 100%;
   }
 }
+

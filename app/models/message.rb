@@ -2,8 +2,6 @@ class Message < ActiveRecord::Base
 
   self.inheritance_column = :_type_disabled
 
-  attr_accessor :read
-
   belongs_to :exercise
 
   validates_presence_of :exercise_id, :submission_id, :content, :sender

@@ -9,7 +9,7 @@ module EditorTabsHelper
   end
 
   def messages_tab(hidden)
-    "<li id='messages-tab' role='presentation' class=\"#{hidden_class(hidden)}\"> <a data-target='#messages' aria-controls='console' role='tab' data-toggle='tab' class='editor-tab'>#{fa_icon 'comments-o'} #{t :comments }</a> </li>".html_safe
+    "<li id='messages-tab' role='presentation' class=\"#{hidden_class(hidden)}\"> <a data-target='#messages' aria-controls='console' role='tab' data-toggle='tab' class='editor-tab'>#{fa_icon 'comments-o'} #{t :messages }</a> </li>".html_safe
   end
 
   def hidden_class(hidden)
