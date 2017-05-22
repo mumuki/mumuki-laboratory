@@ -118,7 +118,7 @@
               <div class="modal-body hidden mu-view-messages">
                 <div class="container-fluid">
                   <div class="row">
-                    <%= f.text_area :content, class: 'form-control', placeholder: t(:new_message_placeholder), class: 'mu-message-textarea' %>
+                    <%= f.text_area :content, class: 'form-control mu-message-textarea', placeholder: t(:new_message_placeholder) %>
                     <%= f.text_field :exercise_id, value: @exercise.id, class: 'hidden' %>
                   </div>
                 </div>
