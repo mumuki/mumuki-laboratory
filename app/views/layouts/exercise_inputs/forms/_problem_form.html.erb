@@ -1,5 +1,5 @@
 <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
-<% if should_render_exercise_tabs? @exercise %>
+<% if should_render_exercise_tabs? @exercise, current_user %>
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active">
         <a data-target="#editor" aria-controls="editor" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'pencil-square' %> <%= t :solution %></a>

@@ -11,8 +11,8 @@ module ExerciseInputHelper
     render "layouts/exercise_inputs/editors/#{exercise.editor}", form: form
   end
 
-  def should_render_exercise_tabs?(exercise)
-    !exercise.hidden? && (exercise.queriable? || exercise.extra_visible?)
+  def should_render_exercise_tabs?(exercise, user)
+    !exercise.hidden? && (exercise.queriable? || exercise.extra_visible? || exercise.assignment_for(user)&.has_messages?)
   end
 
   def render_submit_button(exercise)
