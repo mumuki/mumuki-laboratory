@@ -65,5 +65,5 @@
 
 <%= content_for :no_container do %>
     <%= render partial: 'layouts/modals/guide_corollary', locals: {guide: @guide} %>
-    <%= render partial: 'layouts/modals/new_message', locals: {exercise: @exercise} %>
+    <%= render partial: 'layouts/modals/new_message', locals: {exercise: @exercise} if Organization.current.has_messages? %>
 <% end if current_user? %>
