@@ -50,7 +50,7 @@ var mumuki = mumuki || {};
         setMessagesInterval: function () {
             setInterval(MessagesService.getMessages, 60000);
         },
-        submitMessagesForm: function (url, readUrl) {
+        submitMessagesForm: function (url, readUrl, errorUrl) {
             var $container = $('.mu-view-messages');
 
             function renderHTML(data) {
@@ -66,7 +66,7 @@ var mumuki = mumuki || {};
 
             function error(xhr) {
                 MessagesService.tokenRequest({
-                    url: '/messages/errors',
+                    url: errorUrl,
                     success: renderHTML,
                     xhrFields: {withCredentials: true}
                 });
