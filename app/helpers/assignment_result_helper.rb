@@ -25,6 +25,18 @@ module AssignmentResultHelper
             class: 'pull-right'
   end
 
+  def community_link
+    Organization.current.community_link
+  end
+
+  def community_link?
+    community_link.present?
+  end
+
+  def render_community_link
+    link_to fa_icon(:facebook, text: I18n.t(:access_community), class: 'fa-fw'), community_link, target: '_blank' if community_link?
+  end
+
   private
 
   def solution_octet_data(assignment)

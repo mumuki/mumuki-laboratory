@@ -2,6 +2,7 @@
 es:
   aborted: Ups, no pudimos evaluar tu solución
   about: Detalles
+  access_community: ¡Pedir a la comunidad!
   actions: Acciones
   activity: Actividad
   all: Todos
@@ -102,7 +103,7 @@ es:
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio aún!
   not_found: ¡La página que buscaste no existe!
   not_found_explanation: '¡Ups! Esto es lo que se conoce como %{error}: fijate si escribiste bien la dirección. Peeeeero, si pensás que es un error nuestro, %{issues}'
-  notify_problem_with_exercise: ¿Pensás que algo está mal con este ejercicio?
+  notify_problem_with_exercise: ¡Reportá un error!
   office: Secretaría
   output: Salida
   overview: Vista general
