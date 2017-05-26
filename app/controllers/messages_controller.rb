@@ -12,7 +12,9 @@ class MessagesController < AjaxController
   end
 
   def create
-    Message.create_and_notify! message_params.merge(sender: current_user_uid, exercise: @exercise, submission_id: @submission_id, read: true)
+    Message.create_and_notify! message_params
+                                 .merge(sender: current_user_uid, exercise: @exercise,
+                                        submission_id: @submission_id, read: true)
     redirect_to @exercise
   end
 
