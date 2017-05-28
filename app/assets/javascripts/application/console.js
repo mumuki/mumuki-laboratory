@@ -90,7 +90,7 @@ var mumuki = mumuki || {};
       })
     },
     get _requestUrl() {
-      return '/exercises/' + this.exerciseId + '/queries';
+      return '../exercises/' + this.exerciseId + '/queries';
     },
     get _requestData() {
       return {content: this.content, query: this.line, cookie: this.cookie};
