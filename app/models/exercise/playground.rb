@@ -8,7 +8,7 @@ class Playground < Challenge
   end
 
   def save_query_results!(assignment)
-    if assignment.passed?
+    unless assignment.passed?
       assignment.passed!
       assignment.notify!
     end
