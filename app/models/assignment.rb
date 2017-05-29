@@ -67,8 +67,8 @@ class Assignment < ActiveRecord::Base
     exercise.language.extension
   end
 
-  def notify!
-    Event::Submission.new(self).notify!
+  def notify!(organization = Organization.current)
+    Event::Submission.new(self).notify!(organization)
   end
 
   def notify_to_accessible_organizations!

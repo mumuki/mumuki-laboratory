@@ -1,10 +1,12 @@
 class Event::Base
-  def notify!
-    Mumukit::Nuntius.notify! queue_name, as_json unless Organization.current.silent?
+  def notify!(organization = Organization.current)
+    Mumukit::Nuntius.notify! queue_name, as_json(organization: organization) unless organization.silent?
   end
 
-  def as_json(_options={})
-    event_json.deep_merge('organization' => Organization.current.name)
+  def as_json(options={})
+    options[:organization] ||= Organization.current
+
+    event_json.deep_merge('organization' => options[:organization].name)
   end
 
 end
