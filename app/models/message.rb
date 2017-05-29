@@ -50,6 +50,6 @@ class Message < ActiveRecord::Base
     message_data = Message.parse_json json
     Organization.find_by!(name: message_data.delete('organization')).switch!
     Assignment
-      .find_by(submission_id: message_data.delete('submission_id'))&.message! message_data if message_data['submission_id'].present?
+      .find_by(submission_id: message_data.delete('submission_id'))&.send_message! message_data if message_data['submission_id'].present?
   end
 end

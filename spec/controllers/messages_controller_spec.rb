@@ -7,10 +7,10 @@ describe MessagesController do
   before do
     assignment = exercise.submit_solution! user, content: ''
     10.times do
-      assignment.message! content: 'a',
-                          type: 'success',
-                          date: '1/1/1',
-                          sender: 'aguspina87@gmail.com'
+      assignment.send_message! content: 'a',
+                               type: 'success',
+                               date: '1/1/1',
+                               sender: 'aguspina87@gmail.com'
     end
   end
 

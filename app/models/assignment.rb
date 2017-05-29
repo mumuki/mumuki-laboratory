@@ -62,7 +62,7 @@ class Assignment < ActiveRecord::Base
     Message.where(submission_id: submission_id).order('date DESC')
   end
 
-  def message!(message_data)
+  def send_message!(message_data)
     Message.create! message_data.merge(submission_id: submission_id, exercise_id: exercise_id)
     has_messages!
   end
