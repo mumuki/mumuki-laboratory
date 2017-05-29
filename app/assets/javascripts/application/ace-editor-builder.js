@@ -20,8 +20,9 @@ var mumuki = mumuki || {};
         mumuki.editor.setEditorLanguage(this.editor, language);
       }
     },
-    setupPlaceholder: function(text) {
+    setupPlaceholder: function (text) {
       var self = this;
+
       function update() {
         var shouldShow = !self.editor.session.getValue().length;
         var node = self.editor.renderer.emptyMessageNode;
@@ -35,6 +36,7 @@ var mumuki = mumuki || {};
           self.editor.renderer.scroller.appendChild(node);
         }
       }
+
       this.editor.on("input", update);
       setTimeout(update, 100);
     },

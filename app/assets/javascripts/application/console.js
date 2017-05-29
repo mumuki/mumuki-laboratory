@@ -1,8 +1,8 @@
 var mumuki = mumuki || {};
 (function (mumuki) {
   function renderPrompt() {
-      var prompt = $('#prompt').attr('value');
-      if (prompt && prompt.indexOf('ム') >= 0) {
+    var prompt = $('#prompt').attr('value');
+    if (prompt && prompt.indexOf('ム') >= 0) {
       $('.jquery-console-prompt-label')
         .html('')
         .append('<i class="text-primary da da-mumuki"></i>')
@@ -23,10 +23,11 @@ var mumuki = mumuki || {};
     ]);
     renderPrompt();
   }
+
   function clearConsole() {
-      $('.jquery-console-message-error').remove();
-      $('.jquery-console-message-value').remove();
-      $('.jquery-console-prompt-box:not(:last)').remove()
+    $('.jquery-console-message-error').remove();
+    $('.jquery-console-message-value').remove();
+    $('.jquery-console-prompt-box:not(:last)').remove()
   }
 
   function QueryConsole() {
@@ -38,10 +39,10 @@ var mumuki = mumuki || {};
 
   QueryConsole.prototype = {
     newQuery: function (line) {
-        var cookies = this.statefulConsole ? this.lines : [];
-        return new Query(line, cookies, this);
+      var cookies = this.statefulConsole ? this.lines : [];
+      return new Query(line, cookies, this);
     },
-    clearState: function() {
+    clearState: function () {
       this.lines = [];
       clearConsole();
     }
@@ -69,17 +70,15 @@ var mumuki = mumuki || {};
     },
     submit: function (report, queryConsole, line) {
       var self = this;
-      $.ajax(self._request).
-        done(function (response) {
-          if (response.status !== 'errored') {
-            queryConsole.lines.push(line);
-            if (response.status === 'passed') return reportValue(response.result, report);
-          }
-          reportError(response.result, report);
-        }).
-        fail(function (response) {
-          reportError(response.responseText, report);
-        });
+      $.ajax(self._request).done(function (response) {
+        if (response.status !== 'errored') {
+          queryConsole.lines.push(line);
+          if (response.status === 'passed') return reportValue(response.result, report);
+        }
+        reportError(response.result, report);
+      }).fail(function (response) {
+        reportError(response.responseText, report);
+      });
     },
     get _request() {
       var self = this;
@@ -98,27 +97,27 @@ var mumuki = mumuki || {};
   };
 
   function initConsole() {
-      var prompt = $('#prompt').attr('value');
-      var queryConsole = new QueryConsole();
+    var prompt = $('#prompt').attr('value');
+    var queryConsole = new QueryConsole();
 
-      $('.console-reset').click(function(){
-          queryConsole.clearState();
-      });
+    $('.console-reset').click(function () {
+      queryConsole.clearState();
+    });
 
-      $('.console').console({
-          promptLabel: prompt + ' ',
-          commandValidate: function (line) {
-              return line !== "";
-          },
-          commandHandle: function (line, report) {
-              queryConsole.newQuery(line).submit(report, queryConsole, line);
-          },
-          autofocus: !!$('#solution_editor_bottom').val(),
-          animateScroll: true,
-          promptHistory: true
-      });
+    $('.console').console({
+      promptLabel: prompt + ' ',
+      commandValidate: function (line) {
+        return line !== "";
+      },
+      commandHandle: function (line, report) {
+        queryConsole.newQuery(line).submit(report, queryConsole, line);
+      },
+      autofocus: !!$('#solution_editor_bottom').val(),
+      animateScroll: true,
+      promptHistory: true
+    });
 
-      renderPrompt();
+    renderPrompt();
   }
 
   mumuki.load(initConsole);

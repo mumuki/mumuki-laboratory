@@ -1,63 +1,63 @@
 var mumuki = mumuki || {};
 
 (function (mumuki) {
-    function smoothScrollToElement(domElement) {
-        var SPEED = 1000;
-        $('html, body').animate({scrollTop: domElement.offset().top}, SPEED);
+  function smoothScrollToElement(domElement) {
+    var SPEED = 1000;
+    $('html, body').animate({scrollTop: domElement.offset().top}, SPEED);
+  }
+
+  function ResultsBox(submissionsResults) {
+    this.submissionsresultsArea = submissionsResults;
+    this.processingTemplate = $('#processing-template');
+    this.scrollPin = $('.scroll-pin');
+  }
+
+  ResultsBox.prototype = {
+    waiting: function () {
+      console.log('submitting solution');
+      this.submissionsresultsArea.html(this.processingTemplate.html());
+    },
+    success: function (data) {
+      this.submissionsresultsArea.html(data);
+    },
+    error: function (error) {
+      this.submissionsresultsArea.html('<pre>' + error + '</pre>');
+    },
+    done: function () {
+      if (this.scrollPin.length) {
+        smoothScrollToElement(this.scrollPin);
+      }
     }
+  };
 
-    function ResultsBox(submissionsResults) {
-        this.submissionsresultsArea = submissionsResults;
-        this.processingTemplate = $('#processing-template');
-        this.scrollPin = $('.scroll-pin');
-    }
+  function processSubmission() {
+    var submissionsResults = $('.submission-results');
+    if (!submissionsResults) return;
 
-    ResultsBox.prototype = {
-        waiting: function () {
-            console.log('submitting solution');
-            this.submissionsresultsArea.html(this.processingTemplate.html());
-        },
-        success: function (data) {
-            this.submissionsresultsArea.html(data);
-        },
-        error: function (error) {
-            this.submissionsresultsArea.html('<pre>' + error + '</pre>');
-        },
-        done: function () {
-            if (this.scrollPin.length) {
-                smoothScrollToElement(this.scrollPin);
-            }
-        }
-    };
+    var submitButton = $('.btn-submit');
+    var submissionControls = $('.submission-control');
 
-    function processSubmission() {
-        var submissionsResults = $('.submission-results');
-        if (!submissionsResults) return;
+    var resultsBox = new ResultsBox(submissionsResults);
 
-        var submitButton = $('.btn-submit');
-        var submissionControls = $('.submission-control');
+    $('form.new_solution').on('ajax:beforeSend', function (event, xhr, settings) {
+      document.prevSubmitState = submitButton.html();
+      submitButton.html('<i class="fa fa-refresh fa-spin"></i> ' + submitButton.attr('data-waiting'));
+      submissionControls.attr('disabled', 'disabled');
+      resultsBox.waiting();
+    }).on('ajax:complete', function (xhr, status) {
+      submitButton.html(document.prevSubmitState);
+      submissionControls.removeAttr('disabled');
+      resultsBox.done();
+      $('#messages-tab').removeClass('hidden');
+    }).on('ajax:success', function (xhr, data, status) {
+      resultsBox.success(data);
+    }).on('ajax:error', function (xhr, status, error) {
+      var message = error === "error" ? 'Network error :( Please check your internet connection and try again' : error;
+      resultsBox.error(message);
+    });
 
-        var resultsBox = new ResultsBox(submissionsResults);
+  }
 
-        $('form.new_solution').on('ajax:beforeSend', function (event, xhr, settings) {
-            document.prevSubmitState = submitButton.html();
-            submitButton.html('<i class="fa fa-refresh fa-spin"></i> ' + submitButton.attr('data-waiting'));
-            submissionControls.attr('disabled', 'disabled');
-            resultsBox.waiting();
-        }).on('ajax:complete', function (xhr, status) {
-            submitButton.html(document.prevSubmitState);
-            submissionControls.removeAttr('disabled');
-            resultsBox.done();
-            $('#messages-tab').removeClass('hidden');
-        }).on('ajax:success', function (xhr, data, status) {
-            resultsBox.success(data);
-        }).on('ajax:error', function (xhr, status, error) {
-            var message = error === "error" ? 'Network error :( Please check your internet connection and try again' : error;
-            resultsBox.error(message);
-        });
-
-    }
-
-    mumuki.load(processSubmission);
+  mumuki.load(processSubmission);
 
 })(mumuki);
