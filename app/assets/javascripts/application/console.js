@@ -121,6 +121,6 @@ var mumuki = mumuki || {};
       renderPrompt();
   }
 
-  mumukiLoad(initConsole);
+  mumuki.load(initConsole);
 
 }(mumuki));

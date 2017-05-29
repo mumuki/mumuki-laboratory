@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require application/load.js
 //= require momentjs
 //= require momentjs/locale/es.js
 //= require jquery
@@ -27,7 +28,6 @@
 //= require nprogress-ajax
 //= require jquery-console
 //= require countdown
-//= require application/mumuki.js
 //= require_tree ./application
 
 NProgress.configure({

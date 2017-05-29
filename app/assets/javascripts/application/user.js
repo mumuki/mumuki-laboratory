@@ -1,4 +1,6 @@
-$(function () {
+var mumuki = mumuki || {};
+
+(function (mumuki) {
     function handleTabSelection() {
         var hash = document.location.hash;
         if (hash) {
@@ -8,6 +10,6 @@ $(function () {
             window.location.hash = $(e.target).attr('data-target');
         });
     }
-  
-    mumukiLoad(handleTabSelection);
-});
+
+    mumuki.load(handleTabSelection);
+})(mumuki);
