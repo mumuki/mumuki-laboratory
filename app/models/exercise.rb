@@ -115,7 +115,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def messages_path_for(user)
-    "/api/guides/#{guide.slug}/#{user.uid}/#{bibliotheca_id}/messages"
+    "api/guides/#{guide.slug}/#{user.uid}/#{bibliotheca_id}/messages"
   end
 
   def messages_url_for(user)
@@ -127,6 +127,11 @@ class Exercise < ActiveRecord::Base
       .as_json(only: [:id, :bibliotheca_id], include: {guide: {only: :slug}})
       .group_by { |it| it['guide']['slug'] }
       .each { |k, v| Mumukit::Nuntius.notify_event! 'ExerciseChanged', {guide: {slug: k}, exercises: v.as_json(except: 'guide')} }
+  end
+
+  def submit_question!(user)
+    submit! user, Question.new
+    assignment_for user
   end
 
   private

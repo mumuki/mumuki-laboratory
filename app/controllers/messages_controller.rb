@@ -35,7 +35,7 @@ class MessagesController < AjaxController
   end
 
   def set_submission_id
-    @submission_id = @exercise.last_persisted_submission_id_for current_user
+    @submission_id = @exercise.find_or_create_assignment_for current_user
   end
 
   def message_params
