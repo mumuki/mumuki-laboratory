@@ -3,7 +3,7 @@ class Assignment < ActiveRecord::Base
 
   belongs_to :exercise
   has_one :guide, through: :exercise
-  has_many :messages, foreign_key: :submission_id, through: :submission_id
+  has_many :messages, foreign_key: :submission_id, primary_key: :submission_id
 
   belongs_to :submitter, class_name: 'User'
 

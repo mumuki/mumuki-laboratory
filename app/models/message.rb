@@ -3,6 +3,7 @@ class Message < ActiveRecord::Base
   self.inheritance_column = :_type_disabled
 
   belongs_to :exercise
+  belongs_to :assignment, foreign_key: :submission_id, primary_key: :submission_id
 
   validates_presence_of :exercise_id, :submission_id, :content, :sender
 
@@ -36,10 +37,6 @@ class Message < ActiveRecord::Base
 
   def read!
     update! read: true
-  end
-
-  def assignment
-    Assignment.find_by(submission_id: submission_id)
   end
 
   def exercise

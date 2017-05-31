@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :assignments, foreign_key: :submitter_id
 
+  has_many :messages, -> { order(created_at: :desc) }, through: :assignments
+
   has_many :submitted_exercises, through: :assignments, class_name: 'Exercise', source: :exercise
 
   has_many :solved_exercises,
@@ -63,10 +65,6 @@ class User < ActiveRecord::Base
 
   def passed_assignments
     assignments.where(status: Status::Passed.to_i)
-  end
-
-  def messages
-    Message.where(submission_id: assignments.pluck(:submission_id)).order('created_at DESC')
   end
 
   def unread_messages
