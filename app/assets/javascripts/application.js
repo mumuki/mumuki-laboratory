@@ -27,7 +27,6 @@
 //= require nprogress-turbolinks
 //= require nprogress-ajax
 //= require jquery-console
-//= require countdown
 //= require_tree ./application
 
 NProgress.configure({
