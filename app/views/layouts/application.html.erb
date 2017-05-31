@@ -40,31 +40,31 @@
     </div>
     <div class="mu-navbar-avatar">
       <% if current_user? %>
-          <div class="dropdown">
-              <span>
-                <a class="notifications-box <%= has_messages? ? '' : 'notifications-box-empty' %>" href=<%= "#{user_path}#messages" %>>
-                  <i class="fa fa-bell fa-fw fa-lg"></i>
-                  <span class="badge badge-notifications"><%= messages_count %></span>
-                </a>
-              </span>
-          </div>
-          <div class="dropdown">
-              <span id="profileDropdown" data-toggle="dropdown">
-                <%= image_tag(current_user.image_url, height: 40, class: 'img-circle') %>
-              </span>
-            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
-              <li>
-                <%= link_to fixed_fa_icon('user-o', text: t(:profile)), user_path %>
-              </li>
-              <li><%= link_to_classroom %></li>
-              <li><%= link_to_bibliotheca %></li>
-              <li><%= link_to_office %></li>
-              <li class="divider"></li>
-              <li><%= link_to(t(:sign_out), logout_path(origin: url_for)) %></li>
-            </ul>
-          </div>
+        <div class="dropdown">
+          <span>
+            <a class="notifications-box <%= has_messages? ? '' : 'notifications-box-empty' %>" href=<%= "#{user_path}#messages" %>>
+              <i class="fa fa-bell fa-fw fa-lg"></i>
+                <span class="badge badge-notifications"><%= messages_count %></span>
+            </a>
+          </span>
+        </div>
+        <div class="dropdown">
+          <span id="profileDropdown" data-toggle="dropdown">
+            <%= image_tag(current_user.image_url, height: 40, class: 'img-circle') %>
+          </span>
+          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
+            <li>
+              <%= link_to fixed_fa_icon('user-o', text: t(:profile)), user_path %>
+            </li>
+            <li><%= link_to_classroom %></li>
+            <li><%= link_to_bibliotheca %></li>
+            <li><%= link_to_office %></li>
+            <li class="divider"></li>
+            <li><%= link_to(t(:sign_out), logout_path(origin: url_for)) %></li>
+          </ul>
+        </div>
       <% else %>
-          <%= login_button %>
+        <%= login_button %>
       <% end %>
     </div>
   </nav>
