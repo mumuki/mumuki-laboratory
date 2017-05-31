@@ -54,7 +54,6 @@ es:
   failed: Ups, algo no anduvo bien
   feedback: Problemas que encontramos
   forbidden_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no tenés autorización para ver este contenido. ¿Puede que hayas ingresado con una cuenta incorrecta?
-  get_messages: Ver mensajes
   gone_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que ya no podés ver este examen.
   guide: Lección
   guide_created: Guía creada exitosamente
@@ -78,7 +77,6 @@ es:
   manual_evaluation_pending: ¡Gracias por enviar tu solución! Tus docentes la corregirán pronto
   message: Mensaje
   messages: Mensajes
-  comments: Mensajes
   messages_error: Los mensajes anteriores no están disponibles en este momento. ¡Volvé a intentar mas tarde!
   minute: minuto
   minutes: minutos
@@ -120,7 +118,7 @@ es:
   profile_of: Perfil de %{username}
   progress: Progreso
   read: Leido
-  read_messages: Marcar como leídos
+  read_messages: Ver mensajes
   recent_activity: Actividad Reciente
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
   reset: reiniciar

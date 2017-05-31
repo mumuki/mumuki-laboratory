@@ -47,7 +47,6 @@ en:
   failed: Oops, something went wrong
   feedback: Feedback
   forbidden_explanation: You are not allowed to see this content.
-  get_messages: Get messages
   gone_explanation: This exam is no longer available.
   guide: Guide
   guide_created: Guide created successfully
@@ -68,6 +67,7 @@ en:
   message: Message
   messages: Messages
   messages_error: Previous messages are unavailable. Please try again later.
+  more_messages: More
   mumuki_catchphrase: Improve your programming skills
   mumuki_short_description: Mumuki is a simple, open and collaborative platform for sharing and solving programming exercises. It is aimed to help people with learning and teaching programing languages and paradigms
   my_exercises: My Exercises
@@ -102,7 +102,6 @@ en:
   profile_of: Profile of %{username}
   progress: Progresss
   read: Read
-  read_messages: Mark all as read
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   reset: reset
   running: running
