@@ -115,7 +115,7 @@ class Exercise < ActiveRecord::Base
   end
 
   def messages_path_for(user)
-    "api/guides/#{guide.slug}/#{user.uid}/#{bibliotheca_id}/messages"
+    "api/guides/#{guide.slug}/#{user.uid}/#{bibliotheca_id}/messages?language=#{language}"
   end
 
   def messages_url_for(user)
