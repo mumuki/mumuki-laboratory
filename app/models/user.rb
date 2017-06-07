@@ -104,10 +104,13 @@ class User < ActiveRecord::Base
 
   def send_question_for!(exercise, message_data)
     assignment = exercise.submit_question! self
-    Message.create_and_notify! message_data.merge(
+    message = Message.create! message_data.merge(
       sender: id,
       exercise: exercise,
-      submission_id: assignment.submission_id, read: true)
+      submission_id: assignment.submission_id,
+      read: true)
+    message.assignment.has_messages!
+    message.notify!
   end
 
   def self.import_from_json!(body)

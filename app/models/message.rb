@@ -16,12 +16,6 @@ class Message < ActiveRecord::Base
       .merge(message)
   end
 
-  def self.create_and_notify!(data)
-    message = create! data
-    message.assignment.has_messages!
-    message.notify!
-  end
-
   def self.read_all!
     update_all read: true
   end
