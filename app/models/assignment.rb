@@ -58,7 +58,7 @@ class Assignment < ActiveRecord::Base
     end
   end
 
-  def send_message!(message_data)
+  def receive_answer!(message_data)
     Message.create! message_data.merge(submission_id: submission_id, exercise_id: exercise_id)
     has_messages!
   end

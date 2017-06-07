@@ -11,7 +11,7 @@ class MessagesController < AjaxController
   end
 
   def create
-    current_user.send_message_for! @exercise, message_params
+    current_user.send_question_for! @exercise, message_params
     redirect_to @exercise
   end
 

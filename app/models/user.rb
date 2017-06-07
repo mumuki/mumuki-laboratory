@@ -102,7 +102,7 @@ class User < ActiveRecord::Base
     reload
   end
 
-  def send_message_for!(exercise, message_data)
+  def send_question_for!(exercise, message_data)
     assignment = exercise.submit_question! self
     Message.create_and_notify! message_data.merge(
       sender: id,
