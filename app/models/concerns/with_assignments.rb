@@ -38,10 +38,6 @@ module WithAssignments
     assignment_for(user).try(&:updated_at)
   end
 
-  def find_or_create_assignment_for(user)
-    submit_question!(user)
-  end
-
   def submissions_count_for(user)
     assignment_for(user).try(&:submissions_count) || 0
   end
