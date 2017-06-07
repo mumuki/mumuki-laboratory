@@ -39,7 +39,7 @@ module WithAssignments
   end
 
   def find_or_create_assignment_for(user)
-    submit_question!(user).submission_id
+    submit_question!(user)
   end
 
   def submissions_count_for(user)

@@ -1,6 +1,6 @@
 class MessagesController < AjaxController
   before_action :set_exercise, only: [:create, :read_messages]
-  before_action :set_submission_id, only: :create
+  before_action :set_assignment, only: :create
 
   def index
     render json: {has_messages: has_messages?, messages_count: messages_count}
@@ -14,7 +14,7 @@ class MessagesController < AjaxController
   def create
     Message.create_and_notify! message_params
                                  .merge(sender: current_user_uid, exercise: @exercise,
-                                        submission_id: @submission_id, read: true)
+                                        submission_id: @assignment.submission_id, read: true)
     redirect_to @exercise
   end
 
@@ -29,8 +29,8 @@ class MessagesController < AjaxController
     @exercise = Exercise.find(exercise_id)
   end
 
-  def set_submission_id
-    @submission_id = @exercise.find_or_create_assignment_for current_user
+  def set_assignment
+    @assignment = @exercise.find_or_create_assignment_for current_user
   end
 
   def message_params
