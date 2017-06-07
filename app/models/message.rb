@@ -27,11 +27,13 @@ class Message < ActiveRecord::Base
   end
 
   def notify!
-    Mumukit::Nuntius.notify! 'student-messages', json_to_notify
+    Mumukit::Nuntius.notify! 'student-messages', event_json
   end
 
-  def json_to_notify
-    as_json(except: [:id, :exercise_id, :type], include: {exercise: {only: [:bibliotheca_id]}}).merge(organization: Organization.current.name)
+  def event_json
+    as_json(except: [:id, :exercise_id, :type],
+            include: {exercise: {only: [:bibliotheca_id]}})
+      .merge(organization: Organization.current.name)
   end
 
   def read!
