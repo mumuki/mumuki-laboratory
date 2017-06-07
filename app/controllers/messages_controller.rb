@@ -7,7 +7,7 @@ class MessagesController < AjaxController
   end
 
   def read_messages
-    @exercise.messages_for(current_user).read_all
+    @exercise.messages_for(current_user).read_all!
     render_messages_json
   end
 

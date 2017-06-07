@@ -22,7 +22,7 @@ class Message < ActiveRecord::Base
     message.notify!
   end
 
-  def self.read_all
+  def self.read_all!
     update_all read: true
   end
 
