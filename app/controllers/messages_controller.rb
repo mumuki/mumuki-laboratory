@@ -3,12 +3,12 @@ class MessagesController < AjaxController
   before_action :set_submission_id, only: :create
 
   def index
-    render_messages_json
+    render json: {has_messages: has_messages?, messages_count: messages_count}
   end
 
   def read_messages
     @exercise.messages_for(current_user).read_all!
-    render_messages_json
+    index
   end
 
   def create
@@ -23,11 +23,6 @@ class MessagesController < AjaxController
   end
 
   private
-
-  def render_messages_json
-    render json: {has_messages: has_messages?,
-                  messages_count: messages_count}
-  end
 
   def set_exercise
     exercise_id = params[:message].present? ? params[:message][:exercise_id] : params[:exercise_id]
