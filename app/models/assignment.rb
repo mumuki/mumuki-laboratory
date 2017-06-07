@@ -3,7 +3,7 @@ class Assignment < ActiveRecord::Base
 
   belongs_to :exercise
   has_one :guide, through: :exercise
-  has_many :messages, foreign_key: :submission_id, primary_key: :submission_id
+  has_many :messages, -> { order('date DESC') }, foreign_key: :submission_id, primary_key: :submission_id
 
   belongs_to :submitter, class_name: 'User'
 
@@ -56,10 +56,6 @@ class Assignment < ActiveRecord::Base
       update_submissions_count!
       update_last_submission!
     end
-  end
-
-  def messages
-    Message.where(submission_id: submission_id).order('date DESC')
   end
 
   def send_message!(message_data)
