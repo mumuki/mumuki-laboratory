@@ -108,7 +108,6 @@ class Exercise < ActiveRecord::Base
     end
   end
 
-
   def reclassify!(type)
     update!(type: Exercise.class_for(type).name)
     Exercise.find(id)

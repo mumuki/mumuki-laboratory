@@ -47,10 +47,6 @@ module WithAssignments
   end
 
   def find_or_init_assignment_for(user)
-    if assigned_to?(user)
-      assignment_for(user)
-    else
-      user.assignments.build(exercise: self)
-    end
+    assignment_for(user) || user.assignments.build(exercise: self)
   end
 end
