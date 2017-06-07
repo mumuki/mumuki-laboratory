@@ -15,7 +15,7 @@ module WithAssignments
   end
 
   def messages_for(user)
-    assignment_for(user).try(&:messages) || []
+    assignment_for(user)&.messages || []
   end
 
   def assignment_for(user)
