@@ -20,6 +20,12 @@ class ActiveRecord::Base
     self
   end
 
+  def save_and_notify!
+    save!
+    notify!
+    self
+  end
+
   def self.aggregate_of(association)
     class_eval do
       define_method(:rebuild!) do |children|

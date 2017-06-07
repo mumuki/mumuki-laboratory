@@ -102,16 +102,13 @@ class User < ActiveRecord::Base
     reload
   end
 
-  def send_question_for!(exercise, message_data)
+  def send_question_for!(exercise, question)
     assignment = exercise.submit_question! self
-    message = Message.create! message_data.merge(
-      sender: id,
-      exercise: exercise,
-      submission_id: assignment.submission_id,
-      read: true)
-    message.assignment.has_messages!
-    message.notify!
+    assignment.send_question! question
   end
+
+
+
 
   def self.import_from_json!(body)
     body[:name] = "#{body.delete(:first_name)} #{body.delete(:last_name)}"
