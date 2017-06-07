@@ -102,6 +102,14 @@ class User < ActiveRecord::Base
     reload
   end
 
+  def send_message_for!(exercise, message_data)
+    assignment = exercise.find_or_create_assignment_for self
+    Message.create_and_notify! message_data.merge(
+      sender: id,
+      exercise: exercise,
+      submission_id: assignment.submission_id, read: true)
+  end
+
   def self.import_from_json!(body)
     body[:name] = "#{body.delete(:first_name)} #{body.delete(:last_name)}"
     User.where(uid: body[:uid]).update_or_create!(body.except(:id))
