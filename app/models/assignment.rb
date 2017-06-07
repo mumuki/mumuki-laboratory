@@ -72,7 +72,7 @@ class Assignment < ActiveRecord::Base
   end
 
   def pending_messages?
-    messages.where(read: false).present?
+    messages.exists? read: false
   end
 
   def extension
