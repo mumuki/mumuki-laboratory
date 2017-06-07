@@ -17,8 +17,7 @@ class Message < ActiveRecord::Base
   end
 
   def self.create_and_notify!(data)
-    message = new data
-    message.save!
+    message = create! data
     message.assignment.has_messages!
     message.notify!
   end
