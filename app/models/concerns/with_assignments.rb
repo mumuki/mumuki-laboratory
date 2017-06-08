@@ -18,6 +18,11 @@ module WithAssignments
     assignment_for(user)&.messages || []
   end
 
+  def has_messages_for?(user)
+    messages_for(user).present?
+  end
+
+
   def assignment_for(user)
     assignments.find_by(submitter: user)
   end
