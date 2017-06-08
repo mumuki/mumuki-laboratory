@@ -16,7 +16,8 @@ class Exercise < ActiveRecord::Base
           FriendlyName,
           WithLanguage
 
-  include Submittable
+  include Submittable,
+          Questionable
 
   include SiblingsNavigation,
           ParentNavigation
@@ -108,17 +109,17 @@ class Exercise < ActiveRecord::Base
     end
   end
 
-
   def reclassify!(type)
     update!(type: Exercise.class_for(type).name)
     Exercise.find(id)
   end
 
-  def self.notify_for_classroom_update!
-    all
-      .as_json(only: [:id, :bibliotheca_id], include: {guide: {only: :slug}})
-      .group_by { |it| it['guide']['slug'] }
-      .each { |k, v| Mumukit::Nuntius.notify_event! 'ExerciseChanged', {guide: {slug: k}, exercises: v.as_json(except: 'guide')} }
+  def messages_path_for(user)
+    "api/guides/#{guide.slug}/#{bibliotheca_id}/student/#{user.uid}/messages?language=#{language}"
+  end
+
+  def messages_url_for(user)
+    Mumukit::Platform.classroom_api.organic_url_for(Organization.current, messages_path_for(user))
   end
 
   private
@@ -127,6 +128,21 @@ class Exercise < ActiveRecord::Base
     self.submissions_count = 0
   end
 
+  def evaluation_class
+    if manual_evaluation?
+      manual_evaluation_class
+    else
+      automated_evaluation_class
+    end
+  end
+
+  def manual_evaluation_class
+    ManualEvaluation
+  end
+
+  def automated_evaluation_class
+    AutomatedEvaluation
+  end
 
   def self.class_for(type)
     type.camelcase.constantize

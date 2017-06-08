@@ -35,11 +35,15 @@ Rails.application.routes.draw do
     end
 
     # Current user
-    resources :comments, only: :index
+    resources :messages, only: [:index, :create]
+    get '/messages/errors' => 'messages#errors'
 
     # Routes by slug
     get '/guides/:organization/:repository' => 'guides#show_by_slug', as: :guide_by_slug
     get '/exercises/:organization/:repository/:bibliotheca_id' => 'exercises#show_by_slug', as: :exercise_by_slug
+
+    # Route for reading messages
+    post '/messages/read_messages/:exercise_id' => 'messages#read_messages', as: :read_messages
   end
 
   #Rescue not found routes

@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :assignments, foreign_key: :submitter_id
 
+  has_many :messages, -> { order(created_at: :desc) }, through: :assignments
+
   has_many :submitted_exercises, through: :assignments, class_name: 'Exercise', source: :exercise
 
   has_many :solved_exercises,
@@ -65,12 +67,8 @@ class User < ActiveRecord::Base
     assignments.where(status: Status::Passed.to_i)
   end
 
-  def comments
-    assignments.flat_map(&:comments)
-  end
-
-  def unread_comments
-    comments.reject(&:read)
+  def unread_messages
+    messages.where read: false
   end
 
   def visit!(organization)

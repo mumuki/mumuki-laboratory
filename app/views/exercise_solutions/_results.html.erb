@@ -12,26 +12,26 @@
   <% if assignment.results_visible? %>
     <div>
       <% if assignment.expectation_results_visible? %>
-        <div class="results-item">
-          <strong><%= t :unmeet_expectations %>:</strong>
-          <ul class="results-list">
-            <% assignment.visible_expectation_results.each do |it| %>
-              <li><%= status_icon(it[:result]) %> <%= t_expectation it %></li>
-            <% end %>
-          </ul>
-        </div>
+          <div class="results-item">
+            <strong><%= t :unmeet_expectations %>:</strong>
+            <ul class="results-list">
+              <% assignment.visible_expectation_results.each do |it| %>
+                  <li><%= status_icon(it[:result]) %> <%= t_expectation it %></li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
       <% if render_feedback?(assignment) %>
-        <div class="results-item">
-          <strong><%= t :feedback %>:</strong>
+          <div class="results-item">
+            <strong><%= t :feedback %>:</strong>
 
-          <div>
-            <%= assignment.feedback_html %>
+            <div>
+              <%= assignment.feedback_html %>
+            </div>
+            <a data-toggle="collapse" href="#results-section" class="text-danger">
+              <%= fa_icon 'question-circle' %> <%= t :details %>
+            </a>
           </div>
-          <a data-toggle="collapse" href="#results-section" class="text-danger">
-            <%= fa_icon 'question-circle' %> <%= t :details %>
-          </a>
-        </div>
       <% end %>
       <div id="results-section" class="<%= 'collapse' if render_feedback?(assignment) %> results-item">
         <strong><%= t :test_results %>:</strong>
@@ -46,33 +46,27 @@
   <% else %>
     <div></div>
   <% end %>
-
+  <%= solution_download_link assignment %>
   <%= corollary_box @exercise unless assignment.should_retry? %>
 
 </div>
 
-<% @comments.each do |comment| %>
-  <div class="bs-callout bs-callout-<%= comment.type %>">
-    <h6> <%= comment.author %></h6>
-    <div>
-      <%= comment.content_html %>
-    </div>
-  </div>
-<% end %>
-
 <div class="notify-problem-box">
-  <span>
-    <%= mail_to contact_email,
-                fa_icon(:bug, text: t(:notify_problem_with_exercise)),
-                subject: t(:problem_with_exercise, title: assignment.exercise.name),
-                body: assignment_help_email_body(assignment),
-                class: 'text-info warning' %>
-  </span>
-  <span>
-    <%= solution_download_link assignment %>
-  </span>
+  <div class="dropdown">
+    <%= link_to fa_icon(:'question-circle', text: t(:need_help)), "", {'data-toggle': 'dropdown'} %>
+    <ul class="dropdown-menu" aria-labelledby="helpDropdown">
+      <li>
+        <%= mail_to contact_email,
+                    fa_icon(:bug, text: t(:notify_problem_with_exercise), class: 'fa-fw'),
+                    subject: t(:problem_with_exercise, title: @exercise.name),
+                    class: 'warning' %>
+      </li>
+      <li>
+        <%= render_community_link %>
+      </li>
+    </ul>
+  </div>
 </div>
-
 <div class="row">
   <div class="col-md-12">
     <div class="actions">
@@ -85,7 +79,7 @@
   $('.progress-list-item.active').attr('class', "<%= class_for_progress_list_item(@exercise, true) %>");
 
   <% if guide_finished_by_solution %>
-  $('#guide-done').modal();
+    $('#guide-done').modal();
   <% end %>
 
 </script>

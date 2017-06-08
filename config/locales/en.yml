@@ -2,6 +2,7 @@
 en:
   aborted: Oops, we couldn't evaluate your solution
   about: About
+  ask_community: Ask community for help
   actions: Actions
   activity: Activity
   all: All
@@ -14,8 +15,6 @@ en:
   chapter_number: Chapter %{number} -
   classroom: Classroom
   clear_console: Clear console
-  comment: Comment
-  comments: Comments
   console: Console
   contact_administrator: 'If you think this is not supposed to happen, please contact the admin: %{link}'
   content: Content
@@ -44,6 +43,7 @@ en:
   error_403: 403 error
   error_404: 404 error
   error_410: error 410
+  exit: Exit
   failed: Oops, something went wrong
   feedback: Feedback
   forbidden_explanation: You are not allowed to see this content.
@@ -64,6 +64,10 @@ en:
   lesson: Lesson
   listing_exercises: Listing exercises
   manual_evaluation_pending: Thanks for submitting your solution! It will be revised by the course teachers soon
+  message: Message
+  messages: Messages
+  messages_error: Previous messages are unavailable. Please try again later.
+  more_messages: More
   mumuki_catchphrase: Improve your programming skills
   mumuki_short_description: Mumuki is a simple, open and collaborative platform for sharing and solving programming exercises. It is aimed to help people with learning and teaching programing languages and paradigms
   my_exercises: My Exercises
@@ -72,14 +76,16 @@ en:
   navigation_next: Next
   navigation_revisit: 'Next pending: %{sibling}'
   need_a_hint: Do you need a hint?
+  need_help: I need help!
   never: never
   new: New
+  new_message_placeholder: Escribí tu mensaje acá...
   next_exercise: Next
   next_lesson: 'Next Guide: %{name}'
   no_exercises: Nobody created an exercise for this search yet
   no_guides: Nobody created a guide for this search yet
   no_submissions: Its seems like you haven't tried to solve this exercise
-  notify_problem_with_exercise: Do you think something is wrong with this exercise?
+  notify_problem_with_exercise: Report a bug
   not_found_explanation: 'You may have mistyped the address or the page may have moved. If you think this is our fault, %{issues}'
   office: Office
   output: Output
@@ -87,6 +93,8 @@ en:
   passed: All right
   passed_with_warnings: It worked, but you can do better
   pending: pending
+  pending_messages: You have unread messages
+  pending_messages_explanation: You can't send new solutions until you read pending messages
   permissions: Permissions
   previous_exercise: Previous
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'

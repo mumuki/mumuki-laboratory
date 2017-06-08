@@ -10,8 +10,4 @@ class Reading < Exercise
   def queriable?
     false
   end
-
-  def evaluation_class
-    NoEvaluation
-  end
 end

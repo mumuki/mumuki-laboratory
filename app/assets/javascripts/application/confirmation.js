@@ -1,4 +1,4 @@
-$(document).on('ready page:load', function () {
+mumuki.load(function () {
   $('.btn-confirmation').on('click change', function (evt) {
     $.ajax({
       method: 'POST',

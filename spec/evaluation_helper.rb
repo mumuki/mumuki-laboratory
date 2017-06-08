@@ -1,12 +1,14 @@
-class NoopEvaluation < Evaluation
-  def evaluate!
+Language.class_eval do
+  def test_only_fake_response
     {status: Status::Failed, result: 'noop result'}
   end
-end
 
-class Challenge
-  def automated_evaluation_class
-    NoopEvaluation
+  def run_tests!(*)
+    test_only_fake_response
+  end
+
+  def run_query!(*)
+    test_only_fake_response
   end
 end
 

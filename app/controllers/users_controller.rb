@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user!
 
   def show
-    @comments = current_user.comments || []
+    @messages = current_user.messages || []
   end
 
   private

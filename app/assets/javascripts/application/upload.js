@@ -1,5 +1,5 @@
-$(document).on('ready page:load', function () {
-  $('#upload').change(function (evt) {
+mumuki.load(function() {
+  $('#upload-input').change(function (evt) {
     var file = evt.target.files[0];
     if (!file) return;
 
@@ -8,9 +8,10 @@ $(document).on('ready page:load', function () {
       var contents = e.target.result;
       $('#solution_content').attr('value', contents);
       $(evt.target).val("");
-      $('form').submit();
+      $('form.new_solution').submit();
     };
     reader.readAsText(file);
     return false;
   });
 });
+

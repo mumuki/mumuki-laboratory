@@ -1,8 +1,10 @@
 class Assignment < ActiveRecord::Base
   include WithStatus
+  include WithMessages
 
   belongs_to :exercise
   has_one :guide, through: :exercise
+  has_many :messages, -> { order(date: :desc)  }, foreign_key: :submission_id, primary_key: :submission_id
 
   belongs_to :submitter, class_name: 'User'
 
@@ -49,18 +51,11 @@ class Assignment < ActiveRecord::Base
 
   def accept_new_submission!(submission)
     transaction do
+      messages.destroy_all
       update! submission_id: submission.id
       update_submissions_count!
       update_last_submission!
     end
-  end
-
-  def comments
-    Comment.where(submission_id: submission_id).order('date DESC')
-  end
-
-  def comment!(comment_data)
-    Comment.create! comment_data.merge(submission_id: submission_id, exercise_id: exercise_id)
   end
 
   def extension
@@ -82,11 +77,11 @@ class Assignment < ActiveRecord::Base
 
   def update_submissions_count!
     self.class.connection.execute(
-        "update public.exercises
+      "update public.exercises
          set submissions_count = submissions_count + 1
         where id = #{exercise.id}")
     self.class.connection.execute(
-        "update public.assignments
+      "update public.assignments
          set submissions_count = submissions_count + 1
         where id = #{id}")
     exercise.reload

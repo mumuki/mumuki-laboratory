@@ -7,6 +7,7 @@ class Submission
     @id ||= SecureRandom.hex(8)
   end
 
+
   def setup_assignment!(assignment)
     assignment.solution = content
     assignment.save!

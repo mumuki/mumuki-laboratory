@@ -14,12 +14,17 @@ module WithAssignments
     (default_content || '').gsub('/*...previousContent...*/') { previous.current_content_for(user) }
   end
 
-  def comments_for(user)
-    assignment_for(user).try(&:comments) || []
+  def messages_for(user)
+    assignment_for(user)&.messages || []
   end
 
+  def has_messages_for?(user)
+    messages_for(user).present?
+  end
+
+
   def assignment_for(user)
-    assignments.find_by(submitter_id: user.id)
+    assignments.find_by(submitter: user)
   end
 
   def solved_by?(user)
@@ -27,7 +32,7 @@ module WithAssignments
   end
 
   def assigned_to?(user)
-    assignment_for(user).present?
+    assignments.exists?(submitter: user)
   end
 
   def status_for(user)
@@ -42,11 +47,11 @@ module WithAssignments
     assignment_for(user).try(&:submissions_count) || 0
   end
 
+  def clean_for?(user)
+    submissions_count_for(user).zero?
+  end
+
   def find_or_init_assignment_for(user)
-    if assigned_to?(user)
-      assignment_for(user)
-    else
-      user.assignments.build(exercise: self)
-    end
+    assignment_for(user) || user.assignments.build(exercise: self)
   end
 end

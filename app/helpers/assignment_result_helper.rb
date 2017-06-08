@@ -21,8 +21,21 @@ module AssignmentResultHelper
   def solution_download_link(assignment)
     link_to fa_icon(:download, text: t(:download)),
             solution_octet_data(assignment),
-            download: solution_filename(assignment),
-            class: 'pull-right'
+            download: solution_filename(assignment) if assignment.exercise.upload?
+  end
+
+  def community_link
+    Organization.current.community_link
+  end
+
+  def community_link?
+    community_link.present?
+  end
+
+  def render_community_link
+    if community_link?
+      link_to fa_icon(:facebook, text: I18n.t(:ask_community), class: 'fa-fw'), community_link, target: '_blank'
+    end
   end
 
   private

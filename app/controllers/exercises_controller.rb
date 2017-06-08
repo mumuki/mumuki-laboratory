@@ -5,7 +5,8 @@ class ExercisesController < ApplicationController
   before_action :set_exercises, only: :index
   before_action :set_guide, only: :show
   before_action :set_default_content, only: :show, if: :current_user?
-  before_action :set_comments, only: :show
+  before_action :set_assignment, only: :show, if: :current_user?
+  before_action :set_messages_url, only: [:show,]
   before_action :validate_user, only: :show
   before_action :start!, only: :show
 
@@ -39,9 +40,12 @@ class ExercisesController < ApplicationController
     @default_content = @exercise.default_content_for(current_user)
   end
 
-  def set_comments
-    @comments = @exercise.comments_for(current_user) if current_user?
-    @comments.try(:each, &:read!)
+  def set_assignment
+    @assignment = @exercise.assignment_for(current_user)
+  end
+
+  def set_messages_url
+    @messages_url = @exercise.messages_url_for(current_user) if current_user?
   end
 
   def set_guide
@@ -50,9 +54,9 @@ class ExercisesController < ApplicationController
 
   def exercise_params
     params.require(:exercise).
-        permit(:name, :description, :locale, :test,
-               :extra, :language_id, :hint, :tag_list,
-               :guide_id, :number,
-               :layout, :expectations_yaml)
+      permit(:name, :description, :locale, :test,
+             :extra, :language_id, :hint, :tag_list,
+             :guide_id, :number,
+             :layout, :expectations_yaml)
   end
 end

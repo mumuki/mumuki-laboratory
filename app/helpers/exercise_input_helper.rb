@@ -11,8 +11,12 @@ module ExerciseInputHelper
     render "layouts/exercise_inputs/editors/#{exercise.editor}", form: form
   end
 
-  def should_render_exercise_tabs?(exercise)
-    !exercise.hidden? && (exercise.queriable? || exercise.extra_visible?)
+  def should_render_problem_tabs?(exercise, user)
+      !exercise.hidden? && (exercise.queriable? || exercise.extra_visible? || exercise.has_messages_for?(user))
+  end
+
+  def should_render_message_input?(exercise, organization = Organization.current)
+    exercise.is_a?(Problem) && !exercise.hidden? && organization.raise_hand_enabled?
   end
 
   def render_submit_button(exercise)
@@ -26,7 +30,7 @@ module ExerciseInputHelper
 
   def submit_button_options(exercise)
     if exercise.upload?
-      struct for: :upload,
+      struct for: 'upload-input',
              tag: :label,
              waiting_t: :uploading_solution,
              fa_icon: :upload,

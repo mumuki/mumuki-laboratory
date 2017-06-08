@@ -43,6 +43,7 @@ describe Exercise do
 
       it { expect(exercise_with_guide.next_for(user)).to eq alternative_exercise }
     end
+
     context 'when exercise belongs to a guide with two exercises and alternative exercise has being solved' do
       let(:exercise_with_guide) { create(:exercise, guide: guide) }
       let!(:alternative_exercise) { create(:exercise, guide: guide) }
@@ -272,5 +273,17 @@ describe Exercise do
   describe '#friendly_name' do
     it { expect(Exercise.find(exercise.friendly_name)).to eq exercise }
     it { expect(Problem.find(exercise.friendly_name)).to eq exercise }
+  end
+
+  describe 'messages_path_for' do
+    let(:haskell) { create(:haskell) }
+    let(:problem) { create(:problem, bibliotheca_id: 32, guide: guide, language: haskell) }
+    let(:guide) { create(:guide, slug: 'mumuki/myguide') }
+    let(:student) { create(:user, uid: 'foo@bar.com') }
+
+    it { expect(problem.messages_path_for(student))
+           .to eq 'api/guides/mumuki/myguide/32/student/foo@bar.com/messages?language=haskell' }
+    it { expect(problem.messages_url_for(student))
+           .to eq 'http://test.classroom-api.localmumuki.io/api/guides/mumuki/myguide/32/student/foo@bar.com/messages?language=haskell' }
   end
 end

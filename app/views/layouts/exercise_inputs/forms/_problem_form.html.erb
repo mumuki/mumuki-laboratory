@@ -1,6 +1,5 @@
 <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
-
-<% if should_render_exercise_tabs? @exercise %>
+<% if should_render_problem_tabs? @exercise, current_user %>
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
       <a data-target="#editor" aria-controls="editor" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'pencil-square' %> <%= t :solution %></a>
@@ -11,12 +10,25 @@
     <% if @exercise.queriable? %>
       <%= console_tab %>
     <% end %>
+    <%= messages_tab(@exercise.clean_for?(current_user) || @exercise.assignment_for(current_user).empty_chat?) %>
   </ul>
 <% end %>
 
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane mu-input-panel fade in active" id="editor">
-    <%= form_for([@exercise, @solution], remote: true, html: {role: 'form', class: 'new_solution mu-editor mu-editor-overlap'}) do |f| %>
+    <% if @assignment&.pending_messages? %>
+        <span class="pending-messages-text"> <%= t :pending_messages_explanation %>
+          <a href="javascript:{}"
+             onclick="mumuki.Chat.submitMessagesForm('<%= @messages_url%>', '<%= read_messages_path(@exercise) %>')"
+             class="<%= hidden_pending(@assignment) %>"
+             data-waiting="<%= t(:sending_solution) %>">
+            <%= t :get_messages %>
+          </a>
+        </span>
+    <% end %>
+    <%= form_for([@exercise, @solution],
+                 remote: true,
+                 html: {role: 'form', class: "new_solution mu-editor mu-editor-overlap #{pending_messages_filter(@assignment)}"}) do |f| %>
       <%= render_exercise_input_editor f, @exercise %>
 
       <div class="actions">
@@ -35,14 +47,17 @@
   <div role="tabpanel" class="tab-pane mu-input-panel fade" id="visible-extra">
     <%= @exercise.extra_preview_html %>
   </div>
+  <div role="tabpanel" class="tab-pane mu-input-panel fade" id="messages">
+    <%= render partial: 'layouts/messages', locals: {messages: @assignment.messages} if @assignment %>
+  </div>
 </div>
 
 <% content_for :submission_results do %>
   <% if current_user? %>
     <div class="row">
       <div class="col-md-12 submission-results">
-        <% if @exercise.assignment_for(current_user) %>
-          <%= render partial: 'exercise_solutions/results', locals: {assignment: @exercise.assignment_for(current_user), guide_finished_by_solution: false} %>
+        <% if @assignment %>
+          <%= render partial: 'exercise_solutions/results', locals: {assignment: @assignment, guide_finished_by_solution: false} %>
         <% end %>
       </div>
     </div>
