@@ -1,7 +1,5 @@
 class Message < ActiveRecord::Base
 
-  self.inheritance_column = :_type_disabled
-
   belongs_to :assignment, foreign_key: :submission_id, primary_key: :submission_id
   has_one :exercise, through: :assignment
 
