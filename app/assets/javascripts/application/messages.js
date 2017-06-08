@@ -2,7 +2,7 @@ var mumuki = mumuki || {};
 
 (function (mumuki) {
 
-  MessagesService = {
+  Chat = {
     $body: function () {
       return $('body')
     },
@@ -10,10 +10,10 @@ var mumuki = mumuki || {};
       return $('.new-message-modal');
     },
     $newMessageModalComponents: function () {
-      return MessagesService.$newMessageModal().find('.modal-body, .modal-footer');
+      return Chat.$newMessageModal().find('.modal-body, .modal-footer');
     },
     collapseNewMessageModal: function () {
-      MessagesService.$newMessageModalComponents().toggleClass('hidden');
+      Chat.$newMessageModalComponents().toggleClass('hidden');
     },
     token: new mumuki.CsrfToken(),
     setMessages: function (data) {
@@ -24,31 +24,31 @@ var mumuki = mumuki || {};
       $('.pending-messages-text').remove()
     },
     readMessages: function (url) {
-      MessagesService.tokenRequest({
+      Chat.tokenRequest({
         url: url,
         method: 'POST',
-        success: MessagesService.setMessages,
+        success: Chat.setMessages,
         xhrFields: {withCredentials: true}
       })
     },
     tokenRequest: function (data) {
-      $.ajax(MessagesService.token.newRequest(data))
+      $.ajax(Chat.token.newRequest(data))
     },
     getMessages: function () {
       if ($('.badge-messages').length == 0) {
         return;
       }
-      MessagesService.tokenRequest({
+      Chat.tokenRequest({
         url: '/messages',
         type: 'GET'
       }).done(function (res) {
-        MessagesService.setMessages(res);
+        Chat.setMessages(res);
       }).fail(function (_error) {
         //ignoring error, not important
       });
     },
     setMessagesInterval: function () {
-      setInterval(MessagesService.getMessages, 60000);
+      setInterval(Chat.getMessages, 60000);
     },
     submitMessagesForm: function (url, readUrl, errorUrl) {
       var $container = $('.mu-view-messages');
@@ -61,11 +61,11 @@ var mumuki = mumuki || {};
 
       function success(data) {
         renderHTML(data);
-        MessagesService.readMessages(readUrl);
+        Chat.readMessages(readUrl);
       }
 
       function error(xhr) {
-        MessagesService.tokenRequest({
+        Chat.tokenRequest({
           url: errorUrl,
           success: renderHTML,
           xhrFields: {withCredentials: true}
@@ -80,16 +80,16 @@ var mumuki = mumuki || {};
       })
     },
     openNewMessageModal: function () {
-      MessagesService.$newMessageModal().modal({backdrop: false, keyboard: false});
-      MessagesService.$body().addClass("new-message-modal-open");
-      MessagesService.$body().removeClass("modal-open");
+      Chat.$newMessageModal().modal({backdrop: false, keyboard: false});
+      Chat.$body().addClass("new-message-modal-open");
+      Chat.$body().removeClass("modal-open");
     },
     closeNewMessageModal: function () {
-      MessagesService.$body().removeClass("new-message-modal-open");
+      Chat.$body().removeClass("new-message-modal-open");
     }
   };
 
-  MessagesService.setMessagesInterval();
+  Chat.setMessagesInterval();
 
 }(mumuki));
 
