@@ -2,6 +2,40 @@ require 'spec_helper'
 
 describe Assignment do
 
+  describe 'messages' do
+    let(:student) { create(:user) }
+    let(:exercise) { create(:exercise, manual_evaluation: true) }
+    let(:assignment) { exercise.submit_question! student }
+
+    let(:message) { assignment.messages.first }
+
+    describe '.send_question!' do
+      before { assignment.send_question! content: 'How can i solve this?' }
+
+      it { expect(assignment.has_messages?).to be true }
+      it { expect(assignment.messages.count).to eq 1 }
+      it { expect(message.sender).to eq student.uid }
+      it { expect(message.content).to eq 'How can i solve this?' }
+      it { expect(message.read).to be true }
+      it { expect(message.assignment).to eq assignment }
+      it { expect(message.submission_id).to eq assignment.submission_id }
+      it { expect(message.date).to_not be nil }
+    end
+
+    describe '.receive_answer!' do
+      before { assignment.send_question! content: 'How can i solve this?' }
+      before { assignment.receive_answer! sender: 'bot@mumuki.org', content: 'Check this link' }
+
+      it { expect(assignment.has_messages?).to be true }
+      it { expect(assignment.messages.count).to eq 2 }
+      it { expect(message.sender).to eq 'bot@mumuki.org' }
+      it { expect(message.content).to eq 'Check this link' }
+      it { expect(message.read).to be false }
+      it { expect(message.assignment).to eq assignment }
+      it { expect(message.submission_id).to eq assignment.submission_id }
+    end
+  end
+
   describe 'manual evaluation' do
     let(:user) { create(:user) }
     let(:exercise) { create(:exercise, manual_evaluation: true, test: nil, expectations: []) }

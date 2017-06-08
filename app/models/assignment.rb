@@ -3,10 +3,9 @@ class Assignment < ActiveRecord::Base
 
   belongs_to :exercise
   has_one :guide, through: :exercise
-  has_many :messages, -> { order('date DESC') }, foreign_key: :submission_id, primary_key: :submission_id
+  has_many :messages, -> { order(date: :desc)  }, foreign_key: :submission_id, primary_key: :submission_id
 
   belongs_to :submitter, class_name: 'User'
-
 
   validates_presence_of :exercise, :submitter
 
@@ -64,13 +63,13 @@ class Assignment < ActiveRecord::Base
   end
 
   def send_question!(question)
-    message = build_message question.merge(sender: submitter.id, read: true)
+    message = build_message question.merge(sender: submitter.uid, read: true)
     message.save_and_notify!
     has_messages!
   end
 
   def build_message(body)
-    messages.build body.merge(exercise: exercise)
+    messages.build({date: DateTime.now}.merge(body).merge(exercise: exercise))
   end
 
   def has_messages!
