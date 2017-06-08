@@ -2,7 +2,7 @@
   <div class="modal-dialog">
     <%= form_for(Message.new, html: {role: 'form'}) do |f| %>
         <div class="modal-content">
-          <div class="mu-modal-header" onclick="Chat.collapseNewMessageModal()">
+          <div class="mu-modal-header" onclick="mumuki.Chat.collapseNewMessageModal()">
             <div>
               <%= fa_icon :'envelope-open', class: 'mu-modal-close-button fa-fw' %>
               <span class="mu-modal-header-text">

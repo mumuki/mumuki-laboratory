@@ -96,7 +96,8 @@ var mumuki = mumuki || {};
     }
   };
 
-  function initConsole() {
+
+  mumuki.load(function () {
     var prompt = $('#prompt').attr('value');
     var queryConsole = new QueryConsole();
 
@@ -118,8 +119,6 @@ var mumuki = mumuki || {};
     });
 
     renderPrompt();
-  }
-
-  mumuki.load(initConsole);
+  });
 
 }(mumuki));

@@ -54,7 +54,8 @@ var mumuki = mumuki || {};
   mumuki.page.dynamicEditors = [];
   mumuki.page.editors = [];
 
-  function startAceEditor() {
+
+  mumuki.load(function () {
     mumuki.page.editors = createAceEditors();
     updateAceEditorLanguage();
     onSelectUpdateAceEditor();
@@ -62,8 +63,6 @@ var mumuki = mumuki || {};
     $('.editor-reset').click(function () {
       resetEditor();
     });
-  }
-
-  mumuki.load(startAceEditor);
+  });
 
 }(mumuki));

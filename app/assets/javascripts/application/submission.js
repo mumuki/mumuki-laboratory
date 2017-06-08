@@ -30,7 +30,7 @@ var mumuki = mumuki || {};
     }
   };
 
-  function processSubmission() {
+  mumuki.load(function () {
     var submissionsResults = $('.submission-results');
     if (!submissionsResults) return;
 
@@ -55,9 +55,5 @@ var mumuki = mumuki || {};
       var message = error === "error" ? 'Network error :( Please check your internet connection and try again' : error;
       resultsBox.error(message);
     });
-
-  }
-
-  mumuki.load(processSubmission);
-
+  });
 })(mumuki);

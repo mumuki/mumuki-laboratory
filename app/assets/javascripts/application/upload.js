@@ -1,4 +1,4 @@
-$(document).on('ready page:load', function () {
+mumuki.load(function() {
   $('#upload').change(function (evt) {
     var file = evt.target.files[0];
     if (!file) return;
@@ -14,3 +14,4 @@ $(document).on('ready page:load', function () {
     return false;
   });
 });
+
