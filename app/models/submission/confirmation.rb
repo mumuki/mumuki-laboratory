@@ -4,6 +4,6 @@ class Confirmation < Submission
   end
 
   def try_evaluate_against!(*)
-    raise 'Confirmations are not evaluable'
+    {status: Status::Passed, result: ''}
   end
 end
