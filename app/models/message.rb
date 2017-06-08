@@ -9,17 +9,6 @@ class Message < ActiveRecord::Base
 
   markdown_on :content
 
-  def self.parse_json(json)
-    message = json.delete 'message'
-    json
-      .except('uid')
-      .merge(message)
-  end
-
-  def self.read_all!
-    update_all read: true
-  end
-
   def notify!
     Mumukit::Nuntius.notify! 'student-messages', event_json
   end
@@ -34,8 +23,15 @@ class Message < ActiveRecord::Base
     update! read: true
   end
 
-  def exercise
-    assignment.exercise
+  def self.parse_json(json)
+    message = json.delete 'message'
+    json
+      .except('uid')
+      .merge(message)
+  end
+
+  def self.read_all!
+    update_all read: true
   end
 
   def self.import_from_json!(json)
