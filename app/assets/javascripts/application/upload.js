@@ -1,5 +1,5 @@
 mumuki.load(function() {
-  $('#upload').change(function (evt) {
+  $('#upload-input').change(function (evt) {
     var file = evt.target.files[0];
     if (!file) return;
 
@@ -8,7 +8,7 @@ mumuki.load(function() {
       var contents = e.target.result;
       $('#solution_content').attr('value', contents);
       $(evt.target).val("");
-      $('form').submit();
+      $('form.new_solution').submit();
     };
     reader.readAsText(file);
     return false;

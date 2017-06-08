@@ -30,7 +30,7 @@ module ExerciseInputHelper
 
   def submit_button_options(exercise)
     if exercise.upload?
-      struct for: :upload,
+      struct for: 'upload-input',
              tag: :label,
              waiting_t: :uploading_solution,
              fa_icon: :upload,
