@@ -4,6 +4,6 @@ class Question < Submission
   end
 
   def try_evaluate_against!(*)
-    {status: :pending, result: ''}
+    {status: :pending, result: nil}
   end
 end

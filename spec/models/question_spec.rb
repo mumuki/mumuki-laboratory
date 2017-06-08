@@ -10,8 +10,8 @@ describe Query do
     context 'when just a question on an empty assignment is sent' do
       before { exercise.submit_question!(student, content: 'Please help!') }
 
-      pending { expect(assignment.status).to eq Status::Pending }
-      pending { expect(assignment.result).to be nil }
+      it { expect(assignment.status).to eq Status::Pending }
+      it { expect(assignment.result).to be nil }
 
       it { expect(assignment.solution).to be nil }
       it { expect(exercise.assigned_to? student).to be true }
