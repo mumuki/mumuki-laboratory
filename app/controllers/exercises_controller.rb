@@ -6,8 +6,7 @@ class ExercisesController < ApplicationController
   before_action :set_guide, only: :show
   before_action :set_default_content, only: :show, if: :current_user?
   before_action :set_assignment, only: :show, if: :current_user?
-  before_action :set_messages, only: :read_messages, if: :current_user?
-  before_action :set_messages_url, only: [:show, :read_messages]
+  before_action :set_messages_url, only: [:show,]
   before_action :validate_user, only: :show
   before_action :start!, only: :show
 
@@ -47,10 +46,6 @@ class ExercisesController < ApplicationController
 
   def set_messages_url
     @messages_url = @exercise.messages_url_for(current_user) if current_user?
-  end
-
-  def set_messages
-    @messages = @exercise.messages_for(current_user)
   end
 
   def set_guide
