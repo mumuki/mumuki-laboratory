@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170608033403) do
+ActiveRecord::Schema.define(version: 20170608044038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -164,7 +164,6 @@ ActiveRecord::Schema.define(version: 20170608033403) do
   end
 
   create_table "messages", force: true do |t|
-    t.integer  "exercise_id"
     t.string   "submission_id"
     t.string   "type"
     t.text     "content"

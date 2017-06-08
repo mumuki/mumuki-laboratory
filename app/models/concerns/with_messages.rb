@@ -9,7 +9,7 @@ module WithMessages
   end
 
   def build_message(body)
-    messages.build({date: DateTime.now}.merge(body).merge(exercise: exercise))
+    messages.build({date: DateTime.now}.merge(body))
   end
 
   def empty_chat?

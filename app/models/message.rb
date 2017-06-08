@@ -2,10 +2,10 @@ class Message < ActiveRecord::Base
 
   self.inheritance_column = :_type_disabled
 
-  belongs_to :exercise
   belongs_to :assignment, foreign_key: :submission_id, primary_key: :submission_id
+  has_one :exercise, through: :assignment
 
-  validates_presence_of :exercise_id, :submission_id, :content, :sender
+  validates_presence_of :submission_id, :content, :sender
 
   markdown_on :content
 
@@ -14,7 +14,7 @@ class Message < ActiveRecord::Base
   end
 
   def event_json
-    as_json(except: [:id, :exercise_id, :type],
+    as_json(except: [:id, :type],
             include: {exercise: {only: [:bibliotheca_id]}})
       .merge(organization: Organization.current.name)
   end
@@ -26,7 +26,7 @@ class Message < ActiveRecord::Base
   def self.parse_json(json)
     message = json.delete 'message'
     json
-      .except('uid')
+      .except('uid', 'exercise_id')
       .merge(message)
   end
 

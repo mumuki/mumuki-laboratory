@@ -11,8 +11,7 @@ describe Message do
          'created_at' => '1/1/1'}} }
 
     let(:expected_json) {
-      {'exercise_id' => 1,
-       'submission_id' => 'abcdef1',
+      {'submission_id' => 'abcdef1',
        'content' => 'a',
        'created_at' => '1/1/1',
        'sender' => 'aguspina87@gmail.com'} }
@@ -29,6 +28,8 @@ describe Message do
     context 'when last submission' do
       let!(:assignment) { problem.submit_solution! user, content: '' }
       let(:final_assignment) { Assignment.first }
+      let(:message) { Message.first }
+
       let!(:data) {
         {'exercise_id' => problem.id,
          'submission_id' => assignment.submission_id,
@@ -52,9 +53,9 @@ describe Message do
       end
 
       it { expect(Message.count).to eq 1 }
-      it { expect(Message.first.assignment).to_not be_nil }
-      it { expect(Message.first.assignment).to eq final_assignment }
-      it { expect(Assignment.first.has_messages?).to be true }
+      it { expect(message.assignment).to_not be_nil }
+      it { expect(message.assignment).to eq final_assignment }
+      it { expect(final_assignment.has_messages?).to be true }
     end
 
     context 'when not last submission' do
