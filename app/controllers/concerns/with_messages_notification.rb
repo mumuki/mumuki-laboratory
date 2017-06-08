@@ -1,4 +1,4 @@
-module WithMessages
+module WithMessagesNotification
   def has_messages?
     messages_count > 0
   end

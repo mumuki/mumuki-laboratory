@@ -1,5 +1,6 @@
 class Assignment < ActiveRecord::Base
   include WithStatus
+  include WithMessages
 
   belongs_to :exercise
   has_one :guide, through: :exercise
@@ -55,31 +56,6 @@ class Assignment < ActiveRecord::Base
       update_submissions_count!
       update_last_submission!
     end
-  end
-
-  def receive_answer!(answer)
-    build_message(answer).save!
-  end
-
-  def send_question!(question)
-    message = build_message question.merge(sender: submitter.uid, read: true)
-    message.save_and_notify!
-  end
-
-  def build_message(body)
-    messages.build({date: DateTime.now}.merge(body).merge(exercise: exercise))
-  end
-
-  def empty_chat?
-    !has_messages?
-  end
-
-  def has_messages?
-    messages.exists?
-  end
-
-  def pending_messages?
-    messages.exists? read: false
   end
 
   def extension
