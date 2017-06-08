@@ -59,25 +59,23 @@ class Assignment < ActiveRecord::Base
 
   def receive_answer!(answer)
     build_message(answer).save!
-    has_messages!
   end
 
   def send_question!(question)
     message = build_message question.merge(sender: submitter.uid, read: true)
     message.save_and_notify!
-    has_messages!
   end
 
   def build_message(body)
     messages.build({date: DateTime.now}.merge(body).merge(exercise: exercise))
   end
 
-  def has_messages!
-    update! has_messages: true
+  def empty_chat?
+    !has_messages?
   end
 
-  def empty_chat?
-    !has_messages
+  def has_messages?
+    messages.exists?
   end
 
   def pending_messages?

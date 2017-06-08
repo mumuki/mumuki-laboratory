@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170601181759) do
+ActiveRecord::Schema.define(version: 20170608033403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,9 +27,8 @@ ActiveRecord::Schema.define(version: 20170601181759) do
     t.text     "test_results"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "submissions_count",   default: 0,     null: false
+    t.integer  "submissions_count",   default: 0, null: false
     t.string   "submission_id"
-    t.boolean  "has_messages",        default: false
   end
 
   add_index "assignments", ["exercise_id"], name: "index_assignments_on_exercise_id", using: :btree
