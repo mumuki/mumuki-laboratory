@@ -16,7 +16,8 @@ class Exercise < ActiveRecord::Base
           FriendlyName,
           WithLanguage
 
-  include Submittable
+  include Submittable,
+          Questionable
 
   include SiblingsNavigation,
           ParentNavigation
@@ -119,11 +120,6 @@ class Exercise < ActiveRecord::Base
 
   def messages_url_for(user)
     Mumukit::Platform.classroom_api.organic_url_for(Organization.current, messages_path_for(user))
-  end
-
-  def submit_question!(user)
-    submit! user, Question.new
-    assignment_for user
   end
 
   private

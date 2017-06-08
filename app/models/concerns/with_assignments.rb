@@ -19,7 +19,7 @@ module WithAssignments
   end
 
   def assignment_for(user)
-    assignments.find_by(submitter_id: user.id)
+    assignments.find_by(submitter: user)
   end
 
   def solved_by?(user)
@@ -27,7 +27,7 @@ module WithAssignments
   end
 
   def assigned_to?(user)
-    assignment_for(user).present?
+    assignments.exists?(submitter: user)
   end
 
   def status_for(user)

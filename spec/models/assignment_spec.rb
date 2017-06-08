@@ -4,8 +4,8 @@ describe Assignment do
 
   describe 'messages' do
     let(:student) { create(:user) }
-    let(:exercise) { create(:exercise, manual_evaluation: true) }
-    let(:assignment) { exercise.submit_question! student }
+    let(:problem) { create(:problem, manual_evaluation: true) }
+    let(:assignment) { problem.submit_solution! student, content: '...'}
 
     let(:message) { assignment.messages.first }
 

@@ -43,6 +43,7 @@ describe Exercise do
 
       it { expect(exercise_with_guide.next_for(user)).to eq alternative_exercise }
     end
+
     context 'when exercise belongs to a guide with two exercises and alternative exercise has being solved' do
       let(:exercise_with_guide) { create(:exercise, guide: guide) }
       let!(:alternative_exercise) { create(:exercise, guide: guide) }
