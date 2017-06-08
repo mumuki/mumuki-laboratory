@@ -12,9 +12,11 @@ module ExerciseInputHelper
   end
 
   def should_render_problem_tabs?(exercise, user)
-    !exercise.upload? &&
-      !exercise.hidden? &&
-      (exercise.queriable? || exercise.extra_visible? || exercise.has_messages_for?(user))
+      !exercise.hidden? && (exercise.queriable? || exercise.extra_visible? || exercise.has_messages_for?(user))
+  end
+
+  def should_render_message_input?(exercise, organization = Organization.current)
+    exercise.is_a?(Problem) && !exercise.hidden? && organization.raise_hand_enabled?
   end
 
   def render_submit_button(exercise)
