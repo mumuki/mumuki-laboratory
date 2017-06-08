@@ -41,20 +41,26 @@ describe Message do
 
       before { Message.import_from_json! data }
       before do
-        assignment2 = problem.submit_solution! user, content: ''
-        data2 = {'exercise_id' => problem.id,
-                 'submission_id' => assignment2.submission_id,
-                 'organization' => Organization.current.name,
-                 'message' => {
-                   'sender' => 'teacher@mumuki.org',
-                   'content' => 'a',
-                   'created_at' => '1/1/1'}}
-        Message.import_from_json! data2
+        assignment = problem.submit_solution! user, content: ''
+        Message.import_from_json! 'exercise_id' => problem.id,
+                                  'submission_id' => assignment.submission_id,
+                                  'organization' => Organization.current.name,
+                                  'message' => {
+                                    'sender' => 'teacher@mumuki.org',
+                                    'content' => 'a',
+                                    'created_at' => '1/1/1'}
       end
 
       it { expect(Message.count).to eq 1 }
       it { expect(message.assignment).to_not be_nil }
       it { expect(message.assignment).to eq final_assignment }
+      it { expect(message.event_json.except 'created_at', 'updated_at', 'date')
+             .to json_like submission_id: message.submission_id,
+                           content: 'a',
+                           sender: 'teacher@mumuki.org',
+                           read: false,
+                           exercise: {bibliotheca_id: problem.bibliotheca_id},
+                           organization: 'test' }
       it { expect(final_assignment.has_messages?).to be true }
     end
 
