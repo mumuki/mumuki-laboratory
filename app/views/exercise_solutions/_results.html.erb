@@ -53,7 +53,7 @@
 
 <div class="notify-problem-box">
   <div class="dropdown">
-    <%= link_to fa_icon(:'question-circle', text: 'Ayuda'), "", {'data-toggle': 'dropdown'} %>
+    <%= link_to fa_icon(:'question-circle', text: t(:need_help)), "", {'data-toggle': 'dropdown'} %>
     <ul class="dropdown-menu" aria-labelledby="helpDropdown">
       <li>
         <%= mail_to contact_email,

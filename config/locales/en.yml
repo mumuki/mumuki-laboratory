@@ -76,6 +76,7 @@ en:
   navigation_next: Next
   navigation_revisit: 'Next pending: %{sibling}'
   need_a_hint: Do you need a hint?
+  need_help: I need help!
   never: never
   new: New
   new_message_placeholder: Escribí tu mensaje acá...

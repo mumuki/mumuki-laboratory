@@ -90,6 +90,7 @@ es:
   navigation_next: Siguiente %{kind}
   navigation_revisit: 'Siguiente pendiente: %{sibling}'
   need_a_hint: ¡Dame una pista!
+  need_help: ¡Necesito ayuda!
   never: nunca
   new: Nuevo
   new_message: ¿Tenés dudas? ¡Levantá la mano!
