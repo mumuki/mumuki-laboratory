@@ -17,7 +17,7 @@ module WithPermissions
 
   #FIXME may be able to remove now
   def student?
-    student_of? Organization
+    student_of? Organization.current
   end
 
   def teacher?
