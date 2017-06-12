@@ -14,8 +14,10 @@
       <div role="tabpanel" class="tab-pane active" id="info">
         <div class="row mu-tab-body">
           <div class="col-md-6">
-            <div><%= f.label(t :name) %></div>
-            <div><%= f.text_field :name, class: 'form-control' %></div>
+            <div><%= f.label(t :first_name) %></div>
+            <div><%= f.text_field :first_name, class: 'form-control' %></div>
+            <div><%= f.label(t :last_name) %></div>
+            <div><%= f.text_field :last_name, class: 'form-control' %></div>
             <div><%= f.label(t :email) %></div>
             <div><%= f.text_field :email, class: 'form-control' %></div>
           </div>

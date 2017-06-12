@@ -49,6 +49,7 @@ en:
   exit: Exit
   failed: Oops, something went wrong
   feedback: Feedback
+  first_name: First Name
   forbidden_explanation: You are not allowed to see this content.
   gone_explanation: This exam is no longer available.
   guide: Guide
@@ -63,6 +64,7 @@ en:
   invitation_for: 'Join %{course}'
   joining: You're about to join
   language: Language
+  last_name: Last Name
   last_submission_date: Last submission
   latest_exercises: Latest exercises
   latest_guides: latests guides
