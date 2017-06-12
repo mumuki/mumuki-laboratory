@@ -39,13 +39,9 @@
 <% end %>
 
 <script>
-    $(document).ready(function () {
-        $('#accept_terms').click(function () {
-            if ($(this).is(':checked')) {
-                $("#confirm_data").removeAttr('disabled');
-            } else {
-                $("#confirm_data").attr('disabled', 'disabled');
-            }
-        });
+  $('#accept_terms').click(function () {
+    $("#confirm_data").prop('disabled', function (i, value) {
+      return !value;
     });
+  });
 </script>
