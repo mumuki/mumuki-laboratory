@@ -3,5 +3,5 @@ Mumukit::Login.configure do |config|
   #     find_by_uid!
   #     for_profile
   config.user_class = User
-  config.framework = Mumukit::Login::Framework::Rails
+  config.framework = Mumukit::Platform::WebFramework::Rails
 end
