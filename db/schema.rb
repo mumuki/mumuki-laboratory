@@ -247,6 +247,8 @@ ActiveRecord::Schema.define(version: 20170621222902) do
     t.integer  "last_organization_id"
     t.string   "uid",                                 null: false
     t.text     "permissions",          default: "{}", null: false
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["last_organization_id"], name: "index_users_on_last_organization_id", using: :btree
