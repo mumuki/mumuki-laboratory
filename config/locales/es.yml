@@ -134,6 +134,7 @@ es:
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
   reset: reiniciar
   running: procesando
+  save: Guardar
   search: 'Buscá, por ejemplo: polimorfismo, haskell o competenciaDeSaltos'
   send: Enviar
   sending_solution: Enviando solución

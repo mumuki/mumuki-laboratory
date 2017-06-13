@@ -116,6 +116,7 @@ en:
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   reset: reset
   running: running
+  save: Save
   search: Search
   sending_solution: Sending solution
   show: Show
