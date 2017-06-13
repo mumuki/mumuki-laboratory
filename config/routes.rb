@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :exams, only: [:show]
 
     # All users
-    resource :user, only: [:show]
+    resource :user, only: :show
 
     namespace :api do
       resources :guides, only: [:create]
@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     get '/exercises/:organization/:repository/:bibliotheca_id' => 'exercises#show_by_slug', as: :exercise_by_slug
     get '/join/:code' => 'invitations#show', as: :invitation
     post '/join/:code' => 'invitations#join'
+    put '/user' => 'users#update', as: :update_user
 
     # Route for reading messages
     post '/messages/read_messages/:exercise_id' => 'messages#read_messages', as: :read_messages
