@@ -31,8 +31,13 @@ class User < ActiveRecord::Base
     Mumukit::Nuntius.notify_event! 'UserChanged', user: event_json
   end
 
+  def update_and_notify!(data)
+    update! data
+    notify_changed!
+  end
+
   def event_json
-    as_json(only: [:uid, :social_id, :image_url, :first_name, :last_name], methods: [:permissions]).compact
+    as_json(only: [:uid, :social_id, :image_url, :email, :first_name, :last_name], methods: [:permissions]).compact
   end
 
   def last_lesson
