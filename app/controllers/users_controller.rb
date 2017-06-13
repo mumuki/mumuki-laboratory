@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update! user_params
+    current_user.update_and_notify! user_params
     redirect_to user_path
   end
 
