@@ -106,6 +106,7 @@ en:
   pending_messages_explanation: You can't send new solutions until you read pending messages
   permissions: Permissions
   please_validate: 'Please validate your data before continue:'
+  please_fill_profile_data: Please complete your profile data to continue!
   previous_exercise: Previous
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'
   processing_your_solution: We are processing you solution
