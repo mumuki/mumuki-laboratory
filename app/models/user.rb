@@ -36,6 +36,10 @@ class User < ActiveRecord::Base
     notify_changed!
   end
 
+  def profile_completed?
+    first_name.present? && last_name.present?
+  end
+
   def event_json
     as_json(only: [:uid, :social_id, :image_url, :email, :first_name, :last_name], methods: [:permissions]).compact
   end
