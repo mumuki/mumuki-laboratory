@@ -53,12 +53,20 @@ describe Guide do
           test: "---\nequal: '1'\n",
           choices: [{value: 'foo', checked: false}, {value: 'bar', chekced: true}],
           extra_visible: false,
-          id: 8}]}.deep_stringify_keys
+          id: 8},
+         {type: 'reading',
+          description: 'lorem ipsum',
+          name: 'Reading',
+          tag_list: %w(bar),
+          language: 'text',
+          layout: 'input_bottom',
+          extra_visible: false,
+          id: 9}]}.deep_stringify_keys
   end
 
   describe '#import_from_json!' do
     context 'when an exercise is deleted' do
-      let(:guide) { create(:guide, exercises: [exercise_1, exercise_2, exercise_3, exercise_4, exercise_5]) }
+      let(:guide) { create(:guide, exercises: [exercise_1, exercise_2, exercise_3, exercise_4, exercise_5, exercise_6]) }
 
       let(:exercise_1) { build(:problem,
                                language: haskell,
@@ -90,17 +98,23 @@ describe Guide do
                                 bibliotheca_id: 11,
                                 number: 5) }
 
+      let(:exercise_6) { create(:problem,
+                                language: haskell,
+                                name: 'Exercise 6',
+                                bibliotheca_id: 14,
+                                number: 6) }
+
       before do
         guide.import_from_json!(guide_json)
       end
 
       describe 'it is removed from the guide' do
-        it { expect(guide.exercises.count).to eq 4 }
-        it { expect(guide.exercises).not_to include exercise_5 }
+        it { expect(guide.exercises.count).to eq 6 }
+        it { expect(guide.exercises).not_to include exercise_6 }
       end
 
       describe 'it is deleted from the database' do
-        it { expect { Exercise.find(exercise_5.id) }.to raise_error }
+        it { expect { Exercise.find(exercise_6.id) }.to raise_error }
       end
     end
 
@@ -119,7 +133,7 @@ describe Guide do
       it { expect(guide.extra).to eq 'bar' }
       it { expect(guide.description).to eq 'Baz' }
 
-      it { expect(guide.exercises.count).to eq 4 }
+      it { expect(guide.exercises.count).to eq 5 }
       it { expect(guide.exercises.first.language).to eq gobstones }
       it { expect(guide.exercises.first.extra_visible).to be false }
       it { expect(guide.exercises.second.language).to eq haskell }
@@ -129,7 +143,7 @@ describe Guide do
 
       it { expect(guide.exercises.third.expectations.first['binding']).to eq 'foo' }
 
-      it { expect(guide.exercises.pluck(:name)).to eq %W(Bar Foo Baz Choice) }
+      it { expect(guide.exercises.pluck(:name)).to eq %W(Bar Foo Baz Choice Reading) }
     end
 
     context 'when exercise already exists' do
@@ -147,8 +161,8 @@ describe Guide do
                                  description: 'description') }
 
         describe 'exercises are not duplicated' do
-          it { expect(guide.exercises.count).to eq 4 }
-          it { expect(Exercise.count).to eq 4 }
+          it { expect(guide.exercises.count).to eq 5 }
+          it { expect(Exercise.count).to eq 5 }
         end
 
         it { expect(guide.exercises.first).to be_instance_of(Problem) }
@@ -170,11 +184,11 @@ describe Guide do
           expect(guide.exercises.second).to eq reloaded_exercise_1
         end
 
-        it { expect(guide.exercises.pluck(:bibliotheca_id)).to eq [1, 4, 2, 8] }
+        it { expect(guide.exercises.pluck(:bibliotheca_id)).to eq [1, 4, 2, 8, 9] }
 
         describe 'exercises are not duplicated' do
-          it { expect(guide.exercises.count).to eq 4 }
-          it { expect(Exercise.count).to eq 4 }
+          it { expect(guide.exercises.count).to eq 5 }
+          it { expect(Exercise.count).to eq 5 }
         end
       end
     end
@@ -208,8 +222,8 @@ describe Guide do
       end
 
       describe 'exercises are not duplicated' do
-        it { expect(guide.exercises.count).to eq 4 }
-        it { expect(Exercise.count).to eq 4 }
+        it { expect(guide.exercises.count).to eq 5 }
+        it { expect(Exercise.count).to eq 5 }
       end
 
       it { expect(guide.exercises.first).to be_instance_of(Problem) }
@@ -224,8 +238,8 @@ describe Guide do
       it { expect(guide.exercises.third.number).to eq 3 }
       it { expect(guide.exercises.fourth.number).to eq 4 }
 
-      it { expect(guide.exercises.pluck(:bibliotheca_id)).to eq [1, 4, 2, 8] }
-      it { expect(guide.exercises.pluck(:id).drop(1)).to eq [reloaded_exercise_2.id, reloaded_exercise_1.id, guide.exercises.fourth.id] }
+      it { expect(guide.exercises.pluck(:bibliotheca_id)).to eq [1, 4, 2, 8, 9] }
+      it { expect(guide.exercises.pluck(:id).drop(1)).to eq [reloaded_exercise_2.id, reloaded_exercise_1.id, guide.exercises.fourth.id, guide.exercises.fifth.id] }
     end
 
     context 'when new_expecations' do
