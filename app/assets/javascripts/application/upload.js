@@ -6,7 +6,7 @@ mumuki.load(function() {
     var reader = new FileReader();
     reader.onload = function (e) {
       var contents = e.target.result;
-      $('#solution_content').attr('value', contents);
+      $('#solution_content').html(contents);
       $(evt.target).val("");
       $('form.new_solution').submit();
     };
