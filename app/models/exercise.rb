@@ -97,7 +97,6 @@ class Exercise < ActiveRecord::Base
     self.corollary = nil
     self.hint = nil
     self.extra = nil
-    self.layout = self.class.default_layout
     self.tag_list = []
   end
 
