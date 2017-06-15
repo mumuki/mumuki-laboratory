@@ -11,6 +11,11 @@ class Challenge < Exercise
     Mumukit::ContentType::Markdown.highlighted_code(language.name, extra)
   end
 
+  def reset!
+    super
+    self.layout = self.class.default_layout
+  end
+
   def extra
     extra_code = [guide.extra, self[:extra]].compact.join("\n")
     if extra_code.empty? or extra_code.end_with? "\n"

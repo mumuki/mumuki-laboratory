@@ -7,10 +7,6 @@ class Reading < Exercise
     :input_bottom
   end
 
-  def self.default_layout
-    :input_bottom
-  end
-
   def queriable?
     false
   end
