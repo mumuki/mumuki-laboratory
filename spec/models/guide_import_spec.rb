@@ -57,6 +57,8 @@ describe Guide do
          {type: 'reading',
           description: 'lorem ipsum',
           name: 'Reading',
+          expectations: [],
+          choices: [],
           tag_list: %w(bar),
           language: 'text',
           layout: 'input_bottom',
