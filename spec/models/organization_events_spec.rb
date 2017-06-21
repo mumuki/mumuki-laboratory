@@ -24,7 +24,7 @@ describe 'Organization events' do
     it { expect(organization.book_id).to eq 8 }
     it { expect(organization.book_ids).to eq [8] }
     it { expect(organization.locale).to eq 'en' }
-    it { expect(organization.public).to eq false }
+    it { expect(organization.public?).to eq false }
     it { expect(organization.description).to eq 'Academy' }
     it { expect(organization.login_methods).to eq %w{facebook twitter google} }
     it { expect(organization.logo_url).to eq 'http://mumuki.io/logo-alt-large.png' }
