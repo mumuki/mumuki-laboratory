@@ -12,10 +12,6 @@ module WithMessages
     messages.build({date: DateTime.now}.merge(body))
   end
 
-  def empty_chat?
-    !has_messages?
-  end
-
   def has_messages?
     messages.exists?
   end

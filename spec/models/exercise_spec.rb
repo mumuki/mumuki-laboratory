@@ -279,11 +279,23 @@ describe Exercise do
     let(:haskell) { create(:haskell) }
     let(:problem) { create(:problem, bibliotheca_id: 32, guide: guide, language: haskell) }
     let(:guide) { create(:guide, slug: 'mumuki/myguide') }
-    let(:student) { create(:user, uid: 'foo@bar.com') }
 
-    it { expect(problem.messages_path_for(student))
-           .to eq 'api/guides/mumuki/myguide/32/student/foo@bar.com/messages?language=haskell' }
-    it { expect(problem.messages_url_for(student))
-           .to eq 'http://test.classroom-api.localmumuki.io/api/guides/mumuki/myguide/32/student/foo@bar.com/messages?language=haskell' }
+    context 'user with email uid' do
+      let(:student) { create(:user, uid: 'foo@bar.com') }
+
+      it { expect(problem.messages_path_for(student))
+             .to eq 'api/guides/mumuki/myguide/32/student/foo@bar.com/messages?language=haskell' }
+      it { expect(problem.messages_url_for(student))
+             .to eq 'http://test.classroom-api.localmumuki.io/api/guides/mumuki/myguide/32/student/foo@bar.com/messages?language=haskell' }
+    end
+
+    context 'user with twitter uid' do
+      let(:student) { create(:user, uid: 'twitter|12134342') }
+
+      it { expect(problem.messages_url_for(student))
+             .to eq 'http://test.classroom-api.localmumuki.io/api/guides/mumuki/myguide/32/student/twitter%7C12134342/messages?language=haskell' }
+    end
+
+
   end
 end
