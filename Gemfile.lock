@@ -165,8 +165,6 @@ GEM
     mumukit-nuntius (5.0.0)
       bunny (~> 2.3)
       mumukit-core (~> 1.0)
-    mumukit-platform (0.4.1)
-      mumukit-core (~> 1.0)
     netrc (0.11.0)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)

@@ -1,9 +1,9 @@
 class Organization < ActiveRecord::Base
-  include Mumukit::Platform::OrganizationHelpers
+  include Mumukit::Platform::Organization::Helpers
 
-  serialize :community, Mumukit::Platform::Community
-  serialize :settings, Mumukit::Platform::Settings
-  serialize :theme, Mumukit::Platform::Theme
+  serialize :profile, Mumukit::Platform::Organization::Profile
+  serialize :settings, Mumukit::Platform::Organization::Settings
+  serialize :theme, Mumukit::Platform::Organization::Theme
 
   validate :ensure_consistent_public_login
 
@@ -59,7 +59,7 @@ class Organization < ActiveRecord::Base
   private
 
   def ensure_consistent_public_login
-    errors.add(:base, :consistent_public_login) if customized_login_methods? && public?
+    errors.add(:base, :consistent_public_login) if settings.customized_login_methods? && public?
   end
 
   def notify_assignments!(assignments)
@@ -73,24 +73,19 @@ class Organization < ActiveRecord::Base
     end
 
     def create_from_json!(json)
-      Organization.create! parse_json json
+      Organization.create! parse json
     end
 
     def update_from_json!(json)
-      organization_json = parse_json json
+      organization_json = parse json
 
       organization = Organization.find_by! name: organization_json[:name]
       organization.update! organization_json
     end
 
-    def parse_json(json)
+    def parse(json)
       book_ids = json[:books].map { |it| Book.find_by!(slug: it).id }
-      json
-        .slice(:name)
-        .merge(book_id: book_ids.first, book_ids: book_ids)
-        .merge(theme: Mumukit::Platform::Theme.parse(json))
-        .merge(settings: Mumukit::Platform::Settings.parse(json))
-        .merge(community: Mumukit::Platform::Community.parse(json))
+      super.merge(book_id: book_ids.first, book_ids: book_ids)
     end
   end
 end

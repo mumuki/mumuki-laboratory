@@ -12,8 +12,7 @@ describe Organization do
 
   describe 'defaults' do
     let(:fresh_organization) { create(:organization, name: 'bar') }
-    it { expect(fresh_organization.private?).to be true }
-    it { expect(fresh_organization.customized_login_methods?).to be true }
+    it { expect(fresh_organization.settings.customized_login_methods?).to be true }
   end
 
   describe '#notify_recent_assignments!' do
@@ -24,23 +23,13 @@ describe Organization do
     let(:private_organization) { create(:private_organization, name: 'digitaldojo') }
     let(:public_organization) { create(:public_organization, name: 'guolok') }
 
-    it { expect(private_organization.customized_login_methods?).to be true }
+    it { expect(private_organization.settings.customized_login_methods?).to be true }
     it { expect(private_organization.private?).to be true }
 
     it { expect { private_organization.update! public: true }.to raise_error('Validation failed: A public organization can not restrict login methods') }
 
-    it { expect(public_organization.customized_login_methods?).to be false }
+    it { expect(public_organization.settings.customized_login_methods?).to be false }
     it { expect(public_organization.private?).to be false }
-  end
-
-  describe '#url_for' do
-    it { expect(Organization.current.url_for 'zaraza').to eq 'http://test.localmumuki.io/zaraza' }
-    it { expect(central.url_for 'zaraza').to eq 'http://central.localmumuki.io/zaraza' }
-  end
-
-  describe '#domain' do
-    it { expect(Organization.current.domain).to eq 'test.localmumuki.io' }
-    it { expect(central.domain).to eq 'central.localmumuki.io' }
   end
 
   describe '#notify_assignments_by!' do

@@ -181,7 +181,7 @@ ActiveRecord::Schema.define(version: 20170621222902) do
     t.integer  "book_ids",   default: [],                array: true
     t.text     "settings",   default: "{}", null: false
     t.text     "theme",      default: "{}", null: false
-    t.text     "community",  default: "{}", null: false
+    t.text     "profile",    default: "{}", null: false
   end
 
   add_index "organizations", ["book_id"], name: "index_organizations_on_book_id", using: :btree

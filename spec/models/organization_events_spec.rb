@@ -20,17 +20,11 @@ describe 'Organization events' do
 
   shared_examples 'a task that persists an organization' do
     it { expect(organization.name).to eq 'test-orga' }
-    it { expect(organization.contact_email).to eq 'issues@mumuki.io' }
     it { expect(organization.book_id).to eq 8 }
     it { expect(organization.book_ids).to eq [8] }
-    it { expect(organization.locale).to eq 'en' }
-    it { expect(organization.public?).to eq false }
-    it { expect(organization.description).to eq 'Academy' }
-    it { expect(organization.login_methods).to eq %w{facebook twitter google} }
-    it { expect(organization.logo_url).to eq 'http://mumuki.io/logo-alt-large.png' }
-    it { expect(organization.terms_of_service).to eq 'TOS' }
-    it { expect(organization.theme_stylesheet_url).to eq 'http://mumuki.io/theme.css' }
-    it { expect(organization.extension_javascript_url).to eq 'http://mumuki.io/scripts.js' }
+    it { expect(organization.profile.description).to eq 'Academy' }
+    it { expect(organization.settings.public?).to be false }
+    it { expect(organization.theme.theme_stylesheet_url).to eq 'http://mumuki.io/theme.css' }
   end
 
   describe Organization do

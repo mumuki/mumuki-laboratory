@@ -2,7 +2,7 @@ class IntroduceSettingsAndThemes < ActiveRecord::Migration
   def change
     add_column :organizations, :settings,  :text, default: "{}", null: false
     add_column :organizations, :theme,     :text, default: "{}", null: false
-    add_column :organizations, :community,   :text, default: "{}", null: false
+    add_column :organizations, :profile,   :text, default: "{}", null: false
 
     remove_column :organizations, :login_methods
     remove_column :organizations, :raise_hand_enabled
