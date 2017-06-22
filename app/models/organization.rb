@@ -14,7 +14,6 @@ class Organization < ActiveRecord::Base
   validates_uniqueness_of :name
 
   after_create :reindex_usages!
-  after_save :notify!
 
   has_many :guides, through: 'usages', source: 'item', source_type: 'Guide'
   has_many :exercises, through: :guides
@@ -55,21 +54,6 @@ class Organization < ActiveRecord::Base
 
   def accessible_exams_for(user)
     exams.select { |exam| exam.accessible_for?(user) }
-  end
-
-  def notify!
-    Mumukit::Nuntius.notify_event! 'OrganizationChanged', event_json
-  end
-
-  def event_json
-    { name: name, book_ids: book_slugs, book_id: book.slug, lock_json: login_settings.lock_json }
-      .merge(theme.as_json)
-      .merge(settings.as_json)
-      .merge(community.as_json)
-  end
-
-  def book_slugs
-    book_ids.map { |id| Book.find(id).slug }
   end
 
   private
