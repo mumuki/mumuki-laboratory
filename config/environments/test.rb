@@ -46,5 +46,5 @@ Rails.application.configure do
     OmniAuth::AuthHash.new provider: 'developer',
                            uid: 'johndoe@test.com',
                            credentials: {},
-                           info: {name: 'John Doe', nickname: 'johndoe'}
+                           info: {first_name: 'John', last_name: 'Doe', name: 'John Doe', nickname: 'johndoe'}
 end
