@@ -4,7 +4,7 @@ describe Event do
 
   describe '#to_json' do
     describe Event::Submission do
-      let(:user) { create(:user, id: 2, email: 'foo@bar.com', name: 'foo', provider: 'auth0', social_id: 'github|gh1234') }
+      let(:user) { create(:user, id: 2, email: 'foo@bar.com', first_name: 'foo', provider: 'auth0', social_id: 'github|gh1234') }
       describe 'lesson type' do
         let(:lesson) { chapter.lessons.fourth }
         let(:guide) { lesson.guide }
