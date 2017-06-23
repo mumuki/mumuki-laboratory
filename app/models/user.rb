@@ -1,9 +1,57 @@
+module Mumukit::Platform::UserHelpers
+  extend ActiveSupport::Concern
+
+  included do
+    include Mumukit::Login::UserPermissionsHelpers
+
+    delegate :name,
+             :first_name,
+             :first_name=,
+             :last_name,
+             :last_name=,
+             :image_url,
+             :image_url=,
+             :email,
+             :email=,
+             :social_id,
+             :social_id=, to: :profile
+  end
+
+  def to_s
+    "#{name}:#{uid}"
+  end
+end
+
+
+class Mumukit::Platform::Profile < Mumukit::Platform::Model
+  attr_accessor :first_name,
+                :last_name,
+                :image_url,
+                :email,
+                :social_id
+
+  def name
+    "#{first_name} #{last_name}"
+  end
+
+  def complete?
+    first_name.present? && last_name.present?
+  end
+
+  def image_url
+    @image_url ||= "user_shape.png"
+  end
+end
+
+
 class User < ActiveRecord::Base
+  include Mumukit::Platform::UserHelpers
   include WithProfile,
           WithToken,
           WithPermissions,
-          WithUserNavigation,
-          Mumukit::Login::UserPermissionsHelpers
+          WithUserNavigation
+
+  serialize :profile, Mumukit::Platform::Profile
 
   has_many :assignments, foreign_key: :submitter_id
 
@@ -24,15 +72,19 @@ class User < ActiveRecord::Base
 
   has_many :exam_authorizations
 
-  after_initialize :init
-  after_save :notify_changed!, if: Proc.new { |user| user.image_url_changed? || user.social_id_changed? }
+  after_save :notify_changed!, if: Proc.new { |user| user.profile_changed? }
 
   def notify_changed!
     Mumukit::Nuntius.notify_event! 'UserChanged', user: event_json
   end
 
+  def update_and_notify!(data)
+    update! data
+    notify_changed!
+  end
+
   def event_json
-    as_json(only: [:uid, :social_id, :image_url], methods: [:permissions])
+    as_json(only: [:uid, :social_id, :image_url, :email, :first_name, :last_name], methods: [:permissions]).compact
   end
 
   def last_lesson
@@ -75,10 +127,6 @@ class User < ActiveRecord::Base
     update!(last_organization: organization) if organization != last_organization
   end
 
-  def to_s
-    "#{id}:#{name}:#{uid}"
-  end
-
   def never_submitted?
     last_submission_date.nil?
   end
@@ -103,14 +151,6 @@ class User < ActiveRecord::Base
   end
 
   def self.import_from_json!(body)
-    body[:name] = "#{body.delete(:first_name)} #{body.delete(:last_name)}"
     User.where(uid: body[:uid]).update_or_create!(body.except(:id))
   end
-
-  private
-
-  def init
-    self.image_url ||= "user_shape.png"
-  end
-
 end

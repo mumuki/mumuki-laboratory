@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   before_action :set_organization!
   before_action :set_locale!
   before_action :authorize_if_private!
+  before_action :validate_user_profile!, if: :current_user?
   before_action :validate_subject_accessible!
   before_action :visit_organization!, if: :current_user?
 
@@ -30,6 +31,13 @@ class ApplicationController < ActionController::Base
 
   def login_settings
     Organization.current.login_settings
+  end
+
+  def validate_user_profile!
+    unless current_user.profile.complete?
+      flash.notice = I18n.t :please_fill_profile_data
+      redirect_to user_path
+    end
   end
 
   def set_locale!

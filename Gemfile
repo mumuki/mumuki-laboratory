@@ -61,7 +61,7 @@ gem 'mumukit-core', '~> 1.0'
 gem 'mumukit-bridge', '~> 3.0'
 gem 'mumukit-inspection', '~> 1.0'
 gem 'mumukit-nuntius', '~> 5.0'
-gem 'mumukit-login', '~> 3.0'
+gem 'mumukit-login', '~> 3.1'
 gem 'mumukit-platform', '~> 0.4'
 
 gem 'rack', '~> 1.5'

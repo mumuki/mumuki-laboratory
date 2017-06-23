@@ -3,6 +3,7 @@ en:
   aborted: Oops, we couldn't evaluate your solution
   about: About
   ask_community: Ask community for help
+  accept_terms: I accept the terms and conditions
   actions: Actions
   activity: Activity
   all: All
@@ -15,6 +16,7 @@ en:
   chapter_number: Chapter %{number} -
   classroom: Classroom
   clear_console: Clear console
+  confirm: Confirmar
   console: Console
   contact_administrator: 'If you think this is not supposed to happen, please contact the admin: %{link}'
   content: Content
@@ -27,6 +29,7 @@ en:
   date: Date
   destroy: Destroy
   download: Download your solution
+  email: Email
   errored: Oops, your solution didn't work
   exam_number: 'Exam %{number}:'
   exams: Exams
@@ -46,17 +49,22 @@ en:
   exit: Exit
   failed: Oops, something went wrong
   feedback: Feedback
+  first_name: First Name
   forbidden_explanation: You are not allowed to see this content.
   gone_explanation: This exam is no longer available.
   guide: Guide
   guide_created: Guide created successfully
   guide_finished: You completed %{guide}!
+  invitation: Invitation to course
   lesson_number: Lesson %{number}
   let_us_know: please let us know!
   guides_index_title: Which guide do you want to do today?
   here: here
   history: History
+  invitation_for: 'Join %{course}'
+  joining: You're about to join
   language: Language
+  last_name: Last Name
   last_submission_date: Last submission
   latest_exercises: Latest exercises
   latest_guides: latests guides
@@ -72,6 +80,7 @@ en:
   mumuki_short_description: Mumuki is a simple, open and collaborative platform for sharing and solving programming exercises. It is aimed to help people with learning and teaching programing languages and paradigms
   my_exercises: My Exercises
   my_submissions: My Submissions
+  name: Name
   navigation_continue: 'Next: %{sibling}'
   navigation_next: Next
   navigation_revisit: 'Next pending: %{sibling}'
@@ -96,9 +105,11 @@ en:
   pending_messages: You have unread messages
   pending_messages_explanation: You can't send new solutions until you read pending messages
   permissions: Permissions
+  please_validate: 'Please validate your data before continue:'
+  please_fill_profile_data: Please complete your profile data to continue!
   previous_exercise: Previous
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'
-  processing_you_solution: We are processing you solution
+  processing_your_solution: We are processing you solution
   profile: Profile
   profile_of: Profile of %{username}
   progress: Progresss
@@ -106,6 +117,7 @@ en:
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   reset: reset
   running: running
+  save: Save
   search: Search
   sending_solution: Sending solution
   show: Show
@@ -129,6 +141,7 @@ en:
   stay_here: I want to stay here
   tag: Tags
   tell_us_how: Please tell us how this happened!
+  terms_and_conditions: Terms and conditions
   test_results: Tests results
   time_left: You have
   title: Title

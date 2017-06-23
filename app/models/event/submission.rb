@@ -19,7 +19,7 @@ class Event::Submission < Event::Base
                     language: {only: [:name]}},
                 },
                 exercise: {only: [:name, :number]},
-                submitter: {only: [:name, :email, :image_url, :social_id, :uid]}}).
+                submitter: {only: [:uid]}}).
       deep_merge(
         'sid' => @assignment.submission_id,
         'created_at' => @assignment.updated_at,
