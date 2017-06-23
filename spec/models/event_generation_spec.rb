@@ -59,12 +59,7 @@ describe Event do
                                  }
                                }
                              },
-                             submitter: {
-                               social_id: 'github|gh1234',
-                               name: 'foo',
-                               email: 'foo@bar.com',
-                               uid: assignment.submitter.uid,
-                               image_url: 'user_shape.png'},
+                             submitter: { uid: assignment.submitter.uid },
                              sid: 'abcd1234',
                              created_at: assignment.updated_at,
                              content: 'x = 2',
@@ -110,12 +105,7 @@ describe Event do
                                  chapter: nil
                                }
                              },
-                             submitter: {
-                               social_id: 'github|gh1234',
-                               name: 'foo',
-                               email: 'foo@bar.com',
-                               image_url: 'user_shape.png',
-                               uid: assignment.submitter.uid},
+                             submitter: { uid: assignment.submitter.uid },
                              sid: 'abcd1234',
                              created_at: assignment.updated_at,
                              content: 'x = 2',
@@ -162,12 +152,7 @@ describe Event do
                                  chapter: nil
                                }
                              },
-                             submitter: {
-                               name: 'foo',
-                               email: 'foo@bar.com',
-                               image_url: 'user_shape.png',
-                               uid: assignment.submitter.uid,
-                               social_id: 'github|gh1234'},
+                             submitter: { uid: assignment.submitter.uid },
                              sid: 'abcd1234',
                              created_at: assignment.updated_at,
                              content: 'x = 2',
