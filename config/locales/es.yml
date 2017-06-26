@@ -72,7 +72,7 @@ es:
   hour: hora
   hours: horas
   invitation_for: 'Unirse a %{course}'
-  joining: '¡Bienvenido al curso <strong>%{course}</strong>!'
+  joining: '¡Te damos la bienvenida al curso <strong>%{course}</strong>!'
   language: Lenguaje
   languages: Lenguajes
   last_name: Apellido

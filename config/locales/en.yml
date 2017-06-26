@@ -16,7 +16,7 @@ en:
   chapter_number: Chapter %{number} -
   classroom: Classroom
   clear_console: Clear console
-  confirm: Confirmar
+  confirm: Confirm
   console: Console
   contact_administrator: 'If you think this is not supposed to happen, please contact the admin: %{link}'
   content: Content
