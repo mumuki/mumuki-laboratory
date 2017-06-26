@@ -22,7 +22,7 @@
   <div role="tabpanel" class="tab-pane active" id="info">
     <%= form_for :user, url: update_user_path, method: :put do |f| %>
         <div class="row mu-tab-body">
-          <div class="col-md-4">
+          <div class="col-md-4 text-center">
             <%= image_tag @user.image_url, size: '250x250', class: 'img-circle' %>
           </div>
           <div class="col-md-8">
