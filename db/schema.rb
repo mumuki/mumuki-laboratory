@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170608154055) do
+ActiveRecord::Schema.define(version: 20170621222902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -175,21 +175,13 @@ ActiveRecord::Schema.define(version: 20170608154055) do
 
   create_table "organizations", force: true do |t|
     t.string   "name"
-    t.string   "contact_email"
-    t.text     "description"
     t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "public",                   default: false
-    t.string   "logo_url"
-    t.string   "login_methods",            default: ["user_pass"], null: false, array: true
-    t.integer  "book_ids",                 default: [],                         array: true
-    t.string   "terms_of_service"
-    t.string   "locale"
-    t.string   "theme_stylesheet_url"
-    t.string   "extension_javascript_url"
-    t.string   "community_link"
-    t.boolean  "raise_hand_enabled",       default: false
+    t.integer  "book_ids",   default: [],                array: true
+    t.text     "settings",   default: "{}", null: false
+    t.text     "theme",      default: "{}", null: false
+    t.text     "profile",    default: "{}", null: false
   end
 
   add_index "organizations", ["book_id"], name: "index_organizations_on_book_id", using: :btree
