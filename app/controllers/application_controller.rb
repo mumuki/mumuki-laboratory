@@ -34,10 +34,9 @@ class ApplicationController < ActionController::Base
   end
 
   def validate_user_profile!
-    unless current_user.profile_completed?
-      flash.notice = I18n.t :please_fill_profile_data
-      redirect_to user_path
-    end
+    return !current_user.has_accessible_organizations? || current_user.profile_completed?
+    flash.notice = I18n.t :please_fill_profile_data
+    redirect_to user_path
   end
 
   def set_locale!
