@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def validate_user_profile!
-    return !current_user.has_accessible_organizations? || current_user.profile_completed?
+    return if !current_user.has_accessible_organizations? || current_user.profile_completed?
     flash.notice = I18n.t :please_fill_profile_data
     redirect_to user_path
   end
