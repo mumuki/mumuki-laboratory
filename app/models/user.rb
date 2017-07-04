@@ -31,8 +31,17 @@ class User < ActiveRecord::Base
     Mumukit::Nuntius.notify_event! 'UserChanged', user: event_json
   end
 
+  def update_and_notify!(data)
+    update! data
+    notify_changed!
+  end
+
+  def profile_completed?
+    first_name.present? && last_name.present?
+  end
+
   def event_json
-    as_json(only: [:uid, :social_id, :image_url], methods: [:permissions])
+    as_json(only: [:uid, :social_id, :image_url, :email, :first_name, :last_name], methods: [:permissions]).compact
   end
 
   def last_lesson
@@ -103,7 +112,7 @@ class User < ActiveRecord::Base
   end
 
   def self.import_from_json!(body)
-    body[:name] = "#{body.delete(:first_name)} #{body.delete(:last_name)}"
+    body[:name] = "#{body[:first_name]} #{body[:last_name]}"
     User.where(uid: body[:uid]).update_or_create!(body.except(:id))
   end
 

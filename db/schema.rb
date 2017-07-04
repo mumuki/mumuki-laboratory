@@ -138,6 +138,14 @@ ActiveRecord::Schema.define(version: 20170621222902) do
 
   add_index "guides", ["name"], name: "index_guides_on_name", using: :btree
 
+  create_table "invitations", force: true do |t|
+    t.string "code"
+    t.string "course"
+    t.date   "expiration_date"
+  end
+
+  add_index "invitations", ["code"], name: "index_invitations_on_code", unique: true, using: :btree
+
   create_table "languages", force: true do |t|
     t.string   "name"
     t.string   "runner_url"
@@ -239,6 +247,8 @@ ActiveRecord::Schema.define(version: 20170621222902) do
     t.integer  "last_organization_id"
     t.string   "uid",                                 null: false
     t.text     "permissions",          default: "{}", null: false
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["last_organization_id"], name: "index_users_on_last_organization_id", using: :btree
