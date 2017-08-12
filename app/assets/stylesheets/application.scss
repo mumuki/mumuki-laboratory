@@ -8,3 +8,19 @@
 @import "application/errors";
 @import "application/alerts";
 
+$brand-broken: #651621;
+.bs-callout-broken {
+  border-left-color: $brand-broken;
+  h4 {
+    color: $brand-broken;
+  }
+}
+
+.progress-list-flex .broken {
+  background-color: $brand-broken;
+}
+
+.text-broken,
+.text-broken:hover {
+  color: $brand-broken;
+}

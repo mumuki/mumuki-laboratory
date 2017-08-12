@@ -8,4 +8,8 @@ module Status::Errored
   def self.group
     Status::Failed
   end
+
+  def self.iconize
+    {class: :broken, type: 'minus-circle'}
+  end
 end
