@@ -35,13 +35,13 @@ es:
   date: Fecha
   destroy: Eliminar
   details: Detalles
-  errored: Ups, tu solución no funcionó
+  errored: ¡Ups! Tu solución no se pudo ejecutar
   email: Email
   exam_number: 'Examen %{number}:'
   exams: Exámenes
   exercise: Ejercicio
   exercise_count: ejercicios
-  exercise_done: ¡Tu solución pasó todas nuestras pruebas!
+  exercise_done: ¡Resolviste el ejercicio!
   exercise_number: Ejercicio %{number}
   exercise_success_rate: Tasa de éxito en ejercicios
   exercises: Ejercicios
@@ -54,7 +54,7 @@ es:
   error_403: error 403
   error_404: error 404
   error_410: error 410
-  failed: Ups, algo no anduvo bien
+  failed: ¡Ups! Tu solución no pasó las pruebas
   feedback: Problemas que encontramos
   first_name: Nombre
   forbidden_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no tenés autorización para ver este contenido. ¿Puede que hayas ingresado con una cuenta incorrecta?
@@ -115,8 +115,8 @@ es:
   office: Secretaría
   output: Salida
   overview: Vista general
-  passed: Todo en orden
-  passed_with_warnings: Funcionó, pero hay cosas para mejorar
+  passed: ¡Muy bien! Tu solución pasó todas las pruebas
+  passed_with_warnings: Tu solución funcionó, pero hay cosas que mejorar
   pending: pendiente
   pending_messages: Tenés mensajes sin leer
   pending_messages_explanation: "¡Tu docente te dejó un mensaje! Revisalo antes de seguir enviando soluciones."
