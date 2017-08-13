@@ -25,7 +25,6 @@ es:
   continue_practicing: ¡Seguí aprendiendo!
   continue_lesson: ¡Continuá esta lección!
   contributors: Autores
-  corollary: Para pensar
   create_submission: Enviar
   created_at: Creado
   created_exercises: Ejercicios Creados
@@ -41,7 +40,6 @@ es:
   exams: Exámenes
   exercise: Ejercicio
   exercise_count: ejercicios
-  exercise_done: ¡Resolviste el ejercicio!
   exercise_number: Ejercicio %{number}
   exercise_success_rate: Tasa de éxito en ejercicios
   exercises: Ejercicios
@@ -99,7 +97,7 @@ es:
   navigation_next: Siguiente %{kind}
   navigation_revisit: 'Siguiente pendiente: %{sibling}'
   need_a_hint: ¡Dame una pista!
-  need_help: ¡Necesito ayuda!
+  need_help: No entiendo, ¡necesito ayuda!
   never: nunca
   new: Nuevo
   new_message: ¿Tenés dudas? ¡Levantá la mano!
@@ -163,7 +161,6 @@ es:
   tag: Etiquetas
   tell_us_how: ¡Contanos cómo te pasó esto!
   terms_and_conditions: Términos y condiciones
-  test_results: Resultados de las pruebas
   time_left: Te quedan
   title: Título
   type_expressions_here: Acá podés escribir expresiones para probar tu solución

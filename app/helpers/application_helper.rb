@@ -33,7 +33,6 @@ module ApplicationHelper
     if with_corollary.corollary.present?
       %Q{
       <div>
-        <h3>#{t :corollary}</h3>
         <p>#{with_corollary.corollary_html}</p>
       </div>
 }.html_safe
