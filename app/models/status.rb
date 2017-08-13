@@ -16,10 +16,10 @@ module Status
   def self.coerce(status_like)
     if status_like.is_a? Symbol
       from_sym(status_like)
-    elsif status_like.is_a? Status::Base
-      status_like
-    else
+    elsif status_like.respond_to? :status
       status_like.status
+    else
+      status_like
     end
   end
 end

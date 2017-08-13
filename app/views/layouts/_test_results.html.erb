@@ -1,12 +1,15 @@
+<% unless assignment.exercise.hidden? %>
+  <strong><%= t :test_results %>:</strong>
+<% end %>
 <ul class="results-list">
-  <% test_results.each_with_index do |test_result, index| %>
+  <% assignment.test_results.each_with_index do |test_result, index| %>
     <li>
       <% if test_result[:status] == :failed %>
 
         <span class="text-danger">
           <%= status_icon(test_result[:status]) %>
           <strong class="example-title"><%= test_result[:title] %></strong>
-          <% unless visible_success_output %>
+          <% unless assignment.visible_success_output? %>
             <a data-toggle="collapse" href="#example-result-<%= index %>"  class="example-see-more">Ver detalles</a>
           <% end %>
         </span>
@@ -17,8 +20,8 @@
         </span>
       <% end %>
 
-      <div class="example-result collapse <%= 'in' if visible_success_output %>" id="example-result-<%= index %>">
-        <%= output_content_type.to_html test_result[:result] %>
+      <div class="example-result collapse <%= 'in' if assignment.visible_success_output? %>" id="example-result-<%= index %>">
+        <%= assignment.output_content_type.to_html test_result[:result] %>
       </div>
     </li>
   <% end %>

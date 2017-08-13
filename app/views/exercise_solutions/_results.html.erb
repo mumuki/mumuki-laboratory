@@ -5,8 +5,9 @@
 
 
 <div class="bs-callout bs-callout-<%= class_for_status assignment.status %>">
+
   <h4>
-    <strong><%= fa_icon icon_type_for_status(assignment.status) %> <%= t(assignment.status) %></strong>
+    <strong><%= fa_icon icon_type_for_status(assignment.status) %> <%= t_assignment_status assignment %></strong>
   </h4>
 
   <% if assignment.results_visible? %>
@@ -40,22 +41,24 @@
   <% else %>
     <div></div>
   <% end %>
-  <div class="notify-problem-box">
-    <div class="dropdown">
-      <%= link_to fa_icon(:'question-circle', text: t(:need_help)), "", {'data-toggle': 'dropdown'} %>
-      <ul class="dropdown-menu" aria-labelledby="helpDropdown">
-        <li>
-          <%= mail_to contact_email,
-                      fa_icon(:bug, text: t(:notify_problem_with_exercise), class: 'fa-fw'),
-                      subject: t(:problem_with_exercise, title: @exercise.name),
-                      class: 'warning' %>
-        </li>
-        <li>
-          <%= render_community_link %>
-        </li>
-      </ul>
+  <% unless assignment.passed? %>
+    <div class="notify-problem-box">
+      <div class="dropdown">
+        <%= link_to fa_icon(:'question-circle', text: t(:need_help)), "", {'data-toggle': 'dropdown'} %>
+        <ul class="dropdown-menu" aria-labelledby="helpDropdown">
+          <li>
+            <%= mail_to contact_email,
+                        fa_icon(:bug, text: t(:notify_problem_with_exercise), class: 'fa-fw'),
+                        subject: t(:problem_with_exercise, title: @exercise.name),
+                        class: 'warning' %>
+          </li>
+          <li>
+            <%= render_community_link %>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
+  <% end %>
   <%= solution_download_link assignment %>
 </div>
 

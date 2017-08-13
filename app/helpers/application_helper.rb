@@ -32,7 +32,7 @@ module ApplicationHelper
   def corollary_box(with_corollary)
     if with_corollary.corollary.present?
       %Q{
-      <div>
+      <div class="corollary-box">
         <p>#{with_corollary.corollary_html}</p>
       </div>
 }.html_safe
