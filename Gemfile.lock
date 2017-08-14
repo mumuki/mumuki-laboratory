@@ -152,8 +152,8 @@ GEM
       activesupport (>= 4.1)
       i18n (~> 0.7)
       rack (>= 1.5)
-    mumukit-inspection (1.0.0)
-      mumukit-core (~> 1.0)
+    mumukit-inspection (2.1.1)
+      mumukit-core (>= 0.1, < 2)
     mumukit-login (3.1.0)
       addressable
       mumukit-auth (~> 7.0)
@@ -350,7 +350,7 @@ DEPENDENCIES
   mumukit-bridge (~> 3.0)
   mumukit-content-type!
   mumukit-core (~> 1.0)
-  mumukit-inspection (~> 1.0)
+  mumukit-inspection (~> 2.1)
   mumukit-login (~> 3.1)
   mumukit-nuntius (~> 5.0)
   mumukit-platform (~> 0.5)

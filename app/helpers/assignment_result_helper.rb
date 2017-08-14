@@ -1,6 +1,6 @@
 module AssignmentResultHelper
   def t_expectation(expectation)
-    raw Mumukit::Inspection::I18n.t expectation
+    raw Mumukit::Inspection::Expectation.parse(expectation).translate
   end
 
   def render_feedback?(assignment)
