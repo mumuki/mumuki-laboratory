@@ -7,14 +7,15 @@ module AssignmentResultHelper
     StatusRenderingVerbosity.render_feedback?(assignment.feedback)
   end
 
+  def t_assignment_status(assignment)
+    t(assignment.exercise.hidden? ? :hidden_done : assignment.status)
+  end
+
   def render_test_results(assignment)
     if assignment.test_results.present?
-      render partial: 'layouts/test_results', locals: {
-        visible_success_output: assignment.visible_success_output?,
-        test_results: assignment.test_results,
-        output_content_type: assignment.output_content_type}
+      render partial: 'layouts/test_results', locals: { assignment: assignment }
     else
-      assignment.result_html
+      render partial: 'layouts/result', locals: { assignment: assignment }
     end
   end
 

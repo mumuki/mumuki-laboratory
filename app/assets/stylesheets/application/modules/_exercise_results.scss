@@ -1,10 +1,6 @@
-.submission-results {
-  margin-top: 15px;
-
-  .panel-heading {
-    padding-top: 6px;
-    padding-bottom: 6px;
-  }
+.submission-results .panel-heading {
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 
 .results-item {
@@ -30,8 +26,4 @@ ul.results-list {
   &:hover, &:focus {
     color: white;
   }
-}
-
-.notify-problem-box {
-  margin: -10px 0 15px;
 }

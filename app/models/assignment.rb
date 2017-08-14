@@ -25,6 +25,14 @@ class Assignment < ActiveRecord::Base
     joins(:submitter).where('users.name' => usernames) if usernames
   }
 
+  def single_visual_result?
+    test_results.size == 1 && test_results.first[:title].blank? && visible_success_output?
+  end
+
+  def single_visual_result_html
+    output_content_type.to_html test_results.first[:result]
+  end
+
   def results_visible?
     visible_success_output? || should_retry?
   end

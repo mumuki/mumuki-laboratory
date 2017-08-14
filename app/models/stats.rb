@@ -23,32 +23,8 @@ class Stats
     pending == 0
   end
 
-  def good_progress?
-    resolved * 1.3 > failed
-  end
-
-  def stuck?
-    failed * 1.3 > resolved
-  end
-
   def started?
     submitted > 0
-  end
-
-  def resolved_ratio
-    ratio resolved
-  end
-
-  def passed_ratio
-    ratio passed
-  end
-
-  def passed_with_warnings_ratio
-    ratio passed_with_warnings
-  end
-
-  def failed_ratio
-    ratio failed
   end
 
   def to_h(&key)

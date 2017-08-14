@@ -19,10 +19,10 @@ gem 'execjs'
 gem 'jquery-rails'
 
 source 'https://rails-assets.org' do
-  gem 'rails-assets-dev-awesome'
+  gem 'rails-assets-dev-awesome', '0.4.1'
   gem 'rails-assets-awesome-bootstrap-checkbox'
   gem 'rails-assets-momentjs'
-  gem 'rails-assets-mumuki-styles', '1.6.1'
+  gem 'rails-assets-mumuki-styles', '1.8.0'
 end
 
 gem 'bootstrap-sass', '~> 3.3.5'

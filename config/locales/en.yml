@@ -60,6 +60,7 @@ en:
   let_us_know: please let us know!
   guides_index_title: Which guide do you want to do today?
   here: here
+  hidden_done: 'Good!'
   history: History
   invitation_for: 'Join %{course}'
   joining: You're about to join
@@ -116,6 +117,7 @@ en:
   read: Read
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   reset: reset
+  results: Results
   running: running
   save: Save
   search: Search
@@ -142,6 +144,7 @@ en:
   tag: Tags
   tell_us_how: Please tell us how this happened!
   terms_and_conditions: Terms and conditions
+  test_results: Test results
   test_results: Tests results
   time_left: You have
   title: Title
