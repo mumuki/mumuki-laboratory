@@ -232,15 +232,15 @@ GEM
       rails-assets-jquery (>= 1.9.0)
     rails-assets-bootswatch-scss (3.2.0)
       rails-assets-bootstrap-sass-official (~> 3.2.0)
-    rails-assets-dev-awesome (0.3.0)
+    rails-assets-dev-awesome (0.4.1)
     rails-assets-font-awesome (4.7.0)
     rails-assets-jquery (3.1.1)
     rails-assets-momentjs (2.18.1)
-    rails-assets-mumuki-styles (1.6.1)
+    rails-assets-mumuki-styles (1.8.0)
       rails-assets-awesome-bootstrap-checkbox (= 0.3.7)
       rails-assets-bootstrap-sass (= 3.3.7)
       rails-assets-bootswatch-scss (= 3.2.0)
-      rails-assets-dev-awesome (= 0.3.0)
+      rails-assets-dev-awesome (= 0.4.1)
       rails-assets-font-awesome (= 4.7.0)
       rails-assets-jquery (= 3.1.1)
     rails-i18n (4.0.9)
@@ -367,9 +367,9 @@ DEPENDENCIES
   rack (~> 1.5)
   rails (~> 4.1.14)
   rails-assets-awesome-bootstrap-checkbox!
-  rails-assets-dev-awesome!
+  rails-assets-dev-awesome (= 0.4.1)!
   rails-assets-momentjs!
-  rails-assets-mumuki-styles (= 1.6.1)!
+  rails-assets-mumuki-styles (= 1.8.0)!
   rails-i18n (~> 4.0.0)
   rake (= 10.4.2)
   rouge!
