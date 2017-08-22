@@ -2,15 +2,18 @@
 es:
   aborted: Ups, no pudimos evaluar tu solución
   about: Detalles
-  ask_community: Preguntá a la comunidad
   accept_terms: Acepto los términos y condiciones
   actions: Acciones
   activity: Actividad
   all: Todos
-  appendix: "Apéndice"
   and: y
+  appendix: "Apéndice"
+  appendix_teaser: ¿Querés saber más? <a href="%{link}">Consultá el apéndice de este capítulo</a>
+  ask_community: Preguntá a la comunidad
   ask_redirect: ¿Querés que te llevemos ahí?
   author: Autor
+  authoring: "Autores"
+  authoring_note: Esta guía fue desarrollada por %{authors} y <a href="%{collaborators}" target="_blank">muchas personas más</a>, bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia Creative Commons Compartir-Igual, 4.0</a>.
   back_to_mumuki: ¡Volvé a Mumuki!
   bibliotheca: Biblioteca
   chapter: Capítulo
@@ -22,20 +25,27 @@ es:
   console: Consola
   contact_administrator: 'Si pensás que es un error, comunicate con la persona que administra esta organización: %{link}'
   content: Contenido
-  continue_practicing: ¡Seguí aprendiendo!
+  continue_exercise: "Continuar"
   continue_lesson: ¡Continuá esta lección!
+  continue_practicing: ¡Seguí aprendiendo!
   contributors: Autores
   create_submission: Enviar
   created_at: Creado
   created_exercises: Ejercicios Creados
   created_guides: Lecciones Creadas
+  date: Fecha
   day: Día
   days: Días
-  date: Fecha
   destroy: Eliminar
   details: Detalles
-  errored: ¡Ups! Tu solución no se pudo ejecutar
+  download: "Descargá lo que hiciste"
+  editor_placeholder: "...escribí tu solución acá..."
   email: Email
+  error_401: error 401
+  error_403: error 403
+  error_404: error 404
+  error_410: error 410
+  errored: ¡Ups! Tu solución no se pudo ejecutar
   exam_number: 'Examen %{number}:'
   exams: Exámenes
   exercise: Ejercicio
@@ -48,10 +58,6 @@ es:
   expectations: Objetivos
   explain_redirect: Notamos que te registraste en otra organización.
   export_created: Exportación encolada
-  error_401: error 401
-  error_403: error 403
-  error_404: error 404
-  error_410: error 410
   failed: Tu solución no pasó las pruebas
   feedback: Problemas que encontramos
   first_name: Nombre
@@ -61,16 +67,15 @@ es:
   guide_created: Guía creada exitosamente
   guide_finished: ¡Terminaste %{guide}!
   guide_internal: guia
-  invitation: Invitación a curso
-  lesson_number: Lección %{number}
-  let_us_know: ¡Por favor avisanos!
   guides_index_title: ¿Qué guía querés hacer hoy?
   here: acá
   hidden_done: '¡Muy bien!'
   history: Historial
   hour: hora
   hours: horas
+  invitation: Invitación a curso
   invitation_for: 'Unirse a %{course}'
+  item_not_accessible: "No tenés permisos para acceder a este contenido"
   joining: '¡Te damos la bienvenida al curso <strong>%{course}</strong>!'
   language: Lenguaje
   languages: Lenguajes
@@ -80,6 +85,8 @@ es:
   latest_guides: últimas lecciones
   learning: Aprendizaje
   lesson: Lección
+  lesson_number: Lección %{number}
+  let_us_know: ¡Por favor avisanos!
   listing_exercises: Listado de ejercicios
   manual_evaluation_pending: ¡Gracias por enviar tu solución! Tus docentes la corregirán pronto
   message: Mensaje
@@ -112,6 +119,7 @@ es:
   not_found_explanation: '¡Ups! Esto es lo que se conoce como %{error}: fijate si escribiste bien la dirección. Peeeeero, si pensás que es un error nuestro, %{issues}'
   notify_problem_with_exercise: Reportá un error
   office: Secretaría
+  organizations: Organizaciones
   output: Salida
   overview: Vista general
   passed: ¡Muy bien! Tu solución pasó todas las pruebas
@@ -122,6 +130,7 @@ es:
   permissions: Permisos
   please_fill_profile_data: ¡Completá tus datos personales para continuar!
   please_validate: 'Estás a punto de ingresar al curso. Para poder ofrecerte una mejor experiencia, por favor validá que tus datos a continuación sean reales y correctos.'
+  powered_by_mumuki: "por <span class=\"da da-mumuki-circle\"></span> mumuki"
   previous_exercise: Anterior
   problem_with_exercise: '[Mumuki] Error con el ejercicio: %{title}'
   processing_your_solution: Estamos procesando tu solución
@@ -148,10 +157,11 @@ es:
   solved_exercises: Ejercicios Resueltos
   something_went_wrong: ¡Ups!, algo no anduvo bien...
   something_went_wrong_explanation: Algo se rompió feo en Mumuki. Y necesitamos solucionarlo urgentemente, %{issues}
-  start_practicing: ¡Empezá ahora!
   start_lesson: ¡Comenzá esta lección!
+  start_practicing: ¡Empezá ahora!
   stats: Tu Progreso
   status: Estado
+  stay_here: No, quiero quedarme acá
   submission: solución
   submission_date: Fecha de envío
   submission_for_exercise: Solucion para ejercicio
@@ -159,7 +169,6 @@ es:
   submissions_count: Soluciones
   submissions_for: Soluciones para %{exercise}
   submissions_success_rate: Tasa de éxito en soluciones
-  stay_here: No, quiero quedarme acá
   tag: Etiquetas
   tell_us_how: ¡Contanos cómo te pasó esto!
   terms_and_conditions: Términos y condiciones
@@ -167,23 +176,14 @@ es:
   time_left: Te quedan
   title: Título
   type_expressions_here: Acá podés escribir expresiones para probar tu solución
+  unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no iniciaste sesión.
   uncategorized: No categorizado
   unknown: no resuelto
   unmeet_expectations: Objetivos que no se cumplieron
-  username: Nombre de usuario
-  welcome_back_after_redirection: ¡Qué bueno verte de nuevo! Acá es donde estuviste la última vez
-  you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
-  unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no iniciaste sesión.
-  uploading_solution: "Subiendo solución"
   upload_solution: "Subir solución"
+  uploading_solution: "Subiendo solución"
+  username: Nombre de usuario
   want_permissions: El siguiente usuario requiere permisos
-  item_not_accessible: "No tenés permisos para acceder a este contenido"
-  appendix_teaser: ¿Querés saber más? <a href="%{link}">Consultá el apéndice de este capítulo</a>
-  authoring: "Autores"
-  organizations: Organizaciones
-  authoring_note: Esta guía fue desarrollada por %{authors} y <a href="%{collaborators}" target="_blank">muchas personas más</a>, bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia Creative Commons Compartir-Igual, 4.0</a>.
-  download: "Descargá lo que hiciste"
-  editor_placeholder: "...escribí tu solución acá..."
-  powered_by_mumuki: "por <span class=\"da da-mumuki-circle\"></span> mumuki"
-  continue_exercise: "Continuar"
+  welcome_back_after_redirection: ¡Qué bueno verte de nuevo! Acá es donde estuviste la última vez
   working: "Procesando"
+  you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones

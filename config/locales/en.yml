@@ -2,13 +2,17 @@
 en:
   aborted: Oops, we couldn't evaluate your solution
   about: About
-  ask_community: Ask community for help
   accept_terms: I accept the terms and conditions
   actions: Actions
   activity: Activity
   all: All
+  appendix: "Appendix"
+  appendix_teaser: Do you want to learn more? <a href="%{link}">Check this chapter's appendix</a>"
+  ask_community: Ask community for help
   ask_redirect: Do you want to go there?
   author: Author
+  authoring: "Authoring"
+  authoring_note: This guide's content was developed by %{authors} and <a href="%{collaborators}" target="_blank">many others</a>, under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons License Share-Alike, 4.0</a>
   back_to_mumuki: Back to Mumuki!
   bibliotheca: Bibliotheca
   chapter: Chapter
@@ -20,8 +24,9 @@ en:
   console: Console
   contact_administrator: 'If you think this is not supposed to happen, please contact the admin: %{link}'
   content: Content
-  continue_practicing: Continue practicing!
+  continue_exercise: "Continue"
   continue_lesson: Continue this lesson!
+  continue_practicing: Continue practicing!
   contributors: Contributors
   corollary: To think about
   create_submission: Submit
@@ -29,7 +34,12 @@ en:
   date: Date
   destroy: Destroy
   download: Download your solution
+  editor_placeholder: "write your solution here..."
   email: Email
+  error_401: 401 error
+  error_403: 403 error
+  error_404: 404 error
+  error_410: error 410
   errored: Oops, your solution didn't work
   exam_number: 'Exam %{number}:'
   exams: Exams
@@ -39,14 +49,10 @@ en:
   exercise_number: Exercise %{number}
   exercise_success_rate: Exercises success rate
   exercises_index_title: Looking for a specific exercise?
+  exit: Exit
   expectations: Expectations
   explain_redirect: You have registered in another organization
   export_created: Export queued
-  error_401: 401 error
-  error_403: 403 error
-  error_404: 404 error
-  error_410: error 410
-  exit: Exit
   failed: Oops, something went wrong
   feedback: Feedback
   first_name: First Name
@@ -55,14 +61,13 @@ en:
   guide: Guide
   guide_created: Guide created successfully
   guide_finished: You completed %{guide}!
-  invitation: Invitation to course
-  lesson_number: Lesson %{number}
-  let_us_know: please let us know!
   guides_index_title: Which guide do you want to do today?
   here: here
   hidden_done: 'Good!'
   history: History
+  invitation: Invitation to course
   invitation_for: 'Join %{course}'
+  item_not_accessible: "You are not permitted to access this content"
   joining: You're about to join
   language: Language
   last_name: Last Name
@@ -71,6 +76,8 @@ en:
   latest_guides: latests guides
   learning: Learning
   lesson: Lesson
+  lesson_number: Lesson %{number}
+  let_us_know: please let us know!
   listing_exercises: Listing exercises
   manual_evaluation_pending: Thanks for submitting your solution! It will be revised by the course teachers soon
   message: Message
@@ -95,8 +102,8 @@ en:
   no_exercises: Nobody created an exercise for this search yet
   no_guides: Nobody created a guide for this search yet
   no_submissions: Its seems like you haven't tried to solve this exercise
-  notify_problem_with_exercise: Report a bug
   not_found_explanation: 'You may have mistyped the address or the page may have moved. If you think this is our fault, %{issues}'
+  notify_problem_with_exercise: Report a bug
   office: Office
   output: Output
   overview: Overview
@@ -106,8 +113,9 @@ en:
   pending_messages: You have unread messages
   pending_messages_explanation: You can't send new solutions until you read pending messages
   permissions: Permissions
-  please_validate: 'Please validate your data before continue:'
   please_fill_profile_data: Please complete your profile data to continue!
+  please_validate: 'Please validate your data before continue:'
+  powered_by_mumuki: "powered by <span class=\"da da-mumuki-circle\"></span> mumuki"
   previous_exercise: Previous
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'
   processing_your_solution: We are processing you solution
@@ -130,17 +138,17 @@ en:
   solution: Solution
   something_went_wrong: Something went wrong!
   something_went_wrong_explanation: Something is broken in Mumuki. And we need to solve this as soon as possible, %{issues}.
-  start_practicing: Start Practicing!
   start_lesson: Start this lesson!
+  start_practicing: Start Practicing!
   stats: Some stats
   status: Status
+  stay_here: I want to stay here
   submission: submission
   submission_date: Submission date
   submission_for_exercise: Submission for exercise
   submissions_count: Submissions
   submissions_for: Submissions for %{exercise}
   submissions_success_rate: Submissions success rate
-  stay_here: I want to stay here
   tag: Tags
   tell_us_how: Please tell us how this happened!
   terms_and_conditions: Terms and conditions
@@ -149,20 +157,12 @@ en:
   time_left: You have
   title: Title
   type_expressions_here: You can type expressions here to test your solution
-  username: Username
-  welcome_back_after_redirection: Nice to see you again! This is where you left last time
-  you_must_sign_in_before_submitting: You must sign in before submitting your solutions
-  unmeet_expectations: "Goals that weren't met"
   unauthorized_explanation: You have no permissions for this content. Maybe you logged in with another account.
-  uploading_solution: "Uploading solution"
+  unmeet_expectations: "Goals that weren't met"
   upload_solution: Upload Solution
+  uploading_solution: "Uploading solution"
+  username: Username
   want_permissions: The next user requires permissions
-  item_not_accessible: "You are not permitted to access this content"
-  appendix: "Appendix"
-  appendix_teaser: Do you want to learn more? <a href="%{link}">Check this chapter's appendix</a>"
-  authoring: "Authoring"
-  authoring_note: This guide's content was developed by %{authors} and <a href="%{collaborators}" target="_blank">many others</a>, under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons License Share-Alike, 4.0</a>
-  editor_placeholder: "write your solution here..."
-  powered_by_mumuki: "powered by <span class=\"da da-mumuki-circle\"></span> mumuki"
-  continue_exercise: "Continue"
+  welcome_back_after_redirection: Nice to see you again! This is where you left last time
   working: "Working"
+  you_must_sign_in_before_submitting: You must sign in before submitting your solutions
