@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def update
     current_user.update_and_notify! user_params
-    redirect_to root_path, notice: 'USUARIO UPDETEADO'
+    redirect_to root_path, notice: I18n.t(:user_data_updated)
   end
 
   private
