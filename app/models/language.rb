@@ -9,7 +9,7 @@ class Language < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: {case_sensitive: false}
 
-  markdown_on :test_syntax_hint, :description
+  markdown_on :description
 
   delegate :run_tests!, :run_query!, to: :bridge
 
