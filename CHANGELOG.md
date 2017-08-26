@@ -1,8 +1,72 @@
 # Change Log
 
-## [Unreleased](https://github.com/mumuki/mumuki-laboratory/tree/HEAD)
+## [v4.4.3](https://github.com/mumuki/mumuki-laboratory/tree/v4.4.3) (2017-08-24)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.4.2...v4.4.3)
 
-[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.2.0...HEAD)
+**Closed issues:**
+
+- Error de mumuki [\#809](https://github.com/mumuki/mumuki-laboratory/issues/809)
+
+## [v4.4.2](https://github.com/mumuki/mumuki-laboratory/tree/v4.4.2) (2017-08-22)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.4.1...v4.4.2)
+
+## [v4.4.1](https://github.com/mumuki/mumuki-laboratory/tree/v4.4.1) (2017-08-18)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.4...v4.4.1)
+
+**Closed issues:**
+
+- Missing unique constraint in Guide slug [\#802](https://github.com/mumuki/mumuki-laboratory/issues/802)
+
+## [v4.4](https://github.com/mumuki/mumuki-laboratory/tree/v4.4) (2017-08-14)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.3.2...v4.4)
+
+**Closed issues:**
+
+- Ruby icon is not rendering on certain excercise [\#803](https://github.com/mumuki/mumuki-laboratory/issues/803)
+- Los mensajes de error al enviar una solución no son suficientemente explicativos [\#801](https://github.com/mumuki/mumuki-laboratory/issues/801)
+- In no editor exercises remove the "Pasaron todas nuestras pruebas" string when submit [\#800](https://github.com/mumuki/mumuki-laboratory/issues/800)
+- Unify user model [\#792](https://github.com/mumuki/mumuki-laboratory/issues/792)
+
+**Merged pull requests:**
+
+- Chore update inspections [\#806](https://github.com/mumuki/mumuki-laboratory/pull/806) ([flbulgarelli](https://github.com/flbulgarelli))
+- Feature errored vs failed status distinction [\#805](https://github.com/mumuki/mumuki-laboratory/pull/805) ([flbulgarelli](https://github.com/flbulgarelli))
+- Migrate data inside migrations [\#804](https://github.com/mumuki/mumuki-laboratory/pull/804) ([aguspina](https://github.com/aguspina))
+- Chore unify organizations model [\#798](https://github.com/mumuki/mumuki-laboratory/pull/798) ([flbulgarelli](https://github.com/flbulgarelli))
+- Consume invitations - Finishes mumuki/mumuki-platform\#226 [\#767](https://github.com/mumuki/mumuki-laboratory/pull/767) ([rodri042](https://github.com/rodri042))
+
+## [v4.3.2](https://github.com/mumuki/mumuki-laboratory/tree/v4.3.2) (2017-06-22)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.3.1...v4.3.2)
+
+**Merged pull requests:**
+
+- Rendering message tab only when there are messages [\#797](https://github.com/mumuki/mumuki-laboratory/pull/797) ([flbulgarelli](https://github.com/flbulgarelli))
+
+## [v4.3.1](https://github.com/mumuki/mumuki-laboratory/tree/v4.3.1) (2017-06-16)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.3.0...v4.3.1)
+
+## [v4.3.0](https://github.com/mumuki/mumuki-laboratory/tree/v4.3.0) (2017-06-15)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.2.2...v4.3.0)
+
+**Fixed bugs:**
+
+- Adding comments in the code messes up the inspections validation [\#501](https://github.com/mumuki/mumuki-laboratory/issues/501)
+
+**Closed issues:**
+
+- Use mumuki-styles [\#749](https://github.com/mumuki/mumuki-laboratory/issues/749)
+- Improve comments ui [\#594](https://github.com/mumuki/mumuki-laboratory/issues/594)
+
+**Merged pull requests:**
+
+- Add default layout for reading exercise [\#793](https://github.com/mumuki/mumuki-laboratory/pull/793) ([aguspina](https://github.com/aguspina))
+- Feature conversation [\#779](https://github.com/mumuki/mumuki-laboratory/pull/779) ([aguspina](https://github.com/aguspina))
+
+## [v4.2.2](https://github.com/mumuki/mumuki-laboratory/tree/v4.2.2) (2017-05-29)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.2.1...v4.2.2)
+
+## [v4.2.1](https://github.com/mumuki/mumuki-laboratory/tree/v4.2.1) (2017-05-28)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.2.0...v4.2.1)
 
 **Closed issues:**
 
@@ -55,10 +119,7 @@
 [Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v3.2.4...v4.0.0)
 
 ## [v3.2.4](https://github.com/mumuki/mumuki-laboratory/tree/v3.2.4) (2017-04-12)
-[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/show...v3.2.4)
-
-## [show](https://github.com/mumuki/mumuki-laboratory/tree/show) (2017-04-12)
-[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v3.3.0...show)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v3.3.0...v3.2.4)
 
 ## [v3.3.0](https://github.com/mumuki/mumuki-laboratory/tree/v3.3.0) (2017-04-11)
 [Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v3.2.3...v3.3.0)
@@ -67,19 +128,13 @@
 [Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v3.3.1...v3.2.3)
 
 ## [v3.3.1](https://github.com/mumuki/mumuki-laboratory/tree/v3.3.1) (2017-04-07)
-[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v3.2.2-ikumi...v3.3.1)
-
-## [v3.2.2-ikumi](https://github.com/mumuki/mumuki-laboratory/tree/v3.2.2-ikumi) (2017-04-06)
-[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v3.2.2...v3.2.2-ikumi)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v3.2.2...v3.3.1)
 
 ## [v3.2.2](https://github.com/mumuki/mumuki-laboratory/tree/v3.2.2) (2017-04-06)
-[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v3.2.1-ikumi...v3.2.2)
-
-## [v3.2.1-ikumi](https://github.com/mumuki/mumuki-laboratory/tree/v3.2.1-ikumi) (2017-04-06)
-[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v3.2.1...v3.2.1-ikumi)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v3.2.1...v3.2.2)
 
 ## [v3.2.1](https://github.com/mumuki/mumuki-laboratory/tree/v3.2.1) (2017-04-06)
-[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v3.2.0-ikumi...v3.2.1)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v3.2.0...v3.2.1)
 
 **Fixed bugs:**
 
@@ -89,9 +144,6 @@
 
 - Lessons order do not match what their urls say [\#707](https://github.com/mumuki/mumuki-laboratory/issues/707)
 - Document and simplify platform instalation [\#678](https://github.com/mumuki/mumuki-laboratory/issues/678)
-
-## [v3.2.0-ikumi](https://github.com/mumuki/mumuki-laboratory/tree/v3.2.0-ikumi) (2017-04-03)
-[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v3.2.0...v3.2.0-ikumi)
 
 ## [v3.2.0](https://github.com/mumuki/mumuki-laboratory/tree/v3.2.0) (2017-04-03)
 [Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v3.1.0...v3.2.0)
