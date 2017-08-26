@@ -11,7 +11,9 @@ module WithAssignments
   end
 
   def default_content_for(user)
-    (default_content || '').gsub('/*...previousContent...*/') { previous.current_content_for(user) }
+    (default_content || '')
+      .gsub(/\/\*\.\.\.(previousContent|previousSolution)\.\.\.\*\//) { previous.current_content_for(user) }
+      .gsub(/\/\*\.\.\.(solution|content)\[(-?\d*)\]\.\.\.\*\//) { sibling_at($2.to_i).current_content_for(user) }
   end
 
   def messages_for(user)
