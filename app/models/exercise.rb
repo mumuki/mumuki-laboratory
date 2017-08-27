@@ -52,7 +52,12 @@ class Exercise < ActiveRecord::Base
   end
 
   def previous
-    guide.exercises.find_by(number: number.pred)
+    sibling_at number.pred
+  end
+
+  def sibling_at(index)
+    index = number + index unless index.positive?
+    guide.exercises.find_by(number: index)
   end
 
   def search_tags

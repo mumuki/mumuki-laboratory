@@ -179,22 +179,92 @@ describe Exercise do
       let!(:chapter) {
         create(:chapter, lessons: [
           create(:lesson, exercises: [
+            first_exercise,
+            second_exercise,
             previous_exercise,
             exercise
           ])]) }
 
+      let(:first_exercise) { create(:exercise) }
+      let(:second_exercise) { create(:exercise) }
       let(:previous_exercise) { create(:exercise) }
-      let(:exercise) { create(:exercise, default_content: '/*...previousContent...*/') }
 
       before { reindex_current_organization! }
 
-      context 'has previous submission' do
-        before { previous_exercise.submit_solution!(user, content: 'foobar') }
-        it { expect(exercise.current_content_for(user)).to eq 'foobar' }
+      describe 'right previous content' do
+        let(:exercise) { create(:exercise, default_content: interpolation) }
+
+        context 'using previousContent' do
+          let(:interpolation) { '/*...previousContent...*/' }
+
+          context 'has previous submission' do
+            before { previous_exercise.submit_solution!(user, content: 'foobar') }
+            it { expect(exercise.current_content_for(user)).to eq 'foobar' }
+          end
+
+          context 'does not have previous submission' do
+            it { expect(exercise.current_content_for(user)).to eq '' }
+          end
+        end
+        context 'using previousSolution' do
+          let(:interpolation) { '/*...previousSolution...*/' }
+
+          context 'has previous submission' do
+            before { previous_exercise.submit_solution!(user, content: 'foobar') }
+            it { expect(exercise.current_content_for(user)).to eq 'foobar' }
+          end
+
+          context 'does not have previous submission' do
+            it { expect(exercise.current_content_for(user)).to eq '' }
+          end
+        end
       end
 
-      context 'does not have previous submission' do
-        it { expect(exercise.current_content_for(user)).to eq '' }
+      describe 'indexed previous content' do
+        context '-2 index' do
+          let(:exercise) { create(:exercise, default_content: '/*...solution[-2]...*/') }
+
+          context 'has previous submission' do
+            before { second_exercise.submit_solution!(user, content: 'foobar') }
+            it { expect(exercise.current_content_for(user)).to eq 'foobar' }
+          end
+        end
+        context '-1 index' do
+          let(:exercise) { create(:exercise, default_content: '/*...solution[-1]...*/') }
+
+          context 'has previous submission' do
+            before { previous_exercise.submit_solution!(user, content: 'foobar') }
+            it { expect(exercise.current_content_for(user)).to eq 'foobar' }
+          end
+
+          context 'does not have previous submission' do
+            it { expect(exercise.current_content_for(user)).to eq '' }
+          end
+        end
+        context '1 index' do
+          let(:exercise) { create(:exercise, default_content: '/*...solution[1]...*/') }
+
+          context 'has previous submission' do
+            before { first_exercise.submit_solution!(user, content: 'foobar') }
+            it { expect(exercise.current_content_for(user)).to eq 'foobar' }
+          end
+        end
+        context '2 index' do
+          let(:exercise) { create(:exercise, default_content: '/*...solution[2]...*/') }
+
+          context 'has previous submission' do
+            before { second_exercise.submit_solution!(user, content: 'foobar') }
+            it { expect(exercise.current_content_for(user)).to eq 'foobar' }
+          end
+        end
+        context '3 index' do
+          let(:exercise) { create(:exercise, default_content: '/*...solution[3]...*/') }
+
+          context 'has previous submission' do
+            before { previous_exercise.submit_solution!(user, content: 'foobar') }
+            it { expect(exercise.current_content_for(user)).to eq 'foobar' }
+          end
+        end
       end
     end
 
