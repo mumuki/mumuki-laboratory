@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170818185127) do
+ActiveRecord::Schema.define(version: 20170830020507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,9 +140,9 @@ ActiveRecord::Schema.define(version: 20170818185127) do
   add_index "guides", ["slug"], name: "index_guides_on_slug", unique: true, using: :btree
 
   create_table "invitations", force: true do |t|
-    t.string "code"
-    t.string "course"
-    t.date   "expiration_date"
+    t.string   "code"
+    t.string   "course"
+    t.datetime "expiration_date"
   end
 
   add_index "invitations", ["code"], name: "index_invitations_on_code", unique: true, using: :btree
