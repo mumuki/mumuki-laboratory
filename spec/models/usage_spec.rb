@@ -32,7 +32,7 @@ describe Usage, clean: true do
     it { expect(Organization.all.count).to eq 2 }
 
     it { expect(Organization.current).to eq central }
-    it { expect(central.book).to eq programming }
+    it { expect(central.first_book).to eq programming }
 
     it { expect(programming.chapters.count).to eq 4 }
     it { expect(programming.chapters.map(&:topic)).to eq [fundamentals, functional_programming, oop, logic_programming] }
@@ -59,7 +59,7 @@ describe Usage, clean: true do
     it { expect(Organization.all.count).to eq 2 }
 
     it { expect(Organization.current).to eq pdep }
-    it { expect(pdep.book).to eq paradigms }
+    it { expect(pdep.first_book).to eq paradigms }
 
     it { expect(paradigms.chapters.count).to eq 3 }
     it { expect(paradigms.chapters.map(&:topic)).to eq [functional_programming, logic_programming, oop] }

@@ -18,11 +18,7 @@ module WithSlug
 
   module ClassMethods
     def import!(slug)
-      transaction do
-        item = find_or_initialize_by(slug: slug)
-        item.save(validate: false)
-        item.import!
-      end
+      prepare_by(slug: slug) { |it| it.import! }
     end
 
     def by_slug_parts!(args)

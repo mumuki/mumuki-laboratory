@@ -1,15 +1,23 @@
 class Complement < ActiveRecord::Base
-  include GuideContainer
+
+
   include FriendlyName
+  include GuideContainer
 
-  validates_presence_of :book
+  validates_presence_of :unit
 
+  belongs_to :unit
   belongs_to :guide
-  belongs_to :book
 
-  include TerminalNavigation
+  include ParentNavigation
 
-  def used_in?(organization)
-    organization.book == book
+  def structural_parent
+    unit
   end
+
 end
+
+
+
+
+

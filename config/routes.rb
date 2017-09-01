@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     root to: 'book#show'
 
     resources :book, only: [:show]
+
+    resources :units, only: [:show]
+
+    # All users
     resources :chapters, only: [:show] do
       resource :appendix, only: :show
     end

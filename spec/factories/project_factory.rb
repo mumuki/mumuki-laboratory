@@ -1,6 +1,6 @@
 FactoryGirl.define do
 
-  factory :complement, traits: [:guide_container] do
+  factory :project, traits: [:guide_container] do
     unit { Organization.current.first_unit }
   end
 end

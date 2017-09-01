@@ -58,10 +58,6 @@ class Exercise < ActiveRecord::Base
     guide.slug_parts.merge(bibliotheca_id: bibliotheca_id)
   end
 
-  def friendly
-    defaulting_name { "#{navigable_parent.friendly} - #{name}" }
-  end
-
   def new_solution
     Solution.new(content: default_content)
   end

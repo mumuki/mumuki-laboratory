@@ -1,7 +1,5 @@
 class Topic < Content
   numbered :lessons
-  aggregate_of :lessons
-
   has_many :lessons, -> { order(number: :asc) }, dependent: :delete_all
 
   has_many :guides, -> { order('lessons.number') }, through: :lessons
@@ -28,7 +26,7 @@ class Topic < Content
   def import_from_json!(json)
     self.assign_attributes json.except('lessons', 'id', 'description', 'teacher_info')
     self.description = json['description'].squeeze(' ')
-    rebuild! json['lessons'].map { |it| lesson_for(it) }
+    rebuild! lessons: json['lessons'].map { |it| lesson_for(it) }
     Organization.all.each { |org| org.reindex_usages! }
   end
 

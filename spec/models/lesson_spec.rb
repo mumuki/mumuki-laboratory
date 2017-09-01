@@ -13,7 +13,7 @@ describe Lesson do
 
     before { reindex_current_organization! }
 
-    it { expect(lesson.friendly).to eq "#{chapter.name}: #{lesson.name}" }
+    it { expect(lesson.friendly).to eq "#{chapter.name} - #{lesson.name}" }
   end
 
   describe '#friendly_name' do

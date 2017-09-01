@@ -5,11 +5,11 @@ module ParentNavigation
   end
 
   def navigation_end?
-    false
+    navigable_parent.blank?
   end
 
   def navigable_name
-    defaulting_name { super }
+    name
   end
 
   def navigable_parent
@@ -17,6 +17,10 @@ module ParentNavigation
   end
 
   #required :structural_parent
+
+  def friendly
+    defaulting_name { |parent| "#{parent.friendly} - #{name}" }
+  end
 
   private
 

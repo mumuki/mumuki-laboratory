@@ -26,17 +26,23 @@ class ActiveRecord::Base
     self
   end
 
-  def self.aggregate_of(association)
-    class_eval do
-      define_method(:rebuild!) do |children|
-        transaction do
-          self.send(association).all_except(children).delete_all
-          self.update! association => children
-          children.each &:save!
-        end
-        reload
+  def self.prepare_by(query)
+    transaction do
+      model = find_or_initialize_by(query)
+      model.save(validate: false)
+      yield model
+    end
+  end
+
+  def rebuild!(associations)
+    transaction do
+      associations.each do |association, children|
+        self.send(association).all_except(children).delete_all
+        self.update! association => children
+        children.each &:save!
       end
     end
+    reload
   end
 
   def self.numbered(*associations)
