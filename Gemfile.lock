@@ -19,7 +19,6 @@ GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
   specs:
-    ace-rails-ap (4.1.2)
     actionmailer (4.1.16)
       actionpack (= 4.1.16)
       actionview (= 4.1.16)
@@ -75,6 +74,8 @@ GEM
       xpath (~> 2.0)
     codeclimate-test-reporter (1.0.8)
       simplecov (<= 0.13)
+    codemirror-rails (5.16.0)
+      railties (>= 3.0, < 6.0)
     coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -330,7 +331,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ace-rails-ap (~> 4.0)
   binding_of_caller
   bootstrap-kaminari-views
   bootstrap-sass (~> 3.3.5)
@@ -339,6 +339,7 @@ DEPENDENCIES
   bunny
   capybara (~> 2.3.0)
   codeclimate-test-reporter
+  codemirror-rails (~> 5.16)
   execjs
   factory_girl_rails
   faker (~> 1.5)

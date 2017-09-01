@@ -30,7 +30,7 @@ gem 'bootswatch-rails'
 
 gem 'font-awesome-rails'
 
-gem 'ace-rails-ap', '~> 4.0'
+gem 'codemirror-rails', '~> 5.16'
 
 gem 'puma'
 
