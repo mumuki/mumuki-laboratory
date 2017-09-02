@@ -12,7 +12,7 @@ var mumuki = mumuki || {};
       this.editor = CodeMirror.fromTextArea(this.textarea);
     },
     setupLanguage: function () {
-      var language = $(this.textarea).data('editor-language');
+      var language = this.$textarea.data('editor-language');
       if (language === 'dynamic') {
         mumuki.page.dynamicEditors.push(this.editor);
       } else {
@@ -25,7 +25,6 @@ var mumuki = mumuki || {};
 
     setupOptions: function (minLines) {
       this.editor.setOption('tabSize', 2);
-      this.editor.setOption('indentWithTabs', true);
       this.editor.setOption('lineWrapping', true);
       this.editor.setOption('lineNumbers', true);
       this.editor.setOption('showCursorWhenSelecting', true);
