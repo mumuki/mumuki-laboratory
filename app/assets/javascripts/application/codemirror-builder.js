@@ -14,7 +14,9 @@ var mumuki = mumuki || {};
           lineNumbers: true,
           lineWrapping: true,
           cursorHeight: 1,
+          matchBrackets: true,
           lineWiseCopyCut: true,
+          autoCloseBrackets: true,
           showCursorWhenSelecting: true
       });
     },

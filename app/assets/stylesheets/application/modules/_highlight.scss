@@ -11,6 +11,11 @@ pre {
   border-radius: 4px;
 }
 
+.CodeMirror-matchingbracket {
+  color: $mu-color-complementary !important;
+  font-weight: bold;
+}
+
 .CodeMirror-lines pre.CodeMirror-placeholder {
   color: $mu-color-disabled;
 }
