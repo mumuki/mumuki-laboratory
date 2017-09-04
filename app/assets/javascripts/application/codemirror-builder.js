@@ -19,7 +19,10 @@ var mumuki = mumuki || {};
           autoCloseBrackets: true,
           showCursorWhenSelecting: true,
           extraKeys: {
-            'Ctrl-Space': 'autocomplete'
+            'Ctrl-Space': 'autocomplete',
+            'Ctrl-Enter': function () {
+              $('.btn-submit').click();
+            }
           }
       });
     },
