@@ -19,10 +19,6 @@ var mumuki = mumuki || {};
         mumuki.editor.setOption('mode', language);
       }
     },
-    setupPlaceholder: function (text) {
-      this.editor.setOption('placeholder', text);
-    },
-
     setupOptions: function (minLines) {
       this.editor.setOption('tabSize', 2);
       this.editor.setOption('lineWrapping', true);

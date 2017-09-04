@@ -7,7 +7,6 @@ var mumuki = mumuki || {};
       var builder = new mumuki.editor.CodeMirrorBuilder(textarea);
       builder.setupEditor();
       builder.setupOptions($textarea.data('lines'));
-      builder.setupPlaceholder($textarea.data('placeholder'));
       builder.setupLanguage();
       return builder.build();
      });

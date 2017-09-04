@@ -1,5 +1,6 @@
 <div class="field form-group">
   <%= form.editor :content, 'dynamic',
+                  placeholder: t(:editor_placeholder),
                   class: 'form-control editor',
                   value: @current_content,
                   data: {lines: 17} %>
