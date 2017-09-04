@@ -17,7 +17,10 @@ var mumuki = mumuki || {};
           matchBrackets: true,
           lineWiseCopyCut: true,
           autoCloseBrackets: true,
-          showCursorWhenSelecting: true
+          showCursorWhenSelecting: true,
+          extraKeys: {
+            'Ctrl-Space': 'autocomplete'
+          }
       });
     },
     setupLanguage: function () {

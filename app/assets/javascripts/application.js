@@ -25,6 +25,8 @@
 //= require codemirror/addons/edit/matchbrackets
 //= require codemirror/addons/display/placeholder
 //= require codemirror/addons/display/fullscreen
+//= require codemirror/addons/hint/show-hint
+//= require codemirror/addons/hint/anyword-hint
 //= require turbolinks
 //= require nprogress
 //= require nprogress-turbolinks
