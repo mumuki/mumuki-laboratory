@@ -11,6 +11,10 @@ pre {
   border-radius: 4px;
 }
 
+.CodeMirror-lines pre.CodeMirror-placeholder {
+  color: $mu-color-disabled;
+}
+
 /* identifier */
 .cm-def {
   color: black !important;
