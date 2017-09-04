@@ -1052,3 +1052,9 @@ CodeMirror.defineMode("gobstones", function () {
 });
 
 CodeMirror.defineMIME("text/x-gobstones", "gobstones");
+
+registerAutocomplete('gobstones', (
+    'program procedure function interactive if then else switch repeat while foreach in not div mod Skip return ' +
+    'False True Poner Sacar Mover IrAlBorde VaciarTablero nroBolitas hayBolitas puedeMover siguiente previo opuesto ' +
+    'minBool maxBool minDir maxDir minColor maxColor Verde Rojo Azul Negro Norte Sur Este Oeste'
+).split(' '));

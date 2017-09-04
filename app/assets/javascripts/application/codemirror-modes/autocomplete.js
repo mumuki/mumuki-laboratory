@@ -1,4 +1,4 @@
-function registerAutocoplete(mode, keywords, identifierRegex) {
+function registerAutocomplete(mode, keywords, identifierRegex) {
 
     var regex = identifierRegex || /[a-zA-Z_$][a-zA-Z0-9_$]*\b/;
 
@@ -42,9 +42,3 @@ function registerAutocoplete(mode, keywords, identifierRegex) {
     });
 
 }
-
-registerAutocoplete('gobstones', (
-    'program procedure function interactive if then else switch repeat while foreach in not div mod Skip return ' +
-    'False True Poner Sacar Mover IrAlBorde VaciarTablero nroBolitas hayBolitas puedeMover siguiente previo opuesto ' +
-    'minBool maxBool minDir maxDir minColor maxColor Verde Rojo Azul Negro Norte Sur Este Oeste'
-).split(' '));

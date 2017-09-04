@@ -1145,4 +1145,4 @@ CodeMirror.defineMode("prolog", function (cmCfg, modeCfg) {
 
 CodeMirror.defineMIME("text/x-prolog", "prolog");
 
-registerAutocoplete('prolog', ('findall forall not length member sum_list is').split(' '));
+registerAutocomplete('prolog', ('findall forall not length member sum_list is').split(' '));
