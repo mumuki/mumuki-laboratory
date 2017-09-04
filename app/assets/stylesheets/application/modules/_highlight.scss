@@ -18,12 +18,12 @@ pre {
 
 /* keyword */
 .cm-keyword {
-  color: $brand-info  !important;
+  color: $brand-info !important;
   font-weight: bold !important;
 }
 
 /* literal */
-.cm-number {
+.cm-number, .cm-builtin {
   color: #369434 !important;
 }
 
@@ -65,6 +65,14 @@ pre code {
   font-weight: normal !important;
 }
 
-.w { color: #bbbbbb } /* Text.Whitespace */
-.si { color: #d01040 } /* Literal.String.Interpol */
+.w {
+  color: #bbbbbb
+}
+
+/* Text.Whitespace */
+.si {
+  color: #d01040
+}
+
+/* Literal.String.Interpol */
 
