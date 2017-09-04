@@ -17,6 +17,7 @@ FactoryGirl.define do
 
   factory :gobstones, parent: :language do
     name 'gobstones'
+    extension 'gbs'
     queriable false
   end
 

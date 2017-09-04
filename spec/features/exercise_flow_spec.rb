@@ -123,6 +123,8 @@ feature 'Exercise Flow' do
       expect(page).to_not have_text('Console')
       expect(page).to have_text('need a hint?')
       expect(page).to have_selector('.upload')
+      expect(problem_5.language.extension).to eq('gbs')
+      expect(page.find("//div[@class = 'form-group']/input")['accept']).to eq(".gbs")
     end
 
     scenario 'visit exercise by id, input_bottom layout, extra, no hint' do
