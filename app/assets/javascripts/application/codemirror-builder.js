@@ -9,7 +9,14 @@ var mumuki = mumuki || {};
 
   CodeMirrorBuilder.prototype = {
     setupEditor: function () {
-      this.editor = CodeMirror.fromTextArea(this.textarea);
+      this.editor = CodeMirror.fromTextArea(this.textarea, {
+          tabSize: 2,
+          lineNumbers: true,
+          lineWrapping: true,
+          cursorHeight: 1,
+          lineWiseCopyCut: true,
+          showCursorWhenSelecting: true
+      });
     },
     setupLanguage: function () {
       var language = this.$textarea.data('editor-language');
@@ -20,12 +27,7 @@ var mumuki = mumuki || {};
       }
     },
     setupOptions: function (minLines) {
-      this.editor.setOption('tabSize', 2);
-      this.editor.setOption('lineWrapping', true);
-      this.editor.setOption('lineNumbers', true);
-      this.editor.setOption('showCursorWhenSelecting', true);
-      this.editor.setOption('lineWiseCopyCut', true);
-      this.editor.setOption('cursorHeight', 1);
+      this.editor.setOption('minLines', minLines);
     },
     build: function () {
       return this.editor;
