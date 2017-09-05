@@ -4,13 +4,13 @@
                   class: 'form-control editor',
                   value: @current_content,
                   data: {lines: 17} %>
-  <a class="editor-resize">
+  <a class="editor-resize" title="<%= t(:fullscreen) %>">
     <span class="fa-stack fa-lg">
       <i class="fa fa-square-o fa-stack-2x"></i>
       <i class="fa fa-expand fa-stack-1x"></i>
     </span>
   </a>
-  <div class="submission-overlapped">
+  <div class="submission-overlapped" title="<%= t(:reset) %>">
     <a class="editor-reset submission-reset"><%= reset_button %></a>
   </div>
 </div>

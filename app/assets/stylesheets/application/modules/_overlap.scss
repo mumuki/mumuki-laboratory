@@ -9,7 +9,6 @@
 .submission-overlapped {
   z-index: 10;
   position: absolute;
-  text-align: right;
   bottom: 0;
   right: 0;
 }
@@ -17,14 +16,12 @@
 .submission-reset {
   padding: 5px;
   cursor: pointer;
-  margin-right: 15px;
 }
 
 .editor-resize {
   position: absolute;
   padding: 5px;
   cursor: pointer;
-  margin-right: 15px;
   z-index: 10;
   top: 0;
   right: 0;
