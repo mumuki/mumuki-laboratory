@@ -21,6 +21,11 @@
 //= require codemirror/modes/haskell
 //= require codemirror/modes/javascript
 //= require codemirror/modes/markdown
+//= require codemirror/modes/python
+//= require codemirror/modes/clike
+//= require codemirror/modes/htmlmixed
+//= require codemirror/modes/sql
+//= require codemirror/modes/css
 //= require codemirror/addons/edit/closebrackets
 //= require codemirror/addons/edit/matchbrackets
 //= require codemirror/addons/display/placeholder
@@ -35,5 +40,5 @@
 //= require_tree ./application
 
 NProgress.configure({
-    showSpinner: false
+  showSpinner: false
 });
