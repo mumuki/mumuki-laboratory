@@ -4,6 +4,8 @@
 
 .editor-code {
   position: relative;
+  min-height: 300px;
+  max-height: none;
 }
 
 .submission-overlapped {
@@ -28,6 +30,14 @@
   font-size: 0.5em;
 }
 
+body:not(.fullscreen) {
+  .CodeMirror-wrap,
+  .CodeMirror-scroll {
+    height: auto;
+    min-height: 300px;
+  }
+}
+
 body.fullscreen {
   overflow: hidden;
   form.new_solution {
@@ -45,6 +55,15 @@ body.fullscreen {
     }
     .CodeMirror-wrap {
       height: calc(100vh - 40px);
+    }
+    .CodeMirror-scroll {
+      height: inherit;
+      overflow-y: scroll;
+      overflow-x: auto;
+    }
+    .submission-reset,
+    .editor-resize {
+      margin-right: 15px;
     }
   }
 }
