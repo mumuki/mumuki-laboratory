@@ -7,6 +7,10 @@ var mumuki = mumuki || {};
     this.$textarea = $(textarea);
   }
 
+  function submit() {
+    $('.btn-submit').click();
+  }
+
   CodeMirrorBuilder.prototype = {
     setupEditor: function () {
       this.editor = CodeMirror.fromTextArea(this.textarea, {
@@ -20,9 +24,8 @@ var mumuki = mumuki || {};
           showCursorWhenSelecting: true,
           extraKeys: {
             'Ctrl-Space': 'autocomplete',
-            'Ctrl-Enter': function () {
-              $('.btn-submit').click();
-            }
+            'Cmd-Enter': submit,
+            'Ctrl-Enter': submit
           }
       });
     },
