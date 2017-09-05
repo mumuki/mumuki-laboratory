@@ -3,16 +3,16 @@ Rails.application.routes.draw do
   Mumukit::Login.configure_login_routes! self
 
   Mumukit::Platform.map_organization_routes!(self) do
-    root to: 'book#show'
-
-    resources :book, only: [:show]
-
-    resources :units, only: [:show]
+    root to: 'organization#show'
 
     # All users
-    resources :chapters, only: [:show] do
-      resource :appendix, only: :show
-    end
+    resources :organization, only: :show
+
+    # All users
+    resources :units, only: :show
+
+    # All users
+    resources :appendices, only: :show
 
     # All users
     resources :exercises, only: :show do
@@ -35,10 +35,10 @@ Rails.application.routes.draw do
     resource :user, only: :show
 
     namespace :api do
-      resources :guides, only: [:create]
-      resources :topics, only: [:create]
-      resources :books, only: [:create]
-      resources :organizations, only: [:index]
+      resources :guides, only: :create
+      resources :topics, only: :create
+      resources :books, only: :create
+      resources :organizations, only: :index
     end
 
     # Current user

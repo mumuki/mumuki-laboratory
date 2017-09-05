@@ -1,22 +1,22 @@
 <%= content_for :breadcrumbs do %>
-  <%= breadcrumbs @chapter %>
+  <%= breadcrumbs @unit %>
 <% end %>
 
 <div>
   <h1>
-    <span class="hidden-xs"><%= t(:chapter_number, number: @chapter.number) %>:&nbsp;</span>
-    <span><%= @chapter.name %></span>
+    <span class="hidden-xs"><%= t(:unit_number, number: @unit.number) %>:&nbsp;</span>
+    <span><%= @unit.name %></span>
   </h1>
 
-  <%= @chapter.description_html %>
+  <%= @unit.description_html %>
 
 </div>
 
-<% if @chapter.lessons.present? %>
+<% if @unit.lessons.present? %>
 <div>
   <h3><%= t(:content) %></h3>
 
-  <% @chapter.lessons.each do |lesson| %>
+  <% @unit.lessons.each do |lesson| %>
     <h4><%= t(:lesson_number, number: lesson.number) %>: <%= link_to_path_element lesson, mode: :plain %></h4>
     <%= render partial: 'layouts/progress_listing', locals: {exercises: lesson.exercises} %>
   <% end %>
@@ -24,11 +24,11 @@
 <% end %>
 
 
-<% if @chapter.appendix.present? %>
+<% if @unit.appendix.present? %>
   <div>
     <h3><%= t(:appendix) %></h3>
     <p>
-      <%= t(:appendix_teaser, link: chapter_appendix_path(@chapter)).html_safe %>
+      <%= t(:appendix_teaser, link: unit_appendix_path(@unit)).html_safe %>
     </p>
   </div>
 <% end %>

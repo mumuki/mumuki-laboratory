@@ -56,13 +56,11 @@ ActiveRecord::Schema.define(version: 20170830020507) do
 
   create_table "complements", force: true do |t|
     t.integer  "guide_id"
-    t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "unit_id"
   end
 
-  add_index "complements", ["book_id"], name: "index_complements_on_book_id", using: :btree
   add_index "complements", ["guide_id"], name: "index_complements_on_guide_id", using: :btree
   add_index "complements", ["unit_id"], name: "index_complements_on_unit_id", using: :btree
 
@@ -186,7 +184,6 @@ ActiveRecord::Schema.define(version: 20170830020507) do
 
   create_table "organizations", force: true do |t|
     t.string   "name"
-    t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "book_ids",   default: [],                array: true
@@ -194,8 +191,6 @@ ActiveRecord::Schema.define(version: 20170830020507) do
     t.text     "theme",      default: "{}", null: false
     t.text     "profile",    default: "{}", null: false
   end
-
-  add_index "organizations", ["book_id"], name: "index_organizations_on_book_id", using: :btree
 
   create_table "paths", force: true do |t|
     t.integer  "category_id"
