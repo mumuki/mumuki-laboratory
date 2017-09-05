@@ -52,6 +52,7 @@ var mumuki = mumuki || {};
 
    mumuki.editor = mumuki.editor || {};
    mumuki.editor.setupCodeMirrors = setEditorLanguage;
+   mumuki.editor.toggleFullscreen = toggleFullscreen;
 
    mumuki.page = mumuki.page || {};
    mumuki.page.dynamicEditors = [];

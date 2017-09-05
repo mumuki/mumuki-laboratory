@@ -27,7 +27,10 @@ var mumuki = mumuki || {};
           extraKeys: {
             'Ctrl-Space': 'autocomplete',
             'Cmd-Enter': submit,
-            'Ctrl-Enter': submit
+            'Ctrl-Enter': submit,
+            'F11': function () {
+                mumuki.editor.toggleFullscreen();
+            }
           }
       });
     },
