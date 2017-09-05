@@ -47,14 +47,20 @@ body.fullscreen {
     left: 0;
     bottom: 0;
     z-index: 120;
-    padding: 10px 15px;
+    padding: 0;
+    margin: 0;
     height: 100vh;
     background: white;
+    .editor-code {
+      margin: 0;
+    }
     .btn-submit {
       display: none;
     }
     .CodeMirror-wrap {
-      height: calc(100vh - 40px);
+      margin: 0;
+      height: 100vh;
+      width: 100vw;
     }
     .CodeMirror-scroll {
       height: inherit;
