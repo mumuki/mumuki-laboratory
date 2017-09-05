@@ -28,6 +28,11 @@ var mumuki = mumuki || {};
      })
    }
 
+   function toggleFullscreen() {
+     $('body').toggleClass('fullscreen');
+     $('.editor-resize .fa-stack-1x').toggleClass('fa-expand').toggleClass('fa-compress');
+   }
+
    function setDefaultContent(editor, content) {
      editor.getDoc().setValue(content);
    }
@@ -61,6 +66,10 @@ var mumuki = mumuki || {};
      $('.editor-reset').click(function () {
        resetEditor();
      });
+     $('.editor-resize').click(function () {
+       toggleFullscreen();
+     });
+
    });
 
 }(mumuki));

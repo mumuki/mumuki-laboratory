@@ -4,6 +4,12 @@
                   class: 'form-control editor',
                   value: @current_content,
                   data: {lines: 17} %>
+  <a class="editor-resize">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-square-o fa-stack-2x"></i>
+      <i class="fa fa-expand fa-stack-1x"></i>
+    </span>
+  </a>
   <div class="submission-overlapped">
     <a class="editor-reset submission-reset"><%= reset_button %></a>
   </div>

@@ -19,3 +19,35 @@
   cursor: pointer;
   margin-right: 15px;
 }
+
+.editor-resize {
+  position: absolute;
+  padding: 5px;
+  cursor: pointer;
+  margin-right: 15px;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  font-size: 0.5em;
+}
+
+body.fullscreen {
+  overflow: hidden;
+  form.new_solution {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 120;
+    padding: 10px 15px;
+    height: 100vh;
+    background: white;
+    .btn-submit {
+      display: none;
+    }
+    .CodeMirror-wrap {
+      height: calc(100vh - 40px);
+    }
+  }
+}

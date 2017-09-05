@@ -8,6 +8,8 @@ var mumuki = mumuki || {};
   }
 
   function submit() {
+    $('body').removeClass('fullscreen');
+    $('.editor-resize .fa-stack-1x').removeClass('fa-compress').addClass('fa-expand');
     $('.btn-submit').click();
   }
 
