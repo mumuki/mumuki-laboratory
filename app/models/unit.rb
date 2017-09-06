@@ -10,6 +10,11 @@ class Unit < Container
   include TerminalNavigation
 
   def index_usage!
+    index_usage_at! organization
+  end
+
+  def index_usage_at!(organization)
+    organization.index_usage_of! book, self
     [book.chapters, projects, complements].flatten.each { |item| item.index_usage_at! organization }
   end
 

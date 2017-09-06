@@ -33,7 +33,7 @@ class Chapter < Container
   end
 
   def index_usage_at!(organization)
-    organization.index_usage_of! topic, self
+    super
     topic.lessons.each { |lesson| lesson.index_usage_at! organization }
   end
 

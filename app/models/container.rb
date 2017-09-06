@@ -15,5 +15,9 @@ class Container < ActiveRecord::Base
     child.usage_in_organization(organization) == self
   end
 
-  required :index_usage_at!
+  def index_usage_at!(organization)
+    organization.index_usage_of! child, self
+  end
+
+
 end
