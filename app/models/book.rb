@@ -13,7 +13,7 @@ class Book < Content
   end
 
   def import_from_json!(json)
-    self.assign_attributes json.except('chapters', 'id', 'description', 'teacher_info')
+    self.assign_attributes json.except('chapters', 'id', 'description', 'teacher_info', 'complements')
     self.description = json['description'].squeeze(' ')
 
     rebuild! chapters: json['chapters'].map { |it| Topic.find_by!(slug: it).as_chapter_of(self) }
