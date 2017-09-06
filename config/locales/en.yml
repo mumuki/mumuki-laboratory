@@ -124,7 +124,7 @@ en:
   progress: Progresss
   read: Read
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
-  reset: reset
+  reset: Reset
   results: Results
   running: running
   save: Save
@@ -167,3 +167,4 @@ en:
   welcome_back_after_redirection: Nice to see you again! This is where you left last time
   working: "Working"
   you_must_sign_in_before_submitting: You must sign in before submitting your solutions
+  fullscreen: "Fullscreen"

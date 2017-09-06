@@ -141,7 +141,7 @@ es:
   read_messages: Ver mensajes
   recent_activity: Actividad Reciente
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
-  reset: reiniciar
+  reset: Reiniciar
   results: Resultados
   running: procesando
   save: Guardar
@@ -188,3 +188,4 @@ es:
   welcome_back_after_redirection: ¡Qué bueno verte de nuevo! Acá es donde estuviste la última vez
   working: "Procesando"
   you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
+  fullscreen: "Pantalla completa"

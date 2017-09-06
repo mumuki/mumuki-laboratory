@@ -16,12 +16,22 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require ace-rails-ap
-//= require ace/mode-ruby
-//= require ace/mode-haskell
-//= require ace/mode-prolog
-//= require ace/mode-javascript
-//= require ace/mode-markdown
+//= require codemirror
+//= require codemirror/modes/ruby
+//= require codemirror/modes/haskell
+//= require codemirror/modes/javascript
+//= require codemirror/modes/markdown
+//= require codemirror/modes/python
+//= require codemirror/modes/clike
+//= require codemirror/modes/htmlmixed
+//= require codemirror/modes/sql
+//= require codemirror/modes/css
+//= require codemirror/addons/edit/closebrackets
+//= require codemirror/addons/edit/matchbrackets
+//= require codemirror/addons/display/placeholder
+//= require codemirror/addons/display/fullscreen
+//= require codemirror/addons/hint/show-hint
+//= require codemirror/addons/hint/javascript-hint
 //= require turbolinks
 //= require nprogress
 //= require nprogress-turbolinks
@@ -30,5 +40,5 @@
 //= require_tree ./application
 
 NProgress.configure({
-    showSpinner: false
+  showSpinner: false
 });

@@ -1,10 +1,16 @@
-<div class="field form-group">
+<div class="field form-group editor-code">
   <%= form.editor :content, 'dynamic',
+                  placeholder: t(:editor_placeholder),
                   class: 'form-control editor',
                   value: @current_content,
-                  style: 'display: none',
                   data: {lines: 17} %>
-</div>
-<div class="submission-overlapped">
-  <a class="editor-reset submission-reset"><%= reset_button %></a>
+  <a class="editor-resize" title="<%= t(:fullscreen) %> (F11)">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-square-o fa-stack-2x"></i>
+      <i class="fa fa-expand fa-stack-1x"></i>
+    </span>
+  </a>
+  <div class="submission-overlapped" title="<%= t(:reset) %>">
+    <a class="editor-reset submission-reset"><%= reset_button %></a>
+  </div>
 </div>
