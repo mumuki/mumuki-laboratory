@@ -186,10 +186,11 @@ ActiveRecord::Schema.define(version: 20170830020507) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "book_ids",   default: [],                array: true
-    t.text     "settings",   default: "{}", null: false
-    t.text     "theme",      default: "{}", null: false
-    t.text     "profile",    default: "{}", null: false
+    t.integer  "book_ids",    default: [],                array: true
+    t.text     "settings",    default: "{}", null: false
+    t.text     "theme",       default: "{}", null: false
+    t.text     "profile",     default: "{}", null: false
+    t.text     "description"
   end
 
   create_table "paths", force: true do |t|
