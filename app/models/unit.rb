@@ -1,9 +1,4 @@
-class Unit < ActiveRecord::Base
-  include FriendlyName
-
-  validates_presence_of :organization
-  validates_presence_of :book
-
+class Unit < Container
   belongs_to :organization
   belongs_to :book
 
@@ -12,10 +7,12 @@ class Unit < ActiveRecord::Base
 
   include TerminalNavigation
 
-  delegate :name, :description, :description_teaser_html, to: :book
-
   def index_usage!
     [book.chapters, projects, complements].flatten.each { |item| item.index_usage_at! organization }
+  end
+
+  def child
+    book
   end
 
 end

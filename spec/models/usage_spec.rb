@@ -8,16 +8,16 @@ describe Usage, clean: true do
   let!(:logic_programming) { create(:topic) }
 
   let!(:programming) { create(:book, chapters: [
-      create(:chapter, topic: fundamentals),
-      create(:chapter, topic: functional_programming),
-      create(:chapter, topic: oop),
-      create(:chapter, topic: logic_programming),
+      build(:chapter, topic: fundamentals),
+      build(:chapter, topic: functional_programming),
+      build(:chapter, topic: oop),
+      build(:chapter, topic: logic_programming),
   ]) }
 
   let!(:paradigms) { create(:book, chapters: [
-      create(:chapter, topic: functional_programming),
-      create(:chapter, topic: logic_programming),
-      create(:chapter, topic: oop),
+      build(:chapter, topic: functional_programming),
+      build(:chapter, topic: logic_programming),
+      build(:chapter, topic: oop),
   ]) }
 
   let!(:central) { create(:organization, name: 'central', book: programming) }

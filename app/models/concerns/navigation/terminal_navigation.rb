@@ -18,4 +18,8 @@ module TerminalNavigation
   def usage_in_organization(organization = Organization.current)
     self if used_in?(organization)
   end
+
+  def structural_parent
+    organization
+  end
 end

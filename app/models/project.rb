@@ -1,10 +1,5 @@
-class Project < ActiveRecord::Base
+class Project < GuideContainer
   include WithNumber
-
-  include FriendlyName
-  include GuideContainer
-
-  validates_presence_of :unit
 
   belongs_to :unit
   belongs_to :guide

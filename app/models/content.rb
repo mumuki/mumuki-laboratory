@@ -6,5 +6,5 @@ class Content < ActiveRecord::Base
   include WithSlug
   include WithUsages
 
+  required :import_from_json!
 end
-

@@ -1,10 +1,5 @@
-class Lesson < ActiveRecord::Base
+class Lesson < GuideContainer
   include WithNumber
-
-  include FriendlyName
-  include GuideContainer
-
-  validates_presence_of :topic
 
   belongs_to :topic
   belongs_to :guide
