@@ -12,7 +12,7 @@ class Unit < ActiveRecord::Base
 
   include TerminalNavigation
 
-  delegate :name, to: :book
+  delegate :name, :description, :description_teaser_html, to: :book
 
   def index_usage!
     [book.chapters, projects, complements].flatten.each { |item| item.index_usage_at! organization }

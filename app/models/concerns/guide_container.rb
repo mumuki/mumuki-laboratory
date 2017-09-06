@@ -11,7 +11,8 @@ module GuideContainer
              :first_exercise,
              :next_exercise,
              :stats_for,
-             :exercises_count, to: :guide
+             :exercises_count,
+             :description_teaser_html, to: :guide
   end
 
   def index_usage_at!(organization)

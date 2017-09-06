@@ -4,6 +4,10 @@ class Book < Content
 
   delegate :first_lesson, to: :first_chapter
 
+  def description_teaser
+    description.markdown_paragraphs.first
+  end
+
   def first_chapter
     chapters.first
   end
