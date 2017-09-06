@@ -1,6 +1,5 @@
 class Exercise < ActiveRecord::Base
   include WithNumber,
-          WithTeaser,
           WithAssignments,
           WithLocale,
           FriendlyName,

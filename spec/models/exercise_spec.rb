@@ -282,18 +282,6 @@ describe Exercise do
     end
   end
 
-  describe '#full_text_search' do
-    let!(:tagged_exercise) { create(:exercise, tag_list: ['foo'], name: 'bar') }
-    let!(:untagged_exercise) { create(:exercise, name: 'baz') }
-
-    it { expect(Exercise.full_text_search('foo')).to eq [tagged_exercise] }
-
-    it { expect(Exercise.full_text_search('bar')).to eq [tagged_exercise] }
-    it { expect(Exercise.full_text_search('baz')).to eq [untagged_exercise] }
-
-    it { expect(Exercise.full_text_search('foobaz')).to eq [] }
-  end
-
   describe '#guide_done_for?' do
 
     context 'when it does not belong to a guide' do

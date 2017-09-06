@@ -1,6 +1,5 @@
 class Guide < ActiveRecord::Base
-  include WithTeaser,
-          WithLocale,
+  include WithLocale,
           WithStats,
           WithExpectations,
           WithLanguage,
@@ -8,7 +7,7 @@ class Guide < ActiveRecord::Base
 
   include WithUsages
 
-  markdown_on :description, :teaser, :corollary
+  markdown_on :description, :corollary
 
   numbered :exercises
   has_many :exercises, -> { order(number: :asc) }, dependent:  :delete_all
