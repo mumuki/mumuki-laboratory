@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     resources :units, only: :show
 
     # All users
+    resources :chapters, only: :show
+
+    # All users
     resources :appendices, only: :show
 
     # All users

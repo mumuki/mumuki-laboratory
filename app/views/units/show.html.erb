@@ -12,23 +12,17 @@
 
 </div>
 
-<% if @unit.lessons.present? %>
+<% if @unit.chapters.present? %>
 <div>
   <h3><%= t(:content) %></h3>
 
-  <% @unit.lessons.each do |lesson| %>
-    <h4><%= t(:lesson_number, number: lesson.number) %>: <%= link_to_path_element lesson, mode: :plain %></h4>
-    <%= render partial: 'layouts/progress_listing', locals: {exercises: lesson.exercises} %>
+  <% @unit.chapters.each do |chapter| %>
+    <h4><%= t(:lesson_number, number: chapter.number) %>: <%= link_to_path_element chapter, mode: :plain %></h4>
+      <% chapter.lessons.each do |lesson| %>
+        <%= lesson.name %>
+      <% end %>
+
   <% end %>
 </div>
 <% end %>
 
-
-<% if @unit.appendix.present? %>
-  <div>
-    <h3><%= t(:appendix) %></h3>
-    <p>
-      <%= t(:appendix_teaser, link: unit_appendix_path(@unit)).html_safe %>
-    </p>
-  </div>
-<% end %>

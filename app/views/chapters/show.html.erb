@@ -1,0 +1,31 @@
+<%= content_for :breadcrumbs do %>
+  <%= breadcrumbs @chapter %>
+<% end %>
+
+<div>
+  <h1><%= t(:chapter_number, number: @chapter.number) %> <%= @chapter.name %></h1>
+
+  <%= @chapter.description_html %>
+
+</div>
+
+<% if @chapter.lessons.present? %>
+<div>
+  <h3><%= t(:content) %></h3>
+
+  <% @chapter.lessons.each do |lesson| %>
+    <h4><%= t(:lesson_number, number: lesson.number) %>: <%= link_to_path_element lesson, mode: :plain %></h4>
+    <%= render partial: 'layouts/progress_listing', locals: {exercises: lesson.exercises} %>
+  <% end %>
+</div>
+<% end %>
+
+
+<% if @chapter.appendix.present? %>
+  <div>
+    <h3><%= t(:appendix) %></h3>
+    <p>
+      <%= t(:appendix_teaser, link: appendix_path(@chapter)).html_safe %>
+    </p>
+  </div>
+<% end %>
