@@ -4,7 +4,6 @@ ruby '~> 2.3'
 gem 'rails', '~> 4.1.14'
 
 gem 'pg', '~> 0.18.0'
-gem 'pg_search', '~> 1.0'
 
 gem 'uglifier', '~> 2.7'
 

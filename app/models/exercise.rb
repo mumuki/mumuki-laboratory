@@ -1,15 +1,5 @@
 class Exercise < ActiveRecord::Base
-  INDEXED_ATTRIBUTES = {
-
-    against: [:name, :description, :tag_list],
-    associated_against: {
-      language: [:name],
-      guide: [:name]
-    },
-  }
-
   include WithNumber,
-          WithSearch,
           WithTeaser,
           WithAssignments,
           WithLocale,

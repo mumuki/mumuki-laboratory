@@ -1,13 +1,5 @@
 class Guide < ActiveRecord::Base
-  INDEXED_ATTRIBUTES = {
-      against: [:name, :description],
-      associated_against: {
-          language: [:name]
-      }
-  }
-
-  include WithSearch,
-          WithTeaser,
+  include WithTeaser,
           WithLocale,
           WithStats,
           WithExpectations,
