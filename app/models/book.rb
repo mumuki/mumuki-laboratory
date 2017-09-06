@@ -18,7 +18,7 @@ class Book < Content
 
     rebuild! chapters: json['chapters'].map { |it| Topic.find_by!(slug: it).as_chapter_of(self) }
 
-    Organization.all.each { |org| org.reindex_usages! }
+    Organization.reindex_all!
   end
 
   def as_unit_of(organization)

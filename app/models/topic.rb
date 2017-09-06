@@ -27,7 +27,7 @@ class Topic < Content
     self.assign_attributes json.except('lessons', 'id', 'description', 'teacher_info')
     self.description = json['description'].squeeze(' ')
     rebuild! lessons: json['lessons'].map { |it| lesson_for(it) }
-    Organization.all.each { |org| org.reindex_usages! }
+    Organization.reindex_all!
   end
 
   def as_chapter_of(book)

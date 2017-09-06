@@ -95,7 +95,6 @@ class Organization < ActiveRecord::Base
     assignments.each { |assignment| assignment.notify! }
   end
 
-
   class << self
     def central
       find_by name: 'central'
@@ -104,6 +103,10 @@ class Organization < ActiveRecord::Base
     def import_from_json!(json)
       json = json.deep_symbolize_keys
       prepare_by(name: json[:name]) { |it| it.import_from_json! json }
+    end
+
+    def reindex_all!
+      all.each { |org| org.reindex_usages! }
     end
   end
 end
