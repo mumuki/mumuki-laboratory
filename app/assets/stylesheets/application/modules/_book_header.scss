@@ -6,7 +6,7 @@
   }
 
   h2 {
-    margin: 10px 0px 15px;
+    margin: 10px 0 15px;
     font-size: 35px;
   }
 
@@ -15,6 +15,7 @@
   }
 
   img {
-    height: 75px;
+    max-height: 75px;
+    max-width: 100%;
   }
 }
