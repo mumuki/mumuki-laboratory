@@ -18,7 +18,7 @@ es:
   bibliotheca: Biblioteca
   chapter: Capítulo
   chapter_finished_html: ¡Terminaste %{chapter}! ¡Felicitaciones!
-  chapter_number: 'Capítulo %{number}:'
+  chapter_number: 'Capítulo %{number}'
   classroom: Aula
   clear_console: Reiniciar consola
   confirm: Confirmar
