@@ -17,12 +17,12 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <script type="text/javascript">
-      window.mumukiLocale = <%= raw Organization.current.locale_json %>;
+    window.mumukiLocale = <%= raw Organization.current.locale_json %>;
   </script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <script type="text/javascript" src="<%= extension_javascript_url %>" defer data-turbolinks-track="reload"></script>
   <script type="text/javascript">
-      moment.locale('<%= Organization.current.locale %>');
+    moment.locale('<%= Organization.current.locale %>');
   </script>
   <%= login_form.header_html %>
 </head>
@@ -33,10 +33,20 @@
 
 <div class="container">
   <nav class="mu-navbar">
-    <div class="mu-navbar-breadcrumb">
+    <div class="mu-navbar-breadcrumb hidden-xs">
       <ul class="mu-breadcrumb-list">
         <%= yield :breadcrumbs %>
       </ul>
+    </div>
+    <div class="dropdown hamburguer-breadcrumb hidden-sm hidden-md hidden-lg">
+      <% if content_for? :breadcrumbs %>
+          <span class="hamburguer" id="profileDropdown" data-toggle="dropdown">
+            <i class="fa fa-bars"></i>
+          </span>
+          <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="profileDropdown">
+            <%= yield :breadcrumbs %>
+          </ul>
+      <% end %>
     </div>
     <div class="mu-navbar-avatar">
       <% if current_user? %>

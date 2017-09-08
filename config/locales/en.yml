@@ -17,7 +17,7 @@ en:
   bibliotheca: Bibliotheca
   chapter: Chapter
   chapter_finished_html: You have finished %{chapter}!
-  chapter_number: Chapter %{number} -
+  chapter_number: Chapter %{number}
   classroom: Classroom
   clear_console: Clear console
   confirm: Confirm
@@ -168,3 +168,4 @@ en:
   working: "Working"
   you_must_sign_in_before_submitting: You must sign in before submitting your solutions
   fullscreen: "Fullscreen"
+  get_messages: "View messages"

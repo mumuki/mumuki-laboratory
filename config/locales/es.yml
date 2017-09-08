@@ -18,7 +18,7 @@ es:
   bibliotheca: Biblioteca
   chapter: Capítulo
   chapter_finished_html: ¡Terminaste %{chapter}! ¡Felicitaciones!
-  chapter_number: 'Capítulo %{number}:'
+  chapter_number: 'Capítulo %{number}'
   classroom: Aula
   clear_console: Reiniciar consola
   confirm: Confirmar
@@ -189,3 +189,4 @@ es:
   working: "Procesando"
   you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
   fullscreen: "Pantalla completa"
+  get_messages: "Ver mensajes"

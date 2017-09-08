@@ -11,12 +11,13 @@
 <% end %>
 
 <div class="row">
-  <div class="mu-inline-block-right">
+  <div class="mu-inline-block-right hidden-xs">
     <h1><%= language_icon @exercise.language %></h1>
   </div>
   <div class="mu-inline-block-left">
     <h1>
-      <%= t(:exercise_number, number: @exercise.number) %>: <%= @exercise.name %>
+      <span class="hidden-xs"><%= t(:exercise_number, number: @exercise.number) %>:&nbsp;</span>
+      <span><%= @exercise.name %></span>
     </h1>
   </div>
 </div>
