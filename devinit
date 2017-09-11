@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+echo ''
+echo '.____          ___.                        __                       '
+echo '|    |   _____ \_ |__   ________________ _/  |_  ___________ ___.__.'
+echo '|    |   \__  \ | __ \ /  _ \_  __ \__  \\   __\/  _ \_  __ <   |  |'
+echo '|    |___ / __ \| \_\ (  <_> )  | \// __ \|  | (  <_> )  | \/\___  |'
+echo '|_______ (____  /___  /\____/|__|  (____  /__|  \____/|__|   / ____|'
+echo '        \/    \/    \/                  \/                   \/     '
+echo ''
+
+echo "[MumukiDevstart::Laboratory] Installing dependencies...."
+bundle install --quiet
+
+echo "[MumukiDevstart::Laboratory] Preparing database...."
+MUMUKI_BIBLIOTHECA_API_URL=http://bibliotheca-api.mumuki.io MUMUKI_THESAURUS_URL=http://thesaurus.mumuki.io bundle exec rake db:drop db:create db:schema:load db:seed
