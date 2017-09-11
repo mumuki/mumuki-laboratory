@@ -69,9 +69,8 @@ sudo -u postgres psql <<EOF
   create role mumuki with createdb login password 'mumuki';
 EOF
 
-# create schema and initial data
-bundle install
-bundle exec rake db:create db:schema:load db:seed
+# create schema and initial development data
+./devinit
 ```
 
 
