@@ -1,12 +1,15 @@
 <%= render layout: 'layouts/error' do %>
+    <div class="header">
+      <img src="/error_403.svg">
+    </div>
     <div class="body">
       <p>
         <%= t(:forbidden_explanation, error: link_to_status_codes(403)).html_safe %>
       </p>
+      <p>
+        <%= t(:contact_administrator, link: mail_to_administrator).html_safe %>
+      </p>
     </div>
-    <p>
-      <%= t(:contact_administrator, link: mail_to_administrator).html_safe %>
-    </p>
 <% end %>
 
 

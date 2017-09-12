@@ -62,7 +62,7 @@ es:
   failed: Tu solución no pasó las pruebas
   feedback: Problemas que encontramos
   first_name: Nombre
-  forbidden_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no tenés autorización para ver este contenido. ¿Puede que hayas ingresado con una cuenta incorrecta?
+  forbidden_explanation: ¡Ups! <br> Esto es lo que se conoce como <span class="error-link">%{error}</span>. <br> Es decir que no tenés autorización para ver este contenido. <br> ¿Puede que hayas ingresado con una cuenta incorrecta?
   gone_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que ya no podés ver este examen.
   guide: Lección
   guide_created: Guía creada exitosamente

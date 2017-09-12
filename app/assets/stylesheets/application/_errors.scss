@@ -1,10 +1,29 @@
 .error-message {
-  text-align: center;
   color: #0B465D;
-  width: 500px;
+  width: 100%;
   margin: auto;
+  text-align: center;
 }
-.error-message .header img {
-  display: block;
-  margin: 30px auto;
+
+.error-message {
+
+  .header {
+    img {
+      display: block;
+      margin: 30px auto;
+      max-height: 350px;
+    }
+  }
+  .body {
+    max-width: 500px;
+    margin: auto;
+    p {
+      color: darken($mu-color-disabled, 5%);
+      font-size: 89%;
+      .error-link {
+        text-transform: uppercase;
+      }
+    }
+  }
 }
+
