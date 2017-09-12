@@ -5,7 +5,7 @@ module EditorTabsHelper
 
   def console_tab
     "<li role='presentation'>
-        <a data-target='#console' aria-controls='console' role='tab' data-toggle='tab' class='editor-tab'>
+        <a data-target='#console' aria-controls='console' tabindex='0' role='tab' data-toggle='tab' class='editor-tab'>
           #{fa_icon 'terminal'}#{t :console }
         </a>
      </li>".html_safe
@@ -13,7 +13,7 @@ module EditorTabsHelper
 
   def messages_tab(exercise, organization = Organization.current)
     "<li id='messages-tab' role='presentation'>
-        <a data-target='#messages' aria-controls='console' role='tab' data-toggle='tab' class='editor-tab'>
+        <a data-target='#messages' tabindex='0' aria-controls='console' role='tab' data-toggle='tab' class='editor-tab'>
           #{fa_icon 'comments-o'} #{t :messages }
         </a>
      </li>".html_safe if organization.raise_hand_enabled? && exercise.has_messages_for?(current_user)

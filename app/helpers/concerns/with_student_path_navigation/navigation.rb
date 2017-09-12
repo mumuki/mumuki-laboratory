@@ -26,6 +26,7 @@ module WithStudentPathNavigation
       else
         base_classes
       end
+      .merge role: "button"
     end
 
     def method_missing(name, *args, &block)

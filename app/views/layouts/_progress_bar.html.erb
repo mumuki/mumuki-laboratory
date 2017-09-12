@@ -1,6 +1,6 @@
 <div class="progress-list-flex">
   <% guide.exercises.each do |e| %>
-    <a href="<%= exercise_path(e)%>"  title="<%= e.navigable_name %>"  class="<%= class_for_progress_list_item(e, e == actual)%>">
+    <a href="<%= exercise_path(e)%>" aria-label="<%= e.navigable_name %>" title="<%= e.navigable_name %>"  class="<%= class_for_progress_list_item(e, e == actual)%>">
     </a>
   <% end %>
 </div>

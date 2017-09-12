@@ -5,7 +5,7 @@ module BreadcrumbsHelper
   end
 
   def home_breadcrumb
-    "<li class='mu-breadcrumb-list-item brand '>#{link_to '<i class="da da-mumuki"></i>'.html_safe, root_path }</li>".html_safe
+    "<li class='mu-breadcrumb-list-item brand '>#{link_to '<i class="da da-mumuki" aria-label="Home"></i>'.html_safe, root_path }</li>".html_safe
   end
 
   def breadcrumb_item_class(last)

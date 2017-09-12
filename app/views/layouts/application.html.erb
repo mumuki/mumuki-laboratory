@@ -59,18 +59,18 @@
           </span>
           </div>
           <div class="dropdown">
-          <span id="profileDropdown" data-toggle="dropdown">
+          <span id="profileDropdown" data-toggle="dropdown" aria-label="<%= t(:user) %>" role="menu" tabindex="0">
             <%= image_tag(current_user.image_url, height: 40, class: 'img-circle') %>
           </span>
             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
               <li>
-                <%= link_to fixed_fa_icon('user-o', text: t(:profile)), user_path %>
+                <%= link_to fixed_fa_icon('user-o', text: t(:profile)), user_path, role:"menuitem" %>
               </li>
               <li><%= link_to_classroom %></li>
               <li><%= link_to_bibliotheca %></li>
               <li><%= link_to_office %></li>
               <li class="divider"></li>
-              <li><%= link_to(t(:sign_out), logout_path(origin: url_for)) %></li>
+              <li><%= link_to(t(:sign_out), logout_path(origin: url_for), role:"menuitem") %></li>
             </ul>
           </div>
       <% else %>
@@ -124,10 +124,10 @@
       </div>
 
       <div id="footer-social" class="col-md-4 text-right">
-        <a class="fa fa-facebook social-icon" href="https://www.facebook.com/MumukiProject" target="_blank"></a>
-        <a class="fa fa-twitter social-icon" href="https://twitter.com/MumukiProject" target="_blank"></a>
-        <a class="fa fa-github social-icon" href="https://github.com/mumuki" target="_blank"></a>
-        <a class="fa fa-linkedin social-icon" href="https://www.linkedin.com/company/mumuki-project" target="_blank"></a>
+        <a class="fa fa-facebook social-icon" aria-label="Facebook" href="https://www.facebook.com/MumukiProject" target="_blank"></a>
+        <a class="fa fa-twitter social-icon" aria-label="Twitter" href="https://twitter.com/MumukiProject" target="_blank"></a>
+        <a class="fa fa-github social-icon" aria-label="Github" href="https://github.com/mumuki" target="_blank"></a>
+        <a class="fa fa-linkedin social-icon" aria-label="LinkedIn" href="https://www.linkedin.com/company/mumuki-project" target="_blank"></a>
       </div>
 
     </div>
