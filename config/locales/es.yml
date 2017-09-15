@@ -71,6 +71,7 @@ es:
   here: acá
   hidden_done: '¡Muy bien!'
   history: Historial
+  home: Inicio
   hour: hora
   hours: horas
   invitation: Invitación a curso
@@ -183,6 +184,7 @@ es:
   upload_solution: "Subir solución"
   uploading_solution: "Subiendo solución"
   user_data_updated: Tus datos se actualizaron correctamente
+  user: Usuario
   username: Nombre de usuario
   want_permissions: El siguiente usuario requiere permisos
   welcome_back_after_redirection: ¡Qué bueno verte de nuevo! Acá es donde estuviste la última vez

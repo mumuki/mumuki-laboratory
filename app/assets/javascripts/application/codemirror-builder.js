@@ -16,6 +16,7 @@ var mumuki = mumuki || {};
   CodeMirrorBuilder.prototype = {
     setupEditor: function () {
       this.editor = CodeMirror.fromTextArea(this.textarea, {
+          autofocus: false,
           tabSize: 2,
           lineNumbers: true,
           lineWrapping: true,
