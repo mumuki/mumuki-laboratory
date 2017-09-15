@@ -64,13 +64,13 @@
           </span>
             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
               <li>
-                <%= link_to fixed_fa_icon('user-o', text: t(:profile)), user_path, role:"menuitem" %>
+                <%= link_to fixed_fa_icon('user-o', text: t(:profile)), user_path, role: 'menuitem' %>
               </li>
               <li><%= link_to_classroom %></li>
               <li><%= link_to_bibliotheca %></li>
               <li><%= link_to_office %></li>
               <li class="divider"></li>
-              <li><%= link_to(t(:sign_out), logout_path(origin: url_for), role:"menuitem") %></li>
+              <li><%= link_to(t(:sign_out), logout_path(origin: url_for), role: 'menuitem') %></li>
             </ul>
           </div>
       <% else %>

@@ -17,6 +17,6 @@ module MenuBarHelper
     app = Mumukit::Platform.application_for(app_name)
     url = app.organic_url(Organization.current.name)
 
-    link_to fixed_fa_icon(icon, text: t(app_name)), url, {role:"menuitem", tabindex:"-1"}
+    link_to fixed_fa_icon(icon, text: t(app_name)), url, role: 'menuitem', tabindex: '-1'
   end
 end
