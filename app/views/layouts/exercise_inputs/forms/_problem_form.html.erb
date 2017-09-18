@@ -37,11 +37,14 @@
     <% end %>
   </div>
   <div role="tabpanel" class="tab-pane mu-input-panel fade" id="console">
-    <div class="text-info"><%= t(:type_expressions_here) %></div>
     <div class="console">
     </div>
     <div class="submission-overlapped">
       <a class="console-reset submission-reset"><%= reset_button %></a>
+    </div>
+    <div class="field checkbox complementary complementary-checkbox mu-editor">
+      <input checked="checked" class="solution-choice" data-index="1" id="include_solution" type="checkbox">
+      <label for="include_solution"><p><%= t(:type_expressions_here) %></p></label>
     </div>
   </div>
   <div role="tabpanel" class="tab-pane mu-input-panel fade" id="visible-extra">

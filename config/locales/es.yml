@@ -176,7 +176,7 @@ es:
   test_results: Resultados de las pruebas
   time_left: Te quedan
   title: Título
-  type_expressions_here: Acá podés escribir expresiones para probar tu solución
+  type_expressions_here: Cargar la solución en la consola?
   unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no iniciaste sesión.
   uncategorized: No categorizado
   unknown: no resuelto
