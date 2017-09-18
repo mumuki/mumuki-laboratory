@@ -80,6 +80,7 @@ en:
   lesson_number: Lesson %{number}
   let_us_know: please let us know!
   listing_exercises: Listing exercises
+  load_solution_into_console: Load your solution into the console
   manual_evaluation_pending: Thanks for submitting your solution! It will be revised by the course teachers soon
   message: Message
   messages: Messages
@@ -157,7 +158,6 @@ en:
   test_results: Tests results
   time_left: You have
   title: Title
-  type_expressions_here: Load your solution into the console
   unauthorized_explanation: You have no permissions for this content. Maybe you logged in with another account.
   unmeet_expectations: "Goals that weren't met"
   upload_solution: Upload Solution

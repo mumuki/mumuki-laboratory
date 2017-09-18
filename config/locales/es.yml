@@ -89,6 +89,7 @@ es:
   lesson_number: Lección %{number}
   let_us_know: ¡Por favor avisanos!
   listing_exercises: Listado de ejercicios
+  load_solution_into_console: Cargar la solución en la consola
   manual_evaluation_pending: ¡Gracias por enviar tu solución! Tus docentes la corregirán pronto
   message: Mensaje
   messages: Mensajes
@@ -176,7 +177,6 @@ es:
   test_results: Resultados de las pruebas
   time_left: Te quedan
   title: Título
-  type_expressions_here: Cargar la solución en la consola
   unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no iniciaste sesión.
   uncategorized: No categorizado
   unknown: no resuelto
