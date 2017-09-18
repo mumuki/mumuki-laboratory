@@ -63,7 +63,7 @@ var mumuki = mumuki || {};
     },
     get content() {
       var firstEditor = mumuki.page.editors[0];
-      if (firstEditor)
+      if (firstEditor && $("#include_solution").prop("checked"))
         return firstEditor.getValue();
       else
         return '';

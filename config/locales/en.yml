@@ -157,7 +157,7 @@ en:
   test_results: Tests results
   time_left: You have
   title: Title
-  type_expressions_here: You can type expressions here to test your solution
+  type_expressions_here: Load your solution into the console
   unauthorized_explanation: You have no permissions for this content. Maybe you logged in with another account.
   unmeet_expectations: "Goals that weren't met"
   upload_solution: Upload Solution
