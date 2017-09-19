@@ -1,75 +1,10 @@
-#console {
+.mu-overlapped-container {
   position: relative;
 }
 
-.editor-code {
-  position: relative;
-  min-height: 300px;
-  max-height: none;
-}
-
-.submission-overlapped {
+.mu-overlapped {
   z-index: 10;
   position: absolute;
   bottom: 0;
   right: 0;
-}
-
-.submission-reset {
-  padding: 5px;
-  cursor: pointer;
-}
-
-.editor-resize {
-  position: absolute;
-  padding: 5px;
-  cursor: pointer;
-  z-index: 10;
-  top: 0;
-  right: 0;
-  font-size: 0.5em;
-}
-
-body:not(.fullscreen) {
-  .CodeMirror-wrap,
-  .CodeMirror-scroll {
-    height: auto;
-    min-height: 300px;
-  }
-}
-
-body.fullscreen {
-  overflow: hidden;
-  form.new_solution {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 120;
-    padding: 0;
-    margin: 0;
-    height: 100vh;
-    background: white;
-    .editor-code {
-      margin: 0;
-    }
-    .btn-submit {
-      display: none;
-    }
-    .CodeMirror-wrap {
-      margin: 0;
-      height: 100vh;
-      width: 100vw;
-    }
-    .CodeMirror-scroll {
-      height: inherit;
-      overflow-y: scroll;
-      overflow-x: auto;
-    }
-    .submission-reset,
-    .editor-resize {
-      margin-right: 15px;
-    }
-  }
 }

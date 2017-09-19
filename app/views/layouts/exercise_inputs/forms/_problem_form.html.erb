@@ -37,16 +37,18 @@
     <% end %>
   </div>
   <div role="tabpanel" class="tab-pane mu-input-panel fade" id="console">
-    <div class="console">
+    <div class="mu-overlapped-container">
+      <div class="console">
+      </div>
+      <div class="mu-overlapped">
+        <a class="console-reset submission-reset"><%= reset_button %></a>
+      </div>
     </div>
-    <div class="submission-overlapped">
-      <a class="console-reset submission-reset"><%= reset_button %></a>
-    </div>
-  </div>
     <div class="field checkbox complementary complementary-checkbox mu-editor">
       <input checked="checked" class="solution-choice" data-index="1" id="include_solution" type="checkbox">
       <label for="include_solution"><p><%= t(:load_solution_into_console) %></p></label>
     </div>
+  </div>
   <div role="tabpanel" class="tab-pane mu-input-panel fade" id="visible-extra">
     <%= @exercise.extra_preview_html %>
   </div>
