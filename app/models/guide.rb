@@ -16,6 +16,14 @@ class Guide < ActiveRecord::Base
 
   enum type: [:learning, :practice]
 
+  def clear_progress!(user)
+    transaction do
+      exercises.each do |exercise|
+        exercise.assignment_for(user).destroy!  
+      end
+    end
+  end
+
   def lesson
     usage_in_organization_of_type Lesson
   end
