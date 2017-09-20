@@ -2,7 +2,6 @@ class ExercisesController < ApplicationController
   include WithExerciseIndex
   include WithExamsValidations
 
-  before_action :set_exercises, only: :index
   before_action :set_guide, only: :show
   before_action :set_default_content, only: :show, if: :current_user?
   before_action :set_assignment, only: :show, if: :current_user?
@@ -11,9 +10,6 @@ class ExercisesController < ApplicationController
 
   def show
     @solution = @exercise.new_solution if current_user?
-  end
-
-  def index
   end
 
   def show_by_slug

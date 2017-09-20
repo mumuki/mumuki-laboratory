@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
 
     # All users
-    resources :exercises, only: [:show, :index] do
+    resources :exercises, only: :show do
       # Current user
       resources :confirmations, controller: 'exercise_confirmations', only: :create
       resources :solutions, controller: 'exercise_solutions', only: :create
@@ -19,10 +19,10 @@ Rails.application.routes.draw do
     end
 
     # All users
-    resources :guides, only: [:show, :index]
-    resources :lessons, only: [:show]
-    resources :complements, only: [:show]
-    resources :exams, only: [:show]
+    resources :guides, only: :show
+    resources :lessons, only: :show
+    resources :complements, only: :show
+    resources :exams, only: :show
 
     # All users
     resource :user, only: :show
