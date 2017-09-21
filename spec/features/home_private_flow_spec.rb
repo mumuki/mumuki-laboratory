@@ -17,6 +17,11 @@ feature 'private org' do
 
       expect(page).not_to have_text('Nobody created a guide for this search yet')
     end
+    scenario 'should have access' do
+      visit '/join/1234'
+
+      expect(page).not_to have_text('You are not allowed to see this content')
+    end
   end
 
   context 'logged user' do
