@@ -1,4 +1,5 @@
 class Book < Content
+  has_many :progresses, as: :item
   numbered :chapters
   aggregate_of :chapters
 

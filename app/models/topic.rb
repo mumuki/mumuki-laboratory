@@ -8,6 +8,7 @@ class Topic < Content
   has_many :exercises, -> { order('exercises.number') }, through: :guides
 
   markdown_on :appendix
+  has_many :progresses, as: :item
 
   def pending_lessons(user)
     guides.

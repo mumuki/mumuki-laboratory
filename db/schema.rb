@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830020507) do
+ActiveRecord::Schema.define(version: 20170921205209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -204,6 +204,18 @@ ActiveRecord::Schema.define(version: 20170830020507) do
 
   add_index "paths", ["category_id"], name: "index_paths_on_category_id", using: :btree
   add_index "paths", ["language_id"], name: "index_paths_on_language_id", using: :btree
+
+  create_table "progresses", force: true do |t|
+    t.integer  "status",     default: 0
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.string   "item_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "progresses", ["item_id", "item_type"], name: "index_progresses_on_item_id_and_item_type", using: :btree
+  add_index "progresses", ["user_id"], name: "index_progresses_on_user_id", using: :btree
 
   create_table "topics", force: true do |t|
     t.string   "name"

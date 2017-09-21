@@ -20,16 +20,20 @@ module WithStatus
     end
   end
 
+  def running!
+    update! running_state
+  end
+
   def passed!
     update! status: Status::Passed
   end
 
-  def running!
-    update! status: Status::Running, result: nil, test_results: nil, expectation_results: []
-  end
-
   def errored!(message)
     update! result: message, status: Status::Errored
+  end
+
+  def running_state
+    {status: Status::Running}
   end
 
 end

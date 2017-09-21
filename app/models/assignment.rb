@@ -81,6 +81,11 @@ class Assignment < ActiveRecord::Base
     end
   end
 
+
+  def running_state
+    super.merge result: nil, test_results: nil, expectation_results: []
+  end
+
   private
 
   def update_submissions_count!
