@@ -1,5 +1,4 @@
 class InvitationsController < ApplicationController
-  before_action :authenticate!
   before_action :set_invitation!
 
   def show
@@ -11,6 +10,10 @@ class InvitationsController < ApplicationController
     current_user.update! user_params
     current_user.notify_changed!
     redirect_to_organization!
+  end
+
+  def authorize_if_private!
+    # This controller must never be authenticated
   end
 
   private
