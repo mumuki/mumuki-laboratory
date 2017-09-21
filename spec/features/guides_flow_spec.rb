@@ -74,20 +74,6 @@ feature 'Guides Flow' do
         expect(page).to have_text('An awesome guide')
         expect(page).to have_text('Content')
       end
-
-      scenario 'visit guides from search page, and starts practicing' do
-        visit '/guides'
-
-        click_on 'awesomeGuide'
-
-        expect(page).to have_text('awesomeGuide')
-        expect(page).to have_text('An awesome guide')
-        expect(page).to have_text('Content')
-
-        click_on 'Start this lesson'
-
-        expect(page).to have_text('Description of foo')
-      end
     end
 
     context 'with authors' do
