@@ -10,8 +10,8 @@ describe Guide do
 
     before do
       guide.exercises = [an_exercise]
-      an_exercise.submit_solution! extra_user, content: 'foo(X) :- not(bar(X))'
-      another_exercise.submit_solution! extra_user, content: 'foo(X) :- not(bar(X))'
+      an_exercise.submit_solution! extra_user
+      another_exercise.submit_solution! extra_user
       guide.clear_progress!(extra_user)
     end
 

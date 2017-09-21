@@ -19,7 +19,7 @@ class Guide < ActiveRecord::Base
   def clear_progress!(user)
     transaction do
       exercises.each do |exercise|
-        exercise.assignment_for(user).destroy!  
+        exercise.assignment_for(user)&.destroy!
       end
     end
   end
