@@ -5,14 +5,18 @@ describe Guide do
   let(:guide) { create(:guide) }
 
   describe '#clear_progress!' do
-    let(:student) { create :user }
-    let(:more_clauses) { create(:exercise, name: 'More Clauses') }
+    let(:an_exercise) { create(:exercise) }
+    let(:another_exercise) { create(:exercise) }
 
-    before { more_clauses.submit_solution! student, content: 'foo(X) :- not(bar(X))' }
+    before do
+      guide.exercises = [an_exercise]
+      an_exercise.submit_solution! extra_user, content: 'foo(X) :- not(bar(X))'
+      another_exercise.submit_solution! extra_user, content: 'foo(X) :- not(bar(X))'
+      guide.clear_progress!(extra_user)
+    end
 
-    before { guide.clear_progress!(student) }
-
-    it { expect(student.reload.assignments).to be_empty }
+    it 'destroys the guides assignments for the given user' do expect(an_exercise.assignment_for(extra_user)).to be_nil end
+    it 'does not destroy other guides assignments' do expect(another_exercise.assignment_for(extra_user)).to be_truthy end
   end
 
   describe '#submission_contents_for' do
