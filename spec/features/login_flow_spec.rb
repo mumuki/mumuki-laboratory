@@ -35,7 +35,7 @@ feature 'Login Flow' do
   end
 
   scenario 'can login in non root' do
-    visit '/guides/'
+    visit "/chapters/#{chapter.id}"
 
     click_on 'Sign in'
 

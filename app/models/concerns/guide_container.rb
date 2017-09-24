@@ -6,7 +6,6 @@ module GuideContainer
 
     delegate :name,
              :language,
-             :teaser_html,
              :search_tags,
              :exercises,
              :first_exercise,

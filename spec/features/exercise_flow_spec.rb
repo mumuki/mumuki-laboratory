@@ -26,18 +26,6 @@ feature 'Exercise Flow' do
   before { reindex_current_organization! }
 
   context 'not logged user' do
-    scenario 'visit exercise from search' do
-      visit '/exercises'
-
-      click_on 'Succ1'
-
-      expect(page).to have_text('Succ1')
-      expect(page).to_not have_text('Console')
-      expect(page).to_not have_text('Solution')
-      expect(page).to have_text('need a hint?')
-      expect(page).to have_text('Description of Succ1')
-    end
-
     scenario 'visit exercise by slug' do
       visit "/exercises/#{problem_1.slug}"
 
