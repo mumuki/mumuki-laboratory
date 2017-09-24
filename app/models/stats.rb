@@ -1,3 +1,4 @@
+
 class Stats
   include ActiveModel::Model
 
@@ -39,11 +40,5 @@ class Stats
       accum[status.group.to_sym] += 1
       accum
     end)
-  end
-
-  private
-
-  def ratio(x)
-    (100 * x / total.to_f).round(2)
   end
 end
