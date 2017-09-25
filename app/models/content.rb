@@ -7,4 +7,3 @@ class Content < ActiveRecord::Base
   include WithUsages
 
 end
-
