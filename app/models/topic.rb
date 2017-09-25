@@ -1,10 +1,4 @@
-class Topic < ActiveRecord::Base
-
-  include WithLocale,
-          WithSlug
-
-  validates_presence_of :name, :description
-
+class Topic < Content
   numbered :lessons
   aggregate_of :lessons
 
@@ -13,13 +7,7 @@ class Topic < ActiveRecord::Base
   has_many :guides, -> { order('lessons.number') }, through: :lessons
   has_many :exercises, -> { order('exercises.number') }, through: :guides
 
-  include WithUsages
-
-  markdown_on :appendix, :description, :description_teaser
-
-  def description_teaser
-    description.markdown_paragraphs.first
-  end
+  markdown_on :appendix
 
   def pending_lessons(user)
     guides.

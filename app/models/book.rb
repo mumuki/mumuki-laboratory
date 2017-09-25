@@ -1,15 +1,9 @@
-class Book < ActiveRecord::Base
-  validates_presence_of :name, :locale
-
-  include WithSlug
-
+class Book < Content
   numbered :chapters
   aggregate_of :chapters
 
   has_many :chapters, -> { order(number: :asc) }, dependent: :delete_all
   has_many :complements, dependent: :delete_all
-
-  markdown_on :description
 
   delegate :first_lesson, to: :first_chapter
 
