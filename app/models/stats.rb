@@ -4,28 +4,12 @@ class Stats
 
   attr_accessor :passed, :passed_with_warnings, :failed, :unknown
 
-  def total
-    submitted + unknown
-  end
-
-  def submitted
-    failed + resolved
-  end
-
-  def pending
-    failed + unknown
-  end
-
-  def resolved
-    passed + passed_with_warnings
-  end
-
   def done?
-    pending == 0
+    failed + unknown == 0
   end
 
   def started?
-    submitted > 0
+    failed + passed + passed_with_warnings > 0
   end
 
   def to_h(&key)
