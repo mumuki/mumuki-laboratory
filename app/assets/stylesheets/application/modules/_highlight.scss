@@ -20,68 +20,121 @@ pre {
   color: $mu-color-disabled;
 }
 
-/* identifier */
+/* See https://github.com/jneen/rouge/wiki/List-of-tokens */
+
+$mu-color-highlight-background: #f0f0f5;
+
+$mu-color-highlight-identifier: black;
+$mu-color-highlight-keyword: $mu-color-info;
+$mu-color-highlight-literal: #369434;
+$mu-color-highlight-operator: $mu-color-complementary;
+$mu-color-highlight-comment: grey;
+$mu-color-highlight-punctuation: black;
+$mu-color-highlight-text-whitespace: #bbbbbb;
+$mu-color-highlight-string-interpolation: #d01040;
+
+pre {
+  background-color: $mu-color-highlight-background;
+}
+
+.mu-highlight-identifier,
+.na, .nb, .nc, .no, .nd, .ni, .bp, .vc, .vg, .vi, .nx, .nv,
+.nn, .nt,
+.ace_function,
+.ace_variable,
+.ace_parameter,
+.ace_identifier,
+.ne,
+.nf,
+.nl,
+.cm-variable,
+.cm-variable-2,
+.cm-variable-3,
+.cm-attribute {
+  color: $mu-color-highlight-identifier !important;
+}
+
 .cm-def {
-  color: black !important;
+  color: $mu-color-highlight-identifier !important;
+  font-weight: bold;
 }
 
-/* keyword */
+.mu-highlight-keyword,
+.k, .kn, .kp, .kr, .kt, .kd, .ace_keyword, .ace_type,
 .cm-keyword {
-  color: $brand-info !important;
+  color: $mu-color-highlight-keyword !important;
   font-weight: bold !important;
 }
 
-/* literal */
-.cm-number, .cm-builtin {
-  color: #369434 !important;
+.mu-highlight-literal,
+.m, .mf, .mh, .mi, .mo,
+.s, .sb, .sc, .sd, .s2, .se, .sh, .sx, .sr, .s1, .ss,
+.kc,
+.il,
+.l,
+.ace_boolean, .ace_numeric,
+.ace_string, .ace_symbol,
+.ace_hexadecimal, .ace_character,
+.ace_decimal,
+.cm-string,
+.cm-string-2,
+.cm-number,
+.cm-builtin,
+.cm-type {
+  color: $mu-color-highlight-literal !important;
 }
 
-/* operator */
+.mu-highlight-operator,
+.ow, .o,
+.ace_operator,
+.ace_meta.ace_rule.ace_definition.ace_prolog,
 .cm-operator {
-  color: $brand-complementary !important;
+  color: $mu-color-highlight-operator !important;
   font-weight: bold !important;
 }
 
-/* comment */
+.mu-highlight-comment,
+.ace_comment, .c, .cm, .cp, .c1, .cs,
 .cm-comment {
-  color: grey !important;
+  color: $mu-color-highlight-comment !important;
 }
 
-/* Punctuation*/
+.mu-highlight-punctuation,
 .ace_punctuation,
 .ace_paren,
 .p,
 .ace_keyword.ace_operator.ace_definition.ace_prolog,
+.cm-bracket,
+.cm-punctuation,
 pre code {
   color: black !important;
   font-weight: normal !important;
 }
 
-/** Prolog Specific */
+$mu-color-highlight-prolog-variables: $mu-color-info;
+$mu-color-highlight-prolog-atoms: $mu-color-primary;
 
-/** Variables **/
+.mu-highlight-prolog-variables,
 .ace_variable.ace_prolog,
 .prolog .nv {
-  color: $brand-info !important;
+  color: $mu-color-highlight-prolog-variables !important;
   font-weight: normal !important;
 }
 
-/** Atoms */
+.mu-highlight-prolog-atoms,
 .ace_name.ace_prolog,
 .ace_atom.ace_prolog,
 .prolog .ss {
-  color: $brand-primary !important;
+  color: $mu-color-highlight-prolog-atoms !important;
   font-weight: normal !important;
 }
 
+.mu-highlight-text-whitespace,
 .w {
-  color: #bbbbbb
+  color: $mu-color-highlight-text-whitespace;
 }
 
-/* Text.Whitespace */
+.mu-highlight-string-interpolation,
 .si {
-  color: #d01040
+  color: $mu-color-highlight-string-interpolation;
 }
-
-/* Literal.String.Interpol */
-
