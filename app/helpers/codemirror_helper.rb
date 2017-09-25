@@ -14,6 +14,7 @@ module CodemirrorHelper
       mode/clike/clike.min.js
       mode/sql/sql.min.js
       mode/css/css.min.js
+      mode/shell/shell.min.js
       mode/xml/xml.min.js
       mode/htmlmixed/htmlmixed.min.js
       addon/edit/closebrackets.min.js

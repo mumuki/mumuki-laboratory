@@ -14,4 +14,7 @@
 
   CodeMirrorAlias('sql', 'text/x-sql');
 
+  CodeMirrorAlias('sh', 'text/x-sh');
+  CodeMirrorAlias('bash', 'text/x-sh');
+
 })();
