@@ -1,5 +1,5 @@
 // Parts from Ace; see <https://raw.githubusercontent.com/ajaxorg/ace/master/LICENSE>
-CodeMirror.defineMode("gobstones", function(cmCfg, modeCfg) {
+CodeMirror.defineMode("wollok", function(cmCfg, modeCfg) {
 
   // Fake define() function.
   var moduleHolder = Object.create(null);
@@ -507,39 +507,32 @@ CodeMirror.defineMode("gobstones", function(cmCfg, modeCfg) {
     });
     
 
-  define("gobstones_highlight_rules", function(require, exports, module) {
+  define("wollok_highlight_rules", function(require, exports, module) {
     "use strict";
     
     var oop = require("../lib/oop");
     var DocCommentHighlightRules = require("./doc_comment_highlight_rules").DocCommentHighlightRules;
     var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
     
-    var GobstonesHighlightRules = function() {
+    var WollokHighlightRules = function() {
     
+        // taken from http://download.oracle.com/javase/tutorial/java/nutsandbolts/_keywords.html
         var keywords = (
-        "program|procedure|function|interactive|if|then|else|switch|repeat|while|foreach|in|not|div|mod|Skip|return"
+        "test|describe|package|inherits|false|import|else|or|class|and|not|native|override|program|self|try|const|var|catch|object|super|throw|if|null|return|true|new|constructor|method|mixin"
         );
     
-        var buildinConstants = (
-            "False|True"
-        );
-    
+        var buildinConstants = ("null|assert|console");
     
         var langClasses = (
-            "Poner|Sacar|Mover|IrAlBorde|VaciarTablero|" +
-            "nroBolitas|hayBolitas|puedeMover|siguiente|previo|opuesto|minBool|maxBool|" +
-            "minDir|maxDir|minColor|maxColor"
-        );
-    
-        var supportType = (
-            "Verde|Rojo|Azul|Negro|Norte|Sur|Este|Oeste"
+            "Object|Pair|String|Boolean|Number|Integer|Double|Collection|Set|List|Exception|Range" +
+            "|StackTraceElement"
         );
     
         var keywordMapper = this.createKeywordMapper({
+            "variable.language": "self",
             "keyword": keywords,
             "constant.language": buildinConstants,
-            "support.function": langClasses,
-            "support.type": supportType
+            "support.function": langClasses
         }, "identifier");
     
         // regexp must not have capturing parentheses. Use (?:) instead.
@@ -551,21 +544,12 @@ CodeMirror.defineMode("gobstones", function(cmCfg, modeCfg) {
                     token : "comment",
                     regex : "\\/\\/.*$"
                 },
-                {
-                    token : "comment",
-                    regex : "\\-\\-.*$"
-                },
-                {
-                    token : "comment",
-                    regex : "#.*$"
-                },
                 DocCommentHighlightRules.getStartRule("doc-start"),
                 {
                     token : "comment", // multi line comment
                     regex : "\\/\\*",
                     next : "comment"
                 }, {
-    
                     token : "string", // single line
                     regex : '["](?:(?:\\\\.)|(?:[^"\\\\]))*?["]'
                 }, {
@@ -579,15 +563,15 @@ CodeMirror.defineMode("gobstones", function(cmCfg, modeCfg) {
                     regex : /[+-]?\d[\d_]*(?:(?:\.[\d_]*)?(?:[eE][+-]?[\d_]+)?)?[LlSsDdFfYy]?\b/
                 }, {
                     token : "constant.language.boolean",
-                    regex : "(?:True|False)\\b"
-                }, {
-                    token : "keyword.operator",
-                    regex : ":=|\\.\\.|,|;|\\|\\||\\/\\/|\\+|\\-|\\^|\\*|>|<|>=|=>|==|&&"
+                    regex : "(?:true|false)\\b"
                 }, {
                     token : keywordMapper,
                     // TODO: Unicode escape sequences
                     // TODO: Unicode identifiers
                     regex : "[a-zA-Z_$][a-zA-Z0-9_$]*\\b"
+                }, {
+                    token : "keyword.operator",
+                    regex : "===|&&|\\*=|\\.\\.|\\*\\*|#|!|%|\\*|\\?:|\\+|\\/|,|\\+=|\\-|\\.\\.<|!==|:|\\/=|\\?\\.|\\+\\+|>|=|<|>=|=>|==|\\]|\\[|\\-=|\\->|\\||\\-\\-|<>|!=|%=|\\|"
                 }, {
                     token : "lparen",
                     regex : "[[({]"
@@ -602,10 +586,11 @@ CodeMirror.defineMode("gobstones", function(cmCfg, modeCfg) {
             "comment" : [
                 {
                     token : "comment", // closing comment
-                    regex : "\\*\\/",
+                    regex : ".*?\\*\\/",
                     next : "start"
                 }, {
-                    defaultToken : "comment"
+                    token : "comment", // comment spanning whole line
+                    regex : ".+"
                 }
             ]
         };
@@ -614,15 +599,15 @@ CodeMirror.defineMode("gobstones", function(cmCfg, modeCfg) {
             [ DocCommentHighlightRules.getEndRule("start") ]);
     };
     
-    oop.inherits(GobstonesHighlightRules, TextHighlightRules);
+    oop.inherits(WollokHighlightRules, TextHighlightRules);
     
-    exports.GobstonesHighlightRules = GobstonesHighlightRules;
+    exports.WollokHighlightRules = WollokHighlightRules;
     });
     
 
 
   // Ace highlight rules function imported below.
-  var HighlightRules = require("gobstones_highlight_rules").GobstonesHighlightRules;
+  var HighlightRules = require("wollok_highlight_rules").WollokHighlightRules;
 
   
 
@@ -1047,4 +1032,4 @@ CodeMirror.defineMode("gobstones", function(cmCfg, modeCfg) {
   };
 });
 
-CodeMirror.defineMIME("text/x-gobstones", "gobstones");
+CodeMirror.defineMIME("text/x-wollok", "wollok");
