@@ -21,6 +21,7 @@ en:
   classroom: Classroom
   clear_console: Clear console
   confirm: Confirm
+  confirm_restart: You are about to delete your progress for this guide. Do you want to proceed?
   console: Console
   contact_administrator: 'If you think this is not supposed to happen, please contact the admin: %{link}'
   content: Content
@@ -126,7 +127,7 @@ en:
   progress: Progresss
   read: Read
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
-  reset: Reset
+  restart: Restart
   results: Results
   running: running
   save: Save

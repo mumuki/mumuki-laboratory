@@ -19,7 +19,10 @@ Rails.application.routes.draw do
     end
 
     # All users
-    resources :guides, only: :show
+    resources :guides, only: :show do
+      resource :progress, controller: 'guide_progress', only: :destroy
+    end
+
     resources :lessons, only: :show
     resources :complements, only: :show
     resources :exams, only: :show
