@@ -15,8 +15,13 @@ describe Guide do
       guide.clear_progress!(extra_user)
     end
 
-    it 'destroys the guides assignments for the given user' do expect(an_exercise.assignment_for(extra_user)).to be_nil end
-    it 'does not destroy other guides assignments' do expect(another_exercise.assignment_for(extra_user)).to be_truthy end
+    it 'destroys the guides assignments for the given user' do
+      expect(an_exercise.assignment_for(extra_user)).to be_nil
+    end
+
+    it 'does not destroy other guides assignments' do
+      expect(another_exercise.assignment_for(extra_user)).to be_truthy
+    end
   end
 
   describe '#submission_contents_for' do
