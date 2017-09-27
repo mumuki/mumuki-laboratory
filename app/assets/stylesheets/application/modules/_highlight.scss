@@ -48,19 +48,16 @@ pre {
 .nf,
 .nl,
 .cm-variable,
-.cm-variable-2,
 .cm-variable-3,
+.cm-builtin,
+.cm-def,
 .cm-attribute {
   color: $mu-color-highlight-identifier !important;
 }
 
-.cm-def {
-  color: $mu-color-highlight-identifier !important;
-  font-weight: bold;
-}
-
 .mu-highlight-keyword,
 .k, .kn, .kp, .kr, .kt, .kd, .ace_keyword, .ace_type,
+.cm-type,
 .cm-keyword {
   color: $mu-color-highlight-keyword !important;
   font-weight: bold !important;
@@ -78,9 +75,8 @@ pre {
 .ace_decimal,
 .cm-string,
 .cm-string-2,
-.cm-number,
-.cm-builtin,
-.cm-type {
+.cm-variable-2,
+.cm-number {
   color: $mu-color-highlight-literal !important;
 }
 
@@ -111,6 +107,16 @@ pre code {
   font-weight: normal !important;
 }
 
+.mu-highlight-text-whitespace,
+.w {
+  color: $mu-color-highlight-text-whitespace;
+}
+
+.mu-highlight-string-interpolation,
+.si {
+  color: $mu-color-highlight-string-interpolation;
+}
+
 $mu-color-highlight-prolog-variables: $mu-color-info;
 $mu-color-highlight-prolog-atoms: $mu-color-primary;
 
@@ -127,14 +133,4 @@ $mu-color-highlight-prolog-atoms: $mu-color-primary;
 .prolog .ss {
   color: $mu-color-highlight-prolog-atoms !important;
   font-weight: normal !important;
-}
-
-.mu-highlight-text-whitespace,
-.w {
-  color: $mu-color-highlight-text-whitespace;
-}
-
-.mu-highlight-string-interpolation,
-.si {
-  color: $mu-color-highlight-string-interpolation;
 }

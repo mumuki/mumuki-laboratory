@@ -6,14 +6,6 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="<%= theme_stylesheet_url %>">
 
-  <% codemirror_assets_css.each do |it| %>
-      <link rel="stylesheet" type="text/css" href="<%= it %>">
-  <% end %>
-
-  <% codemirror_assets_js.each do |it| %>
-      <script type="text/javascript" src="<%= it %>"></script>
-  <% end %>
-
   <meta property="og:site_name" content="mumuki"/>
   <meta property="og:title" content="<%= page_title subject %>"/>
   <meta property="og:description" content="<%= t :mumuki_short_description %>"/>

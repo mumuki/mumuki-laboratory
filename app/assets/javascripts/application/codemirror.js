@@ -43,7 +43,8 @@ var mumuki = mumuki || {};
   }
 
   function setEditorLanguage(editor, language) {
-    editor.setOption("mode", language)
+    editor.setOption("mode", language);
+    editor.setOption('theme', 'default ' + language);
   }
 
   mumuki.editor = mumuki.editor || {};
