@@ -1,7 +1,8 @@
 class Exercise < ActiveRecord::Base
+  include WithDescription
+  include WithLocale
   include WithNumber,
           WithAssignments,
-          WithLocale,
           FriendlyName,
           WithLanguage
 
@@ -17,12 +18,8 @@ class Exercise < ActiveRecord::Base
 
   after_initialize :defaults, if: :new_record?
 
-  validates_presence_of :name, :description,
-                        :submissions_count,
+  validates_presence_of :submissions_count,
                         :guide
-
-  markdown_on :description,
-              :teaser
 
   def used_in?(organization=Organization.current)
     guide.usage_in_organization(organization).present?

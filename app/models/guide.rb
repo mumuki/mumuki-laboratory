@@ -1,13 +1,9 @@
-class Guide < ActiveRecord::Base
-  include WithLocale,
-          WithStats,
+class Guide < Content
+  include WithStats,
           WithExpectations,
-          WithLanguage,
-          WithSlug
+          WithLanguage
 
-  include WithUsages
-
-  markdown_on :description, :corollary
+  markdown_on :corollary
 
   numbered :exercises
   has_many :exercises, -> { order(number: :asc) }, dependent:  :delete_all
@@ -26,10 +22,6 @@ class Guide < ActiveRecord::Base
 
   def lesson
     usage_in_organization_of_type Lesson
-  end
-
-  def description_teaser_html
-    description.markdown_paragraphs.first
   end
 
   def chapter
