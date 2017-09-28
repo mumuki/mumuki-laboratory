@@ -2,6 +2,9 @@
     <%= home_breadcrumb %>
 <% end %>
 
-<div class="error-message">
-  <%= yield %>
-</div>
+
+<%= content_for :no_container do %>
+  <div class="error-message">
+    <%= yield %>
+  </div>
+<% end %>
