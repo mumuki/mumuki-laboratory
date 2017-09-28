@@ -51,4 +51,30 @@ describe Problem do
     it { expect(@assignment.result).to eq 'noop result' }
     it { expect(@assignment.status).to eq Status::Failed }
   end
+
+  context 'when submit exercise with blank utf8 chars' do
+    let!(:problem) { create(:problem) }
+    let!(:user) { create(:user) }
+
+    before do
+      @assignment = problem.submit_solution!(user, content: "program {\n  Poner(Norte)\n}")
+    end #                                                                ▲
+    #                                                                    ╰ Blank unsupported UTF-8 char
+    it { expect(@assignment.solution).to eq "program {\n  Poner(Norte)\n}" }
+    #                                                    ▲
+    #                                                    ╰ Normalized text / No blank UTF-8 char
+  end
+
+  context 'when submit exercise with non blank utf8 chars' do
+    let!(:problem) { create(:problem) }
+    let!(:user) { create(:user) }
+
+    before do
+      @assignment = problem.submit_solution!(user, content: "semáforo")
+    end
+
+    it { expect(@assignment.solution).to eq "semáforo" }
+    
+  end
+
 end

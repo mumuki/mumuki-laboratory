@@ -10,4 +10,8 @@ class String
   def markdown_paragraphs
     split(/\n\s*\n/)
   end
+
+  def normalize_whitespaces
+    gsub(/([^[:ascii:]])/) { $1.blank? ? ' ' : $1 }
+  end
 end
