@@ -16,23 +16,23 @@ var mumuki = mumuki || {};
   CodeMirrorBuilder.prototype = {
     setupEditor: function () {
       this.editor = CodeMirror.fromTextArea(this.textarea, {
-          autofocus: false,
-          tabSize: 2,
-          lineNumbers: true,
-          lineWrapping: true,
-          cursorHeight: 1,
-          matchBrackets: true,
-          lineWiseCopyCut: true,
-          autoCloseBrackets: true,
-          showCursorWhenSelecting: true,
-          extraKeys: {
-            'Ctrl-Space': 'autocomplete',
-            'Cmd-Enter': submit,
-            'Ctrl-Enter': submit,
-            'F11': function () {
-                mumuki.editor.toggleFullscreen();
-            }
+        autofocus: false,
+        tabSize: 2,
+        lineNumbers: true,
+        lineWrapping: true,
+        cursorHeight: 1,
+        matchBrackets: true,
+        lineWiseCopyCut: true,
+        autoCloseBrackets: true,
+        showCursorWhenSelecting: true,
+        extraKeys: {
+          'Ctrl-Space': 'autocomplete',
+          'Cmd-Enter': submit,
+          'Ctrl-Enter': submit,
+          'F11': function () {
+            mumuki.editor.toggleFullscreen();
           }
+        }
       });
     },
     setupLanguage: function () {

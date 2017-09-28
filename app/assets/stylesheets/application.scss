@@ -1,7 +1,6 @@
-@import "codemirror";
-@import "codemirror/addons/hint/show-hint";
-@import "codemirror/addons/display/fullscreen";
 @import "mumuki-styles";
+@import "codemirror/codemirror.min";
+@import "codemirror/show-hint.min";
 @import "application/vendor";
 @import "application/tooltip";
 @import "application/hovers";

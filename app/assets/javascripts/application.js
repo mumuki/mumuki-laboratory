@@ -10,33 +10,40 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require application/load.js
+//= require application/load
 //= require momentjs
-//= require momentjs/locale/es.js
+//= require momentjs/locale/es
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require codemirror
-//= require codemirror/modes/ruby
-//= require codemirror/modes/haskell
-//= require codemirror/modes/javascript
-//= require codemirror/modes/markdown
-//= require codemirror/modes/python
-//= require codemirror/modes/clike
-//= require codemirror/modes/htmlmixed
-//= require codemirror/modes/sql
-//= require codemirror/modes/css
-//= require codemirror/addons/edit/closebrackets
-//= require codemirror/addons/edit/matchbrackets
-//= require codemirror/addons/display/placeholder
-//= require codemirror/addons/display/fullscreen
-//= require codemirror/addons/hint/show-hint
-//= require codemirror/addons/hint/javascript-hint
 //= require turbolinks
 //= require nprogress
 //= require nprogress-turbolinks
 //= require nprogress-ajax
 //= require jquery-console
+
+//= require codemirror.min
+//= require codemirror-modes/clike.min.js
+//= require codemirror-modes/closebrackets.min.js
+//= require codemirror-modes/css.min.js
+//= require codemirror-modes/css-hint.min.js
+//= require codemirror-modes/haskell.min.js
+//= require codemirror-modes/html-hint.min.js
+//= require codemirror-modes/htmlmixed.min.js
+//= require codemirror-modes/javascript.min.js
+//= require codemirror-modes/javascript-hint.min
+//= require codemirror-modes/markdown.min
+//= require codemirror-modes/matchbrackets.min
+//= require codemirror-modes/placeholder.min
+//= require codemirror-modes/python.min
+//= require codemirror-modes/ruby.min
+//= require codemirror-modes/shell.min
+//= require codemirror-modes/show-hint.min
+//= require codemirror-modes/sql.min
+//= require codemirror-modes/sql-hint.min
+//= require codemirror-modes/xml.min
+//= require codemirror-modes/xml-hint.min
+
 //= require_tree ./application
 
 NProgress.configure({

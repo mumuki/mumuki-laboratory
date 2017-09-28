@@ -1,5 +1,5 @@
 // Parts from Ace; see <https://raw.githubusercontent.com/ajaxorg/ace/master/LICENSE>
-CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
+CodeMirror.defineMode("assembly_x86", function(cmCfg, modeCfg) {
 
   // Fake define() function.
   var moduleHolder = Object.create(null);
@@ -23,7 +23,7 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
   // All dependencies here.
   define("../lib/oop.js", function(require, exports, module) {
     "use strict";
-    
+
     exports.inherits = function(ctor, superCtor) {
         ctor.super_ = superCtor;
         ctor.prototype = Object.create(superCtor.prototype, {
@@ -35,55 +35,55 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
             }
         });
     };
-    
+
     exports.mixin = function(obj, mixin) {
         for (var key in mixin) {
             obj[key] = mixin[key];
         }
         return obj;
     };
-    
+
     exports.implement = function(proto, mixin) {
         exports.mixin(proto, mixin);
     };
-    
+
     });
-    
+
 
   define("../lib/lang.js", function(require, exports, module) {
     "use strict";
-    
+
     exports.last = function(a) {
         return a[a.length - 1];
     };
-    
+
     exports.stringReverse = function(string) {
         return string.split("").reverse().join("");
     };
-    
+
     exports.stringRepeat = function (string, count) {
         var result = '';
         while (count > 0) {
             if (count & 1)
                 result += string;
-    
+
             if (count >>= 1)
                 string += string;
         }
         return result;
     };
-    
+
     var trimBeginRegexp = /^\s\s*/;
     var trimEndRegexp = /\s\s*$/;
-    
+
     exports.stringTrimLeft = function (string) {
         return string.replace(trimBeginRegexp, '');
     };
-    
+
     exports.stringTrimRight = function (string) {
         return string.replace(trimEndRegexp, '');
     };
-    
+
     exports.copyObject = function(obj) {
         var copy = {};
         for (var key in obj) {
@@ -91,18 +91,18 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
         }
         return copy;
     };
-    
+
     exports.copyArray = function(array){
         var copy = [];
         for (var i=0, l=array.length; i<l; i++) {
             if (array[i] && typeof array[i] == "object")
                 copy[i] = this.copyObject(array[i]);
-            else 
+            else
                 copy[i] = array[i];
         }
         return copy;
     };
-    
+
     exports.deepCopy = function deepCopy(obj) {
         if (typeof obj !== "object" || !obj)
             return obj;
@@ -116,22 +116,22 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
         }
         if (Object.prototype.toString.call(obj) !== "[object Object]")
             return obj;
-        
+
         copy = {};
         for (var key in obj)
             copy[key] = deepCopy(obj[key]);
         return copy;
     };
-    
+
     exports.arrayToMap = function(arr) {
         var map = {};
         for (var i=0; i<arr.length; i++) {
             map[arr[i]] = 1;
         }
         return map;
-    
+
     };
-    
+
     exports.createMap = function(props) {
         var map = Object.create(null);
         for (var i in props) {
@@ -139,7 +139,7 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
         }
         return map;
     };
-    
+
     /*
      * splice out of 'array' anything that === 'value'
      */
@@ -150,28 +150,28 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
         }
       }
     };
-    
+
     exports.escapeRegExp = function(str) {
         return str.replace(/([.*+?^${}()|[\]\/\\])/g, '\\$1');
     };
-    
+
     exports.escapeHTML = function(str) {
         return str.replace(/&/g, "&#38;").replace(/"/g, "&#34;").replace(/'/g, "&#39;").replace(/</g, "&#60;");
     };
-    
+
     exports.getMatchOffsets = function(string, regExp) {
         var matches = [];
-    
+
         string.replace(regExp, function(str) {
             matches.push({
                 offset: arguments[arguments.length-2],
                 length: str.length
             });
         });
-    
+
         return matches;
     };
-    
+
     /* deprecated */
     exports.deferredCall = function(fcn) {
         var timer = null;
@@ -179,82 +179,82 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
             timer = null;
             fcn();
         };
-    
+
         var deferred = function(timeout) {
             deferred.cancel();
             timer = setTimeout(callback, timeout || 0);
             return deferred;
         };
-    
+
         deferred.schedule = deferred;
-    
+
         deferred.call = function() {
             this.cancel();
             fcn();
             return deferred;
         };
-    
+
         deferred.cancel = function() {
             clearTimeout(timer);
             timer = null;
             return deferred;
         };
-        
+
         deferred.isPending = function() {
             return timer;
         };
-    
+
         return deferred;
     };
-    
-    
+
+
     exports.delayedCall = function(fcn, defaultTimeout) {
         var timer = null;
         var callback = function() {
             timer = null;
             fcn();
         };
-    
+
         var _self = function(timeout) {
             if (timer == null)
                 timer = setTimeout(callback, timeout || defaultTimeout);
         };
-    
+
         _self.delay = function(timeout) {
             timer && clearTimeout(timer);
             timer = setTimeout(callback, timeout || defaultTimeout);
         };
         _self.schedule = _self;
-    
+
         _self.call = function() {
             this.cancel();
             fcn();
         };
-    
+
         _self.cancel = function() {
             timer && clearTimeout(timer);
             timer = null;
         };
-    
+
         _self.isPending = function() {
             return timer;
         };
-    
+
         return _self;
     };
     });
-    
+
 
   define("./text_highlight_rules.js", function(require, exports, module) {
     "use strict";
-    
+
     var lang = require("../lib/lang");
-    
+
     var TextHighlightRules = function() {
-    
+
         // regexp must not have capturing parentheses
         // regexps are ordered -> the first match is used
-    
+
         this.$rules = {
             "start" : [{
                 token : "empty_line",
@@ -264,9 +264,9 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
             }]
         };
     };
-    
+
     (function() {
-    
+
         this.addRules = function(rules, prefix) {
             if (!prefix) {
                 for (var key in rules)
@@ -289,11 +289,11 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
                 this.$rules[prefix + key] = state;
             }
         };
-    
+
         this.getRules = function() {
             return this.$rules;
         };
-    
+
         this.embedRules = function (HighlightRules, prefix, escapeRules, states, append) {
             var embedRules = typeof HighlightRules == "function"
                 ? new HighlightRules().getRules()
@@ -306,24 +306,24 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
                 for (var key in embedRules)
                     states.push(prefix + key);
             }
-    
+
             this.addRules(embedRules, prefix);
-    
+
             if (escapeRules) {
                 var addRules = Array.prototype[append ? "push" : "unshift"];
                 for (var i = 0; i < states.length; i++)
                     addRules.apply(this.$rules[states[i]], lang.deepCopy(escapeRules));
             }
-    
+
             if (!this.$embeds)
                 this.$embeds = [];
             this.$embeds.push(prefix);
         };
-    
+
         this.getEmbeds = function() {
             return this.$embeds;
         };
-    
+
         var pushState = function(currentState, stack) {
             if (currentState != "start" || stack.length)
                 stack.unshift(this.nextState, currentState);
@@ -334,7 +334,7 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
             stack.shift();
             return stack.shift() || "start";
         };
-    
+
         this.normalizeRules = function() {
             var id = 0;
             var rules = this.$rules;
@@ -378,13 +378,13 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
                     } else if (next == "pop") {
                         rule.next = popState;
                     }
-    
+
                     if (rule.push) {
                         rule.nextState = rule.next || rule.push;
                         rule.next = pushState;
                         delete rule.push;
                     }
-    
+
                     if (rule.rules) {
                         for (var r in rule.rules) {
                             if (rules[r]) {
@@ -402,7 +402,7 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
                         else
                             toInsert = rules[includeName];
                     }
-    
+
                     if (toInsert) {
                         var args = [i, 1].concat(toInsert);
                         if (rule.noEscape)
@@ -412,7 +412,7 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
                         //i += args.length - 3;
                         i--;
                     }
-                    
+
                     if (rule.keywordMap) {
                         rule.token = this.createKeywordMapper(
                             rule.keywordMap, rule.defaultToken || "text", rule.caseInsensitive
@@ -423,7 +423,7 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
             }
             Object.keys(rules).forEach(processState, this);
         };
-    
+
         this.createKeywordMapper = function(map, defaultToken, ignoreCase, splitChar) {
             var keywords = Object.create(null);
             Object.keys(map).forEach(function(className) {
@@ -445,225 +445,101 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
                 ? function(value) {return keywords[value.toLowerCase()] || defaultToken; }
                 : function(value) {return keywords[value] || defaultToken; };
         };
-    
+
         this.getKeywords = function() {
             return this.$keywords;
         };
-    
+
     }).call(TextHighlightRules.prototype);
-    
+
     exports.TextHighlightRules = TextHighlightRules;
     });
-    
 
-  define("prolog_highlight_rules", function(require, exports, module) {
+
+  define("assembly_x86_highlight_rules", function(require, exports, module) {
     "use strict";
-    
+
     var oop = require("../lib/oop");
     var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
-    
-    var PrologHighlightRules = function() {
+
+    var AssemblyX86HighlightRules = function() {
         // regexp must not have capturing parentheses. Use (?:) instead.
         // regexps are ordered -> the first match is used
-    
-        this.$rules = { start: 
-           [ { include: '#comment' },
-             { include: '#basic_fact' },
-             { include: '#rule' },
-             { include: '#directive' },
-             { include: '#fact' } ],
-          '#atom': 
-           [ { token: 'constant.other.atom.prolog',
-               regex: '\\b[a-z][a-zA-Z0-9_]*\\b' },
-             { token: 'constant.numeric.prolog',
-               regex: '-?\\d+(?:\\.\\d+)?' },
-             { include: '#string' } ],
-          '#basic_elem': 
-           [ { include: '#comment' },
-             { include: '#statement' },
-             { include: '#constants' },
-             { include: '#operators' },
-             { include: '#builtins' },
-             { include: '#list' },
-             { include: '#atom' },
-             { include: '#variable' } ],
-          '#basic_fact': 
-           [ { token: 
-                [ 'entity.name.function.fact.basic.prolog',
-                  'punctuation.end.fact.basic.prolog' ],
-               regex: '([a-z]\\w*)(\\.)' } ],
-          '#builtins': 
-           [ { token: 'support.function.builtin.prolog',
-               regex: '\\b(?:abolish|abort|ancestors|arg|ascii|assert[az]|atom(?:ic)?|body|char|close|conc|concat|consult|define|definition|dynamic|dump|fail|file|free|free_proc|functor|getc|goal|halt|head|head|integer|length|listing|match_args|member|next_clause|nl|nonvar|nth|number|cvars|nvars|offset|op|print?|prompt|putc|quoted|ratom|read|redefine|rename|retract(?:all)?|see|seeing|seen|skip|spy|statistics|system|tab|tell|telling|term|time|told|univ|unlink_clause|unspy_predicate|var|write)\\b' } ],
-          '#comment': 
-           [ { token: 
-                [ 'punctuation.definition.comment.prolog',
-                  'comment.line.percentage.prolog' ],
-               regex: '(%)(.*$)' },
-             { token: 'punctuation.definition.comment.prolog',
-               regex: '/\\*',
-               push: 
-                [ { token: 'punctuation.definition.comment.prolog',
-                    regex: '\\*/',
+
+        this.$rules = { start:
+           [ { token: 'keyword.control.assembly',
+               regex: '\\b(?:aaa|aad|aam|aas|adc|add|addpd|addps|addsd|addss|addsubpd|addsubps|aesdec|aesdeclast|aesenc|aesenclast|aesimc|aeskeygenassist|and|andpd|andps|andnpd|andnps|arpl|blendpd|blendps|blendvpd|blendvps|bound|bsf|bsr|bswap|bt|btc|btr|bts|cbw|cwde|cdqe|clc|cld|cflush|clts|cmc|cmov(?:n?e|ge?|ae?|le?|be?|n?o|n?z)|cmp|cmppd|cmpps|cmps|cnpsb|cmpsw|cmpsd|cmpsq|cmpss|cmpxchg|cmpxchg8b|cmpxchg16b|comisd|comiss|cpuid|crc32|cvtdq2pd|cvtdq2ps|cvtpd2dq|cvtpd2pi|cvtpd2ps|cvtpi2pd|cvtpi2ps|cvtps2dq|cvtps2pd|cvtps2pi|cvtsd2si|cvtsd2ss|cvts2sd|cvtsi2ss|cvtss2sd|cvtss2si|cvttpd2dq|cvtpd2pi|cvttps2dq|cvttps2pi|cvttps2dq|cvttps2pi|cvttsd2si|cvttss2si|cwd|cdq|cqo|daa|das|dec|div|divpd|divps|divsd|divss|dppd|dpps|emms|enter|extractps|f2xm1|fabs|fadd|faddp|fiadd|fbld|fbstp|fchs|fclex|fnclex|fcmov(?:n?e|ge?|ae?|le?|be?|n?o|n?z)|fcom|fcmop|fcompp|fcomi|fcomip|fucomi|fucomip|fcos|fdecstp|fdiv|fdivp|fidiv|fdivr|fdivrp|fidivr|ffree|ficom|ficomp|fild|fincstp|finit|fnint|fist|fistp|fisttp|fld|fld1|fldl2t|fldl2e|fldpi|fldlg2|fldln2|fldz|fldcw|fldenv|fmul|fmulp|fimul|fnop|fpatan|fprem|fprem1|fptan|frndint|frstor|fsave|fnsave|fscale|fsin|fsincos|fsqrt|fst|fstp|fstcw|fnstcw|fstenv|fnstenv|fsts|fnstsw|fsub|fsubp|fisub|fsubr|fsubrp|fisubr|ftst|fucom|fucomp|fucompp|fxam|fxch|fxrstor|fxsave|fxtract|fyl2x|fyl2xp1|haddpd|haddps|husbpd|hsubps|idiv|imul|in|inc|ins|insb|insw|insd|insertps|int|into|invd|invplg|invpcid|iret|iretd|iretq|lahf|lar|lddqu|ldmxcsr|lds|les|lfs|lgs|lss|lea|leave|lfence|lgdt|lidt|llgdt|lmsw|lock|lods|lodsb|lodsw|lodsd|lodsq|lsl|ltr|maskmovdqu|maskmovq|maxpd|maxps|maxsd|maxss|mfence|minpd|minps|minsd|minss|monitor|mov|movapd|movaps|movbe|movd|movq|movddup|movdqa|movdqu|movq2q|movhlps|movhpd|movhps|movlhps|movlpd|movlps|movmskpd|movmskps|movntdqa|movntdq|movnti|movntpd|movntps|movntq|movq|movq2dq|movs|movsb|movsw|movsd|movsq|movsd|movshdup|movsldup|movss|movsx|movsxd|movupd|movups|movzx|mpsadbw|mul|mulpd|mulps|mulsd|mulss|mwait|neg|not|or|orpd|orps|out|outs|outsb|outsw|outsd|pabsb|pabsw|pabsd|packsswb|packssdw|packusdw|packuswbpaddb|paddw|paddd|paddq|paddsb|paddsw|paddusb|paddusw|palignr|pand|pandn|pause|pavgb|pavgw|pblendvb|pblendw|pclmulqdq|pcmpeqb|pcmpeqw|pcmpeqd|pcmpeqq|pcmpestri|pcmpestrm|pcmptb|pcmptgw|pcmpgtd|pcmpgtq|pcmpistri|pcmpisrm|pextrb|pextrd|pextrq|pextrw|phaddw|phaddd|phaddsw|phinposuw|phsubw|phsubd|phsubsw|pinsrb|pinsrd|pinsrq|pinsrw|pmaddubsw|pmadddwd|pmaxsb|pmaxsd|pmaxsw|pmaxsw|pmaxub|pmaxud|pmaxuw|pminsb|pminsd|pminsw|pminub|pminud|pminuw|pmovmskb|pmovsx|pmovzx|pmuldq|pmulhrsw|pmulhuw|pmulhw|pmulld|pmullw|pmuludw|pop|popa|popad|popcnt|popf|popfd|popfq|por|prefetch|psadbw|pshufb|pshufd|pshufhw|pshuflw|pshufw|psignb|psignw|psignd|pslldq|psllw|pslld|psllq|psraw|psrad|psrldq|psrlw|psrld|psrlq|psubb|psubw|psubd|psubq|psubsb|psubsw|psubusb|psubusw|test|ptest|punpckhbw|punpckhwd|punpckhdq|punpckhddq|punpcklbw|punpcklwd|punpckldq|punpckldqd|push|pusha|pushad|pushf|pushfd|pxor|prcl|rcr|rol|ror|rcpps|rcpss|rdfsbase|rdgsbase|rdmsr|rdpmc|rdrand|rdtsc|rdtscp|rep|repe|repz|repne|repnz|roundpd|roundps|roundsd|roundss|rsm|rsqrps|rsqrtss|sahf|sal|sar|shl|shr|sbb|scas|scasb|scasw|scasd|set(?:n?e|ge?|ae?|le?|be?|n?o|n?z)|sfence|sgdt|shld|shrd|shufpd|shufps|sidt|sldt|smsw|sqrtpd|sqrtps|sqrtsd|sqrtss|stc|std|stmxcsr|stos|stosb|stosw|stosd|stosq|str|sub|subpd|subps|subsd|subss|swapgs|syscall|sysenter|sysexit|sysret|teset|ucomisd|ucomiss|ud2|unpckhpd|unpckhps|unpcklpd|unpcklps|vbroadcast|vcvtph2ps|vcvtp2sph|verr|verw|vextractf128|vinsertf128|vmaskmov|vpermilpd|vpermilps|vperm2f128|vtestpd|vtestps|vzeroall|vzeroupper|wait|fwait|wbinvd|wrfsbase|wrgsbase|wrmsr|xadd|xchg|xgetbv|xlat|xlatb|xor|xorpd|xorps|xrstor|xsave|xsaveopt|xsetbv|lzcnt|extrq|insertq|movntsd|movntss|vfmaddpd|vfmaddps|vfmaddsd|vfmaddss|vfmaddsubbpd|vfmaddsubps|vfmsubaddpd|vfmsubaddps|vfmsubpd|vfmsubps|vfmsubsd|vfnmaddpd|vfnmaddps|vfnmaddsd|vfnmaddss|vfnmsubpd|vfnmusbps|vfnmusbsd|vfnmusbss|cvt|xor|cli|sti|hlt|nop|lock|wait|enter|leave|ret|loop(?:n?e|n?z)?|call|j(?:mp|n?e|ge?|ae?|le?|be?|n?o|n?z))\\b',
+               caseInsensitive: true },
+             { token: 'variable.parameter.register.assembly',
+               regex: '\\b(?:CS|DS|ES|FS|GS|SS|RAX|EAX|RBX|EBX|RCX|ECX|RDX|EDX|RCX|RIP|EIP|IP|RSP|ESP|SP|RSI|ESI|SI|RDI|EDI|DI|RFLAGS|EFLAGS|FLAGS|R8-15|(?:Y|X)MM(?:[0-9]|10|11|12|13|14|15)|(?:A|B|C|D)(?:X|H|L)|CR(?:[0-4]|DR(?:[0-7]|TR6|TR7|EFER)))\\b',
+               caseInsensitive: true },
+             { token: 'constant.character.decimal.assembly',
+               regex: '\\b[0-9]+\\b' },
+             { token: 'constant.character.hexadecimal.assembly',
+               regex: '\\b0x[A-F0-9]+\\b',
+               caseInsensitive: true },
+             { token: 'constant.character.hexadecimal.assembly',
+               regex: '\\b[A-F0-9]+h\\b',
+               caseInsensitive: true },
+             { token: 'string.assembly', regex: /'([^\\']|\\.)*'/ },
+             { token: 'string.assembly', regex: /"([^\\"]|\\.)*"/ },
+             { token: 'support.function.directive.assembly',
+               regex: '^\\[',
+               push:
+                [ { token: 'support.function.directive.assembly',
+                    regex: '\\]$',
                     next: 'pop' },
-                  { defaultToken: 'comment.block.prolog' } ] } ],
-          '#constants': 
-           [ { token: 'constant.language.prolog',
-               regex: '\\b(?:true|false|yes|no)\\b' } ],
-          '#directive': 
-           [ { token: 'keyword.operator.directive.prolog',
-               regex: ':-',
-               push: 
-                [ { token: 'meta.directive.prolog', regex: '\\.', next: 'pop' },
-                  { include: '#comment' },
-                  { include: '#statement' },
-                  { defaultToken: 'meta.directive.prolog' } ] } ],
-          '#expr': 
-           [ { include: '#comments' },
-             { token: 'meta.expression.prolog',
-               regex: '\\(',
-               push: 
-                [ { token: 'meta.expression.prolog', regex: '\\)', next: 'pop' },
-                  { include: '#expr' },
-                  { defaultToken: 'meta.expression.prolog' } ] },
-             { token: 'keyword.control.cutoff.prolog', regex: '!' },
-             { token: 'punctuation.control.and.prolog', regex: ',' },
-             { token: 'punctuation.control.or.prolog', regex: ';' },
-             { include: '#basic_elem' } ],
-          '#fact': 
-           [ { token: 
-                [ 'entity.name.function.fact.prolog',
-                  'punctuation.begin.fact.parameters.prolog' ],
-               regex: '([a-z]\\w*)(\\()(?!.*:-)',
-               push: 
-                [ { token: 
-                     [ 'punctuation.end.fact.parameters.prolog',
-                       'punctuation.end.fact.prolog' ],
-                    regex: '(\\))(\\.?)',
-                    next: 'pop' },
-                  { include: '#parameter' },
-                  { defaultToken: 'meta.fact.prolog' } ] } ],
-          '#list': 
-           [ { token: 'punctuation.begin.list.prolog',
-               regex: '\\[(?=.*\\])',
-               push: 
-                [ { token: 'punctuation.end.list.prolog',
-                    regex: '\\]',
-                    next: 'pop' },
-                  { include: '#comment' },
-                  { token: 'punctuation.separator.list.prolog', regex: ',' },
-                  { token: 'punctuation.concat.list.prolog',
-                    regex: '\\|',
-                    push: 
-                     [ { token: 'meta.list.concat.prolog',
-                         regex: '(?=\\s*\\])',
-                         next: 'pop' },
-                       { include: '#basic_elem' },
-                       { defaultToken: 'meta.list.concat.prolog' } ] },
-                  { include: '#basic_elem' },
-                  { defaultToken: 'meta.list.prolog' } ] } ],
-          '#operators': 
-           [ { token: 'keyword.operator.prolog',
-               regex: '\\\\\\+|\\bnot\\b|\\bis\\b|->|[><]|[><\\\\:=]?=|(?:=\\\\|\\\\=)=' } ],
-          '#parameter': 
-           [ { token: 'variable.language.anonymous.prolog',
-               regex: '\\b_\\b' },
-             { token: 'variable.parameter.prolog',
-               regex: '\\b[A-Z_]\\w*\\b' },
-             { token: 'punctuation.separator.parameters.prolog', regex: ',' },
-             { include: '#basic_elem' },
-             { token: 'text', regex: '[^\\s]' } ],
-          '#rule': 
-           [ { token: 'meta.rule.prolog',
-               regex: '(?=[a-z]\\w*.*:-)',
-               push: 
-                [ { token: 'punctuation.rule.end.prolog',
-                    regex: '\\.',
-                    next: 'pop' },
-                  { token: 'meta.rule.signature.prolog',
-                    regex: '(?=[a-z]\\w*.*:-)',
-                    push: 
-                     [ { token: 'meta.rule.signature.prolog',
-                         regex: '(?=:-)',
-                         next: 'pop' },
-                       { token: 'entity.name.function.rule.prolog',
-                         regex: '[a-z]\\w*(?=\\(|\\s*:-)' },
-                       { token: 'punctuation.rule.parameters.begin.prolog',
-                         regex: '\\(',
-                         push: 
-                          [ { token: 'punctuation.rule.parameters.end.prolog',
-                              regex: '\\)',
-                              next: 'pop' },
-                            { include: '#parameter' },
-                            { defaultToken: 'meta.rule.parameters.prolog' } ] },
-                       { defaultToken: 'meta.rule.signature.prolog' } ] },
-                  { token: 'keyword.operator.definition.prolog',
-                    regex: ':-',
-                    push: 
-                     [ { token: 'meta.rule.definition.prolog',
-                         regex: '(?=\\.)',
-                         next: 'pop' },
-                       { include: '#comment' },
-                       { include: '#expr' },
-                       { defaultToken: 'meta.rule.definition.prolog' } ] },
-                  { defaultToken: 'meta.rule.prolog' } ] } ],
-          '#statement': 
-           [ { token: 'meta.statement.prolog',
-               regex: '(?=[a-z]\\w*\\()',
-               push: 
-                [ { token: 'punctuation.end.statement.parameters.prolog',
-                    regex: '\\)',
-                    next: 'pop' },
-                  { include: '#builtins' },
-                  { include: '#atom' },
-                  { token: 'punctuation.begin.statement.parameters.prolog',
-                    regex: '\\(',
-                    push: 
-                     [ { token: 'meta.statement.parameters.prolog',
-                         regex: '(?=\\))',
-                         next: 'pop' },
-                       { token: 'punctuation.separator.statement.prolog', regex: ',' },
-                       { include: '#basic_elem' },
-                       { defaultToken: 'meta.statement.parameters.prolog' } ] },
-                  { defaultToken: 'meta.statement.prolog' } ] } ],
-          '#string': 
-           [ { token: 'punctuation.definition.string.begin.prolog',
-               regex: '\'',
-               push: 
-                [ { token: 'punctuation.definition.string.end.prolog',
-                    regex: '\'',
-                    next: 'pop' },
-                  { token: 'constant.character.escape.prolog', regex: '\\\\.' },
-                  { token: 'constant.character.escape.quote.prolog',
-                    regex: '\'\'' },
-                  { defaultToken: 'string.quoted.single.prolog' } ] } ],
-          '#variable': 
-           [ { token: 'variable.language.anonymous.prolog',
-               regex: '\\b_\\b' },
-             { token: 'variable.other.prolog',
-               regex: '\\b[A-Z_][a-zA-Z0-9_]*\\b' } ] };
-        
+                  { defaultToken: 'support.function.directive.assembly' } ] },
+             { token:
+                [ 'support.function.directive.assembly',
+                  'support.function.directive.assembly',
+                  'entity.name.function.assembly' ],
+               regex: '(^struc)( )([_a-zA-Z][_a-zA-Z0-9]*)' },
+             { token: 'support.function.directive.assembly',
+               regex: '^endstruc\\b' },
+            { token:
+                [ 'support.function.directive.assembly',
+                  'entity.name.function.assembly',
+                  'support.function.directive.assembly',
+                  'constant.character.assembly' ],
+               regex: '^(%macro )([_a-zA-Z][_a-zA-Z0-9]*)( )([0-9]+)' },
+             { token: 'support.function.directive.assembly',
+               regex: '^%endmacro' },
+             { token:
+                [ 'text',
+                  'support.function.directive.assembly',
+                  'text',
+                  'entity.name.function.assembly' ],
+               regex: '(\\s*)(%define|%xdefine|%idefine|%undef|%assign|%defstr|%strcat|%strlen|%substr|%00|%0|%rotate|%rep|%endrep|%include|\\$\\$|\\$|%unmacro|%if|%elif|%else|%endif|%(?:el)?ifdef|%(?:el)?ifmacro|%(?:el)?ifctx|%(?:el)?ifidn|%(?:el)?ifidni|%(?:el)?ifid|%(?:el)?ifnum|%(?:el)?ifstr|%(?:el)?iftoken|%(?:el)?ifempty|%(?:el)?ifenv|%pathsearch|%depend|%use|%push|%pop|%repl|%arg|%stacksize|%local|%error|%warning|%fatal|%line|%!|%comment|%endcomment|__NASM_VERSION_ID__|__NASM_VER__|__FILE__|__LINE__|__BITS__|__OUTPUT_FORMAT__|__DATE__|__TIME__|__DATE_NUM__|_TIME__NUM__|__UTC_DATE__|__UTC_TIME__|__UTC_DATE_NUM__|__UTC_TIME_NUM__|__POSIX_TIME__|__PASS__|ISTRUC|AT|IEND|BITS 16|BITS 32|BITS 64|USE16|USE32|__SECT__|ABSOLUTE|EXTERN|GLOBAL|COMMON|CPU|FLOAT)\\b( ?)((?:[_a-zA-Z][_a-zA-Z0-9]*)?)',
+               caseInsensitive: true },
+              { token: 'support.function.directive.assembly',
+               regex: '\\b(?:d[bwdqtoy]|res[bwdqto]|equ|times|align|alignb|sectalign|section|ptr|byte|word|dword|qword|incbin)\\b',
+               caseInsensitive: true },
+             { token: 'entity.name.function.assembly', regex: '^\\s*%%[\\w.]+?:$' },
+             { token: 'entity.name.function.assembly', regex: '^\\s*%\\$[\\w.]+?:$' },
+             { token: 'entity.name.function.assembly', regex: '^[\\w.]+?:' },
+             { token: 'entity.name.function.assembly', regex: '^[\\w.]+?\\b' },
+             { token: 'comment.assembly', regex: ';.*$' } ]
+        };
+
         this.normalizeRules();
     };
-    
-    PrologHighlightRules.metaData = { fileTypes: [ 'plg', 'prolog' ],
-          foldingStartMarker: '(%\\s*region \\w*)|([a-z]\\w*.*:- ?)',
-          foldingStopMarker: '(%\\s*end(\\s*region)?)|(?=\\.)',
-          keyEquivalent: '^~P',
-          name: 'Prolog',
-          scopeName: 'source.prolog' };
-    
-    
-    oop.inherits(PrologHighlightRules, TextHighlightRules);
-    
-    exports.PrologHighlightRules = PrologHighlightRules;
+
+    AssemblyX86HighlightRules.metaData = { fileTypes: [ 'asm' ],
+          name: 'Assembly x86',
+          scopeName: 'source.assembly' };
+
+
+    oop.inherits(AssemblyX86HighlightRules, TextHighlightRules);
+
+    exports.AssemblyX86HighlightRules = AssemblyX86HighlightRules;
     });
 
 
   // Ace highlight rules function imported below.
-  var HighlightRules = require("prolog_highlight_rules").PrologHighlightRules;
+  var HighlightRules = require("assembly_x86_highlight_rules").AssemblyX86HighlightRules;
 
-  
+
 
   // Ace's Syntax Tokenizer.
 
@@ -702,7 +578,7 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
                   if (rule.token.length == 1 || matchcount == 1) {
                       rule.token = rule.token[0];
                   } else if (matchcount - 1 != rule.token.length) {
-                      throw new Error("number of classes and regexp groups in '" + 
+                      throw new Error("number of classes and regexp groups in '" +
                           rule.token + "'\n'" + rule.regex +  "' doesn't match\n"
                           + (matchcount - 1) + "!=" + rule.token.length);
                   } else {
@@ -740,7 +616,7 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
               if (!rule.onMatch)
                   rule.onMatch = null;
           }
-          
+
           splitterRurles.forEach(function(rule) {
               rule.splitRegex = this.createSplitterRegexp(rule.regex, flag);
           }, this);
@@ -753,7 +629,7 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
       this.$setMaxTokenCount = function(m) {
           MAX_TOKEN_COUNT = m | 0;
       };
-      
+
       this.$applyToken = function(str) {
           var values = this.splitRegex.exec(str).slice(1);
           var types = this.token.apply(this, values);
@@ -948,7 +824,7 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
 
           if (token.type)
               tokens.push(token);
-          
+
           if (stack.length > 1) {
               if (stack[0] !== currentState)
                   stack.unshift(currentState);
@@ -1086,4 +962,6 @@ CodeMirror.defineMode("prolog", function(cmCfg, modeCfg) {
   };
 });
 
-CodeMirror.defineMIME("text/x-prolog", "prolog");
+CodeMirror.defineMIME("text/x-assembly_x86", "assembly_x86");
+CodeMirror.defineMIME("text/x-qsim", "assembly_x86");
+CodeMirror.defineMIME("qsim", "assembly_x86");

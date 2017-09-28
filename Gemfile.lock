@@ -74,8 +74,6 @@ GEM
       xpath (~> 2.0)
     codeclimate-test-reporter (1.0.8)
       simplecov (<= 0.13)
-    codemirror-rails (5.16.0)
-      railties (>= 3.0, < 6.0)
     coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -335,7 +333,6 @@ DEPENDENCIES
   bunny
   capybara (~> 2.3.0)
   codeclimate-test-reporter
-  codemirror-rails (~> 5.16)
   execjs
   factory_girl_rails
   faker (~> 1.5)
@@ -381,4 +378,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.14.6
+   1.16.0.pre.2

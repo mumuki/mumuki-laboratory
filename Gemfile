@@ -29,8 +29,6 @@ gem 'bootswatch-rails'
 
 gem 'font-awesome-rails'
 
-gem 'codemirror-rails', '~> 5.16'
-
 gem 'puma'
 
 gem 'kaminari', '~> 0.16.3'
