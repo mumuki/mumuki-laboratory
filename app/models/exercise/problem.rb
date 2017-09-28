@@ -1,4 +1,4 @@
-class Problem < Challenge
+class Problem < QueriableChallenge
   include WithExpectations,
           WithEditor,
           Solvable
