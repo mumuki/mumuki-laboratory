@@ -1,6 +1,8 @@
 require 'securerandom'
 
 class Submission
+  include ActiveModel::Model
+
   required :try_evaluate_against!
 
   def run!(assignment, evaluation)

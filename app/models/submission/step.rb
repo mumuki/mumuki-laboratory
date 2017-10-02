@@ -1,6 +1,4 @@
 class Step < Submission
-  include ActiveModel::Model
-
   attr_accessor :value
 
   def try_evaluate_against!(exercise)

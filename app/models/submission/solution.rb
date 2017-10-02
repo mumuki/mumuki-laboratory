@@ -1,6 +1,4 @@
 class Solution < Submission
-  include ActiveModel::Model
-
   attr_accessor :content
 
   def try_evaluate_against!(exercise)

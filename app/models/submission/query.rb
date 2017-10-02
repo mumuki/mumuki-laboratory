@@ -1,6 +1,4 @@
 class Query < Submission
-  include ActiveModel::Model
-
   attr_accessor :query, :cookie, :content
 
   def try_evaluate_against!(exercise)
