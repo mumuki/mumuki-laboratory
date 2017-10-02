@@ -63,7 +63,7 @@ class Assignment < ActiveRecord::Base
     StatusRenderingVerbosity.visible_expectation_results(status, expectation_results || [])
   end
 
-  def accept_new_submission!(submission)
+  def persist_submission!(submission)
     transaction do
       messages.destroy_all
       update! submission_id: submission.id

@@ -5,7 +5,7 @@ class Question < Submission
   end
 
   def setup_assignment!(assignment)
-    assignment.accept_new_submission! self
+    assignment.persist_submission! self
   end
 
   def try_evaluate_against!(*)

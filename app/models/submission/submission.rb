@@ -43,6 +43,6 @@ class PersistentSubmission < Submission
   def setup_assignment!(assignment)
     assignment.running!
     super
-    assignment.accept_new_submission! self
+    assignment.persist_submission! self
   end
 end
