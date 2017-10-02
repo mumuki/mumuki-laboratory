@@ -1,13 +1,11 @@
-class Step < Submission
+class Step < PersistentSubmission
   attr_accessor :value
 
-  def try_evaluate_against!(assignment)
-    assignment.seek_goal!(step: value).except(:response_type)
+  def content
+    value
   end
 
-  def setup_assignment!(assignment)
-    assignment.running!
-    super
-    assignment.accept_new_submission! self
+  def try_evaluate_against!(assignment)
+    assignment.seek_goal!(steps: content.split("\n")).except(:response_type)
   end
 end

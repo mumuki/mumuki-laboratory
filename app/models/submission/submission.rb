@@ -7,7 +7,7 @@ class Submission
 
   def run!(assignment, evaluation)
     setup_assignment! assignment
-    results = evaluation.evaluate!(assignment, self)
+    results = evaluation.evaluate! assignment, self
     save_results! results, assignment
     notify_results! results, assignment
     results
@@ -36,5 +36,13 @@ class Submission
 
   def notify_results!(results, assignment)
     assignment.notify!
+  end
+end
+
+class PersistentSubmission < Submission
+  def setup_assignment!(assignment)
+    assignment.running!
+    super
+    assignment.accept_new_submission! self
   end
 end
