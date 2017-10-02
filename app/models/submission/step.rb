@@ -2,7 +2,7 @@ class Step < Submission
   attr_accessor :value
 
   def try_evaluate_against!(assignment)
-    assignment.exercise.seek_goal!(step: value).except(:response_type)
+    assignment.seek_goal!(step: value).except(:response_type)
   end
 
   def setup_assignment!(assignment)
