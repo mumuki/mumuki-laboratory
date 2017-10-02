@@ -26,7 +26,7 @@ class Submission
   private
 
   def setup_assignment!(assignment)
-    assignment.solution = content
+    assignment.solution = content if content.present?
     assignment.save!
   end
 
