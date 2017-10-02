@@ -16,6 +16,6 @@ class Query < Submission
     assignment.exercise.save_query_results!(assignment)
   end
 
-  def notify_results!(_results, assignment)
+  def notify_results!(*)
   end
 end
