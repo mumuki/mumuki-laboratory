@@ -13,8 +13,8 @@ class Submission
     results
   end
 
-  def evaluate_against!(exercise)
-    try_evaluate_against! exercise
+  def evaluate_against!(assignment)
+    try_evaluate_against! assignment
   rescue => e
     {status: :errored, result: e.message}
   end
