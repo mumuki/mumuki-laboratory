@@ -1,7 +1,6 @@
 module Seekable
   def submit_step!(user, attributes={})
     submit! user, Step.new(attributes)
-    assignment_for user
   end
 
   def seek_goal!(params)
