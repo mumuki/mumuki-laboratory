@@ -1,0 +1,69 @@
+<% if @exercise.extra_visible? %>
+  <ul class="nav nav-tabs" role="tablist">
+    <%= console_tab %>
+    <% if @exercise.extra_visible? %>
+      <%= extra_code_tab %>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane mu-input-panel fade in active <%= pending_messages_filter(@assignment) %>" id="console">
+    <% if @assignment&.pending_messages? %>
+        <span class="pending-messages-text"> <%= t :pending_messages_explanation %>
+          <a href="javascript:{}"
+             onclick="mumuki.Chat.submitMessagesForm('<%= messages_url(@exercise) %>', '<%= read_messages_path(@exercise) %>')"
+             class="<%= hidden_pending(@assignment) %>"
+             data-waiting="<%= t(:sending_solution) %>">
+            <%= t :get_messages %>
+          </a>
+        </span>
+    <% end %>
+    <div class="console">
+    </div>
+    <div class="mu-overlapped">
+      <a class="console-reset submission-reset"><%= restart_icon %></a>
+    </div>
+   </div>
+  <div role="tabpanel" class="tab-pane mu-input-panel fade" id="visible-extra">
+    <%= @exercise.extra_preview_html %>
+  </div>
+  <div role="tabpanel" class="tab-pane mu-input-panel fade" id="messages">
+    <%= render partial: 'layouts/messages', locals: {messages: @assignment.messages} if @assignment %>
+  </div>
+</div>
+
+<% content_for :submission_results do %>
+  <%
+    @guide = @exercise.guide
+    @stats = @guide.stats_for(current_user)
+  %>
+
+  <div class="bs-callout bs-callout-success">
+    <h4>
+      <strong><%= fa_icon icon_type_for_status(:passed) %> <%= t :passed %></strong>
+    </h4>
+  </div>
+
+  <%= corollary_box @exercise %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="actions">
+        <%= next_exercise_button(@exercise) %>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $('.progress-list-item.active').attr('class', "<%= class_for_progress_list_item(@exercise, true) %>");
+
+    <% if false  %> <!-- TODO guide_finished_by_solution? -->
+      $('#guide-done').modal();
+    <% end %>
+
+  </script>
+<% end %>
+
+
+
