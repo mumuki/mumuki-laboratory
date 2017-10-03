@@ -31,7 +31,7 @@ var mumuki = mumuki || {};
   }
 
   function QueryConsole() {
-    this.exerciseId = $('#exercise_id').val();
+    this.endpoint = $('#console_endpoint').val();
     this.token = new mumuki.CsrfToken();
     this.statefulConsole = $('#stateful_console').val() === "true";
     this.lines = [];
@@ -55,9 +55,6 @@ var mumuki = mumuki || {};
   }
 
   Query.prototype = {
-    get exerciseId() {
-      return this.console.exerciseId;
-    },
     get token() {
       return this.console.token;
     },
@@ -89,7 +86,7 @@ var mumuki = mumuki || {};
       })
     },
     get _requestUrl() {
-      return '../exercises/' + this.exerciseId + '/queries';
+      return this.console.endpoint;
     },
     get _requestData() {
       return {content: this.content, query: this.line, cookie: this.cookie};

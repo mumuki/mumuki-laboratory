@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       resources :confirmations, controller: 'exercise_confirmations', only: :create
       resources :solutions, controller: 'exercise_solutions', only: :create
       resources :queries, controller: 'exercise_query', only: :create
-      resources :steps, controller: 'exercise_step', only: :create
+      resources :steps, controller: 'exercise_steps', only: :create
     end
 
     # All users
