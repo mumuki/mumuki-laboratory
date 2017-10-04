@@ -6,15 +6,15 @@ class Submission
   required :try_evaluate_against!
 
   def run!(assignment, evaluation)
-    setup_assignment! assignment
+    save_submission! assignment
     results = evaluation.evaluate! assignment, self
     save_results! results, assignment
     notify_results! results, assignment
     results
   end
 
-  def evaluate_against!(assignment)
-    try_evaluate_against! assignment
+  def evaluate_against!(exercise)
+    try_evaluate_against! exercise
   rescue => e
     {status: :errored, result: e.message}
   end
@@ -25,7 +25,7 @@ class Submission
 
   private
 
-  def setup_assignment!(assignment)
+  def save_submission!(assignment)
     assignment.solution = content if content.present?
     assignment.save!
   end

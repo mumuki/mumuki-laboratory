@@ -1,5 +1,5 @@
 class PersistentSubmission < Submission
-  def setup_assignment!(assignment)
+  def save_submission!(assignment)
     assignment.running!
     super
     assignment.persist_submission! self

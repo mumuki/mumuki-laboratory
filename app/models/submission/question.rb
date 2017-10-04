@@ -4,7 +4,7 @@ class Question < Submission
     super
   end
 
-  def setup_assignment!(assignment)
+  def save_submission!(assignment)
     assignment.persist_submission! self
   end
 

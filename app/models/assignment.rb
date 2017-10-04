@@ -1,3 +1,4 @@
+
 class Assignment < ActiveRecord::Base
   include WithStatus
   include WithMessages
@@ -24,12 +25,6 @@ class Assignment < ActiveRecord::Base
   scope :by_usernames, -> (usernames) {
     joins(:submitter).where('users.name' => usernames) if usernames
   }
-
-  delegate :run_tests!, :run_query!, to: :exercise
-
-  def seek_goal!(params)
-    language.seek_goal! params.merge(extra: extra, locale: locale, goal: goal)
-  end
 
   def single_visual_result?
     test_results.size == 1 && test_results.first[:title].blank? && visible_success_output?

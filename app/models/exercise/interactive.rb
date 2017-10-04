@@ -1,14 +1,14 @@
 class Interactive < QueriableChallenge
-  include Seekable
+  include Triable
 
   markdown_on :corollary
-  validate :ensure_seekable_language
+  validate :ensure_triable_language
 
   name_model_as Exercise
 
   def reset!
     super
-    self.step_results = []
+    self.query_results = []
   end
 
   def queriable?
@@ -17,8 +17,8 @@ class Interactive < QueriableChallenge
 
   private
 
-  def ensure_seekable_language
-    errors.add(:base, :language_not_seekable) unless seekable?
+  def ensure_triable_language
+    errors.add(:base, :language_not_triable) unless triable?
   end
 
 end
