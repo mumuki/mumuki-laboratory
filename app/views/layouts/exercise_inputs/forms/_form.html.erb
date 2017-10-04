@@ -1,5 +1,5 @@
 <% if current_user? %>
-  <% if @exercise.queriable? %>
+  <% if @exercise.console? %>
     <%= hidden_field_tag(:stateful_console, @exercise.stateful_console?) %>
     <%= hidden_field_tag(:prompt, @exercise.prompt) %>
   <% end %>

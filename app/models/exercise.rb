@@ -21,6 +21,10 @@ class Exercise < ActiveRecord::Base
   validates_presence_of :submissions_count,
                         :guide
 
+  def console?
+    queriable? || triable?
+  end
+
   def used_in?(organization=Organization.current)
     guide.usage_in_organization(organization).present?
   end

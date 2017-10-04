@@ -15,6 +15,10 @@ class Interactive < QueriableChallenge
     false
   end
 
+  def console?
+    true
+  end
+
   private
 
   def ensure_triable_language
