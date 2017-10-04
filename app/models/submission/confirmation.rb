@@ -3,7 +3,7 @@ class Confirmation < PersistentSubmission
     nil
   end
 
-  def try_evaluate_against!(*)
+  def try_evaluate_exercise!(*)
     {status: Status::Passed, result: ''}
   end
 end

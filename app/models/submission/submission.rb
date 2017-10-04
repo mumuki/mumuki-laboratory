@@ -3,7 +3,7 @@ require 'securerandom'
 class Submission
   include ActiveModel::Model
 
-  required :try_evaluate_against!
+  required :try_evaluate_exercise!
 
   def run!(assignment, evaluation)
     save_submission! assignment
@@ -13,8 +13,8 @@ class Submission
     results
   end
 
-  def evaluate_against!(exercise)
-    try_evaluate_against! exercise
+  def evaluate!(assignment)
+    try_evaluate_exercise! assignment.exercise
   rescue => e
     {status: :errored, result: e.message}
   end

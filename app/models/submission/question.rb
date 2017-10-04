@@ -8,7 +8,7 @@ class Question < Submission
     assignment.persist_submission! self
   end
 
-  def try_evaluate_against!(*)
+  def try_evaluate_exercise!(*)
     {status: :pending, result: nil}
   end
 end

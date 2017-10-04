@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171003204209) do
+ActiveRecord::Schema.define(version: 20171004134607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,10 +27,10 @@ ActiveRecord::Schema.define(version: 20171003204209) do
     t.text     "test_results"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "submissions_count",   default: 0,    null: false
+    t.integer  "submissions_count",   default: 0,  null: false
     t.string   "submission_id"
-    t.string   "queries",             default: [],                array: true
-    t.text     "query_results",       default: "[]"
+    t.string   "queries",             default: [],              array: true
+    t.text     "query_results"
   end
 
   add_index "assignments", ["exercise_id"], name: "index_assignments_on_exercise_id", using: :btree
@@ -163,6 +163,7 @@ ActiveRecord::Schema.define(version: 20171003204209) do
     t.string   "prompt"
     t.boolean  "stateful_console",       default: false
     t.string   "extension",              default: "",    null: false
+    t.boolean  "triable",                default: false
   end
 
   add_index "languages", ["name"], name: "index_languages_on_name", unique: true, using: :btree
