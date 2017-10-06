@@ -27,6 +27,12 @@ class Assignment < ActiveRecord::Base
     joins(:submitter).where('users.name' => usernames) if usernames
   }
 
+  def queries_with_results
+    queries.zip(query_results).map do |query, result|
+      {query: query, status: result[:status], result: result[:result]}
+    end
+  end
+
   def single_visual_result?
     test_results.size == 1 && test_results.first[:title].blank? && visible_success_output?
   end

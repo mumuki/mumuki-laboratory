@@ -10,17 +10,15 @@ var mumuki = mumuki || {};
     }
   }
 
-  function reportValue(message, report) {
-    report([
-      {msg: message, className: 'jquery-console-message-value'}
-    ]);
-    renderPrompt();
+  function classForStatus(status) {
+    return 'jquery-console-message-' + (status === 'passed' ? 'value' : 'error');
   }
 
-  function reportError(message, report) {
-    report([
-      {msg: message, className: "jquery-console-message-error"}
-    ]);
+  function reportStatus(message, status, report) {
+    report([{
+      msg: message,
+      className: classForStatus(status)
+    }]);
     renderPrompt();
   }
 
@@ -45,6 +43,10 @@ var mumuki = mumuki || {};
     clearState: function () {
       this.lines = [];
       clearConsole();
+    },
+    preloadQuery: function(queryWithResults) {
+      this.lines.push(queryWithResults.query);
+      reportStatus(queryWithResults.result, queryWithResults.status, this.controller.report);
     }
   };
 
@@ -68,13 +70,23 @@ var mumuki = mumuki || {};
     submit: function (report, queryConsole, line) {
       var self = this;
       $.ajax(self._request).done(function (response) {
+        if (response.query_result) {
+          if (response.status == 'passed') {
+            $('.mu-try-results').show();
+            mumuki.pin.scroll();
+          } else {
+            $('.mu-try-results').hide();
+          }
+          response = response.query_result;
+        }
         if (response.status !== 'errored') {
           queryConsole.lines.push(line);
-          if (response.status === 'passed') return reportValue(response.result, report);
+          reportStatus(response.result, response.status, report);
+        } else {
+          reportStatus(response.result, 'failed', report);
         }
-        reportError(response.result, report);
       }).fail(function (response) {
-        reportError(response.responseText, report);
+        reportStatus(response.responseText, 'failed', report);
       });
     },
     get _request() {
@@ -102,7 +114,7 @@ var mumuki = mumuki || {};
       queryConsole.clearState();
     });
 
-    $('.console').console({
+    var controller = $('.console').console({
       promptLabel: prompt + ' ',
       commandValidate: function (line) {
         return line !== "";
@@ -116,6 +128,9 @@ var mumuki = mumuki || {};
     });
 
     renderPrompt();
+
+    queryConsole.controller = controller;
+    mumuki.queryConsole = queryConsole;
   });
 
 }(mumuki));

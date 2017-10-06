@@ -1,5 +1,13 @@
 <%= hidden_field_tag :console_endpoint, exercise_tries_path(@exercise) %>
 
+<script>
+  mumuki.load(function () {
+    <% @assignment.queries_with_results.each do |it| %>
+        mumuki.queryConsole.preloadQuery(<%= raw it.to_json %>);
+    <% end if @assignment %>
+  });
+</script>
+
 <% if @exercise.extra_visible? %>
   <ul class="nav nav-tabs" role="tablist">
     <%= console_tab %>
@@ -36,36 +44,39 @@
 </div>
 
 <% content_for :submission_results do %>
-  <%
-    @guide = @exercise.guide
-    @stats = @guide.stats_for(current_user)
-  %>
+  <% if current_user? %>
+    <div class="row">
+      <div class="col-md-12 submission-results mu-try-results" style="<%= 'display: none' unless @assignment&.passed? %>" >
+        <%
+          @guide = @exercise.guide
+          @stats = @guide.stats_for(current_user)
+        %>
 
-  <div class="bs-callout bs-callout-success">
-    <h4>
-      <strong><%= fa_icon icon_type_for_status(:passed) %> <%= t :passed %></strong>
-    </h4>
-  </div>
+        <div class="bs-callout bs-callout-success">
+          <h4>
+            <strong><%= fa_icon icon_type_for_status(:passed) %> <%= t :passed %></strong>
+          </h4>
+        </div>
 
-  <%= corollary_box @exercise %>
+        <%= corollary_box @exercise %>
 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="actions">
-        <%= next_exercise_button(@exercise) %>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="actions">
+              <%= next_exercise_button(@exercise) %>
+            </div>
+          </div>
+        </div>
+
+        <script>
+          $('.progress-list-item.active').attr('class', "<%= class_for_progress_list_item(@exercise, true) %>");
+
+          <% if false  %> <!-- TODO guide_finished_by_solution? -->
+            $('#guide-done').modal();
+          <% end %>
+        </script>
       </div>
     </div>
-  </div>
-
-  <script>
-    $('.progress-list-item.active').attr('class', "<%= class_for_progress_list_item(@exercise, true) %>");
-
-    <% if false  %> <!-- TODO guide_finished_by_solution? -->
-      $('#guide-done').modal();
-    <% end %>
-
-  </script>
+  <% end %>
 <% end %>
-
-
 
