@@ -1,12 +1,5 @@
 <%= hidden_field_tag :console_endpoint, exercise_tries_path(@exercise) %>
-
-<script>
-  mumuki.load(function () {
-    <% @assignment.queries_with_results.each do |it| %>
-        mumuki.queryConsole.preloadQuery(<%= raw it.to_json %>);
-    <% end if @assignment %>
-  });
-</script>
+<%= hidden_field_tag :historic_queries, @assignment.queries_with_results.to_json %>
 
 <% if @exercise.extra_visible? %>
   <ul class="nav nav-tabs" role="tablist">

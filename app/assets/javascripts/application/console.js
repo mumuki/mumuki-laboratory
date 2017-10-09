@@ -1,5 +1,13 @@
 var mumuki = mumuki || {};
 (function (mumuki) {
+  function historicQueries() {
+    var queries = $('#historic_queries').val();
+    if (queries) {
+      return JSON.parse(queries);
+    } else {
+      return [];
+    }
+  }
   function renderPrompt() {
     var prompt = $('#prompt').attr('value');
     if (prompt && prompt.indexOf('ム') >= 0) {
@@ -149,9 +157,10 @@ var mumuki = mumuki || {};
     });
 
     renderPrompt();
-
     queryConsole.controller = controller;
-    mumuki.queryConsole = queryConsole;
+    historicQueries().forEach(function (queryWithResults) {
+      queryConsole.preloadQuery(queryWithResults);
+    })
   });
 
 }(mumuki));
