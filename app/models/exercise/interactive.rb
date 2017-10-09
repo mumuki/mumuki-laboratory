@@ -19,6 +19,14 @@ class Interactive < QueriableChallenge
     true
   end
 
+  def hidden?
+    false
+  end
+
+  def upload?
+    false
+  end
+
   private
 
   def ensure_triable_language

@@ -29,7 +29,7 @@ class Assignment < ActiveRecord::Base
 
   def queries_with_results
     queries.zip(query_results).map do |query, result|
-      {query: query, status: result[:status], result: result[:result]}
+      {query: query, status: result&.dig(:status).defaulting(:pending), result: result&.dig(:result)}
     end
   end
 

@@ -72,10 +72,12 @@ var mumuki = mumuki || {};
       $.ajax(self._request).done(function (response) {
         if (response.query_result) {
           if (response.status == 'passed') {
-            $('.mu-try-results').show();
+            $('.submission-results').show();
+            $('.submission-results').html(response.corollary);
             mumuki.pin.scroll();
           } else {
-            $('.mu-try-results').hide();
+            $('.submission-results').hide();
+            $('.progress-list-item.active').attr('class', "progress-list-item text-center danger active");
           }
           response = response.query_result;
         }
