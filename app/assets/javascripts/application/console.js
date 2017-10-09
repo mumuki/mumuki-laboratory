@@ -44,9 +44,22 @@ var mumuki = mumuki || {};
       this.lines = [];
       clearConsole();
     },
-    preloadQuery: function(queryWithResults) {
+    sendQuery: function (queryContent) {
+      this.controller.promptText(queryContent);
+      this.controller.typer.commandTrigger();
+    },
+    preloadQuery: function (queryWithResults) {
       this.lines.push(queryWithResults.query);
-      reportStatus(queryWithResults.result, queryWithResults.status, this.controller.report);
+      this.enqueuePreloadedQuery(queryWithResults);
+      this.sendQuery(queryWithResults.query);
+    },
+    enqueuePreloadedQuery: function (queryWithResults) {
+      this.preloadedQuery = queryWithResults;
+    },
+    dequeuePreloadedQuery: function () {
+      var result = this.preloadedQuery;
+      this.preloadedQuery = undefined;
+      return result;
     }
   };
 
@@ -68,7 +81,13 @@ var mumuki = mumuki || {};
         return '';
     },
     submit: function (report, queryConsole, line) {
+
       var self = this;
+      var preloadedQuery = queryConsole.dequeuePreloadedQuery();
+      if (preloadedQuery) {
+        return reportStatus(preloadedQuery.result, preloadedQuery.status, report);
+      }
+
       $.ajax(self._request).done(function (response) {
         if (response.query_result) {
           if (response.status == 'passed') {
