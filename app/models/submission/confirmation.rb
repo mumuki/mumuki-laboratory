@@ -1,9 +1,9 @@
-class Confirmation < Submission
-  def setup_assignment!(assignment)
-    assignment.accept_new_submission! self
+class Confirmation < PersistentSubmission
+  def content
+    nil
   end
 
-  def try_evaluate_against!(*)
+  def try_evaluate_exercise!(*)
     {status: Status::Passed, result: ''}
   end
 end

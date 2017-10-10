@@ -1,5 +1,13 @@
 var mumuki = mumuki || {};
 (function (mumuki) {
+  function historicalQueries() {
+    var queries = $('#historical_queries').val();
+    if (queries) {
+      return JSON.parse(queries);
+    } else {
+      return [];
+    }
+  }
   function renderPrompt() {
     var prompt = $('#prompt').attr('value');
     if (prompt && prompt.indexOf('ム') >= 0) {
@@ -10,17 +18,15 @@ var mumuki = mumuki || {};
     }
   }
 
-  function reportValue(message, report) {
-    report([
-      {msg: message, className: 'jquery-console-message-value'}
-    ]);
-    renderPrompt();
+  function classForStatus(status) {
+    return 'jquery-console-message-' + (status === 'passed' ? 'value' : 'error');
   }
 
-  function reportError(message, report) {
-    report([
-      {msg: message, className: "jquery-console-message-error"}
-    ]);
+  function reportStatus(message, status, report) {
+    report([{
+      msg: message,
+      className: classForStatus(status)
+    }]);
     renderPrompt();
   }
 
@@ -31,7 +37,7 @@ var mumuki = mumuki || {};
   }
 
   function QueryConsole() {
-    this.exerciseId = $('#exercise_id').val();
+    this.endpoint = $('#console_endpoint').val();
     this.token = new mumuki.CsrfToken();
     this.statefulConsole = $('#stateful_console').val() === "true";
     this.lines = [];
@@ -45,6 +51,29 @@ var mumuki = mumuki || {};
     clearState: function () {
       this.lines = [];
       clearConsole();
+    },
+    sendQuery: function (queryContent) {
+      this.controller.promptText(queryContent);
+      this.controller.typer.commandTrigger();
+    },
+    preloadQuery: function (queryWithResults) {
+      this.lines.push(queryWithResults.query);
+      this.enqueuePreloadedQuery(queryWithResults);
+      this.sendQuery(queryWithResults.query);
+    },
+    enqueuePreloadedQuery: function (queryWithResults) {
+      this.preloadedQuery = queryWithResults;
+    },
+    dequeuePreloadedQuery: function () {
+      var result = this.preloadedQuery;
+      this.preloadedQuery = undefined;
+      return result;
+    },
+    preloadHistoricalQueries: function () {
+      var self = this;
+      historicalQueries().forEach(function (queryWithResults) {
+        self.preloadQuery(queryWithResults);
+      });
     }
   };
 
@@ -55,9 +84,6 @@ var mumuki = mumuki || {};
   }
 
   Query.prototype = {
-    get exerciseId() {
-      return this.console.exerciseId;
-    },
     get token() {
       return this.console.token;
     },
@@ -70,15 +96,38 @@ var mumuki = mumuki || {};
     },
     submit: function (report, queryConsole, line) {
       var self = this;
+      var preloadedQuery = queryConsole.dequeuePreloadedQuery();
+      if (preloadedQuery) {
+        return reportStatus(preloadedQuery.result, preloadedQuery.status, report);
+      }
+
       $.ajax(self._request).done(function (response) {
-        if (response.status !== 'errored') {
-          queryConsole.lines.push(line);
-          if (response.status === 'passed') return reportValue(response.result, report);
+        if (response.query_result) {
+          self.displayGoalResult(response);
+          response = response.query_result;
         }
-        reportError(response.result, report);
+        self.displayQueryResult(report, queryConsole, line, response);
       }).fail(function (response) {
-        reportError(response.responseText, report);
+        reportStatus(response.responseText, 'failed', report);
       });
+    },
+    displayGoalResult: function (response) {
+      if (response.status == 'passed') {
+        $('.submission-results').show();
+        $('.submission-results').html(response.corollary);
+        mumuki.pin.scroll();
+      } else {
+        $('.submission-results').hide();
+        $('.progress-list-item.active').attr('class', "progress-list-item text-center danger active");
+      }
+    },
+    displayQueryResult: function (report, queryConsole, line, response) {
+      if (response.status !== 'errored') {
+        queryConsole.lines.push(line);
+        reportStatus(response.result, response.status, report);
+      } else {
+        reportStatus(response.result, 'failed', report);
+      }
     },
     get _request() {
       var self = this;
@@ -89,7 +138,7 @@ var mumuki = mumuki || {};
       })
     },
     get _requestUrl() {
-      return '../exercises/' + this.exerciseId + '/queries';
+      return this.console.endpoint;
     },
     get _requestData() {
       return {content: this.content, query: this.line, cookie: this.cookie};
@@ -105,7 +154,7 @@ var mumuki = mumuki || {};
       queryConsole.clearState();
     });
 
-    $('.console').console({
+    queryConsole.controller = $('.console').console({
       promptLabel: prompt + ' ',
       commandValidate: function (line) {
         return line !== "";
@@ -119,6 +168,7 @@ var mumuki = mumuki || {};
     });
 
     renderPrompt();
+    queryConsole.preloadHistoricalQueries();
   });
 
 }(mumuki));

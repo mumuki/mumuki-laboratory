@@ -1,5 +1,5 @@
-class AutomatedEvaluation < Evaluation
-  def evaluate!
-    submission.evaluate_against! assignment.exercise
+class AutomatedEvaluation
+  def evaluate!(assignment, submission)
+    submission.evaluate! assignment
   end
 end

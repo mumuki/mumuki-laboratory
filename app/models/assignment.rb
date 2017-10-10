@@ -12,6 +12,7 @@ class Assignment < ActiveRecord::Base
 
   serialize :expectation_results
   serialize :test_results
+  serialize :query_results
 
   delegate :language, :name, :visible_success_output?, to: :exercise
   delegate :output_content_type, to: :language
@@ -24,6 +25,12 @@ class Assignment < ActiveRecord::Base
   scope :by_usernames, -> (usernames) {
     joins(:submitter).where('users.name' => usernames) if usernames
   }
+
+  def queries_with_results
+    queries.zip(query_results).map do |query, result|
+      {query: query, status: result&.dig(:status).defaulting(:pending), result: result&.dig(:result)}
+    end
+  end
 
   def single_visual_result?
     test_results.size == 1 && test_results.first[:title].blank? && visible_success_output?
@@ -57,7 +64,7 @@ class Assignment < ActiveRecord::Base
     StatusRenderingVerbosity.visible_expectation_results(status, expectation_results || [])
   end
 
-  def accept_new_submission!(submission)
+  def persist_submission!(submission)
     transaction do
       messages.destroy_all
       update! submission_id: submission.id

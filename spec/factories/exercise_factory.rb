@@ -11,6 +11,12 @@ FactoryGirl.define do
     name 'haskell'
   end
 
+  factory :bash, parent: :language do
+    name 'bash'
+    triable true
+    stateful_console true
+  end
+
   factory :text_language, parent: :language do
     name 'text'
   end
@@ -43,6 +49,13 @@ FactoryGirl.define do
     name 'A problem'
     description 'Simple problem'
     test 'dont care'
+  end
+
+  factory :interactive, class: Interactive, parent: :challenge do
+    name 'An interactive problem'
+    description 'Simple interactive problem'
+    goal :query_passes
+    language { create(:bash) }
   end
 
   factory :playground, class: Playground, parent: :challenge do

@@ -1,3 +1,5 @@
+<%= hidden_field_tag :console_endpoint, exercise_queries_path(@exercise) %>
+
 <% if @exercise.extra_visible? %>
   <ul class="nav nav-tabs" role="tablist">
     <%= console_tab %>

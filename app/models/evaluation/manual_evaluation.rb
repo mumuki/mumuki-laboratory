@@ -1,5 +1,5 @@
-class ManualEvaluation < Evaluation
-  def evaluate!
+class ManualEvaluation
+  def evaluate!(*)
     {status: Status::ManualEvaluationPending, result: ''}
   end
 end

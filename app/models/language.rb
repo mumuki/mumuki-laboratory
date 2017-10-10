@@ -11,7 +11,7 @@ class Language < ActiveRecord::Base
 
   markdown_on :description
 
-  delegate :run_tests!, :run_query!, to: :bridge
+  delegate :run_tests!, :run_query!, :run_try!, to: :bridge
 
   def bridge
     Mumukit::Bridge::Runner.new(runner_url)

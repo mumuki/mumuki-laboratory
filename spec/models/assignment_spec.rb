@@ -5,15 +5,16 @@ describe Assignment do
   describe 'messages' do
     let(:student) { create(:user) }
     let(:problem) { create(:problem, manual_evaluation: true) }
-    let(:assignment) { problem.submit_solution! student, content: '...'}
-
+    let(:assignment) { problem.assignment_for(student) }
     let(:message) { assignment.messages.first }
 
-    describe '.send_question!' do
-      before { assignment.send_question! content: 'How can i solve this?' }
+    before { problem.submit_solution! student, content: '...'}
 
+    describe '.send_question!' do
+      before { problem.submit_question! student, content: 'How can i solve this?' }
+
+      it { expect(assignment.new_record?).to be false }
       it { expect(assignment.has_messages?).to be true }
-      it { expect(assignment.messages.count).to eq 1 }
       it { expect(message.sender).to eq student.uid }
       it { expect(message.content).to eq 'How can i solve this?' }
       it { expect(message.read).to be true }
@@ -23,7 +24,7 @@ describe Assignment do
     end
 
     describe '.receive_answer!' do
-      before { assignment.send_question! content: 'How can i solve this?' }
+      before { problem.submit_question! student, content: 'How can i solve this?' }
       before { assignment.receive_answer! sender: 'bot@mumuki.org', content: 'Check this link' }
 
       it { expect(assignment.has_messages?).to be true }

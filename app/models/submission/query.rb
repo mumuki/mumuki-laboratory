@@ -1,15 +1,13 @@
 class Query < Submission
-  include ActiveModel::Model
-
   attr_accessor :query, :cookie, :content
 
-  def try_evaluate_against!(exercise)
+  def try_evaluate_exercise!(exercise)
     r = exercise.run_query!(content: content, query: query, cookie: cookie)
     {result: r[:result], status: Status.from_sym(r[:status])}
   end
 
 
-  def setup_assignment!(assignment)
+  def save_submission!(assignment)
     assignment.exercise.setup_query_assignment!(assignment)
     super
   end
@@ -18,6 +16,6 @@ class Query < Submission
     assignment.exercise.save_query_results!(assignment)
   end
 
-  def notify_results!(_results, assignment)
+  def notify_results!(*)
   end
 end

@@ -1,11 +1,7 @@
 class Challenge < Exercise
-  include WithLayout,
-          Queriable
+  include WithLayout
 
-  markdown_on :hint,
-              :extra_preview
-
-  delegate :stateful_console?, to: :language
+  markdown_on :hint, :extra_preview
 
   def extra_preview
     Mumukit::ContentType::Markdown.highlighted_code(language.name, extra)

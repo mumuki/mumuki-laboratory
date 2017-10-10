@@ -1,9 +1,14 @@
 class Question < Submission
-  def setup_assignment!(assignment)
-    assignment.accept_new_submission! self
+  def run!(assignment, evaluation)
+    return [assignment, nil] unless assignment.new_record?
+    super
   end
 
-  def try_evaluate_against!(*)
+  def save_submission!(assignment)
+    assignment.persist_submission! self
+  end
+
+  def try_evaluate_exercise!(*)
     {status: :pending, result: nil}
   end
 end

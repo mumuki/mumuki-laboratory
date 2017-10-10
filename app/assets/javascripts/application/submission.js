@@ -1,15 +1,9 @@
 var mumuki = mumuki || {};
 
 (function (mumuki) {
-  function smoothScrollToElement(domElement) {
-    var SPEED = 1000;
-    $('html, body').animate({scrollTop: domElement.offset().top}, SPEED);
-  }
-
   function ResultsBox(submissionsResults) {
     this.submissionsresultsArea = submissionsResults;
     this.processingTemplate = $('#processing-template');
-    this.scrollPin = $('.scroll-pin');
   }
 
   ResultsBox.prototype = {
@@ -24,9 +18,7 @@ var mumuki = mumuki || {};
       this.submissionsresultsArea.html('<pre>' + error + '</pre>');
     },
     done: function () {
-      if (this.scrollPin.length) {
-        smoothScrollToElement(this.scrollPin);
-      }
+      mumuki.pin.scroll();
     }
   };
 
