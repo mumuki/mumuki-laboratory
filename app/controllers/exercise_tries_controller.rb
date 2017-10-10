@@ -3,15 +3,14 @@ class ExerciseTriesController < AjaxController
   include WithResultsRendering
 
   def create
-    results = @exercise.submit_try! current_user, try_params
-    @assignment = @exercise.assignment_for current_user
-    render json: results.merge(corollary: render_corollary_string)
+    assignment, results = @exercise.submit_try! current_user, try_params
+    render json: results.merge(corollary: render_corollary_string(assignment))
   end
 
   private
 
-  def render_corollary_string
-    render_to_string(results_rendering_params(@assignment))
+  def render_corollary_string(assignment)
+    render_to_string(results_rendering_params(assignment))
   end
 
 
