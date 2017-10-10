@@ -6,7 +6,6 @@ module WithLanguage
     delegate :visible_success_output?,
              :highlight_mode,
              :queriable?,
-             :triable?,
              :prompt, to: :language
 
     validates_presence_of :language

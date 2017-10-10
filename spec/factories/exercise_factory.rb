@@ -14,6 +14,7 @@ FactoryGirl.define do
   factory :bash, parent: :language do
     name 'bash'
     triable true
+    stateful_console true
   end
 
   factory :text_language, parent: :language do

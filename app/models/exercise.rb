@@ -22,7 +22,7 @@ class Exercise < ActiveRecord::Base
                         :guide
 
   def console?
-    queriable? || triable?
+    queriable?
   end
 
   def used_in?(organization=Organization.current)
