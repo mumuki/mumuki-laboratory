@@ -1,4 +1,3 @@
-
 class Assignment < ActiveRecord::Base
   include WithStatus
   include WithMessages

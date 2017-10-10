@@ -144,7 +144,7 @@ GEM
     mumukit-auth (7.1.0)
       jwt
       mumukit-core (~> 1.0)
-    mumukit-bridge (3.0.0)
+    mumukit-bridge (3.1.0)
       mumukit-core (~> 1.0)
       rest-client
     mumukit-core (1.0.1)

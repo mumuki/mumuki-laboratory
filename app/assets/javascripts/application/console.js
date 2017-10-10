@@ -1,7 +1,7 @@
 var mumuki = mumuki || {};
 (function (mumuki) {
-  function historicQueries() {
-    var queries = $('#historic_queries').val();
+  function historicalQueries() {
+    var queries = $('#historical_queries').val();
     if (queries) {
       return JSON.parse(queries);
     } else {
@@ -68,6 +68,12 @@ var mumuki = mumuki || {};
       var result = this.preloadedQuery;
       this.preloadedQuery = undefined;
       return result;
+    },
+    preloadHistoricalQueries: function () {
+      var self = this;
+      historicalQueries().forEach(function (queryWithResults) {
+        self.preloadQuery(queryWithResults);
+      });
     }
   };
 
@@ -89,7 +95,6 @@ var mumuki = mumuki || {};
         return '';
     },
     submit: function (report, queryConsole, line) {
-
       var self = this;
       var preloadedQuery = queryConsole.dequeuePreloadedQuery();
       if (preloadedQuery) {
@@ -98,25 +103,31 @@ var mumuki = mumuki || {};
 
       $.ajax(self._request).done(function (response) {
         if (response.query_result) {
-          if (response.status == 'passed') {
-            $('.submission-results').show();
-            $('.submission-results').html(response.corollary);
-            mumuki.pin.scroll();
-          } else {
-            $('.submission-results').hide();
-            $('.progress-list-item.active').attr('class', "progress-list-item text-center danger active");
-          }
+          self.displayGoalResult(response);
           response = response.query_result;
         }
-        if (response.status !== 'errored') {
-          queryConsole.lines.push(line);
-          reportStatus(response.result, response.status, report);
-        } else {
-          reportStatus(response.result, 'failed', report);
-        }
+        self.displayQueryResult(report, queryConsole, line, response);
       }).fail(function (response) {
         reportStatus(response.responseText, 'failed', report);
       });
+    },
+    displayGoalResult: function (response) {
+      if (response.status == 'passed') {
+        $('.submission-results').show();
+        $('.submission-results').html(response.corollary);
+        mumuki.pin.scroll();
+      } else {
+        $('.submission-results').hide();
+        $('.progress-list-item.active').attr('class', "progress-list-item text-center danger active");
+      }
+    },
+    displayQueryResult: function (report, queryConsole, line, response) {
+      if (response.status !== 'errored') {
+        queryConsole.lines.push(line);
+        reportStatus(response.result, response.status, report);
+      } else {
+        reportStatus(response.result, 'failed', report);
+      }
     },
     get _request() {
       var self = this;
@@ -143,7 +154,7 @@ var mumuki = mumuki || {};
       queryConsole.clearState();
     });
 
-    var controller = $('.console').console({
+    queryConsole.controller = $('.console').console({
       promptLabel: prompt + ' ',
       commandValidate: function (line) {
         return line !== "";
@@ -157,10 +168,7 @@ var mumuki = mumuki || {};
     });
 
     renderPrompt();
-    queryConsole.controller = controller;
-    historicQueries().forEach(function (queryWithResults) {
-      queryConsole.preloadQuery(queryWithResults);
-    })
+    queryConsole.preloadHistoricalQueries();
   });
 
 }(mumuki));
