@@ -1,4 +1,6 @@
 <%= hidden_field_tag(:exercise_language, @exercise.highlight_mode) %>
+<%= hidden_field_tag :console_endpoint, exercise_queries_path(@exercise) %>
+
 <% if should_render_problem_tabs? @exercise, current_user %>
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
