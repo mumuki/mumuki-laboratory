@@ -119,7 +119,7 @@ es:
   no_guides: No encontramos lecciones que coincidan con tu búsqueda.
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio aún!
   not_found: ¡La página que buscaste no existe!
-  not_found_explanation: '¡Ups! Esto es lo que se conoce como %{error}: fijate si escribiste bien la dirección. Peeeeero, si pensás que es un error nuestro, %{issues}'
+  not_found_explanation: ¡Ups! <br> Esto es lo que se conoce como <span class="error-link">%{error}</span>. <br> Fijate si escribiste bien la dirección. <br> Peeeeero, si pensás que es un error nuestro, %{issues}
   notify_problem_with_exercise: Reportá un error
   office: Secretaría
   organizations: Organizaciones
