@@ -160,7 +160,7 @@ es:
   solution: Solución
   solved_exercises: Ejercicios Resueltos
   something_went_wrong: ¡Ups!, algo no anduvo bien...
-  something_went_wrong_explanation:  ¡Ups! <br> Esto es lo que se conoce como <span class="error-link">%{error}</span>. <br> Algo se rompió feo en Mumuki y necesitamos solucionarlo urgentemente, %{issues}.
+  something_went_wrong_explanation:  ¡Ups! <br> Esto es lo que se conoce como <span class="error-link">%{error}</span>. <br> Algo no anduvo como se esperaba. <br> Si pensas que es un error nuestro, %{issues}.
   start_lesson: ¡Comenzá esta lección!
   start_practicing: ¡Empezá ahora!
   stats: Tu Progreso
