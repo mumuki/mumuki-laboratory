@@ -1,10 +1,13 @@
 <%= render layout: 'layouts/error' do %>
+    <div class="header">
+      <img class="error-code-img" src="/error_500.svg">
+    </div>
     <div class="body">
       <p>
-        <%= t(:something_went_wrong_explanation, issues: link_to_issues(:tell_us_how)).html_safe %>
+        <%= t(:something_went_wrong_explanation, error: link_to_status_codes(500), issues: link_to_issues(:tell_us_how)).html_safe %>
+      </p>
+      <p>
+        <a class="btn btn-success" href="/"> <%= t(:back_to_mumuki) %> </a>
       </p>
     </div>
-    <p>
-      <a class="btn btn-success" href="/"> <%= t(:back_to_mumuki) %> </a></strong>
-    </p>
 <% end %>

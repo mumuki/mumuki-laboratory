@@ -2,9 +2,9 @@
     <%= home_breadcrumb %>
 <% end %>
 
-<div class="error-message">
-  <div class="header">
-    <img src="/astor.png" width="80%">
+
+<%= content_for :no_container do %>
+  <div class="error-message">
+    <%= yield %>
   </div>
-  <%= yield %>
-</div>
+<% end %>

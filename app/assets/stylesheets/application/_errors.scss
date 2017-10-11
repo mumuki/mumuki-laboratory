@@ -1,10 +1,40 @@
 .error-message {
-  text-align: center;
   color: #0B465D;
-  width: 500px;
+  width: 100%;
   margin: auto;
+  text-align: center;
 }
-.error-message .header img {
-  display: block;
-  margin: 30px auto;
+
+.error-message {
+
+  .header {
+    img {
+      display: block;
+      margin: 30px auto;
+      max-height: 350px;
+      &.error-code-img {
+        margin-top: -75px;
+        min-height: 310px;
+        max-height: 500px;
+        width: 100%;
+        object-position: 50% 50%;
+        @media (max-width: $screen-lg) {
+          object-fit: none;
+        }
+      }
+    }
+  }
+  .body {
+    max-width: 500px;
+    margin: auto;
+    p {
+      color: darken($mu-color-disabled, 5%);
+      font-size: 89%;
+      padding: 15px;
+      .error-link {
+        text-transform: uppercase;
+      }
+    }
+  }
 }
+

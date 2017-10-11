@@ -46,6 +46,7 @@ es:
   error_403: error 403
   error_404: error 404
   error_410: error 410
+  error_500: error 500
   errored: ¡Ups! Tu solución no se pudo ejecutar
   exam_number: 'Examen %{number}:'
   exams: Exámenes
@@ -62,7 +63,7 @@ es:
   failed: Tu solución no pasó las pruebas
   feedback: Problemas que encontramos
   first_name: Nombre
-  forbidden_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no tenés autorización para ver este contenido. ¿Puede que hayas ingresado con una cuenta incorrecta?
+  forbidden_explanation: ¡Ups! <br> Esto es lo que se conoce como <span class="error-link">%{error}</span>. <br> Es decir que no tenés autorización para ver este contenido. <br> ¿Puede que hayas ingresado con una cuenta incorrecta?
   gone_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que ya no podés ver este examen.
   guide: Lección
   guide_created: Guía creada exitosamente
@@ -119,7 +120,7 @@ es:
   no_guides: No encontramos lecciones que coincidan con tu búsqueda.
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio aún!
   not_found: ¡La página que buscaste no existe!
-  not_found_explanation: '¡Ups! Esto es lo que se conoce como %{error}: fijate si escribiste bien la dirección. Peeeeero, si pensás que es un error nuestro, %{issues}'
+  not_found_explanation: ¡Ups! <br> Esto es lo que se conoce como <span class="error-link">%{error}</span>. <br> Fijate si escribiste bien la dirección. <br> Peeeeero, si pensás que es un error nuestro, %{issues}
   notify_problem_with_exercise: Reportá un error
   office: Secretaría
   organizations: Organizaciones
@@ -159,7 +160,7 @@ es:
   solution: Solución
   solved_exercises: Ejercicios Resueltos
   something_went_wrong: ¡Ups!, algo no anduvo bien...
-  something_went_wrong_explanation: Algo se rompió feo en Mumuki. Y necesitamos solucionarlo urgentemente, %{issues}
+  something_went_wrong_explanation:  ¡Ups! <br> Esto es lo que se conoce como <span class="error-link">%{error}</span>. <br> Algo no anduvo como se esperaba. <br> Si pensas que es un error nuestro, %{issues}.
   start_lesson: ¡Comenzá esta lección!
   start_practicing: ¡Empezá ahora!
   stats: Tu Progreso
