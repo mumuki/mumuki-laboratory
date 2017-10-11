@@ -14,7 +14,7 @@ module Mumuki
 
     config.autoload_paths += %W(#{config.root}/app/helpers/concerns)
 
-    %w(evaluation exercise submission).each do |it|
+    %w(evaluation exercise submission status).each do |it|
       config.autoload_paths += %W(#{config.root}/app/models/#{it})
     end
 
