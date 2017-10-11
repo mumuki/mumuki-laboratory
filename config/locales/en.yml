@@ -40,7 +40,8 @@ en:
   error_401: 401 error
   error_403: 403 error
   error_404: 404 error
-  error_410: error 410
+  error_410: 410 error
+  error_500: 500 error
   errored: Oops, your solution didn't work
   exam_number: 'Exam %{number}:'
   exams: Exams
