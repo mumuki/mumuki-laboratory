@@ -1,5 +1,5 @@
 <%= hidden_field_tag :console_endpoint, exercise_tries_path(@exercise) %>
-<%= hidden_field_tag :historical_queries, @assignment.queries_with_results.to_json %>
+<%= hidden_field_tag :historical_queries, @assignment&.queries_with_results.to_json %>
 
 <% if @exercise.extra_visible? %>
   <ul class="nav nav-tabs" role="tablist">
