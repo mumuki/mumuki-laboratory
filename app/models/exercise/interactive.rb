@@ -5,6 +5,7 @@ class Interactive < Challenge
   validate :ensure_triable_language
   validate :ensure_stateful_console
 
+  serialize :goal
   name_model_as Exercise
 
   def reset!
