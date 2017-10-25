@@ -34,22 +34,26 @@ class Language < ActiveRecord::Base
   end
 
   def import!
-    import_from_json! Mumukit::Bridge::Runner.new(runner_url).info
+    import_from_json! Mumukit::Bridge::Runner.new(runner_url).importable_info
   end
 
   def devicon
-    name.downcase
+    self[:devicon] || name.downcase
   end
 
   def import_from_json!(json)
-    assign_attributes name: json['name'],
-                      highlight_mode: json.dig('language', 'ace_mode'),
-                      visible_success_output: json.dig('language', 'graphic').present?,
-                      prompt: (json.dig('language', 'prompt') || 'ム')  + ' ',
-                      output_content_type: json['output_content_type'],
-                      queriable: json.dig('features', 'query'),
-                      stateful_console: json.dig('features', 'stateful').present?,
-                      extension: json.dig('language','extension')
+
+    assign_attributes json.slice(:name,
+                                 :comment_type,
+                                 :output_content_type,
+                                 :prompt,
+                                 :extension,
+                                 :highlight_mode,
+                                 :visible_success_output,
+                                 :devicon,
+                                 :triable,
+                                 :queriable,
+                                 :stateful_console)
     save!
   end
 end

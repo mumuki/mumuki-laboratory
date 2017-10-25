@@ -144,7 +144,7 @@ GEM
     mumukit-auth (7.1.0)
       jwt
       mumukit-core (~> 1.0)
-    mumukit-bridge (3.1.0)
+    mumukit-bridge (3.2.0)
       mumukit-core (~> 1.0)
       rest-client
     mumukit-core (1.0.1)
@@ -341,7 +341,7 @@ DEPENDENCIES
   jquery-rails
   kaminari (~> 0.16.3)
   mumukit-auth (~> 7.1)
-  mumukit-bridge (~> 3.0)
+  mumukit-bridge (~> 3.2)
   mumukit-content-type!
   mumukit-core (~> 1.0)
   mumukit-inspection (~> 3.1)
@@ -378,4 +378,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.16.0.pre.2
+   1.16.0.pre.3
