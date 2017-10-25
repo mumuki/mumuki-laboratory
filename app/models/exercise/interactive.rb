@@ -8,11 +8,6 @@ class Interactive < Challenge
   serialize :goal
   name_model_as Exercise
 
-  def reset!
-    super
-    self.query_results = []
-  end
-
   def console?
     true
   end
