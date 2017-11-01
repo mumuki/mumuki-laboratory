@@ -3,6 +3,7 @@ require 'spec_helper'
 feature 'Exams Flow' do
   let(:exam) { create(:exam, classroom_id: '12345') }
   let(:other_exam) { create(:exam, organization: other_organization) }
+  let!(:exam_not_in_path) { create :exam }
 
   let!(:chapter) {
     create(:chapter, lessons: [
@@ -11,6 +12,18 @@ feature 'Exams Flow' do
   let(:other_organization) { create(:organization, name: 'baz') }
 
   before { reindex_current_organization! }
+
+  context 'inexistent exam' do
+    scenario 'visit exam by id, not in path' do
+      visit "/exams/#{exam_not_in_path.id}"
+      expect(page).to have_text('You have no permissions for this content. Maybe you logged in with another account.')
+    end
+
+    scenario 'visit exam by id, unknown exam' do
+      visit '/exams/900000'
+      expect(page).to have_text('You may have mistyped the address or the page may have moved')
+    end
+  end
 
   scenario 'visit exam not in path, by id, anonymous' do
    visit "/exams/#{other_exam.id}"
