@@ -15,6 +15,8 @@ feature 'Exercise Flow' do
   let!(:playground_1) { build(:playground, name: 'Succ5', description: 'Description of Succ4', layout: :input_right) }
   let!(:playground_2) { build(:playground, name: 'Succ6', description: 'Description of Succ4', layout: :input_right, extra: 'x = 4') }
   let!(:reading) { build(:reading, name: 'Reading about Succ', description: 'Lets understand succ history') }
+  let!(:exercise_not_in_path) { create :exercise }
+
 
   let!(:chapter) {
     create(:chapter, name: 'Functional Programming', lessons: [
@@ -24,6 +26,28 @@ feature 'Exercise Flow' do
     ]) }
 
   before { reindex_current_organization! }
+
+  context 'inexistent exercise' do
+    scenario 'visit exercise by slug, not in path' do
+      visit "/exercises/#{exercise_not_in_path.slug}"
+      expect(page).to have_text('You may have mistyped the address or the page may have moved')
+    end
+
+    scenario 'visit exercise by slug, unknown exercise' do
+      visit '/exercises/an_exercise_slug'
+      expect(page).to have_text('You may have mistyped the address or the page may have moved')
+    end
+
+    scenario 'visit exercise by id, not in path' do
+      visit "/exercises/#{exercise_not_in_path.id}"
+      expect(page).to have_text('You may have mistyped the address or the page may have moved')
+    end
+
+    scenario 'visit exercise by id, unknown exercise' do
+      visit '/exercises/900000'
+      expect(page).to have_text('You may have mistyped the address or the page may have moved')
+    end
+  end
 
   context 'not logged user' do
     scenario 'visit exercise by slug' do
