@@ -1,10 +1,14 @@
-<% current_user.accessible_organizations.each do |org| %>
-    <div class="row">
-      <div class="col-md-6 organization-row">
-        <%= image_tag(org.logo_url, height: 50, class: 'pull-left') %>
+<% if current_user.accessible_organizations.empty? %>
+  <%= t :not_in_any_organizations %>
+<% else %>
+  <% current_user.accessible_organizations.each do |org| %>
+      <div class="row">
+        <div class="col-md-6 organization-row">
+          <%= image_tag(org.logo_url, height: 50, class: 'pull-left') %>
+        </div>
+        <div class="col-md-6 organization-row">
+          <%= link_to(t(:go_to, organization: org.name), org.url_for(request.path), class: 'btn btn-success pull-right') %>
+        </div>
       </div>
-      <div class="col-md-6 organization-row">
-        <%= link_to("Ir a #{org.domain}", org.url_for(request.path), class: 'btn btn-success pull-right') %>
-      </div>
-    </div>
+  <% end %>
 <% end %>

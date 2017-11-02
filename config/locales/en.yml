@@ -59,6 +59,7 @@ en:
   feedback: Feedback
   first_name: First Name
   forbidden_explanation: You are not allowed to see this content.
+  go_to: 'Go to %{organization}'
   gone_explanation: This exam is no longer available.
   guide: Guide
   guide_created: Guide created successfully
@@ -105,8 +106,10 @@ en:
   next_lesson: 'Next Guide: %{name}'
   no_exercises: Nobody created an exercise for this search yet
   no_guides: Nobody created a guide for this search yet
-  no_submissions: Its seems like you haven't tried to solve this exercise
+  no_messages: It seems you don't have any messages yet!
+  no_submissions: It seems like you haven't tried to solve this exercise
   not_found_explanation: 'You may have mistyped the address or the page may have moved. If you think this is our fault, %{issues}'
+  not_in_any_organizations: It seems you aren't in any organizations yet!
   notify_problem_with_exercise: Report a bug
   office: Office
   output: Output
