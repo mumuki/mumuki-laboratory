@@ -64,6 +64,7 @@ es:
   feedback: Problemas que encontramos
   first_name: Nombre
   forbidden_explanation: ¡Ups! <br> Esto es lo que se conoce como <span class="error-link">%{error}</span>. <br> Es decir que no tenés autorización para ver este contenido. <br> ¿Puede que hayas ingresado con una cuenta incorrecta?
+  go_to: 'Ir a %{organization}'
   gone_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que ya no podés ver este examen.
   guide: Lección
   guide_created: Guía creada exitosamente
@@ -118,9 +119,11 @@ es:
   next_guide: 'Siguiente Lección: %{name}'
   no_exercises: No encontramos ejercicios que coincidan con tu búsqueda.
   no_guides: No encontramos lecciones que coincidan con tu búsqueda.
+  no_messages: ¡Parece que no tenés ningun mensaje todavía!
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio aún!
   not_found: ¡La página que buscaste no existe!
   not_found_explanation: ¡Ups! <br> Esto es lo que se conoce como <span class="error-link">%{error}</span>. <br> Fijate si escribiste bien la dirección. <br> Peeeeero, si pensás que es un error nuestro, %{issues}
+  not_in_any_organizations: ¡Parece que no estás en ninguna organización todavía!
   notify_problem_with_exercise: Reportá un error
   office: Secretaría
   organizations: Organizaciones
