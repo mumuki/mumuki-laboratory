@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Book do
-  let(:book) { Organization.current.book }
+  let(:book) { Organization.current.first_book }
 
   describe '#next_lesson_for' do
     let!(:chapter) { create(:chapter, lessons: [create(:lesson)]) }
@@ -28,10 +28,10 @@ describe Book do
     context 'when chapter is rebuilt after book rebuilt' do
       before do
         book.description = '#foo'
-        book.rebuild!([chapter_1, chapter_2])
+        book.rebuild! chapters: [chapter_1, chapter_2]
 
-        chapter_1.rebuild!([lesson_1, lesson_2])
-        chapter_2.rebuild!([lesson_3])
+        chapter_1.rebuild! lessons: [lesson_1, lesson_2]
+        chapter_2.rebuild! lessons: [lesson_3]
       end
 
       it { expect(book.description).to eq '#foo' }
@@ -49,10 +49,10 @@ describe Book do
       let(:orphan_chapter) { build(:chapter, book: nil) }
       before do
         book.description = '#foo'
-        book.rebuild!([chapter_1, orphan_chapter, chapter_2])
+        book.rebuild! chapters: [chapter_1, orphan_chapter, chapter_2]
 
-        chapter_1.rebuild!([lesson_1, lesson_2])
-        chapter_2.rebuild!([lesson_3])
+        chapter_1.rebuild! lessons: [lesson_1, lesson_2]
+        chapter_2.rebuild! lessons: [lesson_3]
       end
 
       it { expect(book.description).to eq '#foo' }
@@ -74,10 +74,10 @@ describe Book do
         chapter_2.save!
 
         book.description = '#foo'
-        book.rebuild!([chapter_1, chapter_2])
+        book.rebuild! chapters: [chapter_1, chapter_2]
 
-        chapter_1.rebuild!([lesson_1, lesson_2])
-        chapter_2.rebuild!([lesson_3])
+        chapter_1.rebuild! lessons: [lesson_1, lesson_2]
+        chapter_2.rebuild! lessons: [lesson_3]
       end
 
       it { expect(book.description).to eq '#foo' }
@@ -93,11 +93,11 @@ describe Book do
 
     context 'when chapter is rebuilt before book rebuilt' do
       before do
-        chapter_1.rebuild!([lesson_1, lesson_2])
-        chapter_2.rebuild!([lesson_3])
+        chapter_1.rebuild! lessons: [lesson_1, lesson_2]
+        chapter_2.rebuild! lessons: [lesson_3]
 
         book.description = '#foo'
-        book.rebuild!([chapter_1, chapter_2])
+        book.rebuild! chapters: [chapter_1, chapter_2]
       end
 
       it { expect(book.description).to eq '#foo' }

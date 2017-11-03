@@ -20,13 +20,18 @@ describe BreadcrumbsHelper do
     it { expect(breadcrumb).to be_html_safe }
   end
 
-  context 'exercise in chapter' do
-    let!(:chapter) { create(:chapter, name: 'my chapter', lessons: [
-        create(:lesson, name: 'my lesson', exercises: [
-            create(:exercise, name: 'my exercise')
+  context 'exercise in unit' do
+    let!(:unit) {
+      create(:unit, organization: Organization.current, book:
+        build(:book, chapters: [
+          build(:chapter, name: 'my chapter', lessons: [
+            build(:lesson, name: 'my lesson', exercises: [ exercise ])
+          ])
         ])
-    ]) }
-    let(:exercise) { chapter.first_lesson.exercises.first }
+      )
+    }
+
+    let(:exercise) { build(:exercise, name: 'my exercise') }
 
     before { reindex_current_organization! }
 

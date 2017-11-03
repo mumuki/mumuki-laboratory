@@ -20,6 +20,8 @@ class Invitation < ActiveRecord::Base
     I18n.t(:invitation_for, course: course_name)
   end
 
+# TODO use TerminalNavigation
+
   def navigation_end?
     true
   end

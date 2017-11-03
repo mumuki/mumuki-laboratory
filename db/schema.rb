@@ -58,13 +58,13 @@ ActiveRecord::Schema.define(version: 20171024182244) do
 
   create_table "complements", force: true do |t|
     t.integer  "guide_id"
-    t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "unit_id"
   end
 
-  add_index "complements", ["book_id"], name: "index_complements_on_book_id", using: :btree
   add_index "complements", ["guide_id"], name: "index_complements_on_guide_id", using: :btree
+  add_index "complements", ["unit_id"], name: "index_complements_on_unit_id", using: :btree
 
   create_table "exam_authorizations", force: true do |t|
     t.integer  "exam_id"
@@ -190,16 +190,14 @@ ActiveRecord::Schema.define(version: 20171024182244) do
 
   create_table "organizations", force: true do |t|
     t.string   "name"
-    t.integer  "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "book_ids",   default: [],                array: true
-    t.text     "settings",   default: "{}", null: false
-    t.text     "theme",      default: "{}", null: false
-    t.text     "profile",    default: "{}", null: false
+    t.integer  "book_ids",    default: [],                array: true
+    t.text     "settings",    default: "{}", null: false
+    t.text     "theme",       default: "{}", null: false
+    t.text     "profile",     default: "{}", null: false
+    t.text     "description"
   end
-
-  add_index "organizations", ["book_id"], name: "index_organizations_on_book_id", using: :btree
 
   create_table "paths", force: true do |t|
     t.integer  "category_id"
@@ -210,6 +208,17 @@ ActiveRecord::Schema.define(version: 20171024182244) do
 
   add_index "paths", ["category_id"], name: "index_paths_on_category_id", using: :btree
   add_index "paths", ["language_id"], name: "index_paths_on_language_id", using: :btree
+
+  create_table "projects", force: true do |t|
+    t.integer  "number",     default: 0, null: false
+    t.integer  "unit_id"
+    t.integer  "guide_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "projects", ["guide_id"], name: "index_projects_on_guide_id", using: :btree
+  add_index "projects", ["unit_id"], name: "index_projects_on_unit_id", using: :btree
 
   create_table "topics", force: true do |t|
     t.string   "name"
@@ -222,6 +231,17 @@ ActiveRecord::Schema.define(version: 20171024182244) do
   end
 
   add_index "topics", ["slug"], name: "index_topics_on_slug", unique: true, using: :btree
+
+  create_table "units", force: true do |t|
+    t.integer  "number"
+    t.integer  "book_id"
+    t.integer  "organization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "units", ["book_id"], name: "index_units_on_book_id", using: :btree
+  add_index "units", ["organization_id"], name: "index_units_on_organization_id", using: :btree
 
   create_table "usages", force: true do |t|
     t.integer  "organization_id"

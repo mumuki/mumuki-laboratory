@@ -10,15 +10,14 @@ describe Book do
   let!(:topic_1) { create(:topic, name: 'a topic') }
   let!(:topic_2) { create(:topic, name: 'other topic') }
 
-  let(:book) { Organization.current.book }
+  let(:book) { Organization.current.first_book }
 
   let(:book_json) do
     {name: 'sample book',
      description: 'a sample book description',
      slug: 'mumuki/mumuki-sample-book',
      locale: 'en',
-     chapters: [topic_1.slug, topic_2.slug],
-     complements: [guide_2.slug, guide_1.slug]
+     chapters: [topic_1.slug, topic_2.slug]
     }.deep_stringify_keys
   end
 
@@ -31,9 +30,7 @@ describe Book do
     it { expect(book.description).to eq 'a sample book description' }
     it { expect(book.locale).to eq 'en' }
     it { expect(book.chapters.count).to eq 2 }
-    it { expect(book.complements.count).to eq 2 }
 
     it { expect(topic_2.reload.usage_in_organization).to be_a Chapter }
-    it { expect(guide_2.reload.usage_in_organization).to be_a Complement }
   end
 end

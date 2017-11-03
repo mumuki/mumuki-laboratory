@@ -1,5 +1,3 @@
-require 'addressable/uri'
-
 class ChaptersController < ApplicationController
   def show
   end

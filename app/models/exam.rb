@@ -1,7 +1,4 @@
-class Exam < ActiveRecord::Base
-  include GuideContainer
-  include FriendlyName
-
+class Exam < GuideContainer
   validates_presence_of :start_time, :end_time
 
   belongs_to :guide
@@ -13,10 +10,6 @@ class Exam < ActiveRecord::Base
   after_destroy { |record| Usage.destroy_usages_for record }
 
   include TerminalNavigation
-
-  def used_in?(organization)
-    organization == self.organization
-  end
 
   def enabled?
     enabled_range.cover? DateTime.now
@@ -96,6 +89,10 @@ class Exam < ActiveRecord::Base
     authorizations.all_except(authorizations_for(users)).destroy_all
   end
 
+  def index_usage!
+    index_usage_at! organization
+  end
+
   def self.import_from_json!(json)
     json.except!(:social_ids, :sender)
     organization = Organization.find_by!(name: json.delete(:organization))
@@ -105,7 +102,7 @@ class Exam < ActiveRecord::Base
     users = exam_data.delete(:users)
     exam = where(classroom_id: exam_data.delete(:eid)).update_or_create! exam_data
     exam.process_users users
-    exam.index_usage! organization
+    exam.index_usage!
     exam
   end
 

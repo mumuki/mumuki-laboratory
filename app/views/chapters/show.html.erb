@@ -3,10 +3,7 @@
 <% end %>
 
 <div>
-  <h1>
-    <span class="hidden-xs"><%= t(:chapter_number, number: @chapter.number) %>:&nbsp;</span>
-    <span><%= @chapter.name %></span>
-  </h1>
+  <h1><%= t(:chapter_number, number: @chapter.number) %> <%= @chapter.name %></h1>
 
   <%= @chapter.description_html %>
 
@@ -28,7 +25,7 @@
   <div>
     <h3><%= t(:appendix) %></h3>
     <p>
-      <%= t(:appendix_teaser, link: chapter_appendix_path(@chapter)).html_safe %>
+      <%= t(:appendix_teaser, link: appendix_path(@chapter)).html_safe %>
     </p>
   </div>
 <% end %>

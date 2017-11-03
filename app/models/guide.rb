@@ -76,12 +76,18 @@ class Guide < Content
     reload
   end
 
+  def as_project_of(unit)
+    unit.projects.find_by(guide_id: id) || Project.new(guide: self, unit: unit)
+  end
+
   def as_lesson_of(topic)
     topic.lessons.find_by(guide_id: id) || Lesson.new(guide: self, topic: topic)
   end
 
-  def as_complement_of(book) #FIXME duplication
-    book.complements.find_by(guide_id: id) || Complement.new(guide: self, book: book)
+  def as_complement_of(unit) #FIXME duplication
+    unit.complements.find_by(guide_id: id) || Complement.new(guide: self, unit: unit)
   end
 
+# refactor as_XXXX_of()
+# refactor self.XXXX_of(... )
 end

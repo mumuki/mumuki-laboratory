@@ -2,7 +2,15 @@ FactoryGirl.define do
 
   factory :organization do
     contact_email { Faker::Internet.email }
-    book
+    units { [] }
+
+    transient do
+      book { create(:book) }
+    end
+
+    after(:build) do |organization, evaluator|
+      organization.units << evaluator.book.as_unit_of(organization)
+    end
   end
 
   factory :public_organization, parent: :organization do

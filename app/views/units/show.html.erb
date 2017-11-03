@@ -1,0 +1,28 @@
+<%= content_for :breadcrumbs do %>
+  <%= breadcrumbs @unit %>
+<% end %>
+
+<div>
+  <h1>
+    <span class="hidden-xs"><%= t(:unit_number, number: @unit.number) %>:&nbsp;</span>
+    <span><%= @unit.name %></span>
+  </h1>
+
+  <%= @unit.description_html %>
+
+</div>
+
+<% if @unit.chapters.present? %>
+<div>
+  <h3><%= t(:content) %></h3>
+
+  <% @unit.chapters.each do |chapter| %>
+    <h4><%= t(:lesson_number, number: chapter.number) %>: <%= link_to_path_element chapter, mode: :plain %></h4>
+      <% chapter.lessons.each do |lesson| %>
+        <%= lesson.name %>
+      <% end %>
+
+  <% end %>
+</div>
+<% end %>
+

@@ -1,27 +1,40 @@
-class Chapter < ActiveRecord::Base
+class Chapter < Container
   include WithStats
   include WithNumber
-
-  include FriendlyName
-
-  include TopicContainer
 
   belongs_to :book
   belongs_to :topic
 
-  include SiblingsNavigation
-  include TerminalNavigation
+  delegate :appendix,
+           :appendix_html,
+           :rebuild!,
+           :lessons,
+           :guides,
+           :pending_guides,
+           :lessons,
+           :first_lesson,
+           :exercises, to: :topic
 
-  def used_in?(organization)
-    organization.book == self.book
+  include SiblingsNavigation
+  include ParentNavigation
+
+  alias_method :unit, :navigable_parent
+
+  def structural_parent
+    book
+  end
+
+  def child
+    topic
   end
 
   def pending_siblings_for(user)
-    book.pending_chapters(user)
+    book.pending_chapters(user) # FIXME broken. Use progress
   end
 
-  def index_usage!(organization = Organization.current)
-    organization.index_usage_of! topic, self
-    lessons.each { |lesson| lesson.index_usage! organization }
+  def index_usage_at!(organization)
+    super
+    topic.lessons.each { |lesson| lesson.index_usage_at! organization }
   end
+
 end

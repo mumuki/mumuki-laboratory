@@ -1,19 +1,13 @@
-class Lesson < ActiveRecord::Base
+class Lesson < GuideContainer
   include WithNumber
-  include FriendlyName
-
-  include GuideContainer
 
   belongs_to :topic
   belongs_to :guide
 
-  include ParentNavigation, SiblingsNavigation
+  include ParentNavigation
+  include SiblingsNavigation
 
   alias_method :chapter, :navigable_parent
-
-  def used_in?(organization)
-    guide.usage_in_organization(organization) == self
-  end
 
   def pending_siblings_for(user)
     topic.pending_lessons(user)

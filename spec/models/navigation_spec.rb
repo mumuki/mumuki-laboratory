@@ -1,12 +1,19 @@
 require 'spec_helper'
 
 describe 'Navigation' do
-  let(:organization_1) { create(:organization, name: 'org 1', book: book_1) }
-  let(:organization_2) { create(:organization, name: 'org 2', book: book_2) }
+  let(:organization_1) { create(:organization, name: 'org 1', units: [unit_1]) }
+  let(:organization_2) { create(:organization, name: 'org 2', units: [unit_2]) }
+
+  let(:unit_1) do
+    build(:unit, book: book_1, complements: [build(:complement)])
+  end
+
+  let(:unit_2) do
+    build(:unit, book: book_2, complements: [build(:complement)])
+  end
 
   let(:book_1) do
     create(:book,
-           complements: [create(:complement)],
            chapters: [
                create(:chapter, lessons: [
                    create(:lesson, exercises: [
@@ -19,7 +26,6 @@ describe 'Navigation' do
 
   let(:book_2) do
     create(:book,
-           complements: [create(:complement)],
            chapters: [
                create(:chapter, lessons: [
                    create(:lesson, exercises: [
@@ -42,13 +48,13 @@ describe 'Navigation' do
   before { reindex_organization! organization_1 }
   before { reindex_organization! organization_2 }
 
-  it { expect(book_1.complements.first.used_in? Organization.current).to be false }
-  it { expect(book_1.complements.first.used_in? organization_1).to be true }
-  it { expect(book_1.complements.first.used_in? organization_2).to be false }
+  it { expect(unit_1.complements.first.used_in? Organization.current).to be false }
+  it { expect(unit_1.complements.first.used_in? organization_1).to be true }
+  it { expect(unit_1.complements.first.used_in? organization_2).to be false }
 
-  it { expect(book_2.complements.first.used_in? Organization.current).to be false }
-  it { expect(book_2.complements.first.used_in? organization_1).to be false }
-  it { expect(book_2.complements.first.used_in? organization_2).to be true }
+  it { expect(unit_2.complements.first.used_in? Organization.current).to be false }
+  it { expect(unit_2.complements.first.used_in? organization_1).to be false }
+  it { expect(unit_2.complements.first.used_in? organization_2).to be true }
 
   it { expect(chapter_1.used_in? organization_1).to be true }
   it { expect(chapter_1.used_in? organization_2).to be false }

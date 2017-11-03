@@ -19,7 +19,7 @@ HTML
   def breadcrumbs0(e, extra=nil, last='')
     return "#{breadcrumbs0(e)}<li #{breadcrumb_item_class(last)} >#{extra}</li>".html_safe if extra
 
-    base = link_to_path_element e
+    base = link_to_path_element e, mode: :plain
     if e.navigation_end?
       "#{home_breadcrumb}<li #{breadcrumb_item_class(last)}>#{base}</li>".html_safe
     else

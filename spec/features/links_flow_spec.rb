@@ -7,12 +7,17 @@ feature 'Lessons Flow' do
   let!(:chapter) { create(:chapter, name: 'C1', lessons: [lesson]) }
 
 
-  let(:other_organization) { create(:organization, name: 'other') }
-  let(:other_book) { create(:book) }
-  let(:other_exercise) { create(:exercise) }
-  let!(:other_complement) { create(:complement, book: other_book) }
-  let!(:other_lesson) { create(:lesson, exercises: [other_exercise]) }
-  let!(:other_chapter) { create(:chapter, lessons: [other_lesson], book: other_book) }
+  let!(:other_organization) {
+    create(:organization, name: 'other', units: [
+      build(:unit, complements: [other_complement], book:
+        build(:book, chapters: [other_chapter]))
+    ])
+  }
+
+  let(:other_chapter) { build(:chapter, lessons: [other_lesson]) }
+  let(:other_lesson) { build(:lesson, exercises: [other_exercise]) }
+  let(:other_exercise) { build(:exercise) }
+  let(:other_complement) { build(:complement) }
 
   before { reindex_current_organization! }
   before { reindex_organization! other_organization }

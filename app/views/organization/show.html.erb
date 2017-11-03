@@ -2,10 +2,10 @@
   <div class="book-header <%= current_user? ? '' : 'logged' %>">
     <h1>ム mumuki</h1>
 
-    <img src="<%= Organization.current.logo_url %>" alt="<%= Organization.current.name %> - Mumuki">
-    <h2><%= @book.name %></h2>
+    <img src="<%= @organization.logo_url %>" alt="<%= @organization.name %> - Mumuki">
+    <h2><%= @organization.name %></h2>
 
-    <% unless Organization.current.central? %>
+    <% unless @organization.central? %>
       <h3>
         <small><%= raw t :powered_by_mumuki %></small>
       </h3>
@@ -13,10 +13,11 @@
   </div>
 
   <div class="text-box">
-    <%= @book.description_html %>
+    <%= @organization.description_html %>
   </div>
 
-  <% @book.next_lesson_for(current_user).try do |lesson| %>
+ <!-- FIXME -->
+  <% @organization.first_book.next_lesson_for(current_user).try do |lesson| %>
     <div class="actions">
       <a href="<%= lesson_path(lesson) %>" class="btn btn-success">
         <%= t book_practice_key_for(current_user) %>
@@ -26,9 +27,9 @@
 
   <h2><%= t(:content) %></h2>
 
-  <% @book.chapters.each do |it| %>
-    <div class="chapter">
-      <h3><%= t(:chapter_number, number: it.number) %> <%= link_to_path_element it, mode: :plain %></h3>
+  <% @organization.units.each do |it| %>
+    <div class="unit">
+      <h3><%= t(:unit_number, number: it.number) %> <%= link_to_path_element it, mode: :plain %></h3>
 
       <div class="text-box">
         <%= it.description_teaser_html %>
@@ -38,7 +39,7 @@
   <% if current_user? && @exams.present? %>
     <h2><%= t(:exams) %></h2>
     <% @exams.each_with_index do |it, index| %>
-      <div class="chapter">
+      <div class="unit">
         <h3> <%= t(:exam_number, number: index) %> <%= link_to_path_element it, mode: :plain %></h3>
 
         <div class="text-box">
