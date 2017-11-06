@@ -45,7 +45,7 @@ describe User do
       it { expect(final.last_organization).to eq codeorga }
       it { expect(final.last_exercise).to eq your_first_program }
 
-      it { expect(final.permissions).to json_like({}) }
+      it { expect(final.permissions.as_json).to json_like({}) }
 
       it { expect(submission.reload.submitter).to eq final }
     end
@@ -71,7 +71,7 @@ describe User do
       it { expect(final.last_organization).to eq prologschool }
       it { expect(final.last_exercise).to eq more_clauses }
 
-      it { expect(final.permissions).to json_like student: 'prologschool/*' }
+      it { expect(final.permissions.as_json).to json_like student: 'prologschool/*' }
     end
 
     context 'when both have information, but final is newer' do
@@ -99,7 +99,7 @@ describe User do
       it { expect(final.last_organization).to eq prologschool }
       it { expect(final.last_exercise).to eq more_clauses }
 
-      it { expect(final.permissions).to json_like student: 'prologschool/*' }
+      it { expect(final.permissions.as_json).to json_like student: 'prologschool/*' }
     end
 
     context 'when both have information, but original is newer' do
@@ -127,7 +127,7 @@ describe User do
       it { expect(final.last_organization).to eq codeorga }
       it { expect(final.last_exercise).to eq your_first_program }
 
-      it { expect(final.permissions).to json_like student: 'prologschool/*' }
+      it { expect(final.permissions.as_json).to json_like student: 'prologschool/*' }
     end
   end
 
