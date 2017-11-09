@@ -195,7 +195,7 @@ feature 'Exercise Flow' do
       problem_7.submit_solution!(user, content: '').failed!
       visit "/exercises/#{problem_7.id}"
 
-      expect(page).to have_text 'The answer is incorrect'
+      expect(page).to have_text 'The answer is wrong'
     end
   end
 end
