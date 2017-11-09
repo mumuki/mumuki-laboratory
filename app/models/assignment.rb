@@ -41,7 +41,7 @@ class Assignment < ActiveRecord::Base
   end
 
   def results_visible?
-    visible_success_output? || should_retry?
+    (visible_success_output? || should_retry?) && !exercise.choices?
   end
 
   def result_preview

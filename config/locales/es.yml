@@ -30,6 +30,7 @@ es:
   continue_lesson: ¡Continuá esta lección!
   continue_practicing: ¡Seguí aprendiendo!
   contributors: Autores
+  correct_answer: ¡La respuesta es correcta!
   create_submission: Enviar
   created_at: Creado
   created_exercises: Ejercicios Creados
@@ -194,6 +195,7 @@ es:
   want_permissions: El siguiente usuario requiere permisos
   welcome_back_after_redirection: ¡Qué bueno verte de nuevo! Acá es donde estuviste la última vez
   working: "Procesando"
+  wrong_answer: La respuesta no es correcta
   you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
   fullscreen: "Pantalla completa"
   get_messages: "Ver mensajes"

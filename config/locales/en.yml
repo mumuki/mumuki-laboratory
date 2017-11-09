@@ -30,6 +30,7 @@ en:
   continue_practicing: Continue practicing!
   contributors: Contributors
   corollary: To think about
+  correct_answer: The answer is correct!
   create_submission: Submit
   created_at: Created at
   date: Date
@@ -173,6 +174,7 @@ en:
   want_permissions: The next user requires permissions
   welcome_back_after_redirection: Nice to see you again! This is where you left last time
   working: "Working"
+  wrong_answer: The answer is wrong
   you_must_sign_in_before_submitting: You must sign in before submitting your solutions
   fullscreen: "Fullscreen"
   get_messages: "View messages"

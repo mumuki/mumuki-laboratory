@@ -12,6 +12,7 @@ feature 'Exercise Flow' do
   let!(:problem_4) { build(:problem, name: 'Succ4', description: 'Description of Succ4', layout: :input_bottom, extra: 'x = 2') }
   let!(:problem_5) { build(:problem, name: 'Succ5', description: 'Description of Succ5', layout: :input_right, editor: :upload, hint: 'lele', language: gobstones) }
   let!(:problem_6) { build(:problem, name: 'Succ6', description: 'Description of Succ6', layout: :input_right, editor: :hidden, language: haskell) }
+  let!(:problem_7) { build(:problem, name: 'Succ7', description: 'Description of Succ7', choices: ['some choice']) }
   let!(:playground_1) { build(:playground, name: 'Succ5', description: 'Description of Succ4', layout: :input_right) }
   let!(:playground_2) { build(:playground, name: 'Succ6', description: 'Description of Succ4', layout: :input_right, extra: 'x = 4') }
   let!(:reading) { build(:reading, name: 'Reading about Succ', description: 'Lets understand succ history') }
@@ -21,7 +22,7 @@ feature 'Exercise Flow' do
   let!(:chapter) {
     create(:chapter, name: 'Functional Programming', lessons: [
       create(:lesson, name: 'getting-started', description: 'An awesome guide', language: haskell, exercises: [
-        problem_1, problem_2, problem_3, problem_4, reading, problem_5, problem_6, playground_1, playground_2
+        problem_1, problem_2, problem_3, problem_4, reading, problem_5, problem_6, problem_7, playground_1, playground_2
       ])
     ]) }
 
@@ -181,6 +182,20 @@ feature 'Exercise Flow' do
       expect(page).to_not have_text('Solution')
       expect(page).to_not have_text('need a hint?')
       expect(page).to_not have_selector('.upload')
+    end
+
+    scenario 'visit solved choices exercise' do
+      problem_7.submit_solution!(user, content: '').passed!
+      visit "/exercises/#{problem_7.id}"
+
+      expect(page).to have_text 'The answer is correct!'
+    end
+
+    scenario 'visit failed choices exercise' do
+      problem_7.submit_solution!(user, content: '').failed!
+      visit "/exercises/#{problem_7.id}"
+
+      expect(page).to have_text 'The answer is wrong'
     end
   end
 end

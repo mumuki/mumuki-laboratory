@@ -8,7 +8,17 @@ module AssignmentResultHelper
   end
 
   def t_assignment_status(assignment)
-    t(assignment.exercise.hidden? ? :hidden_done : assignment.status)
+    t assignment_status assignment
+  end
+
+  def assignment_status(assignment)
+    if assignment.exercise.hidden?
+      :hidden_done
+    elsif assignment.exercise.choices?
+      assignment.passed? ? :correct_answer : :wrong_answer
+    else
+      assignment.status
+    end
   end
 
   def render_test_results(assignment)
