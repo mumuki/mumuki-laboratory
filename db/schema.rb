@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024182244) do
+ActiveRecord::Schema.define(version: 20171109181818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20171024182244) do
   create_table "assignments", force: true do |t|
     t.text     "solution"
     t.integer  "exercise_id"
-    t.integer  "status",              default: 0
+    t.integer  "status",                    default: 0
     t.text     "result"
     t.integer  "submitter_id"
     t.text     "expectation_results"
@@ -27,13 +27,15 @@ ActiveRecord::Schema.define(version: 20171024182244) do
     t.text     "test_results"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "submissions_count",   default: 0,  null: false
+    t.integer  "submissions_count",         default: 0,  null: false
     t.string   "submission_id"
-    t.string   "queries",             default: [],              array: true
+    t.string   "queries",                   default: [],              array: true
     t.text     "query_results"
+    t.text     "manual_evaluation_comment"
   end
 
   add_index "assignments", ["exercise_id"], name: "index_assignments_on_exercise_id", using: :btree
+  add_index "assignments", ["submission_id"], name: "index_assignments_on_submission_id", using: :btree
   add_index "assignments", ["submitter_id"], name: "index_assignments_on_submitter_id", using: :btree
 
   create_table "books", force: true do |t|
