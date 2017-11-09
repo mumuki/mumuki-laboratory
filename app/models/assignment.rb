@@ -96,7 +96,7 @@ class Assignment < ActiveRecord::Base
     Assignment.find_by(submission_id: teacher_evaluation[:submission_id])&.evaluate_manually! teacher_evaluation
   end
 
-  def set_content(content)
+  def content=(content)
     if content.present?
       self.solution = exercise.single_choice? ? exercise.choices.index(content) : content
     end

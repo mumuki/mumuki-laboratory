@@ -26,7 +26,7 @@ class Submission
   private
 
   def save_submission!(assignment)
-    assignment.set_content content
+    assignment.content = content
     assignment.save!
   end
 
