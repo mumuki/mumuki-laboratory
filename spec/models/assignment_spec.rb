@@ -8,7 +8,7 @@ describe Assignment do
     let(:assignment) { problem.assignment_for(student) }
     let(:message) { assignment.messages.first }
 
-    before { problem.submit_solution! student, content: '...'}
+    before { problem.submit_solution! student, content: '...' }
 
     describe '.send_question!' do
       before { problem.submit_question! student, content: 'How can i solve this?' }
@@ -60,13 +60,13 @@ describe Assignment do
   end
   describe '#expectation_results_visible?' do
     let(:haskell) { create(:language, visible_success_output: true) }
-    let(:exercise) { create(:exercise)}
+    let(:exercise) { create(:exercise) }
     context 'should show expectation' do
-      let(:failed_submission) { create(:assignment, status: :failed, expectation_results: [{:binding=>"foo", :inspection=>"HasBinding", :result=>:failed}]) }
+      let(:failed_submission) { create(:assignment, status: :failed, expectation_results: [{:binding => "foo", :inspection => "HasBinding", :result => :failed}]) }
       it { expect(failed_submission.expectation_results_visible?).to be true }
     end
     context 'should not show expectation' do
-      let(:errored_submission) { create(:assignment, status: :errored, expectation_results: [{:binding=>"foo", :inspection=>"HasBinding", :result=>:failed}]) }
+      let(:errored_submission) { create(:assignment, status: :errored, expectation_results: [{:binding => "foo", :inspection => "HasBinding", :result => :failed}]) }
       it { expect(errored_submission.expectation_results_visible?).to be false }
     end
   end
@@ -136,7 +136,7 @@ describe Assignment do
     let(:exercise) { create(:exercise) }
     let(:user) { create(:user) }
 
-    before {  exercise.submit_solution!(user, content: 'foo') }
+    before { exercise.submit_solution!(user, content: 'foo') }
 
     it do
       submission_id = exercise.assignment_for(user).submission_id
@@ -148,6 +148,19 @@ describe Assignment do
       expect(new_submission_id).to be_present
       expect(new_submission_id).to_not eq submission_id
     end
+  end
+
+  describe '#evaluate_manually!' do
+
+    let(:user) { create(:user) }
+    let(:exercise) { create(:exercise, manual_evaluation: true, test: nil, expectations: []) }
+    let(:assignment) { exercise.submit_solution!(user, content: '') }
+    let(:evaluated_assignment) { Assignment.find assignment.id }
+
+    before { Assignment.evaluate_manually! submission_id: assignment.submission_id, manual_evaluation: '**Good**', status: 'passed_with_warnings' }
+
+    it { expect(evaluated_assignment.status).to eq Status::PassedWithWarnings }
+    it { expect(evaluated_assignment.manual_evaluation_comment).to eq '**Good**' }
   end
 
 end

@@ -38,6 +38,7 @@ describe Event do
                              feedback: nil,
                              test_results: nil,
                              submissions_count: 2,
+                             manual_evaluation_comment: nil,
                              exercise: {
                                eid: exercise.bibliotheca_id,
                                name: exercise.name,
@@ -97,6 +98,7 @@ describe Event do
                              feedback: nil,
                              test_results: nil,
                              submissions_count: 2,
+                             manual_evaluation_comment: nil,
                              exercise: {
                                name: exercise.name,
                                number: exercise.number,
@@ -151,6 +153,7 @@ describe Event do
                              feedback: nil,
                              test_results: nil,
                              submissions_count: 2,
+                             manual_evaluation_comment: nil,
                              exercise: {
                                eid: exercise.bibliotheca_id,
                                name: exercise.name,

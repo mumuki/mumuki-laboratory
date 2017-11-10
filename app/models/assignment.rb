@@ -4,7 +4,7 @@ class Assignment < ActiveRecord::Base
 
   belongs_to :exercise
   has_one :guide, through: :exercise
-  has_many :messages, -> { order(date: :desc)  }, foreign_key: :submission_id, primary_key: :submission_id
+  has_many :messages, -> { order(date: :desc) }, foreign_key: :submission_id, primary_key: :submission_id
 
   belongs_to :submitter, class_name: 'User'
 
@@ -30,6 +30,10 @@ class Assignment < ActiveRecord::Base
     queries.zip(query_results).map do |query, result|
       {query: query, status: result&.dig(:status).defaulting(:pending), result: result&.dig(:result)}
     end
+  end
+
+  def evaluate_manually!(teacher_evaluation)
+    update! status: Status.from_sym(teacher_evaluation[:status]), manual_evaluation_comment: teacher_evaluation[:manual_evaluation]
   end
 
   def single_visual_result?
@@ -86,6 +90,10 @@ class Assignment < ActiveRecord::Base
       organization.switch!
       notify!
     end
+  end
+
+  def self.evaluate_manually!(teacher_evaluation)
+    Assignment.find_by(submission_id: teacher_evaluation[:submission_id])&.evaluate_manually! teacher_evaluation
   end
 
   private

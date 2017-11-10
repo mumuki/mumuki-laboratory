@@ -25,7 +25,11 @@ module WithStatus
   end
 
   def running!
-    update! status: Status::Running, result: nil, test_results: nil, expectation_results: []
+    update! status: Status::Running,
+            result: nil,
+            test_results: nil,
+            expectation_results: [],
+            manual_evaluation_comment: nil
   end
 
   def errored!(message)
