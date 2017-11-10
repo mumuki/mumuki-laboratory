@@ -19,6 +19,10 @@ Mumukit::Nuntius::EventConsumer.handle do
     Exam.import_from_json! body
   end
 
+  event 'ManualEvaluation' do |payload|
+    Assignment.evaluate_manually! payload.deep_symbolize_keys[:assignment]
+  end
+
   [Book, Topic, Guide].each do |it|
     event "#{it.name}Changed" do |data|
       it.import! data[:slug]
