@@ -33,7 +33,7 @@ class Assignment < ActiveRecord::Base
   end
 
   def evaluate_manually!(teacher_evaluation)
-    update! status: teacher_evaluation[:status], manual_evaluation_comment: teacher_evaluation[:manual_evaluation]
+    update! status: Status.from_sym(teacher_evaluation[:status]), manual_evaluation_comment: teacher_evaluation[:manual_evaluation]
   end
 
   def single_visual_result?
