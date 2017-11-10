@@ -19,7 +19,7 @@ Mumukit::Nuntius::EventConsumer.handle do
     Exam.import_from_json! body
   end
 
-  event 'ManualEvaluation' do |payload|
+  event 'AssignmentManuallyEvaluated' do |payload|
     Assignment.evaluate_manually! payload.deep_symbolize_keys[:assignment]
   end
 
