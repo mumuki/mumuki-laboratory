@@ -81,12 +81,9 @@ class Organization < ActiveRecord::Base
       organization_json = parse json
 
       organization = Organization.find_by! name: organization_json[:name]
-      if organization_json[:book_ids] == organization.book_ids && organization_json[:book_id] == organization.book_id
-        organization.update! organization_json
-      else
-        organization.update! organization_json
-        organization.reindex_usages!
-      end
+      old_book = organization.slice(:book_id, :book_ids)
+      organization.update! organization_json
+      organization.reindex_usages! if old_book != organization_json.slice(:book, :book_ids)
     end
 
     def parse(json)
