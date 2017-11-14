@@ -42,6 +42,7 @@ class Organization < ActiveRecord::Base
       book.index_usage! self
       exams.each { |exam| exam.index_usage! self }
     end
+    reload
   end
 
   def drop_usage_indices!
@@ -80,7 +81,9 @@ class Organization < ActiveRecord::Base
       organization_json = parse json
 
       organization = Organization.find_by! name: organization_json[:name]
+      old_book = organization.slice(:book_id, :book_ids)
       organization.update! organization_json
+      organization.reindex_usages! if old_book != organization_json.slice(:book, :book_ids)
     end
 
     def parse(json)

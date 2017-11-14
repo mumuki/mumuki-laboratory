@@ -9,8 +9,8 @@ describe Book do
 
     before { reindex_current_organization! }
 
-    it { expect(book.next_lesson_for(nil)).to be book.first_lesson }
-    it { expect(book.next_lesson_for(fresh_user)).to be book.first_lesson }
+    it { expect(book.next_lesson_for(nil)).to eq book.first_lesson }
+    it { expect(book.next_lesson_for(fresh_user)).to eq book.first_lesson }
   end
 
   describe '#rebuild!' do
