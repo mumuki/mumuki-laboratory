@@ -26,7 +26,7 @@ class Submission
   private
 
   def save_submission!(assignment)
-    assignment.solution = content if content.present?
+    assignment.content = content
     assignment.save!
   end
 

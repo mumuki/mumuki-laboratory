@@ -96,6 +96,12 @@ class Assignment < ActiveRecord::Base
     Assignment.find_by(submission_id: teacher_evaluation[:submission_id])&.evaluate_manually! teacher_evaluation
   end
 
+  def content=(content)
+    if content.present?
+      self.solution = exercise.single_choice? ? exercise.choices.index(content) : content
+    end
+  end
+
   private
 
   def update_submissions_count!
@@ -113,4 +119,5 @@ class Assignment < ActiveRecord::Base
   def update_last_submission!
     submitter.update!(last_submission_date: DateTime.now, last_exercise: exercise)
   end
+
 end
