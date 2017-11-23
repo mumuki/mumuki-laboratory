@@ -48,7 +48,7 @@ es:
   error_404: error 404
   error_410: error 410
   error_500: error 500
-  errored: ¡Ups! Tu solución no se pudo ejecutar
+  errored: ¡Ups! Tu solución no se puede ejecutar
   exam_number: 'Examen %{number}:'
   exams: Exámenes
   exercise: Ejercicio
