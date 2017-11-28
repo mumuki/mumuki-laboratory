@@ -132,7 +132,7 @@ describe User do
   end
 
   describe '#accessible_organizations' do
-    before { create(:organization, name: 'pdep', book: create(:book, name: 'pdep', slug: 'mumuki/mumuki-the-pdep-book')) }
+    before { create(:organization, name: 'pdep',settings: {}, book: create(:book, name: 'pdep', slug: 'mumuki/mumuki-the-pdep-book')) }
     let(:user) { create :user, permissions: permissions }
 
     context 'when one organizations' do

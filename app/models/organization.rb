@@ -1,9 +1,9 @@
 class Organization < ActiveRecord::Base
   include Mumukit::Platform::Organization::Helpers
 
-  serialize :profile, Mumukit::Platform::Organization::Profile
-  serialize :settings, Mumukit::Platform::Organization::Settings
-  serialize :theme, Mumukit::Platform::Organization::Theme
+  store :profile, accessors: [:logo_url, :locale, :description, :contact_email, :terms_of_service, :community_link], coder: JSON
+  store :settings, accessors: [:login_methods, :raise_hand_enabled, :public], coder: JSON
+  store :theme, accessors: [:theme_stylesheet_url, :extension_javascript_url], coder: JSON
 
   validate :ensure_consistent_public_login
 
@@ -19,6 +19,14 @@ class Organization < ActiveRecord::Base
   has_many :exercises, through: :guides
   has_many :assignments, through: :exercises
   has_many :exams
+
+  def login_methods
+    super || []
+  end
+
+  def public?
+    public
+  end
 
   def in_path?(item)
     usages.exists?(item: item) || usages.exists?(parent_item: item)
@@ -60,7 +68,7 @@ class Organization < ActiveRecord::Base
   private
 
   def ensure_consistent_public_login
-    errors.add(:base, :consistent_public_login) if settings.customized_login_methods? && public?
+    errors.add(:base, :consistent_public_login) if customized_login_methods? && public?
   end
 
   def notify_assignments!(assignments)

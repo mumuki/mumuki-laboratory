@@ -11,7 +11,6 @@ gem 'therubyracer', platforms: :ruby
 
 gem 'turbolinks', '~> 5.0'
 
-
 gem 'sass-rails'
 gem 'execjs'
 
@@ -24,9 +23,6 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-mumuki-styles', '1.8.0'
 end
 
-gem 'bootstrap-sass', '~> 3.3.5'
-
-gem 'font-awesome-rails'
 
 gem 'puma'
 
@@ -34,6 +30,7 @@ gem 'bootstrap_form'
 
 gem 'rails-i18n', '~> 4.0.0'
 
+gem 'font-awesome-rails', '~> 4.7'
 gem 'nprogress-rails'
 
 gem 'mumukit-content-type',

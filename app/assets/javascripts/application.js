@@ -15,7 +15,7 @@
 //= require momentjs/locale/es
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+// require bootstrap
 //= require turbolinks
 //= require nprogress
 //= require nprogress-turbolinks

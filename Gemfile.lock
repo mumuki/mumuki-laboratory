@@ -60,14 +60,9 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     amq-protocol (2.2.0)
     arel (8.0.0)
-    autoprefixer-rails (7.1.6)
-      execjs
     bindex (0.5.0)
     binding_of_caller (0.7.3)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.3.7)
-      autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
     bootstrap_form (2.7.0)
     builder (3.2.3)
     bunny (2.7.2)
@@ -341,7 +336,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.4)
     unicode-display_width (1.3.0)
-    web-console (3.5.0)
+    web-console (3.5.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
@@ -357,14 +352,13 @@ PLATFORMS
 
 DEPENDENCIES
   binding_of_caller
-  bootstrap-sass (~> 3.3.5)
   bootstrap_form
   capybara (~> 2.3.0)
   codeclimate-test-reporter
   execjs
   factory_bot_rails
   faker (~> 1.5)
-  font-awesome-rails
+  font-awesome-rails (~> 4.7)
   i18n-tasks (~> 0.8.3)
   jquery-rails
   mumukit-auth (~> 7.1)

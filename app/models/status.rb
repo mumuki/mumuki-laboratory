@@ -2,7 +2,7 @@ module Status
   STATUSES = [Pending, Running, Passed, Failed, Errored, Aborted, PassedWithWarnings, ManualEvaluationPending]
 
   def self.load(i)
-    STATUSES[i]
+    STATUSES[i.to_i]
   end
 
   def self.dump(status)
@@ -21,5 +21,9 @@ module Status
     else
       status_like.status
     end
+  end
+
+  def self.cast(i)
+    STATUSES[i]
   end
 end
