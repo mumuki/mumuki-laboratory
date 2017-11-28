@@ -43,6 +43,9 @@
 //= require codemirror-modes/sql-hint.min
 //= require codemirror-modes/xml.min
 //= require codemirror-modes/xml-hint.min
+//= require analytics
+//= require hotjar
+//= require facebook
 
 //= require_tree ./application
 
