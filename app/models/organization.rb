@@ -1,5 +1,71 @@
+
 class Organization < ActiveRecord::Base
-  include Mumukit::Platform::Organization::Helpers
+  #include Mumukit::Platform::Organization::Helpers
+ def slug
+    Mumukit::Auth::Slug.join_s name
+  end
+
+  def central?
+    name == 'central'
+  end
+
+  def test?
+    name == 'test'
+  end
+
+  def switch!
+    Mumukit::Platform::Organization.switch! self
+  end
+
+  def to_s
+    name
+  end
+
+  def url_for(path)
+    Mumukit::Platform.application.organic_url_for(name, path)
+  end
+
+  def domain
+    Mumukit::Platform.application.organic_domain(name)
+  end
+
+  def self.current
+    Mumukit::Platform::Organization.current
+  end
+
+  def self.parse(json)
+    json
+      .slice(:name)
+      .merge(theme: Mumukit::Platform::Organization::Theme.parse(json))
+      .merge(settings: Mumukit::Platform::Organization::Settings.parse(json))
+      .merge(profile: Mumukit::Platform::Organization::Profile.parse(json))
+  end
+
+  def login_settings
+    @login_settings ||= Mumukit::Login::Settings.new(login_methods)
+  end
+
+  def customized_login_methods?
+    login_methods.size < Mumukit::Login::Settings.login_methods.size
+  end
+
+  def inconsistent_public_login?
+    customized_login_methods? && public?
+  end
+
+  LOCALES = {
+    en: { facebook_code: :en_US, name: 'English' },
+    es: { facebook_code: :es_LA, name: 'Español' }
+  }.with_indifferent_access
+
+  def locale_json
+    LOCALES[locale].to_json
+  end
+
+  def logo_url
+    @logo_url ||= 'https://mumuki.io/logo-alt-large.png'
+  end
+
 
   store :profile, accessors: [:logo_url, :locale, :description, :contact_email, :terms_of_service, :community_link], coder: JSON
   store :settings, accessors: [:login_methods, :raise_hand_enabled, :public], coder: JSON
@@ -20,13 +86,21 @@ class Organization < ActiveRecord::Base
   has_many :assignments, through: :exercises
   has_many :exams
 
-  def login_methods
-    super || []
+  def raise_hand_enabled?
+    raise_hand_enabled
   end
 
   def public?
     public
   end
+
+#  def login_methods
+#   super || []
+#  end
+
+#  def public?
+#    public
+#  end
 
   def in_path?(item)
     usages.exists?(item: item) || usages.exists?(parent_item: item)
