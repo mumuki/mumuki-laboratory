@@ -320,7 +320,6 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.5)
   bootstrap_form
   bootswatch-rails
-  bunny
   capybara (~> 2.3.0)
   codeclimate-test-reporter
   execjs

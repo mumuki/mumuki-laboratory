@@ -37,8 +37,6 @@ gem 'rails-i18n', '~> 4.0.0'
 
 gem 'nprogress-rails'
 
-gem 'bunny'
-
 gem 'mumukit-content-type',
     git: 'https://github.com/mumuki/mumukit-content-type',
     require: 'mumukit/content_type',
