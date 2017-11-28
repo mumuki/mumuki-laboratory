@@ -53,9 +53,6 @@ GEM
       execjs
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-kaminari-views (0.0.5)
-      kaminari (>= 0.13)
-      rails (>= 3.1)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -123,9 +120,6 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.6)
     jwt (1.5.6)
-    kaminari (0.16.3)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     libv8 (3.16.14.19)
     mail (2.6.5)
       mime-types (>= 1.16, < 4)
@@ -323,7 +317,6 @@ PLATFORMS
 
 DEPENDENCIES
   binding_of_caller
-  bootstrap-kaminari-views
   bootstrap-sass (~> 3.3.5)
   bootstrap_form
   bootswatch-rails
@@ -336,7 +329,6 @@ DEPENDENCIES
   font-awesome-rails
   i18n-tasks (~> 0.8.3)
   jquery-rails
-  kaminari (~> 0.16.3)
   mumukit-auth (~> 7.1)
   mumukit-bridge (~> 3.2)
   mumukit-content-type!

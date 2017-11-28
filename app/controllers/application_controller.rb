@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   include WithAuthentication
   include WithAuthorization
-  include WithPagination
   include WithMessagesNotification
   include WithCustomAssets
   include Accessible

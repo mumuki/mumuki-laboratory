@@ -1,5 +1,4 @@
 class ExercisesController < ApplicationController
-  include WithExerciseIndex
   include WithExamsValidations
 
   before_action :set_guide, only: :show

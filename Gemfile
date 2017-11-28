@@ -31,9 +31,6 @@ gem 'font-awesome-rails'
 
 gem 'puma'
 
-gem 'kaminari', '~> 0.16.3'
-gem 'bootstrap-kaminari-views'
-
 gem 'bootstrap_form'
 
 gem 'i18n-tasks', '~> 0.8.3'
