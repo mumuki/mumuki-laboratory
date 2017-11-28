@@ -56,7 +56,7 @@ gem 'rack', '~> 1.5'
 gem 'omniauth', '~> 1.4.0'
 
 group :test do
-  gem 'rspec-rails', '~> 2.14'
+  gem 'rspec-rails', '~> 3.6'
   gem 'factory_bot_rails'
   gem 'rake', '10.4.2'
   gem 'faker', '~> 1.5'
