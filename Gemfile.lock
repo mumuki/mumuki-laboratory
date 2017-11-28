@@ -53,15 +53,10 @@ GEM
       execjs
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-kaminari-views (0.0.5)
-      kaminari (>= 0.13)
-      rails (>= 3.1)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     bootstrap_form (2.7.0)
-    bootswatch-rails (3.3.5)
-      railties (>= 3.1)
     builder (3.2.3)
     bunny (2.6.5)
       amq-protocol (>= 2.1.0)
@@ -94,10 +89,10 @@ GEM
       thread_safe
     erubis (2.7.0)
     execjs (2.7.0)
-    factory_girl (4.8.0)
+    factory_bot (4.8.2)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.8.0)
-      factory_girl (~> 4.8.0)
+    factory_bot_rails (4.8.2)
+      factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
     faker (1.7.3)
       i18n (~> 0.5)
@@ -109,7 +104,8 @@ GEM
     highline (1.7.8)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    i18n (0.8.6)
+    i18n (0.9.1)
+      concurrent-ruby (~> 1.0)
     i18n-tasks (0.8.7)
       activesupport (>= 2.3.18)
       easy_translate (>= 0.5.0)
@@ -123,12 +119,9 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.6)
     jwt (1.5.6)
-    kaminari (0.16.3)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     libv8 (3.16.14.19)
-    mail (2.6.5)
-      mime-types (>= 1.16, < 4)
+    mail (2.7.0)
+      mini_mime (>= 0.1.1)
     md_emoji (1.0.2)
       railties (>= 3.1.0)
       redcarpet (>= 2.0)
@@ -136,6 +129,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mini_mime (1.0.0)
     mini_portile2 (2.1.0)
     minitest (5.10.3)
     multi_json (1.12.2)
@@ -253,21 +247,23 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    rspec-collection_matchers (1.1.3)
-      rspec-expectations (>= 2.99.0.beta1)
-    rspec-core (2.99.2)
-    rspec-expectations (2.99.2)
-      diff-lcs (>= 1.1.3, < 2.0)
-    rspec-mocks (2.99.4)
-    rspec-rails (2.99.0)
+    rspec-core (3.7.0)
+      rspec-support (~> 3.7.0)
+    rspec-expectations (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-mocks (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-rails (3.7.2)
       actionpack (>= 3.0)
-      activemodel (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec-collection_matchers
-      rspec-core (~> 2.99.0)
-      rspec-expectations (~> 2.99.0)
-      rspec-mocks (~> 2.99.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
+      rspec-support (~> 3.7.0)
+    rspec-support (3.7.0)
     ruby-saml (1.5.0)
       nokogiri (>= 1.5.10)
     sass (3.4.23)
@@ -299,14 +295,14 @@ GEM
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
-    thor (0.19.4)
+    thor (0.20.0)
     thread (0.2.2)
     thread_safe (0.3.6)
     tilt (2.0.7)
     tins (1.13.2)
     turbolinks (2.5.3)
       coffee-rails
-    tzinfo (1.2.3)
+    tzinfo (1.2.4)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
       execjs (>= 0.3.0)
@@ -317,29 +313,22 @@ GEM
     unicode-display_width (1.1.3)
     xpath (2.0.0)
       nokogiri (~> 1.3)
-    yaml_db (0.5.0)
-      rails (>= 3.0, < 5.1)
-      rake (>= 0.8.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   binding_of_caller
-  bootstrap-kaminari-views
   bootstrap-sass (~> 3.3.5)
   bootstrap_form
-  bootswatch-rails
-  bunny
   capybara (~> 2.3.0)
   codeclimate-test-reporter
   execjs
-  factory_girl_rails
+  factory_bot_rails
   faker (~> 1.5)
   font-awesome-rails
   i18n-tasks (~> 0.8.3)
   jquery-rails
-  kaminari (~> 0.16.3)
   mumukit-auth (~> 7.1)
   mumukit-bridge (~> 3.2)
   mumukit-content-type!
@@ -358,7 +347,7 @@ DEPENDENCIES
   pry-stack_explorer
   puma
   rack (~> 1.5)
-  rails (~> 4.1.14)
+  rails (~> 4.1.16)
   rails-assets-awesome-bootstrap-checkbox!
   rails-assets-dev-awesome (= 0.4.1)!
   rails-assets-momentjs!
@@ -366,13 +355,12 @@ DEPENDENCIES
   rails-i18n (~> 4.0.0)
   rake (= 10.4.2)
   rouge!
-  rspec-rails (~> 2.14)
+  rspec-rails (~> 3.6)
   sass-rails
   sitemap_generator
   therubyracer
   turbolinks (~> 2.5)
   uglifier (~> 2.7)
-  yaml_db
 
 RUBY VERSION
    ruby 2.3.1p112

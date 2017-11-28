@@ -116,7 +116,7 @@ describe Guide do
       end
 
       describe 'it is deleted from the database' do
-        it { expect { Exercise.find(exercise_6.id) }.to raise_error }
+        it { expect { Exercise.find(exercise_6.id) }.to raise_error(ActiveRecord::RecordNotFound) }
       end
     end
 

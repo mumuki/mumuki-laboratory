@@ -2,7 +2,6 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'codeclimate-test-reporter'
 require 'mumukit/core/rspec'
 
@@ -22,7 +21,7 @@ RSpec.configure do |config|
 
   config.order = '1'
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 
   config.infer_spec_type_from_file_location!
 

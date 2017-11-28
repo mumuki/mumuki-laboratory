@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
 
   factory :chapter do
     number { Faker::Number.between(1, 40) }

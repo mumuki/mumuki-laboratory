@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
 
   factory :guide do
     sequence(:name) { |n| "guide#{n}" }

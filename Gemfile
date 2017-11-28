@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '~> 2.3'
 
-gem 'rails', '~> 4.1.14'
+gem 'rails', '~> 4.1.16'
 
 gem 'pg', '~> 0.18.0'
 
@@ -25,25 +25,16 @@ source 'https://rails-assets.org' do
 end
 
 gem 'bootstrap-sass', '~> 3.3.5'
-gem 'bootswatch-rails'
 
 gem 'font-awesome-rails'
 
 gem 'puma'
 
-gem 'kaminari', '~> 0.16.3'
-gem 'bootstrap-kaminari-views'
-
 gem 'bootstrap_form'
 
-gem 'i18n-tasks', '~> 0.8.3'
 gem 'rails-i18n', '~> 4.0.0'
 
 gem 'nprogress-rails'
-
-gem 'yaml_db'
-
-gem 'bunny'
 
 gem 'mumukit-content-type',
     git: 'https://github.com/mumuki/mumukit-content-type',
@@ -65,8 +56,8 @@ gem 'rack', '~> 1.5'
 gem 'omniauth', '~> 1.4.0'
 
 group :test do
-  gem 'rspec-rails', '~> 2.14'
-  gem 'factory_girl_rails'
+  gem 'rspec-rails', '~> 3.6'
+  gem 'factory_bot_rails'
   gem 'rake', '10.4.2'
   gem 'faker', '~> 1.5'
   gem 'capybara', '~> 2.3.0'
@@ -79,21 +70,9 @@ group :development do
   gem 'pry-byebug' unless Gem.win_platform?
   gem 'pry-stack_explorer'
   gem 'binding_of_caller'
+  gem 'i18n-tasks', '~> 0.8.3'
 end
 
 gem 'codeclimate-test-reporter', :group => :test, :require => nil
 
 gem 'sitemap_generator'
-
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
