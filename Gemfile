@@ -33,7 +33,6 @@ gem 'puma'
 
 gem 'bootstrap_form'
 
-gem 'i18n-tasks', '~> 0.8.3'
 gem 'rails-i18n', '~> 4.0.0'
 
 gem 'nprogress-rails'
@@ -74,6 +73,7 @@ group :development do
   gem 'pry-byebug' unless Gem.win_platform?
   gem 'pry-stack_explorer'
   gem 'binding_of_caller'
+  gem 'i18n-tasks', '~> 0.8.3'
 end
 
 gem 'codeclimate-test-reporter', :group => :test, :require => nil
