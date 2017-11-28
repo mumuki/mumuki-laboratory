@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '~> 2.3'
 
-gem 'rails', '~> 4.1.16'
+gem 'rails', '~> 5.1.3'
 
 gem 'pg', '~> 0.18.0'
 
@@ -9,7 +9,7 @@ gem 'uglifier', '~> 2.7'
 
 gem 'therubyracer', platforms: :ruby
 
-gem 'turbolinks', '~> 2.5'
+gem 'turbolinks', '~> 5.0'
 
 
 gem 'sass-rails'
@@ -52,7 +52,7 @@ gem 'mumukit-nuntius', '~> 5.0'
 gem 'mumukit-platform', '~> 0.5'
 gem 'mumukit-login', '~> 4.0'
 
-gem 'rack', '~> 1.5'
+gem 'rack', '~> 2.0'
 gem 'omniauth', '~> 1.4.0'
 
 group :test do
@@ -71,6 +71,7 @@ group :development do
   gem 'pry-stack_explorer'
   gem 'binding_of_caller'
   gem 'i18n-tasks', '~> 0.8.3'
+  gem 'web-console'
 end
 
 gem 'codeclimate-test-reporter', :group => :test, :require => nil
