@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :invitation do
     code { Faker::Lorem.sentence(6) }
     course { "foo/bar" }

@@ -57,7 +57,7 @@ gem 'omniauth', '~> 1.4.0'
 
 group :test do
   gem 'rspec-rails', '~> 2.14'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'rake', '10.4.2'
   gem 'faker', '~> 1.5'
   gem 'capybara', '~> 2.3.0'

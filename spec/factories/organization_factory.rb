@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
 
   factory :organization do
     contact_email { Faker::Internet.email }
