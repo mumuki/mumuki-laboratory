@@ -13,6 +13,7 @@ class Assignment < ActiveRecord::Base
   serialize :expectation_results
   serialize :test_results
   serialize :query_results
+  serialize :solution
 
   delegate :language, :name, :visible_success_output?, to: :exercise
   delegate :output_content_type, to: :language
