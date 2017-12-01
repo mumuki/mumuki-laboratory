@@ -33,14 +33,6 @@ class Organization < ActiveRecord::Base
     Mumukit::Platform::Organization.current
   end
 
-  def self.parse(json)
-    json
-      .slice(:name)
-      .merge(theme: Mumukit::Platform::Organization::Theme.parse(json))
-      .merge(settings: Mumukit::Platform::Organization::Settings.parse(json))
-      .merge(profile: Mumukit::Platform::Organization::Profile.parse(json))
-  end
-
   def login_settings
     @login_settings ||= Mumukit::Login::Settings.new(login_methods)
   end
@@ -97,10 +89,6 @@ class Organization < ActiveRecord::Base
   def login_methods
    super || []
   end
-
-#  def public?
-#    public
-#  end
 
   def in_path?(item)
     usages.exists?(item: item) || usages.exists?(parent_item: item)
@@ -170,7 +158,13 @@ class Organization < ActiveRecord::Base
 
     def parse(json)
       book_ids = json[:books].map { |it| Book.find_by!(slug: it).id }
-      super.merge(book_id: book_ids.first, book_ids: book_ids)
+
+      json
+        .slice(:name)
+        .merge(Mumukit::Platform::Organization::Theme.parse(json).as_json) # TODO remove theme, settings and profile classes
+        .merge(Mumukit::Platform::Organization::Settings.parse(json).as_json)
+        .merge(Mumukit::Platform::Organization::Profile.parse(json).as_json)
+        .merge(book_id: book_ids.first, book_ids: book_ids)
     end
   end
 end
