@@ -6,7 +6,7 @@ describe IconsHelper do
 
   describe '#language_icon' do
     let(:haskell) { create(:language, name: 'Haskell') }
-    let(:haskell_img_tag) { '<span alt="Haskell" class="fa da da-haskell lang-icon" />' }
+    let(:haskell_img_tag) { '<span class="fa da da-haskell lang-icon" alt="Haskell" />' }
     it { expect(language_icon(haskell)).to include haskell_img_tag }
   end
 

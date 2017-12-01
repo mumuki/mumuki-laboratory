@@ -7,7 +7,7 @@ describe MessagesController do
   before { allow_any_instance_of(MessagesController).to receive(:message_params).and_return content: 'foo' }
 
   describe 'post when no previous assignment' do
-    before { post :create, {exercise_id: exercise.id} }
+    before { post :create, params: {exercise_id: exercise.id} }
 
     it { expect(response.status).to eq 302 }
     it { expect(user.assignments.size).to eq 1 }
@@ -16,7 +16,7 @@ describe MessagesController do
 
   describe 'post when previous assignment' do
     let(:assignment) { exercise.submit_solution!(user, content: '') }
-    before { post :create, {exercise_id: exercise.id} }
+    before { post :create, params: {exercise_id: exercise.id} }
 
     it { expect(response.status).to eq 302 }
     it { expect(user.assignments.size).to eq 1 }
