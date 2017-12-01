@@ -2,7 +2,7 @@ module WithStatus
   extend ActiveSupport::Concern
 
   included do
-    attribute :status, :status, default: -> { 0 }
+    serialize :status, Status
     validates_presence_of :status
   end
 
