@@ -94,9 +94,9 @@ class Organization < ActiveRecord::Base
     public
   end
 
-#  def login_methods
-#   super || []
-#  end
+  def login_methods
+   super || []
+  end
 
 #  def public?
 #    public
