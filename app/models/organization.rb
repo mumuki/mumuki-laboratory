@@ -1,5 +1,28 @@
-
 class Organization < ActiveRecord::Base
+  LOCALES = {
+    en: { facebook_code: :en_US, name: 'English' },
+    es: { facebook_code: :es_LA, name: 'Español' }
+  }.with_indifferent_access
+
+  store :profile, accessors: [:logo_url, :locale, :description, :contact_email, :terms_of_service, :community_link], coder: JSON
+  store :settings, accessors: [:login_methods, :raise_hand_enabled, :public], coder: JSON
+  store :theme, accessors: [:theme_stylesheet_url, :extension_javascript_url], coder: JSON
+
+  validate :ensure_consistent_public_login
+
+  belongs_to :book
+  has_many :usages
+
+  validates_presence_of :name, :contact_email
+  validates_uniqueness_of :name
+
+  after_create :reindex_usages!
+
+  has_many :guides, through: 'usages', source: 'item', source_type: 'Guide'
+  has_many :exercises, through: :guides
+  has_many :assignments, through: :exercises
+  has_many :exams
+
   def slug
     Mumukit::Auth::Slug.join_s name
   end
@@ -44,11 +67,6 @@ class Organization < ActiveRecord::Base
     customized_login_methods? && public?
   end
 
-  LOCALES = {
-    en: { facebook_code: :en_US, name: 'English' },
-    es: { facebook_code: :es_LA, name: 'Español' }
-  }.with_indifferent_access
-
   def locale_json
     LOCALES[locale].to_json
   end
@@ -56,26 +74,6 @@ class Organization < ActiveRecord::Base
   def logo_url
     @logo_url ||= 'https://mumuki.io/logo-alt-large.png'
   end
-
-
-  store :profile, accessors: [:logo_url, :locale, :description, :contact_email, :terms_of_service, :community_link], coder: JSON
-  store :settings, accessors: [:login_methods, :raise_hand_enabled, :public], coder: JSON
-  store :theme, accessors: [:theme_stylesheet_url, :extension_javascript_url], coder: JSON
-
-  validate :ensure_consistent_public_login
-
-  belongs_to :book
-  has_many :usages
-
-  validates_presence_of :name, :contact_email
-  validates_uniqueness_of :name
-
-  after_create :reindex_usages!
-
-  has_many :guides, through: 'usages', source: 'item', source_type: 'Guide'
-  has_many :exercises, through: :guides
-  has_many :assignments, through: :exercises
-  has_many :exams
 
   def raise_hand_enabled?
     raise_hand_enabled
