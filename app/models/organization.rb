@@ -1,7 +1,6 @@
 
 class Organization < ActiveRecord::Base
-  #include Mumukit::Platform::Organization::Helpers
- def slug
+  def slug
     Mumukit::Auth::Slug.join_s name
   end
 
@@ -84,6 +83,10 @@ class Organization < ActiveRecord::Base
 
   def public?
     public
+  end
+
+  def private?
+    !public?
   end
 
   def login_methods

@@ -22,9 +22,9 @@ describe 'Organization events' do
     it { expect(organization.name).to eq 'test-orga' }
     it { expect(organization.book_id).to eq 8 }
     it { expect(organization.book_ids).to eq [8] }
-    it { expect(organization.profile.description).to eq 'Academy' }
-    it { expect(organization.settings.public?).to be false }
-    it { expect(organization.theme.theme_stylesheet_url).to eq 'http://mumuki.io/theme.css' }
+    it { expect(organization.description).to eq 'Academy' }
+    it { expect(organization.public?).to be false }
+    it { expect(organization.theme_stylesheet_url).to eq 'http://mumuki.io/theme.css' }
   end
 
   describe Organization do
