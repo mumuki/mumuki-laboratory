@@ -2,11 +2,15 @@ module Status
   STATUSES = [Pending, Running, Passed, Failed, Errored, Aborted, PassedWithWarnings, ManualEvaluationPending]
 
   def self.load(i)
-    STATUSES[i.to_i]
+    cast(i)
   end
 
   def self.dump(status)
-    coerce(status).to_i
+    if status.is_a? Numeric
+      status
+    else
+      coerce(status).to_i
+    end
   end
 
   def self.from_sym(status)
@@ -24,6 +28,6 @@ module Status
   end
 
   def self.cast(i)
-    STATUSES[i]
+    STATUSES[i.to_i]
   end
 end
