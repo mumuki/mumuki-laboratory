@@ -17,7 +17,7 @@ module Status
     "Status::#{status.to_s.camelize}".constantize
   end
 
-  def self.coerce(status_like)
+  def self.coerce(status_like) # TODO make polymorphic to_mumuki_status
     if status_like.is_a? Symbol
       from_sym(status_like)
     elsif status_like.is_a? Status::Base
