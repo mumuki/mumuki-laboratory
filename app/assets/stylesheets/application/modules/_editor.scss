@@ -23,6 +23,11 @@
   font-size: 0.5em;
 }
 
+.multiple-editor-resize {
+  @extend .editor-resize;
+  top: 43px;
+}
+
 body:not(.fullscreen) {
   .CodeMirror-wrap,
   .CodeMirror-scroll {
@@ -66,3 +71,49 @@ body.fullscreen {
     }
   }
 }
+
+.editor-files {
+  position: relative;
+}
+
+.files-tabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: -6px;
+
+  .nav-tabs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    li {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      a {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-right: 0;
+        padding: 5px 10px;
+      }
+      &.active {
+        a {
+          background-color: #f7f7f7;
+        }
+      }
+      &:not(.active) > a {
+        background-color: #fff;
+        border: 1px solid #ecf0f1;
+        cursor: pointer;
+        &:hover {
+          background-color: #ecf0f1;
+        }
+      }
+    }
+  }
+}
+
