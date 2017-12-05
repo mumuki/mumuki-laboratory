@@ -21,12 +21,11 @@
   top: 0;
   right: 0;
   font-size: 0.5em;
+  &.multiple-files {
+    top: 43px;
+  }
 }
 
-.multiple-editor-resize {
-  @extend .editor-resize;
-  top: 43px;
-}
 
 body:not(.fullscreen) {
   .CodeMirror-wrap,

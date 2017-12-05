@@ -22,6 +22,6 @@ class ExerciseSolutionsController < AjaxController
   end
 
   def solution_params
-    params.require(:solution).permit(:content)
+    params.require(:solution).tap { |it| it[:content] = params[:solution][:content] }
   end
 end

@@ -30,6 +30,7 @@ class ExercisesController < ApplicationController
   end
 
   def set_default_content
+    @file_content = @exercise.files_content_for(current_user)
     @current_content = @exercise.current_content_for(current_user)
     @default_content = @exercise.default_content_for(current_user)
   end

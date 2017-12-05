@@ -10,6 +10,10 @@ module WithAssignments
       default_content_for(user)
   end
 
+  def files_content_for(user)
+    Mumukit::Directives::Sections.new.split_sections assignment_for(user).try(&:solution)
+  end
+
   def default_content_for(user)
     (default_content || '')
       .gsub(/\/\*\.\.\.(previousContent|previousSolution)\.\.\.\*\//) { previous.current_content_for(user) }

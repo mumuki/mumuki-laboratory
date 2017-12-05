@@ -12,18 +12,18 @@
       </ul>
     </span>
     <div class="tab-content">
-      <% files.each_with_index do |file, index| %>
+      <% files.each_with_index do |filename, index| %>
           <div role="tabpanel" class="tab-pane mu-input-panel <%= 'fade in active' if index == 0 %>" id="editor-file-<%= index %>">
-            <%= form.editor "content[#{file}]", 'dynamic',
+            <%= form.editor "content[#{filename}]", 'dynamic',
                             placeholder: t(:editor_placeholder),
                             class: 'form-control editor',
-                            value: @current_content,
+                            value: @file_content[filename],
                             data: {lines: 17} %>
           </div>
       <% end %>
     </div>
 
-    <a class="multiple-editor-resize" title="<%= t(:fullscreen) %> (F11)">
+    <a class="editor-resize multiple-files" title="<%= t(:fullscreen) %> (F11)">
       <span class="fa-stack fa-lg">
         <i class="fa fa-square-o fa-stack-2x"></i>
         <i class="fa fa-expand fa-stack-1x"></i>
