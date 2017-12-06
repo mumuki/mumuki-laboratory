@@ -88,7 +88,7 @@ class Organization < ActiveRecord::Base
   end
 
   def login_methods
-   super || []
+   settings[:login_methods] || Mumukit::Login::Settings.default_methods
   end
 
   def in_path?(item)
