@@ -10,9 +10,19 @@ class Assignment < ActiveRecord::Base
 
   validates_presence_of :exercise, :submitter
 
-  serialize :expectation_results
-  serialize :test_results
-  serialize :query_results
+  [:expectation_results, :test_results, :query_results].each do |field|
+    serialize field
+    define_method(field) { self[field]&.map { |it| it.symbolize_keys } }
+  end
+
+  def test_results
+    self[:test_results]&.map { |it| it.symbolize_keys }
+  end
+
+  def expectation_results
+    self[:expectation_results]&.map { |it| it.symbolize_keys }
+  end
+
 
   delegate :language, :name, :visible_success_output?, to: :exercise
   delegate :output_content_type, to: :language
