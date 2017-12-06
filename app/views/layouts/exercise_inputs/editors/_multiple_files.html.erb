@@ -1,10 +1,9 @@
 <div class="field form-group editor-code">
 
   <div class="editor-files">
-    <% files = ['file.rb', 'superfile.rb', 'one_more_file.rb'] %>
     <span class="files-tabs">
       <ul class="nav nav-tabs">
-        <% files.each_with_index do |file, index| %>
+        <% @files.each_with_index do |file, index| %>
             <li role="presentation" class="<%= 'active' if index == 0 %>" data-target="#editor-file-<%= index %>" tabindex='0' data-toggle='tab'>
               <a href="#"><%= file %></a>
             </li>
@@ -12,7 +11,7 @@
       </ul>
     </span>
     <div class="tab-content">
-      <% files.each_with_index do |filename, index| %>
+      <% @files.each_with_index do |filename, index| %>
           <div role="tabpanel" class="tab-pane mu-input-panel <%= 'fade in active' if index == 0 %>" id="editor-file-<%= index %>">
             <%= form.editor "content[#{filename}]", 'dynamic',
                             placeholder: t(:editor_placeholder),

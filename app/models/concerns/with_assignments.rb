@@ -11,7 +11,7 @@ module WithAssignments
   end
 
   def files_content_for(user)
-    Mumukit::Directives::Sections.new.split_sections assignment_for(user).try(&:solution)
+    Mumukit::Directives::Sections.new.split_sections(assignment_for(user)&.solution || default_content_for(user))
   end
 
   def default_content_for(user)
