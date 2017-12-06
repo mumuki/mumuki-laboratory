@@ -15,15 +15,6 @@ class Assignment < ActiveRecord::Base
     define_method(field) { self[field]&.map { |it| it.symbolize_keys } }
   end
 
-  def test_results
-    self[:test_results]&.map { |it| it.symbolize_keys }
-  end
-
-  def expectation_results
-    self[:expectation_results]&.map { |it| it.symbolize_keys }
-  end
-
-
   delegate :language, :name, :visible_success_output?, to: :exercise
   delegate :output_content_type, to: :language
   delegate :should_retry?, to: :status
