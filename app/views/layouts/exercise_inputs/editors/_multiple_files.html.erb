@@ -3,9 +3,9 @@
   <div class="editor-files">
     <span class="files-tabs">
       <ul class="nav nav-tabs">
-        <% @files.each_with_index do |file, index| %>
+        <% @files.each_with_index do |filename, index| %>
             <li role="presentation" class="<%= 'active' if index == 0 %>" data-target="#editor-file-<%= index %>" tabindex='0' data-toggle='tab'>
-              <a href="#"><%= file %></a>
+              <a href="#"><%= filename %></a>
             </li>
         <% end %>
       </ul>
