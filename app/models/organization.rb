@@ -1,3 +1,9 @@
+class Mumukit::Platform::Model
+  def self.load(json)
+    json ? new(JSON.parse(json)) : new({})
+  end
+end
+
 class Organization < ActiveRecord::Base
   include Mumukit::Platform::Organization::Helpers
 

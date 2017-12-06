@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   has_many :exam_authorizations
 
   after_initialize :init
-  after_save :notify_changed!, if: Proc.new { |user| user.image_url_changed? || user.social_id_changed? }
+  after_save :notify_changed!, if: Proc.new { |user| user.saved_change_to_image_url? || user.saved_change_to_social_id? }
 
   def notify_changed!
     Mumukit::Nuntius.notify_event! 'UserChanged', user: event_json

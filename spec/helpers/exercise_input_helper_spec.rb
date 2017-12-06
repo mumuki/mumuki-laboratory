@@ -20,7 +20,7 @@ describe ApplicationHelper do
       it { expect(should_render_message_input? code, organization).to be true }
     end
     context 'when raise hand disabled' do
-      it { expect(should_render_message_input? code).to be false }
+      it { expect(should_render_message_input? code).to be_falsy }
     end
   end
 

@@ -18,7 +18,6 @@ module Mumukit::Platform::OrganizationMapping::Path
   end
 end
 
-
 class Mumukit::Platform::Organization::Settings < Mumukit::Platform::Model
   def login_settings
     @login_settings ||= Mumukit::Login::Settings.new(login_methods)
@@ -32,3 +31,5 @@ class Mumukit::Platform::Organization::Settings < Mumukit::Platform::Model
     customized_login_methods? && public?
   end
 end
+
+
