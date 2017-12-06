@@ -22,7 +22,7 @@ class Language < ActiveRecord::Base
   end
 
   def output_content_type
-    Mumukit::ContentType.for(self.class.output_content_types.key(self[:output_content_type]))
+    Mumukit::ContentType.for(self[:output_content_type])
   end
 
   def to_s
