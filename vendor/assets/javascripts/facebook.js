@@ -32,7 +32,7 @@ restoreFacebookRoot = function () {
 
 loadFacebookSDK = function () {
   window.fbAsyncInit = initializeFacebookSDK;
-  return $.getScript("//connect.facebook.net/" + window.mumukiLocale.facebook_code + "/sdk.js#xfbml=1&version=v2.5");
+  return $.getScript("//connect.facebook.net/" + (window.mumukiLocale && window.mumukiLocale.facebook_code) + "/sdk.js#xfbml=1&version=v2.5");
 };
 
 initializeFacebookSDK = function () {
