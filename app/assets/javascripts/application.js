@@ -14,8 +14,8 @@
 //= require momentjs
 //= require momentjs/locale/es
 //= require jquery
-//= require jquery_ujs
 //= require mumuki-styles
+//= require rails-ujs
 //= require turbolinks
 //= require nprogress
 //= require nprogress-turbolinks

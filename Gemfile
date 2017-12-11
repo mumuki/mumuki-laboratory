@@ -14,7 +14,7 @@ gem 'turbolinks', '~> 5.0'
 gem 'sass-rails'
 gem 'execjs'
 
-gem 'jquery-rails'
+gem 'rails-ujs'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-dev-awesome', '0.4.1'
