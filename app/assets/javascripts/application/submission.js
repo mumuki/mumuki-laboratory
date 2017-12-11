@@ -27,7 +27,7 @@ var mumuki = mumuki || {};
     if (!submissionsResults) return;
 
     var submitButton = $('.btn-submit');
-    var submissionControls = $('.submission-control');
+    var submissionControls = $('.submission_control');
 
     var resultsBox = new ResultsBox(submissionsResults);
 
