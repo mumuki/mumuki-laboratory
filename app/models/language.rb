@@ -56,4 +56,12 @@ class Language < ActiveRecord::Base
                                  :stateful_console)
     save!
   end
+
+  def new_sections_directive
+    Mumukit::Directives::Sections.new.tap { |it| it.comment_type = directives_comment_type }
+  end
+
+  def directives_comment_type
+    Mumukit::Directives::CommentType.parse comment_type
+  end
 end

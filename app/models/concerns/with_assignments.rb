@@ -11,8 +11,7 @@ module WithAssignments
   end
 
   def files_content_for(user)
-    Mumukit::Directives::Sections.new
-      .split_sections(assignment_for(user)&.solution || default_content_for(user))
+    language.new_sections_directive.split_sections(assignment_for(user)&.solution || default_content_for(user))
       .except('content')
   end
 
