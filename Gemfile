@@ -14,19 +14,14 @@ gem 'turbolinks', '~> 5.0'
 gem 'sass-rails'
 gem 'execjs'
 
-gem 'rails-ujs'
-
 source 'https://rails-assets.org' do
   gem 'rails-assets-dev-awesome', '0.4.1'
-  gem 'rails-assets-awesome-bootstrap-checkbox'
   gem 'rails-assets-momentjs'
   gem 'rails-assets-mumuki-styles', '1.8.0'
 end
 
 
 gem 'puma'
-
-gem 'bootstrap_form'
 
 gem 'rails-i18n', '~> 4.0.0'
 
