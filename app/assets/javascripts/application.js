@@ -13,7 +13,6 @@
 //= require application/load
 //= require momentjs
 //= require momentjs/locale/es
-//= require jquery
 //= require mumuki-styles
 //= require rails-ujs
 //= require turbolinks
