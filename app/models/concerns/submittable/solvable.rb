@@ -1,8 +1,6 @@
 module Solvable
   def submit_solution!(user, attributes={})
-    content = attributes[:content]
-    attributes[:content] = join_files(content) if content.is_a? Hash
-    assignment, _ = find_assignment_and_submit! user, Solution.new(content: attributes[:content]&.normalize_whitespaces)
+    assignment, _ = find_assignment_and_submit! user, attributes[:content].to_mumuki_solution(language)
     assignment
   end
 
@@ -14,12 +12,25 @@ module Solvable
         locale: locale,
         expectations: expectations))
   end
+end
 
-  private
+class NilClass
+  def to_mumuki_solution(language)
+    Solution.new
+  end
+end
 
-  def join_files(files)
+class String
+  def to_mumuki_solution(language)
+    Solution.new content: normalize_whitespaces
+  end
+end
+
+class Hash
+  def to_mumuki_solution(language)
     language
       .directives_sections
-      .join files
+      .join(self)
+      .to_mumuki_solution(language)
   end
 end
