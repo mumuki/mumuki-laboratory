@@ -10,11 +10,12 @@ module WithAssignments
       default_content_for(user)
   end
 
-  def files_content_for(user)
+  def files_for(user)
     language
       .directives_sections
       .split_sections(assignment_for(user)&.solution || default_content_for(user))
       .except('content')
+      .map { |name, content| struct name: name, content: content }
   end
 
   def default_content_for(user)

@@ -3,20 +3,20 @@
   <div class="editor-files">
     <span class="files-tabs">
       <ul class="nav nav-tabs">
-        <% @filenames.each_with_index do |filename, index| %>
+        <% @files.each_with_index do |file, index| %>
             <li role="presentation" class="<%= 'active' if index == 0 %>" data-target="#editor-file-<%= index %>" tabindex='0' data-toggle='tab'>
-              <a href="#"><%= filename %></a>
+              <a href="#"><%= file.name %></a>
             </li>
         <% end %>
       </ul>
     </span>
     <div class="tab-content">
-      <% @filenames.each_with_index do |filename, index| %>
+      <% @files.each_with_index do |file, index| %>
           <div role="tabpanel" class="tab-pane mu-input-panel <%= 'fade in active' if index == 0 %>" id="editor-file-<%= index %>">
-            <%= form.editor "content[#{filename}]", 'dynamic',
+            <%= form.editor "content[#{file.name}]", 'dynamic',
                             placeholder: t(:editor_placeholder),
                             class: 'form-control editor',
-                            value: @file_contents[filename],
+                            value: file.content,
                             data: {lines: 17} %>
           </div>
       <% end %>
