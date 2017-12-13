@@ -24,5 +24,6 @@ describe ExerciseSolutionsController do
 
     it { expect(response.status).to eq 200 }
     it { expect(Assignment.last.solution).to eq("/*<a_file#*/a content/*#a_file>*/\n/*<content#*//*...a_file...*//*#content>*/") }
+    it { expect(problem.files_content_for(user)).to eq 'a_file' => 'a content' }
   end
 end
