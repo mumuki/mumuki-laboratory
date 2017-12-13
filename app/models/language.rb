@@ -57,7 +57,7 @@ class Language < ActiveRecord::Base
     save!
   end
 
-  def new_sections_directive
+  def directives_sections
     Mumukit::Directives::Sections.new.tap { |it| it.comment_type = directives_comment_type }
   end
 
