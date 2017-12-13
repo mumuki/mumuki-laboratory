@@ -45,7 +45,7 @@ var mumuki = mumuki || {};
       var data = event.detail[0].body.outerHTML;
       resultsBox.success(data);
     }).on('ajax:error', function (event) {
-      resultsBox.error( "Network error :( Please check your internet connection and try again");
+      resultsBox.error("Network error :( Please check your internet connection and try again");
     });
   });
 })(mumuki);
