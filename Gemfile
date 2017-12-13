@@ -14,19 +14,14 @@ gem 'turbolinks', '~> 5.0'
 gem 'sass-rails'
 gem 'execjs'
 
-gem 'jquery-rails'
-
 source 'https://rails-assets.org' do
   gem 'rails-assets-dev-awesome', '0.4.1'
-  gem 'rails-assets-awesome-bootstrap-checkbox'
   gem 'rails-assets-momentjs'
   gem 'rails-assets-mumuki-styles', '1.8.0'
 end
 
 
 gem 'puma'
-
-gem 'bootstrap_form'
 
 gem 'rails-i18n', '~> 4.0.0'
 
@@ -48,6 +43,7 @@ gem 'mumukit-inspection', '~> 3.1'
 gem 'mumukit-nuntius', '~> 5.0'
 gem 'mumukit-platform', '~> 0.5'
 gem 'mumukit-login', '~> 4.0'
+gem 'mumukit-directives', '~>0.3'
 
 gem 'rack', '~> 2.0'
 gem 'omniauth', '~> 1.4.0'

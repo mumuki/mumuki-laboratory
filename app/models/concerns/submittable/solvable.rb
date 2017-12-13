@@ -1,6 +1,6 @@
 module Solvable
   def submit_solution!(user, attributes={})
-    assignment, _ = find_assignment_and_submit! user, Solution.new(content: attributes[:content]&.normalize_whitespaces)
+    assignment, _ = find_assignment_and_submit! user, attributes[:content].to_mumuki_solution(language)
     assignment
   end
 
@@ -11,5 +11,26 @@ module Solvable
         extra: extra,
         locale: locale,
         expectations: expectations))
+  end
+end
+
+class NilClass
+  def to_mumuki_solution(language)
+    Solution.new
+  end
+end
+
+class String
+  def to_mumuki_solution(language)
+    Solution.new content: normalize_whitespaces
+  end
+end
+
+class Hash
+  def to_mumuki_solution(language)
+    language
+      .directives_sections
+      .join(self)
+      .to_mumuki_solution(language)
   end
 end

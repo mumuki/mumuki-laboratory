@@ -27,25 +27,25 @@ var mumuki = mumuki || {};
     if (!submissionsResults) return;
 
     var submitButton = $('.btn-submit');
-    var submissionControls = $('.submission-control');
+    var submissionControls = $('.submission_control');
 
     var resultsBox = new ResultsBox(submissionsResults);
 
-    $('form.new_solution').on('ajax:beforeSend', function (event, xhr, settings) {
+    $('form.new_solution').on('ajax:beforeSend', function (event) {
       document.prevSubmitState = submitButton.html();
       submitButton.html('<i class="fa fa-refresh fa-spin"></i> ' + submitButton.attr('data-waiting'));
       submissionControls.attr('disabled', 'disabled');
       resultsBox.waiting();
-    }).on('ajax:complete', function (xhr, status) {
+    }).on('ajax:complete', function (event) {
       submitButton.html(document.prevSubmitState);
       submissionControls.removeAttr('disabled');
       resultsBox.done();
       $('#messages-tab').removeClass('hidden');
-    }).on('ajax:success', function (xhr, data, status) {
+    }).on('ajax:success', function (event) {
+      var data = event.detail[0].body.outerHTML;
       resultsBox.success(data);
-    }).on('ajax:error', function (xhr, status, error) {
-      var message = error === "error" ? 'Network error :( Please check your internet connection and try again' : error;
-      resultsBox.error(message);
+    }).on('ajax:error', function (event) {
+      resultsBox.error("Network error :( Please check your internet connection and try again");
     });
   });
 })(mumuki);
