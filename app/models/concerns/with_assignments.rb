@@ -19,9 +19,16 @@ module WithAssignments
   end
 
   def default_content_for(user)
-    (default_content || '')
-      .gsub(/\/\*\.\.\.(previousContent|previousSolution)\.\.\.\*\//) { previous.current_content_for(user) }
-      .gsub(/\/\*\.\.\.(solution|content)\[(-?\d*)\]\.\.\.\*\//) { sibling_at($2.to_i).current_content_for(user) }
+    language.directives_interpolations.interpolate(default_content || '', method(:replace_content_reference).curry[user]).first
+  end
+
+  def replace_content_reference(user, interpolee)
+    case interpolee
+      when /previousContent|previousSolution/
+        previous.current_content_for(user)
+      when /(solution|content)\[(-?\d*)\]/
+        sibling_at($2.to_i).current_content_for(user)
+    end
   end
 
   def messages_for(user)
