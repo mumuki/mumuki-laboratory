@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require application/load
 //= require momentjs
 //= require momentjs/locale/es
 //= require mumuki-styles
