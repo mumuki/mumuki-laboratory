@@ -103,6 +103,11 @@ class Assignment < ActiveRecord::Base
     end
   end
 
+  %w(query try tests).each do |key|
+    name = "run_#{key}!"
+    define_method(name) { |*args| exercise.send name, submitter, *args }
+  end
+
   private
 
   def update_submissions_count!
