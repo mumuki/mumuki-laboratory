@@ -52,4 +52,7 @@
 
 .mu-navbar-avatar {
   justify-self: flex-end;
+  .img-circle {
+    cursor: pointer;
+  }
 }
