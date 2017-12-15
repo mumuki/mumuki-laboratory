@@ -114,7 +114,7 @@ describe Exercise do
                                             language: haskell)]) }
     let(:exercise) { guide.exercises.first }
 
-    it { expect(exercise.extra_preview).to eq "```haskell\nf x = 1\ng y = y + 3\n```" }
+    it { expect(exercise.extra_preview(user)).to eq "```haskell\nf x = 1\ng y = y + 3\n```" }
   end
 
   describe '#submitted_by?' do
