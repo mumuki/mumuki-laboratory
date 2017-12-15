@@ -18,8 +18,12 @@ module WithAssignments
       .map { |name, content| struct name: name, content: content }
   end
 
+  def interpolate_for(user, field)
+    language.directives_interpolations.interpolate(field, lambda { |content| replace_content_reference(user, content) }).first
+  end
+
   def default_content_for(user)
-    language.directives_interpolations.interpolate(default_content || '', method(:replace_content_reference).curry[user]).first
+    interpolate_for user, default_content || ''
   end
 
   def replace_content_reference(user, interpolee)

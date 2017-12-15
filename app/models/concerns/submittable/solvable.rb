@@ -4,11 +4,11 @@ module Solvable
     assignment
   end
 
-  def run_tests!(params)
+  def run_tests!(user, params)
     language.run_tests!(
       params.merge(
         test: test,
-        extra: extra,
+        extra: extra_for(user),
         locale: locale,
         expectations: expectations))
   end

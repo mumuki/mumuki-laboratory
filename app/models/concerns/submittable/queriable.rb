@@ -3,7 +3,7 @@ module Queriable
     submit! user, Query.new(attributes)
   end
 
-  def run_query!(params)
-    language.run_query!(params.merge(extra: extra))
+  def run_query!(user, params)
+    language.run_query!(params.merge(extra: extra_for(user)))
   end
 end

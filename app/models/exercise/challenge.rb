@@ -3,8 +3,8 @@ class Challenge < Exercise
 
   markdown_on :hint, :extra_preview
 
-  def extra_preview
-    Mumukit::ContentType::Markdown.highlighted_code(language.name, extra)
+  def extra_preview(user)
+    Mumukit::ContentType::Markdown.highlighted_code(language.name, extra_for(user))
   end
 
   def reset!
@@ -19,6 +19,10 @@ class Challenge < Exercise
     else
       "#{extra_code}\n"
     end
+  end
+
+  def extra_for(user)
+    interpolate_for user, extra
   end
 
   private

@@ -1,8 +1,8 @@
 class Query < Submission
   attr_accessor :query, :cookie, :content
 
-  def try_evaluate_exercise!(exercise)
-    r = exercise.run_query!(content: content, query: query, cookie: cookie)
+  def try_evaluate_exercise!(user, exercise)
+    r = exercise.run_query!(user, content: content, query: query, cookie: cookie)
     {result: r[:result], status: Status.from_sym(r[:status])}
   end
 
