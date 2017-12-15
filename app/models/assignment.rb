@@ -103,9 +103,13 @@ class Assignment < ActiveRecord::Base
     end
   end
 
+  def extra
+    exercise.extra_for submitter
+  end
+
   %w(query try tests).each do |key|
     name = "run_#{key}!"
-    define_method(name) { |*args| exercise.send name, submitter, *args }
+    define_method(name) { |params| exercise.send name, params.merge(extra: extra) }
   end
 
   private
