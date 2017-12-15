@@ -1,4 +1,8 @@
-@import "mumuki-styles";
+$icon-font-path: '../assets/bootstrap/';
+$fa-font-path: '../assets';
+$da-font-path: '../assets';
+
+@import "mumuki-styles.scss";
 @import "codemirror/codemirror.min";
 @import "codemirror/show-hint.min";
 @import "application/vendor";

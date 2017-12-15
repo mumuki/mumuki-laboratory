@@ -15,11 +15,10 @@ gem 'sass-rails'
 gem 'execjs'
 
 source 'https://rails-assets.org' do
-  gem 'rails-assets-dev-awesome', '0.4.1'
   gem 'rails-assets-momentjs'
-  gem 'rails-assets-mumuki-styles', '1.8.0'
 end
 
+gem 'mumuki-styles', '~> 1.13'
 
 gem 'puma'
 
