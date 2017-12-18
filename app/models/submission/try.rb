@@ -1,8 +1,8 @@
 class Try < PersistentSubmission
   attr_accessor :query, :cookie
 
-  def try_evaluate_exercise!(exercise)
-    exercise.run_try!(query: query, cookie: cookie).except(:response_type)
+  def try_evaluate_exercise!(assignment)
+    assignment.run_try!(query: query, cookie: cookie).except(:response_type)
   end
 
   def save_submission!(assignment)

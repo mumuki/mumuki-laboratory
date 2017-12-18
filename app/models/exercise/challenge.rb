@@ -3,8 +3,8 @@ class Challenge < Exercise
 
   markdown_on :hint, :extra_preview
 
-  def extra_preview
-    Mumukit::ContentType::Markdown.highlighted_code(language.name, extra)
+  def extra_preview(user)
+    Mumukit::ContentType::Markdown.highlighted_code(language.name, extra_for(user))
   end
 
   def reset!

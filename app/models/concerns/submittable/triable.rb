@@ -4,6 +4,6 @@ module Triable
   end
 
   def run_try!(params)
-    language.run_try! params.merge(extra: extra, locale: locale, goal: goal)
+    language.run_try! params.merge(locale: locale, goal: goal)
   end
 end

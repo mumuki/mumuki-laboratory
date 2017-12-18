@@ -18,10 +18,25 @@ module WithAssignments
       .map { |name, content| struct name: name, content: content }
   end
 
+  def interpolate_for(user, field)
+    language.directives_interpolations.interpolate(field, lambda { |content| replace_content_reference(user, content) }).first
+  end
+
   def default_content_for(user)
-    (default_content || '')
-      .gsub(/\/\*\.\.\.(previousContent|previousSolution)\.\.\.\*\//) { previous.current_content_for(user) }
-      .gsub(/\/\*\.\.\.(solution|content)\[(-?\d*)\]\.\.\.\*\//) { sibling_at($2.to_i).current_content_for(user) }
+    interpolate_for user, default_content || ''
+  end
+
+  def extra_for(user)
+    interpolate_for user, extra
+  end
+
+  def replace_content_reference(user, interpolee)
+    case interpolee
+      when /previousContent|previousSolution/
+        previous.current_content_for(user)
+      when /(solution|content)\[(-?\d*)\]/
+        sibling_at($2.to_i).current_content_for(user)
+    end
   end
 
   def messages_for(user)

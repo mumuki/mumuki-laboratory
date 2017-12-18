@@ -14,7 +14,7 @@ class Submission
   end
 
   def evaluate!(assignment)
-    try_evaluate_exercise! assignment.exercise
+    try_evaluate_exercise! assignment
   rescue => e
     {status: :errored, result: e.message}
   end

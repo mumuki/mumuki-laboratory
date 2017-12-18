@@ -58,10 +58,20 @@ class Language < ActiveRecord::Base
   end
 
   def directives_sections
-    Mumukit::Directives::Sections.new.tap { |it| it.comment_type = directives_comment_type }
+    new_directive Mumukit::Directives::Sections
+  end
+
+  def directives_interpolations
+    new_directive Mumukit::Directives::Interpolations
   end
 
   def directives_comment_type
     Mumukit::Directives::CommentType.parse comment_type
+  end
+
+  private
+
+  def new_directive(directive_type)
+    directive_type.new.tap { |it| it.comment_type = directives_comment_type }
   end
 end
