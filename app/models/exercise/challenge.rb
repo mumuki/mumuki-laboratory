@@ -21,10 +21,6 @@ class Challenge < Exercise
     end
   end
 
-  def extra_for(user)
-    interpolate_for user, extra
-  end
-
   private
 
   def defaults
