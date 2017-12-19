@@ -36,7 +36,7 @@ gem 'rouge',
     ref: '5a8db3387f3a67232569969cd3da40ee04eb9dc3'
 
 gem 'mumukit-auth', '~> 7.1'
-gem 'mumukit-core', '~> 1.1'
+gem 'mumukit-core', '~> 1.2'
 gem 'mumukit-bridge', '~> 3.2'
 gem 'mumukit-inspection', '~> 3.1'
 gem 'mumukit-nuntius', '~> 5.0'
