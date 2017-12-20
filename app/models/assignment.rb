@@ -10,7 +10,7 @@ class Assignment < ActiveRecord::Base
 
   validates_presence_of :exercise, :submitter
 
-  [:expectation_results, :test_results, :query_results].each do |field|
+  [:expectation_results, :test_results, :query_results, :inline_errors].each do |field|
     serialize field
     define_method(field) { self[field]&.map { |it| it.symbolize_keys } }
   end
