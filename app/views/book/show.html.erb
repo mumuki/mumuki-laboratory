@@ -7,6 +7,8 @@
 
     <% unless Organization.current.central? %>
       <h3>
+        <small><%= Organization.current.description %></small>
+        <br>
         <small><%= raw t :powered_by_mumuki %></small>
       </h3>
     <% end %>
