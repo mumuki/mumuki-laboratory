@@ -18,7 +18,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-momentjs'
 end
 
-gem 'mumuki-styles', '~> 1.13'
+gem 'mumuki-styles', '~> 1.15'
 
 gem 'puma'
 
