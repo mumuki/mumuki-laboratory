@@ -73,6 +73,11 @@ describe Language do
               'sandboxed' => false,
               'structured' => true
           },
+          'assets_urls' => {
+            'js' => ['javascripts/a.js'],
+            'html' => ['b.html', 'c.html'],
+            'css' => ['stylesheets/d.css']
+          },
           'language' => {
               'name' => 'gobstones',
               'graphic' => true,
@@ -99,5 +104,8 @@ describe Language do
     it { expect(gobstones.devicon).to eq 'gobstones' }
     it { expect(gobstones.prompt).to eq 'ム ' }
     it { expect(gobstones.stateful_console).to be false }
+    it { expect(gobstones.assets_js_urls).to eq ['javascripts/a.js'] }
+    it { expect(gobstones.assets_html_urls).to eq ['b.html', 'c.html'] }
+    it { expect(gobstones.assets_css_urls).to eq ['stylesheets/d.css'] }
   end
 end

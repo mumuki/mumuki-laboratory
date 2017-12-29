@@ -53,7 +53,10 @@ class Language < ActiveRecord::Base
                                  :devicon,
                                  :triable,
                                  :queriable,
-                                 :stateful_console)
+                                 :stateful_console,
+                                 :assets_js_urls,
+                                 :assets_html_urls,
+                                 :assets_css_urls)
     save!
   end
 
