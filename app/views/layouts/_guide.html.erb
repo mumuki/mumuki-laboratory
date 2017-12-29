@@ -1,3 +1,15 @@
+<% (@guide.language.assets_js || []).each do |js| %>
+    <script src="<%="#{@guide.language.runner_url}/#{js}"%>"></script>
+<% end %>
+
+<% (@guide.language.assets_css || []).each do |css| %>
+    <link rel="stylesheet" href="<%="#{@guide.language.runner_url}/#{js}"%>"></link>
+<% end %>
+
+<% (@guide.language.assets_html || []).each do |html| %>
+    <link rel="import" href="<%="#{@guide.language.runner_url}/#{html}"%>"></link>
+<% end %>
+
 <%= content_for :breadcrumbs do %>
   <%= breadcrumbs subject %>
 <% end %>
