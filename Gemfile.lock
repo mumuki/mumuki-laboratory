@@ -143,7 +143,7 @@ GEM
     mumukit-auth (7.1.0)
       jwt
       mumukit-core (~> 1.0)
-    mumukit-bridge (3.2.0)
+    mumukit-bridge (3.3.0)
       mumukit-core (~> 1.0)
       rest-client
     mumukit-core (1.2.0)
@@ -342,7 +342,7 @@ DEPENDENCIES
   i18n-tasks (~> 0.8.3)
   mumuki-styles (~> 1.13)
   mumukit-auth (~> 7.1)
-  mumukit-bridge (~> 3.2)
+  mumukit-bridge (~> 3.3)
   mumukit-content-type!
   mumukit-core (~> 1.2)
   mumukit-directives (~> 0.3)

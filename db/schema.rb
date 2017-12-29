@@ -159,9 +159,9 @@ ActiveRecord::Schema.define(version: 20171229042201) do
     t.boolean "triable", default: false
     t.string "devicon"
     t.string "comment_type", default: "cpp"
-    t.string "assets_js", default: [], array: true
-    t.string "assets_html", default: [], array: true
-    t.string "assets_css", default: [], array: true
+    t.string "assets_js_urls", default: [], array: true
+    t.string "assets_html_urls", default: [], array: true
+    t.string "assets_css_urls", default: [], array: true
     t.index ["name"], name: "index_languages_on_name", unique: true
   end
 

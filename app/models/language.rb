@@ -54,9 +54,9 @@ class Language < ActiveRecord::Base
                                  :triable,
                                  :queriable,
                                  :stateful_console,
-                                 :assets_js,
-                                 :assets_html,
-                                 :assets_css)
+                                 :assets_js_urls,
+                                 :assets_html_urls,
+                                 :assets_css_urls)
     save!
   end
 
