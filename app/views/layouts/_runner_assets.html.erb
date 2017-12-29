@@ -1,11 +1,11 @@
-<% guide.language.assets_js_urls.each do |js| %>
-    <script src="<%="#{guide.language.runner_url}/#{js}"%>"></script>
+<% language.assets_js_urls.each do |js| %>
+    <script src="<%="#{language.runner_url}/#{js}"%>"></script>
 <% end %>
 
-<% guide.language.assets_css_urls.each do |css| %>
-    <link rel="stylesheet" href="<%="#{guide.language.runner_url}/#{js}"%>"></link>
+<% language.assets_css_urls.each do |css| %>
+    <link rel="stylesheet" href="<%="#{language.runner_url}/#{js}"%>"></link>
 <% end %>
 
-<% guide.language.assets_html_urls.each do |html| %>
-    <link rel="import" href="<%="#{guide.language.runner_url}/#{html}"%>"></link>
+<% language.assets_html_urls.each do |html| %>
+    <link rel="import" href="<%="#{language.runner_url}/#{html}"%>"></link>
 <% end %>
