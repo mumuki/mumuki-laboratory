@@ -56,11 +56,9 @@ es:
   exercise_number: Ejercicio %{number}
   exercise_success_rate: Tasa de éxito en ejercicios
   exercises: Ejercicios
-  exercises_index_title: ¿Buscando algún ejercicio particular?
   exit: Salir
   expectations: Objetivos
   explain_redirect: Notamos que te registraste en otra organización.
-  export_created: Exportación encolada
   failed: Tu solución no pasó las pruebas
   feedback: Problemas que encontramos
   first_name: Nombre
@@ -87,12 +85,10 @@ es:
   last_name: Apellido
   last_submission_date: Última solución
   latest_exercises: Últimos ejercicios
-  latest_guides: últimas lecciones
   learning: Aprendizaje
   lesson: Lección
   lesson_number: Lección %{number}
   let_us_know: ¡Por favor avisanos!
-  listing_exercises: Listado de ejercicios
   load_solution_into_console: Cargar la solución en la consola
   manual_evaluation_pending: ¡Gracias por enviar tu solución! Tus docentes la corregirán pronto
   message: Mensaje
@@ -103,9 +99,6 @@ es:
   more_messages: Ver mensajes anteriores
   mumuki_catchphrase: Aprendé a programar
   mumuki_short_description: Mumuki es la plataforma libre y gratuita para aprender a programar, de la práctica a la teoría y en tu idioma
-  my_exercises: Mis Ejercicios
-  my_guides: Mis Lecciones
-  my_submissions: Mis Soluciones
   name: Nombre
   navigation_continue: 'Siguiente %{kind}: %{sibling}'
   navigation_next: Siguiente %{kind}
@@ -147,13 +140,11 @@ es:
   progress: Progreso
   read: Leido
   read_messages: Ver mensajes
-  recent_activity: Actividad Reciente
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
   restart: Reiniciar
   results: Resultados
   running: procesando
   save: Guardar
-  search: 'Buscá, por ejemplo: polimorfismo, haskell o competenciaDeSaltos'
   send: Enviar
   sending_solution: Enviando solución
   show: Mostrar
@@ -176,7 +167,6 @@ es:
   submissions: Soluciones
   submissions_count: Soluciones
   submissions_for: Soluciones para %{exercise}
-  submissions_success_rate: Tasa de éxito en soluciones
   tag: Etiquetas
   tell_us_how: ¡Contanos cómo te pasó esto!
   terms_and_conditions: Términos y condiciones
@@ -193,7 +183,6 @@ es:
   user: Usuario
   username: Nombre de usuario
   want_permissions: El siguiente usuario requiere permisos
-  welcome_back_after_redirection: ¡Qué bueno verte de nuevo! Acá es donde estuviste la última vez
   working: "Procesando"
   wrong_answer: La respuesta no es correcta
   you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
