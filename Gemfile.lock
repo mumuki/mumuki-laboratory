@@ -139,7 +139,7 @@ GEM
     multi_json (1.12.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    mumuki-styles (1.15.0)
+    mumuki-styles (1.15.4)
     mumukit-auth (7.1.0)
       jwt
       mumukit-core (~> 1.0)
