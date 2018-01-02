@@ -14,4 +14,4 @@ echo "[MumukiDevstart::Laboratory] Installing dependencies...."
 bundle install --quiet
 
 echo "[MumukiDevstart::Laboratory] Starting server...."
-MUMUKI_PLATFORM_DOMAIN=localhost:3000 MUMUKI_COOKIES_DOMAIN=localhost rails s -p 3000
+MUMUKI_PLATFORM_DOMAIN=localhost:3000 MUMUKI_COOKIES_DOMAIN=localhost bundle exec rails s -p 3000
