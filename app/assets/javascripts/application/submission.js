@@ -39,6 +39,7 @@ var mumuki = mumuki || {};
     }).on('ajax:complete', function (event) {
       submitButton.html(document.prevSubmitState);
       submissionControls.removeAttr('disabled');
+      $(document).renderMuComponents();
       resultsBox.done();
       $('#messages-tab').removeClass('hidden');
     }).on('ajax:success', function (event) {
