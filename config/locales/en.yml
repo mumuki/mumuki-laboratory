@@ -51,11 +51,9 @@ en:
   exercise_done: All our tests passed!
   exercise_number: Exercise %{number}
   exercise_success_rate: Exercises success rate
-  exercises_index_title: Looking for a specific exercise?
   exit: Exit
   expectations: Expectations
   explain_redirect: You have registered in another organization
-  export_created: Export queued
   failed: Oops, something went wrong
   feedback: Feedback
   first_name: First Name
@@ -78,12 +76,10 @@ en:
   last_name: Last Name
   last_submission_date: Last submission
   latest_exercises: Latest exercises
-  latest_guides: latests guides
   learning: Learning
   lesson: Lesson
   lesson_number: Lesson %{number}
   let_us_know: please let us know!
-  listing_exercises: Listing exercises
   load_solution_into_console: Load your solution into the console
   manual_evaluation_pending: Thanks for submitting your solution! It will be revised by the course teachers soon
   message: Message
@@ -92,7 +88,6 @@ en:
   more_messages: More
   mumuki_catchphrase: Improve your programming skills
   mumuki_short_description: Mumuki is a simple, open and collaborative platform for sharing and solving programming exercises. It is aimed to help people with learning and teaching programing languages and paradigms
-  my_exercises: My Exercises
   my_submissions: My Submissions
   name: Name
   navigation_continue: 'Next: %{sibling}'
@@ -136,7 +131,6 @@ en:
   results: Results
   running: running
   save: Save
-  search: Search
   sending_solution: Sending solution
   show: Show
   sign_in: Sign in
@@ -156,7 +150,6 @@ en:
   submission_for_exercise: Submission for exercise
   submissions_count: Submissions
   submissions_for: Submissions for %{exercise}
-  submissions_success_rate: Submissions success rate
   tag: Tags
   tell_us_how: Please tell us how this happened!
   terms_and_conditions: Terms and conditions
@@ -172,7 +165,6 @@ en:
   user_data_updated: Your data was updated successfuly
   username: Username
   want_permissions: The next user requires permissions
-  welcome_back_after_redirection: Nice to see you again! This is where you left last time
   working: "Working"
   wrong_answer: The answer is wrong
   you_must_sign_in_before_submitting: You must sign in before submitting your solutions
