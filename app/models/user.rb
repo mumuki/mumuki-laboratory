@@ -64,14 +64,6 @@ class User < ActiveRecord::Base
     solved_exercises.count
   end
 
-  def submissions_success_rate
-    "#{passed_submissions_count}/#{submissions_count}"
-  end
-
-  def exercises_success_rate
-    "#{solved_exercises_count}/#{submitted_exercises_count}"
-  end
-
   def passed_assignments
     assignments.where(status: Status::Passed.to_i)
   end
