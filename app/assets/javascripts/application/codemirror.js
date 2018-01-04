@@ -29,6 +29,14 @@ var mumuki = mumuki || {};
     $('.editor-resize .fa-stack-1x').toggleClass('fa-expand').toggleClass('fa-compress');
   }
 
+  function indentWithSpaces(cm) {
+    if (cm.somethingSelected()) {
+      cm.indentSelection("add");
+    } else {
+      cm.execCommand("insertSoftTab");
+    }
+  }
+
   function setDefaultContent(editor, content) {
     editor.getDoc().setValue(content);
   }
@@ -50,6 +58,7 @@ var mumuki = mumuki || {};
   mumuki.editor = mumuki.editor || {};
   mumuki.editor.setupCodeMirrors = setEditorLanguage;
   mumuki.editor.toggleFullscreen = toggleFullscreen;
+  mumuki.editor.indentWithSpaces = indentWithSpaces;
 
   mumuki.page = mumuki.page || {};
   mumuki.page.dynamicEditors = [];
