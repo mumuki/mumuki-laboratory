@@ -31,6 +31,9 @@ var mumuki = mumuki || {};
           'Ctrl-Enter': submit,
           'F11': function () {
             mumuki.editor.toggleFullscreen();
+          },
+          'Tab': function (cm) {
+            mumuki.editor.indentWithSpaces(cm)
           }
         }
       });
