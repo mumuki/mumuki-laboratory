@@ -1,4 +1,4 @@
-(function () {
+mumuki.load(function () {
 
   function CodeMirrorAlias(alias, current) {
     CodeMirror.defineMIME(alias, CodeMirror.mimeModes[current]);
@@ -17,4 +17,4 @@
   CodeMirrorAlias('sh', 'text/x-sh');
   CodeMirrorAlias('bash', 'text/x-sh');
 
-})();
+});
