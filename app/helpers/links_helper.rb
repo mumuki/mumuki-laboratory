@@ -17,6 +17,18 @@ module LinksHelper
     "<a href='https://es.wikipedia.org/wiki/Anexo:C%C3%B3digos_de_estado_HTTP'> #{I18n.t("error_#{code}")} </a>"
   end
 
+  def url_for_application(app_name)
+    app = Mumukit::Platform.application_for(app_name)
+    app.organic_url(Organization.current.name)
+  end
+
+  def link_to_bibliotheca_exercise(exercise)
+    return unless current_user&.send(:writer?)
+
+    url = "#{url_for_application(:bibliotheca)}/#/exercises/#{exercise.bibliotheca_id}"
+    link_to fixed_fa_icon(:pencil), url, target: "_blank"
+  end
+
   def mail_to_administrator
     mail_to Organization.current.contact_email,
             Organization.current.contact_email,
