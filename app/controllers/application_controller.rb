@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   include WithOrganizationChooser
 
   before_action :set_organization!
+  before_action :set_cookie_domain!
   before_action :set_locale!
   before_action :authorize_if_private!
   before_action :validate_user_profile!, if: :current_user?
@@ -30,6 +31,13 @@ class ApplicationController < ActionController::Base
 
   def login_settings
     Organization.current.login_settings
+  end
+
+  def set_cookie_domain!
+    return unless Organization.current.settings.laboratory_custom_domain
+    Mumukit::Login.configure do |config|
+      config.mucookie_domain = Organization.current.settings.laboratory_custom_domain
+    end
   end
 
   def validate_user_profile!

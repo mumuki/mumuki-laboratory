@@ -1,6 +1,7 @@
 module WithOrganization
   def set_organization!
-    Organization.find_by!(name: organization_name).switch!
+    organization = Organization.by_custom_domain(request.domain) || Organization.find_by!(name: organization_name)
+    organization.switch!
   rescue => e
     Organization.central.switch!
     raise e

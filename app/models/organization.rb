@@ -26,6 +26,7 @@ class Organization < ActiveRecord::Base
   has_many :assignments, through: :exercises
   has_many :exams
 
+
   def in_path?(item)
     usages.exists?(item: item) || usages.exists?(parent_item: item)
   end
@@ -75,6 +76,10 @@ class Organization < ActiveRecord::Base
   end
 
   class << self
+    def by_custom_domain(domain)
+      all.select {|orga| orga.settings.laboratory_custom_domain == domain}&.first
+    end
+
     def central
       find_by name: 'central'
     end
