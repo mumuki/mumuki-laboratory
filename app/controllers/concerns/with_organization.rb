@@ -8,9 +8,8 @@ module WithOrganization
   end
 
   def set_cookie_domain!
-    return unless Organization.current.settings.laboratory_custom_domain
     Mumukit::Login.configure do |config|
-      config.mucookie_domain = Organization.current.settings.laboratory_custom_domain
+      config.mucookie_domain = Organization.current.settings.laboratory_custom_domain || ENV['MUMUKI_COOKIES_DOMAIN'] || ENV['MUMUKI_MUCOOKIE_DOMAIN']
     end
   end
 
