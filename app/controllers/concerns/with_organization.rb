@@ -7,6 +7,13 @@ module WithOrganization
     raise e
   end
 
+  def set_cookie_domain!
+    return unless Organization.current.settings.laboratory_custom_domain
+    Mumukit::Login.configure do |config|
+      config.mucookie_domain = Organization.current.settings.laboratory_custom_domain
+    end
+  end
+
   def organization_name
     Mumukit::Platform.organization_name(request)
   end

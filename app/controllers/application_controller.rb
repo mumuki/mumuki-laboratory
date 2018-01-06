@@ -33,13 +33,6 @@ class ApplicationController < ActionController::Base
     Organization.current.login_settings
   end
 
-  def set_cookie_domain!
-    return unless Organization.current.settings.laboratory_custom_domain
-    Mumukit::Login.configure do |config|
-      config.mucookie_domain = Organization.current.settings.laboratory_custom_domain
-    end
-  end
-
   def validate_user_profile!
     return if !current_user.has_accessible_organizations? || current_user.profile_completed?
     flash.notice = I18n.t :please_fill_profile_data
