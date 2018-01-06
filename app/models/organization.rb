@@ -26,7 +26,6 @@ class Organization < ActiveRecord::Base
   has_many :assignments, through: :exercises
   has_many :exams
 
-
   def in_path?(item)
     usages.exists?(item: item) || usages.exists?(parent_item: item)
   end
