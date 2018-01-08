@@ -22,11 +22,12 @@ module LinksHelper
     app.organic_url(Organization.current.name)
   end
 
-  def link_to_bibliotheca_exercise(exercise)
-    return unless current_user&.send(:writer?)
+  def link_to_bibliotheca_guide(guide)
+    edit_link_to_bibliotheca { url_for_bibliotheca_guide(guide) }
+  end
 
-    url = "#{url_for_application(:bibliotheca)}/#/exercises/#{exercise.bibliotheca_id}"
-    link_to fixed_fa_icon(:pencil), url, target: "_blank"
+  def link_to_bibliotheca_exercise(exercise)
+    edit_link_to_bibliotheca { "#{url_for_bibliotheca_guide(exercise.guide)}/exercises/#{exercise.bibliotheca_id}" }
   end
 
   def mail_to_administrator
@@ -47,5 +48,16 @@ module LinksHelper
       else
         named.navigable_name
     end
+  end
+
+  def edit_link_to_bibliotheca
+    return unless current_user&.writer?
+
+    url = yield
+    link_to fixed_fa_icon(:pencil), url, target: "_blank", alt: t(:edit)
+  end
+
+  def url_for_bibliotheca_guide(guide)
+    "#{url_for_application(:bibliotheca)}/#/guides/#{guide.slug}"
   end
 end

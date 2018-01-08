@@ -70,11 +70,17 @@ feature 'Exercise Flow' do
       expect(page).to have_text('need a hint?')
       expect(page).to_not have_selector('.upload')
     end
+
+    scenario 'should not see the edit exercise link' do
+      visit "/exercises/#{problem_2.id}"
+      expect(page).not_to have_xpath("//a[@alt='Edit']")
+    end
   end
 
 
   context 'logged user' do
     before { set_current_user! user }
+    let(:writer) { create(:user, permissions: {student: 'private/*', writer: 'private/*'}) }
 
     scenario 'visit exercise by slug' do
       visit "/exercises/#{problem_1.slug}"
@@ -196,6 +202,18 @@ feature 'Exercise Flow' do
       visit "/exercises/#{problem_7.id}"
 
       expect(page).to have_text 'The answer is wrong'
+    end
+
+    scenario 'with no permissions should not see the edit exercise link' do
+      visit "/exercises/#{problem_2.id}"
+      expect(page).not_to have_xpath("//a[@alt='Edit']")
+    end
+
+    scenario 'writer should see the edit exercise link' do
+      set_current_user! writer
+
+      visit "/exercises/#{problem_2.id}"
+      expect(page).to have_xpath("//a[@alt='Edit']")
     end
   end
 end

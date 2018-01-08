@@ -22,7 +22,7 @@ feature 'Guides Flow' do
 
   before { reindex_current_organization! }
 
-  let(:user) { User.find_by(name: 'testuser') }
+  let(:user) { create(:user) }
 
 
   context 'inexistent guide' do
@@ -96,6 +96,30 @@ feature 'Guides Flow' do
         expect(page).to have_text('Description of foo')
         expect(page).to have_text('Jon Doe')
         expect(page).to have_text('Creative Commons')
+      end
+    end
+
+    context 'not logged user' do
+      scenario 'should not see the edit guide link' do
+        visit "/guides/#{lesson.guide.id}"
+        expect(page).not_to have_xpath("//a[@alt='Edit']")
+      end
+    end
+
+    context 'logged user' do
+      before { set_current_user! user }
+      let(:writer) { create(:user, permissions: {student: 'private/*', writer: 'private/*'}) }
+
+      scenario 'with no permissions should not see the edit guide link' do
+        visit "/guides/#{lesson.guide.id}"
+        expect(page).not_to have_xpath("//a[@alt='Edit']")
+      end
+
+      scenario 'writer should see the edit guide link' do
+        set_current_user! writer
+
+        visit "/guides/#{lesson.guide.id}"
+        expect(page).to have_xpath("//a[@alt='Edit']")
       end
     end
   end

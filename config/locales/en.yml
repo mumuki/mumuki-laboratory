@@ -36,6 +36,7 @@ en:
   date: Date
   destroy: Destroy
   download: Download your solution
+  edit: Edit
   editor_placeholder: "write your solution here..."
   email: Email
   error_401: 401 error
