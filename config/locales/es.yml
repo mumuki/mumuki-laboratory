@@ -41,6 +41,7 @@ es:
   destroy: Eliminar
   details: Detalles
   download: "Descargá lo que hiciste"
+  edit: Editar
   editor_placeholder: "...escribí tu solución acá..."
   email: Email
   error_401: error 401

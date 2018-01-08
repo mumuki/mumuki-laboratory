@@ -20,6 +20,7 @@
     <h1>
       <span class="hidden-xs"><%= t(:exercise_number, number: @exercise.number) %>:&nbsp;</span>
       <span><%= @exercise.name %></span>
+      <%= link_to_bibliotheca_exercise(@exercise) %>
     </h1>
   </div>
 </div>
