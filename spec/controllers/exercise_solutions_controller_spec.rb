@@ -9,6 +9,8 @@ describe ExerciseSolutionsController do
       create(:lesson, exercises: [problem])
     ]) }
 
+  before { @request.host = 'test.localmumuki.io' }
+
   before { reindex_current_organization! }
   before { set_current_user! user }
 

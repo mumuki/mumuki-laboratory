@@ -4,6 +4,8 @@ describe ExerciseConfirmationsController do
   let(:user) { create(:user) }
   let(:reading) { create(:reading) }
 
+  before { @request.host = 'test.localmumuki.io' }
+
   context 'when not authenticated' do
     before { post :create, params: { exercise_id: reading.id } }
 

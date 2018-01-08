@@ -6,6 +6,8 @@ describe MessagesController do
   before { set_current_user! user }
   before { allow_any_instance_of(MessagesController).to receive(:message_params).and_return content: 'foo' }
 
+  before { @request.host = 'test.localmumuki.io' }
+
   describe 'post when no previous assignment' do
     before { post :create, params: {exercise_id: exercise.id} }
 
