@@ -32,6 +32,7 @@ require_relative './evaluation_helper'
 
 RSpec.configure do |config|
   config.before(:each) do
+    set_subdomain_host! 'test'
     unless RSpec.current_example.metadata[:clean]
       create(:public_organization,
              name: 'test',
@@ -41,7 +42,6 @@ RSpec.configure do |config|
 
   config.after(:each) do
     Mumukit::Platform::Organization.leave!
-    set_subdomain_host! 'test'
     FileUtils.rm ["#{Mumukit::Auth.config.daybreak_name}.db"], force: true
   end
 end
