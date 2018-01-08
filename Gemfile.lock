@@ -139,7 +139,7 @@ GEM
     multi_json (1.12.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    mumuki-styles (1.15.4)
+    mumuki-styles (1.16.2)
     mumukit-auth (7.1.0)
       jwt
       mumukit-core (~> 1.0)
@@ -340,7 +340,7 @@ DEPENDENCIES
   faker (~> 1.5)
   font-awesome-rails (~> 4.7)
   i18n-tasks (~> 0.8.3)
-  mumuki-styles (~> 1.15)
+  mumuki-styles (~> 1.16)
   mumukit-auth (~> 7.1)
   mumukit-bridge (~> 3.3)
   mumukit-content-type!
