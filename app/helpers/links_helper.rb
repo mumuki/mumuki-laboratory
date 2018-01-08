@@ -54,7 +54,7 @@ module LinksHelper
     return unless current_user&.writer?
 
     url = yield
-    link_to fixed_fa_icon(:pencil), url, target: "_blank", alt: t(:edit)
+    link_to fixed_fa_icon(:pencil), url, class: "mu-edit-link", target: "_blank", alt: t(:edit)
   end
 
   def url_for_bibliotheca_guide(guide)
