@@ -5,7 +5,15 @@ module BreadcrumbsHelper
   end
 
   def home_breadcrumb
-    "<li class='mu-breadcrumb-list-item brand '>#{link_to "<i class='da da-mumuki' aria-label=#{t(:home)}></i>".html_safe, root_path }</li>".html_safe
+    "<li class='mu-breadcrumb-list-item brand '>#{breadcrumb_home_link}</li>".html_safe
+  end
+
+  def breadcrumb_home_link
+    if Organization.current.breadcrumb_image_url.present?
+      link_to image_tag(Organization.current.breadcrumb_image_url, class: "da mu-breadcrumb-img"), root_path
+    else
+      link_to "<i class='da da-mumuki' aria-label=#{t(:home)}></i>".html_safe, root_path
+    end
   end
 
   def breadcrumb_item_class(last)

@@ -4,7 +4,7 @@
   <% current_user.accessible_organizations.each do |org| %>
       <div class="row">
         <div class="col-md-6 organization-row">
-          <%= image_tag(org.logo_url, height: 50, class: 'pull-left') %>
+          <%= image_tag(org.banner_url, height: 50, class: 'pull-left') %>
         </div>
         <div class="col-md-6 organization-row">
           <%= link_to(t(:go_to, organization: org.name), org.url_for(request.path), class: 'btn btn-success pull-right') %>
