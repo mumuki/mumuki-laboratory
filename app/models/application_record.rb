@@ -1,4 +1,6 @@
-class ActiveRecord::Base
+class ApplicationRecord < ActiveRecord::Base
+  self.abstract_class = true
+
   def self.name_model_as(other)
     define_singleton_method :model_name do
       other.model_name

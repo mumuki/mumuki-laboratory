@@ -4,7 +4,7 @@ class Mumukit::Platform::Model
   end
 end
 
-class Organization < ActiveRecord::Base
+class Organization < ApplicationRecord
   include Mumukit::Platform::Organization::Helpers
 
   serialize :profile, Mumukit::Platform::Organization::Profile

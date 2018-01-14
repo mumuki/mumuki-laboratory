@@ -1,4 +1,4 @@
-class Invitation < ActiveRecord::Base
+class Invitation < ApplicationRecord
   def self.find_by_code(code)
     Invitation
       .where(code: code)

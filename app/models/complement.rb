@@ -1,4 +1,4 @@
-class Complement < ActiveRecord::Base
+class Complement < ApplicationRecord
   include GuideContainer
   include FriendlyName
 

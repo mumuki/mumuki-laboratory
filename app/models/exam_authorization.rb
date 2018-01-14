@@ -1,4 +1,4 @@
-class ExamAuthorization < ActiveRecord::Base
+class ExamAuthorization < ApplicationRecord
 
   belongs_to :user
   belongs_to :exam
