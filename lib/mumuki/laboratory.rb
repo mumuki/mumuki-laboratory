@@ -11,4 +11,5 @@ require_relative './laboratory/mumukit/login'
 require_relative './laboratory/mumukit/nuntius'
 require_relative './laboratory/mumukit/platform'
 
-require "mumuki/laboratory/exceptions"
+require_relative './laboratory/extensions'
+require_relative './laboratory/exceptions'
