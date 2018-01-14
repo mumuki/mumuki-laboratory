@@ -8,6 +8,6 @@ class GuidesController < ApplicationController
   end
 
   def redirect_to_usage(guide)
-    raise Exceptions::NotFoundError unless guide.usage_in_organization.try { |usage| redirect_to usage }
+    raise Mumuki::Laboratory::NotFoundError unless guide.usage_in_organization.try { |usage| redirect_to usage }
   end
 end

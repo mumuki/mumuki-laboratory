@@ -14,7 +14,7 @@ class GuideContainerController < ApplicationController
   private
 
   def set_guide
-    raise Exceptions::NotFoundError if subject.nil?
+    raise Mumuki::Laboratory::NotFoundError if subject.nil?
     @guide = subject.guide
   end
 end

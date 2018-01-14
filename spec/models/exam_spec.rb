@@ -28,7 +28,7 @@ describe Exam do
       it { expect(exam.enabled?).to be false }
 
       context 'not authorized' do
-        it { expect { exam.access! user }.to raise_error(Exceptions::ForbiddenError) }
+        it { expect { exam.access! user }.to raise_error(Mumuki::Laboratory::ForbiddenError) }
       end
 
       context 'authorized' do
@@ -42,14 +42,14 @@ describe Exam do
       it { expect(exam.enabled?).to be true }
 
       context 'not authorized' do
-        it { expect { exam.access! user }.to raise_error(Exceptions::ForbiddenError) }
+        it { expect { exam.access! user }.to raise_error(Mumuki::Laboratory::ForbiddenError) }
       end
 
       context 'authorized' do
         before { exam.authorize! user }
 
         it { expect { exam.access! user }.to_not raise_error }
-        it { expect { exam.access! other_user }.to raise_error(Exceptions::ForbiddenError) }
+        it { expect { exam.access! other_user }.to raise_error(Mumuki::Laboratory::ForbiddenError) }
       end
 
       context 'import_from_json' do
@@ -76,7 +76,7 @@ describe Exam do
           before { Exam.import_from_json! exam_json2 }
 
           it { expect(Exam.count).to eq 1 }
-          it { expect { Exam.find_by(classroom_id: '1').access! user }.to raise_error(Exceptions::ForbiddenError) }
+          it { expect { Exam.find_by(classroom_id: '1').access! user }.to raise_error(Mumuki::Laboratory::ForbiddenError) }
           it { expect { Exam.find_by(classroom_id: '1').access! user2 }.to_not raise_error }
         end
       end

@@ -9,10 +9,10 @@ module WithDynamicErrors
     #FIXME maybe we can user more Mumukit::Auth::Exceptions here
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
     rescue_from Mumukit::Auth::UnauthorizedAccessError, with: :forbidden
-    rescue_from Exceptions::NotFoundError, with: :not_found
-    rescue_from Exceptions::ForbiddenError, with: :forbidden
-    rescue_from Exceptions::UnauthorizedError, with: :unauthorized
-    rescue_from Exceptions::GoneError, with: :gone
+    rescue_from Mumuki::Laboratory::NotFoundError, with: :not_found
+    rescue_from Mumuki::Laboratory::ForbiddenError, with: :forbidden
+    rescue_from Mumuki::Laboratory::UnauthorizedError, with: :unauthorized
+    rescue_from Mumuki::Laboratory::GoneError, with: :gone
   end
 
   def not_found

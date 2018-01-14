@@ -10,3 +10,5 @@ require_relative './laboratory/mumukit/directives'
 require_relative './laboratory/mumukit/login'
 require_relative './laboratory/mumukit/nuntius'
 require_relative './laboratory/mumukit/platform'
+
+require "mumuki/laboratory/exceptions"
