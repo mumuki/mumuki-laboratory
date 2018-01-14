@@ -1,9 +1,3 @@
-## Development defaults
-if ENV['RAILS_ENV'] == 'development' || ENV['RACK_ENV'] == 'development'
-  ENV['MUMUKI_ORGANIZATION_MAPPING'] ||= 'path'
-  ENV['SECRET_KEY_BASE'] ||= 'aReallyStrongKeyForDevelopment'
-end
-
 ## Require code
 require ::File.expand_path('../config/environment',  __FILE__)
 
