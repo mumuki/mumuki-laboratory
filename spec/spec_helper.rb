@@ -1,17 +1,14 @@
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
 
+require File.expand_path("../dummy/config/environment.rb", __FILE__)
 require 'rspec/rails'
 require 'codeclimate-test-reporter'
 require 'mumukit/core/rspec'
+require 'factory_bot_rails'
 
-# Requires supporting ruby files with custom matchers and macros, etc,
-# in spec/support/ and its subdirectories.
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir["#{__dir__}/factories/**/*.rb"].each { |f| require f }
 
-# Checks for pending migrations before tests are run.
-# If you are not using ActiveRecord, you can remove this line.
-ActiveRecord::Migration.maintain_test_schema! if defined?(ActiveRecord::Migration)
+ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
 
@@ -74,5 +71,13 @@ class String
     JSON.parse(self, symbolize_names: true)
   end
 end
+
+OmniAuth.config.test_mode = true
+OmniAuth.config.mock_auth[:developer] =
+  OmniAuth::AuthHash.new provider: 'developer',
+                         uid: 'johndoe@test.com',
+                         credentials: {},
+                         info: {first_name: 'John', last_name: 'Doe', name: 'John Doe', nickname: 'johndoe'}
+
 
 SimpleCov.start
