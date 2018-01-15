@@ -6,7 +6,7 @@ class Chapter < ApplicationRecord
 
   include TopicContainer
 
-  belongs_to :book
+  belongs_to :book, optional: true
   belongs_to :topic
 
   include SiblingsNavigation
