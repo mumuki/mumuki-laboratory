@@ -1,3 +1,7 @@
+require 'mumukit/core'
+
+I18n.load_translations_path File.join(__dir__, 'laboratory', 'locales', '*.yml')
+
 module Mumuki
   module Laboratory
   end
