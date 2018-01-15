@@ -1,4 +1,4 @@
-class Exercise < ActiveRecord::Base
+class Exercise < ApplicationRecord
   include WithDescription
   include WithLocale
   include WithNumber,

@@ -1,6 +1,6 @@
 require 'mumukit/bridge'
 
-class Language < ActiveRecord::Base
+class Language < ApplicationRecord
   include WithCaseInsensitiveSearch
 
   enum output_content_type: [:plain, :html, :markdown]

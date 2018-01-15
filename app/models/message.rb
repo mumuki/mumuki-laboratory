@@ -1,4 +1,4 @@
-class Message < ActiveRecord::Base
+class Message < ApplicationRecord
 
   belongs_to :assignment, foreign_key: :submission_id, primary_key: :submission_id
   has_one :exercise, through: :assignment

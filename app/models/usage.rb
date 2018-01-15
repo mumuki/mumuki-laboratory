@@ -1,4 +1,4 @@
-class Usage < ActiveRecord::Base
+class Usage < ApplicationRecord
   belongs_to :organization
 
   belongs_to :item, polymorphic: true

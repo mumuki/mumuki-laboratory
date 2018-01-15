@@ -1,4 +1,4 @@
-class Exam < ActiveRecord::Base
+class Exam < ApplicationRecord
   include GuideContainer
   include FriendlyName
 

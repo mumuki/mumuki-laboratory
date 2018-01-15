@@ -1,4 +1,4 @@
-class Content < ActiveRecord::Base
+class Content < ApplicationRecord
   self.abstract_class = true
 
   include WithDescription
