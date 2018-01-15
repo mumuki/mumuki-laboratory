@@ -1,0 +1,7 @@
+development:
+  host: localhost
+  port: 5672
+
+test:
+  host: <%=ENV['RABBIT_PORT_5672_TCP_ADDR'] || 'localhost'%>
+  port: <%=ENV['RABBIT_PORT_5672_TCP_PORT'] || 5672%>
