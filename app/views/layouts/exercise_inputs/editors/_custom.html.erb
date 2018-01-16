@@ -1,0 +1,10 @@
+<div>
+    <gs-element-blockly />
+
+    <%= form.hidden_field :content, id: "custom-value", value: @exercise.default_content %>
+
+    <!-- // TODO: Parameterize assets -->
+    <script>
+        $("gs-element-blockly")[0].workspace.addChangeListener(() => $("#custom-value")[0].value = $("gs-element-blockly")[0].generateCode());
+    </script>
+</div>
