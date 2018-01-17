@@ -27,5 +27,10 @@ module Mumuki
 
     config.registration_notification_format = {only: [:id, :name, :email, :image_url]}
     config.action_dispatch.perform_deep_munge = false
+
+    config.sender_email = ENV['SENDER_EMAIL']
+    config.smtp_address = ENV['SMTP_ADDRESS']
+    config.email_service_username = ENV['EMAIL_SERVICE_USERNAME']
+    config.email_service_password = ENV['EMAIL_SERVICE_PASSWORD']
   end
 end

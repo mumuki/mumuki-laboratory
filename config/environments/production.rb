@@ -85,4 +85,14 @@ Rails.application.configure do
   config.i18n.default_locale = :es
 
   config.i18n.available_locales = [:es, :en]
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address              => Rails.configuration.smtp_address,
+    :port                 => 587,
+    :user_name            => Rails.configuration.email_service_username,
+    :password             => Rails.configuration.email_service_password,
+    :authentication       => :plain,
+    :enable_starttls_auto => true
+  }
 end
