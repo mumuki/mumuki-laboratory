@@ -184,6 +184,7 @@ es:
   user: Usuario
   username: Nombre de usuario
   want_permissions: El siguiente usuario requiere permisos
+  we_miss_you: Te extrañamos!
   working: "Procesando"
   wrong_answer: La respuesta no es correcta
   you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
