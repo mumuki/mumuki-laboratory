@@ -3,14 +3,14 @@
 <head>
   <title><%= page_title subject %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" data-turbolinks-track="reload">
+  <link rel="icon" type="image/x-icon" href="<%= Organization.current.favicon_url %>" data-turbolinks-track="reload">
   <link rel="stylesheet" type="text/css" href="<%= theme_stylesheet_url %>" data-turbolinks-track="reload">
 
   <meta property="og:site_name" content="mumuki"/>
   <meta property="og:title" content="<%= page_title subject %>"/>
   <meta property="og:description" content="<%= t :mumuki_short_description %>"/>
   <meta property="og:type" content="website"/>
-  <meta property="og:image" content="<%= Mumukit::Platform.application.url %>/logo-alt.png"/>
+  <meta property="og:image" content="<%= Organization.current.open_graph_image_url %>"/>
   <meta property="og:url" content="<%= request.original_url %>"/>
 
   <meta name="description" content="<%= t :mumuki_short_description %>"/>
