@@ -47,4 +47,6 @@ Rails.application.configure do
                            uid: 'johndoe@test.com',
                            credentials: {},
                            info: {first_name: 'John', last_name: 'Doe', name: 'John Doe', nickname: 'johndoe'}
+
+  config.sender_email = 'support@mumuki.org'
 end
