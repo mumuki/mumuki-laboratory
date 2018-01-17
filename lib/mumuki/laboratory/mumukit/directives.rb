@@ -1,3 +1,5 @@
+require 'mumukit/directives'
+
 class Mumukit::Directives::Sections < Mumukit::Directives::Directive
   def build(section, content)
     "#{comment_type.comment "<#{section}#"}#{content}#{comment_type.comment "##{section}>"}"

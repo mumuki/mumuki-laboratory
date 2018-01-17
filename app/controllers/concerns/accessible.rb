@@ -1,5 +1,5 @@
 module Accessible
   def validate_subject_accessible!
-    raise Exceptions::NotFoundError if subject && !subject.used_in?(Organization.current)
+    raise Mumuki::Laboratory::NotFoundError if subject && !subject.used_in?(Organization.current)
   end
 end

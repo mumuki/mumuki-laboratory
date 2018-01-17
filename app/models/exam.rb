@@ -32,10 +32,10 @@ class Exam < ApplicationRecord
 
   def access!(user)
     if user.present?
-      raise Exceptions::ForbiddenError unless authorized?(user)
-      raise Exceptions::GoneError unless enabled_for?(user)
+      raise Mumuki::Laboratory::ForbiddenError unless authorized?(user)
+      raise Mumuki::Laboratory::GoneError unless enabled_for?(user)
     else
-      raise Exceptions::UnauthorizedError
+      raise Mumuki::Laboratory::UnauthorizedError
     end
   end
 
