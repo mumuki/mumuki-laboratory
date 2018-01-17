@@ -1,15 +1,5 @@
 <div>
-  <% exercise.language.custom_editor_js_urls.each do |js| %>
-      <script src="<%=js%>"></script>
-  <% end %>
-
-  <% exercise.language.custom_editor_css_urls.each do |css| %>
-    <link rel="stylesheet" href="<%=css%>" />
-  <% end %>
-
-  <% exercise.language.custom_editor_html_urls.each do |html| %>
-      <link rel="import" href="<%=html%>" />
-  <% end %>
+  <%= render partial: 'layouts/runner_assets', locals: {language: @exercise.language, prefix: 'custom_editor'} %>
 
   <div id="custom-editor"></div>
   <%= form.hidden_field :content, id: "custom-editor-value", value: @exercise.default_content %>
