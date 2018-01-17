@@ -12,9 +12,9 @@
 //
 //= require momentjs
 //= require momentjs/locale/es
-//= require mumuki-styles
 //= require rails-ujs
 //= require turbolinks
+//= require mumuki-styles
 //= require nprogress
 //= require nprogress-turbolinks
 //= require nprogress-ajax
