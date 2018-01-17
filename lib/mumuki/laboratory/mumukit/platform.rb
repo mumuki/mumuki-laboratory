@@ -10,7 +10,6 @@ module Mumukit::Platform::OrganizationMapping::Path
     alias __organization_name__ organization_name
 
     def organization_name(request, domain)
-      puts "'Getting org name for' #{request} #{domain}"
       name = __organization_name__(request, domain)
       if %w(auth login logout).include? name
         'central'
