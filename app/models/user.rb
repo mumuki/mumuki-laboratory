@@ -17,8 +17,8 @@ class User < ApplicationRecord
            class_name: 'Exercise',
            source: :exercise
 
-  belongs_to :last_exercise, class_name: 'Exercise'
-  belongs_to :last_organization, class_name: 'Organization'
+  belongs_to :last_exercise, class_name: 'Exercise', optional: true
+  belongs_to :last_organization, class_name: 'Organization', optional: true
 
   has_one :last_guide, through: :last_exercise, source: :guide
 

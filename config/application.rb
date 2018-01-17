@@ -6,6 +6,8 @@ Bundler.require(*Rails.groups)
 
 module Mumuki
   class Application < Rails::Application
+    config.load_defaults 5.1
+
     config.generators.stylesheets = false
     config.generators.javascripts = false
     config.generators.test_framework = :rspec

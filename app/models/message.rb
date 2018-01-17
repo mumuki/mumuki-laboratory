@@ -1,6 +1,6 @@
 class Message < ApplicationRecord
 
-  belongs_to :assignment, foreign_key: :submission_id, primary_key: :submission_id
+  belongs_to :assignment, foreign_key: :submission_id, primary_key: :submission_id, optional: true
   has_one :exercise, through: :assignment
 
   validates_presence_of :submission_id, :content, :sender
