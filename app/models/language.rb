@@ -56,7 +56,10 @@ class Language < ApplicationRecord
                                  :stateful_console,
                                  :assets_js_urls,
                                  :assets_html_urls,
-                                 :assets_css_urls)
+                                 :assets_css_urls,
+                                 :custom_editor_js_urls,
+                                 :custom_editor_html_urls,
+                                 :custom_editor_css_urls)
     save!
   end
 

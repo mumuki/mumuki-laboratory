@@ -1,11 +1,11 @@
 <% language.assets_js_urls.each do |js| %>
-    <script src="<%="#{language.runner_url}/#{js}"%>"></script>
+  <script src="<%=js%>"></script>
 <% end %>
 
 <% language.assets_css_urls.each do |css| %>
-    <link rel="stylesheet" href="<%="#{language.runner_url}/#{js}"%>"></link>
+  <link rel="stylesheet" href="<%=css%>" />
 <% end %>
 
 <% language.assets_html_urls.each do |html| %>
-    <link rel="import" href="<%="#{language.runner_url}/#{html}"%>"></link>
+  <link rel="import" href="<%=html%>" />
 <% end %>

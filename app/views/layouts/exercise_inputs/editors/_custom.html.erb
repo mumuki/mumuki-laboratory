@@ -1,10 +1,16 @@
 <div>
-    <gs-element-blockly />
+  <% exercise.language.custom_editor_js_urls.each do |js| %>
+      <script src="<%=js%>"></script>
+  <% end %>
 
-    <%= form.hidden_field :content, id: "custom-value", value: @exercise.default_content %>
+  <% exercise.language.custom_editor_css_urls.each do |css| %>
+    <link rel="stylesheet" href="<%=css%>" />
+  <% end %>
 
-    <!-- // TODO: Parameterize assets -->
-    <script>
-        $("gs-element-blockly")[0].workspace.addChangeListener(() => $("#custom-value")[0].value = $("gs-element-blockly")[0].generateCode());
-    </script>
+  <% exercise.language.custom_editor_html_urls.each do |html| %>
+      <link rel="import" href="<%=html%>" />
+  <% end %>
+
+  <div id="custom-editor"></div>
+  <%= form.hidden_field :content, id: "custom-editor-value", value: @exercise.default_content %>
 </div>
