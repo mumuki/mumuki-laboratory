@@ -3,6 +3,7 @@ class User < ApplicationRecord
           WithToken,
           WithPermissions,
           WithUserNavigation,
+          WithReminders,
           Mumukit::Login::UserPermissionsHelpers
 
   has_many :assignments, foreign_key: :submitter_id

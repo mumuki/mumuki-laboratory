@@ -5,7 +5,7 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.we_miss_you_notification.subject
   #
-  def we_miss_you_notification(user, weeks)
+  def we_miss_you_reminder(user, weeks)
     @user = user
 
     mail to: user.email,

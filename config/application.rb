@@ -30,7 +30,8 @@ module Mumuki
 
     config.sender_email = ENV['SENDER_EMAIL']
     config.smtp_address = ENV['SMTP_ADDRESS']
-    config.email_service_username = ENV['EMAIL_SERVICE_USERNAME']
-    config.email_service_password = ENV['EMAIL_SERVICE_PASSWORD']
+    config.mailer_username = ENV['MAILER_USERNAME']
+    config.mailer_password = ENV['MAILER_PASSWORD']
+    config.reminder_frequency = ENV['REMINDER_FREQUENCY']
   end
 end
