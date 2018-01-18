@@ -25,15 +25,10 @@ class User < ApplicationRecord
   has_many :exam_authorizations
 
   after_initialize :init
-  after_save :notify_changed!, if: Proc.new { |user| user.saved_change_to_image_url? || user.saved_change_to_social_id? }
+  after_save :notify!, if: Proc.new { |user| user.saved_change_to_image_url? || user.saved_change_to_social_id? }
 
-  def notify_changed!
+  def notify!
     Mumukit::Nuntius.notify_event! 'UserChanged', user: event_json
-  end
-
-  def update_and_notify!(data)
-    update! data
-    notify_changed!
   end
 
   def profile_completed?

@@ -8,7 +8,7 @@ class InvitationsController < ApplicationController
   def join
     current_user.make_student_of! @invitation.course
     current_user.update! user_params
-    current_user.notify_changed!
+    current_user.notify!
     redirect_to_organization!
   end
 
