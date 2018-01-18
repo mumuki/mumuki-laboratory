@@ -1,6 +1,14 @@
-class Event::Submission < Event::Base
+class Event::Submission
   def initialize(assignment)
     @assignment = assignment
+  end
+
+  def notify!
+    Mumukit::Nuntius.notify! queue_name, as_json unless Organization.current.silent?
+  end
+
+  def as_json(_options={})
+    event_json.deep_merge('organization' => Organization.current.name)
   end
 
   def queue_name
