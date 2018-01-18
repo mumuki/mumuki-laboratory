@@ -1,0 +1,40 @@
+$kids-height: calc(100vh - 80px - 103px);
+$kids-Characters-height: 120px;
+
+.mu-kids-exercise {
+  height: $kids-height;
+  min-height: $kids-height;
+  max-height: $kids-height;
+
+  .mu-kids-character,
+  .mu-kids-blocks,
+  .mu-kids-gbs-board-expected,
+  .mu-kids-gbs-board-actual {
+    border: 1px solid $mu-color-disabled;
+    border-radius: 4px;
+  }
+  .mu-kids-character,
+  .mu-kids-gbs-board-expected,
+  .mu-kids-gbs-board-actual {
+    padding: 15px;
+  }
+  .mu-kids-blocks,
+  .mu-kids-gbs-board-actual {
+    margin-top: 15px;
+  }
+  .mu-kids-gbs-board-expected,
+  .mu-kids-gbs-board-actual {
+    height: calc(#{$kids-height} / 2 - 15px);
+  }
+  .mu-kids-character {
+    height: $kids-Characters-height;
+  }
+  .mu-kids-blocks {
+    height: calc(#{$kids-height} - #{$kids-Characters-height} - 30px);
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .mu-kids-exercise-description {
+    padding-right: 0;
+  }
+}

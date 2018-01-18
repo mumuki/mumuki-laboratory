@@ -80,10 +80,7 @@
   </nav>
 </div>
 
-<%= yield :no_container %>
-
-
-<div class="container" id="wrap">
+<div class="container<%= @kids ? '-fluid' : '' %>" id="wrap">
   <div id="toast-container" class="toast-bottom-left">
     <% if notice %>
         <div class="alert toast toast-success" role="alert">
@@ -101,6 +98,8 @@
   <%= yield %>
 
 </div>
+
+<%= yield :no_container %>
 
 <footer class="footer">
   <div class="container">
