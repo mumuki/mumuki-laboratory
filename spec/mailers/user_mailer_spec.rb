@@ -16,32 +16,32 @@ RSpec.describe UserMailer, type: :mailer do
     context "this week" do
       let(:cycles) { 0 }
 
-      it { expect(user.should_send_reminder? cycles).to be false }
+      it { expect(user.should_send_reminder?).to be false }
     end
 
     context "after 1 week" do
-      it { expect(user.should_send_reminder? cycles).to be true }
+      it { expect(user.should_send_reminder?).to be true }
       it { expect(reminder.body.encoded).to match("Hi") }
     end
 
     context "after 2 weeks" do
       let(:cycles) { 2 }
 
-      it { expect(user.should_send_reminder? cycles).to be true }
+      it { expect(user.should_send_reminder?).to be true }
       it { expect(reminder.body.encoded).to match("Hi") }
     end
 
     context "after 3 weeks" do
       let(:cycles) { 3 }
 
-      it { expect(user.should_send_reminder? cycles).to be true }
+      it { expect(user.should_send_reminder?).to be true }
       it { expect(reminder.body.encoded).to match("Hi") }
     end
 
     context "after 4 weeks" do
       let(:cycles) { 4 }
 
-      it { expect(user.should_send_reminder? cycles).to be false }
+      it { expect(user.should_send_reminder?).to be false }
     end
   end
 end

@@ -5,11 +5,11 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.we_miss_you_notification.subject
   #
-  def we_miss_you_reminder(user, weeks)
+  def we_miss_you_reminder(user, cycles)
     @user = user
 
     mail to: user.email,
          subject: t(:we_miss_you),
-         template_name: "#{weeks.ordinalize}_reminder"
+         template_name: "#{cycles.ordinalize}_reminder"
   end
 end
