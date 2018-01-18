@@ -26,11 +26,11 @@ describe Event do
                                   submission_id: 'abcd1234',
                                   exercise: exercise) }
         let(:event) { Event::Submission.new(assignment) }
-        let(:json) { event.as_json.deep_symbolize_keys }
 
         it { expect(lesson.number).to eq 4 }
         it do
-          expect(json).to eq(status: Status::Passed,
+          expect(event.event_json).to json_like(
+                             status: Status::Passed,
                              result: nil,
                              expectation_results: nil,
                              queries: [],
@@ -87,10 +87,10 @@ describe Event do
                                   submission_id: 'abcd1234',
                                   exercise: exercise) }
         let(:event) { Event::Submission.new(assignment) }
-        let(:json) { event.as_json.deep_symbolize_keys }
 
         it do
-          expect(json).to eq(status: Status::Passed,
+          expect(event.event_json).to json_like(
+                             status: Status::Passed,
                              result: nil,
                              expectation_results: nil,
                              queries: [],
@@ -142,10 +142,10 @@ describe Event do
                                   submission_id: 'abcd1234',
                                   exercise: exercise) }
         let(:event) { Event::Submission.new(assignment) }
-        let(:json) { event.as_json.deep_symbolize_keys }
 
         it do
-          expect(json).to eq(status: Status::Passed,
+          expect(event.event_json).to json_like(
+                             status: Status::Passed,
                              result: nil,
                              expectation_results: nil,
                              queries: [],

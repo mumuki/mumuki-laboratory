@@ -4,15 +4,7 @@ class Event::Submission
   end
 
   def notify!
-    Mumukit::Nuntius.notify! queue_name, as_json unless Organization.current.silent?
-  end
-
-  def as_json(_options={})
-    event_json.deep_merge('organization' => Organization.current.name)
-  end
-
-  def queue_name
-    'submissions'
+    Mumukit::Nuntius.notify! 'submissions', event_json unless Organization.current.silent?
   end
 
   def event_json
@@ -29,6 +21,7 @@ class Event::Submission
                 exercise: {only: [:name, :number]},
                 submitter: {only: [:name, :email, :image_url, :social_id, :uid]}}).
       deep_merge(
+        'organization' => Organization.current.name,
         'sid' => @assignment.submission_id,
         'created_at' => @assignment.updated_at,
         'content' => @assignment.solution,
