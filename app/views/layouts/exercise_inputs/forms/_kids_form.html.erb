@@ -1,0 +1,19 @@
+<div id="editor">
+  <%= form_for([@exercise, @solution],
+               remote: true,
+               html: {role: 'form', class: "new_solution mu-editor mu-editor-overlap #{pending_messages_filter(@assignment)}"}) do |f| %>
+      <%= render_exercise_input_editor f, @exercise %>
+  <% end %>
+</div>
+<% content_for :submission_results do %>
+    <% if current_user? %>
+        <div class="row">
+          <div class="col-md-12 submission-results">
+            <% if @assignment %>
+                <%= render partial: 'exercise_solutions/results',
+                           locals: {assignment: @assignment, guide_finished_by_solution: false} %>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+<% end %>
