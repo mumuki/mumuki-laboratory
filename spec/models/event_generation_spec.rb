@@ -25,11 +25,10 @@ describe Event do
                                   submitter: user,
                                   submission_id: 'abcd1234',
                                   exercise: exercise) }
-        let(:event) { Event::Submission.new(assignment) }
 
         it { expect(lesson.number).to eq 4 }
         it do
-          expect(event.event_json).to json_like(
+          expect(assignment.event_json).to json_like(
                              status: Status::Passed,
                              result: nil,
                              expectation_results: nil,
@@ -86,10 +85,8 @@ describe Event do
                                   submitter: user,
                                   submission_id: 'abcd1234',
                                   exercise: exercise) }
-        let(:event) { Event::Submission.new(assignment) }
-
         it do
-          expect(event.event_json).to json_like(
+          expect(assignment.event_json).to json_like(
                              status: Status::Passed,
                              result: nil,
                              expectation_results: nil,
@@ -141,10 +138,9 @@ describe Event do
                                   submitter: user,
                                   submission_id: 'abcd1234',
                                   exercise: exercise) }
-        let(:event) { Event::Submission.new(assignment) }
 
         it do
-          expect(event.event_json).to json_like(
+          expect(assignment.event_json).to json_like(
                              status: Status::Passed,
                              result: nil,
                              expectation_results: nil,
