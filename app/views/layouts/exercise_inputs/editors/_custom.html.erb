@@ -1,0 +1,6 @@
+<div>
+  <%= render_runner_assets @exercise.language, :editor %>
+
+  <div id="custom-editor"></div>
+  <%= form.hidden_field :content, id: "custom-editor-value", value: @exercise.default_content %>
+</div>

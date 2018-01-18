@@ -8,7 +8,7 @@ module ExerciseInputHelper
   end
 
   def render_exercise_input_editor(form, exercise)
-    render "layouts/exercise_inputs/editors/#{exercise.editor}", form: form
+    render "layouts/exercise_inputs/editors/#{exercise.editor}", form: form, exercise: exercise
   end
 
   def should_render_problem_tabs?(exercise, user)

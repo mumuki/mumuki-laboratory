@@ -54,9 +54,12 @@ class Language < ApplicationRecord
                                  :triable,
                                  :queriable,
                                  :stateful_console,
-                                 :assets_js_urls,
-                                 :assets_html_urls,
-                                 :assets_css_urls)
+                                 :layout_js_urls,
+                                 :layout_html_urls,
+                                 :layout_css_urls,
+                                 :editor_js_urls,
+                                 :editor_html_urls,
+                                 :editor_css_urls)
     save!
   end
 
@@ -70,6 +73,10 @@ class Language < ApplicationRecord
 
   def directives_comment_type
     Mumukit::Directives::CommentType.parse comment_type
+  end
+
+  def assets_urls_for(kind, content_type)
+    send "#{kind}_#{content_type}_urls"
   end
 
   private

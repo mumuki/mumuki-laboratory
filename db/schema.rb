@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171229042201) do
+ActiveRecord::Schema.define(version: 20180117014110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,9 +159,12 @@ ActiveRecord::Schema.define(version: 20171229042201) do
     t.boolean "triable", default: false
     t.string "devicon"
     t.string "comment_type", default: "cpp"
-    t.string "assets_js_urls", default: [], array: true
-    t.string "assets_html_urls", default: [], array: true
-    t.string "assets_css_urls", default: [], array: true
+    t.string "layout_js_urls", default: [], array: true
+    t.string "layout_html_urls", default: [], array: true
+    t.string "layout_css_urls", default: [], array: true
+    t.string "editor_js_urls", default: [], array: true
+    t.string "editor_html_urls", default: [], array: true
+    t.string "editor_css_urls", default: [], array: true
     t.index ["name"], name: "index_languages_on_name", unique: true
   end
 

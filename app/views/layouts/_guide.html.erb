@@ -1,4 +1,4 @@
-<%= render partial: 'layouts/runner_assets', locals: {language: @guide.language} %>
+<%= render_runner_assets @guide.language, :layout %>
 
 <%= content_for :breadcrumbs do %>
   <%= breadcrumbs subject %>
