@@ -49,4 +49,5 @@ Rails.application.configure do
                            info: {first_name: 'John', last_name: 'Doe', name: 'John Doe', nickname: 'johndoe'}
 
   config.sender_email = 'support@mumuki.org'
+  config.reminder_frequency = 7
 end

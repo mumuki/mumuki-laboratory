@@ -10,6 +10,6 @@ class UserMailer < ApplicationMailer
 
     mail to: user.email,
          subject: t(:we_miss_you),
-         template_name: "we_miss_you_#{weeks}_weeks"
+         template_name: "#{weeks.ordinalize}_reminder"
   end
 end
