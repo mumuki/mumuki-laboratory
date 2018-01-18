@@ -159,12 +159,12 @@ ActiveRecord::Schema.define(version: 20180117014110) do
     t.boolean "triable", default: false
     t.string "devicon"
     t.string "comment_type", default: "cpp"
-    t.string "assets_js_urls", default: [], array: true
-    t.string "assets_html_urls", default: [], array: true
-    t.string "assets_css_urls", default: [], array: true
-    t.string "custom_editor_js_urls", default: [], array: true
-    t.string "custom_editor_html_urls", default: [], array: true
-    t.string "custom_editor_css_urls", default: [], array: true
+    t.string "layout_js_urls", default: [], array: true
+    t.string "layout_html_urls", default: [], array: true
+    t.string "layout_css_urls", default: [], array: true
+    t.string "editor_js_urls", default: [], array: true
+    t.string "editor_html_urls", default: [], array: true
+    t.string "editor_css_urls", default: [], array: true
     t.index ["name"], name: "index_languages_on_name", unique: true
   end
 

@@ -1,4 +1,4 @@
-<%= render partial: 'layouts/runner_assets', locals: {language: @exercise.language, prefix: 'assets'} %>
+<%= render_runner_assets @exercise.language, :layout %>
 
 <%= content_for :breadcrumbs do %>
     <%= breadcrumbs @exercise %>

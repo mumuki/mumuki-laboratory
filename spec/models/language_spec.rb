@@ -73,12 +73,12 @@ describe Language do
               'sandboxed' => false,
               'structured' => true
           },
-          'assets_urls' => {
+          'layout_assets_urls' => {
             'js' => ['javascripts/a.js'],
             'html' => ['b.html', 'c.html'],
             'css' => ['stylesheets/d.css']
           },
-          'custom_editor_assets_urls' => {
+          'editor_assets_urls' => {
             'js' => ['javascripts/aa.js'],
             'html' => ['bb.html', 'cc.html'],
             'css' => ['stylesheets/dd.css']
@@ -109,11 +109,11 @@ describe Language do
     it { expect(gobstones.devicon).to eq 'gobstones' }
     it { expect(gobstones.prompt).to eq 'ム ' }
     it { expect(gobstones.stateful_console).to be false }
-    it { expect(gobstones.assets_js_urls).to eq ['runner.com/javascripts/a.js'] }
-    it { expect(gobstones.assets_html_urls).to eq ['runner.com/b.html', 'runner.com/c.html'] }
-    it { expect(gobstones.assets_css_urls).to eq ['runner.com/stylesheets/d.css'] }
-    it { expect(gobstones.custom_editor_js_urls).to eq ['runner.com/javascripts/aa.js'] }
-    it { expect(gobstones.custom_editor_html_urls).to eq ['runner.com/bb.html', 'runner.com/cc.html'] }
-    it { expect(gobstones.custom_editor_css_urls).to eq ['runner.com/stylesheets/dd.css'] }
+    it { expect(gobstones.layout_js_urls).to eq ['runner.com/javascripts/a.js'] }
+    it { expect(gobstones.layout_html_urls).to eq ['runner.com/b.html', 'runner.com/c.html'] }
+    it { expect(gobstones.layout_css_urls).to eq ['runner.com/stylesheets/d.css'] }
+    it { expect(gobstones.editor_js_urls).to eq ['runner.com/javascripts/aa.js'] }
+    it { expect(gobstones.editor_html_urls).to eq ['runner.com/bb.html', 'runner.com/cc.html'] }
+    it { expect(gobstones.editor_css_urls).to eq ['runner.com/stylesheets/dd.css'] }
   end
 end
