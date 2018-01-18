@@ -22,7 +22,7 @@ describe 'events' do
     before { expect_any_instance_of(Mumukit::Nuntius::NotificationMode::Deaf).to receive(:notify!) }
     before { organization.switch! }
 
-    it { expect { Event::Submission.new(assignment).notify! }.to_not raise_error }
+    it { expect { assignment.notify! }.to_not raise_error }
   end
 
   describe 'submit_solution!' do
