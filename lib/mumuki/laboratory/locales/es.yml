@@ -16,6 +16,7 @@ es:
   authoring_note: Esta guía fue desarrollada por %{authors} y <a href="%{collaborators}" target="_blank">muchas personas más</a>, bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia Creative Commons Compartir-Igual, 4.0</a>.
   back_to_mumuki: ¡Volvé a Mumuki!
   bibliotheca: Biblioteca
+  cancel_subscription: Cancelá tu subscripción.
   chapter: Capítulo
   chapter_finished_html: ¡Terminaste %{chapter}! ¡Felicitaciones!
   chapter_number: 'Capítulo %{number}'
@@ -40,6 +41,7 @@ es:
   days: Días
   destroy: Eliminar
   details: Detalles
+  dont_leave_us: ¡No nos abandones! Aprender a programar es divertido. Sólo tenés que seguir practicando.
   download: "Descargá lo que hiciste"
   edit: Editar
   editor_placeholder: "...escribí tu solución acá..."
@@ -80,7 +82,9 @@ es:
   invitation: Invitación a curso
   invitation_for: 'Unirse a %{course}'
   item_not_accessible: "No tenés permisos para acceder a este contenido"
+  its_been_a_while: Hace un tiempo que no usás Mumuki.
   joining: '¡Te damos la bienvenida al curso <strong>%{course}</strong>!'
+  keep_learning: ¡Seguí aprendiendo!
   language: Lenguaje
   languages: Lenguajes
   last_name: Apellido
@@ -162,6 +166,7 @@ es:
   stats: Tu Progreso
   status: Estado
   stay_here: No, quiero quedarme acá
+  stop_emails?: ¿Querés dejar de recibir estos mails?
   submission: solución
   submission_date: Fecha de envío
   submission_for_exercise: Solucion para ejercicio

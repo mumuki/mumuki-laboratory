@@ -21,21 +21,21 @@ RSpec.describe UserMailer, type: :mailer do
 
     context "after 1 week" do
       it { expect(user.should_send_reminder?).to be true }
-      it { expect(reminder.body.encoded).to match("Hi") }
+      it { expect(reminder.body.encoded).to include("No nos abandones") }
     end
 
     context "after 2 weeks" do
       let(:cycles) { 2 }
 
       it { expect(user.should_send_reminder?).to be true }
-      it { expect(reminder.body.encoded).to match("Hi") }
+      it { expect(reminder.body.encoded).to include("No nos abandones") }
     end
 
     context "after 3 weeks" do
       let(:cycles) { 3 }
 
       it { expect(user.should_send_reminder?).to be true }
-      it { expect(reminder.body.encoded).to match("Hi") }
+      it { expect(reminder.body.encoded).to include("No nos abandones") }
     end
 
     context "after 4 weeks" do

@@ -15,6 +15,7 @@ en:
   authoring_note: This guide's content was developed by %{authors} and <a href="%{collaborators}" target="_blank">many others</a>, under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons License Share-Alike, 4.0</a>
   back_to_mumuki: Back to Mumuki!
   bibliotheca: Bibliotheca
+  cancel_subscription: Cancel your subscription.
   chapter: Chapter
   chapter_finished_html: You have finished %{chapter}!
   chapter_number: Chapter %{number}
@@ -35,6 +36,7 @@ en:
   created_at: Created at
   date: Date
   destroy: Destroy
+  dont_leave_us: Don't leave us! Learning is fun. You just have to keep at it.
   download: Download your solution
   edit: Edit
   editor_placeholder: "write your solution here..."
@@ -72,7 +74,9 @@ en:
   invitation: Invitation to course
   invitation_for: 'Join %{course}'
   item_not_accessible: "You are not permitted to access this content"
+  its_been_a_while: It's been a while since you last used Mumuki.
   joining: You're about to join
+  keep_learning: Keep learning!
   language: Language
   last_name: Last Name
   last_submission_date: Last submission
@@ -146,6 +150,7 @@ en:
   stats: Some stats
   status: Status
   stay_here: I want to stay here
+  stop_emails?: Want to stop getting emails?
   submission: submission
   submission_date: Submission date
   submission_for_exercise: Submission for exercise
