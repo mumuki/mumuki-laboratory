@@ -37,4 +37,38 @@ $kids-Characters-height: 120px;
   .mu-kids-exercise-description {
     padding-right: 0;
   }
+
+  [class^="mu-kids-gbs-board"] {
+    display: flex;
+    gs-board {
+      > table {
+        transform: scale(1.5);
+      }
+      display: block;
+      margin: auto;
+      td, th {
+        padding: 1px;
+        span {
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  .mu-kids-blocks {
+    form,
+    #custom-editor,
+    gs-element-blockly,
+    #blocklyDiv {
+      min-width: 100%;
+      min-height: 100%;
+      width: 100%;
+      height: 100%;
+    }
+    gs-element-blockly {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
 }
