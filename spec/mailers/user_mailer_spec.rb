@@ -4,7 +4,8 @@ RSpec.describe UserMailer, type: :mailer do
 
   describe "we_miss_you_reminder" do
     let(:reminder) { user.build_reminder cycles }
-    let(:user) { build :user, last_submission_date: cycles.weeks.ago }
+    let(:central) { create(:organization, name: 'central') }
+    let(:user) { build :user, last_organization: central, last_submission_date: cycles.weeks.ago }
     let(:cycles) { 1 }
 
     it "renders the headers" do
@@ -21,21 +22,21 @@ RSpec.describe UserMailer, type: :mailer do
 
     context "after 1 week" do
       it { expect(user.should_send_reminder?).to be true }
-      it { expect(reminder.body.encoded).to include("No nos abandones") }
+      it { expect(reminder.body.encoded).to include("Keep learning") }
     end
 
     context "after 2 weeks" do
       let(:cycles) { 2 }
 
       it { expect(user.should_send_reminder?).to be true }
-      it { expect(reminder.body.encoded).to include("No nos abandones") }
+      it { expect(reminder.body.encoded).to include("Keep learning") }
     end
 
     context "after 3 weeks" do
       let(:cycles) { 3 }
 
       it { expect(user.should_send_reminder?).to be true }
-      it { expect(reminder.body.encoded).to include("No nos abandones") }
+      it { expect(reminder.body.encoded).to include("Keep learning") }
     end
 
     context "after 4 weeks" do
