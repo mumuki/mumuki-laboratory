@@ -83,7 +83,7 @@ class Assignment < ApplicationRecord
   end
 
   def notify!
-    Event::Submission.new(self).notify!
+    Mumukit::Nuntius.notify! 'submissions', event_json unless Organization.current.silent?
   end
 
   def notify_to_accessible_organizations!
@@ -110,6 +110,34 @@ class Assignment < ApplicationRecord
   %w(query try tests).each do |key|
     name = "run_#{key}!"
     define_method(name) { |params| exercise.send name, params.merge(extra: extra) }
+  end
+
+  def event_json
+    navigable_parent = exercise.navigable_parent
+    as_json(except: [:exercise_id, :submission_id, :id, :submitter_id, :solution, :created_at, :updated_at],
+              include: {
+                guide: {
+                  only: [:slug, :name],
+                  include: {
+                    lesson: {only: [:number]},
+                    language: {only: [:name]}},
+                },
+                exercise: {only: [:name, :number]},
+                submitter: {only: [:name, :email, :image_url, :social_id, :uid]}}).
+      deep_merge(
+        'organization' => Organization.current.name,
+        'sid' => submission_id,
+        'created_at' => updated_at,
+        'content' => solution,
+        'exercise' => {
+          'eid' => exercise.bibliotheca_id
+        },
+        'guide' => {'parent' => {
+          'type' => navigable_parent.class.to_s,
+          'name' => navigable_parent.name,
+          'position' => navigable_parent.try(:number),
+          'chapter' => guide.chapter.as_json(only: [:id], methods: [:name])
+        }})
   end
 
   private

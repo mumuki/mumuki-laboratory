@@ -223,7 +223,7 @@ describe User do
     end
   end
 
-  describe '#notify_changed!' do
+  describe '#notify!' do
     let(:user) { create(:user) }
     before { expect_any_instance_of(Mumukit::Nuntius::NotificationMode::Deaf).to receive(:notify_event!).exactly(2).times }
     it { expect { user.update! image_url: 'http://foo.com' }.to_not raise_error }

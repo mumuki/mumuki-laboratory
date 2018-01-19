@@ -28,6 +28,12 @@ class ApplicationRecord < ActiveRecord::Base
     self
   end
 
+  def update_and_notify!(data)
+    update! data
+    notify!
+    self
+  end
+
   def self.aggregate_of(association)
     class_eval do
       define_method(:rebuild!) do |children|
