@@ -165,6 +165,7 @@ en:
   title: Title
   unauthorized_explanation: You have no permissions for this content. Maybe you logged in with another account.
   unmeet_expectations: "Goals that weren't met"
+  unsubscribed_successfully: You have successfully unsubscribed from reminders.
   upload_solution: Upload Solution
   uploading_solution: "Uploading solution"
   user: User

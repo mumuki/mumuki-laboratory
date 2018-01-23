@@ -40,6 +40,7 @@ Rails.application.routes.draw do
     get '/exercises/:organization/:repository/:bibliotheca_id' => 'exercises#show_by_slug', as: :exercise_by_slug
     get '/join/:code' => 'invitations#show', as: :invitation
     post '/join/:code' => 'invitations#join'
+    get '/user/unsubscribe' => 'users#unsubscribe'
     put '/user' => 'users#update', as: :update_user
 
     # Route for reading messages

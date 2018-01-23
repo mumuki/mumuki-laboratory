@@ -1,6 +1,4 @@
-<!--*|IF:MC_PREVIEW_TEXT|*-->
-<!--[if !gte mso 9]><!----><span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">*|MC_PREVIEW_TEXT|*</span><!--<![endif]-->
-<!--*|END:IF|*-->
+<span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;"><%= t :dont_leave_us %></span><!--<![endif]-->
 <center>
   <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
     <tbody><tr>
@@ -318,8 +316,7 @@
                               © Copyright 2015-2017&nbsp;<a href="https://mumuki.io/home/">Mumuki Project</a><em>.</em><br>
                               <br>
                               <%= t :stop_emails? %><br>
-                              <a href="*|UNSUB|*" target="_blank"><%= t :cancel_subscription %></a><br>
-                              &nbsp;
+                              <%= link_to t(:cancel_subscription), "https://mumuki.io/user/unsubscribe?id=#{@unsubscribe_code}", target: :_blank %>
                             </td>
                           </tr>
                           </tbody></table>

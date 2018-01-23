@@ -11,6 +11,13 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: I18n.t(:user_data_updated)
   end
 
+  def unsubscribe
+    user_id = Rails.application.message_verifier(:unsubscribe).verify(params[:id])
+    User.find(user_id).update! accepts_reminders: false
+
+    redirect_to root_path, notice: t(:unsubscribed_successfully)
+  end
+
   private
 
   def validate_user_profile!
