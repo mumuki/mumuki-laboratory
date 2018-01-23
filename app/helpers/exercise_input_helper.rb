@@ -12,7 +12,7 @@ module ExerciseInputHelper
   end
 
   def should_render_problem_tabs?(exercise, user)
-      !exercise.hidden? && (exercise.queriable? || exercise.extra_visible? || exercise.has_messages_for?(user))
+    !exercise.hidden? && (exercise.queriable? || exercise.extra_visible? || exercise.has_messages_for?(user))
   end
 
   def should_render_message_input?(exercise, organization = Organization.current)
@@ -21,11 +21,17 @@ module ExerciseInputHelper
 
   def render_submit_button(exercise)
     options = submit_button_options(exercise)
+    text = t(options.t) if options.t.present?
+    waiting_text = t(options.waiting_t) if options.waiting_t.present?
     %Q{<#{options.tag} for="#{options.for}"
                        class="btn btn-success btn-block btn-submit #{options.classes}"
-                       data-waiting="#{t(options.waiting_t)}">
-          #{fa_icon options.fa_icon, text: t(options.t)}
+                       data-waiting="#{waiting_text}">
+          #{fa_icon options.fa_icon, text: text}
        </#{options.tag}>}.html_safe
+  end
+
+  def exercise_container_type
+    @exercise&.input_kids? ? 'container-fluid' : 'container'
   end
 
   def submit_button_options(exercise)
@@ -41,6 +47,10 @@ module ExerciseInputHelper
              waiting_t: :working,
              fa_icon: :play,
              t: :continue_exercise
+    elsif exercise.input_kids?
+      struct tag: :button,
+             classes: 'submission_control',
+             fa_icon: :play
     else
       struct tag: :button,
              classes: 'submission_control',

@@ -33,6 +33,21 @@ $kids-Characters-height: 120px;
     height: calc(#{$kids-height} - #{$kids-Characters-height} - 30px);
     margin-left: 0;
     margin-right: 0;
+    position: relative;
+    .mu-kids-submit-button {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      width: 54px;
+      height: 54px;
+      z-index: 2;
+      button {
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
   }
   .mu-kids-exercise-description {
     padding-right: 0;
@@ -70,5 +85,4 @@ $kids-Characters-height: 120px;
       margin: 0;
     }
   }
-
 }

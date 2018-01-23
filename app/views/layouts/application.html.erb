@@ -32,7 +32,7 @@
     <%= render partial: 'layouts/organization_chooser' %>
 <% end %>
 
-<div class="container">
+<div class="<%= exercise_container_type %>">
   <nav class="mu-navbar">
     <div class="mu-navbar-breadcrumb hidden-xs">
       <ul class="mu-breadcrumb-list">
@@ -80,7 +80,7 @@
   </nav>
 </div>
 
-<div class="container<%= @kids ? '-fluid' : '' %>" id="wrap">
+<div class="<%= exercise_container_type %><%= @kids ? '-fluid' : '' %>" id="wrap">
   <div id="toast-container" class="toast-bottom-left">
     <% if notice %>
         <div class="alert toast toast-success" role="alert">
@@ -102,7 +102,7 @@
 <%= yield :no_container %>
 
 <footer class="footer">
-  <div class="container">
+  <div class="<%= exercise_container_type %>">
     <hr>
 
     <div class="row">
