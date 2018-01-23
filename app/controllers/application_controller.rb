@@ -32,10 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_main_organization!
-    laboratory = Mumukit::Platform.laboratory
-    flash.notice = t :you_were_redirected, url: view_context.link_to(t(:here), laboratory.organic_url(Organization.central))
-
-    redirect_to laboratory.organic_url(current_user.accessible_organizations.first)
+    redirect_to Mumukit::Platform.laboratory.organic_url(current_user.main_organization)
   end
 
   private

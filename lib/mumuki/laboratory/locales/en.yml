@@ -169,6 +169,5 @@ en:
   working: "Working"
   wrong_answer: The answer is wrong
   you_must_sign_in_before_submitting: You must sign in before submitting your solutions
-  you_were_redirected: You were redirected to your organization. If you wanted to stay in central, click %{url}
   fullscreen: "Fullscreen"
   get_messages: "View messages"

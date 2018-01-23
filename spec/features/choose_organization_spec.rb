@@ -36,7 +36,6 @@ feature 'Choose organization Flow' do
     visit '/'
 
     expect(page).to have_text('Sign Out')
-    expect(page).to have_text('You were redirected to your organization')
     expect(page).to have_text('pdep')
     expect(page).not_to have_text('Do you want to go there?')
   end
@@ -48,7 +47,6 @@ feature 'Choose organization Flow' do
     visit '/'
 
     expect(page).to have_text('Sign Out')
-    expect(page).not_to have_text('You were redirected to your organization')
     expect(page).to have_text('Do you want to go there?')
   end
 
@@ -58,7 +56,6 @@ feature 'Choose organization Flow' do
     visit '/'
 
     expect(page).not_to have_text('Do you want to go there?')
-    expect(page).not_to have_text('You were redirected to your organization')
     expect(page).not_to have_text('pdep')
   end
 
@@ -69,7 +66,6 @@ feature 'Choose organization Flow' do
     visit '/'
 
     expect(page).not_to have_text('Do you want to go there?')
-    expect(page).not_to have_text('You were redirected to your organization')
     expect(page).to have_text('foo')
   end
 

@@ -187,6 +187,5 @@ es:
   working: "Procesando"
   wrong_answer: La respuesta no es correcta
   you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
-  you_were_redirected: Fuiste redirigido a tu organización. Si te querés quedar en central, hace click %{url}
   fullscreen: "Pantalla completa"
   get_messages: "Ver mensajes"
