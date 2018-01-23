@@ -103,6 +103,14 @@ class User < ApplicationRecord
     User.where(uid: body[:uid]).update_or_create!(body.except(:id))
   end
 
+  def main_organization
+    accessible_organizations.first
+  end
+
+  def has_main_organization?
+    accessible_organizations.length == 1
+  end
+
   private
 
   def init

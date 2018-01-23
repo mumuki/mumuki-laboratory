@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_organization!
   before_action :set_locale!
-  before_action :redirect_to_main_organization!, if: :should_redirect?
+  before_action :redirect_to_main_organization!, if: :should_redirect_to_main_organization?
   before_action :authorize_if_private!
   before_action :validate_user_profile!, if: :current_user?
   before_action :validate_subject_accessible!
@@ -27,15 +27,15 @@ class ApplicationController < ActionController::Base
                 :theme_stylesheet_url,
                 :extension_javascript_url
 
-  def should_redirect?
-    should_choose_organization? && current_user.accessible_organizations.length == 1
+  def should_redirect_to_main_organization?
+    should_choose_organization? && current_user.has_main_organization?
   end
 
   def redirect_to_main_organization!
-    labo = Mumukit::Platform.laboratory
-    flash.notice = t :you_were_redirected, url: view_context.link_to(t(:here), labo.organic_url(Organization.central))
+    laboratory = Mumukit::Platform.laboratory
+    flash.notice = t :you_were_redirected, url: view_context.link_to(t(:here), laboratory.organic_url(Organization.central))
 
-    redirect_to labo.organic_url(current_user.accessible_organizations.first)
+    redirect_to laboratory.organic_url(current_user.accessible_organizations.first)
   end
 
   private
