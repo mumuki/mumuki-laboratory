@@ -111,6 +111,10 @@ class User < ApplicationRecord
     accessible_organizations.length == 1
   end
 
+  def has_immersive_main_organization?
+    has_main_organization? && main_organization.immersive?
+  end
+
   private
 
   def init

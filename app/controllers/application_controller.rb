@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
                 :extension_javascript_url
 
   def should_redirect_to_main_organization?
-    should_choose_organization? && current_user.has_main_organization?
+    should_choose_organization? && current_user.has_immersive_main_organization?
   end
 
   def redirect_to_main_organization!
