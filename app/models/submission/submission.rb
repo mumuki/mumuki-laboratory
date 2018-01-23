@@ -27,6 +27,7 @@ class Submission
 
   def save_submission!(assignment)
     assignment.content = content
+    assignment.user_solution = content_metadata
     assignment.save!
   end
 

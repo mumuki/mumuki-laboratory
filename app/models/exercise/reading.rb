@@ -7,6 +7,10 @@ class Reading < Exercise
     :input_bottom
   end
 
+  def input_kids?
+    false
+  end
+
   def queriable?
     false
   end
