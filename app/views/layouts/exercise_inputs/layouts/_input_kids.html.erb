@@ -14,24 +14,10 @@
 
         <div class="mu-kids-board col-md-4">
           <div class="mu-kids-gbs-board-expected">
-            <gs-board>
-              GBB/1.0
-              size 4 3
-              cell 1 2 Azul 0 Negro 0 Rojo 8 Verde 0
-              cell 3 2 Azul 2 Negro 0 Rojo 5 Verde 1
-              cell 2 1 Azul 0 Negro 6 Rojo 0 Verde 0
-              head 1 2
-            </gs-board>
+            <%= @exercise.final_state.html_safe %>
           </div>
           <div class="mu-kids-gbs-board-actual">
-            <gs-board>
-              GBB/1.0
-              size 4 3
-              cell 1 2 Azul 0 Negro 0 Rojo 8 Verde 0
-              cell 3 2 Azul 2 Negro 0 Rojo 5 Verde 1
-              cell 2 1 Azul 0 Negro 6 Rojo 0 Verde 0
-              head 1 2
-            </gs-board>
+            <%= @exercise.initial_state.html_safe %>
           </div>
         </div>
       </div>
