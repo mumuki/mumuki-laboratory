@@ -120,6 +120,10 @@ class User < ApplicationRecord
     update! accepts_reminders: false
   end
 
+  def self.unsubscription_verifier
+    Rails.application.message_verifier(:unsubscribe)
+  end
+
   private
 
   def init
