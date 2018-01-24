@@ -1,7 +1,7 @@
 <% if current_user.accessible_organizations.empty? %>
   <%= t :not_in_any_organizations %>
 <% else %>
-  <% current_user.accessible_organizations.each do |org| %>
+  <% organizations_for(current_user).each do |org| %>
       <div class="row">
         <div class="col-md-6 organization-row">
           <%= image_tag(org.banner_url, height: 50, class: 'pull-left') %>

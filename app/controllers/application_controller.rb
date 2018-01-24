@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_organization!
   before_action :set_locale!
+  before_action :redirect_to_main_organization!, if: :should_redirect_to_main_organization?
   before_action :authorize_if_private!
   before_action :validate_user_profile!, if: :current_user?
   before_action :validate_subject_accessible!
@@ -25,6 +26,14 @@ class ApplicationController < ActionController::Base
                 :should_choose_organization?,
                 :theme_stylesheet_url,
                 :extension_javascript_url
+
+  def should_redirect_to_main_organization?
+    should_choose_organization? && current_user.has_immersive_main_organization?
+  end
+
+  def redirect_to_main_organization!
+    redirect_to Mumukit::Platform.laboratory.organic_url(current_user.main_organization)
+  end
 
   private
 

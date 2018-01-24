@@ -2,29 +2,68 @@ require 'spec_helper'
 
 feature 'Choose organization Flow' do
 
-  let(:chapter) { create(:chapter, lessons: [create(:lesson)]) }
-  let(:book) { create(:book, chapters: [chapter], name: 'foo', slug: 'mumuki/mumuki-the-foo-book') }
-  let(:foo_organization) { create(:organization, name: 'foo', book: book) }
+  let(:user) { create(:user, permissions: {student: ''}) }
+  let(:user2) { create(:user, permissions: {student: 'pdep/*'}) }
+  let(:user3) { create(:user, permissions: {student: 'pdep/*:foo/*'}) }
+  let(:user4) { create(:user, permissions: {student: 'immersive-orga/*'}) }
 
-  let(:user) { create(:user, permissions: {student: 'pdep/*'}) }
-  let(:user2) { create(:user, permissions: {student: ''}) }
+  before do
+    %w(pdep central foo immersive-orga).each do |it|
+      create(:organization,
+             name: it,
+             book: create(:book,
+                          chapters: [create(:chapter, lessons: [create(:lesson)])],
+                          name: it,
+                          slug: "mumuki/mumuki-the-#{it}-book"))
+    end
+  end
 
-  let(:organization) { create(:organization, name: 'central', book: create(:book, name: 'central', slug: 'mumuki/mumuki-the-book')).switch! }
-  before { create(:organization, name: 'pdep', book: create(:book, name: 'pdep', slug: 'mumuki/mumuki-the-pdep-book')) }
-  before { create(:organization, name: 'central', book: create(:book, name: 'central', slug: 'mumuki/mumuki-the-central-book')).switch! }
+  before { Organization.find_by_name('immersive-orga').tap { |it| it.immersive = true }.save! }
+
+  before { Organization.central.switch! }
   before { set_current_user! user }
 
-  scenario 'when visit implicit central' do
+  scenario 'when visiting with implicit subdomain and no permissions' do
+    set_implicit_central!
+
+    visit '/'
+
+    expect(page).to have_text('Sign Out')
+    expect(page).not_to have_text('Do you want to go there?')
+  end
+
+  scenario 'when visiting with implicit subdomain and permissions to only one non-immersive organization' do
+    set_current_user! user2
     set_implicit_central!
 
     visit '/'
 
     expect(page).to have_text('Sign Out')
     expect(page).to have_text('Do you want to go there?')
-    expect(page).to have_text('pdep')
   end
 
-  scenario 'when visit explicit central' do
+  scenario 'when visiting with implicit subdomain and permissions to only one immersive organization' do
+    set_current_user! user4
+    set_implicit_central!
+
+    visit '/'
+
+    expect(page).to have_text('Sign Out')
+    expect(page).not_to have_text('Do you want to go there?')
+    expect(page).to have_text('immersive-orga')
+  end
+
+  scenario 'when visiting with implicit subdomain and permissions to two or more organizations' do
+    set_current_user! user3
+    set_implicit_central!
+
+    visit '/'
+
+    expect(page).to have_text('Sign Out')
+    expect(page).to have_text('Do you want to go there?')
+  end
+
+  scenario 'when visiting central explicitly' do
     set_subdomain_host!('central')
 
     visit '/'
@@ -34,18 +73,13 @@ feature 'Choose organization Flow' do
   end
 
   scenario 'when visit foo subdomain' do
+    set_current_user! user3
     set_subdomain_host!('foo')
+
     visit '/'
 
     expect(page).not_to have_text('Do you want to go there?')
-    expect(page).not_to have_text('foo')
+    expect(page).to have_text('foo')
   end
 
-  scenario 'when user does not have any permission' do
-    set_current_user! user2
-    set_implicit_central!
-    visit '/'
-
-    expect(page).not_to have_text('Do you want to go there?')
-  end
 end
