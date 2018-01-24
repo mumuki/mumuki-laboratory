@@ -4,7 +4,7 @@ module WithReminders
     UserMailer.new.we_miss_you_reminder(self, cycles)
   end
 
-  def send_reminder(cycles)
+  def send_reminder!(cycles)
     build_reminder(cycles).deliver
   end
 
@@ -18,7 +18,7 @@ module WithReminders
   end
 
   def remind!
-    send_reminder cycles_since_last_submission.to_i if should_send_reminder?
+    send_reminder! cycles_since_last_submission.to_i if should_send_reminder?
   end
 
 end

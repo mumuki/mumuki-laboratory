@@ -32,6 +32,6 @@ module Mumuki
     config.smtp_address = ENV['SMTP_ADDRESS']
     config.mailer_username = ENV['MAILER_USERNAME']
     config.mailer_password = ENV['MAILER_PASSWORD']
-    config.reminder_frequency = ENV['REMINDER_FREQUENCY'].to_i
+    config.reminder_frequency = ENV['REMINDER_FREQUENCY'].defaulting(7, &:to_i)
   end
 end

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def unsubscribe
     user_id = Rails.application.message_verifier(:unsubscribe).verify(params[:id])
-    User.find(user_id).update! accepts_reminders: false
+    User.find(user_id).unsubscribe_from_reminders!
 
     redirect_to root_path, notice: t(:unsubscribed_successfully)
   end

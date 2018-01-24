@@ -160,8 +160,8 @@ ActiveRecord::Schema.define(version: 20180123180836) do
     t.string "devicon"
     t.string "comment_type", default: "cpp"
     t.string "layout_js_urls", default: [], array: true
-    t.string "layout_css_urls", default: [], array: true
     t.string "layout_html_urls", default: [], array: true
+    t.string "layout_css_urls", default: [], array: true
     t.string "editor_js_urls", default: [], array: true
     t.string "editor_html_urls", default: [], array: true
     t.string "editor_css_urls", default: [], array: true

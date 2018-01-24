@@ -116,6 +116,10 @@ class User < ApplicationRecord
     has_main_organization? && main_organization.immersive?
   end
 
+  def unsubscribe_from_reminders!
+    update! accepts_reminders: false
+  end
+
   private
 
   def init
