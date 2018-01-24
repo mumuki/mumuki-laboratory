@@ -8,7 +8,6 @@ var mumuki = mumuki || {};
 
   ResultsBox.prototype = {
     waiting: function () {
-      console.log('submitting solution');
       this.submissionsresultsArea.html(this.processingTemplate.html());
     },
     success: function (data) {
