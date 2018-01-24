@@ -14,7 +14,8 @@ var mumuki = mumuki || {};
       this.submissionsresultsArea.html(data);
     },
     error: function (error) {
-      this.submissionsresultsArea.html('<pre>' + error + '</pre>');
+      this.submissionsresultsArea.html(generateNetworkError());
+      animateTimeoutError();
     },
     done: function () {
       mumuki.pin.scroll();
@@ -48,4 +49,35 @@ var mumuki = mumuki || {};
       resultsBox.error("Network error :( Please check your internet connection and try again");
     });
   });
+
+  function generateNetworkError() {
+    return [
+
+      '<div class="bs-callout bs-callout-broken submission-result-error">',
+      '  <h4>',
+      '    <strong><i class="fa fa-fw fa-minus-circle"></i>¡Ups! No pudimos ejecutar tu solución</strong>',
+      '  </h4>',
+      '  <div class="submission-result-error-body">',
+      '    <img id="submission-result-error-animation" src="' + mumuki.errors.error_timeout_1 + '"/>',
+      '    <ul class="submission-result-error-body-description">',
+      '      <li>Fijate que tu programa no tenga recursión o bucle infinito</li>',
+      '      <li>Chequeá que tengas conexión a internet <img src="/assets/emojis/raise_hands.png"/></li>',
+      '      <li>Recursividad</li>',
+      '    </ul>',
+      '  </div>',
+      '</div>'
+
+    ].join('')
+  }
+
+  function animateTimeoutError() {
+    setTimeout(function () {
+      var image = $('#submission-result-error-animation')[0];
+      image.src = mumuki.errors.error_timeout_2;
+      setTimeout(function () {
+        image.src = mumuki.errors.error_timeout_3;
+      }, 4000);
+    }, 10333);
+  }
+
 })(mumuki);
