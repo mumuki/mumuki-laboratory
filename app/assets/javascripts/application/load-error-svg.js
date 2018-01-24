@@ -1,6 +1,8 @@
 mumuki.load(function () {
-  [403, 404, 500].forEach(function (errorCode) {
-    var url = '/error_' + errorCode + '.svg';
+  var svgs = ['403', '404', '500', 'timeout_1', 'timeout_2', 'timeout_3'];
+
+  svgs.forEach(function (svgErrorSuffix) {
+    var url = '/error_' + svgErrorSuffix + '.svg';
     $.get(url, function () {
     });
   });
