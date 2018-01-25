@@ -18,7 +18,7 @@ pt:
   bibliotheca: Biblioteca
   chapter: Capítulo
   chapter_finished_html: Você terminou %{chapter}! Parabéns!
-  chapter_number: Capítulo %{número}
+  chapter_number: Capítulo %{number}
   classroom: Sala de aula
   clear_console: Reiniciar o console
   confirm: Confirme
@@ -54,7 +54,7 @@ pt:
   exams: Exames
   exercise: Exercício
   exercise_count: exercícios
-  exercise_number: Exercício %{número}
+  exercise_number: Exercício %{number}
   exercise_success_rate: Taxa de sucesso em exercícios
   exercises: Exercícios
   exit: Sair
