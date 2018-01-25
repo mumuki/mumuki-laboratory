@@ -13,7 +13,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>*|MC:SUBJECT|*</title>
 
   <style type="text/css">
     p{
@@ -40,7 +39,7 @@
       padding:0;
       width:100%;
     }
-    .mcnPreviewText{
+    .muMailPreviewText{
       display:none !important;
     }
     #outlook a{
@@ -85,19 +84,19 @@
     .templateContainer{
       max-width:600px !important;
     }
-    a.mcnButton{
+    a.muMailButton{
       display:block;
     }
-    .mcnImage{
+    .muMailImage{
       vertical-align:bottom;
     }
-    .mcnTextContent{
+    .muMailTextContent{
       word-break:break-word;
     }
-    .mcnTextContent img{
+    .muMailTextContent img{
       height:auto !important;
     }
-    .mcnDividerBlock{
+    .muMailDividerBlock{
       table-layout:fixed !important;
     }
     /*
@@ -194,7 +193,7 @@
     @tab Header
     @section Header Text
     */
-    .headerContainer .mcnTextContent,.headerContainer .mcnTextContent p{
+    .headerContainer .muMailTextContent,.headerContainer .muMailTextContent p{
       /*@editable*/color:#808080;
       /*@editable*/font-family:Helvetica;
       /*@editable*/font-size:16px;
@@ -205,7 +204,7 @@
     @tab Header
     @section Header Link
     */
-    .headerContainer .mcnTextContent a,.headerContainer .mcnTextContent p a{
+    .headerContainer .muMailTextContent a,.headerContainer .muMailTextContent p a{
       /*@editable*/color:#00ADD8;
       /*@editable*/font-weight:normal;
       /*@editable*/text-decoration:underline;
@@ -244,7 +243,7 @@
     @tab Body
     @section Body Text
     */
-    .bodyContainer .mcnTextContent,.bodyContainer .mcnTextContent p{
+    .bodyContainer .muMailTextContent,.bodyContainer .muMailTextContent p{
       /*@editable*/color:#808080;
       /*@editable*/font-family:Helvetica;
       /*@editable*/font-size:16px;
@@ -255,7 +254,7 @@
     @tab Body
     @section Body Link
     */
-    .bodyContainer .mcnTextContent a,.bodyContainer .mcnTextContent p a{
+    .bodyContainer .muMailTextContent a,.bodyContainer .muMailTextContent p a{
       /*@editable*/color:#00ADD8;
       /*@editable*/font-weight:normal;
       /*@editable*/text-decoration:underline;
@@ -294,7 +293,7 @@
     @tab Footer
     @section Footer Text
     */
-    .footerContainer .mcnTextContent,.footerContainer .mcnTextContent p{
+    .footerContainer .muMailTextContent,.footerContainer .muMailTextContent p{
       /*@editable*/color:#FFFFFF;
       /*@editable*/font-family:Helvetica;
       /*@editable*/font-size:12px;
@@ -305,7 +304,7 @@
     @tab Footer
     @section Footer Link
     */
-    .footerContainer .mcnTextContent a,.footerContainer .mcnTextContent p a{
+    .footerContainer .muMailTextContent a,.footerContainer .muMailTextContent p a{
       /*@editable*/color:#FFFFFF;
       /*@editable*/font-weight:normal;
       /*@editable*/text-decoration:underline;
@@ -327,61 +326,61 @@
       }
 
     }	@media only screen and (max-width: 480px){
-      .mcnImage{
+      .muMailImage{
         width:100% !important;
       }
 
     }	@media only screen and (max-width: 480px){
-      .mcnCartContainer,.mcnCaptionTopContent,.mcnRecContentContainer,.mcnCaptionBottomContent,.mcnTextContentContainer,.mcnBoxedTextContentContainer,.mcnImageGroupContentContainer,.mcnCaptionLeftTextContentContainer,.mcnCaptionRightTextContentContainer,.mcnCaptionLeftImageContentContainer,.mcnCaptionRightImageContentContainer,.mcnImageCardLeftTextContentContainer,.mcnImageCardRightTextContentContainer,.mcnImageCardLeftImageContentContainer,.mcnImageCardRightImageContentContainer{
+      .muMailCartContainer,.muMailCaptionTopContent,.muMailRecContentContainer,.muMailCaptionBottomContent,.muMailTextContentContainer,.muMailBoxedTextContentContainer,.muMailImageGroupContentContainer,.muMailCaptionLeftTextContentContainer,.muMailCaptionRightTextContentContainer,.muMailCaptionLeftImageContentContainer,.muMailCaptionRightImageContentContainer,.muMailImageCardLeftTextContentContainer,.muMailImageCardRightTextContentContainer,.muMailImageCardLeftImageContentContainer,.muMailImageCardRightImageContentContainer{
         max-width:100% !important;
         width:100% !important;
       }
 
     }	@media only screen and (max-width: 480px){
-      .mcnBoxedTextContentContainer{
+      .muMailBoxedTextContentContainer{
         min-width:100% !important;
       }
 
     }	@media only screen and (max-width: 480px){
-      .mcnImageGroupContent{
+      .muMailImageGroupContent{
         padding:9px !important;
       }
 
     }	@media only screen and (max-width: 480px){
-      .mcnCaptionLeftContentOuter .mcnTextContent,.mcnCaptionRightContentOuter .mcnTextContent{
+      .muMailCaptionLeftContentOuter .muMailTextContent,.muMailCaptionRightContentOuter .muMailTextContent{
         padding-top:9px !important;
       }
 
     }	@media only screen and (max-width: 480px){
-      .mcnImageCardTopImageContent,.mcnCaptionBottomContent:last-child .mcnCaptionBottomImageContent,.mcnCaptionBlockInner .mcnCaptionTopContent:last-child .mcnTextContent{
+      .muMailImageCardTopImageContent,.muMailCaptionBottomContent:last-child .muMailCaptionBottomImageContent,.muMailCaptionBlockInner .muMailCaptionTopContent:last-child .muMailTextContent{
         padding-top:18px !important;
       }
 
     }	@media only screen and (max-width: 480px){
-      .mcnImageCardBottomImageContent{
+      .muMailImageCardBottomImageContent{
         padding-bottom:9px !important;
       }
 
     }	@media only screen and (max-width: 480px){
-      .mcnImageGroupBlockInner{
+      .muMailImageGroupBlockInner{
         padding-top:0 !important;
         padding-bottom:0 !important;
       }
 
     }	@media only screen and (max-width: 480px){
-      .mcnImageGroupBlockOuter{
+      .muMailImageGroupBlockOuter{
         padding-top:9px !important;
         padding-bottom:9px !important;
       }
 
     }	@media only screen and (max-width: 480px){
-      .mcnTextContent,.mcnBoxedTextContentColumn{
+      .muMailTextContent,.muMailBoxedTextContentColumn{
         padding-right:18px !important;
         padding-left:18px !important;
       }
 
     }	@media only screen and (max-width: 480px){
-      .mcnImageCardLeftImageContent,.mcnImageCardRightImageContent{
+      .muMailImageCardLeftImageContent,.muMailImageCardRightImageContent{
         padding-right:18px !important;
         padding-bottom:0 !important;
         padding-left:18px !important;
@@ -443,7 +442,7 @@
       @section Boxed Text
       @tip Make the boxed text larger in size for better readability on small screens. We recommend a font size of at least 16px.
       */
-      .mcnBoxedTextContentContainer .mcnTextContent,.mcnBoxedTextContentContainer .mcnTextContent p{
+      .muMailBoxedTextContentContainer .muMailTextContent,.muMailBoxedTextContentContainer .muMailTextContent p{
         /*@editable*/font-size:14px !important;
         /*@editable*/line-height:150% !important;
       }
@@ -454,7 +453,7 @@
       @section Header Text
       @tip Make the header text larger in size for better readability on small screens.
       */
-      .headerContainer .mcnTextContent,.headerContainer .mcnTextContent p{
+      .headerContainer .muMailTextContent,.headerContainer .muMailTextContent p{
         /*@editable*/font-size:16px !important;
         /*@editable*/line-height:150% !important;
       }
@@ -465,7 +464,7 @@
       @section Body Text
       @tip Make the body text larger in size for better readability on small screens. We recommend a font size of at least 16px.
       */
-      .bodyContainer .mcnTextContent,.bodyContainer .mcnTextContent p{
+      .bodyContainer .muMailTextContent,.bodyContainer .muMailTextContent p{
         /*@editable*/font-size:16px !important;
         /*@editable*/line-height:150% !important;
       }
@@ -476,7 +475,7 @@
       @section Footer Text
       @tip Make the footer content text larger in size for better readability on small screens.
       */
-      .footerContainer .mcnTextContent,.footerContainer .mcnTextContent p{
+      .footerContainer .muMailTextContent,.footerContainer .muMailTextContent p{
         /*@editable*/font-size:14px !important;
         /*@editable*/line-height:150% !important;
       }
