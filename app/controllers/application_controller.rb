@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_main_organization!
-    redirect_to Mumukit::Platform.laboratory.organic_url(current_user.main_organization)
+    redirect_to current_user.main_organization.url_for(request.path)
   end
 
   private
