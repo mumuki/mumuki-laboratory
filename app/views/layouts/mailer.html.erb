@@ -165,7 +165,7 @@
     */
     #templateHeader{
       /*@editable*/background-color:#e6e6e6;
-      /*@editable*/background-image:url("https://gallery.mailchimp.com/046b6c670d9f80ebd6c5d075b/images/f8bc0dad-5b50-419d-b49f-c4e991fe47c3.png");
+      /*@editable*/background-image:url(<%= @organization.url_for('/email-banner.png') %>);
       /*@editable*/background-repeat:no-repeat;
       /*@editable*/background-position:center;
       /*@editable*/background-size:cover;
