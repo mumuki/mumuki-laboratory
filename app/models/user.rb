@@ -3,6 +3,7 @@ class User < ApplicationRecord
           WithToken,
           WithPermissions,
           WithUserNavigation,
+          WithReminders,
           Mumukit::Login::UserPermissionsHelpers
 
   has_many :assignments, foreign_key: :submitter_id
@@ -113,6 +114,14 @@ class User < ApplicationRecord
 
   def has_immersive_main_organization?
     has_main_organization? && main_organization.immersive?
+  end
+
+  def unsubscribe_from_reminders!
+    update! accepts_reminders: false
+  end
+
+  def self.unsubscription_verifier
+    Rails.application.message_verifier(:unsubscribe)
   end
 
   private
