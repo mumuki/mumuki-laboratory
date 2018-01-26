@@ -44,4 +44,10 @@
   align-items: center;
   margin-left: -20px;
   margin-bottom: -20px;
+  img {
+    align-self: flex-end;
+  }
+  ul, ol {
+    margin: 0;
+  }
 }
