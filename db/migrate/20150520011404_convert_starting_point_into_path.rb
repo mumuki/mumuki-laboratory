@@ -1,4 +1,4 @@
-class ConvertStartingPointIntoPath < ActiveRecord::Migration
+class ConvertStartingPointIntoPath < ActiveRecord::Migration[4.2]
   def change
     rename_table :starting_points, :paths
 

@@ -1,4 +1,4 @@
-class CreatePathRules < ActiveRecord::Migration
+class CreatePathRules < ActiveRecord::Migration[4.2]
   def change
     create_table :path_rules do |t|
       t.references :guide

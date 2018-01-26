@@ -1,4 +1,4 @@
-class AddSlugToTopicAndBook < ActiveRecord::Migration
+class AddSlugToTopicAndBook < ActiveRecord::Migration[4.2]
   def change
     add_column :books,  :slug, :string
     add_column :topics, :slug, :string

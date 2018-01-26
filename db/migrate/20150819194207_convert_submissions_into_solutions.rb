@@ -1,4 +1,4 @@
-class ConvertSubmissionsIntoSolutions < ActiveRecord::Migration
+class ConvertSubmissionsIntoSolutions < ActiveRecord::Migration[4.2]
   def change
     ActiveRecord::Base.connection.execute(
         "insert into solutions

@@ -1,4 +1,4 @@
-class AddGuidesSuggestions < ActiveRecord::Migration
+class AddGuidesSuggestions < ActiveRecord::Migration[4.2]
   def change
     create_table :suggested_guides do |t|
       t.integer :guide_id

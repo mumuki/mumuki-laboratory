@@ -1,4 +1,4 @@
-class AddCommentModel < ActiveRecord::Migration
+class AddCommentModel < ActiveRecord::Migration[4.2]
   def change
     create_table :comments do |t|
       t.integer :exercise_id

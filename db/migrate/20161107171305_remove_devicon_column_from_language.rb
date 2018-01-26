@@ -1,4 +1,4 @@
-class RemoveDeviconColumnFromLanguage < ActiveRecord::Migration
+class RemoveDeviconColumnFromLanguage < ActiveRecord::Migration[4.2]
   def change
     remove_column :languages, :devicon
   end

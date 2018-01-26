@@ -1,4 +1,4 @@
-class CreateComplements < ActiveRecord::Migration
+class CreateComplements < ActiveRecord::Migration[4.2]
   def change
     create_table :complements do |t|
       t.references :guide, index: true

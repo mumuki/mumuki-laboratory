@@ -1,4 +1,4 @@
-class AddGuidesUsersAssociationTables < ActiveRecord::Migration
+class AddGuidesUsersAssociationTables < ActiveRecord::Migration[4.2]
   def change
     create_table :collaborators do |t|
       t.integer :guide_id

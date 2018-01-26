@@ -1,4 +1,4 @@
-class CreateUsages < ActiveRecord::Migration
+class CreateUsages < ActiveRecord::Migration[4.2]
   def change
     create_table :usages do |t|
       t.references :organization, index: true

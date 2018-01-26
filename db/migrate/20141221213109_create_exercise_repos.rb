@@ -1,4 +1,4 @@
-class CreateExerciseRepos < ActiveRecord::Migration
+class CreateExerciseRepos < ActiveRecord::Migration[4.2]
   def change
     create_table :exercise_repos do |t|
       t.string :github_url

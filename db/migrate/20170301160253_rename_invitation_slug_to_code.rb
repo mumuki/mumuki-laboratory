@@ -1,4 +1,4 @@
-class RenameInvitationSlugToCode < ActiveRecord::Migration
+class RenameInvitationSlugToCode < ActiveRecord::Migration[4.2]
   def change
     rename_column :invitations, :slug, :code
   end

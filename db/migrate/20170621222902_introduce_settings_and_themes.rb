@@ -1,4 +1,4 @@
-class IntroduceSettingsAndThemes < ActiveRecord::Migration
+class IntroduceSettingsAndThemes < ActiveRecord::Migration[4.2]
   def change
     add_column :organizations, :settings, :text, default: "{}", null: false
     add_column :organizations, :theme, :text, default: "{}", null: false

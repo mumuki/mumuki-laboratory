@@ -1,4 +1,4 @@
-class CreateExpectations < ActiveRecord::Migration
+class CreateExpectations < ActiveRecord::Migration[4.2]
   def change
     create_table :expectations do |t|
       t.references :exercise
