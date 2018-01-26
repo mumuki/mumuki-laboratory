@@ -4,27 +4,30 @@ var mumuki = mumuki || {};
   function ResultsBox(submissionsResults) {
     this.submissionsresultsArea = submissionsResults;
     this.processingTemplate = $('#processing-template');
-  }
-
-  function SubmissionController() {
-    this.submitButton = $('.btn-submit');
-    this.submissionControls = $('.submission_control');
+    this.submissionsErrorTemplate = $(".submission-result-error");
   }
 
   ResultsBox.prototype = {
     waiting: function () {
       this.submissionsresultsArea.html(this.processingTemplate.html());
+      this.submissionsErrorTemplate.hide();
     },
     success: function (data) {
       this.submissionsresultsArea.html(data);
     },
     error: function () {
-      this.submissionsresultsArea.html(generateNetworkError());
+      this.submissionsresultsArea.html('');
+      this.submissionsErrorTemplate.show();
     },
     done: function () {
       mumuki.pin.scroll();
     }
   };
+
+  function SubmissionController() {
+    this.submitButton = $('.btn-submit');
+    this.submissionControls = $('.submission_control');
+  }
 
   SubmissionController.prototype = {
     disable: function () {
@@ -62,27 +65,10 @@ var mumuki = mumuki || {};
     });
   });
 
-  function generateNetworkError() {
-    return [
-      '<div class="bs-callout bs-callout-broken submission-result-error">',
-      '  <h4>',
-      '    <strong><i class="fa fa-fw fa-minus-circle"></i>¡Ups! No pudimos ejecutar tu solución</strong>',
-      '  </h4>',
-      '  <div class="submission-result-error-body">',
-      '    <img id="submission-result-error-animation" src="' + mumuki.errors.error_timeout_1 + '"/>',
-      '    <ul class="submission-result-error-body-description">',
-      '      <li>Fijate que tu programa no tenga recursión o bucle infinito</li>',
-      '      <li>Chequeá que tengas conexión a internet <img src="/assets/emojis/raise_hands.png"/></li>',
-      '      <li>Recursividad</li>',
-      '    </ul>',
-      '  </div>',
-      '</div>'
-    ].join('')
-  }
-
   function animateTimeoutError(submissionController) {
+    var image = $('#submission-result-error-animation')[0];
+    image.src = mumuki.errors.error_timeout_1;
     setTimeout(function () {
-      var image = $('#submission-result-error-animation')[0];
       image.src = mumuki.errors.error_timeout_2;
       setTimeout(function () {
         image.src = mumuki.errors.error_timeout_3;
