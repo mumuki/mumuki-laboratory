@@ -24,12 +24,12 @@ var mumuki = mumuki || {};
     }
   };
 
-  function SubmissionController() {
+  function SubmitButton() {
     this.submitButton = $('.btn-submit');
     this.submissionControls = $('.submission_control');
   }
 
-  SubmissionController.prototype = {
+  SubmitButton.prototype = {
     disable: function () {
       document.prevSubmitState = this.submitButton.html();
       this.submitButton.html('<i class="fa fa-refresh fa-spin"></i> ' + this.submitButton.attr('data-waiting'));
@@ -46,10 +46,10 @@ var mumuki = mumuki || {};
     if (!submissionsResults) return;
 
     var resultsBox = new ResultsBox(submissionsResults);
-    var submissionController = new SubmissionController();
+    var submitButton = new SubmitButton();
 
     $('form.new_solution').on('ajax:beforeSend', function (event) {
-      submissionController.disable();
+      submitButton.disable();
       resultsBox.waiting();
     }).on('ajax:complete', function (event) {
       $(document).renderMuComponents();
@@ -57,11 +57,11 @@ var mumuki = mumuki || {};
       $('#messages-tab').removeClass('hidden');
     }).on('ajax:success', function (event) {
       var data = event.detail[0].body.outerHTML;
-      submissionController.enable();
+      submitButton.enable();
       resultsBox.success(data);
     }).on('ajax:error', function (event) {
-      resultsBox.error(submissionController);
-      animateTimeoutError(submissionController);
+      resultsBox.error(submitButton);
+      animateTimeoutError(submitButton);
     });
   });
 
