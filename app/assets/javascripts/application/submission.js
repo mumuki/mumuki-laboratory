@@ -2,21 +2,21 @@ var mumuki = mumuki || {};
 
 (function (mumuki) {
   function ResultsBox(submissionsResults) {
-    this.submissionsresultsArea = submissionsResults;
+    this.submissionsResultsArea = submissionsResults;
     this.processingTemplate = $('#processing-template');
     this.submissionsErrorTemplate = $(".submission-result-error");
   }
 
   ResultsBox.prototype = {
     waiting: function () {
-      this.submissionsresultsArea.html(this.processingTemplate.html());
+      this.submissionsResultsArea.html(this.processingTemplate.html());
       this.submissionsErrorTemplate.hide();
     },
     success: function (data) {
-      this.submissionsresultsArea.html(data);
+      this.submissionsResultsArea.html(data);
     },
     error: function () {
-      this.submissionsresultsArea.html('');
+      this.submissionsResultsArea.html('');
       this.submissionsErrorTemplate.show();
     },
     done: function () {
