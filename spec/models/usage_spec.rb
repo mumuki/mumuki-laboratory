@@ -74,13 +74,4 @@ describe Usage, clean: true do
 
     it { expect(Usage.in_organization.count).to eq 3  }
   end
-
-  context 'on updating organization book' do
-    before do
-      pdep.switch!
-      Organization.update_from_json! name: 'pdep', locale: 'en',  books: [programming.slug], contact_email: 'email@foo.com'
-    end
-
-    it { expect(Usage.in_organization.count).to eq 4  }
-  end
 end

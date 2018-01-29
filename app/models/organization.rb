@@ -89,23 +89,5 @@ class Organization < ApplicationRecord
     def central
       find_by name: 'central'
     end
-
-    def create_from_json!(json)
-      Organization.create! parse json
-    end
-
-    def update_from_json!(json)
-      organization_json = parse json
-
-      organization = Organization.find_by! name: organization_json[:name]
-      old_book = organization.slice(:book_id, :book_ids)
-      organization.update! organization_json
-      organization.reindex_usages! if old_book != organization_json.slice(:book, :book_ids)
-    end
-
-    def parse(json)
-      book_ids = json[:books].map { |it| Book.find_by!(slug: it).id }
-      super.merge(book_id: book_ids.first, book_ids: book_ids)
-    end
   end
 end
