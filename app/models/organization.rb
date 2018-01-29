@@ -1,9 +1,3 @@
-module Mumukit::Platform::Locale
-  def self.supported
-    %w(es en pt)
-  end
-end
-
 class Mumukit::Platform::Model
   def self.load(json)
     json ? new(JSON.parse(json)) : new({})
