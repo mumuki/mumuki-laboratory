@@ -14,8 +14,8 @@ describe User do
   end
   describe '#transfer_progress_to!' do
 
-    let(:codeorga) { create :organization, name: 'Code.Orga' }
-    let(:prologschool) { create :organization, name: 'PrologSchool' }
+    let(:codeorga) { create :organization, name: 'code.orga' }
+    let(:prologschool) { create :organization, name: 'prologschool' }
 
     let(:your_first_program) { create(:exercise, name: 'Your First Program') }
     let(:more_clauses) { create(:exercise, name: 'More Clauses') }
