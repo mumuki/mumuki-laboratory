@@ -28,6 +28,8 @@ module Mumuki
     config.registration_notification_format = {only: [:id, :name, :email, :image_url]}
     config.action_dispatch.perform_deep_munge = false
 
+    config.i18n.available_locales = Mumukit::Platform::Locale.supported
+
     config.sender_email = ENV['SENDER_EMAIL']
     config.smtp_address = ENV['SMTP_ADDRESS']
     config.mailer_username = ENV['MAILER_USERNAME']
