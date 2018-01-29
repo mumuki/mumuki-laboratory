@@ -45,6 +45,10 @@ Rails.application.routes.draw do
 
     # Route for reading messages
     post '/messages/read_messages/:exercise_id' => 'messages#read_messages', as: :read_messages
+
+    # Organizations assets
+    get '/theme_stylesheet'     => 'assets#theme_stylesheet'
+    get '/extension_javascript' => 'assets#extension_javascript'
   end
 
   #Rescue not found routes

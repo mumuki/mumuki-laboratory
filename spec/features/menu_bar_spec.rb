@@ -12,7 +12,6 @@ feature 'menu bar' do
     scenario 'should not see any app' do
       visit '/'
 
-      expect(page).not_to have_text('Office')
       expect(page).not_to have_text('Classroom')
       expect(page).not_to have_text('Bibliotheca')
     end
@@ -30,7 +29,6 @@ feature 'menu bar' do
       set_current_user! visitor
 
       visit '/'
-      expect(page).not_to have_text('Office')
       expect(page).not_to have_text('Classroom')
       expect(page).not_to have_text('Bibliotheca')
     end
@@ -40,35 +38,16 @@ feature 'menu bar' do
 
       visit '/'
 
-      expect(page).not_to have_text('Office')
       expect(page).to have_text('Classroom')
       expect(page).not_to have_text('Bibliotheca')
     end
 
-    scenario 'janitor should see office' do
-      set_current_user! janitor
-
-      visit '/'
-
-      expect(page).to have_text('Office')
-      expect(page).to have_text('Classroom')
-      expect(page).not_to have_text('Bibliotheca')
-    end
     scenario 'writer should see bibliotheca' do
       set_current_user! writer
 
       visit '/'
 
-      expect(page).not_to have_text('Office')
       expect(page).not_to have_text('Classroom')
-      expect(page).to have_text('Bibliotheca')
-    end
-    scenario 'owner should see all' do
-      set_current_user! owner
-
-      visit '/'
-      expect(page).to have_text('Office')
-      expect(page).to have_text('Classroom')
       expect(page).to have_text('Bibliotheca')
     end
   end

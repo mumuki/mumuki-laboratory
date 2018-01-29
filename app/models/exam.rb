@@ -68,7 +68,7 @@ class Exam < ApplicationRecord
   end
 
   def start!(user)
-    authorization_for(user).start! unless user.teacher?
+    authorization_for(user).start! unless user.teacher_here?
   end
 
   def started?(user)

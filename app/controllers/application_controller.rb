@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   include WithAuthentication
   include WithAuthorization
   include WithMessagesNotification
-  include WithCustomAssets
   include Accessible
   include WithDynamicErrors
   include WithOrganizationChooser

@@ -1,9 +1,3 @@
-class Mumukit::Platform::Model
-  def self.load(json)
-    json ? new(JSON.parse(json)) : new({})
-  end
-end
-
 class Organization < ApplicationRecord
   include Mumukit::Platform::Organization::Helpers
 
@@ -16,8 +10,9 @@ class Organization < ApplicationRecord
   belongs_to :book
   has_many :usages
 
-  validates_presence_of :contact_email
-  validates :name, uniqueness: true, presence: true,
+  validates_presence_of :contact_email, :locale
+  validates :name, uniqueness: true,
+                   presence: true,
                    format: { with: Mumukit::Platform::Organization::Helpers.anchored_valid_name_regex }
   validates :locale, inclusion: { in: Mumukit::Platform::Locale.supported }
 
@@ -28,6 +23,16 @@ class Organization < ApplicationRecord
   has_many :exercises, through: :guides
   has_many :assignments, through: :exercises
   has_many :exams
+
+  defaults do
+    self.class.base.try do |base|
+      self.theme         = base.theme    if theme.empty?
+      self.settings      = base.settings if settings.empty?
+      self.contact_email ||= base.contact_email
+      self.book          ||= base.book
+      self.locale        ||= base.locale
+    end
+  end
 
   def in_path?(item)
     usages.exists?(item: item) || usages.exists?(parent_item: item)
@@ -74,6 +79,10 @@ class Organization < ApplicationRecord
     errors_explanations.try { |it| it[code.to_s] } || I18n.t(advice)
   end
 
+  def notify!(event = 'Changed')
+    Mumukit::Nuntius.notify_event! "Organization#{event}", organization: as_platform_json
+  end
+
   private
 
   def ensure_consistent_public_login
@@ -88,6 +97,10 @@ class Organization < ApplicationRecord
   class << self
     def central
       find_by name: 'central'
+    end
+
+    def base
+      find_by name: 'base'
     end
   end
 end

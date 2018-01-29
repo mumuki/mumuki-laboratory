@@ -32,8 +32,8 @@ RSpec.configure do |config|
     set_subdomain_host! 'test'
     unless RSpec.current_example.metadata[:clean]
       create(:public_organization,
-             name: 'test',
-             book: create(:book, name: 'test', slug: 'mumuki/mumuki-the-book')).switch!
+          name: 'test',
+          book: create(:book, name: 'test', slug: 'mumuki/mumuki-the-book')).switch!
     end
   end
 

@@ -1,14 +1,10 @@
 module MenuBarHelper
   def link_to_classroom
-    link_to_application 'graduation-cap', :classroom, :teacher?
+    link_to_application 'graduation-cap', :classroom, :teacher_here?
   end
 
   def link_to_bibliotheca
     link_to_application :book, :bibliotheca, :writer?
-  end
-
-  def link_to_office
-    link_to_application :clipboard, :office, :janitor?
   end
 
   def link_to_application(icon, app_name, minimal_permissions)

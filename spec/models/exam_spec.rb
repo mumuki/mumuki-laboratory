@@ -135,7 +135,7 @@ describe Exam do
         let(:exam) { Exam.import_from_json! exam_json }
 
         context 'exam_authorization do not receive start method' do
-          before { expect(teacher).to receive(:teacher?).and_return(true) }
+          before { expect(teacher).to receive(:teacher_here?).and_return(true) }
           before { expect_any_instance_of(ExamAuthorization).to_not receive(:start!) }
           it { expect { exam.start!(teacher) }.to_not raise_error }
 

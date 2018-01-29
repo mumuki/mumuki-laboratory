@@ -14,7 +14,7 @@ describe User do
     before { User.import_from_json! user_json }
     it { expect(user.uid).to eq 'foo@bar.com' }
     it { expect(user.name).to eq 'Foo Bar' }
-    it { expect(user.student?).to be true }
+    it { expect(user.student_here?).to be true }
   end
 
   context 'when user exists' do
@@ -28,8 +28,8 @@ describe User do
     before { User.import_from_json! user_json }
     before { User.import_from_json! new_json }
     it { expect(user.name).to eq 'Foo Baz' }
-    it { expect(user.student?).to be true }
-    it { expect(user.permissions.student? 'test/example2').to be true }
-    it { expect(user.permissions.student? 'test/example').to be false }
+    it { expect(user.student_here?).to be true }
+    it { expect(user.student? 'test/example2').to be true }
+    it { expect(user.student? 'test/example').to be false }
   end
 end
