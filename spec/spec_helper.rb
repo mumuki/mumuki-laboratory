@@ -42,7 +42,6 @@ RSpec.configure do |config|
 
   config.after(:each) do
     Mumukit::Platform::Organization.leave!
-    FileUtils.rm ["#{Mumukit::Auth.config.daybreak_name}.db"], force: true
   end
 end
 
