@@ -29,11 +29,5 @@ module Mumuki
     config.action_dispatch.perform_deep_munge = false
 
     config.i18n.available_locales = Mumukit::Platform::Locale.supported
-
-    config.sender_email = ENV['SENDER_EMAIL']
-    config.smtp_address = ENV['SMTP_ADDRESS']
-    config.mailer_username = ENV['MAILER_USERNAME']
-    config.mailer_password = ENV['MAILER_PASSWORD']
-    config.reminder_frequency = ENV['REMINDER_FREQUENCY'].defaulting(7, &:to_i)
   end
 end
