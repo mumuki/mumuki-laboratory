@@ -84,8 +84,6 @@ Rails.application.configure do
 
   config.i18n.default_locale = :es
 
-  config.i18n.available_locales = [:es, :en, :pt]
-
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address              => Rails.configuration.smtp_address,

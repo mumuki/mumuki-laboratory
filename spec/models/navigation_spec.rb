@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe 'Navigation' do
-  let(:organization_1) { create(:organization, name: 'org 1', book: book_1) }
-  let(:organization_2) { create(:organization, name: 'org 2', book: book_2) }
+  let(:organization_1) { create(:organization, name: 'org1', book: book_1) }
+  let(:organization_2) { create(:organization, name: 'org2', book: book_2) }
 
   let(:book_1) do
     create(:book,

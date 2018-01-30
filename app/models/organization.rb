@@ -16,8 +16,10 @@ class Organization < ApplicationRecord
   belongs_to :book
   has_many :usages
 
-  validates_presence_of :name, :contact_email
-  validates_uniqueness_of :name
+  validates_presence_of :contact_email
+  validates :name, uniqueness: true, presence: true,
+                   format: { with: Mumukit::Platform::Organization::Helpers.anchored_valid_name_regex }
+  validates :locale, inclusion: { in: Mumukit::Platform::Locale.supported }
 
   after_create :reindex_usages!
 
@@ -61,6 +63,10 @@ class Organization < ApplicationRecord
 
   def accessible_exams_for(user)
     exams.select { |exam| exam.accessible_for?(user) }
+  end
+
+  def has_login_method?(login_method)
+    self.login_methods.include? login_method.to_s
   end
 
   private

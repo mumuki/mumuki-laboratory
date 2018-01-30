@@ -72,4 +72,44 @@ describe Organization do
     it { expect(fresh_organization.login_settings.social_login_methods).to eq [] }
     it { expect(fresh_organization.login_settings.to_lock_json('/foo')).to be_html_safe }
   end
+
+  describe 'validations' do
+    let(:book) { create :book }
+
+    def organization_with_name(name)
+      Organization.new name: name, contact_email: 'a@a.com', locale: 'es', book: book
+    end
+
+    describe 'organization name' do
+      it { expect(build(:public_organization).valid?).to be true }
+      it { expect(organization_with_name('a.name').valid?).to be true }
+      it { expect(organization_with_name('a.name.with.subdomains').valid?).to be true }
+      it { expect(organization_with_name('.a.name.that.starts.with.period').valid?).to be false }
+      it { expect(organization_with_name('a.name.that.ends.with.period.').valid?).to be false }
+      it { expect(organization_with_name('a.name.that..has.two.periods.in.a.row').valid?).to be false }
+      it { expect(organization_with_name('a.name.with.Uppercases').valid?).to be false }
+      it { expect(organization_with_name('A random name').valid?).to be false }
+    end
+
+    context 'is valid when all is ok' do
+      let(:organization) { build :public_organization }
+      it { expect(organization.valid?).to be true }
+    end
+
+    context 'is invalid when there are no books' do
+      let(:organization) { build :public_organization, book: nil }
+      it { expect(organization.valid?).to be false }
+    end
+
+    context 'is invalid when the locale isnt known' do
+      let(:organization) { build :public_organization, locale: 'uk-DA' }
+      it { expect(organization.valid?).to be false }
+    end
+
+    context 'has login method' do
+      let(:organization) { build :public_organization, login_methods: ['github'] }
+      it { expect(organization.has_login_method? 'github').to be true }
+      it { expect(organization.has_login_method? 'google').to be false }
+    end
+  end
 end
