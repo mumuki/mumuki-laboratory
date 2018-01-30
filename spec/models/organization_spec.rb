@@ -81,7 +81,7 @@ describe Organization do
     end
 
     describe 'organization name' do
-      it { expect(build(:organization).valid?).to be true }
+      it { expect(build(:public_organization).valid?).to be true }
       it { expect(organization_with_name('a.name').valid?).to be true }
       it { expect(organization_with_name('a.name.with.subdomains').valid?).to be true }
       it { expect(organization_with_name('.a.name.that.starts.with.period').valid?).to be false }
@@ -92,22 +92,22 @@ describe Organization do
     end
 
     context 'is valid when all is ok' do
-      let(:organization) { build :organization }
+      let(:organization) { build :public_organization }
       it { expect(organization.valid?).to be true }
     end
 
     context 'is invalid when there are no books' do
-      let(:organization) { build :organization, book: nil }
+      let(:organization) { build :public_organization, book: nil }
       it { expect(organization.valid?).to be false }
     end
 
     context 'is invalid when the locale isnt known' do
-      let(:organization) { build :organization, locale: 'uk-DA' }
+      let(:organization) { build :public_organization, locale: 'uk-DA' }
       it { expect(organization.valid?).to be false }
     end
 
     context 'has login method' do
-      let(:organization) { build :organization, login_methods: ['github'] }
+      let(:organization) { build :public_organization, login_methods: ['github'] }
       it { expect(organization.has_login_method? 'github').to be true }
       it { expect(organization.has_login_method? 'google').to be false }
     end
