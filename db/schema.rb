@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180123180836) do
+ActiveRecord::Schema.define(version: 20180130194923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "assignments", force: :cascade do |t|
+  create_table "assignments", id: :serial, force: :cascade do |t|
     t.text "solution"
     t.integer "exercise_id"
     t.integer "status", default: 0
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20180123180836) do
     t.index ["submitter_id"], name: "index_assignments_on_submitter_id"
   end
 
-  create_table "books", force: :cascade do |t|
+  create_table "books", id: :serial, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20180123180836) do
     t.index ["slug"], name: "index_books_on_slug", unique: true
   end
 
-  create_table "chapters", force: :cascade do |t|
+  create_table "chapters", id: :serial, force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "number", default: 0, null: false
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20180123180836) do
     t.integer "topic_id"
   end
 
-  create_table "complements", force: :cascade do |t|
+  create_table "complements", id: :serial, force: :cascade do |t|
     t.integer "guide_id"
     t.integer "book_id"
     t.datetime "created_at"
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20180123180836) do
     t.index ["user_id"], name: "index_exam_authorizations_on_user_id"
   end
 
-  create_table "exams", force: :cascade do |t|
+  create_table "exams", id: :serial, force: :cascade do |t|
     t.integer "organization_id"
     t.integer "guide_id"
     t.datetime "created_at"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20180123180836) do
     t.index ["organization_id"], name: "index_exams_on_organization_id"
   end
 
-  create_table "exercises", force: :cascade do |t|
+  create_table "exercises", id: :serial, force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.text "test"
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 20180123180836) do
     t.index ["language_id"], name: "index_exercises_on_language_id"
   end
 
-  create_table "guides", force: :cascade do |t|
+  create_table "guides", id: :serial, force: :cascade do |t|
     t.string "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -136,14 +136,14 @@ ActiveRecord::Schema.define(version: 20180123180836) do
     t.index ["slug"], name: "index_guides_on_slug", unique: true
   end
 
-  create_table "invitations", force: :cascade do |t|
+  create_table "invitations", id: :serial, force: :cascade do |t|
     t.string "code"
     t.string "course"
     t.datetime "expiration_date"
     t.index ["code"], name: "index_invitations_on_code", unique: true
   end
 
-  create_table "languages", force: :cascade do |t|
+  create_table "languages", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "runner_url"
     t.datetime "created_at"
@@ -160,15 +160,15 @@ ActiveRecord::Schema.define(version: 20180123180836) do
     t.string "devicon"
     t.string "comment_type", default: "cpp"
     t.string "layout_js_urls", default: [], array: true
-    t.string "layout_html_urls", default: [], array: true
     t.string "layout_css_urls", default: [], array: true
+    t.string "layout_html_urls", default: [], array: true
     t.string "editor_js_urls", default: [], array: true
     t.string "editor_html_urls", default: [], array: true
     t.string "editor_css_urls", default: [], array: true
     t.index ["name"], name: "index_languages_on_name", unique: true
   end
 
-  create_table "lessons", force: :cascade do |t|
+  create_table "lessons", id: :serial, force: :cascade do |t|
     t.integer "guide_id"
     t.integer "number"
     t.datetime "created_at"
@@ -176,7 +176,7 @@ ActiveRecord::Schema.define(version: 20180123180836) do
     t.integer "topic_id"
   end
 
-  create_table "messages", force: :cascade do |t|
+  create_table "messages", id: :serial, force: :cascade do |t|
     t.string "submission_id"
     t.text "content"
     t.string "sender"
@@ -186,7 +186,7 @@ ActiveRecord::Schema.define(version: 20180123180836) do
     t.boolean "read", default: false
   end
 
-  create_table "organizations", force: :cascade do |t|
+  create_table "organizations", id: :serial, force: :cascade do |t|
     t.string "name"
     t.integer "book_id"
     t.datetime "created_at"
@@ -198,7 +198,7 @@ ActiveRecord::Schema.define(version: 20180123180836) do
     t.index ["book_id"], name: "index_organizations_on_book_id"
   end
 
-  create_table "paths", force: :cascade do |t|
+  create_table "paths", id: :serial, force: :cascade do |t|
     t.integer "category_id"
     t.integer "language_id"
     t.datetime "created_at"
@@ -207,7 +207,7 @@ ActiveRecord::Schema.define(version: 20180123180836) do
     t.index ["language_id"], name: "index_paths_on_language_id"
   end
 
-  create_table "topics", force: :cascade do |t|
+  create_table "topics", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "locale"
     t.text "description"
@@ -218,21 +218,21 @@ ActiveRecord::Schema.define(version: 20180123180836) do
     t.index ["slug"], name: "index_topics_on_slug", unique: true
   end
 
-  create_table "usages", force: :cascade do |t|
+  create_table "usages", id: :serial, force: :cascade do |t|
     t.integer "organization_id"
     t.string "slug"
-    t.integer "item_id"
     t.string "item_type"
-    t.integer "parent_item_id"
+    t.integer "item_id"
     t.string "parent_item_type"
+    t.integer "parent_item_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["item_id", "item_type"], name: "index_usages_on_item_id_and_item_type"
+    t.index ["item_type", "item_id"], name: "index_usages_on_item_type_and_item_id"
     t.index ["organization_id"], name: "index_usages_on_organization_id"
-    t.index ["parent_item_id", "parent_item_type"], name: "index_usages_on_parent_item_id_and_parent_item_type"
+    t.index ["parent_item_type", "parent_item_id"], name: "index_usages_on_parent_item_type_and_parent_item_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :serial, force: :cascade do |t|
     t.string "provider"
     t.string "social_id"
     t.string "name"
@@ -251,6 +251,7 @@ ActiveRecord::Schema.define(version: 20180123180836) do
     t.string "first_name"
     t.string "last_name"
     t.boolean "accepts_reminders", default: true
+    t.datetime "last_reminded_date"
     t.index ["last_organization_id"], name: "index_users_on_last_organization_id"
     t.index ["uid"], name: "index_users_on_uid", unique: true
   end
