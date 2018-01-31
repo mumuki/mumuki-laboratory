@@ -84,12 +84,15 @@ Rails.application.configure do
 
   config.i18n.default_locale = :es
 
+  config.sender_email = ENV['MUMUKI_REMINDER_SENDER_EMAIL']
+  config.reminder_frequency = ENV['MUMUKI_REMINDER_FREQUENCY'].defaulting(7, &:to_i)
+
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => Rails.configuration.smtp_address,
-    :port                 => 587,
-    :user_name            => Rails.configuration.mailer_username,
-    :password             => Rails.configuration.mailer_password,
+    :address              => ENV['MUMUKI_REMINDER_MAILER_SMTP_ADDRESS'],
+    :port                 => ENV['MUMUKI_REMINDER_MAILER_PORT'].defaulting(587, &:to_i),
+    :user_name            => ENV['MUMUKI_REMINDER_MAILER_USERNAME'],
+    :password             => ENV['MUMUKI_REMINDER_MAILER_PASSWORD'],
     :authentication       => :plain,
     :enable_starttls_auto => true
   }
