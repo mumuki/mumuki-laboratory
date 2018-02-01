@@ -27,14 +27,9 @@ gem 'rails-i18n', '~> 4.0.0'
 gem 'font-awesome-rails', '~> 4.7'
 gem 'nprogress-rails'
 
-gem 'mumukit-content-type',
-    git: 'https://github.com/mumuki/mumukit-content-type',
-    require: 'mumukit/content_type',
-    ref: 'v1.0.0-mumuki-rouge'
-gem 'rouge',
-    git: 'https://github.com/mumuki/rouge',
-    ref: '5a8db3387f3a67232569969cd3da40ee04eb9dc3'
+gem 'md_emoji'
 
+gem 'mumukit-content-type', '~> 1.2'
 gem 'mumukit-auth', '~> 7.1'
 gem 'mumukit-core', '~> 1.2'
 gem 'mumukit-bridge', '~> 3.5'
