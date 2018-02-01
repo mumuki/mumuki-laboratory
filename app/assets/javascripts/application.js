@@ -12,6 +12,7 @@
 //
 //= require momentjs
 //= require momentjs/locale/es
+//= require momentjs/locale/pt
 //= require webcomponents
 //= require rails-ujs
 //= require turbolinks
