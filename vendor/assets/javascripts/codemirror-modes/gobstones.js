@@ -521,14 +521,14 @@ CodeMirror.defineMode("gobstones", function(cmCfg, modeCfg) {
         );
 
         var buildinConstants = (
-          "Verde|Rojo|Azul|Negro|Norte|Sur|Este|Oeste|False|True"
+          "Verde|Rojo|Vermelho|Azul|Negro|Preto|Norte|Sur|Sul|Este|Leste|Oeste|False|True"
         );
 
 
         var langClasses = (
-            "Poner|Sacar|Mover|IrAlBorde|VaciarTablero|" +
-            "nroBolitas|hayBolitas|puedeMover|siguiente|previo|opuesto|minBool|maxBool|" +
-            "minDir|maxDir|minColor|maxColor"
+            "Poner|Colocar|Sacar|Retirar|Mover|IrAlBorde|IrABorda|VaciarTablero|" +
+            "nroBolitas|nroPedras|hayBolitas|haPedras|puedeMover|podeMover|siguiente|seguinte|previo|opuesto|oposto|minBool|maxBool|" +
+            "minDir|maxDir|minColor|minCor|maxColor|maxCor"
         );
 
         var keywordMapper = this.createKeywordMapper({
