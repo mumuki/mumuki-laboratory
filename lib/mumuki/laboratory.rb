@@ -8,6 +8,7 @@ module Mumuki
 end
 
 require 'mumukit/inspection'
+require 'mumukit/content_type'
 
 require_relative './laboratory/mumukit/auth'
 require_relative './laboratory/mumukit/directives'
