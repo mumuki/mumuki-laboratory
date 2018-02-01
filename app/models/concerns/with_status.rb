@@ -21,11 +21,11 @@ module WithStatus
   end
 
   def passed!
-    update! status: Mumuki::Laboratory::Status::Passed
+    update! status: :passed
   end
 
   def running!
-    update! status: Mumuki::Laboratory::Status::Running,
+    update! status: :running,
             result: nil,
             test_results: nil,
             expectation_results: [],
@@ -33,7 +33,7 @@ module WithStatus
   end
 
   def errored!(message)
-    update! result: message, status: Mumuki::Laboratory::Status::Errored
+    update! result: message, status: :errored
   end
 
 end

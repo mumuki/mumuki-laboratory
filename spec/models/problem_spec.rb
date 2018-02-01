@@ -49,7 +49,7 @@ describe Problem do
     it { expect(@assignment.expectation_results).to eq [] }
     it { expect(@assignment.test_results).to eq nil }
     it { expect(@assignment.result).to eq 'noop result' }
-    it { expect(@assignment.status).to eq Status::Failed }
+    it { expect(@assignment.status).to eq :failed }
   end
 
   context 'when submit exercise with blank utf8 chars' do
@@ -74,7 +74,7 @@ describe Problem do
     end
 
     it { expect(@assignment.solution).to eq "semáforo" }
-    
+
   end
 
 end

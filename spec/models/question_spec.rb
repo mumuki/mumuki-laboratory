@@ -10,7 +10,7 @@ describe Query do
     context 'when just a question on an empty assignment is sent' do
       before { exercise.submit_question!(student, content: 'Please help!') }
 
-      it { expect(assignment.status).to eq Status::Pending }
+      it { expect(assignment.status).to eq :pending }
       it { expect(assignment.result).to be nil }
 
       it { expect(assignment.solution).to be nil }
@@ -29,7 +29,7 @@ describe Query do
       before { exercise.submit_question!(student, content: 'Please help!') }
 
       it { expect(exercise.assigned_to? student).to be true }
-      it { expect(assignment.status).to eq Status::Failed }
+      it { expect(assignment.status).to eq :failed }
       it { expect(assignment.result).to eq 'noop result' }
       it { expect(assignment.solution).to eq 'x = 1' }
       it { expect(assignment.messages.count).to eq 1 }

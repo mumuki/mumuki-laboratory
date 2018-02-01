@@ -14,6 +14,6 @@ end
 
 Assignment.class_eval do
   def failed!
-    update_attributes!(status: Mumuki::Laboratory::Status::Failed)
+    update! status: :failed
   end
 end

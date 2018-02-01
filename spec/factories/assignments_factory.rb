@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :assignment do
-    status Mumuki::Laboratory::Status::Pending
+    status :pending
     exercise
     submitter { create(:user) }
   end

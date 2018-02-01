@@ -7,22 +7,12 @@ module Mumuki::Laboratory::Status
     if status.is_a? Numeric
       status
     else
-      coerce(status).to_i
+      status.to_mumuki_status.to_i
     end
   end
 
   def self.from_sym(status)
     "Mumuki::Laboratory::Status::#{status.to_s.camelize}".constantize
-  end
-
-  def self.coerce(status_like) # TODO make polymorphic to_mumuki_status
-    if status_like.is_a? Symbol
-      from_sym(status_like)
-    elsif status_like.is_a? Mumuki::Laboratory::Status::Base
-      status_like
-    else
-      status_like.status
-    end
   end
 
   def self.cast(i)
@@ -43,4 +33,29 @@ require_relative './status/manual_evaluation_pending'
 
 module Mumuki::Laboratory::Status
   STATUSES = [Pending, Running, Passed, Failed, Errored, Aborted, PassedWithWarnings, ManualEvaluationPending]
+end
+
+
+class Object
+  def to_mumuki_status
+    status.to_mumuki_status
+  end
+end
+
+class String
+  def to_mumuki_status
+    to_sym.to_mumuki_status
+  end
+end
+
+class Symbol
+  def to_mumuki_status
+    Mumuki::Laboratory::Status.from_sym(self)
+  end
+end
+
+module Mumuki::Laboratory::Status::Base
+  def to_mumuki_status
+    self
+  end
 end

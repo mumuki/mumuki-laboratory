@@ -1,7 +1,7 @@
 module IconsHelper
   #FIXME refactor names
   def status_icon(status_like)
-    fa_icon *icon_for_status(Mumuki::Laboratory::Status.coerce(status_like))
+    fa_icon *icon_for_status(status_like.to_mumuki_status)
   end
 
   def fixed_fa_icon(name, options={})

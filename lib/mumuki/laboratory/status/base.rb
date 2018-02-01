@@ -34,4 +34,8 @@ module Mumuki::Laboratory::Status::Base
   def as_json(_options={})
     to_s
   end
+
+  def ==(other)
+    self.equal? other.to_mumuki_status rescue false
+  end
 end

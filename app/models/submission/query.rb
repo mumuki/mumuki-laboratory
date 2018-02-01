@@ -3,7 +3,7 @@ class Query < Submission
 
   def try_evaluate_exercise!(assignment)
     r = assignment.run_query!(content: content, query: query, cookie: cookie)
-    {result: r[:result], status: Status.from_sym(r[:status])}
+    {result: r[:result], status: r[:status].to_mumuki_status}
   end
 
 

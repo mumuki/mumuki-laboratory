@@ -42,7 +42,7 @@ describe Assignment do
     let(:exercise) { create(:exercise, manual_evaluation: true, test: nil, expectations: []) }
     let(:assignment) { exercise.submit_solution!(user, content: '') }
 
-    it { expect(assignment.status).to be Mumuki::Laboratory::Status::ManualEvaluationPending }
+    it { expect(assignment.status).to eq :manual_evaluation_pending }
   end
 
   describe '#results_visible?' do
@@ -74,19 +74,19 @@ describe Assignment do
     let(:assignment) { create(:assignment) }
     context 'when run passes unstructured' do
       before { assignment.run_update! { {result: 'ok', status: :passed} } }
-      it { expect(assignment.status).to eq(Mumuki::Laboratory::Status::Passed) }
+      it { expect(assignment.status).to eq(:passed) }
       it { expect(assignment.result).to eq('ok') }
     end
 
     context 'when run fails unstructured' do
       before { assignment.run_update! { {result: 'ups', status: :failed} } }
-      it { expect(assignment.status).to eq(Mumuki::Laboratory::Status::Failed) }
+      it { expect(assignment.status).to eq(:failed) }
       it { expect(assignment.result).to eq('ups') }
     end
 
     context 'when run aborts unstructured' do
       before { assignment.run_update! { {result: 'took more thn 4 seconds', status: :aborted} } }
-      it { expect(assignment.status).to eq(Mumuki::Laboratory::Status::Aborted) }
+      it { expect(assignment.status).to eq(:aborted) }
       it { expect(assignment.result).to eq('took more thn 4 seconds') }
     end
 
@@ -101,7 +101,7 @@ describe Assignment do
       end
       before { assignment.run_update! { runner_response } }
 
-      it { expect(assignment.status).to eq(Mumuki::Laboratory::Status::PassedWithWarnings) }
+      it { expect(assignment.status).to eq(:passed_with_warnings) }
       it { expect(assignment.result).to be_blank }
       it { expect(assignment.test_results).to eq(runner_response[:test_results]) }
       it { expect(assignment.expectation_results).to eq(runner_response[:expectation_results]) }
@@ -114,7 +114,7 @@ describe Assignment do
         rescue
         end
       end
-      it { expect(assignment.status).to eq(Mumuki::Laboratory::Status::Errored) }
+      it { expect(assignment.status).to eq(:errored) }
       it { expect(assignment.result).to eq('ouch') }
     end
   end
@@ -159,7 +159,7 @@ describe Assignment do
 
     before { Assignment.evaluate_manually! submission_id: assignment.submission_id, manual_evaluation: '**Good**', status: 'passed_with_warnings' }
 
-    it { expect(evaluated_assignment.status).to eq Mumuki::Laboratory::Status::PassedWithWarnings }
+    it { expect(evaluated_assignment.status).to eq :passed_with_warnings }
     it { expect(evaluated_assignment.manual_evaluation_comment).to eq '**Good**' }
   end
 
