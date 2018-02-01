@@ -1,5 +1,5 @@
 class ManualEvaluation
   def evaluate!(*)
-    {status: Status::ManualEvaluationPending, result: ''}
+    {status: Mumuki::Laboratory::Status::ManualEvaluationPending, result: ''}
   end
 end

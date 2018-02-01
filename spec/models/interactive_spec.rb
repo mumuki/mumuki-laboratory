@@ -10,7 +10,7 @@ describe Interactive do
   context 'before even trying' do
     it { expect(assignment.queries).to eq [] }
     it { expect(assignment.query_results).to be_blank }
-    it { expect(assignment.status).to eq Status::Pending }
+    it { expect(assignment.status).to eq Mumuki::Laboratory::Status::Pending }
     it { expect(assignment.result).to be_blank }
   end
 
@@ -31,7 +31,7 @@ describe Interactive do
     it { expect(assignment.queries).to eq ['foo'] }
     it { expect(assignment.query_results).to eq [{status: :passed, result: "foo out"}] }
     it { expect(assignment.queries_with_results).to eq [{query: 'foo', status: :passed, result: "foo out"}] }
-    it { expect(assignment.status).to eq Status::Failed }
+    it { expect(assignment.status).to eq Mumuki::Laboratory::Status::Failed }
     it { expect(assignment.result).to eq '' }
   end
 
@@ -61,7 +61,7 @@ describe Interactive do
                                                 {query: 'foo', status: :passed, result: 'foo out'},
                                                 {query: 'bar', status: :failed, result: 'bar out'}] }
 
-    it { expect(assignment.status).to eq Status::Failed }
+    it { expect(assignment.status).to eq Mumuki::Laboratory::Status::Failed }
     it { expect(assignment.result).to be_blank }
   end
 
@@ -92,7 +92,7 @@ describe Interactive do
                                                 {status: :passed, result: 'foo out'},
                                                 {status: :failed, result: 'bar out'},
                                                 {status: :passed, result: 'baz out'}] }
-    it { expect(assignment.status).to eq Status::Passed }
+    it { expect(assignment.status).to eq Mumuki::Laboratory::Status::Passed }
     it { expect(assignment.result).to eq 'foobaz' }
   end
 
@@ -121,7 +121,7 @@ describe Interactive do
 
     it { expect(assignment.queries).to eq ['goo'] }
     it { expect(assignment.query_results).to eq [{status: :failed, result: 'goo out'}] }
-    it { expect(assignment.status).to eq Status::Failed }
+    it { expect(assignment.status).to eq Mumuki::Laboratory::Status::Failed }
     it { expect(assignment.result).to be_blank }
   end
 

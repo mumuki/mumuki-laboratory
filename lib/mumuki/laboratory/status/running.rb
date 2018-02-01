@@ -1,8 +1,8 @@
-module Status::Running
-  extend Status::Base
+module Mumuki::Laboratory::Status::Running
+  extend Mumuki::Laboratory::Status::Base
 
   def self.group
-    Status::Unknown
+    Mumuki::Laboratory::Status::Unknown
   end
 
   def self.iconize

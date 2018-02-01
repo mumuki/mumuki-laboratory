@@ -18,7 +18,7 @@ describe '#event_json' do
 
       let(:assignment) { create(:assignment,
                                 solution: 'x = 2',
-                                status: Status::Passed,
+                                status: Mumuki::Laboratory::Status::Passed,
                                 submissions_count: 2,
                                 submitter: user,
                                 submission_id: 'abcd1234',
@@ -27,7 +27,7 @@ describe '#event_json' do
       it { expect(lesson.number).to eq 4 }
       it do
         expect(assignment.event_json).to json_like(
-                           status: Status::Passed,
+                           status: Mumuki::Laboratory::Status::Passed,
                            result: nil,
                            expectation_results: nil,
                            queries: [],
@@ -78,14 +78,14 @@ describe '#event_json' do
       before { reindex_current_organization! }
       let(:assignment) { create(:assignment,
                                 solution: 'x = 2',
-                                status: Status::Passed,
+                                status: Mumuki::Laboratory::Status::Passed,
                                 submissions_count: 2,
                                 submitter: user,
                                 submission_id: 'abcd1234',
                                 exercise: exercise) }
       it do
         expect(assignment.event_json).to json_like(
-                           status: Status::Passed,
+                           status: Mumuki::Laboratory::Status::Passed,
                            result: nil,
                            expectation_results: nil,
                            queries: [],
@@ -131,7 +131,7 @@ describe '#event_json' do
       before { reindex_current_organization! }
       let(:assignment) { create(:assignment,
                                 solution: 'x = 2',
-                                status: Status::Passed,
+                                status: Mumuki::Laboratory::Status::Passed,
                                 submissions_count: 2,
                                 submitter: user,
                                 submission_id: 'abcd1234',
@@ -139,7 +139,7 @@ describe '#event_json' do
 
       it do
         expect(assignment.event_json).to json_like(
-                           status: Status::Passed,
+                           status: Mumuki::Laboratory::Status::Passed,
                            result: nil,
                            expectation_results: nil,
                            queries: [],

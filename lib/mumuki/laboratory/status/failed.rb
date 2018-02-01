@@ -1,5 +1,5 @@
-module Status::Failed
-  extend Status::Base
+module Mumuki::Laboratory::Status::Failed
+  extend Mumuki::Laboratory::Status::Base
 
   def self.should_retry?
     true

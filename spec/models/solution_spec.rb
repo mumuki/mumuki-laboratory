@@ -13,7 +13,7 @@ describe Solution do
       let(:assignment) { exercise.submit_solution! user }
       let(:bridge_response) { {result: '0 failures', status: :passed} }
 
-      it { expect(assignment.status).to eq(Status::Passed) }
+      it { expect(assignment.status).to eq(Mumuki::Laboratory::Status::Passed) }
       it { expect(assignment.result).to include('0 failures') }
     end
 
@@ -26,7 +26,7 @@ describe Solution do
           status: :passed,
           expectation_results: [binding: 'foo', inspection: 'HasBinding', result: :passed]} }
 
-      it { expect(assignment.status).to eq(Status::Passed) }
+      it { expect(assignment.status).to eq(Mumuki::Laboratory::Status::Passed) }
       it { expect(assignment.result).to include('0 failures') }
       it { expect(assignment.expectation_results).to eq([{binding: 'foo', inspection: 'HasBinding', result: :passed}]) }
     end
