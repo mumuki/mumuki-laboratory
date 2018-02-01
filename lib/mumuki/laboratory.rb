@@ -18,3 +18,4 @@ require_relative './laboratory/mumukit/platform'
 
 require_relative './laboratory/extensions'
 require_relative './laboratory/exceptions'
+require_relative './laboratory/status'
