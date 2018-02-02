@@ -27,8 +27,6 @@ gem 'rails-i18n', '~> 4.0.0'
 gem 'font-awesome-rails', '~> 4.7'
 gem 'nprogress-rails'
 
-gem 'md_emoji'
-
 gem 'mumukit-content-type', '~> 1.3'
 gem 'mumukit-auth', '~> 7.1'
 gem 'mumukit-core', '~> 1.2'
