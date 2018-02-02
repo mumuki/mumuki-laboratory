@@ -29,7 +29,7 @@ gem 'nprogress-rails'
 
 gem 'md_emoji'
 
-gem 'mumukit-content-type', '~> 1.2'
+gem 'mumukit-content-type', '~> 1.3'
 gem 'mumukit-auth', '~> 7.1'
 gem 'mumukit-core', '~> 1.2'
 gem 'mumukit-bridge', '~> 3.4'
