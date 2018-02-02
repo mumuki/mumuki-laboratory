@@ -1,12 +1,12 @@
-module Status::Errored
-  extend Status::Base
+module Mumuki::Laboratory::Status::Errored
+  extend Mumuki::Laboratory::Status::Base
 
   def self.errored?
     true
   end
 
   def self.group
-    Status::Failed
+    Mumuki::Laboratory::Status::Failed
   end
 
   def self.iconize

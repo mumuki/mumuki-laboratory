@@ -6,5 +6,5 @@ describe Reading do
 
   let!(:result) { reading.submit_confirmation!(user) }
 
-  it { expect(result).to eq status: Status::Passed, result: '' }
+  it { expect(result).to eq status: :passed, result: '' }
 end

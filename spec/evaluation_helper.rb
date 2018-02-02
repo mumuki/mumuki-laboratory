@@ -1,6 +1,6 @@
 Language.class_eval do
   def test_only_fake_response
-    {status: Status::Failed, result: 'noop result'}
+    {status: Mumuki::Laboratory::Status::Failed, result: 'noop result'}
   end
 
   def run_tests!(*)
@@ -14,6 +14,6 @@ end
 
 Assignment.class_eval do
   def failed!
-    update_attributes!(status: Status::Failed)
+    update! status: :failed
   end
 end

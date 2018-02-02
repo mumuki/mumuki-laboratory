@@ -4,6 +4,6 @@ class Confirmation < PersistentSubmission
   end
 
   def try_evaluate_exercise!(*)
-    {status: Status::Passed, result: ''}
+    {status: Mumuki::Laboratory::Status::Passed, result: ''}
   end
 end

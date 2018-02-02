@@ -2,7 +2,7 @@ module WithStatus
   extend ActiveSupport::Concern
 
   included do
-    serialize :status, Status
+    serialize :status, Mumuki::Laboratory::Status
     validates_presence_of :status
   end
 
@@ -21,11 +21,11 @@ module WithStatus
   end
 
   def passed!
-    update! status: Status::Passed
+    update! status: :passed
   end
 
   def running!
-    update! status: Status::Running,
+    update! status: :running,
             result: nil,
             test_results: nil,
             expectation_results: [],
@@ -33,7 +33,7 @@ module WithStatus
   end
 
   def errored!(message)
-    update! result: message, status: Status::Errored
+    update! result: message, status: :errored
   end
 
 end

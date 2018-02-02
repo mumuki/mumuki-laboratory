@@ -13,10 +13,10 @@ describe Query do
     let!(:results) { exercise.submit_query!(user, query: 'foo', content: 'bar', cookie: ['foo', 'bar']) }
     let(:assignment) { exercise.assignment_for user }
 
-    it { expect(results[:status]).to eq Status::Passed }
+    it { expect(results[:status]).to eq :passed }
     it { expect(results[:result]).to eq '5' }
     it { expect(exercise.assigned_to? user).to be true }
     it { expect(assignment.solution).to eq 'bar' }
-    it { expect(assignment.status).to eq Status::Pending }
+    it { expect(assignment.status).to eq :pending }
   end
 end

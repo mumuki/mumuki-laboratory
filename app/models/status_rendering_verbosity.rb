@@ -8,7 +8,7 @@ module StatusRenderingVerbosity
   end
 
   module Verbose
-    def self.visible_expectation_results(_status, expectation_results)
+    def self.visible_expectation_results(_status_like, expectation_results)
       expectation_results
     end
 
@@ -18,8 +18,8 @@ module StatusRenderingVerbosity
   end
 
   module Standard
-    def self.visible_expectation_results(status, expectation_results)
-      if status.errored?
+    def self.visible_expectation_results(status_like, expectation_results)
+      if status_like.to_mumuki_status.errored?
         []
       else
         expectation_results.select { |it| it[:result] == :failed }
@@ -32,7 +32,7 @@ module StatusRenderingVerbosity
   end
 
   module Silent
-    def self.visible_expectation_results(_status, _expectation_results)
+    def self.visible_expectation_results(_status_like, _expectation_results)
       []
     end
 

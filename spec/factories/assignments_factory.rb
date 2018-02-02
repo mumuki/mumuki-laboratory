@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :assignment do
-    status Status::Pending
+    status :pending
     exercise
     submitter { create(:user) }
   end

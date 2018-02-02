@@ -37,7 +37,7 @@ class Guide < Content
         joins("left join public.assignments assignments
                 on assignments.exercise_id = exercises.id
                 and assignments.submitter_id = #{user.id}
-                and assignments.status = #{Status::Passed.to_i}").
+                and assignments.status = #{Mumuki::Laboratory::Status::Passed.to_i}").
         where('assignments.id is null')
   end
 

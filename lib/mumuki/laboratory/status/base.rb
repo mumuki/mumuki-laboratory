@@ -1,10 +1,10 @@
-module Status::Base
+module Mumuki::Laboratory::Status::Base
   def to_s
     name.demodulize.underscore
   end
 
   def to_i
-    Status::STATUSES.index(self)
+    Mumuki::Laboratory::Status::STATUSES.index(self)
   end
 
   def to_sym
@@ -33,5 +33,9 @@ module Status::Base
 
   def as_json(_options={})
     to_s
+  end
+
+  def ==(other)
+    self.equal? other.to_mumuki_status rescue false
   end
 end
