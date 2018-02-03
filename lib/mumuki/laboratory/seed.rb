@@ -20,7 +20,7 @@ module Mumuki::Laboratory::Seed
       end
 
       def import_languages!
-        (%W(http://gobstones.runners.mumuki.io) + Mumukit::Bridge::Thesaurus.new(Mumukit::Platform.config.thesaurus_url).runners).each do |url|
+        Mumukit::Bridge::Thesaurus.new(Mumukit::Platform.config.thesaurus_url).runners.each do |url|
           puts "Importing Language #{url}"
 
           begin
