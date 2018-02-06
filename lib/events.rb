@@ -1,14 +1,18 @@
 Mumukit::Nuntius::EventConsumer.handle do
+  def clean_payload(payload, key)
+    payload.deep_symbolize_keys[key].except(:created_at, :updated_at)
+  end
+
   event 'UserChanged' do |payload|
-    User.import_from_json! payload.deep_symbolize_keys[:user]
+    User.import_from_json! clean_payload(payload, :user)
   end
 
   event 'OrganizationCreated' do |payload|
-    Organization.create_from_json! payload.deep_symbolize_keys[:organization]
+    Organization.create_from_json! clean_payload(payload, :organization)
   end
 
   event 'OrganizationChanged' do |payload|
-    Organization.update_from_json! payload.deep_symbolize_keys[:organization]
+    Organization.update_from_json! clean_payload(payload, :organization)
   end
 
   event 'InvitationCreated' do |payload|
