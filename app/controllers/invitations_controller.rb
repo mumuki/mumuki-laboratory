@@ -19,11 +19,11 @@ class InvitationsController < ApplicationController
   private
 
   def redirect_to_organization!
-    redirect_to Mumukit::Platform.laboratory.organic_url_for @organization.name, '/'
+    redirect_to Mumukit::Platform.laboratory.organic_url @organization
   end
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:name, :first_name, :last_name, :email)
   end
 
   def set_invitation!
