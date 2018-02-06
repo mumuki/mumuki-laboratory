@@ -230,4 +230,13 @@ describe User do
     it { expect { user.update! social_id: 'auth|foo' }.to_not raise_error }
 
   end
+
+  describe '.for_profile' do
+    let(:user) { create(:user, first_name: 'some name', last_name: 'some last name') }
+
+    before { User.for_profile struct({ uid: user.uid, first_name: nil, last_name: 'some other last name' }) }
+
+    it{ expect(User.find(user.id).first_name).to eq 'some name' }
+    it{ expect(User.find(user.id).last_name).to eq 'some other last name' }
+  end
 end
