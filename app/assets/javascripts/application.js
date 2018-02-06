@@ -13,7 +13,7 @@
 //= require momentjs
 //= require momentjs/locale/es
 //= require momentjs/locale/pt
-//= require webcomponents
+//= require webcomponents-lite
 //= require rails-ujs
 //= require turbolinks
 //= require mumuki-styles
