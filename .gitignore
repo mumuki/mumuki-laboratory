@@ -18,10 +18,12 @@ saml_idp.crt
 
 # Ignore all logfiles and tempfiles.
 *.log
-/log/*.log
+**/log/*.log
 **/*~
-/tmp
+**/tmp/**
 *.db
+
+Gemfile.lock
 
 .idea
 
@@ -31,3 +33,4 @@ public/assets
 coverage/
 
 vendor/cache/**
+*.cache

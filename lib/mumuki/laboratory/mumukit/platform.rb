@@ -5,6 +5,10 @@ Mumukit::Platform.configure do |config|
   config.web_framework = Mumukit::Platform::WebFramework::Rails
 end
 
+class Mumuki::Laboratory::Engine < ::Rails::Engine
+  config.i18n.available_locales = Mumukit::Platform::Locale.supported
+end
+
 module Mumukit::Platform::OrganizationMapping::Path
   class << self
     alias __organization_name__ organization_name
