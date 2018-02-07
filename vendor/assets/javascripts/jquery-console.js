@@ -288,6 +288,34 @@
     });
 
     ////////////////////////////////////////////////////////////////////////
+    // Handle Android text input.
+
+    typer.on('textInput', function(e){
+      var data = e.originalEvent.data;
+      if(data.length > 1){
+        return true;
+      }
+      var keyCode = data.charCodeAt(0);
+      if((e.keyCode == keyCodes.tab || e.keyCode == 192) && e.altKey){
+        return false;
+      }
+      if ((e.ctrlKey || e.metaKey) && String.fromCharCode(keyCode).toLowerCase() == 'v') {
+        return true;
+      }
+      if (acceptInput && cancelKeyPress != keyCode && keyCode >= 32){
+        if (cancelKeyPress) return false;
+        if (
+          typeof config.charInsertTrigger == 'undefined' || (
+            typeof config.charInsertTrigger == 'function' &&
+            config.charInsertTrigger(keyCode,promptText)
+          )
+        ){
+          typer.consoleInsert(keyCode);
+        }
+      }
+    });
+
+    ////////////////////////////////////////////////////////////////////////
     // Handle key hit before translation
     // For picking up control characters like up/left/down/right
 
