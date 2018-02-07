@@ -276,11 +276,14 @@
     ////////////////////////////////////////////////////////////////////////
     // Bind to the paste event of the input box so we know when we
     // get pasted data
+    var pasteCalled = false;
+
     typer.bind('paste', function(e) {
       // wipe typer input clean just in case
       typer.val("");
       // this timeout is required because the onpaste event is
       // fired *before* the text is actually pasted
+      pasteCalled = true;
       setTimeout(function() {
         typer.consoleInsert(typer.val());
         typer.val("");
@@ -292,7 +295,9 @@
 
     typer.on('textInput', function(e){
       var data = e.originalEvent.data;
-      if(data.length > 1){
+
+      if(pasteCalled){
+        pasteCalled = false;
         return true;
       }
       var keyCode = data.charCodeAt(0);
