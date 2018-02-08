@@ -16,7 +16,7 @@ class Exercise < ApplicationRecord
 
   belongs_to :guide
 
-  after_initialize :defaults, if: :new_record?
+  defaults { self.submissions_count = 0 }
 
   validates_presence_of :submissions_count,
                         :guide
@@ -117,10 +117,6 @@ class Exercise < ApplicationRecord
   end
 
   private
-
-  def defaults
-    self.submissions_count = 0
-  end
 
   def evaluation_class
     if manual_evaluation?
