@@ -35,6 +35,9 @@ var mumuki = mumuki || {};
       this.submitButton.html('<i class="fa fa-refresh fa-spin"></i> ' + this.submitButton.attr('data-waiting'));
       this.submissionControls.attr('disabled', 'disabled');
     },
+    setSendText: function () {
+      this.submitButton.html(document.prevSubmitState);
+    },
     enable: function () {
       this.submitButton.html(document.prevSubmitState);
       this.submissionControls.removeAttr('disabled');
@@ -65,14 +68,15 @@ var mumuki = mumuki || {};
     });
   });
 
-  function animateTimeoutError(submissionController) {
+  function animateTimeoutError(submitButton) {
     var image = $('#submission-result-error-animation')[0];
     image.src = mumuki.errors.error_timeout_1;
+    submitButton.setSendText();
     setTimeout(function () {
       image.src = mumuki.errors.error_timeout_2;
       setTimeout(function () {
         image.src = mumuki.errors.error_timeout_3;
-        submissionController.enable();
+        submitButton.enable();
       }, 4000);
     }, 10333);
   }
