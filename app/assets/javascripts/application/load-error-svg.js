@@ -7,8 +7,12 @@ mumuki.load(function () {
     var image = 'error_' + svgErrorSuffix;
     var url = '/' + image + '.svg';
     if (!mumuki.errors[image]) {
-      $.get(url, function () {
-        mumuki.errors[image] = url;
+      $.get(url, function (data) {
+        var duration = parseFloat($(data).find('animate').attr('dur') || 0, 10) * 1000;
+        mumuki.errors[image] = {
+          url: url,
+          duration: duration
+        };
       });
     }
   });

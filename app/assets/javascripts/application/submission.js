@@ -73,15 +73,15 @@ var mumuki = mumuki || {};
 
   function animateTimeoutError(submitButton) {
     var image = $('#submission-result-error-animation')[0];
-    image.src = mumuki.errors.error_timeout_1;
+    image.src = mumuki.errors.error_timeout_1.url;
     submitButton.setSendText();
     setTimeout(function () {
-      image.src = mumuki.errors.error_timeout_2;
+      image.src = mumuki.errors.error_timeout_2.url;
       setTimeout(function () {
-        image.src = mumuki.errors.error_timeout_3;
+        image.src = mumuki.errors.error_timeout_3.url;
         submitButton.enable();
-      }, 4000);
-    }, 10333);
+      }, mumuki.errors.error_timeout_2.duration);
+    }, mumuki.errors.error_timeout_1.duration);
   }
 
 })(mumuki);
