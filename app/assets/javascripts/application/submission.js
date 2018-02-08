@@ -12,12 +12,14 @@ var mumuki = mumuki || {};
       this.submissionsResultsArea.html(this.processingTemplate.html());
       this.submissionsErrorTemplate.hide();
     },
-    success: function (data) {
+    success: function (data, submitButton) {
       this.submissionsResultsArea.html(data);
+      this.submissionsResultsArea.find('#is_aborted').data('aborted') ? this.error(submitButton) : submitButton.enable();
     },
-    error: function () {
+    error: function (submitButton) {
       this.submissionsResultsArea.html('');
       this.submissionsErrorTemplate.show();
+      animateTimeoutError(submitButton);
     },
     done: function () {
       mumuki.pin.scroll();
@@ -63,11 +65,9 @@ var mumuki = mumuki || {};
       $('#messages-tab').removeClass('hidden');
     }).on('ajax:success', function (event) {
       var data = event.detail[0].body.outerHTML;
-      submitButton.enable();
-      resultsBox.success(data);
+      resultsBox.success(data, submitButton);
     }).on('ajax:error', function (event) {
       resultsBox.error(submitButton);
-      animateTimeoutError(submitButton);
     });
   });
 

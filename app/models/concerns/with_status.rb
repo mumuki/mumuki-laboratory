@@ -10,6 +10,10 @@ module WithStatus
     status.passed?
   end
 
+  def aborted?
+    status == :aborted
+  end
+
   def run_update!
     running!
     begin
