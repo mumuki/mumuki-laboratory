@@ -31,15 +31,18 @@ var mumuki = mumuki || {};
 
   SubmitButton.prototype = {
     disable: function () {
+      this.setWaitingText();
+      this.submissionControls.attr('disabled', 'disabled');
+    },
+    setWaitingText: function () {
       document.prevSubmitState = this.submitButton.html();
       this.submitButton.html('<i class="fa fa-refresh fa-spin"></i> ' + this.submitButton.attr('data-waiting'));
-      this.submissionControls.attr('disabled', 'disabled');
     },
     setSendText: function () {
       this.submitButton.html(document.prevSubmitState);
     },
     enable: function () {
-      this.submitButton.html(document.prevSubmitState);
+      this.setSendText();
       this.submissionControls.removeAttr('disabled');
     }
   };
