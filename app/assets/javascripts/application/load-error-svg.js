@@ -7,9 +7,8 @@ mumuki.load(function () {
     var image = 'error_' + svgErrorSuffix;
     var url = '/' + image + '.svg';
     if (!mumuki.errors[image]) {
-      $.get(url, function (data) {
-        var s = new XMLSerializer().serializeToString(data);
-        mumuki.errors[image] = 'data:image/svg+xml;base64,' + window.btoa(s);
+      $.get(url, function () {
+        mumuki.errors[image] = url;
       });
     }
   });
