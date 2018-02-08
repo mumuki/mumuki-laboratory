@@ -13,11 +13,13 @@
       margin: 30px auto;
       max-height: 350px;
       &.error-code-img {
-        margin-top: -75px;
+        margin-top: -80px;
+        margin-left: -30px;
         min-height: 310px;
         max-height: 500px;
-        width: 100%;
+        width: calc(100% + 30px);
         object-position: 50% 50%;
+        overflow: hidden;
         @media (max-width: $screen-lg) {
           object-fit: none;
         }
