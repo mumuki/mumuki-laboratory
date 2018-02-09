@@ -16,6 +16,8 @@
   <meta property="og:image" content="<%= Organization.current.open_graph_image_url %>"/>
   <meta property="og:url" content="<%= request.original_url %>"/>
 
+  <meta name="turbolinks-cache-control" content="no-cache">
+
   <meta name="description" content="<%= t :mumuki_short_description %>"/>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= csrf_meta_tags %>
