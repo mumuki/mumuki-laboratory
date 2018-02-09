@@ -1,6 +1,7 @@
 ---
 pt:
   aborted: Opa, não pudemos avaliar sua solução
+  abort_explanation: <li>Verifique se o seu programa não possui recursão ou um loop infinito</li> <li>Verifique se você tem uma conexão com a internet</li> <li>Espere um pouco e tente novamente</li>
   about: Detalhes
   accept_terms: Aceito os termos e condições
   actions: Ações

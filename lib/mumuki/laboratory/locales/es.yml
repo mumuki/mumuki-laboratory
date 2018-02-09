@@ -1,6 +1,7 @@
 ---
 es:
   aborted: Ups, no pudimos evaluar tu solución
+  abort_explanation: <li>Revisá que tu programa no tenga recursión o algún bucle infinito</li><li>Revisá que tengas conexión a internet</li><li>Esperá un rato e intentalo nuevamente</li>
   about: Detalles
   accept_terms: Acepto los términos y condiciones
   actions: Acciones
