@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   include WithProfile,
-          WithToken,
           WithPermissions,
           WithUserNavigation,
           WithReminders,
