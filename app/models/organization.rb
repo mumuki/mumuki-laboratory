@@ -81,6 +81,10 @@ class Organization < ApplicationRecord
   end
 
   class << self
+    def by_custom_domain(domain)
+      all.select {|orga| orga.settings.laboratory_custom_domain == domain}&.first
+    end
+
     def central
       find_by name: 'central'
     end
