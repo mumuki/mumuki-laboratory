@@ -12,8 +12,6 @@ class Exercise < ApplicationRecord
   include SiblingsNavigation,
           ParentNavigation
 
-  scope :currently_used, -> (q='') { by_full_text(q).order('submissions_count desc').select(&:used_in?) }
-
   belongs_to :guide
 
   defaults { self.submissions_count = 0 }
