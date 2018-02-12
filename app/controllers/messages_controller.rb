@@ -1,5 +1,5 @@
 class MessagesController < AjaxController
-  before_action :set_exercise, only: [:create, :read_messages]
+  before_action :set_exercise!, only: [:create, :read_messages]
 
   def index
     render json: {has_messages: has_messages?, messages_count: messages_count}
@@ -21,7 +21,7 @@ class MessagesController < AjaxController
 
   private
 
-  def set_exercise
+  def set_exercise!
     exercise_id = params.dig(:message, :exercise_id)  || params[:exercise_id]
     @exercise = Exercise.find(exercise_id)
   end
