@@ -1,6 +1,6 @@
 class ExerciseTriesController < AjaxController
-  include NestedInExercise
-  include WithResultsRendering
+  include Mumuki::Laboratory::Controllers::NestedInExercise
+  include Mumuki::Laboratory::Controllers::ResultsRendering
 
   def create
     assignment, results = @exercise.submit_try! current_user, try_params

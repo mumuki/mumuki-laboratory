@@ -1,4 +1,4 @@
-module WithAuthorization
+module Mumuki::Laboratory::Controllers::Authorization
   def from_sessions?
     params['controller'] == 'login'
   end

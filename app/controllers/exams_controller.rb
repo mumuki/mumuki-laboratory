@@ -1,6 +1,4 @@
 class ExamsController < GuideContainerController
-  include WithExamsValidations
-
   before_action :validate_user, only: :show
 
   private

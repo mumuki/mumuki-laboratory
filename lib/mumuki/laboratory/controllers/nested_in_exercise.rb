@@ -1,4 +1,4 @@
-module NestedInExercise
+module Mumuki::Laboratory::Controllers::NestedInExercise
   extend ActiveSupport::Concern
 
   included do

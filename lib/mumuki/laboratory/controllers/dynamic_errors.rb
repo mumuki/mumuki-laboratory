@@ -1,4 +1,4 @@
-module WithDynamicErrors
+module Mumuki::Laboratory::Controllers::DynamicErrors
   extend ActiveSupport::Concern
 
   included do
@@ -25,7 +25,6 @@ module WithDynamicErrors
     Rails.logger.error "Internal server error: #{exception} \n#{exception.backtrace.join("\n")}"
     render 'errors/internal_server_error', status: 500
   end
-
 
   def unauthorized
     render 'errors/unauthorized', status: 401

@@ -1,7 +1,6 @@
 class ExerciseSolutionsController < AjaxController
-  include NestedInExercise
-  include WithExamsValidations
-  include WithResultsRendering
+  include Mumuki::Laboratory::Controllers::NestedInExercise
+  include Mumuki::Laboratory::Controllers::ResultsRendering
 
   before_action :set_messages, only: :create
   before_action :validate_user, only: :create

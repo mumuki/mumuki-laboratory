@@ -1,8 +1,9 @@
-module WithResultsRendering
+module Mumuki::Laboratory::Controllers::ResultsRendering
   extend ActiveSupport::Concern
-  include ProgressBarHelper
 
   included do
+    include ProgressBarHelper
+
     before_action :set_guide_previously_done
   end
 

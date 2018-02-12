@@ -1,4 +1,4 @@
-module WithMessagesNotification
+module Mumuki::Laboratory::Controllers::Messages
   def has_messages?
     messages_count > 0
   end
