@@ -21,14 +21,14 @@ describe Exam do
 
   end
 
-  describe '#access!' do
+  describe '#validate_accessible_for!' do
     context 'not enabled' do
       let(:exam) { create(:exam, start_time: 5.minutes.since, end_time: 10.minutes.since) }
 
       it { expect(exam.enabled?).to be false }
 
       context 'not authorized' do
-        it { expect { exam.access! user }.to raise_error(Mumuki::Laboratory::ForbiddenError) }
+        it { expect { exam.validate_accessible_for! user }.to raise_error(Mumuki::Laboratory::ForbiddenError) }
       end
 
       context 'authorized' do
@@ -42,14 +42,14 @@ describe Exam do
       it { expect(exam.enabled?).to be true }
 
       context 'not authorized' do
-        it { expect { exam.access! user }.to raise_error(Mumuki::Laboratory::ForbiddenError) }
+        it { expect { exam.validate_accessible_for! user }.to raise_error(Mumuki::Laboratory::ForbiddenError) }
       end
 
       context 'authorized' do
         before { exam.authorize! user }
 
-        it { expect { exam.access! user }.to_not raise_error }
-        it { expect { exam.access! other_user }.to raise_error(Mumuki::Laboratory::ForbiddenError) }
+        it { expect { exam.validate_accessible_for! user }.to_not raise_error }
+        it { expect { exam.validate_accessible_for! other_user }.to raise_error(Mumuki::Laboratory::ForbiddenError) }
       end
 
       context 'import_from_json' do
@@ -62,7 +62,7 @@ describe Exam do
 
         context 'new exam' do
           it { expect(Exam.count).to eq 1 }
-          it { expect { Exam.find_by(classroom_id: '1').access! user }.to_not raise_error }
+          it { expect { Exam.find_by(classroom_id: '1').validate_accessible_for! user }.to_not raise_error }
           it { expect(guide.usage_in_organization).to be_a Exam }
         end
 
@@ -76,8 +76,8 @@ describe Exam do
           before { Exam.import_from_json! exam_json2 }
 
           it { expect(Exam.count).to eq 1 }
-          it { expect { Exam.find_by(classroom_id: '1').access! user }.to raise_error(Mumuki::Laboratory::ForbiddenError) }
-          it { expect { Exam.find_by(classroom_id: '1').access! user2 }.to_not raise_error }
+          it { expect { Exam.find_by(classroom_id: '1').validate_accessible_for! user }.to raise_error(Mumuki::Laboratory::ForbiddenError) }
+          it { expect { Exam.find_by(classroom_id: '1').validate_accessible_for! user2 }.to_not raise_error }
         end
       end
 

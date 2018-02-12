@@ -6,7 +6,6 @@ module Mumuki::Laboratory::Controllers::DynamicErrors
       rescue_from Exception, with: :internal_server_error
       rescue_from ActionController::RoutingError, with: :not_found
     end
-    #FIXME maybe we can user more Mumukit::Auth::Exceptions here
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
     rescue_from Mumukit::Auth::UnauthorizedAccessError, with: :forbidden
     rescue_from Mumuki::Laboratory::NotFoundError, with: :not_found
@@ -18,8 +17,6 @@ module Mumuki::Laboratory::Controllers::DynamicErrors
   def not_found
     render 'errors/not_found', status: 404
   end
-
-  private
 
   def internal_server_error(exception)
     Rails.logger.error "Internal server error: #{exception} \n#{exception.backtrace.join("\n")}"

@@ -1,5 +1,5 @@
 class ExamsController < GuideContainerController
-  before_action :validate_user, only: :show
+  before_action :validate_accessible!, only: :show
 
   private
 
@@ -7,8 +7,8 @@ class ExamsController < GuideContainerController
     @exam = Exam.find_by(classroom_id: params[:id]) || Exam.find_by(id: params[:id])
   end
 
-  def validate_user
-    validate_accessible @exam
+  def accessible_subject
+    subject
   end
 
 end

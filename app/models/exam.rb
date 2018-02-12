@@ -30,7 +30,7 @@ class Exam < ApplicationRecord
     enabled_range_for(user).cover? DateTime.now
   end
 
-  def access!(user)
+  def validate_accessible_for!(user)
     if user.present?
       raise Mumuki::Laboratory::ForbiddenError unless authorized?(user)
       raise Mumuki::Laboratory::GoneError unless enabled_for?(user)
