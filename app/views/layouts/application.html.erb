@@ -25,6 +25,7 @@
     moment.locale('<%= Organization.current.locale %>');
   </script>
   <%= login_form.header_html %>
+  <%= yield :assets %>
 </head>
 <body>
 <% if should_choose_organization? %>
