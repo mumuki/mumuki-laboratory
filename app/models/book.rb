@@ -7,6 +7,10 @@ class Book < Content
 
   delegate :first_lesson, to: :first_chapter
 
+  def to_s
+    slug
+  end
+
   def first_chapter
     chapters.first
   end
