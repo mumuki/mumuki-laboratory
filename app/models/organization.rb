@@ -22,6 +22,7 @@ class Organization < ApplicationRecord
   validates :locale, inclusion: { in: Mumukit::Platform::Locale.supported }
 
   after_create :reindex_usages!
+  after_update :reindex_usages!, if: lambda { |user| user.saved_change_to_book_id? }
 
   has_many :guides, through: 'usages', source: 'item', source_type: 'Guide'
   has_many :exercises, through: :guides
