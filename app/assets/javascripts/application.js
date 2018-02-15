@@ -26,7 +26,6 @@
 //= require_tree ../../../vendor/assets/javascripts/codemirror-modes
 //= require analytics
 //= require hotjar
-//= require facebook
 
 //= require_tree ./application
 
