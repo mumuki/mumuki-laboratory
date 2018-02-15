@@ -223,21 +223,31 @@ describe User do
     end
   end
 
-  describe '#notify!' do
-    let(:user) { create(:user) }
-    before { expect_any_instance_of(Mumukit::Nuntius::NotificationMode::Deaf).to receive(:notify_event!).exactly(2).times }
-    it { expect { user.update! image_url: 'http://foo.com' }.to_not raise_error }
-    it { expect { user.update! social_id: 'auth|foo' }.to_not raise_error }
-
-  end
 
   describe '.for_profile' do
     let(:user) { create(:user, first_name: 'some name', last_name: 'some last name') }
+    let(:profile) { struct(uid: user.uid, first_name: nil, last_name: 'some other last name') }
 
-    before { User.for_profile struct({ uid: user.uid, first_name: nil, last_name: 'some other last name' }) }
+    before { User.for_profile profile }
 
     it{ expect(User.find(user.id).first_name).to eq 'some name' }
     it{ expect(User.find(user.id).last_name).to eq 'some other last name' }
+
+    describe 'notification' do
+      let(:user) { create(:user) }
+
+      context 'no changes' do
+        before { expect_any_instance_of(Mumukit::Nuntius::NotificationMode::Deaf).to_not receive(:notify_event!) }
+        it { User.for_profile profile }
+      end
+
+      context 'with changes' do
+        before { expect_any_instance_of(Mumukit::Nuntius::NotificationMode::Deaf).to receive(:notify_event!).exactly(1).times }
+        it { User.for_profile profile.to_h.merge(first_name: 'Mary').to_struct }
+        it { User.for_profile profile.to_h.merge(last_name: 'Doe').to_struct }
+      end
+
+    end
   end
 
   describe '#event_json' do

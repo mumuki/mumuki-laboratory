@@ -26,8 +26,6 @@ class User < ApplicationRecord
 
   after_initialize :init
 
-  after_save :notify!, if: Proc.new { |user| user.saved_change_to_image_url? || user.saved_change_to_social_id? }
-
   def notify!
     Mumukit::Nuntius.notify_event! 'UserChanged', user: event_json
   end

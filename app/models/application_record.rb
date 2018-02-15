@@ -27,6 +27,14 @@ class ApplicationRecord < ActiveRecord::Base
     self
   end
 
+  def save_and_notify_changes!
+    if changed?
+      save_and_notify!
+    else
+      save!
+    end
+  end
+
   def save_and_notify!
     save!
     notify!
