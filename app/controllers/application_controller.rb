@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   include WithDynamicErrors
   include WithOrganizationChooser
 
-  before_action :set_organization!
+  before_action :set_current_organization!
   before_action :set_locale!
   before_action :redirect_to_main_organization!, if: :should_redirect_to_main_organization?
   before_action :authorize_if_private!
