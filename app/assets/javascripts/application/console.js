@@ -122,12 +122,10 @@ var mumuki = mumuki || {};
       }
     },
     displayQueryResult: function (report, queryConsole, line, response) {
-      if (response.status !== 'errored') {
-        queryConsole.lines.push(line);
-        reportStatus(response.result, response.status, report);
-      } else {
-        reportStatus(response.result, 'failed', report);
-      }
+      var status = response.status === 'errored' ? 'failed' : response.status;
+
+      if (status === 'passed') queryConsole.lines.push(line);
+      reportStatus(response.result, status, report);
     },
     get _request() {
       var self = this;
