@@ -84,7 +84,7 @@ Rails.application.configure do
 
   config.i18n.default_locale = :es
 
-  config.sender_email = ENV['MUMUKI_REMINDER_SENDER_EMAIL']
+  config.reminder_sender_email = ENV['MUMUKI_REMINDER_SENDER_EMAIL']
   config.reminder_frequency = ENV['MUMUKI_REMINDER_FREQUENCY'].defaulting(7, &:to_i)
 
   config.action_mailer.delivery_method = :smtp
