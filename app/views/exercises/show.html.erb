@@ -12,20 +12,20 @@
     <%= render partial: 'layouts/timer', locals: {end_time: @exercise.navigable_parent.real_end_time(current_user)} %>
 <% end %>
 
-<div class="row">
-  <% unless @exercise.input_kids? %>
+<% unless @exercise.input_kids? %>
+    <div class="row">
       <div class="mu-inline-block-right hidden-xs">
         <h1><%= language_icon @exercise.language %></h1>
       </div>
-  <% end %>
-  <div class="mu-inline-block-left">
-    <h1>
-      <span class="hidden-xs"><%= t(:exercise_number, number: @exercise.number) %>:&nbsp;</span>
-      <span><%= @exercise.name %></span>
-      <%= link_to_bibliotheca_exercise(@exercise) %>
-    </h1>
-  </div>
-</div>
+      <div class="mu-inline-block-left">
+        <h1>
+          <span class="hidden-xs"><%= t(:exercise_number, number: @exercise.number) %>:&nbsp;</span>
+          <span><%= @exercise.name %></span>
+          <%= link_to_bibliotheca_exercise(@exercise) %>
+        </h1>
+      </div>
+    </div>
+<% end %>
 
 <div>
   <% if @stats %>

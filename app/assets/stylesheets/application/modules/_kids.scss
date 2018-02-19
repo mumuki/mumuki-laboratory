@@ -1,5 +1,8 @@
-$kids-height: calc(100vh - 80px - 103px);
+$kids-height: calc(100vh - 80px - 30px);
 $kids-Characters-height: 120px;
+$kids-speech-arrow-size: 10px;
+$kids-speech-border-color: $mu-color-disabled;
+$kids-speech-background-color: $mu-color-separator;
 
 .mu-kids-exercise {
   height: $kids-height;
@@ -51,6 +54,46 @@ $kids-Characters-height: 120px;
   }
   .mu-kids-exercise-description {
     padding-right: 0;
+  }
+
+  .mu-kids-character {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 15px 0 0;
+    border: none;
+    img {
+      height: 100%;
+    }
+    .mu-kids-character-speech-bubble {
+      position: relative;
+      padding: 15px;
+      //width: 100%;
+      color: #333;
+      border-radius: 10px;
+      background: $kids-speech-background-color;
+      border: 1px solid $kids-speech-border-color;
+      &:before {
+        position: absolute;
+        top: calc(50% - #{$kids-speech-arrow-size + 2px} / 2);
+        left: -$kids-speech-arrow-size - 2px;
+        border-width: (1px + $kids-speech-arrow-size / 2) (2px + $kids-speech-arrow-size) (1px + $kids-speech-arrow-size / 2) 0;
+        content: '';
+        border-style: solid;
+        border-color: transparent $kids-speech-border-color;
+      }
+      &:after {
+        position: absolute;
+        top: calc(50% - #{$kids-speech-arrow-size} / 2);
+        left: -$kids-speech-arrow-size;
+        border-width: ($kids-speech-arrow-size / 2) $kids-speech-arrow-size ($kids-speech-arrow-size / 2) 0;
+        border-color: transparent $kids-speech-background-color;
+        content: '';
+        border-style: solid;
+      }
+    }
+
   }
 
   [class^="mu-kids-gbs-board"] {
