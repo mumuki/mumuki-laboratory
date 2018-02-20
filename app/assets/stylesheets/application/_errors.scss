@@ -32,9 +32,13 @@
     p {
       color: darken($mu-color-disabled, 5%);
       font-size: 89%;
-      padding: 15px;
+      padding: 0;
+      margin: 0;
       .error-link {
         text-transform: uppercase;
+      }
+      a.btn {
+        margin-top: 30px;
       }
     }
   }

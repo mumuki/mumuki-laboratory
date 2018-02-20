@@ -4,7 +4,13 @@
     </div>
     <div class="body">
       <p>
-        <%= t(:not_found_explanation, error: link_to_error_404, issues: link_to_issues(:let_us_know)).html_safe %>
+        <%= t(:error_description, error: link_to_error_404).html_safe %>
+      </p>
+      <p>
+        <%= Organization.current.explain_error(404, :not_found_explanation).html_safe %>
+      </p>
+      <p>
+        <%= t(:tell_us_if_our_error, issues: link_to_issues(:let_us_know)).html_safe %>
       </p>
       <p>
         <a class="btn btn-success" href="/"> <%= t(:back_to_mumuki) %> </a>

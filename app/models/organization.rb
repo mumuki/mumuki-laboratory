@@ -70,6 +70,10 @@ class Organization < ApplicationRecord
     self.login_methods.include? login_method.to_s
   end
 
+  def explain_error(code, advice)
+    errors_explanations.try { |it| it[code.to_s] } || I18n.t(advice)
+  end
+
   private
 
   def ensure_consistent_public_login

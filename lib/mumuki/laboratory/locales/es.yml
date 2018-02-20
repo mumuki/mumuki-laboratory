@@ -47,6 +47,7 @@ es:
   edit: Editar
   editor_placeholder: "...escribí tu solución acá..."
   email: Email
+  error_description: ¡Ups! <br> Esto es lo que se conoce como <span class="error-link">%{error}</span>.
   error_401: error 401
   error_403: error 403
   error_404: error 404
@@ -66,7 +67,7 @@ es:
   failed: Tu solución no pasó las pruebas
   feedback: Problemas que encontramos
   first_name: Nombre
-  forbidden_explanation: ¡Ups! <br> Esto es lo que se conoce como <span class="error-link">%{error}</span>. <br> Es decir que no tenés autorización para ver este contenido. <br> ¿Puede que hayas ingresado con una cuenta incorrecta?
+  forbidden_explanation: Es decir que no tenés autorización para ver este contenido. <br> ¿Puede que hayas ingresado con una cuenta incorrecta?
   go_to: 'Ir a %{organization}'
   gone_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que ya no podés ver este examen.
   guide: Lección
@@ -122,7 +123,7 @@ es:
   no_messages: ¡Parece que no tenés ningun mensaje todavía!
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio aún!
   not_found: ¡La página que buscaste no existe!
-  not_found_explanation: ¡Ups! <br> Esto es lo que se conoce como <span class="error-link">%{error}</span>. <br> Fijate si escribiste bien la dirección. <br> Peeeeero, si pensás que es un error nuestro, %{issues}
+  not_found_explanation: Fijate si escribiste bien la dirección. Peeeeero...
   not_in_any_organizations: ¡Parece que no estás en ninguna organización todavía!
   notify_problem_with_exercise: Reportá un error
   office: Secretaría
@@ -161,7 +162,7 @@ es:
   solution: Solución
   solved_exercises: Ejercicios Resueltos
   something_went_wrong: ¡Ups!, algo no anduvo bien...
-  something_went_wrong_explanation:  ¡Ups! <br> Esto es lo que se conoce como <span class="error-link">%{error}</span>. <br> Algo no anduvo como se esperaba. <br> Si pensas que es un error nuestro, %{issues}.
+  something_went_wrong_explanation: Algo no anduvo como se esperaba.
   start_lesson: ¡Comenzá esta lección!
   start_practicing: ¡Empezá ahora!
   stats: Tu Progreso
@@ -176,6 +177,7 @@ es:
   submissions_for: Soluciones para %{exercise}
   tag: Etiquetas
   tell_us_how: ¡Contanos cómo te pasó esto!
+  tell_us_if_our_error: Si pensás que es un error nuestro, %{issues}
   terms_and_conditions: Términos y condiciones
   test_results: Resultados de las pruebas
   time_left: Te quedan
