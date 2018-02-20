@@ -13,9 +13,12 @@
 
       <div class="mu-kids-board">
         <div class="mu-kids-gbs-board-expected">
+          <strong>Tablero Final</strong>
           <%= @exercise.final_state&.html_safe %>
         </div>
+        <hr>
         <div class="mu-kids-gbs-board-actual">
+          <strong>Tablero Inicial</strong>
           <%= @exercise.initial_state&.html_safe %>
         </div>
       </div>

@@ -1,8 +1,8 @@
 $kids-height: calc(100vh - 80px - 30px);
-$kids-Characters-height: 120px;
+$kids-characters-height: 120px;
 $kids-speech-arrow-size: 10px;
-$kids-speech-border-color: $mu-color-disabled;
-$kids-speech-background-color: $mu-color-separator;
+$kids-speech-border-color: lighten($mu-color-disabled, 20%);
+$kids-speech-background-color: #f4f6fb;
 
 .mu-kids-exercise {
   height: $kids-height;
@@ -18,13 +18,14 @@ $kids-speech-background-color: $mu-color-separator;
     flex-direction: column;
   }
   .mu-kids-exercise-description {
-    padding-right: 0;
+    padding-right: 15px;
+  }
+  .mu-kids-exercise-board {
+    hr {
+      border-top: 1px solid $kids-speech-border-color;
+    }
   }
 
-  .mu-kids-blocks {
-    border: 1px solid $mu-color-disabled;
-    border-radius: 4px;
-  }
   .mu-kids-character,
   .mu-kids-gbs-board-expected,
   .mu-kids-gbs-board-actual {
@@ -39,10 +40,10 @@ $kids-speech-background-color: $mu-color-separator;
     height: calc(#{$kids-height} / 2 - 15px);
   }
   .mu-kids-character {
-    height: $kids-Characters-height;
+    height: $kids-characters-height;
   }
   .mu-kids-blocks {
-    height: calc(#{$kids-height} - #{$kids-Characters-height} - 30px);
+    height: calc(#{$kids-height} - #{$kids-characters-height} - 30px);
     margin-left: 0;
     margin-right: 0;
     position: relative;
@@ -129,14 +130,33 @@ $kids-speech-background-color: $mu-color-separator;
 
   [class^="mu-kids-gbs-board"] {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gs-board {
       > table {
         transform: scale(1.5);
+        background-color: $kids-speech-border-color !important;
+        border: 1px solid $kids-speech-border-color !important;
+        border-radius: 12px;
       }
       display: block;
       margin: auto;
+      padding: 1px;
       td, th {
-        padding: 1px;
+        &.gs-board {
+          border: 1px solid $kids-speech-border-color !important;
+          background-color: #FFFFFF;
+        }
+        &.gbs_lx,
+        &.gbs_lh,
+        &.gbs_lv {
+          background-color: $kids-speech-background-color !important;
+          border: 0 solid transparent !important;
+        }
+        &.gbs_gh.gs-cell {
+          background: rgba(221, 221, 136, 0.7) !important;
+          outline: 3px solid $kids-speech-border-color !important;
+        }
         span {
           vertical-align: middle;
         }
@@ -157,6 +177,26 @@ $kids-speech-background-color: $mu-color-separator;
     gs-element-blockly {
       padding: 0;
       margin: 0;
+    }
+    .blocklyMainBackground {
+      rx: 10px !important;
+      ry: 10px !important;
+    }
+    .blocklyScrollbarHandle {
+      fill: $kids-speech-background-color !important;
+      stroke: $kids-speech-border-color !important;
+      stroke-width: 1px !important;
+    }
+    .blocklyToolboxDiv {
+      background-color: $kids-speech-background-color !important;
+      border: 1px solid $kids-speech-border-color !important;
+      border-right: none !important;
+      border-radius: 10px !important;
+    }
+    .blocklyFlyoutBackground {
+      fill: $kids-speech-background-color !important;
+      border: 1px solid $kids-speech-border-color !important;
+      border-right: none !important;
     }
   }
 }

@@ -6,13 +6,13 @@ mumuki.load(function () {
 
     var gbsBoard = $('[class^="mu-kids-gbs-board"]');
 
-    var dimension = gbsBoard.height() - 30;
+    var dimension = gbsBoard.height() - margin * 2;
     gbsBoard.width(dimension);
 
     var $muKidsExercise = $('.mu-kids-exercise');
     var $muKidsExerciseDescription = $('.mu-kids-exercise-description');
 
-    $muKidsExerciseDescription.width($muKidsExercise.width() - gbsBoard.width());
+    $muKidsExerciseDescription.width($muKidsExercise.width() - gbsBoard.width() - margin);
 
     gbsBoard.each(function (i) {
       gsBoardScale($(gbsBoard[i]));
@@ -31,8 +31,8 @@ mumuki.load(function () {
     function gsBoardScale($element) {
       var $table = $element.find('gs-board > table');
       $table.css('transform', 'scale(1)');
-      var scaleX = ($element.width() - fullMargin) / $table.width();
-      var scaleY = ($element.height() - fullMargin) / $table.height();
+      var scaleX = ($element.width() - fullMargin * 2) / $table.width();
+      var scaleY = ($element.height() - fullMargin * 2) / $table.height();
       $table.css('transform', 'scale(' + Math.min(scaleX, scaleY) + ')');
     }
 
