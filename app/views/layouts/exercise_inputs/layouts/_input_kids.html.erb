@@ -1,24 +1,22 @@
 <% content_for :no_container do %>
 
     <div class="mu-kids-exercise container-fluid">
-      <div class="row">
 
-        <div class="mu-kids-exercise-description col-md-10">
-          <div class="mu-kids-character">
-            <%= render partial: 'layouts/kids' %>
-          </div>
-          <div class="mu-kids-blocks">
-            <%= render partial: 'layouts/exercise_inputs/forms/kids_form' %>
-          </div>
+      <div class="mu-kids-exercise-description">
+        <div class="mu-kids-character">
+          <%= render partial: 'layouts/kids' %>
         </div>
+        <div class="mu-kids-blocks">
+          <%= render partial: 'layouts/exercise_inputs/forms/kids_form' %>
+        </div>
+      </div>
 
-        <div class="mu-kids-board col-md-2">
-          <div class="mu-kids-gbs-board-expected">
-            <%= @exercise.final_state&.html_safe %>
-          </div>
-          <div class="mu-kids-gbs-board-actual">
-            <%= @exercise.initial_state&.html_safe %>
-          </div>
+      <div class="mu-kids-board">
+        <div class="mu-kids-gbs-board-expected">
+          <%= @exercise.final_state&.html_safe %>
+        </div>
+        <div class="mu-kids-gbs-board-actual">
+          <%= @exercise.initial_state&.html_safe %>
         </div>
       </div>
 

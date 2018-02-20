@@ -5,6 +5,15 @@ mumuki.load(function () {
     var fullMargin = margin * 2;
 
     var gbsBoard = $('[class^="mu-kids-gbs-board"]');
+
+    var dimension = gbsBoard.height() - 30;
+    gbsBoard.width(dimension);
+
+    var $muKidsExercise = $('.mu-kids-exercise');
+    var $muKidsExerciseDescription = $('.mu-kids-exercise-description');
+
+    $muKidsExerciseDescription.width($muKidsExercise.width() - gbsBoard.width());
+
     gbsBoard.each(function (i) {
       gsBoardScale($(gbsBoard[i]));
     });

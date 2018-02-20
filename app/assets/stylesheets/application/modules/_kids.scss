@@ -9,6 +9,18 @@ $kids-speech-background-color: $mu-color-separator;
   min-height: $kids-height;
   max-height: $kids-height;
 
+  display: flex;
+  flex-direction: row;
+
+  .mu-kids-exercise-description,
+  .mu-kids-exercise-board {
+    display: flex;
+    flex-direction: column;
+  }
+  .mu-kids-exercise-description {
+    padding-right: 0;
+  }
+
   .mu-kids-blocks {
     border: 1px solid $mu-color-disabled;
     border-radius: 4px;
@@ -48,9 +60,6 @@ $kids-speech-background-color: $mu-color-separator;
       }
     }
 
-  }
-  .mu-kids-exercise-description {
-    padding-right: 0;
   }
 
   .mu-kids-character {
