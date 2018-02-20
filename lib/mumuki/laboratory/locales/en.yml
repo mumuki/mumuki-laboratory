@@ -42,6 +42,7 @@ en:
   edit: Edit
   editor_placeholder: "write your solution here..."
   email: Email
+  error_description: This is known as a <span class="error-link">%{error}</span>.
   error_401: 401 error
   error_403: 403 error
   error_404: 404 error
@@ -110,7 +111,7 @@ en:
   no_guides: Nobody created a guide for this search yet
   no_messages: It seems you don't have any messages yet!
   no_submissions: It seems like you haven't tried to solve this exercise
-  not_found_explanation: 'You may have mistyped the address or the page may have moved. If you think this is our fault, %{issues}'
+  not_found_explanation: 'You may have mistyped the address or the page may have moved.'
   not_in_any_organizations: It seems you aren't in any organizations yet!
   notify_problem_with_exercise: Report a bug
   office: Office
@@ -145,7 +146,7 @@ en:
   sign_up_date: User since
   solution: Solution
   something_went_wrong: Something went wrong!
-  something_went_wrong_explanation: Something is broken in Mumuki. And we need to solve this as soon as possible, %{issues}.
+  something_went_wrong_explanation: Something is broken in Mumuki.
   start_lesson: Start this lesson!
   start_practicing: Start Practicing!
   stats: Some stats
@@ -159,6 +160,7 @@ en:
   submissions_for: Submissions for %{exercise}
   tag: Tags
   tell_us_how: Please tell us how this happened!
+  tell_us_if_our_error: If you think this is our fault, %{issues}
   terms_and_conditions: Terms and conditions
   test_results: Test results
   test_results: Tests results

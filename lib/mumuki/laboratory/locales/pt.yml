@@ -45,9 +45,10 @@ pt:
   edit: Editar
   editor_placeholder: ... Eu escrevi sua solução aqui ...
   email: E-mail
+  error_description: Opa! <br> Isto é o que é conhecido como <span class = "error-link"> %{error} </ span>.
   error_401: erro 401
   error_403: erro 403
-  error_404: Erro 404
+  error_404: erro 404
   error_410: erro 410
   error_500: erro 500
   errored: Opa! Sua solução não pode ser executada
@@ -64,7 +65,7 @@ pt:
   failed: Sua solução não passou as provas
   feedback: Problemas que encontramos
   first_name: Nome
-  forbidden_explanation: Opa! <br> Isto é o que é conhecido como <span class = "error-link"> %{error} </ span>. <br> Isso significa que você não tem autorização para ver esse conteúdo. <br> Você poderia ter entrado com uma conta incorreta?
+  forbidden_explanation: Isso significa que você não tem autorização para ver esse conteúdo. <br> Você poderia ter entrado com uma conta incorreta?
   fullscreen: Tela completa
   get_messages: Ver mensagens
   go_to: Vá para %{organization}
@@ -120,7 +121,7 @@ pt:
   no_messages: Parece que você ainda não tem uma mensagem!
   no_submissions: Parece que você ainda não tentou resolver este exercício!
   not_found: A página que você pesquisou não existe!
-  not_found_explanation: Opa! <br> Isto é o que é conhecido como <span class = "error-link"> %{error} </ span>. <br> Olhe se você escreveu o endereço corretamente. <br> Peeeeero, se você acha que é nosso erro, %{issues}
+  not_found_explanation: Olhe se você escreveu o endereço corretamente. Mas...
   not_in_any_organizations: Parece que você ainda não está em nenhuma organização!
   notify_problem_with_exercise: Relatar um erro
   office: Secretariado
@@ -159,7 +160,7 @@ pt:
   solution: Solução
   solved_exercises: Exercícios resolvidos
   something_went_wrong: Oops!, Algo não estava certo ...
-  something_went_wrong_explanation: Opa! <br> Isto é o que é conhecido como <span class = "error-link"> %{error} </ span>. <br> Algo não foi como esperado. <br> Se você acha que é nosso erro, %{issues}.
+  something_went_wrong_explanation: Algo não foi como esperado.
   start_lesson: Comece esta lição!
   start_practicing: Comece agora!
   stats: Seu progresso
@@ -173,6 +174,7 @@ pt:
   submissions_for: Soluções para %{exercise}
   tag: Etiquetas
   tell_us_how: Conte-nos como isso aconteceu com você!
+  tell_us_if_our_error: Se você acha que é nosso erro, %{issues}
   terms_and_conditions: Termos e Condições
   test_results: Resultados do teste
   time_left: Te deixam
