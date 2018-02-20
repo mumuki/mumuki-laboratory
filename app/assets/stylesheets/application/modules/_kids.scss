@@ -9,10 +9,7 @@ $kids-speech-background-color: $mu-color-separator;
   min-height: $kids-height;
   max-height: $kids-height;
 
-  .mu-kids-character,
-  .mu-kids-blocks,
-  .mu-kids-gbs-board-expected,
-  .mu-kids-gbs-board-actual {
+  .mu-kids-blocks {
     border: 1px solid $mu-color-disabled;
     border-radius: 4px;
   }
@@ -61,7 +58,7 @@ $kids-speech-background-color: $mu-color-separator;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 0 15px 0 0;
+    padding: 0;
     border: none;
     img {
       height: 100%;
@@ -84,18 +81,19 @@ $kids-speech-background-color: $mu-color-separator;
         bottom: 0;
       }
       position: relative;
-      padding: 10px;
+      display: flex;
+      align-items: center;
+      padding: 15px;
       color: #333;
       border-radius: 10px;
       background: $kids-speech-background-color;
       border: 1px solid $kids-speech-border-color;
-      max-height: 80px;
-      overflow: hidden auto;
+      height: 80px;
+      width: 100%;
       p {
         margin-bottom: 0;
-        display: none;
-        &:first-child {
-          display: block;
+        &:not(:first-child) {
+          display: none;
         }
       }
       &:before {
