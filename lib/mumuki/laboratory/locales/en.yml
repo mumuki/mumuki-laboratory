@@ -116,7 +116,7 @@ en:
   office: Office
   output: Output
   overview: Overview
-  passed: All right
+  passed: Everything is in order! Your solution passed all our tests!
   passed_with_warnings: It worked, but you can do better
   pending: pending
   pending_messages: You have unread messages
