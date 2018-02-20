@@ -29,4 +29,33 @@ mumuki.load(function () {
 
   });
 
+  var currentParagraphIndex = 0;
+  var $speechParagraphs = $('.mu-kids-character-speech-bubble > p');
+  var $prevSpeech = $('.mu-kids-character-speech-bubble > .mu-kids-prev-speech').hide();
+  var $nextSpeech = $('.mu-kids-character-speech-bubble > .mu-kids-next-speech');
+
+  $nextSpeech.click(function () {
+    hideCurrentParagraph();
+    showNextParagraph();
+  });
+  $prevSpeech.click(function () {
+    hideCurrentParagraph();
+    showPrevParagraph();
+  });
+
+  function hideCurrentParagraph() {
+    $($speechParagraphs[currentParagraphIndex]).hide();
+  }
+
+  function showPrevParagraph() {
+    $nextSpeech.show();
+    $($speechParagraphs[--currentParagraphIndex]).show();
+    if (currentParagraphIndex === 0) $prevSpeech.hide();
+  }
+
+  function showNextParagraph() {
+    $prevSpeech.show();
+    $($speechParagraphs[++currentParagraphIndex]).show();
+    if ($speechParagraphs.length - 1 === currentParagraphIndex) $nextSpeech.hide();
+  }
 });
