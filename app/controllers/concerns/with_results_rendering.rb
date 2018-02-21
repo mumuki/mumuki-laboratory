@@ -13,6 +13,10 @@ module WithResultsRendering
       }}
   end
 
+  def render_results(assignment)
+    render_to_string results_rendering_params(assignment)
+  end
+
   def guide_finished_by_solution?
     !@guide_previously_done && @exercise.guide_done_for?(current_user)
   end

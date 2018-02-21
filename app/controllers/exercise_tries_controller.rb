@@ -10,7 +10,7 @@ class ExerciseTriesController < AjaxController
   private
 
   def render_corollary_string(assignment)
-    render_to_string(results_rendering_params(assignment))
+    render_results(assignment)
   end
 
 
