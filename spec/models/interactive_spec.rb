@@ -127,12 +127,8 @@ describe Interactive do
 
   context 'on errored try with no query_result' do
     before do
-      expect(bridge)
-        .to receive(:run_try!).and_return({status: :errored,
-                                           result: ''})
-
+      expect(bridge).to receive(:run_try!).and_return({status: :errored, result: ''})
     end
-
 
     before do
       interactive.submit_try!(user, query: 'foo')
