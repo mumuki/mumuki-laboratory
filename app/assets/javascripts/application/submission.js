@@ -15,6 +15,9 @@ var mumuki = mumuki || {};
     success: function (data, submitButton) {
       this.submissionsResultsArea.html(data.html);
       data.status === 'aborted' ? this.error(submitButton) : submitButton.enable();
+
+      $('.progress-list-item.active').attr('class', data.class_for_progress_list_item);
+      if(data.guide_finished_by_solution) $('#guide-done').modal();
     },
     error: function (submitButton) {
       this.submissionsResultsArea.html('');

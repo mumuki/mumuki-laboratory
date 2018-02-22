@@ -4,15 +4,10 @@ class ExerciseTriesController < AjaxController
 
   def create
     assignment, results = @exercise.submit_try! current_user, try_params
-    render json: results.merge(corollary: render_corollary_string(assignment))
+    render_json assignment, results
   end
 
   private
-
-  def render_corollary_string(assignment)
-    render_results(assignment)
-  end
-
 
   def try_params
     params.permit(:query, cookie: [])

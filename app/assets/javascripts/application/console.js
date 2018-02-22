@@ -114,8 +114,10 @@ var mumuki = mumuki || {};
     displayGoalResult: function (response) {
       if (response.status == 'passed') {
         $('.submission-results').show();
-        $('.submission-results').html(response.corollary);
+        $('.submission-results').html(response.html);
         mumuki.pin.scroll();
+        $('.progress-list-item.active').attr('class', response.class_for_progress_list_item);
+        if(response.guide_finished_by_solution) $('#guide-done').modal();
       } else {
         $('.submission-results').hide();
         $('.progress-list-item.active').attr('class', "progress-list-item text-center danger active");

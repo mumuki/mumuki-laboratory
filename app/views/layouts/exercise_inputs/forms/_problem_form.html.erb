@@ -65,7 +65,7 @@
       <div class="col-md-12 submission-results">
         <% if @assignment %>
           <%= render partial: 'exercise_solutions/results',
-                     locals: {assignment: @assignment, guide_finished_by_solution: false} %>
+                     locals: {assignment: @assignment} %>
         <% end %>
       </div>
     </div>

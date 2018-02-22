@@ -8,7 +8,7 @@ class ExerciseSolutionsController < AjaxController
 
   def create
     assignment = @exercise.submit_solution!(current_user, solution_params)
-    render json: { status: assignment.status, html: render_results(assignment) }
+    render_json assignment, status: assignment.status
   end
 
   private
