@@ -35,9 +35,10 @@ class User < ApplicationRecord
   end
 
   def event_json
-    options = { only: [:uid, :social_id, :image_url, :email, :first_name, :last_name] }
-    options.merge!(methods: [:permissions]) unless permissions.empty?
-    as_json(options).compact
+    as_json(
+      only: [:uid, :social_id, :image_url, :email, :first_name, :last_name],
+      methods: [:permissions])
+    .compact
   end
 
   def last_lesson

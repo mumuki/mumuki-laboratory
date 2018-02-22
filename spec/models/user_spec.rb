@@ -249,18 +249,4 @@ describe User do
 
     end
   end
-
-  describe '#event_json' do
-    let(:user) { create(:user) }
-
-    context 'user with no permissions' do
-      it{ expect(user.event_json).to_not include('permissions') }
-    end
-
-    context 'user with permissions' do
-      before { user.make_student_of! 'pdep/_'}
-
-      it{ expect(user.event_json).to include('permissions') }
-    end
-  end
 end
