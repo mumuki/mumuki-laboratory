@@ -66,8 +66,6 @@
   <%= solution_download_link assignment %>
 </div>
 
-<%= hidden_field_tag :is_aborted, '', data: {aborted: assignment.aborted?} %>
-
 <%= corollary_box @exercise unless assignment.should_retry? %>
 
 <div class="row">
@@ -77,14 +75,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  $('.progress-list-item.active').attr('class', "<%= class_for_progress_list_item(@exercise, true) %>");
-
-  <% if guide_finished_by_solution %>
-    $('#guide-done').modal();
-  <% end %>
-
-</script>
-
-

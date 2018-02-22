@@ -13,8 +13,9 @@ var mumuki = mumuki || {};
       this.submissionsErrorTemplate.hide();
     },
     success: function (data, submitButton) {
-      this.submissionsResultsArea.html(data);
-      this.submissionsResultsArea.find('#is_aborted').data('aborted') ? this.error(submitButton) : submitButton.enable();
+      this.submissionsResultsArea.html(data.html);
+      data.status === 'aborted' ? this.error(submitButton) : submitButton.enable();
+      mumuki.updateProgressBarAndShowModal(data);
     },
     error: function (submitButton) {
       this.submissionsResultsArea.html('');
@@ -64,7 +65,7 @@ var mumuki = mumuki || {};
       resultsBox.done();
       $('#messages-tab').removeClass('hidden');
     }).on('ajax:success', function (event) {
-      var data = event.detail[0].body.outerHTML;
+      var data = event.detail[0];
       resultsBox.success(data, submitButton);
     }).on('ajax:error', function (event) {
       resultsBox.error(submitButton);

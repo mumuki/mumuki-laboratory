@@ -114,8 +114,9 @@ var mumuki = mumuki || {};
     displayGoalResult: function (response) {
       if (response.status == 'passed') {
         $('.submission-results').show();
-        $('.submission-results').html(response.corollary);
+        $('.submission-results').html(response.html);
         mumuki.pin.scroll();
+        mumuki.updateProgressBarAndShowModal(response);
       } else {
         $('.submission-results').hide();
         $('.progress-list-item.active').attr('class', "progress-list-item text-center danger active");
