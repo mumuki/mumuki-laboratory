@@ -15,9 +15,7 @@ var mumuki = mumuki || {};
     success: function (data, submitButton) {
       this.submissionsResultsArea.html(data.html);
       data.status === 'aborted' ? this.error(submitButton) : submitButton.enable();
-
-      $('.progress-list-item.active').attr('class', data.class_for_progress_list_item);
-      if(data.guide_finished_by_solution) $('#guide-done').modal();
+      mumuki.updateProgressBarAndShowModal(data);
     },
     error: function (submitButton) {
       this.submissionsResultsArea.html('');
@@ -27,6 +25,11 @@ var mumuki = mumuki || {};
     done: function () {
       mumuki.pin.scroll();
     }
+  };
+
+  mumuki.updateProgressBarAndShowModal = function (data) {
+    $('.progress-list-item.active').attr('class', data.class_for_progress_list_item);
+    if(data.guide_finished_by_solution) $('#guide-done').modal();
   };
 
   function SubmitButton() {
