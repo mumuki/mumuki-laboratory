@@ -191,7 +191,8 @@ $kids-speech-background-color: #f4f6fb;
       background-color: $kids-speech-background-color !important;
       border: 1px solid $kids-speech-border-color !important;
       border-right: none !important;
-      border-radius: 10px !important;
+      border-top-left-radius: 10px !important;
+      border-bottom-left-radius: 10px !important;
     }
     .blocklyFlyoutBackground {
       fill: $kids-speech-background-color !important;
