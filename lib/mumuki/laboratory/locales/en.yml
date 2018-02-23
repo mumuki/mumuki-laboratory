@@ -166,6 +166,7 @@ en:
   test_results: Tests results
   time_left: You have
   title: Title
+  try_again: Oops, something went wrong in Mumuki. Restart the exercise, wait a few seconds and try again.
   unauthorized_explanation: You have no permissions for this content. Maybe you logged in with another account.
   unmeet_expectations: "Goals that weren't met"
   unsubscribed_successfully: You have successfully unsubscribed from reminders.

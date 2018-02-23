@@ -1,11 +1,10 @@
 class Query < Submission
+  include ConsoleSubmission
   attr_accessor :query, :cookie, :content
 
   def try_evaluate_exercise!(assignment)
-    r = assignment.run_query!(content: content, query: query, cookie: cookie)
-    {result: r[:result], status: r[:status].to_mumuki_status}
+    format_result assignment.run_query!(content: content, query: query, cookie: cookie)
   end
-
 
   def save_submission!(assignment)
     assignment.exercise.setup_query_assignment!(assignment)
