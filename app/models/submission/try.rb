@@ -1,8 +1,8 @@
-class Try < Submission
+class Try < ConsoleSubmission
   attr_accessor :query, :cookie
 
-  def try_evaluate_exercise!(assignment)
-    format_result assignment.run_try!(query: query, cookie: cookie).except(:response_type)
+  def evaluate_exercise!(assignment)
+    assignment.run_try!(query: query, cookie: cookie).except(:response_type)
   end
 
   def save_submission!(assignment)
