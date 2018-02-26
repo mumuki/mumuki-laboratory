@@ -1,7 +1,7 @@
 class Query < ConsoleSubmission
   attr_accessor :query, :cookie, :content
 
-  def evaluate_exercise!(assignment)
+  def try_evaluate_query!(assignment)
     assignment.run_query!(content: content, query: query, cookie: cookie)
   end
 
