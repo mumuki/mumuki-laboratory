@@ -25,6 +25,7 @@
     moment.locale('<%= Organization.current.locale %>');
   </script>
   <%= login_form.header_html %>
+  <%= yield :assets %>
 </head>
 <body>
 <% if should_choose_organization? %>
@@ -68,7 +69,6 @@
               </li>
               <li><%= link_to_classroom %></li>
               <li><%= link_to_bibliotheca %></li>
-              <li><%= link_to_office %></li>
               <li class="divider"></li>
               <li><%= link_to(t(:sign_out), logout_path(origin: url_for), role: 'menuitem') %></li>
             </ul>

@@ -1,10 +1,9 @@
 class ExerciseSolutionsController < AjaxController
-  include NestedInExercise
-  include WithExamsValidations
-  include WithResultsRendering
+  include Mumuki::Laboratory::Controllers::NestedInExercise
+  include Mumuki::Laboratory::Controllers::ResultsRendering
 
   before_action :set_messages, only: :create
-  before_action :validate_user, only: :create
+  before_action :validate_accessible!, only: :create
 
   def create
     assignment = @exercise.submit_solution!(current_user, solution_params)
@@ -13,8 +12,8 @@ class ExerciseSolutionsController < AjaxController
 
   private
 
-  def validate_user
-    validate_accessible @exercise.navigable_parent
+  def accessible_subject
+    @exercise.navigable_parent
   end
 
   def set_messages

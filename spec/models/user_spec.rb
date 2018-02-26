@@ -131,29 +131,6 @@ describe User do
     end
   end
 
-  describe '#accessible_organizations' do
-    before { create(:organization, name: 'pdep',settings: {}, book: create(:book, name: 'pdep', slug: 'mumuki/mumuki-the-pdep-book')) }
-    let(:user) { create :user, permissions: permissions }
-
-    context 'when one organizations' do
-      let(:permissions) { {student: 'pdep/*'} }
-      it { expect(user.accessible_organizations.size).to eq 1 }
-    end
-    context 'when two organizations' do
-      let(:permissions) { {student: 'pdep/*:alcal/*'} }
-      before { create(:organization, name: 'alcal', book: create(:book, name: 'alcal', slug: 'mumuki/mumuki-the-alcal-book')) }
-      it { expect(user.accessible_organizations.size).to eq 2 }
-    end
-    context 'when all grant present organizations' do
-      let(:permissions) { {student: 'pdep/*:*'} }
-      it { expect(user.accessible_organizations.size).to eq 0 }
-    end
-    context 'when one organization appears twice' do
-      let(:permissions) { {student: 'pdep/*:pdep/*'} }
-      it { expect(user.accessible_organizations.size).to eq 1 }
-    end
-  end
-
   describe '#visit!' do
     let(:user) { create(:user) }
 
@@ -166,11 +143,11 @@ describe User do
     let(:other) { create(:organization, name: 'pdep') }
     let(:user) { create :user, permissions: {student: 'pdep/k2001', teacher: 'test/all'} }
 
-    it { expect(user.permissions.student? 'test/all').to be true }
-    it { expect(user.permissions.student? 'pdep/k2001').to be true }
+    it { expect(user.student? 'test/all').to be true }
+    it { expect(user.student? 'pdep/k2001').to be true }
 
-    it { expect(user.permissions.teacher? 'test/all').to be true }
-    it { expect(user.permissions.teacher? 'pdep/k2001').to be false }
+    it { expect(user.teacher? 'test/all').to be true }
+    it { expect(user.teacher? 'pdep/k2001').to be false }
   end
 
   describe '#submissions_count' do

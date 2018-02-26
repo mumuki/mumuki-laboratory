@@ -8,6 +8,12 @@ FactoryBot.define do
     book
   end
 
+  factory :base, parent: :organization do
+    public true
+    name 'base'
+    login_methods Mumukit::Login::Settings.login_methods
+  end
+
   factory :public_organization, parent: :organization do
     public true
     name 'the-public-org'

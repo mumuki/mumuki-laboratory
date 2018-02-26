@@ -7,14 +7,6 @@ Mumukit::Nuntius::EventConsumer.handle do
     User.import_from_json! clean_payload(payload, :user)
   end
 
-  event 'OrganizationCreated' do |payload|
-    Organization.create_from_json! clean_payload(payload, :organization)
-  end
-
-  event 'OrganizationChanged' do |payload|
-    Organization.update_from_json! clean_payload(payload, :organization)
-  end
-
   event 'InvitationCreated' do |payload|
     Invitation.import_from_json! payload.deep_symbolize_keys[:invitation]
   end

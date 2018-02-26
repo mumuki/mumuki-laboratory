@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe '#event_json' do
+describe '#as_platform_json' do
   describe Assignment do
     let(:user) { create(:user, id: 2, email: 'foo@bar.com', name: 'foo', provider: 'auth0', social_id: 'github|gh1234') }
     describe 'lesson type' do
@@ -26,7 +26,7 @@ describe '#event_json' do
 
       it { expect(lesson.number).to eq 4 }
       it do
-        expect(assignment.event_json).to json_like(
+        expect(assignment.as_platform_json).to json_like(
                            status: :passed,
                            result: nil,
                            expectation_results: nil,
@@ -84,7 +84,7 @@ describe '#event_json' do
                                 submission_id: 'abcd1234',
                                 exercise: exercise) }
       it do
-        expect(assignment.event_json).to json_like(
+        expect(assignment.as_platform_json).to json_like(
                            status: :passed,
                            result: nil,
                            expectation_results: nil,
@@ -138,7 +138,7 @@ describe '#event_json' do
                                 exercise: exercise) }
 
       it do
-        expect(assignment.event_json).to json_like(
+        expect(assignment.as_platform_json).to json_like(
                            status: :passed,
                            result: nil,
                            expectation_results: nil,

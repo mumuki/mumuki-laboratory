@@ -12,7 +12,18 @@ describe Organization do
 
   describe 'defaults' do
     let(:fresh_organization) { create(:organization, name: 'bar') }
-    it { expect(fresh_organization.settings.customized_login_methods?).to be true }
+
+    context 'no base organization' do
+      it { expect(fresh_organization.settings.customized_login_methods?).to be true }
+      it { expect(fresh_organization.theme_stylesheet).to eq nil }
+    end
+
+    context 'with base organization' do
+      before { create(:base, theme_stylesheet: '.foo { width: 100%; }') }
+
+      it { expect(fresh_organization.settings.customized_login_methods?).to be true }
+      it { expect(fresh_organization.theme_stylesheet).to eq '.foo { width: 100%; }' }
+    end
   end
 
   describe '#notify_recent_assignments!' do
@@ -75,21 +86,6 @@ describe Organization do
 
   describe 'validations' do
     let(:book) { create :book }
-
-    def organization_with_name(name)
-      Organization.new name: name, contact_email: 'a@a.com', locale: 'es', book: book
-    end
-
-    describe 'organization name' do
-      it { expect(build(:public_organization).valid?).to be true }
-      it { expect(organization_with_name('a.name').valid?).to be true }
-      it { expect(organization_with_name('a.name.with.subdomains').valid?).to be true }
-      it { expect(organization_with_name('.a.name.that.starts.with.period').valid?).to be false }
-      it { expect(organization_with_name('a.name.that.ends.with.period.').valid?).to be false }
-      it { expect(organization_with_name('a.name.that..has.two.periods.in.a.row').valid?).to be false }
-      it { expect(organization_with_name('a.name.with.Uppercases').valid?).to be false }
-      it { expect(organization_with_name('A random name').valid?).to be false }
-    end
 
     context 'is valid when all is ok' do
       let(:organization) { build :public_organization }

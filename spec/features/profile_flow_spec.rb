@@ -72,7 +72,7 @@ feature 'Standard Flow' do
 
     context 'with organizations and messages' do
       scenario 'visit organizations tab' do
-        user.make_student_of! organization.slug
+        user.make_student_of! organization
         user.save!
         visit "/user#organizations"
 

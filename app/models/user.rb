@@ -1,9 +1,10 @@
 class User < ApplicationRecord
   include WithProfile,
-          WithPermissions,
           WithUserNavigation,
           WithReminders,
-          Mumukit::Login::UserPermissionsHelpers
+          Mumukit::Platform::User::Helpers
+
+  serialize :permissions, Mumukit::Auth::Permissions
 
   has_many :assignments, foreign_key: :submitter_id
 
@@ -25,21 +26,6 @@ class User < ApplicationRecord
   has_many :exam_authorizations
 
   after_initialize :init
-
-  def notify!
-    Mumukit::Nuntius.notify_event! 'UserChanged', user: event_json
-  end
-
-  def profile_completed?
-    first_name.present? && last_name.present?
-  end
-
-  def event_json
-    as_json(
-      only: [:uid, :social_id, :image_url, :email, :first_name, :last_name],
-      methods: [:permissions])
-    .compact
-  end
 
   def last_lesson
     last_guide.try(:lesson)
@@ -105,18 +91,6 @@ class User < ApplicationRecord
     User.where(uid: body[:uid]).update_or_create!(body.except(:id))
   end
 
-  def main_organization
-    accessible_organizations.first
-  end
-
-  def has_main_organization?
-    accessible_organizations.length == 1
-  end
-
-  def has_immersive_main_organization?
-    has_main_organization? && main_organization.immersive?
-  end
-
   def unsubscribe_from_reminders!
     update! accepts_reminders: false
   end
@@ -125,10 +99,13 @@ class User < ApplicationRecord
     Rails.application.message_verifier(:unsubscribe)
   end
 
+  def notify!
+    Mumukit::Nuntius.notify_event! 'UserChanged', user: as_platform_json
+  end
+
   private
 
   def init
     self.image_url ||= "user_shape.png"
   end
-
 end

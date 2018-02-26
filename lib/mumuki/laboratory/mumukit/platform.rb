@@ -1,8 +1,21 @@
 require 'mumukit/platform'
 
 Mumukit::Platform.configure do |config|
+  # User class must understand
+  #     find_by_uid!
+  #     for_profile
+  config.user_class_name = 'User'
+
+  # Organization class must understand
+  #     find_by_name!
+  config.organization_class_name = 'Organization'
+
   config.application = Mumukit::Platform.laboratory
   config.web_framework = Mumukit::Platform::WebFramework::Rails
+end
+
+class Mumuki::Laboratory::Engine < ::Rails::Engine
+  config.i18n.available_locales = Mumukit::Platform::Locale.supported
 end
 
 module Mumukit::Platform::OrganizationMapping::Path
@@ -19,19 +32,3 @@ module Mumukit::Platform::OrganizationMapping::Path
     end
   end
 end
-
-class Mumukit::Platform::Organization::Settings < Mumukit::Platform::Model
-  def login_settings
-    @login_settings ||= Mumukit::Login::Settings.new(login_methods)
-  end
-
-  def customized_login_methods?
-    login_methods.size < Mumukit::Login::Settings.login_methods.size
-  end
-
-  def inconsistent_public_login?
-    customized_login_methods? && public?
-  end
-end
-
-

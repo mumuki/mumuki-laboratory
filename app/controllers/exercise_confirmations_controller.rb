@@ -1,5 +1,5 @@
 class ExerciseConfirmationsController < AjaxController
-  include NestedInExercise
+  include Mumuki::Laboratory::Controllers::NestedInExercise
 
   def create
     result = @exercise.submit_confirmation! current_user

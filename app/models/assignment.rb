@@ -83,7 +83,7 @@ class Assignment < ApplicationRecord
   end
 
   def notify!
-    Mumukit::Nuntius.notify! 'submissions', event_json unless Organization.current.silent?
+    Mumukit::Nuntius.notify! 'submissions', as_platform_json unless Organization.current.silent?
   end
 
   def notify_to_accessible_organizations!
@@ -112,7 +112,7 @@ class Assignment < ApplicationRecord
     define_method(name) { |params| exercise.send name, params.merge(extra: extra) }
   end
 
-  def event_json
+  def as_platform_json
     navigable_parent = exercise.navigable_parent
     as_json(except: [:exercise_id, :submission_id, :id, :submitter_id, :solution, :created_at, :updated_at],
               include: {

@@ -17,18 +17,6 @@ module ApplicationHelper
     "<div class=\"text-center\">#{super(object, {theme: 'twitter-bootstrap-3'}.merge(options))}</div>".html_safe
   end
 
-  def link_to_tag_list(tags)
-    tags.map { |tag| link_to "##{tag}", exercises_path(q: tag) }.join(', ').html_safe
-  end
-
-  def active_if(expected, current=@current_tab)
-    'class="active"'.html_safe if expected == current
-  end
-
-  def time_ago_in_words_or_never(date)
-    date ? time_ago_in_words(date) : t(:never)
-  end
-
   def corollary_box(with_corollary)
     if with_corollary.corollary.present?
       %Q{

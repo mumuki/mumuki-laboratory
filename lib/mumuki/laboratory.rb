@@ -2,6 +2,8 @@ require 'mumukit/core'
 
 I18n.load_translations_path File.join(__dir__, 'laboratory', 'locales', '*.yml')
 
+require 'mumuki/laboratory/engine'
+
 module Mumuki
   module Laboratory
   end
@@ -20,3 +22,4 @@ require_relative './laboratory/extensions'
 require_relative './laboratory/exceptions'
 require_relative './laboratory/status'
 require_relative './laboratory/evaluation'
+require_relative './laboratory/controllers'

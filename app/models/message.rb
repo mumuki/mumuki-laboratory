@@ -8,10 +8,10 @@ class Message < ApplicationRecord
   markdown_on :content
 
   def notify!
-    Mumukit::Nuntius.notify! 'student-messages', event_json
+    Mumukit::Nuntius.notify! 'student-messages', as_platform_json
   end
 
-  def event_json
+  def as_platform_json
     as_json(except: [:id, :type],
             include: {exercise: {only: [:bibliotheca_id]}})
       .merge(organization: Organization.current.name)

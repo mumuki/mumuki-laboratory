@@ -1,22 +1,19 @@
 class ApplicationController < ActionController::Base
   Mumukit::Login.configure_controller! self
 
-  include WithOrganization
+  include Mumuki::Laboratory::Controllers::CurrentOrganization
+  include Mumukit::Login::AuthenticationHelpers
 
-  include WithAuthentication
-  include WithAuthorization
-  include WithMessagesNotification
-  include WithCustomAssets
-  include Accessible
-  include WithDynamicErrors
-  include WithOrganizationChooser
+  include Mumuki::Laboratory::Controllers::Authorization
+  include Mumuki::Laboratory::Controllers::Messages
+  include Mumuki::Laboratory::Controllers::DynamicErrors
 
   before_action :set_current_organization!
   before_action :set_locale!
   before_action :redirect_to_main_organization!, if: :should_redirect_to_main_organization?
   before_action :authorize_if_private!
   before_action :validate_user_profile!, if: :current_user?
-  before_action :validate_subject_accessible!
+  before_action :validate_used_here!
   before_action :visit_organization!, if: :current_user?
 
   helper_method :login_button,
@@ -33,6 +30,27 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_main_organization!
     redirect_to current_user.main_organization.url_for(request.path)
+  end
+
+  def should_choose_organization?
+    current_user? &&
+      current_user.has_accessible_organizations? &&
+      Mumukit::Platform.implicit_organization?(request)
+  end
+
+  # ensures contents are in current organization's path
+  def validate_used_here!
+    raise Mumuki::Laboratory::NotFoundError if subject && !subject.used_in?(Organization.current)
+  end
+
+  # ensures contents are accessible to current user
+  def validate_accessible!
+    accessible_subject.validate_accessible_for!(current_user) unless (current_user? && current_user.teacher_here?)
+  end
+
+  # required by Mumukit::Login
+  def login_button(options={})
+    login_form.button_html I18n.t(:sign_in), options[:class]
   end
 
   private
