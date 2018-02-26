@@ -1,5 +1,4 @@
 class Query < Submission
-  include ConsoleSubmission
   attr_accessor :query, :cookie, :content
 
   def try_evaluate_exercise!(assignment)

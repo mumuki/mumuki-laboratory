@@ -1,5 +1,4 @@
-class Try < PersistentSubmission
-  include ConsoleSubmission
+class Try < Submission
   attr_accessor :query, :cookie
 
   def try_evaluate_exercise!(assignment)
