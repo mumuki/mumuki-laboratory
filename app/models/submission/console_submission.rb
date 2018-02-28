@@ -6,7 +6,7 @@ class ConsoleSubmission < Submission
   end
 
   def format_query_result!(results)
-    results[:result] = I18n.t(:try_again) if results[:status] == :errored
+    results[:result] = I18n.t(:try_again) if results[:status] == :aborted
     results[:status] = results[:status].to_mumuki_status
     results
   end
