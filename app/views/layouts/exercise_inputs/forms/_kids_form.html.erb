@@ -1,9 +1,17 @@
-<%= form_for([@exercise, @solution],
-             remote: true,
-             html: {role: 'form', class: 'new_solution mu-editor mu-editor-overlap'}) do |f| %>
+<% if current_user? %>
+  <%= form_for([@exercise, @solution],
+               remote: true,
+               html: {role: 'form', class: 'new_solution mu-editor mu-editor-overlap'}) do |f| %>
     <%= render_exercise_input_editor f, @exercise %>
 
     <div class="actions mu-kids-submit-button">
       <%= render_submit_button(@exercise) %>
     </div>
+  <% end %>
+<% else %>
+  <p><%= t :you_must_sign_in_before_submitting %></p>
+
+  <div class="actions">
+    <%= login_button class: 'btn btn-success btn-block' %>
+  </div>
 <% end %>
