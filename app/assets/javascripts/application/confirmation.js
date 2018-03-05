@@ -1,9 +1,13 @@
 mumuki.load(function () {
   $('.btn-confirmation').on('click change', function (evt) {
-    $.ajax({
+    var token = new mumuki.CsrfToken();
+
+    $.ajax(token.newRequest({
       method: 'POST',
-      url: $(this).data('confirmation-url')
-    });
+      url: $(this).data('confirmation-url'),
+      xhrFields: {withCredentials: true}
+    }));
+
     return true;
   });
 });
