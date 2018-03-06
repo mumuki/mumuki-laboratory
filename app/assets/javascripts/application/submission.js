@@ -14,6 +14,7 @@ var mumuki = mumuki || {};
     },
     success: function (data, submitButton) {
       this.submissionsResultsArea.html(data.html);
+      mumuki.showKidsResult(data);
       data.status === 'aborted' ? this.error(submitButton) : submitButton.enable();
       mumuki.updateProgressBarAndShowModal(data);
     },

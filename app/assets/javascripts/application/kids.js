@@ -67,4 +67,10 @@ mumuki.load(function () {
     $($speechParagraphs[++currentParagraphIndex]).show();
     if ($speechParagraphs.length - 1 === currentParagraphIndex) $nextSpeech.hide();
   }
+
+  mumuki.showKidsResult = function(data){
+    if(data.guide_finished_by_solution) return;
+    var results_kids_modal = $('#kids-results');
+    if(results_kids_modal) results_kids_modal.modal();
+  }
 });
