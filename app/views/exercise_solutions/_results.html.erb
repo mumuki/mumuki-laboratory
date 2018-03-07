@@ -35,6 +35,7 @@
                 </div>
             <% end %>
             <div id="results-section" class="<%= 'collapse' if render_feedback?(assignment) %> results-item">
+              <%= showable_tips_html assignment %>
               <%= render_test_results assignment %>
             </div>
           </div>

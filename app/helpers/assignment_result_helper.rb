@@ -55,6 +55,10 @@ module AssignmentResultHelper
     end
   end
 
+  def showable_tips_html(assignment)
+    Mumukit::ContentType::Markdown.to_html assignment.showable_tips.map { |tip| "* #{tip}" }.join "\n"
+  end
+
   private
 
   def solution_octet_data(assignment)
