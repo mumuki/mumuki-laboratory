@@ -14,6 +14,8 @@ class Exercise < ApplicationRecord
 
   belongs_to :guide
 
+  serialize :progressive_tips, Array
+
   defaults { self.submissions_count = 0 }
 
   validates_presence_of :submissions_count,
