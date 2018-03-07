@@ -31,7 +31,9 @@ class Submission
   end
 
   def save_results!(results, assignment)
-    assignment.update! results
+    assignment.failed_submissions_count += 1 unless results[:status] == :passed
+    assignment.update results
+    assignment.save!
   end
 
   def notify_results!(results, assignment)
