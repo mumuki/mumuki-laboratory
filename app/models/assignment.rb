@@ -97,9 +97,9 @@ class Assignment < ApplicationRecord
     Assignment.find_by(submission_id: teacher_evaluation[:submission_id])&.evaluate_manually! teacher_evaluation
   end
 
-  def content=(content)
-    if content.present?
-      self.submittable_solution = exercise.single_choice? ? exercise.choices.index(content) : content
+  def solution=(solution)
+    if solution.present?
+      self.user_solution = exercise.single_choice? ? exercise.choices.index(solution) : solution
     end
   end
 
@@ -108,7 +108,7 @@ class Assignment < ApplicationRecord
   end
 
   def solution
-    user_solution || submittable_solution
+    submittable_solution || user_solution
   end
 
   %w(query try tests).each do |key|
@@ -132,7 +132,7 @@ class Assignment < ApplicationRecord
         'organization' => Organization.current.name,
         'sid' => submission_id,
         'created_at' => updated_at,
-        'content' => submittable_solution,
+        'content' => solution,
         'exercise' => {
           'eid' => exercise.bibliotheca_id
         },
