@@ -27,16 +27,16 @@ $kids-speech-background-color: #f4f6fb;
   }
 
   .mu-kids-character,
-  .mu-kids-gbs-board-expected,
-  .mu-kids-gbs-board-actual {
+  .mu-kids-gbs-board-initial,
+  .mu-kids-gbs-board-expected {
     padding: 15px;
   }
   .mu-kids-blocks,
-  .mu-kids-gbs-board-actual {
+  .mu-kids-gbs-board-expected {
     margin-top: 15px;
   }
-  .mu-kids-gbs-board-expected,
-  .mu-kids-gbs-board-actual {
+  .mu-kids-gbs-board-initial,
+  .mu-kids-gbs-board-expected {
     height: calc(#{$kids-height} / 2 - 15px);
   }
   .mu-kids-character {
