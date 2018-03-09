@@ -30,6 +30,11 @@ module ExerciseInputHelper
        </#{options.tag}>}.html_safe
   end
 
+  def render_custom_editor(exercise)
+    custom_editor_tag = "mu-#{exercise.language}-custom-editor"
+    "<#{custom_editor_tag}> </#{custom_editor_tag}>".html_safe
+  end
+
   def exercise_container_type
     @exercise&.input_kids? ? 'container-fluid' : 'container'
   end
