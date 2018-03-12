@@ -166,13 +166,14 @@ $kids-speech-background-color: #f4f6fb;
 
   .mu-kids-blocks {
     form,
-    #custom-editor,
+    [id*="custom-editor"],
     gs-element-blockly,
-    #blocklyDiv {
-      min-width: 100%;
-      min-height: 100%;
-      width: 100%;
-      height: 100%;
+    #blocklyDiv,
+    .blocklySvg {
+      min-width: 100% !important;
+      min-height: 100% !important;
+      width: 100% !important;
+      height: 100% !important;
     }
     gs-element-blockly {
       padding: 0;
@@ -186,6 +187,15 @@ $kids-speech-background-color: #f4f6fb;
       fill: $kids-speech-background-color !important;
       stroke: $kids-speech-border-color !important;
       stroke-width: 1px !important;
+    }
+    .blocklyScrollbarVertical {
+      right: 0 !important;
+      transform: unset !important;
+    }
+    .blocklyScrollbarHorizontal {
+      right: 15px !important;
+      transform: translateY(0) !important;
+      bottom: 0 !important;
     }
     .blocklyToolboxDiv {
       background-color: $kids-speech-background-color !important;
