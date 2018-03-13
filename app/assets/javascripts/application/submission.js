@@ -58,19 +58,24 @@ var mumuki = mumuki || {};
     var resultsBox = new ResultsBox(submissionsResults);
     var submitButton = new SubmitButton();
 
-    $('form.new_solution').on('ajax:beforeSend', function (event) {
+    var bridge = new mumuki.bridge.Laboratory;
+
+    $('.btn-submit').on('click', function () {
       submitButton.disable();
       resultsBox.waiting();
-    }).on('ajax:complete', function (event) {
-      $(document).renderMuComponents();
-      resultsBox.done();
-      $('#messages-tab').removeClass('hidden');
-    }).on('ajax:success', function (event) {
-      var data = event.detail[0];
-      resultsBox.success(data, submitButton);
-    }).on('ajax:error', function (event) {
-      resultsBox.error(submitButton);
+
+      var solutionContent = mumuki.editor.getContent();
+
+      bridge.runTests(solutionContent).always(function () {
+        $(document).renderMuComponents();
+        resultsBox.done();
+      }).done(function (data) {
+        resultsBox.success(data, submitButton);
+      }).fail(function () {
+        resultsBox.error(submitButton);
+      });
     });
+
   });
 
   function animateTimeoutError(submitButton) {
