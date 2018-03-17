@@ -1,5 +1,303 @@
 # Change Log
 
+## [v4.14.1](https://github.com/mumuki/mumuki-laboratory/tree/v4.14.1) (2018-03-05)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.14.0...v4.14.1)
+
+**Closed issues:**
+
+- Reading exercise is not working [\#958](https://github.com/mumuki/mumuki-laboratory/issues/958)
+- Render test results on the client [\#944](https://github.com/mumuki/mumuki-laboratory/issues/944)
+
+**Merged pull requests:**
+
+- Add CSRF Token to confirmation headers [\#959](https://github.com/mumuki/mumuki-laboratory/pull/959) ([julian-berbel](https://github.com/julian-berbel))
+- Updating bridge version and establishing connection on puma worker boot [\#954](https://github.com/mumuki/mumuki-laboratory/pull/954) ([luchotc](https://github.com/luchotc))
+- Feature structurize server response [\#948](https://github.com/mumuki/mumuki-laboratory/pull/948) ([julian-berbel](https://github.com/julian-berbel))
+- Convert into an engine and remove office integrations [\#915](https://github.com/mumuki/mumuki-laboratory/pull/915) ([flbulgarelli](https://github.com/flbulgarelli))
+
+## [v4.14.0](https://github.com/mumuki/mumuki-laboratory/tree/v4.14.0) (2018-02-22)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.13.7...v4.14.0)
+
+**Closed issues:**
+
+- Improve or be able to customize the error pages [\#929](https://github.com/mumuki/mumuki-laboratory/issues/929)
+- Animations are always being reloaded [\#909](https://github.com/mumuki/mumuki-laboratory/issues/909)
+- Usar nuevos diseños de personajes [\#907](https://github.com/mumuki/mumuki-laboratory/issues/907)
+
+**Merged pull requests:**
+
+- Feature issue\#929 customize error screens [\#946](https://github.com/mumuki/mumuki-laboratory/pull/946) ([julian-berbel](https://github.com/julian-berbel))
+- Update 'passed' translations [\#945](https://github.com/mumuki/mumuki-laboratory/pull/945) ([aguspina](https://github.com/aguspina))
+- changing turbolinks-track to new syntax [\#937](https://github.com/mumuki/mumuki-laboratory/pull/937) ([luchotc](https://github.com/luchotc))
+- New errors images [\#910](https://github.com/mumuki/mumuki-laboratory/pull/910) ([fedescarpa](https://github.com/fedescarpa))
+
+## [v4.13.7](https://github.com/mumuki/mumuki-laboratory/tree/v4.13.7) (2018-02-08)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.13.6...v4.13.7)
+
+**Closed issues:**
+
+- Error when finishing expression with ; \(javascript console\) [\#935](https://github.com/mumuki/mumuki-laboratory/issues/935)
+- Console not working in mobile browsers [\#918](https://github.com/mumuki/mumuki-laboratory/issues/918)
+
+**Merged pull requests:**
+
+- updating jquery-console asset with fix for mobile browsers [\#936](https://github.com/mumuki/mumuki-laboratory/pull/936) ([luchotc](https://github.com/luchotc))
+- Never notifying permissions [\#933](https://github.com/mumuki/mumuki-laboratory/pull/933) ([flbulgarelli](https://github.com/flbulgarelli))
+
+## [v4.13.6](https://github.com/mumuki/mumuki-laboratory/tree/v4.13.6) (2018-02-07)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.13.5...v4.13.6)
+
+**Merged pull requests:**
+
+- Fixing dead input in android devices [\#934](https://github.com/mumuki/mumuki-laboratory/pull/934) ([luchotc](https://github.com/luchotc))
+
+## [v4.13.5](https://github.com/mumuki/mumuki-laboratory/tree/v4.13.5) (2018-02-06)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.13.4...v4.13.5)
+
+**Closed issues:**
+
+- Resetting guide progress throws 500 error [\#928](https://github.com/mumuki/mumuki-laboratory/issues/928)
+- Tabs and clues not working in Firefox v. 58  [\#927](https://github.com/mumuki/mumuki-laboratory/issues/927)
+- Portuguese submissions are always passing [\#925](https://github.com/mumuki/mumuki-laboratory/issues/925)
+- Editor gutter is broken when gobstones assets are loaded [\#920](https://github.com/mumuki/mumuki-laboratory/issues/920)
+- Runners assets are always being reloaded [\#908](https://github.com/mumuki/mumuki-laboratory/issues/908)
+- Organization's extension assets are always being reloaded  [\#884](https://github.com/mumuki/mumuki-laboratory/issues/884)
+- Sometimes the user data is requested twice after joining to a course [\#862](https://github.com/mumuki/mumuki-laboratory/issues/862)
+
+**Merged pull requests:**
+
+- remove nil fields on assign\_attributes [\#932](https://github.com/mumuki/mumuki-laboratory/pull/932) ([julian-berbel](https://github.com/julian-berbel))
+- fixing 500 error when resetting guide progress [\#931](https://github.com/mumuki/mumuki-laboratory/pull/931) ([luchotc](https://github.com/luchotc))
+- replacing webcomponets for webcomponents-lite [\#930](https://github.com/mumuki/mumuki-laboratory/pull/930) ([luchotc](https://github.com/luchotc))
+- Chore move status to lib [\#919](https://github.com/mumuki/mumuki-laboratory/pull/919) ([flbulgarelli](https://github.com/flbulgarelli))
+
+## [v4.13.4](https://github.com/mumuki/mumuki-laboratory/tree/v4.13.4) (2018-02-02)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.13.3...v4.13.4)
+
+**Closed issues:**
+
+- laboratory's styles are breaking gobstones styles [\#923](https://github.com/mumuki/mumuki-laboratory/issues/923)
+- Gobstones portuguese syntax is not properly highlighted [\#922](https://github.com/mumuki/mumuki-laboratory/issues/922)
+
+## [v4.13.3](https://github.com/mumuki/mumuki-laboratory/tree/v4.13.3) (2018-02-01)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.13.2...v4.13.3)
+
+**Closed issues:**
+
+- Set action mailer port through environment variable [\#914](https://github.com/mumuki/mumuki-laboratory/issues/914)
+- Mailing environment variables should be set in environment files and not application.rb [\#912](https://github.com/mumuki/mumuki-laboratory/issues/912)
+- Disable mailing feature if env variables are not set [\#911](https://github.com/mumuki/mumuki-laboratory/issues/911)
+
+**Merged pull requests:**
+
+- adding locale for central organization in seeds file [\#917](https://github.com/mumuki/mumuki-laboratory/pull/917) ([luchotc](https://github.com/luchotc))
+- Reminder mailing refactor [\#916](https://github.com/mumuki/mumuki-laboratory/pull/916) ([julian-berbel](https://github.com/julian-berbel))
+- Feature platform 0.8 [\#913](https://github.com/mumuki/mumuki-laboratory/pull/913) ([flbulgarelli](https://github.com/flbulgarelli))
+
+## [v4.13.2](https://github.com/mumuki/mumuki-laboratory/tree/v4.13.2) (2018-01-25)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.13.1...v4.13.2)
+
+**Merged pull requests:**
+
+- Feature reminder mailing [\#905](https://github.com/mumuki/mumuki-laboratory/pull/905) ([julian-berbel](https://github.com/julian-berbel))
+
+## [v4.13.1](https://github.com/mumuki/mumuki-laboratory/tree/v4.13.1) (2018-01-25)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.13.0...v4.13.1)
+
+## [v4.13.0](https://github.com/mumuki/mumuki-laboratory/tree/v4.13.0) (2018-01-25)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.12.0...v4.13.0)
+
+**Closed issues:**
+
+- Links in flash notices look pretty bad [\#904](https://github.com/mumuki/mumuki-laboratory/issues/904)
+- Soporte para bloques [\#898](https://github.com/mumuki/mumuki-laboratory/issues/898)
+- ERD & Tables are not being properly displayed [\#895](https://github.com/mumuki/mumuki-laboratory/issues/895)
+- Add brazil's portuguese i18n [\#886](https://github.com/mumuki/mumuki-laboratory/issues/886)
+- We need to be able to parameterize the og:image to each organization [\#877](https://github.com/mumuki/mumuki-laboratory/issues/877)
+
+**Merged pull requests:**
+
+- Feature autoredirect users with one organization [\#903](https://github.com/mumuki/mumuki-laboratory/pull/903) ([julian-berbel](https://github.com/julian-berbel))
+- Chore notification improvements [\#900](https://github.com/mumuki/mumuki-laboratory/pull/900) ([flbulgarelli](https://github.com/flbulgarelli))
+- Custom editors support [\#899](https://github.com/mumuki/mumuki-laboratory/pull/899) ([rodri042](https://github.com/rodri042))
+- Feature lib [\#897](https://github.com/mumuki/mumuki-laboratory/pull/897) ([flbulgarelli](https://github.com/flbulgarelli))
+- Chore rails 5 defaults [\#896](https://github.com/mumuki/mumuki-laboratory/pull/896) ([flbulgarelli](https://github.com/flbulgarelli))
+- Chore cleanup [\#893](https://github.com/mumuki/mumuki-laboratory/pull/893) ([flbulgarelli](https://github.com/flbulgarelli))
+- Adding banner, favicon, og and breadcrumb url image support for each organization [\#892](https://github.com/mumuki/mumuki-laboratory/pull/892) ([luchotc](https://github.com/luchotc))
+- Issue\#886 add portuguese i18n [\#891](https://github.com/mumuki/mumuki-laboratory/pull/891) ([julian-berbel](https://github.com/julian-berbel))
+
+## [v4.12.0](https://github.com/mumuki/mumuki-laboratory/tree/v4.12.0) (2018-01-08)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.11.0...v4.12.0)
+
+**Closed issues:**
+
+- HTML and Java highlight is not working [\#885](https://github.com/mumuki/mumuki-laboratory/issues/885)
+- Add edit link in each exercise  [\#880](https://github.com/mumuki/mumuki-laboratory/issues/880)
+- Editor does not replace tabs with spaces [\#879](https://github.com/mumuki/mumuki-laboratory/issues/879)
+- Parametrize brand icon in breadcrumb by Organization [\#849](https://github.com/mumuki/mumuki-laboratory/issues/849)
+
+**Merged pull requests:**
+
+- adding exercise link to bibliotheca [\#889](https://github.com/mumuki/mumuki-laboratory/pull/889) ([luchotc](https://github.com/luchotc))
+- Move alias-modes to application and wrap it in mumuki.load [\#888](https://github.com/mumuki/mumuki-laboratory/pull/888) ([julian-berbel](https://github.com/julian-berbel))
+- Issue\#879 tabs to spaces [\#887](https://github.com/mumuki/mumuki-laboratory/pull/887) ([luchotc](https://github.com/luchotc))
+
+## [v4.11.0](https://github.com/mumuki/mumuki-laboratory/tree/v4.11.0) (2018-01-02)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.10.0...v4.11.0)
+
+**Merged pull requests:**
+
+- update mumuki styles version to use mu components renderization [\#883](https://github.com/mumuki/mumuki-laboratory/pull/883) ([fedescarpa](https://github.com/fedescarpa))
+- updating readme and devstart script [\#882](https://github.com/mumuki/mumuki-laboratory/pull/882) ([luchotc](https://github.com/luchotc))
+- Removing unused keys [\#881](https://github.com/mumuki/mumuki-laboratory/pull/881) ([flbulgarelli](https://github.com/flbulgarelli))
+- Runner assets [\#878](https://github.com/mumuki/mumuki-laboratory/pull/878) ([rodri042](https://github.com/rodri042))
+
+## [v4.10.0](https://github.com/mumuki/mumuki-laboratory/tree/v4.10.0) (2017-12-27)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.9.1...v4.10.0)
+
+**Implemented enhancements:**
+
+- Generalize previousSolution interpolation [\#656](https://github.com/mumuki/mumuki-laboratory/issues/656)
+
+**Closed issues:**
+
+- Home view should display both the organization and book descriptions [\#874](https://github.com/mumuki/mumuki-laboratory/issues/874)
+- Dropdowns are not working [\#869](https://github.com/mumuki/mumuki-laboratory/issues/869)
+- Profile picture cursor should be a clickeable hand [\#868](https://github.com/mumuki/mumuki-laboratory/issues/868)
+- Move vendor js code to vendor folder [\#858](https://github.com/mumuki/mumuki-laboratory/issues/858)
+- Single choice selected answer not showing up [\#843](https://github.com/mumuki/mumuki-laboratory/issues/843)
+- Multiple and single choice bugs [\#837](https://github.com/mumuki/mumuki-laboratory/issues/837)
+- Multiple editors support [\#711](https://github.com/mumuki/mumuki-laboratory/issues/711)
+
+**Merged pull requests:**
+
+- Fix static\_assests, headers and redirect\_back [\#876](https://github.com/mumuki/mumuki-laboratory/pull/876) ([flbulgarelli](https://github.com/flbulgarelli))
+- Displaying organization description [\#875](https://github.com/mumuki/mumuki-laboratory/pull/875) ([flbulgarelli](https://github.com/flbulgarelli))
+- Issue\#656 generalize previous solution interpolation [\#872](https://github.com/mumuki/mumuki-laboratory/pull/872) ([julian-berbel](https://github.com/julian-berbel))
+- moving fonts to public [\#871](https://github.com/mumuki/mumuki-laboratory/pull/871) ([fedescarpa](https://github.com/fedescarpa))
+- Feature multifile model [\#867](https://github.com/mumuki/mumuki-laboratory/pull/867) ([fedescarpa](https://github.com/fedescarpa))
+- Removing content import http [\#866](https://github.com/mumuki/mumuki-laboratory/pull/866) ([flbulgarelli](https://github.com/flbulgarelli))
+- Feature rails5 [\#865](https://github.com/mumuki/mumuki-laboratory/pull/865) ([flbulgarelli](https://github.com/flbulgarelli))
+- Fix codemirror requires [\#864](https://github.com/mumuki/mumuki-laboratory/pull/864) ([julian-berbel](https://github.com/julian-berbel))
+- Move vendor code to vendor folder [\#863](https://github.com/mumuki/mumuki-laboratory/pull/863) ([julian-berbel](https://github.com/julian-berbel))
+- Chore gems cleanup [\#860](https://github.com/mumuki/mumuki-laboratory/pull/860) ([flbulgarelli](https://github.com/flbulgarelli))
+
+## [v4.9.1](https://github.com/mumuki/mumuki-laboratory/tree/v4.9.1) (2017-11-23)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.9.0...v4.9.1)
+
+**Fixed bugs:**
+
+- Changing the organization's book breaks navigation [\#807](https://github.com/mumuki/mumuki-laboratory/issues/807)
+
+**Closed issues:**
+
+- Improve error name [\#859](https://github.com/mumuki/mumuki-laboratory/issues/859)
+
+**Merged pull requests:**
+
+- Trigger usages\_reindexing when set books are different to previous ones [\#857](https://github.com/mumuki/mumuki-laboratory/pull/857) ([julian-berbel](https://github.com/julian-berbel))
+- Save solution index instead of value on single choice problems [\#854](https://github.com/mumuki/mumuki-laboratory/pull/854) ([julian-berbel](https://github.com/julian-berbel))
+
+## [v4.9.0](https://github.com/mumuki/mumuki-laboratory/tree/v4.9.0) (2017-11-10)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.8.0...v4.9.0)
+
+**Closed issues:**
+
+- Multiple choice exercise fails on reloading page [\#852](https://github.com/mumuki/mumuki-laboratory/issues/852)
+- Checkboxes and radiobuttons visually buggy [\#847](https://github.com/mumuki/mumuki-laboratory/issues/847)
+- Navigating to a not existing exam should not raise internal server error  [\#747](https://github.com/mumuki/mumuki-laboratory/issues/747)
+- My Profile - need placeholders for empty tabs [\#706](https://github.com/mumuki/mumuki-laboratory/issues/706)
+- Remove solution success rate and exercise success rate [\#700](https://github.com/mumuki/mumuki-laboratory/issues/700)
+
+**Merged pull requests:**
+
+- Mumuki/mumuki platform\#117 feature manual correction [\#856](https://github.com/mumuki/mumuki-laboratory/pull/856) ([fedescarpa](https://github.com/fedescarpa))
+- Run solution set when document finishes loading too [\#853](https://github.com/mumuki/mumuki-laboratory/pull/853) ([julian-berbel](https://github.com/julian-berbel))
+- Change shown result message on choices exercises [\#851](https://github.com/mumuki/mumuki-laboratory/pull/851) ([julian-berbel](https://github.com/julian-berbel))
+- Update mumukit login [\#850](https://github.com/mumuki/mumuki-laboratory/pull/850) ([fedescarpa](https://github.com/fedescarpa))
+- Anchor option to top instead of bottom and change to 6px to better align it [\#848](https://github.com/mumuki/mumuki-laboratory/pull/848) ([julian-berbel](https://github.com/julian-berbel))
+- Issue\#706 empty profile tabs placeholders [\#846](https://github.com/mumuki/mumuki-laboratory/pull/846) ([julian-berbel](https://github.com/julian-berbel))
+- Feature issue\#747 navigating to non existing resources should return 404 [\#845](https://github.com/mumuki/mumuki-laboratory/pull/845) ([julian-berbel](https://github.com/julian-berbel))
+
+## [v4.8.0](https://github.com/mumuki/mumuki-laboratory/tree/v4.8.0) (2017-10-25)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.7.0...v4.8.0)
+
+**Closed issues:**
+
+- Update error images [\#833](https://github.com/mumuki/mumuki-laboratory/issues/833)
+
+**Merged pull requests:**
+
+- Feature interactive integration [\#842](https://github.com/mumuki/mumuki-laboratory/pull/842) ([fedescarpa](https://github.com/fedescarpa))
+- Remove interfering class from solution inclusion checkbox [\#841](https://github.com/mumuki/mumuki-laboratory/pull/841) ([julian-berbel](https://github.com/julian-berbel))
+- Make goal serializable and skip fetching history when no assignments [\#840](https://github.com/mumuki/mumuki-laboratory/pull/840) ([julian-berbel](https://github.com/julian-berbel))
+
+## [v4.7.0](https://github.com/mumuki/mumuki-laboratory/tree/v4.7.0) (2017-10-11)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.6.0...v4.7.0)
+
+**Merged pull requests:**
+
+- Feature errores views [\#839](https://github.com/mumuki/mumuki-laboratory/pull/839) ([fedescarpa](https://github.com/fedescarpa))
+- Feature interactive problems [\#835](https://github.com/mumuki/mumuki-laboratory/pull/835) ([flbulgarelli](https://github.com/flbulgarelli))
+
+## [v4.6.0](https://github.com/mumuki/mumuki-laboratory/tree/v4.6.0) (2017-10-05)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.5.0...v4.6.0)
+
+**Implemented enhancements:**
+
+- students skip the corollary [\#631](https://github.com/mumuki/mumuki-laboratory/issues/631)
+
+**Fixed bugs:**
+
+- Join link is failing with 403 error [\#825](https://github.com/mumuki/mumuki-laboratory/issues/825)
+
+**Closed issues:**
+
+- CodeMirror JS highlight is not consistent with Mumuki's style  [\#826](https://github.com/mumuki/mumuki-laboratory/issues/826)
+- Code Mirror Editor is still troublesome in some mobile devices [\#823](https://github.com/mumuki/mumuki-laboratory/issues/823)
+- Puse una formula que me parecio correcta. [\#808](https://github.com/mumuki/mumuki-laboratory/issues/808)
+- Console seems to take editor into account [\#636](https://github.com/mumuki/mumuki-laboratory/issues/636)
+- Do something about the need help link [\#560](https://github.com/mumuki/mumuki-laboratory/issues/560)
+
+**Merged pull requests:**
+
+- Add hotjar js [\#836](https://github.com/mumuki/mumuki-laboratory/pull/836) ([aguspina](https://github.com/aguspina))
+- Introducing content class [\#834](https://github.com/mumuki/mumuki-laboratory/pull/834) ([flbulgarelli](https://github.com/flbulgarelli))
+- Fix codemirror mobile [\#832](https://github.com/mumuki/mumuki-laboratory/pull/832) ([fedescarpa](https://github.com/fedescarpa))
+- Add reset guide progress button to guide layout [\#831](https://github.com/mumuki/mumuki-laboratory/pull/831) ([julian-berbel](https://github.com/julian-berbel))
+- Cleaup [\#830](https://github.com/mumuki/mumuki-laboratory/pull/830) ([flbulgarelli](https://github.com/flbulgarelli))
+- Fix authorized invitations [\#829](https://github.com/mumuki/mumuki-laboratory/pull/829) ([fedescarpa](https://github.com/fedescarpa))
+- Adding solution inclusion checkbox [\#824](https://github.com/mumuki/mumuki-laboratory/pull/824) ([julian-berbel](https://github.com/julian-berbel))
+
+## [v4.5.0](https://github.com/mumuki/mumuki-laboratory/tree/v4.5.0) (2017-09-15)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.4.4...v4.5.0)
+
+**Fixed bugs:**
+
+- Message tab is shown after a submission is sent [\#794](https://github.com/mumuki/mumuki-laboratory/issues/794)
+- Shift key behaves as backspace on mobile [\#487](https://github.com/mumuki/mumuki-laboratory/issues/487)
+
+**Closed issues:**
+
+- Mejoras a la experiencia móvil [\#820](https://github.com/mumuki/mumuki-laboratory/issues/820)
+- Visually impaired accessibility improvements  [\#813](https://github.com/mumuki/mumuki-laboratory/issues/813)
+- Full screen editor [\#811](https://github.com/mumuki/mumuki-laboratory/issues/811)
+- I can only write numbers in the console from mobile [\#486](https://github.com/mumuki/mumuki-laboratory/issues/486)
+
+**Merged pull requests:**
+
+- Feature improve accessibility for visually impaired users [\#822](https://github.com/mumuki/mumuki-laboratory/pull/822) ([julian-berbel](https://github.com/julian-berbel))
+- Feature \#820 mobile improvements [\#821](https://github.com/mumuki/mumuki-laboratory/pull/821) ([fedescarpa](https://github.com/fedescarpa))
+- Fix extension filter and add extension test [\#816](https://github.com/mumuki/mumuki-laboratory/pull/816) ([julian-berbel](https://github.com/julian-berbel))
+- Replace buggy ace-editor with codemiror [\#814](https://github.com/mumuki/mumuki-laboratory/pull/814) ([aguspina](https://github.com/aguspina))
+
+## [v4.4.4](https://github.com/mumuki/mumuki-laboratory/tree/v4.4.4) (2017-08-30)
+[Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.4.3...v4.4.4)
+
+**Merged pull requests:**
+
+- Issue \#656 generalize previous solution [\#810](https://github.com/mumuki/mumuki-laboratory/pull/810) ([flbulgarelli](https://github.com/flbulgarelli))
+
 ## [v4.4.3](https://github.com/mumuki/mumuki-laboratory/tree/v4.4.3) (2017-08-24)
 [Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.4.2...v4.4.3)
 
