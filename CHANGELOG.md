@@ -8,13 +8,6 @@
 - Reading exercise is not working [\#958](https://github.com/mumuki/mumuki-laboratory/issues/958)
 - Render test results on the client [\#944](https://github.com/mumuki/mumuki-laboratory/issues/944)
 
-**Merged pull requests:**
-
-- Add CSRF Token to confirmation headers [\#959](https://github.com/mumuki/mumuki-laboratory/pull/959) ([julian-berbel](https://github.com/julian-berbel))
-- Updating bridge version and establishing connection on puma worker boot [\#954](https://github.com/mumuki/mumuki-laboratory/pull/954) ([luchotc](https://github.com/luchotc))
-- Feature structurize server response [\#948](https://github.com/mumuki/mumuki-laboratory/pull/948) ([julian-berbel](https://github.com/julian-berbel))
-- Convert into an engine and remove office integrations [\#915](https://github.com/mumuki/mumuki-laboratory/pull/915) ([flbulgarelli](https://github.com/flbulgarelli))
-
 ## [v4.14.0](https://github.com/mumuki/mumuki-laboratory/tree/v4.14.0) (2018-02-22)
 [Full Changelog](https://github.com/mumuki/mumuki-laboratory/compare/v4.13.7...v4.14.0)
 
