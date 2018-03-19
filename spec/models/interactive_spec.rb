@@ -125,4 +125,19 @@ describe Interactive do
     it { expect(assignment.result).to be_blank }
   end
 
+  context 'on aborted try with no query_result' do
+    before do
+      expect(bridge).to receive(:run_try!).and_return({status: :aborted, result: ''})
+    end
+
+    before do
+      interactive.submit_try!(user, query: 'foo')
+    end
+
+    it { expect(assignment.queries).to eq ['foo'] }
+    it { expect(assignment.query_results).to eq [] }
+    it { expect(assignment.status).to eq :aborted }
+    it { expect(assignment.result).to eq 'Oops, something went wrong in Mumuki. Restart the exercise, wait a few seconds and try again.'}
+  end
+
 end

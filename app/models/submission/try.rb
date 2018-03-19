@@ -1,7 +1,7 @@
-class Try < PersistentSubmission
+class Try < ConsoleSubmission
   attr_accessor :query, :cookie
 
-  def try_evaluate_exercise!(assignment)
+  def try_evaluate_query!(assignment)
     assignment.run_try!(query: query, cookie: cookie).except(:response_type)
   end
 
@@ -12,8 +12,9 @@ class Try < PersistentSubmission
   end
 
   def save_results!(results, assignment)
-    assignment.update! status: results[:status],
-                       result: results[:result],
-                       query_results: assignment.query_results.insert_last(results[:query_result])
+    changes = { status: results[:status], result: results[:result] }
+    changes.merge! query_results: assignment.query_results.insert_last(results[:query_result]) if results[:query_result]
+
+    assignment.update! changes
   end
 end
