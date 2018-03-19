@@ -65,8 +65,9 @@ var mumuki = mumuki || {};
       resultsBox.waiting();
 
       var solutionContent = mumuki.editor.getContent();
+      var solution = {content: solutionContent};
 
-      bridge.runTests(solutionContent).always(function () {
+      bridge.runTests(solution).always(function () {
         $(document).renderMuComponents();
         resultsBox.done();
       }).done(function (data) {

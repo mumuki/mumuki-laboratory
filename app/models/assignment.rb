@@ -132,7 +132,7 @@ class Assignment < ApplicationRecord
         'organization' => Organization.current.name,
         'sid' => submission_id,
         'created_at' => updated_at,
-        'content' => solution,
+        'content' => user_solution,
         'exercise' => {
           'eid' => exercise.bibliotheca_id
         },
