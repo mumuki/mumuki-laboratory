@@ -68,12 +68,16 @@ mumuki.load(function () {
     if ($speechParagraphs.length - 1 === currentParagraphIndex) $nextSpeech.hide();
   }
 
+  mumuki.getKidsResultsModal = function () {
+    return $('#kids-results');
+  };
+
   mumuki.showKidsResult = function (data) {
     if (data.guide_finished_by_solution) return;
 
     $(".submission-results").html(data.html);
 
-    var results_kids_modal = $('#kids-results');
+    var results_kids_modal = this.getKidsResultsModal();
     if (results_kids_modal) results_kids_modal.modal();
   }
 });
