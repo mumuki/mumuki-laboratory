@@ -3,8 +3,7 @@
   @stats = @guide.stats_for(current_user)
 %>
 
-
-<div class="bs-callout bs-callout-<%= class_for_status assignment.status %>">
+<div class="<%= (@exercise.input_kids? ? 'mu-kids-callout-' : 'bs-callout bs-callout-') + (class_for_status assignment.status) %>">
 
   <h4>
     <strong><%= fa_icon icon_type_for_status(assignment.status) %> <%= t_assignment_status assignment %></strong>

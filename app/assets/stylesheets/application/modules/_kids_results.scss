@@ -4,3 +4,10 @@
   }
 }
 
+@each $class in success, warning, danger, broken {
+  .mu-kids-callout-#{$class} {
+    h4 {
+      @extend .text-#{$class};
+    }
+  }
+}

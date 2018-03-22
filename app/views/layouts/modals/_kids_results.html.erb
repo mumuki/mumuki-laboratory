@@ -8,12 +8,12 @@
       <div class="modal-body">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-12 text-center">
+            <div class="col-md-12">
               <div class="row">
                 <div class="col-md-12 submission-results">
-                  <% if @assignment&.passed?  %>
-                    <%= render partial: 'exercise_solutions/results',
-                               locals: {assignment: @assignment, guide_finished_by_solution: false} %>
+                  <% if @assignment&.passed? %>
+                      <%= render partial: 'exercise_solutions/results',
+                                 locals: {assignment: @assignment, guide_finished_by_solution: false} %>
                   <% end %>
                 </div>
               </div>
