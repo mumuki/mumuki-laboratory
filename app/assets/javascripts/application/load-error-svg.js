@@ -16,11 +16,8 @@ mumuki.load(function () {
     var url = urlPrefix + imageName + '.svg';
     if (!object[imageName]) {
       $.get(url, function (data) {
-        var duration = parseFloat($(data).find('animate').attr('dur') || 0, 10) * 1000;
-        object[imageName] = {
-          url: url,
-          duration: duration
-        };
+        var duration = parseFloat($('data').find('animate').attr('dur') || 0, 10) * 1000;
+        object[imageName] = new mumuki.State(image, url, duration);
       });
     }
   }

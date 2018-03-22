@@ -235,6 +235,28 @@ mumuki.load(function () {
 
   mumuki.kids.submitButton = _createSubmitButton();
 
+  function showPrevParagraph() {
+    $nextSpeech.show();
+    animateSpeech();
+    $($speechParagraphs[--currentParagraphIndex]).show();
+    if (currentParagraphIndex === 0) $prevSpeech.hide();
+  }
+
+  function showNextParagraph() {
+    $prevSpeech.show();
+    animateSpeech();
+    $($speechParagraphs[++currentParagraphIndex]).show();
+    if ($speechParagraphs.length - 1 === currentParagraphIndex) $nextSpeech.hide();
+  }
+
+  function animateSpeech() {
+    var ch = new mumuki.Character(document.getElementById('mu-kids-character-animation'));
+    ch.addState(mumuki.animations.talk.onEndSwitch(ch, 'idle'))
+      .addState(mumuki.animations.idle.onEndSwitch(ch, 'jump'))
+      .addState(mumuki.animations.jump.onEnd(animateSpeech))
+      .play();
+  }
+
   mumuki.showKidsResult = function (data) {
     mumuki.updateProgressBarAndShowModal(data);
     if (data.guide_finished_by_solution) return;
