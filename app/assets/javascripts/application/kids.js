@@ -43,6 +43,8 @@ mumuki.load(function () {
   var $prevSpeech = $('.mu-kids-character-speech-bubble > .mu-kids-prev-speech').hide();
   var $nextSpeech = $('.mu-kids-character-speech-bubble > .mu-kids-next-speech');
 
+  if ($speechParagraphs.length <= 1) $nextSpeech.hide();
+
   $nextSpeech.click(function () {
     hideCurrentParagraph();
     showNextParagraph();

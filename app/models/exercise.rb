@@ -114,6 +114,18 @@ class Exercise < ApplicationRecord
     Mumukit::Platform.classroom_api.organic_url_for(Organization.current, messages_path_for(user))
   end
 
+  def description_context
+    Mumukit::ContentType::Markdown.to_html splitted_description.first
+  end
+
+  def splitted_description
+    description.split('> ')
+  end
+
+  def description_task
+    Mumukit::ContentType::Markdown.to_html splitted_description.drop(1).join("\n")
+  end
+
   private
 
   def evaluation_class
