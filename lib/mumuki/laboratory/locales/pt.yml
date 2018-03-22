@@ -43,7 +43,7 @@ pt:
   details: Detalhes
   download: Faça o download do que você fez
   edit: Editar
-  editor_placeholder: ... Eu escrevi sua solução aqui ...
+  editor_placeholder: ... Escreva sua solução aqui ...
   email: E-mail
   error_description: Opa! <br> Isto é o que é conhecido como <span class = "error-link"> %{error} </ span>.
   error_401: erro 401
@@ -113,7 +113,7 @@ pt:
   never: nunca
   new: Novo
   new_message: Você tem dúvidas? Levante a mão!
-  new_message_placeholder: Eu escrevi a mensagem para o seu professor aqui ...
+  new_message_placeholder: Escreva sua mensagem para o seu professor aqui ...
   next_exercise: Em seguida
   next_guide: Próxima Lição %{nome}
   no_exercises: Não encontramos exercícios que correspondam à sua pesquisa.
