@@ -2,8 +2,11 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span></button>
+        <% if assignment %>
+            <h4 class="text-<%= class_for_status(assignment.status) %>">
+              <strong><%= fa_icon icon_type_for_status(assignment.status) %> <%= t_assignment_status assignment %></strong>
+            </h4>
+        <% end %>
       </div>
       <div class="modal-body">
         <div class="container-fluid">
