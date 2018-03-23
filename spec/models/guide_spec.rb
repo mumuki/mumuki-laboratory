@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Guide do
-  let!(:extra_user) { create(:user, name: 'ignatiusReilly') }
+  let!(:extra_user) { create(:user, first_name: 'Ignatius', last_name: 'Reilly') }
   let(:guide) { create(:guide) }
 
   describe '#clear_progress!' do

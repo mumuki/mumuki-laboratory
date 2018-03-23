@@ -123,7 +123,7 @@ class Assignment < ApplicationRecord
                     language: {only: [:name]}},
                 },
                 exercise: {only: [:name, :number]},
-                submitter: {only: [:name, :email, :image_url, :social_id, :uid]}}).
+                submitter: {only: [:email, :image_url, :social_id, :uid], methods: [:name]}}).
       deep_merge(
         'organization' => Organization.current.name,
         'sid' => submission_id,

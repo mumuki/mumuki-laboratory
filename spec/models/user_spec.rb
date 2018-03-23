@@ -29,13 +29,15 @@ describe User do
 
       let(:original) { create :user,
                               permissions: {student: 'codeorga/*'},
-                              name: 'johnny doe',
+                              first_name: 'johnny',
+                              last_name: 'doe',
                               social_id: 'auth0|123456',
                               last_organization: codeorga }
 
       let(:final) { create :user,
                            permissions: Mumukit::Auth::Permissions.new,
-                           name: 'John Doe',
+                           first_name: 'John',
+                           last_name: 'Doe',
                            social_id: 'auth0|345678' }
 
       it { expect(final.name).to eq 'John Doe' }
@@ -56,11 +58,13 @@ describe User do
 
       let(:original) { create :user,
                               permissions: Mumukit::Auth::Permissions.new,
-                              name: 'johnny doe',
+                              first_name: 'johnny',
+                              last_name: 'doe',
                               social_id: 'auth0|123456' }
       let(:final) { create :user,
                            permissions: {student: 'prologschool/*'},
-                           name: 'John Doe',
+                           first_name: 'John',
+                           last_name: 'Doe',
                            social_id: 'auth0|345678',
                            last_organization: prologschool }
 
@@ -79,14 +83,16 @@ describe User do
 
       let(:original) { create :user,
                               permissions: {student: 'codeorga/*'},
-                              name: 'johnny doe',
+                              first_name: 'johnny',
+                              last_name: 'doe',
                               social_id: 'auth0|123456',
                               last_submission_date: 6.hours.ago,
                               last_organization: codeorga,
                               last_exercise: your_first_program }
       let(:final) { create :user,
                            permissions: {student: 'prologschool/*'},
-                           name: 'John Doe',
+                           first_name: 'John',
+                           last_name: 'Doe',
                            social_id: 'auth0|345678',
                            last_submission_date: two_hours_ago,
                            last_organization: prologschool,
@@ -107,14 +113,16 @@ describe User do
 
       let(:original) { create :user,
                               permissions: {student: 'codeorga/*'},
-                              name: 'johnny doe',
+                              first_name: 'johnny',
+                              last_name: 'doe',
                               social_id: 'auth0|123456',
                               last_submission_date: two_hours_ago,
                               last_organization: codeorga,
                               last_exercise: your_first_program }
       let(:final) { create :user,
                            permissions: {student: 'prologschool/*'},
-                           name: 'John Doe',
+                           first_name: 'John',
+                           last_name: 'Doe',
                            social_id: 'auth0|345678',
                            last_submission_date: 5.hours.ago,
                            last_organization: prologschool,

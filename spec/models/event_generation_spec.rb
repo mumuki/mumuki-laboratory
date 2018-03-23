@@ -2,7 +2,11 @@ require 'spec_helper'
 
 describe '#as_platform_json' do
   describe Assignment do
-    let(:user) { create(:user, id: 2, email: 'foo@bar.com', name: 'foo', provider: 'auth0', social_id: 'github|gh1234') }
+    let(:user) {
+      create(:user,
+        id: 2, email: 'foo@bar.com',
+        first_name: 'Homer', last_name: 'Simpson',
+        provider: 'auth0', social_id: 'github|gh1234') }
     describe 'lesson type' do
       let(:lesson) { chapter.lessons.fourth }
       let(:guide) { lesson.guide }
@@ -61,7 +65,7 @@ describe '#as_platform_json' do
                            },
                            submitter: {
                              social_id: 'github|gh1234',
-                             name: 'foo',
+                             name: 'Homer Simpson',
                              email: 'foo@bar.com',
                              uid: assignment.submitter.uid,
                              image_url: 'user_shape.png'},
@@ -113,7 +117,7 @@ describe '#as_platform_json' do
                            },
                            submitter: {
                              social_id: 'github|gh1234',
-                             name: 'foo',
+                             name: 'Homer Simpson',
                              email: 'foo@bar.com',
                              image_url: 'user_shape.png',
                              uid: assignment.submitter.uid},
@@ -166,7 +170,7 @@ describe '#as_platform_json' do
                              }
                            },
                            submitter: {
-                             name: 'foo',
+                             name: 'Homer Simpson',
                              email: 'foo@bar.com',
                              image_url: 'user_shape.png',
                              uid: assignment.submitter.uid,

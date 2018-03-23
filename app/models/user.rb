@@ -87,7 +87,6 @@ class User < ApplicationRecord
   end
 
   def self.import_from_json!(body)
-    body[:name] = "#{body[:first_name]} #{body[:last_name]}"
     User.where(uid: body[:uid]).update_or_create!(body.except(:id))
   end
 
