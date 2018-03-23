@@ -23,6 +23,7 @@ class Organization < ApplicationRecord
   has_many :exercises, through: :guides
   has_many :assignments, through: :exercises
   has_many :exams
+  has_many :courses
 
   defaults do
     self.class.base.try do |base|

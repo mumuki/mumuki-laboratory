@@ -64,6 +64,19 @@ ActiveRecord::Schema.define(version: 20180323140943) do
     t.index ["guide_id"], name: "index_complements_on_guide_id"
   end
 
+  create_table "courses", force: :cascade do |t|
+    t.string "uid"
+    t.string "slug"
+    t.string "days", array: true
+    t.string "code"
+    t.string "shifts", array: true
+    t.string "period"
+    t.string "description"
+    t.integer "organization_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "exam_authorizations", force: :cascade do |t|
     t.integer "exam_id"
     t.integer "user_id"
