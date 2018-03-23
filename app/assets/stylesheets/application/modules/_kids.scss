@@ -4,6 +4,10 @@ $kids-speech-arrow-size: 10px;
 $kids-speech-border-color: lighten($mu-color-disabled, 20%);
 $kids-speech-background-color: #f4f6fb;
 
+$kids-speech-border: 1px solid $kids-speech-border-color;
+
+$kids-speech-tabs-width: 40px;
+
 .mu-kids-exercise {
   height: $kids-height;
   min-height: $kids-height;
@@ -22,7 +26,7 @@ $kids-speech-background-color: #f4f6fb;
   }
   .mu-kids-exercise-board {
     hr {
-      border-top: 1px solid $kids-speech-border-color;
+      border-top: $kids-speech-border;
     }
   }
 
@@ -74,14 +78,61 @@ $kids-speech-background-color: #f4f6fb;
       height: 100%;
     }
     .mu-kids-character-speech-bubble {
+      ul {
+        margin: 0;
+      }
       .mu-kids-prev-speech,
       .mu-kids-next-speech {
         position: absolute;
-        right: 0;
+        right: $kids-speech-tabs-width;
         font-size: 90%;
         color: darken($mu-color-disabled, 25%);
         &:hover {
           cursor: pointer;
+        }
+      }
+      ul.mu-kids-character-speech-bubble-tabs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+        width: $kids-speech-tabs-width;
+        position: absolute;
+        right: 0;
+        top: 0;
+        list-style-type: none;
+        padding: 0;
+        background-color: lighten($kids-speech-background-color, 2%);
+        border-radius: 0 10px 10px 0;
+        li {
+          border-left: $kids-speech-border;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          padding: 0;
+          margin: 0;
+          height: 50%;
+          width: 100%;
+          &:first-child {
+            border-radius: 0 10px 0 0
+          }
+          &:last-child {
+            border-radius: 0 0 10px 0
+          }
+        }
+        li.separator {
+          cursor: default;
+          pointer-events: none;
+          height: 0;
+          width: 100%;
+          border-top: $kids-speech-border;
+        }
+        li.active {
+          border-left: none;
+          background-color: $kids-speech-background-color;
         }
       }
       .mu-kids-prev-speech {
@@ -93,11 +144,11 @@ $kids-speech-background-color: #f4f6fb;
       position: relative;
       display: flex;
       align-items: center;
-      padding: 15px;
+      padding: 15px 50px 15px 15px;
       color: #333;
       border-radius: 10px;
       background: $kids-speech-background-color;
-      border: 1px solid $kids-speech-border-color;
+      border: $kids-speech-border;
       height: 80px;
       width: 100%;
       p {
@@ -136,7 +187,7 @@ $kids-speech-background-color: #f4f6fb;
       > table {
         transform: scale(1.5);
         background-color: $kids-speech-border-color !important;
-        border: 1px solid $kids-speech-border-color !important;
+        border: $kids-speech-border !important;
         border-radius: 12px;
       }
       display: block;
@@ -144,7 +195,7 @@ $kids-speech-background-color: #f4f6fb;
       padding: 1px;
       td, th {
         &.gs-board {
-          border: 1px solid $kids-speech-border-color !important;
+          border: $kids-speech-border !important;
           background-color: #FFFFFF;
         }
         &.gbs_lx,
@@ -199,14 +250,14 @@ $kids-speech-background-color: #f4f6fb;
     }
     .blocklyToolboxDiv {
       background-color: $kids-speech-background-color !important;
-      border: 1px solid $kids-speech-border-color !important;
+      border: $kids-speech-border !important;
       border-right: none !important;
       border-top-left-radius: 10px !important;
       border-bottom-left-radius: 10px !important;
     }
     .blocklyFlyoutBackground {
       fill: $kids-speech-background-color !important;
-      border: 1px solid $kids-speech-border-color !important;
+      border: $kids-speech-border !important;
       border-right: none !important;
     }
   }

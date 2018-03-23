@@ -38,10 +38,31 @@ mumuki.load(function () {
 
   });
 
+  var $speechParagraphs;
   var currentParagraphIndex = 0;
-  var $speechParagraphs = $('.mu-kids-character-speech-bubble > p');
   var $prevSpeech = $('.mu-kids-character-speech-bubble > .mu-kids-prev-speech').hide();
   var $nextSpeech = $('.mu-kids-character-speech-bubble > .mu-kids-next-speech');
+
+  updateSpeechParagraphs();
+
+  function updateSpeechParagraphs() {
+    $speechParagraphs = $('.mu-kids-character-speech-bubble > p');
+  }
+
+  var $speechTabs = $('.mu-kids-character-speech-bubble-tabs > li:not(.separator)');
+  var $bubble = $('.mu-kids-character-speech-bubble');
+  var $texts = $bubble.children('.description, .hint');
+
+  $speechTabs.each(function (i) {
+    var $tab = $($speechTabs[i]);
+    $tab.click(function () {
+      $speechTabs.removeClass('active');
+      $tab.addClass('active');
+      $texts.hide();
+      $bubble.children('.' + $tab.data('target')).show();
+      updateSpeechParagraphs();
+    })
+  });
 
   if ($speechParagraphs.length <= 1) $nextSpeech.hide();
 

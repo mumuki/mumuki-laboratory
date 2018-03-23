@@ -1,6 +1,13 @@
 <img src="/anim_amarillo.svg" alt="">
 <div class="mu-kids-character-speech-bubble">
-  <%= @exercise.description_task %>
   <i class="mu-kids-prev-speech fa fa-fw fa-caret-up"></i>
   <i class="mu-kids-next-speech fa fa-fw fa-caret-down"></i>
+  <ul class="mu-kids-character-speech-bubble-tabs">
+    <li class="active" data-target="description"><i class="fa fa-fw fa-file-text-o"></i>
+    </li>
+    <li class="separator"></li>
+    <li data-target="hint"><i class="fa fa-fw fa-lightbulb-o"></i></li>
+  </ul>
+  <div class="description"><%= @exercise.description_task %></div>
+  <div class="hint" style="display: none"><%= @exercise.hint_html %></div>
 </div>
