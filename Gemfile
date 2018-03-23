@@ -23,6 +23,9 @@ gem 'rails-i18n', '~> 4.0.0'
 gem 'nprogress-rails'
 gem 'mumuki-styles', '~> 1.16'
 
+gem 'mumukit-platform', github: 'mumuki/mumukit-platform', branch: 'feature-unified-platform-model'
+gem 'mumukit-login', github: 'mumuki/mumukit-login', branch: 'feature-unified-platform-model'
+
 gem 'font-awesome-rails', '~> 4.7'
 
 group :test do
