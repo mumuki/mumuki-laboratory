@@ -1,0 +1,24 @@
+<div class="modal fade kids-context" id="kids-context" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="text-center">
+          <strong><%= "#{@exercise.number}. #{@exercise.name}" %></strong>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12 text-box">
+              <%= @exercise.description_context %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('#kids-context').modal();
+</script>
