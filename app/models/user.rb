@@ -98,10 +98,6 @@ class User < ApplicationRecord
     Rails.application.message_verifier(:unsubscribe)
   end
 
-  def notify!
-    Mumukit::Nuntius.notify_event! 'UserChanged', user: as_platform_json
-  end
-
   private
 
   def init

@@ -5,10 +5,6 @@ class Course < ApplicationRecord
   validates_uniqueness_of :slug
   belongs_to :organization
 
-  def notify!
-    Mumukit::Nuntius.notify_event! 'CourseChanged', course: as_platform_json
-  end
-
   def self.import_from_json!(data)
     where(slug: data[:slug]).update_or_create!(data)
   end
