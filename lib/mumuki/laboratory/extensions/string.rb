@@ -15,9 +15,3 @@ class String
     gsub(/([^[:ascii:]])/) { $1.blank? ? ' ' : $1 }
   end
 end
-
-class NilClass
-  def content_metadata
-    ''
-  end
-end

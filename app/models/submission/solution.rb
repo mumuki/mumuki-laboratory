@@ -1,5 +1,5 @@
 class Solution < PersistentSubmission
-  attr_accessor :content, :content_metadata
+  attr_accessor :content
 
   def try_evaluate!(assignment)
     assignment.run_tests!(content: content).except(:response_type)

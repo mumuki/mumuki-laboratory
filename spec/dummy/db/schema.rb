@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20180326224511) do
   enable_extension "plpgsql"
 
   create_table "assignments", id: :serial, force: :cascade do |t|
-    t.text "user_solution"
+    t.text "solution"
     t.integer "exercise_id"
     t.integer "status", default: 0
     t.text "result"
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20180326224511) do
     t.string "queries", default: [], array: true
     t.text "query_results"
     t.text "manual_evaluation_comment"
-    t.string "submittable_solution"
     t.index ["exercise_id"], name: "index_assignments_on_exercise_id"
     t.index ["submission_id"], name: "index_assignments_on_submission_id"
     t.index ["submitter_id"], name: "index_assignments_on_submitter_id"

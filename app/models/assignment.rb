@@ -97,18 +97,14 @@ class Assignment < ApplicationRecord
     Assignment.find_by(submission_id: teacher_evaluation[:submission_id])&.evaluate_manually! teacher_evaluation
   end
 
-  def solution=(solution)
-    if solution.present?
-      self.user_solution = exercise.single_choice? ? exercise.choices.index(solution) : solution
+  def content=(content)
+    if content.present?
+      self.solution = exercise.single_choice? ? exercise.choices.index(content) : content
     end
   end
 
   def extra
     exercise.extra_for submitter
-  end
-
-  def solution
-    submittable_solution || user_solution
   end
 
   %w(query try tests).each do |key|
@@ -118,7 +114,7 @@ class Assignment < ApplicationRecord
 
   def as_platform_json
     navigable_parent = exercise.navigable_parent
-    as_json(except: [:exercise_id, :submission_id, :id, :submitter_id, :submittable_solution, :user_solution, :created_at, :updated_at],
+    as_json(except: [:exercise_id, :submission_id, :id, :submitter_id, :solution, :created_at, :updated_at],
               include: {
                 guide: {
                   only: [:slug, :name],
@@ -132,7 +128,7 @@ class Assignment < ApplicationRecord
         'organization' => Organization.current.name,
         'sid' => submission_id,
         'created_at' => updated_at,
-        'content' => user_solution,
+        'content' => solution,
         'exercise' => {
           'eid' => exercise.bibliotheca_id
         },

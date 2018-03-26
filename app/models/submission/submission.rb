@@ -26,8 +26,7 @@ class Submission
   private
 
   def save_submission!(assignment)
-    assignment.solution = content_metadata || content
-    assignment.submittable_solution = content unless content_metadata.blank?
+    assignment.content = content
     assignment.save!
   end
 

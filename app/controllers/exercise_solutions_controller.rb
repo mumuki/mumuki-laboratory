@@ -22,6 +22,6 @@ class ExerciseSolutionsController < AjaxController
 
   def solution_params
     params_h = params.require(:solution).permit!.to_h
-    {content: params_h[:content], content_metadata: params_h[:content_metadata]}
+    {content: params_h[:content]}
   end
 end
