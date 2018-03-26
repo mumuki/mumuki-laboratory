@@ -14,8 +14,9 @@ echo "[MumukiDevstart::Laboratory] Installing dependencies...."
 bundle install --quiet
 
 echo "[MumukiDevstart::Laboratory] Starting server...."
-MUMUKI_PLATFORM_DOMAIN=localhost:3000 \
+MUMUKI_DEV_IP=${1:-localhost}
+MUMUKI_PLATFORM_DOMAIN=$MUMUKI_DEV_IP:3000 \
 MUMUKI_ORGANIZATION_MAPPING=path \
-MUMUKI_COOKIES_DOMAIN=localhost \
+MUMUKI_COOKIES_DOMAIN=$MUMUKI_DEV_IP \
 SECRET_KEY_BASE=aReallyStrongKeyForDevelopment \
-  bundle exec rails s -p 3000
+  bundle exec rails s -p 3000 -b $MUMUKI_DEV_IP
