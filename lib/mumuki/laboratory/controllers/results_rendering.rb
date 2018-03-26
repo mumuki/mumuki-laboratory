@@ -11,11 +11,17 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
     render json: results.merge(
       guide_finished_by_solution: guide_finished_by_solution?,
       class_for_progress_list_item: class_for_progress_list_item(@exercise, true),
-      html: render_results_html(assignment))
+      html: render_results_html(assignment),
+      title_html: render_results_title_html(assignment))
   end
 
   def render_results_html(assignment)
     render_to_string partial: 'exercise_solutions/results',
+                     locals: {assignment: assignment}
+  end
+
+  def render_results_title_html(assignment)
+    render_to_string partial: 'exercise_solutions/results_title',
                      locals: {assignment: assignment}
   end
 

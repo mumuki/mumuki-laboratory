@@ -101,6 +101,9 @@ mumuki.load(function () {
     $(".submission-results").html(data.html);
 
     var results_kids_modal = this.getKidsResultsModal();
-    if (results_kids_modal) results_kids_modal.modal();
+    if (results_kids_modal) {
+      results_kids_modal.modal();
+      results_kids_modal.find('.modal-header').first().html(data.title_html);
+    }
   }
 });
