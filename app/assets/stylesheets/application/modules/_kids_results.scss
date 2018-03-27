@@ -11,3 +11,12 @@
     }
   }
 }
+
+$capital-animation-width: 135px;
+.capital-animation {
+  float: left;
+  width: $capital-animation-width;
+  height: $capital-animation-width;
+  margin-left: -20px;
+  margin-top: -20px;
+}
