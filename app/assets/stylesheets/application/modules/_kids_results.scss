@@ -20,3 +20,11 @@ $capital-animation-width: 135px;
   margin-left: -20px;
   margin-top: -20px;
 }
+
+.modal-open .mu-kids-exercise {
+  filter: blur(5px);
+}
+
+.modal-open .mu-navbar {
+  filter: blur(5px);
+}
