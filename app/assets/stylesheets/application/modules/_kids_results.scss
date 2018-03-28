@@ -1,9 +1,3 @@
-.kids-results {
-  .modal-dialog {
-    width: 90%;
-  }
-}
-
 @each $class in success, warning, danger, broken {
   .mu-kids-callout-#{$class} {
     h4 {
