@@ -86,8 +86,9 @@ class User < ApplicationRecord
     reload
   end
 
-  def self.import_from_json!(body)
-    User.where(uid: body[:uid]).update_or_create!(body.except(:id))
+  def self.import_from_json!(json)
+    json = Mumukit::Platform::User::Helpers.slice_platform_json json
+    User.where(uid: json[:uid]).update_or_create!(json)
   end
 
   def unsubscribe_from_reminders!

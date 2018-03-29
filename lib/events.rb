@@ -1,10 +1,10 @@
 Mumukit::Nuntius::EventConsumer.handle do
-  def clean_payload(payload, key)
-    payload.deep_symbolize_keys[key].except(:created_at, :updated_at)
+  event 'UserChanged' do |payload|
+    User.import_from_json! payload.deep_symbolize_keys[:user]
   end
 
-  event 'UserChanged' do |payload|
-    User.import_from_json! clean_payload(payload, :user)
+  event 'CourseChanged' do |payload|
+    Course.import_from_json! payload.deep_symbolize_keys[:course]
   end
 
   event 'InvitationCreated' do |payload|
