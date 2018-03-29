@@ -5,6 +5,6 @@ class AssetsController < ApplicationController
   end
 
   def extension_javascript
-    render inline: Organization.current.extension_javascript.to_s, content_type: :js
+    render inline: Organization.current.extension_javascript.to_s, content_type: 'text/javascript'
   end
 end
