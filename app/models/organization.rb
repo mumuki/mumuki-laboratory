@@ -23,6 +23,7 @@ class Organization < ApplicationRecord
   has_many :exercises, through: :guides
   has_many :assignments, through: :exercises
   has_many :exams
+  has_many :courses
 
   defaults do
     self.class.base.try do |base|
@@ -77,10 +78,6 @@ class Organization < ApplicationRecord
 
   def explain_error(code, advice)
     errors_explanations.try { |it| it[code.to_s] } || I18n.t(advice)
-  end
-
-  def notify!(event = 'Changed')
-    Mumukit::Nuntius.notify_event! "Organization#{event}", organization: as_platform_json
   end
 
   private

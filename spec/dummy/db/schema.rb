@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180130194923) do
+ActiveRecord::Schema.define(version: 20180326224511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,19 @@ ActiveRecord::Schema.define(version: 20180130194923) do
     t.datetime "updated_at"
     t.index ["book_id"], name: "index_complements_on_book_id"
     t.index ["guide_id"], name: "index_complements_on_guide_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "uid"
+    t.string "slug"
+    t.string "days", array: true
+    t.string "code"
+    t.string "shifts", array: true
+    t.string "period"
+    t.string "description"
+    t.integer "organization_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "exam_authorizations", force: :cascade do |t|
@@ -191,7 +204,6 @@ ActiveRecord::Schema.define(version: 20180130194923) do
     t.integer "book_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer "book_ids", default: [], array: true
     t.text "settings", default: "{}", null: false
     t.text "theme", default: "{}", null: false
     t.text "profile", default: "{}", null: false
@@ -235,16 +247,12 @@ ActiveRecord::Schema.define(version: 20180130194923) do
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "provider"
     t.string "social_id"
-    t.string "name"
-    t.string "token"
-    t.datetime "expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "email"
     t.datetime "last_submission_date"
     t.string "image_url"
     t.integer "last_exercise_id"
-    t.string "remember_me_token"
     t.integer "last_organization_id"
     t.string "uid", null: false
     t.text "permissions", default: "{}", null: false

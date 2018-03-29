@@ -86,9 +86,9 @@ class User < ApplicationRecord
     reload
   end
 
-  def self.import_from_json!(body)
-    body[:name] = "#{body[:first_name]} #{body[:last_name]}"
-    User.where(uid: body[:uid]).update_or_create!(body.except(:id))
+  def self.import_from_json!(json)
+    json = Mumukit::Platform::User::Helpers.slice_platform_json json
+    User.where(uid: json[:uid]).update_or_create!(json)
   end
 
   def unsubscribe_from_reminders!
@@ -97,10 +97,6 @@ class User < ApplicationRecord
 
   def self.unsubscription_verifier
     Rails.application.message_verifier(:unsubscribe)
-  end
-
-  def notify!
-    Mumukit::Nuntius.notify_event! 'UserChanged', user: as_platform_json
   end
 
   private
