@@ -2,7 +2,10 @@
 <html lang="<%= Organization.current.locale %>">
 <head>
   <title><%= page_title subject %></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <% unless input_kids? %>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <% end %>
+
   <link rel="icon" type="image/x-icon" href="<%= Organization.current.favicon_url %>" data-turbolinks-track="reload">
   <link rel="stylesheet" type="text/css" href="<%= theme_stylesheet_url %>" data-turbolinks-track="reload">
 

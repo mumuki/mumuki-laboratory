@@ -193,6 +193,7 @@ $kids-speech-tabs-width: 40px;
       display: block;
       margin: auto;
       padding: 1px;
+      max-height: 100%;
       td, th {
         &.gs-board {
           border: $kids-speech-border !important;
@@ -260,5 +261,39 @@ $kids-speech-tabs-width: 40px;
       border: $kids-speech-border !important;
       border-right: none !important;
     }
+  }
+}
+
+.mu-kids-landscape-support {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: $kids-height;
+  min-height: $kids-height;
+  max-height: $kids-height;
+}
+
+@media screen and (orientation: landscape) {
+  .mu-kids-landscape-support {
+    display: none;
+  }
+  .mu-kids-exercise {
+    visibility: unset;
+  }
+  .mu-kids-submit-button {
+    display: block;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .mu-kids-landscape-support {
+    display: flex;
+  }
+  .mu-kids-exercise {
+    visibility: hidden;
+  }
+  .mu-kids-submit-button {
+    display: none;
   }
 }

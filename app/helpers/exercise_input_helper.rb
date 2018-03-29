@@ -35,8 +35,12 @@ module ExerciseInputHelper
     "<#{custom_editor_tag}> </#{custom_editor_tag}>".html_safe
   end
 
+  def input_kids?
+    @exercise&.input_kids?
+  end
+
   def exercise_container_type
-    @exercise&.input_kids? ? 'container-fluid' : 'container'
+    input_kids? ? 'container-fluid' : 'container'
   end
 
   def submit_button_options(exercise)
