@@ -190,8 +190,11 @@ $kids-speech-tabs-width: 40px;
         border: $kids-speech-border !important;
         border-radius: 12px;
       }
-      display: block;
-      margin: auto;
+      display: flex;
+      margin-top: 15px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       padding: 1px;
       max-height: 100%;
       td, th {
