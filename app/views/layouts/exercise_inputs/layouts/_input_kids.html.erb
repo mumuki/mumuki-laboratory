@@ -1,35 +1,39 @@
 <% content_for :no_container do %>
 
-    <div class="mu-kids-landscape-support container-fluid">
-      <img src="/anim_amarillo.svg"/>
-      <h3><%= t :only_landscape_support %></h3>
-    </div>
+    <div <%= turbolinks_enable_for @exercise %>>
 
-    <div class="mu-kids-exercise container-fluid">
-
-      <div class="mu-kids-exercise-description">
-        <div class="mu-kids-character">
-          <%= render partial: 'layouts/kids' %>
-        </div>
-        <div class="mu-kids-blocks">
-          <%= render partial: 'layouts/exercise_inputs/forms/kids_form' %>
-        </div>
+      <div class="mu-kids-landscape-support container-fluid">
+        <img src="/anim_amarillo.svg"/>
+        <h3><%= t :only_landscape_support %></h3>
       </div>
 
-      <div class="mu-kids-board">
-        <div class="mu-kids-gbs-board-initial">
-          <strong>Tablero inicial</strong>
-          <%= @exercise.initial_state&.html_safe %>
+      <div class="mu-kids-exercise container-fluid">
+
+        <div class="mu-kids-exercise-description">
+          <div class="mu-kids-character">
+            <%= render partial: 'layouts/kids' %>
+          </div>
+          <div class="mu-kids-blocks">
+            <%= render partial: 'layouts/exercise_inputs/forms/kids_form' %>
+          </div>
         </div>
-        <hr>
-        <div class="mu-kids-gbs-board-expected">
-          <strong>Tablero esperado</strong>
-          <%= @exercise.final_state&.html_safe %>
+
+        <div class="mu-kids-board">
+          <div class="mu-kids-gbs-board-initial">
+            <strong>Tablero inicial</strong>
+            <%= @exercise.initial_state&.html_safe %>
+          </div>
+          <hr>
+          <div class="mu-kids-gbs-board-expected">
+            <strong>Tablero esperado</strong>
+            <%= @exercise.final_state&.html_safe %>
+          </div>
         </div>
+
       </div>
 
-    </div>
+      <%= render partial: 'layouts/modals/kids_results', locals: {exercise: @exercise, assignment: @assignment} %>
+      <%= render partial: 'layouts/modals/kids_context', locals: {exercise: @exercise, assignment: @assignment} %>
 
-    <%= render partial: 'layouts/modals/kids_results', locals: {exercise: @exercise, assignment: @assignment} %>
-    <%= render partial: 'layouts/modals/kids_context', locals: {exercise: @exercise, assignment: @assignment} %>
+    </div>
 <% end %>
