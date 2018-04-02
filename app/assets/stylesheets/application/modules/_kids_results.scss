@@ -1,0 +1,24 @@
+@each $class in success, warning, danger, broken {
+  .mu-kids-callout-#{$class} {
+    h4 {
+      @extend .text-#{$class};
+    }
+  }
+}
+
+$capital-animation-width: 135px;
+.capital-animation {
+  float: left;
+  width: $capital-animation-width;
+  height: $capital-animation-width;
+  margin-left: -20px;
+  margin-top: -20px;
+}
+
+.modal-open .mu-kids-exercise {
+  filter: blur(5px);
+}
+
+.modal-open .mu-navbar {
+  filter: blur(5px);
+}

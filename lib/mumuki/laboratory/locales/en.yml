@@ -182,3 +182,5 @@ en:
   you_must_sign_in_before_submitting: You must sign in before submitting your solutions
   fullscreen: "Fullscreen"
   get_messages: "View messages"
+  task: Task
+  only_landscape_support: Please, rotate your tablet or cellphone to continue practicing

@@ -126,6 +126,8 @@ ActiveRecord::Schema.define(version: 20180326224511) do
     t.integer "editor", default: 0, null: false
     t.string "choices", default: [], null: false, array: true
     t.text "goal"
+    t.string "initial_state"
+    t.string "final_state"
     t.index ["guide_id"], name: "index_exercises_on_guide_id"
     t.index ["language_id"], name: "index_exercises_on_language_id"
   end

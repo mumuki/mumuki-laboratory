@@ -6,14 +6,12 @@ var mumuki = mumuki || {};
   }
 
   Laboratory.prototype = {
-    runTests: function (content) {
+    runTests: function (solution) {
       return $.ajax({
         type: 'POST',
         url: window.location + '/solutions',
         data: {
-          solution: {
-            content: content
-          }
+          solution: solution
         }
       })
     }

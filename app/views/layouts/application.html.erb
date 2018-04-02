@@ -2,7 +2,10 @@
 <html lang="<%= Organization.current.locale %>">
 <head>
   <title><%= page_title subject %></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <% unless input_kids? %>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <% end %>
+
   <link rel="icon" type="image/x-icon" href="<%= Organization.current.favicon_url %>" data-turbolinks-track="reload">
   <link rel="stylesheet" type="text/css" href="<%= theme_stylesheet_url %>" data-turbolinks-track="reload">
 
@@ -25,14 +28,13 @@
     moment.locale('<%= Organization.current.locale %>');
   </script>
   <%= login_form.header_html %>
-  <%= yield :assets %>
 </head>
 <body>
 <% if should_choose_organization? %>
     <%= render partial: 'layouts/organization_chooser' %>
 <% end %>
 
-<div class="container">
+<div class="<%= exercise_container_type %>">
   <nav class="mu-navbar">
     <div class="mu-navbar-breadcrumb hidden-xs">
       <ul class="mu-breadcrumb-list">
@@ -80,10 +82,7 @@
   </nav>
 </div>
 
-<%= yield :no_container %>
-
-
-<div class="container" id="wrap">
+<div class="<%= exercise_container_type %><%= @kids ? '-fluid' : '' %>" id="wrap">
   <div id="toast-container" class="toast-bottom-left">
     <% if notice %>
         <div class="alert toast toast-success" role="alert">
@@ -102,8 +101,10 @@
 
 </div>
 
+<%= yield :no_container %>
+
 <footer class="footer">
-  <div class="container">
+  <div class="<%= exercise_container_type %>">
     <hr>
 
     <div class="row">
