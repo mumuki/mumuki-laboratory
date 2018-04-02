@@ -87,7 +87,6 @@ class Organization < ApplicationRecord
   end
 
   def notify_assignments!(assignments)
-    puts "We will try to send #{assignments.count} assignments, please wait..."
     assignments.each { |assignment| assignment.notify! }
   end
 
