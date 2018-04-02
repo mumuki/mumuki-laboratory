@@ -37,6 +37,10 @@ module LinksHelper
             body: permissions_help_email_body(current_user)
   end
 
+  def turbolinks_enable_for(exercise)
+    %Q{data-turbolinks="#{!exercise.input_kids?}"}.html_safe
+  end
+
   private
 
   def extract_name(named, options)

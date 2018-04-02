@@ -1,10 +1,10 @@
 <ul class="progress-listing">
   <% exercises.each do |exercise| %>
-    <% cache [exercise, exercise.status_for(current_user)] do %>
-      <li data-turbolinks="<%= !exercise.input_kids? %>">
-        <%= exercise_status_icon exercise %>
-        <%= link_to_path_element(exercise) %>
-      </li>
-    <% end %>
+      <% cache [exercise, exercise.status_for(current_user)] do %>
+          <li <%= turbolinks_enable_for(exercise) %>>
+            <%= exercise_status_icon exercise %>
+            <%= link_to_path_element(exercise) %>
+          </li>
+      <% end %>
   <% end %>
 </ul>
