@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = "Where students practice and receive automated and human feedback."
   s.license     = "GPL-3.0"
 
-  s.files = Dir["{app,config,db,lib,public}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  s.files = Dir["{app,config,db,lib,public,vendor}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   s.test_files = Dir["spec/**/*"]
 
