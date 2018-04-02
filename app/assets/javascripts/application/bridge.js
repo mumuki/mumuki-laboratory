@@ -7,13 +7,15 @@ var mumuki = mumuki || {};
 
   Laboratory.prototype = {
     runTests: function (solution) {
-      return $.ajax({
+      var token = new mumuki.CsrfToken();
+      var request = token.newRequest({
         type: 'POST',
         url: window.location + '/solutions',
         data: {
           solution: solution
         }
-      })
+      });
+      return $.ajax(request)
     }
   };
 
