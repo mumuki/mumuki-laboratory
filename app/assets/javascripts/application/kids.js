@@ -4,7 +4,7 @@ mumuki.load(function () {
     var margin = 15;
     var fullMargin = margin * 2;
 
-    var gbsBoard = $('[class^="mu-kids-gbs-board"]');
+    var gbsBoard = $('.mu-kids-state');
 
     var dimension = gbsBoard.height() - margin * 2;
     gbsBoard.width(dimension);
