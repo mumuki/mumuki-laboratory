@@ -1,6 +1,6 @@
 class AssetsController < ApplicationController
 
-  protect_from_forgery except: :extension_javascript
+  skip_before_action :protect_from_forgery, :authorize_if_private!
 
   def theme_stylesheet
     render inline: Organization.current.theme_stylesheet.to_s, content_type: 'text/css'
