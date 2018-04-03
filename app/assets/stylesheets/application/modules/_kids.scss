@@ -31,16 +31,14 @@ $kids-speech-tabs-width: 40px;
   }
 
   .mu-kids-character,
-  .mu-kids-gbs-board-initial,
-  .mu-kids-gbs-board-expected {
+  .mu-kids-state {
     padding: 15px;
   }
   .mu-kids-blocks,
-  .mu-kids-gbs-board-expected {
+  .mu-state-final {
     margin-top: 15px;
   }
-  .mu-kids-gbs-board-initial,
-  .mu-kids-gbs-board-expected {
+  .mu-kids-state {
     height: calc(#{$kids-height} / 2 - 15px);
   }
   .mu-kids-character {
@@ -179,41 +177,49 @@ $kids-speech-tabs-width: 40px;
 
   }
 
-  [class^="mu-kids-gbs-board"] {
+  .mu-kids-state {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gs-board {
-      > table {
-        transform: scale(1.5);
-        background-color: $kids-speech-border-color !important;
-        border: $kids-speech-border !important;
-        border-radius: 12px;
-      }
+    .mu-kids-state-image {
       display: flex;
-      margin-top: 15px;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 1px;
-      max-height: 100%;
-      td, th {
-        &.gs-board {
+      height: 100%;
+      width: 100%;
+      gs-board {
+        > table {
+          transform: scale(1.5);
+          background-color: $kids-speech-border-color !important;
           border: $kids-speech-border !important;
-          background-color: #FFFFFF;
+          border-radius: 12px;
         }
-        &.gbs_lx,
-        &.gbs_lh,
-        &.gbs_lv {
-          background-color: $kids-speech-background-color !important;
-          border: 0 solid transparent !important;
-        }
-        &.gbs_gh.gs-cell {
-          background: rgba(221, 221, 136, 0.7) !important;
-          outline: 3px solid $kids-speech-border-color !important;
-        }
-        span {
-          vertical-align: middle;
+        display: flex;
+        margin-top: 15px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1px;
+        max-height: 100%;
+        td, th {
+          &.gs-board {
+            border: $kids-speech-border !important;
+            background-color: #FFFFFF;
+          }
+          &.gbs_lx,
+          &.gbs_lh,
+          &.gbs_lv {
+            background-color: $kids-speech-background-color !important;
+            border: 0 solid transparent !important;
+          }
+          &.gbs_gh.gs-cell {
+            background: rgba(221, 221, 136, 0.7) !important;
+            outline: 3px solid $kids-speech-border-color !important;
+          }
+          span {
+            vertical-align: middle;
+          }
         }
       }
     }
