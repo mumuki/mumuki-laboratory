@@ -55,17 +55,17 @@ var mumuki = mumuki || {};
     editor.setOption('theme', 'default ' + language);
   }
 
-  function getContent(){
-    return mumuki.page.editors.map(function (_, editor) {
-      return editor.getValue();
-    }).get().join("\n");
+  function syncContent(){
+    mumuki.page.editors.each(function (_, editor) {
+      editor.save();
+    });
   }
 
   mumuki.editor = mumuki.editor || {};
   mumuki.editor.setupCodeMirrors = setEditorLanguage;
   mumuki.editor.toggleFullscreen = toggleFullscreen;
   mumuki.editor.indentWithSpaces = indentWithSpaces;
-  mumuki.editor.getContent = getContent;
+  mumuki.editor.syncContent = syncContent;
 
   mumuki.page = mumuki.page || {};
   mumuki.page.dynamicEditors = [];

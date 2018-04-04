@@ -64,8 +64,8 @@ var mumuki = mumuki || {};
       submitButton.disable();
       resultsBox.waiting();
 
-      var solutionContent = mumuki.editor.getContent();
-      var solution = {content: solutionContent};
+      mumuki.editor.syncContent();
+      var solution = getContent();
 
       bridge.runTests(solution).always(function () {
         $(document).renderMuComponents();
@@ -78,6 +78,15 @@ var mumuki = mumuki || {};
     });
 
   });
+
+  function getContent(){
+    var content = {};
+    $('.new_solution').serializeArray().forEach(function(it) {
+      content[it.name] = it.value;
+    });
+
+    return content;
+  }
 
   function animateTimeoutError(submitButton) {
     var image = $('#submission-result-error-animation')[0];
