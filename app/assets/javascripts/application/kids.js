@@ -96,8 +96,8 @@ mumuki.load(function () {
   };
 
   mumuki.showKidsResult = function (data) {
+    mumuki.updateProgressBarAndShowModal(data);
     if (data.guide_finished_by_solution) return;
-
     $(".submission-results").html(data.html);
 
     var results_kids_modal = this.getKidsResultsModal();
