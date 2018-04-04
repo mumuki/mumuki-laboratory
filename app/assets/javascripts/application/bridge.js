@@ -11,9 +11,7 @@ var mumuki = mumuki || {};
       var request = token.newRequest({
         type: 'POST',
         url: window.location + '/solutions',
-        data: {
-          solution: solution
-        }
+        data: solution
       });
       return $.ajax(request)
     }
