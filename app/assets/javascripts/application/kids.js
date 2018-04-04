@@ -96,10 +96,7 @@ mumuki.load(function () {
   };
 
   mumuki.showKidsResult = function (data) {
-    if (data.guide_finished_by_solution){
-      $('#guide-done').modal();
-      return;
-    }
+    if (data.guide_finished_by_solution) return;
 
     $(".submission-results").html(data.html);
 
