@@ -6,7 +6,7 @@ var mumuki = mumuki || {};
   }
 
   Laboratory.prototype = {
-    runTests: function (solution) {
+    runLocalTests: function (solution) {
       var token = new mumuki.CsrfToken();
       var request = token.newRequest({
         type: 'POST',
@@ -14,6 +14,9 @@ var mumuki = mumuki || {};
         data: solution
       });
       return $.ajax(request)
+    },
+    runTests: function(content) {
+      return this.runLocalTests({ solution: content });
     }
   };
 

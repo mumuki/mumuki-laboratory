@@ -67,7 +67,7 @@ var mumuki = mumuki || {};
       mumuki.editor.syncContent();
       var solution = getContent();
 
-      bridge.runTests(solution).always(function () {
+      bridge.runLocalTests(solution).always(function () {
         $(document).renderMuComponents();
         resultsBox.done();
       }).done(function (data) {
