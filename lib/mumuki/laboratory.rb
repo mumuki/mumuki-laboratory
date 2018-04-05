@@ -10,6 +10,7 @@ module Mumuki
 end
 
 require 'mumukit/inspection'
+require 'mumukit/bridge'
 require 'mumukit/content_type'
 
 require_relative './laboratory/mumukit/auth'
