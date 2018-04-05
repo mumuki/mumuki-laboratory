@@ -1,5 +1,3 @@
-require 'mumukit/bridge'
-
 class Language < ApplicationRecord
   include WithCaseInsensitiveSearch
 
