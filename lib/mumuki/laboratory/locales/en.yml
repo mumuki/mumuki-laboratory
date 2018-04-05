@@ -136,6 +136,7 @@ en:
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   restart: Restart
   results: Results
+  retry_exercise: Retry
   running: running
   save: Save
   sending_solution: Sending solution
