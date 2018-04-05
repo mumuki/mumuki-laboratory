@@ -49,13 +49,19 @@ $kids-speech-tabs-width: 40px;
     margin-left: 0;
     margin-right: 0;
     position: relative;
+    .mu-kids-compass-rose,
     .mu-kids-submit-button {
       position: absolute;
-      bottom: 15px;
       right: 15px;
-      width: 54px;
-      height: 54px;
+      width: 56px;
+      height: 56px;
       z-index: 2;
+    }
+    .mu-kids-compass-rose {
+      top: 15px;
+    }
+    .mu-kids-submit-button {
+      bottom: 15px;
       button {
         border-radius: 50%;
         width: 100%;
