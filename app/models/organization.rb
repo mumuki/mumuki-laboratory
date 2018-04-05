@@ -80,6 +80,10 @@ class Organization < ApplicationRecord
     errors_explanations.try { |it| it[code.to_s] } || I18n.t(advice)
   end
 
+  def self.accessible_as(user, role)
+    all.select { |it| it.public? || user.has_permission?(role, it.slug) }
+  end
+
   private
 
   def ensure_consistent_public_login
