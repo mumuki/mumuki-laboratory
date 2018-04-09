@@ -11,12 +11,10 @@ class Course < ApplicationRecord
   end
 
   def slug=(slug)
-    self[:slug] = slug
-    self[:organization_id] = Organization.find_by(name: Mumukit::Auth::Slug.parse(slug).organization).id
-  end
+    s = Mumukit::Auth::Slug.parse(slug)
 
-  def organization=(organization)
-    self[:organization_id] = organization.id
-    self[:slug] = "#{organization.name}/#{code}"
+    self[:slug] = slug
+    self[:code] = s.course
+    self[:organization_id] = Organization.find_by!(name: s.organization).id
   end
 end

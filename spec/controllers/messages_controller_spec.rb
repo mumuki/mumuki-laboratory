@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MessagesController do
+describe MessagesController, organization_workspace: :test do
   let(:user) { create(:user) }
   let(:exercise) { create(:exercise) }
   before { set_current_user! user }

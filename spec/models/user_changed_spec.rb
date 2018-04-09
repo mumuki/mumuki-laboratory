@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe User do
+describe User, organization_workspace: :test do
   let(:user) { User.find_by(uid: 'foo@bar.com') }
   let(:user_json) { {
     uid: 'foo@bar.com',

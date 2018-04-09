@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Lesson do
+describe Lesson, organization_workspace: :test do
   let(:user) { create(:user) }
   describe '#friendly' do
     let!(:chapter) {

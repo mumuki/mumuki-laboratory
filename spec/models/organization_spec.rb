@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Organization do
+describe Organization, organization_workspace: :test do
   let(:user) { create(:user) }
   let(:central) { create(:organization, name: 'central') }
 

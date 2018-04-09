@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Message do
+describe Message, organization_workspace: :test do
   describe '#parse_json' do
     let(:data) {
       {'exercise_id' => 1,

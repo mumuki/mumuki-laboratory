@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Login Flow' do
+feature 'Login Flow', organization_workspace: :test do
   let!(:chapter) do
     create(:chapter, name: 'C1', lessons: [
       create(:lesson, language: create(:language), name: 'awesomeRubyGuide', description: 'rubist baz guide', exercises: [

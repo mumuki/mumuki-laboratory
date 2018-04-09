@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Usage, clean: true do
+describe Usage do
 
   let!(:fundamentals) { create(:topic) }
   let!(:functional_programming) { create(:topic) }

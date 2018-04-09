@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe User do
+describe User, organization_workspace: :test do
   describe '#clear_progress!' do
     let(:student) { create :user }
     let(:more_clauses) { create(:exercise, name: 'More Clauses') }

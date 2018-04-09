@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ExerciseConfirmationsController do
+describe ExerciseConfirmationsController, organization_workspace: :test do
   let(:user) { create(:user) }
   let(:reading) { create(:reading) }
 

@@ -29,17 +29,33 @@ require_relative './evaluation_helper'
 
 RSpec.configure do |config|
   config.before(:each) do
-    set_subdomain_host! 'test'
-    unless RSpec.current_example.metadata[:clean]
+    if RSpec.current_example.metadata[:organization_workspace] == :test
+      set_subdomain_host! 'test'
       create(:public_organization,
           name: 'test',
           book: create(:book, name: 'test', slug: 'mumuki/mumuki-the-book')).switch!
+    elsif RSpec.current_example.metadata[:organization_workspace] == :base
+      set_subdomain_host! 'test'
+      create(:organization, name: 'base',
+                            logo_url: 'http://mumuki.io/logo-alt-large.png',
+                            terms_of_service: 'Default terms of service',
+                            theme_stylesheet: '.defaultCssFromBase { css: red }',
+                            extension_javascript: 'function jsFromBase() {}').switch!
     end
   end
 
   config.after(:each) do
-    Mumukit::Platform::Organization.leave!
+    Mumukit::Platform::Organization.leave! if RSpec.current_example.metadata[:organization_workspace]
   end
+end
+
+
+Mumukit::Auth.configure do |c|
+  c.clients.default = {id: 'test-client', secret: 'thisIsATestSecret'}
+end
+
+def set_api_client!
+  @request.env["HTTP_AUTHORIZATION"] = api_client.token
 end
 
 def reindex_organization!(organization)

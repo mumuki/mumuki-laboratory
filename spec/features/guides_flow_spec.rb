@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Guides Flow' do
+feature 'Guides Flow', organization_workspace: :test do
   let(:haskell) { create(:haskell) }
   let!(:exercises) { [
     create(:exercise, name: 'Foo', guide: guide, number: 1, description: 'Description of foo'),

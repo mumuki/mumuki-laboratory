@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Exercise do
+describe Exercise, organization_workspace: :test do
   let(:exercise) { create(:exercise) }
   let(:user) { create(:user) }
 

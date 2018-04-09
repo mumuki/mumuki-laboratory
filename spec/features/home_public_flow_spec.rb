@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'public org' do
+feature 'public org', organization_workspace: :test do
   let!(:exercise) { build(:exercise) }
   let(:guide) { create(:guide) }
   let(:exam) { create(:exam) }

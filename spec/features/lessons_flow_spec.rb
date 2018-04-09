@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Lessons Flow' do
+feature 'Lessons Flow', organization_workspace: :test do
   let(:lesson_not_in_path) { create(:lesson) }
 
   before { reindex_current_organization! }

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Navigation' do
+describe 'Navigation', organization_workspace: :test do
   let(:organization_1) { create(:organization, name: 'org1', book: book_1) }
   let(:organization_2) { create(:organization, name: 'org2', book: book_2) }
 

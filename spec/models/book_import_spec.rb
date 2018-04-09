@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Book do
+describe Book, organization_workspace: :test do
   let!(:haskell) { create(:haskell) }
   let!(:gobstones) { create(:gobstones) }
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Assignment do
+describe Assignment, organization_workspace: :test do
 
   describe 'messages' do
     let(:student) { create(:user) }

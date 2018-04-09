@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Interactive do
+describe Interactive, organization_workspace: :test do
   let!(:interactive) { create(:interactive) }
   let!(:user) { create(:user) }
   let(:assignment) { interactive.find_or_init_assignment_for(user) }

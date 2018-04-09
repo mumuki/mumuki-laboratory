@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Exercise Flow' do
+feature 'Exercise Flow', organization_workspace: :test do
   let(:user) { create(:user) }
 
   let(:haskell) { create(:haskell) }

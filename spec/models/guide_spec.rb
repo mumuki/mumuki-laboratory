@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Guide do
+describe Guide, organization_workspace: :test do
   let!(:extra_user) { create(:user, first_name: 'Ignatius', last_name: 'Reilly') }
   let(:guide) { create(:guide) }
 

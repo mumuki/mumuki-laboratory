@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Standard Flow' do
+feature 'Standard Flow', organization_workspace: :test do
   let(:haskell) { create(:haskell) }
 
   let!(:chapter) {

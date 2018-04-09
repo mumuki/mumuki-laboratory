@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe BreadcrumbsHelper do
+describe BreadcrumbsHelper, organization_workspace: :test do
 
   helper BreadcrumbsHelper
   helper LinksHelper

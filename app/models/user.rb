@@ -27,6 +27,8 @@ class User < ApplicationRecord
 
   after_initialize :init
 
+  before_validation :set_uid!
+
   def last_lesson
     last_guide.try(:lesson)
   end
@@ -99,7 +101,26 @@ class User < ApplicationRecord
     Rails.application.message_verifier(:unsubscribe)
   end
 
+  def attach!(role, course)
+    add_permission! role, course.slug
+    save_and_notify!
+  end
+
+  def detach!(role, course)
+    remove_permission! role, course.slug
+    save_and_notify!
+  end
+
+  def self.create_if_necessary(user)
+    user[:uid] ||= user[:email]
+    where(uid: user[:uid]).first_or_create(user)
+  end
+
   private
+
+  def set_uid!
+    self.uid ||= email
+  end
 
   def init
     self.image_url ||= "user_shape.png"
