@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ExerciseSolutionsController do
+describe ExerciseSolutionsController, organization_workspace: :test do
   let(:user) { create(:user) }
   let(:problem) { create(:problem) }
 

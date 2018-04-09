@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Exam do
+describe Exam, organization_workspace: :test do
   let(:user) { create(:user) }
   let(:other_user) { create(:user) }
 

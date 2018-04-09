@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'CourseChanged' do
+describe 'CourseChanged', organization_workspace: :test do
   let(:course_json) do
     {slug: 'test/bar',
      shifts: %w(morning),

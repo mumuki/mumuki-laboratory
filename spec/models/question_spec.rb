@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Query do
+describe Query, organization_workspace: :test do
   let!(:exercise) { create(:problem) }
   let(:student) { create(:user) }
 

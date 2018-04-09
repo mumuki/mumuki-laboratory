@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Exams Flow' do
+feature 'Exams Flow', organization_workspace: :test do
   let(:exam) { create(:exam, classroom_id: '12345') }
   let(:other_exam) { create(:exam, organization: other_organization) }
   let!(:exam_not_in_path) { create :exam }

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Complements Flow' do
+feature 'Complements Flow', organization_workspace: :test do
   let(:complement_not_in_path) { create(:complement) }
 
   before { reindex_current_organization! }

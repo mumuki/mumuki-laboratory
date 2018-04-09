@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ApplicationHelper do
+describe ApplicationHelper, organization_workspace: :test do
   helper ExerciseInputHelper
 
   describe 'should_render_message_input?' do

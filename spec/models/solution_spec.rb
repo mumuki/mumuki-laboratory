@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Solution do
+describe Solution, organization_workspace: :test do
 
   describe '#run_tests!' do
     let(:user) { create(:user) }

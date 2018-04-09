@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe WithStudentPathNavigation do
+describe WithStudentPathNavigation, organization_workspace: :test do
   helper WithStudentPathNavigation
   helper FontAwesome::Rails::IconHelper
 

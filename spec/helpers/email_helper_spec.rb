@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe EmailHelper do
+describe EmailHelper, organization_workspace: :test do
   helper EmailHelper
 
   before { I18n.locale = :en }

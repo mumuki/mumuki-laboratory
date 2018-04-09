@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe '#as_platform_json' do
+describe '#as_platform_json', organization_workspace: :test do
   describe Assignment do
     let(:user) {
       create(:user,

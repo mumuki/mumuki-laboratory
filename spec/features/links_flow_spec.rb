@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Lessons Flow' do
+feature 'Lessons Flow', organization_workspace: :test do
   let(:exercise) { create(:exercise, name:  'E1') }
   let!(:complement) { create(:complement) }
   let!(:lesson) { create(:lesson, name: 'L1', exercises: [exercise]) }

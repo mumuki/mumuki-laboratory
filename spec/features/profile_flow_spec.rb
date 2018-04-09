@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Standard Flow' do
+feature 'Standard Flow', organization_workspace: :test do
   let!(:user) { create(:user, uid: 'mumuki@test.com', first_name: nil) }
   let!(:user2) { create(:user, uid: 'johndoe@test.com') }
   let(:haskell) { create(:haskell) }
