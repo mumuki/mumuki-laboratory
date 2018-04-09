@@ -150,6 +150,7 @@ es:
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
   restart: Reiniciar
   results: Resultados
+  retry_exercise: Reintentar
   running: procesando
   save: Guardar
   send: Enviar

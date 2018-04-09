@@ -65,10 +65,4 @@
 
 <%= corollary_box @exercise unless assignment.should_retry? %>
 
-<div class="row">
-  <div class="col-md-12">
-    <div class="actions">
-      <%= next_exercise_button(@exercise) %>
-    </div>
-  </div>
-</div>
+<%= render partial: 'exercise_solutions/results_button', locals: {assignment: assignment} unless @exercise.input_kids? %>
