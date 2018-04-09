@@ -1,6 +1,6 @@
 module ResetButtonHelper
   def restart_icon
-    fa_icon('trash-o', title: t(:restart), class: 'fa-fw', role: 'button', tabindex: '0', 'aria-label': t(:restart))
+    fa_icon('undo', title: t(:restart), class: 'fa-fw', role: 'button', tabindex: '0', 'aria-label': t(:restart))
   end
 
   def restart_guide_link(guide)
