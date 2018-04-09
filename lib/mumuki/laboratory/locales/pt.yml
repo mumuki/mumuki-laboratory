@@ -6,6 +6,7 @@ pt:
   accept_terms: Aceito os termos e condições
   actions: Ações
   activity: Atividade
+  actual_board: Tablero obtido
   all: Todos
   and: e
   appendix: Apêndice
@@ -61,6 +62,7 @@ pt:
   exercises: Exercícios
   exit: Sair
   expectations: Objetivos
+  expected_board: Tabuleiro esperado
   explain_redirect: Percebemos que você se registrou em outra organização.
   failed: Sua solução não passou as provas
   feedback: Problemas que encontramos
@@ -81,6 +83,7 @@ pt:
   home: Home
   hour: hora
   hours: horas
+  initial_board: Tabuleiro inicial
   invitation: Convite para o curso
   invitation_for: Participe %{curso}
   item_not_accessible: Você não tem permissões para acessar este conteúdo

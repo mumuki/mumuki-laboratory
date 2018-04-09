@@ -6,6 +6,7 @@ en:
   accept_terms: I accept the terms and conditions
   actions: Actions
   activity: Activity
+  actual_board: Obtained board
   all: All
   appendix: "Appendix"
   appendix_teaser: Do you want to learn more? <a href="%{link}">Check this chapter's appendix</a>"
@@ -58,6 +59,7 @@ en:
   exercise_success_rate: Exercises success rate
   exit: Exit
   expectations: Expectations
+  expected_board: Expected board
   explain_redirect: You have registered in another organization
   failed: Oops, something went wrong
   feedback: Feedback
@@ -73,6 +75,7 @@ en:
   hidden_done: 'Good!'
   history: History
   home: Home
+  initial_board: Initial board
   invitation: Invitation to course
   invitation_for: 'Join %{course}'
   item_not_accessible: "You are not permitted to access this content"
