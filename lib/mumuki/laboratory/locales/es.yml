@@ -6,6 +6,7 @@ es:
   accept_terms: Acepto los términos y condiciones
   actions: Acciones
   activity: Actividad
+  actual_state: Tablero obtenido
   all: Todos
   and: y
   appendix: "Apéndice"
@@ -63,6 +64,7 @@ es:
   exercises: Ejercicios
   exit: Salir
   expectations: Objetivos
+  expected_state: Tablero esperado
   explain_redirect: Notamos que te registraste en otra organización.
   failed: Tu solución no pasó las pruebas
   feedback: Problemas que encontramos
@@ -81,6 +83,7 @@ es:
   home: Inicio
   hour: hora
   hours: horas
+  initial_state: Tablero inicial
   invitation: Invitación a curso
   invitation_for: 'Unirse a %{course}'
   item_not_accessible: "No tenés permisos para acceder a este contenido"

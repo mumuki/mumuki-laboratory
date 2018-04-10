@@ -181,6 +181,9 @@ $kids-speech-tabs-width: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    #mu-initial-state-text {
+      display: none;
+    }
     .mu-kids-state-image {
       display: flex;
       flex-direction: column;
