@@ -35,7 +35,7 @@ RSpec.configure do |config|
           name: 'test',
           book: create(:book, name: 'test', slug: 'mumuki/mumuki-the-book')).switch!
     elsif RSpec.current_example.metadata[:organization_workspace] == :base
-      set_subdomain_host! 'test'
+      set_subdomain_host! 'base'
       create(:organization, name: 'base',
                             logo_url: 'http://mumuki.io/logo-alt-large.png',
                             terms_of_service: 'Default terms of service',
