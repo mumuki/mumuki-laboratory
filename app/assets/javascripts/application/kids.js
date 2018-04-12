@@ -6,7 +6,7 @@ mumuki.load(function () {
 
     var gbsBoard = $('.mu-kids-state');
 
-    var dimension = gbsBoard.height() - margin * 2;
+    var dimension = gbsBoard.height() * 1.25 - fullMargin;
     gbsBoard.width(dimension);
 
     var $muKidsExercise = $('.mu-kids-exercise');

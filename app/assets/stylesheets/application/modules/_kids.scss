@@ -1,4 +1,4 @@
-$kids-height: calc(100vh - 80px - 30px);
+$kids-height: calc(100vh);
 $kids-characters-height: 120px;
 $kids-speech-arrow-size: 10px;
 $kids-speech-border-color: lighten($mu-color-disabled, 20%);
@@ -24,22 +24,24 @@ $kids-speech-tabs-width: 40px;
   .mu-kids-exercise-description {
     padding-right: 15px;
   }
-  .mu-kids-exercise-board {
-    hr {
+
+  .mu-kids-states {
+    margin-bottom: 15px;
+    .mu-state-final {
       border-top: $kids-speech-border;
     }
   }
-
-  .mu-kids-character,
-  .mu-kids-state {
+  .mu-kids-character {
     padding: 15px;
   }
-  .mu-kids-blocks,
-  .mu-state-final {
+  .mu-kids-state {
+    padding: 0;
+  }
+  .mu-kids-blocks {
     margin-top: 15px;
   }
   .mu-kids-state {
-    height: calc(#{$kids-height} / 2 - 15px);
+    height: calc(#{$kids-height} / 2);
   }
   .mu-kids-character {
     height: $kids-characters-height;
@@ -196,6 +198,9 @@ $kids-speech-tabs-width: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    strong {
+      margin-top: 7.5px;
+    }
     #mu-actual-state-text {
       display: none;
     }
@@ -214,7 +219,7 @@ $kids-speech-tabs-width: 40px;
           border-radius: 12px;
         }
         display: flex;
-        margin-top: 15px;
+        //margin-top: 15px;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -263,18 +268,14 @@ $kids-speech-tabs-width: 40px;
       ry: 10px !important;
     }
     .blocklyScrollbarHandle {
+      display: none;
       fill: $kids-speech-background-color !important;
       stroke: $kids-speech-border-color !important;
       stroke-width: 1px !important;
     }
-    .blocklyScrollbarVertical {
-      right: 0 !important;
-      transform: unset !important;
-    }
+    .blocklyScrollbarVertical,
     .blocklyScrollbarHorizontal {
-      right: 15px !important;
-      transform: translateY(0) !important;
-      bottom: 0 !important;
+      display: none;
     }
     .blocklyToolboxDiv {
       background-color: $kids-speech-background-color !important;
