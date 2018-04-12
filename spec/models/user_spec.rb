@@ -25,7 +25,7 @@ describe User, organization_workspace: :test do
     context 'when final user has less information than original' do
       let!(:submission) { your_first_program.submit_solution! original, content: 'adasdsadas' }
 
-      before { original.reload.transfer_progress_to! final }
+      before { original.reload.copy_progress_to! final }
 
       let(:original) { create :user,
                               permissions: {student: 'codeorga/*'},
@@ -54,7 +54,7 @@ describe User, organization_workspace: :test do
 
     context 'when final user has more information than original' do
       before { more_clauses.submit_solution! final, content: 'adasdsadas' }
-      before { original.transfer_progress_to! final.reload }
+      before { original.copy_progress_to! final.reload }
 
       let(:original) { create :user,
                               permissions: Mumukit::Auth::Permissions.new,
@@ -79,7 +79,7 @@ describe User, organization_workspace: :test do
     end
 
     context 'when both have information, but final is newer' do
-      before { original.transfer_progress_to! final }
+      before { original.copy_progress_to! final }
 
       let(:original) { create :user,
                               permissions: {student: 'codeorga/*'},
@@ -109,7 +109,7 @@ describe User, organization_workspace: :test do
     end
 
     context 'when both have information, but original is newer' do
-      before { original.transfer_progress_to! final }
+      before { original.copy_progress_to! final }
 
       let(:original) { create :user,
                               permissions: {student: 'codeorga/*'},

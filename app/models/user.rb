@@ -76,7 +76,7 @@ class User < ApplicationRecord
     end
   end
 
-  def transfer_progress_to!(another)
+  def copy_progress_to!(another)
     transaction do
       assignments.update_all(submitter_id: another.id)
       if another.never_submitted? || last_submission_date.try { |it| it > another.last_submission_date }
