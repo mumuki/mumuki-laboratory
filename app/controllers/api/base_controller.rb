@@ -4,9 +4,13 @@ module Api
 
     protect_from_forgery with: :null_session
 
-    include OnBaseOrganizationOnly
     include WithApiErrors
     include WithAuthorization
+    include Mumuki::Laboratory::Controllers::CurrentOrganization
+
+    before_action :set_current_organization!
+
+    include OnBaseOrganizationOnly
 
     before_action :verify_api_client!
 
