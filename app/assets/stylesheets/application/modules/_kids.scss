@@ -49,6 +49,7 @@ $kids-speech-tabs-width: 40px;
     margin-left: 0;
     margin-right: 0;
     position: relative;
+    .mu-kids-reset-button,
     .mu-kids-compass-rose,
     .mu-kids-submit-button {
       position: absolute;
@@ -67,6 +68,13 @@ $kids-speech-tabs-width: 40px;
         border-radius: 50%;
         width: 100%;
         height: 100%;
+      }
+    }
+    .mu-kids-reset-button {
+      bottom: 80px;
+      transform: scale(0.9);
+      paper-fab {
+        background-color: $mu-color-disabled;
       }
     }
 
@@ -300,6 +308,7 @@ $kids-speech-tabs-width: 40px;
   .mu-kids-exercise {
     visibility: unset;
   }
+  .mu-kids-reset-button,
   .mu-kids-submit-button {
     display: block;
   }
@@ -312,6 +321,7 @@ $kids-speech-tabs-width: 40px;
   .mu-kids-exercise {
     visibility: hidden;
   }
+  .mu-kids-reset-button,
   .mu-kids-submit-button {
     display: none;
   }
