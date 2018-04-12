@@ -117,6 +117,7 @@ mumuki.load(function () {
     $bubble.find('.description').hide();
     $bubble.find('.hint').hide();
     $bubble.find('.failed').show().html(data.title_html);
+    $('.mu-kids-overlay').show();
   };
 
   mumuki.kids.resultAction.passed = mumuki.kids.resultAction._onSuccessLike;

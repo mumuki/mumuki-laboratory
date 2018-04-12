@@ -52,6 +52,18 @@ $kids-speech-tabs-width: 40px;
     margin-left: 0;
     margin-right: 0;
     position: relative;
+    .mu-kids-overlay {
+      border-radius: 10px;
+      position: absolute;
+      z-index: 80;
+      background-color: white;
+      opacity: 0.50;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      cursor: not-allowed;
+    }
     .mu-kids-reset-button,
     .mu-kids-compass-rose,
     .mu-kids-submit-button {
@@ -59,13 +71,14 @@ $kids-speech-tabs-width: 40px;
       right: 15px;
       width: 56px;
       height: 56px;
-      z-index: 2;
+      z-index: 70;
     }
     .mu-kids-compass-rose {
       top: 15px;
       opacity: 0.75;
     }
     .mu-kids-submit-button {
+      z-index: 90;
       bottom: 15px;
       button {
         border-radius: 50%;
