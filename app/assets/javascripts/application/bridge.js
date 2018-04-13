@@ -7,9 +7,21 @@ var lastSubmission = {};
     this.exerciseId = exerciseId;
   }
 
+  function asString(json){
+    return JSON.stringify(json);
+  }
+
+  function sameAsLastSolution(newSolution){
+    return asString(lastSubmission.content) === asString(newSolution);
+  }
+
+  function lastSubmissionFinishedSuccessfully(){
+    return lastSubmission.result && lastSubmission.result.status !== 'aborted';
+  }
+
   Laboratory.prototype = {
     runLocalTests: function (solution) {
-      if(lastSubmission.result && lastSubmission.result.status !== 'aborted' && JSON.stringify(lastSubmission.content) === JSON.stringify(solution)){
+      if(lastSubmissionFinishedSuccessfully() && sameAsLastSolution(solution)){
         return $.Deferred().resolve(lastSubmission.result)
       }else{
         var token = new mumuki.CsrfToken();
