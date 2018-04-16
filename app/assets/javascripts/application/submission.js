@@ -59,7 +59,8 @@ var mumuki = mumuki || {};
 
     var bridge = new mumuki.bridge.Laboratory;
 
-    $('.btn-submit').on('click', function () {
+    $('.btn-submit').on('click', function (e) {
+      e.preventDefault();
       submitButton.disable();
       resultsBox.waiting();
 
