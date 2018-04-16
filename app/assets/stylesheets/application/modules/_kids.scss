@@ -204,6 +204,28 @@ $kids-speech-tabs-width: 40px;
         content: '';
         border-style: solid;
       }
+      $classes: (
+              failed: $mu-color-danger,
+              passed: $mu-color-success,
+              aborted: $mu-color-broken,
+              errored: $mu-color-broken,
+              passed_with_warnings: $mu-color-warning
+      );
+      @each $status, $class in $classes {
+        &.#{$status} {
+          border: 2px solid $class;
+          &:before {
+            border-color: transparent $class;
+            left: -$kids-speech-arrow-size - 4px;
+          }
+        }
+      }
+      &.failed {
+        border: 2px solid $mu-color-danger;
+      }
+      &.errored {
+        border: 2px solid $mu-color-danger;
+      }
     }
 
   }

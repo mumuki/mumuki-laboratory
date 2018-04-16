@@ -117,7 +117,18 @@ mumuki.load(function () {
     $bubble.find('.description').hide();
     $bubble.find('.hint').hide();
     $bubble.find('.failed').show().html(data.title_html);
+    $bubble.addClass(data.status);
     $('.mu-kids-overlay').show();
+  };
+
+  mumuki.kids.resultAction._restart = function ($bubble) {
+    $bubble.find('.description').show();
+    $bubble.find('.hint').show();
+    $bubble.find('.failed').hide();
+    $('.mu-kids-overlay').hide();
+    Object.keys(mumuki.kids.resultAction).forEach(function (e) {
+      $bubble.removeClass(e);
+    });
   };
 
   mumuki.kids.resultAction.passed = mumuki.kids.resultAction._onSuccessLike;
