@@ -95,6 +95,10 @@ mumuki.load(function () {
     return $('#kids-results');
   };
 
+  mumuki.getKidsCharaterImage = function () {
+    return $('.mu-kids-character > img');
+  };
+
   mumuki.showKidsResult = function (data) {
     mumuki.updateProgressBarAndShowModal(data);
     if (data.guide_finished_by_solution) return;
@@ -119,6 +123,7 @@ mumuki.load(function () {
     $bubble.find('.failed').show().html(data.title_html);
     $bubble.addClass(data.status);
     $('.mu-kids-overlay').show();
+    mumuki.getKidsCharaterImage().attr('src', '/amarillo_fracaso.svg');
   };
 
   mumuki.kids.resultAction._restart = function ($bubble) {
@@ -126,9 +131,8 @@ mumuki.load(function () {
     $bubble.find('.hint').show();
     $bubble.find('.failed').hide();
     $('.mu-kids-overlay').hide();
-    Object.keys(mumuki.kids.resultAction).forEach(function (e) {
-      $bubble.removeClass(e);
-    });
+    Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
+    mumuki.getKidsCharaterImage().attr('src', '/anim_amarillo.svg');
   };
 
   mumuki.kids.resultAction.passed = mumuki.kids.resultAction._onSuccessLike;
