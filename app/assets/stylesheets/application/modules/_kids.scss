@@ -204,6 +204,7 @@ $kids-speech-tabs-width: 40px;
         content: '';
         border-style: solid;
       }
+
       $classes: (
               failed: $mu-color-danger,
               passed: $mu-color-success,
@@ -225,12 +226,7 @@ $kids-speech-tabs-width: 40px;
           }
         }
       }
-      &.failed {
-        border: 2px solid $mu-color-danger;
-      }
-      &.errored {
-        border: 2px solid $mu-color-danger;
-      }
+
     }
 
   }
