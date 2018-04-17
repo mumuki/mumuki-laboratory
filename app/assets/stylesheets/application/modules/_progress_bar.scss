@@ -3,6 +3,7 @@
   justify-content: space-between;
   margin-bottom: 20px;
   a {
+    position: relative;
     border-width: 1px;
     border-color: white;
     border-style: solid;
@@ -15,6 +16,13 @@
     &.active:after {
       content: '•';
     }
+    &.kids {
+      height: 3px;
+      border: transparent;
+      &.active:after {
+        content: unset;
+      }
+    }
   }
   .success {
     background-color: $brand-success;
@@ -24,5 +32,27 @@
   }
   .danger {
     background-color: $brand-danger;
+  }
+  .progress-list-flex-exercise-number {
+    position: absolute;
+    margin-top: -8px;
+    text-align: center;
+    color: white;
+    height: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    width: 20px;
+    left: calc(50% - 10px);
+    border-radius: 50%;
+    background-color: $gray-lighter;
+    &.success {
+      background-color: $brand-success;
+    }
+    &.warning {
+      background-color: $brand-warning;
+    }
+    &.danger {
+      background-color: $brand-danger;
+    }
   }
 }
