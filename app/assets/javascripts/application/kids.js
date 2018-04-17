@@ -91,55 +91,75 @@ mumuki.load(function () {
     if ($speechParagraphs.length - 1 === currentParagraphIndex) $nextSpeech.hide();
   }
 
-  mumuki.getKidsResultsModal = function () {
-    return $('#kids-results');
-  };
+  mumuki.kids = {
 
-  mumuki.getKidsCharaterImage = function () {
-    return $('.mu-kids-character > img');
-  };
+    getResultsModal: function () {
+      return $('#kids-results');
+    },
 
-  mumuki.showKidsResult = function (data) {
-    mumuki.updateProgressBarAndShowModal(data);
-    if (data.guide_finished_by_solution) return;
-    $bubble = $('.mu-kids-character-speech-bubble');
-    mumuki.kids.resultAction[data.status]($bubble, data);
-  };
+    getCharaterImage: function () {
+      return $('.mu-kids-character > img');
+    },
 
-  mumuki.kids = {};
-  mumuki.kids.resultAction = {};
-  mumuki.kids.resultAction._onSuccessLike = function ($bubble, data) {
-    $('.submission-results').html(data.html);
-    var results_kids_modal = mumuki.getKidsResultsModal();
-    if (results_kids_modal) {
-      results_kids_modal.modal();
-      results_kids_modal.find('.modal-header').first().html(data.title_html);
-      results_kids_modal.find('.modal-footer').first().html(data.button_html);
+    getCharacterBubble: function () {
+      return $('.mu-kids-character-speech-bubble');
+    },
+
+    showResult: function (data) {  // This function is called by the custom runner
+      mumuki.updateProgressBarAndShowModal(data);
+      if (data.guide_finished_by_solution) return;
+      mumuki.kids.resultAction[data.status](data);
+    },
+
+    hideFailedMessage: function (data) {
+      var $bubble = mumuki.kids.getCharacterBubble();
+      $bubble.find('.description').show();
+      $bubble.find('.hint').show();
+      $bubble.find('.failed').hide();
+      $bubble.addClass(data.status);
+      $('.mu-kids-overlay').hide();
+    },
+
+    showFailedMessage: function (data) {
+      var $bubble = mumuki.kids.getCharacterBubble();
+      $bubble.find('.description').hide();
+      $bubble.find('.hint').hide();
+      $bubble.find('.failed').show().html(data.title_html);
+      $bubble.addClass(data.status);
+      $('.mu-kids-overlay').show();
+    },
+
+    resultAction: {
+      _showOnPopup: function (data) {
+        $('.submission-results').html(data.html);
+        var results_kids_modal = mumuki.kids.getResultsModal();
+        if (results_kids_modal) {
+          results_kids_modal.modal();
+          results_kids_modal.find('.modal-header').first().html(data.title_html);
+          results_kids_modal.find('.modal-footer').first().html(data.button_html);
+        }
+      },
+
+      _showOnCharacterBubble: function (data) {
+        mumuki.kids.getCharaterImage().attr('src', '/amarillo_fracaso.svg');
+        mumuki.kids.showFailedMessage(data);
+      },
+
+      _restart: function () {  // This function is called by the custom runner
+        mumuki.kids.hideFailedMessage();
+        var $bubble = mumuki.kids.getCharacterBubble();
+        Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
+        mumuki.kids.getCharaterImage().attr('src', '/anim_amarillo.svg');
+      }
     }
   };
-  mumuki.kids.resultAction._onErrorLike = function ($bubble, data) {
-    $bubble.find('.description').hide();
-    $bubble.find('.hint').hide();
-    $bubble.find('.failed').show().html(data.title_html);
-    $bubble.addClass(data.status);
-    $('.mu-kids-overlay').show();
-    mumuki.getKidsCharaterImage().attr('src', '/amarillo_fracaso.svg');
-  };
 
-  mumuki.kids.resultAction._restart = function ($bubble) {
-    $bubble.find('.description').show();
-    $bubble.find('.hint').show();
-    $bubble.find('.failed').hide();
-    $('.mu-kids-overlay').hide();
-    Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
-    mumuki.getKidsCharaterImage().attr('src', '/anim_amarillo.svg');
-  };
+  mumuki.kids.resultAction.passed = mumuki.kids.resultAction._showOnPopup;
+  mumuki.kids.resultAction.aborted = mumuki.kids.resultAction._showOnPopup;
+  mumuki.kids.resultAction.passed_with_warnings = mumuki.kids.resultAction._showOnPopup;
 
-  mumuki.kids.resultAction.passed = mumuki.kids.resultAction._onSuccessLike;
-  mumuki.kids.resultAction.passed_with_warnings = mumuki.kids.resultAction._onSuccessLike;
-  mumuki.kids.resultAction.failed = mumuki.kids.resultAction._onErrorLike;
-  mumuki.kids.resultAction.errored = mumuki.kids.resultAction._onErrorLike;
-  mumuki.kids.resultAction.aborted = mumuki.kids.resultAction._onErrorLike;
-  mumuki.kids.resultAction.pending = mumuki.kids.resultAction._onErrorLike
+  mumuki.kids.resultAction.failed = mumuki.kids.resultAction._showOnCharacterBubble;
+  mumuki.kids.resultAction.errored = mumuki.kids.resultAction._showOnCharacterBubble;
+  mumuki.kids.resultAction.pending = mumuki.kids.resultAction._showOnCharacterBubble;
 
 });
