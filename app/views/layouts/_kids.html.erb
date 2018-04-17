@@ -10,7 +10,9 @@
         <li data-target="hint" title="<%= t :need_a_hint %>"><i class="fa fa-fw fa-lightbulb-o"></i></li>
       </ul>
   <% end %>
-  <div class="description"><%= @exercise.description_task %></div>
-  <div class="hint" style="display: none"><%= @exercise.hint_html %></div>
-  <div class="failed" style="display: none"></div>
+  <div class="mu-kids-character-speech-bubble-normal">
+    <div class="description"><%= @exercise.description_task %></div>
+    <div class="hint" style="display: none"><%= @exercise.hint_html %></div>
+  </div>
+  <div class="mu-kids-character-speech-bubble-failed" style="display: none"></div>
 </div>

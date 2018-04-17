@@ -178,7 +178,7 @@ $kids-speech-tabs-width: 40px;
       border-radius: 10px;
       background: $kids-speech-background-color;
       border: $kids-speech-border;
-      height: 80px;
+      height: 90px;
       width: 100%;
       p {
         margin-bottom: 0;
@@ -212,11 +212,16 @@ $kids-speech-tabs-width: 40px;
               passed_with_warnings: $mu-color-warning
       );
       @each $status, $class in $classes {
+        $lighten-class: lighten($class, 35%);
         &.#{$status} {
           border: 2px solid $class;
+          background: $lighten-class;
           &:before {
             border-color: transparent $class;
             left: -$kids-speech-arrow-size - 4px;
+          }
+          &:after {
+            border-color: transparent $lighten-class;
           }
         }
       }

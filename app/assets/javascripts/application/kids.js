@@ -50,7 +50,7 @@ mumuki.load(function () {
   }
 
   var $speechTabs = $('.mu-kids-character-speech-bubble-tabs > li:not(.separator)');
-  var $bubble = $('.mu-kids-character-speech-bubble');
+  var $bubble = $('.mu-kids-character-speech-bubble').children('.mu-kids-character-speech-bubble-normal');
   var $texts = $bubble.children('.description, .hint');
 
   $speechTabs.each(function (i) {
@@ -113,18 +113,18 @@ mumuki.load(function () {
 
     hideFailedMessage: function (data) {
       var $bubble = mumuki.kids.getCharacterBubble();
-      $bubble.find('.description').show();
-      $bubble.find('.hint').show();
-      $bubble.find('.failed').hide();
-      $bubble.addClass(data.status);
+      $bubble.find('.mu-kids-character-speech-bubble-tabs').show();
+      $bubble.find('.mu-kids-character-speech-bubble-normal').show();
+      $bubble.find('.mu-kids-character-speech-bubble-failed').hide();
+      Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
       $('.mu-kids-overlay').hide();
     },
 
     showFailedMessage: function (data) {
       var $bubble = mumuki.kids.getCharacterBubble();
-      $bubble.find('.description').hide();
-      $bubble.find('.hint').hide();
-      $bubble.find('.failed').show().html(data.title_html);
+      $bubble.find('.mu-kids-character-speech-bubble-tabs').hide();
+      $bubble.find('.mu-kids-character-speech-bubble-normal').hide();
+      $bubble.find('.mu-kids-character-speech-bubble-failed').show().html(data.title_html);
       $bubble.addClass(data.status);
       $('.mu-kids-overlay').show();
     },
