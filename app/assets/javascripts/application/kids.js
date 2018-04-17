@@ -105,61 +105,78 @@ mumuki.load(function () {
       return $('.mu-kids-character-speech-bubble');
     },
 
+    getSubmissionResult: function () {
+      return $('.submission-results');
+    },
+
+    getOverlay: function () {
+      return $('.mu-kids-overlay');
+    },
+
     showResult: function (data) {  // This function is called by the custom runner
       mumuki.updateProgressBarAndShowModal(data);
       if (data.guide_finished_by_solution) return;
       mumuki.kids.resultAction[data.status](data);
     },
 
-    hideFailedMessage: function (data) {
+    restart: function () {  // This function is called by the custom runner
+      mumuki.kids._hideFailedMessage();
+      var $bubble = mumuki.kids.getCharacterBubble();
+      Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
+      mumuki.kids.getCharaterImage().attr('src', '/anim_amarillo.svg');
+    },
+
+    _hideFailedMessage: function () {
       var $bubble = mumuki.kids.getCharacterBubble();
       $bubble.find('.mu-kids-character-speech-bubble-tabs').show();
       $bubble.find('.mu-kids-character-speech-bubble-normal').show();
       $bubble.find('.mu-kids-character-speech-bubble-failed').hide();
       Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
-      $('.mu-kids-overlay').hide();
+      mumuki.kids.getOverlay().hide();
     },
 
-    showFailedMessage: function (data) {
+    _showFailedMessage: function (data) {
       var $bubble = mumuki.kids.getCharacterBubble();
       $bubble.find('.mu-kids-character-speech-bubble-tabs').hide();
       $bubble.find('.mu-kids-character-speech-bubble-normal').hide();
       $bubble.find('.mu-kids-character-speech-bubble-failed').show().html(data.title_html);
       $bubble.addClass(data.status);
-      $('.mu-kids-overlay').show();
+      mumuki.kids.getOverlay().show();
     },
 
-    resultAction: {
-      _showOnPopup: function (data) {
-        $('.submission-results').html(data.html);
+    _showOnPopup: function (data) {
+      this.getSubmissionResult().html(data.html);
+      mumuki.kids.getCharaterImage().attr('src', '/amarillo_fracaso.svg');
+      mumuki.kids._showFailedMessage(data);
+      setTimeout(function () {
         var results_kids_modal = mumuki.kids.getResultsModal();
         if (results_kids_modal) {
           results_kids_modal.modal();
           results_kids_modal.find('.modal-header').first().html(data.title_html);
           results_kids_modal.find('.modal-footer').first().html(data.button_html);
         }
-      },
+      }, 1000 * 3);
+    },
 
-      _showOnCharacterBubble: function (data) {
-        mumuki.kids.getCharaterImage().attr('src', '/amarillo_fracaso.svg');
-        mumuki.kids.showFailedMessage(data);
-      },
+    _showOnCharacterBubble: function (data) {
+      mumuki.kids.getCharaterImage().attr('src', '/amarillo_fracaso.svg');
+      mumuki.kids._showFailedMessage(data);
+    },
 
-      _restart: function () {  // This function is called by the custom runner
-        mumuki.kids.hideFailedMessage();
-        var $bubble = mumuki.kids.getCharacterBubble();
-        Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
-        mumuki.kids.getCharaterImage().attr('src', '/anim_amarillo.svg');
-      }
-    }
+    resultAction: {}
+
   };
 
-  mumuki.kids.resultAction.passed = mumuki.kids.resultAction._showOnPopup;
-  mumuki.kids.resultAction.aborted = mumuki.kids.resultAction._showOnPopup;
-  mumuki.kids.resultAction.passed_with_warnings = mumuki.kids.resultAction._showOnPopup;
+  mumuki.kids.resultAction.passed = mumuki.kids._showOnPopup;
+  mumuki.kids.resultAction.aborted = mumuki.kids._showOnPopup;
+  mumuki.kids.resultAction.passed_with_warnings = mumuki.kids._showOnPopup;
 
-  mumuki.kids.resultAction.failed = mumuki.kids.resultAction._showOnCharacterBubble;
-  mumuki.kids.resultAction.errored = mumuki.kids.resultAction._showOnCharacterBubble;
-  mumuki.kids.resultAction.pending = mumuki.kids.resultAction._showOnCharacterBubble;
+  mumuki.kids.resultAction.failed = mumuki.kids._showOnCharacterBubble;
+  mumuki.kids.resultAction.errored = mumuki.kids._showOnCharacterBubble;
+  mumuki.kids.resultAction.pending = mumuki.kids._showOnCharacterBubble;
+
+  mumuki.kids.resultAction.passed = mumuki.kids._showOnCharacterBubble;
+  mumuki.kids.resultAction.aborted = mumuki.kids._showOnCharacterBubble;
+  mumuki.kids.resultAction.passed_with_warnings = mumuki.kids._showOnCharacterBubble;
 
 });
