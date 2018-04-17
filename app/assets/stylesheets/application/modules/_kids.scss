@@ -29,7 +29,7 @@ $kids-speech-tabs-width: 40px;
   .mu-kids-states {
     margin-bottom: 15px;
     .mu-state-final {
-      border-top: $kids-speech-border;
+      // border-top: $kids-speech-border;
     }
   }
   .mu-kids-character {
@@ -215,11 +215,10 @@ $kids-speech-tabs-width: 40px;
       @each $status, $class in $classes {
         $lighten-class: lighten($class, 35%);
         &.#{$status} {
-          border: 2px solid $class;
+          border: none;
           background: $lighten-class;
           &:before {
-            border-color: transparent $class;
-            left: -$kids-speech-arrow-size - 4px;
+            border: none;
           }
           &:after {
             border-color: transparent $lighten-class;

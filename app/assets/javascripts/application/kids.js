@@ -145,17 +145,20 @@ mumuki.load(function () {
     },
 
     _showOnPopup: function (data) {
-      this.getSubmissionResult().html(data.html);
-      mumuki.kids.getCharaterImage().attr('src', '/amarillo_fracaso.svg');
+      mumuki.kids.getSubmissionResult().html(data.html);
+      mumuki.kids.getCharaterImage().attr('src', '/amarillo_exito.svg');
       mumuki.kids._showFailedMessage(data);
       setTimeout(function () {
         var results_kids_modal = mumuki.kids.getResultsModal();
         if (results_kids_modal) {
-          results_kids_modal.modal();
+          results_kids_modal.modal({
+            backdrop: 'static',
+            keyboard: false
+          });
           results_kids_modal.find('.modal-header').first().html(data.title_html);
           results_kids_modal.find('.modal-footer').first().html(data.button_html);
         }
-      }, 1000 * 3);
+      }, 1000 * 4);
     },
 
     _showOnCharacterBubble: function (data) {
@@ -174,9 +177,5 @@ mumuki.load(function () {
   mumuki.kids.resultAction.failed = mumuki.kids._showOnCharacterBubble;
   mumuki.kids.resultAction.errored = mumuki.kids._showOnCharacterBubble;
   mumuki.kids.resultAction.pending = mumuki.kids._showOnCharacterBubble;
-
-  mumuki.kids.resultAction.passed = mumuki.kids._showOnCharacterBubble;
-  mumuki.kids.resultAction.aborted = mumuki.kids._showOnCharacterBubble;
-  mumuki.kids.resultAction.passed_with_warnings = mumuki.kids._showOnCharacterBubble;
 
 });
