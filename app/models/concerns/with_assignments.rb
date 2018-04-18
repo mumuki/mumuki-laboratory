@@ -19,7 +19,10 @@ module WithAssignments
   end
 
   def interpolate_for(user, field)
-    language.directives_interpolations.interpolate(field, lambda { |content| replace_content_reference(user, content) }).first
+    language
+      .directives_interpolations
+      .interpolate(field, lambda { |content| replace_content_reference(user, content) })
+      .first
   end
 
   def default_content_for(user)
