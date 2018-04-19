@@ -88,14 +88,22 @@ describe Exercise, organization_workspace: :test do
       it { expect(exercise_with_extra.extra).to eq "exercise extra code\n" }
     end
 
-    context 'when exercise has extra code and belong to a guide with no extra code' do
+    context 'when exercise has extra code and belongs to a guide with no extra code' do
       let!(:exercise_with_extra) { create(:exercise, guide: guide, extra: 'exercise extra code') }
       let!(:guide) { create(:guide) }
 
       it { expect(exercise_with_extra.extra).to eq "exercise extra code\n" }
     end
 
-    context 'when exercise has extra code and belong to a guide with extra code' do
+    context 'when exercise has extra code with trailing whitespaces
+             and belongs to a guide with no extra code' do
+      let!(:exercise_with_extra) { create(:exercise, guide: guide, extra: "\nexercise extra code \n") }
+      let!(:guide) { create(:guide) }
+
+      it { expect(exercise_with_extra.extra).to eq "exercise extra code\n" }
+    end
+
+    context 'when exercise has extra code and belongs to a guide with extra code' do
       let!(:exercise_with_extra) { create(:exercise, guide: guide, extra: 'exercise extra code') }
       let!(:guide) { create(:guide, extra: 'guide extra code') }
 

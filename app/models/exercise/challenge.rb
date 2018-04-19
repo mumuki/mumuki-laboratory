@@ -13,12 +13,11 @@ class Challenge < Exercise
   end
 
   def extra
-    extra_code = [guide.extra, self[:extra]].compact.join("\n")
-    if extra_code.empty? or extra_code.end_with? "\n"
-      extra_code
-    else
-      "#{extra_code}\n"
-    end
+    [guide.extra, self[:extra]]
+      .compact
+      .join("\n")
+      .strip
+      .ensure_newline
   end
 
   private
