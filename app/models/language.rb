@@ -32,7 +32,7 @@ class Language < ApplicationRecord
   end
 
   def import!
-    import_from_json! Mumukit::Bridge::Runner.new(runner_url).importable_info
+    import_from_json! bridge.importable_info
   end
 
   def devicon
