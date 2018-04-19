@@ -6,7 +6,7 @@ mumuki.load(function () {
 
     var gbsBoard = $('.mu-kids-state');
 
-    var dimension = gbsBoard.height() - margin * 2;
+    var dimension = gbsBoard.height() * 1.25 - fullMargin;
     gbsBoard.width(dimension);
 
     var $muKidsExercise = $('.mu-kids-exercise');
@@ -50,7 +50,7 @@ mumuki.load(function () {
   }
 
   var $speechTabs = $('.mu-kids-character-speech-bubble-tabs > li:not(.separator)');
-  var $bubble = $('.mu-kids-character-speech-bubble');
+  var $bubble = $('.mu-kids-character-speech-bubble').children('.mu-kids-character-speech-bubble-normal');
   var $texts = $bubble.children('.description, .hint');
 
   $speechTabs.each(function (i) {
@@ -91,20 +91,91 @@ mumuki.load(function () {
     if ($speechParagraphs.length - 1 === currentParagraphIndex) $nextSpeech.hide();
   }
 
-  mumuki.getKidsResultsModal = function () {
-    return $('#kids-results');
+  mumuki.kids = {
+
+    getResultsModal: function () {
+      return $('#kids-results');
+    },
+
+    getCharaterImage: function () {
+      return $('.mu-kids-character > img');
+    },
+
+    getCharacterBubble: function () {
+      return $('.mu-kids-character-speech-bubble');
+    },
+
+    getSubmissionResult: function () {
+      return $('.submission-results');
+    },
+
+    getOverlay: function () {
+      return $('.mu-kids-overlay');
+    },
+
+    showResult: function (data) {  // This function is called by the custom runner
+      mumuki.updateProgressBarAndShowModal(data);
+      if (data.guide_finished_by_solution) return;
+      mumuki.kids.resultAction[data.status](data);
+    },
+
+    restart: function () {  // This function is called by the custom runner
+      mumuki.kids._hideFailedMessage();
+      var $bubble = mumuki.kids.getCharacterBubble();
+      Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
+      mumuki.kids.getCharaterImage().attr('src', '/anim_amarillo.svg');
+    },
+
+    _hideFailedMessage: function () {
+      var $bubble = mumuki.kids.getCharacterBubble();
+      $bubble.find('.mu-kids-character-speech-bubble-tabs').show();
+      $bubble.find('.mu-kids-character-speech-bubble-normal').show();
+      $bubble.find('.mu-kids-character-speech-bubble-failed').hide();
+      Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
+      mumuki.kids.getOverlay().hide();
+    },
+
+    _showFailedMessage: function (data) {
+      var $bubble = mumuki.kids.getCharacterBubble();
+      $bubble.find('.mu-kids-character-speech-bubble-tabs').hide();
+      $bubble.find('.mu-kids-character-speech-bubble-normal').hide();
+      $bubble.find('.mu-kids-character-speech-bubble-failed').show().html(data.title_html);
+      $bubble.addClass(data.status);
+      mumuki.kids.getOverlay().show();
+    },
+
+    _showOnPopup: function (data) {
+      mumuki.kids.getSubmissionResult().html(data.html);
+      mumuki.kids.getCharaterImage().attr('src', '/amarillo_exito.svg');
+      mumuki.kids._showFailedMessage(data);
+      setTimeout(function () {
+        var results_kids_modal = mumuki.kids.getResultsModal();
+        if (results_kids_modal) {
+          results_kids_modal.modal({
+            backdrop: 'static',
+            keyboard: false
+          });
+          results_kids_modal.find('.modal-header').first().html(data.title_html);
+          results_kids_modal.find('.modal-footer').first().html(data.button_html);
+        }
+      }, 1000 * 4);
+    },
+
+    _showOnCharacterBubble: function (data) {
+      mumuki.kids.getCharaterImage().attr('src', '/amarillo_fracaso.svg');
+      mumuki.kids._showFailedMessage(data);
+    },
+
+    resultAction: {}
+
   };
 
-  mumuki.showKidsResult = function (data) {
-    mumuki.updateProgressBarAndShowModal(data);
-    if (data.guide_finished_by_solution) return;
-    $(".submission-results").html(data.html);
+  mumuki.kids.resultAction.passed = mumuki.kids._showOnPopup;
+  mumuki.kids.resultAction.aborted = mumuki.kids._showOnPopup;
+  mumuki.kids.resultAction.passed_with_warnings = mumuki.kids._showOnPopup;
 
-    var results_kids_modal = this.getKidsResultsModal();
-    if (results_kids_modal) {
-      results_kids_modal.modal();
-      results_kids_modal.find('.modal-header').first().html(data.title_html);
-      results_kids_modal.find('.modal-footer').first().html(data.button_html);
-    }
-  }
+  mumuki.kids.resultAction.failed = mumuki.kids._showOnCharacterBubble;
+  mumuki.kids.resultAction.errored = mumuki.kids._showOnCharacterBubble;
+  mumuki.kids.resultAction.pending = mumuki.kids._showOnCharacterBubble;
+
 });
