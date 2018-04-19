@@ -135,6 +135,10 @@ $mu-color-highlight-prolog-atoms: $mu-color-primary;
   font-weight: normal !important;
 }
 
+$mu-color-highlight-css-literal: #b96dba;
+
 .css .m { color: $mu-color-highlight-literal !important; }
 .css .nc { color: $mu-color-highlight-identifier !important; font-weight: bold !important; }
 .css .nl { color: $mu-color-highlight-keyword !important; }
+.css .n { color: $mu-color-highlight-css-literal !important; }
+.css .nb { color: $mu-color-highlight-css-literal !important; }
