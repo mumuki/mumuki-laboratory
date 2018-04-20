@@ -170,6 +170,19 @@ mumuki.load(function () {
 
   };
 
+  mumuki.showKidsResult = function (data) {
+    mumuki.updateProgressBarAndShowModal(data);
+    if (data.guide_finished_by_solution) return;
+    mumuki.kids.getSubmissionResult().html(data.html);
+
+    var results_kids_modal = mumuki.kids.getResultsModal();
+    if (results_kids_modal) {
+      results_kids_modal.modal();
+      results_kids_modal.find('.modal-header').first().html(data.title_html);
+      results_kids_modal.find('.modal-footer').first().html(data.button_html);
+    }
+  };
+
   mumuki.kids.resultAction.passed = mumuki.kids._showOnPopup;
   mumuki.kids.resultAction.aborted = mumuki.kids._showOnPopup;
   mumuki.kids.resultAction.passed_with_warnings = mumuki.kids._showOnPopup;
