@@ -32,6 +32,10 @@ var mumuki = mumuki || {};
     });
   }
 
+  mumuki.load(function () {
+    lastSubmission = {};
+  });
+
   Laboratory.prototype = {
     runLocalTests: function (solution) {
       if(lastSubmissionFinishedSuccessfully() && sameAsLastSolution(solution)){
