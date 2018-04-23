@@ -97,6 +97,10 @@ mumuki.load(function () {
       return $('#kids-results');
     },
 
+    getResultsAbortedModal: function () {
+      return $('#kids-results-aborted');
+    },
+
     getCharaterImage: function () {
       return $('.mu-kids-character > img');
     },
@@ -120,13 +124,13 @@ mumuki.load(function () {
     },
 
     restart: function () {  // This function is called by the custom runner
-      mumuki.kids._hideFailedMessage();
+      mumuki.kids._hideMessageOnCharacterBubble();
       var $bubble = mumuki.kids.getCharacterBubble();
       Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
       mumuki.kids.getCharaterImage().attr('src', '/anim_amarillo.svg');
     },
 
-    _hideFailedMessage: function () {
+    _hideMessageOnCharacterBubble: function () {
       var $bubble = mumuki.kids.getCharacterBubble();
       $bubble.find('.mu-kids-character-speech-bubble-tabs').show();
       $bubble.find('.mu-kids-character-speech-bubble-normal').show();
@@ -135,7 +139,7 @@ mumuki.load(function () {
       mumuki.kids.getOverlay().hide();
     },
 
-    _showFailedMessage: function (data) {
+    _showMessageOnCharacterBubble: function (data) {
       var $bubble = mumuki.kids.getCharacterBubble();
       $bubble.find('.mu-kids-character-speech-bubble-tabs').hide();
       $bubble.find('.mu-kids-character-speech-bubble-normal').hide();
@@ -144,10 +148,10 @@ mumuki.load(function () {
       mumuki.kids.getOverlay().show();
     },
 
-    _showOnPopup: function (data) {
+    _showOnSuccessPopup: function (data) {
       mumuki.kids.getSubmissionResult().html(data.html);
       mumuki.kids.getCharaterImage().attr('src', '/amarillo_exito.svg');
-      mumuki.kids._showFailedMessage(data);
+      mumuki.kids._showMessageOnCharacterBubble(data);
       setTimeout(function () {
         var results_kids_modal = mumuki.kids.getResultsModal();
         if (results_kids_modal) {
@@ -161,9 +165,14 @@ mumuki.load(function () {
       }, 1000 * 4);
     },
 
+    _showOnFailurePopup: function () {
+      mumuki.kids.getResultsAbortedModal().modal();
+      mumuki.submission.animateTimeoutError();
+    },
+
     _showOnCharacterBubble: function (data) {
       mumuki.kids.getCharaterImage().attr('src', '/amarillo_fracaso.svg');
-      mumuki.kids._showFailedMessage(data);
+      mumuki.kids._showMessageOnCharacterBubble(data);
     },
 
     resultAction: {}
@@ -183,9 +192,10 @@ mumuki.load(function () {
     }
   };
 
-  mumuki.kids.resultAction.passed = mumuki.kids._showOnPopup;
-  mumuki.kids.resultAction.aborted = mumuki.kids._showOnPopup;
-  mumuki.kids.resultAction.passed_with_warnings = mumuki.kids._showOnPopup;
+  mumuki.kids.resultAction.passed = mumuki.kids._showOnSuccessPopup;
+  mumuki.kids.resultAction.passed_with_warnings = mumuki.kids._showOnSuccessPopup;
+
+  mumuki.kids.resultAction.aborted = mumuki.kids._showOnFailurePopup;
 
   mumuki.kids.resultAction.failed = mumuki.kids._showOnCharacterBubble;
   mumuki.kids.resultAction.errored = mumuki.kids._showOnCharacterBubble;
