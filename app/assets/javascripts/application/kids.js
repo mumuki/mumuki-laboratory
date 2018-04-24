@@ -166,8 +166,9 @@ mumuki.load(function () {
     },
 
     _showOnFailurePopup: function () {
+      mumuki.kids.submitButton.disable();
       mumuki.kids.getResultsAbortedModal().modal();
-      mumuki.submission.animateTimeoutError();
+      mumuki.submission.animateTimeoutError(mumuki.kids.submitButton);
     },
 
     _showOnCharacterBubble: function (data) {
@@ -178,6 +179,14 @@ mumuki.load(function () {
     resultAction: {}
 
   };
+
+  _createSubmitButton = function () {
+    var submitButton = $('#kids-btn-retry');
+    var submissionControl = $('.submission_control');
+    return new mumuki.submission.SubmitButton(submitButton, submissionControl);
+  };
+
+  mumuki.kids.submitButton = _createSubmitButton();
 
   mumuki.showKidsResult = function (data) {
     mumuki.updateProgressBarAndShowModal(data);

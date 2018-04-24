@@ -2,7 +2,6 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title text-broken">
           <strong><%= t :errored %></strong>
         </h4>
@@ -17,6 +16,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success btn-block submission_control" data-dismiss="modal" aria-label="<%= t :retry_exercise %>"> <%= t :retry_exercise %> </button>
       </div>
     </div>
   </div>
