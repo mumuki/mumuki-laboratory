@@ -17,8 +17,12 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
   end
 
   def render_results_html(assignment)
-    render_to_string partial: 'exercise_solutions/results',
+    render_to_string partial: results_partial,
                      locals: {assignment: assignment}
+  end
+
+  def results_partial
+    @exercise&.input_kids? ? 'exercise_solutions/kids_results' : 'exercise_solutions/results'
   end
 
   def render_results_title_html(assignment)

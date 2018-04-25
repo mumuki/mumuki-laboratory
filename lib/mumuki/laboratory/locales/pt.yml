@@ -87,7 +87,8 @@ pt:
   invitation: Convite para o curso
   invitation_for: Participe %{curso}
   item_not_accessible: Você não tem permissões para acessar este conteúdo
-  joining: Bem-vindo ao curso <strong> %{curso} </ strong>!
+  joining: Bem-vindo ao curso <strong> %{curso} </strong>!
+  kids_default_success: Você fez muito bem!
   language: Linguagem
   languages: Idiomas
   last_name: Sobrenome

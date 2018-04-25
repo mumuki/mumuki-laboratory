@@ -1,0 +1,22 @@
+<%
+  @guide = @exercise.guide
+  @stats = @guide.stats_for(current_user)
+%>
+
+<div class="<%= 'mu-kids-callout-' + (class_for_status assignment.status) %>">
+
+  <% if assignment.manual_evaluation_comment? %>
+    <%= Mumukit::ContentType::Markdown.to_html assignment.manual_evaluation_comment %>
+  <% end %>
+  <%= solution_download_link assignment %>
+</div>
+
+<% if @exercise.corollary.present? %>
+  <img src="/character/kids/yellow_context.svg" class="capital-animation"/>
+  <%= corollary_box @exercise %>
+<% else %>
+  <div class="mu-kids-default-success">
+    <img src="/amarillo_exito_bailarin.svg" class="capital-animation"/>
+    <p><%= t :kids_default_success %></p>
+  </div>
+<% end %>
