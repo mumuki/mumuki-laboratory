@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 describe ApiClient, type: :model do
   let(:api_client) {create :api_client}
