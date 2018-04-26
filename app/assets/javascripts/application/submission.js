@@ -27,9 +27,9 @@ var mumuki = mumuki || {};
     }
   };
 
-  function SubmitButton() {
-    this.submitButton = $('.btn-submit');
-    this.submissionControls = $('.submission_control');
+  function SubmitButton(submitButton, submissionControls) {
+    this.submitButton = submitButton;
+    this.submissionControls = submissionControls;
   }
 
   SubmitButton.prototype = {
@@ -55,11 +55,14 @@ var mumuki = mumuki || {};
     if (!submissionsResults) return;
 
     var resultsBox = new ResultsBox(submissionsResults);
-    var submitButton = new SubmitButton();
+
+    var btnSubmit = $('.btn-submit');
+    var submissionControl = $('.submission_control');
+    var submitButton = new SubmitButton(btnSubmit, submissionControl);
 
     var bridge = new mumuki.bridge.Laboratory;
 
-    $('.btn-submit').on('click', function (e) {
+    btnSubmit.on('click', function (e) {
       e.preventDefault();
       submitButton.disable();
       resultsBox.waiting();
@@ -100,5 +103,10 @@ var mumuki = mumuki || {};
       }, mumuki.errors.error_timeout_2.duration);
     }, mumuki.errors.error_timeout_1.duration);
   }
+
+  mumuki.submission = {
+    animateTimeoutError: animateTimeoutError,
+    SubmitButton: SubmitButton
+  };
 
 })(mumuki);

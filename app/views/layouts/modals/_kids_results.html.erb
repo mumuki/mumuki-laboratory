@@ -10,12 +10,11 @@
               <div class="row">
                 <div class="col-md-12 submission-results">
                   <% if @assignment&.passed? %>
-                      <%= render partial: 'exercise_solutions/results',
-                                 locals: {assignment: @assignment, guide_finished_by_solution: false} %>
+                    <%= render partial: 'exercise_solutions/results',
+                               locals: {assignment: @assignment, guide_finished_by_solution: false} %>
                   <% end %>
                 </div>
               </div>
-              <%= render partial: 'layouts/submission_result_error' %>
             </div>
           </div>
         </div>
