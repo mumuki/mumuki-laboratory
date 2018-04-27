@@ -90,6 +90,7 @@ es:
   its_been_a_while: Hace un tiempo que no usás Mumuki.
   joining: '¡Te damos la bienvenida al curso <strong>%{course}</strong>!'
   keep_learning: ¡Seguí aprendiendo!
+  kids_default_success: ¡Lo hiciste muy bien!
   language: Lenguaje
   languages: Lenguajes
   last_name: Apellido

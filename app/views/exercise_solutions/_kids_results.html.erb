@@ -1,0 +1,18 @@
+<%
+  @guide = @exercise.guide
+  @stats = @guide.stats_for(current_user)
+%>
+
+<div class="<%= "mu-kids-callout-#{class_for_status assignment.status}" %>">
+  <%= manual_evaluation_comment assignment %>
+</div>
+
+<% if @exercise.corollary.present? %>
+  <img id="mu-kids-corollary-animation" class="capital-animation"/>
+  <%= corollary_box @exercise %>
+<% else %>
+  <div class="mu-kids-default-success">
+    <img src="/amarillo_exito_bailarin.svg" class="capital-animation"/>
+    <p><%= t :kids_default_success %></p>
+  </div>
+<% end %>

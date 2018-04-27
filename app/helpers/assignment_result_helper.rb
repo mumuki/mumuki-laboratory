@@ -49,6 +49,12 @@ module AssignmentResultHelper
     end
   end
 
+  def manual_evaluation_comment(assignment)
+    if assignment.manual_evaluation_comment?
+      Mumukit::ContentType::Markdown.to_html assignment.manual_evaluation_comment
+    end
+  end
+
   private
 
   def solution_octet_data(assignment)

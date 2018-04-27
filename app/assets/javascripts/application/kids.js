@@ -161,6 +161,7 @@ mumuki.load(function () {
           });
           results_kids_modal.find('.modal-header').first().html(data.title_html);
           results_kids_modal.find('.modal-footer').first().html(data.button_html);
+          mumuki.kids._showCorollaryCharacter();
         }
       }, 1000 * 4);
     },
@@ -174,6 +175,16 @@ mumuki.load(function () {
     _showOnCharacterBubble: function (data) {
       mumuki.kids.getCharaterImage().attr('src', '/amarillo_fracaso.svg');
       mumuki.kids._showMessageOnCharacterBubble(data);
+    },
+
+    _showCorollaryCharacter: function () {
+      var image = $('#mu-kids-corollary-animation')[0];
+      setTimeout(function () {
+        image.src = mumuki.characters.magnifying_glass_apparition.url;
+        setTimeout(function () {
+          image.src = mumuki.characters.magnifying_glass_loop.url;
+        }, mumuki.characters.magnifying_glass_apparition.duration);
+      }, 500);
     },
 
     resultAction: {}

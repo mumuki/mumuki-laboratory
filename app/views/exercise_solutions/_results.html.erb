@@ -3,13 +3,13 @@
   @stats = @guide.stats_for(current_user)
 %>
 
-<div class="<%= (@exercise.input_kids? ? 'mu-kids-callout-' : 'bs-callout bs-callout-') + (class_for_status assignment.status) %>">
+<div class="<%= "bs-callout bs-callout-#{class_for_status assignment.status}" %>">
 
-  <%= render partial: 'exercise_solutions/results_title', locals: {assignment: assignment} unless @exercise.input_kids? %>
+  <%= render partial: 'exercise_solutions/results_title', locals: {assignment: assignment} %>
 
-  <% if assignment.manual_evaluation_comment? %>
-      <%= Mumukit::ContentType::Markdown.to_html assignment.manual_evaluation_comment %>
-  <% else %>
+
+  <%= manual_evaluation_comment assignment %>
+  <% unless assignment.manual_evaluation_comment? %>
       <% if assignment.results_visible? %>
           <div>
             <% if assignment.expectation_results_visible? %>
@@ -65,4 +65,4 @@
 
 <%= corollary_box @exercise unless assignment.should_retry? %>
 
-<%= render partial: 'exercise_solutions/results_button', locals: {assignment: assignment} unless @exercise.input_kids? %>
+<%= render partial: 'exercise_solutions/results_button', locals: {assignment: assignment} %>
