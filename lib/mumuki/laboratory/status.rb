@@ -42,15 +42,53 @@ class Object
   end
 end
 
+class NilClass
+  def passed?
+    false
+  end
+
+  def failed?
+    false
+  end
+
+  def errored?
+    false
+  end
+end
+
 class String
   def to_mumuki_status
     to_sym.to_mumuki_status
+  end
+
+  def passed?
+    self == 'passed'.freeze
+  end
+
+  def failed?
+    self == 'failed'.freeze
+  end
+
+  def errored?
+    self == 'errored'.freeze
   end
 end
 
 class Symbol
   def to_mumuki_status
     Mumuki::Laboratory::Status.from_sym(self)
+  end
+
+  def passed?
+    self == :passed
+  end
+
+  def failed?
+    self == :failed
+  end
+
+  def errored?
+    self == :errored
   end
 end
 

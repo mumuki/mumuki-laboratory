@@ -22,7 +22,7 @@ module StatusRenderingVerbosity
       if status_like.to_mumuki_status.errored?
         []
       else
-        expectation_results.select { |it| it[:result] == :failed }
+        expectation_results.select { |it| it[:result].failed? }
       end
     end
 

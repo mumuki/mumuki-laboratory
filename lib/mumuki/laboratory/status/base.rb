@@ -19,6 +19,10 @@ module Mumuki::Laboratory::Status::Base
     false
   end
 
+  def failed?
+    false
+  end
+
   def errored?
     false
   end
