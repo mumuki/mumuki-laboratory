@@ -5,7 +5,7 @@
   <ul class="results-list">
     <% assignment.test_results.each_with_index do |test_result, index| %>
       <li>
-        <% if test_result[:status] == :failed %>
+        <% if test_result[:status].failed? %>
           <span class="text-danger">
             <%= status_icon(test_result[:status]) %>
             <strong class="example-title"><%= test_result[:title] %></strong>
