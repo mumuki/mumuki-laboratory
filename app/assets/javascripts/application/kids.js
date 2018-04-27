@@ -179,7 +179,7 @@ mumuki.load(function () {
 
     _showCorollaryCharacter: function () {
       var image = $('#mu-kids-corollary-animation')[0];
-      setTimeout(function () {
+      image && setTimeout(function () {
         image.src = mumuki.characters.magnifying_glass_apparition.url;
         setTimeout(function () {
           image.src = mumuki.characters.magnifying_glass_loop.url;
