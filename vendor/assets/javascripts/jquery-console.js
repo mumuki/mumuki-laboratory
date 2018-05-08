@@ -602,6 +602,8 @@
       mesg.show();
     };
 
+    typer.commandTrigger = commandTrigger;
+
     ////////////////////////////////////////////////////////////////////////
     // Handle normal character insertion
     // data can either be a number, which will be interpreted as the
