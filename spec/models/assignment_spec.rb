@@ -164,11 +164,11 @@ describe Assignment, organization_workspace: :test do
   end
 
   describe '#extra' do
-    let(:user) { create(:user, uid: 'some_user', email: 'some_email', first_name: 'some_first_name', last_name: 'some_last_name') }
-    let(:exercise) { create(:exercise, extra: "/*...username...*/\n/*...user_email...*/\n/*...user_first_name...*/\n/*...user_last_name...*/") }
+    let(:user) { create(:user, email: 'some_email', first_name: 'some_first_name', last_name: 'some_last_name') }
+    let(:exercise) { create(:exercise, extra: "/*...user_email...*/\n/*...user_first_name...*/\n/*...user_last_name...*/") }
     let(:assignment) { exercise.submit_solution!(user, content: '') }
 
-    it { expect(assignment.extra).to eq "some_user\nsome_email\nsome_first_name\nsome_last_name\n" }
+    it { expect(assignment.extra).to eq "some_email\nsome_first_name\nsome_last_name\n" }
   end
 
 end

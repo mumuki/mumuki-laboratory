@@ -118,7 +118,6 @@ class User < ApplicationRecord
 
   def interpolations
     {
-      'username' => uid,
       'user_email' => email,
       'user_first_name' => first_name,
       'user_last_name' => last_name
