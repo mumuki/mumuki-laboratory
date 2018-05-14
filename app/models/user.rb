@@ -116,6 +116,14 @@ class User < ApplicationRecord
     where(uid: user[:uid]).first_or_create(user)
   end
 
+  def interpolations
+    {
+      'user_email' => email,
+      'user_first_name' => first_name,
+      'user_last_name' => last_name
+    }
+  end
+
   private
 
   def set_uid!

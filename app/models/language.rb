@@ -65,6 +65,10 @@ class Language < ApplicationRecord
     new_directive Mumukit::Directives::Sections
   end
 
+  def interpolate(interpolee, *interpolations)
+    interpolations.inject(interpolee) { |content, interpolation| directives_interpolations.interpolate(content, interpolation).first }
+  end
+
   def directives_interpolations
     new_directive Mumukit::Directives::Interpolations
   end
