@@ -4,15 +4,6 @@ module WithStudentPathNavigation
       @template = template
     end
 
-    def button(navigable)
-      sibling = sibling_for(navigable)
-      if sibling && sibling != navigable
-        link_to link_icon(sibling), sibling, merge_confirmation_classes(navigable, class: clazz)
-      else
-        link_to I18n.t(:back_to_mumuki), root_path, merge_confirmation_classes(navigable, class: clazz)
-      end
-    end
-
     def link_icon(sibling)
       fa_icon(icon, text: I18n.t(key, sibling: sibling.name, kind: I18n.t(sibling.class.model_name.name.downcase)), right: right)
     end

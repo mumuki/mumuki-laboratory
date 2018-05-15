@@ -31,6 +31,12 @@ group :test do
   gem 'rake', '10.4.2'
   gem 'faker', '~> 1.5'
   gem 'capybara', '~> 2.3.0'
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-remote'
+  gem 'pry-byebug' unless Gem.win_platform?
+  gem 'pry-stack_explorer'
+  gem 'binding_of_caller'
 end
 
 group :development do

@@ -33,7 +33,7 @@ describe WithStudentPathNavigation, organization_workspace: :test do
         end
 
         it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success btn-block\" role=\"button\" href=\"/exercises/12-exercise-2\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
-        it { expect(next_button(exercise_2)).to be nil }
+        it { expect(next_button(exercise_2)).to eq "<a class=\"btn btn-warning btn-block\" role=\"button\" href=\"/\">Back to Mumuki!</a>" }
         it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning btn-block\" role=\"button\" href=\"/exercises/12-exercise-2\">Next pending: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
       end
 
@@ -70,7 +70,7 @@ describe WithStudentPathNavigation, organization_workspace: :test do
         end
 
         it { expect(next_button(reading)).to eq "<a class=\"btn-confirmation btn btn-success btn-block\" data-confirmation-url=\"/exercises/11-exercise-1/confirmations\" role=\"button\" href=\"/exercises/12-exercise-2\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
-        it { expect(next_button(exercise)).to eq nil }
+        it { expect(next_button(exercise)).to eq "<a class=\"btn btn-warning btn-block\" role=\"button\" href=\"/\">Back to Mumuki!</a>" }
       end
     end
 
@@ -86,7 +86,7 @@ describe WithStudentPathNavigation, organization_workspace: :test do
         before { reindex_current_organization! }
         before { exercise.submit_solution!(current_user).passed! }
 
-        it { expect(next_button(lesson)).to be nil }
+        it { expect(next_button(lesson)).to eq "<a class=\"btn btn-warning btn-block\" role=\"button\" href=\"/\">Back to Mumuki!</a>" }
       end
 
       context 'when guide has one suggestion' do

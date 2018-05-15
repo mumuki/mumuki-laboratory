@@ -1,5 +1,13 @@
 module WithStudentPathNavigation
   class ContinueNavigation < Navigation
+
+    def button(navigable)
+      sibling = sibling_for(navigable)
+      link_to link_icon(sibling),
+              sibling,
+              merge_confirmation_classes(navigable, class: clazz) if sibling && sibling != navigable
+    end
+
     def right
       true
     end
