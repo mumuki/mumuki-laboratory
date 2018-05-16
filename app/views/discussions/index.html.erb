@@ -1,0 +1,58 @@
+<%= content_for :breadcrumbs do %>
+  <%= link_to fixed_fa_icon('arrow-left', text: t(@debatable_class.downcase)), polymorphic_path(@debatable), role: 'menuitem' %>
+<% end %>
+
+<div class="row">
+  <% if @debatable.respond_to? :language %>
+    <div class="mu-inline-block-right hidden-xs">
+      <h1><%= language_icon @debatable.language %></h1>
+    </div>
+  <% end %>
+  <div class="mu-inline-block-left">
+    <h1>
+      <span class="hidden-xs"><%= t("#{@debatable_class.downcase}_number", number: @debatable.number) %>:&nbsp;</span>
+      <span><%= @debatable.name %></span>
+    </h1>
+  </div>
+</div>
+
+<div>
+  <% if @discussions.empty? %>
+    <%= "No existen consultas para este #{t @debatable_class.downcase}"%>
+  <% else %>
+    <h3> Consultas realizadas para este <%= t @debatable_class.downcase %> </h3>
+
+    <div class="discussions">
+      <% @discussions.each do |discussion| %>
+        <div class="discussion">
+          <div class="discussion-display-more mu-inline-block-right">
+            <a>
+              <i class="fa fa-caret-left"></i>
+            </a>
+          </div>
+          <div class="discussion-title">
+            <%= discussion.title %>
+            <span class="discussion-messages-icon fa-stack fa-xs">
+              <i class="fa fa-comment-o fa-stack-2x"></i>
+              <i class="fa fa-stack-1x"><%= discussion.messages.size %></i>
+            </span>
+          </div>
+          <div class="discussion-body">
+            <%= discussion.description %>
+            <%= link_to "Ver", polymorphic_path([@debatable, discussion]) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <a>
+    <span id="discussion-create"> Crear nueva consulta </span>
+  </a>
+</div>
+
+<%= content_for :no_container do %>
+  <%= render partial: 'layouts/modals/new_discussion', locals: {debatable: @debatable} %>
+<% end if current_user? %>
+
+

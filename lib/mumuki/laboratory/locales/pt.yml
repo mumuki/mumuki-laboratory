@@ -42,6 +42,7 @@ pt:
   days: Dias
   destroy: Excluir
   details: Detalhes
+  discussions: Consultas
   download: Faça o download do que você fez
   edit: Editar
   editor_placeholder: ... Escreva sua solução aqui ...
@@ -164,6 +165,7 @@ pt:
   sign_up_date: Usuário de
   solution: Solução
   solved_exercises: Exercícios resolvidos
+  solve_your_doubts: Consulte suas dúvidas
   something_went_wrong: Oops!, Algo não estava certo ...
   something_went_wrong_explanation: Algo não foi como esperado.
   start_lesson: Comece esta lição!

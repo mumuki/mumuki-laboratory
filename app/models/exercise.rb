@@ -4,7 +4,8 @@ class Exercise < ApplicationRecord
   include WithNumber,
           WithAssignments,
           FriendlyName,
-          WithLanguage
+          WithLanguage,
+          WithDiscussions
 
   include Submittable,
           Questionable

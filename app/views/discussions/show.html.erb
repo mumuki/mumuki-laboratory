@@ -1,0 +1,18 @@
+<%= content_for :breadcrumbs do %>
+  <%= link_to fixed_fa_icon('arrow-left', text: t(:discussions)), polymorphic_path([@debatable, Discussion]), role: 'menuitem' %>
+<% end %>
+
+<div>
+  <div class="discussion-header">
+    <%= user_avatar(@discussion.initiator) %>
+    <h2 class="discussion-title"><%= @discussion.title %></h2>
+  </div>
+  <h4><%= @discussion.description %></h4>
+  <div class="discussion-messages">
+    <% @discussion.messages.each do |message| %>
+      <%= render partial: 'discussions/message', locals: {user: current_user, message: message} %>
+    <% end %>
+  </div>
+
+  <%= render partial: 'discussions/new_message', locals: {user: current_user} %>
+</div>

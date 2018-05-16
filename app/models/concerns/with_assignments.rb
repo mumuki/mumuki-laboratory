@@ -63,7 +63,7 @@ module WithAssignments
   end
 
   def status_for(user)
-    assignment_for(user).defaulting(Mumuki::Laboratory::Status::Unknown, &:status) if user
+    assignment_for(user).defaulting(Mumuki::Laboratory::Status::Assignment::Unknown, &:status) if user
   end
 
   def last_submission_date_for(user)

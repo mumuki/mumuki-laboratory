@@ -1,0 +1,108 @@
+$discussion-message-arrow-size: 10px;
+$discussion-message-border-color: #aaa;
+
+.discussions {
+  margin-top: 30px;
+  .discussion {
+    margin-top: 10px;
+    background-color: #d9edf4;
+    padding: 10px;
+  }
+
+  .discussion-title {
+    font-size: 18px;
+    font-weight: bold;
+    display: table-cell;
+  }
+
+  .discussion-body {
+    display: none;
+  }
+
+  .discussion-display-more {
+    display: table-cell;
+    width: 30px;
+    vertical-align: middle;
+    margin-right: 0;
+    a {
+      cursor: pointer;
+    }
+  }
+
+  .discussion-messages-icon {
+    margin-left: 5px;
+    margin-bottom: 5px;
+    -ms-transform: scale(0.7,0.7); /* IE 9 */
+    -webkit-transform: scale(0.7,0.7); /* Safari */
+    transform: scale(0.7,0.7);
+  }
+}
+
+.discussion-header {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  .discussion-title {
+    margin-left: 15px
+  }
+}
+
+.discussion-messages {
+  margin-top: 70px;
+}
+
+.discussion-message-content {
+  padding: 15px;
+}
+
+.discussion-message {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  padding: 0;
+  border: none;
+  margin-top: 30px;
+}
+
+.discussion-message-user-avatar {
+  margin-right: 20px;
+}
+
+.discussion-message-bubble {
+  background-color: #fff;
+  border: 1px solid $discussion-message-border-color;
+  border-radius: 3px;
+  position: relative;
+  width: 100%;
+  .discussion-message-bubble-header {
+    background-color: #ddd;
+    height: 40px;
+    &:before {
+      position: absolute;
+      top: calc(20px - #{$discussion-message-arrow-size + 2px} / 2);
+      left: -$discussion-message-arrow-size - 2px;
+      border-width: (1px + $discussion-message-arrow-size / 2) (2px + $discussion-message-arrow-size) (1px + $discussion-message-arrow-size / 2) 0;
+      content: '';
+      border-style: solid;
+      border-color: transparent $discussion-message-border-color;
+    }
+    &:after {
+      position: absolute;
+      top: calc(20px - #{$discussion-message-arrow-size} / 2);
+      left: -$discussion-message-arrow-size;
+      border-width: ($discussion-message-arrow-size / 2) $discussion-message-arrow-size ($discussion-message-arrow-size / 2) 0;
+      border-color: transparent $discussion-message-border-color;
+      content: '';
+      border-style: solid;
+    }
+    .discussion-message-bubble-title {
+      padding: 5px 15px;
+      display: block;
+    }
+  }
+}
+
+

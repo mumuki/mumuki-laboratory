@@ -43,6 +43,7 @@ es:
   days: Días
   destroy: Eliminar
   details: Detalles
+  discussions: Consultas
   dont_leave_us: ¡No nos abandones! Aprender a programar es divertido. Sólo tenés que seguir practicando.
   download: "Descargá lo que hiciste"
   edit: Editar
@@ -119,6 +120,7 @@ es:
   never: nunca
   new: Nuevo
   new_message: ¿Tenés dudas? ¡Levantá la mano!
+  new_discussion: Nueva consulta
   new_message_placeholder: Escribí el mensaje para tu docente acá...
   next_exercise: Siguiente
   next_guide: 'Siguiente Lección: %{name}'
@@ -166,6 +168,7 @@ es:
   sign_up_date: Usuario desde
   solution: Solución
   solved_exercises: Ejercicios Resueltos
+  solve_your_doubts: Consultá tus dudas
   something_went_wrong: ¡Ups!, algo no anduvo bien...
   something_went_wrong_explanation: Algo no anduvo como se esperaba.
   start_lesson: ¡Comenzá esta lección!

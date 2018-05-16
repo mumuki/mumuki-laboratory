@@ -1,0 +1,12 @@
+<%= render layout: 'discussions/message_container', locals: {user: user} do %>
+  <%= form_for [@discussion, Message.new] do |f| %>
+    <div class="container-fluid">
+      <div class="row">
+        <div><%= f.text_area :content, class: 'form-control', placeholder: t(:message) %></div>
+      </div>
+      <div class="row">
+        <button class="btn btn-success btn-block"> <%= t :send %> </button>
+      </div>
+    </div>
+  <% end %>
+<% end %>

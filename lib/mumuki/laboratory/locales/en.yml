@@ -38,6 +38,7 @@ en:
   created_at: Created at
   date: Date
   destroy: Destroy
+  discussions: Discussions
   dont_leave_us: Don't leave us! Learning is fun. You just have to keep at it.
   download: Download your solution
   edit: Edit
@@ -108,7 +109,7 @@ en:
   need_help: I need help!
   never: never
   new: New
-  new_message_placeholder: Escribí tu mensaje acá...
+  new_message_placeholder: Write a message for your teacher...
   next_exercise: Next
   next_lesson: 'Next Guide: %{name}'
   no_exercises: Nobody created an exercise for this search yet
@@ -150,6 +151,7 @@ en:
   sign_out: Sign Out
   sign_up_date: User since
   solution: Solution
+  solve_your_doubts: Solve your doubts
   something_went_wrong: Something went wrong!
   something_went_wrong_explanation: Something is broken in Mumuki.
   start_lesson: Start this lesson!
