@@ -1,6 +1,7 @@
 class Chapter < ApplicationRecord
   include WithStats
   include WithNumber
+  include WithDiscussions
 
   include FriendlyName
 

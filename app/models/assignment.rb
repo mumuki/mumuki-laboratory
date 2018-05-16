@@ -1,5 +1,5 @@
 class Assignment < ApplicationRecord
-  include WithStatus
+  include WithAssignmentStatus
   include WithMessages
 
   belongs_to :exercise

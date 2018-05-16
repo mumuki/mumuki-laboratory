@@ -1,10 +1,10 @@
-<%= hidden_field_tag :console_endpoint, exercise_tries_path(@exercise) %>
+<%= hidden_field_tag :console_endpoint, exercise_tries_path(exercise) %>
 <%= hidden_field_tag :historical_queries, @assignment&.queries_with_results.to_json %>
 
-<% if @exercise.extra_visible? %>
+<% if exercise.extra_visible? %>
   <ul class="nav nav-tabs" role="tablist">
     <%= console_tab %>
-    <% if @exercise.extra_visible? %>
+    <% if exercise.extra_visible? %>
       <%= extra_code_tab %>
     <% end %>
   </ul>
@@ -15,7 +15,7 @@
     <% if @assignment&.pending_messages? %>
         <span class="pending-messages-text"> <%= t :pending_messages_explanation %>
           <a href="javascript:{}"
-             onclick="mumuki.Chat.submitMessagesForm('<%= messages_url(@exercise) %>', '<%= read_messages_path(@exercise) %>')"
+             onclick="mumuki.Chat.submitMessagesForm('<%= messages_url(exercise) %>', '<%= read_messages_path(exercise) %>')"
              class="<%= hidden_pending(@assignment) %>"
              data-waiting="<%= t(:sending_solution) %>">
             <%= t :get_messages %>
@@ -29,7 +29,7 @@
     </div>
    </div>
   <div role="tabpanel" class="tab-pane mu-input-panel fade" id="visible-extra">
-    <%= @exercise.extra_preview_html(current_user) %>
+    <%= exercise.extra_preview_html(current_user) %>
   </div>
   <div role="tabpanel" class="tab-pane mu-input-panel fade" id="messages">
     <%= render partial: 'layouts/messages', locals: {messages: @assignment.messages} if @assignment %>

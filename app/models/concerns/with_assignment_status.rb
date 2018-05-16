@@ -1,8 +1,8 @@
-module WithStatus
+module WithAssignmentStatus
   extend ActiveSupport::Concern
 
   included do
-    serialize :status, Mumuki::Laboratory::Status
+    serialize :status, Mumuki::Laboratory::Status::Assignment
     validates_presence_of :status
   end
 

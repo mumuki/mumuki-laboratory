@@ -11,8 +11,10 @@ es:
   and: y
   appendix: "Apéndice"
   appendix_teaser: ¿Querés saber más? <a href="%{link}">Consultá el apéndice de este capítulo</a>
+  ask_a_question: Hacé una pregunta!
   ask_community: Preguntá a la comunidad
   ask_redirect: ¿Querés que te llevemos ahí?
+  ask_the_first_question: Hacé la primer pregunta!
   author: Autor
   authoring: "Autores"
   authoring_note: Esta guía fue desarrollada por %{authors} y <a href="%{collaborators}" target="_blank">muchas personas más</a>, bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia Creative Commons Compartir-Igual, 4.0</a>.
@@ -24,6 +26,7 @@ es:
   chapter_number: 'Capítulo %{number}'
   classroom: Aula
   clear_console: Reiniciar consola
+  comment: Comentar
   confirm: Confirmar
   confirm_restart: Estás por borrar tu progreso en esta guía. ¿Querés continuar?
   console: Consola
@@ -43,6 +46,8 @@ es:
   days: Días
   destroy: Eliminar
   details: Detalles
+  discussion_updated: Consulta actualizada
+  discussions: Consultas
   dont_leave_us: ¡No nos abandones! Aprender a programar es divertido. Sólo tenés que seguir practicando.
   download: "Descargá lo que hiciste"
   edit: Editar
@@ -119,13 +124,16 @@ es:
   never: nunca
   new: Nuevo
   new_message: ¿Tenés dudas? ¡Levantá la mano!
+  new_discussion: Nueva consulta
   new_message_placeholder: Escribí el mensaje para tu docente acá...
   next_exercise: Siguiente
   next_guide: 'Siguiente Lección: %{name}'
   no_exercises: No encontramos ejercicios que coincidan con tu búsqueda.
   no_guides: No encontramos lecciones que coincidan con tu búsqueda.
   no_messages: ¡Parece que no tenés ningun mensaje todavía!
+  no_questions: Parece que aún no hay ninguna consulta.
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio aún!
+  no_useful_result: ¿No encontraste lo que estabas buscando?
   not_found: ¡La página que buscaste no existe!
   not_found_explanation: Fijate si escribiste bien la dirección. Peeeeero...
   not_in_any_organizations: ¡Parece que no estás en ninguna organización todavía!
@@ -166,6 +174,8 @@ es:
   sign_up_date: Usuario desde
   solution: Solución
   solved_exercises: Ejercicios Resueltos
+  solve_your_doubts: Consultá tus dudas
+  solve_your_doubts_teaser: ¿Tenés alguna consulta?
   something_went_wrong: ¡Ups!, algo no anduvo bien...
   something_went_wrong_explanation: Algo no anduvo como se esperaba.
   start_lesson: ¡Comenzá esta lección!
@@ -188,6 +198,9 @@ es:
   test_results: Resultados de las pruebas
   time_left: Te quedan
   title: Título
+  to_closed: Cerrar
+  to_opened: Reabrir
+  to_solved: Marcar como resuelta
   try_again: ¡Ups! Algo salió mal en mumuki. Reiniciá el ejercicio, esperá unos segundos y volvé a intentar.
   unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no iniciaste sesión.
   uncategorized: No categorizado

@@ -1,0 +1,56 @@
+<%= content_for :breadcrumbs do %>
+  <%= breadcrumbs(@debatable, t(:discussions)) %>
+<% end %>
+
+<div class="row">
+  <% if @debatable.respond_to? :language %>
+    <div class="mu-inline-block-right hidden-xs">
+      <h1><%= language_icon @debatable.language %></h1>
+    </div>
+  <% end %>
+  <div class="mu-inline-block-left">
+    <h1>
+      <span class="hidden-xs"><%= t("#{@debatable_class.downcase}_number", number: @debatable.number) %>:&nbsp;</span>
+      <span><%= @debatable.name %></span>
+    </h1>
+  </div>
+</div>
+
+<div>
+  <% if @discussions.empty? %>
+    <%= new_discussion_link(:no_questions, :ask_the_first_question) %>
+
+  <% else %>
+    <h3><%= t :discussions %></h3>
+
+    <div class="discussions">
+      <% @discussions.each do |discussion| %>
+        <%= link_to polymorphic_path([@debatable, discussion]) do %>
+          <div class="discussion">
+            <div class="discussion-row">
+              <%= discussion_messages_icon(discussion) %>
+              <div>
+                <div class="discussion-title">
+                  <span class="discussion-status-icon">
+                    <%= discussion_status_fa_icon(discussion) %>
+                  </span>
+                  <%= discussion.title %>
+                </div>
+                <span class="discussion-description">
+                  <%= discussion.description %>
+                </span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <%= new_discussion_link(:no_useful_result, :ask_a_question) %>
+  <% end %>
+</div>
+
+<%= content_for :no_container do %>
+  <%= render partial: 'layouts/modals/new_discussion', locals: {debatable: @debatable} %>
+<% end if current_user? %>
+
+

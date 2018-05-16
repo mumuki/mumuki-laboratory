@@ -22,7 +22,7 @@ class MessagesController < AjaxController
   private
 
   def set_exercise!
-    exercise_id = params.dig(:message, :exercise_id)  || params[:exercise_id]
+    exercise_id = params.dig(:message, :exercise_id) || params[:exercise_id]
     @exercise = Exercise.find(exercise_id)
   end
 

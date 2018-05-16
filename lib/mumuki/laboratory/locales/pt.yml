@@ -11,8 +11,10 @@ pt:
   and: e
   appendix: Apêndice
   appendix_teaser: Você quer saber mais? <a href="%{link}"> Consulte o apêndice deste capítulo </a>
+  ask_a_question: Faça uma pergunta!
   ask_community: Pergunte à comunidade
   ask_redirect: Você quer que nós o levemos para lá?
+  ask_the_first_question: Faça a primeira pergunta!
   author: Autor
   authoring: Autores
   authoring_note: 'Este guia foi desenvolvido por %{authors} e <a href="%{collaborators}" target="_blank"> muitas outras pessoas </a>, nos termos do <a href = "https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"> Creative Commons License Share-Equal, 4.0 </a>.'
@@ -23,6 +25,7 @@ pt:
   chapter_number: Capítulo %{number}
   classroom: Sala de aula
   clear_console: Reiniciar o console
+  comment: Comentar
   confirm: Confirme
   confirm_restart: Você está prestes a apagar o seu progresso neste guia. Você quer continuar?
   console: Consola
@@ -42,6 +45,8 @@ pt:
   days: Dias
   destroy: Excluir
   details: Detalhes
+  discussion_updated: Consulta actualizada
+  discussions: Consultas
   download: Faça o download do que você fez
   edit: Editar
   editor_placeholder: ... Escreva sua solução aqui ...
@@ -123,7 +128,9 @@ pt:
   no_exercises: Não encontramos exercícios que correspondam à sua pesquisa.
   no_guides: Não encontramos lições que correspondam à sua pesquisa.
   no_messages: Parece que você ainda não tem uma mensagem!
+  no_questions: Parece que ainda não há dúvida.
   no_submissions: Parece que você ainda não tentou resolver este exercício!
+  no_useful_result: Didn't find what you were looking for
   not_found: A página que você pesquisou não existe!
   not_found_explanation: Olhe se você escreveu o endereço corretamente. Mas...
   not_in_any_organizations: Parece que você ainda não está em nenhuma organização!
@@ -164,6 +171,8 @@ pt:
   sign_up_date: Usuário de
   solution: Solução
   solved_exercises: Exercícios resolvidos
+  solve_your_doubts: Consulte suas dúvidas
+  solve_your_doubts_teaser: Você tem alguma dúvida?
   something_went_wrong: Oops!, Algo não estava certo ...
   something_went_wrong_explanation: Algo não foi como esperado.
   start_lesson: Comece esta lição!
@@ -184,6 +193,9 @@ pt:
   test_results: Resultados do teste
   time_left: Te deixam
   title: Título
+  to_closed: Fechar
+  to_opened: Reabrir
+  to_solved: Marcar como resolvida
   try_again: Opa, algo deu errado em Mumuki. Reinicie o exercício, aguarde alguns segundos e tente novamente.
   unauthorized_explanation: Opa! Isso é o que é conhecido como %{error}, ou seja, você não fez logon.
   uncategorized: Não classificado

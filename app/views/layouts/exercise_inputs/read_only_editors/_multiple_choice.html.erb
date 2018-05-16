@@ -1,0 +1,8 @@
+<div class="form-group">
+  <% exercise.pretty_choices.each do |choice| %>
+    <div class="field checkbox complementary complementary-checkbox">
+      <%= check_box_tag(choice.id, '1', checked?(choice, content), disabled: true, class: 'solution-choice mu-read-only', 'data-index' => choice.index) %>
+      <%= label_tag(choice.id, choice.text) %>
+    </div>
+  <% end %>
+</div>

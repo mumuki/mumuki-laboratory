@@ -1,18 +1,23 @@
 class Message < ApplicationRecord
 
+  belongs_to :discussion, optional: true
   belongs_to :assignment, foreign_key: :submission_id, primary_key: :submission_id, optional: true
   has_one :exercise, through: :assignment
 
-  validates_presence_of :submission_id, :content, :sender
-
+  validates_presence_of :content, :sender
+  validates_presence_of :submission_id, :unless => :discussion_id? #FIXME Refactor this
   markdown_on :content
 
   def notify!
     Mumukit::Nuntius.notify! 'student-messages', as_platform_json
   end
 
+  def from_initiator?
+    sender == discussion.initiator.uid
+  end
+
   def as_platform_json
-    as_json(except: [:id, :type],
+    as_json(except: [:id, :type, :discussion_id],
             include: {exercise: {only: [:bibliotheca_id]}})
       .merge(organization: Organization.current.name)
   end

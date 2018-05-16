@@ -7,6 +7,7 @@ class Exercise < ApplicationRecord
           WithLanguage,
           Assistable,
           WithRandomizations
+          WithDiscussions
 
   include Submittable,
           Questionable

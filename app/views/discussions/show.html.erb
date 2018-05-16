@@ -1,0 +1,68 @@
+<%= content_for :breadcrumbs do %>
+  <%= breadcrumbs0 @debatable, link_to(t(:discussions), polymorphic_path([@debatable, Discussion])) %>
+<% end %>
+
+<div>
+  <div class="row">
+    <div class="mu-inline-block-right hidden-xs">
+      <h1>
+        <%= discussion_status_fa_icon(@discussion) %>
+      </h1>
+    </div>
+    <div class="mu-inline-block-left">
+      <div class="discussion-header">
+        <h1>
+          <%= user_avatar(@discussion.initiator, 'discussion-user-avatar') %>
+          <%= @discussion.title %>
+        </h1>
+      </div>
+      <h4 class="discussion-description">
+        <%= @discussion.description %>
+      </h4>
+    </div>
+  </div>
+
+  <% if @discussion.submission.present? %>
+    <ul class="nav nav-tabs discussion-tabs" role="tablist">
+      <li role="presentation" class="active">
+        <a data-target="#messages" aria-controls="messages" role="tab" data-toggle="tab">
+          <%= t :messages %>
+          <%= discussion_messages_icon(@discussion) %>
+        </a>
+      </li>
+      <li role="presentation">
+        <a data-target="#context" aria-controls="context" role="tab" data-toggle="tab">
+          <%= t :exercise %>
+        </a>
+      </li>
+    </ul>
+  <% end %>
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="messages">
+      <div class="mu-tab-body">
+        <div class="discussion-messages">
+          <% @discussion.messages.each do |message| %>
+            <%= render partial: 'discussions/message', locals: {user: current_user, message: message} %>
+          <% end %>
+        </div>
+
+        <%= render partial: 'discussions/new_message', locals: {user: current_user} if @discussion.opened? && current_user %>
+      </div>
+    </div>
+
+    <% if @discussion.submission.present? %>
+      <div role="tabpanel" class="tab-pane" id="context">
+        <div class="mu-tab-body">
+          <%= render partial: 'exercises/read_only', locals: {exercise: @debatable} %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="discussion-actions">
+    <% @discussion.allowed_statuses_for(current_user).each do |status| %>
+      <%= discussion_update_status_button(status) %>
+    <% end if current_user %>
+  </div>
+</div>

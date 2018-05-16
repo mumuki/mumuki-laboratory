@@ -1,11 +1,10 @@
 <% if current_user? %>
-  <% if @exercise.console? %>
-    <%= hidden_field_tag(:stateful_console, @exercise.stateful_console?) %>
-    <%= hidden_field_tag(:prompt, @exercise.prompt) %>
+  <% if exercise.console? %>
+    <%= hidden_field_tag(:stateful_console, exercise.stateful_console?) %>
+    <%= hidden_field_tag(:prompt, exercise.prompt) %>
   <% end %>
-  <div>
-    <%= render_exercise_input_form @exercise %>
-  </div>
+  <%= render_exercise_input_form exercise %>
+
 <% else %>
   <p><%= t :you_must_sign_in_before_submitting %></p>
 

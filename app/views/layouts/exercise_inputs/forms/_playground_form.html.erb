@@ -1,9 +1,9 @@
-<%= hidden_field_tag :console_endpoint, exercise_queries_path(@exercise) %>
+<%= hidden_field_tag :console_endpoint, exercise_queries_path(exercise) %>
 
-<% if @exercise.extra_visible? %>
+<% if exercise.extra_visible? %>
   <ul class="nav nav-tabs" role="tablist">
     <%= console_tab %>
-    <% if @exercise.extra_visible? %>
+    <% if exercise.extra_visible? %>
       <%= extra_code_tab %>
     <% end %>
   </ul>
@@ -18,9 +18,9 @@
     </div>
   </div>
   <div role="tabpanel" class="tab-pane mu-input-panel fade" id="visible-extra">
-    <%= @exercise.extra_preview_html(current_user) %>
+    <%= exercise.extra_preview_html(current_user) %>
   </div>
 </div>
 <div class="actions">
-  <%= next_exercise_button @exercise %>
+  <%= next_exercise_button exercise %>
 </div>

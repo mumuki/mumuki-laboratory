@@ -1,0 +1,22 @@
+<% content_for :assignment do %>
+  <div class="text-box">
+    <%= exercise.description_html %>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="hint-box <%= 'hidden' if exercise.hint.blank? %>">
+        <% if exercise.hint.present? %>
+          <a data-toggle="collapse" href="#hint-section" class="text-info">
+            <%= fa_icon 'lightbulb-o' %> <%= t :need_a_hint %>
+          </a>
+
+          <div id="hint-section" class="collapse">
+            <p>
+              <%= exercise.hint_html %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
