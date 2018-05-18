@@ -18,7 +18,7 @@ module StatusRenderingVerbosity
   end
 
   module Standard
-    def self.visible_expectation_results(status_like, expectation_results)
+    def self.visible_expectation_results(_status_like, expectation_results)
       expectation_results.select { |it| it[:result].failed? }
     end
 
