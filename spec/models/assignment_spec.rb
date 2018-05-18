@@ -61,13 +61,13 @@ describe Assignment, organization_workspace: :test do
   describe '#expectation_results_visible?' do
     let(:haskell) { create(:language, visible_success_output: true) }
     let(:exercise) { create(:exercise) }
-    context 'should show expectation' do
+    context 'should show expectation with failed submissions' do
       let(:failed_submission) { create(:assignment, status: :failed, expectation_results: [{:binding => "foo", :inspection => "HasBinding", :result => :failed}]) }
       it { expect(failed_submission.expectation_results_visible?).to be true }
     end
-    context 'should not show expectation' do
+    context 'should show expectation with errored submissions' do
       let(:errored_submission) { create(:assignment, status: :errored, expectation_results: [{:binding => "foo", :inspection => "HasBinding", :result => :failed}]) }
-      it { expect(errored_submission.expectation_results_visible?).to be false }
+      it { expect(errored_submission.expectation_results_visible?).to be true }
     end
   end
   describe '#run_update!' do

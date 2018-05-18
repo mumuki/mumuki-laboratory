@@ -9,9 +9,10 @@ describe StatusRenderingVerbosity do
   end
 
   describe StatusRenderingVerbosity::Standard do
-    it { expect(StatusRenderingVerbosity::Standard.visible_expectation_results(:passed_with_warnings, results)).to eq ([
-        {result: :failed, inspection: 'HasBinding', binding: 'bar'}]) }
-    it { expect(StatusRenderingVerbosity::Standard.visible_expectation_results(:errored, results)).to eq [] }
+    let (:failed_expectations) { [{result: :failed, inspection: 'HasBinding', binding: 'bar'}] }
+
+    it { expect(StatusRenderingVerbosity::Standard.visible_expectation_results(:passed_with_warnings, results)).to eq failed_expectations }
+    it { expect(StatusRenderingVerbosity::Standard.visible_expectation_results(:errored, results)).to eq failed_expectations }
   end
 
   describe StatusRenderingVerbosity::Silent do
