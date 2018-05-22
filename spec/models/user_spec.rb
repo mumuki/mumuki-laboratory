@@ -234,4 +234,24 @@ describe User, organization_workspace: :test do
 
     end
   end
+
+  describe '.resubmit!' do
+    let(:student) { create :user }
+    let(:exercises) { FactoryBot.create_list(:exercise, 5) }
+
+    let!(:chapter) {
+      create(:chapter, lessons: [
+        create(:lesson, exercises: exercises)]) }
+
+    before { reindex_current_organization! }
+
+    before { exercises.each { |it| it.submit_solution! student, content: '' } }
+
+    before { allow_any_instance_of(User).to receive(:assignments).and_return(student.assignments) }
+
+    it do
+      student.assignments.each { |it| expect(it).to receive(:notify!).once }
+      User.resubmit_by_uid! student.uid, Organization.current.name
+    end
+  end
 end
