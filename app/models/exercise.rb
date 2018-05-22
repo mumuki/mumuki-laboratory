@@ -130,10 +130,6 @@ class Exercise < ApplicationRecord
     false
   end
 
-  def default_content_tag_id
-    custom? ? 'mu-custom-editor-default-value' : 'default_content'
-  end
-
   private
 
   def evaluation_class

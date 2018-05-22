@@ -11,6 +11,10 @@ module ExerciseInputHelper
     render "layouts/exercise_inputs/editors/#{exercise.editor}", form: form, exercise: exercise
   end
 
+  def default_content_tag_id(exercise)
+    exercise.custom? ? 'mu-custom-editor-default-value' : 'default_content'
+  end
+
   def should_render_problem_tabs?(exercise, user)
     !exercise.hidden? && (exercise.queriable? || exercise.extra_visible? || exercise.has_messages_for?(user))
   end
