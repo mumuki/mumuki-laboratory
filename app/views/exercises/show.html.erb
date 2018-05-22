@@ -59,7 +59,7 @@
 
 <%= render_exercise_input_layout(@exercise) %>
 
-<%= hidden_field_tag :default_content, @default_content %>
+<%= hidden_field_tag default_content_tag_id(@exercise), @default_content %>
 
 <div style="display: none" id="processing-template">
   <div class="bs-callout bs-callout-info">

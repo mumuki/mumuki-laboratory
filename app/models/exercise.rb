@@ -126,6 +126,10 @@ class Exercise < ApplicationRecord
     Mumukit::ContentType::Markdown.to_html splitted_description.drop(1).join("\n")
   end
 
+  def custom?
+    false
+  end
+
   private
 
   def evaluation_class
