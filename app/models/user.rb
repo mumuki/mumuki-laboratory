@@ -126,9 +126,7 @@ class User < ApplicationRecord
 
   def resubmit!(organization = nil)
     organization = Organization.find_by_name(organization) || main_organization
-
     organization.switch!
-
     assignments.each { |it| it.notify! rescue nil }
   end
 
