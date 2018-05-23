@@ -124,12 +124,12 @@ class User < ApplicationRecord
     }
   end
 
-  def self.resubmit_by_uid!(uid, organization = nil)
-    user = find_by_uid uid
-    organization = Organization.find_by_name(organization) || user.main_organization
+  def resubmit!(organization = nil)
+    organization = Organization.find_by_name(organization) || main_organization
 
     organization.switch!
-    user.assignments.each { |it| it.notify! rescue nil }
+
+    assignments.each { |it| it.notify! rescue nil }
   end
 
   private

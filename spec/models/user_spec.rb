@@ -235,7 +235,7 @@ describe User, organization_workspace: :test do
     end
   end
 
-  describe '.resubmit!' do
+  describe '#resubmit!' do
     let(:student) { create :user }
     let(:exercises) { FactoryBot.create_list(:exercise, 5) }
 
@@ -247,11 +247,9 @@ describe User, organization_workspace: :test do
 
     before { exercises.each { |it| it.submit_solution! student, content: '' } }
 
-    before { allow_any_instance_of(User).to receive(:assignments).and_return(student.assignments) }
-
     it do
       student.assignments.each { |it| expect(it).to receive(:notify!).once }
-      User.resubmit_by_uid! student.uid, Organization.current.name
+      student.resubmit! Organization.current.name
     end
   end
 end
