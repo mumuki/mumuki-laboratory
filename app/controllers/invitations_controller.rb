@@ -1,4 +1,5 @@
 class InvitationsController < ApplicationController
+  before_action :authenticate!
   before_action :set_invitation!
 
   def show
