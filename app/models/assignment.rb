@@ -141,7 +141,7 @@ class Assignment < ApplicationRecord
   end
 
   def showable_tips
-    tips.select { |tries, _| tries <= failed_submissions_count }.map &:second
+    tips.select { |tries, _| tries <= attemps_count }.map &:second
   end
 
   private
