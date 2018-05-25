@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Progressive Tips' do
+feature 'Progressive Tips', organization_workspace: :test do
   let(:user) { create(:user) }
 
   let(:haskell) { create(:haskell) }
