@@ -144,6 +144,10 @@ class Assignment < ApplicationRecord
     tips.select { |tries, _| tries <= attemps_count }.map &:second
   end
 
+  def increment_attemps!
+    self.attemps_count += 1 unless passed?
+  end
+
   private
 
   def update_submissions_count!
