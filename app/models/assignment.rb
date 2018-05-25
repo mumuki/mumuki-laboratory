@@ -15,7 +15,7 @@ class Assignment < ApplicationRecord
     define_method(field) { self[field]&.map { |it| it.symbolize_keys } }
   end
 
-  delegate :language, :name, :visible_success_output?, to: :exercise
+  delegate :language, :name, :visible_success_output?, :tips, to: :exercise
   delegate :output_content_type, to: :language
   delegate :should_retry?, to: :status
 
@@ -138,6 +138,10 @@ class Assignment < ApplicationRecord
           'position' => navigable_parent.try(:number),
           'chapter' => guide.chapter.as_json(only: [:id], methods: [:name])
         }})
+  end
+
+  def showable_tips
+    tips.select { |tries, _| tries <= attemps_count }.map &:second
   end
 
   private

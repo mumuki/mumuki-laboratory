@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20180402015405) do
     t.string "queries", default: [], array: true
     t.text "query_results"
     t.text "manual_evaluation_comment"
+    t.integer "attemps_count", default: 0
     t.index ["exercise_id"], name: "index_assignments_on_exercise_id"
     t.index ["submission_id"], name: "index_assignments_on_submission_id"
     t.index ["submitter_id"], name: "index_assignments_on_submitter_id"
@@ -136,6 +137,7 @@ ActiveRecord::Schema.define(version: 20180402015405) do
     t.text "goal"
     t.string "initial_state"
     t.string "final_state"
+    t.text "tips"
     t.index ["guide_id"], name: "index_exercises_on_guide_id"
     t.index ["language_id"], name: "index_exercises_on_language_id"
   end
