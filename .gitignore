@@ -34,3 +34,8 @@ coverage/
 
 vendor/cache/**
 *.cache
+
+node_modules/**
+
+**/*.rsa*
+**/*.gem
