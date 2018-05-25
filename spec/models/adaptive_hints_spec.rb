@@ -7,7 +7,9 @@ module Mumukit
     end
 
     def assist_with(submission)
-      @rules.map { |it| it.call(submission)&.call(submission.retries) }.compact
+      @rules
+        .select { |it| it.matches?(submission) }
+        .map { |it| it.message_for(submission.retries) }
     end
 
     class Message
@@ -34,9 +36,9 @@ module Mumukit
         message = Mumukit::Assistant::Message.parse hash[:message]
         case hash[:type]
           when :content_empty                    then Mumukit::Assistant::Rule::ContentEmpty.new(message)
-          when :submission_errored               then Mumukit::Assistant::Rule::SubmissionStatus.new(message, &:errored?)
-          when :submission_failed                then Mumukit::Assistant::Rule::SubmissionStatus.new(message, &:failed?)
-          when :submission_passed_with_warnings  then Mumukit::Assistant::Rule::SubmissionStatus.new(message, &:passed_with_warnings?)
+          when :submission_errored               then Mumukit::Assistant::Rule::SubmissionErrored.new(message, hash[:contains])
+          when :submission_failed                then Mumukit::Assistant::Rule::SubmissionFailed.new(message)
+          when :submission_passed_with_warnings  then Mumukit::Assistant::Rule::SubmissionPassedWithWarnings.new(message, hash[:expectations])
           else raise "Unsupported rule #{hash[:type]}"
         end
       end
@@ -46,21 +48,58 @@ module Mumukit
         def initialize(message)
           @message = message
         end
+
+        def message_for(retries)
+          message.call(retries)
+        end
       end
 
       class ContentEmpty < Base
-        def call(submission)
-          message if submission.content.empty?
+        def matches?(submission)
+          submission.content.empty?
         end
       end
 
-      class SubmissionStatus < Base
-        def initialize(message, &block)
-          super(message)
-          @block = block
+      class SubmissionFailed < Base
+        def matches?(submission)
+          submission.status.failed?
         end
-        def call(submission)
-          message if @block.call(submission.status)
+      end
+
+      class SubmissionPassedWithWarnings < Base
+        def initialize(message, expectations)
+          super(message)
+          @expectations = expectations
+        end
+
+        def matches?(submission)
+          submission.status.passed_with_warnings? && matches_failing_expectations?(submission)
+        end
+
+        def matches_failing_expectations?(submission)
+          (@expectations || []).all? do |it|
+            includes_failing_expectation? it, submission.expectation_results
+          end
+        end
+
+        def includes_failing_expectation?(humanized_expectation, expectation_results)
+          binding, inspection = humanized_expectation.split(' ')
+          expectation_results.include? binding: binding, inspection: inspection, result: :failed
+        end
+      end
+
+      class SubmissionErrored < Base
+        def initialize(message, text)
+          super(message)
+          @text = text
+        end
+
+        def matches?(submission)
+          submission.status.errored? && includes_text?(submission)
+        end
+
+        def includes_text?(submission)
+          @text.blank? || submission.result.include?(@text)
         end
       end
     end
@@ -154,6 +193,42 @@ describe 'adaptive hints' do
     end
   end
 
+  describe 'submission_errored with contains rule' do
+    let(:rules) {[
+      {
+        type: :submission_errored,
+        message: 'Oops, it did not compile'
+      },
+      {
+        type: :submission_errored,
+        contains: 'Unrecognized token %',
+        message: 'Remeber you have to use `mod`, not `%`'
+      }
+    ]}
+
+    context 'when submission has errored with expected message' do
+      let(:submission) { struct status: :errored, result: 'Illegal start of sentence. Unrecognized token %'  }
+      it do
+        expect(assistant.assist_with submission).to eq ['Oops, it did not compile', 'Remeber you have to use `mod`, not `%`']
+      end
+    end
+
+    context 'when submission has errored without expected message' do
+      let(:submission) { struct status: :errored, result: 'Illegal start of sentence'  }
+      it do
+        expect(assistant.assist_with submission).to eq ['Oops, it did not compile']
+      end
+    end
+
+
+    context 'when submission has not errored' do
+      let(:submission) { struct status: :passed }
+      it do
+        expect(assistant.assist_with submission).to eq []
+      end
+    end
+  end
+
   describe 'submission_failed rule' do
     let(:rules) {[
       {type: :submission_failed, message: 'oops, it did not pass'}
@@ -188,6 +263,43 @@ describe 'adaptive hints' do
 
     context 'when submission has not passed_with_warnings' do
       let(:submission) { struct status: :passed }
+      it do
+        expect(assistant.assist_with submission).to eq []
+      end
+    end
+  end
+
+  describe 'submission_passed_with_warnings with expectations rule' do
+    let(:rules) {[{
+      type: :submission_passed_with_warnings,
+      expectations: [
+        'Foo DeclaresMethod:getBar',
+        'Foo DeclaresAttribute:bar'
+      ],
+      message: 'You must declare getter bar'
+    }]}
+
+    context 'when submission has passed_with_warnings with matching expectations' do
+      let(:submission) {
+        struct status: :passed_with_warnings,
+               expectation_results: [
+                 {binding: "Foo", inspection: "DeclaresMethod:getBar", result: :failed},
+                 {binding: "Foo", inspection: "DeclaresAttribute:bar",  result: :failed},
+                 {binding: "foo", inspection: "DeclaresAttribute:baz", result: :failed}] }
+
+      it do
+        expect(assistant.assist_with submission).to eq ['You must declare getter bar']
+      end
+    end
+
+    context 'when submission has passed_with_warnings without matching all expectations' do
+      let(:submission) {
+        struct status: :passed_with_warnings,
+               expectation_results: [
+                {binding: "Foo", inspection: "DeclaresMethod:getBar", result: :failed},
+                {binding: "Foo", inspection: "DeclaresAttribute:bar",  result: :passed},
+                {binding: "foo", inspection: "DeclaresAttribute:baz", result: :failed}] }
+
       it do
         expect(assistant.assist_with submission).to eq []
       end
