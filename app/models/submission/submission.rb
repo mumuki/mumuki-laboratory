@@ -31,7 +31,7 @@ class Submission
   end
 
   def save_results!(results, assignment)
-    assignment.failed_submissions_count += 1 unless results[:status] == :passed
+    assignment.attemps_count += 1 unless results[:status] == :passed
     assignment.update results
     assignment.save!
   end
