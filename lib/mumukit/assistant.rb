@@ -16,7 +16,7 @@ module Mumukit
     def assist_with(submission)
       @rules
         .select { |it| it.matches?(submission) }
-        .map { |it| it.message_for(submission.retries) }
+        .map { |it| it.message_for(submission.attemps_count) }
     end
   end
 end

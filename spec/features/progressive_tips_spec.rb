@@ -7,7 +7,7 @@ feature 'Progressive Tips', organization_workspace: :test do
 
   let!(:problem) { build(:problem,
                           name: 'Succ1', description: 'Description of Succ1',
-                          layout: :input_right, tips_rules: [[5, 'try this'], [10, 'try that']] ) }
+                          layout: :input_right, tips_rules: [{type: :submission_failed, message: ['try this', 'try that']}] ) }
   let(:assignment) { problem.find_or_init_assignment_for(user) }
 
   let!(:chapter) {
@@ -25,24 +25,24 @@ feature 'Progressive Tips', organization_workspace: :test do
       assignment.update! attemps_count: 2
       visit "/exercises/#{problem.slug}"
 
-      expect(page).to_not have_text('try this')
-      expect(page).to_not have_text('try that')
+      expect(page).to have_text('Try this')
+      expect(page).to_not have_text('Try that')
     end
 
     scenario '5 failed submissions' do
       assignment.update! attemps_count: 5
       visit "/exercises/#{problem.id}"
 
-      expect(page).to have_text('try this')
-      expect(page).to_not have_text('try that')
+      expect(page).to_not have_text('Try this')
+      expect(page).to have_text('Try that')
     end
 
     scenario '10 failed submissions' do
       assignment.update! attemps_count: 10
       visit "/exercises/#{problem.id}"
 
-      expect(page).to have_text('try that')
-      expect(page).to_not have_text('try this')
+      expect(page).to_not have_text('Try this')
+      expect(page).to have_text('Try that')
     end
   end
 end

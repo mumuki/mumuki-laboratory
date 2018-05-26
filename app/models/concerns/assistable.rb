@@ -6,7 +6,7 @@ module Assistable
   end
 
   def assistant
-    Mumukit::Assistant.new(tips_rules)
+    Mumukit::Assistant.new(Mumukit::Assistant::Rule.parse_many tips_rules)
   end
 
   def tips_for(assignment)

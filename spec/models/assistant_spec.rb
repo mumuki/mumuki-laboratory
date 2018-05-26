@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'adaptive hints' do
-  let(:assistant) { Mumukit::Assistant.new(rules.map { |it| Mumukit::Assistant::Rule.parse it }) }
+  let(:assistant) { Mumukit::Assistant.new(Mumukit::Assistant::Rule.parse_many rules) }
 
   describe 'content_empty rule' do
     let(:rules) {[
@@ -10,20 +10,16 @@ describe 'adaptive hints' do
 
     context 'when submission has content' do
       let(:submission) { struct content: 'something' }
-      it do
-        expect(assistant.assist_with submission).to eq []
-      end
+      it { expect(assistant.assist_with submission).to eq [] }
     end
 
     context 'when submission has no content' do
       let(:submission) { struct content: '' }
-      it do
-        expect(assistant.assist_with submission).to eq ['oops, please write something in the editor']
-      end
+      it { expect(assistant.assist_with submission).to eq ['oops, please write something in the editor'] }
     end
   end
 
-  describe 'content_empty with retries rule' do
+  describe 'content_empty with attemps_count rule' do
     let(:rules) {[
       {
         type: :content_empty,
@@ -33,37 +29,16 @@ describe 'adaptive hints' do
 
     context 'when submission has content' do
       let(:submission) { struct content: 'something' }
-      it do
-        expect(assistant.assist_with submission).to eq []
-      end
+      it { expect(assistant.assist_with submission).to eq [] }
     end
 
-    context 'when submission has no content, for the first time' do
-      let(:submission) { struct content: '', retries: 1 }
-      it do
-        expect(assistant.assist_with submission).to eq ['message 1']
-      end
-    end
-
-    context 'when submission has no content, for the second time' do
-      let(:submission) { struct content: '', retries: 2 }
-      it do
-        expect(assistant.assist_with submission).to eq ['message 2']
-      end
-    end
-
-    context 'when submission has no content, for the third time' do
-      let(:submission) { struct content: '', retries: 3 }
-      it do
-        expect(assistant.assist_with submission).to eq ['message 3']
-      end
-    end
-
-    context 'when submission has no content, for the fourth time' do
-      let(:submission) { struct content: '', retries: 4 }
-      it do
-        expect(assistant.assist_with submission).to eq ['message 3']
-      end
+    context 'when submission has no content' do
+      it { expect(assistant.assist_with(struct content: '', attemps_count: 1)).to eq ['message 1'] }
+      it { expect(assistant.assist_with(struct content: '', attemps_count: 3)).to eq ['message 1'] }
+      it { expect(assistant.assist_with(struct content: '', attemps_count: 4)).to eq ['message 2'] }
+      it { expect(assistant.assist_with(struct content: '', attemps_count: 6)).to eq ['message 2'] }
+      it { expect(assistant.assist_with(struct content: '', attemps_count: 7)).to eq ['message 3'] }
+      it { expect(assistant.assist_with(struct content: '', attemps_count: 10)).to eq ['message 3'] }
     end
   end
 
@@ -74,16 +49,12 @@ describe 'adaptive hints' do
 
     context 'when submission has errored' do
       let(:submission) { struct status: :errored }
-      it do
-        expect(assistant.assist_with submission).to eq ['oops, it did not compile']
-      end
+      it { expect(assistant.assist_with submission).to eq ['oops, it did not compile'] }
     end
 
     context 'when submission has not errored' do
       let(:submission) { struct status: :passed }
-      it do
-        expect(assistant.assist_with submission).to eq []
-      end
+      it { expect(assistant.assist_with submission).to eq [] }
     end
   end
 
@@ -109,17 +80,13 @@ describe 'adaptive hints' do
 
     context 'when submission has errored without expected message' do
       let(:submission) { struct status: :errored, result: 'Illegal start of sentence'  }
-      it do
-        expect(assistant.assist_with submission).to eq ['Oops, it did not compile']
-      end
+      it { expect(assistant.assist_with submission).to eq ['Oops, it did not compile'] }
     end
 
 
     context 'when submission has not errored' do
       let(:submission) { struct status: :passed }
-      it do
-        expect(assistant.assist_with submission).to eq []
-      end
+      it { expect(assistant.assist_with submission).to eq [] }
     end
   end
 
@@ -130,16 +97,12 @@ describe 'adaptive hints' do
 
     context 'when submission has failed' do
       let(:submission) { struct status: :failed }
-      it do
-        expect(assistant.assist_with submission).to eq ['oops, it did not pass']
-      end
+      it { expect(assistant.assist_with submission).to eq ['oops, it did not pass'] }
     end
 
     context 'when submission has not failed' do
       let(:submission) { struct status: :passed }
-      it do
-        expect(assistant.assist_with submission).to eq []
-      end
+      it { expect(assistant.assist_with submission).to eq [] }
     end
   end
 
@@ -150,16 +113,12 @@ describe 'adaptive hints' do
 
     context 'when submission has passed_with_warnings' do
       let(:submission) { struct status: :passed_with_warnings }
-      it do
-        expect(assistant.assist_with submission).to eq ['oops, it did not pass']
-      end
+      it { expect(assistant.assist_with submission).to eq ['oops, it did not pass'] }
     end
 
     context 'when submission has not passed_with_warnings' do
       let(:submission) { struct status: :passed }
-      it do
-        expect(assistant.assist_with submission).to eq []
-      end
+      it { expect(assistant.assist_with submission).to eq [] }
     end
   end
 
@@ -181,9 +140,7 @@ describe 'adaptive hints' do
                  {binding: "Foo", inspection: "DeclaresAttribute:bar",  result: :failed},
                  {binding: "foo", inspection: "DeclaresAttribute:baz", result: :failed}] }
 
-      it do
-        expect(assistant.assist_with submission).to eq ['You must declare getter bar']
-      end
+      it { expect(assistant.assist_with submission).to eq ['You must declare getter bar'] }
     end
 
     context 'when submission has passed_with_warnings without matching all expectations' do
@@ -194,9 +151,7 @@ describe 'adaptive hints' do
                 {binding: "Foo", inspection: "DeclaresAttribute:bar",  result: :passed},
                 {binding: "foo", inspection: "DeclaresAttribute:baz", result: :failed}] }
 
-      it do
-        expect(assistant.assist_with submission).to eq []
-      end
+      it { expect(assistant.assist_with submission).to eq [] }
     end
   end
 

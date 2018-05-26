@@ -11,15 +11,16 @@ module Mumukit::Assistant::Message
 
   class Progressive
     def initialize(alternatives)
+      raise 'You need at least two alternatives' if alternatives.size < 2
       @alternatives = alternatives
     end
 
-    def call(retries)
-      @alternatives[alternative_number(retries) - 1]
-    end
-
-    def alternative_number(retries)
-      [retries, @alternatives.size].compact.min
+    def call(attemps_count)
+      case attemps_count
+      when (1..3) then @alternatives.first
+      when (4..6) then @alternatives.second
+      else @alternatives.last
+      end
     end
   end
 
