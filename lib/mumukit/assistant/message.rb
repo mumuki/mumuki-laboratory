@@ -1,18 +1,33 @@
-class Mumukit::Assistant::Message
-  def initialize(alternatives)
-    @alternatives = alternatives
+module Mumukit::Assistant::Message
+  class Fixed
+    def initialize(text)
+      @text = text
+    end
+
+    def call(_)
+      @text
+    end
   end
 
-  def call(retries)
-    @alternatives[alternative_number(retries) - 1]
+  class Progressive
+    def initialize(alternatives)
+      @alternatives = alternatives
+    end
+
+    def call(retries)
+      @alternatives[alternative_number(retries) - 1]
+    end
+
+    def alternative_number(retries)
+      [retries, @alternatives.size].compact.min
+    end
   end
 
-  def alternative_number(retries)
-    [retries, @alternatives.size].compact.min
-  end
-
-  def self.parse(alternatives)
-    alternatives = [alternatives] if alternatives.is_a? String
-    new alternatives
+  def self.parse(text_or_alternatives)
+    if text_or_alternatives.is_a? String
+      Fixed.new text_or_alternatives
+    else
+      Progressive.new text_or_alternatives
+    end
   end
 end
