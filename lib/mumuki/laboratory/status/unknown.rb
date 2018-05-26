@@ -8,8 +8,4 @@ module Mumuki::Laboratory::Status::Unknown
   def self.iconize
     {class: :muted, type: :circle}
   end
-
-  def self.should_retry?
-    false
-  end
 end

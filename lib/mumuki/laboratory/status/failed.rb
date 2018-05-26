@@ -5,10 +5,6 @@ module Mumuki::Laboratory::Status::Failed
     true
   end
 
-  def self.should_retry?
-    true
-  end
-
   def self.iconize
     {class: :danger, type: 'times-circle'}
   end

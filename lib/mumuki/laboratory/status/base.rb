@@ -27,8 +27,10 @@ module Mumuki::Laboratory::Status::Base
     false
   end
 
+  # False if and only if this status
+  # is `Mumuki::Laboratory::Status`
   def should_retry?
-    group.should_retry?
+    true
   end
 
   def iconize
