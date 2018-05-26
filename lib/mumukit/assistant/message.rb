@@ -1,4 +1,6 @@
 module Mumukit::Assistant::Message
+  # Fixed messages are independent of the number
+  # of attemps
   class Fixed
     def initialize(text)
       @text = text
@@ -9,6 +11,13 @@ module Mumukit::Assistant::Message
     end
   end
 
+  # Progressive messages depend on the number of attemps
+  # They work with exactly two or three messages:
+  #
+  #  * the first message will be displayed in the first three attemps
+  #  * the second message will be displayed in the fourth, fifth and sixth attemps
+  #  * the third message will be displayed starting at the seventh attemp
+  #
   class Progressive
     def initialize(alternatives)
       raise 'You need at least two alternatives' if alternatives.size < 2
