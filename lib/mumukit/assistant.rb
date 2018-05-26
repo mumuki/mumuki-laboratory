@@ -1,4 +1,9 @@
 module Mumukit
+  # An assistant is used to generate dynamic feedback
+  # over a student's submission, based on rules.
+  #
+  # This feedback is composed of a list of markdown messages called _tips_,
+  # and the whole processes of creating this feedback is called _assistance_.
   class Assistant
     attr_accessor :rules
 
@@ -7,7 +12,7 @@ module Mumukit
     end
 
     # Provides tips for the studen for the given submission,
-    # based on the `rules`
+    # based on the `rules`.
     def assist_with(submission)
       @rules
         .select { |it| it.matches?(submission) }

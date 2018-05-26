@@ -141,7 +141,7 @@ class Assignment < ApplicationRecord
   end
 
   def tips
-    @tips ||= [exercise.tips.select { |tries, _| tries <= attemps_count }.map(&:second).last].compact
+    @tips ||= exercise.tips_for(self)
   end
 
   def increment_attemps!

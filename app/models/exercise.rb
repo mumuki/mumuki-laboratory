@@ -4,7 +4,8 @@ class Exercise < ApplicationRecord
   include WithNumber,
           WithAssignments,
           FriendlyName,
-          WithLanguage
+          WithLanguage,
+          Assistable
 
   include Submittable,
           Questionable
@@ -13,9 +14,6 @@ class Exercise < ApplicationRecord
           ParentNavigation
 
   belongs_to :guide
-
-  serialize :tips, Array
-
   defaults { self.submissions_count = 0 }
 
   validates_presence_of :submissions_count,

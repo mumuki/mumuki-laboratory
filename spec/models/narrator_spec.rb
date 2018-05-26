@@ -21,8 +21,8 @@ describe 'narrator' do
       ] }
 
       it { expect(narrator.retry_phrase).to eq 'Let\'s try again!' }
-      it { expect(narrator.explanation_introduction_phrase).to eq 'Oops, it didn\'t work :frowned:.' }
-      it { expect(narrator.compose_explanation tips).to eq "Oops, it didn\'t work :frowned:.\n\n"+
+      it { expect(narrator.explanation_introduction_phrase).to eq 'Oops, it didn\'t work :frowning:.' }
+      it { expect(narrator.compose_explanation tips).to eq "Oops, it didn\'t work :frowning:.\n\n"+
                                                           "Check you have not mispelled `product`.\n\n"+
                                                           "Also, check that you are using composition.\n\n" +
                                                           "Finally, remeber that `sum` must work with both `Int`s and `Float`s.\n\n" +

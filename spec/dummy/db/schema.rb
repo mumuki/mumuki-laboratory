@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180402015405) do
+ActiveRecord::Schema.define(version: 20180526141344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,7 +137,7 @@ ActiveRecord::Schema.define(version: 20180402015405) do
     t.text "goal"
     t.string "initial_state"
     t.string "final_state"
-    t.text "tips"
+    t.text "tips_rules"
     t.index ["guide_id"], name: "index_exercises_on_guide_id"
     t.index ["language_id"], name: "index_exercises_on_language_id"
   end

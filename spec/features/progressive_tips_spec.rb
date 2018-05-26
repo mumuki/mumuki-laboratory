@@ -5,7 +5,9 @@ feature 'Progressive Tips', organization_workspace: :test do
 
   let(:haskell) { create(:haskell) }
 
-  let!(:problem) { build(:problem, name: 'Succ1', description: 'Description of Succ1', layout: :input_right, tips: [[5, 'try this'], [10, 'try that']] ) }
+  let!(:problem) { build(:problem,
+                          name: 'Succ1', description: 'Description of Succ1',
+                          layout: :input_right, tips_rules: [[5, 'try this'], [10, 'try that']] ) }
   let(:assignment) { problem.find_or_init_assignment_for(user) }
 
   let!(:chapter) {
