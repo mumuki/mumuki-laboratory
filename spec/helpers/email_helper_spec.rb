@@ -3,8 +3,6 @@ require 'spec_helper'
 describe EmailHelper, organization_workspace: :test do
   helper EmailHelper
 
-  before { I18n.locale = :en }
-
   describe 'page_title' do
     let(:user) { create(:user) }
     let(:guide) { create(:guide, name: 'A Guide') }

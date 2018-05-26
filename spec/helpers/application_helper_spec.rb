@@ -4,8 +4,6 @@ describe ApplicationHelper, organization_workspace: :test do
   helper ApplicationHelper
   helper LinksHelper
 
-  before { I18n.locale = :en }
-
   describe 'page_title' do
     context 'in path' do
       let(:exercise) { lesson.exercises.first }

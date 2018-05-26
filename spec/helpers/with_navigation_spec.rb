@@ -4,8 +4,6 @@ describe WithStudentPathNavigation, organization_workspace: :test do
   helper WithStudentPathNavigation
   helper FontAwesome::Rails::IconHelper
 
-  before { I18n.locale = :en }
-
   describe '#next_button' do
     context 'with problems' do
       let(:lesson) { create(:lesson, name: 'my guide', exercises: [

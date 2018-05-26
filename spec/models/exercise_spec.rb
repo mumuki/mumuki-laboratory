@@ -4,8 +4,6 @@ describe Exercise, organization_workspace: :test do
   let(:exercise) { create(:exercise) }
   let(:user) { create(:user) }
 
-  before { I18n.locale = :en }
-
   describe '#slug' do
     let(:guide) { create(:guide, slug: 'foo/bar') }
     let(:exercise) { create(:exercise, guide: guide, bibliotheca_id: 4) }
