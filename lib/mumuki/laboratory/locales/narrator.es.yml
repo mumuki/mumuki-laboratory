@@ -4,7 +4,7 @@ es:
     retry_1: 'Pero a no deseperar, intentemos otra vez :muscle:'
     retry_2: ¡Corrijamos el problema!
     introduction_0: 'Parece que algo no funcionó :see_no_evil:.'
-    introduction_1: 'Eh, ¿qué pasó acá :frowned:?'
+    introduction_1: 'Eh, ¿qué pasó acá :frowning:?'
     introduction_2: 'Parece que algo no anduvo bien :sweat_smile:'
     middle_0: "Además, %{tip}."
     middle_1: "También %{tip}."

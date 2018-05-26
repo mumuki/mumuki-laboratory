@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'adaptive hints' do
-  let(:assistant) { Mumukit::Assistant.new(rules) }
+  let(:assistant) { Mumukit::Assistant.new(rules.map { |it| Mumukit::Assistant::Rule.parse it }) }
 
   describe 'content_empty rule' do
     let(:rules) {[

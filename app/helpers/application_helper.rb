@@ -28,12 +28,13 @@ module ApplicationHelper
   end
 
   def tips_box(assignment)
-    tip = assignment.tips.first
-    if tip.present?
+    tips = assignment.tips
+    if tips.present?
+      explanation = Mumukit::Assistant::Narrator.sample.compose_explanation tips
     %Q{<div class="mu-tips-box">
-        #{Mumukit::ContentType::Markdown.to_html tip}
+        #{Mumukit::ContentType::Markdown.to_html explanation}
       </div>}.html_safe
-      end
+    end
   end
 
   def chapter_finished(chapter)
