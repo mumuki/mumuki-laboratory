@@ -25,7 +25,6 @@
             <% if render_feedback?(assignment) %>
                 <div class="results-item">
                   <strong><%= t :feedback %>:</strong>
-
                   <div>
                     <%= assignment.feedback_html %>
                   </div>
@@ -35,9 +34,13 @@
                 </div>
             <% end %>
             <div id="results-section" class="<%= 'collapse' if render_feedback?(assignment) %> results-item">
-              <%= showable_tips_html assignment %>
               <%= render_test_results assignment %>
             </div>
+            <% if render_tips?(assignment) %>
+              <div class="results-item">
+                <%= tips_html assignment %>
+              </div>
+            <% end %>
           </div>
       <% else %>
           <div></div>

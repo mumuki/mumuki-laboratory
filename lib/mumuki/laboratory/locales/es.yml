@@ -187,6 +187,7 @@ es:
   test_results: Resultados de las pruebas
   time_left: Te quedan
   title: Título
+  tips: Sugerencias
   try_again: ¡Ups! Algo salió mal en mumuki. Reiniciá el ejercicio, esperá unos segundos y volvé a intentar.
   unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no iniciaste sesión.
   uncategorized: No categorizado

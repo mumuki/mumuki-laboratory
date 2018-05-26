@@ -39,8 +39,8 @@ feature 'Progressive Tips', organization_workspace: :test do
       assignment.update! attemps_count: 10
       visit "/exercises/#{problem.id}"
 
-      expect(page).to have_text('try this')
       expect(page).to have_text('try that')
+      expect(page).to_not have_text('try this')
     end
   end
 end
