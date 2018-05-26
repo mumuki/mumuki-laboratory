@@ -7,10 +7,6 @@ module AssignmentResultHelper
     StatusRenderingVerbosity.render_feedback?(assignment.feedback)
   end
 
-  def render_tips?(assignment)
-    assignment.tips.present?
-  end
-
   def t_assignment_status(assignment)
     t assignment_status assignment
   end
@@ -57,10 +53,6 @@ module AssignmentResultHelper
     if assignment.manual_evaluation_comment?
       Mumukit::ContentType::Markdown.to_html assignment.manual_evaluation_comment
     end
-  end
-
-  def tips_html(assignment)
-    Mumukit::ContentType::Markdown.to_html assignment.tips.map { |tip| "* #{tip}" }.join("\n")
   end
 
   private

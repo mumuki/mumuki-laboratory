@@ -27,6 +27,15 @@ module ApplicationHelper
     end
   end
 
+  def tips_box(assignment)
+    tip = assignment.tips.first
+    if tip.present?
+    %Q{<div class="mu-tips-box">
+        #{Mumukit::ContentType::Markdown.to_html tip}
+      </div>}.html_safe
+      end
+  end
+
   def chapter_finished(chapter)
     t :chapter_finished_html, chapter: link_to_path_element(chapter) if chapter
   end

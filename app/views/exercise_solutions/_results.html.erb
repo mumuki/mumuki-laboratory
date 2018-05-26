@@ -36,11 +36,6 @@
             <div id="results-section" class="<%= 'collapse' if render_feedback?(assignment) %> results-item">
               <%= render_test_results assignment %>
             </div>
-            <% if render_tips?(assignment) %>
-              <div class="results-item">
-                <%= tips_html assignment %>
-              </div>
-            <% end %>
           </div>
       <% else %>
           <div></div>
@@ -68,6 +63,9 @@
   <%= solution_download_link assignment %>
 </div>
 
-<%= corollary_box @exercise unless assignment.should_retry? %>
-
+<% if assignment.should_retry? %>
+  <%= tips_box assignment %>
+<% else %>
+  <%= corollary_box @exercise %>
+<% end %>
 <%= render partial: 'exercise_solutions/results_button', locals: {assignment: assignment} %>
