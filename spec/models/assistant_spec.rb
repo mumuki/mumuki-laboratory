@@ -3,9 +3,9 @@ require 'spec_helper'
 describe 'adaptive hints' do
   let(:assistant) { Mumukit::Assistant.new(Mumukit::Assistant::Rule.parse_many rules) }
 
-  describe 'content_empty rule' do
+  describe 'content_empty' do
     let(:rules) {[
-      {type: :content_empty, message: 'oops, please write something in the editor'}
+      {when: :content_empty, then: 'oops, please write something in the editor'}
     ]}
 
     context 'when submission has content' do
@@ -19,11 +19,11 @@ describe 'adaptive hints' do
     end
   end
 
-  describe 'content_empty with attemps_count rule' do
+  describe 'content_empty with attemps_count' do
     let(:rules) {[
       {
-        type: :content_empty,
-        message: ['message 1', 'message 2', 'message 3']
+        when: :content_empty,
+        then: ['message 1', 'message 2', 'message 3']
       }
     ]}
 
@@ -42,9 +42,9 @@ describe 'adaptive hints' do
     end
   end
 
-  describe 'submission_errored rule' do
+  describe 'submission_errored' do
     let(:rules) {[
-      {type: :submission_errored, message: 'oops, it did not compile'}
+      {when: :submission_errored, then: 'oops, it did not compile'}
     ]}
 
     context 'when submission has errored' do
@@ -58,16 +58,15 @@ describe 'adaptive hints' do
     end
   end
 
-  describe 'submission_errored with contains rule' do
+  describe 'error_contains with contains' do
     let(:rules) {[
       {
-        type: :submission_errored,
-        message: 'Oops, it did not compile'
+        when: :submission_errored,
+        then: 'Oops, it did not compile'
       },
       {
-        type: :submission_errored,
-        contains: 'Unrecognized token %',
-        message: 'Remeber you have to use `mod`, not `%`'
+        when: { error_contains: 'Unrecognized token %' },
+        then: 'Remeber you have to use `mod`, not `%`'
       }
     ]}
 
@@ -90,9 +89,9 @@ describe 'adaptive hints' do
     end
   end
 
-  describe 'submission_failed rule' do
+  describe 'submission_failed' do
     let(:rules) {[
-      {type: :submission_failed, message: 'oops, it did not pass'}
+      {when: :submission_failed, then: 'oops, it did not pass'}
     ]}
 
     context 'when submission has failed' do
@@ -106,9 +105,93 @@ describe 'adaptive hints' do
     end
   end
 
-  describe 'submission_passed_with_warnings rule' do
+  describe 'these_tests_failed' do
     let(:rules) {[
-      {type: :submission_passed_with_warnings, message: 'oops, it did not pass'}
+      {
+        when: {
+          these_tests_failed: [
+            'f -2 should return 1',
+            'f -5 should return 1']
+        },
+        then: 'oops, failed!'}
+    ]}
+
+    context 'when given tests have failed' do
+      let(:submission) {
+        struct status: :failed,
+               test_results: [
+                  {title: 'f -2 should return 1', status: :failed, result: '.'},
+                  {title: 'f -5 should return 1', status: :failed, result: '.'},
+                  {title: 'f -6 should return 1', status: :failed, result: '.'},
+               ]
+      }
+      it { expect(assistant.assist_with submission).to eq ['oops, failed!'] }
+    end
+
+    context 'when given tests have not failed' do
+      let(:submission) {
+        struct status: :failed,
+               test_results: [
+                  {title: 'f -2 should return 1', status: :failed, result: '.'},
+                  {title: 'f -5 should return 1', status: :passed, result: '.'},
+                  {title: 'f -6 should return 1', status: :failed, result: '.'},
+               ]
+      }
+      it { expect(assistant.assist_with submission).to eq [] }
+    end
+  end
+
+  describe 'only_these_tests_failed' do
+    let(:rules) {[
+      {
+        when: {
+          only_these_tests_failed: [
+            'f -2 should return 1',
+            'f -5 should return 1']
+        },
+        then: 'oops, failed!'}
+    ]}
+
+    context 'when given tests have failed, and no others' do
+      let(:submission) {
+        struct status: :failed,
+               test_results: [
+                  {title: 'f -2 should return 1', status: :failed, result: '.'},
+                  {title: 'f -5 should return 1', status: :failed, result: '.'},
+                  {title: 'f -6 should return 1', status: :passed, result: '.'},
+               ]
+      }
+      it { expect(assistant.assist_with submission).to eq ['oops, failed!'] }
+    end
+
+    context 'when given tests have failed, but others too' do
+      let(:submission) {
+        struct status: :failed,
+               test_results: [
+                  {title: 'f -2 should return 1', status: :failed, result: '.'},
+                  {title: 'f -5 should return 1', status: :failed, result: '.'},
+                  {title: 'f -6 should return 1', status: :failed, result: '.'},
+               ]
+      }
+      it { expect(assistant.assist_with submission).to eq [] }
+    end
+
+    context 'when given tests have not failed' do
+      let(:submission) {
+        struct status: :failed,
+               test_results: [
+                  {title: 'f -2 should return 1', status: :failed, result: '.'},
+                  {title: 'f -5 should return 1', status: :passed, result: '.'},
+                  {title: 'f -6 should return 1', status: :failed, result: '.'},
+               ]
+      }
+      it { expect(assistant.assist_with submission).to eq [] }
+    end
+  end
+
+  describe 'submission_passed_with_warnings' do
+    let(:rules) {[
+      {when: :submission_passed_with_warnings, then: 'oops, it did not pass'}
     ]}
 
     context 'when submission has passed_with_warnings' do
@@ -122,14 +205,15 @@ describe 'adaptive hints' do
     end
   end
 
-  describe 'submission_passed_with_warnings with expectations rule' do
+  describe 'submission_passed_with_warnings with expectations' do
     let(:rules) {[{
-      type: :submission_passed_with_warnings,
-      expectations: [
-        'Foo DeclaresMethod:getBar',
-        'Foo DeclaresAttribute:bar'
-      ],
-      message: 'You must declare getter bar'
+      when: {
+        these_expectations_failed: [
+          'Foo DeclaresMethod:getBar',
+          'Foo DeclaresAttribute:bar'
+        ]
+      },
+      then: 'You must declare getter bar'
     }]}
 
     context 'when submission has passed_with_warnings with matching expectations' do

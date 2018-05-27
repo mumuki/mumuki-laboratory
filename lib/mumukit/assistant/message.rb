@@ -20,7 +20,7 @@ module Mumukit::Assistant::Message
   #
   class Progressive
     def initialize(alternatives)
-      raise 'You need at least two alternatives' if alternatives.size < 2
+      raise 'You need two or three alternatives' unless alternatives.size.between?(2, 3)
       @alternatives = alternatives
     end
 
@@ -36,8 +36,10 @@ module Mumukit::Assistant::Message
   def self.parse(text_or_alternatives)
     if text_or_alternatives.is_a? String
       Fixed.new text_or_alternatives
-    else
+    elsif text_or_alternatives.is_a? Array
       Progressive.new text_or_alternatives
+    else
+      raise "Wrong message format #{text_or_alternatives}"
     end
   end
 end
