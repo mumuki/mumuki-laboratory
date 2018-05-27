@@ -2,16 +2,16 @@ module Assistable
   extend ActiveSupport::Concern
 
   included do
-    serialize :tips_rules, Array
+    serialize :assistance_rules, Array
   end
 
   def assistant
-    Mumukit::Assistant.new(Mumukit::Assistant::Rule.parse_many tips_rules)
+    Mumukit::Assistant.parse(assistance_rules)
   end
 
-  def tips_for(assignment)
+  def assist_with(assignment)
     # not strictly necessary, but avoid going through
     # all the assistence process when there are no rules
-    tips_rules.blank? ? [] : assistant.assist_with(assignment)
+    assistance_rules.blank? ? [] : assistant.assist_with(assignment)
   end
 end

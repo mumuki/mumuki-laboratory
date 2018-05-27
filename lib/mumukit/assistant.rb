@@ -18,6 +18,10 @@ module Mumukit
         .select { |it| it.matches?(submission) }
         .map { |it| it.message_for(submission.attemps_count) }
     end
+
+    def self.parse(rules)
+      new rules.map { |it| Mumukit::Assistant::Rule.parse it }
+    end
   end
 end
 

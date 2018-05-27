@@ -141,7 +141,7 @@ class Assignment < ApplicationRecord
   end
 
   def tips
-    @tips ||= exercise.tips_for(self)
+    @tips ||= exercise.assist_with(self)
   end
 
   def increment_attemps!

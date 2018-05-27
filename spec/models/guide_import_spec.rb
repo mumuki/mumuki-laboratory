@@ -25,7 +25,7 @@ describe Guide do
           teacher_info: 'an info',
           language: 'gobstones',
           solution: 'foo',
-          tips_rules: [
+          assistance_rules: [
             {when: :content_empty, then: 'remember to copy the code in the editor!'},
             {when: :submission_errored, then: 'remember to copy code exactly as presented'},
           ],
@@ -142,7 +142,7 @@ describe Guide do
       it { expect(guide.exercises.count).to eq 5 }
       it { expect(guide.exercises.first.language).to eq gobstones }
       it { expect(guide.exercises.first.extra_visible).to be false }
-      it { expect(guide.exercises.first.tips_rules).to be_present }
+      it { expect(guide.exercises.first.assistance_rules).to be_present }
       it { expect(guide.exercises.first.assistant.rules.count).to eq 2 }
 
       it { expect(guide.exercises.second.language).to eq haskell }

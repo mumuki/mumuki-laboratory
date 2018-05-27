@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'narrator' do
   describe 'random narrator' do
-    let(:narrator) { Mumukit::Assistant::Narrator.sample }
+    let(:narrator) { Mumukit::Assistant::Narrator.random }
 
     it { expect(narrator).to be_a Mumukit::Assistant::Narrator }
     it { expect(narrator.retry_phrase).to be_a String }

@@ -30,10 +30,6 @@ module Mumukit::Assistant::Rule
     end
   end
 
-  def self.parse_many(hashes)
-    hashes.map { |it| parse it }
-  end
-
   class Base
     attr_accessor :message
     def initialize(message)

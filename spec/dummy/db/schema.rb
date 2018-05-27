@@ -137,7 +137,7 @@ ActiveRecord::Schema.define(version: 20180526141344) do
     t.text "goal"
     t.string "initial_state"
     t.string "final_state"
-    t.text "tips_rules"
+    t.text "assistance_rules"
     t.index ["guide_id"], name: "index_exercises_on_guide_id"
     t.index ["language_id"], name: "index_exercises_on_language_id"
   end

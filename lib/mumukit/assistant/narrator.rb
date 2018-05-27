@@ -9,10 +9,16 @@ class Mumukit::Assistant::Narrator
     @seed = seed
   end
 
-  # Generated the explanation using the seeded phrases. Uses `I18n` to get
+  # Generated a markdown explanation using the seeded phrases. Uses `I18n` to get
   # the appropriate locale.
   def compose_explanation(tips)
     "#{explanation_introduction_phrase}\n\n#{explanation_paragraphs(tips).join("\n\n")}\n\n#{retry_phrase}\n"
+  end
+
+  # Generates an html explantion.
+  # See `compose_explanation`
+  def compose_explanation_html(tips)
+    Mumukit::ContentType::Markdown.to_html compose_explanation(tips)
   end
 
   def retry_phrase
@@ -41,8 +47,8 @@ class Mumukit::Assistant::Narrator
     t :ending, tip: tip
   end
 
-  def self.sample
-    new seed(*5.times.map { sample_index })
+  def self.random
+    new seed(*5.times.map { random_index })
   end
 
   def self.seed(r, i, o, m, e)
@@ -55,7 +61,7 @@ class Mumukit::Assistant::Narrator
     I18n.t "narrator.#{key}_#{@seed[key]}", args
   end
 
-  def self.sample_index
+  def self.random_index
     (0..2).to_a.sample
   end
 end

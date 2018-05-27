@@ -7,7 +7,7 @@ feature 'Progressive Tips', organization_workspace: :test do
 
   let!(:problem) { build(:problem,
                           name: 'Succ1', description: 'Description of Succ1',
-                          layout: :input_right, tips_rules: [{when: :submission_failed, then: ['try this', 'try that']}] ) }
+                          layout: :input_right, assistance_rules: [{when: :submission_failed, then: ['try this', 'try that']}] ) }
   let(:assignment) { problem.find_or_init_assignment_for(user) }
 
   let!(:chapter) {
