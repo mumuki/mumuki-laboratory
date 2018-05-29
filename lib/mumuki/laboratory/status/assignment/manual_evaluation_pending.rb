@@ -1,12 +1,12 @@
-module Mumuki::Laboratory::Status::ManualEvaluationPending
-  extend Mumuki::Laboratory::Status::Base
+module Mumuki::Laboratory::Status::Assignment::ManualEvaluationPending
+  extend Mumuki::Laboratory::Status::Assignment
 
   def self.passed?
     true
   end
 
   def self.group
-    Mumuki::Laboratory::Status::Passed
+    Mumuki::Laboratory::Status::Assignment::Passed
   end
 
   def self.iconize

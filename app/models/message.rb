@@ -12,6 +12,10 @@ class Message < ApplicationRecord
     Mumukit::Nuntius.notify! 'student-messages', as_platform_json
   end
 
+  def from_initiator?
+    sender == discussion.initiator.uid
+  end
+
   def as_platform_json
     as_json(except: [:id, :type, :discussion_id],
             include: {exercise: {only: [:bibliotheca_id]}})

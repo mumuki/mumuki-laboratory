@@ -1,5 +1,5 @@
 <%= content_for :breadcrumbs do %>
-  <%= link_to fixed_fa_icon('arrow-left', text: t(@debatable_class.downcase)), polymorphic_path(@debatable), role: 'menuitem' %>
+  <%= breadcrumbs(@debatable, t(:discussions)) %>
 <% end %>
 
 <div class="row">
@@ -18,37 +18,35 @@
 
 <div>
   <% if @discussions.empty? %>
-    <%= "No existen consultas para este #{t @debatable_class.downcase}"%>
+    <%= new_discussion_link(:no_questions, :ask_the_first_question) %>
+
   <% else %>
     <h3> Consultas realizadas para este <%= t @debatable_class.downcase %> </h3>
 
     <div class="discussions">
       <% @discussions.each do |discussion| %>
-        <div class="discussion">
-          <div class="discussion-display-more mu-inline-block-right">
-            <a>
-              <i class="fa fa-caret-left"></i>
-            </a>
+        <%= link_to polymorphic_path([@debatable, discussion]) do %>
+          <div class="discussion">
+            <div class="discussion-row">
+              <%= discussion_messages_icon(discussion) %>
+              <div>
+                <div class="discussion-title">
+                  <span class="discussion-status-icon">
+                    <%= discussion_status_fa_icon(discussion) %>
+                  </span>
+                  <%= discussion.title %>
+                </div>
+                <span class="discussion-description">
+                  <%= discussion.description %>
+                </span>
+              </div>
+            </div>
           </div>
-          <div class="discussion-title">
-            <%= discussion.title %>
-            <span class="discussion-messages-icon fa-stack fa-xs">
-              <i class="fa fa-comment-o fa-stack-2x"></i>
-              <i class="fa fa-stack-1x"><%= discussion.messages.size %></i>
-            </span>
-          </div>
-          <div class="discussion-body">
-            <%= discussion.description %>
-            <%= link_to "Ver", polymorphic_path([@debatable, discussion]) %>
-          </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
+    <%= new_discussion_link(:no_useful_result, :ask_a_question) %>
   <% end %>
-
-  <a>
-    <span id="discussion-create"> Crear nueva consulta </span>
-  </a>
 </div>
 
 <%= content_for :no_container do %>

@@ -10,10 +10,10 @@
         </div>
         <div class="modal-body">
           <div class="container-fluid">
-            <div class="row">
-              <div><%= f.text_field :title, class: 'form-control', placeholder: t(:title) %></div>
+            <div class="row form-group">
+              <div><%= f.text_field :title, class: 'form-control', placeholder: t(:title), required: true %></div>
             </div>
-            <div class="row">
+            <div class="row form-group">
               <div><%= f.text_area :description, class: 'form-control', placeholder: t(:description) %></div>
             </div>
           </div>

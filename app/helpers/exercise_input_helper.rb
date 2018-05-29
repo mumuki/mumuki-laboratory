@@ -1,6 +1,6 @@
 module ExerciseInputHelper
   def render_exercise_input_layout(exercise)
-    render "layouts/exercise_inputs/layouts/#{exercise.layout}"
+    render "layouts/exercise_inputs/layouts/#{exercise.layout}", exercise: exercise
   end
 
   def render_exercise_input_form(exercise)

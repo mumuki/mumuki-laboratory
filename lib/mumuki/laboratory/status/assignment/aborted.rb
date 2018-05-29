@@ -1,7 +1,7 @@
-module Mumuki::Laboratory::Status::Aborted
-  extend Mumuki::Laboratory::Status::Base
+module Mumuki::Laboratory::Status::Assignment::Aborted
+  extend Mumuki::Laboratory::Status::Assignment
 
   def self.group
-    Mumuki::Laboratory::Status::Failed
+    Mumuki::Laboratory::Status::Assignment::Failed
   end
 end

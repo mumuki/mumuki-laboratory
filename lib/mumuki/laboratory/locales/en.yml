@@ -10,8 +10,10 @@ en:
   all: All
   appendix: "Appendix"
   appendix_teaser: Do you want to learn more? <a href="%{link}">Check this chapter's appendix</a>"
+  ask_a_question: Ask a question!
   ask_community: Ask community for help
   ask_redirect: Do you want to go there?
+  ask_the_first_question: Be the first one to ask!
   author: Author
   authoring: "Authoring"
   authoring_note: This guide's content was developed by %{authors} and <a href="%{collaborators}" target="_blank">many others</a>, under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons License Share-Alike, 4.0</a>
@@ -23,6 +25,7 @@ en:
   chapter_number: Chapter %{number}
   classroom: Classroom
   clear_console: Clear console
+  comment: Comment
   confirm: Confirm
   confirm_restart: You are about to delete your progress for this guide. Do you want to proceed?
   console: Console
@@ -38,6 +41,7 @@ en:
   created_at: Created at
   date: Date
   destroy: Destroy
+  discussion_updated: Discussion updated
   discussions: Discussions
   dont_leave_us: Don't leave us! Learning is fun. You just have to keep at it.
   download: Download your solution
@@ -115,7 +119,9 @@ en:
   no_exercises: Nobody created an exercise for this search yet
   no_guides: Nobody created a guide for this search yet
   no_messages: It seems you don't have any messages yet!
+  no_questions: It seems there isn't any question yet.
   no_submissions: It seems like you haven't tried to solve this exercise
+  no_useful_result: Não encontrou o que estava buscando?
   not_found_explanation: 'You may have mistyped the address or the page may have moved.'
   not_in_any_organizations: It seems you aren't in any organizations yet!
   notify_problem_with_exercise: Report a bug
@@ -152,6 +158,7 @@ en:
   sign_up_date: User since
   solution: Solution
   solve_your_doubts: Solve your doubts
+  solve_your_doubts_teaser: Do you have any doubts?
   something_went_wrong: Something went wrong!
   something_went_wrong_explanation: Something is broken in Mumuki.
   start_lesson: Start this lesson!
@@ -173,6 +180,9 @@ en:
   test_results: Tests results
   time_left: You have
   title: Title
+  to_closed: Close
+  to_opened: Reopen
+  to_solved: Mark as solved
   try_again: Oops, something went wrong in Mumuki. Restart the exercise, wait a few seconds and try again.
   unauthorized_explanation: You have no permissions for this content. Maybe you logged in with another account.
   unmeet_expectations: "Goals that weren't met"

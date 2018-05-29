@@ -1,7 +1,7 @@
-module Mumuki::Laboratory::Status::Discussion::Closed
+module Mumuki::Laboratory::Status::Discussion::Solved
   extend Mumuki::Laboratory::Status::Discussion
 
-  def self.closed?
+  def self.solved?
     true
   end
 
@@ -10,6 +10,6 @@ module Mumuki::Laboratory::Status::Discussion::Closed
   end
 
   def self.iconize
-    {class: :danger, type: 'times-circle'}
+    {class: :success, type: 'check-circle'}
   end
 end

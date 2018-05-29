@@ -1,8 +1,8 @@
-module Mumuki::Laboratory::Status::Pending
-  extend Mumuki::Laboratory::Status::Base
+module Mumuki::Laboratory::Status::Assignment::Pending
+  extend Mumuki::Laboratory::Status::Assignment
 
   def self.group
-    Mumuki::Laboratory::Status::Unknown
+    Mumuki::Laboratory::Status::Assignment::Unknown
   end
 
   def self.iconize

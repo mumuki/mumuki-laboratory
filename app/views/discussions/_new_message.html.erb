@@ -2,10 +2,10 @@
   <%= form_for [@discussion, Message.new] do |f| %>
     <div class="container-fluid">
       <div class="row">
-        <div><%= f.text_area :content, class: 'form-control', placeholder: t(:message) %></div>
+        <div><%= f.text_area :content, class: 'form-control discussion-new-message-content', placeholder: t(:message), required: true %></div>
       </div>
       <div class="row">
-        <button class="btn btn-success btn-block"> <%= t :send %> </button>
+        <button class="btn btn-success btn-block discussion-new-message-button"> <%= t :comment %> </button>
       </div>
     </div>
   <% end %>

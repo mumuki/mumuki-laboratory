@@ -19,7 +19,7 @@ module StatusRenderingVerbosity
 
   module Standard
     def self.visible_expectation_results(status_like, expectation_results)
-      if status_like.to_mumuki_status.errored?
+      if status_like.to_assignment_status.errored?
         []
       else
         expectation_results.select { |it| it[:result].failed? }

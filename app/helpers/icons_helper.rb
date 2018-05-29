@@ -1,7 +1,7 @@
 module IconsHelper
   #FIXME refactor names
   def status_icon(status_like)
-    fa_icon *icon_for_status(status_like.to_mumuki_status)
+    fa_icon *icon_for_status(status_like.to_assignment_status)
   end
 
   def fixed_fa_icon(name, options={})
@@ -21,6 +21,10 @@ module IconsHelper
 
   def exercise_status_fa_icon(exercise)
     fa_icon(*icon_for_status(exercise.status_for(current_user)))
+  end
+
+  def discussion_status_fa_icon(discussion)
+    fa_icon(*icon_for_status(discussion.status))
   end
 
   def icon_for_status(s)

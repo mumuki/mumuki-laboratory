@@ -1,4 +1,4 @@
-module WithStatus
+module WithAssignmentStatus
   extend ActiveSupport::Concern
 
   included do

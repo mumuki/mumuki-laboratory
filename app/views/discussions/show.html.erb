@@ -1,18 +1,66 @@
 <%= content_for :breadcrumbs do %>
-  <%= link_to fixed_fa_icon('arrow-left', text: t(:discussions)), polymorphic_path([@debatable, Discussion]), role: 'menuitem' %>
+  <%= breadcrumbs0 @debatable, link_to(t(:discussions), polymorphic_path([@debatable, Discussion])) %>
 <% end %>
 
 <div>
-  <div class="discussion-header">
-    <%= user_avatar(@discussion.initiator) %>
-    <h2 class="discussion-title"><%= @discussion.title %></h2>
-  </div>
-  <h4><%= @discussion.description %></h4>
-  <div class="discussion-messages">
-    <% @discussion.messages.each do |message| %>
-      <%= render partial: 'discussions/message', locals: {user: current_user, message: message} %>
-    <% end %>
+  <div class="row">
+    <div class="mu-inline-block-right hidden-xs">
+      <h1>
+        <%= discussion_status_fa_icon(@discussion) %>
+      </h1>
+    </div>
+    <div class="mu-inline-block-left">
+      <div class="discussion-header">
+        <h1>
+          <%= user_avatar(@discussion.initiator, 'discussion-user-avatar') %>
+          <%= @discussion.title %>
+        </h1>
+      </div>
+      <h4 class="discussion-description">
+        <%= @discussion.description %>
+      </h4>
+    </div>
   </div>
 
-  <%= render partial: 'discussions/new_message', locals: {user: current_user} %>
+  <% if true #@discussion.submission.present? %>
+    <ul class="nav nav-tabs discussion-tabs" role="tablist">
+      <li role="presentation" class="active">
+        <a data-target="#messages" aria-controls="messages" role="tab" data-toggle="tab">
+          <%= t :messages %>
+          <%= discussion_messages_icon(@discussion) %>
+        </a>
+      </li>
+      <li role="presentation">
+        <a data-target="#context" aria-controls="context" role="tab" data-toggle="tab">
+          <%= t :exercise %>
+        </a>
+      </li>
+    </ul>
+  <% end %>
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="messages">
+      <div class="mu-tab-body">
+        <div class="discussion-messages">
+          <% @discussion.messages.each do |message| %>
+            <%= render partial: 'discussions/message', locals: {user: current_user, message: message} %>
+          <% end %>
+        </div>
+
+        <%= render partial: 'discussions/new_message', locals: {user: current_user} if @discussion.opened? && current_user %>
+      </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="context">
+      <div class="mu-tab-body">
+        <%= render_exercise_input_layout(@debatable) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="discussion-actions">
+    <% @discussion.allowed_statuses_for(current_user).each do |status| %>
+      <%= discussion_update_status_button(status) %>
+    <% end if current_user %>
+  </div>
 </div>

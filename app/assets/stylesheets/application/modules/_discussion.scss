@@ -2,18 +2,44 @@ $discussion-message-arrow-size: 10px;
 $discussion-message-border-color: #aaa;
 
 .discussions {
-  margin-top: 30px;
+  margin: 30px 0;
   .discussion {
-    margin-top: 10px;
-    background-color: #d9edf4;
-    padding: 10px;
+    padding: 10px 15px;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    &:hover{
+      background-color: #f8f8f8;
+    }
+    border: 1px solid #cccccc;
+  }
+  a {
+    color: unset;
+    text-decoration: unset;
+    &:not(:last-child) > .discussion {
+      border-bottom: 0;
+    }
   }
 
-  .discussion-title {
-    font-size: 18px;
-    font-weight: bold;
-    display: table-cell;
+  .discussion-status-icon {
+    padding-right: 10px;
   }
+
+  .discussion-row {
+    display: table-cell;
+    vertical-align: middle;
+    .discussion-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .discussion-description {
+      overflow: hidden;
+      display: block;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
 
   .discussion-body {
     display: none;
@@ -22,7 +48,6 @@ $discussion-message-border-color: #aaa;
   .discussion-display-more {
     display: table-cell;
     width: 30px;
-    vertical-align: middle;
     margin-right: 0;
     a {
       cursor: pointer;
@@ -30,12 +55,21 @@ $discussion-message-border-color: #aaa;
   }
 
   .discussion-messages-icon {
-    margin-left: 5px;
+    margin-left: 30px;
     margin-bottom: 5px;
-    -ms-transform: scale(0.7,0.7); /* IE 9 */
-    -webkit-transform: scale(0.7,0.7); /* Safari */
-    transform: scale(0.7,0.7);
   }
+}
+
+.discussion-messages-icon {
+  -ms-transform: scale(0.7,0.7);
+  -webkit-transform: scale(0.7,0.7);
+  transform: scale(0.7,0.7);
+  float: right;
+  margin-left: 5px;
+}
+
+#discussion-create {
+  cursor: pointer;
 }
 
 .discussion-header {
@@ -44,9 +78,18 @@ $discussion-message-border-color: #aaa;
   justify-content: flex-start;
   align-items: center;
   padding: 0;
-  .discussion-title {
-    margin-left: 15px
+  .discussion-user-avatar {
+    margin-right: 15px;
+    margin-bottom: 10px;
   }
+}
+
+h4.discussion-description {
+  margin-top: 0;
+}
+
+.discussion-tabs {
+  margin-top: 20px;
 }
 
 .discussion-messages {
@@ -55,6 +98,19 @@ $discussion-message-border-color: #aaa;
 
 .discussion-message-content {
   padding: 15px;
+}
+
+.discussion-new-message-content {
+  resize: none;
+  border-radius: 0;
+  border-bottom: none;
+  &:focus {
+    border-color: darken(#dce4ec, 20%);
+  }
+}
+
+.discussion-new-message-button {
+  border-radius: 0;
 }
 
 .discussion-message {
@@ -101,6 +157,39 @@ $discussion-message-border-color: #aaa;
     .discussion-message-bubble-title {
       padding: 5px 15px;
       display: block;
+    }
+  }
+}
+
+.discussion-actions {
+  display: inline-block;
+  float: right;
+  margin-top: 35px;
+  > form {
+    display: inline;
+  }
+}
+
+$statuses: (
+  closed: (white #333333 #dddddd),
+  opened: (white #333333 #dddddd),
+  solved: ($brand-success white $brand-success)
+);
+
+@each $status, $style in $statuses {
+  $background-color: nth($style, 1);
+  $font-color: nth($style, 2);
+  $border-color: nth($style, 3);
+
+  .btn-discussion-#{$status} {
+    background-color: $background-color;
+    color: $font-color;
+    border-color: $border-color;
+    margin-left: 5px;
+    &:hover {
+      color: $font-color;
+      border-color: darken($border-color, 5%);
+      background-color: darken($background-color, 5%);
     }
   }
 }

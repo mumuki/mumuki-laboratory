@@ -22,16 +22,20 @@ module BreadcrumbsHelper
 HTML
   end
 
+  def breadcrumb_list_item(last, item)
+    "<li #{breadcrumb_item_class(last)}>#{item}</li>".html_safe
+  end
+
   private
 
   def breadcrumbs0(e, extra=nil, last='')
-    return "#{breadcrumbs0(e)}<li #{breadcrumb_item_class(last)} >#{extra}</li>".html_safe if extra
+    return "#{breadcrumbs0(e)} #{breadcrumb_list_item(last, extra)}".html_safe if extra
 
     base = link_to_path_element e
     if e.navigation_end?
-      "#{home_breadcrumb}<li #{breadcrumb_item_class(last)}>#{base}</li>".html_safe
+      "#{home_breadcrumb} #{breadcrumb_list_item(last, base)}".html_safe
     else
-      "#{breadcrumbs0(e.navigable_parent)} <li #{breadcrumb_item_class(last)}>#{base}</li>".html_safe
+      "#{breadcrumbs0(e.navigable_parent)} #{breadcrumb_list_item(last, base)}".html_safe
     end
   end
 end
