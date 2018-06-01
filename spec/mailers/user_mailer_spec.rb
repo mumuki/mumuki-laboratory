@@ -66,4 +66,30 @@ RSpec.describe UserMailer, type: :mailer do
       end
     end
   end
+
+  describe "no_submissions_reminder" do
+    let(:reminder) { user.build_reminder }
+    let(:central) { create(:organization, name: 'central') }
+    let(:user) { build :user, last_organization: central, last_submission_date: nil, last_reminded_date: days_since_last_reminded.days.ago }
+
+    let(:days_since_last_reminded) { 8 }
+
+    it "renders the headers" do
+      expect(reminder.subject).to eq("Start using Mumuki!")
+      expect(reminder.to).to eq([user.email])
+      expect(reminder.from).to eq(["support@mumuki.org"])
+    end
+
+    context 'last reminded over 1 week ago' do
+      let(:days_since_last_reminded) { 8 }
+
+      it { expect(user.should_send_reminder?).to be true }
+    end
+
+    context 'last reminded this week' do
+      let(:days_since_last_reminded) { 2 }
+
+      it { expect(user.should_send_reminder?).to be false }
+    end
+  end
 end

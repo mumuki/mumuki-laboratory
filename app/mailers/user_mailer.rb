@@ -5,7 +5,7 @@ class UserMailer < ApplicationMailer
   end
 
   def no_submissions_reminder(user)
-    send_reminder! user, t(:we_miss_you), "no_submissions_reminder"
+    send_reminder! user, t(:start_using_mumuki), "no_submissions_reminder"
   end
 
   private
