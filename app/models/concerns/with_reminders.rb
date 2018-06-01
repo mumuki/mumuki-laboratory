@@ -19,12 +19,16 @@ module WithReminders
     last_reminded_date.nil? || cycles_since(last_reminded_date) >= 1
   end
 
+  def has_no_submissions?
+    last_submission_date.nil? && cycles_since(created_at).between?(1, 3)
+  end
+
   def has_no_recent_submission?
-    last_submission_date.nil? || cycles_since(last_submission_date).between?(1, 3)
+    !last_submission_date.nil? && cycles_since(last_submission_date).between?(1, 3)
   end
 
   def should_send_reminder?
-    remider_due? && has_no_recent_submission?
+    remider_due? && (has_no_submissions? || has_no_recent_submission?)
   end
 
   def remind!
