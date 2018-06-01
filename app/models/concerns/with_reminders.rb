@@ -8,7 +8,7 @@ module WithReminders
 
   def send_reminder!
     build_reminder.deliver
-    update! last_reminded: Time.now
+    update! last_reminded_date: Time.now
   end
 
   def cycles_since(time)
