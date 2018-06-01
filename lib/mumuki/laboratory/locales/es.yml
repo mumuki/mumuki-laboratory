@@ -203,6 +203,7 @@ es:
   working: "Procesando"
   wrong_answer: La respuesta no es correcta
   you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
+  you_never_submitted_solutions: Parece que nunca has enviado soluciones desde que creaste tu cuenta.
   fullscreen: "Pantalla completa"
   get_messages: "Ver mensajes"
   task: Consigna

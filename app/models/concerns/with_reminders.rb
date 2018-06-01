@@ -1,7 +1,9 @@
 module WithReminders
 
   def build_reminder
-    UserMailer.new.we_miss_you_reminder(self, cycles_since(last_submission_date))
+    last_submission_date.nil? ?
+      UserMailer.new.no_submissions_reminder(self) :
+      UserMailer.new.we_miss_you_reminder(self, cycles_since(last_submission_date))
   end
 
   def send_reminder!
@@ -17,8 +19,12 @@ module WithReminders
     last_reminded_date.nil? || cycles_since(last_reminded_date) >= 1
   end
 
+  def has_no_recent_submission?
+    last_submission_date.nil? || cycles_since(last_submission_date).between?(1, 3)
+  end
+
   def should_send_reminder?
-    remider_due? && cycles_since(last_submission_date).between?(1, 3)
+    remider_due? && has_no_recent_submission?
   end
 
   def remind!
