@@ -40,18 +40,17 @@ mumuki.load(function () {
 
   var $speechParagraphs;
   var currentParagraphIndex = 0;
-  var $prevSpeech = $('.mu-kids-character-speech-bubble > .mu-kids-prev-speech').hide();
-  var $nextSpeech = $('.mu-kids-character-speech-bubble > .mu-kids-next-speech');
-
-  updateSpeechParagraphs();
-
-  function updateSpeechParagraphs() {
-    $speechParagraphs = $('.mu-kids-character-speech-bubble > p');
-  }
-
+  var $prevSpeech = $('.mu-kids-character-speech-bubble-normal > .mu-kids-prev-speech').hide();
+  var $nextSpeech = $('.mu-kids-character-speech-bubble-normal > .mu-kids-next-speech');
   var $speechTabs = $('.mu-kids-character-speech-bubble-tabs > li:not(.separator)');
   var $bubble = $('.mu-kids-character-speech-bubble').children('.mu-kids-character-speech-bubble-normal');
   var $texts = $bubble.children('.description, .hint');
+
+  updateSpeechParagraphs();
+  function updateSpeechParagraphs() {
+    $speechParagraphs = $('.mu-kids-character-speech-bubble > .mu-kids-character-speech-bubble-normal > div.' + getSelectedTabName() + ' > p');
+    showParagraph(0);
+  }
 
   $speechTabs.each(function (i) {
     var $tab = $($speechTabs[i]);
@@ -60,11 +59,11 @@ mumuki.load(function () {
       $tab.addClass('active');
       $texts.hide();
       $bubble.children('.' + $tab.data('target')).show();
+      $bubble.scroll(0);
+      hideCurrentParagraph();
       updateSpeechParagraphs();
     })
   });
-
-  if ($speechParagraphs.length <= 1) $nextSpeech.hide();
 
   $nextSpeech.click(function () {
     hideCurrentParagraph();
@@ -75,21 +74,48 @@ mumuki.load(function () {
     showPrevParagraph();
   });
 
+  function getSelectedTabName() {
+    return $speechTabs.filter(".active").data('target');
+  }
+
   function hideCurrentParagraph() {
     $($speechParagraphs[currentParagraphIndex]).hide();
   }
 
   function showPrevParagraph() {
-    $nextSpeech.show();
-    $($speechParagraphs[--currentParagraphIndex]).show();
-    if (currentParagraphIndex === 0) $prevSpeech.hide();
+    showParagraph(currentParagraphIndex - 1);
   }
 
   function showNextParagraph() {
-    $prevSpeech.show();
-    $($speechParagraphs[++currentParagraphIndex]).show();
-    if ($speechParagraphs.length - 1 === currentParagraphIndex) $nextSpeech.hide();
+    showParagraph(currentParagraphIndex + 1);
   }
+
+  function showParagraph(index) {
+    $($speechParagraphs[index]).show();
+    setVisibility($prevSpeech, index !== 0);
+    setVisibility($nextSpeech, index !== $speechParagraphs.length - 1);
+
+    currentParagraphIndex = index;
+  }
+
+  function setVisibility(element, isVisible) {
+    if (isVisible) element.show(); else element.hide();
+  }
+
+  function autoScrollBubble(toBottom) {
+    var SCROLL_TIME = 1000;
+    var PAUSE_TIME = 2000;
+
+    setTimeout(function() {
+      $bubble.animate({ scrollTop: toBottom ? $bubble.height() : 0 }, {
+        duration: SCROLL_TIME,
+        complete: function() {
+          autoScrollBubble(!toBottom);
+        }
+      });
+    }, PAUSE_TIME);
+  }
+  autoScrollBubble();
 
   mumuki.kids = {
 
