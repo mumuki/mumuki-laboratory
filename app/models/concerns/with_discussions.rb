@@ -11,7 +11,7 @@ module WithDiscussions
   end
 
   def discussions_for(user)
-    #user.moderator? ? discussions.for_admin : discussions.for_student(user)
-    discussions.for_student(user)
+    #user.moderator? ? discussions.for_helper : discussions.for_questioner(user)
+    discussions.for_questioner(user)
   end
 end

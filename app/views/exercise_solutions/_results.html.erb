@@ -3,44 +3,10 @@
   @stats = @guide.stats_for(current_user)
 %>
 
-<div class="<%= "bs-callout bs-callout-#{class_for_status assignment.status}" %>">
-
-  <%= render partial: 'exercise_solutions/results_title', locals: {assignment: assignment} %>
-
-
+<%= render layout: 'exercise_solutions/assignment_results_container', locals: {assignment: assignment} do %>
   <%= manual_evaluation_comment assignment %>
   <% unless assignment.manual_evaluation_comment? %>
-      <% if assignment.results_visible? %>
-          <div>
-            <% if assignment.expectation_results_visible? %>
-                <div class="results-item">
-                  <strong><%= t :unmeet_expectations %>:</strong>
-                  <ul class="results-list">
-                    <% assignment.visible_expectation_results.each do |it| %>
-                        <li><%= status_icon(it[:result]) %> <%= t_expectation it %></li>
-                    <% end %>
-                  </ul>
-                </div>
-            <% end %>
-            <% if render_feedback?(assignment) %>
-                <div class="results-item">
-                  <strong><%= t :feedback %>:</strong>
-
-                  <div>
-                    <%= assignment.feedback_html %>
-                  </div>
-                  <a data-toggle="collapse" href="#results-section" class="text-danger">
-                    <%= fa_icon 'question-circle' %> <%= t :details %>
-                  </a>
-                </div>
-            <% end %>
-            <div id="results-section" class="<%= 'collapse' if render_feedback?(assignment) %> results-item">
-              <%= render_test_results assignment %>
-            </div>
-          </div>
-      <% else %>
-          <div></div>
-      <% end %>
+      <%= render partial: 'exercise_solutions/assignment_results', locals: {assignment: assignment} %>
       <% unless assignment.passed? %>
           <div class="notify-problem-box">
             <div class="dropdown">
@@ -64,7 +30,7 @@
       <% end %>
   <% end %>
   <%= solution_download_link assignment %>
-</div>
+<% end %>
 
 <%= corollary_box @exercise unless assignment.should_retry? %>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180504185845) do
+ActiveRecord::Schema.define(version: 20180605143727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,8 +92,10 @@ ActiveRecord::Schema.define(version: 20180504185845) do
     t.bigint "initiator_id"
     t.string "item_type"
     t.bigint "item_id"
+    t.bigint "submission_id"
     t.index ["initiator_id"], name: "index_discussions_on_initiator_id"
     t.index ["item_type", "item_id"], name: "index_discussions_on_item_type_and_item_id"
+    t.index ["submission_id"], name: "index_discussions_on_submission_id"
   end
 
   create_table "exam_authorizations", force: :cascade do |t|

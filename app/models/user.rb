@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
   has_many :exam_authorizations
 
-  has_many :discussions
+  has_many :discussions, foreign_key: 'initiator_id'
 
   after_initialize :init
 
@@ -57,6 +57,10 @@ class User < ApplicationRecord
 
   def unread_messages
     messages.where read: false
+  end
+
+  def unread_discussions
+
   end
 
   def visit!(organization)

@@ -21,7 +21,7 @@
     <%= new_discussion_link(:no_questions, :ask_the_first_question) %>
 
   <% else %>
-    <h3> Consultas realizadas para este <%= t @debatable_class.downcase %> </h3>
+    <h3><%= t :discussions %></h3>
 
     <div class="discussions">
       <% @discussions.each do |discussion| %>

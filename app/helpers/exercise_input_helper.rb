@@ -4,15 +4,31 @@ module ExerciseInputHelper
   end
 
   def render_exercise_input_form(exercise)
-    render "layouts/exercise_inputs/forms/#{exercise.class.name.underscore}_form"
+    render "layouts/exercise_inputs/forms/#{input_form_for(exercise)}_form", exercise: exercise
   end
 
   def render_exercise_input_editor(form, exercise)
     render "layouts/exercise_inputs/editors/#{exercise.editor}", form: form, exercise: exercise
   end
 
+  def render_exercise_read_only_editor(exercise, content)
+    render "layouts/exercise_inputs/read_only_editors/#{exercise.editor}", exercise: exercise, content: content
+  end
+
+  def input_form_for(exercise)
+    if exercise&.input_kids?
+      'kids'
+    else
+      exercise.class.name.underscore
+    end
+  end
+
   def should_render_problem_tabs?(exercise, user)
     !exercise.hidden? && (exercise.queriable? || exercise.extra_visible? || exercise.has_messages_for?(user))
+  end
+
+  def should_render_read_only_tabs?(exercise)
+    !exercise.hidden? && (exercise.queriable? || exercise.extra_visible?)
   end
 
   def should_render_message_input?(exercise, organization = Organization.current)
@@ -30,9 +46,13 @@ module ExerciseInputHelper
        </#{options.tag}>}.html_safe
   end
 
-  def render_custom_editor(exercise)
+  def render_custom_editor(exercise, read_only=false)
     custom_editor_tag = "mu-#{exercise.language}-custom-editor"
-    "<#{custom_editor_tag}> </#{custom_editor_tag}>".html_safe
+    "<#{custom_editor_tag} #{custom_editor_read_only if read_only}> </#{custom_editor_tag}>".html_safe
+  end
+
+  def custom_editor_read_only
+    "read-only=true"
   end
 
   def input_kids?

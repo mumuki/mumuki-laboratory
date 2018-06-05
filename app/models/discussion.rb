@@ -4,12 +4,13 @@ class Discussion < ApplicationRecord
   belongs_to :item, polymorphic: true
   has_many :messages
   belongs_to :initiator, class_name: 'User'
+  belongs_to :submission
 
   before_save :capitalize
   validates_presence_of :title
 
-  scope :for_student, -> (student) { where.not(status: :closed).or(where(status: :closed, initiator: student)).order(status: :desc, created_at: :asc) }
-  scope :for_admin, -> { order(status: :asc, created_at: :asc) }
+  scope :for_questioner, -> (questioner) { where.not(status: :closed).or(where(status: :closed, initiator: questioner)).order(status: :desc, created_at: :asc) }
+  scope :for_helper, -> { order(status: :asc, created_at: :asc) }
 
   def capitalize
     title.capitalize!
@@ -38,8 +39,8 @@ class Discussion < ApplicationRecord
   end
 
   def allowed_statuses_for(user)
-    return reachable_statuses if authorized?(user)
-    []
+    return [] unless authorized?(user)
+    reachable_statuses
   end
 
   def allowed_status_for?(user, status)

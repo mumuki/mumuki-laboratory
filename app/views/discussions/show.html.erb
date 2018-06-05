@@ -22,7 +22,7 @@
     </div>
   </div>
 
-  <% if true #@discussion.submission.present? %>
+  <% if @discussion.submission.present? %>
     <ul class="nav nav-tabs discussion-tabs" role="tablist">
       <li role="presentation" class="active">
         <a data-target="#messages" aria-controls="messages" role="tab" data-toggle="tab">
@@ -51,11 +51,13 @@
       </div>
     </div>
 
-    <div role="tabpanel" class="tab-pane" id="context">
-      <div class="mu-tab-body">
-        <%= render_exercise_input_layout(@debatable) %>
+    <% if @discussion.submission.present? %>
+      <div role="tabpanel" class="tab-pane" id="context">
+        <div class="mu-tab-body">
+          <%= render partial: 'exercises/read_only', locals: {exercise: @debatable} %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 
   <div class="discussion-actions">
