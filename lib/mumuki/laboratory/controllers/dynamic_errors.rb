@@ -15,7 +15,7 @@ module Mumuki::Laboratory::Controllers::DynamicErrors
   end
 
   def not_found
-    render 'errors/not_found', status: 404
+    render 'errors/not_found', status: 404, formats: [:html]
   end
 
   def internal_server_error(exception)
