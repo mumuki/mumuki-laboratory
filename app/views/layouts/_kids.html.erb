@@ -1,7 +1,5 @@
 <img src="/anim_amarillo.svg" alt="">
 <div class="mu-kids-character-speech-bubble">
-  <i class="mu-kids-prev-speech fa fa-fw fa-caret-up"></i>
-  <i class="mu-kids-next-speech fa fa-fw fa-caret-down"></i>
   <% if @exercise.hint? %>
       <ul class="mu-kids-character-speech-bubble-tabs">
         <li class="active" data-target="description" title="<%= t :task %>"><i class="fa fa-fw fa-file-text-o"></i>
@@ -11,6 +9,8 @@
       </ul>
   <% end %>
   <div class="mu-kids-character-speech-bubble-normal">
+    <i class="mu-kids-prev-speech fa fa-fw fa-caret-up"></i>
+    <i class="mu-kids-next-speech fa fa-fw fa-caret-down"></i>
     <div class="description"><%= @exercise.description_task %></div>
     <div class="hint" style="display: none"><%= @exercise.hint_html %></div>
   </div>
