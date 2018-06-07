@@ -11,7 +11,7 @@ module Mumukit
       @rules = rules
     end
 
-    # Provides tips for the studen for the given submission,
+    # Provides tips for the student for the given submission,
     # based on the `rules`.
     def assist_with(submission)
       @rules

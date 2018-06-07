@@ -66,14 +66,14 @@ describe 'adaptive hints' do
       },
       {
         when: { error_contains: 'Unrecognized token %' },
-        then: 'Remeber you have to use `mod`, not `%`'
+        then: 'Remember you have to use `mod`, not `%`'
       }
     ]}
 
     context 'when submission has errored with expected message' do
       let(:submission) { struct status: :errored, result: 'Illegal start of sentence. Unrecognized token %'  }
       it do
-        expect(assistant.assist_with submission).to eq ['Oops, it did not compile', 'Remeber you have to use `mod`, not `%`']
+        expect(assistant.assist_with submission).to eq ['Oops, it did not compile', 'Remember you have to use `mod`, not `%`']
       end
     end
 

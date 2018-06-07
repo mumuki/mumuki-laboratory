@@ -28,7 +28,7 @@ module Mumuki::Laboratory::Status::Base
   end
 
   # False if and only if this status
-  # is `Mumuki::Laboratory::Status`
+  # is `Mumuki::Laboratory::Status::Passed`
   def should_retry?
     true
   end

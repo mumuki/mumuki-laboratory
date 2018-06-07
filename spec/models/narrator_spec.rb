@@ -17,7 +17,7 @@ describe 'narrator' do
       let(:tips) { [
         'check you have not mispelled `product`',
         'check that you are using composition',
-        'remeber that `sum` must work with both `Int`s and `Float`s'
+        'remember that `sum` must work with both `Int`s and `Float`s'
       ] }
 
       it { expect(narrator.retry_phrase).to eq 'Let\'s try again!' }
@@ -25,7 +25,7 @@ describe 'narrator' do
       it { expect(narrator.compose_explanation tips).to eq "Oops, it didn\'t work :frowning:.\n\n"+
                                                           "Check you have not mispelled `product`.\n\n"+
                                                           "Also, check that you are using composition.\n\n" +
-                                                          "Finally, remeber that `sum` must work with both `Int`s and `Float`s.\n\n" +
+                                                          "Finally, remember that `sum` must work with both `Int`s and `Float`s.\n\n" +
                                                           "Let's try again!\n" }
     end
 
