@@ -27,6 +27,14 @@ module ApplicationHelper
     end
   end
 
+  def assistance_box(assignment)
+    if assignment.tips.present?
+      %Q{<div class="mu-tips-box">
+        #{Mumukit::Assistant::Narrator.random.compose_explanation_html assignment.tips}
+      </div>}.html_safe
+    end
+  end
+
   def chapter_finished(chapter)
     t :chapter_finished_html, chapter: link_to_path_element(chapter) if chapter
   end

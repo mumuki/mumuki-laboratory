@@ -1,0 +1,14 @@
+es:
+  narrator:
+    retry_0: ¡Intentemos de nuevo!
+    retry_1: 'Pero a no desesperar, intentemos otra vez :muscle:'
+    retry_2: ¡Corrijamos el problema!
+    introduction_0: 'Parece que algo no funcionó :see_no_evil:.'
+    introduction_1: 'Eh, ¿qué pasó acá :frowning:?'
+    introduction_2: 'Parece que algo no anduvo bien :sweat_smile:'
+    middle_0: "Además, %{tip}."
+    middle_1: "También %{tip}."
+    middle_2: "Por otro lado, %{tip}."
+    ending_0: "Por último, %{tip}."
+    ending_1: "Ah, algo más: %{tip}."
+    ending_2: "Y para cerrar, %{tip}."

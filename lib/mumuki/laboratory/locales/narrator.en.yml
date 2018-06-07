@@ -1,0 +1,14 @@
+en:
+  narrator:
+    retry_0: Let's try again!
+    retry_1: Keep on!
+    retry_2: Let's fix it!
+    introduction_0: "Oops, it didn't work :frowning:."
+    introduction_1: "Oops, it didn't work :frowning:."
+    introduction_2: "Oops, it didn't work :frowning:."
+    middle_0: Also, %{tip}.
+    middle_1: Also, %{tip}.
+    middle_2: Also, %{tip}.
+    ending_0: Finally, %{tip}.
+    ending_1: Finally, %{tip}.
+    ending_2: Finally, %{tip}.

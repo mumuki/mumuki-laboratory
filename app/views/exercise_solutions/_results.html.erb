@@ -25,7 +25,6 @@
             <% if render_feedback?(assignment) %>
                 <div class="results-item">
                   <strong><%= t :feedback %>:</strong>
-
                   <div>
                     <%= assignment.feedback_html %>
                   </div>
@@ -64,6 +63,9 @@
   <%= solution_download_link assignment %>
 </div>
 
-<%= corollary_box @exercise unless assignment.should_retry? %>
-
+<% if assignment.should_retry? %>
+  <%= assistance_box assignment %>
+<% else %>
+  <%= corollary_box @exercise %>
+<% end %>
 <%= render partial: 'exercise_solutions/results_button', locals: {assignment: assignment} %>

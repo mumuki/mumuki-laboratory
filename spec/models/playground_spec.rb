@@ -3,8 +3,6 @@ require 'spec_helper'
 describe Playground do
   let(:user) { create(:user) }
 
-  before { I18n.locale = :en }
-
   describe '#create' do
     context 'when language is queriable and exercise is playable' do
       let(:language) { create(:language, queriable: true) }

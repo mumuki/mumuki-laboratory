@@ -28,6 +28,8 @@ require_relative './capybara_helper'
 require_relative './evaluation_helper'
 
 RSpec.configure do |config|
+  config.before(:each) { I18n.locale = :en }
+
   config.before(:each) do
     if RSpec.current_example.metadata[:organization_workspace] == :test
       set_subdomain_host! 'test'

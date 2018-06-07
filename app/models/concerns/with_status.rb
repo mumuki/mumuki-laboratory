@@ -11,7 +11,7 @@ module WithStatus
   end
 
   def aborted?
-    status == :aborted
+    status.aborted?
   end
 
   def run_update!

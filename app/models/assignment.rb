@@ -140,6 +140,14 @@ class Assignment < ApplicationRecord
         }})
   end
 
+  def tips
+    @tips ||= exercise.assist_with(self)
+  end
+
+  def increment_attemps!
+    self.attemps_count += 1 unless passed?
+  end
+
   private
 
   def update_submissions_count!

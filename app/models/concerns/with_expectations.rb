@@ -2,7 +2,7 @@ module WithExpectations
   extend ActiveSupport::Concern
 
   included do
-    serialize :expectations
+    serialize :expectations, Array
   end
 
   def expectations_yaml
@@ -15,9 +15,5 @@ module WithExpectations
 
   def expectations=(expectations)
     self[:expectations] = expectations.map(&:stringify_keys)
-  end
-
-  def expectations
-    self[:expectations] || []
   end
 end
