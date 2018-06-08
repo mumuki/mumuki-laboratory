@@ -9,7 +9,7 @@ module Mumuki
   end
 end
 
-require_relative '../mumukit/assistant'
+require 'mumukit/assistant'
 require 'mumukit/inspection'
 require 'mumukit/bridge'
 require 'mumukit/content_type'
