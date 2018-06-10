@@ -56,10 +56,15 @@ cd mumuki-laboratory
 > We need to create a PostgreSQL role - AKA a user - who will be used by Laboratory to create and access the database
 
 ```bash
-# create db user
+# create db user for linux users
 sudo -u postgres psql <<EOF
   create role mumuki with createdb login password 'mumuki';
 EOF
+
+# create db user for mac users
+psql postgres
+#once inside postgres server
+create role mumuki with createdb login password 'mumuki';
 
 # create schema and initial development data
 ./devinit
