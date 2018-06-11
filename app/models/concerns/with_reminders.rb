@@ -12,7 +12,7 @@ module WithReminders
   end
 
   def should_send_reminder?
-    remider_due? && (has_no_submissions? || has_no_recent_submission?)
+    reminder_due? && (has_no_submissions? || has_no_recent_submission?)
   end
 
   def remind!
@@ -25,7 +25,7 @@ module WithReminders
     ((Date.current - time.to_date) / Rails.configuration.reminder_frequency).to_i
   end
 
-  def remider_due?
+  def reminder_due?
     last_reminded_date.nil? || cycles_since(last_reminded_date) >= 1
   end
 
