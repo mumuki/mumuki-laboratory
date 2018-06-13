@@ -1,16 +1,25 @@
 class Discussion < ApplicationRecord
-  include WithDiscussionStatus, ParentNavigation
+  include WithDiscussionStatus, ParentNavigation, Searchable
 
   belongs_to :item, polymorphic: true
   has_many :messages
   belongs_to :initiator, class_name: 'User'
-  belongs_to :submission
+  belongs_to :submission, optional: true
 
   before_save :capitalize
   validates_presence_of :title
 
-  scope :for_questioner, -> (questioner) { where.not(status: :closed).or(where(status: :closed, initiator: questioner)).order(status: :desc, created_at: :asc) }
-  scope :for_helper, -> { order(status: :asc, created_at: :asc) }
+  delegate :language, to: :item
+
+  scope :for_user, -> (user) do
+    if user.try(:moderator?)
+      all
+    else
+      where.not(status: :closed).or(where(initiator: user))
+    end
+  end
+
+  scope :for_status, -> (status) { where(status: status) }
 
   def capitalize
     title.capitalize!
@@ -35,19 +44,27 @@ class Discussion < ApplicationRecord
   end
 
   def initiator?(user)
-    user.uid == initiator.uid
+    user.try(:uid) == initiator.uid
   end
 
-  def allowed_statuses_for(user)
+  def reachable_statuses_for(user)
     return [] unless authorized?(user)
     reachable_statuses
   end
 
-  def allowed_status_for?(user, status)
-    allowed_statuses_for(user).include? status
+  def reachable_status_for?(user, status)
+    reachable_statuses_for(user).include? status
+  end
+
+  def allowed_statuses_for(user)
+    status.allowed_statuses_for(user, self)
   end
 
   def update_status!(status, user)
-    update!(status: status) if allowed_status_for?(user, status)
+    update!(status: status) if reachable_status_for?(user, status)
+  end
+
+  def self.sortable_fields
+    [:created_at]
   end
 end

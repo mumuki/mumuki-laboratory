@@ -3,8 +3,12 @@ module DiscussionsHelper
     link_to t(:solve_your_doubts), polymorphic_path([item, :discussions])
   end
 
-  def user_avatar(user, img_class='')
-    image_tag user.image_url, height: 40, class: "img-circle #{img_class}"
+  def solve_discussions_link(item)
+    link_to t(:solve_doubts), polymorphic_path([item, :discussions], helping: true)
+  end
+
+  def user_avatar(user, image_class='')
+    image_tag user.image_url, height: 40, class: "img-circle #{image_class}"
   end
 
   def discussions_link_with_teaser(item)
@@ -16,7 +20,7 @@ module DiscussionsHelper
           #{discussions_link(item)}
         </p>
       </div>
-}.html_safe
+    }.html_safe
   end
 
   def discussion_messages_icon(discussion)
@@ -25,7 +29,7 @@ module DiscussionsHelper
         <i class="fa fa-comment-o fa-stack-2x"></i>
         <i class="fa fa-stack-1x">#{discussion.messages.size}</i>
       </span>
-}.html_safe
+    }.html_safe
   end
 
   def discussion_update_status_button(status)
@@ -42,6 +46,41 @@ module DiscussionsHelper
           </span>
         </a>
       </h4>
-}.html_safe
+    }.html_safe
+  end
+
+  def should_render_discussion_tabs?(discussion)
+    true
+  end
+
+  def discussions_count_for_status(status)
+    @discussions.for_status(status).count
+  end
+
+  def discussions_languages
+    @discussions.map { |it| it.language.name }.uniq
+  end
+
+  def discussion_status_filter(status)
+    %Q{
+      #{status_fa_icon(status)}
+      <span>
+        #{discussions_count_for_status(status)}
+        #{t status}
+      </span>
+    }.html_safe
+  end
+
+  def discussion_dropdown_filter(label, &block)
+    %Q{
+      <div class="dropdown discussions-toolbar-filter">
+        <a id="dropdown-#{label}" data-toggle="dropdown" role="menu">
+          #{t label} #{fa_icon :'caret-down', class: 'fa-xs'}
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdown-#{label}">
+          #{capture(&block)}
+        </ul>
+      </div>
+    }.html_safe
   end
 end

@@ -16,6 +16,10 @@ class Message < ApplicationRecord
     sender == discussion.initiator.uid
   end
 
+  def from_user?(user)
+    sender == user.uid
+  end
+
   def as_platform_json
     as_json(except: [:id, :type, :discussion_id],
             include: {exercise: {only: [:bibliotheca_id]}})

@@ -19,7 +19,11 @@ module Mumuki::Laboratory::Status::Discussion
     false
   end
 
-  def reachable_statuses
-    []
+  def allowed_for?(*)
+    true
+  end
+
+  def allowed_statuses_for(user, discussion)
+    STATUSES.select { |it| it.allowed_for?(user, discussion) }
   end
 end

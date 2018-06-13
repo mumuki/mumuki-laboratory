@@ -26,6 +26,7 @@ es:
   chapter_number: 'Capítulo %{number}'
   classroom: Aula
   clear_console: Reiniciar consola
+  closed: Cerrada
   comment: Comentar
   confirm: Confirmar
   confirm_restart: Estás por borrar tu progreso en esta guía. ¿Querés continuar?
@@ -139,6 +140,7 @@ es:
   not_in_any_organizations: ¡Parece que no estás en ninguna organización todavía!
   notify_problem_with_exercise: Reportá un error
   office: Secretaría
+  opened: Abierta
   organizations: Organizaciones
   output: Salida
   overview: Vista general
@@ -173,11 +175,14 @@ es:
   sign_out: Cerrar Sesión
   sign_up_date: Usuario desde
   solution: Solución
+  solved: Resuelta
   solved_exercises: Ejercicios Resueltos
+  solve_doubts: Resolvé consultas
   solve_your_doubts: Consultá tus dudas
   solve_your_doubts_teaser: ¿Tenés alguna consulta?
   something_went_wrong: ¡Ups!, algo no anduvo bien...
   something_went_wrong_explanation: Algo no anduvo como se esperaba.
+  sort: Ordenar
   start_lesson: ¡Comenzá esta lección!
   start_practicing: ¡Empezá ahora!
   stats: Tu Progreso

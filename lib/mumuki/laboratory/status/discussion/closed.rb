@@ -12,4 +12,8 @@ module Mumuki::Laboratory::Status::Discussion::Closed
   def self.iconize
     {class: :danger, type: 'times-circle'}
   end
+
+  def allowed_for(user, discussion)
+    discussion.initiator?(user)
+  end
 end

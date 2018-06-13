@@ -1,4 +1,4 @@
-<%= render layout: 'discussions/message_container', locals: {user: user} do %>
+<%= render layout: 'discussions/message_container', locals: {user: user, message: nil} do %>
   <%= form_for [@discussion, Message.new] do |f| %>
     <div class="container-fluid">
       <div class="row">

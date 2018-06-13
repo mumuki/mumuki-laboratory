@@ -25,6 +25,7 @@ en:
   chapter_number: Chapter %{number}
   classroom: Classroom
   clear_console: Clear console
+  closed: Closed
   comment: Comment
   confirm: Confirm
   confirm_restart: You are about to delete your progress for this guide. Do you want to proceed?
@@ -126,6 +127,7 @@ en:
   not_in_any_organizations: It seems you aren't in any organizations yet!
   notify_problem_with_exercise: Report a bug
   office: Office
+  opened: Open
   output: Output
   overview: Overview
   passed: Everything is in order! Your solution passed all our tests!
@@ -157,10 +159,13 @@ en:
   sign_out: Sign Out
   sign_up_date: User since
   solution: Solution
+  solved: Solved
+  solve_doubts: Solve other's doubts
   solve_your_doubts: Solve your doubts
   solve_your_doubts_teaser: Do you have any doubts?
   something_went_wrong: Something went wrong!
   something_went_wrong_explanation: Something is broken in Mumuki.
+  sort: Sort
   start_lesson: Start this lesson!
   start_practicing: Start Practicing!
   stats: Some stats

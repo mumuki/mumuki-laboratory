@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       resources :discussions, options.merge(only: [:index, :show, :create, :update])
     end
 
+    concerns :debatable, controller: 'book_discussions', only: :index
+
     resources :discussions, only: [] do
       resources :messages, only: :create, controller: 'discussions_messages'
     end

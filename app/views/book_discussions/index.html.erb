@@ -1,0 +1,17 @@
+<%= content_for :breadcrumbs do %>
+  <%= home_breadcrumb %>
+<% end %>
+
+<div class="row">
+  <div class="mu-inline-block-left">
+    <h1><%= @debatable.name %></h1>
+  </div>
+</div>
+
+<div>
+  <% if @discussions.empty? %>
+    <h4><%= t :no_questions %></h4>
+  <% else %>
+    <%= render partial: 'layouts/discussions' %>
+  <% end %>
+</div>

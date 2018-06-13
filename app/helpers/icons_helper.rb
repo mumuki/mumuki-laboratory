@@ -19,12 +19,16 @@ module IconsHelper
 
   private
 
+  def status_fa_icon(status)
+    fa_icon(*icon_for_status(status))
+  end
+
   def exercise_status_fa_icon(exercise)
-    fa_icon(*icon_for_status(exercise.status_for(current_user)))
+    status_fa_icon(exercise.status_for(current_user))
   end
 
   def discussion_status_fa_icon(discussion)
-    fa_icon(*icon_for_status(discussion.status))
+    status_fa_icon(discussion.status)
   end
 
   def icon_for_status(s)
