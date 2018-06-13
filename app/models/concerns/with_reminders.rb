@@ -1,4 +1,5 @@
 module WithReminders
+  extend ActiveSupport::Concern
 
   def build_reminder
     last_submission_date.nil? ?
@@ -17,6 +18,10 @@ module WithReminders
 
   def remind!
     send_reminder! if should_send_reminder?
+  end
+
+  def try_remind_with_lock!
+    with_lock('for update nowait') { remind! } rescue nil
   end
 
   private
@@ -41,4 +46,9 @@ module WithReminders
     !last_submission_date.nil? && can_still_remind?(last_submission_date)
   end
 
+  module ClassMethods
+    def remindable
+      where('accepts_reminders and (last_submission_date < ? or last_submission_date is null)', Rails.configuration.remainder_frequency.days.ago)
+    end
+  end
 end
