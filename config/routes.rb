@@ -6,11 +6,15 @@ Rails.application.routes.draw do
     root to: 'book#show'
 
     concern :debatable do |options|
-      resources :discussions, options.merge(only: [:index, :show, :create, :update])
+      resources :discussions, options.merge(only: [:index, :show, :create, :update, :destroy]) do
+        post :subscription, on: :member
+      end
     end
 
+    concerns :debatable, controller: 'book_discussions', only: :index
+
     resources :discussions, only: [] do
-      resources :messages, only: :create, controller: 'discussions_messages'
+      resources :messages, only: [:create, :destroy], controller: 'discussions_messages'
     end
 
     resources :book, only: [:show]

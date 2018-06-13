@@ -40,4 +40,11 @@ module ApplicationHelper
   def chapter_finished(chapter)
     t :chapter_finished_html, chapter: link_to_path_element(chapter) if chapter
   end
+
+  def span_toggle(hidden_text, active_text, active)
+    %Q{
+      <span class="#{'hidden' if active}">#{hidden_text}</span>
+      <span class="#{'hidden' unless active}">#{active_text}</span>
+    }.html_safe
+  end
 end

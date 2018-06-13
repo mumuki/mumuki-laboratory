@@ -1,5 +1,5 @@
 $discussion-message-arrow-size: 10px;
-$discussion-message-border-color: #aaa;
+$discussion-message-border-color: #ccc;
 
 .discussions {
   margin: 30px 0;
@@ -18,6 +18,29 @@ $discussion-message-border-color: #aaa;
     text-decoration: unset;
     &:not(:last-child) > .discussion {
       border-bottom: 0;
+    }
+  }
+
+  .discussions-reset-query {
+    color: #6a737d;
+    font-weight: 600;
+    &:hover {
+      color: inherit;
+    }
+  }
+
+  .discussions-no-filtered-results {
+    padding: 20px;
+    border: 1px solid #e1e4e8;
+    text-align: center;
+    div {
+      margin-bottom: 20px;
+      i {
+        font-size: 28px;
+      }
+    }
+    span {
+      font-size: 24px;
     }
   }
 
@@ -40,7 +63,6 @@ $discussion-message-border-color: #aaa;
     }
   }
 
-
   .discussion-body {
     display: none;
   }
@@ -58,6 +80,52 @@ $discussion-message-border-color: #aaa;
     margin-left: 30px;
     margin-bottom: 5px;
   }
+
+  .discussions-toolbar {
+    width: 100%;
+    padding: 10px 20px;
+    display: table;
+    margin-top: 20px;
+    background-color: #f6f8fa;
+    border: 1px solid #e1e4e8;
+    border-radius: 3px 3px 0 0;
+    border-bottom: none;
+    .discussions-toolbar-status {
+      float: left;
+      a {
+        margin-right: 15px;
+        &:hover {
+          color: darken($brand-primary, 10%);
+        }
+        &.selected {
+          color: darken($brand-primary, 10%);
+          font-weight: bold;
+        }
+      }
+      .status-icon {
+        color: lighten($brand-primary, 10%);
+      }
+    }
+    .discussions-toolbar-filter {
+      float: right;
+      margin-right: 20px;
+      cursor: pointer;
+      li.selected {
+        a {
+          font-weight: bold;
+          padding-left: 2px;
+          &::before {
+            content: '✓';
+          }
+        }
+      }
+    }
+  }
+}
+
+.message-divider {
+  border-top: 1px solid #ecf0f1;
+  margin-top: 20px
 }
 
 .discussion-messages-icon {
@@ -68,8 +136,32 @@ $discussion-message-border-color: #aaa;
   margin-left: 5px;
 }
 
+.discussion-user-menu {
+  a {
+    padding: 5px 10px;
+    font-size: 15px;
+    line-height: 20px;
+    border: 1px solid rgba(27,31,35,0.2);
+    border-radius: 0.25em;
+    background-color: #fafafa;
+    font-weight: bold;
+    color: #000000;
+    cursor: pointer;
+    margin-left: 10px;
+    &:hover {
+      text-decoration: none;
+      background-color: darken(#fafafa, 5%);
+      color: black;
+    }
+  }
+}
+
 #discussion-create {
   cursor: pointer;
+}
+
+.discussion-context {
+  margin-top: 40px;
 }
 
 .discussion-header {
@@ -78,22 +170,32 @@ $discussion-message-border-color: #aaa;
   justify-content: flex-start;
   align-items: center;
   padding: 0;
-  .discussion-user-avatar {
-    margin-right: 15px;
-    margin-bottom: 10px;
+  .discussion-title {
+    font-weight: bold;
   }
 }
 
-h4.discussion-description {
+.discussion-description {
   margin-top: 0;
+  .status-label {
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+    margin-right: 10px;
+    font-size: 18px;
+  }
 }
 
 .discussion-tabs {
   margin-top: 20px;
 }
 
-.discussion-messages {
-  margin-top: 70px;
+.discussion-info {
+  font-size: 18px;
+}
+
+.discussion-initiator-name {
+  font-weight: bold;
 }
 
 .discussion-message-content {
@@ -103,38 +205,48 @@ h4.discussion-description {
 .discussion-new-message-content {
   resize: none;
   border-radius: 0;
-  border-bottom: none;
+  border-color: transparent;
   &:focus {
-    border-color: darken(#dce4ec, 20%);
+    border-color: #ffffff;
   }
+}
+
+summary.discussion-summary {
+  display: list-item;
+  font-size: 29px;
+  outline: 0;
+  cursor: pointer;
 }
 
 .discussion-new-message-button {
   border-radius: 0;
+  margin-top: 15px;
 }
 
 .discussion-message {
   position: relative;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: start;
   padding: 0;
   border: none;
   margin-top: 30px;
+  .discussion-message-user-avatar {
+    margin-right: 20px;
+  }
 }
 
-.discussion-message-user-avatar {
-  margin-right: 20px;
+.discussion-message-bubble-container {
+  width: 100%;
 }
 
 .discussion-message-bubble {
-  background-color: #fff;
+  background-color: #ffffff;
   border: 1px solid $discussion-message-border-color;
   border-radius: 3px;
   position: relative;
-  width: 100%;
   .discussion-message-bubble-header {
-    background-color: #ddd;
+    background-color: $mu-color-highlight-background;
     height: 40px;
     &:before {
       position: absolute;
@@ -145,18 +257,18 @@ h4.discussion-description {
       border-style: solid;
       border-color: transparent $discussion-message-border-color;
     }
-    &:after {
-      position: absolute;
-      top: calc(20px - #{$discussion-message-arrow-size} / 2);
-      left: -$discussion-message-arrow-size;
-      border-width: ($discussion-message-arrow-size / 2) $discussion-message-arrow-size ($discussion-message-arrow-size / 2) 0;
-      border-color: transparent $discussion-message-border-color;
-      content: '';
-      border-style: solid;
-    }
     .discussion-message-bubble-title {
       padding: 5px 15px;
       display: block;
+      .message-date {
+        font-size: 15px;
+      }
+      .actions {
+        float: right;
+        i {
+          color: #aaaaaa
+        }
+      }
     }
   }
 }
@@ -170,10 +282,16 @@ h4.discussion-description {
   }
 }
 
+.text-default,
+.text-default:hover {
+  color: #798d8f;
+}
+
 $statuses: (
   closed: (white #333333 #dddddd),
   opened: (white #333333 #dddddd),
-  solved: ($brand-success white $brand-success)
+  solved: ($brand-success white $brand-success),
+  pending_review: ($brand-success white $brand-success)
 );
 
 @each $status, $style in $statuses {

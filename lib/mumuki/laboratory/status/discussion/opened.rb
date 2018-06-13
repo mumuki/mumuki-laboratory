@@ -5,11 +5,19 @@ module Mumuki::Laboratory::Status::Discussion::Opened
     true
   end
 
-  def self.reachable_statuses
-    [Mumuki::Laboratory::Status::Discussion::Closed, Mumuki::Laboratory::Status::Discussion::Solved]
+  def self.reachable_statuses_for_initiator(discussion)
+    if discussion.has_responses?
+      [Mumuki::Laboratory::Status::Discussion::PendingReview]
+    else
+      [Mumuki::Laboratory::Status::Discussion::Closed]
+    end
   end
 
   def self.iconize
     {class: :info, type: 'question-circle'}
+  end
+
+  def self.should_be_shown?(*)
+    true
   end
 end

@@ -5,11 +5,15 @@ module Mumuki::Laboratory::Status::Discussion::Solved
     true
   end
 
-  def self.reachable_statuses
-    [Mumuki::Laboratory::Status::Discussion::Opened]
+  def self.reachable_statuses_for_moderator(*)
+    [Mumuki::Laboratory::Status::Discussion::Closed]
   end
 
   def self.iconize
     {class: :success, type: 'check-circle'}
+  end
+
+  def self.should_be_shown?(*)
+    true
   end
 end

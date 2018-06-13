@@ -4,8 +4,9 @@ module Mumuki::Laboratory::Status::Discussion
   require_relative './opened'
   require_relative './closed'
   require_relative './solved'
+  require_relative './pending_review'
 
-  STATUSES = [Opened, Closed, Solved]
+  STATUSES = [Opened, Closed, Solved, PendingReview]
 
   def closed?
     false
@@ -19,7 +20,35 @@ module Mumuki::Laboratory::Status::Discussion
     false
   end
 
-  def reachable_statuses
+  def pending?
+    false
+  end
+
+  def allowed_for?(*)
+    true
+  end
+
+  def reachable_statuses_for_moderator(*)
     []
+  end
+
+  def reachable_statuses_for_initiator(*)
+    []
+  end
+
+  def should_be_shown?(count)
+    count > 0
+  end
+
+  def reachable_statuses_for(user, discussion)
+    if user.moderator?
+      reachable_statuses_for_moderator(discussion)
+    else
+      reachable_statuses_for_initiator(discussion)
+    end
+  end
+
+  def allowed_statuses_for(user, discussion)
+    STATUSES.select { |it| it.allowed_for?(user, discussion) }
   end
 end

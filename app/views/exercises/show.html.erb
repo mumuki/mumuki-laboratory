@@ -33,7 +33,9 @@
   <% end %>
 </div>
 
-<%= render partial: 'exercise_assignment', locals: {exercise: @exercise} %>
+<% content_for :assignment do %>
+  <%= render partial: 'exercise_assignment', locals: {exercise: @exercise} %>
+<% end %>
 
 <%= content_for :exercise_content do %>
   <%= render partial: 'layouts/exercise_inputs/forms/form', locals: {exercise: @exercise} %>

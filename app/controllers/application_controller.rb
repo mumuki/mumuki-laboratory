@@ -17,8 +17,8 @@ class ApplicationController < ActionController::Base
   before_action :visit_organization!, if: :current_user?
 
   helper_method :login_button,
-                :messages_count,
-                :has_messages?,
+                :notifications_count,
+                :has_notifications?,
                 :subject,
                 :should_choose_organization?,
                 :theme_stylesheet_url,

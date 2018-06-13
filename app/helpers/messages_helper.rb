@@ -18,4 +18,8 @@ module MessagesHelper
   def read_messages_caption(assignment)
     assignment&.pending_messages? ? :read_messages : :exit
   end
+
+  def sender_class(message)
+    message.blank? || message.from_user?(current_user) ? 'self' : 'other'
+  end
 end

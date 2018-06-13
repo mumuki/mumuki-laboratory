@@ -11,6 +11,7 @@ pt:
   and: e
   appendix: Apêndice
   appendix_teaser: Você quer saber mais? <a href="%{link}"> Consulte o apêndice deste capítulo </a>
+  are_you_sure: 'Tem certeza de que deseja %{action}?'
   ask_a_question: Faça uma pergunta!
   ask_community: Pergunte à comunidade
   ask_redirect: Você quer que nós o levemos para lá?
@@ -25,6 +26,7 @@ pt:
   chapter_number: Capítulo %{number}
   classroom: Sala de aula
   clear_console: Reiniciar o console
+  closed: Fechado
   comment: Comentar
   confirm: Confirme
   confirm_restart: Você está prestes a apagar o seu progresso neste guia. Você quer continuar?
@@ -38,12 +40,15 @@ pt:
   correct_answer: A resposta está correta!
   create_submission: Enviar
   created_at: Criado
+  created_at_asc: Antigo
+  created_at_desc: Novo
   created_exercises: Exercícios criados
   created_guides: Lições criadas
   date: Data
   day: Dia
   days: Dias
   destroy: Excluir
+  destroy_message: excluir a mensagem
   details: Detalhes
   discussion_updated: Consulta actualizada
   discussions: Consultas
@@ -105,6 +110,9 @@ pt:
   let_us_know: Por favor, avise-nos!
   load_solution_into_console: Carregue a solução no console
   manual_evaluation_pending: Obrigado por enviar sua solução! Seus professores irão corrigi-lo em breve
+  message_count:
+      one: 1 mensagem
+      other: '%{count} mensagens'
   message: Mensagem
   messages: Mensagens
   messages_error: As mensagens acima não estão disponíveis no momento. Eu tentei novamente mais tarde!
@@ -125,6 +133,7 @@ pt:
   new_message_placeholder: Escreva sua mensagem para o seu professor aqui ...
   next_exercise: Em seguida
   next_guide: Próxima Lição %{nome}
+  no_discussions: Não encontramos consultas que correspondam à sua pesquisa.
   no_exercises: Não encontramos exercícios que correspondam à sua pesquisa.
   no_guides: Não encontramos lições que correspondam à sua pesquisa.
   no_messages: Parece que você ainda não tem uma mensagem!
@@ -136,6 +145,7 @@ pt:
   not_in_any_organizations: Parece que você ainda não está em nenhuma organização!
   notify_problem_with_exercise: Relatar um erro
   office: Secretariado
+  opened: Aberto
   organizations: Organizações
   output: Sair
   overview: Visão global
@@ -144,6 +154,7 @@ pt:
   pending: pendente
   pending_messages: Você tem mensagens não lidas
   pending_messages_explanation: Seu professor deixou uma mensagem para você! Verifique antes de continuar a enviar soluções.
+  pending_review: Sendo revisto
   permissions: Permissões
   please_fill_profile_data: Preencha suas informações pessoais para continuar!
   please_validate: Você está prestes a entrar no curso. Para oferecer uma experiência melhor, valide que seus dados abaixo sejam reais e corretos.
@@ -157,6 +168,7 @@ pt:
   read: Ler
   read_messages: Ver mensagens
   refresh_or_wait: Se não mostrar automaticamente em alguns segundos, pressione F5
+  reset_query: Limpar filtros de pesquisa atuais
   restart: Reiniciar
   results: Resultados
   retry_exercise: Tentar novamente
@@ -170,11 +182,14 @@ pt:
   sign_out: Fechar Sessão
   sign_up_date: Usuário de
   solution: Solução
+  solved: Resolvido
   solved_exercises: Exercícios resolvidos
+  solve_doubts: Resolvi dúvidas
   solve_your_doubts: Consulte suas dúvidas
   solve_your_doubts_teaser: Você tem alguma dúvida?
   something_went_wrong: Oops!, Algo não estava certo ...
   something_went_wrong_explanation: Algo não foi como esperado.
+  sort: Ordenar
   start_lesson: Comece esta lição!
   start_practicing: Comece agora!
   stats: Seu progresso
@@ -191,10 +206,12 @@ pt:
   tell_us_if_our_error: Se você acha que é nosso erro, %{issues}
   terms_and_conditions: Termos e Condições
   test_results: Resultados do teste
+  time_since: "há %{time}"
   time_left: Te deixam
   title: Título
   to_closed: Fechar
   to_opened: Reabrir
+  to_pending_review: Marcar como resolvida
   to_solved: Marcar como resolvida
   try_again: Opa, algo deu errado em Mumuki. Reinicie o exercício, aguarde alguns segundos e tente novamente.
   unauthorized_explanation: Opa! Isso é o que é conhecido como %{error}, ou seja, você não fez logon.

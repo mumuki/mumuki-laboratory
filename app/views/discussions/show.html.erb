@@ -4,65 +4,68 @@
 
 <div>
   <div class="row">
-    <div class="mu-inline-block-right hidden-xs">
-      <h1>
-        <%= discussion_status_fa_icon(@discussion) %>
-      </h1>
-    </div>
-    <div class="mu-inline-block-left">
-      <div class="discussion-header">
-        <h1>
-          <%= user_avatar(@discussion.initiator, 'discussion-user-avatar') %>
-          <%= @discussion.title %>
-        </h1>
-      </div>
-      <h4 class="discussion-description">
-        <%= @discussion.description %>
-      </h4>
-    </div>
-  </div>
-
-  <% if @discussion.submission.present? %>
-    <ul class="nav nav-tabs discussion-tabs" role="tablist">
-      <li role="presentation" class="active">
-        <a data-target="#messages" aria-controls="messages" role="tab" data-toggle="tab">
-          <%= t :messages %>
-          <%= discussion_messages_icon(@discussion) %>
-        </a>
-      </li>
-      <li role="presentation">
-        <a data-target="#context" aria-controls="context" role="tab" data-toggle="tab">
-          <%= t :exercise %>
-        </a>
-      </li>
-    </ul>
-  <% end %>
-
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="messages">
-      <div class="mu-tab-body">
-        <div class="discussion-messages">
-          <% @discussion.messages.each do |message| %>
-            <%= render partial: 'discussions/message', locals: {user: current_user, message: message} %>
-          <% end %>
-        </div>
-
-        <%= render partial: 'discussions/new_message', locals: {user: current_user} if @discussion.opened? && current_user %>
-      </div>
-    </div>
-
-    <% if @discussion.submission.present? %>
-      <div role="tabpanel" class="tab-pane" id="context">
-        <div class="mu-tab-body">
-          <%= render partial: 'exercises/read_only', locals: {exercise: @debatable} %>
-        </div>
+    <% if current_user %>
+      <div class="mu-inline-block-right hidden-xs discussion-user-menu">
+        <h3>
+          <a class="discussion-subscription" onclick="mumuki.Forum.discussionSubscription('<%= subscription_discussion_url(@discussion) %>')">
+            <%= fa_icon(:eye, class: 'fa-xs') %>
+            <%= span_toggle "Me interesa", "No me interesa", current_user.subscribed_to?(@discussion) %> <!-- FIXME: define proper translations -->
+          </a>
+          <a class="discussion-starred">
+            <%= fa_icon(:star, class: 'fa-xs') %>
+            <%= span_toggle "Me resulto util", "No me resulto util", current_user.subscribed_to?(@discussion) %> <!-- FIXME: define proper translations -->
+          </a>
+        </h3>
       </div>
     <% end %>
+    <div class="mu-inline-block-left">
+      <div class="discussion-header">
+        <h3 class="discussion-title">
+          <%= @discussion.title %>
+        </h3>
+      </div>
+      <div class="discussion-description">
+        <%= label_for_status(@discussion.status) %>
+        <span class="discussion-info">
+          <span class="discussion-initiator-name">
+            <%= @discussion.initiator.name %>
+          </span>
+          <%= discussion_info(@discussion) %>
+        </span>
+      </div>
+    </div>
   </div>
 
-  <div class="discussion-actions">
-    <% @discussion.allowed_statuses_for(current_user).each do |status| %>
-      <%= discussion_update_status_button(status) %>
-    <% end if current_user %>
+  <div class="discussion-context">
+    <%= render partial: 'exercises/read_only', locals: {exercise: @debatable} %>
   </div>
+
+</div>
+
+<% if @discussion.has_messages? || @discussion.commentable_by?(current_user) %>
+  <hr class="message-divider">
+
+  <h3>
+    <%= t :messages %>
+  </h3>
+
+  <% if @discussion.has_messages? %>
+    <div class="discussion-messages">
+      <% @discussion.messages.each do |message| %>
+        <%= render partial: 'discussions/message', locals: {user: message.sender_user, message: message} %>
+      <% end %>
+      <% if @discussion.commentable_by?(current_user) %>
+        <hr class="message-divider">
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= render partial: 'discussions/new_message', locals: {user: current_user} if @discussion.commentable_by?(current_user) %>
+
+<% end %>
+
+<div class="discussion-actions">
+  <% @discussion.reachable_statuses_for(current_user).each do |status| %>
+    <%= discussion_update_status_button(status) %>
+  <% end if current_user %>
 </div>

@@ -13,7 +13,19 @@ class Message < ApplicationRecord
   end
 
   def from_initiator?
-    sender == discussion.initiator.uid
+    sender_user == discussion&.initiator
+  end
+
+  def from_user?(user)
+    sender_user == user
+  end
+
+  def sender_user
+    User.find_by(uid: sender)
+  end
+
+  def authorized?(user)
+    from_user?(user) || user&.moderator?
   end
 
   def as_platform_json

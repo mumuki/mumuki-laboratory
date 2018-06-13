@@ -2,14 +2,7 @@
   <div class="discussion-message-user-avatar">
     <%= user_avatar(user) %>
   </div>
-  <div class="discussion-message-bubble">
-    <div class="discussion-message-bubble-header">
-      <div class="discussion-message-bubble-title">
-        <%= user.name %>
-      </div>
-    </div>
-    <div class="discussion-message-bubble-content">
-      <%= yield %>
-    </div>
+  <div class="discussion-message-bubble-container">
+    <%= yield %>
   </div>
 </div>

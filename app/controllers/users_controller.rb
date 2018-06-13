@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @messages = current_user.messages || []
+    @unread_discussions = current_user.unread_discussions
   end
 
   def update
