@@ -1,15 +1,51 @@
 require "spec_helper"
 
 RSpec.describe UserMailer, type: :mailer do
+  let(:central) { create(:organization, name: 'central') }
+
+  describe '#remindable' do
+    context 'when user does not want to receive notifications' do
+      let(:user) { create :user,
+                          accepts_reminders: false,
+                          last_organization: central,
+                          last_submission_date: nil }
+      it { expect(User.remindable).to_not include user }
+    end
+
+    context 'when user wants to receive notifications, and has never submitted' do
+      let(:user) { create :user,
+                          accepts_reminders: true,
+                          last_organization: central,
+                          last_submission_date: nil }
+      it { expect(User.remindable).to include user }
+    end
+
+    context 'when user wants to receive notifications, and has not sent submissions recently' do
+      let(:user) { create :user,
+                          accepts_reminders: true,
+                          last_organization: central,
+                          last_submission_date: 30.days.ago }
+      it { expect(User.remindable).to include user }
+    end
+
+    context 'when user wants to receive notifications, and has sent submissions recently' do
+      let(:user) { create :user,
+                          accepts_reminders: true,
+                          last_organization: central,
+                          last_submission_date: 15.minutes.ago }
+      it { expect(User.remindable).to_not include user }
+    end
+  end
 
   describe "we_miss_you_reminder" do
     let(:reminder) { user.build_reminder }
-    let(:central) { create(:organization, name: 'central') }
-    let(:user) { build :user, last_organization: central, last_submission_date: days_since_last_submission.days.ago, last_reminded_date: days_since_last_reminded.days.ago }
+    let(:user) { build :user,
+                       last_organization: central,
+                       last_submission_date: days_since_last_submission.days.ago,
+                       last_reminded_date: days_since_last_reminded.days.ago }
 
     let(:days_since_last_submission) { 9 }
     let(:days_since_last_reminded) { 8 }
-
 
     it "renders the headers" do
       expect(reminder.subject).to eq("We miss you!")
@@ -69,8 +105,10 @@ RSpec.describe UserMailer, type: :mailer do
 
   describe "no_submissions_reminder" do
     let(:reminder) { user.build_reminder }
-    let(:central) { create(:organization, name: 'central') }
-    let(:user) { build :user, last_organization: central, last_submission_date: nil, last_reminded_date: days_since_last_reminded.days.ago, created_at: days_since_user_creation.days.ago }
+    let(:user) { build :user, last_organization: central,
+                              last_submission_date: nil,
+                              last_reminded_date: days_since_last_reminded.days.ago,
+                              created_at: days_since_user_creation.days.ago }
 
     let(:days_since_last_reminded) { 8 }
     let(:days_since_user_creation) { 8 }
