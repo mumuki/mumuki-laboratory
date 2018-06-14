@@ -2,9 +2,10 @@ module WithReminders
   extend ActiveSupport::Concern
 
   def build_reminder
+    mailer = UserMailer.new
     last_submission_date.nil? ?
-      UserMailer.new.no_submissions_reminder(self) :
-      UserMailer.new.we_miss_you_reminder(self, cycles_since(last_submission_date))
+      mailer.no_submissions_reminder(self) :
+      mailer.we_miss_you_reminder(self, cycles_since(last_submission_date))
   end
 
   def send_reminder!
