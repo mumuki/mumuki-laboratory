@@ -28,7 +28,7 @@ module WithReminders
   private
 
   def cycles_since(time)
-    ((Date.current - time.to_date) / Rails.configuration.reminder_frequency).to_i
+    ((Date.current - time.to_date) / self.class.reminder_frequency).to_i
   end
 
   def reminder_due?
@@ -49,7 +49,12 @@ module WithReminders
 
   module ClassMethods
     def remindable
-      where('accepts_reminders and (last_submission_date < ? or last_submission_date is null)', Rails.configuration.remainder_frequency.days.ago)
+      where('accepts_reminders and (last_submission_date < ? or last_submission_date is null)', reminder_frequency.days.ago)
+    end
+
+    # The frequency of reminders, expressed in days
+    def reminder_frequency
+      Rails.configuration.reminder_frequency
     end
   end
 end
