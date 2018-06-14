@@ -8,21 +8,33 @@ module WithReminders
       mailer.we_miss_you_reminder(self, cycles_since(last_submission_date))
   end
 
-  def send_reminder!
+  def remind!
     build_reminder.deliver
     update! last_reminded_date: Time.now
   end
 
-  def should_send_reminder?
+  def should_remind?
     reminder_due? && (has_no_submissions? || has_no_recent_submission?)
   end
 
-  def remind!
-    send_reminder! if should_send_reminder?
-  end
-
+  # Try to send a reminder, by acquiring a database lock for update
+  # the aproppriate record. This object can't be updated as long as
+  # the reminder is being sent.
+  #
+  # This method is aimed to be sent across multiple servers or processed concurrently
+  # and still not send duplicate mails
   def try_remind_with_lock!
-    with_lock('for update nowait') { remind! } rescue nil
+    # Some notes:
+    #
+    # * nowait is a postgre specific option and may not work with other databases
+    # * nowait will raise an exception if the lock can not be acquired
+    # * we are using a double check lock pattern to reduce lock acquisition
+    with_lock('for update nowait') do
+      reload
+      remind! if should_remind?
+    end if should_remind?
+  rescue
+    nil
   end
 
   private

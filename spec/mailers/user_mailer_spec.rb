@@ -59,32 +59,32 @@ RSpec.describe UserMailer, type: :mailer do
       context "last submission this week" do
         let(:days_since_last_submission) { 3 }
 
-        it { expect(user.should_send_reminder?).to be false }
+        it { expect(user.should_remind?).to be false }
       end
 
       context "last submission 1 week ago" do
-        it { expect(user.should_send_reminder?).to be true }
+        it { expect(user.should_remind?).to be true }
         it { expect(reminder.body.encoded).to include("Keep learning") }
       end
 
       context "last submission 2 weeks ago" do
         let(:days_since_last_submission) { 16 }
 
-        it { expect(user.should_send_reminder?).to be true }
+        it { expect(user.should_remind?).to be true }
         it { expect(reminder.body.encoded).to include("Keep learning") }
       end
 
       context "last submission 3 weeks ago" do
         let(:days_since_last_submission) { 26 }
 
-        it { expect(user.should_send_reminder?).to be true }
+        it { expect(user.should_remind?).to be true }
         it { expect(reminder.body.encoded).to include("Keep learning") }
       end
 
       context "last submission 4 weeks ago" do
         let(:days_since_last_submission) { 30 }
 
-        it { expect(user.should_send_reminder?).to be false }
+        it { expect(user.should_remind?).to be false }
       end
     end
 
@@ -94,11 +94,11 @@ RSpec.describe UserMailer, type: :mailer do
       context "last submission this week" do
         let(:days_since_last_submission) { 3 }
 
-        it { expect(user.should_send_reminder?).to be false }
+        it { expect(user.should_remind?).to be false }
       end
 
       context "last submission 1 week ago" do
-        it { expect(user.should_send_reminder?).to be false }
+        it { expect(user.should_remind?).to be false }
       end
     end
   end
@@ -125,39 +125,39 @@ RSpec.describe UserMailer, type: :mailer do
       context "registered this week" do
         let(:days_since_user_creation) { 3 }
 
-        it { expect(user.should_send_reminder?).to be false }
+        it { expect(user.should_remind?).to be false }
       end
 
       context "registered 1 week ago" do
-        it { expect(user.should_send_reminder?).to be true }
+        it { expect(user.should_remind?).to be true }
         it { expect(reminder.body.encoded).to include("you've never submitted solutions") }
       end
 
       context "last submission 2 weeks ago" do
         let(:days_since_user_creation) { 16 }
 
-        it { expect(user.should_send_reminder?).to be true }
+        it { expect(user.should_remind?).to be true }
         it { expect(reminder.body.encoded).to include("you've never submitted solutions") }
       end
 
       context "last submission 3 weeks ago" do
         let(:days_since_user_creation) { 26 }
 
-        it { expect(user.should_send_reminder?).to be true }
+        it { expect(user.should_remind?).to be true }
         it { expect(reminder.body.encoded).to include("you've never submitted solutions") }
       end
 
       context "last submission 4 weeks ago" do
         let(:days_since_user_creation) { 30 }
 
-        it { expect(user.should_send_reminder?).to be false }
+        it { expect(user.should_remind?).to be false }
       end
     end
 
     context 'last reminded this week' do
       let(:days_since_last_reminded) { 2 }
 
-      it { expect(user.should_send_reminder?).to be false }
+      it { expect(user.should_remind?).to be false }
     end
   end
 end
