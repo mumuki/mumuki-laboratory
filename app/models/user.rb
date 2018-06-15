@@ -76,6 +76,10 @@ class User < ApplicationRecord
     end
   end
 
+  def accept_invitation!(invitation)
+    make_student_of! invitation.course
+  end
+
   def copy_progress_to!(another)
     transaction do
       assignments.update_all(submitter_id: another.id)
