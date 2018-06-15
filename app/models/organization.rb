@@ -84,6 +84,14 @@ class Organization < ApplicationRecord
     all.select { |it| it.public? || user.has_permission?(role, it.slug) }
   end
 
+  def title_suffix
+    central? ? '' : " - #{book.name}"
+  end
+
+  def site_name
+    central? ? 'mumuki' : name
+  end
+
   private
 
   def ensure_consistent_public_login
