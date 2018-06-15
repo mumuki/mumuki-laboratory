@@ -13,11 +13,16 @@ class Exercise < ApplicationRecord
   include SiblingsNavigation,
           ParentNavigation
 
+  serialize :randomizations, Hash
   belongs_to :guide
   defaults { self.submissions_count = 0 }
 
   validates_presence_of :submissions_count,
                         :guide
+
+  interpolations_on :description, :hint, :extra, :test, with: :randomizations
+
+  attr_accessor :seed
 
   def console?
     queriable?
