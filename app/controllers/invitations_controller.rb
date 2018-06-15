@@ -20,7 +20,7 @@ class InvitationsController < ApplicationController
   private
 
   def redirect_to_organization!
-    redirect_to Mumukit::Platform.laboratory.organic_url @organization
+    redirect_to Mumukit::Platform.laboratory.organic_url(@organization)
   end
 
   def user_params
