@@ -1,6 +1,6 @@
 <div class="col-md-offset-2 col-md-8">
   <div class="book-header <%= current_user? ? '' : 'logged' %>">
-    <h1>ム mumuki <%= Organization.current.title_suffix %></h1>
+    <h1>ム mumuki<%= Organization.current.title_suffix %></h1>
 
     <img src="<%= Organization.current.banner_url %>" alt="<%= Organization.current.name %> - Mumuki">
     <h2><%= @book.name %></h2>
