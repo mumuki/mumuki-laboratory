@@ -31,6 +31,10 @@ module IconsHelper
     status_fa_icon(discussion.status)
   end
 
+  def discussion_status_fa_label(discussion)
+    status_fa_icon(discussion.status)
+  end
+
   def icon_for_status(s)
     iconized = s.iconize
     [iconized[:type], class: "text-#{iconized[:class]} status-icon"]

@@ -1,37 +1,75 @@
 <%= render_runner_assets exercise.language, :layout %>
 
-<%= render partial: 'exercises/exercise_assignment', locals: {exercise: exercise} %>
+<% if exercise.console? %>
+  <%= hidden_field_tag(:stateful_console, exercise.stateful_console?) %>
+  <%= hidden_field_tag(:prompt, exercise.prompt) %>
+<% end %>
+<%= hidden_field_tag(:exercise_language, exercise.highlight_mode) %>
+<%= hidden_field_tag :console_endpoint, exercise_queries_path(exercise) %>
 
-<%= content_for :exercise_content do %>
-  <% if exercise.console? %>
-    <%= hidden_field_tag(:stateful_console, exercise.stateful_console?) %>
-    <%= hidden_field_tag(:prompt, exercise.prompt) %>
-  <% end %>
-  <%= hidden_field_tag(:exercise_language, exercise.highlight_mode) %>
-  <%= hidden_field_tag :console_endpoint, exercise_queries_path(exercise) %>
+<details open>
+  <summary class="discussion-summary">
+    <%= t :exercise %>
+  </summary>
 
-  <% if should_render_read_only_tabs? exercise %>
-    <ul class="nav nav-tabs" role="tablist">
-      <li role="presentation" class="active">
-        <a data-target="#editor" aria-controls="editor" tabindex="0" role="tab" data-toggle="tab" class="editor-tab"> <%= t :solution %></a>
-      </li>
-      <% if exercise.extra_visible? %>
-        <%= extra_code_tab %>
-      <% end %>
-      <% if exercise.queriable? %>
-        <%= console_tab %>
-      <% end %>
-    </ul>
-  <% else %>
-    <h4>
-      <%= t :solution %>
-    </h4>
-  <% end %>
+  <ul class="nav nav-tabs discussion-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a data-target="#solution" aria-controls="solution" role="tab" data-toggle="tab" class="editor-tab">
+        <%= t :solution %>
+      </a>
+    </li>
+    <li role="presentation">
+      <a data-target="#results" aria-controls="results" role="tab" data-toggle="tab" class="editor-tab">
+        <%= t :results %>
+      </a>
+    </li>
+    <li role="presentation">
+      <a data-target="#content" aria-controls="content" role="tab" data-toggle="tab" class="editor-tab">
+        <%= t :content %>
+      </a>
+    </li>
+
+    <% if exercise.extra_visible? %>
+      <%= extra_code_tab %>
+    <% end %>
+
+    <% if exercise.queriable? %>
+      <%= console_tab %>
+    <% end %>
+  </ul>
 
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane mu-input-panel fade in active" id="editor">
-      <%= render_exercise_read_only_editor exercise, exercise.assignment_for(current_user).solution %>
+    <div role="tabpanel" class="tab-pane active" id="solution">
+      <div class="mu-tab-body">
+        <div role="tabpanel" class="tab-pane mu-input-panel fade in active" id="editor">
+          <%= render_exercise_read_only_editor exercise, exercise.assignments.last.solution %>
+        </div>
+      </div>
     </div>
+
+    <div role="tabpanel" class="tab-pane" id="results">
+      <div class="mu-tab-body">
+        <% if current_user? %>
+          <%= render layout: 'exercise_solutions/assignment_results_container', locals: {assignment: exercise.assignments.last } do %>
+            <div class="row">
+              <div class="col-md-12 submission-results">
+                <%= render partial: 'exercise_solutions/assignment_results',
+                           locals: {assignment: exercise.assignments.last, guide_finished_by_solution: false} %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="content">
+      <div class="mu-tab-body">
+        <div class="exercise-assignment">
+          <%= render partial: 'exercises/exercise_assignment', locals: {exercise: exercise} %>
+        </div>
+      </div>
+    </div>
+
     <div role="tabpanel" class="tab-pane mu-input-panel fade" id="console">
       <div class="mu-overlapped-container">
         <div class="console">
@@ -45,23 +83,9 @@
         <label for="include_solution"><p><%= t(:load_solution_into_console) %></p></label>
       </div>
     </div>
+
     <div role="tabpanel" class="tab-pane mu-input-panel fade" id="visible-extra">
       <%= exercise.extra_preview_html(current_user) %>
     </div>
   </div>
-<% end %>
-
-<% content_for :submission_results do %>
-  <% if current_user? %>
-    <%= render layout: 'exercise_solutions/assignment_results_container', locals: {assignment: exercise.assignment_for(current_user)} do %>
-      <div class="row">
-        <div class="col-md-12 submission-results">
-          <%= render partial: 'exercise_solutions/assignment_results',
-                     locals: {assignment: exercise.assignment_for(current_user), guide_finished_by_solution: false} %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-<% end %>
-
-<%= render_exercise_input_layout(exercise) %>
+</details>

@@ -1,12 +1,19 @@
-<%= render layout: 'discussions/message_container', locals: {user: user, message: nil} do %>
-  <%= form_for [@discussion, Message.new] do |f| %>
-    <div class="container-fluid">
-      <div class="row">
-        <div><%= f.text_area :content, class: 'form-control discussion-new-message-content', placeholder: t(:message), required: true %></div>
+<%= form_for [@discussion, Message.new] do |f| %>
+  <%= render layout: 'discussions/message_container', locals: {user: user} do %>
+    <div class="discussion-message-bubble">
+      <div class="discussion-message-bubble-header">
+        <div class="discussion-message-bubble-title">
+          <%= user.name %>
+        </div>
       </div>
-      <div class="row">
-        <button class="btn btn-success btn-block discussion-new-message-button"> <%= t :comment %> </button>
+      <div class="discussion-message-bubble-content">
+        <div class="container-fluid">
+          <div class="row">
+            <div><%= f.text_area :content, class: 'form-control discussion-new-message-content', placeholder: t(:message), required: true %></div>
+          </div>
+        </div>
       </div>
     </div>
+    <button class="btn btn-success btn-block discussion-new-message-button"> <%= t :comment %> </button>
   <% end %>
 <% end %>

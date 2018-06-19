@@ -5,9 +5,16 @@ class Discussion < ApplicationRecord
   has_many :messages
   belongs_to :initiator, class_name: 'User'
   belongs_to :submission, optional: true
+  belongs_to :exercise, foreign_type: :exercise, foreign_key: 'item_id'
+  has_many :subscriptions
+
+  scope :by_language, -> (language) { includes(:exercise).joins(exercise: :language).where(languages: {name: language}) }
 
   before_save :capitalize
   validates_presence_of :title
+
+  sortable_by :created_at
+  filterable_by :status, :language
 
   delegate :language, to: :item
 
@@ -19,8 +26,6 @@ class Discussion < ApplicationRecord
     end
   end
 
-  scope :for_status, -> (status) { where(status: status) }
-
   def capitalize
     title.capitalize!
     description.try(:capitalize!)
@@ -30,17 +35,26 @@ class Discussion < ApplicationRecord
     item.used_in?(organization).present?
   end
 
+  def commentable?(user)
+    opened? && user.present?
+  end
+
   def friendly
     title
+  end
+
+  def subscription_for(user)
+    subscriptions.find_by(user: user)
   end
 
   def submit_message!(message, user)
     message.merge!(sender: user.uid)
     messages.create(message)
+    subscription_for(user).try(:unread!)
   end
 
   def authorized?(user)
-    initiator?(user) || user.moderator?
+    initiator?(user) || user.try(:moderator?)
   end
 
   def initiator?(user)
@@ -64,7 +78,8 @@ class Discussion < ApplicationRecord
     update!(status: status) if reachable_status_for?(user, status)
   end
 
-  def self.sortable_fields
-    [:created_at]
+  def has_messages?
+    messages.exists?
   end
+
 end

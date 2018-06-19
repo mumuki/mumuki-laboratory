@@ -10,6 +10,7 @@ en:
   all: All
   appendix: "Appendix"
   appendix_teaser: Do you want to learn more? <a href="%{link}">Check this chapter's appendix</a>"
+  are_you_sure: 'Are you sure you want to %{action}?'
   ask_a_question: Ask a question!
   ask_community: Ask community for help
   ask_redirect: Do you want to go there?
@@ -42,6 +43,7 @@ en:
   created_at: Created at
   date: Date
   destroy: Destroy
+  destroy_message: delete the message
   discussion_updated: Discussion updated
   discussions: Discussions
   dont_leave_us: Don't leave us! Learning is fun. You just have to keep at it.

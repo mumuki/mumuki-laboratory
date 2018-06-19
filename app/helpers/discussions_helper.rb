@@ -49,38 +49,54 @@ module DiscussionsHelper
     }.html_safe
   end
 
-  def should_render_discussion_tabs?(discussion)
-    true
+  def discussions_count_for_status(status, discussions)
+    discussions.by_status(status).count
   end
 
-  def discussions_count_for_status(status)
-    @discussions.for_status(status).count
+  def discussions_statuses(discussions)
+    discussions.pluck(:status).uniq
   end
 
-  def discussions_languages
-    @discussions.map { |it| it.language.name }.uniq
+  def discussions_languages(discussions)
+    discussions.map { |it| it.language.name }.uniq
   end
 
-  def discussion_status_filter(status)
+  def discussion_status_filter(status, discussions)
     %Q{
       #{status_fa_icon(status)}
       <span>
-        #{discussions_count_for_status(status)}
+        #{discussions_count_for_status(status, discussions)}
         #{t status}
       </span>
     }.html_safe
   end
 
-  def discussion_dropdown_filter(label, &block)
+  def discussion_dropdown_filter(label, filters, &block)
     %Q{
       <div class="dropdown discussions-toolbar-filter">
         <a id="dropdown-#{label}" data-toggle="dropdown" role="menu">
           #{t label} #{fa_icon :'caret-down', class: 'fa-xs'}
         </a>
         <ul class="dropdown-menu" aria-labelledby="dropdown-#{label}">
-          #{capture(&block)}
+          #{discussion_filter_list(label, filters, &block)}
         </ul>
       </div>
     }.html_safe
+  end
+
+  def discussion_filter_list(label, filters, &block)
+    filters.map { |it| discussion_filter_item(label, it, &block) }.join("\n")
+  end
+
+  def discussion_filter_item(label, filter, &block)
+    content_tag(:li, discussion_filter_link(label, filter, &block), class: "#{'active' if discussion_filter_selected?(label, filter)}")
+  end
+
+  def discussion_filter_selected?(label, filter)
+    false
+  end
+
+  def discussion_filter_link(label, filter, &block)
+    link_to capture(filter, &block), @filter_params.merge(Hash[label, filter])
   end
 end

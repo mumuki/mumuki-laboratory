@@ -1,6 +1,6 @@
 class BookDiscussionsController < DiscussionsController
   def index
-    @discussions = Discussion.custom_sort(@filter_params)
+    @discussions = Discussion.search_by(params)
   end
 
   def set_debatable

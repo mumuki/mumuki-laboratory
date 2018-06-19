@@ -3,36 +3,26 @@
 
     <div class="discussions-toolbar-status">
       <div class="hidden-xs hidden-sm">
-        <% Mumuki::Laboratory::Status::Discussion::STATUSES.each do |status| %>
+        <% discussions_statuses(@discussions).each do |status| %>
           <%= link_to @filter_params.merge({status: status}) do %>
-            <%= discussion_status_filter(status) %>
+            <%= discussion_status_filter(status, @discussions) %>
           <% end %>
         <% end %>
       </div>
     </div>
     <div>
       <div class="hidden-md hidden-lg ">
-        <%= discussion_dropdown_filter(:status) do %>
-          <% Mumuki::Laboratory::Status::Discussion::STATUSES.each do |status|%>
-            <li>
-              <%= link_to t status, @filter_params.merge({status: status}) %>
-            </li>
-          <% end %>
+        <%= discussion_dropdown_filter :status, discussions_statuses(@discussions) do |status_filter| %>
+          <%= t status_filter %>
         <% end %>
       </div>
-      <%= discussion_dropdown_filter(:language) do %>
-        <% discussions_languages.each do |language| %>
-          <li>
-            <%= link_to language.capitalize, @filter_params.merge({language: language}) %>
-          </li>
-        <% end %>
+
+      <%= discussion_dropdown_filter :language, discussions_languages(@discussions) do |language_filter| %>
+        <%= language_filter.capitalize %>
       <% end %>
-      <%= discussion_dropdown_filter(:sort) do %>
-        <% discussions_languages.each do |language| %>
-          <li>
-            <%= link_to language.capitalize, @filter_params.merge({language: language}) %>
-          </li>
-        <% end %>
+
+      <%= discussion_dropdown_filter :sort, Discussion.sorting_filters do |sorting_filter| %>
+        <%= sorting_filter %>
       <% end %>
     </div>
   </div>

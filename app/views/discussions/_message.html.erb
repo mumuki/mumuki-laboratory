@@ -1,5 +1,22 @@
-<%= render layout: 'discussions/message_container', locals: {user: user, message: message} do %>
-  <div class="discussion-message-content">
-    <%= message.content %>
+<%= render layout: 'discussions/message_container', locals: {user: user} do %>
+  <div class="discussion-message-bubble">
+    <div class="discussion-message-bubble-header">
+      <div class="discussion-message-bubble-title">
+        <%= user.name %>
+        <span class="message-date">
+          <%= time_ago_in_words message.created_at %>
+        </span>
+        <% if message.authorized? current_user %>
+          <span class="actions">
+            <%= link_to fa_icon('trash-o'), discussion_message_path(@discussion, message), method: :delete, data: { confirm: t(:are_you_sure, action: t(:destroy_message)) } %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+    <div class="discussion-message-bubble-content">
+      <div class="discussion-message-content">
+        <%= message.content %>
+      </div>
+    </div>
   </div>
 <% end %>

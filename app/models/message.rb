@@ -17,7 +17,11 @@ class Message < ApplicationRecord
   end
 
   def from_user?(user)
-    sender == user.uid
+    sender == user&.uid
+  end
+
+  def authorized?(user)
+    from_user?(user) || user&.moderator?
   end
 
   def as_platform_json

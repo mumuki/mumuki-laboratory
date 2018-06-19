@@ -4,61 +4,49 @@
 
 <div>
   <div class="row">
-    <div class="mu-inline-block-right hidden-xs">
-      <h1>
-        <%= discussion_status_fa_icon(@discussion) %>
-      </h1>
-    </div>
+    <% if current_user %>
+      <div class="mu-inline-block-right hidden-xs">
+        <h2>
+          <%= fa_icon(:bell, class: 'fa-fw') %>
+        </h2>
+      </div>
+    <% end %>
     <div class="mu-inline-block-left">
       <div class="discussion-header">
-        <h1>
+        <h2>
           <%= user_avatar(@discussion.initiator, 'discussion-user-avatar') %>
           <%= @discussion.title %>
-        </h1>
+        </h2>
       </div>
       <h4 class="discussion-description">
+        <%= discussion_status_fa_icon(@discussion) %>
         <%= @discussion.description %>
       </h4>
     </div>
   </div>
 
-  <% if should_render_discussion_tabs?(@discussion) %>
-    <ul class="nav nav-tabs discussion-tabs" role="tablist">
-      <li role="presentation" class="active">
-        <a data-target="#messages" aria-controls="messages" role="tab" data-toggle="tab">
-          <%= t :messages %>
-          <%= discussion_messages_icon(@discussion) %>
-        </a>
-      </li>
-      <li role="presentation">
-        <a data-target="#context" aria-controls="context" role="tab" data-toggle="tab">
-          <%= t :exercise %>
-        </a>
-      </li>
-    </ul>
+  <%= render partial: 'exercises/read_only', locals: {exercise: @debatable} %>
+
+  </div>
+
+  <hr class="message-divider">
+
+  <h3>
+    <%= t :messages %>
+  </h3>
+
+  <% if @discussion.has_messages? %>
+    <div class="discussion-messages">
+      <% @discussion.messages.each do |message| %>
+        <%= render partial: 'discussions/message', locals: {user: current_user, message: message} %>
+      <% end %>
+      <% if @discussion.commentable?(current_user) %>
+        <hr class="message-divider">
+      <% end %>
+    </div>
   <% end %>
 
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="messages">
-      <div class="mu-tab-body">
-        <div class="discussion-messages <%= 'no-tabs' unless should_render_discussion_tabs?(@discussion) %>">
-          <% @discussion.messages.each do |message| %>
-            <%= render partial: 'discussions/message', locals: {user: current_user, message: message} %>
-          <% end %>
-        </div>
-
-        <%= render partial: 'discussions/new_message', locals: {user: current_user} if @discussion.opened? && current_user %>
-      </div>
-    </div>
-
-    <% if should_render_discussion_tabs?(@discussion) %>
-      <div role="tabpanel" class="tab-pane" id="context">
-        <div class="mu-tab-body">
-          <%= render partial: 'exercises/read_only', locals: {exercise: @debatable} %>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <%= render partial: 'discussions/new_message', locals: {user: current_user} if @discussion.commentable?(current_user) %>
 
   <div class="discussion-actions">
     <% @discussion.reachable_statuses_for(current_user).each do |status| %>

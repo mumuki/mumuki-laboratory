@@ -1,5 +1,5 @@
 $discussion-message-arrow-size: 10px;
-$discussion-message-border-color: #aaa;
+$discussion-message-border-color: #ccc;
 
 .discussions {
   margin: 30px 0;
@@ -74,10 +74,10 @@ $discussion-message-border-color: #aaa;
         margin-right: 15px;
       }
       &:hover {
-        color: darken($brand-primary, 10%);
+        color: darken($brand-primary, 20%);
       }
       &.active {
-        color: darken($brand-primary, 15%);
+        color: darken($brand-primary, 20%);
         font-weight: bold;
       }
       .status-icon {
@@ -88,11 +88,12 @@ $discussion-message-border-color: #aaa;
       float: right;
       margin-right: 20px;
       cursor: pointer;
+
     }
   }
 }
 
-.discussion-messages.no-tabs {
+.message-divider {
   border-top: 1px solid #ecf0f1;
   margin-top: 20px
 }
@@ -136,46 +137,49 @@ h4.discussion-description {
 .discussion-new-message-content {
   resize: none;
   border-radius: 0;
-  border-bottom: none;
+  border-color: transparent;
   &:focus {
-    border-color: darken(#dce4ec, 20%);
+    border-color: #ffffff;
   }
+}
+
+summary.discussion-summary {
+  display: list-item;
+  font-size: 29px;
+  outline: 0;
 }
 
 .discussion-new-message-button {
   border-radius: 0;
+  margin-top: 15px;
 }
 
 .discussion-message {
   position: relative;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: start;
   padding: 0;
   border: none;
   margin-top: 30px;
-  &.self {
-    justify-content: flex-end;
-    .discussion-message-user-avatar {
-      order: 2;
-      margin-left: 20px;
-    }
-    .discussion-message-bubble .discussion-message-bubble-header:after {
-      position: absolute;
-      top: calc(20px - #{$discussion-message-arrow-size + 2px} / 2);
-      right: -$discussion-message-arrow-size - 2px;
-      border-width: (1px + $discussion-message-arrow-size / 2) 0 (1px + $discussion-message-arrow-size / 2) (2px + $discussion-message-arrow-size);
-      border-color: transparent $discussion-message-border-color;
-      content: '';
-      border-style: solid;
-    }
+  .discussion-message-user-avatar {
+    margin-right: 20px;
   }
-  &.other {
-    justify-content: flex-start;
-    .discussion-message-user-avatar {
-      margin-right: 20px;
-    }
-    .discussion-message-bubble .discussion-message-bubble-header:before {
+}
+
+.discussion-message-bubble-container {
+  width: 100%;
+}
+
+.discussion-message-bubble {
+  background-color: #ffffff;
+  border: 1px solid $discussion-message-border-color;
+  border-radius: 3px;
+  position: relative;
+  .discussion-message-bubble-header {
+    background-color: $mu-color-highlight-background;
+    height: 40px;
+    &:before {
       position: absolute;
       top: calc(20px - #{$discussion-message-arrow-size + 2px} / 2);
       left: -$discussion-message-arrow-size - 2px;
@@ -184,21 +188,18 @@ h4.discussion-description {
       border-style: solid;
       border-color: transparent $discussion-message-border-color;
     }
-  }
-}
-
-.discussion-message-bubble {
-  width: 65%;
-  background-color: #fff;
-  border: 1px solid $discussion-message-border-color;
-  border-radius: 3px;
-  position: relative;
-  .discussion-message-bubble-header {
-    background-color: #ddd;
-    height: 40px;
     .discussion-message-bubble-title {
       padding: 5px 15px;
       display: block;
+      .message-date {
+        font-size: 15px;
+      }
+      .actions {
+        float: right;
+        i {
+          color: #aaaaaa
+        }
+      }
     }
   }
 }

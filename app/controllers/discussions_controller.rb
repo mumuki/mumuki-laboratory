@@ -4,7 +4,7 @@ class DiscussionsController < AjaxController
   before_action :discussion_filter_params, only: [:index]
 
   def index
-    @discussions = @debatable.discussions.for_user(current_user).filter(@filter_params)
+    @discussions = @debatable.discussions.for_user(current_user).search_by(params)
   end
 
   def show
@@ -14,6 +14,11 @@ class DiscussionsController < AjaxController
   def update
     subject.update_status! params[:status], current_user
     redirect_to [@debatable, subject], notice: I18n.t(:discussion_updated)
+  end
+
+  def subscription
+    current_user&.toggle_subscription(subject)
+    head :ok
   end
 
   def create
@@ -38,6 +43,6 @@ class DiscussionsController < AjaxController
   end
 
   def discussion_filter_params
-    @filter_params = params.permit(:status, :language, :sort)
+    @filter_params = params.permit(Discussion.permitted_filtering_params)
   end
 end
