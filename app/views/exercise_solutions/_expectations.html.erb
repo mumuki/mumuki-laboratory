@@ -1,0 +1,7 @@
+<% expectation = assignment.visible_expectation_results.find { |it| it[:status] != :passed } %>
+
+<% if expectation %>
+    <ul class="results-list">
+      <li><%= status_icon(expectation[:result]) %> <%= t_expectation expectation %></li>
+    </ul>
+<% end %>

@@ -106,15 +106,16 @@ mumuki.load(function () {
     var SCROLL_TIME = 1000;
     var PAUSE_TIME = 2000;
 
-    setTimeout(function() {
-      $bubble.animate({ scrollTop: toBottom ? $bubble.height() : 0 }, {
+    setTimeout(function () {
+      $bubble.animate({scrollTop: toBottom ? $bubble.height() : 0}, {
         duration: SCROLL_TIME,
-        complete: function() {
+        complete: function () {
           autoScrollBubble(!toBottom);
         }
       });
     }, PAUSE_TIME);
   }
+
   autoScrollBubble();
 
   mumuki.kids = {
@@ -171,6 +172,10 @@ mumuki.load(function () {
       $bubble.find('.mu-kids-character-speech-bubble-normal').hide();
       $bubble.find('.mu-kids-character-speech-bubble-failed').show().html(data.title_html);
       $bubble.addClass(data.status);
+      console.log(data);
+      if (data.status === 'passed_with_warnings') {
+        $bubble.find('.mu-kids-character-speech-bubble-failed').append(data.expectations_html);
+      }
       mumuki.kids.getOverlay().show();
     },
 
@@ -239,7 +244,7 @@ mumuki.load(function () {
   };
 
   mumuki.kids.resultAction.passed = mumuki.kids._showOnSuccessPopup;
-  mumuki.kids.resultAction.passed_with_warnings = mumuki.kids._showOnSuccessPopup;
+  mumuki.kids.resultAction.passed_with_warnings = mumuki.kids._showOnCharacterBubble;
 
   mumuki.kids.resultAction.aborted = mumuki.kids._showOnFailurePopup;
 

@@ -13,7 +13,8 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
       class_for_progress_list_item: class_for_progress_list_item(@exercise, true),
       html: render_results_html(assignment),
       title_html: render_results_title_html(assignment),
-      button_html: render_results_button_html(assignment))
+      button_html: render_results_button_html(assignment),
+      expectations_html: render_results_expectations_html(assignment))
   end
 
   def render_results_html(assignment)
@@ -32,6 +33,11 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
 
   def render_results_button_html(assignment)
     render_to_string partial: 'exercise_solutions/kids_results_button',
+                     locals: {assignment: assignment}
+  end
+
+  def render_results_expectations_html(assignment)
+    render_to_string partial: 'exercise_solutions/expectations',
                      locals: {assignment: assignment}
   end
 
