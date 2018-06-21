@@ -172,7 +172,6 @@ mumuki.load(function () {
       $bubble.find('.mu-kids-character-speech-bubble-normal').hide();
       $bubble.find('.mu-kids-character-speech-bubble-failed').show().html(data.title_html);
       $bubble.addClass(data.status);
-      console.log(data);
       if (data.status === 'passed_with_warnings') {
         $bubble.find('.mu-kids-character-speech-bubble-failed').append(data.expectations_html);
       }

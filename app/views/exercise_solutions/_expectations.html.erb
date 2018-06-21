@@ -1,4 +1,4 @@
-<% expectation = assignment.visible_expectation_results.find { |it| it[:status] != :passed } %>
+<% expectation = assignment.visible_expectation_results.find { |it| it[:result].failed? } %>
 
 <% if expectation %>
     <ul class="results-list">
