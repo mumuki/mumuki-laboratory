@@ -7,7 +7,7 @@ class InvitationsController < ApplicationController
   end
 
   def join
-    current_user.make_student_of! @invitation.course
+    current_user.accept_invitation! @invitation
     current_user.update! user_params
     current_user.notify!
     redirect_to_organization!
@@ -20,7 +20,7 @@ class InvitationsController < ApplicationController
   private
 
   def redirect_to_organization!
-    redirect_to Mumukit::Platform.laboratory.organic_url @organization
+    redirect_to Mumukit::Platform.laboratory.organic_url(@organization)
   end
 
   def user_params
