@@ -8,7 +8,6 @@ module WithDiscussions
   def create_discussion!(user, discussion)
     discussion.merge!(initiator_id: user.id)
     created_discussion = discussions.create(discussion)
-    user.watched_discussions << created_discussion
-    user.save!
+    user.subscribe_to(created_discussion)
   end
 end
