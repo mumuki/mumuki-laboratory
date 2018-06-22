@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180605143727) do
+ActiveRecord::Schema.define(version: 20180619182555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -241,6 +241,14 @@ ActiveRecord::Schema.define(version: 20180605143727) do
     t.datetime "updated_at"
     t.index ["category_id"], name: "index_paths_on_category_id"
     t.index ["language_id"], name: "index_paths_on_language_id"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "discussion_id"
+    t.boolean "read", default: true
+    t.index ["discussion_id"], name: "index_subscriptions_on_discussion_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
   create_table "topics", force: :cascade do |t|

@@ -5,7 +5,7 @@ class Assignment < ApplicationRecord
   belongs_to :exercise
   has_one :guide, through: :exercise
   has_many :messages, -> { order(date: :desc) }, foreign_key: :submission_id, primary_key: :submission_id
-
+  composed_of :submission, mapping: [ %w(test_results), %w(status), %w(solution), %w(result), %w(expectation_results), %w(feedback) ], constructor: :initialize_submission
   belongs_to :submitter, class_name: 'User'
 
   validates_presence_of :exercise, :submitter

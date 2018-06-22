@@ -7,6 +7,7 @@ class Discussion < ApplicationRecord
   belongs_to :submission, optional: true
   belongs_to :exercise, foreign_type: :exercise, foreign_key: 'item_id'
   has_many :subscriptions
+  composed_of :submission, mapping: [ %w(test_results test_results), %w(submission_status status), %w(solution solution), %w(result result), %w(expectation_results expectation_results), %w(feedback feedback) ]
 
   scope :by_language, -> (language) { includes(:exercise).joins(exercise: :language).where(languages: {name: language}) }
 
