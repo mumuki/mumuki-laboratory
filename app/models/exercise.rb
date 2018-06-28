@@ -5,7 +5,8 @@ class Exercise < ApplicationRecord
           WithAssignments,
           FriendlyName,
           WithLanguage,
-          Assistable
+          Assistable,
+          WithRandomizations
 
   include Submittable,
           Questionable
@@ -21,8 +22,6 @@ class Exercise < ApplicationRecord
                         :guide
 
   interpolations_on :description, :hint, :extra, :test, with: :randomizations
-
-  attr_accessor :seed
 
   def console?
     queriable?

@@ -1,8 +1,9 @@
 class ExercisesController < ApplicationController
+  include Mumuki::Laboratory::Controllers::ExerciseSeed
+
   before_action :set_guide!, only: :show
   before_action :set_default_content!, only: :show, if: :current_user?
   before_action :set_assignment!, only: :show, if: :current_user?
-  before_action :set_seed!, only: :show
   before_action :validate_accessible!, only: :show
   before_action :start!, only: :show
 
@@ -36,10 +37,6 @@ class ExercisesController < ApplicationController
 
   def set_assignment!
     @assignment = @exercise.assignment_for(current_user)
-  end
-
-  def set_seed!
-    @exercise.seed = current_user&.id || 0
   end
 
   def set_guide!

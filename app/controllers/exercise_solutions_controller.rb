@@ -1,10 +1,10 @@
 class ExerciseSolutionsController < AjaxController
   include Mumuki::Laboratory::Controllers::NestedInExercise
   include Mumuki::Laboratory::Controllers::ResultsRendering
+  include Mumuki::Laboratory::Controllers::ExerciseSeed
 
   before_action :set_messages, only: :create
   before_action :validate_accessible!, only: :create
-  before_action :set_seed!, only: :create
 
   def create
     assignment = @exercise.submit_solution!(current_user, solution_params)
@@ -24,9 +24,5 @@ class ExerciseSolutionsController < AjaxController
   def solution_params
     params_h = params.require(:solution).permit!.to_h
     {content: params_h[:content]}
-  end
-
-  def set_seed!
-    @exercise.seed = current_user&.id || 0
   end
 end

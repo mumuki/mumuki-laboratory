@@ -1,11 +1,15 @@
-class OneOf
+class Mumukit::Randomizer::Randomization::OneOf
   attr_accessor :choices
 
   def initialize(choices)
     @choices = choices
   end
 
+  def size
+    choices.size
+  end
+
   def get(value)
-    choices.to_a[value % choices.size]
+    choices[value % size]
   end
 end

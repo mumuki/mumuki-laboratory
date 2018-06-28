@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 feature 'Exercise Flow', organization_workspace: :test do
-  let(:user) { create(:user) }
-  let(:user2) { create(:user) }
+  let(:user) { create(:user, id: 1) }
+  let(:user2) { create(:user, id: 2) }
 
-  let!(:problem) { build(:problem, description: 'do f = /*...someVariable...*/', randomizations: { 'someVariable' => OneOf.new(%w(some_string some_other_string)) }) }
+  let!(:problem) { build(:problem, description: 'do f = $someVariable', randomizations: { someVariable: { type: :oneOf, value: %w(some_string some_other_string)} }) }
 
   let!(:chapter) {
     create(:chapter, lessons: [
