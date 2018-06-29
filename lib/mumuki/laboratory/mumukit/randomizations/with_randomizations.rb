@@ -1,7 +1,9 @@
 module WithRandomizations
-  def self.included(base)
-    base.include InstanceMethods
-    base.extend ClassMethods
+  extend ActiveSupport::Concern
+
+  included do
+    include InstanceMethods
+    extend ClassMethods
   end
 
   module InstanceMethods
