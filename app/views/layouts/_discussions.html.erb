@@ -1,4 +1,4 @@
-<div class="discussions">
+<div class="discussions-list">
   <%= discussions_reset_query_link %>
   <div class="discussions-toolbar">
     <div class="discussions-toolbar-status">
@@ -32,25 +32,32 @@
       </span>
     </div>
   <% else %>
-    <% @filtered_discussions.each do |discussion| %>
-      <%= link_to polymorphic_path([discussion.item, discussion]) do %>
-        <div class="discussion">
-          <div class="discussion-row">
-            <%= discussion_messages_icon(discussion) %>
-            <div>
-              <div class="discussion-title">
-                <span class="discussion-status-icon">
-                  <%= discussion_status_fa_icon(discussion) %>
+    <div class="discussions">
+      <% @filtered_discussions.each do |discussion| %>
+        <%= link_to polymorphic_path([discussion.item, discussion]) do %>
+          <div class="discussion">
+            <div class="discussion-row">
+              <%= discussion_messages_icon(discussion) %>
+              <div>
+                <div class="discussion-title">
+                  <span class="discussion-status-icon">
+                    <%= discussion_status_fa_icon(discussion) %>
+                  </span>
+                  <%= discussion.title %>
+                </div>
+                <span class="discussion-description">
+                  <%= discussion.description %>
                 </span>
-                <%= discussion.title %>
               </div>
-              <span class="discussion-description">
-                <%= discussion.description %>
-              </span>
             </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+
+    <div class="discussion-pagination">
+      <%= will_paginate @filtered_discussions %>
+    </div>
+
   <% end %>
 </div>

@@ -64,7 +64,7 @@ pt:
   error_500: erro 500
   errored: Opa! Sua solução não pode ser executada
   exam_number: 'Revise %{number}:'
-  exams: Exames
+  exams: Examesca
   exercise: Exercício
   exercise_count: exercícios
   exercise_number: Exercício %{number}

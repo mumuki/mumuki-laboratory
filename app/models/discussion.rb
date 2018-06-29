@@ -1,5 +1,5 @@
 class Discussion < ApplicationRecord
-  include WithDiscussionStatus, ParentNavigation, Searchable
+  include WithDiscussionStatus, ParentNavigation, WithScopedQueries
 
   belongs_to :item, polymorphic: true
   has_many :messages
@@ -13,8 +13,9 @@ class Discussion < ApplicationRecord
   before_save :capitalize
   validates_presence_of :title
 
-  sortable_by :created_at
-  filterable_by :status, :language
+  sortable :created_at
+  filterable :status, :language
+  pageable
 
   delegate :language, to: :item
 

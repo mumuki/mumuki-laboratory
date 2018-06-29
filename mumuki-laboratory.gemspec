@@ -35,5 +35,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'rack', '~> 2.0'
   s.add_dependency 'omniauth', '~> 1.4.0'
 
+  s.add_dependency 'will_paginate', '~> 3.1'
+
   s.add_development_dependency 'pg', '~> 0.18.0'
 end

@@ -3,11 +3,11 @@ class DiscussionsController < AjaxController
   before_action :authenticate!, only: [:update, :create]
   before_action :discussion_filter_params, only: [:index]
   before_action :read_discussion, only: [:show]
+  before_action :set_current_discussions, only: [:index]
 
   def index
-    @discussions = @debatable.discussions
     @discussions = @discussions.for_user(current_user)
-    @filtered_discussions = @discussions.search_by(@filter_params)
+    @filtered_discussions = @discussions.scoped_query_by(@filter_params)
   end
 
   def show
@@ -31,9 +31,8 @@ class DiscussionsController < AjaxController
 
   private
 
-  def scope_for_user
-    @discussions = @discussions.for_user(current_user)
-    @filtered_discussions = @discussions.search_by(@filter_params)
+  def set_current_discussions
+    @discussions = @debatable.discussions
   end
 
   def set_debatable
@@ -55,6 +54,6 @@ class DiscussionsController < AjaxController
   end
 
   def discussion_filter_params
-    @filter_params = params.permit(Discussion.permitted_filtering_params)
+    @filter_params = params.permit(Discussion.permitted_query_params)
   end
 end

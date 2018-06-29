@@ -50,7 +50,7 @@ module DiscussionsHelper
   end
 
   def discussions_count_for_status(status, discussions)
-    discussions.search_by(@filter_params, :status).by_status(status).count
+    discussions.scoped_query_by(@filter_params, :status).by_status(status).count
   end
 
   def discussions_reset_query_link

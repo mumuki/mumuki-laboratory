@@ -14,6 +14,7 @@ require 'mumukit/randomizer'
 require 'mumukit/inspection'
 require 'mumukit/bridge'
 require 'mumukit/content_type'
+require 'will_paginate'
 
 require_relative './laboratory/mumukit/auth'
 require_relative './laboratory/mumukit/directives'

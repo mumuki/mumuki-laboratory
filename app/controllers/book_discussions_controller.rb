@@ -1,11 +1,11 @@
 class BookDiscussionsController < DiscussionsController
-  def index
-    @discussions = Discussion.all
-    @discussions = @discussions.for_user(current_user)
-    @filtered_discussions = @discussions.search_by(@filter_params)
-  end
+  private
 
   def set_debatable
     @debatable = Organization.current.book
+  end
+
+  def set_current_discussions
+    @discussions = Discussion.all
   end
 end
