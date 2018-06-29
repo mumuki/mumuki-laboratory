@@ -1,15 +1,9 @@
-class Mumukit::Randomizer::Randomization::OneOf
-  attr_accessor :choices
-
+class Mumukit::Randomizer::Randomization::OneOf < Mumukit::Randomizer::Randomization::Base
   def initialize(choices)
     @choices = choices
   end
 
-  def size
-    choices.size
-  end
-
   def get(value)
-    choices[value % size]
+    choices[modulo(value, 0..choices.size - 1)]
   end
 end

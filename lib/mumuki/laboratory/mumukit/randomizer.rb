@@ -24,6 +24,7 @@ module Mumukit
 end
 
 require_relative 'randomizations/randomization'
+require_relative 'randomizations/base'
 require_relative 'randomizations/one_of'
 require_relative 'randomizations/range'
 require_relative 'randomizations/with_randomizations'
