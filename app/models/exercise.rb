@@ -14,7 +14,6 @@ class Exercise < ApplicationRecord
   include SiblingsNavigation,
           ParentNavigation
 
-  serialize :randomizations, Hash
   belongs_to :guide
   defaults { self.submissions_count = 0 }
 

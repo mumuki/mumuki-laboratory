@@ -2,6 +2,8 @@ module WithRandomizations
   extend ActiveSupport::Concern
 
   included do
+    serialize :randomizations, Hash
+
     include InstanceMethods
     extend ClassMethods
   end
