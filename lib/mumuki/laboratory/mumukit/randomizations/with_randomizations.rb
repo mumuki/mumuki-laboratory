@@ -17,16 +17,16 @@ module WithRandomizations
   end
 
   module ClassMethods
-    def interpolations_on(*selectors, with:)
-      selectors.each { |selector| _interpolate selector, with }
+    def randomize(*selectors, with:)
+      selectors.each { |selector| randomize_field selector, with }
     end
 
     private
 
-    def _interpolate(selector, interpolations_selector)
+    def randomize_field(selector, randomizations_selector)
       define_method(selector) do |*args|
         return unless super(*args)
-        interpolations = Mumukit::Randomizer.parse(send(interpolations_selector)).with_seed(seed)
+        interpolations = Mumukit::Randomizer.parse(send(randomizations_selector)).with_seed(seed)
         interpolations.inject(super(*args)) { |result, (replacee, replacer)| result.gsub "$#{replacee}", replacer }
       end
     end
