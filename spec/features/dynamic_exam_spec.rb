@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Exercise Flow', organization_workspace: :test do
+feature 'Dynamic Exam', organization_workspace: :test do
   let(:user) { create(:user, id: 1) }
   let(:user2) { create(:user, id: 2) }
 
