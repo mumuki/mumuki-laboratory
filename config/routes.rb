@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     concern :debatable do |options|
       resources :discussions, options.merge(only: [:index, :show, :create, :update, :destroy]) do
         post :subscription, on: :member
+        post :upvote, on: :member
       end
     end
 

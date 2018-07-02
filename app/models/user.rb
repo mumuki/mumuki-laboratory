@@ -2,6 +2,7 @@ class User < ApplicationRecord
   include WithProfile,
           WithUserNavigation,
           WithReminders,
+          WithDiscussionCreation,
           Mumukit::Platform::User::Helpers
 
   serialize :permissions, Mumukit::Auth::Permissions
@@ -24,10 +25,6 @@ class User < ApplicationRecord
   has_one :last_guide, through: :last_exercise, source: :guide
 
   has_many :exam_authorizations
-
-  has_many :discussions, foreign_key: 'initiator_id'
-  has_many :subscriptions
-  has_many :watched_discussions, through: :subscriptions, source: :discussion
 
   after_initialize :init
 
@@ -59,30 +56,6 @@ class User < ApplicationRecord
 
   def unread_messages
     messages.where read: false
-  end
-
-  def unread_discussions
-    subscriptions.where(read: false).map(&:discussion)
-  end
-
-  def subscribed_to?(discussion)
-    discussion.subscription_for(self).present?
-  end
-
-  def subscribe_to(discussion)
-    watched_discussions << discussion
-  end
-
-  def unsubscribe_to(discussion)
-    watched_discussions.delete(discussion)
-  end
-
-  def toggle_subscription(discussion)
-    if subscribed_to?(discussion)
-      unsubscribe_to(discussion)
-    else
-      subscribe_to(discussion)
-    end
   end
 
   def visit!(organization)

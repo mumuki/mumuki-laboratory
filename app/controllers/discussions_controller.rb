@@ -24,6 +24,11 @@ class DiscussionsController < AjaxController
     head :ok
   end
 
+  def upvote
+    current_user&.toggle_upvote(subject)
+    head :ok
+  end
+
   def create
     discussion = @debatable.create_discussion! current_user, discussion_create_params
     redirect_to [@debatable, discussion]

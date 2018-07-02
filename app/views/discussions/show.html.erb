@@ -7,14 +7,18 @@
     <% if current_user %>
       <div class="mu-inline-block-right hidden-xs discussion-user-menu">
         <h3>
-          <a class="discussion-subscription" onclick="mumuki.Forum.discussionSubscription('<%= subscription_discussion_url(@discussion) %>')">
-            <%= fa_icon(:eye, class: 'fa-xs') %>
-            <%= span_toggle "Me interesa", "No me interesa", current_user.subscribed_to?(@discussion) %> <!-- FIXME: define proper translations -->
-          </a>
-          <a class="discussion-starred">
-            <%= fa_icon(:star, class: 'fa-xs') %>
-            <%= span_toggle "Me resulto util", "No me resulto util", current_user.subscribed_to?(@discussion) %> <!-- FIXME: define proper translations -->
-          </a>
+          <% if @discussion.subscribable? %>
+            <a class="discussion-subscription" onclick="mumuki.Forum.discussionSubscription('<%= subscription_discussion_url(@discussion) %>')">
+              <%= fa_icon(:eye, class: 'fa-xs') %>
+              <%= span_toggle t(:subscribe), t(:unsubscribe), current_user.subscribed_to?(@discussion) %>
+            </a>
+          <% end %>
+          <% if @discussion.solved? %>
+            <a class="discussion-upvote" onclick="mumuki.Forum.discussionUpvote('<%= upvote_discussion_url(@discussion) %>')">
+              <%= fa_icon(:star, class: 'fa-xs') %>
+              <%= span_toggle "Me resulto util", "No me resulto util", current_user.upvoted?(@discussion) %> <!-- FIXME: define proper translations -->
+            </a>
+          <% end %>
         </h3>
       </div>
     <% end %>

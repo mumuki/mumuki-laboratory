@@ -201,6 +201,7 @@ pt:
   submissions: Soluções
   submissions_count: Soluções
   submissions_for: Soluções para %{exercise}
+  subscribe: se inscrever
   tag: Etiquetas
   tell_us_how: Conte-nos como isso aconteceu com você!
   tell_us_if_our_error: Se você acha que é nosso erro, %{issues}
@@ -218,6 +219,7 @@ pt:
   uncategorized: Não classificado
   unknown: não resolvido
   unmeet_expectations: Objetivos que não foram atendidos
+  unsubscribe: Cancelar subscrição
   upload_solution: Carregar solução
   uploading_solution: Uploading solution
   user: Usuário

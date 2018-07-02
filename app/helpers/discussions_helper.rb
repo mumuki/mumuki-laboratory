@@ -25,11 +25,22 @@ module DiscussionsHelper
 
   def discussion_messages_icon(discussion)
     %Q{
-      <span class="discussion-messages-icon fa-stack fa-xs">
+      <span class="discussion-icon fa-stack fa-xs">
         <i class="fa fa-comment-o fa-stack-2x"></i>
         <i class="fa fa-stack-1x">#{discussion.messages.size}</i>
       </span>
     }.html_safe
+  end
+
+  def discussion_upvotes_icon(discussion)
+    if discussion.upvotes_count > 0
+      %Q{
+        <span class="discussion-icon fa-stack fa-xs">
+          <i class="fa fa-star-o fa-stack-2x"></i>
+          <i class="fa fa-stack-1x">#{discussion.upvotes_count}</i>
+        </span>
+      }.html_safe
+    end
   end
 
   def discussion_update_status_button(status)
@@ -85,16 +96,18 @@ module DiscussionsHelper
   end
 
   def discussion_dropdown_filter(label, filters, &block)
-    %Q{
-      <div class="dropdown discussions-toolbar-filter">
-        <a id="dropdown-#{label}" data-toggle="dropdown" role="menu">
-          #{t label} #{fa_icon :'caret-down', class: 'fa-xs'}
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="dropdown-#{label}">
-          #{discussion_filter_list(label, filters, &block)}
-        </ul>
-      </div>
-    }.html_safe
+    if filters.size > 0
+      %Q{
+        <div class="dropdown discussions-toolbar-filter">
+          <a id="dropdown-#{label}" data-toggle="dropdown" role="menu">
+            #{t label} #{fa_icon :'caret-down', class: 'fa-xs'}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown-#{label}">
+            #{discussion_filter_list(label, filters, &block)}
+          </ul>
+        </div>
+      }.html_safe
+    end
   end
 
   def discussion_filter_list(label, filters, &block)

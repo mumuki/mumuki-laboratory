@@ -38,6 +38,11 @@
           <div class="discussion">
             <div class="discussion-row">
               <%= discussion_messages_icon(discussion) %>
+              <% unless @debatable.respond_to? :language %>
+                <div class="discussion-language-icon">
+                  <%= language_icon(discussion.language) %>
+                </div>
+              <% end %>
               <div>
                 <div class="discussion-title">
                   <span class="discussion-status-icon">

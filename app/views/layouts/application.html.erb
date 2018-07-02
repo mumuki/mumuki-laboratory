@@ -56,7 +56,7 @@
       <% if current_user? %>
           <div class="dropdown">
             <span>
-              <a class="notifications-box <%= has_notifications? ? '' : 'notifications-box-empty' %>" href=<%= "#{user_path}#messages" %>>
+              <a class="notifications-box <%= has_notifications? ? '' : 'notifications-box-empty' %>" href=<%= "#{user_path}##{notifications_path}" %>>
                 <i class="fa fa-bell fa-fw fa-lg"></i>
                   <span class="badge badge-notifications"><%= notifications_count %></span>
               </a>

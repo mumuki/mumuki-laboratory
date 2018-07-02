@@ -1,10 +1,20 @@
-module Mumuki::Laboratory::Controllers::Messages
+module Mumuki::Laboratory::Controllers::Notifications
+  def notifications_path
+    has_messages? ? 'messages' : 'discussions'
+  end
+
   def has_notifications?
     notifications_count > 0
   end
 
   def notifications_count
     messages_count + discussions_count
+  end
+
+  private
+
+  def has_messages?
+    messages_count > 0
   end
 
   def messages_count

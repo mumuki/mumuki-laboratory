@@ -11,19 +11,25 @@ mumuki.load(function () {
     });
   });
 
-  var $suscriptionButton = $('.discussion-subscription');
-  var $suscriptionSpans = $suscriptionButton.children('span');
+  var $subscriptionSpans = $('.discussion-subscription > span');
+  var $upvoteSpans = $('.discussion-upvote > span');
 
   var Forum = {
-    toggleSpans: function (spans) {
+    toggleButton: function (spans) {
       spans.toggleClass('hidden');
     },
     token: new mumuki.CsrfToken(),
     discussionSubscription: function (url) {
+      Forum.discussionPostAndToggle(url, $subscriptionSpans)
+    },
+    discussionUpvote: function (url) {
+      Forum.discussionPostAndToggle(url, $upvoteSpans)
+    },
+    discussionPostAndToggle: function (url, elem) {
       Forum.tokenRequest({
         url: url,
         method: 'POST',
-        success: Forum.toggleSpans($suscriptionSpans),
+        success: Forum.toggleButton(elem),
         xhrFields: {withCredentials: true}
       })
     },

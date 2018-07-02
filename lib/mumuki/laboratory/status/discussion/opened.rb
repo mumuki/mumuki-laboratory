@@ -13,6 +13,10 @@ module Mumuki::Laboratory::Status::Discussion::Opened
     end
   end
 
+  def self.reachable_statuses_for_moderator(_)
+    [Mumuki::Laboratory::Status::Discussion::Closed, Mumuki::Laboratory::Status::Discussion::Solved]
+  end
+
   def self.iconize
     {class: :info, type: 'question-circle'}
   end

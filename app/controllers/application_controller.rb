@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include Mumukit::Login::AuthenticationHelpers
 
   include Mumuki::Laboratory::Controllers::Authorization
-  include Mumuki::Laboratory::Controllers::Messages
+  include Mumuki::Laboratory::Controllers::Notifications
   include Mumuki::Laboratory::Controllers::DynamicErrors
 
   before_action :set_current_organization!
@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :login_button,
                 :notifications_count,
+                :notifications_path,
                 :has_notifications?,
                 :subject,
                 :should_choose_organization?,

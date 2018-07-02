@@ -7,13 +7,14 @@ class Discussion < ApplicationRecord
   belongs_to :submission, optional: true
   belongs_to :exercise, foreign_type: :exercise, foreign_key: 'item_id'
   has_many :subscriptions
+  has_many :upvotes
 
   scope :by_language, -> (language) { includes(:exercise).joins(exercise: :language).where(languages: {name: language}) }
 
   before_save :capitalize
   validates_presence_of :title
 
-  sortable :created_at
+  sortable :created_at, :upvotes_count
   filterable :status, :language
   pageable
 
@@ -38,6 +39,18 @@ class Discussion < ApplicationRecord
 
   def commentable_by?(user)
     opened? && user.present?
+  end
+
+  def subscribable?
+    opened? || solved?
+  end
+
+  def read_by?(user)
+    subscription_for(user).read
+  end
+
+  def last_message_date
+    messages.last&.created_at || created_at
   end
 
   def friendly
