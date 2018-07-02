@@ -18,7 +18,7 @@ module Mumukit
     end
 
     def self.parse(randomizations)
-      new randomizations.transform_values { |it| Mumukit::Randomizer::Randomization.parse it }
+      new randomizations.with_indifferent_access.transform_values { |it| Mumukit::Randomizer::Randomization.parse it }
     end
   end
 end

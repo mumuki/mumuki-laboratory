@@ -6,7 +6,7 @@ module Mumukit::Randomizer::Randomization
   end
 
   def self.parse(randomization)
-    case randomization[:type]
+    case randomization[:type].to_sym
       when :oneOf then Mumukit::Randomizer::Randomization::OneOf.new randomization[:value]
       when :range then Mumukit::Randomizer::Randomization::Range.new(*randomization[:value])
       else raise 'Unsupported randomization kind'
