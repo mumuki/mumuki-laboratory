@@ -17,6 +17,10 @@ module Mumukit
       resulting_hash
     end
 
+    def randomize!(field, seed)
+      with_seed(seed).inject(field) { |result, (replacee, replacer)| result.gsub "$#{replacee}", replacer }
+    end
+
     def self.parse(randomizations)
       new randomizations.with_indifferent_access.transform_values { |it| Mumukit::Randomizer::Randomization.parse it }
     end
@@ -27,4 +31,3 @@ require_relative 'randomizations/randomization'
 require_relative 'randomizations/base'
 require_relative 'randomizations/one_of'
 require_relative 'randomizations/range'
-require_relative 'randomizations/with_randomizations'

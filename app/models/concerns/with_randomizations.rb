@@ -3,19 +3,18 @@ module WithRandomizations
 
   included do
     serialize :randomizations, Hash
-
-    include InstanceMethods
-    extend ClassMethods
   end
 
-  module InstanceMethods
-    def seed
-      @seed || 0
-    end
+  def seed
+    @seed || 0
+  end
 
-    def seed_with!(seed)
-      @seed = seed
-    end
+  def seed_with!(seed)
+    @seed = seed
+  end
+
+  def randomizer
+    @randomizer ||= Mumukit::Randomizer.parse(randomizations)
   end
 
   module ClassMethods
@@ -28,8 +27,7 @@ module WithRandomizations
     def randomize_field(selector)
       define_method(selector) do |*args|
         return unless super(*args)
-        interpolations = Mumukit::Randomizer.parse(randomizations).with_seed(seed)
-        interpolations.inject(super(*args)) { |result, (replacee, replacer)| result.gsub "$#{replacee}", replacer }
+        randomizer.randomize!(super(*args), seed)
       end
     end
   end
