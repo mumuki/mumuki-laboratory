@@ -1,6 +1,7 @@
 class ExerciseSolutionsController < AjaxController
   include Mumuki::Laboratory::Controllers::NestedInExercise
   include Mumuki::Laboratory::Controllers::ResultsRendering
+  include Mumuki::Laboratory::Controllers::ExerciseSeed
 
   before_action :set_messages, only: :create
   before_action :validate_accessible!, only: :create

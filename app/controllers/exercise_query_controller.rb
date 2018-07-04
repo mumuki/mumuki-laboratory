@@ -1,5 +1,6 @@
 class ExerciseQueryController < AjaxController
   include Mumuki::Laboratory::Controllers::NestedInExercise
+  include Mumuki::Laboratory::Controllers::ExerciseSeed
 
   def create
     results = @exercise.submit_query! current_user, query_params

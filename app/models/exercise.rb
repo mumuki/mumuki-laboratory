@@ -5,7 +5,8 @@ class Exercise < ApplicationRecord
           WithAssignments,
           FriendlyName,
           WithLanguage,
-          Assistable
+          Assistable,
+          WithRandomizations
 
   include Submittable,
           Questionable
@@ -18,6 +19,8 @@ class Exercise < ApplicationRecord
 
   validates_presence_of :submissions_count,
                         :guide
+
+  randomize :description, :hint, :extra, :test
 
   def console?
     queriable?
