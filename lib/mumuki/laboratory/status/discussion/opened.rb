@@ -18,7 +18,7 @@ module Mumuki::Laboratory::Status::Discussion::Opened
   end
 
   def self.iconize
-    {class: :info, type: 'question-circle'}
+    {class: :warning, type: 'question-circle'}
   end
 
   def self.should_be_shown?(*)

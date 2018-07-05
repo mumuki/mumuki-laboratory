@@ -2,26 +2,33 @@ module WithScopedQueries::Sort
   extend ActiveSupport::Concern
 
   included do
-    class_attribute :sorting_fields, instance_writer: false
+    class_attribute :sorting_fields, :default_sorting_field, instance_writer: false
   end
 
   def self.query_by(params, scope, klass)
     sort_param = params[:sort]
-    normalized_params = sort_param&.split(/_(?!.*_)/)
+    normalized_params = normalized_params(sort_param)
     if sort_param.present? && klass.sorting_params_allowed?(*normalized_params)
       sort_method_for(klass, scope, *normalized_params)
+    elsif klass.default_sorting_field.present?
+      sort_method_for(klass, scope, *normalized_params(klass.default_sorting_field.to_s))
     else
       scope
     end
   end
 
+  def self.normalized_params(param)
+    param&.split(/_(?!.*_)/)
+  end
+
   def self.add_queriable_attributes_to(klass, attributes)
+    klass.default_sorting_field = attributes.extract_options![:default]
     klass.sorting_fields = attributes
     klass.queriable_attributes.merge!(sort: :sort)
   end
 
   def self.sort_method_for(klass, scope, field, direction)
-    if klass.method_defined? field
+    if klass.column_names.include? field
       scope.public_send(:order, "#{field} #{direction}")
     else
       scope.public_send("order_by_#{field}", direction)

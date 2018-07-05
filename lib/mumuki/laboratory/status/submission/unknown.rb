@@ -1,5 +1,5 @@
-module Mumuki::Laboratory::Status::Assignment::Unknown
-  extend Mumuki::Laboratory::Status::Assignment
+module Mumuki::Laboratory::Status::Submission::Unknown
+  extend Mumuki::Laboratory::Status::Submission
 
   def self.to_i
     raise 'unknown status'

@@ -12,10 +12,10 @@ es:
   appendix: "Apéndice"
   appendix_teaser: ¿Querés saber más? <a href="%{link}">Consultá el apéndice de este capítulo</a>
   are_you_sure: '¿Estás seguro que querés %{action}?'
-  ask_a_question: Hacé una pregunta!
+  ask_a_question: ¡Hacé una pregunta!
   ask_community: Preguntá a la comunidad
   ask_redirect: ¿Querés que te llevemos ahí?
-  ask_the_first_question: Hacé la primer pregunta!
+  ask_the_first_question: ¡Hacé la primer pregunta!
   author: Autor
   authoring: "Autores"
   authoring_note: Esta guía fue desarrollada por %{authors} y <a href="%{collaborators}" target="_blank">muchas personas más</a>, bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia Creative Commons Compartir-Igual, 4.0</a>.
@@ -217,8 +217,8 @@ es:
   title: Título
   to_closed: Cerrar
   to_opened: Reabrir
-  to_pending_review: Marcar como resuelta
-  to_solved: Marcar como resuelta
+  to_pending_review: Resolver
+  to_solved: Resolver
   try_again: ¡Ups! Algo salió mal en mumuki. Reiniciá el ejercicio, esperá unos segundos y volvé a intentar.
   unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no iniciaste sesión.
   uncategorized: No categorizado

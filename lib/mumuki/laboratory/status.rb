@@ -4,10 +4,9 @@ module Mumuki::Laboratory::Status
   included do
     to_status_method_name = to_status_method
     base = self
-    Object.send :define_method, to_status_method_name, Proc.new { status.send(to_status_method_name) }
-    String.send :define_method, to_status_method_name, Proc.new { to_sym.send(to_status_method_name) }
-    Symbol.send :define_method, to_status_method_name, Proc.new { base.from_sym(self) }
-    define_method to_status_method_name, Proc.new { self }
+    String.send :define_method, to_status_method_name, proc { to_sym.send(to_status_method_name) }
+    Symbol.send :define_method, to_status_method_name, proc { base.from_sym(self) }
+    define_method to_status_method_name, proc { self }
   end
 
   def to_s
@@ -65,5 +64,5 @@ module Mumuki::Laboratory::Status
   end
 end
 
-require_relative './status/assignment/assignment'
+require_relative './status/submission/submission'
 require_relative './status/discussion/discussion'

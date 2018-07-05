@@ -31,10 +31,6 @@ module ExerciseInputHelper
     !exercise.hidden? && (exercise.queriable? || exercise.extra_visible? || exercise.has_messages_for?(user))
   end
 
-  def should_render_read_only_tabs?(exercise)
-    !exercise.hidden? && (exercise.queriable? || exercise.extra_visible?)
-  end
-
   def should_render_message_input?(exercise, organization = Organization.current)
     exercise.is_a?(Problem) && !exercise.hidden? && organization.raise_hand_enabled?
   end

@@ -1,6 +1,4 @@
 class Book < Content
-  include WithDiscussions
-
   numbered :chapters
   aggregate_of :chapters
 

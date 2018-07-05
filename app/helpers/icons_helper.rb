@@ -1,7 +1,7 @@
 module IconsHelper
   #FIXME refactor names
   def status_icon(status_like)
-    fa_icon *icon_for_status(status_like.to_assignment_status)
+    fa_icon *icon_for_status(status_like.to_submission_status)
   end
 
   def fixed_fa_icon(name, options={})
@@ -31,10 +31,6 @@ module IconsHelper
     status_fa_icon(discussion.status)
   end
 
-  def discussion_status_fa_label(discussion)
-    status_fa_icon(discussion.status)
-  end
-
   def icon_for_status(s)
     iconized = s.iconize
     [iconized[:type], class: "text-#{iconized[:class]} status-icon"]
@@ -43,8 +39,8 @@ module IconsHelper
   def label_for_status(s)
     iconized = s.iconize
     %Q{
-      <span class="label-#{iconized[:class]} status-label">
-        #{fa_icon "#{iconized[:type]}-o"}
+      <span class="text-#{iconized[:class]} status-label">
+        #{fa_icon "#{iconized[:type]}"}
         <span>#{t s}</span>
       </span>
     }.html_safe

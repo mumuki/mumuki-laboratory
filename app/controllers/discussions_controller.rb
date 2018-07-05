@@ -1,9 +1,9 @@
 class DiscussionsController < AjaxController
   before_action :set_debatable, except: [:subscription]
   before_action :authenticate!, only: [:update, :create]
-  before_action :discussion_filter_params, only: [:index]
-  before_action :read_discussion, only: [:show]
-  before_action :set_current_discussions, only: [:index]
+  before_action :discussion_filter_params, only: :index
+  before_action :read_discussion, only: :show
+  before_action :set_current_discussions, only: :index
 
   def index
     @discussions = @discussions.for_user(current_user)
@@ -51,7 +51,7 @@ class DiscussionsController < AjaxController
   end
 
   def read_discussion
-    @discussion.subscription_for(current_user).try(:read!)
+    @discussion.subscription_for(current_user)&.read!
   end
 
   def discussion_create_params

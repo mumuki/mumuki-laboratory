@@ -1,10 +1,22 @@
 module DiscussionsHelper
   def discussions_link(item)
-    link_to t(:solve_your_doubts), polymorphic_path([item, :discussions])
+    link_to t(:solve_your_doubts), polymorphic_path([item, :discussions], default_discussions_params)
   end
 
-  def solve_discussions_link(item)
-    link_to t(:solve_doubts), polymorphic_path([item, :discussions], helping: true)
+  def solve_discussions_link
+    link_to fixed_fa_icon('comments', text: t(:solve_doubts)), discussions_path(solve_discussion_params_for(current_user))
+  end
+
+  def solve_discussion_params_for(user)
+    if user&.moderator?
+      {status: :pending_review, sort: :created_at_asc}
+    else
+      {status: :opened, sort: :created_at_asc}
+    end
+  end
+
+  def default_discussions_params
+    {status: :solved, sort: :upvotes_count_desc}
   end
 
   def user_avatar(user, image_class='')
@@ -44,7 +56,8 @@ module DiscussionsHelper
   end
 
   def discussion_update_status_button(status)
-    button_to t("to_#{status}"), polymorphic_path([@debatable, @discussion], {status: status}), class: "btn btn-discussion-#{status}", :method => :put
+    button_to t("to_#{status}"), polymorphic_path([@debatable, @discussion], {status: status}),
+              class: "btn btn-discussion-#{status}", :method => :put
   end
 
   def new_discussion_link(teaser_text, link_text)
@@ -60,7 +73,7 @@ module DiscussionsHelper
     }.html_safe
   end
 
-  def discussions_count_for_status(status, discussions)
+  def discussion_count_for_status(status, discussions)
     discussions.scoped_query_by(@filter_params, :status).by_status(status).count
   end
 
@@ -77,10 +90,10 @@ module DiscussionsHelper
   end
 
   def discussion_status_filter_link(status, discussions)
-    discussions_count = discussions_count_for_status(status, discussions)
+    discussions_count = discussion_count_for_status(status, discussions)
     if status.should_be_shown?(discussions_count)
-      link_to @filter_params.merge({status: status}), class: "#{'selected' if discussion_filter_selected?(:status, status)}" do
-         discussion_status_filter(status, discussions_count)
+      discussion_filter_item(:status, status) do
+        discussion_status_filter(status, discussions_count)
       end
     end
   end
@@ -110,6 +123,10 @@ module DiscussionsHelper
     end
   end
 
+  def should_render_exercise_tabs?(discussion)
+    !discussion.exercise.hidden? && (discussion.submission.solution || discussion.exercise.queriable? || discussion.exercise.extra_visible?)
+  end
+
   def discussion_filter_list(label, filters, &block)
     filters.map { |it| discussion_filter_item(label, it, &block) }.join("\n")
   end
@@ -119,7 +136,7 @@ module DiscussionsHelper
   end
 
   def discussion_filter_selected?(label, filter)
-    @filter_params[label] == filter.to_s
+    filter.to_s == @filter_params[label]
   end
 
   def discussion_filter_link(label, filter, &block)
@@ -127,6 +144,6 @@ module DiscussionsHelper
   end
 
   def discussion_info(discussion)
-     "#{t(:time_since, time: time_ago_in_words(discussion.created_at))} - #{t(:message_count, count: discussion.messages.size)}"
+     "· #{t(:time_since, time: time_ago_in_words(discussion.created_at))} · #{t(:message_count, count: discussion.messages.size)}"
   end
 end

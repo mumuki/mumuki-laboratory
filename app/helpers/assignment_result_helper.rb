@@ -17,7 +17,7 @@ module AssignmentResultHelper
     elsif assignment.exercise.choices?
       assignment.passed? ? :correct_answer : :wrong_answer
     else
-      assignment.status
+      assignment.submission_status
     end
   end
 

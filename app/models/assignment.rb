@@ -1,5 +1,5 @@
 class Assignment < ApplicationRecord
-  include WithAssignmentStatus
+  include WithSubmission
   include WithMessages
 
   belongs_to :exercise
@@ -10,14 +10,9 @@ class Assignment < ApplicationRecord
 
   validates_presence_of :exercise, :submitter
 
-  [:expectation_results, :test_results, :query_results].each do |field|
-    serialize field
-    define_method(field) { self[field]&.map { |it| it.symbolize_keys } }
-  end
+  delegate :language, :name, to: :exercise
 
-  delegate :language, :name, :visible_success_output?, to: :exercise
-  delegate :output_content_type, to: :language
-  delegate :should_retry?, to: :status
+  alias_attribute :status, :submission_status
 
   scope :by_exercise_ids, -> (exercise_ids) {
     where(exercise_id: exercise_ids) if exercise_ids
@@ -27,46 +22,8 @@ class Assignment < ApplicationRecord
     joins(:submitter).where('users.name' => usernames) if usernames
   }
 
-  def queries_with_results
-    queries.zip(query_results).map do |query, result|
-      {query: query, status: result&.dig(:status).defaulting(:pending), result: result&.dig(:result)}
-    end
-  end
-
   def evaluate_manually!(teacher_evaluation)
     update! status: teacher_evaluation[:status], manual_evaluation_comment: teacher_evaluation[:manual_evaluation]
-  end
-
-  def single_visual_result?
-    test_results.size == 1 && test_results.first[:title].blank? && visible_success_output?
-  end
-
-  def single_visual_result_html
-    output_content_type.to_html test_results.first[:result]
-  end
-
-  def results_visible?
-    (visible_success_output? || should_retry?) && !exercise.choices?
-  end
-
-  def result_preview
-    result.truncate(100) if should_retry?
-  end
-
-  def result_html
-    output_content_type.to_html(result)
-  end
-
-  def feedback_html
-    output_content_type.to_html(feedback)
-  end
-
-  def expectation_results_visible?
-    visible_expectation_results.present?
-  end
-
-  def visible_expectation_results
-    (expectation_results || []).select { |it| it[:result].failed? }
   end
 
   def persist_submission!(submission)
@@ -107,6 +64,32 @@ class Assignment < ApplicationRecord
     exercise.extra_for submitter
   end
 
+  def run_update!
+    running!
+    begin
+      update! yield
+    rescue => e
+      errored! e.message
+      raise e
+    end
+  end
+
+  def passed!
+    update! submission_status: :passed
+  end
+
+  def running!
+    update! submission_status: :running,
+            result: nil,
+            test_results: nil,
+            expectation_results: [],
+            manual_evaluation_comment: nil
+  end
+
+  def errored!(message)
+    update! result: message, submission_status: :errored
+  end
+
   %w(query try tests).each do |key|
     name = "run_#{key}!"
     define_method(name) { |params| exercise.send name, params.merge(extra: extra) }
@@ -114,7 +97,7 @@ class Assignment < ApplicationRecord
 
   def as_platform_json
     navigable_parent = exercise.navigable_parent
-    as_json(except: [:exercise_id, :submission_id, :id, :submitter_id, :solution, :created_at, :updated_at],
+    as_json(except: [:exercise_id, :submission_id, :id, :submitter_id, :solution, :created_at, :updated_at, :submission_status],
               include: {
                 guide: {
                   only: [:slug, :name],
@@ -129,6 +112,7 @@ class Assignment < ApplicationRecord
         'sid' => submission_id,
         'created_at' => updated_at,
         'content' => solution,
+        'status' => submission_status,
         'exercise' => {
           'eid' => exercise.bibliotheca_id
         },

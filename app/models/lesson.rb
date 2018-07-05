@@ -1,7 +1,6 @@
 class Lesson < ApplicationRecord
   include WithNumber
   include FriendlyName
-  include WithDiscussions
 
   include GuideContainer
 

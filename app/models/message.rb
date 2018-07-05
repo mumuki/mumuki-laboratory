@@ -5,7 +5,7 @@ class Message < ApplicationRecord
   has_one :exercise, through: :assignment
 
   validates_presence_of :content, :sender
-  validates_presence_of :submission_id, :unless => :discussion_id? #FIXME Refactor this
+  validates_presence_of :submission_id, :unless => :discussion_id?
   markdown_on :content
 
   def notify!

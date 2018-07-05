@@ -1,4 +1,4 @@
-module Mumuki::Laboratory::Status::Assignment
+module Mumuki::Laboratory::Status::Submission
   include Mumuki::Laboratory::Status
 
   require_relative './unknown'
@@ -30,7 +30,7 @@ module Mumuki::Laboratory::Status::Assignment
   end
 
   def should_retry?
-    group.should_retry?
+    true
   end
 
   def iconize

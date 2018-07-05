@@ -7,5 +7,5 @@ module WithDiscussionStatus
     scope :by_status, -> (status) { where(status: status) }
   end
 
-  delegate :closed?, :opened?, :solved?, :reachable_statuses, to: :status
+  delegate :closed?, :opened?, :solved?, :pending_review?, :reachable_statuses, to: :status
 end

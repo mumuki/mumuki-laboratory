@@ -16,7 +16,7 @@
   <li role="presentation">
     <a data-target="#messages" aria-controls="messages" role="tab" data-toggle="tab"><%= t :messages %></a>
   </li>
-  <% if @user.watched_discussions.present? %>
+  <% if @watched_discussions.present? %>
     <li role="presentation">
       <a data-target="#discussions" aria-controls="discussions" role="tab" data-toggle="tab"><%= t :discussions %></a>
     </li>
@@ -74,10 +74,10 @@
       </table>
     <% end %>
   </div>
-  <% if @user.watched_discussions.present? %>
+  <% if @watched_discussions.present? %>
     <div role="tabpanel" class="tab-pane" id="discussions">
       <table class="table table-striped">
-        <% @user.watched_discussions.each do |discussion| %>
+        <% @watched_discussions.each do |discussion| %>
           <tr>
             <td>
               <%= icon_for_read(discussion.read_by?(@user)) %>

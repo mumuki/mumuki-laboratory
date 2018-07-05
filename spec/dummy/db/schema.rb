@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180619182555) do
+ActiveRecord::Schema.define(version: 20180704150839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20180619182555) do
   create_table "assignments", id: :serial, force: :cascade do |t|
     t.text "solution"
     t.integer "exercise_id"
-    t.integer "status", default: 0
+    t.integer "submission_status", default: 0
     t.text "result"
     t.integer "submitter_id"
     t.text "expectation_results"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20180619182555) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "submission_id"
+    t.integer "upvotes_count"
     t.index ["initiator_id"], name: "index_discussions_on_initiator_id"
     t.index ["item_type", "item_id"], name: "index_discussions_on_item_type_and_item_id"
     t.index ["submission_id"], name: "index_discussions_on_submission_id"
@@ -265,6 +266,13 @@ ActiveRecord::Schema.define(version: 20180619182555) do
     t.text "appendix"
     t.string "slug"
     t.index ["slug"], name: "index_topics_on_slug", unique: true
+  end
+
+  create_table "upvotes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "discussion_id"
+    t.index ["discussion_id"], name: "index_upvotes_on_discussion_id"
+    t.index ["user_id"], name: "index_upvotes_on_user_id"
   end
 
   create_table "usages", id: :serial, force: :cascade do |t|

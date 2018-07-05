@@ -1,7 +1,7 @@
 module Mumuki::Laboratory::Status::Discussion::PendingReview
   extend Mumuki::Laboratory::Status::Discussion
 
-  def self.pending?
+  def self.pending_review?
     true
   end
 
@@ -10,6 +10,6 @@ module Mumuki::Laboratory::Status::Discussion::PendingReview
   end
 
   def self.iconize
-    {class: :default, type: 'hourglass'}
+    {class: :info, type: 'hourglass'}
   end
 end

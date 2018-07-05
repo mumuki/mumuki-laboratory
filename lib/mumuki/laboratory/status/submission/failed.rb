@@ -1,5 +1,5 @@
-module Mumuki::Laboratory::Status::Assignment::Failed
-  extend Mumuki::Laboratory::Status::Assignment
+module Mumuki::Laboratory::Status::Submission::Failed
+  extend Mumuki::Laboratory::Status::Submission
 
   def self.failed?
     true

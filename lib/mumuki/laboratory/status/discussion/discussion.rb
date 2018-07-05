@@ -20,7 +20,7 @@ module Mumuki::Laboratory::Status::Discussion
     false
   end
 
-  def pending?
+  def pending_review?
     false
   end
 

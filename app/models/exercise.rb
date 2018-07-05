@@ -68,6 +68,10 @@ class Exercise < ApplicationRecord
     defaulting_name { "#{navigable_parent.friendly} - #{name}" }
   end
 
+  def submission_for(user)
+    assignment_for(user)&.submission
+  end
+
   def new_solution
     Solution.new(content: default_content)
   end

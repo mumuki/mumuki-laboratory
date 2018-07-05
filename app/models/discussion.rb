@@ -1,10 +1,9 @@
 class Discussion < ApplicationRecord
-  include WithDiscussionStatus, ParentNavigation, WithScopedQueries
+  include WithDiscussionStatus, ParentNavigation, WithScopedQueries, WithSubmission
 
   belongs_to :item, polymorphic: true
   has_many :messages
   belongs_to :initiator, class_name: 'User'
-  belongs_to :submission, optional: true
   belongs_to :exercise, foreign_type: :exercise, foreign_key: 'item_id'
   has_many :subscriptions
   has_many :upvotes
@@ -14,11 +13,12 @@ class Discussion < ApplicationRecord
   before_save :capitalize
   validates_presence_of :title
 
-  sortable :created_at, :upvotes_count
+  sortable :created_at, :upvotes_count, default: :created_at_desc
   filterable :status, :language
   pageable
 
   delegate :language, to: :item
+  delegate :to_discussion_status, to: :status
 
   scope :for_user, -> (user) do
     if user.try(:moderator?)
@@ -101,7 +101,7 @@ class Discussion < ApplicationRecord
   end
 
   def responses_count
-    messages.where.not(sender: initiator).count
+    messages.where.not(sender: initiator.uid).count
   end
 
   def has_responses?
