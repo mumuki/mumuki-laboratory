@@ -117,7 +117,7 @@ $kids-speech-tabs-width: 40px;
       ul {
         margin: 0;
       }
-      &.no-hint {
+      &.no-tabs {
         .mu-kids-prev-speech,
         .mu-kids-next-speech {
           right: 0px;
@@ -197,7 +197,7 @@ $kids-speech-tabs-width: 40px;
       display: flex;
       align-items: center;
       padding: 15px 50px 15px 15px;
-      &.no-hint {
+      &.no-tabs {
         padding-right: 25px;
       }
       color: #333;
