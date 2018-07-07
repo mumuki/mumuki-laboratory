@@ -43,6 +43,7 @@ mumuki.load(function () {
   var $prevSpeech = $('.mu-kids-character-speech-bubble-normal > .mu-kids-prev-speech').hide();
   var $nextSpeech = $('.mu-kids-character-speech-bubble-normal > .mu-kids-next-speech');
   var $speechTabs = $('.mu-kids-character-speech-bubble-tabs > li:not(.separator)');
+  var $defaultSpeechTabName = 'description';
   var $bubble = $('.mu-kids-character-speech-bubble').children('.mu-kids-character-speech-bubble-normal');
   var $texts = $bubble.children('.description, .hint');
 
@@ -75,7 +76,7 @@ mumuki.load(function () {
   });
 
   function getSelectedTabName() {
-    return $speechTabs.filter(".active").data('target');
+    return $speechTabs.filter(".active").data('target') || $defaultSpeechTabName;
   }
 
   function hideCurrentParagraph() {
@@ -101,22 +102,6 @@ mumuki.load(function () {
   function setVisibility(element, isVisible) {
     if (isVisible) element.show(); else element.hide();
   }
-
-  function autoScrollBubble(toBottom) {
-    var SCROLL_TIME = 1000;
-    var PAUSE_TIME = 2000;
-
-    setTimeout(function () {
-      $bubble.animate({scrollTop: toBottom ? $bubble.height() : 0}, {
-        duration: SCROLL_TIME,
-        complete: function () {
-          autoScrollBubble(!toBottom);
-        }
-      });
-    }, PAUSE_TIME);
-  }
-
-  autoScrollBubble();
 
   mumuki.kids = {
 

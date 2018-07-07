@@ -1,5 +1,5 @@
 <img src="/anim_amarillo.svg" alt="">
-<div class="mu-kids-character-speech-bubble">
+<div class="mu-kids-character-speech-bubble <%= 'no-tabs' unless @exercise.hint? %>">
   <% if @exercise.hint? %>
       <ul class="mu-kids-character-speech-bubble-tabs">
         <li class="active" data-target="description" title="<%= t :task %>"><i class="fa fa-fw fa-file-text-o"></i>
