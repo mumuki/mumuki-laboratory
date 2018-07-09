@@ -20,7 +20,7 @@ class Exercise < ApplicationRecord
   validates_presence_of :submissions_count,
                         :guide
 
-  randomize :description, :hint, :extra, :test
+  randomize :description, :hint, :extra, :test, :default_content
 
   def console?
     queriable?

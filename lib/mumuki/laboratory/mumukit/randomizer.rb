@@ -1,24 +1,15 @@
 module Mumukit
   class Randomizer
-    attr_accessor :randomizations
-
     def initialize(randomizations)
       @randomizations = randomizations
     end
 
     def with_seed(seed)
-      acumulated_size = 1
-      resulting_hash = {}
-
-      randomizations.each do |key, value|
-        resulting_hash.merge! key => value.get(seed / acumulated_size)
-        acumulated_size += value.size - 1
-      end
-      resulting_hash
+      @randomizations.each_with_index.map { |(key, value), index| [key, value.get(seed + index)] }
     end
 
     def randomize!(field, seed)
-      with_seed(seed).inject(field) { |result, (replacee, replacer)| result.gsub "$#{replacee}", replacer }
+      with_seed(seed).inject(field) { |result, (replacee, replacer)| result.gsub "$#{replacee}", replacer.to_s }
     end
 
     def self.parse(randomizations)
