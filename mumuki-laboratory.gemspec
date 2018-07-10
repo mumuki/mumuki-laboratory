@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'mumukit-login', '~> 5.0'
   s.add_dependency 'mumukit-directives', '~> 0.3'
   s.add_dependency 'mumukit-assistant', '~> 0.1'
+  s.add_dependency 'mumukit-randomizer', '~> 0.1'
 
   s.add_dependency 'rack', '~> 2.0'
   s.add_dependency 'omniauth', '~> 1.4.0'

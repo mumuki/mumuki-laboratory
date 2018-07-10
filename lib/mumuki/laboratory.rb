@@ -10,6 +10,7 @@ module Mumuki
 end
 
 require 'mumukit/assistant'
+require 'mumukit/randomizer'
 require 'mumukit/inspection'
 require 'mumukit/bridge'
 require 'mumukit/content_type'
@@ -25,4 +26,3 @@ require_relative './laboratory/exceptions'
 require_relative './laboratory/status'
 require_relative './laboratory/evaluation'
 require_relative './laboratory/controllers'
-require_relative './laboratory/mumukit/randomizer'
