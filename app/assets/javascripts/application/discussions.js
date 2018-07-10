@@ -2,7 +2,7 @@ var mumuki = mumuki || {};
 
 mumuki.load(function () {
   var $newDiscussionModal = $('.new-discussion-modal');
-  var $newDiscussion = $('#discussion-create');
+  var $newDiscussion = $('.discussion-create');
 
   $newDiscussion.click(function () {
     $newDiscussionModal.modal({

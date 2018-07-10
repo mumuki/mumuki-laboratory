@@ -4,4 +4,8 @@ module Mumuki::Laboratory::Status::Submission::Aborted
   def self.group
     Mumuki::Laboratory::Status::Submission::Failed
   end
+
+  def aborted?
+    true
+  end
 end

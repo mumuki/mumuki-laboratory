@@ -16,7 +16,7 @@
           <% if @discussion.solved? %>
             <a class="discussion-upvote" onclick="mumuki.Forum.discussionUpvote('<%= upvote_discussion_url(@discussion) %>')">
               <%= fa_icon(:star, class: 'fa-xs') %>
-              <%= span_toggle "Me resulto util", "No me resulto util", current_user.upvoted?(@discussion) %> <!-- FIXME: define proper translations -->
+              <%= span_toggle t(:upvote), t(:undo_upvote), current_user.upvoted?(@discussion) %>
             </a>
           <% end %>
         </h3>

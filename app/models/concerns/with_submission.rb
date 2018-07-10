@@ -18,7 +18,7 @@ module WithSubmission
 
     delegate :visible_success_output?, to: :exercise
     delegate :output_content_type, to: :language
-    delegate :should_retry?, :to_submission_status, to: :submission_status
+    delegate :should_retry?, :to_submission_status, :passed?, :aborted?, to: :submission_status
   end
 
   def queries_with_results
@@ -57,13 +57,5 @@ module WithSubmission
 
   def visible_expectation_results
     StatusRenderingVerbosity.visible_expectation_results(submission_status, expectation_results || [])
-  end
-
-  def passed?
-    submission_status.passed?
-  end
-
-  def aborted?
-    submission_status == :aborted
   end
 end

@@ -92,7 +92,7 @@
       </div>
 
       <div role="tabpanel" class="tab-pane mu-input-panel fade" id="visible-extra">
-        <%= exercise.extra_preview_html(current_user) %>
+        <%= exercise.extra_preview_html(@discussion.initiator) %>
       </div>
     </div>
   <% else %>

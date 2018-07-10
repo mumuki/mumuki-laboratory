@@ -1,16 +1,18 @@
 module Mumuki::Laboratory::Status::Submission
   include Mumuki::Laboratory::Status
+end
 
-  require_relative './unknown'
-  require_relative './pending'
-  require_relative './running'
-  require_relative './passed'
-  require_relative './failed'
-  require_relative './errored'
-  require_relative './aborted'
-  require_relative './passed_with_warnings'
-  require_relative './manual_evaluation_pending'
+require_relative './unknown'
+require_relative './pending'
+require_relative './running'
+require_relative './passed'
+require_relative './failed'
+require_relative './errored'
+require_relative './aborted'
+require_relative './passed_with_warnings'
+require_relative './manual_evaluation_pending'
 
+module Mumuki::Laboratory::Status::Submission
   STATUSES = [Pending, Running, Passed, Failed, Errored, Aborted, PassedWithWarnings, ManualEvaluationPending]
 
   def group
@@ -26,6 +28,10 @@ module Mumuki::Laboratory::Status::Submission
   end
 
   def errored?
+    false
+  end
+
+  def aborted?
     false
   end
 

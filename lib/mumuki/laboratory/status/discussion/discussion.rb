@@ -1,11 +1,13 @@
 module Mumuki::Laboratory::Status::Discussion
   include Mumuki::Laboratory::Status
+end
 
-  require_relative './opened'
-  require_relative './closed'
-  require_relative './solved'
-  require_relative './pending_review'
+require_relative './opened'
+require_relative './closed'
+require_relative './solved'
+require_relative './pending_review'
 
+module Mumuki::Laboratory::Status::Discussion
   STATUSES = [Opened, Closed, Solved, PendingReview]
 
   def closed?

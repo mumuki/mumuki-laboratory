@@ -69,7 +69,7 @@ module DiscussionsHelper
       <h4>
         <span>#{t(teaser_text)}</span>
         <a>
-          <span id="discussion-create">
+          <span class="discussion-create">
             #{t(link_text)}
           </span>
         </a>
