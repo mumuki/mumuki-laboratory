@@ -8,7 +8,7 @@ module WithDiscussionCreation::Subscription
   end
 
   def subscribed_to?(discussion)
-    watched_discussions.include? discussion
+    discussion.subscription_for(self).present?
   end
 
   def subscribe_to(discussion)

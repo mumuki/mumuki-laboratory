@@ -7,7 +7,7 @@ module WithDiscussionCreation::Upvote
   end
 
   def upvoted?(discussion)
-    upvoted_discussions.include? discussion
+    discussion.upvote_for(self).present?
   end
 
   def upvote(discussion)

@@ -45,6 +45,10 @@ class Discussion < ApplicationRecord
     opened? || solved?
   end
 
+  def has_submission?
+    submission.solution.present?
+  end
+
   def read_by?(user)
     subscription_for(user).read
   end
@@ -59,6 +63,10 @@ class Discussion < ApplicationRecord
 
   def subscription_for(user)
     subscriptions.find_by(user: user)
+  end
+
+  def upvote_for(user)
+    upvotes.find_by(user: user)
   end
 
   def unread_subscriptions(user)

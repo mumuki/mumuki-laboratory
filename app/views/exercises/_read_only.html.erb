@@ -13,20 +13,23 @@
     <span><%= @debatable.name %></span>
   </summary>
 
-  <% if should_render_exercise_tabs?(@discussion) %>
+  <% if should_render_read_only_exercise_tabs?(@discussion) %>
 
     <ul class="nav nav-tabs discussion-tabs" role="tablist">
-      <li role="presentation" class="active">
-        <a data-target="#solution" aria-controls="solution" role="tab" data-toggle="tab" class="editor-tab">
-          <%= t :solution %>
-        </a>
-      </li>
-      <li role="presentation">
-        <a data-target="#results" aria-controls="results" role="tab" data-toggle="tab" class="editor-tab">
-          <%= t :results %>
-        </a>
-      </li>
-      <li role="presentation">
+      <% if @discussion.has_submission? %>
+        <li role="presentation" class="active">
+          <a data-target="#solution" aria-controls="solution" role="tab" data-toggle="tab" class="editor-tab">
+            <%= t :solution %>
+          </a>
+        </li>
+        <li role="presentation">
+          <a data-target="#results" aria-controls="results" role="tab" data-toggle="tab" class="editor-tab">
+            <%= t :results %>
+          </a>
+        </li>
+      <% end %>
+
+      <li role="presentation" <%= "class=active" unless @discussion.has_submission? %>>
         <a data-target="#content" aria-controls="content" role="tab" data-toggle="tab" class="editor-tab">
           <%= t :description %>
         </a>
@@ -42,28 +45,31 @@
     </ul>
 
     <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="solution">
-        <div class="mu-tab-body">
-          <div role="tabpanel" class="tab-pane mu-input-panel fade in active" id="editor">
-            <%= render_exercise_read_only_editor exercise, @discussion.solution %>
+
+      <% if @discussion.has_submission? %>
+        <div role="tabpanel" class="tab-pane active" id="solution">
+          <div class="mu-tab-body">
+            <div role="tabpanel" class="tab-pane mu-input-panel fade in active" id="editor">
+              <%= render_exercise_read_only_editor exercise, @discussion.solution %>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div role="tabpanel" class="tab-pane" id="results">
-        <div class="mu-tab-body">
-          <%= render layout: 'exercise_solutions/assignment_results_container', locals: {assignment: @discussion } do %>
-            <div class="row">
-              <div class="col-md-12 submission-results">
-                <%= render partial: 'exercise_solutions/assignment_results',
-                           locals: {assignment: @discussion, guide_finished_by_solution: false} %>
+        <div role="tabpanel" class="tab-pane" id="results">
+          <div class="mu-tab-body">
+            <%= render layout: 'exercise_solutions/assignment_results_container', locals: {assignment: @discussion } do %>
+              <div class="row">
+                <div class="col-md-12 submission-results">
+                  <%= render partial: 'exercise_solutions/assignment_results',
+                             locals: {assignment: @discussion, guide_finished_by_solution: false} %>
+                </div>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
 
-      <div role="tabpanel" class="tab-pane" id="content">
+      <div role="tabpanel" class="tab-pane <%= 'active' unless @discussion.has_submission? %>" id="content">
         <div class="mu-tab-body">
           <div class="exercise-assignment">
             <%= render partial: 'exercises/exercise_assignment', locals: {exercise: exercise} %>

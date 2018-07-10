@@ -6,7 +6,7 @@ class Exercise < ApplicationRecord
           FriendlyName,
           WithLanguage,
           Assistable,
-          WithRandomizations
+          WithRandomizations,
           WithDiscussions
 
   include Submittable,

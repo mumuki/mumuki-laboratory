@@ -1,10 +1,14 @@
 module DiscussionsHelper
   def discussions_link(item)
-    link_to t(:solve_your_doubts), polymorphic_path([item, :discussions], default_discussions_params)
+    link_to discussions_icon(t :solve_your_doubts), polymorphic_path([item, :discussions], default_discussions_params)
   end
 
   def solve_discussions_link
-    link_to fixed_fa_icon('comments', text: t(:solve_doubts)), discussions_path(solve_discussion_params_for(current_user))
+    link_to discussions_icon(t :solve_doubts), discussions_path(solve_discussion_params_for(current_user))
+  end
+
+  def discussions_icon(text)
+    fixed_fa_icon 'comments', text: text
   end
 
   def solve_discussion_params_for(user)
@@ -78,7 +82,7 @@ module DiscussionsHelper
   end
 
   def discussions_reset_query_link
-    link_to fa_icon(:times, text: t(:reset_query)), {} ,class: 'discussions-reset-query' unless @filter_params.blank?
+    link_to fa_icon(:times, text: t(:reset_query)), {}, class: 'discussions-reset-query' unless @filter_params.blank?
   end
 
   def discussions_statuses
@@ -121,10 +125,6 @@ module DiscussionsHelper
         </div>
       }.html_safe
     end
-  end
-
-  def should_render_exercise_tabs?(discussion)
-    !discussion.exercise.hidden? && (discussion.submission.solution || discussion.exercise.queriable? || discussion.exercise.extra_visible?)
   end
 
   def discussion_filter_list(label, filters, &block)
