@@ -11,10 +11,10 @@ module WithSubmission
     end
 
     composed_of :submission,
-                mapping: [ %w(solution solution), %w(submission_status status), %w(result result), %w(expectation_results expectation_results),
-                           %w(feedback feedback), %w(test_results test_results), %w(submission_id submission_id), %w(queries queries),
-                           %w(query_results query_results), %w(manual_evaluation_comment manual_evaluation_comment) ],
-                constructor: :initialize_submission
+      mapping: [ %w(solution solution), %w(submission_status status), %w(result result), %w(expectation_results expectation_results),
+                 %w(feedback feedback), %w(test_results test_results), %w(submission_id submission_id), %w(queries queries),
+                 %w(query_results query_results), %w(manual_evaluation_comment manual_evaluation_comment)],
+      constructor: :initialize_submission
 
     delegate :visible_success_output?, to: :exercise
     delegate :output_content_type, to: :language

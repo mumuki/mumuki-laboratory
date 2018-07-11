@@ -42,8 +42,7 @@ class DiscussionsController < AjaxController
 
   def set_debatable
     @debatable_class = params[:debatable_class]
-    debatable_id = params["#{@debatable_class.underscore}_id"]
-    @debatable = params[:debatable_class].constantize.find(debatable_id)
+    @debatable = Discussion.debatable_for(@debatable_class, params)
   end
 
   def subject

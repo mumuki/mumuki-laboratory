@@ -115,4 +115,9 @@ class Discussion < ApplicationRecord
   def has_responses?
     responses_count > 0
   end
+
+  def self.debatable_for(klazz, params)
+    debatable_id = params["#{klazz.underscore}_id"]
+    klazz.constantize.find(debatable_id)
+  end
 end
