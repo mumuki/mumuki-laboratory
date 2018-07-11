@@ -68,4 +68,8 @@ module Contextualization
   def visible_expectation_results
     (expectation_results || []).select { |it| it[:result].failed? }
   end
+
+  def first_failed_expectation_result
+    visible_expectation_results.find { |it| it[:result].failed? }
+  end
 end
