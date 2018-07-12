@@ -1,5 +1,5 @@
 <% assignment.first_failed_expectation_result.try |expectation| do %>
   <ul class="results-list">
-    <li><%= status_icon(expectation[:result]) %> <%= t_expectation expectation %></li>
+    <%= humanized_expectation_result_item expectation %>
   </ul>
 <% end %>
