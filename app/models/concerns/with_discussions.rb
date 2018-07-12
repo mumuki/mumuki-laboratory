@@ -9,7 +9,7 @@ module WithDiscussions
     discussion.merge!(initiator_id: user.id)
     discussion.merge!(submission: submission_for(user)) if submission_for(user).present?
     created_discussion = discussions.create discussion
-    user.subscribe_to created_discussion
+    user.subscribe_to! created_discussion
     created_discussion
   end
 

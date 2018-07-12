@@ -10,19 +10,19 @@ module WithDiscussionCreation::Upvote
     discussion.upvote_for(self).present?
   end
 
-  def upvote(discussion)
+  def upvote!(discussion)
     upvoted_discussions << discussion
   end
 
-  def undo_upvote(discussion)
+  def undo_upvote!(discussion)
     upvoted_discussions.delete(discussion)
   end
 
-  def toggle_upvote(discussion)
+  def toggle_upvote!(discussion)
     if upvoted?(discussion)
-      undo_upvote(discussion)
+      undo_upvote!(discussion)
     else
-      upvote(discussion)
+      upvote!(discussion)
     end
   end
 end

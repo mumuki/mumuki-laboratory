@@ -11,19 +11,19 @@ module WithDiscussionCreation::Subscription
     discussion.subscription_for(self).present?
   end
 
-  def subscribe_to(discussion)
+  def subscribe_to!(discussion)
     watched_discussions << discussion
   end
 
-  def unsubscribe_to(discussion)
+  def unsubscribe_to!(discussion)
     watched_discussions.delete(discussion)
   end
 
-  def toggle_subscription(discussion)
+  def toggle_subscription!(discussion)
     if subscribed_to?(discussion)
-      unsubscribe_to(discussion)
+      unsubscribe_to!(discussion)
     else
-      subscribe_to(discussion)
+      subscribe_to!(discussion)
     end
   end
 

@@ -95,11 +95,19 @@ ActiveRecord::Schema.define(version: 20180704150839) do
     t.bigint "item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "submission_id"
+    t.text "solution"
+    t.integer "submission_status", default: 0
+    t.text "result"
+    t.text "expectation_results"
+    t.text "feedback"
+    t.text "test_results"
+    t.string "submission_id"
+    t.string "queries", default: [], array: true
+    t.text "query_results"
+    t.text "manual_evaluation_comment"
     t.integer "upvotes_count"
     t.index ["initiator_id"], name: "index_discussions_on_initiator_id"
     t.index ["item_type", "item_id"], name: "index_discussions_on_item_type_and_item_id"
-    t.index ["submission_id"], name: "index_discussions_on_submission_id"
   end
 
   create_table "exam_authorizations", force: :cascade do |t|

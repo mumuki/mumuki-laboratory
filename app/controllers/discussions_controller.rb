@@ -11,7 +11,6 @@ class DiscussionsController < AjaxController
   end
 
   def show
-
   end
 
   def update
@@ -20,12 +19,12 @@ class DiscussionsController < AjaxController
   end
 
   def subscription
-    current_user&.toggle_subscription(subject)
+    current_user&.toggle_subscription!(subject)
     head :ok
   end
 
   def upvote
-    current_user&.toggle_upvote(subject)
+    current_user&.toggle_upvote!(subject)
     head :ok
   end
 

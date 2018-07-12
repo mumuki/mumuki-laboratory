@@ -1,26 +1,30 @@
 module DiscussionsHelper
-  def discussions_link(item)
-    link_to discussions_icon(t :solve_your_doubts), polymorphic_path([item, :discussions], default_discussions_params)
+  def read_discussions_link(item)
+    discussions_link t(:solve_your_doubts), polymorphic_path([item, :discussions], default_discussions_params)
   end
 
   def solve_discussions_link
-    link_to discussions_icon(t :solve_doubts), discussions_path(solve_discussion_params_for(current_user))
+    discussions_link t(:solve_doubts), discussions_path(solve_discussion_params_for(current_user))
   end
 
   def discussions_icon(text)
     fixed_fa_icon 'comments', text: text
   end
 
+  def discussions_link(text, path, organization=Organization.current)
+    link_to discussions_icon(text), path if organization.forum_enabled?
+  end
+
   def solve_discussion_params_for(user)
     if user&.moderator?
-      {status: :pending_review, sort: :created_at_asc}
+      { status: :pending_review, sort: :created_at_asc }
     else
-      {status: :opened, sort: :created_at_asc}
+      { status: :opened, sort: :created_at_asc }
     end
   end
 
   def default_discussions_params
-    {status: :solved, sort: :upvotes_count_desc}
+    { status: :solved, sort: :upvotes_count_desc }
   end
 
   def user_avatar(user, image_class='')
@@ -33,7 +37,7 @@ module DiscussionsHelper
         <h3>#{t(:discussions)}</h3>
         <p>
           #{t(:solve_your_doubts_teaser)}
-          #{discussions_link(item)}
+          #{read_discussions_link(item)}
         </p>
       </div>
     }.html_safe

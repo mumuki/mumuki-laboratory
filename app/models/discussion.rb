@@ -10,7 +10,7 @@ class Discussion < ApplicationRecord
 
   scope :by_language, -> (language) { includes(:exercise).joins(exercise: :language).where(languages: {name: language}) }
 
-  before_save :capitalize
+  before_save :capitalize_title
   validates_presence_of :title
 
   sortable :created_at, :upvotes_count, default: :created_at_desc
@@ -28,9 +28,8 @@ class Discussion < ApplicationRecord
     end
   end
 
-  def capitalize
+  def capitalize_title
     title.capitalize!
-    description.try(:capitalize!)
   end
 
   def used_in?(organization)

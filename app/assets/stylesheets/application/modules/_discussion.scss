@@ -1,5 +1,10 @@
 $discussion-message-arrow-size: 10px;
 $discussion-message-border-color: #cccccc;
+$discussion-toolbar-border-color: #e1e4e8;
+$discussion-toolbar-color: #f6f6fa;
+$message-divider-color: #ecf0f1l;
+$discussion-button-color: #fafafa;
+$toolbar-filter-color: #808080;
 
 .discussions-list {
   margin: 30px 0;
@@ -61,7 +66,7 @@ $discussion-message-border-color: #cccccc;
 
 .discussions-no-filtered-results {
   padding: 20px;
-  border: 1px solid #e1e4e8;
+  border: 1px solid $discussion-toolbar-border-color;
   text-align: center;
   div {
     margin-bottom: 20px;
@@ -116,8 +121,8 @@ $discussion-message-border-color: #cccccc;
   padding: 10px 20px;
   display: table;
   margin-top: 20px;
-  background-color: #f6f8fa;
-  border: 1px solid #e1e4e8;
+  background-color: $discussion-toolbar-color;
+  border: 1px solid $discussion-toolbar-border-color;
   border-radius: 3px 3px 0 0;
   border-bottom: none;
   .discussions-toolbar-status {
@@ -127,13 +132,13 @@ $discussion-message-border-color: #cccccc;
       display: inline;
       margin-right: 15px;
       &:not(.selected) .status-icon, span {
-        color: #808080;
+        color: $toolbar-filter-color;
       }
       &:hover span {
-        color: darken(#808080, 20%);
+        color: darken($toolbar-filter-color, 20%);
       }
       &.selected span {
-        color: darken(#808080, 40%);
+        color: darken($toolbar-filter-color, 40%);
         font-weight: bold;
       }
     }
@@ -155,7 +160,7 @@ $discussion-message-border-color: #cccccc;
 }
 
 .message-divider {
-  border-top: 1px solid #ecf0f1;
+  border-top: 1px solid $message-divider-color;
   margin-top: 20px
 }
 
@@ -166,14 +171,14 @@ $discussion-message-border-color: #cccccc;
     line-height: 20px;
     border: 1px solid rgba(27, 31, 35, 0.2);
     border-radius: 0.25em;
-    background-color: #fafafa;
+    background-color: $discussion-button-color;
     font-weight: bold;
     color: black;
     cursor: pointer;
     margin-left: 10px;
     &:hover {
       text-decoration: none;
-      background-color: darken(#fafafa, 5%);
+      background-color: darken($discussion-button-color, 5%);
       color: black;
     }
   }
@@ -300,11 +305,6 @@ summary.discussion-summary {
   > form {
     display: inline;
   }
-}
-
-.text-default,
-.text-default:hover {
-  color: #798d8f;
 }
 
 $statuses: (
