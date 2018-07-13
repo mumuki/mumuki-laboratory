@@ -5,13 +5,17 @@ class Submission
 
   required :try_evaluate!
 
-  attr_accessor :solution, :status, :result, :expectation_results, :feedback, :test_results,
-                :submission_id, :queries, :query_results, :manual_evaluation_comment
+  ATTRIBUTES = [:solution, :status, :result, :expectation_results, :feedback, :test_results,
+                :submission_id, :queries, :query_results, :manual_evaluation_comment]
 
-  def self.initialize_submission(solution, status, result, expectation_results, feedback, test_results, submission_id, queries, query_results, manual_evaluation_comment)
-    new(solution: solution, status: status, result: result, expectation_results: expectation_results, feedback: feedback,
-          test_results: test_results, submission_id: submission_id, queries: queries, query_results: query_results,
-          manual_evaluation_comment: manual_evaluation_comment)
+  attr_accessor *ATTRIBUTES
+
+  def self.from_attributes(*args)
+    new ATTRIBUTES.zip(args).to_h
+  end
+
+  def self.mapping_attributes
+    ATTRIBUTES
   end
 
   def run!(assignment, evaluation)

@@ -1,6 +1,20 @@
 module WithSubmission
   extend ActiveSupport::Concern
 
+  class_methods do
+
+    private
+
+    def submission_mapping
+      class_attrs = Submission.mapping_attributes.map { |it| submission_fields_overrides[it] || it }
+      class_attrs.zip Submission.mapping_attributes
+    end
+
+    def submission_fields_overrides
+      { status: :submission_status }
+    end
+  end
+
   included do
     serialize :submission_status, Mumuki::Laboratory::Status::Submission
     validates_presence_of :submission_status
@@ -10,11 +24,7 @@ module WithSubmission
       define_method(field) { self[field]&.map { |it| it.symbolize_keys } }
     end
 
-    composed_of :submission,
-      mapping: [ %w(solution solution), %w(submission_status status), %w(result result), %w(expectation_results expectation_results),
-                 %w(feedback feedback), %w(test_results test_results), %w(submission_id submission_id), %w(queries queries),
-                 %w(query_results query_results), %w(manual_evaluation_comment manual_evaluation_comment)],
-      constructor: :initialize_submission
+    composed_of :submission, mapping: submission_mapping, constructor: :from_attributes
 
     delegate :visible_success_output?, to: :exercise
     delegate :output_content_type, to: :language
