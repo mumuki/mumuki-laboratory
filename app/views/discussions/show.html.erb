@@ -1,5 +1,6 @@
 <%= content_for :breadcrumbs do %>
   <%= breadcrumbs0 @debatable, link_to(t(:discussions), polymorphic_path([@debatable, Discussion])) %>
+  <%= breadcrumb_list_item('last', @discussion.friendly.truncate_words(4)) %>
 <% end %>
 
 <div>
@@ -29,7 +30,7 @@
         </h3>
       </div>
       <div class="discussion-description">
-        <%= label_for_status(@discussion.status) %>
+        <%= label_for_status(@discussion.status) %> ·
         <span class="discussion-info">
           <span class="discussion-initiator-name">
             <%= @discussion.initiator.name %>

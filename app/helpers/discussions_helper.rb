@@ -148,6 +148,6 @@ module DiscussionsHelper
   end
 
   def discussion_info(discussion)
-     "· #{t(:time_since, time: time_ago_in_words(discussion.created_at))} · #{t(:message_count, count: discussion.messages.size)}"
+     "#{t(:time_since, time: time_ago_in_words(discussion.created_at))} · #{t(:message_count, count: discussion.messages.size)}"
   end
 end

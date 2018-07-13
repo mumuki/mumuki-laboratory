@@ -49,6 +49,14 @@ module AssignmentResultHelper
     end
   end
 
+  def report_bug_link(assignment, organization=Organization.current)
+    if organization.report_issue_enabled?
+      mail_to contact_email, fa_icon(:bug, text: t(:notify_problem_with_exercise), class: 'fa-fw'),
+        subject: t(:problem_with_exercise, title: @exercise.name), body: assignment_help_email_body(assignment),
+        class: 'warning'
+    end
+  end
+
   def manual_evaluation_comment(assignment)
     if assignment.manual_evaluation_comment?
       Mumukit::ContentType::Markdown.to_html assignment.manual_evaluation_comment

@@ -14,7 +14,7 @@ $toolbar-filter-color: #808080;
     table-layout: fixed;
     width: 100%;
     &:hover {
-      background-color: darken(white, 3%);
+      background-color: darken(white, 2%);
     }
     border: 1px solid $discussion-message-border-color;
   }
@@ -309,7 +309,7 @@ summary.discussion-summary {
 
 $statuses: (
   closed: ($brand-danger white $brand-danger),
-  opened: (white #333333 #dddddd),
+  opened: (white #333333 #eaeaea),
   solved: ($brand-success white $brand-success),
   pending_review: ($brand-success white $brand-success)
 );
@@ -326,8 +326,8 @@ $statuses: (
     margin-left: 5px;
     &:hover {
       color: $font-color;
-      border-color: darken($border-color, 5%);
-      background-color: darken($background-color, 5%);
+      border-color: darken($border-color, 3%);
+      background-color: darken($background-color, 3%);
     }
   }
 }
