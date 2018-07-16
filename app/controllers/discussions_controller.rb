@@ -29,7 +29,7 @@ class DiscussionsController < AjaxController
   end
 
   def create
-    discussion = @debatable.create_discussion! current_user, discussion_create_params
+    discussion = @debatable.create_discussion! current_user, discussion_params
     redirect_to [@debatable, discussion]
   end
 
@@ -52,7 +52,7 @@ class DiscussionsController < AjaxController
     @discussion.subscription_for(current_user)&.read!
   end
 
-  def discussion_create_params
+  def discussion_params
     params.require(:discussion).permit(:title, :description)
   end
 

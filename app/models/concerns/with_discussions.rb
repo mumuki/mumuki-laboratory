@@ -16,4 +16,8 @@ module WithDiscussions
   def submission_for(_)
     nil
   end
+
+  def try_solve_discussions(user)
+    discussions.where(initiator: user).map(&:try_solve!)
+  end
 end

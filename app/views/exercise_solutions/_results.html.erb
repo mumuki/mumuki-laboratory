@@ -13,13 +13,13 @@
           <%= link_to fa_icon(:'question-circle', text: t(:need_help)), "", {'data-toggle': 'dropdown'} %>
           <ul class="dropdown-menu" aria-labelledby="helpDropdown">
             <li>
-              <%= report_bug_link(assignment) %>
-            </li>
-            <li>
               <%= read_discussions_link(@exercise) %>
             </li>
             <li>
               <%= render_community_link %>
+            </li>
+            <li>
+              <%= report_bug_link(assignment) %>
             </li>
           </ul>
         </div>

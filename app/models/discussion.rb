@@ -28,6 +28,12 @@ class Discussion < ApplicationRecord
     end
   end
 
+  def try_solve!
+    if opened?
+      update! status: reachable_statuses_for(initiator).first
+    end
+  end
+
   def capitalize_title
     title.capitalize!
   end
@@ -116,7 +122,7 @@ class Discussion < ApplicationRecord
   end
 
   def self.debatable_for(klazz, params)
-    debatable_id = params["#{klazz.underscore}_id"]
+    debatable_id = params[:"#{klazz.underscore}_id"]
     klazz.constantize.find(debatable_id)
   end
 end
