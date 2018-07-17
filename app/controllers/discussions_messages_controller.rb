@@ -8,7 +8,7 @@ class DiscussionsMessagesController < AjaxController
 
   def destroy
     message = Message.find(params[:id])
-    raise Mumukit::Auth::UnauthorizedAccessError unless message.authorized?(current_user)
+    message.authorize!
     message.destroy!
     redirect_back(fallback_location: root_path)
   end

@@ -6,7 +6,7 @@ describe Discussion, organization_workspace: :test do
     let(:initiator) { create(:user) }
     let(:student) { create(:user) }
     let(:problem) { create(:problem) }
-    let(:discussion) { problem.create_discussion! initiator, title: 'Need help' }
+    let(:discussion) { problem.discuss! initiator, title: 'Need help' }
     let(:moderator) { create(:user, permissions: {moderator: 'private/*'}) }
 
     it { expect(discussion.new_record?).to be false }
@@ -121,5 +121,33 @@ describe Discussion, organization_workspace: :test do
     let(:exercise) { create(:problem) }
 
     it { expect(described_class.debatable_for('Exercise', {exercise_id: exercise.id})).to eq exercise }
+  end
+
+  describe 'scope for user' do
+    let(:initiator) { create(:user) }
+    let(:exercise) { create(:problem) }
+
+    let!(:public_discussions) { [:opened, :solved].map { |it| create(:discussion, {status: it, initiator: initiator, item: exercise}) } }
+    let!(:private_discussions) { [:pending_review, :closed].map { |it| create(:discussion, {status: it, initiator: initiator, item: exercise}) } }
+    let!(:other_discussion) { create(:discussion, { status: :closed, item: exercise }) }
+
+    context 'as student' do
+      let(:student) { create(:user) }
+      it { expect(exercise.discussions.for_user(student)).to match_array public_discussions }
+    end
+
+    context 'as initiator' do
+      it { expect(exercise.discussions.for_user(initiator)).to match_array public_discussions + private_discussions }
+    end
+
+    context 'as moderator' do
+      let(:moderator) { create(:user, permissions: {moderator: 'private/*'}) }
+      it { expect(exercise.discussions.for_user(moderator)).to match_array public_discussions + private_discussions + [other_discussion] }
+    end
+
+    context 'for other item' do
+      let(:other_exercise) { create(:exercise) }
+      it { expect(other_exercise.discussions.for_user(initiator)).to be_empty }
+    end
   end
 end

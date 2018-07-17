@@ -1,5 +1,5 @@
 <%= content_for :breadcrumbs do %>
-  <%= breadcrumbs0 @debatable, link_to(t(:discussions), polymorphic_path([@debatable, Discussion])) %>
+  <%= breadcrumbs0 @debatable, link_to(t(:discussions), item_discussions_path(@debatable))%>
   <%= breadcrumb_list_item('last', @discussion.friendly.truncate_words(4)) %>
 <% end %>
 

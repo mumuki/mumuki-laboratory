@@ -6,18 +6,16 @@ module WithScopedQueries::Sort
   end
 
   def self.query_by(params, scope, klass)
-    sort_param = params[:sort]
-    normalized_params = normalized_params(sort_param)
+    sort_param = params[:sort] || klass.default_sorting_field.to_s
+    normalized_params = normalize_params(sort_param)
     if sort_param.present? && klass.sorting_params_allowed?(*normalized_params)
       sort_method_for(klass, scope, *normalized_params)
-    elsif klass.default_sorting_field.present?
-      sort_method_for(klass, scope, *normalized_params(klass.default_sorting_field.to_s))
     else
       scope
     end
   end
 
-  def self.normalized_params(param)
+  def self.normalize_params(param)
     param&.split(/_(?!.*_)/)
   end
 
@@ -29,7 +27,7 @@ module WithScopedQueries::Sort
 
   def self.sort_method_for(klass, scope, field, direction)
     if klass.column_names.include? field
-      scope.public_send(:order, "#{field} #{direction}")
+      scope.public_send(:order, "#{klass.table_name}.#{field} #{direction}")
     else
       scope.public_send("order_by_#{field}", direction)
     end

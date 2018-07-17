@@ -28,7 +28,7 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
 
   def render_results_title_html(assignment)
     render_to_string partial: 'exercise_solutions/results_title',
-                     locals: {assignment: assignment}
+                     locals: {contextualization: assignment}
   end
 
   def render_results_button_html(assignment)

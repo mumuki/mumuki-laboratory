@@ -1,5 +1,5 @@
 class Assignment < ApplicationRecord
-  include WithSubmission
+  include Contextualization
   include WithMessages
 
   belongs_to :exercise

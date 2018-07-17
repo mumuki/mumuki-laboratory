@@ -82,7 +82,7 @@
             <td>
               <%= icon_for_read(discussion.read_by?(@user)) %>
             </td>
-            <td><%= link_to discussion.item.name, polymorphic_path([discussion.item, discussion]) %></td>
+            <td><%= link_to discussion.item.name, item_discussions_path(discussion) %></td>
             <td><%= time_ago_in_words discussion.last_message_date %></td>
           </tr>
         <% end %>

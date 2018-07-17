@@ -34,7 +34,7 @@
   <% else %>
     <div class="discussions">
       <% @filtered_discussions.each do |discussion| %>
-        <%= link_to polymorphic_path([discussion.item, discussion]) do %>
+        <%= link_to item_discussion_path(discussion) do %>
           <div class="discussion">
             <div class="discussion-row">
               <%= discussion_messages_icon(discussion) %>

@@ -3,10 +3,10 @@
   @stats = @guide.stats_for(current_user)
 %>
 
-<%= render layout: 'exercise_solutions/assignment_results_container', locals: {assignment: assignment} do %>
+<%= render layout: 'exercise_solutions/contextualization_results_container', locals: {contextualization: assignment} do %>
   <%= manual_evaluation_comment assignment %>
   <% unless assignment.manual_evaluation_comment? %>
-    <%= render partial: 'exercise_solutions/assignment_results', locals: {assignment: assignment} %>
+    <%= render partial: 'exercise_solutions/contextualization_results', locals: {contextualization: assignment} %>
     <% unless assignment.passed? %>
       <div class="notify-problem-box">
         <div class="dropdown">

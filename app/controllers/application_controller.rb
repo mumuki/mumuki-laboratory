@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :login_button,
                 :notifications_count,
-                :notifications_path,
+                :user_notifications_path,
                 :has_notifications?,
                 :subject,
                 :should_choose_organization?,

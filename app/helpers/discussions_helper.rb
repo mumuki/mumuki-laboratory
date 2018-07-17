@@ -1,6 +1,6 @@
 module DiscussionsHelper
   def read_discussions_link(item)
-    discussions_link t(:solve_your_doubts), polymorphic_path([item, :discussions], default_discussions_params)
+    discussions_link t(:solve_your_doubts), item_discussions_path(item, default_discussions_params)
   end
 
   def solve_discussions_link
@@ -13,6 +13,14 @@ module DiscussionsHelper
 
   def discussions_link(text, path, organization=Organization.current)
     link_to discussions_icon(text), path if organization.forum_enabled?
+  end
+
+  def item_discussion_path(discussion, params={})
+    polymorphic_path([discussion.item, discussion], params)
+  end
+
+  def item_discussions_path(item, params={})
+    polymorphic_path([item, :discussions], params)
   end
 
   def solve_discussion_params_for(user)
@@ -64,8 +72,10 @@ module DiscussionsHelper
   end
 
   def discussion_update_status_button(status)
-    button_to t("to_#{status}"), polymorphic_path([@debatable, @discussion], {status: status}),
-              class: "btn btn-discussion-#{status}", :method => :put
+    button_to t("to_#{status}"),
+              item_discussion_path(@discussion, {status: status}),
+              class: "btn btn-discussion-#{status}",
+              method: :put
   end
 
   def new_discussion_link(teaser_text, link_text)
@@ -82,11 +92,11 @@ module DiscussionsHelper
   end
 
   def discussion_count_for_status(status, discussions)
-    discussions.scoped_query_by(@filter_params, :status).by_status(status).count
+    discussions.scoped_query_by(discussion_filter_params, :status).by_status(status).count
   end
 
   def discussions_reset_query_link
-    link_to fa_icon(:times, text: t(:reset_query)), {}, class: 'discussions-reset-query' unless @filter_params.blank?
+    link_to fa_icon(:times, text: t(:reset_query)), {}, class: 'discussions-reset-query' unless discussion_filter_params.blank?
   end
 
   def discussions_statuses
@@ -117,7 +127,7 @@ module DiscussionsHelper
   end
 
   def discussion_dropdown_filter(label, filters, &block)
-    if filters.size > 0
+    if filters.present?
       %Q{
         <div class="dropdown discussions-toolbar-filter">
           <a id="dropdown-#{label}" data-toggle="dropdown" role="menu">
@@ -140,11 +150,11 @@ module DiscussionsHelper
   end
 
   def discussion_filter_selected?(label, filter)
-    filter.to_s == @filter_params[label]
+    filter.to_s == discussion_filter_params[label]
   end
 
   def discussion_filter_link(label, filter, &block)
-    link_to capture(filter, &block), @filter_params.merge(Hash[label, filter])
+    link_to capture(filter, &block), discussion_filter_params.merge(Hash[label, filter])
   end
 
   def discussion_info(discussion)

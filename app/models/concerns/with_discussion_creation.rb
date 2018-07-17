@@ -3,6 +3,7 @@ module WithDiscussionCreation
 
   included do
     has_many :discussions, foreign_key: 'initiator_id'
-    include WithDiscussionCreation::Subscription, WithDiscussionCreation::Upvote
+    include WithDiscussionCreation::Subscription
+    include WithDiscussionCreation::Upvote
   end
 end

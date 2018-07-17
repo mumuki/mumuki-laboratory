@@ -1,6 +1,6 @@
 module Mumuki::Laboratory::Controllers::Notifications
-  def notifications_path
-    has_messages? ? 'messages' : 'discussions'
+  def user_notifications_path
+    "#{user_path}##{notifications_path}"
   end
 
   def has_notifications?
@@ -12,6 +12,10 @@ module Mumuki::Laboratory::Controllers::Notifications
   end
 
   private
+
+  def notifications_path
+    has_messages? ? 'messages' : 'discussions'
+  end
 
   def has_messages?
     messages_count > 0

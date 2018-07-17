@@ -31,7 +31,6 @@ group :test do
   gem 'rake', '10.4.2'
   gem 'faker', '~> 1.5'
   gem 'capybara', '~> 2.3.0'
-  gem 'rails-controller-testing', '~> 1.0'
 end
 
 group :development do

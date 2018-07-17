@@ -1,4 +1,4 @@
-module WithSubmission
+module Contextualization
   extend ActiveSupport::Concern
 
   class_methods do

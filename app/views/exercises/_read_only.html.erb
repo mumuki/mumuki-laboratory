@@ -57,11 +57,11 @@
 
         <div role="tabpanel" class="tab-pane" id="results">
           <div class="mu-tab-body">
-            <%= render layout: 'exercise_solutions/assignment_results_container', locals: {assignment: @discussion } do %>
+            <%= render layout: 'exercise_solutions/contextualization_results_container', locals: {contextualization: @discussion } do %>
               <div class="row">
                 <div class="col-md-12 submission-results">
-                  <%= render partial: 'exercise_solutions/assignment_results',
-                             locals: {assignment: @discussion, guide_finished_by_solution: false} %>
+                  <%= render partial: 'exercise_solutions/contextualization_results',
+                             locals: {contextualization: @discussion, guide_finished_by_solution: false} %>
                 </div>
               </div>
             <% end %>

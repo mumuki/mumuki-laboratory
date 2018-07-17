@@ -9,6 +9,8 @@ class Chapter < ApplicationRecord
   belongs_to :book, optional: true
   belongs_to :topic
 
+  has_many :exercises, through: :topic
+
   include SiblingsNavigation
   include TerminalNavigation
 

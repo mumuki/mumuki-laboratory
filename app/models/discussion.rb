@@ -1,5 +1,5 @@
 class Discussion < ApplicationRecord
-  include WithDiscussionStatus, ParentNavigation, WithScopedQueries, WithSubmission
+  include WithDiscussionStatus, ParentNavigation, WithScopedQueries, Contextualization
 
   belongs_to :item, polymorphic: true
   has_many :messages
