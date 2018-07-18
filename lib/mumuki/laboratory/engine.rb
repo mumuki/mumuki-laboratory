@@ -21,8 +21,6 @@ module Mumuki
       config.registration_notification_format = {only: [:id, :name, :email, :image_url]}
       config.action_dispatch.perform_deep_munge = false
 
-      config.status_rendering_verbosity = :standard
-
       initializer "static assets" do |app|
           app.middleware.insert_before(::ActionDispatch::Static, ::ActionDispatch::Static, "#{root}/public")
       end

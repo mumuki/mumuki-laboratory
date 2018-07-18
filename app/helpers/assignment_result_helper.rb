@@ -4,7 +4,7 @@ module AssignmentResultHelper
   end
 
   def render_feedback?(assignment)
-    StatusRenderingVerbosity.render_feedback?(assignment.feedback)
+    assignment.feedback.present?
   end
 
   def t_assignment_status(assignment)

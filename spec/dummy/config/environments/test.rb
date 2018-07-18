@@ -42,8 +42,6 @@ Rails.application.configure do
 
   config.i18n.default_locale = :en
 
-  config.status_rendering_verbosity = :standard
-
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:developer] =
     OmniAuth::AuthHash.new provider: 'developer',

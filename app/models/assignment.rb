@@ -66,7 +66,7 @@ class Assignment < ApplicationRecord
   end
 
   def visible_expectation_results
-    StatusRenderingVerbosity.visible_expectation_results(status, expectation_results || [])
+    (expectation_results || []).select { |it| it[:result].failed? }
   end
 
   def persist_submission!(submission)
