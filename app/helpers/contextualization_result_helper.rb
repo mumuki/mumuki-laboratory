@@ -7,6 +7,11 @@ module ContextualizationResultHelper
     %Q{<li>#{status_icon(expectation[:result])} #{t_expectation expectation}</li>}.html_safe
   end
 
+  def showable_expectation_results(assignment, exercise)
+    results = assignment.visible_expectation_results
+    exercise.input_kids? ? results.first(1) : results
+  end
+  
   def render_feedback?(contextualization)
     contextualization.feedback.present?
   end

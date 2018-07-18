@@ -1,5 +1,15 @@
-<% assignment.first_failed_expectation_result.try do |expectation| %>
-  <ul class="results-list">
-    <%= humanized_expectation_result_item expectation %>
-  </ul>
+<% @expectation_results = showable_expectation_results assignment, @exercise %>
+
+<% if assignment.expectation_results_visible? %>
+  <div class="results-item">
+    <% unless assignment.exercise.input_kids?%>
+      <strong><%= t :unmeet_expectations %>:</strong>
+    <% end %>
+
+    <ul class="results-list">
+      <% @expectation_results.each do |it| %>
+        <%= humanized_expectation_result_item it %>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
