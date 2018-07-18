@@ -1,4 +1,4 @@
-<% assignment.first_failed_expectation_result.try |expectation| do %>
+<% assignment.first_failed_expectation_result.try do |expectation| %>
   <ul class="results-list">
     <%= humanized_expectation_result_item expectation %>
   </ul>
