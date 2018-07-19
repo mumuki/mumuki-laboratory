@@ -69,7 +69,7 @@ module Contextualization
     (expectation_results || []).select { |it| it[:result].failed? }
   end
 
-  def first_failed_expectation_result
-    visible_expectation_results.find { |it| it[:result].failed? }
+  def showable_expectation_results
+    exercise.input_kids? ? visible_expectation_results.first(1) : visible_expectation_results
   end
 end

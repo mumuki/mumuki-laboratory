@@ -1,4 +1,4 @@
-<% @expectation_results = showable_expectation_results assignment, @exercise %>
+<% expectation_results = assignment.showable_expectation_results%>
 
 <% if assignment.expectation_results_visible? %>
   <div class="results-item">
@@ -7,7 +7,7 @@
     <% end %>
 
     <ul class="results-list">
-      <% @expectation_results.each do |it| %>
+      <% expectation_results.each do |it| %>
         <%= humanized_expectation_result_item it %>
       <% end %>
     </ul>
