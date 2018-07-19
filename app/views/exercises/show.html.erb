@@ -33,28 +33,12 @@
   <% end %>
 </div>
 
-
 <% content_for :assignment do %>
-    <div class="text-box">
-      <%= @exercise.description_html %>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="hint-box <%= 'hidden' if @exercise.hint.blank? %>">
-          <% if @exercise.hint.present? %>
-              <a data-toggle="collapse" href="#hint-section" class="text-info">
-                <%= fa_icon 'lightbulb-o' %> <%= t :need_a_hint %>
-              </a>
+  <%= render partial: 'exercise_assignment', locals: {exercise: @exercise} %>
+<% end %>
 
-              <div id="hint-section" class="collapse">
-                <p>
-                  <%= @exercise.hint_html %>
-                </p>
-              </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
+<%= content_for :exercise_content do %>
+  <%= render partial: 'layouts/exercise_inputs/forms/form', locals: {exercise: @exercise} %>
 <% end %>
 
 <%= render_exercise_input_layout(@exercise) %>

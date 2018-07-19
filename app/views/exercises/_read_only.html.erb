@@ -1,0 +1,103 @@
+<%= render_runner_assets exercise.language, :layout %>
+
+<% if exercise.console? %>
+  <%= hidden_field_tag(:stateful_console, exercise.stateful_console?) %>
+  <%= hidden_field_tag(:prompt, exercise.prompt) %>
+<% end %>
+<%= hidden_field_tag(:exercise_language, exercise.highlight_mode) %>
+<%= hidden_field_tag :console_endpoint, exercise_queries_path(exercise) %>
+
+<details open>
+  <summary class="discussion-summary">
+    <span class="hidden-xs"><%= t(:exercise_number, number: exercise.number) %>:&nbsp;</span>
+    <span><%= @debatable.name %></span>
+  </summary>
+
+  <% if should_render_read_only_exercise_tabs?(@discussion) %>
+
+    <ul class="nav nav-tabs discussion-tabs" role="tablist">
+      <% if @discussion.has_submission? %>
+        <li role="presentation" class="active">
+          <a data-target="#solution" aria-controls="solution" role="tab" data-toggle="tab" class="editor-tab">
+            <%= t :solution %>
+          </a>
+        </li>
+        <li role="presentation">
+          <a data-target="#results" aria-controls="results" role="tab" data-toggle="tab" class="editor-tab">
+            <%= t :results %>
+          </a>
+        </li>
+      <% end %>
+
+      <li role="presentation" <%= "class=active" unless @discussion.has_submission? %>>
+        <a data-target="#content" aria-controls="content" role="tab" data-toggle="tab" class="editor-tab">
+          <%= t :description %>
+        </a>
+      </li>
+
+      <% if exercise.extra_visible? %>
+        <%= extra_code_tab %>
+      <% end %>
+
+      <% if exercise.queriable? %>
+        <%= console_tab %>
+      <% end %>
+    </ul>
+
+    <div class="tab-content">
+
+      <% if @discussion.has_submission? %>
+        <div role="tabpanel" class="tab-pane active" id="solution">
+          <div class="mu-tab-body">
+            <div role="tabpanel" class="tab-pane mu-input-panel fade in active" id="editor">
+              <%= render_exercise_read_only_editor exercise, @discussion.solution %>
+            </div>
+          </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="results">
+          <div class="mu-tab-body">
+            <%= render layout: 'exercise_solutions/contextualization_results_container', locals: {contextualization: @discussion } do %>
+              <div class="row">
+                <div class="col-md-12 submission-results">
+                  <%= render partial: 'exercise_solutions/contextualization_results',
+                             locals: {contextualization: @discussion, guide_finished_by_solution: false} %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <div role="tabpanel" class="tab-pane <%= 'active' unless @discussion.has_submission? %>" id="content">
+        <div class="mu-tab-body">
+          <div class="exercise-assignment">
+            <%= render partial: 'exercises/exercise_assignment', locals: {exercise: exercise} %>
+          </div>
+        </div>
+      </div>
+
+      <div role="tabpanel" class="tab-pane mu-input-panel fade" id="console">
+        <div class="mu-overlapped-container">
+          <div class="console">
+          </div>
+          <div class="mu-overlapped">
+            <a class="console-reset submission-reset"><%= restart_icon %></a>
+          </div>
+        </div>
+        <div class="field checkbox complementary complementary-checkbox mu-editor">
+          <input checked="checked" data-index="1" id="include_solution" type="checkbox">
+          <label for="include_solution"><p><%= t(:load_solution_into_console) %></p></label>
+        </div>
+      </div>
+
+      <div role="tabpanel" class="tab-pane mu-input-panel fade" id="visible-extra">
+        <%= exercise.extra_preview_html(@discussion.initiator) %>
+      </div>
+    </div>
+  <% else %>
+    <div class="exercise-assignment">
+      <%= render partial: 'exercises/exercise_assignment', locals: {exercise: exercise} %>
+    </div>
+  <% end %>
+</details>

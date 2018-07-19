@@ -21,12 +21,12 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 5.1.3"
 
   s.add_dependency 'mumukit-content-type', '~> 1.3'
-  s.add_dependency 'mumukit-auth', '~> 7.1'
+  s.add_dependency 'mumukit-auth', '~> 7.3'
   s.add_dependency 'mumukit-core', '~> 1.3'
   s.add_dependency 'mumukit-bridge', '~> 3.5'
   s.add_dependency 'mumukit-inspection', '~> 3.2'
   s.add_dependency 'mumukit-nuntius', '~> 6.1'
-  s.add_dependency 'mumukit-platform', '~> 2.0'
+  s.add_dependency 'mumukit-platform', '~> 2.2'
   s.add_dependency 'mumukit-login', '~> 5.0'
   s.add_dependency 'mumukit-directives', '~> 0.3'
   s.add_dependency 'mumukit-assistant', '~> 0.1'
@@ -34,6 +34,9 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rack', '~> 2.0'
   s.add_dependency 'omniauth', '~> 1.4.0'
+
+  s.add_dependency 'kaminari', '~> 0.16'
+  s.add_dependency 'bootstrap-kaminari-views'
 
   s.add_development_dependency 'pg', '~> 0.18.0'
 end

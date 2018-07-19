@@ -1,34 +1,4 @@
 module AssignmentResultHelper
-  def t_expectation(expectation)
-    raw Mumukit::Inspection::Expectation.parse(expectation).translate
-  end
-
-  def render_feedback?(assignment)
-    assignment.feedback.present?
-  end
-
-  def t_assignment_status(assignment)
-    t assignment_status assignment
-  end
-
-  def assignment_status(assignment)
-    if assignment.exercise.hidden?
-      :hidden_done
-    elsif assignment.exercise.choices?
-      assignment.passed? ? :correct_answer : :wrong_answer
-    else
-      assignment.status
-    end
-  end
-
-  def render_test_results(assignment)
-    if assignment.test_results.present?
-      render partial: 'layouts/test_results', locals: { assignment: assignment }
-    else
-      render partial: 'layouts/result', locals: { assignment: assignment }
-    end
-  end
-
   def solution_download_link(assignment)
     link_to fa_icon(:download, text: t(:download)),
             solution_octet_data(assignment),
@@ -46,6 +16,16 @@ module AssignmentResultHelper
   def render_community_link
     if community_link?
       link_to fa_icon(:facebook, text: I18n.t(:ask_community), class: 'fa-fw'), community_link, target: '_blank'
+    end
+  end
+
+  def report_bug_link(assignment, organization=Organization.current)
+    if organization.report_issue_enabled?
+      mail_to contact_email,
+        fa_icon(:bug, text: t(:notify_problem_with_exercise), class: 'fa-fw'),
+        subject: t(:problem_with_exercise, title: @exercise.name),
+        body: assignment_help_email_body(assignment),
+        class: 'warning'
     end
   end
 

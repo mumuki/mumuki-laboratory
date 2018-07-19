@@ -16,7 +16,7 @@ class Topic < Content
         joins("left join public.assignments assignments
                 on assignments.exercise_id = exercises.id
                 and assignments.submitter_id = #{user.id}
-                and assignments.status = #{Mumuki::Laboratory::Status::Passed.to_i}").
+                and assignments.submission_status = #{Mumuki::Laboratory::Status::Submission::Passed.to_i}").
         where('assignments.id is null').
         group('public.guides.id', 'lessons.number').map(&:lesson)
   end

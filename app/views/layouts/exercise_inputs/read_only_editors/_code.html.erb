@@ -1,0 +1,3 @@
+<div class="field form-group">
+  <%= Mumukit::ContentType::Markdown.to_html(Mumukit::ContentType::Markdown.highlighted_code(exercise.language.name, content)) %>
+</div>

@@ -1,0 +1,68 @@
+<div class="discussions-list">
+  <%= discussions_reset_query_link %>
+  <div class="discussions-toolbar">
+    <div class="discussions-toolbar-status">
+      <div class="hidden-xs hidden-sm">
+        <% discussions_statuses.each do |status| %>
+          <%= discussion_status_filter_link(status, @discussions) %>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <div class="hidden-md hidden-lg ">
+        <%= discussion_dropdown_filter :status, discussions_statuses do |status_filter| %>
+          <%= t status_filter %>
+        <% end %>
+      </div>
+
+      <%= yield :extra_filters %>
+
+      <%= discussion_dropdown_filter :sort, Discussion.sorting_filters do |sorting_filter| %>
+        <%= t sorting_filter %>
+      <% end %>
+    </div>
+  </div>
+  <% if @filtered_discussions.empty? %>
+    <div class="discussions-no-filtered-results">
+      <div>
+        <%= fa_icon('exclamation-circle', class: 'fa-lg') %>
+      </div>
+      <span>
+        <%= t :no_discussions %>
+      </span>
+    </div>
+  <% else %>
+    <div class="discussions">
+      <% @filtered_discussions.each do |discussion| %>
+        <%= link_to item_discussion_path(discussion) do %>
+          <div class="discussion">
+            <div class="discussion-row">
+              <%= discussion_messages_icon(discussion) %>
+              <% unless @debatable.respond_to? :language %>
+                <div class="discussion-language-icon">
+                  <%= language_icon(discussion.language) %>
+                </div>
+              <% end %>
+              <div>
+                <div class="discussion-title">
+                  <span class="discussion-status-icon">
+                    <%= discussion_status_fa_icon(discussion) %>
+                  </span>
+                  <%= discussion.title %>
+                </div>
+                <span class="discussion-description">
+                  <%= discussion.description %>
+                </span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="discussion-pagination">
+      <%= paginate @filtered_discussions %>
+    </div>
+
+  <% end %>
+</div>

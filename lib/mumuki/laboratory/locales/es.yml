@@ -11,8 +11,11 @@ es:
   and: y
   appendix: "Apéndice"
   appendix_teaser: ¿Querés saber más? <a href="%{link}">Consultá el apéndice de este capítulo</a>
+  are_you_sure: '¿Estás seguro que querés %{action}?'
+  ask_a_question: ¡Hacé una pregunta!
   ask_community: Preguntá a la comunidad
   ask_redirect: ¿Querés que te llevemos ahí?
+  ask_the_first_question: ¡Hacé la primer pregunta!
   author: Autor
   authoring: "Autores"
   authoring_note: Esta guía fue desarrollada por %{authors} y <a href="%{collaborators}" target="_blank">muchas personas más</a>, bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia Creative Commons Compartir-Igual, 4.0</a>.
@@ -24,6 +27,10 @@ es:
   chapter_number: 'Capítulo %{number}'
   classroom: Aula
   clear_console: Reiniciar consola
+  closed: Cerrada
+  created_at_asc: Antiguas
+  created_at_desc: Nuevas
+  comment: Comentar
   confirm: Confirmar
   confirm_restart: Estás por borrar tu progreso en esta guía. ¿Querés continuar?
   console: Consola
@@ -42,7 +49,10 @@ es:
   day: Día
   days: Días
   destroy: Eliminar
+  destroy_message: eliminar el mensaje
   details: Detalles
+  discussion_updated: Consulta actualizada
+  discussions: Consultas
   dont_leave_us: ¡No nos abandones! Aprender a programar es divertido. Sólo tenés que seguir practicando.
   download: "Descargá lo que hiciste"
   edit: Editar
@@ -102,6 +112,9 @@ es:
   let_us_know: ¡Por favor avisanos!
   load_solution_into_console: Cargar la solución en la consola
   manual_evaluation_pending: ¡Gracias por enviar tu solución! Tus docentes la corregirán pronto
+  message_count:
+    one: 1 mensaje
+    other: '%{count} mensajes'
   message: Mensaje
   messages: Mensajes
   messages_error: Los mensajes anteriores no están disponibles en este momento. ¡Volvé a intentar mas tarde!
@@ -119,24 +132,30 @@ es:
   never: nunca
   new: Nuevo
   new_message: ¿Tenés dudas? ¡Levantá la mano!
+  new_discussion: Nueva consulta
   new_message_placeholder: Escribí el mensaje para tu docente acá...
   next_exercise: Siguiente
   next_guide: 'Siguiente Lección: %{name}'
+  no_discussions: No encontramos consultas que coincidan con tu búsqueda.
   no_exercises: No encontramos ejercicios que coincidan con tu búsqueda.
   no_guides: No encontramos lecciones que coincidan con tu búsqueda.
   no_messages: ¡Parece que no tenés ningun mensaje todavía!
+  no_questions: Parece que aún no hay ninguna consulta.
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio aún!
+  no_useful_result: ¿No encontraste lo que estabas buscando?
   not_found: ¡La página que buscaste no existe!
   not_found_explanation: Fijate si escribiste bien la dirección. Peeeeero...
   not_in_any_organizations: ¡Parece que no estás en ninguna organización todavía!
-  notify_problem_with_exercise: Reportá un error
+  notify_problem_with_exercise: Reportá un bug
   office: Secretaría
+  opened: Abierta
   organizations: Organizaciones
   output: Salida
   overview: Vista general
   passed: ¡Muy bien! Tu solución pasó todas las pruebas
   passed_with_warnings: Tu solución funcionó, pero hay cosas que mejorar
   pending: pendiente
+  pending_review: En revisión
   pending_messages: Tenés mensajes sin leer
   pending_messages_explanation: "¡Tu docente te dejó un mensaje! Revisalo antes de seguir enviando soluciones."
   permissions: Permisos
@@ -152,6 +171,7 @@ es:
   read: Leido
   read_messages: Ver mensajes
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
+  reset_query: Borrar los filtros de búsqueda actuales
   restart: Reiniciar
   results: Resultados
   retry_exercise: Reintentar
@@ -165,9 +185,14 @@ es:
   sign_out: Cerrar Sesión
   sign_up_date: Usuario desde
   solution: Solución
+  solved: Resuelta
   solved_exercises: Ejercicios Resueltos
+  solve_doubts: Resolvé consultas
+  solve_your_doubts: Consultá tus dudas
+  solve_your_doubts_teaser: ¿Tenés alguna consulta?
   something_went_wrong: ¡Ups!, algo no anduvo bien...
   something_went_wrong_explanation: Algo no anduvo como se esperaba.
+  sort: Ordenar
   start_lesson: ¡Comenzá esta lección!
   start_practicing: ¡Empezá ahora!
   start_using_mumuki: ¡Empezá a usar Mumuki!
@@ -175,6 +200,7 @@ es:
   status: Estado
   stay_here: No, quiero quedarme acá
   stop_emails?: ¿Querés dejar de recibir estos mails?
+  subscribe: Recibir notificaciones
   submission: solución
   submission_date: Fecha de envío
   submission_for_exercise: Solucion para ejercicio
@@ -186,21 +212,35 @@ es:
   tell_us_if_our_error: Si pensás que es un error nuestro, %{issues}
   terms_and_conditions: Términos y condiciones
   test_results: Resultados de las pruebas
+  time_since: "hace %{time}"
   time_left: Te quedan
   title: Título
+  to_closed: Cerrar
+  to_opened: Reabrir
+  to_pending_review: Resolver
+  to_solved: Resolver
   try_again: ¡Ups! Algo salió mal en mumuki. Reiniciá el ejercicio, esperá unos segundos y volvé a intentar.
   unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no iniciaste sesión.
   uncategorized: No categorizado
+  undo_upvote: No es útil
   unknown: no resuelto
   unmeet_expectations: Objetivos que no se cumplieron
+  unsubscribe: Dejar de recibir notificaciones
   unsubscribed_successfully: Te desuscribiste exitosamente de los recordatorios.
   upload_solution: "Subir solución"
   uploading_solution: "Subiendo solución"
+  upvote: Es útil
+  upvotes_count_asc: Más útiles
+  upvotes_count_desc: Menos útiles
   user_data_updated: Tus datos se actualizaron correctamente
   user: Usuario
   username: Nombre de usuario
   want_permissions: El siguiente usuario requiere permisos
   we_miss_you: ¡Te extrañamos!
+  will_paginate:
+    previous_label: "&#8592; Anterior"
+    next_label: "Siguiente &#8594;"
+    page_gap: "&hellip;"
   working: "Procesando"
   wrong_answer: La respuesta no es correcta
   you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones

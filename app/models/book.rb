@@ -5,6 +5,9 @@ class Book < Content
   has_many :chapters, -> { order(number: :asc) }, dependent: :delete_all
   has_many :complements, dependent: :delete_all
 
+  has_many :exercises, through: :chapters
+  has_many :discussions, through: :exercises
+
   delegate :first_lesson, to: :first_chapter
 
   def to_s

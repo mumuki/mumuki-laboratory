@@ -1,0 +1,30 @@
+<%= content_for :breadcrumbs do %>
+  <%= breadcrumbs(@debatable, t(:discussions)) %>
+<% end %>
+
+<div class="row">
+  <% if @debatable.respond_to? :language %>
+    <div class="mu-inline-block-right hidden-xs">
+      <h1><%= language_icon @debatable.language %></h1>
+    </div>
+  <% end %>
+  <div class="mu-inline-block-left">
+    <h1>
+      <span class="hidden-xs"><%= t("#{@debatable_class.downcase}_number", number: @debatable.number) %>:&nbsp;</span>
+      <span><%= @debatable.name %></span>
+    </h1>
+  </div>
+</div>
+
+<% if @discussions.empty? %>
+  <%= new_discussion_link(:no_questions, :ask_the_first_question) %>
+<% else %>
+  <%= render partial: 'layouts/discussions' %>
+  <%= new_discussion_link(:no_useful_result, :ask_a_question) %>
+<% end %>
+
+  <%= content_for :no_container do %>
+  <%= render partial: 'layouts/modals/new_discussion', locals: {debatable: @debatable} %>
+<% end if current_user? %>
+
+

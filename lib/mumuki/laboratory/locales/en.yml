@@ -10,8 +10,11 @@ en:
   all: All
   appendix: "Appendix"
   appendix_teaser: Do you want to learn more? <a href="%{link}">Check this chapter's appendix</a>"
+  are_you_sure: 'Are you sure you want to %{action}?'
+  ask_a_question: Ask a question!
   ask_community: Ask community for help
   ask_redirect: Do you want to go there?
+  ask_the_first_question: Be the first one to ask!
   author: Author
   authoring: "Authoring"
   authoring_note: This guide's content was developed by %{authors} and <a href="%{collaborators}" target="_blank">many others</a>, under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons License Share-Alike, 4.0</a>
@@ -23,6 +26,10 @@ en:
   chapter_number: Chapter %{number}
   classroom: Classroom
   clear_console: Clear console
+  closed: Closed
+  created_at_asc: Oldest
+  created_at_desc: Newest
+  comment: Comment
   confirm: Confirm
   confirm_restart: You are about to delete your progress for this guide. Do you want to proceed?
   console: Console
@@ -38,6 +45,9 @@ en:
   created_at: Created at
   date: Date
   destroy: Destroy
+  destroy_message: delete the message
+  discussion_updated: Discussion updated
+  discussions: Discussions
   dont_leave_us: Don't leave us! Learning is fun. You just have to keep at it.
   download: Download your solution
   edit: Edit
@@ -93,6 +103,9 @@ en:
   let_us_know: please let us know!
   load_solution_into_console: Load your solution into the console
   manual_evaluation_pending: Thanks for submitting your solution! It will be revised by the course teachers soon
+  message_count:
+    one: 1 message
+    other: '%{count} messages'
   message: Message
   messages: Messages
   messages_error: Previous messages are unavailable. Please try again later.
@@ -108,17 +121,21 @@ en:
   need_help: I need help!
   never: never
   new: New
-  new_message_placeholder: Escribí tu mensaje acá...
+  new_message_placeholder: Write a message for your teacher...
   next_exercise: Next
   next_lesson: 'Next Guide: %{name}'
+  no_discussions: No discussions matched your search.
   no_exercises: Nobody created an exercise for this search yet
   no_guides: Nobody created a guide for this search yet
   no_messages: It seems you don't have any messages yet!
+  no_questions: It seems there isn't any question yet.
   no_submissions: It seems like you haven't tried to solve this exercise
+  no_useful_result: Não encontrou o que estava buscando?
   not_found_explanation: 'You may have mistyped the address or the page may have moved.'
   not_in_any_organizations: It seems you aren't in any organizations yet!
   notify_problem_with_exercise: Report a bug
   office: Office
+  opened: Open
   output: Output
   overview: Overview
   passed: Everything is in order! Your solution passed all our tests!
@@ -126,6 +143,7 @@ en:
   pending: pending
   pending_messages: You have unread messages
   pending_messages_explanation: You can't send new solutions until you read pending messages
+  Pending_review: Pending review
   permissions: Permissions
   please_fill_profile_data: Please complete your profile data to continue!
   please_validate: 'Please validate your data before continue:'
@@ -138,6 +156,7 @@ en:
   progress: Progresss
   read: Read
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
+  reset_query: Clear current search filters
   restart: Restart
   results: Results
   retry_exercise: Retry
@@ -150,8 +169,13 @@ en:
   sign_out: Sign Out
   sign_up_date: User since
   solution: Solution
+  solved: Solved
+  solve_doubts: Solve other's doubts
+  solve_your_doubts: Solve your doubts
+  solve_your_doubts_teaser: Do you have any doubts?
   something_went_wrong: Something went wrong!
   something_went_wrong_explanation: Something is broken in Mumuki.
+  sort: Sort
   start_lesson: Start this lesson!
   start_practicing: Start Practicing!
   start_using_mumuki: Start using Mumuki!
@@ -164,20 +188,31 @@ en:
   submission_for_exercise: Submission for exercise
   submissions_count: Submissions
   submissions_for: Submissions for %{exercise}
+  subscribe: Subscribe
   tag: Tags
   tell_us_how: Please tell us how this happened!
   tell_us_if_our_error: If you think this is our fault, %{issues}
   terms_and_conditions: Terms and conditions
   test_results: Test results
   test_results: Tests results
+  time_ago: "%{time} ago"
   time_left: You have
   title: Title
+  to_closed: Close
+  to_opened: Reopen
+  to_pending_review: Mark as solved
+  to_solved: Mark as solved
   try_again: Oops, something went wrong in Mumuki. Restart the exercise, wait a few seconds and try again.
   unauthorized_explanation: You have no permissions for this content. Maybe you logged in with another account.
+  undo_upvote: Undo upvote
   unmeet_expectations: "Goals that weren't met"
+  unsubscribe: Unsubscribe
   unsubscribed_successfully: You have successfully unsubscribed from reminders.
   upload_solution: Upload Solution
   uploading_solution: "Uploading solution"
+  upvote: Upvote
+  upvotes_count_asc: Most voted
+  upvotes_count_desc: Least voted
   user: User
   user_data_updated: Your data was updated successfuly
   username: Username

@@ -1,15 +1,15 @@
 require 'spec_helper'
 require 'ostruct'
 
-describe AssignmentResultHelper do
+describe ContextualizationResultHelper do
   helper IconsHelper
-  helper AssignmentResultHelper
+  helper ContextualizationResultHelper
 
-  let(:html) { render_test_results assignment }
+  let(:html) { render_test_results contextualization }
 
   context 'structured results' do
     context 'when single passed submission' do
-      let(:assignment) { struct(
+      let(:contextualization) { struct(
         exercise: struct(hidden?: false),
         test_results: [{title: '2 is 2', status: :passed, result: ''}],
         output_content_type: Mumukit::ContentType::Plain) }
@@ -21,7 +21,7 @@ describe AssignmentResultHelper do
 
     context 'when single failed submission' do
       context 'when plain results' do
-        let(:assignment) { struct(
+        let(:contextualization) { struct(
           exercise: struct(hidden?: false),
           test_results: [{title: '2 is 2', status: :failed, result: 'something _went_ wrong'}],
           output_content_type: Mumukit::ContentType::Plain) }
@@ -32,7 +32,7 @@ describe AssignmentResultHelper do
       end
 
       context 'when markdown results' do
-        let(:assignment) { struct(
+        let(:contextualization) { struct(
           exercise: struct(hidden?: false),
           test_results: [{title: '2 is 2', status: :failed, result: 'something went _really_ wrong'}],
           output_content_type: Mumukit::ContentType::Markdown) }
@@ -45,7 +45,7 @@ describe AssignmentResultHelper do
   end
 
   context 'unstructured results' do
-    let(:assignment) { struct(
+    let(:contextualization) { struct(
       exercise: struct(hidden?: false),
       result_html: '<pre>ooops, something went wrong</pre>'.html_safe) }
 

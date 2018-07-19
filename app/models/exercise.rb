@@ -6,7 +6,8 @@ class Exercise < ApplicationRecord
           FriendlyName,
           WithLanguage,
           Assistable,
-          WithRandomizations
+          WithRandomizations,
+          WithDiscussions
 
   include Submittable,
           Questionable
@@ -65,6 +66,10 @@ class Exercise < ApplicationRecord
 
   def friendly
     defaulting_name { "#{navigable_parent.friendly} - #{name}" }
+  end
+
+  def submission_for(user)
+    assignment_for(user)&.submission
   end
 
   def new_solution

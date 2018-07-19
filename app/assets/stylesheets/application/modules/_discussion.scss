@@ -1,0 +1,335 @@
+$discussion-message-arrow-size: 10px;
+$discussion-message-border-color: #cccccc;
+$discussion-toolbar-border-color: #e1e4e8;
+$discussion-toolbar-color: #f6f6fa;
+$message-divider-color: #ecf0f1;
+$discussion-button-color: #fafafa;
+$toolbar-filter-color: #808080;
+
+.discussions-list {
+  margin: 30px 0;
+  .discussion {
+    padding: 10px 15px;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    &:hover {
+      background-color: darken(white, 2%);
+    }
+    border: 1px solid $discussion-message-border-color;
+  }
+  a {
+    color: unset;
+    text-decoration: unset;
+    &:not(:last-child) > .discussion {
+      border-bottom: 0;
+    }
+  }
+
+  .discussions-reset-query {
+    color: #6a737d;
+    font-weight: 600;
+    &:hover {
+      color: inherit;
+    }
+  }
+
+  .discussion-pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .discussion-language-icon {
+    float: right;
+    margin-right: 10px;
+    margin-top: 6px;
+    -ms-transform: scale(1.4, 1.4);
+    -webkit-transform: scale(1.4, 1.4);
+    transform: scale(1.4, 1.4);
+  }
+
+  .discussion-icon {
+    -ms-transform: scale(0.8, 0.8);
+    -webkit-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8);
+    margin-left: 5px;
+    float: right;
+    .fa-stack-1x {
+      -ms-transform: scale(0.9, 0.9);
+      -webkit-transform: scale(0.9, 0.9);
+      transform: scale(0.9, 0.9);
+    }
+  }
+}
+
+.discussions-no-filtered-results {
+  padding: 20px;
+  border: 1px solid $discussion-toolbar-border-color;
+  text-align: center;
+  div {
+    margin-bottom: 20px;
+    i {
+      font-size: 28px;
+    }
+  }
+  span {
+    font-size: 24px;
+  }
+}
+
+.discussion-status-icon {
+  padding-right: 10px;
+}
+
+.discussion-row {
+  display: table-cell;
+  vertical-align: middle;
+  .discussion-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .discussion-description {
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.discussion-body {
+  display: none;
+}
+
+.discussion-display-more {
+  display: table-cell;
+  width: 30px;
+  margin-right: 0;
+  a {
+    cursor: pointer;
+  }
+}
+
+.discussion-messages-icon {
+  margin-left: 30px;
+  margin-bottom: 5px;
+}
+
+.discussions-toolbar {
+  width: 100%;
+  padding: 10px 20px;
+  display: table;
+  margin-top: 20px;
+  background-color: $discussion-toolbar-color;
+  border: 1px solid $discussion-toolbar-border-color;
+  border-radius: 3px 3px 0 0;
+  border-bottom: none;
+  .discussions-toolbar-status {
+    float: left;
+    li {
+      text-decoration: none;
+      display: inline;
+      margin-right: 15px;
+      &:not(.selected) .status-icon, span {
+        color: $toolbar-filter-color;
+      }
+      &:hover span {
+        color: darken($toolbar-filter-color, 20%);
+      }
+      &.selected span {
+        color: darken($toolbar-filter-color, 40%);
+        font-weight: bold;
+      }
+    }
+  }
+  .discussions-toolbar-filter {
+    float: right;
+    margin-right: 20px;
+    cursor: pointer;
+    li.selected {
+      a {
+        font-weight: bold;
+        padding-left: 2px;
+        &::before {
+          content: '✓';
+        }
+      }
+    }
+  }
+}
+
+.message-divider {
+  border-top: 1px solid $message-divider-color;
+  margin-top: 20px
+}
+
+.discussion-user-menu {
+  a {
+    padding: 5px 10px;
+    font-size: 15px;
+    line-height: 20px;
+    border: 1px solid rgba(27, 31, 35, 0.2);
+    border-radius: 0.25em;
+    background-color: $discussion-button-color;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+    margin-left: 10px;
+    &:hover {
+      text-decoration: none;
+      background-color: darken($discussion-button-color, 5%);
+      color: black;
+    }
+  }
+}
+
+.discussion-create {
+  cursor: pointer;
+}
+
+.discussion-context {
+  margin-top: 40px;
+}
+
+.discussion-header {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  .discussion-title {
+    font-weight: bold;
+  }
+}
+
+.discussion-description {
+  margin-top: 0;
+  .status-label {
+    margin-right: 2px;
+    font-size: 18px;
+  }
+}
+
+.discussion-tabs {
+  margin-top: 20px;
+}
+
+.discussion-info {
+  font-size: 18px;
+}
+
+.discussion-initiator-name {
+  font-weight: bold;
+}
+
+.discussion-message-content {
+  padding: 15px;
+}
+
+.discussion-new-message-content {
+  resize: none;
+  border-radius: 0;
+  border-color: transparent;
+  &:focus {
+    border-color: white;
+  }
+}
+
+summary.discussion-summary {
+  display: list-item;
+  font-size: 29px;
+  outline: 0;
+  cursor: pointer;
+}
+
+.discussion-new-message-button {
+  border-radius: 0;
+  margin-top: 15px;
+}
+
+.discussion-message {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 0;
+  border: none;
+  margin-top: 30px;
+  .discussion-message-user-avatar {
+    margin-right: 20px;
+  }
+}
+
+.discussion-message-bubble-container {
+  width: 100%;
+}
+
+.discussion-message-bubble {
+  background-color: white;
+  border: 1px solid $discussion-message-border-color;
+  border-radius: 3px;
+  position: relative;
+  .discussion-message-bubble-header {
+    background-color: $mu-color-highlight-background;
+    height: 40px;
+    &:before {
+      position: absolute;
+      top: calc(20px - #{$discussion-message-arrow-size + 2px} / 2);
+      left: -$discussion-message-arrow-size - 2px;
+      border-width: (1px + $discussion-message-arrow-size / 2) (2px + $discussion-message-arrow-size) (1px + $discussion-message-arrow-size / 2) 0;
+      content: '';
+      border-style: solid;
+      border-color: transparent $discussion-message-border-color;
+    }
+    .discussion-message-bubble-title {
+      padding: 5px 15px;
+      display: block;
+      .message-date {
+        font-size: 15px;
+      }
+      .actions {
+        float: right;
+        i {
+          color: #aaaaaa
+        }
+      }
+    }
+  }
+}
+
+.discussion-actions {
+  display: inline-block;
+  float: right;
+  margin-top: 35px;
+  > form {
+    display: inline;
+  }
+}
+
+$statuses: (
+  closed: ($brand-danger white $brand-danger),
+  opened: (white #333333 #eaeaea),
+  solved: ($brand-success white $brand-success),
+  pending_review: ($brand-success white $brand-success)
+);
+
+@each $status, $style in $statuses {
+  $background-color: nth($style, 1);
+  $font-color: nth($style, 2);
+  $border-color: nth($style, 3);
+
+  .btn-discussion-#{$status} {
+    background-color: $background-color;
+    color: $font-color;
+    border-color: $border-color;
+    margin-left: 5px;
+    &:hover {
+      color: $font-color;
+      border-color: darken($border-color, 3%);
+      background-color: darken($background-color, 3%);
+    }
+  }
+}
+
+

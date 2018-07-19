@@ -1,0 +1,10 @@
+.pagination li {
+  a, span {
+    background-color: lighten($brand-primary, 10%);
+  }
+  &:hover, &.active, &.active:hover {
+    a, span {
+      background-color: $brand-primary;
+    }
+  }
+}

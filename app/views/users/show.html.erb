@@ -16,6 +16,11 @@
   <li role="presentation">
     <a data-target="#messages" aria-controls="messages" role="tab" data-toggle="tab"><%= t :messages %></a>
   </li>
+  <% if @watched_discussions.present? %>
+    <li role="presentation">
+      <a data-target="#discussions" aria-controls="discussions" role="tab" data-toggle="tab"><%= t :discussions %></a>
+    </li>
+  <% end %>
 </ul>
 
 <div class="tab-content">
@@ -26,15 +31,15 @@
             <%= image_tag @user.image_url, size: '250x250', class: 'img-circle' %>
           </div>
           <div class="col-md-8">
-            <fieldset class="form-group"> 
+            <fieldset class="form-group">
               <div><%= f.label(t :first_name) %></div>
               <div><%= f.text_field :first_name, class: 'form-control' %></div>
             </fieldset>
-            <fieldset class="form-group"> 
+            <fieldset class="form-group">
               <div><%= f.label(t :last_name) %></div>
               <div><%= f.text_field :last_name, class: 'form-control' %></div>
             </fieldset>
-            <fieldset class="form-group"> 
+            <fieldset class="form-group">
               <div><%= f.label(t :email) %></div>
               <div><%= f.text_field :email, readonly: true, class: 'form-control' %></div>
             </fieldset>
@@ -69,4 +74,19 @@
       </table>
     <% end %>
   </div>
+  <% if @watched_discussions.present? %>
+    <div role="tabpanel" class="tab-pane" id="discussions">
+      <table class="table table-striped">
+        <% @watched_discussions.each do |discussion| %>
+          <tr>
+            <td>
+              <%= icon_for_read(discussion.read_by?(@user)) %>
+            </td>
+            <td><%= link_to discussion.item.name, item_discussions_path(discussion) %></td>
+            <td><%= time_ago_in_words discussion.last_message_date %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
 </div>

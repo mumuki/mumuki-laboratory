@@ -1,0 +1,30 @@
+<% if contextualization.results_visible? %>
+  <div>
+    <% if contextualization.expectation_results_visible? %>
+      <div class="results-item">
+        <strong><%= t :unmeet_expectations %>:</strong>
+        <ul class="results-list">
+          <% contextualization.visible_expectation_results.each do |it| %>
+            <li><%= status_icon(it[:result]) %> <%= t_expectation it %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <% if render_feedback?(contextualization) %>
+      <div class="results-item">
+        <strong><%= t :feedback %>:</strong>
+        <div>
+          <%= contextualization.feedback_html %>
+        </div>
+        <a data-toggle="collapse" href="#results-section" class="text-danger">
+          <%= fa_icon 'question-circle' %> <%= t :details %>
+        </a>
+      </div>
+    <% end %>
+    <div id="results-section" class="<%= 'collapse' if render_feedback?(contextualization) %> results-item">
+      <%= render_test_results contextualization %>
+    </div>
+  </div>
+<% else %>
+  <div></div>
+<% end %>

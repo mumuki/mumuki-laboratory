@@ -1,0 +1,23 @@
+<%= content_for :breadcrumbs do %>
+  <%= home_breadcrumb %>
+<% end %>
+
+<%= content_for :extra_filters do %>
+  <%= discussion_dropdown_filter :language, discussions_languages(@discussions) do |language_filter| %>
+    <%= language_filter.capitalize %>
+  <% end %>
+<% end %>
+
+<div class="row">
+  <div class="mu-inline-block-left">
+    <h1><%= @debatable.name %></h1>
+  </div>
+</div>
+
+<div>
+  <% if @discussions.empty? %>
+    <h4><%= t :no_questions %></h4>
+  <% else %>
+      <%= render partial: 'layouts/discussions' %>
+  <% end %>
+</div>

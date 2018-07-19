@@ -2,6 +2,7 @@ class User < ApplicationRecord
   include WithProfile,
           WithUserNavigation,
           WithReminders,
+          WithDiscussionCreation,
           Mumukit::Platform::User::Helpers
 
   serialize :permissions, Mumukit::Auth::Permissions
@@ -13,7 +14,7 @@ class User < ApplicationRecord
   has_many :submitted_exercises, through: :assignments, class_name: 'Exercise', source: :exercise
 
   has_many :solved_exercises,
-           -> { where('assignments.status' => Mumuki::Laboratory::Status::Passed.to_i) },
+           -> { where('assignments.submission_status' => Mumuki::Laboratory::Status::Submission::Passed.to_i) },
            through: :assignments,
            class_name: 'Exercise',
            source: :exercise
@@ -50,7 +51,7 @@ class User < ApplicationRecord
   end
 
   def passed_assignments
-    assignments.where(status: Mumuki::Laboratory::Status::Passed.to_i)
+    assignments.where(status: Mumuki::Laboratory::Status::Submission::Passed.to_i)
   end
 
   def unread_messages

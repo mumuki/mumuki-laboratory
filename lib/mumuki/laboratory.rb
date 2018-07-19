@@ -14,6 +14,8 @@ require 'mumukit/randomizer'
 require 'mumukit/inspection'
 require 'mumukit/bridge'
 require 'mumukit/content_type'
+require 'kaminari'
+require 'bootstrap-kaminari-views'
 
 require_relative './laboratory/mumukit/auth'
 require_relative './laboratory/mumukit/directives'

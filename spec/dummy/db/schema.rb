@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180611190239) do
+ActiveRecord::Schema.define(version: 20180704150839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20180611190239) do
   create_table "assignments", id: :serial, force: :cascade do |t|
     t.text "solution"
     t.integer "exercise_id"
-    t.integer "status", default: 0
+    t.integer "submission_status", default: 0
     t.text "result"
     t.integer "submitter_id"
     t.text "expectation_results"
@@ -84,6 +84,30 @@ ActiveRecord::Schema.define(version: 20180611190239) do
     t.integer "organization_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "discussions", force: :cascade do |t|
+    t.integer "status", default: 0
+    t.string "title"
+    t.text "description"
+    t.bigint "initiator_id"
+    t.string "item_type"
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "solution"
+    t.integer "submission_status", default: 0
+    t.text "result"
+    t.text "expectation_results"
+    t.text "feedback"
+    t.text "test_results"
+    t.string "submission_id"
+    t.string "queries", default: [], array: true
+    t.text "query_results"
+    t.text "manual_evaluation_comment"
+    t.integer "upvotes_count"
+    t.index ["initiator_id"], name: "index_discussions_on_initiator_id"
+    t.index ["item_type", "item_id"], name: "index_discussions_on_item_type_and_item_id"
   end
 
   create_table "exam_authorizations", force: :cascade do |t|
@@ -210,6 +234,7 @@ ActiveRecord::Schema.define(version: 20180611190239) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean "read", default: false
+    t.integer "discussion_id"
   end
 
   create_table "organizations", id: :serial, force: :cascade do |t|
@@ -232,6 +257,14 @@ ActiveRecord::Schema.define(version: 20180611190239) do
     t.index ["language_id"], name: "index_paths_on_language_id"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "discussion_id"
+    t.boolean "read", default: true
+    t.index ["discussion_id"], name: "index_subscriptions_on_discussion_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
   create_table "topics", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "locale"
@@ -241,6 +274,13 @@ ActiveRecord::Schema.define(version: 20180611190239) do
     t.text "appendix"
     t.string "slug"
     t.index ["slug"], name: "index_topics_on_slug", unique: true
+  end
+
+  create_table "upvotes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "discussion_id"
+    t.index ["discussion_id"], name: "index_upvotes_on_discussion_id"
+    t.index ["user_id"], name: "index_upvotes_on_user_id"
   end
 
   create_table "usages", id: :serial, force: :cascade do |t|

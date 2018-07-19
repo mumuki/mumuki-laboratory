@@ -5,8 +5,21 @@ Rails.application.routes.draw do
   Mumukit::Platform.map_organization_routes!(self) do
     root to: 'book#show'
 
+    concern :debatable do |options|
+      resources :discussions, options.merge(only: [:index, :show, :create, :update, :destroy]) do
+        post :subscription, on: :member
+        post :upvote, on: :member
+      end
+    end
+
+    concerns :debatable, controller: 'book_discussions', only: :index
+
+    resources :discussions, only: [] do
+      resources :messages, only: [:create, :destroy], controller: 'discussions_messages'
+    end
+
     resources :book, only: [:show]
-    resources :chapters, only: [:show] do
+    resources :chapters, only: [:show], concerns: :debatable, debatable_class: 'Chapter' do
       resource :appendix, only: :show
     end
 
@@ -19,12 +32,14 @@ Rails.application.routes.draw do
       resources :tries, controller: 'exercise_tries', only: :create
     end
 
+    resources :exercises, only: :show, concerns: :debatable, debatable_class: 'Exercise'
+
     # All users
     resources :guides, only: :show do
       resource :progress, controller: 'guide_progress', only: :destroy
     end
 
-    resources :lessons, only: :show
+    resources :lessons, only: :show, concerns: :debatable, debatable_class: 'Lesson'
     resources :complements, only: :show
     resources :exams, only: :show
 

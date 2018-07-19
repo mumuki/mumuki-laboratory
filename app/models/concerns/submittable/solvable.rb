@@ -1,6 +1,7 @@
 module Solvable
   def submit_solution!(user, attributes={})
     assignment, _ = find_assignment_and_submit! user, attributes[:content].to_mumuki_solution(language)
+    try_solve_discussions(user) if assignment.passed?
     assignment
   end
 
