@@ -66,6 +66,6 @@ module Contextualization
   end
 
   def visible_expectation_results
-    StatusRenderingVerbosity.visible_expectation_results(submission_status, expectation_results || [])
+    (expectation_results || []).select { |it| it[:result].failed? }
   end
 end

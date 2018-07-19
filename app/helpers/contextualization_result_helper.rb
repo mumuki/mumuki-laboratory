@@ -4,7 +4,7 @@ module ContextualizationResultHelper
   end
 
   def render_feedback?(contextualization)
-    StatusRenderingVerbosity.render_feedback?(contextualization.feedback)
+    contextualization.feedback.present?
   end
 
   def t_contextualization_status(contextualization)
