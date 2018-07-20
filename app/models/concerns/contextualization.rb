@@ -61,11 +61,15 @@ module Contextualization
     output_content_type.to_html(feedback)
   end
 
+  def failed_expectation_results
+    (expectation_results || []).select { |it| it[:result].failed? }
+  end
+
   def expectation_results_visible?
-    visible_expectation_results.present?
+    failed_expectation_results.present?
   end
 
   def visible_expectation_results
-    (expectation_results || []).select { |it| it[:result].failed? }
+    exercise.input_kids? ? failed_expectation_results.first(1) : failed_expectation_results
   end
 end

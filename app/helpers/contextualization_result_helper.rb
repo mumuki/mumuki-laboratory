@@ -3,6 +3,10 @@ module ContextualizationResultHelper
     raw Mumukit::Inspection::Expectation.parse(expectation).translate
   end
 
+  def humanized_expectation_result_item(expectation)
+    %Q{<li>#{status_icon(expectation[:result])} #{t_expectation expectation}</li>}.html_safe
+  end
+
   def render_feedback?(contextualization)
     contextualization.feedback.present?
   end

@@ -1,15 +1,6 @@
 <% if contextualization.results_visible? %>
   <div>
-    <% if contextualization.expectation_results_visible? %>
-      <div class="results-item">
-        <strong><%= t :unmeet_expectations %>:</strong>
-        <ul class="results-list">
-          <% contextualization.visible_expectation_results.each do |it| %>
-            <li><%= status_icon(it[:result]) %> <%= t_expectation it %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+    <%= render partial: 'exercise_solutions/expectations', locals: {assignment: contextualization} %>
     <% if render_feedback?(contextualization) %>
       <div class="results-item">
         <strong><%= t :feedback %>:</strong>
