@@ -161,7 +161,8 @@ $toolbar-filter-color: #808080;
 
 .message-divider {
   border-top: 1px solid $message-divider-color;
-  margin-top: 20px
+  margin-top: 20px;
+  width: 100%;
 }
 
 .discussion-user-menu {
@@ -241,6 +242,9 @@ summary.discussion-summary {
   font-size: 29px;
   outline: 0;
   cursor: pointer;
+  .discussion-exercise-title {
+    display: inline;
+  }
 }
 
 .discussion-new-message-button {

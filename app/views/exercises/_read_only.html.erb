@@ -9,8 +9,13 @@
 
 <details open>
   <summary class="discussion-summary">
-    <span class="hidden-xs"><%= t(:exercise_number, number: exercise.number) %>:&nbsp;</span>
-    <span><%= @debatable.name %></span>
+    <div class="mu-inline-block-right hidden-xs">
+      <h1><%= language_icon @debatable.language %></h1>
+    </div>
+    <h3 class="discussion-exercise-title">
+      <span class="hidden-xs"><%= t(:exercise_number, number: exercise.number) %>:&nbsp;</span>
+      <span><%= @debatable.name %></span>
+    </h3>
   </summary>
 
   <% if should_render_read_only_exercise_tabs?(@discussion) %>
