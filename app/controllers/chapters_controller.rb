@@ -1,6 +1,6 @@
 require 'addressable/uri'
 
-class ChaptersController < ApplicationController
+class ChaptersController < ContentController
   def show
   end
 

@@ -1,4 +1,4 @@
-class GuideContainerController < ApplicationController
+class GuideContainerController < ContentController
 
   before_action :set_guide
 
