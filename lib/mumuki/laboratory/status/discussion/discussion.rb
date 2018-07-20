@@ -38,8 +38,8 @@ module Mumuki::Laboratory::Status::Discussion
     []
   end
 
-  def should_be_shown?(count)
-    count > 0
+  def should_be_shown?(count, user)
+    count > 0 || user&.moderator?
   end
 
   def reachable_statuses_for(user, discussion)

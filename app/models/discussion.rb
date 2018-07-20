@@ -39,7 +39,7 @@ class Discussion < ApplicationRecord
   end
 
   def used_in?(organization)
-    item.used_in?(organization).present?
+    item.used_in?(organization)
   end
 
   def commentable_by?(user)

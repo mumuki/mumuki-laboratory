@@ -109,7 +109,7 @@ module DiscussionsHelper
 
   def discussion_status_filter_link(status, discussions)
     discussions_count = discussion_count_for_status(status, discussions)
-    if status.should_be_shown?(discussions_count)
+    if status.should_be_shown?(discussions_count, current_user)
       discussion_filter_item(:status, status) do
         discussion_status_filter(status, discussions_count)
       end
