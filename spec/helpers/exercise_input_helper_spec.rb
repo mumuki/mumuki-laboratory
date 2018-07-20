@@ -24,6 +24,31 @@ describe ApplicationHelper, organization_workspace: :test do
     end
   end
 
+  describe 'should_render_need_help_dropdown?' do
+    let(:assignment) { create(:assignment) }
+
+    context 'when the orga has a community link' do
+      let(:organization) { create(:organization, name: 'myorg', community_link: 'com_link') }
+      it { expect(should_render_need_help_dropdown? assignment, organization).to be true }
+    end
+    context 'when report issue enabled' do
+      let(:organization) { create(:organization, name: 'myorg', report_issue_enabled: true) }
+      it { expect(should_render_need_help_dropdown? assignment, organization).to be true }
+    end
+    context 'when forum enabled' do
+      let(:organization) { create(:organization, name: 'myorg', forum_enabled: true) }
+      it { expect(should_render_need_help_dropdown? assignment, organization).to be true }
+    end
+    context 'when ask for help is not enabled' do
+      it { expect(should_render_need_help_dropdown? assignment).to be false }
+    end
+    context 'when assignment passed' do
+      let(:organization) { create(:organization, name: 'myorg', forum_enabled: true) }
+      let(:assignment) { create(:assignment, status: :passed) }
+      it { expect(should_render_need_help_dropdown? assignment, organization).to be false }
+    end
+  end
+
   describe 'should_render_problem_tabs?' do
     let(:student) { create(:user) }
 
