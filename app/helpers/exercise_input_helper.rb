@@ -43,6 +43,10 @@ module ExerciseInputHelper
     exercise.is_a?(Problem) && !exercise.hidden? && organization.raise_hand_enabled?
   end
 
+  def should_render_need_help_dropdown?(assignment, organization = Organization.current)
+    !assignment.passed? && organization.ask_for_help_enabled?
+  end
+
   def render_submit_button(exercise)
     options = submit_button_options(exercise)
     text = t(options.t) if options.t.present?

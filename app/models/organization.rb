@@ -92,6 +92,10 @@ class Organization < ApplicationRecord
     central? ? 'mumuki' : name
   end
 
+  def ask_for_help_enabled?
+    report_issue_enabled? || community_link.present? || forum_enabled?
+  end
+
   private
 
   def ensure_consistent_public_login
