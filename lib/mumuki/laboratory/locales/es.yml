@@ -48,6 +48,7 @@ es:
   date: Fecha
   day: Día
   days: Días
+  description: Descripción
   destroy: Eliminar
   destroy_message: eliminar el mensaje
   details: Detalles
