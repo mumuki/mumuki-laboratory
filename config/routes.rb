@@ -19,7 +19,8 @@ Rails.application.routes.draw do
     end
 
     resources :book, only: [:show]
-    resources :chapters, only: [:show], concerns: :debatable, debatable_class: 'Chapter' do
+    resources :chapters, only: [:show] do
+      concerns :debatable, debatable_class: 'Chapter'
       resource :appendix, only: :show
     end
 
@@ -32,14 +33,18 @@ Rails.application.routes.draw do
       resources :tries, controller: 'exercise_tries', only: :create
     end
 
-    resources :exercises, only: :show, concerns: :debatable, debatable_class: 'Exercise'
+    resources :exercises, only: :show do
+      concerns :debatable, debatable_class: 'Exercise'
+    end
 
     # All users
     resources :guides, only: :show do
       resource :progress, controller: 'guide_progress', only: :destroy
     end
 
-    resources :lessons, only: :show, concerns: :debatable, debatable_class: 'Lesson'
+    resources :lessons, only: :show do
+      concerns :debatable, debatable_class: 'Lesson'
+    end
     resources :complements, only: :show
     resources :exams, only: :show
 
