@@ -64,7 +64,7 @@ describe Assignment, organization_workspace: :test do
     context 'should show expectation with failed submissions' do
       let(:failed_submission) { create(:assignment, status: :failed, expectation_results: [{:binding => "foo", :inspection => "HasBinding", :result => :failed}]) }
       it { expect(failed_submission.expectation_results_visible?).to be true }
-      it { expect(failed_submission.visible_expectation_results.size).to eq 1 }
+      it { expect(failed_submission.failed_expectation_results.size).to eq 1 }
     end
     context 'should show expectation with errored submissions' do
       let(:errored_submission) { create(:assignment, status: :errored, expectation_results: [{:binding => "foo", :inspection => "HasBinding", :result => :failed}]) }
@@ -77,12 +77,12 @@ describe Assignment, organization_workspace: :test do
 
     context 'should show all failed expectation results for regular problems' do
       let(:problem) { create(:problem) }
-      it { expect(failed_submission.showable_expectation_results.size).to eq 2 }
+      it { expect(failed_submission.visible_expectation_results.size).to eq 2 }
     end
 
     context 'should show only the first failed expectation result for kids problems' do
       let(:problem) { create(:problem, layout: 'input_kids') }
-      it { expect(failed_submission.showable_expectation_results.size).to eq 1 }
+      it { expect(failed_submission.visible_expectation_results.size).to eq 1 }
     end
   end
   describe '#run_update!' do
