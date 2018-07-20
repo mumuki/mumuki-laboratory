@@ -1,4 +1,5 @@
-class GuideContainerController < ContentController
+class GuideContainerController < ApplicationController
+  include Mumuki::Laboratory::Controllers::Content
 
   before_action :set_guide
 

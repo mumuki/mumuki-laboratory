@@ -1,4 +1,6 @@
 class DiscussionsController < AjaxController
+  include Mumuki::Laboratory::Controllers::Content
+
   before_action :set_debatable, except: [:subscription]
   before_action :authenticate!, only: [:update, :create]
   before_action :discussion_filter_params, only: :index

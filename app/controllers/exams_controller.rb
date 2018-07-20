@@ -1,4 +1,4 @@
-class ExamsController < ContentController
+class ExamsController < GuideContainerController
   before_action :validate_accessible!, only: :show
 
   private
