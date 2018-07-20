@@ -1,5 +1,3 @@
-<% expectation_results = assignment.visible_expectation_results%>
-
 <% if assignment.expectation_results_visible? %>
   <div class="results-item">
     <% unless assignment.exercise.input_kids?%>
@@ -7,7 +5,7 @@
     <% end %>
 
     <ul class="results-list">
-      <% expectation_results.each do |it| %>
+      <% assignment.visible_expectation_results.each do |it| %>
         <%= humanized_expectation_result_item it %>
       <% end %>
     </ul>
