@@ -47,6 +47,7 @@ pt:
   date: Data
   day: Dia
   days: Dias
+  description: Descrição
   destroy: Excluir
   destroy_message: excluir a mensagem
   details: Detalhes

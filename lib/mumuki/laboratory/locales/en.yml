@@ -44,6 +44,7 @@ en:
   create_submission: Submit
   created_at: Created at
   date: Date
+  description: Description
   destroy: Destroy
   destroy_message: delete the message
   discussion_updated: Discussion updated
