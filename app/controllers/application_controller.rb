@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
   before_action :redirect_to_main_organization!, if: :should_redirect_to_main_organization?
   before_action :authorize_if_private!
   before_action :validate_user_profile!, if: :current_user?
-  before_action :validate_used_here!
   before_action :visit_organization!, if: :current_user?
 
   helper_method :login_button,
@@ -37,11 +36,6 @@ class ApplicationController < ActionController::Base
     current_user? &&
       current_user.has_accessible_organizations? &&
       Mumukit::Platform.implicit_organization?(request)
-  end
-
-  # ensures contents are in current organization's path
-  def validate_used_here!
-    raise Mumuki::Laboratory::NotFoundError if subject && !subject.used_in?(Organization.current)
   end
 
   # ensures contents are accessible to current user

@@ -1,4 +1,5 @@
 class ExercisesController < ApplicationController
+  include Mumuki::Laboratory::Controllers::Content
   include Mumuki::Laboratory::Controllers::ExerciseSeed
 
   before_action :set_guide!, only: :show

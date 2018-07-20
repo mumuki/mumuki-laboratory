@@ -1,6 +1,8 @@
 require 'addressable/uri'
 
 class ChaptersController < ApplicationController
+  include Mumuki::Laboratory::Controllers::Content
+
   def show
   end
 
