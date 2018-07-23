@@ -72,4 +72,17 @@ module Contextualization
   def visible_expectation_results
     exercise.input_kids? ? failed_expectation_results.first(1) : failed_expectation_results
   end
+
+  def humanized_expectation_results
+    visible_expectation_results.map do |it|
+      {
+        result: it[:result],
+        explanation: Mumukit::Inspection::Expectation.parse(it).translate(keywords)
+      }
+    end
+  end
+
+  def keywords
+    nil
+  end
 end
