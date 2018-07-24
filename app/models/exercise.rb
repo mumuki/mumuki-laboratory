@@ -138,6 +138,10 @@ class Exercise < ApplicationRecord
     false
   end
 
+  def inspection_keywords
+    {}
+  end
+
   private
 
   def evaluation_class

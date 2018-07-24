@@ -5,7 +5,7 @@
     <% end %>
 
     <ul class="results-list">
-      <% assignment.visible_expectation_results.each do |it| %>
+      <% assignment.humanized_expectation_results.each do |it| %>
         <%= humanized_expectation_result_item it %>
       <% end %>
     </ul>

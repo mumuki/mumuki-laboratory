@@ -29,6 +29,7 @@ module Contextualization
     delegate :visible_success_output?, to: :exercise
     delegate :output_content_type, to: :language
     delegate :should_retry?, :to_submission_status, :passed?, :aborted?, to: :submission_status
+    delegate :inspection_keywords, to: :exercise
   end
 
   def queries_with_results
@@ -71,5 +72,14 @@ module Contextualization
 
   def visible_expectation_results
     exercise.input_kids? ? failed_expectation_results.first(1) : failed_expectation_results
+  end
+
+  def humanized_expectation_results
+    visible_expectation_results.map do |it|
+      {
+        result: it[:result],
+        explanation: Mumukit::Inspection::Expectation.parse(it).translate(inspection_keywords)
+      }
+    end
   end
 end
