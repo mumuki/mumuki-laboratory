@@ -4,6 +4,6 @@ class LoginController < ApplicationController
   private
 
   def login_failure!
-    @error_msg = request.params['message']
+    redirect_to root_path, alert: request.params['message']
   end
 end
