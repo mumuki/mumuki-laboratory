@@ -27,7 +27,7 @@ module WithScopedQueries::Sort
 
   def self.sort_method_for(klass, scope, field, direction)
     if klass.column_names.include? field
-      scope.public_send(:order, "#{klass.table_name}.#{field} #{direction}")
+      scope.public_send(:reorder, "#{klass.table_name}.#{field} #{direction}")
     else
       scope.public_send("order_by_#{field}", direction)
     end

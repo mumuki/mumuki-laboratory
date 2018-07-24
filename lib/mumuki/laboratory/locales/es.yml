@@ -231,8 +231,8 @@ es:
   upload_solution: "Subir solución"
   uploading_solution: "Subiendo solución"
   upvote: Es útil
-  upvotes_count_asc: Más útiles
-  upvotes_count_desc: Menos útiles
+  upvotes_count_desc: Más útiles
+  upvotes_count_asc: Menos útiles
   user_data_updated: Tus datos se actualizaron correctamente
   user: Usuario
   username: Nombre de usuario
