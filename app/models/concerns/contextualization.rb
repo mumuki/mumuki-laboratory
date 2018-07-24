@@ -29,6 +29,7 @@ module Contextualization
     delegate :visible_success_output?, to: :exercise
     delegate :output_content_type, to: :language
     delegate :should_retry?, :to_submission_status, :passed?, :aborted?, to: :submission_status
+    delegate :inspection_keywords, to: :exercise
   end
 
   def queries_with_results
@@ -77,12 +78,8 @@ module Contextualization
     visible_expectation_results.map do |it|
       {
         result: it[:result],
-        explanation: Mumukit::Inspection::Expectation.parse(it).translate(keywords)
+        explanation: Mumukit::Inspection::Expectation.parse(it).translate(inspection_keywords)
       }
     end
-  end
-
-  def keywords
-    nil
   end
 end
