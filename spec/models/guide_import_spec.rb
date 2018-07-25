@@ -115,7 +115,7 @@ describe Guide do
       end
 
       describe 'it is removed from the guide' do
-        it { expect(guide.exercises.count).to eq 6 }
+        it { expect(guide.exercises.count).to eq 5 }
         it { expect(guide.exercises).not_to include exercise_6 }
       end
 
