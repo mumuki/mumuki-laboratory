@@ -1,8 +1,7 @@
 require 'mumuki/laboratory/seed'
 
 Mumuki::Laboratory::Seed.import_languages!
-
-Mumuki::Laboratory::Seed.import_contents!
+Mumuki::Laboratory::Seed.import_main_contents!
 
 Organization.find_or_create_by!(name: 'base') do |org|
   org.contact_email = 'issues@mumuki.org'
