@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20180704150839) do
     t.string "queries", default: [], array: true
     t.text "query_results"
     t.text "manual_evaluation_comment"
-    t.integer "upvotes_count"
+    t.integer "upvotes_count", default: 0
     t.index ["initiator_id"], name: "index_discussions_on_initiator_id"
     t.index ["item_type", "item_id"], name: "index_discussions_on_item_type_and_item_id"
   end
