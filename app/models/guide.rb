@@ -72,7 +72,9 @@ class Guide < Content
       exercise.import_from_json! (i+1), e
     end
 
-    self.exercises.where('number > ?', json['exercises'].size).destroy_all
+    new_ids = json['exercises'].map { |it| it['id'] }
+    self.exercises.where.not(bibliotheca_id: new_ids).destroy_all
+
     reload
   end
 
