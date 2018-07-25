@@ -126,4 +126,8 @@ class Exam < ApplicationRecord
       exams.destroy_all
     end
   end
+
+  def attempts_status_for(assignment)
+    Capped.new assignment.attempts_left_in(self)
+  end
 end

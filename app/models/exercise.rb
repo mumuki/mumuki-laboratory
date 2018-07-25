@@ -146,6 +146,14 @@ class Exercise < ApplicationRecord
     self[:default_content] || ''
   end
 
+  def max_attempts_in(exam)
+    choice? ? exam.max_choice_submissions : exam.max_problem_submissions
+  end
+
+  def attempts_status_for(user)
+    navigable_parent.attempts_status_for find_or_init_assignment_for(user)
+  end
+
   private
 
   def evaluation_class

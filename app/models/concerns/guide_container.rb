@@ -31,4 +31,8 @@ module GuideContainer
 
   def start!(user)
   end
+
+  def attempts_status_for(assignment)
+    Capless
+  end
 end

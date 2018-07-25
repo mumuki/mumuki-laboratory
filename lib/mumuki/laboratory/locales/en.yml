@@ -143,6 +143,7 @@ en:
   office: Office
   opened: Open
   opened_count: '%{count} opened'
+  out_of_attempts: You've run out of attempts. You should proceed to the next exercise!
   output: Output
   overview: Overview
   passed: Everything is in order! Your solution passed all our tests!

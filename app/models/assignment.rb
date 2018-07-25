@@ -148,7 +148,11 @@ class Assignment < ApplicationRecord
   end
 
   def increment_attemps!
-    self.attemps_count += 1 unless passed?
+    self.attemps_count += 1 if failed? || errored?
+  end
+
+  def attempts_left_in(exam)
+    attemps_count - exercise.max_attempts_in(exam)
   end
 
   def current_content

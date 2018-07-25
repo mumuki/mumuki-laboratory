@@ -41,6 +41,16 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
                      locals: {assignment: assignment}
   end
 
+  def render_out_of_attempts
+    render json: {
+      html: render_out_of_attemts_html
+    }
+  end
+
+  def render_out_of_attemts_html
+    render_to_string partial: 'exercise_solutions/out_of_attempts'
+  end
+
   def guide_finished_by_solution?
     !@guide_previously_done && @exercise.guide_done_for?(current_user)
   end

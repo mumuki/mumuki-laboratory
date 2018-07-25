@@ -161,6 +161,7 @@ es:
     one: '1 abierta'
     other: '%{count} abiertas'
   organizations: Organizaciones
+  out_of_attempts: Te quedaste sin intentos. ¡Seguí al proximo ejercicio!
   output: Salida
   overview: Vista general
   passed: ¡Muy bien! Tu solución pasó todas las pruebas
