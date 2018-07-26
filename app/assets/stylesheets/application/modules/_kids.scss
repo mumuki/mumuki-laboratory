@@ -105,6 +105,31 @@ $kids-speech-tabs-width: 40px;
     }
     .mu-kids-character-speech-bubble {
 
+      @media screen and (max-width: $screen-sm-max) {
+        h4 {
+          &.text-warning {
+            font-size: 18px;
+            margin-top: 8px;
+          }
+        }
+        ul.results-list li {
+          font-size: 13px
+        }
+      }
+
+      @media screen and (max-width: $screen-xs-max) {
+        h4 {
+          font-size: 20px;
+          &.text-warning {
+            font-size: 14px;
+            margin-top: 5px;
+          }
+        }
+        ul.results-list li {
+          font-size: 12px
+        }
+      }
+
       &.passed_with_warnings {
         padding-top: 5px;
         padding-bottom: 5px;
