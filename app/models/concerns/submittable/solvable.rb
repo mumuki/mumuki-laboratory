@@ -5,10 +5,10 @@ module Solvable
     assignment
   end
 
-  def run_tests!(params, custom_test = nil)
+  def run_tests!(params, test)
     language.run_tests!(
       params.merge(
-        test: custom_test || test,
+        test: test,
         locale: locale,
         expectations: expectations))
   end
