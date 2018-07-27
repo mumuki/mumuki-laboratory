@@ -4,7 +4,7 @@ class Assignment < ApplicationRecord
 
   belongs_to :exercise
   has_one :guide, through: :exercise
-  has_many :messages, -> { order(date: :desc) }, foreign_key: :submission_id, primary_key: :submission_id
+  has_many :messages, -> { where.not(submission_id: nil).order(date: :desc) }, foreign_key: :submission_id, primary_key: :submission_id
 
   belongs_to :submitter, class_name: 'User'
 
@@ -28,7 +28,7 @@ class Assignment < ApplicationRecord
 
   def persist_submission!(submission)
     transaction do
-      messages.destroy_all
+      messages.destroy_all if submission_id.present?
       update! submission_id: submission.id
       update_submissions_count!
       update_last_submission!

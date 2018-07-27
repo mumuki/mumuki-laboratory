@@ -150,4 +150,17 @@ describe Discussion, organization_workspace: :test do
       it { expect(other_exercise.discussions.for_user(initiator)).to be_empty }
     end
   end
+
+  describe 'messages not being deleted' do
+    let(:user) { create(:user) }
+    let(:other_user) { create(:user) }
+    let(:problem) { create(:problem) }
+    let(:assignment) { problem.submit_solution! user }
+    let(:discussion) { problem.discuss!(user, {title: 'A discussion'})}
+
+    before { discussion.submit_message!({content: 'You should do this'}, user) }
+    before { problem.submit_solution! other_user }
+
+    it { expect(discussion.messages.count).to eq 1 }
+  end
 end
