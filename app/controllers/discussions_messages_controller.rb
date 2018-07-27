@@ -8,7 +8,7 @@ class DiscussionsMessagesController < AjaxController
 
   def destroy
     message = Message.find(params[:id])
-    message.authorize!
+    message.authorize! current_user
     message.destroy!
     redirect_back(fallback_location: root_path)
   end

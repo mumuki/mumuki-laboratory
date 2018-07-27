@@ -5,6 +5,7 @@ $discussion-toolbar-color: #f6f6fa;
 $message-divider-color: #ecf0f1;
 $discussion-button-color: #fafafa;
 $toolbar-filter-color: #808080;
+$moderator-star-color: #dd9900;
 
 .discussions-list {
   margin: 30px 0;
@@ -174,6 +175,10 @@ $toolbar-filter-color: #808080;
   border-top: 1px solid $message-divider-color;
   margin-top: 20px;
   width: 100%;
+}
+
+.moderator-star {
+  color: $moderator-star-color;
 }
 
 .discussion-user-menu {
