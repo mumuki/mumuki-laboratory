@@ -26,7 +26,8 @@ module OrganizationsControllerTemplate
       .permit(:book,
               :contact_email, :name, :locale, :description,
               :logo_url, :banner_url, :open_graph_image_url, :favicon_url, :breadcrumb_image_url,
-              :raise_hand_enabled, :feedback_suggestions_enabled, :public, :immersive,
+              :raise_hand_enabled, :report_issue_enabled, :forum_enabled,
+              :feedback_suggestions_enabled, :public, :immersive,
               :theme_stylesheet, :extension_javascript,
               :terms_of_service, :community_link, login_methods: [])
       .tap { |it| it.merge!(book: Book.find_by!(slug: it[:book])) if it[:book] }
