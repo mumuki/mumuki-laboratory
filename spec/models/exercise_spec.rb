@@ -274,6 +274,14 @@ describe Exercise, organization_workspace: :test do
           end
         end
       end
+      context 'when interpolation is in test' do
+        context 'using user_first_name'  do
+          let(:exercise) { create(:exercise, test: "<div>Hola #{interpolation}</div>") }
+          let(:interpolation) { '/*...user_first_name...*/' }
+
+          it { expect(exercise.test_for(user)).to eq "<div>Hola Orlo</div>" }
+        end
+      end
       context 'when interpolation is in extra' do
         describe 'right previous content' do
           let(:exercise) { create(:exercise, extra: interpolation) }
