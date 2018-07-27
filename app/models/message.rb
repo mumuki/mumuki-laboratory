@@ -28,8 +28,8 @@ class Message < ApplicationRecord
     from_user?(user) || user&.moderator?
   end
 
-  def authorize!
-    raise Mumukit::Auth::UnauthorizedAccessError unless authorized?(current_user)
+  def authorize!(user)
+    raise Mumukit::Auth::UnauthorizedAccessError unless authorized?(user)
   end
 
   def as_platform_json
