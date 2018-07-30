@@ -15,6 +15,10 @@ module ApplicationHelper
     end
   end
 
+  def profile_picture
+    image_tag(@current_user.image_url, height: 40, class: 'img-circle', onError: "this.onerror = null; this.src = '#{image_url('user_shape.png')}'")
+  end
+
   def paginate(object, options={})
     "<div class=\"text-center\">#{super(object, {theme: 'twitter-bootstrap-3'}.merge(options))}</div>".html_safe
   end
