@@ -100,7 +100,7 @@ class Assignment < ApplicationRecord
   end
 
   def run_tests!(params)
-    exercise.run_tests! params.merge(extra: extra), test
+    exercise.run_tests! params.merge(extra: extra, test: test)
   end
 
   def as_platform_json
