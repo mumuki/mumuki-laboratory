@@ -242,7 +242,12 @@ $moderator-star-color: #dd9900;
 
 .discussion-message-content {
   padding: 15px;
+  p {
+    margin: 0px;
+    white-space: pre-wrap;
+  }
 }
+
 
 .discussion-new-message-content {
   resize: none;
