@@ -1,18 +1,19 @@
 module ProgressHelper
   def lesson_practice_key_for(stats)
-    if stats.try(:started?)
-      :continue_lesson
-    else
-      :start_lesson
-    end
+    key_or_default stats, :started?, :continue_lesson, :start_lesson
   end
 
-  #FIXME refactorme: similar methods
   def book_practice_key_for(student)
-    if student.try(:last_exercise)
-      :continue_practicing
+    key_or_default student, :last_exercise, :continue_practicing, :start_practicing
+  end
+
+  private
+
+  def key_or_default(object, property, key, default_key)
+    if object.try(property)
+      key
     else
-      :start_practicing
+      default_key
     end
   end
 end
