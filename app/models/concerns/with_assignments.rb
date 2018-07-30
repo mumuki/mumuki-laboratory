@@ -30,6 +30,10 @@ module WithAssignments
     interpolate_for user, extra
   end
 
+  def test_for(user)
+    interpolate_for user, test
+  end
+
   def replace_content_reference(user, interpolee)
     case interpolee
       when /previousContent|previousSolution/

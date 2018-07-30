@@ -60,6 +60,10 @@ class Assignment < ApplicationRecord
     end
   end
 
+  def test
+    exercise.test_for submitter
+  end
+
   def extra
     exercise.extra_for submitter
   end
@@ -90,9 +94,13 @@ class Assignment < ApplicationRecord
     update! result: message, submission_status: :errored
   end
 
-  %w(query try tests).each do |key|
+  %w(query try).each do |key|
     name = "run_#{key}!"
     define_method(name) { |params| exercise.send name, params.merge(extra: extra) }
+  end
+
+  def run_tests!(params)
+    exercise.run_tests! params.merge(extra: extra, test: test)
   end
 
   def as_platform_json

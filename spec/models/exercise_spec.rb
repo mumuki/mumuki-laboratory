@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Exercise, organization_workspace: :test do
   let(:exercise) { create(:exercise) }
-  let(:user) { create(:user) }
+  let(:user) { create(:user, first_name: 'Orlo') }
 
   describe '#slug' do
     let(:guide) { create(:guide, slug: 'foo/bar') }
@@ -272,6 +272,14 @@ describe Exercise, organization_workspace: :test do
               it { expect(exercise.current_content_for(user)).to eq 'foobar' }
             end
           end
+        end
+      end
+      context 'when interpolation is in test' do
+        context 'using user_first_name'  do
+          let(:exercise) { create(:exercise, test: "<div>Hola #{interpolation}</div>") }
+          let(:interpolation) { '/*...user_first_name...*/' }
+
+          it { expect(exercise.test_for(user)).to eq "<div>Hola Orlo</div>" }
         end
       end
       context 'when interpolation is in extra' do
