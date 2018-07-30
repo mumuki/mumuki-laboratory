@@ -43,7 +43,7 @@ class Discussion < ApplicationRecord
   end
 
   def commentable_by?(user)
-    opened? && user.present?
+    user&.moderator? || (opened? && user.present?)
   end
 
   def subscribable?

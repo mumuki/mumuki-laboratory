@@ -18,7 +18,7 @@ describe Discussion, organization_workspace: :test do
     it { expect(initiator.subscribed_to? discussion).to be true }
     it { expect(discussion.status).to eq :opened }
     it { expect(discussion.reachable_statuses_for initiator).to eq [:closed] }
-    it { expect(discussion.reachable_statuses_for moderator).to eq [:closed, :solved] }
+    it { expect(discussion.reachable_statuses_for moderator).to eq [:closed] }
     it { expect(discussion.reachable_statuses_for student).to eq [] }
 
     describe 'initiator sends a message' do
@@ -28,7 +28,7 @@ describe Discussion, organization_workspace: :test do
       it { expect(discussion.messages.first.content).to eq 'I forgot to say this' }
       it { expect(initiator.unread_discussions).to eq [] }
       it { expect(discussion.reachable_statuses_for initiator).to eq [:closed] }
-      it { expect(discussion.reachable_statuses_for moderator).to eq [:closed, :solved] }
+      it { expect(discussion.reachable_statuses_for moderator).to eq [:closed] }
       it { expect(discussion.reachable_statuses_for student).to eq [] }
 
       describe 'and closes the discussion' do
@@ -56,7 +56,7 @@ describe Discussion, organization_workspace: :test do
 
         it { expect(discussion.status).to eq :pending_review }
         it { expect(discussion.reachable_statuses_for initiator).to eq [] }
-        it { expect(discussion.reachable_statuses_for moderator).to eq [:closed, :solved] }
+        it { expect(discussion.reachable_statuses_for moderator).to eq [:opened, :closed, :solved] }
         it { expect(discussion.reachable_statuses_for student).to eq [] }
       end
 
@@ -69,7 +69,7 @@ describe Discussion, organization_workspace: :test do
 
         it { expect(discussion.status).to eq :solved }
         it { expect(discussion.reachable_statuses_for initiator).to eq [] }
-        it { expect(discussion.reachable_statuses_for moderator).to eq [:closed] }
+        it { expect(discussion.reachable_statuses_for moderator).to eq [:opened, :closed] }
         it { expect(discussion.reachable_statuses_for student).to eq [] }
       end
     end
