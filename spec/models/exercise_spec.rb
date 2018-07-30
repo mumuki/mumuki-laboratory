@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Exercise, organization_workspace: :test do
   let(:exercise) { create(:exercise) }
-  let(:user) { create(:user) }
+  let(:user) { create(:user, first_name: 'Orlo') }
 
   describe '#slug' do
     let(:guide) { create(:guide, slug: 'foo/bar') }
