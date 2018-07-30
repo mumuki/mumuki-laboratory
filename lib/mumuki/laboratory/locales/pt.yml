@@ -27,6 +27,7 @@ pt:
   classroom: Sala de aula
   clear_console: Reiniciar o console
   closed: Fechado
+  closed_count: '%{count} fechado'
   comment: Comentar
   confirm: Confirme
   confirm_restart: Você está prestes a apagar o seu progresso neste guia. Você quer continuar?
@@ -148,6 +149,7 @@ pt:
   notify_problem_with_exercise: Relatar um erro
   office: Secretariado
   opened: Aberto
+  opened_count: '%{count} aberto'
   organizations: Organizações
   output: Sair
   overview: Visão global
@@ -157,6 +159,7 @@ pt:
   pending_messages: Você tem mensagens não lidas
   pending_messages_explanation: Seu professor deixou uma mensagem para você! Verifique antes de continuar a enviar soluções.
   pending_review: Sendo revisto
+  pending_review_count: '%{count} sendo revisto'
   permissions: Permissões
   please_fill_profile_data: Preencha suas informações pessoais para continuar!
   please_validate: Você está prestes a entrar no curso. Para oferecer uma experiência melhor, valide que seus dados abaixo sejam reais e corretos.
@@ -185,6 +188,7 @@ pt:
   sign_up_date: Usuário de
   solution: Solução
   solved: Resolvido
+  solved_count: '%{count} resolvido'
   solved_exercises: Exercícios resolvidos
   solve_doubts: Resolvi dúvidas
   solve_your_doubts: Consulte suas dúvidas

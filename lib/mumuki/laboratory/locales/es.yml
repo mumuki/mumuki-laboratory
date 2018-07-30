@@ -28,6 +28,9 @@ es:
   classroom: Aula
   clear_console: Reiniciar consola
   closed: Cerrada
+  closed_count:
+    one: 1 cerrada
+    other: '%{count} cerradas'
   created_at_asc: Antiguas
   created_at_desc: Nuevas
   comment: Comentar
@@ -151,6 +154,9 @@ es:
   notify_problem_with_exercise: Reportá un bug
   office: Secretaría
   opened: Abierta
+  opened_count:
+    one: '1 abierta'
+    other: '%{count} abiertas'
   organizations: Organizaciones
   output: Salida
   overview: Vista general
@@ -158,6 +164,7 @@ es:
   passed_with_warnings: Tu solución funcionó, pero hay cosas que mejorar
   pending: pendiente
   pending_review: En revisión
+  pending_review_count: '%{count} en revisión'
   pending_messages: Tenés mensajes sin leer
   pending_messages_explanation: "¡Tu docente te dejó un mensaje! Revisalo antes de seguir enviando soluciones."
   permissions: Permisos
@@ -188,6 +195,9 @@ es:
   sign_up_date: Usuario desde
   solution: Solución
   solved: Resuelta
+  solved_count:
+    one: 1 resuelta
+    other: '%{count} resueltas'
   solved_exercises: Ejercicios Resueltos
   solve_doubts: Resolvé consultas
   solve_your_doubts: Consultá tus dudas
