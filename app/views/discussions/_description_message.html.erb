@@ -1,0 +1,17 @@
+<%= render layout: 'discussions/message_container', locals: {user: discussion.initiator} do %>
+  <div class="discussion-message-bubble">
+    <div class="discussion-message-bubble-header">
+      <div class="discussion-message-bubble-title">
+        <%= discussion.initiator.name %>
+        <span class="message-date">
+          <%= t(:time_since, time: time_ago_in_words(discussion.created_at)) %>
+        </span>
+      </div>
+    </div>
+    <div class="discussion-message-bubble-content">
+      <div class="discussion-message-content">
+        <%= discussion.description_html %>
+      </div>
+    </div>
+  </div>
+<% end %>

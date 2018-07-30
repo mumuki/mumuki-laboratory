@@ -13,6 +13,8 @@ class Discussion < ApplicationRecord
   before_save :capitalize_title
   validates_presence_of :title
 
+  markdown_on :description
+
   sortable :created_at, :upvotes_count, default: :created_at_desc
   filterable :status, :language
   pageable
@@ -110,7 +112,7 @@ class Discussion < ApplicationRecord
   end
 
   def has_messages?
-    messages.exists?
+    messages.exists? || description.present?
   end
 
   def responses_count
