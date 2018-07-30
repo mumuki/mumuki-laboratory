@@ -1,7 +1,11 @@
-<div class="row">
-  <div class="col-md-12">
-    <div class="actions">
-      <%= next_exercise_button(@exercise) %>
+<%= content_for :next_exercise_button do %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="actions">
+          <%= next_exercise_button(@exercise) %>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+<% end %>
+
+<%= yield :next_exercise_button %>

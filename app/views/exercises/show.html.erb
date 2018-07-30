@@ -2,7 +2,7 @@
 
 <%= content_for :breadcrumbs do %>
     <%= breadcrumbs @exercise %>
-<% end %>
+<% end unless @embedded_mode %>
 
 <%= render partial: 'layouts/authoring', locals: {guide: @guide} %>
 
@@ -28,7 +28,7 @@
 <% end %>
 
 <div>
-  <% if @stats %>
+  <% if @stats and !@embedded_mode %>
       <%= render partial: 'layouts/progress_bar', locals: {actual: @exercise, guide: @exercise.guide, stats: @stats} %>
   <% end %>
 </div>
@@ -56,3 +56,5 @@
     <%= render partial: 'layouts/modals/guide_corollary', locals: {guide: @guide} %>
     <%= render partial: 'layouts/modals/new_message', locals: {exercise: @exercise} if should_render_message_input?(@exercise) %>
 <% end if current_user? %>
+
+<%= content_for :next_exercise_button do end if @embedded_mode %>

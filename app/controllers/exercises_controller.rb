@@ -9,7 +9,10 @@ class ExercisesController < ApplicationController
   before_action :start!, only: :show
 
   def show
+    @embedded_mode = params[:embed] == 'true' && Organization.current.settings.embeddable?
     @solution = @exercise.new_solution if current_user?
+
+    allow_parent_iframe! if @embedded_mode
   end
 
   def show_by_slug
@@ -51,5 +54,9 @@ class ExercisesController < ApplicationController
              :extra, :language_id, :hint, :tag_list,
              :guide_id, :number,
              :layout, :expectations_yaml)
+  end
+
+  def allow_parent_iframe!
+    response.set_header('X-Frame-Options', 'ALLOWALL')
   end
 end
