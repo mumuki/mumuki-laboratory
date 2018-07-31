@@ -1,8 +1,12 @@
 <%= render_runner_assets @exercise.language, :layout %>
 
 <%= content_for :breadcrumbs do %>
-    <%= breadcrumbs @exercise %>
+  <%= breadcrumbs @exercise %>
 <% end unless @embedded_mode %>
+
+<%= content_for :next_exercise_button do %>
+  <span></span>
+<% end if @embedded_mode %>
 
 <%= render partial: 'layouts/authoring', locals: {guide: @guide} %>
 
@@ -56,5 +60,3 @@
     <%= render partial: 'layouts/modals/guide_corollary', locals: {guide: @guide} %>
     <%= render partial: 'layouts/modals/new_message', locals: {exercise: @exercise} if should_render_message_input?(@exercise) %>
 <% end if current_user? %>
-
-<%= content_for :next_exercise_button do end if @embedded_mode %>
