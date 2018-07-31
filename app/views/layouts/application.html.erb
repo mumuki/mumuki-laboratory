@@ -1,59 +1,23 @@
-<!DOCTYPE html>
-<html lang="<%= Organization.current.locale %>">
-<head>
-  <title><%= page_title subject %></title>
-  <% unless input_kids? %>
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <% end %>
-
-  <link rel="icon" type="image/x-icon" href="<%= Organization.current.favicon_url %>" data-turbolinks-track="reload">
-  <link rel="stylesheet" type="text/css" href="<%= theme_stylesheet_url %>" data-turbolinks-track="reload">
-
-  <meta property="og:site_name" content="<%= Organization.current.site_name %>" />
-  <meta property="og:title" content="<%= page_title subject %>"/>
-  <meta property="og:description" content="<%= Organization.current.central? ? t(:mumuki_short_description) : Organization.current.description %>"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:image" content="<%= Organization.current.open_graph_image_url %>"/>
-  <meta property="og:url" content="<%= request.original_url %>"/>
-
-  <meta name="turbolinks-cache-control" content="no-cache">
-
-  <meta name="description" content="<%= t :mumuki_short_description %>"/>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= csrf_meta_tags %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <script type="text/javascript" src="<%= extension_javascript_url %>" defer data-turbolinks-track="reload"></script>
-  <script type="text/javascript">
-    window.mumukiLocale = <%= raw Organization.current.locale_json %>;
-    mumuki.locale = '<%= Organization.current.locale %>';
-    moment.locale('<%= Organization.current.locale %>');
-  </script>
-  <%= login_form.header_html %>
-</head>
-<body>
-<% if should_choose_organization? %>
-    <%= render partial: 'layouts/organization_chooser' %>
-<% end %>
-
-<div class="<%= exercise_container_type %>">
-  <nav class="mu-navbar">
-    <div class="mu-navbar-breadcrumb hidden-xs">
-      <ul class="mu-breadcrumb-list">
-        <%= yield :breadcrumbs %>
-      </ul>
-    </div>
-    <div class="dropdown hamburguer-breadcrumb hidden-sm hidden-md hidden-lg">
-      <% if content_for? :breadcrumbs %>
-          <span class="hamburguer" id="profileDropdown" data-toggle="dropdown">
-            <i class="fa fa-bars"></i>
-          </span>
+<%= content_for :navbar do %>
+  <div class="<%= exercise_container_type %>">
+    <nav class="mu-navbar">
+      <div class="mu-navbar-breadcrumb hidden-xs">
+        <ul class="mu-breadcrumb-list">
+          <%= yield :breadcrumbs %>
+        </ul>
+      </div>
+      <div class="dropdown hamburguer-breadcrumb hidden-sm hidden-md hidden-lg">
+        <% if content_for? :breadcrumbs %>
+        <span class="hamburguer" id="profileDropdown" data-toggle="dropdown">
+          <i class="fa fa-bars"></i>
+        </span>
           <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="profileDropdown">
             <%= yield :breadcrumbs %>
           </ul>
-      <% end %>
-    </div>
-    <div class="mu-navbar-avatar">
-      <% if current_user? %>
+        <% end %>
+      </div>
+      <div class="mu-navbar-avatar">
+        <% if current_user? %>
           <div class="dropdown">
             <span>
               <a class="notifications-box <%= has_notifications? ? '' : 'notifications-box-empty' %>" href=<%= "#{user_notifications_path}" %>>
@@ -77,35 +41,15 @@
               <li><%= link_to(t(:sign_out), logout_path(origin: url_for), role: 'menuitem') %></li>
             </ul>
           </div>
-      <% else %>
+        <% else %>
           <%= login_button %>
-      <% end %>
-    </div>
-  </nav>
-</div>
-
-<div class="<%= exercise_container_type %><%= @kids ? '-fluid' : '' %>" id="wrap">
-  <div id="toast-container" class="toast-bottom-left">
-    <% if notice %>
-        <div class="alert toast toast-success" role="alert">
-          <%= notice.html_safe %>
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-        </div>
-    <% elsif alert %>
-        <div class="alert toast toast-error" role="alert">
-          <%= alert.html_safe %>
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-        </div>
-    <% end %>
+        <% end %>
+      </div>
+    </nav>
   </div>
+<% end %>
 
-  <%= yield %>
-
-</div>
-
-<%= yield :no_container %>
-
-<% try_set_content_for :footer do %>
+<% content_for :footer do %>
   <footer class="footer">
     <div class="<%= exercise_container_type %>">
       <hr>
@@ -133,12 +77,9 @@
           <a class="fa fa-github social-icon" aria-label="Github" href="https://github.com/mumuki" target="_blank"></a>
           <a class="fa fa-linkedin social-icon" aria-label="LinkedIn" href="https://www.linkedin.com/company/mumuki-project" target="_blank"></a>
         </div>
-
       </div>
     </div>
   </footer>
 <% end %>
-<%= yield :footer %>
 
-</body>
-</html>
+<%= render partial: 'layouts/main' %>

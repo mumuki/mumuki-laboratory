@@ -51,10 +51,4 @@ module ApplicationHelper
       <span class="#{'hidden' unless active}">#{active_text}</span>
     }.html_safe
   end
-
-  def try_set_content_for(key)
-    unless content_for?(key)
-      content_for key, yield
-    end
-  end
 end

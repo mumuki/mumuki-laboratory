@@ -12,7 +12,10 @@ class ExercisesController < ApplicationController
     @embedded_mode = params[:embed] == 'true' && Organization.current.settings.embeddable?
     @solution = @exercise.new_solution if current_user?
 
-    allow_parent_iframe! if @embedded_mode
+    if @embedded_mode
+      allow_parent_iframe!
+      render layout: 'embedded'
+    end
   end
 
   def show_by_slug
@@ -57,6 +60,6 @@ class ExercisesController < ApplicationController
   end
 
   def allow_parent_iframe!
-    response.set_header('X-Frame-Options', 'ALLOWALL')
+    response.set_header 'X-Frame-Options', 'ALLOWALL'
   end
 end

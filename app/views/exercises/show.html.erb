@@ -2,13 +2,9 @@
 
 <%= content_for :breadcrumbs do %>
   <%= breadcrumbs @exercise %>
-<% end unless @embedded_mode %>
+<% end %>
 
 <%= content_for :next_exercise_button do %>
-  <span></span>
-<% end if @embedded_mode %>
-
-<%= content_for :footer do %>
   <span></span>
 <% end if @embedded_mode %>
 
