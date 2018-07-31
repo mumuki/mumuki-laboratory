@@ -20,6 +20,8 @@ describe Discussion, organization_workspace: :test do
     it { expect(discussion.reachable_statuses_for initiator).to eq [:closed] }
     it { expect(discussion.reachable_statuses_for moderator).to eq [:closed] }
     it { expect(discussion.reachable_statuses_for student).to eq [] }
+    it { expect(discussion.commentable_by? student).to be true }
+    it { expect(discussion.commentable_by? moderator).to be true }
 
     describe 'initiator sends a message' do
       before { discussion.submit_message!({content: 'I forgot to say this'}, initiator)  }
@@ -38,6 +40,8 @@ describe Discussion, organization_workspace: :test do
         it { expect(discussion.reachable_statuses_for initiator).to eq [] }
         it { expect(discussion.reachable_statuses_for moderator).to eq [:opened, :solved] }
         it { expect(discussion.reachable_statuses_for student).to eq [] }
+        it { expect(discussion.commentable_by? student).to be false }
+        it { expect(discussion.commentable_by? moderator).to be true }
       end
     end
 
@@ -58,6 +62,8 @@ describe Discussion, organization_workspace: :test do
         it { expect(discussion.reachable_statuses_for initiator).to eq [] }
         it { expect(discussion.reachable_statuses_for moderator).to eq [:opened, :closed, :solved] }
         it { expect(discussion.reachable_statuses_for student).to eq [] }
+        it { expect(discussion.commentable_by? student).to be false }
+        it { expect(discussion.commentable_by? moderator).to be true }
       end
 
       describe 'initiator tries to solve it' do
@@ -71,6 +77,8 @@ describe Discussion, organization_workspace: :test do
         it { expect(discussion.reachable_statuses_for initiator).to eq [] }
         it { expect(discussion.reachable_statuses_for moderator).to eq [:opened, :closed] }
         it { expect(discussion.reachable_statuses_for student).to eq [] }
+        it { expect(discussion.commentable_by? student).to be false }
+        it { expect(discussion.commentable_by? moderator).to be true }
       end
     end
   end
