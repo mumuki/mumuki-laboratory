@@ -105,36 +105,40 @@
 
 <%= yield :no_container %>
 
-<footer class="footer">
-  <div class="<%= exercise_container_type %>">
-    <hr>
+<% try_set_content_for :footer do %>
+  <footer class="footer">
+    <div class="<%= exercise_container_type %>">
+      <hr>
 
-    <div class="row">
-      <div class="col-md-12">
-        <%= yield :authoring %>
+      <div class="row">
+        <div class="col-md-12">
+          <%= yield :authoring %>
+        </div>
+      </div>
+
+      <div id="footer-copyright" class="row">
+        <div class="col-md-4 text-left">
+          <p>&copy; Copyright 2015-<%= DateTime.now.year %>
+            <a href="http://mumuki.org/" class="mu-org-link"><span class="da da-mumuki-circle"></span> Mumuki Project</a>
+          </p>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <%= login_form.footer_html %>
+        </div>
+
+        <div id="footer-social" class="col-md-4 text-right" lang="en">
+          <a class="fa fa-facebook social-icon" aria-label="Facebook" href="https://www.facebook.com/MumukiProject" target="_blank"></a>
+          <a class="fa fa-twitter social-icon" aria-label="Twitter" href="https://twitter.com/MumukiProject" target="_blank"></a>
+          <a class="fa fa-github social-icon" aria-label="Github" href="https://github.com/mumuki" target="_blank"></a>
+          <a class="fa fa-linkedin social-icon" aria-label="LinkedIn" href="https://www.linkedin.com/company/mumuki-project" target="_blank"></a>
+        </div>
+
       </div>
     </div>
+  </footer>
+<% end %>
+<%= yield :footer %>
 
-    <div id="footer-copyright" class="row">
-      <div class="col-md-4 text-left">
-        <p>&copy; Copyright 2015-<%= DateTime.now.year %>
-          <a href="http://mumuki.org/" class="mu-org-link"><span class="da da-mumuki-circle"></span> Mumuki Project</a>
-        </p>
-      </div>
-
-      <div class="col-md-4 text-center">
-        <%= login_form.footer_html %>
-      </div>
-
-      <div id="footer-social" class="col-md-4 text-right" lang="en">
-        <a class="fa fa-facebook social-icon" aria-label="Facebook" href="https://www.facebook.com/MumukiProject" target="_blank"></a>
-        <a class="fa fa-twitter social-icon" aria-label="Twitter" href="https://twitter.com/MumukiProject" target="_blank"></a>
-        <a class="fa fa-github social-icon" aria-label="Github" href="https://github.com/mumuki" target="_blank"></a>
-        <a class="fa fa-linkedin social-icon" aria-label="LinkedIn" href="https://www.linkedin.com/company/mumuki-project" target="_blank"></a>
-      </div>
-
-    </div>
-  </div>
-</footer>
 </body>
 </html>
