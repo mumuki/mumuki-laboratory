@@ -13,8 +13,12 @@ module Mumuki::Laboratory::Status::Discussion::Opened
     end
   end
 
-  def self.reachable_statuses_for_moderator(_)
-    [Mumuki::Laboratory::Status::Discussion::Closed, Mumuki::Laboratory::Status::Discussion::Solved]
+  def self.reachable_statuses_for_moderator(discussion)
+    if discussion.has_responses?
+      [Mumuki::Laboratory::Status::Discussion::Closed, Mumuki::Laboratory::Status::Discussion::Solved]
+    else
+      [Mumuki::Laboratory::Status::Discussion::Closed]
+    end
   end
 
   def self.iconize

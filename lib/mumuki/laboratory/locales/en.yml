@@ -27,6 +27,7 @@ en:
   classroom: Classroom
   clear_console: Clear console
   closed: Closed
+  closed_count: '%{count} closed'
   created_at_asc: Oldest
   created_at_desc: Newest
   comment: Comment
@@ -138,6 +139,7 @@ en:
   notify_problem_with_exercise: Report a bug
   office: Office
   opened: Open
+  opened_count: '%{count} opened'
   output: Output
   overview: Overview
   passed: Everything is in order! Your solution passed all our tests!
@@ -145,7 +147,8 @@ en:
   pending: pending
   pending_messages: You have unread messages
   pending_messages_explanation: You can't send new solutions until you read pending messages
-  Pending_review: Pending review
+  pending_review: Pending review
+  pending_review_count: '%{count} for review'
   permissions: Permissions
   please_fill_profile_data: Please complete your profile data to continue!
   please_validate: 'Please validate your data before continue:'
@@ -172,6 +175,7 @@ en:
   sign_up_date: User since
   solution: Solution
   solved: Solved
+  solved_count: '%{count} solved'
   solve_doubts: Solve other's doubts
   solve_your_doubts: Solve your doubts
   solve_your_doubts_teaser: Do you have any doubts?

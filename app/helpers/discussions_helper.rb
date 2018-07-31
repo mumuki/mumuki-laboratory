@@ -120,8 +120,7 @@ module DiscussionsHelper
     %Q{
       #{status_fa_icon(status)}
       <span>
-        #{discussions_count}
-        #{t status}
+        #{t("#{status}_count", count: discussions_count)}
       </span>
     }.html_safe
   end
