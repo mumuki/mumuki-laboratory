@@ -14,6 +14,19 @@ mumuki.load(function () {
   var $subscriptionSpans = $('.discussion-subscription > span');
   var $upvoteSpans = $('.discussion-upvote > span');
 
+  function createNewMessageEditor() {
+    var $textarea = $("#new-discussion-message");
+    var textarea = $textarea[0];
+    if(!textarea) return;
+    var builder = new mumuki.editor.CodeMirrorBuilder(textarea);
+    builder.setupSimpleEditor();
+    builder.setupOptions($textarea.data('lines'));
+    builder.setupLanguage();
+    builder.build();
+  }
+
+  createNewMessageEditor();
+
   var Forum = {
     toggleButton: function (spans) {
       spans.toggleClass('hidden');
