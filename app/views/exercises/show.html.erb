@@ -4,10 +4,6 @@
   <%= breadcrumbs @exercise %>
 <% end %>
 
-<%= content_for :next_exercise_button do %>
-  <span></span>
-<% end if @embedded_mode %>
-
 <%= render partial: 'layouts/authoring', locals: {guide: @guide} %>
 
 <% @stats = @exercise.guide.stats_for(current_user) if current_user && @exercise.guide %>
