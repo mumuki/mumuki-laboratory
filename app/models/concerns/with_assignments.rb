@@ -15,7 +15,7 @@ module WithAssignments
       .directives_sections
       .split_sections(assignment_for(user)&.solution || default_content_for(user))
       .except('content')
-      .map { |name, content| struct name: name, content: content }
+      .map { |name, content| LogicFile.new name, content }
   end
 
   def interpolate_for(user, field)
