@@ -96,6 +96,10 @@ class Organization < ApplicationRecord
     report_issue_enabled? || community_link.present? || forum_enabled?
   end
 
+  def can_embed_view?(params)
+    params[:embed] == 'true' && embeddable?
+  end
+
   private
 
   def ensure_consistent_public_login

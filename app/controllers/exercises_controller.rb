@@ -9,7 +9,7 @@ class ExercisesController < ApplicationController
   before_action :start!, only: :show
 
   def show
-    @embedded_mode = params[:embed] == 'true' && Organization.current.embeddable?
+    @embedded_mode = Organization.current.can_embed_view? params
     @solution = @exercise.new_solution if current_user?
 
     if @embedded_mode

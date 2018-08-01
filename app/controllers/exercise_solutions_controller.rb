@@ -7,6 +7,8 @@ class ExerciseSolutionsController < AjaxController
   before_action :validate_accessible!, only: :create
 
   def create
+    @embedded_mode = Organization.current.can_embed_view? params
+
     assignment = @exercise.submit_solution!(current_user, solution_params)
     render_results_json assignment, status: assignment.status
   end
