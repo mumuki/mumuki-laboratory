@@ -32,7 +32,7 @@
 <% end %>
 
 <div>
-  <% if @stats and !@embedded_mode %>
+  <% if @stats && !@embedded_mode %>
       <%= render partial: 'layouts/progress_bar', locals: {actual: @exercise, guide: @exercise.guide, stats: @stats} %>
   <% end %>
 </div>
