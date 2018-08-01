@@ -281,6 +281,12 @@ describe Exercise, organization_workspace: :test do
 
           it { expect(exercise.test_for(user)).to eq "<div>Hola Orlo</div>" }
         end
+
+        context 'and test is nil'  do
+          let(:exercise) { create(:exercise, test: nil, expectations: [{}]) }
+
+          it { expect(exercise.test_for(user)).to eq nil }
+        end
       end
       context 'when interpolation is in extra' do
         describe 'right previous content' do
