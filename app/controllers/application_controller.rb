@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   include Mumuki::Laboratory::Controllers::Authorization
   include Mumuki::Laboratory::Controllers::Notifications
   include Mumuki::Laboratory::Controllers::DynamicErrors
+  include Mumuki::Laboratory::Controllers::EmbeddedMode
 
   before_action :set_current_organization!
   before_action :set_locale!

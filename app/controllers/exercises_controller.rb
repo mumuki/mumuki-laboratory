@@ -9,13 +9,8 @@ class ExercisesController < ApplicationController
   before_action :start!, only: :show
 
   def show
-    @embedded_mode = Organization.current.can_embed_view? params
     @solution = @exercise.new_solution if current_user?
-
-    if @embedded_mode
-      allow_parent_iframe!
-      render layout: 'embedded'
-    end
+    enable_embedded_rendering
   end
 
   def show_by_slug
@@ -57,9 +52,5 @@ class ExercisesController < ApplicationController
              :extra, :language_id, :hint, :tag_list,
              :guide_id, :number,
              :layout, :expectations_yaml)
-  end
-
-  def allow_parent_iframe!
-    response.set_header 'X-Frame-Options', 'ALLOWALL'
   end
 end

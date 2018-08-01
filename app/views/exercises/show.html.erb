@@ -28,7 +28,7 @@
 <% end %>
 
 <div>
-  <% if @stats && !@embedded_mode %>
+  <% if @stats && standalone_mode? %>
       <%= render partial: 'layouts/progress_bar', locals: {actual: @exercise, guide: @exercise.guide, stats: @stats} %>
   <% end %>
 </div>
