@@ -23,7 +23,7 @@ var mumuki = mumuki || {};
     var token = new mumuki.CsrfToken();
     var request = token.newRequest({
       type: 'POST',
-      url: window.location.origin + window.location.pathname + '/solutions',
+      url: window.location.origin + window.location.pathname + '/solutions' + window.location.search,
       data: solution
     });
 

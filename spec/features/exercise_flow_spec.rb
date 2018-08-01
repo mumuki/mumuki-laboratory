@@ -91,6 +91,27 @@ feature 'Exercise Flow', organization_workspace: :test do
       expect(page).to have_text('Description of Succ1')
     end
 
+    describe 'embedded mode' do
+      scenario 'visit exercise by id, standalone mode' do
+        visit "/exercises/#{problem_1.id}"
+        expect(page).to have_text('Functional Programming 1')
+        expect(page).to have_text('Profile')
+      end
+      scenario 'visit exercise by id, embedded mode in non embeddable organization' do
+        visit "/exercises/#{problem_1.id}?embed=true"
+        expect(page).to have_text('Functional Programming 1')
+        expect(page).to have_text('Profile')
+      end
+      scenario 'visit exercise by id, embedded mode in embeddable organization' do
+        Organization.current.tap { |it| it.embeddable = true }.save!
+
+        visit "/exercises/#{problem_1.id}?embed=true"
+        expect(page).to_not have_text('Functional Programming 1')
+        expect(page).to_not have_text('Profile')
+      end
+    end
+
+
     scenario 'visit exercise by id, editor right layout' do
       visit "/exercises/#{problem_1.id}"
 

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="<%= Organization.current.locale %>">
+<head>
+  <title><%= page_title subject %></title>
+  <% unless input_kids? %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <% end %>
+
+  <link rel="icon" type="image/x-icon" href="<%= Organization.current.favicon_url %>" data-turbolinks-track="reload">
+  <link rel="stylesheet" type="text/css" href="<%= theme_stylesheet_url %>" data-turbolinks-track="reload">
+
+  <meta property="og:site_name" content="<%= Organization.current.site_name %>" />
+  <meta property="og:title" content="<%= page_title subject %>"/>
+  <meta property="og:description" content="<%= Organization.current.central? ? t(:mumuki_short_description) : Organization.current.description %>"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="<%= Organization.current.open_graph_image_url %>"/>
+  <meta property="og:url" content="<%= request.original_url %>"/>
+
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <meta name="description" content="<%= t :mumuki_short_description %>"/>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script type="text/javascript" src="<%= extension_javascript_url %>" defer data-turbolinks-track="reload"></script>
+  <script type="text/javascript">
+    window.mumukiLocale = <%= raw Organization.current.locale_json %>;
+    mumuki.locale = '<%= Organization.current.locale %>';
+    moment.locale('<%= Organization.current.locale %>');
+  </script>
+  <%= login_form.header_html %>
+</head>
+<body>
+<% if should_choose_organization? %>
+    <%= render partial: 'layouts/organization_chooser' %>
+<% end %>
+
+<%= yield :navbar %>
+
+<div class="<%= exercise_container_type %><%= @kids ? '-fluid' : '' %>" id="wrap">
+  <div id="toast-container" class="toast-bottom-left">
+    <% if notice %>
+      <div class="alert toast toast-success" role="alert">
+        <%= notice.html_safe %>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      </div>
+    <% elsif alert %>
+      <div class="alert toast toast-error" role="alert">
+        <%= alert.html_safe %>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      </div>
+    <% end %>
+  </div>
+
+  <%= yield %>
+</div>
+
+<%= yield :no_container %>
+
+<%= yield :footer %>
+
+</body>
+</html>

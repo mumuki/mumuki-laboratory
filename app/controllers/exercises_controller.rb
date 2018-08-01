@@ -10,6 +10,7 @@ class ExercisesController < ApplicationController
 
   def show
     @solution = @exercise.new_solution if current_user?
+    enable_embedded_rendering
   end
 
   def show_by_slug
