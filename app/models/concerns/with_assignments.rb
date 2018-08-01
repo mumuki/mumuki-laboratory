@@ -31,7 +31,7 @@ module WithAssignments
   end
 
   def test_for(user)
-    interpolate_for user, test
+    test && interpolate_for(user, test)
   end
 
   def replace_content_reference(user, interpolee)

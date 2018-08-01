@@ -29,6 +29,7 @@ class Submission
   def evaluate!(assignment)
     try_evaluate! assignment
   rescue => e
+    Rails.logger.error "Evaluation failed: #{e} \n#{e.backtrace.join("\n")}"
     {status: :errored, result: e.message}
   end
 
