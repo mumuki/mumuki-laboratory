@@ -4,11 +4,9 @@ var mumuki = mumuki || {};
   function createCodeMirrors() {
     var editors = $(".editor").map(function (index, textarea) {
       var $textarea = $("#solution_content");
-      var builder = new mumuki.editor.CodeMirrorBuilder(textarea);
-      builder.setupEditor();
-      builder.setupOptions($textarea.data('lines'));
-      builder.setupLanguage();
-      return builder.build();
+      return new mumuki.editor.CodeMirrorBuilder(textarea)
+        .setup($textarea.data('lines'))
+        .build();
     });
 
     return editors;

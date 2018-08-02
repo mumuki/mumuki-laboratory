@@ -20,6 +20,8 @@ var mumuki = mumuki || {};
   }
 
   function sendNewSolution(solution){
+    debugger; // TODO: Borrar
+
     var token = new mumuki.CsrfToken();
     var request = token.newRequest({
       type: 'POST',

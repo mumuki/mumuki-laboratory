@@ -4,7 +4,7 @@ mumuki.load(function () {
     this.tabsContainer = tabsContainer;
     this.editorsContainer = editorsContainer;
 
-    this.MAX_TABS = 3; // TODO: Fix the view so it doesn't break the UI with more than 3 tabs
+    this.MAX_TABS = 5;
     this.DELETE_FILE = '.delete-file-button';
     this.FILE_NAME = '.file-name';
 
@@ -14,7 +14,7 @@ mumuki.load(function () {
   FileControls.prototype = {
     tabs: function() { return this.tabsContainer.children(); },
     editors: function() { return this.editorsContainer.find('.file-editor'); },
-    
+
     setUpAddFile: function() {
       this._addFileButton.click(function() {
         this._addFile();
@@ -80,8 +80,14 @@ mumuki.load(function () {
 
       var textarea = editor.children().first();
       textarea.attr('id', 'solution_content[' + name + ']');
+      textarea.attr('name', 'solution[content[' + name + ']]');
       textarea.text('');
-      // TODO: Setupear CodeMirror
+
+      // TODO: A veces no serializa el content nuevo
+      // TODO: Detectar content type según extensión
+      
+      new mumuki.editor.CodeMirrorBuilder(textarea[0])
+        .setup(textarea.data('lines'));
 
       return editor;
     },

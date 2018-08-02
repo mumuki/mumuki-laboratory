@@ -84,6 +84,8 @@ var mumuki = mumuki || {};
 
   function getContent(){
     var content = {};
+
+    debugger; // TODO: Borrar
     $('.new_solution').serializeArray().forEach(function(it) {
       content[it.name] = it.value;
     });

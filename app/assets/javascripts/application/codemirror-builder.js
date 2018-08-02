@@ -30,7 +30,7 @@ var mumuki = mumuki || {};
 
   CodeMirrorBuilder.prototype = {
     createEditor: function (customOptions) {
-      return CodeMirror.fromTextArea(this.textarea, Object.assign({}, codeMirrorDefaults, customOptions));
+        return CodeMirror.fromTextArea(this.textarea, Object.assign({}, codeMirrorDefaults, customOptions));
     },
     setupEditor: function () {
       this.editor = this.createEditor({
@@ -59,6 +59,13 @@ var mumuki = mumuki || {};
           }
         }
       });
+    },
+    setup: function(minLines) {
+      this.setupEditor();
+      this.setupLanguage();
+      this.setupOptions(minLines);
+
+      return this;
     },
     setupLanguage: function () {
       var language = this.$textarea.data('editor-language');
