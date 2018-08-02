@@ -30,7 +30,7 @@ var mumuki = mumuki || {};
 
   CodeMirrorBuilder.prototype = {
     createEditor: function (customOptions) {
-      return CodeMirror.fromTextArea(this.textarea, Object.assign(codeMirrorDefaults, customOptions));
+      return CodeMirror.fromTextArea(this.textarea, Object.assign({}, codeMirrorDefaults, customOptions));
     },
     setupEditor: function () {
       this.editor = this.createEditor({
@@ -50,6 +50,7 @@ var mumuki = mumuki || {};
     },
     setupSimpleEditor: function () {
       this.editor = this.createEditor({
+        mode: 'text',
         extraKeys: {
           'Cmd-Enter': submitMessage,
           'Ctrl-Enter': submitMessage,

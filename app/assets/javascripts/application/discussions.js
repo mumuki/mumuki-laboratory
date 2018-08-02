@@ -21,7 +21,6 @@ mumuki.load(function () {
     var builder = new mumuki.editor.CodeMirrorBuilder(textarea);
     builder.setupSimpleEditor();
     builder.setupOptions($textarea.data('lines'));
-    builder.setupLanguage();
     builder.build();
   }
 
