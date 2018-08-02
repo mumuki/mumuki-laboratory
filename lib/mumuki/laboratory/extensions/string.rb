@@ -22,4 +22,8 @@ class String
   def normalize_whitespaces
     gsub(/([^[:ascii:]])/) { $1.blank? ? ' ' : $1 }
   end
+
+  def get_file_extension
+    File.extname(self).delete '.'
+  end
 end

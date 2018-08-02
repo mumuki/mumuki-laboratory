@@ -43,7 +43,8 @@ var mumuki = mumuki || {};
       if (language === 'dynamic') {
         mumuki.page.dynamicEditors.push(this.editor);
       } else {
-        mumuki.editor.setOption('mode', language);
+        this.editor.setOption('mode', language);
+        this.editor.refresh();
       }
     },
     setupOptions: function (minLines) {
