@@ -30,9 +30,9 @@ describe ExerciseSolutionsController, organization_workspace: :test do
     it { expect(response.status).to eq 200 }
     it { expect(Assignment.last.solution).to eq("/*<a_file.css#*/a css content/*#a_file.css>*/\n/*<a_file.js#*/a js content/*#a_file.js>*/\n/*<content#*//*...a_file.css...*/\n/*...a_file.js...*//*#content>*/") }
     it { expect(files.count).to eq 2 }
-    it { expect(files[0]).to have_attributes({ name: 'a_file.css', content: 'a css content' }) }
+    it { expect(files[0]).to have_attributes(name: 'a_file.css', content: 'a css content') }
     it { expect(files[0].highlight_mode).to eq 'css' }
-    it { expect(files[1]).to have_attributes({ name: 'a_file.js', content: 'a js content' }) }
+    it { expect(files[1]).to have_attributes(name: 'a_file.js', content: 'a js content') }
     it { expect(files[1].highlight_mode).to eq 'javascript' }
   end
 end
