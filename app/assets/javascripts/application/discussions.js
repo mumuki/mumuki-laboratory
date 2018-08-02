@@ -31,6 +31,16 @@ mumuki.load(function () {
       spans.toggleClass('hidden');
     },
     token: new mumuki.CsrfToken(),
+    tokenRequest: function (data) {
+      return $.ajax(Forum.token.newRequest(data))
+    },
+    discussionPost: function (url) {
+      return Forum.tokenRequest({
+        url: url,
+        method: 'POST',
+        xhrFields: {withCredentials: true}
+      })
+    },
     discussionSubscription: function (url) {
       Forum.discussionPostAndToggle(url, $subscriptionSpans)
     },
@@ -38,15 +48,12 @@ mumuki.load(function () {
       Forum.discussionPostAndToggle(url, $upvoteSpans)
     },
     discussionPostAndToggle: function (url, elem) {
-      Forum.tokenRequest({
-        url: url,
-        method: 'POST',
-        success: Forum.toggleButton(elem),
-        xhrFields: {withCredentials: true}
-      })
+      Forum.discussionPost(url).done(Forum.toggleButton(elem))
     },
-    tokenRequest: function (data) {
-      $.ajax(Forum.token.newRequest(data))
+    discussionMessageUseful : function (url, elem) {
+      Forum.discussionPost(url).done(function () {
+        elem.toggleClass("selected");
+      })
     }
   };
 

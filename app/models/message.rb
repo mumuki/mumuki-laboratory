@@ -33,13 +33,17 @@ class Message < ApplicationRecord
   end
 
   def as_platform_json
-    as_json(except: [:id, :type, :discussion_id],
+    as_json(except: [:id, :type, :discussion_id, :useful],
             include: {exercise: {only: [:bibliotheca_id]}})
       .merge(organization: Organization.current.name)
   end
 
   def read!
     update! read: true
+  end
+
+  def toggle_useful!
+    toggle! :useful
   end
 
   def self.parse_json(json)

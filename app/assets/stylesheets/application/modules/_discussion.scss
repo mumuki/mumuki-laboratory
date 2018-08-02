@@ -329,6 +329,18 @@ summary.discussion-summary {
       }
       .actions {
         float: right;
+        a {
+          margin-left: 5px;
+        }
+        .discussion-message-useful {
+          cursor: pointer;
+          text-decoration: none;
+          &.selected {
+            i {
+              color: $brand-primary;
+            }
+          }
+        }
         i {
           color: #aaaaaa
         }

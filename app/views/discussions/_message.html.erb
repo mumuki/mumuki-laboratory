@@ -11,6 +11,9 @@
         <% end %>
         <% if message.authorized? current_user %>
           <span class="actions">
+            <a class="discussion-message-useful <%= 'selected' if message.useful? %>" onclick="mumuki.Forum.discussionMessageUseful('<%= useful_discussion_message_url(@discussion, message) %>', $(this))">
+              <%= fa_icon('thumbs-up', class: 'fa-xs') %>
+            </a>
             <%= link_to fa_icon('trash-o'), discussion_message_path(@discussion, message), method: :delete, data: { confirm: t(:are_you_sure, action: t(:destroy_message)) } %>
           </span>
         <% end %>

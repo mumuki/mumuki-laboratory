@@ -1,18 +1,22 @@
 module DiscussionsHelper
   def read_discussions_link(item)
-    discussions_link discussions_icon(t(:solve_doubts)), item_discussions_path(item, default_discussions_params)
+    discussions_link others_discussions_icon(t(:solve_your_doubts)), item_discussions_path(item, default_discussions_params)
   end
 
   def solve_discussions_link
-    discussions_link discussions_icon(t(:solve_doubts)), discussions_path(solve_discussion_params_for(current_user))
+    discussions_link others_discussions_icon(t(:solve_doubts)), discussions_path(solve_discussion_params_for(current_user))
   end
 
   def user_discussions_link
-    discussions_link fixed_fa_icon('comment', text: t(:my_doubts)), "#{user_path}#discussions" if current_user.watched_discussions.present?
+    discussions_link user_discussions_icon(t(:my_doubts)), user_profile_path('discussions') if current_user.watched_discussions.present?
   end
 
-  def discussions_icon(text)
+  def others_discussions_icon(text)
     fixed_fa_icon 'comments', text: text
+  end
+
+  def user_discussions_icon(text)
+    fixed_fa_icon 'comment', text: text
   end
 
   def discussions_link(item, path, organization=Organization.current)
