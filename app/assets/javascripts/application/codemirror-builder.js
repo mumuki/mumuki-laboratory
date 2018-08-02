@@ -13,18 +13,28 @@ var mumuki = mumuki || {};
     $('.btn-submit').click();
   }
 
+  function submitMessage() {
+    $('.discussion-new-message-button').click();
+  }
+
+  var codeMirrorDefaults = {
+    autofocus: false,
+    tabSize: 2,
+    cursorHeight: 1,
+    matchBrackets: true,
+    lineWiseCopyCut: true,
+    autoCloseBrackets: true,
+    showCursorWhenSelecting: true,
+    lineWrapping: true
+  };
+
   CodeMirrorBuilder.prototype = {
+    createEditor: function (customOptions) {
+      return CodeMirror.fromTextArea(this.textarea, Object.assign({}, codeMirrorDefaults, customOptions));
+    },
     setupEditor: function () {
-      this.editor = CodeMirror.fromTextArea(this.textarea, {
-        autofocus: false,
-        tabSize: 2,
+      this.editor = this.createEditor({
         lineNumbers: true,
-        lineWrapping: true,
-        cursorHeight: 1,
-        matchBrackets: true,
-        lineWiseCopyCut: true,
-        autoCloseBrackets: true,
-        showCursorWhenSelecting: true,
         extraKeys: {
           'Ctrl-Space': 'autocomplete',
           'Cmd-Enter': submit,
@@ -32,6 +42,18 @@ var mumuki = mumuki || {};
           'F11': function () {
             mumuki.editor.toggleFullscreen();
           },
+          'Tab': function (cm) {
+            mumuki.editor.indentWithSpaces(cm)
+          }
+        }
+      });
+    },
+    setupSimpleEditor: function () {
+      this.editor = this.createEditor({
+        mode: 'text',
+        extraKeys: {
+          'Cmd-Enter': submitMessage,
+          'Ctrl-Enter': submitMessage,
           'Tab': function (cm) {
             mumuki.editor.indentWithSpaces(cm)
           }

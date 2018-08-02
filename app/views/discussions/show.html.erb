@@ -56,7 +56,9 @@
 
   <% if @discussion.has_messages? %>
     <div class="discussion-messages">
-      <%= render partial: 'discussions/description_message', locals: {discussion: @discussion} %>
+      <% if @discussion.description.present? %>
+        <%= render partial: 'discussions/description_message', locals: {discussion: @discussion} %>
+      <% end %>
       <% @discussion.messages.each do |message| %>
         <%= render partial: 'discussions/message', locals: {user: message.sender_user, message: message} %>
       <% end %>

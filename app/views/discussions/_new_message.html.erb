@@ -9,7 +9,9 @@
       <div class="discussion-message-bubble-content">
         <div class="container-fluid">
           <div class="row">
-            <div><%= f.text_area :content, class: 'form-control discussion-new-message-content', placeholder: t(:message), required: true %></div>
+            <div class="discussion-new-message-content">
+              <%= f.editor :content, '', { id: 'new-discussion-message', class: 'form-control', placeholder: t(:message) } %>
+            </div>
           </div>
         </div>
       </div>

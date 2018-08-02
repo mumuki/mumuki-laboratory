@@ -250,8 +250,23 @@ $moderator-star-color: #dd9900;
 
 .discussion-new-message-content {
   resize: none;
+  min-height: 150px;
   border-radius: 0;
   border-color: transparent;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  .CodeMirror {
+    border: unset;
+    color: $brand-primary;
+    font-family: $font-family-sans-serif;
+    padding: 15px;
+  }
+  .CodeMirror-wrap,
+  .CodeMirror-scroll {
+    height: auto !important;
+    min-height: 100px !important;
+  }
   &:focus {
     border-color: white;
   }
