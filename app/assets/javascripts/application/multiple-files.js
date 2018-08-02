@@ -12,6 +12,9 @@ mumuki.load(function () {
   }
 
   FileControls.prototype = {
+    tabs: function() { return this.tabsContainer.children(); },
+    editors: function() { return this.editorsContainer.find('.file-editor'); },
+    
     setUpAddFile: function() {
       this._addFileButton.click(function() {
         this._addFile();
@@ -30,15 +33,14 @@ mumuki.load(function () {
       }.bind(this));
     },
 
-    tabs: function() { return this.tabsContainer.children(); },
-    editors: function() { return this.editorsContainer.find('.file-editor'); },
-
     _addFile: function() {
       var name = prompt('Insert a file name'); // TODO: i18n, or improve somehow
       if (!name.length || !name.includes('.')) return;
 
-      this.tabsContainer.append(this._createTab(name));
-      this.editorsContainer.append(this._createEditor(name));
+      const id = 'editor-file-' + this._getFilesCount();
+      this.tabsContainer.append(this._createTab(name, id));
+      this.editorsContainer.append(this._createEditor(name, id));
+      this.editors().last().remove();
 
       this._updateButtonsVisibility();
     },
@@ -61,19 +63,19 @@ mumuki.load(function () {
       this._setVisibility(deleteButtons, filesCount > 1);
     },
 
-    _createTab: function(name) {
-      var index = this._getFilesCount() + 1;
+    _createTab: function(name, id) {
       var tab = this.tabs().last().clone();
       this._setFileName(tab, name);
-      tab.attr('data-target', '#editor-file-' + index);
+      tab.attr('data-target', '#' + id);
       tab.removeClass('active');
       this.setUpDeleteFile(tab);
 
       return tab;
     },
 
-    _createEditor: function(name) {
+    _createEditor: function(name, id) {
       var editor = this.editors().last().clone();
+      editor.attr('id', id);
       editor.find('.CodeMirror').remove();
 
       var textarea = editor.children().first();
