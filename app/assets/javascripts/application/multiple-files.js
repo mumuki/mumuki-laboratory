@@ -4,10 +4,9 @@ mumuki.load(function () {
     this.tabsContainer = tabsContainer;
     this.editorsContainer = editorsContainer;
 
-    this.tabs = tabsContainer.children();
-    this.editors = editorsContainer.find('.file-editor');
-
     this.MAX_TABS = 3; // TODO: Fix the view so it doesn't break the UI with more than 3 tabs
+    this.DELETE_FILE = '.delete-file-button';
+    this.FILE_NAME = '.file-name';
 
     this._addFileButton = this.tabsContainer.siblings('.add-file-button');
   }
@@ -20,16 +19,19 @@ mumuki.load(function () {
     },
 
     setUpDeleteFiles: function() {
-      this.tabs.each(function(i, element) {
+      this.tabs().each(function(i, element) {
         this.setUpDeleteFile($(element));
       }.bind(this));
     },
 
     setUpDeleteFile: function(tab) {
-      tab.find('.delete-file-button').click(function() {
+      tab.find(this.DELETE_FILE).click(function() {
         this._deleteFile(this._getFileName(tab));
       }.bind(this));
     },
+
+    tabs: function() { return this.tabsContainer.children(); },
+    editors: function() { return this.editorsContainer.find('.file-editor'); },
 
     _addFile: function() {
       var name = prompt('Insert a file name'); // TODO: i18n, or improve somehow
@@ -42,21 +44,26 @@ mumuki.load(function () {
     },
 
     _deleteFile: function(name) {
-      var tab = this.tabs.find(".file-name:contains('" + name + "')").parent();
+      var tab = this.tabs().find(this.FILE_NAME + ":contains('" + name + "')").parent();
       if (!tab.length) return;
 
       $(tab.attr('data-target')).remove();
       tab.remove();
+
+      this._updateButtonsVisibility();
     },
 
     _updateButtonsVisibility: function() {
-      if (this._getFilesCount() < this.MAX_FILES) this._addFileButton.show();
-      else this._addFileButton.hide();
+      var filesCount = this._getFilesCount();
+      var deleteButtons = this.tabs().find(this.DELETE_FILE);
+
+      this._setVisibility(this._addFileButton, filesCount < this.MAX_TABS);
+      this._setVisibility(deleteButtons, filesCount > 1);
     },
 
     _createTab: function(name) {
       var index = this._getFilesCount() + 1;
-      var tab = this.tabs.last().clone();
+      var tab = this.tabs().last().clone();
       this._setFileName(tab, name);
       tab.attr('data-target', '#editor-file-' + index);
       tab.removeClass('active');
@@ -66,7 +73,7 @@ mumuki.load(function () {
     },
 
     _createEditor: function(name) {
-      var editor = this.editors.last().clone();
+      var editor = this.editors().last().clone();
       editor.find('.CodeMirror').remove();
 
       var textarea = editor.children().first();
@@ -78,15 +85,19 @@ mumuki.load(function () {
     },
 
     _getFilesCount: function() {
-      return this.editors.length;
+      return this.editors().length;
     },
 
     _setFileName: function(tab, name) {
-      return tab.find(".file-name").text(name);
+      return tab.find(this.FILE_NAME).text(name);
     },
 
     _getFileName: function(tab) {
-      return tab.find(".file-name").text();
+      return tab.find(this.FILE_NAME).text();
+    },
+
+    _setVisibility: function(element, isVisible) {
+      if (isVisible) element.show(); else element.hide();
     }
   };
 
