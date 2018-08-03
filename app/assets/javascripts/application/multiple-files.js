@@ -67,7 +67,7 @@ mumuki.load(function () {
       var tab = this.tabs().last().clone();
       this._setFileName(tab, name);
       tab.attr('data-target', '#' + id);
-      tab.removeClass('active');
+      this._removeActiveClasses(tab);
       this.setUpDeleteFile(tab);
 
       return tab;
@@ -77,6 +77,7 @@ mumuki.load(function () {
       var editor = this.editors().last().clone();
       editor.attr('id', id);
       editor.find('.CodeMirror').remove();
+      this._removeActiveClasses(editor);
 
       var textarea = editor.children().first();
       textarea.attr('id', 'solution_content[' + name + ']');
@@ -85,7 +86,7 @@ mumuki.load(function () {
 
       // TODO: A veces no serializa el content nuevo
       // TODO: Detectar content type según extensión
-      
+
       new mumuki.editor.CodeMirrorBuilder(textarea[0])
         .setup(textarea.data('lines'));
 
@@ -106,18 +107,23 @@ mumuki.load(function () {
 
     _setVisibility: function(element, isVisible) {
       if (isVisible) element.show(); else element.hide();
+    },
+
+    _removeActiveClasses: function(element) {
+      element.removeClass('active');
+      element.removeClass('in');
     }
   };
 
-	var setUpTabsBehavior = function(event) {
-	  var tabsContainer = $('.nav-tabs');
-	  if (!tabsContainer.length) return;
-	  var editorsContainer = $('.tab-content');
+var setUpTabsBehavior = function(event) {
+  var tabsContainer = $('.nav-tabs');
+  if (!tabsContainer.length) return;
+  var editorsContainer = $('.tab-content');
 
-	  var controls = new FileControls(tabsContainer, editorsContainer);
+  var controls = new FileControls(tabsContainer, editorsContainer);
 
-	  controls.setUpAddFile();
-	  controls.setUpDeleteFiles();
-	};
-	$(document).ready(setUpTabsBehavior);
+  controls.setUpAddFile();
+  controls.setUpDeleteFiles();
+};
+$(document).ready(setUpTabsBehavior);
 });
