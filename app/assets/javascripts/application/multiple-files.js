@@ -153,14 +153,19 @@ mumuki.load(function () {
       editor.find('.CodeMirror').remove();
 
       var textarea = editor.children().first();
-      textarea.attr('id', 'solution_content[' + name + ']');
-      textarea.attr('name', 'solution[content[' + name + ']]');
+      textarea.attr('id', '');
+      textarea.attr('name', '');
       textarea.text('');
+      textarea.val('');
 
-      // TODO: No serializa el content nuevo al agregar tabs y enviar solución
+      setTimeout(function() {
+        new mumuki.editor.CodeMirrorBuilder(textarea.get(0)).setup(textarea.data('lines'));
+        const solutionTextArea = $('.new_solution').find('textarea').last();
+        solutionTextArea.attr('id', 'solution_content[' + name + ']');
+        solutionTextArea.attr('name', 'solution[content[' + name + ']]');
+      });
+
       // TODO: Detectar content type según extensión
-
-      new mumuki.editor.CodeMirrorBuilder(textarea.get(0)).setup(textarea.data('lines'));
 
       return editor;
     },
