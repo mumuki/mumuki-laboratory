@@ -49,8 +49,16 @@ mumuki.load(function () {
       var tab = this.tabs().find(this.FILE_NAME + ":contains('" + name + "')").parent();
       if (!tab.length) return;
 
-      $(tab.attr('data-target')).remove();
+      const editor = $(tab.attr('data-target'));
+      const wasSelected = this._isSelected(tab);
+
       tab.remove();
+      editor.remove();
+
+      if (wasSelected) {
+        this._select(this.tabs().last());
+        this._select(this.editors().last());
+      }
 
       this._updateButtonsVisibility();
     },
@@ -67,7 +75,7 @@ mumuki.load(function () {
       var tab = this.tabs().last().clone();
       this._setFileName(tab, name);
       tab.attr('data-target', '#' + id);
-      this._removeActiveClasses(tab);
+      this._unselect(tab);
       this.setUpDeleteFile(tab);
 
       return tab;
@@ -77,7 +85,7 @@ mumuki.load(function () {
       var editor = this.editors().last().clone();
       editor.attr('id', id);
       editor.find('.CodeMirror').remove();
-      this._removeActiveClasses(editor);
+      this._unselect(editor);
 
       var textarea = editor.children().first();
       textarea.attr('id', 'solution_content[' + name + ']');
@@ -109,7 +117,16 @@ mumuki.load(function () {
       if (isVisible) element.show(); else element.hide();
     },
 
-    _removeActiveClasses: function(element) {
+    _isSelected: function(element) {
+      return element.hasClass("active");
+    },
+
+    _select: function(element) {
+      element.addClass('active');
+      element.addClass('in');
+    },
+
+    _unselect: function(element) {
       element.removeClass('active');
       element.removeClass('in');
     }
