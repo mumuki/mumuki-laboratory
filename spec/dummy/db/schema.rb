@@ -235,7 +235,7 @@ ActiveRecord::Schema.define(version: 20180802190437) do
     t.datetime "updated_at"
     t.boolean "read", default: false
     t.integer "discussion_id"
-    t.boolean "useful", default: false
+    t.boolean "approved", default: false
   end
 
   create_table "organizations", id: :serial, force: :cascade do |t|

@@ -1,6 +1,6 @@
 class DiscussionsMessagesController < AjaxController
   before_action :set_discussion!, only: [:create, :destroy]
-  before_action :authorize!, only: [:destroy, :useful]
+  before_action :authorize!, only: [:destroy, :approve]
 
   def create
     @discussion.submit_message! message_params, current_user
@@ -12,8 +12,8 @@ class DiscussionsMessagesController < AjaxController
     redirect_back(fallback_location: root_path)
   end
 
-  def useful
-    current_message.toggle_useful!
+  def approve
+    current_message.toggle_approved!
     head :ok
   end
 

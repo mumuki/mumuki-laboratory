@@ -50,7 +50,7 @@ mumuki.load(function () {
     discussionPostAndToggle: function (url, elem) {
       Forum.discussionPost(url).done(Forum.toggleButton(elem))
     },
-    discussionMessageUseful : function (url, elem) {
+    discussionMessageToggleApprove : function (url, elem) {
       Forum.discussionPost(url).done(function () {
         elem.toggleClass("selected");
       })

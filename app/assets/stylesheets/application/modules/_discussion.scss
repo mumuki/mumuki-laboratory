@@ -332,12 +332,12 @@ summary.discussion-summary {
         a {
           margin-left: 5px;
         }
-        .discussion-message-useful {
+        .discussion-message-approved {
           cursor: pointer;
           text-decoration: none;
           &.selected {
             i {
-              color: $brand-primary;
+              color: $brand-success;
             }
           }
         }
