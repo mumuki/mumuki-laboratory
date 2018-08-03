@@ -60,19 +60,19 @@ var mumuki = mumuki || {};
         }
       });
     },
-    setup: function(minLines) {
+    setup: function(minLines, language) {
       this.setupEditor();
-      this.setupLanguage();
+      this.setupLanguage(language);
       this.setupOptions(minLines);
 
       return this;
     },
-    setupLanguage: function () {
-      var language = this.$textarea.data('editor-language');
-      if (language === 'dynamic') {
+    setupLanguage: function (language) {
+      var highlightMode = language || this.$textarea.data('editor-language');
+      if (highlightMode === 'dynamic') {
         mumuki.page.dynamicEditors.push(this.editor);
       } else {
-        this.editor.setOption('mode', language);
+        this.editor.setOption('mode', highlightMode);
         this.editor.refresh();
       }
     },

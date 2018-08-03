@@ -35,7 +35,7 @@ mumuki.load(function () {
     },
 
     remove: function() {
-      const wasSelected = this.isSelected();
+      var wasSelected = this.isSelected();
 
       this.tab.remove();
       this.editor.remove();
@@ -76,7 +76,7 @@ mumuki.load(function () {
 
   FileControls.prototype = {
     files: function() {
-      const editors = this.editors();
+      var editors = this.editors();
 
       return this.tabs().map(function(i, tab) {
         return new File($(tab), $(editors[i]));
@@ -111,22 +111,22 @@ mumuki.load(function () {
       var name = prompt('Insert a file name'); // TODO: i18n, or improve somehow
       if (!name.length || !name.includes('.')) return;
 
-      const id = 'editor-file-' + this._getFilesCount();
+      var id = 'editor-file-' + this._getFilesCount();
       this.tabsContainer.append(this._createTab(name, id));
       this.editors().parent().last().append(this._createEditor(name, id));
-      const file = this.files().last().get(0).initialize(name);
+      var file = this.files().last().get(0).initialize(name);
       this.setUpDeleteFile(file);
 
       this._updateButtonsVisibility();
     },
 
     _deleteFile: function(file) {
-      const index  = this.files().toArray()
+      var index  = this.files().toArray()
         .map(function(file) { return file.getName(); })
         .indexOf(file.getName());
-      const previousIndex = Math.max(index - 1, 0);
+      var previousIndex = Math.max(index - 1, 0);
 
-      const wasSelected = file.remove();
+      var wasSelected = file.remove();
       if (wasSelected) this.files()[previousIndex].select();
 
       this._updateButtonsVisibility();
@@ -153,25 +153,40 @@ mumuki.load(function () {
       editor.find('.CodeMirror').remove();
 
       var textarea = editor.children().first();
-      textarea.attr('id', '');
-      textarea.attr('name', '');
-      textarea.text('');
-      textarea.val('');
+      this._setUpTextArea(textarea, 'solution_content[' + name + ']', 'solution[content[' + name + ']]');
 
       setTimeout(function() {
-        new mumuki.editor.CodeMirrorBuilder(textarea.get(0)).setup(textarea.data('lines'));
-        const solutionTextArea = $('.new_solution').find('textarea').last();
-        solutionTextArea.attr('id', 'solution_content[' + name + ']');
-        solutionTextArea.attr('name', 'solution[content[' + name + ']]');
-      });
+        var highlightModes = JSON.parse($('#highlight-modes').val());
+        var extension = name.split('.').pop();
+        var language = highlightModes.find(function(it) {
+          return it.extension === extension;
+        });
+        var highlightMode = language && language.highlight_mode || extension;
 
-      // TODO: Detectar content type según extensión
+        new mumuki.editor.CodeMirrorBuilder(textarea.get(0)).setup(textarea.data('lines'), highlightMode);
+
+        setTimeout(function() {
+          var solutionTextArea = $('.new_solution').find('textarea').last();
+          this._setUpTextArea(solutionTextArea, '', '');
+
+          $(solutionTextArea).change(function(event) {
+            textarea.val(event.target.value);
+          });
+        }.bind(this));
+      }.bind(this));
 
       return editor;
     },
 
     _getFilesCount: function() {
       return this.files().length;
+    },
+
+    _setUpTextArea: function(textarea, id, name) {
+      textarea.attr('id', id);
+      textarea.attr('name', name);
+      textarea.text('');
+      textarea.val('');
     },
 
     _setVisibility: function(element, isVisible) {
