@@ -1,7 +1,7 @@
 module Mumuki::Laboratory::Controllers::Notifications
 
   def user_notifications_path
-    helpers.user_profile_path(current_notifications_tab)
+    user_path(anchor: current_notifications_tab)
   end
 
   def has_notifications?
