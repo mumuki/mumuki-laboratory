@@ -155,25 +155,17 @@ mumuki.load(function () {
       var textarea = editor.children().first();
       this._setUpTextArea(textarea, 'solution_content[' + name + ']', 'solution[content[' + name + ']]');
 
-      setTimeout(function() {
-        var highlightModes = JSON.parse($('#highlight-modes').val());
-        var extension = name.split('.').pop();
-        var language = highlightModes.find(function(it) {
-          return it.extension === extension;
-        });
-        var highlightMode = language && language.highlight_mode || extension;
+      var highlightMode = this._getHighlightModeFor(name);
+      var codeMirrorEditor = new mumuki.editor.CodeMirrorBuilder(textarea.get(0))
+        .setup(textarea.data('lines'), highlightMode)
+        .build();
 
-        new mumuki.editor.CodeMirrorBuilder(textarea.get(0)).setup(textarea.data('lines'), highlightMode);
+      codeMirrorEditor.on("change", function(event) {
+        textarea.val(event.getValue());
+      });
 
-        setTimeout(function() {
-          var solutionTextArea = $('.new_solution').find('textarea').last();
-          this._setUpTextArea(solutionTextArea, '', '');
-
-          $(solutionTextArea).change(function(event) {
-            textarea.val(event.target.value);
-          });
-        }.bind(this));
-      }.bind(this));
+      var solutionTextArea = $('.new_solution').find('textarea').last();
+      this._setUpTextArea(solutionTextArea, '', '');
 
       return editor;
     },
@@ -187,6 +179,16 @@ mumuki.load(function () {
       textarea.attr('name', name);
       textarea.text('');
       textarea.val('');
+    },
+
+    _getHighlightModeFor: function(name) {
+      var highlightModes = JSON.parse($('#highlight-modes').val());
+      var extension = name.split('.').pop();
+      var language = highlightModes.find(function(it) {
+        return it.extension === extension;
+      });
+
+      return language && language.highlight_mode || extension;
     },
 
     _setVisibility: function(element, isVisible) {
