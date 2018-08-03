@@ -123,8 +123,13 @@ mumuki.load(function () {
     },
 
     _deleteFile: function(file) {
+      const index  = this.files().toArray()
+        .map(function(file) { return file.getName(); })
+        .indexOf(file.getName());
+      const previousIndex = Math.max(index - 1, 0);
+
       const wasSelected = file.remove();
-      if (wasSelected) this.files().last().get(0).select();
+      if (wasSelected) this.files()[previousIndex].select();
 
       this._updateButtonsVisibility();
     },
