@@ -113,9 +113,7 @@ mumuki.load(function () {
 
       const id = 'editor-file-' + this._getFilesCount();
       this.tabsContainer.append(this._createTab(name, id));
-      this.editorsContainer.append(this._createEditor(name, id));
-      this.editors().last().remove();
-
+      this.editors().parent().last().append(this._createEditor(name, id));
       const file = this.files().last().get(0).initialize(name);
       this.setUpDeleteFile(file);
 
@@ -159,11 +157,10 @@ mumuki.load(function () {
       textarea.attr('name', 'solution[content[' + name + ']]');
       textarea.text('');
 
-      // TODO: A veces no serializa el content nuevo
+      // TODO: No serializa el content nuevo al agregar tabs y enviar solución
       // TODO: Detectar content type según extensión
 
-      new mumuki.editor.CodeMirrorBuilder(textarea.get(0))
-        .setup(textarea.data('lines'));
+      new mumuki.editor.CodeMirrorBuilder(textarea.get(0)).setup(textarea.data('lines'));
 
       return editor;
     },
