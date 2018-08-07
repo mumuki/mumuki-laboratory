@@ -9,21 +9,21 @@ mumuki.load(() => {
     }
 
     initialize(name) {
-      this.setName(name);
+      this.name = name;
       this.unselect();
 
       return this;
     }
 
-    getName() {
+    get name() {
       return this.tab.find(File.NAME_CLASS).text();
     }
 
-    setName(name) {
+    set name(name) {
       return this.tab.find(File.NAME_CLASS).text(name);
     }
 
-    isSelected() {
+    get isSelected() {
       return this.tab.hasClass("active");
     }
 
@@ -34,7 +34,7 @@ mumuki.load(() => {
     }
 
     remove() {
-      const wasSelected = this.isSelected();
+      const wasSelected = this.isSelected;
 
       this.tab.remove();
       this.editor.remove();
@@ -74,19 +74,19 @@ mumuki.load(() => {
       this._updateButtonsVisibility();
     }
 
-    files() {
-      const editors = this.editors();
+    get files() {
+      const editors = this.editors;
 
-      return this.tabs().map((i, tab) => {
+      return this.tabs.map((i, tab) => {
         return new File($(tab), $(editors[i]));
       });
     }
 
-    tabs() {
+    get tabs() {
       return this.tabsContainer.children();
     }
 
-    editors() {
+    get editors() {
       return this.editorsContainer.find('.file-editor')
     }
 
@@ -97,7 +97,7 @@ mumuki.load(() => {
     }
 
     setUpDeleteFiles() {
-      this.files().each((i, file) => {
+      this.files.each((i, file) => {
         this.setUpDeleteFile(file);
       });
     }
@@ -108,47 +108,47 @@ mumuki.load(() => {
 
     _addFile() {
       const name = prompt('Insert a file name'); // TODO: i18n, or improve somehow
-      const alreadyExists = this.files().toArray().some(it => it.getName() === name);
+      const alreadyExists = this.files.toArray().some(it => it.name === name);
       if (!name.length || !name.includes('.') || alreadyExists) return;
 
       const id = `editor-file-${this._getFilesCount()}`;
       this.tabsContainer.append(this._createTab(name, id));
-      this.editors().parent().last().append(this._createEditor(name, id));
-      const file = this.files().last().get(0).initialize(name);
+      this.editors.parent().last().append(this._createEditor(name, id));
+      const file = this.files.last().get(0).initialize(name);
       this.setUpDeleteFile(file);
 
       this._updateButtonsVisibility();
     }
 
     _deleteFile(file) {
-      const index  = this.files().toArray()
-        .map((file) => file.getName())
-        .indexOf(file.getName());
+      const index  = this.files.toArray()
+        .map((file) => file.name)
+        .indexOf(file.name);
       const previousIndex = Math.max(index - 1, 0);
 
       const wasSelected = file.remove();
-      if (wasSelected) this.files()[previousIndex].select();
+      if (wasSelected) this.files[previousIndex].select();
 
       this._updateButtonsVisibility();
     }
 
     _updateButtonsVisibility() {
       const filesCount = this._getFilesCount();
-      const deleteButtons = this.tabs().find(File.DELETE_BUTTON_CLASS);
+      const deleteButtons = this.tabs.find(File.DELETE_BUTTON_CLASS);
 
       this._setVisibility(this._addFileButton, filesCount < this.MAX_TABS);
       this._setVisibility(deleteButtons, filesCount > 1);
     }
 
     _createTab(name, id) {
-      const tab = this.tabs().last().clone();
+      const tab = this.tabs.last().clone();
       tab.attr('data-target', `#${id}`);
 
       return tab;
     }
 
     _createEditor(name, id) {
-      const editor = this.editors().last().clone();
+      const editor = this.editors.last().clone();
       editor.attr('id', id);
       editor.find('.CodeMirror').remove();
 
@@ -173,7 +173,7 @@ mumuki.load(() => {
     }
 
     _getFilesCount() {
-      return this.files().length;
+      return this.files.length;
     }
 
     _setUpTextArea(textarea, id, name) {
