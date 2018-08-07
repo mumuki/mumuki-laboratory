@@ -29,9 +29,6 @@ var mumuki = mumuki || {};
   };
 
   CodeMirrorBuilder.prototype = {
-    createEditor: function (customOptions) {
-      return CodeMirror.fromTextArea(this.textarea, Object.assign({}, codeMirrorDefaults, customOptions));
-    },
     setupEditor: function () {
       this.editor = this.createEditor({
         lineNumbers: true,
@@ -47,6 +44,8 @@ var mumuki = mumuki || {};
           }
         }
       });
+
+      return this;
     },
     setupSimpleEditor: function () {
       this.editor = this.createEditor({
@@ -59,11 +58,6 @@ var mumuki = mumuki || {};
           }
         }
       });
-    },
-    setup: function(minLines, language) {
-      this.setupEditor();
-      this.setupLanguage(language);
-      this.setupOptions(minLines);
 
       return this;
     },
@@ -75,12 +69,19 @@ var mumuki = mumuki || {};
         this.editor.setOption('mode', highlightMode);
         this.editor.refresh();
       }
+
+      return this;
     },
-    setupOptions: function (minLines) {
+    setupMinLines: function (minLines) {
       this.editor.setOption('minLines', minLines);
+
+      return this;
     },
     build: function () {
       return this.editor;
+    },
+    createEditor: function (customOptions) {
+      return CodeMirror.fromTextArea(this.textarea, Object.assign({}, codeMirrorDefaults, customOptions));
     }
   };
 

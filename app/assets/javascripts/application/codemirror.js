@@ -5,7 +5,9 @@ var mumuki = mumuki || {};
     var editors = $(".editor").map(function (index, textarea) {
       var $textarea = $("#solution_content");
       return new mumuki.editor.CodeMirrorBuilder(textarea)
-        .setup($textarea.data('lines'))
+        .setupEditor()
+        .setupMinLines($textarea.data('lines'))
+        .setupLanguage()
         .build();
     });
 

@@ -157,7 +157,9 @@ mumuki.load(function () {
 
       var highlightMode = this._getHighlightModeFor(name);
       var codeMirrorEditor = new mumuki.editor.CodeMirrorBuilder(textarea.get(0))
-        .setup(textarea.data('lines'), highlightMode)
+        .setupEditor()
+        .setupMinLines(textarea.data('lines'))
+        .setupLanguage(highlightMode)
         .build();
 
       codeMirrorEditor.on("change", function(event) {
