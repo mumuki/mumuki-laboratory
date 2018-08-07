@@ -64,7 +64,7 @@ mumuki.load(function () {
     }
   };
 
-  function FileControls(tabsContainer, editorsContainer) {
+  function MultipleFileEditor(tabsContainer, editorsContainer) {
     this.tabsContainer = tabsContainer;
     this.editorsContainer = editorsContainer;
 
@@ -74,7 +74,7 @@ mumuki.load(function () {
     this._updateButtonsVisibility();
   }
 
-  FileControls.prototype = {
+  MultipleFileEditor.prototype = {
     files: function() {
       var editors = this.editors();
 
@@ -203,7 +203,7 @@ mumuki.load(function () {
     if (!tabsContainer.length) return;
     var editorsContainer = $('.tab-content');
 
-    var controls = new FileControls(tabsContainer, editorsContainer);
+    var controls = new MultipleFileEditor(tabsContainer, editorsContainer);
 
     controls.setUpAddFile();
     controls.setUpDeleteFiles();
