@@ -2,16 +2,15 @@ var mumuki = mumuki || {};
 
 (function (mumuki) {
   function createCodeMirrors() {
-    var editors = $(".editor").map(function (index, textarea) {
+    return $(".editor").map(function (index, textarea) {
       var $textarea = $("#solution_content");
-      var builder = new mumuki.editor.CodeMirrorBuilder(textarea);
-      builder.setupEditor();
-      builder.setupOptions($textarea.data('lines'));
-      builder.setupLanguage();
-      return builder.build();
-    });
 
-    return editors;
+      return new mumuki.editor.CodeMirrorBuilder(textarea)
+        .setupEditor()
+        .setupMinLines($textarea.data('lines'))
+        .setupLanguage()
+        .build();
+    });
   }
 
   function onSelectUpdateCodeMirror() {
@@ -62,7 +61,6 @@ var mumuki = mumuki || {};
   }
 
   mumuki.editor = mumuki.editor || {};
-  mumuki.editor.setupCodeMirrors = setEditorLanguage;
   mumuki.editor.toggleFullscreen = toggleFullscreen;
   mumuki.editor.indentWithSpaces = indentWithSpaces;
   mumuki.editor.syncContent = syncContent;

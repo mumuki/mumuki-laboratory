@@ -88,6 +88,7 @@ body.fullscreen {
     width: 100%;
 
     li {
+      position: relative;
       width: 100%;
       white-space: nowrap;
       overflow: hidden;
@@ -98,6 +99,12 @@ body.fullscreen {
         text-overflow: ellipsis;
         margin-right: 0;
         padding: 5px 10px;
+      }
+      .delete-file-button {
+        position: absolute;
+        right: 16px;
+        top: 12px;
+        cursor: pointer;
       }
       &.active {
         a {
@@ -113,6 +120,12 @@ body.fullscreen {
         }
       }
     }
+  }
+
+  .add-file-button {
+    margin-left: 16px;
+    margin-right: 16px;
+    cursor: pointer;
   }
 }
 

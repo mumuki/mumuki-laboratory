@@ -1,0 +1,222 @@
+mumuki.load(() => {
+  class File {
+    static get NAME_CLASS() { return '.file-name'; }
+    static get DELETE_BUTTON_CLASS() { return '.delete-file-button'; }
+
+    constructor(tab, editor) {
+      this.tab = tab;
+      this.editor = editor;
+    }
+
+    initialize(name) {
+      this.name = name;
+      this.unselect();
+
+      return this;
+    }
+
+    get name() {
+      return this.tab.find(File.NAME_CLASS).text();
+    }
+
+    set name(name) {
+      return this.tab.find(File.NAME_CLASS).text(name);
+    }
+
+    get isSelected() {
+      return this.tab.hasClass("active");
+    }
+
+    setUpOnRemove(handler) {
+      this.tab.find(File.DELETE_BUTTON_CLASS).click(() => {
+        handler(this);
+      });
+    }
+
+    remove() {
+      const wasSelected = this.isSelected;
+
+      this.tab.remove();
+      this.editor.remove();
+
+      return wasSelected;
+    }
+
+    select() {
+      this._selectElement(this.tab);
+      this._selectElement(this.editor);
+    }
+
+    unselect() {
+      this._unselectElement(this.tab);
+      this._unselectElement(this.editor);
+    }
+
+    _selectElement(element) {
+      element.addClass('active');
+      element.addClass('in');
+    }
+
+    _unselectElement(element) {
+      element.removeClass('active');
+      element.removeClass('in');
+    }
+  }
+
+  class MultipleFileEditor {
+    constructor(tabsContainer, editorsContainer) {
+      this.tabsContainer = tabsContainer;
+      this.editorsContainer = editorsContainer;
+
+      this.MAX_TABS = 5;
+
+      this._addFileButton = this.tabsContainer.siblings('.add-file-button');
+      this._updateButtonsVisibility();
+    }
+
+    get files() {
+      const editors = this.editors;
+
+      return this.tabs.map((i, tab) => {
+        return new File($(tab), $(editors[i]));
+      });
+    }
+
+    get tabs() {
+      return this.tabsContainer.children();
+    }
+
+    get editors() {
+      return this.editorsContainer.find('.file-editor')
+    }
+
+    get highlightModes() {
+      return this._getDataFromHiddenInput('#highlight-modes')
+    }
+
+    get locales() {
+      return this._getDataFromHiddenInput('#multifile-locales')
+    }
+
+    setUpAddFile() {
+      this._addFileButton.click(() => {
+        this._addFile();
+      });
+    }
+
+    setUpDeleteFiles() {
+      this.files.each((i, file) => {
+        this.setUpDeleteFile(file);
+      });
+    }
+
+    setUpDeleteFile(file) {
+      file.setUpOnRemove(this._deleteFile.bind(this));
+    }
+
+    _addFile() {
+      const name = prompt(this.locales.insert_file_name);
+      const alreadyExists = this.files.toArray().some(it => it.name === name);
+      if (!name.length || !name.includes('.') || alreadyExists) return;
+
+      const id = `editor-file-${this._getFilesCount()}`;
+      this.tabsContainer.append(this._createTab(name, id));
+      this.editors.parent().last().append(this._createEditor(name, id));
+      const file = this.files.last().get(0).initialize(name);
+      this.setUpDeleteFile(file);
+
+      this._updateButtonsVisibility();
+    }
+
+    _deleteFile(file) {
+      const index  = this.files.toArray()
+        .map((file) => file.name)
+        .indexOf(file.name);
+      const previousIndex = Math.max(index - 1, 0);
+
+      const wasSelected = file.remove();
+      if (wasSelected) this.files[previousIndex].select();
+
+      this._updateButtonsVisibility();
+    }
+
+    _updateButtonsVisibility() {
+      const filesCount = this._getFilesCount();
+      const deleteButtons = this.tabs.find(File.DELETE_BUTTON_CLASS);
+
+      this._setVisibility(this._addFileButton, filesCount < this.MAX_TABS);
+      this._setVisibility(deleteButtons, filesCount > 1);
+    }
+
+    _createTab(name, id) {
+      const tab = this.tabs.last().clone();
+      tab.attr('data-target', `#${id}`);
+
+      return tab;
+    }
+
+    _createEditor(name, id) {
+      const editor = this.editors.last().clone();
+      editor.attr('id', id);
+      editor.find('.CodeMirror').remove();
+
+      const textarea = editor.children().first();
+      this._setUpTextArea(textarea, `solution_content[${name}]`, `solution[content[${name}]]`);
+
+      const highlightMode = this._getHighlightModeFor(name);
+      const codeMirrorEditor = new mumuki.editor.CodeMirrorBuilder(textarea.get(0))
+        .setupEditor()
+        .setupMinLines(textarea.data('lines'))
+        .setupLanguage(highlightMode)
+        .build();
+
+      codeMirrorEditor.on("change", (event) => {
+        textarea.val(event.getValue());
+      });
+
+      const solutionTextArea = $('.new_solution').find('textarea').last();
+      this._setUpTextArea(solutionTextArea, '', '');
+
+      return editor;
+    }
+
+    _getFilesCount() {
+      return this.files.length;
+    }
+
+    _setUpTextArea(textarea, id, name) {
+      textarea.attr('id', id);
+      textarea.attr('name', name);
+      textarea.text('');
+      textarea.val('');
+    }
+
+    _getHighlightModeFor(name) {
+      const extension = name.split('.').pop();
+      const language = this.highlightModes.find((it) => it.extension === extension);
+
+      return language && language.highlight_mode || extension;
+    }
+
+    _setVisibility(element, isVisible) {
+      if (isVisible) element.show(); else element.hide();
+    }
+
+    _getDataFromHiddenInput(name) {
+      return JSON.parse($(name).val());
+    }
+  }
+
+
+  const setUpTabsBehavior = () => {
+    const tabsContainer = $('.nav-tabs');
+    if (!tabsContainer.length) return;
+    const editorsContainer = $('.tab-content');
+
+    const multipleFileEditor = new MultipleFileEditor(tabsContainer, editorsContainer);
+    multipleFileEditor.setUpAddFile();
+    multipleFileEditor.setUpDeleteFiles();
+  };
+
+  $(document).ready(setUpTabsBehavior);
+});

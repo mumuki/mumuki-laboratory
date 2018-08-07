@@ -98,6 +98,7 @@ es:
   hour: hora
   hours: horas
   initial_state: Tablero inicial
+  insert_file_name: Ingresa un nombre de archivo
   invitation: Invitación a curso
   invitation_for: 'Unirse a %{course}'
   item_not_accessible: "No tenés permisos para acceder a este contenido"

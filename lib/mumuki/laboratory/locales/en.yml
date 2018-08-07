@@ -88,6 +88,7 @@ en:
   history: History
   home: Home
   initial_state: Initial board
+  insert_file_name: Insert a file name
   invitation: Invitation to course
   invitation_for: 'Join %{course}'
   item_not_accessible: "You are not permitted to access this content"

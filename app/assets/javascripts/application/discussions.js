@@ -18,10 +18,11 @@ mumuki.load(function () {
     var $textarea = $("#new-discussion-message");
     var textarea = $textarea[0];
     if(!textarea) return;
-    var builder = new mumuki.editor.CodeMirrorBuilder(textarea);
-    builder.setupSimpleEditor();
-    builder.setupOptions($textarea.data('lines'));
-    builder.build();
+
+    new mumuki.editor.CodeMirrorBuilder(textarea)
+      .setupSimpleEditor()
+      .setupMinLines($textarea.data('lines'))
+      .build();
   }
 
   createNewMessageEditor();
