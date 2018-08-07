@@ -90,6 +90,14 @@ mumuki.load(() => {
       return this.editorsContainer.find('.file-editor')
     }
 
+    get highlightModes() {
+      return this._getDataFromHiddenInput('#highlight-modes')
+    }
+
+    get locales() {
+      return this._getDataFromHiddenInput('#multifile-locales')
+    }
+
     setUpAddFile() {
       this._addFileButton.click(() => {
         this._addFile();
@@ -107,7 +115,7 @@ mumuki.load(() => {
     }
 
     _addFile() {
-      const name = prompt('Insert a file name'); // TODO: i18n, or improve somehow
+      const name = prompt(this.locales.insert_file_name);
       const alreadyExists = this.files.toArray().some(it => it.name === name);
       if (!name.length || !name.includes('.') || alreadyExists) return;
 
@@ -184,15 +192,18 @@ mumuki.load(() => {
     }
 
     _getHighlightModeFor(name) {
-      const highlightModes = JSON.parse($('#highlight-modes').val());
       const extension = name.split('.').pop();
-      const language = highlightModes.find((it) => it.extension === extension);
+      const language = this.highlightModes.find((it) => it.extension === extension);
 
       return language && language.highlight_mode || extension;
     }
 
     _setVisibility(element, isVisible) {
       if (isVisible) element.show(); else element.hide();
+    }
+
+    _getDataFromHiddenInput(name) {
+      return JSON.parse($(name).val());
     }
   }
 

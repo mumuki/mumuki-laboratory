@@ -96,6 +96,7 @@ pt:
   hour: hora
   hours: horas
   initial_state: Tabuleiro inicial
+  insert_file_name: Insira um nome de arquivo
   invitation: Convite para o curso
   invitation_for: Participe %{curso}
   item_not_accessible: Você não tem permissões para acessar este conteúdo
