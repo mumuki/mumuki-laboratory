@@ -4,8 +4,6 @@ module MultipleFileEditorHelper
   end
 
   def multifile_locales
-    [
-      :insert_file_name
-    ].map { |it| [it, t(it)] }.to_h
+    :insert_file_name.try { |it| { it => t(it) } }
   end
 end
