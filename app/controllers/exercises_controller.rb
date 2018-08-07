@@ -33,7 +33,6 @@ class ExercisesController < ApplicationController
 
   def set_default_content!
     @files = @exercise.files_for(current_user)
-    @highlight_modes = Language.all.map { |it| { extension: it.extension, highlight_mode: it.highlight_mode } }
     @current_content = @exercise.current_content_for(current_user)
     @default_content = @exercise.default_content_for(current_user)
   end
