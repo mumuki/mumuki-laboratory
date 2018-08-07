@@ -14,7 +14,6 @@ module WithAssignments
     language
       .directives_sections
       .split_sections(assignment_for(user)&.solution || default_content_for(user))
-      .select { |name| Mumuki::Laboratory::File.valid_filename? name }
       .map { |name, content| Mumuki::Laboratory::File.new name, content }
   end
 

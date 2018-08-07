@@ -2,10 +2,6 @@ module Mumuki::Laboratory
   class File
     attr_reader :name, :content
 
-    def self.valid_filename?(name)
-      name.include? '.'
-    end
-
     def initialize(name, content)
       @name = name
       @content = content
