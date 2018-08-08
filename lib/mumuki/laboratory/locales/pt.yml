@@ -125,6 +125,7 @@ pt:
   moderator: Moderador
   mumuki_catchphrase: Aprendi a programar
   mumuki_short_description: Mumuki é a plataforma gratuita e gratuita para aprender a programar, desde a prática até a teoria e no seu idioma
+  my_doubts: Minhas duvidas
   name: Nome
   navigation_continue: "Próximo %{kind}: %{sibling}"
   navigation_next: Próximo %{kind}

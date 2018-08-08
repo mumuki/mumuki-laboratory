@@ -116,6 +116,7 @@ en:
   moderator: Moderator
   mumuki_catchphrase: Improve your programming skills
   mumuki_short_description: Mumuki is a simple, open and collaborative platform for sharing and solving programming exercises. It is aimed to help people with learning and teaching programing languages and paradigms
+  my_doubts: My doubts
   my_submissions: My Submissions
   name: Name
   navigation_continue: 'Next: %{sibling}'

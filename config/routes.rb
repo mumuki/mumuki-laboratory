@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     concerns :debatable, controller: 'book_discussions', only: :index
 
     resources :discussions, only: [] do
-      resources :messages, only: [:create, :destroy], controller: 'discussions_messages'
+      resources :messages, only: [:create, :destroy], controller: 'discussions_messages' do
+        post :approve, on: :member
+      end
     end
 
     resources :book, only: [:show]

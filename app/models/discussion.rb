@@ -2,7 +2,7 @@ class Discussion < ApplicationRecord
   include WithDiscussionStatus, ParentNavigation, WithScopedQueries, Contextualization
 
   belongs_to :item, polymorphic: true
-  has_many :messages
+  has_many :messages, -> { order(:created_at) }
   belongs_to :initiator, class_name: 'User'
   belongs_to :exercise, foreign_type: :exercise, foreign_key: 'item_id'
   has_many :subscriptions

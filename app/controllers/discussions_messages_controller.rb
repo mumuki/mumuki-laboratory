@@ -1,5 +1,6 @@
 class DiscussionsMessagesController < AjaxController
   before_action :set_discussion!, only: [:create, :destroy]
+  before_action :authorize!, only: [:destroy, :approve]
 
   def create
     @discussion.submit_message! message_params, current_user
@@ -7,16 +8,27 @@ class DiscussionsMessagesController < AjaxController
   end
 
   def destroy
-    message = Message.find(params[:id])
-    message.authorize! current_user
-    message.destroy!
+    current_message.destroy!
     redirect_back(fallback_location: root_path)
+  end
+
+  def approve
+    current_message.toggle_approved!
+    head :ok
   end
 
   private
 
   def set_discussion!
     @discussion ||= Discussion.find_by(id: params[:discussion_id])
+  end
+
+  def authorize!
+    current_message.authorize! current_user
+  end
+
+  def current_message
+    @message ||= Message.find(params[:id])
   end
 
   def message_params
