@@ -58,7 +58,7 @@ class Guide < Content
   end
 
   def import_from_json!(json)
-    self.assign_attributes json.except('exercises', 'language', 'id_format', 'id', 'teacher_info', 'collaborators')
+    self.assign_attributes json.except('exercises', 'language', 'id_format', 'id', 'teacher_info', 'collaborators', 'private')
     self.language = Language.for_name(json['language'])
     self.save!
 
