@@ -127,7 +127,20 @@ class Exam < ApplicationRecord
     end
   end
 
-  def attempts_status_for(assignment)
-    Capped.new assignment.attempts_left_in(self)
+  def submission_context_for(assignment)
+    (super if has_attempts_left?(assignment)) || assignment
+  end
+
+  def has_attempts_left?(assignment)
+    assignment.attempts_left > 0
+  end
+
+  def results_partial_for(assignment)
+    return 'out_of_attempts' unless has_attempts_left? assignment
+    super
+  end
+
+  def capped?
+    true
   end
 end

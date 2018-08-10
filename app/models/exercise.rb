@@ -22,6 +22,7 @@ class Exercise < ApplicationRecord
                         :guide
 
   randomize :description, :hint, :extra, :test, :default_content
+  delegate :capped?, :timed?, to: :navigable_parent
 
   def console?
     queriable?
@@ -150,8 +151,17 @@ class Exercise < ApplicationRecord
     choice? ? exam.max_choice_submissions : exam.max_problem_submissions
   end
 
-  def attempts_status_for(user)
-    navigable_parent.attempts_status_for find_or_init_assignment_for(user)
+  def try_submit_solution!(user, solution)
+    assignment = find_or_init_assignment_for(user)
+    navigable_parent.submission_context_for(assignment) { submit_solution! user, solution }
+  end
+
+  def results_partial
+    input_kids? ? 'exercise_solutions/kids_results' : 'exercise_solutions/results'
+  end
+
+  def attempts_left_for(assignment)
+    max_attempts_in(navigable_parent) - (assignment&.attempts_count || 0)
   end
 
   private

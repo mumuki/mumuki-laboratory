@@ -22,7 +22,8 @@ var mumuki = mumuki || {};
       this.submissionsErrorTemplate.show();
       animateTimeoutError(submitButton);
     },
-    done: function () {
+    done: function (data, submitButton) {
+      submitButton.updateAttemptsLeft(data);
       mumuki.pin.scroll();
     }
   };
@@ -34,7 +35,6 @@ var mumuki = mumuki || {};
 
   SubmitButton.prototype = {
     disable: function () {
-      this.setWaitingText();
       this.submissionControls.attr('disabled', 'disabled');
     },
     setWaitingText: function () {
@@ -47,6 +47,24 @@ var mumuki = mumuki || {};
     enable: function () {
       this.setSendText();
       this.submissionControls.removeAttr('disabled');
+    },
+    reachedMaxAttempts: function () {
+      return $('#attempts-left-text').attr('data-disabled') === "true";
+    },
+    updateAttemptsLeft: function (data) {
+      $('#attempts-left-text').replaceWith(data['remaining_attempts_html']);
+      this.checkAttemptsLeft();
+    },
+    preventSubmission: function () {
+      this.disable();
+      this.submitButton.on('click', function (e) {
+        e.preventDefault();
+      })
+    },
+    checkAttemptsLeft: function () {
+      if (this.reachedMaxAttempts()) {
+        this.preventSubmission();
+      }
     }
   };
 
@@ -58,6 +76,7 @@ var mumuki = mumuki || {};
 
     var btnSubmit = $('.btn-submit');
     var submissionControl = $('.submission_control');
+
     var submitButton = new SubmitButton(btnSubmit, submissionControl);
 
     var bridge = new mumuki.bridge.Laboratory;
@@ -65,6 +84,7 @@ var mumuki = mumuki || {};
     btnSubmit.on('click', function (e) {
       e.preventDefault();
       submitButton.disable();
+      submitButton.setWaitingText();
       resultsBox.waiting();
 
       mumuki.editor.syncContent();
@@ -74,12 +94,13 @@ var mumuki = mumuki || {};
         resultsBox.success(data, submitButton);
       }).fail(function () {
         resultsBox.error(submitButton);
-      }).always(function () {
+      }).always(function (data) {
         $(document).renderMuComponents();
-        resultsBox.done();
+        resultsBox.done(data, submitButton);
       });
     });
 
+    submitButton.checkAttemptsLeft();
   });
 
   function getContent(){

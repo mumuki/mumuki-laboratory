@@ -41,7 +41,8 @@ class ApplicationController < ActionController::Base
 
   # ensures contents are accessible to current user
   def validate_accessible!
-    accessible_subject.validate_accessible_for!(current_user) unless (current_user? && current_user.teacher_here?)
+    return if current_user&.teacher_here?
+    accessible_subject.validate_accessible_for! current_user
   end
 
   # required by Mumukit::Login

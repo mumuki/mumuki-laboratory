@@ -12,9 +12,10 @@ class Assignment < ApplicationRecord
 
   validates_presence_of :exercise, :submitter
 
-  delegate :language, :name, to: :exercise
+  delegate :language, :name, :navigable_parent, to: :exercise
 
   alias_attribute :status, :submission_status
+  alias_attribute :attempts_count, :attemps_count
 
   scope :by_exercise_ids, -> (exercise_ids) {
     where(exercise_id: exercise_ids) if exercise_ids
@@ -148,11 +149,15 @@ class Assignment < ApplicationRecord
   end
 
   def increment_attemps!
-    self.attemps_count += 1 if failed? || errored?
+    self.attempts_count += 1 if failed? || errored?
   end
 
-  def attempts_left_in(exam)
-    attemps_count - exercise.max_attempts_in(exam)
+  def attempts_left
+    exercise.attempts_left_for(self)
+  end
+
+  def results_partial
+    navigable_parent.results_partial_for(self)
   end
 
   def current_content

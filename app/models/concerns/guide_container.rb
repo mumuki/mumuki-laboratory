@@ -29,10 +29,18 @@ module GuideContainer
     false
   end
 
+  def capped?
+    false
+  end
+
   def start!(user)
   end
 
-  def attempts_status_for(assignment)
-    Capless
+  def results_partial_for(assignment)
+    assignment.exercise.results_partial
+  end
+
+  def submission_context_for(assignment)
+    yield
   end
 end
