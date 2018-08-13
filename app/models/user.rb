@@ -135,6 +135,10 @@ class User < ApplicationRecord
     assignments.each { |it| it.notify! rescue nil }
   end
 
+  def currently_in_exam?
+    Exam.any? { |e| e.in_progress_for? self }
+  end
+
   private
 
   def set_uid!

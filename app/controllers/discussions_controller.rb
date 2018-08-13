@@ -5,6 +5,7 @@ class DiscussionsController < AjaxController
   before_action :authenticate!, only: [:update, :create]
   before_action :discussion_filter_params, only: :index
   before_action :read_discussion, only: :show
+  before_action :validate_not_in_exam!
 
   helper_method :discussion_filter_params
 
@@ -61,5 +62,9 @@ class DiscussionsController < AjaxController
 
   def discussion_filter_params
     @filter_params ||= params.permit(Discussion.permitted_query_params)
+  end
+
+  def validate_not_in_exam!
+    raise Mumuki::Laboratory::ForbiddenError if current_user&.currently_in_exam?
   end
 end
