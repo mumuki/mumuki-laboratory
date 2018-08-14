@@ -260,4 +260,17 @@ describe User, organization_workspace: :test do
     it { expect(student.student? invitation.course).to be true }
     it { expect(student.student? 'foo/bar').to be false }
   end
+
+  describe '#currently_in_exam?' do
+    let(:student_not_in_exam) { create :user }
+    let(:student_in_exam) { create :user }
+    let(:exam) { create :exam }
+
+    before { exam.authorize! student_in_exam }
+    before { exam.authorize! student_not_in_exam }
+    before { exam.start! student_in_exam }
+
+    it { expect(student_not_in_exam.currently_in_exam?).to be false }
+    it { expect(student_in_exam.currently_in_exam?).to be true }
+  end
 end

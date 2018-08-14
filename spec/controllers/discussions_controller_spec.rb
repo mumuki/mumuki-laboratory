@@ -6,6 +6,7 @@ describe DiscussionsController, organization_workspace: :test do
   let(:exercise_params) { {debatable_class: 'Exercise', exercise_id: exercise.id} }
 
   before { set_current_user! user }
+  before { Organization.current.tap { |it| it.forum_enabled = true }.save! }
 
   describe 'post' do
     before { allow_any_instance_of(DiscussionsController).to receive(:discussion_params).and_return title: 'A title' }

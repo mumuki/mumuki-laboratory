@@ -1,6 +1,8 @@
 class DiscussionsController < AjaxController
   include Mumuki::Laboratory::Controllers::Content
 
+  before_action :validate_forum_enabled!
+  before_action :validate_not_in_exam!
   before_action :set_debatable, except: [:subscription]
   before_action :authenticate!, only: [:update, :create]
   before_action :discussion_filter_params, only: :index
@@ -61,5 +63,13 @@ class DiscussionsController < AjaxController
 
   def discussion_filter_params
     @filter_params ||= params.permit(Discussion.permitted_query_params)
+  end
+
+  def validate_forum_enabled!
+    raise Mumuki::Laboratory::NotFoundError unless Organization.current.forum_enabled?
+  end
+
+  def validate_not_in_exam!
+    raise Mumuki::Laboratory::BlockedForumError if current_user&.currently_in_exam?
   end
 end

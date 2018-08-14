@@ -12,6 +12,7 @@ module Mumuki::Laboratory::Controllers::DynamicErrors
     rescue_from Mumuki::Laboratory::ForbiddenError, with: :forbidden
     rescue_from Mumuki::Laboratory::UnauthorizedError, with: :unauthorized
     rescue_from Mumuki::Laboratory::GoneError, with: :gone
+    rescue_from Mumuki::Laboratory::BlockedForumError, with: :blocked_forum
   end
 
   def not_found
@@ -29,7 +30,11 @@ module Mumuki::Laboratory::Controllers::DynamicErrors
 
   def forbidden
     Rails.logger.info "Access to organization #{Organization.current} was forbidden to user #{current_user} with permissions #{current_user.permissions}"
-    render 'errors/forbidden', status: 403
+    render 'errors/forbidden', status: 403, locals: { explanation: :forbidden_explanation }
+  end
+
+  def blocked_forum
+    render 'errors/forbidden', status: 403, locals: { explanation: :blocked_forum_explanation }
   end
 
   def gone

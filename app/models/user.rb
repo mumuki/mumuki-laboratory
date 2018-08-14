@@ -26,6 +26,8 @@ class User < ApplicationRecord
 
   has_many :exam_authorizations
 
+  has_many :exams, through: :exam_authorizations
+
   after_initialize :init
 
   before_validation :set_uid!
@@ -133,6 +135,10 @@ class User < ApplicationRecord
     organization = Organization.find_by_name(organization) || main_organization
     organization.switch!
     assignments.each { |it| it.notify! rescue nil }
+  end
+
+  def currently_in_exam?
+    exams.any? { |e| e.in_progress_for? self }
   end
 
   private
