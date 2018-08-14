@@ -31,7 +31,7 @@ class Exam < ApplicationRecord
   end
 
   def in_progress_for?(user)
-    enabled_for?(user) && started?(user)
+    accessible_for?(user) && started?(user)
   end
 
   def validate_accessible_for!(user)
