@@ -65,6 +65,6 @@ class DiscussionsController < AjaxController
   end
 
   def validate_not_in_exam!
-    raise Mumuki::Laboratory::ForbiddenError if current_user&.currently_in_exam?
+    raise Mumuki::Laboratory::BlockedForumError if current_user&.currently_in_exam?
   end
 end
