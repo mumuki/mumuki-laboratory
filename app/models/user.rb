@@ -26,6 +26,8 @@ class User < ApplicationRecord
 
   has_many :exam_authorizations
 
+  has_many :exams, through: :exam_authorizations
+
   after_initialize :init
 
   before_validation :set_uid!
@@ -136,7 +138,7 @@ class User < ApplicationRecord
   end
 
   def currently_in_exam?
-    Exam.any? { |e| e.in_progress_for? self }
+    exams.any? { |e| e.in_progress_for? self }
   end
 
   private
