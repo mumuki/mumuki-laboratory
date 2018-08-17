@@ -128,8 +128,8 @@ ActiveRecord::Schema.define(version: 20180802190437) do
     t.datetime "end_time", null: false
     t.string "classroom_id"
     t.integer "duration"
-    t.integer "max_problem_submissions", default: 5
-    t.integer "max_choice_submissions", default: 1
+    t.integer "max_problem_submissions"
+    t.integer "max_choice_submissions"
     t.index ["classroom_id"], name: "index_exams_on_classroom_id", unique: true
     t.index ["guide_id"], name: "index_exams_on_guide_id"
     t.index ["organization_id"], name: "index_exams_on_organization_id"
