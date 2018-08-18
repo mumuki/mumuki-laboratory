@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :api_client do |t|
     transient do
-      role :janitor
-      grant 'test/*'
+      role { :janitor }
+      grant { 'test/*' }
     end
 
-    description "foo"
+    description { "foo" }
     user {
       create :user,
              first_name: 'foo',

@@ -5,7 +5,7 @@ FactoryBot.define do
     book { Organization.current.book rescue nil }
 
     transient do
-      lessons []
+      lessons { [] }
       name { Faker::Lorem.sentence(3) }
     end
 

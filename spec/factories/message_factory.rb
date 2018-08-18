@@ -5,7 +5,7 @@ FactoryBot.define do
     assignment
     submission_id { assignment.id }
     sender { Faker::Internet.email }
-    type 'success'
+    type { 'success' }
     content { Faker::Lorem.sentence(3) }
   end
 end

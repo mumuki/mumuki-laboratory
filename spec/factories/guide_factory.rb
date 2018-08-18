@@ -2,15 +2,15 @@ FactoryBot.define do
 
   factory :guide do
     sequence(:name) { |n| "guide#{n}" }
-    locale 'en'
-    description 'A Guide'
+    locale { 'en' }
+    description { 'A Guide' }
     slug { "flbulgarelli/mumuki-sample-guide-#{SecureRandom.uuid}" }
     language
   end
 
   trait :guide_container do
     transient do
-      exercises []
+      exercises { [] }
       name { Faker::Lorem.sentence(3) }
       description { Faker::Lorem.sentence(10) }
       language { create(:language) }
