@@ -6,14 +6,13 @@ module WithAssignments
   end
 
   def current_content_for(user)
-    assignment_for(user).try(&:solution) ||
-      default_content_for(user)
+    assignment_for(user)&.solution || default_content_for(user)
   end
 
   def files_for(user)
     language
       .directives_sections
-      .split_sections(assignment_for(user)&.solution || default_content_for(user))
+      .split_sections(current_content_for user)
       .map { |name, content| Mumuki::Laboratory::File.new name, content }
   end
 
