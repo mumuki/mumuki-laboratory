@@ -1,6 +1,7 @@
 require 'mumukit/directives'
 
 class Mumukit::Directives::Sections < Mumukit::Directives::Directive
+  # TODO Move this behaviour to gem
   def join(sections)
     file_declarations, file_references = sections.map do |section, content|
       [build(section, content), interpolate(section)]

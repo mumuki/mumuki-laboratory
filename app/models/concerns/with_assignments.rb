@@ -1,6 +1,11 @@
 module WithAssignments
   extend ActiveSupport::Concern
 
+  # TODO we must avoid _for(user) methods when they
+  # are hidden the assignment object, since an assignment already encapsulates
+  # the exercise-user pair, and many times they impose a performance hit,
+  # since in the normal scenario the assignment object already exists
+
   included do
     has_many :assignments, dependent: :destroy
   end
@@ -16,29 +21,16 @@ module WithAssignments
       .map { |name, content| Mumuki::Laboratory::File.new name, content }
   end
 
-  def interpolate_for(user, field)
-    language.interpolate(field, user.interpolations, lambda { |content| replace_content_reference(user, content) })
-  end
-
   def default_content_for(user)
-    interpolate_for user, default_content || ''
+    language.interpolate_references_for self, user, default_content || ''
   end
 
   def extra_for(user)
-    interpolate_for user, extra
+    extra && language.interpolate_references_for(self, user, extra)
   end
 
   def test_for(user)
-    test && interpolate_for(user, test)
-  end
-
-  def replace_content_reference(user, interpolee)
-    case interpolee
-      when /previousContent|previousSolution/
-        previous.current_content_for(user)
-      when /(solution|content)\[(-?\d*)\]/
-        sibling_at($2.to_i).current_content_for(user)
-    end
+    test && language.interpolate_references_for(self, user, test)
   end
 
   def messages_for(user)
