@@ -201,7 +201,6 @@ pt:
   sort: Ordenar
   start_lesson: Comece esta lição!
   start_practicing: Comece agora!
-  stats: Seu progresso
   status: Estado
   stay_here: Não, eu quero ficar aqui
   submission: solução
@@ -226,7 +225,6 @@ pt:
   try_again: Opa, algo deu errado em Mumuki. Reinicie o exercício, aguarde alguns segundos e tente novamente.
   unauthorized_explanation: Opa! Isso é o que é conhecido como %{error}, ou seja, você não fez logon.
   uncategorized: Não classificado
-  unknown: não resolvido
   unmeet_expectations: Objetivos que não foram atendidos
   unsubscribe: Cancelar subscrição
   upload_solution: Carregar solução

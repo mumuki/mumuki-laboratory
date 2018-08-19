@@ -2,7 +2,7 @@ module Mumuki::Laboratory::Status::Submission::Running
   extend Mumuki::Laboratory::Status::Submission
 
   def self.group
-    Mumuki::Laboratory::Status::Submission::Unknown
+    Mumuki::Laboratory::Status::Submission::Pending
   end
 
   def self.iconize

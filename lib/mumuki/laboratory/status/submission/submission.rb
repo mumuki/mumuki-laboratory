@@ -2,7 +2,6 @@ module Mumuki::Laboratory::Status::Submission
   include Mumuki::Laboratory::Status
 end
 
-require_relative './unknown'
 require_relative './pending'
 require_relative './running'
 require_relative './passed'

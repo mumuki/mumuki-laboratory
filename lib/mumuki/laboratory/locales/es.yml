@@ -211,7 +211,6 @@ es:
   start_lesson: ¡Comenzá esta lección!
   start_practicing: ¡Empezá ahora!
   start_using_mumuki: ¡Empezá a usar Mumuki!
-  stats: Tu Progreso
   status: Estado
   stay_here: No, quiero quedarme acá
   stop_emails?: ¿Querés dejar de recibir estos mails?
@@ -238,7 +237,6 @@ es:
   unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no iniciaste sesión.
   uncategorized: No categorizado
   undo_upvote: No es útil
-  unknown: no resuelto
   unmeet_expectations: Objetivos que no se cumplieron
   unsubscribe: Dejar de recibir notificaciones
   unsubscribed_successfully: Te desuscribiste exitosamente de los recordatorios.

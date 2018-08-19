@@ -54,7 +54,7 @@ module WithAssignments
   end
 
   def status_for(user)
-    assignment_for(user).defaulting(Mumuki::Laboratory::Status::Submission::Unknown, &:status) if user
+    assignment_for(user).defaulting(Mumuki::Laboratory::Status::Submission::Pending, &:status) if user
   end
 
   def find_or_init_assignment_for(user)
