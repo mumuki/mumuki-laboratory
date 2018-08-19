@@ -54,24 +54,8 @@ module WithAssignments
     assignments.find_by(submitter: user)
   end
 
-  def solved_by?(user)
-    !!assignment_for(user).try(&:passed?)
-  end
-
-  def assigned_to?(user)
-    assignments.exists?(submitter: user)
-  end
-
   def status_for(user)
     assignment_for(user).defaulting(Mumuki::Laboratory::Status::Submission::Unknown, &:status) if user
-  end
-
-  def last_submission_date_for(user)
-    assignment_for(user).try(&:updated_at)
-  end
-
-  def submissions_count_for(user)
-    assignment_for(user).try(&:submissions_count) || 0
   end
 
   def find_or_init_assignment_for(user)

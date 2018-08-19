@@ -15,7 +15,7 @@ describe Query do
 
     it { expect(results[:status]).to eq :passed }
     it { expect(results[:result]).to eq '5' }
-    it { expect(exercise.assigned_to? user).to be true }
+    it { expect(exercise.assignment_for(user)).to be_present }
     it { expect(assignment.solution).to eq 'bar' }
     it { expect(assignment.status).to eq :pending }
   end

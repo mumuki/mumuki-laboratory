@@ -14,7 +14,7 @@ describe Query, organization_workspace: :test do
       it { expect(assignment.result).to be nil }
 
       it { expect(assignment.solution).to be nil }
-      it { expect(exercise.assigned_to? student).to be true }
+      it { expect(exercise.assignment_for(student)).to be_present }
       it { expect(assignment.messages.count).to eq 1 }
       it { expect(assignment.submission_id).to_not be nil }
     end
@@ -28,7 +28,7 @@ describe Query, organization_workspace: :test do
 
       before { exercise.submit_question!(student, content: 'Please help!') }
 
-      it { expect(exercise.assigned_to? student).to be true }
+      it { expect(exercise.assignment_for(student)).to be_present }
       it { expect(assignment.status).to eq :failed }
       it { expect(assignment.result).to eq 'noop result' }
       it { expect(assignment.solution).to eq 'x = 1' }

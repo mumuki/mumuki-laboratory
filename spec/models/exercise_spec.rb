@@ -123,37 +123,13 @@ describe Exercise, organization_workspace: :test do
     it { expect(exercise.extra_preview(user)).to eq "```haskell\nf x = 1\ng y = y + 3\n```" }
   end
 
-  describe '#submitted_by?' do
+  describe '#submit_solution!' do
     context 'when user did a submission' do
       before { exercise.submit_solution!(user) }
-      it { expect(exercise.assigned_to? user).to be true }
+      it { expect(exercise.assignment_for(user)).to be_present }
     end
     context 'when user did no submission' do
-      it { expect(exercise.assigned_to? user).to be false }
-    end
-  end
-
-  describe '#solved_by?' do
-    context 'when user did no submission' do
-      it { expect(exercise.solved_by? user).to be false }
-    end
-    context 'when user did a successful submission' do
-      before { exercise.submit_solution!(user).passed! }
-
-      it { expect(exercise.solved_by? user).to be true }
-    end
-    context 'when user did a pending submission' do
-      before { exercise.submit_solution!(user) }
-
-      it { expect(exercise.solved_by? user).to be false }
-    end
-    context 'when user did both successful and failed submissions' do
-      before do
-        exercise.submit_solution!(user)
-        exercise.submit_solution!(user).passed!
-      end
-
-      it { expect(exercise.solved_by? user).to be true }
+      it { expect(exercise.assignment_for(user)).to be_blank }
     end
   end
 
