@@ -23,10 +23,6 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
                      locals: {assignment: assignment}
   end
 
-  def results_partial
-    @exercise&.input_kids? ? 'exercise_solutions/kids_results' : 'exercise_solutions/results'
-  end
-
   def render_results_title_html(assignment)
     render_to_string partial: 'exercise_solutions/results_title',
                      locals: {contextualization: assignment}
