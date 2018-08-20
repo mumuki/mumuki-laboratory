@@ -29,7 +29,7 @@ module GuideContainer
     false
   end
 
-  def capped?
+  def limited?
     false
   end
 

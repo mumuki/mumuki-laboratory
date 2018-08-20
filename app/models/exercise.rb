@@ -22,7 +22,7 @@ class Exercise < ApplicationRecord
                         :guide
 
   randomize :description, :hint, :extra, :test, :default_content
-  delegate :capped?, :timed?, to: :navigable_parent
+  delegate :limited?, :timed?, to: :navigable_parent
 
   def console?
     queriable?

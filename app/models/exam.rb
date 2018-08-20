@@ -136,7 +136,7 @@ class Exam < ApplicationRecord
     super
   end
 
-  def capped?
+  def limited?
     true
   end
 end
