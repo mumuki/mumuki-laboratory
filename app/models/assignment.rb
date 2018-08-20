@@ -156,6 +156,10 @@ class Assignment < ApplicationRecord
     exercise.attempts_left_for(self)
   end
 
+  def attemps_left?
+    attempts_left > 0
+  end
+
   def results_partial
     navigable_parent.results_partial_for(self)
   end
