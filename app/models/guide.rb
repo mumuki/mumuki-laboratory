@@ -15,7 +15,7 @@ class Guide < Content
   def clear_progress!(user)
     transaction do
       exercises.each do |exercise|
-        exercise.assignment_for(user)&.destroy!
+        exercise.find_assignment_for(user)&.destroy!
       end
     end
   end

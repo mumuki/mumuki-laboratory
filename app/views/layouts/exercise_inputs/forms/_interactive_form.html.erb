@@ -1,5 +1,5 @@
 <%= hidden_field_tag :console_endpoint, exercise_tries_path(exercise) %>
-<%= hidden_field_tag :historical_queries, @assignment&.queries_with_results.to_json %>
+<%= hidden_field_tag :historical_queries, @assignment.queries_with_results.to_json %>
 
 <% if exercise.extra_visible? %>
   <ul class="nav nav-tabs" role="tablist">
@@ -12,7 +12,7 @@
 
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane mu-input-panel fade in active <%= pending_messages_filter(@assignment) %>" id="console">
-    <% if @assignment&.pending_messages? %>
+    <% if @assignment.pending_messages? %>
         <span class="pending-messages-text"> <%= t :pending_messages_explanation %>
           <a href="javascript:{}"
              onclick="mumuki.Chat.submitMessagesForm('<%= messages_url(exercise) %>', '<%= read_messages_path(exercise) %>')"
@@ -29,18 +29,18 @@
     </div>
    </div>
   <div role="tabpanel" class="tab-pane mu-input-panel fade" id="visible-extra">
-    <%= exercise.extra_preview_html(current_user) %>
+    <%= @assignment.extra_preview_html %>
   </div>
   <div role="tabpanel" class="tab-pane mu-input-panel fade" id="messages">
-    <%= render partial: 'layouts/messages', locals: {messages: @assignment.messages} if @assignment %>
+    <%= render partial: 'layouts/messages', locals: {messages: @assignment.messages} unless @assignment.pending? %>
   </div>
 </div>
-
+<%# FIXME Duplicated view in problem_form %>
 <% content_for :submission_results do %>
   <% if current_user? %>
     <div class="row">
       <div class="col-md-12 submission-results">
-        <% if @assignment&.passed?  %>
+        <% if @assignment.passed?  %>
           <%= render partial: 'exercise_solutions/results',
                      locals: {assignment: @assignment, guide_finished_by_solution: false} %>
         <% end %>

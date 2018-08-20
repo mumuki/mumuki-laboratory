@@ -3,7 +3,6 @@ class ExercisesController < ApplicationController
   include Mumuki::Laboratory::Controllers::ExerciseSeed
 
   before_action :set_guide!, only: :show
-  before_action :set_default_content!, only: :show, if: :current_user?
   before_action :set_assignment!, only: :show, if: :current_user?
   before_action :validate_accessible!, only: :show
   before_action :start!, only: :show
@@ -31,14 +30,11 @@ class ExercisesController < ApplicationController
     @exercise.navigable_parent.start! current_user
   end
 
-  def set_default_content!
-    @files = @exercise.files_for(current_user)
-    @current_content = @exercise.current_content_for(current_user)
-    @default_content = @exercise.default_content_for(current_user)
-  end
-
   def set_assignment!
     @assignment = @exercise.assignment_for(current_user)
+    @files = @assignment.files
+    @current_content = @assignment.current_content
+    @default_content = @assignment.default_content
   end
 
   def set_guide!

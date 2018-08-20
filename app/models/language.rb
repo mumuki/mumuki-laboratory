@@ -72,8 +72,8 @@ class Language < ApplicationRecord
 
   # TODO this should be a Mumukit::Directives::Directive
   # and be part of a pipeline
-  def interpolate_references_for(exercise, user, field)
-    interpolate(field, user.interpolations, lambda { |content| replace_content_reference(exercise, user, content) })
+  def interpolate_references_for(assignment, field)
+    interpolate(field, assignment.submitter.interpolations, lambda { |content| replace_content_reference(assignment, content) })
   end
 
   private
@@ -87,12 +87,12 @@ class Language < ApplicationRecord
     new_directive Mumukit::Directives::Interpolations
   end
 
-  def replace_content_reference(exercise, user, interpolee)
+  def replace_content_reference(assignment, interpolee)
     case interpolee
     when /previousContent|previousSolution/
-      exercise.previous.current_content_for(user)
+      assignment.current_content_at(-1)
     when /(solution|content)\[(-?\d*)\]/
-      exercise.sibling_at($2.to_i).current_content_for(user)
+      assignment.current_content_at($2.to_i)
     end
   end
 

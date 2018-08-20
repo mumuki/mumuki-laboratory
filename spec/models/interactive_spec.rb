@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Interactive, organization_workspace: :test do
   let!(:interactive) { create(:interactive) }
   let!(:user) { create(:user) }
-  let(:assignment) { interactive.find_or_init_assignment_for(user) }
+  let(:assignment) { interactive.assignment_for(user) }
   let!(:bridge) { double(:bridge) }
   before { allow_any_instance_of(Language).to receive(:bridge).and_return bridge }
 

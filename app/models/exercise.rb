@@ -69,7 +69,7 @@ class Exercise < ApplicationRecord
   end
 
   def submission_for(user)
-    assignment_for(user)&.submission
+    assignment_for(user).submission
   end
 
   def new_solution
@@ -140,6 +140,10 @@ class Exercise < ApplicationRecord
 
   def inspection_keywords
     {}
+  end
+
+  def default_content
+    self[:default_content] || ''
   end
 
   private

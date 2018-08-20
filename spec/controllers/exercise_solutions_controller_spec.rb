@@ -25,7 +25,7 @@ describe ExerciseSolutionsController, organization_workspace: :test do
       'a_file.css' => 'a css content',
       'a_file.js' => 'a js content'
     } } } }
-    let(:files) { problem.files_for(user) }
+    let(:files) { problem.assignment_for(user).files }
 
     it { expect(response.status).to eq 200 }
     it { expect(Assignment.last.solution).to eq("/*<a_file.css#*/a css content/*#a_file.css>*/\n/*<a_file.js#*/a js content/*#a_file.js>*/") }

@@ -18,7 +18,7 @@
 
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane mu-input-panel fade in active" id="editor">
-    <% if @assignment&.pending_messages? %>
+    <% if @assignment.pending_messages? %>
         <span class="pending-messages-text"> <%= t :pending_messages_explanation %>
           <a href="javascript:{}"
              onclick="mumuki.Chat.submitMessagesForm('<%= messages_url(exercise) %>', '<%= read_messages_path(exercise) %>')"
@@ -52,10 +52,10 @@
     </div>
   </div>
   <div role="tabpanel" class="tab-pane mu-input-panel fade" id="visible-extra">
-    <%= exercise.extra_preview_html(current_user) %>
+    <%= @assignment.extra_preview_html %>
   </div>
   <div role="tabpanel" class="tab-pane mu-input-panel fade" id="messages">
-    <%= render partial: 'layouts/messages', locals: {messages: @assignment.messages} if @assignment %>
+    <%= render partial: 'layouts/messages', locals: {messages: @assignment.messages} unless @assignment.pending? %>
   </div>
 </div>
 
@@ -63,7 +63,7 @@
   <% if current_user? %>
     <div class="row">
       <div class="col-md-12 submission-results">
-        <% if @assignment %>
+        <% unless @assignment.pending? %>
           <%= render partial: 'exercise_solutions/results',
                      locals: {assignment: @assignment} %>
         <% end %>

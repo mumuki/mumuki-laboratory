@@ -1,11 +1,7 @@
 class Challenge < Exercise
   include WithLayout
 
-  markdown_on :hint, :extra_preview
-
-  def extra_preview(user)
-    Mumukit::ContentType::Markdown.highlighted_code(language.name, extra_for(user))
-  end
+  markdown_on :hint
 
   def reset!
     super

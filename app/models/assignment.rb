@@ -2,6 +2,8 @@ class Assignment < ApplicationRecord
   include Contextualization
   include WithMessages
 
+  markdown_on :extra_preview
+
   belongs_to :exercise
   has_one :guide, through: :exercise
   has_many :messages, -> { where.not(submission_id: nil).order(date: :desc) }, foreign_key: :submission_id, primary_key: :submission_id
@@ -21,6 +23,11 @@ class Assignment < ApplicationRecord
   scope :by_usernames, -> (usernames) {
     joins(:submitter).where('users.name' => usernames) if usernames
   }
+
+  defaults do
+    self.query_results = []
+    self.expectation_results = []
+  end
 
   def evaluate_manually!(teacher_evaluation)
     update! status: teacher_evaluation[:status], manual_evaluation_comment: teacher_evaluation[:manual_evaluation]
@@ -61,11 +68,15 @@ class Assignment < ApplicationRecord
   end
 
   def test
-    exercise.test_for submitter
+    exercise.test && language.interpolate_references_for(self, exercise.test)
   end
 
   def extra
-    exercise.extra_for submitter
+    exercise.extra && language.interpolate_references_for(self, exercise.extra)
+  end
+
+  def extra_preview
+    Mumukit::ContentType::Markdown.highlighted_code(language.name, extra)
   end
 
   def run_update!
@@ -138,6 +149,25 @@ class Assignment < ApplicationRecord
 
   def increment_attemps!
     self.attemps_count += 1 unless passed?
+  end
+
+  def current_content
+    solution || default_content
+  end
+
+  def current_content_at(index)
+    exercise.sibling_at(index).assignment_for(submitter).current_content
+  end
+
+  def default_content
+    @default_content ||= language.interpolate_references_for(self, exercise.default_content)
+  end
+
+  def files
+    language
+      .directives_sections
+      .split_sections(current_content)
+      .map { |name, content| Mumuki::Laboratory::File.new name, content }
   end
 
   private

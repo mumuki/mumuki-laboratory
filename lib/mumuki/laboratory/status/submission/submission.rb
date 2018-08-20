@@ -34,6 +34,10 @@ module Mumuki::Laboratory::Status::Submission
     false
   end
 
+  def pending?
+    false
+  end
+
   def should_retry?
     true
   end
