@@ -19,67 +19,74 @@ feature 'Choose organization Flow' do
   end
 
   before { Organization.find_by_name('immersive-orga').tap { |it| it.immersive = true }.save! }
-
-  before { Organization.central.switch! }
   before { set_current_user! user }
 
-  scenario 'when visiting with implicit subdomain and no permissions' do
-    set_implicit_central!
+  context 'when organization exists' do
+    before { Organization.central.switch! }
 
-    visit '/'
+    scenario 'when visiting with implicit subdomain and no permissions' do
+      set_implicit_central!
 
-    expect(page).to have_text('Sign Out')
-    expect(page).not_to have_text('Do you want to go there?')
+      visit '/'
+
+      expect(page).to have_text('Sign Out')
+      expect(page).not_to have_text('Do you want to go there?')
+    end
+
+    scenario 'when visiting with implicit subdomain and permissions to only one non-immersive organization' do
+      set_current_user! user2
+      set_implicit_central!
+
+      visit '/'
+
+      expect(page).to have_text('Sign Out')
+      expect(page).to have_text('Do you want to go there?')
+    end
+
+    scenario 'when visiting with implicit subdomain and permissions to only one immersive organization' do
+      set_current_user! user4
+      set_implicit_central!
+
+      visit '/'
+
+      expect(page).to have_text('Sign Out')
+      expect(page).not_to have_text('Do you want to go there?')
+      expect(page).to have_text('immersive-orga')
+    end
+
+    scenario 'when visiting with implicit subdomain and permissions to two or more organizations' do
+      set_current_user! user3
+      set_implicit_central!
+
+      visit '/'
+
+      expect(page).to have_text('Sign Out')
+      expect(page).to have_text('Do you want to go there?')
+    end
+
+    scenario 'when visiting central explicitly' do
+      set_subdomain_host!('central')
+
+      visit '/'
+
+      expect(page).not_to have_text('Do you want to go there?')
+      expect(page).not_to have_text('pdep')
+    end
+
+    scenario 'when visit foo subdomain' do
+      set_current_user! user3
+      set_subdomain_host!('foo')
+
+      visit '/'
+
+      expect(page).not_to have_text('Do you want to go there?')
+      expect(page).to have_text('foo')
+    end
   end
 
-  scenario 'when visiting with implicit subdomain and permissions to only one non-immersive organization' do
-    set_current_user! user2
-    set_implicit_central!
-
+  scenario 'when organization does not exist' do
     visit '/'
 
-    expect(page).to have_text('Sign Out')
-    expect(page).to have_text('Do you want to go there?')
+    expect(page).to have_http_status(404)
   end
-
-  scenario 'when visiting with implicit subdomain and permissions to only one immersive organization' do
-    set_current_user! user4
-    set_implicit_central!
-
-    visit '/'
-
-    expect(page).to have_text('Sign Out')
-    expect(page).not_to have_text('Do you want to go there?')
-    expect(page).to have_text('immersive-orga')
-  end
-
-  scenario 'when visiting with implicit subdomain and permissions to two or more organizations' do
-    set_current_user! user3
-    set_implicit_central!
-
-    visit '/'
-
-    expect(page).to have_text('Sign Out')
-    expect(page).to have_text('Do you want to go there?')
-  end
-
-  scenario 'when visiting central explicitly' do
-    set_subdomain_host!('central')
-
-    visit '/'
-
-    expect(page).not_to have_text('Do you want to go there?')
-    expect(page).not_to have_text('pdep')
-  end
-
-  scenario 'when visit foo subdomain' do
-    set_current_user! user3
-    set_subdomain_host!('foo')
-
-    visit '/'
-
-    expect(page).not_to have_text('Do you want to go there?')
-    expect(page).to have_text('foo')
-  end
-
 end
