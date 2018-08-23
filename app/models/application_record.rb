@@ -1,6 +1,8 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
+  delegate :whitelist_attributes, to: :class
+
   def self.defaults(&block)
     after_initialize :defaults, if: :new_record?
     define_method :defaults, &block
@@ -77,7 +79,7 @@ class ApplicationRecord < ActiveRecord::Base
     obj
   end
 
-  def whitelist_attributes(a_hash, options)
+  def self.whitelist_attributes(a_hash, options={})
     a_hash.slice(*attribute_names).except(*options[:except])
   end
 end

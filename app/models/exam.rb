@@ -106,7 +106,7 @@ class Exam < ApplicationRecord
     organization.switch!
     adapt_json_values exam_data
     remove_previous_version exam_data[:eid], exam_data[:guide_id]
-    exam = where(classroom_id: exam_data[:eid]).update_or_create!(exam_data.slice *attribute_names)
+    exam = where(classroom_id: exam_data[:eid]).update_or_create!(whitelist_attributes(exam_data))
     exam.process_users exam_data[:users]
     exam.index_usage! organization
     exam
