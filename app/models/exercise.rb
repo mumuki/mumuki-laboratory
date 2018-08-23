@@ -82,7 +82,7 @@ class Exercise < ApplicationRecord
 
     reset!
 
-    attrs = json.slice(*attribute_names).except 'type', 'id'
+    attrs = whitelist_attributes(json, except: %w(type id))
     attrs['choices'] = json['choices'].map { |choice| choice['value'] } if json['choices'].present?
     attrs['bibliotheca_id'] = json['id']
     attrs['number'] = number

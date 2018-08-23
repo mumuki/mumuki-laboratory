@@ -58,7 +58,7 @@ class Guide < Content
   end
 
   def import_from_json!(json)
-    self.assign_attributes json.slice(*attribute_names).except 'id'
+    self.assign_attributes whitelist_attributes(json, except: ['id'])
     self.language = Language.for_name(json['language'])
     self.save!
 

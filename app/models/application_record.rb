@@ -77,4 +77,7 @@ class ApplicationRecord < ActiveRecord::Base
     obj
   end
 
+  def whitelist_attributes(a_hash, options)
+    a_hash.slice(*attribute_names).except(*options[:except])
+  end
 end
