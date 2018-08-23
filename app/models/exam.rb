@@ -101,25 +101,22 @@ class Exam < ApplicationRecord
   end
 
   def self.import_from_json!(json)
-    json.except!(:social_ids, :sender)
-    organization = Organization.find_by!(name: json.delete(:organization))
+    exam_data = json.with_indifferent_access
+    organization = Organization.find_by!(name: exam_data[:organization])
     organization.switch!
-    exam_data = parse_json json
+    adapt_json_values exam_data
     remove_previous_version exam_data[:eid], exam_data[:guide_id]
-    users = exam_data.delete(:users)
-    exam = where(classroom_id: exam_data.delete(:eid)).update_or_create! exam_data
-    exam.process_users users
+    exam = where(classroom_id: exam_data[:eid]).update_or_create!(exam_data.slice *attribute_names)
+    exam.process_users exam_data[:users]
     exam.index_usage! organization
     exam
   end
 
-  def self.parse_json(exam_json)
-    exam = exam_json.except(:name, :language)
-    exam[:guide_id] = Guide.find_by(slug: exam.delete(:slug)).id
+  def self.adapt_json_values(exam)
+    exam[:guide_id] = Guide.find_by(slug: exam[:slug]).id
     exam[:organization_id] = Organization.current.id
-    exam[:users] = exam.delete(:uids).map { |uid| User.find_by(uid: uid) }.compact
+    exam[:users] = exam[:uids].map { |uid| User.find_by(uid: uid) }.compact
     [:start_time, :end_time].each { |param| exam[param] = exam[param].to_time }
-    exam
   end
 
   def self.remove_previous_version(eid, guide_id)
