@@ -77,7 +77,7 @@ mumuki.load(function () {
   }
 
   function setVisibility(element, isVisible) {
-    if (isVisible) element.show(); else element.hide();
+    isVisible ? element.show() : element.hide();
   }
 
   mumuki.resize(function () {
