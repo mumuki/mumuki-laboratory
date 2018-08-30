@@ -1,4 +1,84 @@
 mumuki.load(function () {
+  var $bubble = $('.mu-kids-character-speech-bubble').children('.mu-kids-character-speech-bubble-normal');
+  if(!$bubble.length) return;
+
+  var availableTabs = ['.description', '.hint'];
+  var $speechParagraphs, paragraphHeight, scrollHeight;
+  var currentParagraphIndex = 0;
+  var paragraphCount = 1;
+  var paragraphsLines = 2;
+  var $prevSpeech = $('.mu-kids-character-speech-bubble-normal > .mu-kids-prev-speech').hide();
+  var $nextSpeech = $('.mu-kids-character-speech-bubble-normal > .mu-kids-next-speech');
+  var $speechTabs = $('.mu-kids-character-speech-bubble-tabs > li:not(.separator)');
+  var $defaultSpeechTabName = 'description';
+  var $texts = $bubble.children(availableTabs.join(", "));
+
+  function floatFromPx(value) {
+    return parseFloat(value.substring(0, value.length - 2));
+  }
+
+  function resizeSpeechParagraphs(paragraphIndex) {
+    var previousParagraphCount = paragraphCount;
+    scrollHeight = $bubble[0].scrollHeight;
+    paragraphHeight = floatFromPx($speechParagraphs.css('line-height')) * paragraphsLines;
+    paragraphCount = Math.ceil(scrollHeight / paragraphHeight);
+    var newParagraphIndex = Math.floor((paragraphCount / previousParagraphCount) * currentParagraphIndex);
+    showParagraph(paragraphIndex || newParagraphIndex);
+  }
+
+  availableTabs.forEach(function (tabSelector) {
+    tabParagraphs(tabSelector).contents().unwrap().wrapAll('<p>');
+  });
+
+  function tabParagraphs(selector) {
+    return $('.mu-kids-character-speech-bubble > .mu-kids-character-speech-bubble-normal > div' + selector + ' > p');
+  }
+
+  updateSpeechParagraphs();
+  function updateSpeechParagraphs() {
+    $speechParagraphs = tabParagraphs('.' + getSelectedTabName());
+    resizeSpeechParagraphs(0);
+  }
+
+  resizeSpeechParagraphs();
+
+  $speechTabs.each(function (i) {
+    var $tab = $($speechTabs[i]);
+    $tab.click(function () {
+      $speechTabs.removeClass('active');
+      $tab.addClass('active');
+      $texts.hide();
+      $bubble.children('.' + $tab.data('target')).show();
+      updateSpeechParagraphs();
+    })
+  });
+
+  $nextSpeech.click(function () {
+    showParagraph(currentParagraphIndex + 1);
+  });
+
+  $prevSpeech.click(function () {
+    showParagraph(currentParagraphIndex - 1);
+  });
+
+  function getSelectedTabName() {
+    return $speechTabs.filter(".active").data('target') || $defaultSpeechTabName;
+  }
+
+  function showParagraph(index) {
+    $bubble[0].scrollTop = index * paragraphHeight;
+    currentParagraphIndex = index;
+    checkArrowsSpeechVisibility();
+  }
+
+  function checkArrowsSpeechVisibility() {
+    setVisibility($prevSpeech, currentParagraphIndex !== 0);
+    setVisibility($nextSpeech, currentParagraphIndex !== paragraphCount - 1);
+  }
+
+  function setVisibility(element, isVisible) {
+    isVisible ? element.show() : element.hide();
+  }
 
   mumuki.resize(function () {
     var margin = 15;
@@ -36,72 +116,8 @@ mumuki.load(function () {
       $table.css('transform', 'scale(' + Math.min(scaleX, scaleY) + ')');
     }
 
+    resizeSpeechParagraphs();
   });
-
-  var $speechParagraphs;
-  var currentParagraphIndex = 0;
-  var $prevSpeech = $('.mu-kids-character-speech-bubble-normal > .mu-kids-prev-speech').hide();
-  var $nextSpeech = $('.mu-kids-character-speech-bubble-normal > .mu-kids-next-speech');
-  var $speechTabs = $('.mu-kids-character-speech-bubble-tabs > li:not(.separator)');
-  var $defaultSpeechTabName = 'description';
-  var $bubble = $('.mu-kids-character-speech-bubble').children('.mu-kids-character-speech-bubble-normal');
-  var $texts = $bubble.children('.description, .hint');
-
-  updateSpeechParagraphs();
-  function updateSpeechParagraphs() {
-    $speechParagraphs = $('.mu-kids-character-speech-bubble > .mu-kids-character-speech-bubble-normal > div.' + getSelectedTabName() + ' > p');
-    showParagraph(0);
-  }
-
-  $speechTabs.each(function (i) {
-    var $tab = $($speechTabs[i]);
-    $tab.click(function () {
-      $speechTabs.removeClass('active');
-      $tab.addClass('active');
-      $texts.hide();
-      $bubble.children('.' + $tab.data('target')).show();
-      $bubble.scroll(0);
-      hideCurrentParagraph();
-      updateSpeechParagraphs();
-    })
-  });
-
-  $nextSpeech.click(function () {
-    hideCurrentParagraph();
-    showNextParagraph();
-  });
-  $prevSpeech.click(function () {
-    hideCurrentParagraph();
-    showPrevParagraph();
-  });
-
-  function getSelectedTabName() {
-    return $speechTabs.filter(".active").data('target') || $defaultSpeechTabName;
-  }
-
-  function hideCurrentParagraph() {
-    $($speechParagraphs[currentParagraphIndex]).hide();
-  }
-
-  function showPrevParagraph() {
-    showParagraph(currentParagraphIndex - 1);
-  }
-
-  function showNextParagraph() {
-    showParagraph(currentParagraphIndex + 1);
-  }
-
-  function showParagraph(index) {
-    $($speechParagraphs[index]).show();
-    setVisibility($prevSpeech, index !== 0);
-    setVisibility($nextSpeech, index !== $speechParagraphs.length - 1);
-
-    currentParagraphIndex = index;
-  }
-
-  function setVisibility(element, isVisible) {
-    if (isVisible) element.show(); else element.hide();
-  }
 
   mumuki.kids = {
 
