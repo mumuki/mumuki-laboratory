@@ -21,7 +21,7 @@ gem 'puma'
 gem 'rails-i18n', '~> 4.0.0'
 
 gem 'nprogress-rails'
-gem 'mumuki-styles', '~> 1.17'
+gem 'mumuki-styles', '~> 1.17.1'
 
 gem 'font-awesome-rails', '~> 4.7'
 
