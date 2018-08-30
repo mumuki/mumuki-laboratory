@@ -1,7 +1,7 @@
 module BreadcrumbsHelper
 
   def breadcrumbs(e, extra=nil)
-    breadcrumbs0(e, extra, 'last')
+    breadcrumbs0(e.navigable_name, e, extra, 'last')
   end
 
   def home_breadcrumb
@@ -28,14 +28,17 @@ HTML
 
   private
 
-  def breadcrumbs0(e, extra=nil, last='')
-    return "#{breadcrumbs0(e)} #{breadcrumb_list_item(last, extra)}".html_safe if extra
+  def breadcrumbs_for_linkable(e, extra=nil, last='')
+    breadcrumbs0(link_to_path_element(e), e, extra, last)
+  end
 
-    base = link_to_path_element e
+  def breadcrumbs0(base, e, extra, last)
+    return "#{breadcrumbs_for_linkable(e)} #{breadcrumb_list_item(last, extra)}".html_safe if extra
+
     if e.navigation_end?
       "#{home_breadcrumb} #{breadcrumb_list_item(last, base)}".html_safe
     else
-      "#{breadcrumbs0(e.navigable_parent)} #{breadcrumb_list_item(last, base)}".html_safe
+      "#{breadcrumbs_for_linkable(e.navigable_parent)} #{breadcrumb_list_item(last, base)}".html_safe
     end
   end
 end
