@@ -149,7 +149,7 @@ class Assignment < ApplicationRecord
   end
 
   def increment_attemps!
-    self.attempts_count += 1 if failed? || errored?
+    self.attempts_count += 1 if should_retry?
   end
 
   def attempts_left

@@ -29,9 +29,9 @@
   <%= solution_download_link assignment %>
 <% end %>
 
-<% if assignment.should_retry? %>
-  <%= assistance_box assignment %>
-<% else %>
+<% if assignment.passed? %>
   <%= corollary_box @exercise %>
+<% else %>
+  <%= assistance_box assignment %>
 <% end %>
 <%= render partial: 'exercise_solutions/results_button', locals: {assignment: assignment} %>

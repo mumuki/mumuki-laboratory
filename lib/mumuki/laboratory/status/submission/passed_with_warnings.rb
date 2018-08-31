@@ -5,6 +5,10 @@ module Mumuki::Laboratory::Status::Submission::PassedWithWarnings
     true
   end
 
+  def self.should_retry?
+    true
+  end
+
   def self.iconize
     {class: :warning, type: 'exclamation-circle'}
   end

@@ -5,6 +5,10 @@ module Mumuki::Laboratory::Status::Submission::Errored
     true
   end
 
+  def self.should_retry?
+    true
+  end
+
   def self.group
     Mumuki::Laboratory::Status::Submission::Failed
   end
