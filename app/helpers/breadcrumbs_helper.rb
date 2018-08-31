@@ -17,9 +17,7 @@ module BreadcrumbsHelper
   end
 
   def breadcrumb_item_class(last)
-    <<HTML
-    class='mu-breadcrumb-list-item #{last}'
-HTML
+    "class='mu-breadcrumb-list-item #{last}'"
   end
 
   def breadcrumb_list_item(last, item)
