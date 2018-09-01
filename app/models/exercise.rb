@@ -152,7 +152,7 @@ class Exercise < ApplicationRecord
   end
 
   def try_submit_solution!(user, solution)
-    assignment = find_or_init_assignment_for(user)
+    assignment = assignment_for(user)
     navigable_parent.submission_context_for(assignment) { submit_solution! user, solution }
   end
 
