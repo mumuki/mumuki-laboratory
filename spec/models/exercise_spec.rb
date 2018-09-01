@@ -20,7 +20,7 @@ describe Exercise, organization_workspace: :test do
     context 'when there is no default content' do
       let(:exercise) { create(:exercise) }
 
-      it { expect(exercise.new_solution.content).to be_nil }
+      it { expect(exercise.new_solution.content).to be_blank }
     end
   end
 
@@ -120,16 +120,16 @@ describe Exercise, organization_workspace: :test do
                                             language: haskell)]) }
     let(:exercise) { guide.exercises.first }
 
-    it { expect(exercise.extra_preview(user)).to eq "```haskell\nf x = 1\ng y = y + 3\n```" }
+    it { expect(exercise.assignment_for(user).extra_preview).to eq "```haskell\nf x = 1\ng y = y + 3\n```" }
   end
 
   describe '#submit_solution!' do
     context 'when user did a submission' do
       before { exercise.submit_solution!(user) }
-      it { expect(exercise.assignment_for(user)).to be_present }
+      it { expect(exercise.find_assignment_for(user)).to be_present }
     end
     context 'when user did no submission' do
-      it { expect(exercise.assignment_for(user)).to be_blank }
+      it { expect(exercise.find_assignment_for(user)).to be_blank }
     end
   end
 
@@ -150,11 +150,11 @@ describe Exercise, organization_workspace: :test do
     context 'when user has a single submission for the exercise' do
       let!(:assignment) { exercise.submit_solution!(user, content: 'foo') }
 
-      it { expect(exercise.current_content_for(user)).to eq assignment.solution }
+      it { expect(assignment.current_content).to eq assignment.solution }
     end
 
     context 'when user has no submissions for the exercise' do
-      it { expect(exercise.current_content_for(user)).to eq '' }
+      it { expect(exercise.assignment_for(user).current_content).to eq '' }
     end
 
     context 'when using an interpolation' do
@@ -174,6 +174,8 @@ describe Exercise, organization_workspace: :test do
       before { reindex_current_organization! }
 
       context 'when interpolation is in default_content' do
+        let(:assignment) { exercise.assignment_for(user) }
+
         describe 'right previous content' do
           let(:exercise) { create(:exercise, default_content: interpolation) }
 
@@ -182,11 +184,11 @@ describe Exercise, organization_workspace: :test do
 
             context 'has previous submission' do
               before { previous_exercise.submit_solution!(user, content: 'foobar') }
-              it { expect(exercise.current_content_for(user)).to eq 'foobar' }
+              it { expect(assignment.current_content).to eq 'foobar' }
             end
 
             context 'does not have previous submission' do
-              it { expect(exercise.current_content_for(user)).to eq '' }
+              it { expect(assignment.current_content).to eq '' }
             end
           end
           context 'using previousSolution' do
@@ -194,11 +196,11 @@ describe Exercise, organization_workspace: :test do
 
             context 'has previous submission' do
               before { previous_exercise.submit_solution!(user, content: 'foobar') }
-              it { expect(exercise.current_content_for(user)).to eq 'foobar' }
+              it { expect(assignment.current_content).to eq 'foobar' }
             end
 
             context 'does not have previous submission' do
-              it { expect(exercise.current_content_for(user)).to eq '' }
+              it { expect(assignment.current_content).to eq '' }
             end
           end
         end
@@ -209,7 +211,7 @@ describe Exercise, organization_workspace: :test do
 
             context 'has previous submission' do
               before { second_exercise.submit_solution!(user, content: 'foobar') }
-              it { expect(exercise.current_content_for(user)).to eq 'foobar' }
+              it { expect(assignment.current_content).to eq 'foobar' }
             end
           end
           context '-1 index' do
@@ -217,11 +219,11 @@ describe Exercise, organization_workspace: :test do
 
             context 'has previous submission' do
               before { previous_exercise.submit_solution!(user, content: 'foobar') }
-              it { expect(exercise.current_content_for(user)).to eq 'foobar' }
+              it { expect(assignment.current_content).to eq 'foobar' }
             end
 
             context 'does not have previous submission' do
-              it { expect(exercise.current_content_for(user)).to eq '' }
+              it { expect(assignment.current_content).to eq '' }
             end
           end
           context '1 index' do
@@ -229,7 +231,7 @@ describe Exercise, organization_workspace: :test do
 
             context 'has previous submission' do
               before { first_exercise.submit_solution!(user, content: 'foobar') }
-              it { expect(exercise.current_content_for(user)).to eq 'foobar' }
+              it { expect(assignment.current_content).to eq 'foobar' }
             end
           end
           context '2 index' do
@@ -237,7 +239,7 @@ describe Exercise, organization_workspace: :test do
 
             context 'has previous submission' do
               before { second_exercise.submit_solution!(user, content: 'foobar') }
-              it { expect(exercise.current_content_for(user)).to eq 'foobar' }
+              it { expect(assignment.current_content).to eq 'foobar' }
             end
           end
           context '3 index' do
@@ -245,26 +247,30 @@ describe Exercise, organization_workspace: :test do
 
             context 'has previous submission' do
               before { previous_exercise.submit_solution!(user, content: 'foobar') }
-              it { expect(exercise.current_content_for(user)).to eq 'foobar' }
+              it { expect(assignment.current_content).to eq 'foobar' }
             end
           end
         end
       end
       context 'when interpolation is in test' do
+        let(:assignment) { exercise.assignment_for(user) }
+
         context 'using user_first_name'  do
           let(:exercise) { create(:exercise, test: "<div>Hola #{interpolation}</div>") }
           let(:interpolation) { '/*...user_first_name...*/' }
 
-          it { expect(exercise.test_for(user)).to eq "<div>Hola Orlo</div>" }
+          it { expect(assignment.test).to eq "<div>Hola Orlo</div>" }
         end
 
         context 'and test is nil'  do
           let(:exercise) { create(:exercise, test: nil, expectations: [{}]) }
 
-          it { expect(exercise.test_for(user)).to eq nil }
+          it { expect(assignment.test).to eq nil }
         end
       end
       context 'when interpolation is in extra' do
+        let(:assignment) { exercise.assignment_for(user) }
+
         describe 'right previous content' do
           let(:exercise) { create(:exercise, extra: interpolation) }
 
@@ -273,11 +279,11 @@ describe Exercise, organization_workspace: :test do
 
             context 'has previous submission' do
               before { previous_exercise.submit_solution!(user, content: 'foobar') }
-              it { expect(exercise.extra_for(user)).to eq "foobar\n" }
+              it { expect(assignment.extra).to eq "foobar\n" }
             end
 
             context 'does not have previous submission' do
-              it { expect(exercise.extra_for(user)).to eq "\n" }
+              it { expect(assignment.extra).to eq "\n" }
             end
           end
           context 'using previousSolution' do
@@ -285,11 +291,11 @@ describe Exercise, organization_workspace: :test do
 
             context 'has previous submission' do
               before { previous_exercise.submit_solution!(user, content: 'foobar') }
-              it { expect(exercise.extra_for(user)).to eq "foobar\n" }
+              it { expect(assignment.extra).to eq "foobar\n" }
             end
 
             context 'does not have previous submission' do
-              it { expect(exercise.extra_for(user)).to eq "\n" }
+              it { expect(assignment.extra).to eq "\n" }
             end
           end
         end
@@ -300,7 +306,7 @@ describe Exercise, organization_workspace: :test do
 
             context 'has previous submission' do
               before { second_exercise.submit_solution!(user, content: 'foobar') }
-              it { expect(exercise.extra_for(user)).to eq "foobar\n" }
+              it { expect(assignment.extra).to eq "foobar\n" }
             end
           end
           context '-1 index' do
@@ -308,11 +314,11 @@ describe Exercise, organization_workspace: :test do
 
             context 'has previous submission' do
               before { previous_exercise.submit_solution!(user, content: 'foobar') }
-              it { expect(exercise.extra_for(user)).to eq "foobar\n" }
+              it { expect(assignment.extra).to eq "foobar\n" }
             end
 
             context 'does not have previous submission' do
-              it { expect(exercise.extra_for(user)).to eq "\n" }
+              it { expect(assignment.extra).to eq "\n" }
             end
           end
           context '1 index' do
@@ -320,7 +326,7 @@ describe Exercise, organization_workspace: :test do
 
             context 'has previous submission' do
               before { first_exercise.submit_solution!(user, content: 'foobar') }
-              it { expect(exercise.extra_for(user)).to eq "foobar\n" }
+              it { expect(assignment.extra).to eq "foobar\n" }
             end
           end
           context '2 index' do
@@ -328,7 +334,7 @@ describe Exercise, organization_workspace: :test do
 
             context 'has previous submission' do
               before { second_exercise.submit_solution!(user, content: 'foobar') }
-              it { expect(exercise.extra_for(user)).to eq "foobar\n" }
+              it { expect(assignment.extra).to eq "foobar\n" }
             end
           end
           context '3 index' do
@@ -336,7 +342,7 @@ describe Exercise, organization_workspace: :test do
 
             context 'has previous submission' do
               before { previous_exercise.submit_solution!(user, content: 'foobar') }
-              it { expect(exercise.extra_for(user)).to eq "foobar\n" }
+              it { expect(assignment.extra).to eq "foobar\n" }
             end
           end
         end
@@ -344,16 +350,17 @@ describe Exercise, organization_workspace: :test do
     end
 
     context 'when user has multiple submission for the exercise' do
-      let!(:assignments) { [exercise.submit_solution!(user, content: 'foo'),
-                            exercise.submit_solution!(user, content: 'bar')] }
+      before { exercise.submit_solution!(user, content: 'foo') }
+      let!(:assignment) { exercise.submit_solution!(user, content: 'bar') }
 
-      it { expect(exercise.current_content_for(user)).to eq assignments.last.solution }
+      it { expect(assignment.current_content).to eq assignment.solution }
     end
 
     context 'when user has no solution and exercise has default content' do
       let(:exercise) { create(:exercise, default_content: '#write here...') }
+      let(:assignment) { exercise.assignment_for user }
 
-      it { expect(exercise.current_content_for(user)).to eq '#write here...' }
+      it { expect(assignment.current_content).to eq '#write here...' }
     end
   end
 

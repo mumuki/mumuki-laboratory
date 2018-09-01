@@ -123,6 +123,12 @@ class Discussion < ApplicationRecord
     responses_count > 0
   end
 
+  def extra_preview_html
+    # FIXME this is buggy, because the extra
+    # may have changed since the submission of this discussion
+    exercise.assignment_for(initiator).extra_preview_html
+  end
+
   def self.debatable_for(klazz, params)
     debatable_id = params[:"#{klazz.underscore}_id"]
     klazz.constantize.find(debatable_id)

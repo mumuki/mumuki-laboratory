@@ -65,6 +65,20 @@ class Language < ApplicationRecord
     new_directive Mumukit::Directives::Sections
   end
 
+
+  def assets_urls_for(kind, content_type)
+    send "#{kind}_#{content_type}_urls"
+  end
+
+  # TODO this should be a Mumukit::Directives::Directive
+  # and be part of a pipeline
+  def interpolate_references_for(assignment, field)
+    interpolate(field, assignment.submitter.interpolations, lambda { |content| replace_content_reference(assignment, content) })
+  end
+
+  private
+
+  # TODO we should use Mumukit::Directives::Pipeline
   def interpolate(interpolee, *interpolations)
     interpolations.inject(interpolee) { |content, interpolation| directives_interpolations.interpolate(content, interpolation).first }
   end
@@ -73,17 +87,20 @@ class Language < ApplicationRecord
     new_directive Mumukit::Directives::Interpolations
   end
 
-  def directives_comment_type
-    Mumukit::Directives::CommentType.parse comment_type
+  def replace_content_reference(assignment, interpolee)
+    case interpolee
+    when /previousContent|previousSolution/
+      assignment.current_content_at(-1)
+    when /(solution|content)\[(-?\d*)\]/
+      assignment.current_content_at($2.to_i)
+    end
   end
-
-  def assets_urls_for(kind, content_type)
-    send "#{kind}_#{content_type}_urls"
-  end
-
-  private
 
   def new_directive(directive_type)
     directive_type.new.tap { |it| it.comment_type = directives_comment_type }
+  end
+
+  def directives_comment_type
+    Mumukit::Directives::CommentType.parse comment_type
   end
 end

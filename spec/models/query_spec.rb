@@ -11,11 +11,10 @@ describe Query do
 
   describe '#submit_query!' do
     let!(:results) { exercise.submit_query!(user, query: 'foo', content: 'bar', cookie: ['foo', 'bar']) }
-    let(:assignment) { exercise.assignment_for user }
+    let(:assignment) { exercise.find_assignment_for user }
 
     it { expect(results[:status]).to eq :passed }
     it { expect(results[:result]).to eq '5' }
-    it { expect(exercise.assignment_for(user)).to be_present }
     it { expect(assignment.solution).to eq 'bar' }
     it { expect(assignment.status).to eq :pending }
   end
