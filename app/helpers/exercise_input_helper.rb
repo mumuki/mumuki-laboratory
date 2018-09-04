@@ -64,7 +64,7 @@ module ExerciseInputHelper
   end
 
   def remaining_attempts_text(assignment)
-    if assignment.exercise.limited?
+    if assignment.limited?
       %Q{
         <span id="attempts-left-text" data-disabled="#{!assignment.attempts_left?}">
           (#{t(:attempts_left, count: assignment.attempts_left)})

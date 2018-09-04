@@ -131,12 +131,17 @@ class Exam < ApplicationRecord
     (super if assignment.attempts_left?) || assignment
   end
 
-  def results_partial_for(assignment)
-    return 'out_of_attempts' unless assignment.attempts_left?
-    super
+  def attempts_left_for(assignment)
+    max_attempts_for(assignment) - (assignment.attempts_count || 0)
   end
 
   def limited?
     true
+  end
+
+  private
+
+  def max_attempts_for(assignment)
+    assignment.choice? ? max_choice_submissions : max_problem_submissions
   end
 end

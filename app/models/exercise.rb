@@ -147,22 +147,11 @@ class Exercise < ApplicationRecord
     self[:default_content] || ''
   end
 
-  def max_attempts_in(exam)
-    choice? ? exam.max_choice_submissions : exam.max_problem_submissions
-  end
-
   def try_submit_solution!(user, solution)
     assignment = assignment_for(user)
     navigable_parent.submission_context_for(assignment) { submit_solution! user, solution }
   end
 
-  def results_partial
-    input_kids? ? 'exercise_solutions/kids_results' : 'exercise_solutions/results'
-  end
-
-  def attempts_left_for(assignment)
-    max_attempts_in(navigable_parent) - (assignment&.attempts_count || 0)
-  end
 
   private
 

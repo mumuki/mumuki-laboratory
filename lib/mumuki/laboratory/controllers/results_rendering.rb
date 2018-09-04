@@ -19,8 +19,13 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
   end
 
   def render_results_html(assignment)
-    render_to_string partial: assignment.results_partial,
+    render_to_string partial: results_partial(assignment),
                      locals: {assignment: assignment}
+  end
+
+  def results_partial(assignment)
+    return 'out_of_attempts' unless assignment.attempts_left?
+    assignment.input_kids? ? 'exercise_solutions/kids_results' : 'exercise_solutions/results'
   end
 
   def render_results_title_html(assignment)

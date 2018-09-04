@@ -46,7 +46,7 @@ class Submission
 
   def save_results!(results, assignment)
     assignment.assign_attributes results
-    assignment.increment_attemps!
+    assignment.increment_attempts!
     assignment.save! results
   end
 
