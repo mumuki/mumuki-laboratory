@@ -147,11 +147,13 @@ class Exercise < ApplicationRecord
     self[:default_content] || ''
   end
 
+  # Submits the user solution
+  # only if the corresponding assignment has attemps left
   def try_submit_solution!(user, solution)
-    assignment = assignment_for(user)
-    navigable_parent.submission_context_for(assignment) { submit_solution! user, solution }
+    assignment_for(user).tap do |assignment|
+      submit_solution!(user, solution) if assignment.attempts_left?
+    end
   end
-
 
   private
 

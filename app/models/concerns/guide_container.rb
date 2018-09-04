@@ -46,8 +46,4 @@ module GuideContainer
 
   def start!(user)
   end
-
-  def submission_context_for(assignment)
-    yield
-  end
 end

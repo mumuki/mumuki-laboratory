@@ -127,10 +127,6 @@ class Exam < ApplicationRecord
     end
   end
 
-  def submission_context_for(assignment)
-    (super if assignment.attempts_left?) || assignment
-  end
-
   def attempts_left_for(assignment)
     max_attempts_for(assignment) - (assignment.attempts_count || 0)
   end
