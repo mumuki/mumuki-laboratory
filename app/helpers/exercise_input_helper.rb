@@ -47,15 +47,30 @@ module ExerciseInputHelper
     !assignment.passed? && organization.ask_for_help_enabled?
   end
 
-  def render_submit_button(exercise)
-    options = submit_button_options(exercise)
+  def render_submit_button(assignment)
+    options = submit_button_options(assignment.exercise)
     text = t(options.t) if options.t.present?
     waiting_text = t(options.waiting_t) if options.waiting_t.present?
-    %Q{<#{options.tag} for="#{options.for}"
+    %Q{
+      <div class="btn-submit-container">
+        <#{options.tag} for="#{options.for}"
                        class="btn btn-success btn-block btn-submit #{options.classes}"
                        data-waiting="#{waiting_text}">
-          #{fa_icon options.fa_icon, text: text}
-       </#{options.tag}>}.html_safe
+          #{fa_icon options.fa_icon}
+          #{text} #{remaining_attempts_text(assignment)}
+       </#{options.tag}>
+      </div>
+    }.html_safe
+  end
+
+  def remaining_attempts_text(assignment)
+    if assignment.limited?
+      %Q{
+        <span id="attempts-left-text" data-disabled="#{!assignment.attempts_left?}">
+          (#{t(:attempts_left, count: assignment.attempts_left)})
+        </span>
+      }
+    end
   end
 
   def render_custom_editor(exercise, read_only=false)

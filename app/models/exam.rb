@@ -126,4 +126,18 @@ class Exam < ApplicationRecord
       exams.destroy_all
     end
   end
+
+  def attempts_left_for(assignment)
+    max_attempts_for(assignment) - (assignment.attempts_count || 0)
+  end
+
+  def limited?
+    true
+  end
+
+  private
+
+  def max_attempts_for(assignment)
+    assignment.choice? ? max_choice_submissions : max_problem_submissions
+  end
 end

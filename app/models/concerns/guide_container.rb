@@ -25,6 +25,21 @@ module GuideContainer
   def validate_accessible_for!(user)
   end
 
+  # Tells the number of remaning
+  # attemps for a given assignment that belongs to this
+  # container, or `nil`, if this container does not impose
+  # any limit to the number of submissions
+  def attempts_left_for(assignment)
+    nil
+  end
+
+  # Tells if this guide container
+  # imposes any kind of limit to the number of submission
+  # to its assignments
+  def limited?
+    false
+  end
+
   def timed?
     false
   end

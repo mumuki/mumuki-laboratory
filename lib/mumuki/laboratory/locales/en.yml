@@ -15,6 +15,9 @@ en:
   ask_community: Ask community for help
   ask_redirect: Do you want to go there?
   ask_the_first_question: Be the first one to ask!
+  attempts_left:
+    zero: "You've run out of attempts "
+    other: '%{count} attempts remaining'
   author: Author
   authoring: "Authoring"
   authoring_note: This guide's content was developed by %{authors} and <a href="%{collaborators}" target="_blank">many others</a>, under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons License Share-Alike, 4.0</a>
@@ -143,6 +146,7 @@ en:
   office: Office
   opened: Open
   opened_count: '%{count} opened'
+  out_of_attempts: You've run out of attempts. You should proceed to the next exercise!
   output: Output
   overview: Overview
   passed: Everything is in order! Your solution passed all our tests!

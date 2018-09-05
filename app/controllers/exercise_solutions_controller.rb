@@ -7,7 +7,7 @@ class ExerciseSolutionsController < AjaxController
   before_action :validate_accessible!, only: :create
 
   def create
-    assignment = @exercise.submit_solution!(current_user, solution_params)
+    assignment = @exercise.try_submit_solution!(current_user, solution_params)
     render_results_json assignment, status: assignment.status
   end
 

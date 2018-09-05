@@ -5,10 +5,6 @@ module Mumuki::Laboratory::Status::Submission::Passed
     true
   end
 
-  def self.should_retry?
-    false
-  end
-
   def self.iconize
     {class: :success, type: 'check-circle'}
   end

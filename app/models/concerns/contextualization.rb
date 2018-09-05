@@ -28,7 +28,7 @@ module Contextualization
 
     delegate :visible_success_output?, to: :exercise
     delegate :output_content_type, to: :language
-    delegate :should_retry?, :to_submission_status, :pending?, :passed?, :aborted?, to: :submission_status
+    delegate :should_retry?, :to_submission_status, :pending?, :passed?, :failed?, :errored?, :aborted?, to: :submission_status
     delegate :inspection_keywords, to: :exercise
   end
 
@@ -47,11 +47,11 @@ module Contextualization
   end
 
   def results_visible?
-    (visible_success_output? || should_retry?) && !exercise.choices?
+    (visible_success_output? || !passed?) && !exercise.choices?
   end
 
   def result_preview
-    result.truncate(100) if should_retry?
+    result.truncate(100) unless passed?
   end
 
   def result_html

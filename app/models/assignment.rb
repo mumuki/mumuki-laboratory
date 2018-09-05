@@ -12,9 +12,11 @@ class Assignment < ApplicationRecord
 
   validates_presence_of :exercise, :submitter
 
-  delegate :language, :name, to: :exercise
+  delegate :language, :name, :navigable_parent,
+           :limited?, :input_kids?, :choice?, to: :exercise
 
   alias_attribute :status, :submission_status
+  alias_attribute :attempts_count, :attemps_count
 
   scope :by_exercise_ids, -> (exercise_ids) {
     where(exercise_id: exercise_ids) if exercise_ids
@@ -115,7 +117,6 @@ class Assignment < ApplicationRecord
   end
 
   def as_platform_json
-    navigable_parent = exercise.navigable_parent
     as_json(except: [:exercise_id, :submission_id, :id, :submitter_id, :solution, :created_at, :updated_at, :submission_status],
               include: {
                 guide: {
@@ -147,8 +148,20 @@ class Assignment < ApplicationRecord
     @tips ||= exercise.assist_with(self)
   end
 
-  def increment_attemps!
-    self.attemps_count += 1 unless passed?
+  def increment_attempts!
+    self.attempts_count += 1 if should_retry?
+  end
+
+  def attempts_left
+    navigable_parent.attempts_left_for(self)
+  end
+
+  # Tells wether the submitter of this
+  # assignment can keep on sending submissions
+  # which is true for non limited or for assignments
+  # that have not reached their submissions limit
+  def attempts_left?
+    !limited? || attempts_left > 0
   end
 
   def current_content

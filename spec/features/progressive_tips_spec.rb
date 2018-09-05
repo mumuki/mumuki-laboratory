@@ -22,7 +22,7 @@ feature 'Progressive Tips', organization_workspace: :test do
     before { assignment.update! status: :failed }
 
     scenario '2 failed submissions' do
-      assignment.update! attemps_count: 2
+      assignment.update! attempts_count: 2
       visit "/exercises/#{problem.slug}"
 
       expect(page).to have_text('Try this')
@@ -30,7 +30,7 @@ feature 'Progressive Tips', organization_workspace: :test do
     end
 
     scenario '5 failed submissions' do
-      assignment.update! attemps_count: 5
+      assignment.update! attempts_count: 5
       visit "/exercises/#{problem.id}"
 
       expect(page).to_not have_text('Try this')
@@ -38,7 +38,7 @@ feature 'Progressive Tips', organization_workspace: :test do
     end
 
     scenario '10 failed submissions' do
-      assignment.update! attemps_count: 10
+      assignment.update! attempts_count: 10
       visit "/exercises/#{problem.id}"
 
       expect(page).to_not have_text('Try this')

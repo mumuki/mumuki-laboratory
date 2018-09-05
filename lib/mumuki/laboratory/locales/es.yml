@@ -16,6 +16,10 @@ es:
   ask_community: Preguntá a la comunidad
   ask_redirect: ¿Querés que te llevemos ahí?
   ask_the_first_question: ¡Hacé la primera pregunta!
+  attempts_left:
+    zero: 'Te quedaste sin intentos'
+    one: '1 intento restante'
+    other: '%{count} intentos restantes'
   author: Autor
   authoring: "Autores"
   authoring_note: Esta guía fue desarrollada por %{authors} y <a href="%{collaborators}" target="_blank">muchas personas más</a>, bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia Creative Commons Compartir-Igual, 4.0</a>.
@@ -161,6 +165,7 @@ es:
     one: '1 abierta'
     other: '%{count} abiertas'
   organizations: Organizaciones
+  out_of_attempts: Te quedaste sin intentos. ¡Seguí al proximo ejercicio!
   output: Salida
   overview: Vista general
   passed: ¡Muy bien! Tu solución pasó todas las pruebas

@@ -22,6 +22,7 @@ class Exercise < ApplicationRecord
                         :guide
 
   randomize :description, :hint, :extra, :test, :default_content
+  delegate :limited?, :timed?, to: :navigable_parent
 
   def console?
     queriable?
@@ -144,6 +145,14 @@ class Exercise < ApplicationRecord
 
   def default_content
     self[:default_content] || ''
+  end
+
+  # Submits the user solution
+  # only if the corresponding assignment has attemps left
+  def try_submit_solution!(user, solution)
+    assignment_for(user).tap do |assignment|
+      submit_solution!(user, solution) if assignment.attempts_left?
+    end
   end
 
   private

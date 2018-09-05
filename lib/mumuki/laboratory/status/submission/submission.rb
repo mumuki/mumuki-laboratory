@@ -38,8 +38,10 @@ module Mumuki::Laboratory::Status::Submission
     false
   end
 
+  # Tells if a new, different submission should be tried.
+  # True for `failed`, `errored` and `passed_with_warnings`
   def should_retry?
-    true
+    false
   end
 
   def iconize
