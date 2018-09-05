@@ -3,6 +3,10 @@ class LoginController < ApplicationController
 
   private
 
+  def organization_name
+    params[:organization] || super
+  end
+
   def login_failure!
     redirect_to root_path, alert: request.params['message']
   end
