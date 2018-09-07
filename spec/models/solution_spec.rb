@@ -2,8 +2,39 @@ require 'spec_helper'
 
 describe Solution, organization_workspace: :test do
 
-  describe '#run_tests!' do
-    let(:user) { create(:user) }
+  let(:user) { create(:user) }
+
+  describe '#try_submit_solution!' do
+
+    context 'when on chapter' do
+      let(:problem) { create(:problem) }
+      let!(:chapter) {
+        create(:chapter, name: 'Functional Programming', lessons: [
+          create(:lesson, exercises: [problem])
+        ]) }
+
+      before { reindex_current_organization! }
+      let!(:result) { problem.try_submit_solution! user }
+
+      it { expect(result).to eq problem.find_assignment_for(user) }
+      it { expect(result.attempts_left).to eq nil  }
+      it { expect(result.attempts_left?).to be true  }
+    end
+
+    context 'when on exam' do
+      let(:problem) { create(:problem) }
+      let!(:exam) { create(:exam, max_problem_submissions: 10, exercises: [problem]) }
+
+      before { reindex_current_organization! }
+      let(:result) { problem.try_submit_solution! user }
+
+      it { expect(result).to eq problem.find_assignment_for(user) }
+      it { expect(result.attempts_left).to eq 9  }
+      it { expect(result.attempts_left?).to be true  }
+    end
+  end
+
+  describe '#submit_solution!' do
 
     before { expect_any_instance_of(Challenge).to receive(:automated_evaluation_class).and_return(Mumuki::Laboratory::Evaluation::Automated) }
     before { expect_any_instance_of(Language).to receive(:run_tests!).and_return(bridge_response) }

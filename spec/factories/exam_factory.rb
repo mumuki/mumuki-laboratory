@@ -1,7 +1,6 @@
 FactoryBot.define do
 
-  factory :exam do
-    guide
+  factory :exam, traits: [:guide_container] do
     duration { Faker::Number.between(10, 60).minutes }
     organization { Organization.current }
     start_time { 5.minutes.ago }
