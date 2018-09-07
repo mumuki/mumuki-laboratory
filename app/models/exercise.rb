@@ -149,9 +149,12 @@ class Exercise < ApplicationRecord
 
   # Submits the user solution
   # only if the corresponding assignment has attemps left
-  def try_submit_solution!(user, solution)
-    assignment_for(user).tap do |assignment|
-      submit_solution!(user, solution) if assignment.attempts_left?
+  def try_submit_solution!(user, solution={})
+    assignment = assignment_for(user)
+    if assignment.attempts_left?
+      submit_solution!(user, solution)
+    else
+      assignment
     end
   end
 

@@ -16,6 +16,11 @@ describe ExerciseSolutionsController, organization_workspace: :test do
     before { post :create, params: { exercise_id: problem.id, solution: { content: 'asd' } } }
 
     it { expect(response.status).to eq 200 }
+    it { expect(response.body).to json_eq(
+                                    {status: :failed, guide_finished_by_solution: false},
+                                    except: [:class_for_progress_list_item,
+                                             :html, :title_html, :button_html,
+                                             :expectations_html, :remaining_attempts_html]) }
     it { expect(Assignment.last.solution).to eq('asd')}
   end
 
