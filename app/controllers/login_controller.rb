@@ -1,6 +1,8 @@
 class LoginController < ApplicationController
   Mumukit::Login.configure_login_controller! self
 
+  skip_before_action :verify_authenticity_token
+
   private
 
   def organization_name
