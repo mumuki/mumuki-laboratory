@@ -16,5 +16,12 @@ describe DiscussionsController, organization_workspace: :test do
     it { expect(exercise.discussions.size).to eq 1 }
     it { expect(user.discussions.size).to eq 1 }
     it { expect(user.watched_discussions.size).to eq 1 }
+
+    describe 'deleting exercises does delete all discussions' do
+      before { @discussion_id = exercise.discussions.first.id }
+      before { exercise.destroy }
+
+      it { expect { Discussion.find(@discussion_id) }.to raise_exception(ActiveRecord::RecordNotFound) }
+    end
   end
 end
