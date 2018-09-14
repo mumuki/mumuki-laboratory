@@ -1,4 +1,5 @@
 ENV['RAILS_ENV'] ||= 'test'
+ENV['MUMUKI_ENABLED_LOGIN_PROVIDERS'] = 'developer'
 
 require File.expand_path("../dummy/config/environment.rb", __FILE__)
 require 'rspec/rails'
