@@ -29,7 +29,8 @@ module OrganizationsControllerTemplate
               :raise_hand_enabled, :report_issue_enabled, :forum_enabled,
               :feedback_suggestions_enabled, :public, :immersive,
               :theme_stylesheet, :extension_javascript, :terms_of_service,
-              :community_link, :login_provider, login_methods: [])
+              :community_link, :login_provider, :embeddable,
+              login_methods: [])
       .tap { |it| it.merge!(book: Book.find_by!(slug: it[:book])) if it[:book] }
   end
 end
