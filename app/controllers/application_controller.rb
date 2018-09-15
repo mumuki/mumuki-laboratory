@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   Mumukit::Login.configure_controller! self
 
+  protect_from_forgery with: :exception
+
   include Mumuki::Laboratory::Controllers::CurrentOrganization
   include Mumukit::Login::AuthenticationHelpers
 
