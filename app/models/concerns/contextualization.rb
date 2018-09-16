@@ -47,7 +47,7 @@ module Contextualization
   end
 
   def results_visible?
-    (visible_success_output? || !passed?) && !exercise.choices?
+    (visible_success_output? || !passed?) && !exercise.choices? && !manual_evaluation_pending?
   end
 
   def result_preview

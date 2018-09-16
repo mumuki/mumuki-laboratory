@@ -52,11 +52,13 @@ describe Assignment, organization_workspace: :test do
     let(:failed_submission) { create(:assignment, status: :failed) }
     let(:passed_submission) { create(:assignment, status: :passed, expectation_results: []) }
     let(:passed_submission_with_visible_output_language) { create(:assignment, status: :passed, exercise: gobstones_exercise) }
+    let(:manual_evaluation_pending_submission) { create(:assignment, status: :manual_evaluation_pending) }
 
     it { expect(passed_submission.results_visible?).to be false }
     it { expect(failed_submission.should_retry?).to be true }
     it { expect(failed_submission.results_visible?).to be true }
     it { expect(passed_submission_with_visible_output_language.results_visible?).to be true }
+    it { expect(manual_evaluation_pending_submission.results_visible?).to be false }
   end
   describe '#expectation_results_visible?' do
     let(:haskell) { create(:language, visible_success_output: true) }
