@@ -38,6 +38,10 @@ module Mumuki::Laboratory::Status
       end
     end
 
+    def test_selectors
+      self::STATUSES.map { |it| "#{it}?".to_sym }
+    end
+
     def to_mumuki_status(status)
       status.send(to_status_method)
     end

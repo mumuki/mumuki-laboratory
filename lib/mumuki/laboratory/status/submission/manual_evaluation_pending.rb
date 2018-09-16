@@ -1,6 +1,10 @@
 module Mumuki::Laboratory::Status::Submission::ManualEvaluationPending
   extend Mumuki::Laboratory::Status::Submission
 
+  def self.manual_evaluation_pending?
+    true
+  end
+
   def self.group
     Mumuki::Laboratory::Status::Submission::Passed
   end

@@ -10,20 +10,8 @@ require_relative './pending_review'
 module Mumuki::Laboratory::Status::Discussion
   STATUSES = [Opened, Closed, Solved, PendingReview]
 
-  def closed?
-    false
-  end
-
-  def opened?
-    false
-  end
-
-  def solved?
-    false
-  end
-
-  def pending_review?
-    false
+  test_selectors.each do |selector|
+    define_method(selector) { false }
   end
 
   def allowed_for?(*)

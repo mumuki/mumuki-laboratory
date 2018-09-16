@@ -14,28 +14,12 @@ require_relative './manual_evaluation_pending'
 module Mumuki::Laboratory::Status::Submission
   STATUSES = [Pending, Running, Passed, Failed, Errored, Aborted, PassedWithWarnings, ManualEvaluationPending]
 
+  test_selectors.each do |selector|
+    define_method(selector) { false }
+  end
+
   def group
     self
-  end
-
-  def passed?
-    false
-  end
-
-  def failed?
-    false
-  end
-
-  def errored?
-    false
-  end
-
-  def aborted?
-    false
-  end
-
-  def pending?
-    false
   end
 
   # Tells if a new, different submission should be tried.

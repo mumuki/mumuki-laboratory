@@ -1,11 +1,11 @@
 module Mumuki::Laboratory::Status::Submission::Aborted
   extend Mumuki::Laboratory::Status::Submission
 
-  def self.group
-    Mumuki::Laboratory::Status::Submission::Failed
+  def self.aborted?
+    true
   end
 
-  def aborted?
-    true
+  def self.group
+    Mumuki::Laboratory::Status::Submission::Failed
   end
 end
