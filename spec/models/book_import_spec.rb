@@ -18,22 +18,32 @@ describe Book, organization_workspace: :test do
      slug: 'mumuki/mumuki-sample-book',
      locale: 'en',
      chapters: [topic_1.slug, topic_2.slug],
-     complements: [guide_2.slug, guide_1.slug]
+     complements: complement_slugs,
     }.deep_stringify_keys
   end
 
   describe '#import_from_json!' do
-    before do
-      book.import_from_json!(book_json)
+    context 'when complements are present' do
+      let(:complement_slugs) { [guide_2.slug, guide_1.slug] }
+
+      before { book.import_from_json!(book_json) }
+
+      it { expect(book.name).to eq 'sample book' }
+      it { expect(book.description).to eq 'a sample book description' }
+      it { expect(book.locale).to eq 'en' }
+      it { expect(book.chapters.count).to eq 2 }
+      it { expect(book.complements.count).to eq 2 }
+
+      it { expect(topic_2.reload.usage_in_organization).to be_a Chapter }
+      it { expect(guide_2.reload.usage_in_organization).to be_a Complement }
     end
 
-    it { expect(book.name).to eq 'sample book' }
-    it { expect(book.description).to eq 'a sample book description' }
-    it { expect(book.locale).to eq 'en' }
-    it { expect(book.chapters.count).to eq 2 }
-    it { expect(book.complements.count).to eq 2 }
+    context 'when complements are not present' do
+      let(:complement_slugs) { ['foo/bar', guide_1.slug] }
 
-    it { expect(topic_2.reload.usage_in_organization).to be_a Chapter }
-    it { expect(guide_2.reload.usage_in_organization).to be_a Complement }
+      before { book.import_from_json!(book_json) }
+
+      it { expect(book.complements.count).to eq 1 }
+    end
   end
 end

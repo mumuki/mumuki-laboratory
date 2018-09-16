@@ -27,7 +27,7 @@ class Book < Content
     self.description = json['description'].squeeze(' ')
 
     rebuild! json['chapters'].map { |it| Topic.find_by!(slug: it).as_chapter_of(self) }
-    rebuild_complements!  (json['complements']||[]).map { |it| Guide.find_by!(slug: it).as_complement_of(self) }
+    rebuild_complements!  (json['complements']||[]).map { |it| Guide.find_by(slug: it)&.as_complement_of(self) }.compact
 
     Organization.all.each { |org| org.reindex_usages! }
   end
