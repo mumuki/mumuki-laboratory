@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'mumukit-bridge', '~> 3.7'
   s.add_dependency 'mumukit-inspection', '~> 3.4'
   s.add_dependency 'mumukit-nuntius', '~> 6.1'
-  s.add_dependency 'mumukit-platform', '~> 2.4'
+  s.add_dependency 'mumukit-platform', '~> 2.6'
   s.add_dependency 'mumukit-login', '~> 6.0'
   s.add_dependency 'mumukit-directives', '~> 0.3'
   s.add_dependency 'mumukit-assistant', '~> 0.1'
