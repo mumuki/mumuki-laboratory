@@ -128,7 +128,7 @@ class Exam < ApplicationRecord
   end
 
   def attempts_left_for(assignment)
-    max_attempts_for(assignment) - (assignment.attempts_count || 0)
+    max_attempts_for(assignment.exercise) - (assignment.attempts_count || 0)
   end
 
   def limited_for?(exercise)
@@ -137,7 +137,7 @@ class Exam < ApplicationRecord
 
   private
 
-  def max_attempts_for(assignment)
-    assignment.choice? ? max_choice_submissions : max_problem_submissions
+  def max_attempts_for(exercise)
+    exercise.choice? ? max_choice_submissions : max_problem_submissions
   end
 end
