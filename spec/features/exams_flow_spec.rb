@@ -57,7 +57,6 @@ feature 'Exams Flow', organization_workspace: :test do
   scenario 'visit exercise for exam with no submission limits' do
     user = create(:user)
     set_current_user! user
-    user.make_student_of! other_organization.slug
     exam_with_no_submission_limits.authorize!(user)
     visit "/exercises/#{exercise.id}"
 
