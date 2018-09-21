@@ -5,11 +5,13 @@ feature 'Exams Flow', organization_workspace: :test do
   let(:other_exam) { create(:exam, organization: other_organization) }
   let!(:exam_not_in_path) { create :exam }
 
-  let!(:chapter) {
-    create(:chapter, lessons: [
-        create(:lesson)]) }
-
   let(:other_organization) { create(:organization, name: 'baz') }
+
+  let(:exam_with_no_submission_limits) { create(:exam, organization_id: Organization.find_by_name('test').id, guide_id: guide.id) }
+  let(:guide) { create(:guide, exercises: [exercise])}
+  let(:exercise) { create(:exercise, name: 'Exam Exercise') }
+
+  before { exam_with_no_submission_limits.index_usage! Organization.find_by_name('test') }
 
   before { reindex_current_organization! }
 
@@ -50,5 +52,15 @@ feature 'Exams Flow', organization_workspace: :test do
     visit "/exams/#{exam.classroom_id}"
 
     expect(page).to have_text('This exam is no longer available.')
+  end
+
+  scenario 'visit exercise for exam with no submission limits' do
+    user = create(:user)
+    set_current_user! user
+    user.make_student_of! other_organization.slug
+    exam_with_no_submission_limits.authorize!(user)
+    visit "/exercises/#{exercise.id}"
+
+    expect(page).to have_text('Exam Exercise')
   end
 end

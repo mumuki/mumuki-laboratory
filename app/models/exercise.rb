@@ -22,7 +22,7 @@ class Exercise < ApplicationRecord
                         :guide
 
   randomize :description, :hint, :extra, :test, :default_content
-  delegate :limited?, :timed?, to: :navigable_parent
+  delegate :timed?, to: :navigable_parent
 
   def console?
     queriable?
@@ -156,6 +156,10 @@ class Exercise < ApplicationRecord
     else
       assignment
     end
+  end
+
+  def limited?
+    navigable_parent.limited_for?(self)
   end
 
   private
