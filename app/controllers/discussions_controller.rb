@@ -1,4 +1,4 @@
-class DiscussionsController < AjaxController
+class DiscussionsController < ApplicationController
   include Mumuki::Laboratory::Controllers::Content
 
   before_action :validate_forum_enabled!
