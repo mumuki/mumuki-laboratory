@@ -56,7 +56,7 @@ mumuki.load(function () {
 
   $nextSpeech.click(function () {
     showParagraph(currentParagraphIndex + 1);
-    clearInterval(nextSpeechBlinking)
+    clearInterval(nextSpeechBlinking);
   });
 
   $prevSpeech.click(function () {
