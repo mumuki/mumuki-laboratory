@@ -36,7 +36,7 @@ module GuideContainer
   # Tells if this guide container
   # imposes any kind of limit to the number of submission
   # to its assignments
-  def limited?
+  def limited_for?(exercise)
     false
   end
 

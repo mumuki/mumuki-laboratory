@@ -131,8 +131,8 @@ class Exam < ApplicationRecord
     max_attempts_for(assignment) - (assignment.attempts_count || 0)
   end
 
-  def limited?
-    true
+  def limited_for?(exercise)
+    max_attempts_for(exercise).present?
   end
 
   private
