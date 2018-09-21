@@ -1,5 +1,5 @@
 class GuideProgressController < ApplicationController
-  before_action :check_not_in_exam!
+  before_action :check_not_in_exam!, only: :destroy
 
   def destroy
     guide.clear_progress! current_user
