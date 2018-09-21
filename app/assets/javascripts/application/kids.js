@@ -3,7 +3,7 @@ mumuki.load(function () {
   if(!$bubble.length) return;
 
   var availableTabs = ['.description', '.hint'];
-  var $speechParagraphs, paragraphHeight, scrollHeight;
+  var $speechParagraphs, paragraphHeight, scrollHeight, nextSpeechBlinking;
   var currentParagraphIndex = 0;
   var paragraphCount = 1;
   var paragraphsLines = 2;
@@ -12,7 +12,6 @@ mumuki.load(function () {
   var $speechTabs = $('.mu-kids-character-speech-bubble-tabs > li:not(.separator)');
   var $defaultSpeechTabName = 'description';
   var $texts = $bubble.children(availableTabs.join(", "));
-  var nextSpeechBlinking = setInterval(() => $nextSpeech.fadeTo('slow', 0.1).fadeTo('slow', 1.0), 1000);
 
   function floatFromPx(value) {
     return parseFloat(value.substring(0, value.length - 2));
@@ -53,6 +52,10 @@ mumuki.load(function () {
       updateSpeechParagraphs();
     })
   });
+
+  if(paragraphCount > 1) {
+    nextSpeechBlinking = setInterval(() => $nextSpeech.fadeTo('slow', 0.1).fadeTo('slow', 1.0), 1000);
+  }
 
   $nextSpeech.click(function () {
     showParagraph(currentParagraphIndex + 1);
