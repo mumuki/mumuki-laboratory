@@ -46,4 +46,8 @@ module GuideContainer
 
   def start!(user)
   end
+
+  def resettable?
+    true
+  end
 end

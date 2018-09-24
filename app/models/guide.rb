@@ -86,4 +86,7 @@ class Guide < Content
     book.complements.find_by(guide_id: id) || Complement.new(guide: self, book: book)
   end
 
+  def resettable?
+    usage_in_organization.resettable?
+  end
 end
