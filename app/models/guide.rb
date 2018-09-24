@@ -86,7 +86,7 @@ class Guide < Content
     book.complements.find_by(guide_id: id) || Complement.new(guide: self, book: book)
   end
 
-  def exam_in_organization?(organization = Organization.current)
-    usage_in_organization_of_type(Exam, organization).present?
+  def resettable?
+    usage_in_organization.resettable?
   end
 end

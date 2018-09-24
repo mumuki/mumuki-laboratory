@@ -1,5 +1,5 @@
 class GuideProgressController < ApplicationController
-  before_action :check_not_in_exam!, only: :destroy
+  before_action :check_resettable!, only: :destroy
 
   def destroy
     guide.clear_progress! current_user
@@ -8,8 +8,8 @@ class GuideProgressController < ApplicationController
 
   private
 
-  def check_not_in_exam!
-    raise Mumuki::Laboratory::ForbiddenError if guide.exam_in_organization?
+  def check_resettable!
+    raise Mumuki::Laboratory::ForbiddenError unless guide.resettable?
   end
 
   def guide

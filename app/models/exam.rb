@@ -135,6 +135,10 @@ class Exam < ApplicationRecord
     max_attempts_for(exercise).present?
   end
 
+  def resettable?
+    false
+  end
+
   private
 
   def max_attempts_for(exercise)

@@ -36,7 +36,7 @@
 </div>
 
 <h3 style="display:inline;"><%= t :content %></h3>
-<%= restart_guide_link(@guide) if current_user && @guide.started?(current_user) && !@guide.exam_in_organization? %>
+<%= restart_guide_link(@guide) if current_user && @guide.started?(current_user) && @guide.resettable? %>
 <%= render partial: 'layouts/progress_listing', locals: {exercises: @guide.exercises} %>
 
 <% if @stats.try :done? %>
