@@ -1,6 +1,6 @@
 <ul class="progress-listing">
   <% exercises.each do |exercise| %>
-      <% cache [exercise, exercise.status_for(current_user)] do %>
+      <% cache [exercise, exercise.status_for(current_user), Organization.current] do %>
           <li <%= turbolinks_enable_for(exercise) %>>
             <%= exercise_status_icon exercise %>
             <%= link_to_path_element(exercise) %>
