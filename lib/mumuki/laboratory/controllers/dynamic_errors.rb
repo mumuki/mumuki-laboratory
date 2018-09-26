@@ -18,6 +18,7 @@ module Mumuki::Laboratory::Controllers::DynamicErrors
   end
 
   def bad_record(exception)
+    # bad records can only be produced thourgh API
     render_api_errors exception.record.errors, 400
   end
 
@@ -49,7 +50,7 @@ module Mumuki::Laboratory::Controllers::DynamicErrors
   end
 
   def render_error(template, status, options={})
-    if request.path.start_with? '/api/'
+    if Mumukit::Platform.organization_mapping.path_under_namespace? request.path, 'api'
       render_api_errors [options[:error_message] || template.gsub('_', ' ')], status
     else
       render_app_errors template, options.merge(status: status).except(:error_message)
@@ -65,5 +66,4 @@ module Mumuki::Laboratory::Controllers::DynamicErrors
   def render_api_errors(errors, status)
     render json: { errors: errors }, status: status
   end
-
 end

@@ -18,6 +18,14 @@ class Mumuki::Laboratory::Engine < ::Rails::Engine
   config.i18n.available_locales = Mumukit::Platform::Locale.supported
 end
 
+module Mumukit::Platform::OrganizationMapping::Subdomain
+  class << self
+    def path_under_namespace?(path, namespace)
+      path.start_with? "/#{namespace}/"
+    end
+  end
+end
+
 module Mumukit::Platform::OrganizationMapping::Path
   class << self
     alias __organization_name__ organization_name
@@ -29,6 +37,10 @@ module Mumukit::Platform::OrganizationMapping::Path
       else
         name
       end
+    end
+
+    def path_under_namespace?(path, namespace)
+      path.start_with? "/#{Mumukit::Platform.current_organization_name}/#{namespace}/"
     end
   end
 end
