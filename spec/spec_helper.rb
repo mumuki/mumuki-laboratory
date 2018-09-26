@@ -57,8 +57,13 @@ Mumukit::Auth.configure do |c|
   c.clients.default = {id: 'test-client', secret: 'thisIsATestSecret'}
 end
 
-def set_api_client!
-  @request.env["HTTP_AUTHORIZATION"] = api_client.token
+def set_token!(token)
+  @request.env["HTTP_AUTHORIZATION"] = token
+
+end
+
+def set_api_client!(api_client)
+  set_token! api_client.token
 end
 
 def reindex_organization!(organization)

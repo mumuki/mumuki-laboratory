@@ -17,7 +17,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
   describe 'authenticated request' do
     let(:book) { create :book }
 
-    before { set_api_client! }
+    before { set_api_client! api_client }
 
     describe 'GET' do
       let!(:public_organization) { create :organization, name: 'public' }
