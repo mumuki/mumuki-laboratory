@@ -8,37 +8,62 @@ module Mumuki::Laboratory::Controllers::DynamicErrors
     end
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
     rescue_from Mumukit::Auth::UnauthorizedAccessError, with: :forbidden
+    rescue_from Mumukit::Auth::InvalidTokenError, with: :unauthorized
     rescue_from Mumuki::Laboratory::NotFoundError, with: :not_found
     rescue_from Mumuki::Laboratory::ForbiddenError, with: :forbidden
     rescue_from Mumuki::Laboratory::UnauthorizedError, with: :unauthorized
     rescue_from Mumuki::Laboratory::GoneError, with: :gone
     rescue_from Mumuki::Laboratory::BlockedForumError, with: :blocked_forum
+    rescue_from ActiveRecord::RecordInvalid, with: :bad_record
+  end
+
+  def bad_record(exception)
+    # bad records can only be produced thourgh API
+    render_api_errors exception.record.errors, 400
   end
 
   def not_found
-    render 'errors/not_found', status: 404, formats: [:html]
+    render_error 'not_found', 404, formats: [:html]
   end
 
   def internal_server_error(exception)
     Rails.logger.error "Internal server error: #{exception} \n#{exception.backtrace.join("\n")}"
-    render 'errors/internal_server_error', status: 500
+    render_error 'internal_server_error', 500
   end
 
-  def unauthorized
-    render 'errors/unauthorized', status: 401
+  def unauthorized(exception)
+    render_error 'unauthorized', 401, error_message: exception.message
   end
 
   def forbidden
-    Rails.logger.info "Access to organization #{Organization.current} was forbidden to user #{current_user} with permissions #{current_user.permissions}"
-    render 'errors/forbidden', status: 403, locals: { explanation: :forbidden_explanation }
+    message = "Access to organization #{Organization.current} was forbidden to user #{current_user.uid} with permissions #{current_user.permissions.to_json}"
+    Rails.logger.info message
+    render_error 'forbidden', 403, locals: { explanation: :forbidden_explanation }, error_message: message
   end
 
   def blocked_forum
-    render 'errors/forbidden', status: 403, locals: { explanation: :blocked_forum_explanation }
+    render_error 'forbidden', 403, locals: { explanation: :blocked_forum_explanation }
   end
 
   def gone
-    render 'errors/gone', status: 410
+    render_error 'gone', 410
   end
 
+  def render_error(template, status, options={})
+    if Mumukit::Platform.organization_mapping.path_under_namespace? request.path, 'api'
+      render_api_errors [options[:error_message] || template.gsub('_', ' ')], status
+    else
+      render_app_errors template, options.merge(status: status).except(:error_message)
+    end
+  end
+
+  private
+
+  def render_app_errors(template, options)
+    render "errors/#{template}", options
+  end
+
+  def render_api_errors(errors, status)
+    render json: { errors: errors }, status: status
+  end
 end

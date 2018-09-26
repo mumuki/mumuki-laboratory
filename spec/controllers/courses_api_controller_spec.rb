@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Api::CoursesController, type: :controller, organization_workspace: :base do
-  before { set_api_client! }
+  before { set_api_client! api_client }
   let(:api_client) { create :api_client }
   let(:course_json) do
     {slug: 'test/bar',

@@ -4,7 +4,7 @@ module Api
 
     protect_from_forgery with: :null_session
 
-    include WithApiErrors
+    include Mumuki::Laboratory::Controllers::DynamicErrors
     include WithAuthorization
     include Mumuki::Laboratory::Controllers::CurrentOrganization
 

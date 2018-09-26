@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ApiClientsController, type: :controller, organization_workspace: :base do
-  before { @request.env["HTTP_AUTHORIZATION"] = api_client.token }
+  before { set_api_client! api_client }
   let(:api_client) { create :api_client }
   let(:api_client_json) do
     {description: 'foo',

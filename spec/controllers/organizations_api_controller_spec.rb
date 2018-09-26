@@ -6,18 +6,22 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
   end
 
   describe 'unauthenticated request' do
-    it { expect { get :index }.to raise_error 'missing authorization header' }
+    before { get :index }
+    it { expect(response.body).to json_eq errors: ['missing authorization header'] }
+    it { check_status! 401 }
   end
 
-  describe 'unauthenticated request' do
-    before { @request.env["HTTP_AUTHORIZATION"] = 'foo' }
-    it { expect { get :index }.to raise_error 'No Api Client found for Token' }
+  describe 'invalid authenticated request' do
+    before { set_token! 'foo' }
+    before { get :index }
+    it { expect(response.body).to json_eq errors: ['No Api Client found for Token'] }
+    it { check_status! 401 }
   end
 
   describe 'authenticated request' do
     let(:book) { create :book }
 
-    before { set_api_client! }
+    before { set_api_client! api_client }
 
     describe 'GET' do
       let!(:public_organization) { create :organization, name: 'public' }
@@ -33,7 +37,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
 
           it { check_status! 200 }
 
-          it { expect(body[:organizations].map { |it| it[:name] }).to contain_exactly(*%w(base public dot.org private another_private)) }
+          it { expect(body[:organizations].map { |it| it[:name] }).to contain_exactly 'base', 'public', 'dot.org', 'private', 'another_private' }
         end
         context 'with non-wildcard permissions' do
           before { get :index }
@@ -42,7 +46,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
 
           it { check_status! 200 }
 
-          it { expect(body[:organizations].map { |it| it[:name] }).to eq %w(public private) }
+          it { expect(body[:organizations].map { |it| it[:name] }).to contain_exactly 'public', 'private' }
         end
       end
 

@@ -9,12 +9,12 @@ class ApiClient < ApplicationRecord
   before_create :set_encoded_token!
 
   def verify!
-    raise 'Invalid Api Client' if Mumukit::Auth::Token.decode(token).uid != user.uid
+    self.class.invalid_token! 'Invalid Api Client' if Mumukit::Auth::Token.decode(token).uid != user.uid
   end
 
   def self.verify_token!(token)
     client = find_by token: token
-    raise 'No Api Client found for Token' unless client
+    invalid_token! 'No Api Client found for Token' unless client
     client.verify!
   end
 
@@ -22,6 +22,10 @@ class ApiClient < ApplicationRecord
 
   def set_encoded_token!
     self.token = Mumukit::Auth::Token.encode user.uid, {}
+  end
+
+  def self.invalid_token!(message)
+    raise Mumukit::Auth::InvalidTokenError, message
   end
 
 end
