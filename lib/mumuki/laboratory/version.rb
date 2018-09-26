@@ -1,5 +1,5 @@
 module Mumuki
   module Laboratory
-    VERSION = '5.10.0'
+    VERSION = '5.10.1'
   end
 end
