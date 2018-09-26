@@ -7,15 +7,15 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
 
   describe 'unauthenticated request' do
     before { get :index }
-    it { expect(response.body).to json_eq message: 'missing authorization header' }
-    it { check_status! 403 }
+    it { expect(response.body).to json_eq errors: ['missing authorization header'] }
+    it { check_status! 401 }
   end
 
   describe 'invalid authenticated request' do
     before { set_token! 'foo' }
     before { get :index }
-    it { expect(response.body).to json_eq message: 'No Api Client found for Token' }
-    it { check_status! 403 }
+    it { expect(response.body).to json_eq errors: ['No Api Client found for Token'] }
+    it { check_status! 401 }
   end
 
   describe 'authenticated request' do

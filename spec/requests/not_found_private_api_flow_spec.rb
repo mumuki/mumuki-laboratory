@@ -9,14 +9,14 @@ describe 'not found on api', type: :request, organization_workspace: :base do
   it 'without authentication' do
     get '/api/nonexistentroute'
 
-    expect(response.body).to json_eq message: 'not found'
+    expect(response.body).to json_eq errors: ['not found']
     expect(response.status).to eq 404
   end
 
   it 'with authentication' do
     get '/api/nonexistentroute', headers: { 'Authorization': owner_api_client.token, 'Content-Type': 'application/json' }
 
-    expect(response.body).to json_eq message: 'not found'
+    expect(response.body).to json_eq errors: ['not found']
     expect(response.status).to eq 404
   end
 end
