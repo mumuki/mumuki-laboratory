@@ -18,6 +18,8 @@ module Api
 
     def verify_api_client!
       ApiClient.verify_token! Mumukit::Auth::Token.extract_from_header(request.env['HTTP_AUTHORIZATION'])
+    rescue => e
+      render json: { message: e.message }, status: 403
     end
   end
 end

@@ -4,7 +4,6 @@ describe 'not found on api', type: :request, organization_workspace: :base do
   before { set_subdomain_host! Organization.base.name }
   before { Organization.base.switch! }
 
-
   let(:owner_api_client) { create :api_client, role: :owner, grant: '*' }
 
   it 'without authentication' do
