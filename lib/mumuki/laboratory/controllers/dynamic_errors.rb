@@ -36,7 +36,7 @@ module Mumuki::Laboratory::Controllers::DynamicErrors
   end
 
   def forbidden
-    message = "Access to organization #{Organization.current} was forbidden to user #{current_user.uid} with permissions #{current_user.permissions}"
+    message = "Access to organization #{Organization.current} was forbidden to user #{current_user.uid} with permissions #{current_user.permissions.to_json}"
     Rails.logger.info message
     render_error 'forbidden', 403, locals: { explanation: :forbidden_explanation }, error_message: message
   end

@@ -37,7 +37,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
 
           it { check_status! 200 }
 
-          it { expect(body[:organizations].map { |it| it[:name] }).to contain_exactly(*%w(base public dot.org private another_private)) }
+          it { expect(body[:organizations].map { |it| it[:name] }).to contain_exactly 'base', 'public', 'dot.org', 'private', 'another_private' }
         end
         context 'with non-wildcard permissions' do
           before { get :index }
@@ -46,7 +46,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
 
           it { check_status! 200 }
 
-          it { expect(body[:organizations].map { |it| it[:name] }).to eq %w(public private) }
+          it { expect(body[:organizations].map { |it| it[:name] }).to contain_exactly 'public', 'private' }
         end
       end
 
