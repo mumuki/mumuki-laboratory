@@ -83,7 +83,7 @@ Rails.application.routes.draw do
                     constraints: {id: organization_regexp}
 
       resources :courses, only: [:create]
-      constraints(uid: uid_regexp) do
+      constraints(uid: uid_regexp, organization: organization_regexp) do
         '/courses/:organization/:course'.tap do |it|
           post "#{it}/students" => 'students#create'
           post "#{it}/students/:uid/attach" => 'students#attach'
