@@ -1,6 +1,6 @@
 mumuki.load(() => {
   function appendElementValue(values, element) {
-    values[element.attr('name')] = element.attr('value');
+    values[element.attr('name')] = element.val();
   }
 
 	function setSolution(evt) {
