@@ -18,6 +18,8 @@ feature 'private org' do
       ])
     ]) }
 
+  let!(:current_organization) { Organization.current }
+
   before { reindex_current_organization! }
 
 
@@ -56,10 +58,10 @@ feature 'private org' do
 
       visit '/'
 
-      expect(student.reload.last_organization).to eq Organization.current
+      expect(student.reload.last_organization).to eq current_organization
       expect(page).to have_text('powered by mumuki')
-      expect(page).to have_text(Organization.current.description)
-      expect(page).to have_text(Organization.current.book.description)
+      expect(page).to have_text(current_organization.description)
+      expect(page).to have_text(current_organization.book.description)
     end
 
     scenario 'teacher should access' do
@@ -67,10 +69,10 @@ feature 'private org' do
 
       visit '/'
 
-      expect(teacher.reload.last_organization).to eq Organization.current
+      expect(teacher.reload.last_organization).to eq current_organization
       expect(page).to have_text('powered by mumuki')
-      expect(page).to have_text(Organization.current.description)
-      expect(page).to have_text(Organization.current.book.description)
+      expect(page).to have_text(current_organization.description)
+      expect(page).to have_text(current_organization.book.description)
     end
   end
 end
