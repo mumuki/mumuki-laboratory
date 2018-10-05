@@ -1,18 +1,30 @@
 mumuki.load(() => {
-  function appendElementValue(values, element) {
+  function dumpInput(values, element) {
     values[element.attr('name')] = element.val();
   }
 
-	function setSolution(evt) {
+  function loadInput(values, element) {
+    element.attr('value', values[element.attr('name')]);
+  }
+
+	function dumpForm(_event) {
     let  values = {};
-
     $('.mu-free-form-input').each(function () {
-      appendElementValue(values, $(this));
+      dumpInput(values, $(this));
     });
-
 		$('#solution_content').attr('value', JSON.stringify(values));
-  };
+  }
 
-	$(document).ready(setSolution);
-  $('.mu-free-form-input').change(setSolution);
+  function loadForm() {
+    let json = $('#solution_content').val();
+    if (!json) return;
+
+    let values = JSON.parse(json);
+    $('.mu-free-form-input').each(function () {
+      loadInput(values, $(this));
+    });
+  }
+
+  mumuki.onInputsReady('.mu-free-form-input', loadForm);
+  $('.mu-free-form-input').change(dumpForm);
 });
