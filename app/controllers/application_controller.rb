@@ -18,6 +18,8 @@ class ApplicationController < ActionController::Base
   before_action :validate_user_profile!, if: :current_user?
   before_action :visit_organization!, if: :current_user?
 
+  after_action :leave_organization!
+
   helper_method :login_button,
                 :notifications_count,
                 :user_notifications_path,
@@ -70,5 +72,9 @@ class ApplicationController < ActionController::Base
 
   def subject #TODO may be used to remove breadcrumbs duplication
     nil
+  end
+
+  def leave_organization!
+    Mumukit::Platform::Organization.leave!
   end
 end
