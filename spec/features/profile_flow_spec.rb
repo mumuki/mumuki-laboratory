@@ -81,6 +81,7 @@ feature 'Standard Flow', organization_workspace: :test do
       end
 
       scenario 'visit messages tab' do
+        Organization.find_by_name('test').switch!
         problem.submit_solution! user, {content: 'something'}
         Message.import_from_json! message
         visit "/user#messages"
