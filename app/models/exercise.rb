@@ -84,7 +84,7 @@ class Exercise < ApplicationRecord
     reset!
 
     attrs = whitelist_attributes(json, except: %w(type id))
-    attrs['choices'] = json['choices'].map { |choice| choice['value'] } if json['choices'].present?
+    attrs['choices'] = json['choices']&.map { |choice| choice['value'] } || []
     attrs['bibliotheca_id'] = json['id']
     attrs['number'] = number
     attrs = attrs.except('expectations') if json['type'] != 'problem' || json['new_expectations']

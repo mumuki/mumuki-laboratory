@@ -176,8 +176,22 @@ describe Guide do
 
         it { expect(guide.exercises.first).to be_instance_of(Problem) }
         it { expect(guide.exercises.first).to eq reloaded_exercise_1 }
-
       end
+
+      context 'when exercise doesnt have choices anymore' do
+        let(:exercise_1) { build(:problem,
+                                  bibliotheca_id: 1,
+                                  language: haskell,
+                                  name: 'Choices 1',
+                                  description: 'description',
+                                  hint: 'baz',
+                                  choices: ['option 1', 'option 2'],
+                                  test: 'pending',
+                                  extra: 'foo') }
+
+        it { expect(guide.exercises.first.choices?).to be false }
+      end
+
       context 'exercises are reordered' do
         let(:exercise_1) { create(:problem,
                                   bibliotheca_id: 4,
