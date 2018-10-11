@@ -71,6 +71,8 @@ var mumuki = mumuki || {};
 
 
   mumuki.load(function () {
+    CodeMirror.currentLocale = mumuki.locale;
+
     mumuki.page.editors = createCodeMirrors();
     updateCodeMirrorLanguage();
     onSelectUpdateCodeMirror();
