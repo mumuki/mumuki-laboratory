@@ -9,7 +9,7 @@ class Message < ApplicationRecord
   markdown_on :content
 
   def notify!
-    Mumukit::Nuntius.notify! 'student-messages', as_platform_json
+    Mumuki::Laboratory::Nuntius.notify! 'student-messages', as_platform_json
   end
 
   def from_initiator?

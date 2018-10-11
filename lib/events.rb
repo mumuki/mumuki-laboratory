@@ -1,4 +1,4 @@
-Mumukit::Nuntius::EventConsumer.handle do
+Mumuki::Laboratory::Nuntius.event_consumer.handle do
 
   # Emitted by user registration and modification in classroom
   event 'UserChanged' do |payload|

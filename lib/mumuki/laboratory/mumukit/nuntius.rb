@@ -1,6 +1,11 @@
 require 'mumukit/nuntius'
 
 Mumukit::Nuntius.configure do |c|
-  c.app_name = 'laboratory'
-  c.notification_mode = Mumukit::Nuntius::NotificationMode.from_env
+
+end
+
+module Mumuki
+  module Laboratory
+    Nuntius = Mumukit::Nuntius::Component.new('laboratory')
+  end
 end
