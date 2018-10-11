@@ -516,25 +516,38 @@ CodeMirror.defineMode("gobstones", function(cmCfg, modeCfg) {
 
     var GobstonesHighlightRules = function() {
 
+        var buildList = function(values) {
+            return values.join('|');
+        };
+
         var keywords = (
-        "program|procedure|function|interactive|if|then|else|switch|repeat|while|foreach|in|not|div|mod|Skip|return"
+            "program|procedure|function|interactive|if|then|else|switch|repeat|while|foreach|in|not|div|mod|Skip|return"
         );
 
-        var buildinConstants = (
-          "Verde|Rojo|Vermelho|Azul|Negro|Preto|Norte|Sur|Sul|Este|Leste|Oeste|False|True"
-        );
+        var allBuiltinConstants = {
+            es: ["Verde", "Rojo", "Azul", "Negro", "Norte", "Sur", "Este", "Oeste", "False", "True"],
+            pt: ["Verde", "Vermelho", "Azul", "Preto", "Norte", "Sul", "Leste", "Oeste", "False", "True"],
+            en: ["Green", "Red", "Blue", "Black", "North", "South", "East", "West", "False", "True"]
+        };
 
+        var allLangClasses = {
+            es: ["Poner", "Sacar", "Mover", "IrAlBorde", "VaciarTablero", "nroBolitas", "hayBolitas", "puedeMover", "siguiente", "previo", "opuesto", "minBool", "maxBool", "minDir", "maxDir", "minColor", "maxColor"],
+            pt: ["Colocar", "Retirar", "Mover", "IrAlBorda", "VaciarTablero", "nroPedras", "haPedras", "podeMover", "seguinte", "previo", "oposto", "minBool", "maxBool", "minDir", "maxDir", "minCor", "maxCor"],
+            en: ["Put", "Grab", "Move", "GoToEdge", "EmptyBoardContents", "numStones", "anyStones", "canMove", "next", "prev", "opposite", "minBool", "maxBool", "minDir", "maxDir", "minColor", "maxColor"]
+        };
 
-        var langClasses = (
-            "Poner|Colocar|Sacar|Retirar|Mover|IrAlBorde|IrABorda|VaciarTablero|" +
-            "nroBolitas|nroPedras|hayBolitas|haPedras|puedeMover|podeMover|siguiente|seguinte|previo|opuesto|oposto|minBool|maxBool|" +
-            "minDir|maxDir|minColor|minCor|maxColor|maxCor"
+        var locale = CodeMirror.currentLocale || 'es';
+
+        registerAutocomplete('gobstones',
+            keywords.split('|')
+              .concat(allBuiltinConstants[locale])
+              .concat(allLangClasses[locale])
         );
 
         var keywordMapper = this.createKeywordMapper({
             "keyword": keywords,
-            "constant.language": buildinConstants,
-            "support.function": langClasses,
+            "constant.language": buildList(allBuiltinConstants[locale]),
+            "support.function": buildList(allLangClasses[locale]),
             "support.type": ''
         }, "identifier");
 
