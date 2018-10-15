@@ -1,4 +1,4 @@
-module Mumuki::Laboratory
+module Mumuki::Domain
   class File
     attr_reader :name, :content
 
@@ -12,7 +12,7 @@ module Mumuki::Laboratory
     end
 
     def extension
-      name.get_file_extension
+      name.file_extension
     end
   end
 end

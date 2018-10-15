@@ -8,3 +8,5 @@ end
 require_relative './domain/evaluation'
 require_relative './domain/status'
 require_relative './domain/exceptions'
+require_relative './domain/file'
+require_relative './domain/extensions'

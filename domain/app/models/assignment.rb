@@ -180,7 +180,7 @@ class Assignment < ApplicationRecord
     language
       .directives_sections
       .split_sections(current_content)
-      .map { |name, content| Mumuki::Laboratory::File.new name, content }
+      .map { |name, content| Mumuki::Domain::File.new name, content }
   end
 
   private

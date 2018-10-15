@@ -1,6 +1,6 @@
 require 'mumukit/bridge'
 
-module Mumuki::Laboratory::Seed
+module Mumuki::Domain::Seed
   # Those are organizations that provide content
   # that was actually curated by the Mumuki Project and
   # as such must be supported by each platform release
