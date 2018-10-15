@@ -10,7 +10,7 @@ module UsersControllerTemplate
   private
 
   def protect_permissions_assignment!
-    current_user.protect_permissions_assignment! user_params[:permissions], @user.permissions
+    current_user.protect_permissions_assignment! user_params[:permissions], @user.permissions_was
   end
 
   def user_params

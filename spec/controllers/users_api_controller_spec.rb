@@ -38,10 +38,18 @@ describe Api::UsersController, type: :controller, organization_workspace: :base 
   end
 
 
-  context 'post without permissions' do
+  context 'post that tries to escalate permissions' do
     before { post :create, params: {user: owner_json} }
 
     it { expect(response.status).to eq 403 }
+    it { expect(response.body).to json_eq errors: ['The operation on organization base was forbidden to user foo+1@bar.com with permissions !janitor:test/*;owner:'] }
+  end
+
+  context 'post on a user with high permissions that does not operate on them' do
+    let!(:user) { User.create! owner_json }
+    before { put :update, params: {id: 'foo@bar.com', user: owner_json} }
+
+    it { expect(response.status).to eq 200 }
   end
 
   context 'put' do
