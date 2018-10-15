@@ -165,7 +165,7 @@ ActiveRecord::Schema.define(version: 20181004173216) do
     t.string "final_state"
     t.text "assistance_rules"
     t.text "randomizations"
-    t.text "free_form_editor_html"
+    t.text "free_form_editor_source"
     t.index ["guide_id"], name: "index_exercises_on_guide_id"
     t.index ["language_id"], name: "index_exercises_on_language_id"
   end
