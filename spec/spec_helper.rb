@@ -88,19 +88,11 @@ Mumukit::Login.configure do |config|
   config.mucookie_sign_salt = 'mucookie test sign salt'
 end
 
-
-class String
-  def parse_json
-    JSON.parse(self, symbolize_names: true)
-  end
-end
-
 OmniAuth.config.test_mode = true
 OmniAuth.config.mock_auth[:developer] =
   OmniAuth::AuthHash.new provider: 'developer',
                          uid: 'johndoe@test.com',
                          credentials: {},
                          info: {first_name: 'John', last_name: 'Doe', name: 'John Doe', nickname: 'johndoe'}
-
 
 SimpleCov.start
