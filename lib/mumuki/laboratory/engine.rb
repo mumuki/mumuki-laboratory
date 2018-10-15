@@ -5,14 +5,6 @@ module Mumuki
       config.generators.javascripts = false
       config.generators.test_framework = :rspec
 
-      %w(exercise submission).each do |it|
-        config.autoload_paths += %W(#{config.root}/app/models/#{it})
-      end
-
-      %w(submittable navigation).each do |it|
-        config.autoload_paths += %W(#{config.root}/app/models/concerns/#{it})
-      end
-
       config.assets.precompile += %w(user_shape.png)
 
       config.autoload_paths += %W(#{config.root}/plugins)
