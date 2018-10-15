@@ -28,7 +28,7 @@ describe Exam, organization_workspace: :test do
       it { expect(exam.enabled?).to be false }
 
       context 'not authorized' do
-        it { expect { exam.validate_accessible_for! user }.to raise_error(Mumuki::Laboratory::ForbiddenError) }
+        it { expect { exam.validate_accessible_for! user }.to raise_error(Mumuki::Domain::ForbiddenError) }
       end
 
       context 'authorized' do
@@ -42,14 +42,14 @@ describe Exam, organization_workspace: :test do
       it { expect(exam.enabled?).to be true }
 
       context 'not authorized' do
-        it { expect { exam.validate_accessible_for! user }.to raise_error(Mumuki::Laboratory::ForbiddenError) }
+        it { expect { exam.validate_accessible_for! user }.to raise_error(Mumuki::Domain::ForbiddenError) }
       end
 
       context 'authorized' do
         before { exam.authorize! user }
 
         it { expect { exam.validate_accessible_for! user }.to_not raise_error }
-        it { expect { exam.validate_accessible_for! other_user }.to raise_error(Mumuki::Laboratory::ForbiddenError) }
+        it { expect { exam.validate_accessible_for! other_user }.to raise_error(Mumuki::Domain::ForbiddenError) }
       end
 
       context 'import_from_json' do
@@ -76,7 +76,7 @@ describe Exam, organization_workspace: :test do
           before { Exam.import_from_json! exam_json2 }
 
           it { expect(Exam.count).to eq 1 }
-          it { expect { Exam.find_by(classroom_id: '1').validate_accessible_for! user }.to raise_error(Mumuki::Laboratory::ForbiddenError) }
+          it { expect { Exam.find_by(classroom_id: '1').validate_accessible_for! user }.to raise_error(Mumuki::Domain::ForbiddenError) }
           it { expect { Exam.find_by(classroom_id: '1').validate_accessible_for! user2 }.to_not raise_error }
         end
       end

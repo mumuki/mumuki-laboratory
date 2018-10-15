@@ -1,5 +1,5 @@
-module Mumuki::Laboratory::Status::Submission::Passed
-  extend Mumuki::Laboratory::Status::Submission
+module Mumuki::Domain::Status::Submission::Passed
+  extend Mumuki::Domain::Status::Submission
 
   def self.passed?
     true

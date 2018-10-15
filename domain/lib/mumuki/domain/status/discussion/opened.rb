@@ -1,5 +1,5 @@
-module Mumuki::Laboratory::Status::Discussion::Opened
-  extend Mumuki::Laboratory::Status::Discussion
+module Mumuki::Domain::Status::Discussion::Opened
+  extend Mumuki::Domain::Status::Discussion
 
   def self.opened?
     true
@@ -7,17 +7,17 @@ module Mumuki::Laboratory::Status::Discussion::Opened
 
   def self.reachable_statuses_for_initiator(discussion)
     if discussion.has_responses?
-      [Mumuki::Laboratory::Status::Discussion::PendingReview]
+      [Mumuki::Domain::Status::Discussion::PendingReview]
     else
-      [Mumuki::Laboratory::Status::Discussion::Closed]
+      [Mumuki::Domain::Status::Discussion::Closed]
     end
   end
 
   def self.reachable_statuses_for_moderator(discussion)
     if discussion.has_responses?
-      [Mumuki::Laboratory::Status::Discussion::Closed, Mumuki::Laboratory::Status::Discussion::Solved]
+      [Mumuki::Domain::Status::Discussion::Closed, Mumuki::Domain::Status::Discussion::Solved]
     else
-      [Mumuki::Laboratory::Status::Discussion::Closed]
+      [Mumuki::Domain::Status::Discussion::Closed]
     end
   end
 

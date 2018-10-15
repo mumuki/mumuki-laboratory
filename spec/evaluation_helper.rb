@@ -1,6 +1,6 @@
 Language.class_eval do
   def test_only_fake_response
-    {status: Mumuki::Laboratory::Status::Submission::Failed, result: 'noop result'}
+    {status: Mumuki::Domain::Status::Submission::Failed, result: 'noop result'}
   end
 
   def run_tests!(*)

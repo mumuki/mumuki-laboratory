@@ -1,4 +1,4 @@
-module Mumuki::Laboratory::Evaluation
+module Mumuki::Domain::Evaluation
 end
 
 require_relative './evaluation/manual'

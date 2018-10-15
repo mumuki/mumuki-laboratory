@@ -1,5 +1,5 @@
-module Mumuki::Laboratory::Status::Discussion
-  include Mumuki::Laboratory::Status
+module Mumuki::Domain::Status::Discussion
+  include Mumuki::Domain::Status
 end
 
 require_relative './opened'
@@ -7,7 +7,7 @@ require_relative './closed'
 require_relative './solved'
 require_relative './pending_review'
 
-module Mumuki::Laboratory::Status::Discussion
+module Mumuki::Domain::Status::Discussion
   STATUSES = [Opened, Closed, Solved, PendingReview]
 
   test_selectors.each do |selector|

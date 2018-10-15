@@ -173,11 +173,11 @@ class Exercise < ApplicationRecord
   end
 
   def manual_evaluation_class
-    Mumuki::Laboratory::Evaluation::Manual
+    Mumuki::Domain::Evaluation::Manual
   end
 
   def automated_evaluation_class
-    Mumuki::Laboratory::Evaluation::Automated
+    Mumuki::Domain::Evaluation::Automated
   end
 
   def self.class_for(type)

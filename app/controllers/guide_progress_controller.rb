@@ -9,7 +9,7 @@ class GuideProgressController < ApplicationController
   private
 
   def check_resettable!
-    raise Mumuki::Laboratory::ForbiddenError unless guide.resettable?
+    raise Mumuki::Domain::ForbiddenError unless guide.resettable?
   end
 
   def guide

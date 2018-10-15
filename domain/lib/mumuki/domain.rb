@@ -2,6 +2,9 @@ require "mumuki/domain/engine"
 
 module Mumuki
   module Domain
-    # Your code goes here...
   end
 end
+
+require_relative './domain/evaluation'
+require_relative './domain/status'
+require_relative './domain/exceptions'

@@ -1,4 +1,4 @@
-module Mumuki::Laboratory::Status
+module Mumuki::Domain::Status
   extend ActiveSupport::Concern
 
   included do
@@ -51,7 +51,7 @@ module Mumuki::Laboratory::Status
     end
 
     def from_sym(status)
-      "Mumuki::Laboratory::Status::#{module_namespace(self)}::#{module_namespace(status)}".constantize
+      "Mumuki::Domain::Status::#{module_namespace(self)}::#{module_namespace(status)}".constantize
     end
 
     def module_namespace(mod)

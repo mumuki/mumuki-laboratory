@@ -1,5 +1,5 @@
-module Mumuki::Laboratory::Status::Submission
-  include Mumuki::Laboratory::Status
+module Mumuki::Domain::Status::Submission
+  include Mumuki::Domain::Status
 end
 
 require_relative './pending'
@@ -11,7 +11,7 @@ require_relative './aborted'
 require_relative './passed_with_warnings'
 require_relative './manual_evaluation_pending'
 
-module Mumuki::Laboratory::Status::Submission
+module Mumuki::Domain::Status::Submission
   STATUSES = [Pending, Running, Passed, Failed, Errored, Aborted, PassedWithWarnings, ManualEvaluationPending]
 
   test_selectors.each do |selector|

@@ -1,4 +1,4 @@
-class Mumuki::Laboratory::Evaluation::Automated
+class Mumuki::Domain::Evaluation::Automated
   def evaluate!(assignment, submission)
     submission.evaluate! assignment
   end

@@ -1,5 +1,5 @@
-module Mumuki::Laboratory::Status::Submission::Errored
-  extend Mumuki::Laboratory::Status::Submission
+module Mumuki::Domain::Status::Submission::Errored
+  extend Mumuki::Domain::Status::Submission
 
   def self.errored?
     true
@@ -10,7 +10,7 @@ module Mumuki::Laboratory::Status::Submission::Errored
   end
 
   def self.group
-    Mumuki::Laboratory::Status::Submission::Failed
+    Mumuki::Domain::Status::Submission::Failed
   end
 
   def self.iconize
