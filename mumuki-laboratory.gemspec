@@ -32,6 +32,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'mumukit-assistant', '~> 0.1'
   s.add_dependency 'mumukit-randomizer', '~> 1.0'
 
+  s.add_dependency 'mumuki-domain', Mumuki::Laboratory::VERSION
+
   s.add_dependency 'rack', '~> 2.0'
   s.add_dependency 'omniauth', '~> 1.4.0'
 

@@ -15,6 +15,8 @@ require 'mumukit/inspection'
 require 'mumukit/bridge'
 require 'mumukit/content_type'
 require 'mumukit/directives'
+require 'mumuki/domain'
+
 require 'kaminari'
 require 'bootstrap-kaminari-views'
 
