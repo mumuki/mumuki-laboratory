@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181004173216) do
+ActiveRecord::Schema.define(version: 20181014233438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -312,7 +312,7 @@ ActiveRecord::Schema.define(version: 20181004173216) do
     t.integer "last_exercise_id"
     t.integer "last_organization_id"
     t.string "uid", null: false
-    t.text "permissions", default: "{}", null: false
+    t.text "permissions"
     t.string "first_name"
     t.string "last_name"
     t.boolean "accepts_reminders", default: true
