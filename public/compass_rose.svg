@@ -70,21 +70,21 @@
 		<g id="Layer_4">
 			<g>
 				<g>
-					<text transform="matrix(1 0 0 1 219.0117 76.1201)" fill="#0B465D" font-family="'ArialRoundedMTBold'" font-size="90">N</text>
+					<text transform="matrix(1 0 0 1 219.0117 76.1201)" fill="#0B465D" font-family="'Nunito'" font-size="90">N</text>
 				</g>
 			</g>
 			<g>
 				<g>
 					<g>
-						<text transform="matrix(1 0 0 1 223.6504 513.0156)" fill="#0B465D" font-family="'ArialRoundedMTBold'" font-size="90">S</text>
+						<text transform="matrix(1 0 0 1 223.6504 513.0156)" fill="#0B465D" font-family="'Nunito'" font-size="90">S</text>
 					</g>
 				</g>
 			</g>
 			<g>
-				<text transform="matrix(1 0 0 1 433.9707 287.1221)" fill="#0B465D" font-family="'ArialRoundedMTBold'" font-size="90">E</text>
+				<text transform="matrix(1 0 0 1 433.9707 287.1221)" fill="#0B465D" font-family="'Nunito'" font-size="90">E</text>
 			</g>
 			<g>
-				<text transform="matrix(1 0 0 1 19.0801 287.1221)" fill="#0B465D" font-family="'ArialRoundedMTBold'" font-size="90">O</text>
+				<text transform="matrix(1 0 0 1 19.0801 287.1221)" fill="#0B465D" font-family="'Nunito'" font-size="90">O</text>
 			</g>
 			<g>
 				<circle fill="#FFFFFF" stroke="#FF5B81" stroke-width="25" stroke-miterlimit="10" cx="256.578" cy="125.387" r="22.971"/>
