@@ -71,6 +71,8 @@ feature 'Standard Flow', organization_workspace: :test do
     end
 
     context 'with organizations and messages' do
+      before { allow_any_instance_of(Mumukit::Platform::Application::Organic).to receive(:organization_mapping).and_return(Mumukit::Platform::OrganizationMapping::Path) }
+
       scenario 'visit organizations tab' do
         user.make_student_of! organization.slug
         user.save!
@@ -78,6 +80,7 @@ feature 'Standard Flow', organization_workspace: :test do
 
         expect(page).to_not have_text('It seems you aren\'t in any organizations yet!')
         expect(page).to have_text('Go to test-organization')
+        expect(page).to have_link(nil, href: 'http://localmumuki.io/test-organization/')
       end
 
       scenario 'visit messages tab' do
