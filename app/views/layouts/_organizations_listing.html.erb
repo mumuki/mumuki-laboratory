@@ -7,7 +7,7 @@
           <%= image_tag(org.banner_url, height: 50, class: 'pull-left') %>
         </div>
         <div class="col-md-6 organization-row">
-          <%= link_to(t(:go_to, organization: org.name), organization_switch_url(org), class: 'btn btn-success pull-right') %>
+          <%= link_to(t(:go_to, organization: org.name), org.url, class: 'btn btn-success pull-right') %>
         </div>
       </div>
   <% end %>
