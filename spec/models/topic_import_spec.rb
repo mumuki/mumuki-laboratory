@@ -20,12 +20,12 @@ describe Guide do
      lessons: [guide_2, guide_1, guide_3].map(&:slug)}.deep_stringify_keys
   end
 
-  describe '#import_from_json!' do
+  describe '#import_from_resource_h!' do
     context 'when guide is empty' do
       let(:topic) { create(:topic, lessons: [lesson_1, lesson_2]) }
 
       before do
-        topic.import_from_json!(topic_json)
+        topic.import_from_resource_h!(topic_json)
       end
 
       it { expect(topic.name).to eq 'sample topic' }

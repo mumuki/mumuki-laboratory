@@ -22,11 +22,11 @@ describe Book, organization_workspace: :test do
     }.deep_stringify_keys
   end
 
-  describe '#import_from_json!' do
+  describe '#import_from_resource_h!' do
     context 'when complements are present' do
       let(:complement_slugs) { [guide_2.slug, guide_1.slug] }
 
-      before { book.import_from_json!(book_json) }
+      before { book.import_from_resource_h!(book_json) }
 
       it { expect(book.name).to eq 'sample book' }
       it { expect(book.description).to eq 'a sample book description' }
@@ -41,7 +41,7 @@ describe Book, organization_workspace: :test do
     context 'when complements are not present' do
       let(:complement_slugs) { ['foo/bar', guide_1.slug] }
 
-      before { book.import_from_json!(book_json) }
+      before { book.import_from_resource_h!(book_json) }
 
       it { expect(book.complements.count).to eq 1 }
     end

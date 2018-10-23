@@ -70,7 +70,7 @@ describe Guide do
           id: 9}]}.deep_stringify_keys
   end
 
-  describe '#import_from_json!' do
+  describe '#import_from_resource_h!' do
     context 'when an exercise is deleted' do
       let(:guide) { create(:guide, exercises: [exercise_1, exercise_2, exercise_3, exercise_4, exercise_5, exercise_6]) }
 
@@ -111,7 +111,7 @@ describe Guide do
                                 number: 6) }
 
       before do
-        guide.import_from_json!(guide_json)
+        guide.import_from_resource_h!(guide_json)
       end
 
       describe 'it is removed from the guide' do
@@ -129,7 +129,7 @@ describe Guide do
       let(:guide) { lesson.guide }
 
       before do
-        guide.import_from_json!(guide_json)
+        guide.import_from_resource_h!(guide_json)
       end
 
       it { expect(guide).to_not be nil }
@@ -159,7 +159,7 @@ describe Guide do
       let(:guide) { create(:guide, language: haskell, exercises: [exercise_1]) }
 
       before do
-        guide.import_from_json! guide_json
+        guide.import_from_resource_h! guide_json
       end
 
       context 'when exercise changes its type' do
@@ -241,7 +241,7 @@ describe Guide do
       let(:reloaded_exercise_2) { Exercise.find(exercise_2.id) }
 
       before do
-        guide.import_from_json! guide_json
+        guide.import_from_resource_h! guide_json
       end
 
       describe 'exercises are not duplicated' do
@@ -289,7 +289,7 @@ describe Guide do
       end
 
       before do
-        guide.import_from_json! guide_json
+        guide.import_from_resource_h! guide_json
       end
 
       it { expect(guide.exercises.first.new_expectations).to be_truthy }

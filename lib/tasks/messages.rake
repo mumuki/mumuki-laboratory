@@ -6,7 +6,7 @@ namespace :messages do
 
     Mumukit::Nuntius::Consumer.start 'teacher-messages', 'teacher-messages' do |_delivery_info, _properties, body|
       begin
-        Message.import_from_json!(body)
+        Message.import_from_resource_h!(body)
       rescue ActiveRecord::RecordInvalid => e
         logger.info e
       end

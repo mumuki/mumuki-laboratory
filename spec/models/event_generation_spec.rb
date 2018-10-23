@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe '#as_platform_json', organization_workspace: :test do
+describe '#to_resource_h', organization_workspace: :test do
   describe Assignment do
     let(:user) {
       create(:user,
@@ -30,7 +30,7 @@ describe '#as_platform_json', organization_workspace: :test do
 
       it { expect(lesson.number).to eq 4 }
       it do
-        expect(assignment.as_platform_json).to json_like(
+        expect(assignment.to_resource_h).to json_like(
                            status: :passed,
                            result: nil,
                            expectation_results: [],
@@ -89,7 +89,7 @@ describe '#as_platform_json', organization_workspace: :test do
                                 submission_id: 'abcd1234',
                                 exercise: exercise) }
       it do
-        expect(assignment.as_platform_json).to json_like(
+        expect(assignment.to_resource_h).to json_like(
                            status: :passed,
                            result: nil,
                            expectation_results: [],
@@ -144,7 +144,7 @@ describe '#as_platform_json', organization_workspace: :test do
                                 exercise: exercise) }
 
       it do
-        expect(assignment.as_platform_json).to json_like(
+        expect(assignment.to_resource_h).to json_like(
                            status: :passed,
                            result: nil,
                            expectation_results: [],

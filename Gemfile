@@ -26,6 +26,9 @@ gem 'mumuki-styles', '~> 1.18'
 gem 'font-awesome-rails', '~> 4.7'
 gem 'mumuki-domain', path: './domain'
 
+gem 'mumukit-platform', path: '../mumukit-platform'
+gem 'mumukit-sync', path: '../mumukit-sync'
+
 group :test do
   gem 'rspec-rails', '~> 3.6'
   gem 'factory_bot_rails'

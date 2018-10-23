@@ -9,7 +9,7 @@ class Message < ApplicationRecord
   markdown_on :content
 
   def notify!
-    Mumukit::Nuntius.notify! 'student-messages', as_platform_json
+    Mumukit::Nuntius.notify! 'student-messages', to_resource_h
   end
 
   def from_initiator?
@@ -32,7 +32,7 @@ class Message < ApplicationRecord
     raise Mumukit::Auth::UnauthorizedAccessError unless authorized?(user)
   end
 
-  def as_platform_json
+  def to_resource_h
     as_json(except: [:id, :type, :discussion_id, :approved],
             include: {exercise: {only: [:bibliotheca_id]}})
       .merge(organization: Organization.current.name)
@@ -57,7 +57,7 @@ class Message < ApplicationRecord
     update_all read: true
   end
 
-  def self.import_from_json!(json)
+  def self.import_from_resource_h!(json)
     message_data = parse_json json
     Organization.find_by!(name: message_data.delete('organization')).switch!
 

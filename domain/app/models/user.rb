@@ -95,7 +95,7 @@ class User < ApplicationRecord
     reload
   end
 
-  def self.import_from_json!(json)
+  def self.import_from_resource_h!(json)
     json = Mumukit::Platform::User::Helpers.slice_platform_json json
     User.where(uid: json[:uid]).update_or_create!(json)
   end

@@ -49,7 +49,7 @@ class Assignment < ApplicationRecord
   end
 
   def notify!
-    Mumukit::Nuntius.notify! 'submissions', as_platform_json unless Organization.current.silent?
+    Mumukit::Nuntius.notify! 'submissions', to_resource_h unless Organization.current.silent?
   end
 
   def notify_to_accessible_organizations!
@@ -116,7 +116,7 @@ class Assignment < ApplicationRecord
     exercise.run_tests! params.merge(extra: extra, test: test)
   end
 
-  def as_platform_json
+  def to_resource_h
     as_json(except: [:exercise_id, :submission_id, :id, :submitter_id, :solution, :created_at, :updated_at, :submission_status],
               include: {
                 guide: {

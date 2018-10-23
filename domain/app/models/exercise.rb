@@ -77,20 +77,29 @@ class Exercise < ApplicationRecord
     Solution.new(content: default_content)
   end
 
-  def import_from_json!(number, json)
-    self.language = Language.for_name(json['language']) || guide.language
+  def import_from_resource_h!(number, resource_h)
+    self.language = Language.for_name(resource_h[:language]) || guide.language
     self.locale = guide.locale
 
     reset!
 
-    attrs = whitelist_attributes(json, except: %w(type id))
-    attrs['choices'] = json['choices']&.map { |choice| choice['value'] } || []
-    attrs['bibliotheca_id'] = json['id']
-    attrs['number'] = number
-    attrs = attrs.except('expectations') if json['type'] != 'problem' || json['new_expectations']
+    attrs = whitelist_attributes(resource_h, except: [:type, :id])
+    attrs[:choices] = resource_h[:choices]&.map { |choice| choice[:value] }.to_a
+    attrs[:bibliotheca_id] = resource_h[:id]
+    attrs[:number] = number
+    attrs[:manual_evaluation] ||= false
+    attrs = attrs.except(:expectations) if resource_h[:type] != 'problem' || resource_h[:new_expectations]
 
     assign_attributes(attrs)
     save!
+  end
+
+  def to_markdownified_resource_h
+    to_resource_h.tap do |exercise|
+      [:hint, :corollary, :description, :teacher_info].each do |it|
+        exercise[it] = Mumukit::ContentType::Markdown.to_html(exercise[it])
+      end
+    end
   end
 
   def reset!
@@ -111,7 +120,7 @@ class Exercise < ApplicationRecord
   end
 
   def reclassify!(type)
-    update!(type: Exercise.class_for(type).name)
+    update!(type: Mumukit::Sync.classify(type))
     Exercise.find(id)
   end
 
@@ -178,10 +187,6 @@ class Exercise < ApplicationRecord
 
   def automated_evaluation_class
     Mumuki::Domain::Evaluation::Automated
-  end
-
-  def self.class_for(type)
-    type.camelcase.constantize
   end
 
   def self.default_layout

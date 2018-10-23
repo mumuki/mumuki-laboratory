@@ -25,15 +25,29 @@ class Topic < Content
     lessons.first
   end
 
-  def import_from_json!(json)
-    self.assign_attributes json.except('lessons', 'id', 'description', 'teacher_info')
-    self.description = json['description'].squeeze(' ')
-    rebuild! json['lessons'].map { |it| lesson_for(it) }
+  def import_from_resource_h!(resource_h)
+    self.assign_attributes resource_h.except(:lessons, :id, :description, :teacher_info)
+    self.description = resource_h[:description].squeeze(' ')
+    rebuild! resource_h[:lessons].to_a.map { |it| lesson_for(it) }
     Organization.all.each { |org| org.reindex_usages! }
+  end
+
+  def to_resource_h
+    super.merge(lessons: lessons.map(&:slug))
   end
 
   def as_chapter_of(book)
     book.chapters.find_by(topic_id: id) || Chapter.new(topic: self, book: book)
+  end
+
+  ## Forking
+
+  def fork_to!(organization, syncer)
+    rebased_copy(organization).tap do |copy|
+      copy.lessons.map! { |lesson| lesson.fork_to!(organization, syncer) }
+      copy.save!
+      syncer.export! copy
+    end
   end
 
   private

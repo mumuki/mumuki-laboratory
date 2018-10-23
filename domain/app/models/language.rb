@@ -31,16 +31,15 @@ class Language < ApplicationRecord
     find_by_ignore_case!(:name, name) if name
   end
 
-  def import!
-    import_from_json! bridge.importable_info
-  end
-
   def devicon
     self[:devicon] || name.downcase
   end
 
-  def import_from_json!(json)
+  def sync_key
+    Mumukit::Sync.key :language, runner_url
+  end
 
+  def from_resource_h!(json)
     assign_attributes json.slice(:name,
                                  :comment_type,
                                  :output_content_type,
@@ -74,6 +73,10 @@ class Language < ApplicationRecord
   # and be part of a pipeline
   def interpolate_references_for(assignment, field)
     interpolate(field, assignment.submitter.interpolations, lambda { |content| replace_content_reference(assignment, content) })
+  end
+
+  def self.locate_resource(runner_url)
+    find_or_initialize_by(runner_url: runner_url).tap { |it| it.save(validate: false) }
   end
 
   private

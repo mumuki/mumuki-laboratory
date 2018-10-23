@@ -5,6 +5,7 @@ module GuideContainer
     validates_presence_of :guide
 
     delegate :name,
+             :slug,
              :language,
              :search_tags,
              :exercises,

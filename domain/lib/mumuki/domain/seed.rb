@@ -16,18 +16,14 @@ module Mumuki::Domain::Seed
   )
 
   def self.import_main_contents!
-    import_contents! /^#{MAIN_CONTENT_ORGANIZATIONS.join('|')}\/.*$/i
-  end
-
-  def self.import_contents!(slug_regex = /.*/)
-    Mumukit::Platform.bibliotheca_bridge.import_contents!(slug_regex) do |resource_type, slug|
-      resource_type.classify.constantize.import!(slug)
-    end
+    Mumukit::Sync::Syncer.new(
+      Mumukit::Sync::Store::Bibliotheca.new(
+        Mumukit::Platform.bibliotheca_bridge)).import! /^#{MAIN_CONTENT_ORGANIZATIONS.join('|')}\/.*$/i
   end
 
   def self.import_languages!
-    Mumukit::Platform.thesaurus_bridge.import_languages! do |runner_url|
-      Language.find_or_initialize_by(runner_url: runner_url).import!
-    end
+    Mumukit::Sync::Syncer.new(
+      Mumukit::Sync::Store::Thesaurus.new(
+        Mumukit::Platform.thesaurus_bridge)).import!
   end
 end

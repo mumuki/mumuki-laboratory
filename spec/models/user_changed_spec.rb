@@ -11,7 +11,7 @@ describe User, organization_workspace: :test do
   } }
 
   context 'when new user' do
-    before { User.import_from_json! user_json }
+    before { User.import_from_resource_h! user_json }
     it { expect(user.uid).to eq 'foo@bar.com' }
     it { expect(user.name).to eq 'Foo Bar' }
     it { expect(user.student_here?).to be true }
@@ -25,8 +25,8 @@ describe User, organization_workspace: :test do
       permissions: {student: 'test/example2'},
       id: 1
     } }
-    before { User.import_from_json! user_json }
-    before { User.import_from_json! new_json }
+    before { User.import_from_resource_h! user_json }
+    before { User.import_from_resource_h! new_json }
     it { expect(user.name).to eq 'Foo Baz' }
     it { expect(user.student_here?).to be true }
     it { expect(user.student? 'test/example2').to be true }

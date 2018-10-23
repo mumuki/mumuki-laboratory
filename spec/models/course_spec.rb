@@ -10,7 +10,7 @@ describe 'CourseChanged', organization_workspace: :test do
      description: 'test course'}
   end
 
-  let!(:course) { Course.import_from_json! course_json }
+  let!(:course) { Course.import_from_resource_h! course_json }
 
   it { expect(course.organization.courses).to include course }
   it { expect(course.organization.name).to eq 'test' }

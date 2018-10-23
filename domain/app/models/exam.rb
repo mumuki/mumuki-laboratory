@@ -100,7 +100,7 @@ class Exam < ApplicationRecord
     authorizations.all_except(authorizations_for(users)).destroy_all
   end
 
-  def self.import_from_json!(json)
+  def self.import_from_resource_h!(json)
     exam_data = json.with_indifferent_access
     organization = Organization.find_by!(name: exam_data[:organization])
     organization.switch!

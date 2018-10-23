@@ -87,7 +87,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
             let(:api_client) { create :api_client, role: :janitor, grant: 'private/*' }
 
             it { check_status! 200 }
-            it { expect(response.body).to json_like(private_organization.as_platform_json) }
+            it { expect(response.body).to json_like(private_organization.to_resource_h) }
           end
         end
 
@@ -115,7 +115,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
         let(:organization) { Organization.find_by name: 'a-name' }
 
         it { check_status! 200 }
-        it { expect(response.body).to json_like(organization.as_platform_json) }
+        it { expect(response.body).to json_like(organization.to_resource_h) }
         it { expect(Organization.count).to eq 2 }
         it { expect(organization.name).to eq 'a-name' }
         it { expect(organization.contact_email).to eq 'an_email@gmail.com' }

@@ -8,7 +8,7 @@ class Invitation < ApplicationRecord
     raise RecordNotFound.new('The invitation does not exist or it has expired')
   end
 
-  def self.import_from_json!(json)
+  def self.import_from_resource_h!(json)
     Invitation.create! json
   end
 

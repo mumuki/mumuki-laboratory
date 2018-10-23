@@ -57,25 +57,39 @@ class Guide < Content
     stats_for(user).done?
   end
 
-  def import_from_json!(json)
-    self.assign_attributes whitelist_attributes(json, except: ['id'])
-    self.language = Language.for_name(json['language'])
+  def import_from_resource_h!(resource_h)
+    self.assign_attributes whitelist_attributes(resource_h, except: [:id])
+    self.language = Language.for_name(resource_h[:language][:name])
     self.save!
 
-    json['exercises'].each_with_index do |e, i|
-      exercise = Exercise.find_by(guide_id: self.id, bibliotheca_id: e['id'])
+    resource_h[:exercises]&.each_with_index do |e, i|
+      exercise = Exercise.find_by(guide_id: self.id, bibliotheca_id: e[:id])
+      exercise_type = e[:type] || 'problem'
 
       exercise = exercise ?
-          exercise.ensure_type!(e['type']) :
-          Exercise.class_for(e['type']).new(guide_id: self.id, bibliotheca_id: e['id'])
+          exercise.ensure_type!(exercise_type) :
+          Mumukit::Sync.constantize(exercise_type).new(guide_id: self.id, bibliotheca_id: e[:id])
 
-      exercise.import_from_json! (i+1), e
+      exercise.import_from_resource_h! (i+1), e
     end
 
-    new_ids = json['exercises'].map { |it| it['id'] }
+    new_ids = resource_h[:exercises].map { |it| it['id'] }
     self.exercises.where.not(bibliotheca_id: new_ids).destroy_all
 
     reload
+  end
+
+  def to_resource_h
+    as_json(only: [:beta, :type, :id_format, :name, :language, :slug, :description, :private, :expectations])
+  end
+
+  def to_markdownified_resource_h
+    to_resource_h.tap do |guide|
+      [:corollary, :description, :teacher_info].each do |it|
+        guide[it] = Mumukit::ContentType::Markdown.to_html(guide[it])
+      end
+      #guide[:exercises].map! &:markdownified
+    end
   end
 
   def as_lesson_of(topic)
@@ -88,5 +102,13 @@ class Guide < Content
 
   def resettable?
     usage_in_organization.resettable?
+  end
+
+  def fork_to!(organization, syncer)
+    rebased_copy(organization).tap do |copy|
+      copy.exercises = exercises.map(&:copy)
+      copy.save!
+      syncer.export! copy
+    end
   end
 end

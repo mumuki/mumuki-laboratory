@@ -185,6 +185,9 @@ ActiveRecord::Schema.define(version: 20181101180652) do
     t.integer "type", default: 0, null: false
     t.text "authors"
     t.text "contributors"
+    t.string "id_format", default: "%05d"
+    t.boolean "private", default: false
+    t.text "teacher_info"
     t.index ["name"], name: "index_guides_on_name"
     t.index ["slug"], name: "index_guides_on_slug", unique: true
   end
@@ -218,6 +221,7 @@ ActiveRecord::Schema.define(version: 20181101180652) do
     t.string "editor_js_urls", default: [], array: true
     t.string "editor_html_urls", default: [], array: true
     t.string "editor_css_urls", default: [], array: true
+    t.string "test_extension"
     t.index ["name"], name: "index_languages_on_name", unique: true
   end
 

@@ -87,6 +87,8 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def self.whitelist_attributes(a_hash, options={})
-    a_hash.slice(*attribute_names).except(*options[:except])
+    attributes = attribute_names
+    attributes += reflections.keys if options[:relations]
+    a_hash.with_indifferent_access.slice(*attributes).except(*options[:except])
   end
 end

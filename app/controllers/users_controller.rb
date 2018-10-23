@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user!
 
   def show
-    @messages = current_user.messages || []
+    @messages = current_user.messages.to_a
     @watched_discussions = current_user.watched_discussions
   end
 

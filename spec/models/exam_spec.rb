@@ -7,11 +7,11 @@ describe Exam, organization_workspace: :test do
   describe '#upsert' do
     let(:guide) { create(:guide) }
     let(:exam_json) { {eid: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', uids: [], organization: 'test'} }
-    let!(:exam) { Exam.import_from_json! exam_json }
+    let!(:exam) { Exam.import_from_resource_h! exam_json }
     context 'when new exam and the guide is the same' do
       let(:guide2) { create(:guide) }
       let(:exam_json2) { {eid: '2', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', uids: [], organization: 'test'} }
-      let!(:exam2) { Exam.import_from_json! exam_json2 }
+      let!(:exam2) { Exam.import_from_resource_h! exam_json2 }
       context 'and the organization is the same' do
         it { expect(Exam.count).to eq 1 }
         it { expect(Usage.where(item_id: guide.id, parent_item_id: exam.id).count).to eq 0 }
@@ -58,7 +58,7 @@ describe Exam, organization_workspace: :test do
         let(:guide) { create(:guide) }
         let(:duration) { 150 }
         let(:exam_json) { {eid: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: duration, language: 'haskell', name: 'foo', uids: [user.uid], organization: 'test'} }
-        before { Exam.import_from_json! exam_json }
+        before { Exam.import_from_resource_h! exam_json }
 
         context 'new exam' do
           it { expect(Exam.count).to eq 1 }
@@ -73,7 +73,7 @@ describe Exam, organization_workspace: :test do
 
         context 'existing exam' do
           let(:exam_json2) { {eid: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', uids: [user2.uid], organization: 'test'} }
-          before { Exam.import_from_json! exam_json2 }
+          before { Exam.import_from_resource_h! exam_json2 }
 
           it { expect(Exam.count).to eq 1 }
           it { expect { Exam.find_by(classroom_id: '1').validate_accessible_for! user }.to raise_error(Mumuki::Domain::ForbiddenError) }
@@ -85,7 +85,7 @@ describe Exam, organization_workspace: :test do
         let(:user) { create(:user, uid: 'auth0|1') }
         let(:guide) { create(:guide) }
         let(:exam_json) { {eid: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: duration, language: 'haskell', name: 'foo', uids: [user.uid], organization: 'test'} }
-        let(:exam) { Exam.import_from_json! exam_json }
+        let(:exam) { Exam.import_from_resource_h! exam_json }
         before { exam.start! user }
 
         context 'with duration' do
@@ -111,9 +111,9 @@ describe Exam, organization_workspace: :test do
         let(:user) { create(:user, uid: 'auth0|1') }
         let(:guide) { create(:guide) }
         let(:exam_json) { {eid: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', uids: [user.uid], organization: 'test'} }
-        let(:exam) { Exam.import_from_json! exam_json }
+        let(:exam) { Exam.import_from_resource_h! exam_json }
         before { exam.start! user }
-        before { Exam.import_from_json! exam_json.merge(organization: 'test') }
+        before { Exam.import_from_resource_h! exam_json.merge(organization: 'test') }
 
         it { expect(exam.started?(user)).to be true }
 
@@ -122,9 +122,9 @@ describe Exam, organization_workspace: :test do
       context 'create exam with non existing user' do
         let(:guide) { create(:guide) }
         let(:exam_json) { {eid: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', uids: [user.uid], organization: 'test'} }
-        let(:exam) { Exam.import_from_json! exam_json }
+        let(:exam) { Exam.import_from_resource_h! exam_json }
 
-        it { expect { Exam.import_from_json! exam_json.merge(organization: 'test') }.not_to raise_error }
+        it { expect { Exam.import_from_resource_h! exam_json.merge(organization: 'test') }.not_to raise_error }
 
       end
 
@@ -132,7 +132,7 @@ describe Exam, organization_workspace: :test do
         let(:teacher) { create(:user, uid: 'auth0|1') }
         let(:guide) { create(:guide) }
         let(:exam_json) { {eid: '1', slug: guide.slug, start_time: 5.minutes.ago, end_time: 10.minutes.since, duration: 150, language: 'haskell', name: 'foo', uids: [], organization: 'test'} }
-        let(:exam) { Exam.import_from_json! exam_json }
+        let(:exam) { Exam.import_from_resource_h! exam_json }
 
         context 'exam_authorization do not receive start method' do
           before { expect(teacher).to receive(:teacher_here?).and_return(true) }
