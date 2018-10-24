@@ -1,11 +1,11 @@
 class UserMailer < ApplicationMailer
 
   def we_miss_you_reminder(user, cycles)
-    send_reminder! user, t(:we_miss_you), "#{cycles.ordinalize}_reminder"
+    send_reminder! user, :we_miss_you, "#{cycles.ordinalize}_reminder"
   end
 
   def no_submissions_reminder(user)
-    send_reminder! user, t(:start_using_mumuki), "no_submissions_reminder"
+    send_reminder! user, :start_using_mumuki, "no_submissions_reminder"
   end
 
   private
@@ -17,7 +17,7 @@ class UserMailer < ApplicationMailer
 
     I18n.with_locale(@organization.locale) do
       mail to: user.email,
-           subject: subject,
+           subject: t(subject),
            template_name: template_name
     end
   end
