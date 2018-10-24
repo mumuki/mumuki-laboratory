@@ -2,6 +2,7 @@ class Exercise < ApplicationRecord
   include WithDescription
   include WithLocale
   include WithNumber,
+          WithName,
           WithAssignments,
           FriendlyName,
           WithLanguage,
@@ -19,7 +20,7 @@ class Exercise < ApplicationRecord
   defaults { self.submissions_count = 0 }
 
   validates_presence_of :submissions_count,
-                        :guide
+                        :guide, :bibliotheca_id
 
   randomize :description, :hint, :extra, :test, :default_content
   delegate :timed?, to: :navigable_parent
@@ -94,12 +95,8 @@ class Exercise < ApplicationRecord
     save!
   end
 
-  def to_markdownified_resource_h
-    to_resource_h.tap do |exercise|
-      [:hint, :corollary, :description, :teacher_info].each do |it|
-        exercise[it] = Mumukit::ContentType::Markdown.to_html(exercise[it])
-      end
-    end
+  def to_resource_h(options = {})
+    as_json
   end
 
   def reset!

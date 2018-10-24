@@ -33,7 +33,7 @@ class Topic < Content
   end
 
   def to_resource_h
-    super.merge(lessons: lessons.map(&:slug))
+    super.merge(appendix: appendix, lessons: lessons.map(&:slug)).compact
   end
 
   def as_chapter_of(book)

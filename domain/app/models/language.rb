@@ -39,7 +39,7 @@ class Language < ApplicationRecord
     Mumukit::Sync.key :language, runner_url
   end
 
-  def from_resource_h!(json)
+  def import_from_resource_h!(json)
     assign_attributes json.slice(:name,
                                  :comment_type,
                                  :output_content_type,

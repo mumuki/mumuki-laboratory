@@ -17,7 +17,7 @@ describe Guide do
      description: 'topic description',
      slug: 'mumuki/mumuki-sample-topic',
      locale: 'en',
-     lessons: [guide_2, guide_1, guide_3].map(&:slug)}.deep_stringify_keys
+     lessons: [guide_2, guide_1, guide_3].map(&:slug)}
   end
 
   describe '#import_from_resource_h!' do

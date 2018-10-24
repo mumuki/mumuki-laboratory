@@ -5,6 +5,11 @@ class Content < ApplicationRecord
   include WithLocale
   include WithSlug
   include WithUsages
+  include WithName
+
+  def to_resource_h
+    as_json(only: [:name, :slug, :description, :locale]).symbolize_keys
+  end
 
 end
 

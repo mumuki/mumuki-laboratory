@@ -18,10 +18,6 @@ module WithSlug
     Mumukit::Sync.key self.class.name.underscore.to_sym, slug
   end
 
-  def to_resource_h
-    as_json(only: [:name, :slug, :description, :locale])
-  end
-
   ## Copy and Rebase
 
   def copy
