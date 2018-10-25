@@ -17,7 +17,7 @@ class UserMailer < ApplicationMailer
 
     I18n.with_locale(@organization.locale) do
       mail to: user.email,
-           subject: t(subject),
+           subject: "Mumuki - #{t(subject)}",
            template_name: template_name
     end
   end
