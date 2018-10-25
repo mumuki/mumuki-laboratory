@@ -48,7 +48,7 @@ RSpec.describe UserMailer, type: :mailer do
     let(:days_since_last_reminded) { 8 }
 
     it "renders the headers" do
-      expect(reminder.subject).to eq("We miss you!")
+      expect(reminder.subject).to eq("Mumuki - We miss you!")
       expect(reminder.to).to eq([user.email])
       expect(reminder.from).to eq(["support@mumuki.org"])
     end
@@ -114,7 +114,7 @@ RSpec.describe UserMailer, type: :mailer do
     let(:days_since_user_creation) { 8 }
 
     it "renders the headers" do
-      expect(reminder.subject).to eq("Start using Mumuki!")
+      expect(reminder.subject).to eq("Mumuki - Start using Mumuki!")
       expect(reminder.to).to eq([user.email])
       expect(reminder.from).to eq(["support@mumuki.org"])
     end
