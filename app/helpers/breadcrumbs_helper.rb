@@ -21,7 +21,7 @@ module BreadcrumbsHelper
   end
 
   def breadcrumb_list_item(last, item)
-    "<li #{breadcrumb_item_class(last)}>#{item}</li>".html_safe
+    "<li #{breadcrumb_item_class(last)}>#{h item}</li>".html_safe
   end
 
   private
