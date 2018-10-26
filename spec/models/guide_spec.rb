@@ -24,10 +24,60 @@ describe Guide, organization_workspace: :test do
     end
   end
 
-  describe '#submission_contents_for' do
-    before do
-      guide.exercises = [create(:exercise, language: guide.language), create(:exercise, language: guide.language)]
-      guide.save!
+  describe '#fork!' do
+    let(:syncer) { double(:syncer) }
+    let!(:guide_from) { create :guide, slug: 'foo/bar' }
+    let(:slug_from) { guide_from.slug }
+    let(:slug_to) { 'baz/bar'.to_mumukit_slug }
+    let(:guide_to) { Guide.find_by_slug! slug_to.to_s }
+    let!(:guide) { create(:guide, slug: 'test/bar') }
+
+    context 'fork works' do
+      before { expect(syncer).to receive(:export!).with(instance_of(Guide)) }
+      before { Guide.find_by_slug!(slug_from).fork_to! 'baz', syncer }
+      it { expect(guide_from.to_resource_h).to json_eq guide_to.to_resource_h, except: [:slug] }
+    end
+
+    context 'fork does not work if guide already exists' do
+      before { expect(syncer).to_not receive(:export!) }
+      it { expect { Guide.find_by_slug!(slug_from).fork_to! 'test', syncer }.to raise_error ActiveRecord::RecordInvalid }
+    end
+  end
+
+  describe '#to_markdownified_resource_h' do
+    subject { guide.to_markdownified_resource_h }
+    context 'description' do
+      let(:guide) { create(:guide, description: '`foo = (+)`') }
+      it { expect(subject[:description]).to eq("<p><code>foo = (+)</code></p>\n") }
+    end
+    context 'corollary' do
+      let(:guide) { create(:guide, corollary: '[Google](https://google.com)') }
+      it { expect(subject[:corollary]).to eq("<p><a title=\"\" href=\"https://google.com\" target=\"_blank\">Google</a></p>\n") }
+    end
+    context 'teacher_info' do
+      let(:guide) { create(:guide, teacher_info: '**foo**') }
+      it { expect(subject[:teacher_info]).to eq("<p><strong>foo</strong></p>\n") }
+    end
+    context 'exercises' do
+      let(:guide) { create(:guide, exercises: [exercise]) }
+      subject { guide.to_markdownified_resource_h[:exercises].first }
+
+      context 'description' do
+        let(:exercise) { build(:exercise, description: '`foo = (+)`') }
+        it { expect(subject[:description]).to eq("<p><code>foo = (+)</code></p>\n") }
+      end
+      context 'corollary' do
+        let(:exercise) { build(:exercise, corollary: '[Google](https://google.com)') }
+        it { expect(subject[:corollary]).to eq("<p><a title=\"\" href=\"https://google.com\" target=\"_blank\">Google</a></p>\n") }
+      end
+      context 'teacher_info' do
+        let(:exercise) { build(:exercise, teacher_info: '**foo**') }
+        it { expect(subject[:teacher_info]).to eq("<p><strong>foo</strong></p>\n") }
+      end
+      context 'hint' do
+        let(:exercise) { build(:exercise, hint: '***foo***') }
+        it { expect(subject[:hint]).to eq("<p><strong><em>foo</em></strong></p>\n") }
+      end
     end
   end
 end

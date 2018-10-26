@@ -81,7 +81,7 @@ class Guide < Content
 
   def to_resource_h
     super
-      .merge(as_json(only: [:beta, :type, :id_format, :private, :expectations]).symbolize_keys)
+      .merge(as_json(only: [:beta, :type, :id_format, :private, :expectations, :corollary, :teacher_info]).symbolize_keys)
       .merge(exercises: exercises.map(&:to_resource_h))
       .merge(language: language.as_json(only: [:name, :extension, :test_extension]).symbolize_keys)
   end
@@ -92,7 +92,7 @@ class Guide < Content
         guide[it] = Mumukit::ContentType::Markdown.to_html(guide[it])
       end
       [:hint, :corollary, :description, :teacher_info].each do |it|
-        guide[:exercises].map! { |exercise| exercise[it] = Mumukit::ContentType::Markdown.to_html(exercise[it]) }
+        guide[:exercises].each { |exercise| exercise[it] = Mumukit::ContentType::Markdown.to_html(exercise[it]) }
       end
     end
   end

@@ -33,12 +33,12 @@ module WithSlug
   module ClassMethods
 
     def allowed(permissions)
-      all.select { |it| permissions.writer?(it.slug) }
+      all.select { |it| permissions&.writer?(it.slug) }
     end
 
     def visible(permissions)
       # FIXME no truly generic
-      all.select { |it| !it.private? || permissions.writer?(it.slug) }
+      all.select { |it| !it.private? || permissions&.writer?(it.slug) }
     end
 
     def by_slug_parts!(args)
