@@ -54,11 +54,11 @@ class Book < Content
   ## Forking
 
   def fork_to!(organization, syncer)
-    rebased_copy(organization).tap do |copy|
-      copy.chapters = chapters.map { |chapter| chapter.fork_to!(organization, syncer) }
-      copy.complements = complements.map { |complement| complement.fork_to!(organization, syncer) }
-      copy.save!
-      syncer.export! copy
+    rebased_dup(organization).tap do |dup|
+      dup.chapters = chapters.map { |chapter| chapter.topic.fork_to!(organization, syncer).as_chapter_of(self) }
+      dup.complements = complements.map { |complement| complement.guide.fork_to!(organization, syncer).as_complement_of(self) }
+      dup.save!
+      syncer.export! dup
     end
   end
 end

@@ -22,8 +22,16 @@ es:
       models:
         exercise:
           attributes:
+            randomizations:
+              invalid_format: 'gormato inválido'
+            own_expectations:
+              invalid_format: 'gormato inválido'
+            assistance_rules:
+              invalid_format: 'gormato inválido'
+            name:
+              invalid_format: 'no debe contener /'
             base:
-              evaluation_criteria_required:  'Tenés que proveer al menos un test o un archivo de expectativas'
+              evaluation_criteria_required:  'Tenés que proveer tests y/o expectativas'
         organization:
           attributes:
             base:

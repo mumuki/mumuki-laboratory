@@ -79,7 +79,7 @@ class Exercise < ApplicationRecord
   end
 
   def import_from_resource_h!(number, resource_h)
-    self.language = Language.for_name(resource_h[:language]) || guide.language
+    self.language = Language.for_name(resource_h.dig(:language, :name)) || guide.language
     self.locale = guide.locale
 
     reset!
@@ -95,8 +95,8 @@ class Exercise < ApplicationRecord
     save!
   end
 
-  def to_resource_h(options = {})
-    as_json
+  def to_resource_h
+    as_json(except: [:id, :created_at, :updated_at]).symbolize_keys.compact
   end
 
   def reset!

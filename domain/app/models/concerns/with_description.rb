@@ -3,7 +3,7 @@ module WithDescription
 
   included do
     markdown_on :description, :description_teaser
-    validates_presence_of :name, :description
+    validates_presence_of :description
   end
 
   def description_teaser

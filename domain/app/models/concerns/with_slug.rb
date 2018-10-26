@@ -20,16 +20,12 @@ module WithSlug
 
   ## Copy and Rebase
 
-  def copy
-    dup.tap { |it| it.id = nil }
-  end
-
   def rebase!(organization)
     self.slug = self.slug.to_mumukit_slug.rebase(organization).to_s
   end
 
-  def rebased_copy(organization)
-    copy.tap { |it| it.rebase! organization }
+  def rebased_dup(organization)
+    dup.tap { |it| it.rebase! organization }
   end
 
   ## Filtering

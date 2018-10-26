@@ -22,7 +22,7 @@ class Problem < QueriableChallenge
   end
 
   def expectations
-    super + guide_expectations
+    own_expectations + guide_expectations
   end
 
   def guide_expectations
@@ -30,7 +30,7 @@ class Problem < QueriableChallenge
   end
 
   def evaluation_criteria?
-    manual_evaluation? || expectations.present? || test.present?
+    manual_evaluation? || own_expectations.present? || test.present?
   end
 
   private

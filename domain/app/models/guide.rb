@@ -59,7 +59,7 @@ class Guide < Content
 
   def import_from_resource_h!(resource_h)
     self.assign_attributes whitelist_attributes(resource_h, except: [:id])
-    self.language = Language.for_name(resource_h[:language][:name])
+    self.language = Language.for_name(resource_h.dig(:language, :name))
     self.save!
 
     resource_h[:exercises]&.each_with_index do |e, i|
@@ -73,7 +73,7 @@ class Guide < Content
       exercise.import_from_resource_h! (i+1), e
     end
 
-    new_ids = resource_h[:exercises].map { |it| it['id'] }
+    new_ids = resource_h[:exercises].map { |it| it[:id] }
     self.exercises.where.not(bibliotheca_id: new_ids).destroy_all
 
     reload
@@ -110,10 +110,10 @@ class Guide < Content
   end
 
   def fork_to!(organization, syncer)
-    rebased_copy(organization).tap do |copy|
-      copy.exercises = exercises.map(&:copy)
-      copy.save!
-      syncer.export! copy
+    rebased_dup(organization).tap do |dup|
+      dup.exercises = exercises.map(&:dup)
+      dup.save!
+      syncer.export! dup
     end
   end
 end

@@ -43,10 +43,10 @@ class Topic < Content
   ## Forking
 
   def fork_to!(organization, syncer)
-    rebased_copy(organization).tap do |copy|
-      copy.lessons.map! { |lesson| lesson.fork_to!(organization, syncer) }
-      copy.save!
-      syncer.export! copy
+    rebased_dup(organization).tap do |dup|
+      dup.lessons = lessons.map { |lesson| lesson.guide.fork_to!(organization, syncer).as_lesson_of(self) }
+      dup.save!
+      syncer.export! dup
     end
   end
 
