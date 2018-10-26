@@ -4,7 +4,7 @@ describe BreadcrumbsHelper, organization_workspace: :test do
 
   helper BreadcrumbsHelper
   helper LinksHelper
-
+  helper ERB::Util
 
   context 'user' do
     let(:user) { create(:user) }
