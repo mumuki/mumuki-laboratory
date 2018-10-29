@@ -3,10 +3,6 @@ module ContextualizationResultHelper
     %Q{<li>#{status_icon(expectation_result[:result])} #{sanitized expectation_result[:explanation]}</li>}.html_safe
   end
 
-  def sanitized(html)
-    Mumukit::ContentType::Sanitizer.sanitize html
-  end
-
   def render_feedback?(contextualization)
     contextualization.feedback.present?
   end
