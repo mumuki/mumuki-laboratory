@@ -61,7 +61,9 @@ module WithReminders
 
   module ClassMethods
     def remindable
-      where('accepts_reminders and (last_submission_date < ? or last_submission_date is null)', reminder_frequency.days.ago)
+      where('accepts_reminders  and email is not null
+                                and last_organization_id is not null
+                                and (last_submission_date < ? or last_submission_date is null)', reminder_frequency.days.ago)
     end
 
     # The frequency of reminders, expressed in days
