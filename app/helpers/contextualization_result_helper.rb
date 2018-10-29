@@ -1,6 +1,6 @@
 module ContextualizationResultHelper
   def humanized_expectation_result_item(expectation_result)
-    %Q{<li>#{status_icon(expectation_result[:result])} #{expectation_result[:explanation]}</li>}.html_safe
+    %Q{<li>#{status_icon(expectation_result[:result])} #{sanitized expectation_result[:explanation]}</li>}.html_safe
   end
 
   def render_feedback?(contextualization)
