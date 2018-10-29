@@ -35,6 +35,16 @@ RSpec.describe UserMailer, type: :mailer do
                           last_submission_date: 15.minutes.ago }
       it { expect(User.remindable).to_not include user }
     end
+
+    context 'when user does not have an email' do
+      let(:user) { create :user,
+                          uid: 'user',
+                          accepts_reminders: true,
+                          last_organization: central,
+                          email: nil,
+                          last_submission_date: nil }
+      it { expect(User.remindable).to_not include user }
+    end
   end
 
   describe "we_miss_you_reminder" do
