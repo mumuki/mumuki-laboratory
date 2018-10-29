@@ -45,6 +45,14 @@ RSpec.describe UserMailer, type: :mailer do
                           last_submission_date: nil }
       it { expect(User.remindable).to_not include user }
     end
+
+    context 'when user does not have a last organization' do
+      let(:user) { create :user,
+                          uid: 'user',
+                          accepts_reminders: true,
+                          last_submission_date: nil }
+      it { expect(User.remindable).to_not include user }
+    end
   end
 
   describe "we_miss_you_reminder" do
