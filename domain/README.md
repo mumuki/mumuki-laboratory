@@ -1,28 +1,56 @@
-# Mumuki::Domain
-Short description and motivation.
+Resource Hashes:
 
-## Usage
-How to use my plugin.
+## Language
 
-## Installation
-Add this line to your application's Gemfile:
+## Organization
 
-```ruby
-gem 'mumuki-domain'
-```
+## User
 
-And then execute:
-```bash
-$ bundle
-```
+## Book
 
-Or install it yourself as:
-```bash
-$ gem install mumuki-domain
-```
+  name
+  description
+  locale
+  slug
+  chapters
+  complements
 
-## Contributing
-Contribution directions go here.
+## Topic
 
-## License
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+  name
+  description
+  locale
+  slug
+  lessons
+
+## Guide
+
+  guide
+    exercises
+      name
+      bibliotheca_id
+    authors
+    collaborators
+    description
+    corollary
+    name
+    locale
+    type
+    beta
+    teacher_info
+    language
+      name
+      extension
+      test_extension
+    id_format
+    extra
+    slug
+
+## Exam
+
+## Course
+
+## Invitation
+
+
+  Book.all.as_json(only: [:name, :slug])
