@@ -10,7 +10,7 @@
             <%= status_icon(test_result[:status]) %>
             <strong class="example-title"><%= test_result[:title] %></strong>
             <% unless contextualization.visible_success_output? %>
-              <a data-toggle="collapse" href="#example-result-<%= index %>"  class="example-see-more">Ver detalles</a>
+              <a data-toggle="collapse" href="#example-result-<%= index %>"  class="example-see-more"><%= t :view_details %></a>
             <% end %>
           </span>
         <% else %>
