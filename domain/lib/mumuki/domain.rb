@@ -1,4 +1,5 @@
 require "mumuki/domain/engine"
+require 'mumukit/core/activemodel'
 
 I18n.load_translations_path File.join(__dir__, 'domain', 'locales', '*.yml')
 
