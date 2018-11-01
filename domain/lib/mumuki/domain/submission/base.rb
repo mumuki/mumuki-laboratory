@@ -1,6 +1,4 @@
-require 'securerandom'
-
-class Submission
+class Mumuki::Domain::Submission::Base
   include ActiveModel::Model
 
   required :try_evaluate!

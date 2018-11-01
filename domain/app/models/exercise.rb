@@ -75,7 +75,7 @@ class Exercise < ApplicationRecord
   end
 
   def new_solution
-    Solution.new(content: default_content)
+    Mumuki::Domain::Submission::Solution.new(content: default_content)
   end
 
   def import_from_resource_h!(number, resource_h)

@@ -1,4 +1,4 @@
-class Confirmation < PersistentSubmission
+class Mumuki::Domain::Submission::Confirmation < Mumuki::Domain::Submission::PersistentSubmission
   def content
     nil
   end

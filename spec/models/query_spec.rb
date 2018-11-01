@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Query do
+describe Mumuki::Domain::Submission::Query do
   let!(:exercise) { create(:exercise) }
   let(:user) { create(:user) }
 

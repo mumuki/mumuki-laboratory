@@ -1,4 +1,4 @@
-class Try < ConsoleSubmission
+class Mumuki::Domain::Submission::Try < Mumuki::Domain::Submission::ConsoleSubmission
   attr_accessor :query, :cookie
 
   def try_evaluate_query!(assignment)

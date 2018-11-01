@@ -12,13 +12,13 @@ end
 
 class NilClass
   def to_mumuki_solution(language)
-    Solution.new
+    Mumuki::Domain::Submission::Solution.new
   end
 end
 
 class String
   def to_mumuki_solution(language)
-    Solution.new content: normalize_whitespaces
+    Mumuki::Domain::Submission::Solution.new content: normalize_whitespaces
   end
 end
 

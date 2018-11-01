@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Solution, organization_workspace: :test do
+describe Mumuki::Domain::Submission::Solution, organization_workspace: :test do
 
   let(:user) { create(:user) }
 

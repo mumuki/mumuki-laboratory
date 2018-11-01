@@ -1,4 +1,4 @@
-class Solution < PersistentSubmission
+class Mumuki::Domain::Submission::Solution < Mumuki::Domain::Submission::PersistentSubmission
   attr_accessor :content
 
   def try_evaluate!(assignment)

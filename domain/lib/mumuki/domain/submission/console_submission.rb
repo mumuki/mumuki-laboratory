@@ -1,4 +1,4 @@
-class ConsoleSubmission < Submission
+class Mumuki::Domain::Submission::ConsoleSubmission < Mumuki::Domain::Submission::Base
   required :try_evaluate_query!
 
   def try_evaluate!(assignment)

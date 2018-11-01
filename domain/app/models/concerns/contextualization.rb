@@ -6,8 +6,8 @@ module Contextualization
     private
 
     def submission_mapping
-      class_attrs = Submission.mapping_attributes.map { |it| submission_fields_overrides[it] || it }
-      class_attrs.zip Submission.mapping_attributes
+      class_attrs = Mumuki::Domain::Submission::Base.mapping_attributes.map { |it| submission_fields_overrides[it] || it }
+      class_attrs.zip Mumuki::Domain::Submission::Base.mapping_attributes
     end
 
     def submission_fields_overrides
@@ -21,7 +21,7 @@ module Contextualization
 
     serialize_symbolized_hash_array :expectation_results, :test_results, :query_results
 
-    composed_of :submission, mapping: submission_mapping, constructor: :from_attributes
+    composed_of :submission, mapping: submission_mapping, constructor: :from_attributes, class_name: 'Mumuki::Domain::Submission::Base'
 
     delegate :visible_success_output?, to: :exercise
     delegate :output_content_type, to: :language

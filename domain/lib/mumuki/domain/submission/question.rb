@@ -1,4 +1,4 @@
-class Question < Submission
+class Mumuki::Domain::Submission::Question < Mumuki::Domain::Submission::Base
   def run!(assignment, evaluation)
     return [assignment, nil] unless assignment.new_record?
     super

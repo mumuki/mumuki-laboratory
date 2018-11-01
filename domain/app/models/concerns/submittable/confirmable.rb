@@ -1,5 +1,5 @@
 module Confirmable
   def submit_confirmation!(user)
-    submit! user, Confirmation.new
+    submit! user, Mumuki::Domain::Submission::Confirmation.new
   end
 end

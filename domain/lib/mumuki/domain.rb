@@ -8,6 +8,7 @@ module Mumuki
 end
 
 require_relative './domain/evaluation'
+require_relative './domain/submission'
 require_relative './domain/status'
 require_relative './domain/exceptions'
 require_relative './domain/file'
