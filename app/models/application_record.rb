@@ -22,6 +22,13 @@ class ApplicationRecord < ActiveRecord::Base
     end
   end
 
+  def self.serialize_symbolized_hash_array(*keys)
+    keys.each do |field|
+      serialize field
+      define_method(field) { self[field]&.map { |it| it.symbolize_keys } }
+    end
+  end
+
   def save(*)
     super
   rescue => e

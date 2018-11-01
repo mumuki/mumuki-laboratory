@@ -19,10 +19,7 @@ module Contextualization
     serialize :submission_status, Mumuki::Laboratory::Status::Submission
     validates_presence_of :submission_status
 
-    [:expectation_results, :test_results, :query_results].each do |field|
-      serialize field
-      define_method(field) { self[field]&.map { |it| it.symbolize_keys } }
-    end
+    serialize_symbolized_hash_array :expectation_results, :test_results, :query_results
 
     composed_of :submission, mapping: submission_mapping, constructor: :from_attributes
 
