@@ -79,6 +79,7 @@ en:
   explain_redirect: You have registered in another organization
   failed: Oops, something went wrong
   feedback: Feedback
+  finish: Finish
   first_name: First Name
   forbidden_explanation: You are not allowed to see this content.
   go_to: 'Go to %{organization}'

@@ -5,7 +5,10 @@ mumuki.load(function () {
     $.ajax(token.newRequest({
       method: 'POST',
       url: $(this).data('confirmation-url'),
-      xhrFields: {withCredentials: true}
+      xhrFields: {withCredentials: true},
+      success: function(data){
+        mumuki.updateProgressBarAndShowModal(data);
+      }
     }));
 
     return true;

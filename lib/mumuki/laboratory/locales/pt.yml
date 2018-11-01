@@ -82,6 +82,7 @@ pt:
   explain_redirect: Percebemos que você se registrou em outra organização.
   failed: Sua solução não passou as provas
   feedback: Problemas que encontramos
+  finish: Terminar
   first_name: Nome
   forbidden_explanation: Isso significa que você não tem autorização para ver esse conteúdo. <br> Você poderia ter entrado com uma conta incorreta?
   fullscreen: Tela completa

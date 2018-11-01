@@ -8,14 +8,19 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
   end
 
   def render_results_json(assignment, results = {})
-    render json: results.merge(
-      guide_finished_by_solution: guide_finished_by_solution?,
-      class_for_progress_list_item: class_for_progress_list_item(@exercise, true),
+    render json: results.merge(progress_json).merge(
       html: render_results_html(assignment),
       title_html: render_results_title_html(assignment),
       button_html: render_results_button_html(assignment),
       expectations_html: render_results_expectations_html(assignment),
       remaining_attempts_html: remaining_attempts_text(assignment))
+  end
+
+  def progress_json
+    {
+      guide_finished_by_solution: guide_finished_by_solution?,
+      class_for_progress_list_item: class_for_progress_list_item(@exercise, true)
+    }
   end
 
   def render_results_html(assignment)
