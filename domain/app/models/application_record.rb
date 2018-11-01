@@ -8,12 +8,6 @@ class ApplicationRecord < ActiveRecord::Base
     define_method :defaults, &block
   end
 
-  def self.name_model_as(other)
-    define_singleton_method :model_name do
-      other.model_name
-    end
-  end
-
   def self.all_except(others)
     if others.present?
       where.not(id: [others.map(&:id)])

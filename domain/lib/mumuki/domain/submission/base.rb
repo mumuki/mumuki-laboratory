@@ -3,6 +3,8 @@ class Mumuki::Domain::Submission::Base
 
   required :try_evaluate!
 
+  demodulized_model_name
+
   ATTRIBUTES = [:solution, :status, :result, :expectation_results, :feedback, :test_results,
                 :submission_id, :queries, :query_results, :manual_evaluation_comment]
 

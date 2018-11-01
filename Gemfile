@@ -29,6 +29,7 @@ gem 'mumuki-domain', path: './domain'
 gem 'mumukit-platform', path: '../mumukit-platform'
 gem 'mumukit-auth', path: '../mumukit-auth'
 gem 'mumukit-sync', path: '../mumukit-sync'
+gem 'mumukit-core', path: '../mumukit-core'
 
 group :test do
   gem 'rspec-rails', '~> 3.6'
