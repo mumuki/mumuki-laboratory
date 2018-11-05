@@ -25,7 +25,6 @@ Gem::Specification.new do |s|
 
   # TODO move to domain
   s.add_dependency 'mumuki-domain', Mumuki::Laboratory::VERSION
-  s.add_dependency 'mumukit-auth', '~> 7.4'
   s.add_dependency 'mumukit-sync', '~> 0.0'
   s.add_dependency 'mumukit-platform', '~> 2.7'
 

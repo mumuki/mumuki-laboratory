@@ -27,7 +27,6 @@ gem 'font-awesome-rails', '~> 4.7'
 gem 'mumuki-domain', path: './domain'
 
 gem 'mumukit-platform', path: '../mumukit-platform'
-gem 'mumukit-auth', path: '../mumukit-auth'
 gem 'mumukit-sync', path: '../mumukit-sync'
 
 group :test do
