@@ -20,13 +20,10 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 5.1.3"
 
+  s.add_dependency 'mumuki-domain', Mumuki::Laboratory::VERSION
   s.add_dependency 'mumukit-login', '~> 6.1'
   s.add_dependency 'mumukit-nuntius', '~> 6.1'
-
-  # TODO move to domain
-  s.add_dependency 'mumuki-domain', Mumuki::Laboratory::VERSION
   s.add_dependency 'mumukit-sync', '~> 0.0'
-  s.add_dependency 'mumukit-platform', '~> 2.7'
 
   s.add_dependency 'rack', '~> 2.0'
   s.add_dependency 'omniauth', '~> 1.4.0'

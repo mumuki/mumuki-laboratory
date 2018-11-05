@@ -22,8 +22,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'mumukit-assistant', '~> 0.1'
   s.add_dependency 'mumukit-bridge', '~> 3.7'
   s.add_dependency 'mumukit-content-type', '~> 1.4'
-  s.add_dependency 'mumukit-core', '~> 1.6'
+  s.add_dependency 'mumukit-core', '~> 1.7'
   s.add_dependency 'mumukit-directives', '~> 0.5'
   s.add_dependency 'mumukit-inspection', '~> 3.5'
   s.add_dependency 'mumukit-randomizer', '~> 1.0'
+  s.add_dependency 'mumukit-platform', '~> 3.0'
 end
