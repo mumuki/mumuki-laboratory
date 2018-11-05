@@ -83,7 +83,8 @@ class Guide < Content
     super
       .merge(as_json(only: [:beta, :type, :id_format, :private, :expectations, :corollary, :teacher_info]).symbolize_keys)
       .merge(exercises: exercises.map(&:to_resource_h))
-      .merge(language: language.as_json(only: [:name, :extension, :test_extension]).symbolize_keys)
+      .merge(language: language.to_embedded_resource_h)
+      .compact
   end
 
   def to_markdownified_resource_h

@@ -79,6 +79,10 @@ class Language < ApplicationRecord
     find_or_initialize_by(runner_url: runner_url).tap { |it| it.save(validate: false) }
   end
 
+  def to_embedded_resource_h
+    as_json(only: [:name, :extension, :test_extension]).symbolize_keys
+  end
+
   private
 
   # TODO we should use Mumukit::Directives::Pipeline
