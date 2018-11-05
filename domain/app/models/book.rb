@@ -29,7 +29,7 @@ class Book < Content
     rebuild! resource_h[:chapters].map { |it| Topic.find_by!(slug: it).as_chapter_of(self) }
     rebuild_complements! resource_h[:complements].to_a.map { |it| Guide.find_by(slug: it)&.as_complement_of(self) }.compact
 
-    Organization.all.each { |org| org.reindex_usages! }
+    Organization.where(book: self).each { |org| org.reindex_usages! }
   end
 
   def to_resource_h
