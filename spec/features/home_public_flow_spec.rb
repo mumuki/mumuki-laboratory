@@ -7,7 +7,8 @@ feature 'public org', organization_workspace: :test do
   let!(:chapter) {
     create(:chapter, lessons: [
       create(:lesson, guide: guide)]) }
-  let(:book) { Organization.current.book }
+  let!(:current_organization) { Organization.current }
+  let(:book) { current_organization.book }
 
   before { reindex_current_organization! }
 
@@ -18,7 +19,7 @@ feature 'public org', organization_workspace: :test do
       visit '/'
 
       expect(page).to have_text('ム mumuki')
-      expect(page).to have_text(Organization.current.book.name)
+      expect(page).to have_text(current_organization.book.name)
       expect(page).not_to have_text('Exams')
     end
 
@@ -28,7 +29,7 @@ feature 'public org', organization_workspace: :test do
       visit '/'
 
       expect(page).to have_text('ム mumuki')
-      expect(page).to have_text(Organization.current.book.name)
+      expect(page).to have_text(current_organization.book.name)
     end
   end
 
@@ -43,8 +44,8 @@ feature 'public org', organization_workspace: :test do
       visit '/'
 
       expect(page).to have_text('ム mumuki')
-      expect(page).to have_text(Organization.current.book.name)
-      expect(user.reload.last_organization).to eq Organization.current
+      expect(page).to have_text(current_organization.book.name)
+      expect(user.reload.last_organization).to eq current_organization
       expect(page).to have_text('Exams')
     end
 
@@ -54,8 +55,8 @@ feature 'public org', organization_workspace: :test do
       visit '/'
 
       expect(page).to have_text('ム mumuki')
-      expect(page).to have_text(Organization.current.book.name)
-      expect(user.reload.last_organization).to eq Organization.current
+      expect(page).to have_text(current_organization.book.name)
+      expect(user.reload.last_organization).to eq current_organization
     end
   end
 end
