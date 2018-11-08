@@ -23,11 +23,11 @@ es:
         exercise:
           attributes:
             randomizations:
-              invalid_format: 'gormato inválido'
+              invalid_format: 'formato inválido'
             own_expectations:
-              invalid_format: 'gormato inválido'
+              invalid_format: 'formato inválido'
             assistance_rules:
-              invalid_format: 'gormato inválido'
+              invalid_format: 'formato inválido'
             name:
               invalid_format: 'no debe contener /'
             base:
