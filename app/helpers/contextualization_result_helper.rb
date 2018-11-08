@@ -23,7 +23,8 @@ module ContextualizationResultHelper
 
   def render_test_results(contextualization)
     if contextualization.test_results.present?
-      render partial: 'layouts/test_results', locals: { contextualization: contextualization }
+      template = contextualization.result.present? ? 'layouts/mixed_results' : 'layouts/test_results'
+      render partial: template, locals: { contextualization: contextualization }
     else
       render partial: 'layouts/result', locals: { contextualization: contextualization }
     end
