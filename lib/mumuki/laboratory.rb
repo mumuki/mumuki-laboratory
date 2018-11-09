@@ -32,10 +32,8 @@ end
 
 module Mumukit::Platform::OrganizationMapping::Path
   class << self
-    alias_method :__organization_name__, :organization_name
-
-    def organization_name(request, domain)
-      name = __organization_name__(request, domain)
+    patch :organization_name do |request, domain, hyper|
+      name = hyper.(request, domain)
       if %w(auth login logout).include? name
         'central'
       else
