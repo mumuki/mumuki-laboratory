@@ -24,4 +24,15 @@ Mumukit::Nuntius::EventConsumer.handle do
   event 'AssignmentManuallyEvaluated' do |payload|
     Assignment.evaluate_manually! payload.deep_symbolize_keys[:assignment]
   end
+
+  [Book, Topic, Guide].each do |it|
+    event "#{it.name}Changed" do |data|
+      slug = data[:slug]
+      item = it.find_or_initialize_by(slug: slug)
+
+      Mumukit::Sync::Syncer.new(
+        Mumukit::Sync::Store::Bibliotheca.new(
+          Mumukit::Platform.bibliotheca_bridge)).import! item
+    end
+  end
 end
