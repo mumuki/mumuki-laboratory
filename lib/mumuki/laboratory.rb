@@ -30,5 +30,20 @@ class Mumuki::Laboratory::Engine < ::Rails::Engine
   config.i18n.available_locales = Mumukit::Platform::Locale.supported
 end
 
+module Mumukit::Platform::OrganizationMapping::Path
+  class << self
+    alias_method :__organization_name__, :organization_name
+
+    def organization_name(request, domain)
+      name = __organization_name__(request, domain)
+      if %w(auth login logout).include? name
+        'central'
+      else
+        name
+      end
+    end
+  end
+end
+
 require_relative './laboratory/extensions'
 require_relative './laboratory/controllers'
