@@ -18,12 +18,12 @@ module Mumuki::Domain::Seed
   def self.import_main_contents!
     Mumukit::Sync::Syncer.new(
       Mumukit::Sync::Store::Bibliotheca.new(
-        Mumukit::Platform.bibliotheca_bridge)).import! /^#{MAIN_CONTENT_ORGANIZATIONS.join('|')}\/.*$/i
+        Mumukit::Platform.bibliotheca_bridge)).import_all! /^#{MAIN_CONTENT_ORGANIZATIONS.join('|')}\/.*$/i
   end
 
   def self.import_languages!
     Mumukit::Sync::Syncer.new(
       Mumukit::Sync::Store::Thesaurus.new(
-        Mumukit::Platform.thesaurus_bridge)).import!
+        Mumukit::Platform.thesaurus_bridge)).import_all!
   end
 end
