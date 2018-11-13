@@ -81,7 +81,7 @@ class Guide < Content
 
   def to_resource_h
     super
-      .merge(as_json(only: [:beta, :type, :id_format, :private, :expectations, :corollary, :teacher_info]).symbolize_keys)
+      .merge(as_json(only: %i(beta type id_format private expectations corollary teacher_info authors collaborators)).symbolize_keys)
       .merge(exercises: exercises.map(&:to_resource_h))
       .merge(language: language.to_embedded_resource_h)
       .compact
