@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181105152420) do
+ActiveRecord::Schema.define(version: 20181113183935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,7 +184,7 @@ ActiveRecord::Schema.define(version: 20181105152420) do
     t.string "slug", default: "", null: false
     t.integer "type", default: 0, null: false
     t.text "authors"
-    t.text "contributors"
+    t.text "collaborators"
     t.string "id_format", default: "%05d"
     t.boolean "private", default: false
     t.text "teacher_info"
