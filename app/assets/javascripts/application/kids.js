@@ -160,7 +160,7 @@ mumuki.load(function () {
       mumuki.kids._hideMessageOnCharacterBubble();
       var $bubble = mumuki.kids.getCharacterBubble();
       Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
-      mumuki.kids.getCharaterImage().attr('src', '/anim_amarillo.svg');
+      mumuki.kids.getCharaterImage().attr('src', '/anim_kibi.svg');
     },
 
     _hideMessageOnCharacterBubble: function () {
@@ -186,7 +186,7 @@ mumuki.load(function () {
 
     _showOnSuccessPopup: function (data) {
       mumuki.kids.getSubmissionResult().html(data.html);
-      mumuki.kids.getCharaterImage().attr('src', '/amarillo_exito.svg');
+      mumuki.kids.getCharaterImage().attr('src', '/kibi_exito.svg');
       mumuki.kids._showMessageOnCharacterBubble(data);
       setTimeout(function () {
         var results_kids_modal = mumuki.kids.getResultsModal();
@@ -209,7 +209,7 @@ mumuki.load(function () {
     },
 
     _showOnCharacterBubble: function (data) {
-      mumuki.kids.getCharaterImage().attr('src', '/amarillo_fracaso.svg');
+      mumuki.kids.getCharaterImage().attr('src', '/kibi_fracaso.svg');
       mumuki.kids._showMessageOnCharacterBubble(data);
     },
 
