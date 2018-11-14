@@ -80,7 +80,7 @@ class Guide < Content
   end
 
   def to_resource_h
-    as_json(only: %i(beta type id_format private expectations corollary teacher_info authors collaborators))
+    as_json(only: %i(beta type id_format private expectations corollary teacher_info authors collaborators extra))
       .symbolize_keys
       .merge(super)
       .merge(exercises: exercises.map(&:to_resource_h))
