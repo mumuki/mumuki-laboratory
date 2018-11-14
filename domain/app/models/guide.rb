@@ -80,8 +80,9 @@ class Guide < Content
   end
 
   def to_resource_h
-    super
-      .merge(as_json(only: %i(beta type id_format private expectations corollary teacher_info authors collaborators)).symbolize_keys)
+    as_json(only: %i(beta type id_format private expectations corollary teacher_info authors collaborators))
+      .symbolize_keys
+      .merge(super)
       .merge(exercises: exercises.map(&:to_resource_h))
       .merge(language: language.to_embedded_resource_h)
       .compact
@@ -89,10 +90,10 @@ class Guide < Content
 
   def to_markdownified_resource_h
     to_resource_h.tap do |guide|
-      [:corollary, :description, :teacher_info].each do |it|
+      %i(corollary description teacher_info).each do |it|
         guide[it] = Mumukit::ContentType::Markdown.to_html(guide[it])
       end
-      [:hint, :corollary, :description, :teacher_info].each do |it|
+      %i(hint corollary description teacher_info).each do |it|
         guide[:exercises].each { |exercise| exercise[it] = Mumukit::ContentType::Markdown.to_html(exercise[it]) }
       end
     end
