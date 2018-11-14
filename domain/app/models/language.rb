@@ -56,7 +56,8 @@ class Language < ApplicationRecord
                                  :layout_css_urls,
                                  :editor_js_urls,
                                  :editor_html_urls,
-                                 :editor_css_urls)
+                                 :editor_css_urls,
+                                 :test_template)
     save!
   end
 
