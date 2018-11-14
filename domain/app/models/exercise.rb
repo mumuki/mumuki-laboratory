@@ -98,7 +98,8 @@ class Exercise < ApplicationRecord
   def to_resource_h
     language_resource_h = language.to_embedded_resource_h if language != guide.language
     as_json(only: %i(name layout editor description corollary teacher_info hint test manual_evaluation locale extra
-                     choices expectations assistance_rules randomizations tag_list extra_visible goal default_content))
+                     choices expectations assistance_rules randomizations tag_list extra_visible goal default_content
+                     free_form_editor_source initial_state final_state))
       .merge(id: bibliotheca_id, language: language_resource_h, type: type.underscore)
       .symbolize_keys
       .compact
