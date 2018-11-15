@@ -1,5 +1,5 @@
 module Mumuki
   module Domain
-    VERSION = '5.13.0'
+    VERSION = '6.0.0'
   end
 end
