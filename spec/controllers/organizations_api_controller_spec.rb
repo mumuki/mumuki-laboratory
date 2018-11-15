@@ -30,23 +30,23 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
       let!(:another_private_organization) { create :organization, name: 'another_private', public: false }
 
       context 'GET /organizations' do
+        let(:organization_names) { JSON.parse(response.body)['organizations'].map { |it| it['name'] }  }
+
         context 'with wildcard permissions' do
           before { get :index }
           let(:api_client) { create :api_client, role: :janitor, grant: '*' }
-          let!(:body) { response.body.parse_json }
 
           it { check_status! 200 }
 
-          it { expect(body[:organizations].map { |it| it[:name] }).to contain_exactly 'base', 'public', 'dot.org', 'private', 'another_private' }
+          it { expect(organization_names).to contain_exactly 'base', 'public', 'dot.org', 'private', 'another_private' }
         end
         context 'with non-wildcard permissions' do
           before { get :index }
           let(:api_client) { create :api_client, role: :janitor, grant: 'public/*:private/*' }
-          let!(:body) { response.body.parse_json }
 
           it { check_status! 200 }
 
-          it { expect(body[:organizations].map { |it| it[:name] }).to contain_exactly 'public', 'private' }
+          it { expect(organization_names).to contain_exactly 'public', 'private' }
         end
       end
 
@@ -87,7 +87,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
             let(:api_client) { create :api_client, role: :janitor, grant: 'private/*' }
 
             it { check_status! 200 }
-            it { expect(response.body.parse_json).to json_like(private_organization.as_platform_json) }
+            it { expect(response.body).to json_like(private_organization.to_resource_h) }
           end
         end
 
@@ -115,7 +115,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
         let(:organization) { Organization.find_by name: 'a-name' }
 
         it { check_status! 200 }
-        it { expect(response.body.parse_json).to json_like(organization.as_platform_json) }
+        it { expect(response.body).to json_like(organization.to_resource_h) }
         it { expect(Organization.count).to eq 2 }
         it { expect(organization.name).to eq 'a-name' }
         it { expect(organization.contact_email).to eq 'an_email@gmail.com' }
@@ -170,7 +170,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
           end
 
           it { check_status! 400 }
-          it { expect(response.body.parse_json).to eq expected_errors }
+          it { expect(response.body).to json_eq expected_errors }
         end
       end
 
@@ -205,7 +205,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
         before { put :update, params: {id: organization.name, organization: update_json} }
 
         it { check_status! 200 }
-        it { expect(response.body.parse_json).to json_like(
+        it { expect(response.body).to json_like(
                                             book: book.slug,
                                             name: "existing-organization",
                                             profile: {

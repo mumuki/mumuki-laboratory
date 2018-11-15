@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Query, organization_workspace: :test do
+describe Mumuki::Domain::Submission::Query, organization_workspace: :test do
   let!(:exercise) { create(:problem) }
   let(:student) { create(:user) }
 

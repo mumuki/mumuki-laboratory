@@ -108,7 +108,7 @@ module DiscussionsHelper
   end
 
   def discussions_statuses
-    Mumuki::Laboratory::Status::Discussion::STATUSES
+    Mumuki::Domain::Status::Discussion::STATUSES
   end
 
   def discussions_languages(discussions)

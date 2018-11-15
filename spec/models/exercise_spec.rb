@@ -263,7 +263,7 @@ describe Exercise, organization_workspace: :test do
         end
 
         context 'and test is nil'  do
-          let(:exercise) { create(:exercise, test: nil, expectations: [{}]) }
+          let(:exercise) { create(:exercise, test: nil, expectations: [{binding: "program", inspection: 'Uses:foo'}]) }
 
           it { expect(assignment.test).to eq nil }
         end
@@ -435,13 +435,36 @@ describe Exercise, organization_workspace: :test do
       it { expect(problem.messages_url_for(student))
              .to eq 'http://test.classroom-api.localmumuki.io/api/guides/mumuki/myguide/32/student/twitter%7C12134342/messages?language=haskell' }
     end
-
-
   end
 
   describe '#splitted_description' do
     let(:exercise) { create(:exercise, description: "**Foo**\n\n> _Bar_") }
     it { expect(exercise.description_context).to eq "<p><strong>Foo</strong></p>\n" }
     it { expect(exercise.description_task).to eq "<p><em>Bar</em></p>\n" }
+  end
+
+  describe '#validate!' do
+    context 'non-empty, valid randomizations' do
+      let(:exercise) { build(:exercise,
+                            randomizations: {
+                              some_word: { type: :one_of, value: %w('some' 'word') },
+                              some_number: { type: :range, value: [1, 10] } }) }
+      it { expect { exercise.validate! }.not_to raise_error }
+    end
+
+    context 'empty inspections' do
+      let(:exercise) { build(:exercise, expectations: [{ "binding" => "program", "inspection" => "" }]) }
+      it { expect { exercise.validate! }.to raise_error(/expectations format is invalid/i) }
+    end
+
+    context 'invalid assistance_rules' do
+      let(:exercise) { build(:exercise, assistance_rules: [{ when: 'content_empty', then: ['asd'] }]) }
+      it { expect { exercise.validate! }.to raise_error(/assistance rules format is invalid/i) }
+    end
+
+    context 'invalid randomizations' do
+      let(:exercise) { build(:exercise, randomizations: { type: :range, value: [1] }) }
+      it { expect { exercise.validate! }.to raise_error(/randomizations format is invalid/i) }
+    end
   end
 end

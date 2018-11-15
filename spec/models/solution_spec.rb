@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Solution, organization_workspace: :test do
+describe Mumuki::Domain::Submission::Solution, organization_workspace: :test do
 
   let(:user) { create(:user) }
 
@@ -36,7 +36,7 @@ describe Solution, organization_workspace: :test do
 
   describe '#submit_solution!' do
 
-    before { expect_any_instance_of(Challenge).to receive(:automated_evaluation_class).and_return(Mumuki::Laboratory::Evaluation::Automated) }
+    before { expect_any_instance_of(Challenge).to receive(:automated_evaluation_class).and_return(Mumuki::Domain::Evaluation::Automated) }
     before { expect_any_instance_of(Language).to receive(:run_tests!).and_return(bridge_response) }
 
     context 'when results have no expectation' do

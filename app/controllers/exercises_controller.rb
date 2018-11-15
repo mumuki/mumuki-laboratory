@@ -38,7 +38,7 @@ class ExercisesController < ApplicationController
   end
 
   def set_guide!
-    raise Mumuki::Laboratory::NotFoundError if @exercise.nil?
+    raise Mumuki::Domain::NotFoundError if @exercise.nil?
     @guide = @exercise.guide
   end
 

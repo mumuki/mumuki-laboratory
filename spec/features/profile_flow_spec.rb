@@ -86,7 +86,7 @@ feature 'Standard Flow', organization_workspace: :test do
       scenario 'visit messages tab' do
         Organization.find_by_name('test').switch!
         problem.submit_solution! user, {content: 'something'}
-        Message.import_from_json! message
+        Message.import_from_resource_h! message
         visit "/user#messages"
 
         expect(page).to_not have_text('It seems you don\'t have any messages yet!')

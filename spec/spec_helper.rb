@@ -26,7 +26,9 @@ RSpec.configure do |config|
 end
 
 require_relative './capybara_helper'
+require_relative './api_helper'
 require_relative './evaluation_helper'
+require_relative './login_helper'
 
 RSpec.configure do |config|
   config.before(:each) { I18n.locale = :en }
@@ -57,14 +59,6 @@ Mumukit::Auth.configure do |c|
   c.clients.default = {id: 'test-client', secret: 'thisIsATestSecret'}
 end
 
-def set_token!(token)
-  @request.env["HTTP_AUTHORIZATION"] = token
-end
-
-def set_api_client!(api_client)
-  set_token! api_client.token
-end
-
 def reindex_organization!(organization)
   organization.reload
   organization.reindex_usages!
@@ -73,34 +67,5 @@ end
 def reindex_current_organization!
   reindex_organization! Organization.current
 end
-
-def set_current_user!(user)
-  allow_any_instance_of(ApplicationController).to receive(:current_user_uid).and_return(user.uid)
-end
-
-Mumukit::Login.configure do |config|
-  config.auth0 = struct
-  config.saml = struct
-
-  config.mucookie_domain = '.localmumuki.io'
-  config.mucookie_secret_key = 'abcde1213456123456'
-  config.mucookie_secret_salt = 'mucookie test secret salt'
-  config.mucookie_sign_salt = 'mucookie test sign salt'
-end
-
-
-class String
-  def parse_json
-    JSON.parse(self, symbolize_names: true)
-  end
-end
-
-OmniAuth.config.test_mode = true
-OmniAuth.config.mock_auth[:developer] =
-  OmniAuth::AuthHash.new provider: 'developer',
-                         uid: 'johndoe@test.com',
-                         credentials: {},
-                         info: {first_name: 'John', last_name: 'Doe', name: 'John Doe', nickname: 'johndoe'}
-
 
 SimpleCov.start

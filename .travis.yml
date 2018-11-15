@@ -18,10 +18,19 @@ env:
   global:
   - secure: IW65qMjgbuuj4kUsBwaY+iV+jaIedgf2V3W7bTLj1SjaNdc8hC9SXBiNWQrT9Ygu5Q67mKzXuu5GTyAvAGftF02UKgT+yDE43p+a9w2+Onx5dGTIXCCREIE9fgmQhAkqgt9+1E99fRWsQzqkpEVINOMvumk+HM/Rxg8B9e5jvB8=
 deploy:
-  provider: rubygems
-  api_key:
-    secure: Xtu9wRywQXA+J+hhunUC8vUpbXZRJac06dFuEcb7QDmr19Fzrik92vlGTWn17VMIMGLQ5NJhjwfgjWgNJKD6EZbWMx+iwkADvPBJsBGD5AV9A9Tw1SnoiSaXfGH6KqlvPd8HlRWrL49ZUKkMpMhsvQHp3z/qcKM/PUpbcE+nC44=
-  gem: mumuki-laboratory
-  on:
-    tags: true
-    repo: mumuki/mumuki-laboratory
+  - provider: rubygems
+    api_key:
+      secure: Xtu9wRywQXA+J+hhunUC8vUpbXZRJac06dFuEcb7QDmr19Fzrik92vlGTWn17VMIMGLQ5NJhjwfgjWgNJKD6EZbWMx+iwkADvPBJsBGD5AV9A9Tw1SnoiSaXfGH6KqlvPd8HlRWrL49ZUKkMpMhsvQHp3z/qcKM/PUpbcE+nC44=
+    gem: mumuki-laboratory
+    gemspec: mumuki-laboratory.gemspec
+    on:
+      tags: true
+      repo: mumuki/mumuki-laboratory
+  - provider: rubygems
+    api_key:
+      secure: UCcnbLlfv+vrOjeiwUK3qMrkP67AQPnsy1ukNW9zey4FI8RgaQGZAoXws3POhZaLkOfoS/OaUDbXs+LN7IDx3j6KeJv+gdxJ7/LNND7IAnLnkcRaBwpSfb7kF+HfqyWnIY9GosMaLN2W715A7sxdFpLf1EpToxb4SQVKjfWJGC8=
+    gem: mumuki-domain
+    gemspec: domain/mumuki-domain.gemspec
+    on:
+      tags: true
+      repo: mumuki/mumuki-laboratory

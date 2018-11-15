@@ -25,13 +25,13 @@ describe Api::UsersController, type: :controller, organization_workspace: :base 
     before { post :create, params: {user: user_json} }
 
     it { expect(response.status).to eq 200 }
-    it { expect(response.body.parse_json).to json_like({uid: 'foo@bar.com',
-                                                        first_name: 'foo',
-                                                        last_name: 'bar',
-                                                        email: 'foo@bar.com',
-                                                        permissions: {'student' => 'test/bar'},
-                                                        image_url: 'user_shape.png'},
-                                                       except: [:id, :created_at, :updated_at]) }
+    it { expect(response.body).to json_like({uid: 'foo@bar.com',
+                                             first_name: 'foo',
+                                             last_name: 'bar',
+                                             email: 'foo@bar.com',
+                                             permissions: {'student' => 'test/bar'},
+                                             image_url: 'user_shape.png'},
+                                            except: [:id, :created_at, :updated_at]) }
     it { expect(User.count).to eq 2 }
     it { expect(User.last.student? 'test/_').to be true }
     it { expect(User.last.uid).to eq 'foo@bar.com' }

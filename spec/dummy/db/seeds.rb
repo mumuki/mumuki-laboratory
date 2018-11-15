@@ -1,7 +1,7 @@
-require 'mumuki/laboratory/seed'
+require 'mumuki/domain/seed'
 
-Mumuki::Laboratory::Seed.import_languages!
-Mumuki::Laboratory::Seed.import_main_contents!
+Mumuki::Domain::Seed.import_languages!
+Mumuki::Domain::Seed.import_main_contents!
 
 Organization.find_or_create_by!(name: 'base') do |org|
   org.contact_email = 'issues@mumuki.org'
@@ -17,3 +17,7 @@ Organization.find_or_create_by!(name: 'private') do |org|
 end
 
 Organization.find_or_create_by!(name: 'central')
+
+User.find_or_create_by!(uid: 'dev.student@mumuki.org') { |org| org.permissions = {student: 'central/*'} }
+User.find_or_create_by!(uid: 'dev.teacher@mumuki.org') { |org| org.permissions = {teacher: 'private/*'} }
+User.find_or_create_by!(uid: 'dev.owner@mumuki.org') { |org| org.permissions = {owner: '*/*'} }

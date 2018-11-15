@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181101180652) do
+ActiveRecord::Schema.define(version: 20181114201620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20181101180652) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "locale", default: "en"
-    t.string "contact_email", default: "info@mumuki.org", null: false
     t.text "description"
     t.string "slug"
     t.index ["slug"], name: "index_books_on_slug", unique: true
@@ -166,6 +165,7 @@ ActiveRecord::Schema.define(version: 20181101180652) do
     t.text "assistance_rules"
     t.text "randomizations"
     t.text "free_form_editor_source"
+    t.text "teacher_info"
     t.index ["guide_id"], name: "index_exercises_on_guide_id"
     t.index ["language_id"], name: "index_exercises_on_language_id"
   end
@@ -184,7 +184,10 @@ ActiveRecord::Schema.define(version: 20181101180652) do
     t.string "slug", default: "", null: false
     t.integer "type", default: 0, null: false
     t.text "authors"
-    t.text "contributors"
+    t.text "collaborators"
+    t.string "id_format", default: "%05d"
+    t.boolean "private", default: false
+    t.text "teacher_info"
     t.index ["name"], name: "index_guides_on_name"
     t.index ["slug"], name: "index_guides_on_slug", unique: true
   end
@@ -218,6 +221,8 @@ ActiveRecord::Schema.define(version: 20181101180652) do
     t.string "editor_js_urls", default: [], array: true
     t.string "editor_html_urls", default: [], array: true
     t.string "editor_css_urls", default: [], array: true
+    t.string "test_extension"
+    t.text "test_template"
     t.index ["name"], name: "index_languages_on_name", unique: true
   end
 

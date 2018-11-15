@@ -66,10 +66,10 @@ class DiscussionsController < ApplicationController
   end
 
   def validate_forum_enabled!
-    raise Mumuki::Laboratory::NotFoundError unless Organization.current.forum_enabled?
+    raise Mumuki::Domain::NotFoundError unless Organization.current.forum_enabled?
   end
 
   def validate_not_in_exam!
-    raise Mumuki::Laboratory::BlockedForumError if current_user&.currently_in_exam?
+    raise Mumuki::Domain::BlockedForumError if current_user&.currently_in_exam?
   end
 end

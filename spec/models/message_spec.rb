@@ -21,7 +21,7 @@ describe Message, organization_workspace: :test do
     it { expect(parsed_comment).to eq(expected_json) }
   end
 
-  describe '.import_from_json!' do
+  describe '.import_from_resource_h!' do
     let(:user) { create(:user) }
     let(:problem) { create(:problem) }
 
@@ -39,10 +39,10 @@ describe Message, organization_workspace: :test do
            'content' => 'a',
            'created_at' => '1/1/1'}} }
 
-      before { Message.import_from_json! data }
+      before { Message.import_from_resource_h! data }
       before do
         assignment = problem.submit_solution! user, content: ''
-        Message.import_from_json! 'exercise_id' => problem.id,
+        Message.import_from_resource_h! 'exercise_id' => problem.id,
                                   'submission_id' => assignment.submission_id,
                                   'organization' => Organization.current.name,
                                   'message' => {
@@ -54,7 +54,7 @@ describe Message, organization_workspace: :test do
       it { expect(Message.count).to eq 1 }
       it { expect(message.assignment).to_not be_nil }
       it { expect(message.assignment).to eq final_assignment }
-      it { expect(message.as_platform_json.except 'created_at', 'updated_at', 'date')
+      it { expect(message.to_resource_h.except 'created_at', 'updated_at', 'date')
              .to json_like submission_id: message.submission_id,
                            content: 'a',
                            sender: 'teacher@mumuki.org',
@@ -77,7 +77,7 @@ describe Message, organization_workspace: :test do
            'created_at' => '1/1/1'}} }
 
       before { problem.submit_solution! user, content: 'other solution' }
-      before { Message.import_from_json! data }
+      before { Message.import_from_resource_h! data }
 
       it { expect(Message.count).to eq 0 }
       it { expect(Assignment.first.has_messages?).to be false }

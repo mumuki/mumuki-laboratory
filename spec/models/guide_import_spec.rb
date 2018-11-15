@@ -6,11 +6,11 @@ describe Guide do
   let!(:gobstones) { create(:gobstones) }
   let(:reloaded_exercise_1) { Exercise.find(exercise_1.id) }
 
-  let(:guide_json) do
+  let(:guide_resource_h) do
     {name: 'sample guide',
      description: 'Baz',
      slug: 'mumuki/sample-guide',
-     language: 'haskell',
+     language: { name: 'haskell' },
      locale: 'en',
      extra: 'bar',
      teacher_info: 'an info',
@@ -23,7 +23,7 @@ describe Guide do
           tag_list: %w(baz bar),
           layout: 'input_bottom',
           teacher_info: 'an info',
-          language: 'gobstones',
+          language: { name: 'gobstones' },
           solution: 'foo',
           assistance_rules: [
             {when: :content_empty, then: 'remember to copy the code in the editor!'},
@@ -53,7 +53,7 @@ describe Guide do
           name: 'Choice',
           tag_list: %w(bar),
           extra: '',
-          language: 'text',
+          language: { name: 'text' },
           test: "---\nequal: '1'\n",
           choices: [{value: 'foo', checked: false}, {value: 'bar', chekced: true}],
           extra_visible: false,
@@ -64,13 +64,13 @@ describe Guide do
           expectations: [],
           choices: [],
           tag_list: %w(bar),
-          language: 'text',
+          language: { name: 'text' },
           layout: 'input_bottom',
           extra_visible: false,
-          id: 9}]}.deep_stringify_keys
+          id: 9}]}
   end
 
-  describe '#import_from_json!' do
+  describe '#import_from_resource_h!' do
     context 'when an exercise is deleted' do
       let(:guide) { create(:guide, exercises: [exercise_1, exercise_2, exercise_3, exercise_4, exercise_5, exercise_6]) }
 
@@ -111,7 +111,7 @@ describe Guide do
                                 number: 6) }
 
       before do
-        guide.import_from_json!(guide_json)
+        guide.import_from_resource_h!(guide_resource_h)
       end
 
       describe 'it is removed from the guide' do
@@ -129,7 +129,7 @@ describe Guide do
       let(:guide) { lesson.guide }
 
       before do
-        guide.import_from_json!(guide_json)
+        guide.import_from_resource_h!(guide_resource_h)
       end
 
       it { expect(guide).to_not be nil }
@@ -159,7 +159,7 @@ describe Guide do
       let(:guide) { create(:guide, language: haskell, exercises: [exercise_1]) }
 
       before do
-        guide.import_from_json! guide_json
+        guide.import_from_resource_h! guide_resource_h
       end
 
       context 'when exercise changes its type' do
@@ -241,7 +241,7 @@ describe Guide do
       let(:reloaded_exercise_2) { Exercise.find(exercise_2.id) }
 
       before do
-        guide.import_from_json! guide_json
+        guide.import_from_resource_h! guide_resource_h
       end
 
       describe 'exercises are not duplicated' do
@@ -267,11 +267,11 @@ describe Guide do
 
     context 'when new_expecations' do
       let(:guide) { create(:guide, language: haskell) }
-      let(:guide_json) do
+      let(:guide_resource_h) do
         {name: 'sample guide',
          description: 'Baz',
          slug: 'mumuki/sample-guide',
-         language: 'haskell',
+         language: { name: 'haskell' },
          locale: 'en',
          extra: 'bar',
          teacher_info: 'an info',
@@ -285,11 +285,11 @@ describe Guide do
               type: 'problem',
               expectations: [{inspection: 'HasBinding', binding: 'foo'}],
               new_expectations: true,
-              id: 2}]}.deep_stringify_keys
+              id: 2}]}
       end
 
       before do
-        guide.import_from_json! guide_json
+        guide.import_from_resource_h! guide_resource_h
       end
 
       it { expect(guide.exercises.first.new_expectations).to be_truthy }

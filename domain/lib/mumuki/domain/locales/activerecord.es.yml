@@ -1,0 +1,50 @@
+---
+es:
+  activerecord:
+    attributes:
+      exercise:
+        description: Descripción
+        extra: Biblioteca
+        hint: Ayudas
+        language: Lenguaje
+        locale: Idioma
+        tag_list: Etiquetas
+        title: Título
+      guide:
+        description: Descripción
+        github_repository: Repositorio Github
+        language: Lenguaje
+        locale: Idioma
+        name: Nombre
+      submission:
+        content: Contenido
+    errors:
+      models:
+        exercise:
+          attributes:
+            randomizations:
+              invalid_format: 'formato inválido'
+            own_expectations:
+              invalid_format: 'formato inválido'
+            assistance_rules:
+              invalid_format: 'formato inválido'
+            name:
+              invalid_format: 'no debe contener /'
+            base:
+              evaluation_criteria_required:  'Tenés que proveer tests y/o expectativas'
+        organization:
+          attributes:
+            base:
+              consistent_public_login: 'Una organización pública no puede restringir los métodos de login'
+    models:
+      exercise:
+        one: Ejercicio
+        other: Ejercicios
+      chapter:
+        one: Capítulo
+        other: Capítulos
+      guide: Guía
+      language: Lenguaje
+      submission:
+        one: Solucion
+        other: Soluciones
