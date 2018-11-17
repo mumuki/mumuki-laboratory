@@ -39,25 +39,8 @@ class Language < ApplicationRecord
     Mumukit::Sync.key :language, runner_url
   end
 
-  def import_from_resource_h!(json)
-    assign_attributes json.slice(:name,
-                                 :comment_type,
-                                 :output_content_type,
-                                 :prompt,
-                                 :extension,
-                                 :highlight_mode,
-                                 :visible_success_output,
-                                 :devicon,
-                                 :triable,
-                                 :queriable,
-                                 :stateful_console,
-                                 :layout_js_urls,
-                                 :layout_html_urls,
-                                 :layout_css_urls,
-                                 :editor_js_urls,
-                                 :editor_html_urls,
-                                 :editor_css_urls,
-                                 :test_template)
+  def import_from_resource_h!(resource_h)
+    assign_attributes resource_h.except(:runner_url)
     save!
   end
 

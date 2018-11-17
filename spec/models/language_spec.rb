@@ -10,112 +10,47 @@ describe Language do
   end
 
   describe '#import!' do
-    let(:bridge) { Mumukit::Bridge::Runner.new('http://runner.com') }
-    before { expect(bridge).to receive(:info).and_return response }
-    before { subject.import_from_resource_h! bridge.importable_info }
+    subject { create(:language, name: 'gobstones', runner_url: 'http://runner.com') }
+    before { subject.import_from_resource_h! language_resource_h }
 
-    context 'non graphical language' do
-      subject { create(:language, name: 'ruby') }
-      let(:response) do
-      {
-          'name' => 'ruby',
-          'version' => 'master',
-          'escualo_base_version' => nil,
-          'escualo_service_version' => nil,
-          'mumukit_version' => '1.0.1',
-          'output_content_type' => 'markdown',
-          'features' => {
-              'query' => true,
-              'expectations' => false,
-              'feedback' => false,
-              'secure' => false,
-              'sandboxed' => true,
-              'stateful' => true,
-              'structured' => true
-          },
-          'language' => {
-              'prompt' => '>',
-              'name' => 'ruby',
-              'version' => '2.0',
-              'extension' => 'rb',
-              'ace_mode' => 'ruby'
-          },
-          'test_framework' => {
-              'name' => 'rspec',
-              'version' => '2.13',
-              'test_extension' => '.rb'
-          },
-          'url' => 'http://ruby.runners.mumuki.io/info'
-      }
-      end
+    let(:language_resource_h) { {
+      name: "gobstones",
+      comment_type: nil,
+      runner_url: "http://foo",
+      output_content_type: "html",
+      prompt: "ム ",
+      extension: "gbs",
+      highlight_mode: "gobstones",
+      visible_success_output: true,
+      devicon: nil,
+      triable: false,
+      feedback: true,
+      queriable: false,
+      stateful_console: false,
+      test_extension: "yml",
+      test_template: nil,
+      layout_js_urls: ['http://runner.com/javascripts/a.js'],
+      layout_html_urls: ["http://runner.com/b.html", "http://runner.com/c.html"],
+      layout_css_urls: ["http://runner.com/stylesheets/d.css"],
+      editor_js_urls: ['http://runner.com/javascripts/aa.js'],
+      editor_html_urls: ["http://runner.com/bb.html", "http://runner.com/cc.html"],
+      editor_css_urls: ["http://runner.com/stylesheets/dd.css"]
+    } }
 
-      it { expect(subject.name).to eq 'ruby' }
-      it { expect(subject.queriable).to be true }
-      it { expect(subject.output_content_type).to eq Mumukit::ContentType::Markdown }
-      it { expect(subject.visible_success_output).to be false }
-      it { expect(subject.highlight_mode).to eq 'ruby' }
-      it { expect(subject.devicon).to eq 'ruby' }
-      it { expect(subject.prompt).to eq '> ' }
-      it { expect(subject.stateful_console).to be true }
-    end
-
-    context 'graphical language' do
-      subject { create(:language, name: 'gobstones', runner_url: 'http://runner.com') }
-      let(:response) do
-      {
-          'name' => 'gobstones',
-          'version' => 'master',
-          'escualo_base_version' => nil,
-          'escualo_service_version' => nil,
-          'mumukit_version' => '1.0.1',
-          'output_content_type' => 'html',
-          'features' => {
-              'query' => false,
-              'expectations' => true,
-              'feedback' => false,
-              'secure' => false,
-              'sandboxed' => false,
-              'structured' => true
-          },
-          'layout_assets_urls' => {
-              'js' => ['javascripts/a.js'],
-              'html' => ['b.html', 'c.html'],
-              'css' => ['stylesheets/d.css']
-          },
-          'editor_assets_urls' => {
-              'js' => ['javascripts/aa.js'],
-              'html' => ['bb.html', 'cc.html'],
-              'css' => ['stylesheets/dd.css']
-          },
-          'language' => {
-              'name' => 'gobstones',
-              'graphic' => true,
-              'version' => '1.4.1',
-              'extension' => 'gbs',
-              'ace_mode' => 'gobstones'
-          },
-          'test_framework' => {
-              'name' => 'stones-spec',
-              'test_extension' => 'yml'
-          },
-          'url' => 'http://runners2.mumuki.io:8001/info'
-      }
-      end
-
-      it { expect(subject.name).to eq 'gobstones' }
-      it { expect(subject.queriable).to be false }
-      it { expect(subject.output_content_type).to eq Mumukit::ContentType::Html }
-      it { expect(subject.visible_success_output).to be true }
-      it { expect(subject.highlight_mode).to eq 'gobstones' }
-      it { expect(subject.devicon).to eq 'gobstones' }
-      it { expect(subject.prompt).to eq 'ム ' }
-      it { expect(subject.stateful_console).to be false }
-      it { expect(subject.layout_js_urls).to eq ['http://runner.com/javascripts/a.js'] }
-      it { expect(subject.layout_html_urls).to eq ['http://runner.com/b.html', 'http://runner.com/c.html'] }
-      it { expect(subject.layout_css_urls).to eq ['http://runner.com/stylesheets/d.css'] }
-      it { expect(subject.editor_js_urls).to eq ['http://runner.com/javascripts/aa.js'] }
-      it { expect(subject.editor_html_urls).to eq ['http://runner.com/bb.html', 'http://runner.com/cc.html'] }
-      it { expect(subject.editor_css_urls).to eq ['http://runner.com/stylesheets/dd.css'] }
-    end
+    it { expect(subject.name).to eq 'gobstones' }
+    it { expect(subject.queriable).to be false }
+    it { expect(subject.output_content_type).to eq Mumukit::ContentType::Html }
+    it { expect(subject.visible_success_output).to be true }
+    it { expect(subject.highlight_mode).to eq 'gobstones' }
+    it { expect(subject.devicon).to eq 'gobstones' }
+    it { expect(subject.prompt).to eq 'ム ' }
+    it { expect(subject.stateful_console).to be false }
+    it { expect(subject.feedback).to be true }
+    it { expect(subject.layout_js_urls).to eq ['http://runner.com/javascripts/a.js'] }
+    it { expect(subject.layout_html_urls).to eq ['http://runner.com/b.html', 'http://runner.com/c.html'] }
+    it { expect(subject.layout_css_urls).to eq ['http://runner.com/stylesheets/d.css'] }
+    it { expect(subject.editor_js_urls).to eq ['http://runner.com/javascripts/aa.js'] }
+    it { expect(subject.editor_html_urls).to eq ['http://runner.com/bb.html', 'http://runner.com/cc.html'] }
+    it { expect(subject.editor_css_urls).to eq ['http://runner.com/stylesheets/dd.css'] }
   end
 end
