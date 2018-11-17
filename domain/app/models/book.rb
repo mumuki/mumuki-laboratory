@@ -23,7 +23,7 @@ class Book < Content
   end
 
   def import_from_resource_h!(resource_h)
-    self.assign_attributes resource_h.except(:chapters, :complements, :id, :description, :teacher_info)
+    self.assign_attributes resource_h.except(:chapters, :complements, :id, :description)
     self.description = resource_h[:description]&.squeeze(' ')
 
     rebuild! resource_h[:chapters].map { |it| Topic.find_by!(slug: it).as_chapter_of(self) }

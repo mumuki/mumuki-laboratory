@@ -26,7 +26,7 @@ class Topic < Content
   end
 
   def import_from_resource_h!(resource_h)
-    self.assign_attributes resource_h.except(:lessons, :id, :description, :teacher_info)
+    self.assign_attributes resource_h.except(:lessons, :description)
     self.description = resource_h[:description].squeeze(' ')
     rebuild! resource_h[:lessons].to_a.map { |it| lesson_for(it) }
     Organization.all.each { |org| org.reindex_usages! }
