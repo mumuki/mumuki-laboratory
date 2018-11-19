@@ -3,27 +3,22 @@ gemspec
 
 ruby '~> 2.3'
 
-gem 'uglifier', '~> 2.7'
-
-gem 'therubyracer', platforms: :ruby
-
-gem 'turbolinks', '~> 5.0'
-
-gem 'sass-rails'
-gem 'execjs'
+gem 'puma'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-momentjs'
 end
-
-gem 'puma'
-
+gem 'uglifier', '~> 2.7'
+gem 'therubyracer', platforms: :ruby
+gem 'turbolinks', '~> 5.0'
+gem 'sass-rails'
+gem 'execjs'
 gem 'rails-i18n', '~> 4.0.0'
-
 gem 'nprogress-rails'
 gem 'mumuki-styles', '~> 1.18'
-
+gem 'sitemap_generator'
 gem 'font-awesome-rails', '~> 4.7'
+
 gem 'mumuki-domain', path: './domain'
 
 group :test do
@@ -43,8 +38,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'i18n-tasks', '~> 0.8.3'
   gem 'web-console'
+  gem 'codeclimate-test-reporter', require: nil
+
 end
 
-gem 'codeclimate-test-reporter', :group => :test, :require => nil
-
-gem 'sitemap_generator'
