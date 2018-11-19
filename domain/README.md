@@ -7,7 +7,7 @@
 ```
   name
   comment_type
-  test_runner_url
+  runner_url
   output_content_type
   prompt
   extension
@@ -28,7 +28,7 @@
   editor_css_urls
 ```
 
-_as defined in `Mumukit::Bridge::Runner#importable_info`_
+_as defined in `Language#to_resource_h`_
 
 ## Platform Hashes
 

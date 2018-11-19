@@ -67,6 +67,13 @@ class Language < ApplicationRecord
     as_json(only: [:name, :extension, :test_extension]).symbolize_keys
   end
 
+  def to_resource_h
+    as_json(only: %i(comment_type devicon editor_css_urls editor_html_urls editor_js_urls
+                    extension feedback highlight_mode layout_css_urls layout_html_urls
+                    layout_js_urls name output_content_type prompt queriable runner_url
+                    stateful_console test_extension test_template triable visible_success_output)).symbolize_keys
+  end
+
   private
 
   # TODO we should use Mumukit::Directives::Pipeline
