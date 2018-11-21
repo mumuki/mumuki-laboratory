@@ -96,6 +96,16 @@ class Organization < ApplicationRecord
     report_issue_enabled? || community_link.present? || forum_enabled?
   end
 
+  def self.import_from_resource_h!(resource_h)
+    find_or_initialize_by(name: resource_h[:name]).tap { |it| it.import_from_resource_h! resource_h }
+  end
+
+  def import_from_resource_h!(resource_h)
+    attrs = Mumukit::Platform::Organization::Helpers.slice_platform_json resource_h
+    attrs[:book] = Book.locate_resource attrs[:book]
+    update! attrs
+  end
+
   private
 
   def ensure_consistent_public_login
