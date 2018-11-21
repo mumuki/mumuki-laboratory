@@ -65,7 +65,7 @@ class Assignment < ApplicationRecord
 
   def content=(content)
     if content.present?
-      self.solution = exercise.single_choice? ? exercise.choices.index(content) : content
+      self.solution = exercise.single_choice? ? exercise.choices_values.index(content) : content
     end
   end
 

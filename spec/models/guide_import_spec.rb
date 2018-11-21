@@ -148,7 +148,8 @@ describe Guide do
       it { expect(guide.exercises.second.language).to eq haskell }
       it { expect(guide.exercises.second.default_content).to eq 'a default content' }
       it { expect(guide.exercises.second.extra_visible).to be true }
-      it { expect(guide.exercises.fourth.choices).to eq ['foo', 'bar'] }
+      it { expect(guide.exercises.fourth.choices).to eq [{value: 'foo', checked: true}, {value: 'bar', checked: false}] }
+      it { expect(guide.exercises.fourth.choice_values).to eq ['foo', 'bar'] }
 
       it { expect(guide.exercises.third.expectations.first['binding']).to eq 'foo' }
 
