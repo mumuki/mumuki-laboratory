@@ -96,7 +96,7 @@ class Exercise < ApplicationRecord
   end
 
   def choice_values
-    choices.map { |it| it.indifferent_get :value }
+    choices.map { |it| it.is_a?(String) ? it : it.indifferent_get(:value) }
   end
 
   def to_resource_h
