@@ -7,9 +7,10 @@ describe Exercise, organization_workspace: :test do
   describe '#choice_values' do
     context 'when choices are in 5.0 format' do
       let(:choice_values) { %w(1492 1453 1773)  }
-      let(:exercise) { build(:exercise, description: 'when did byzantine empire fall?', choices: choice_values) }
+      let(:exercise) { build(:exercise, description: 'when did byzantine empire fall?', choice_values: choice_values) }
 
-      it { expect(exercise.choices).to eq choice_values }
+      it { expect(exercise.choices).to be_blank }
+      it { expect(exercise[:choice_values]).to eq choice_values }
       it { expect(exercise.choice_values).to eq choice_values }
     end
 
@@ -18,6 +19,7 @@ describe Exercise, organization_workspace: :test do
       let(:exercise) { build(:exercise, description: 'when did byzantine empire fall?', choices: choices) }
 
       it { expect(exercise.choices).to eq choices }
+      it { expect(exercise[:choice_values]).to be_blank }
       it { expect(exercise.choice_values).to eq %w(1492 1453 1773) }
     end
   end

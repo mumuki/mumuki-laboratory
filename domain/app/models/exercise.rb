@@ -19,6 +19,7 @@ class Exercise < ApplicationRecord
   belongs_to :guide
   defaults { self.submissions_count = 0 }
 
+  serialize :choices, Array
   validates_presence_of :submissions_count,
                         :guide, :bibliotheca_id
 
@@ -96,7 +97,7 @@ class Exercise < ApplicationRecord
   end
 
   def choice_values
-    choices.map { |it| it.is_a?(String) ? it : it.indifferent_get(:value) }
+    self[:choice_values].presence || choices.map { |it| it.indifferent_get(:value) }
   end
 
   def to_resource_h
