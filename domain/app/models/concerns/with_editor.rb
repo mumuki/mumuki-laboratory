@@ -15,7 +15,7 @@ module WithEditor
   end
 
   def pretty_choices
-    choices.each_with_index.map do |choice, index|
+    choice_values.each_with_index.map do |choice, index|
       struct id: "content_choice_#{index}",
              index: index,
              value: choice,

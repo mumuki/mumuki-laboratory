@@ -85,7 +85,7 @@ class Exercise < ApplicationRecord
     reset!
 
     attrs = whitelist_attributes(resource_h, except: [:type, :id])
-    attrs[:choices] = resource_h[:choices]&.map { |choice| choice[:value] }.to_a
+    attrs[:choices] = resource_h[:choices].to_a
     attrs[:bibliotheca_id] = resource_h[:id]
     attrs[:number] = number
     attrs[:manual_evaluation] ||= false
@@ -93,6 +93,10 @@ class Exercise < ApplicationRecord
 
     assign_attributes(attrs)
     save!
+  end
+
+  def choice_values
+    choices.map { |it| it.indifferent_get :value }
   end
 
   def to_resource_h
