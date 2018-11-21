@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ChoicesHelper do
   helper ChoicesHelper
 
-  context 'exercise width choices' do
+  context 'exercise with choices' do
     let(:checked_content) { struct id: '1', index: 0, value: 'foo', text: 'bar' }
     let(:unchecked_content) { struct id: '3', index: 2, value: 'baz', text: 'lorem' }
     let(:content) { '0:1' }

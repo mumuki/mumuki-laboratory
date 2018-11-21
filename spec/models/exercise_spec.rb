@@ -4,6 +4,30 @@ describe Exercise, organization_workspace: :test do
   let(:exercise) { create(:exercise) }
   let(:user) { create(:user, first_name: 'Orlo') }
 
+  describe '#choice_values' do
+    context 'when choices are in 5.0 format' do
+      let(:choice_values) { %w(1492 1453 1773)  }
+      let(:exercise) { build(:exercise, description: 'when did byzantine empire fall?', choice_values: choice_values) }
+
+      it { expect(exercise.choices).to be_blank }
+      it { expect(exercise[:choice_values]).to eq choice_values }
+      it { expect(exercise.choice_values).to eq choice_values }
+      it { expect(exercise.choice_index_for '1492').to eq 0 }
+      it { expect(exercise.choice_index_for '1773').to eq 2 }
+    end
+
+    context 'when choices are in 6.0 format' do
+      let(:choices) { [{value: '1492', checked: false}, {value: '1453', checked: true}, {value: '1773', checked: false}] }
+      let(:exercise) { build(:exercise, description: 'when did byzantine empire fall?', choices: choices) }
+
+      it { expect(exercise.choices).to eq choices }
+      it { expect(exercise[:choice_values]).to be_blank }
+      it { expect(exercise.choice_values).to eq %w(1492 1453 1773) }
+      it { expect(exercise.choice_index_for '1492').to eq 0 }
+      it { expect(exercise.choice_index_for '1773').to eq 2 }
+    end
+  end
+
   describe '#slug' do
     let(:guide) { create(:guide, slug: 'foo/bar') }
     let(:exercise) { create(:exercise, guide: guide, bibliotheca_id: 4) }

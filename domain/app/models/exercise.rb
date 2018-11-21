@@ -19,6 +19,7 @@ class Exercise < ApplicationRecord
   belongs_to :guide
   defaults { self.submissions_count = 0 }
 
+  serialize :choices, Array
   validates_presence_of :submissions_count,
                         :guide, :bibliotheca_id
 
@@ -85,7 +86,7 @@ class Exercise < ApplicationRecord
     reset!
 
     attrs = whitelist_attributes(resource_h, except: [:type, :id])
-    attrs[:choices] = resource_h[:choices]&.map { |choice| choice[:value] }.to_a
+    attrs[:choices] = resource_h[:choices].to_a
     attrs[:bibliotheca_id] = resource_h[:id]
     attrs[:number] = number
     attrs[:manual_evaluation] ||= false
@@ -93,6 +94,14 @@ class Exercise < ApplicationRecord
 
     assign_attributes(attrs)
     save!
+  end
+
+  def choice_values
+    self[:choice_values].presence || choices.map { |it| it.indifferent_get(:value) }
+  end
+
+  def choice_index_for(value)
+    choice_values.index(value)
   end
 
   def to_resource_h
