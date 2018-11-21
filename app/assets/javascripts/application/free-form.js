@@ -4,7 +4,7 @@ mumuki.load(() => {
   }
 
   function loadInput(values, element) {
-    element.attr('value', values[element.attr('name')]);
+    element.val(values[element.attr('name')]);
   }
 
 	function dumpForm(_event) {
