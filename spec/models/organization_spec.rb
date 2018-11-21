@@ -4,6 +4,20 @@ describe Organization, organization_workspace: :test do
   let(:user) { create(:user) }
   let(:central) { create(:organization, name: 'central') }
 
+  describe '.import_from_resource_h!' do
+    let(:book) { create(:book) }
+    let(:resource_h) { {
+      name: 'zulema',
+      book: book.slug,
+      profile: { locale: 'es', contact_email: 'contact@email.com' }
+    } }
+    let!(:imported) { Organization.import_from_resource_h! resource_h }
+    let(:found) { Organization.find_by(name: 'zulema').to_resource_h }
+
+    it { expect(imported).to_not be nil }
+    it { expect(found).to json_eq resource_h, except: [:theme, :settings]  }
+  end
+
   describe '.current' do
     let(:organization) { Organization.find_by(name: 'test') }
     it { expect(organization).to_not be nil }
