@@ -100,6 +100,10 @@ class Exercise < ApplicationRecord
     self[:choice_values].presence || choices.map { |it| it.indifferent_get(:value) }
   end
 
+  def choice_index_for(value)
+    choice_values.index(value)
+  end
+
   def to_resource_h
     language_resource_h = language.to_embedded_resource_h if language != guide.language
     as_json(only: %i(name layout editor description corollary teacher_info hint test manual_evaluation locale extra
