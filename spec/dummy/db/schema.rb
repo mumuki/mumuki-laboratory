@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181117190241) do
+ActiveRecord::Schema.define(version: 20181121165956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -158,7 +158,7 @@ ActiveRecord::Schema.define(version: 20181117190241) do
     t.boolean "new_expectations", default: false
     t.boolean "manual_evaluation", default: false
     t.integer "editor", default: 0, null: false
-    t.string "choices", default: [], null: false, array: true
+    t.string "choice_values", default: [], null: false, array: true
     t.text "goal"
     t.string "initial_state"
     t.string "final_state"
@@ -166,6 +166,7 @@ ActiveRecord::Schema.define(version: 20181117190241) do
     t.text "randomizations"
     t.text "free_form_editor_source"
     t.text "teacher_info"
+    t.text "choices"
     t.index ["guide_id"], name: "index_exercises_on_guide_id"
     t.index ["language_id"], name: "index_exercises_on_language_id"
   end
