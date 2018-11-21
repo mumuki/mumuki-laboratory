@@ -12,6 +12,8 @@ describe Exercise, organization_workspace: :test do
       it { expect(exercise.choices).to be_blank }
       it { expect(exercise[:choice_values]).to eq choice_values }
       it { expect(exercise.choice_values).to eq choice_values }
+      it { expect(exercise.choice_index_for '1492').to eq 0 }
+      it { expect(exercise.choice_index_for '1773').to eq 2 }
     end
 
     context 'when choices are in 6.0 format' do
@@ -21,6 +23,8 @@ describe Exercise, organization_workspace: :test do
       it { expect(exercise.choices).to eq choices }
       it { expect(exercise[:choice_values]).to be_blank }
       it { expect(exercise.choice_values).to eq %w(1492 1453 1773) }
+      it { expect(exercise.choice_index_for '1492').to eq 0 }
+      it { expect(exercise.choice_index_for '1773').to eq 2 }
     end
   end
 
