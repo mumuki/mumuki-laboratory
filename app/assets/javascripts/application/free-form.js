@@ -20,6 +20,8 @@ mumuki.load(() => {
     if (!json) return;
 
     let values = JSON.parse(json);
+    $('.mu-read-only-free-form .mu-free-form-input').prop('disabled', true);
+
     $('.mu-free-form-input').each(function () {
       loadInput(values, $(this));
     });
