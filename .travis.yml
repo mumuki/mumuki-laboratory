@@ -26,11 +26,3 @@ deploy:
     on:
       tags: true
       repo: mumuki/mumuki-laboratory
-  - provider: rubygems
-    api_key:
-      secure: UCcnbLlfv+vrOjeiwUK3qMrkP67AQPnsy1ukNW9zey4FI8RgaQGZAoXws3POhZaLkOfoS/OaUDbXs+LN7IDx3j6KeJv+gdxJ7/LNND7IAnLnkcRaBwpSfb7kF+HfqyWnIY9GosMaLN2W715A7sxdFpLf1EpToxb4SQVKjfWJGC8=
-    gem: mumuki-domain
-    gemspec: domain/mumuki-domain.gemspec
-    on:
-      tags: true
-      repo: mumuki/mumuki-laboratory
