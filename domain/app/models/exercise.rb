@@ -132,7 +132,7 @@ class Exercise < ApplicationRecord
   end
 
   def reclassify!(type)
-    update!(type: Mumukit::Sync.classify(type))
+    update!(type: type)
     Exercise.find(id)
   end
 

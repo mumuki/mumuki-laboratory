@@ -15,7 +15,7 @@ module WithSlug
   ## Resource Protocol
 
   def sync_key
-    Mumukit::Sync.key self.class.name.underscore.to_sym, slug
+    Mumukit::Sync.key self.class, slug
   end
 
   ## Copy and Rebase

@@ -27,12 +27,9 @@ Mumukit::Nuntius::EventConsumer.handle do
 
   [Book, Topic, Guide].each do |it|
     event "#{it.name}Changed" do |data|
-      slug = data[:slug]
-      item = it.find_or_initialize_by(slug: slug)
-
       Mumukit::Sync::Syncer.new(
         Mumukit::Sync::Store::Bibliotheca.new(
-          Mumukit::Platform.bibliotheca_bridge)).import! item
+          Mumukit::Platform.bibliotheca_bridge)).locate_and_import! it, data[:slug]
     end
   end
 end
