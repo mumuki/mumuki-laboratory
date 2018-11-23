@@ -6,7 +6,7 @@ class Mumuki::Domain::Submission::ConsoleSubmission < Mumuki::Domain::Submission
   end
 
   def format_query_result!(results)
-    results[:result] = I18n.t(:try_again) if results[:status] == :aborted
+    results[:result] = I18n.t(:try_again) if results[:status].aborted?
     results[:status] = results[:status].to_submission_status
     results
   end
