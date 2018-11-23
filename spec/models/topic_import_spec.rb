@@ -12,7 +12,7 @@ describe Guide do
   let!(:guide_2) { create(:guide, name: 'g2') }
   let!(:guide_3) { create(:guide, name: 'g3') }
 
-  let(:topic_json) do
+  let(:topic_resource_h) do
     {name: 'sample topic',
      description: 'topic description',
      slug: 'mumuki/mumuki-sample-topic',
@@ -25,7 +25,7 @@ describe Guide do
       let(:topic) { create(:topic, lessons: [lesson_1, lesson_2]) }
 
       before do
-        topic.import_from_resource_h!(topic_json)
+        topic.import_from_resource_h!(topic_resource_h)
       end
 
       it { expect(topic.name).to eq 'sample topic' }
