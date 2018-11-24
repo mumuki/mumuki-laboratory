@@ -7,10 +7,10 @@ describe BreadcrumbsHelper, organization_workspace: :test do
   helper ERB::Util
 
   context 'user' do
-    let(:user) { create(:user) }
+    let(:user) { create(:user, first_name: "Alfonsina", last_name: "Storni") }
     let(:breadcrumb) { breadcrumbs(user) }
 
-    it { expect(breadcrumb).to include "<li class='mu-breadcrumb-list-item last'>#{user.name}</li>" }
+    it { expect(breadcrumb).to include "<li class='mu-breadcrumb-list-item last'>Alfonsina Storni</li>" }
   end
 
   context 'exercise' do
