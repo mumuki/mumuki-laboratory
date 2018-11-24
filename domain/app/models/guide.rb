@@ -58,7 +58,7 @@ class Guide < Content
   end
 
   def import_from_resource_h!(resource_h)
-    self.assign_attributes whitelist_attributes(resource_h, except: [:id])
+    self.assign_attributes whitelist_attributes(resource_h)
     self.language = Language.for_name(resource_h.dig(:language, :name))
     self.save!
 
@@ -67,8 +67,8 @@ class Guide < Content
       exercise_type = e[:type] || 'problem'
 
       exercise = exercise ?
-          exercise.ensure_type!(exercise_type) :
-          Mumukit::Sync.constantize(exercise_type).new(guide_id: self.id, bibliotheca_id: e[:id])
+          exercise.ensure_type!(exercise_type.as_module_name) :
+          exercise_type.as_module.new(guide_id: self.id, bibliotheca_id: e[:id])
 
       exercise.import_from_resource_h! (i+1), e
     end
