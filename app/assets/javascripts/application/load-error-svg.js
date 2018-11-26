@@ -8,7 +8,7 @@ mumuki.load(function () {
     addImage(mumuki.errors, 'error_' + svgErrorSuffix, '/');
   });
 
-  addImage(mumuki.characters, 'yellow_context', '/character/kids/');
+  addImage(mumuki.characters, 'kibi_context', '/character/kids/');
   addImage(mumuki.characters, 'magnifying_glass_apparition', '/');
   addImage(mumuki.characters, 'magnifying_glass_loop', '/');
 
