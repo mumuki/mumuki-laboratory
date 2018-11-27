@@ -177,10 +177,7 @@ class Assignment < ApplicationRecord
   end
 
   def files
-    language
-      .directives_sections
-      .split_sections(current_content)
-      .map { |name, content| Mumuki::Domain::File.new name, content }
+    exercise.files_for(current_content)
   end
 
   private

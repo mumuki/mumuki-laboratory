@@ -19,14 +19,26 @@ mumuki.load(function () {
     var textarea = $textarea[0];
     if(!textarea) return;
 
-    new mumuki.editor.CodeMirrorBuilder(textarea)
+    return new mumuki.editor.CodeMirrorBuilder(textarea)
       .setupSimpleEditor()
       .setupMinLines($textarea.data('lines'))
       .build();
   }
 
-  createNewMessageEditor();
+  function createReadOnlyEditors() {
+    return $(".read-only-editor").map(function (index, textarea) {
+      var $textarea = $("#solution_content");
 
+      return new mumuki.editor.CodeMirrorBuilder(textarea)
+        .setupReadOnlyEditor()
+        .setupMinLines($textarea.data('lines'))
+        .setupLanguage()
+        .build();
+    });
+  }
+  createReadOnlyEditors();
+  createNewMessageEditor();
+  
   var Forum = {
     toggleButton: function (spans) {
       spans.toggleClass('hidden');
