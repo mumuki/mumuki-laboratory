@@ -25,7 +25,8 @@ var mumuki = mumuki || {};
     lineWiseCopyCut: true,
     autoCloseBrackets: true,
     showCursorWhenSelecting: true,
-    lineWrapping: true
+    lineWrapping: true,
+    autoRefresh: true
   };
 
   CodeMirrorBuilder.prototype = {
@@ -57,6 +58,15 @@ var mumuki = mumuki || {};
             mumuki.editor.indentWithSpaces(cm)
           }
         }
+      });
+
+      return this;
+    },
+    setupReadOnlyEditor: function () {
+      this.editor = this.createEditor({
+        readOnly: true,
+        cursorBlinkRate: -1, //Hides the cursor
+        lineNumbers: true
       });
 
       return this;

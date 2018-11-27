@@ -183,6 +183,13 @@ class Exercise < ApplicationRecord
     navigable_parent.limited_for?(self)
   end
 
+  def files_for(current_content)
+    language
+      .directives_sections
+      .split_sections(current_content)
+      .map { |name, content| Mumuki::Domain::File.new name, content }
+  end
+
   private
 
   def evaluation_class

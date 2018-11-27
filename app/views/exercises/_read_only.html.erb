@@ -55,7 +55,9 @@
         <div role="tabpanel" class="tab-pane active" id="solution">
           <div class="mu-tab-body">
             <div role="tabpanel" class="tab-pane mu-input-panel fade in active" id="editor">
-              <%= render_exercise_read_only_editor exercise, @discussion.solution %>
+              <div class="mu-read-only-editor">
+                <%= render_exercise_read_only_editor exercise, @discussion.solution %>
+              </div>
             </div>
           </div>
         </div>
