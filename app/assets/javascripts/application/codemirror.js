@@ -83,7 +83,6 @@ var mumuki = mumuki || {};
     $('.editor-resize').click(function () {
       toggleFullscreen();
     });
-
   });
 
 }(mumuki));

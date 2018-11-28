@@ -491,4 +491,18 @@ describe Exercise, organization_workspace: :test do
       it { expect { exercise.validate! }.to raise_error(/randomizations format is invalid/i) }
     end
   end
+
+  describe '#files_for' do
+    before { create(:language, extension: 'js', highlight_mode: 'javascript') }
+    let(:current_content) { "/*<index.html#*/a html content/*#index.html>*/\n/*<a_file.js#*/a js content/*#a_file.js>*/" }
+    let(:assignment) { build(:assignment, exercise: exercise, solution: current_content) }
+    let(:files) { exercise.files_for(current_content) }
+
+    it { expect(files.count).to eq 2 }
+    it { expect(files[0]).to have_attributes(name: 'index.html', content: 'a html content') }
+    it { expect(files[0].highlight_mode).to eq 'html' }
+    it { expect(files[1]).to have_attributes(name: 'a_file.js', content: 'a js content') }
+    it { expect(files[1].highlight_mode).to eq 'javascript' }
+    it { expect(files.to_json).to eq assignment.files.to_json }
+  end
 end

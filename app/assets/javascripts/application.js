@@ -23,6 +23,7 @@
 //= require jquery-console
 
 //= require codemirror.min
+//= require codemirror-autorefresh
 //= require_tree ../../../vendor/assets/javascripts/codemirror-modes
 //= require analytics
 //= require hotjar

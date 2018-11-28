@@ -4,26 +4,25 @@
     <span class="files-tabs">
       <ul class="nav nav-tabs">
         <% @files.each_with_index do |file, index| %>
-            <li role="presentation" class="file-tab <%= 'active' if index == 0 %>" data-target="#editor-file-<%= index %>" tabindex='0' data-toggle='tab'>
-              <a class="file-name" href="#"><%= file.name %></a> <i class="delete-file-button fa fa-times"></i>
-            </li>
+          <li role="presentation" class="file-tab <%= 'active' if index == 0 %>" data-target="#editor-file-<%= index %>" tabindex='0' data-toggle='tab'>
+            <a class="file-name" href="#"><%= file.name %></a> <i class="delete-file-button fa fa-times"></i>
+          </li>
         <% end %>
       </ul>
       <i class="add-file-button fa fa-plus"></i>
     </span>
 
-    <input id="highlight-modes" type="hidden" value="<%=highlight_modes.to_json%>" />
-    <input id="multifile-locales" type="hidden" value="<%=multifile_locales.to_json%>" />
+    <%= multifile_hidden_inputs %>
 
     <div class="tab-content">
       <% @files.each_with_index do |file, index| %>
-          <div role="tabpanel" class="file-editor tab-pane mu-input-panel <%= 'fade in active' if index == 0 %>" id="editor-file-<%= index %>">
-            <%= form.editor "content[#{file.name}]", file.highlight_mode,
-                            placeholder: t(:editor_placeholder),
-                            class: 'form-control editor',
-                            value: file.content,
-                            data: {lines: 17} %>
-          </div>
+        <div role="tabpanel" class="file-editor tab-pane mu-input-panel <%= 'fade in active' if index == 0 %>" id="editor-file-<%= index %>">
+          <%= form.editor "content[#{file.name}]", file.highlight_mode,
+                          placeholder: t(:editor_placeholder),
+                          class: 'form-control editor',
+                          value: file.content,
+                          data: {lines: 17} %>
+        </div>
       <% end %>
     </div>
 
