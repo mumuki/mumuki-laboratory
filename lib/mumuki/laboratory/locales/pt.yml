@@ -226,7 +226,6 @@ pt:
   to_opened: Reabrir
   to_pending_review: Marcar como resolvida
   to_solved: Marcar como resolvida
-  try_again: Opa, algo deu errado em Mumuki. Reinicie o exercício, aguarde alguns segundos e tente novamente.
   unauthorized_explanation: Opa! Isso é o que é conhecido como %{error}, ou seja, você não fez logon.
   uncategorized: Não classificado
   unmeet_expectations: Objetivos que não foram atendidos

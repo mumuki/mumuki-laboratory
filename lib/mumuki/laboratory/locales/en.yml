@@ -214,7 +214,6 @@ en:
   to_opened: Reopen
   to_pending_review: Mark as solved
   to_solved: Mark as solved
-  try_again: Oops, something went wrong in Mumuki. Restart the exercise, wait a few seconds and try again.
   unauthorized_explanation: You have no permissions for this content. Maybe you logged in with another account.
   undo_upvote: Undo upvote
   unmeet_expectations: "Goals that weren't met"
