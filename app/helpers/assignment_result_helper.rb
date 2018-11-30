@@ -21,7 +21,7 @@ module AssignmentResultHelper
 
   def report_bug_link(assignment, organization=Organization.current)
     if organization.report_issue_enabled?
-      mail_to contact_email,
+      mail_to organization.contact_email,
         fa_icon(:bug, text: t(:notify_problem_with_exercise), class: 'fa-fw'),
         subject: t(:problem_with_exercise, title: @exercise.name),
         body: assignment_help_email_body(assignment),
