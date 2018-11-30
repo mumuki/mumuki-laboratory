@@ -7,7 +7,7 @@ require 'codeclimate-test-reporter'
 require 'mumukit/core/rspec'
 require 'factory_bot_rails'
 
-Dir["#{__dir__}/factories/**/*.rb"].each { |f| require f }
+require 'mumuki/domain/factories'
 
 ActiveRecord::Migration.maintain_test_schema!
 
