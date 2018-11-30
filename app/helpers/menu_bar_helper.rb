@@ -9,7 +9,7 @@ module MenuBarHelper
   end
 
   def menu_bar_list_items
-    menu_bar_links.compact.map { |link| "<li>#{link}<li>".html_safe }.join
+    menu_bar_links.compact.map { |link| "<li>#{link}<li>" }.join.html_safe
   end
 
   def link_to_classroom
