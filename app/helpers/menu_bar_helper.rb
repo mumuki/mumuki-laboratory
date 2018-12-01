@@ -1,4 +1,17 @@
 module MenuBarHelper
+  def menu_bar_links
+    [
+      link_to_classroom,
+      link_to_bibliotheca,
+      solve_discussions_link,
+      user_discussions_link
+    ]
+  end
+
+  def menu_bar_list_items
+    menu_bar_links.compact.map { |link| "<li>#{link}<li>" }.join.html_safe
+  end
+
   def link_to_classroom
     link_to_application 'graduation-cap', :classroom, :teacher_here?
   end

@@ -1,20 +1,6 @@
 module ApplicationHelper
   include WithStudentPathNavigation
 
-  def contact_email
-    Organization.current.contact_email
-  end
-
-  def page_title(subject)
-    name = "Mumuki#{Organization.current.title_suffix}"
-
-    if subject && !subject.new_record?
-      "#{subject.friendly} - #{name}"
-    else
-      "#{name} - #{t :mumuki_catchphrase}"
-    end
-  end
-
   def profile_picture
     image_tag(current_user.image_url, height: 40, class: 'img-circle', onError: "this.onerror = null; this.src = '#{image_url('user_shape.png')}'")
   end
@@ -30,14 +16,6 @@ module ApplicationHelper
         <p>#{with_corollary.corollary_html}</p>
       </div>
 }.html_safe
-    end
-  end
-
-  def assistance_box(assignment)
-    if assignment.tips.present?
-      %Q{<div class="mu-tips-box">
-        #{Mumukit::Assistant::Narrator.random.compose_explanation_html assignment.tips}
-      </div>}.html_safe
     end
   end
 
