@@ -2,7 +2,7 @@
     <%= breadcrumbs @invitation %>
 <% end %>
 <div>
-  <h3><%= raw t(:joining, course: @invitation.course) %> </h3>
+  <h3><%= raw t(:joining, course: @invitation.course.name) %> </h3>
 </div>
 <div>
   <span><%= t :please_validate %></span>
