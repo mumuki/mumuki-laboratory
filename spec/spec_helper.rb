@@ -23,6 +23,7 @@ RSpec.configure do |config|
 
   config.infer_spec_type_from_file_location!
 
+  config.full_backtrace = true if ENV['RSPEC_FULL_BACKTRACE']
 end
 
 require_relative './capybara_helper'
