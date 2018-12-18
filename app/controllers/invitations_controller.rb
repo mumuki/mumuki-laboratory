@@ -28,7 +28,7 @@ class InvitationsController < ApplicationController
   end
 
   def set_invitation!
-    @invitation = Invitation.locate(params[:code]).unexpired
+    @invitation = Invitation.locate!(params[:code]).unexpired
     @organization = @invitation.organization
   end
 end
