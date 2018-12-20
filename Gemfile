@@ -19,8 +19,6 @@ gem 'mumuki-styles', '~> 1.18'
 gem 'sitemap_generator'
 gem 'font-awesome-rails', '~> 4.7'
 
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain'
-
 group :test do
   gem 'rspec-rails', '~> 3.6'
   gem 'factory_bot_rails'
