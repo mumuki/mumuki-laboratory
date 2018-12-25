@@ -1,17 +1,17 @@
 <div class="text-box">
-  <%= exercise.description_html %>
+  <%= customized_description_html %>
 </div>
 <div class="row">
   <div class="col-md-12">
-    <div class="hint-box <%= 'hidden' if exercise.hint.blank? %>">
-      <% if exercise.hint.present? %>
+    <div class="hint-box <%= 'hidden' if customized_hint_html.blank? %>">
+      <% if customized_hint_html.present? %>
         <a data-toggle="collapse" href="#hint-section" class="text-info">
           <%= fa_icon 'lightbulb-o' %> <%= t :need_a_hint %>
         </a>
 
         <div id="hint-section" class="collapse">
           <p>
-            <%= exercise.hint_html %>
+            <%= customized_hint_html %>
           </p>
         </div>
       <% end %>

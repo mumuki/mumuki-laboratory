@@ -6,6 +6,9 @@ module Mumuki::Laboratory::Controllers::ExerciseSeed
   end
 
   def set_seed!
-    @exercise.seed_with! current_user&.id if @exercise
+    if @exercise && current_user
+      @assignment = @exercise.assignment_for current_user
+      @assignment.seed_with! current_user.id
+    end
   end
 end

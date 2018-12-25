@@ -2,5 +2,5 @@
 
 <%= render_custom_editor(exercise, true) %>
 <%= hidden_field :content, id: "mu-custom-editor-value", value: content %>
-<%= hidden_field :default_content, id: "mu-custom-editor-default-value", value: exercise.default_content %>
-<%= hidden_field :content_extra, id: "mu-custom-editor-extra", value: exercise.extra %>
+<%= hidden_field :default_content, id: "mu-custom-editor-default-value", value: customized_default_content %>
+<%= hidden_field :content_extra, id: "mu-custom-editor-extra", value: customized_extra %>

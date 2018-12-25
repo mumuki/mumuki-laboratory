@@ -4,7 +4,10 @@ feature 'Dynamic Exam', organization_workspace: :test do
   let(:user) { create(:user, id: 1) }
   let(:user2) { create(:user, id: 2) }
 
-  let!(:problem) { build(:problem, description: 'do f = $someVariable', randomizations: { someVariable: { type: :one_of, value: %w(some_string some_other_string)} }) }
+  let!(:problem) {
+    build(:problem,
+          description: 'do f = $someVariable',
+          randomizations: { someVariable: { type: :one_of, value: %w(some_string some_other_string)} }) }
 
   let!(:chapter) {
     create(:chapter, lessons: [
@@ -19,7 +22,7 @@ feature 'Dynamic Exam', organization_workspace: :test do
     scenario 'visit exercise by slug' do
       visit "/exercises/#{problem.slug}"
 
-      expect(page).to have_text('do f = some_string')
+      expect(page).to have_text('do f = $someVariable')
     end
   end
 

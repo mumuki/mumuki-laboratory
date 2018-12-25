@@ -13,6 +13,8 @@ feature 'Exercise Flow', organization_workspace: :test do
   let!(:problem_5) { build(:problem, name: 'Succ5', description: 'Description of Succ5', layout: :input_right, editor: :upload, hint: 'lele', language: gobstones) }
   let!(:problem_6) { build(:problem, name: 'Succ6', description: 'Description of Succ6', layout: :input_right, editor: :hidden, language: haskell) }
   let!(:problem_7) { build(:problem, name: 'Succ7', description: 'Description of Succ7', choices: [{value: 'some choice', checked: true}]) }
+  let!(:problem_8) { build(:problem, name: 'Succ For Kids', description: 'Description of Succ For Kids', layout: :input_kids, hint: 'lala') }
+
   let!(:playground_1) { build(:playground, name: 'Succ5', description: 'Description of Succ4', layout: :input_right) }
   let!(:playground_2) { build(:playground, name: 'Succ6', description: 'Description of Succ4', layout: :input_right, extra: 'x = 4') }
   let!(:reading) { build(:reading, name: 'Reading about Succ', description: 'Lets understand succ history') }
@@ -22,7 +24,7 @@ feature 'Exercise Flow', organization_workspace: :test do
   let!(:chapter) {
     create(:chapter, name: 'Functional Programming', lessons: [
       create(:lesson, name: 'getting-started', description: 'An awesome guide', language: haskell, exercises: [
-        problem_1, problem_2, problem_3, problem_4, reading, problem_5, problem_6, problem_7, playground_1, playground_2
+        problem_1, problem_2, problem_3, problem_4, reading, problem_5, problem_6, problem_7, problem_8, playground_1, playground_2
       ])
     ]) }
 
@@ -53,6 +55,16 @@ feature 'Exercise Flow', organization_workspace: :test do
   context 'not logged user' do
     scenario 'visit exercise by slug' do
       visit "/exercises/#{problem_1.slug}"
+
+      expect(page).to have_text('Succ1')
+      expect(page).to_not have_text('Console')
+      expect(page).to_not have_text('Solution')
+      expect(page).to have_text('need a hint?')
+      expect(page).to have_text('Description of Succ1')
+    end
+
+    scenario 'visit exercise by slug, kids layout' do
+      visit "/exercises/#{problem_8.slug}"
 
       expect(page).to have_text('Succ1')
       expect(page).to_not have_text('Console')

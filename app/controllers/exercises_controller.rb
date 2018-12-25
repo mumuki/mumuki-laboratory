@@ -34,7 +34,6 @@ class ExercisesController < ApplicationController
     @assignment = @exercise.assignment_for(current_user)
     @files = @assignment.files
     @current_content = @assignment.current_content
-    @default_content = @assignment.default_content
   end
 
   def set_guide!
