@@ -103,10 +103,14 @@ var mumuki = mumuki || {};
     submitButton.checkAttemptsLeft();
   });
 
+  function getEditorsContent() {
+    return $('.new_solution').serializeArray().concat(mumuki.CustomEditor.getContent())
+  }
+
   function getContent(){
     var content = {};
 
-    $('.new_solution').serializeArray().forEach(function(it) {
+    getEditorsContent().forEach(function(it) {
       content[it.name] = it.value;
     });
 
