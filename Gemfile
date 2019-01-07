@@ -18,6 +18,7 @@ gem 'nprogress-rails'
 gem 'mumuki-styles', '~> 1.18'
 gem 'sitemap_generator'
 gem 'font-awesome-rails', '~> 4.7'
+gem 'serviceworker-rails'
 
 group :test do
   gem 'rspec-rails', '~> 3.6'
