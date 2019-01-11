@@ -8,7 +8,7 @@ module MultipleFileEditorHelper
   end
 
   def multifile_hidden_inputs
-    hidden_field_tag('highlight-modes', highlight_modes.to_json)
+    hidden_field_tag('highlight-modes', highlight_modes.to_json) +
     hidden_field_tag('multifile-locales', multifile_locales.to_json)
   end
 end
