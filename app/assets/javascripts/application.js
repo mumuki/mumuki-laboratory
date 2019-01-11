@@ -34,3 +34,9 @@
 NProgress.configure({
   showSpinner: false
 });
+
+// ver elementos cacheados:
+caches.open("v1:sw-cache-").then((cache) => cache.keys()).then(console.log)
+
+// cachear una url programáticamente:
+cache.add("http://localhost:3000/central/chapters/51-programacion-imperativa")
