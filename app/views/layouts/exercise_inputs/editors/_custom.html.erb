@@ -1,6 +1,7 @@
 <%= render_runner_assets @exercise.language, :editor %>
 
 <%= render_custom_editor(@exercise) %>
+
 <%= form.hidden_field :content, id: "mu-custom-editor-value", value: @current_content %>
 <%= form.hidden_field :content_extra, id: "mu-custom-editor-extra", value: @exercise.extra %>
 <%= form.hidden_field :content, id: "mu-custom-editor-test", value: @exercise.test %>
