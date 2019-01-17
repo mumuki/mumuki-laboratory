@@ -57,14 +57,9 @@ mumuki.load(function () {
     nextSpeechBlinking = setInterval(() => $nextSpeech.fadeTo('slow', 0.1).fadeTo('slow', 1.0), 1000);
   }
 
-  $nextSpeech.click(function () {
-    showParagraph(currentParagraphIndex + 1);
-    clearInterval(nextSpeechBlinking);
-  });
+  $nextSpeech.click(showNextParagraph);
 
-  $prevSpeech.click(function () {
-    showParagraph(currentParagraphIndex - 1);
-  });
+  $prevSpeech.click(showPrevParagraph);
 
   function getSelectedTabName() {
     return $speechTabs.filter(".active").data('target') || $defaultSpeechTabName;
@@ -215,12 +210,9 @@ mumuki.load(function () {
 
     _showCorollaryCharacter: function () {
       var image = $('#mu-kids-corollary-animation')[0];
-      image && setTimeout(function () {
-        image.src = mumuki.characters.magnifying_glass_apparition.url;
-        setTimeout(function () {
-          image.src = mumuki.characters.magnifying_glass_loop.url;
-        }, mumuki.characters.magnifying_glass_apparition.duration);
-      }, 500);
+      mumuki.animation.sequence([
+        mumuki.characters.magnifying_glass_apparition,
+        mumuki.characters.magnifying_glass_loop]).play(image);
     },
 
     resultAction: {}
@@ -236,25 +228,23 @@ mumuki.load(function () {
   mumuki.kids.submitButton = _createSubmitButton();
 
   function showPrevParagraph() {
-    $nextSpeech.show();
     animateSpeech();
-    $($speechParagraphs[--currentParagraphIndex]).show();
-    if (currentParagraphIndex === 0) $prevSpeech.hide();
+    showParagraph(currentParagraphIndex - 1);
   }
 
   function showNextParagraph() {
-    $prevSpeech.show();
     animateSpeech();
-    $($speechParagraphs[++currentParagraphIndex]).show();
-    if ($speechParagraphs.length - 1 === currentParagraphIndex) $nextSpeech.hide();
+    showParagraph(currentParagraphIndex + 1);
+    clearInterval(nextSpeechBlinking);
   }
 
   function animateSpeech() {
-    var ch = new mumuki.Scene(document.getElementById('mu-kids-character-animation'));
-    ch.addState(mumuki.animations.talk.onEndSwitch(ch, 'idle'))
-      .addState(mumuki.animations.idle.onEndSwitch(ch, 'jump'))
-      .addState(mumuki.animations.jump.onEnd(animateSpeech))
-      .play();
+    var image = $('#mu-kids-character-animation')[0];
+    mumuki.animation.sequence([
+      mumuki.animation.oneOf([
+        mumuki.characters.kibi.svgs.talk,
+        mumuki.characters.kibi.svgs.talk2]),
+      mumuki.characters.kibi.svgs.blink]).play(image);
   }
 
   mumuki.showKidsResult = function (data) {
