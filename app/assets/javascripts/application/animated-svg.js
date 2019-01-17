@@ -10,11 +10,10 @@ mumuki.load(function () {
   };
 
   var State = function () {
-    function State(name, src, duration) {
+    function State(name, movie) {
       _classCallCheck(this, State);
-      this.src = src;
+      this.movie = movie;
       this.name = name;
-      this.duration = duration;
       this.callbacks = {
         end: noop,
         start: noop
@@ -42,8 +41,7 @@ mumuki.load(function () {
 
     State.prototype.play = function play(imageDomElement) {
       this.callbacks.start();
-      imageDomElement.src = this.src;
-      setTimeout(this.callbacks.end.bind(this), this.duration);
+      this.movie.play(imageDomElement).then(this.callbacks.end.bind(this));
     };
 
     return State;
@@ -75,7 +73,25 @@ mumuki.load(function () {
     return Scene;
   }();
 
+  var Clip = function () {
+    function Clip(src, duration) {
+      this.src = src;
+      this.duration = duration;
+    }
+
+    Clip.prototype.play = function play(where) {
+      where.src = this.src;
+      
+      return new Promise((resolve) => {
+        setTimeout(resolve, this.duration);
+      });
+    }
+
+    return Clip;
+  }();
+
   mumuki.State = State;
   mumuki.Scene = Scene;
+  mumuki.Clip = Clip;
 
 });
