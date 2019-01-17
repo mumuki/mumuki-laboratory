@@ -118,7 +118,7 @@ var mumuki = mumuki || {};
   }
 
   function animateTimeoutError(submitButton) {
-    var ch = new mumuki.Character(document.getElementById('submission-result-error-animation'));
+    var ch = new mumuki.Scene(document.getElementById('submission-result-error-animation'));
     ch.addState(mumuki.errors.error_timeout_1.onStart(submitButton.setSendText.bind(submitButton)).onEndSwitch(ch, 'error_timeout_2'))
       .addState(mumuki.errors.error_timeout_2.onEndSwitch(ch, 'error_timeout_3'))
       .addState(mumuki.errors.error_timeout_3.onStart(submitButton.enable.bind(submitButton)))

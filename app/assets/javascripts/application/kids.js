@@ -250,7 +250,7 @@ mumuki.load(function () {
   }
 
   function animateSpeech() {
-    var ch = new mumuki.Character(document.getElementById('mu-kids-character-animation'));
+    var ch = new mumuki.Scene(document.getElementById('mu-kids-character-animation'));
     ch.addState(mumuki.animations.talk.onEndSwitch(ch, 'idle'))
       .addState(mumuki.animations.idle.onEndSwitch(ch, 'jump'))
       .addState(mumuki.animations.jump.onEnd(animateSpeech))

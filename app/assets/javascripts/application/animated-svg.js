@@ -49,33 +49,33 @@ mumuki.load(function () {
     return State;
   }();
 
-  var Character = function () {
-    function Character(imageDomElement) {
-      _classCallCheck(this, Character);
+  var Scene = function () {
+    function Scene(imageDomElement) {
+      _classCallCheck(this, Scene);
 
       this.states = {};
       this.image = imageDomElement;
     }
 
-    Character.prototype.addState = function addState(state) {
+    Scene.prototype.addState = function addState(state) {
       if (!this.currentState) this.currentState = state;
       this.states[state.name] = state;
       return this;
     };
 
-    Character.prototype.switch = function _switch(stateName) {
+    Scene.prototype.switch = function _switch(stateName) {
       this.currentState = this.states[stateName];
       this.play();
     };
 
-    Character.prototype.play = function play() {
+    Scene.prototype.play = function play() {
       this.currentState.play(this.image);
     };
 
-    return Character;
+    return Scene;
   }();
 
   mumuki.State = State;
-  mumuki.Character = Character;
+  mumuki.Scene = Scene;
 
 });
