@@ -90,8 +90,40 @@ mumuki.load(function () {
     return Clip;
   }();
 
+  var Animation = function () {
+    function Animation(clips, player) {
+      this.clips = clips;
+      this.player = player;
+    }
+
+    Animation.prototype.play = function play(where) {
+      return this.player(this.clips, where);
+    };
+
+    return Animation;
+  }();
+
+  function sequence(clips) {
+    return new Animation(clips, function (clips, where) {
+      var accum = Promise.resolve();
+
+      clips.forEach((clip) =>
+        accum = accum.then(() => 
+          clip.play(where)));
+      
+      return accum;
+    });
+  }
+
+  function oneOf(clips) {
+    return new Animation(clips, function (clips, where) {
+      return clips[Math.floor(Math.random() * clips.length)].play(where)
+    });
+  }
+
   mumuki.State = State;
   mumuki.Scene = Scene;
   mumuki.Clip = Clip;
 
+  mumuki.animation = { sequence: sequence, oneOf: oneOf };
 });
