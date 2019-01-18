@@ -118,7 +118,7 @@ mumuki.load(() => {
       let name = prompt(this.locales.insert_file_name);
       const alreadyExists = this.files.toArray().some(it => it.name === name);
       if (!name || !name.includes('.') || alreadyExists) return;
-      name = name.replace(/[^0-9A-Z\.-]/ig, "_");
+      name = this._sanitize(name);
 
       const id = `editor-file-${this._getFilesCount()}`;
       this.tabsContainer.append(this._createTab(name, id));
@@ -197,6 +197,10 @@ mumuki.load(() => {
       const language = this.highlightModes.find((it) => it.extension === extension);
 
       return language && language.highlight_mode || extension;
+    }
+
+    _sanitize(name) {
+      return name.replace(/[^0-9A-Z\.-]/ig, "_");
     }
 
     _setVisibility(element, isVisible) {
