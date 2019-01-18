@@ -1,17 +1,8 @@
 mumuki.load(function () {
+  var noop = function noop() {};
 
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var noop = function noop() {
-  };
-
-  var State = function () {
-    function State(name, movie) {
-      _classCallCheck(this, State);
+  class State {
+    constructor(name, movie) {
       this.movie = movie;
       this.name = name;
       this.callbacks = {
@@ -20,88 +11,78 @@ mumuki.load(function () {
       };
     }
 
-    State.prototype.on = function on(event, callback) {
+    on(event, callback) {
       this.callbacks[event] = callback;
       return this;
     };
 
-    State.prototype.onEnd = function onEnd(callback) {
+    onEnd(callback) {
       return this.on('end', callback);
     };
 
-    State.prototype.onEndSwitch = function onEndSwitch(character, stateName) {
+    onEndSwitch(character, stateName) {
       return this.onEnd(function () {
         return character.switch(stateName);
       });
     };
 
-    State.prototype.onStart = function onStart(callback) {
+    onStart(callback) {
       return this.on('start', callback);
     };
 
-    State.prototype.play = function play(imageDomElement) {
+    play(imageDomElement) {
       this.callbacks.start();
       this.movie.play(imageDomElement).then(this.callbacks.end.bind(this));
     };
+  };
 
-    return State;
-  }();
-
-  var Scene = function () {
-    function Scene(imageDomElement) {
-      _classCallCheck(this, Scene);
-
+  class Scene {
+    constructor(imageDomElement) {
       this.states = {};
       this.image = imageDomElement;
     }
 
-    Scene.prototype.addState = function addState(state) {
+    addState(state) {
       if (!this.currentState) this.currentState = state;
       this.states[state.name] = state;
       return this;
     };
 
-    Scene.prototype.switch = function _switch(stateName) {
+    _switch(stateName) {
       this.currentState = this.states[stateName];
       this.play();
     };
 
-    Scene.prototype.play = function play() {
+    play() {
       this.currentState.play(this.image);
     };
+  };
 
-    return Scene;
-  }();
-
-  var Clip = function () {
-    function Clip(src, duration) {
+  class Clip {
+    constructor(src, duration) {
       this.src = src;
       this.duration = duration;
     }
 
-    Clip.prototype.play = function play(where) {
+    play(where) {
       where.src = this.src;
       
       return new Promise((resolve) => {
         setTimeout(resolve, this.duration);
       });
     }
+  };
 
-    return Clip;
-  }();
-
-  var Animation = function () {
-    function Animation(clips, player) {
+  class Animation {
+    constructor(clips, player) {
       this.clips = clips;
       this.player = player;
     }
 
-    Animation.prototype.play = function play(where) {
+    play(where) {
       return this.player(this.clips, where);
     };
-
-    return Animation;
-  }();
+  };
 
   function sequence(clips) {
     return new Animation(clips, function (clips, where) {
