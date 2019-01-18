@@ -115,9 +115,10 @@ mumuki.load(() => {
     }
 
     _addFile() {
-      const name = prompt(this.locales.insert_file_name);
+      let name = prompt(this.locales.insert_file_name);
       const alreadyExists = this.files.toArray().some(it => it.name === name);
-      if (!name.length || !name.includes('.') || alreadyExists) return;
+      if (!name || !name.includes('.') || alreadyExists) return;
+      name = name.replace(/[^0-9A-Z\.-]/ig, "_");
 
       const id = `editor-file-${this._getFilesCount()}`;
       this.tabsContainer.append(this._createTab(name, id));
