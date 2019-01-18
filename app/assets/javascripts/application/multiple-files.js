@@ -87,7 +87,7 @@ mumuki.load(() => {
     }
 
     get editors() {
-      return this.editorsContainer.find('.file-editor')
+      return this.editorsContainer.find('.file-editor');
     }
 
     get highlightModes() {
@@ -214,7 +214,7 @@ mumuki.load(() => {
 
 
   const setUpTabsBehavior = () => {
-    const tabsContainer = $('.nav-tabs');
+    const tabsContainer = $('.nav-tabs').last();
     if (!tabsContainer.length) return;
     const editorsContainer = $('.tab-content');
 
