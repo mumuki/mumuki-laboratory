@@ -10,6 +10,7 @@ module OrganizationsControllerTemplate
 
   def set_new_organization!
     @organization = Organization.new organization_params
+    @organization.validate!
   end
 
   def set_organization!
