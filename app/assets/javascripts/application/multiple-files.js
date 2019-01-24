@@ -87,7 +87,7 @@ mumuki.load(() => {
     }
 
     get editors() {
-      return this.editorsContainer.find('.file-editor')
+      return this.editorsContainer.find('.file-editor');
     }
 
     get highlightModes() {
@@ -115,9 +115,10 @@ mumuki.load(() => {
     }
 
     _addFile() {
-      const name = prompt(this.locales.insert_file_name);
+      let name = prompt(this.locales.insert_file_name);
       const alreadyExists = this.files.toArray().some(it => it.name === name);
-      if (!name.length || !name.includes('.') || alreadyExists) return;
+      if (!name || !name.includes('.') || alreadyExists) return;
+      name = this._sanitize(name);
 
       const id = `editor-file-${this._getFilesCount()}`;
       this.tabsContainer.append(this._createTab(name, id));
@@ -198,6 +199,10 @@ mumuki.load(() => {
       return language && language.highlight_mode || extension;
     }
 
+    _sanitize(name) {
+      return name.replace(/[^0-9A-Z\.-]/ig, "_");
+    }
+
     _setVisibility(element, isVisible) {
       if (isVisible) element.show(); else element.hide();
     }
@@ -209,7 +214,7 @@ mumuki.load(() => {
 
 
   const setUpTabsBehavior = () => {
-    const tabsContainer = $('.nav-tabs');
+    const tabsContainer = $('.nav-tabs').last();
     if (!tabsContainer.length) return;
     const editorsContainer = $('.tab-content');
 
