@@ -1,5 +1,5 @@
 mumuki.load(function () {
-  var noop = function noop() {};
+  let noop = function noop() {};
 
   class State {
     constructor(name, movie) {
@@ -86,7 +86,7 @@ mumuki.load(function () {
 
   function sequence(clips) {
     return new Animation(clips, function (clips, where) {
-      var accum = Promise.resolve();
+      let accum = Promise.resolve();
 
       clips.forEach((clip) =>
         accum = accum.then(() => 

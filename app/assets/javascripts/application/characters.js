@@ -1,14 +1,14 @@
-mumuki.load(function () {
-  var characters = mumuki.characters || {};
+mumuki.load(() => {
+  let characters = mumuki.characters || {};
 
-  $.get('/character/animations.json',  function (animations) {
+  $.get('/character/animations.json',  (animations) => {
     Object.keys(animations).forEach((character) => {
       newCharacter(character);
 
       let promises = loadAnimations(character, animations[character].svgs);
 
       Promise.all(promises).then(() => {
-        loadActions(character, animations[character].actions)
+        loadActions(character, animations[character].actions);
       });
     });
   });
@@ -21,23 +21,23 @@ mumuki.load(function () {
 
   function loadAnimations(character, animations) {
     return animations.map((svg) =>
-      addClip(character, svg))
+      addClip(character, svg));
   }
 
   function loadActions(character, actions) {
-    Object.keys(actions || {}).forEach((action) => {
-      addAction(character, action, parseAction(character, actions[action]));
-    });
+    Object.keys(actions || {}).forEach((action) =>
+      addAction(character, action, parseAction(character, actions[action])));
   }
 
   function addAction(character, actionName, action) {
-    characters[character].actions[actionName] = action
+    characters[character].actions[actionName] = action;
   }
 
   function parseAction(character, action) {
     if (!action.type) return characters[character].svgs[action];
 
-    return mumuki.animation[action.type](action.animations.map((animation) => parseAction(character, animation)));
+    return mumuki.animation[action.type](action.animations.map((animation) =>
+      parseAction(character, animation)));
   }
 
   addImage(characters, 'magnifying_glass_apparition', '/');
