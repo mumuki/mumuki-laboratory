@@ -40,24 +40,8 @@ mumuki.load(() => {
       parseAction(character, animation)));
   }
 
-  addImage(characters, 'magnifying_glass_apparition', '/');
-  addImage(characters, 'magnifying_glass_loop', '/');
-
   function addClip(character, name) {
-    return addImage(characters[character].svgs, name, `/character/${character}/`);
-  }
-
-  function addImage(object, imageName, urlPrefix) {
-    var url = urlPrefix + imageName + '.svg';
-    if (object[imageName]) return Promise.resolve();
-
-    return new Promise((resolve) => {
-      $.get(url, function (data) {
-        var duration = parseFloat($(data).find('animate').attr('dur') || 0, 10) * 1000;
-        object[imageName] = new mumuki.Clip(url, duration);
-        resolve();
-      });
-    });
+    return mumuki.animation.addImage(characters[character].svgs, name, `/character/${character}/`);
   }
 
   mumuki.characters = characters;

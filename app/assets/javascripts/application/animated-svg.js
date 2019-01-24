@@ -106,7 +106,20 @@ mumuki.load(function () {
 
   function oneOf(clips) {
     return new Animation(clips, function (clips, where) {
-      return clips[Math.floor(Math.random() * clips.length)].play(where)
+      return clips[Math.floor(Math.random() * clips.length)].play(where);
+    });
+  }
+
+  function addImage(object, imageName, urlPrefix) {
+    let url = urlPrefix + imageName + '.svg';
+    if (object[imageName]) return Promise.resolve();
+
+    return new Promise((resolve) => {
+      $.get(url, (data) => {
+        let duration = parseFloat($(data).find('animate').attr('dur') || 0, 10) * 1000;
+        object[imageName] = new mumuki.Clip(url, duration);
+        resolve();
+      });
     });
   }
 
@@ -114,5 +127,9 @@ mumuki.load(function () {
   mumuki.Scene = Scene;
   mumuki.Clip = Clip;
 
-  mumuki.animation = { sequence: sequence, oneOf: oneOf };
+  mumuki.animation = {
+    sequence: sequence,
+    oneOf: oneOf,
+    addImage: addImage
+  };
 });
