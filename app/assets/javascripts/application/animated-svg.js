@@ -71,6 +71,10 @@ mumuki.load(function () {
         setTimeout(resolve, this.duration);
       });
     }
+
+    asState(name) {
+      return new State(name, this);
+    }
   };
 
   class Animation {
@@ -82,6 +86,10 @@ mumuki.load(function () {
     play(where) {
       return this.player(this.clips, where);
     };
+
+    asState(name) {
+      return new State(name, this);
+    }
   };
 
   function sequence(clips) {
