@@ -27,6 +27,8 @@ $kids-speech-tabs-width: 40px;
   }
 
   .mu-kids-states {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 15px;
   }
   .mu-kids-character {
@@ -418,10 +420,18 @@ $kids-speech-tabs-width: 40px;
     max-height: 100vh;
 
     .mu-kids-state {
-      height: 50vh;
+      flex: 1;
     }
     .mu-kids-blocks {
-      height: calc(100vh - #{$kids-characters-height} - 30px);
+
     }
   }
+}
+
+gs-attire-toggle-button {
+  text-align: right;
+}
+
+gs-attire-toggle-button .button.gs-attire-toggle-button {
+  float: none;
 }
