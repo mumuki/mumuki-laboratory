@@ -18,16 +18,27 @@
           </div>
         </div>
 
-        <div class="mu-kids-states">
-          <div class="mu-kids-state mu-state-initial mu-kids-gbs-board-initial">
-            <strong id="mu-initial-state-text"><%= t :initial_state %></strong>
-            <strong id="mu-actual-state-text"><%= t :actual_state %></strong>
-            <div class="mu-kids-state-image"><%= exercise.initial_state&.html_safe %></div>
+        <div class="mu-kids-states mu-multiple-scenarios">
+          <div class="mu-scenarios hidden">
+            <a class="mu-scenario-control previous">
+              <%= fa_icon('caret-left', class: 'fa-lg fa-2x') %>
+            </a>
+            <a class="mu-scenario-control next">
+              <%= fa_icon('caret-right', class: 'fa-lg fa-2x') %>
+            </a>
+            <div class="mu-kids-state mu-state-initial mu-kids-gbs-board-initial">
+              <div class="mu-initial-state-header">
+                <strong id="mu-initial-state-text"><%= t :initial_state %></strong>
+                <strong id="mu-actual-state-text"><%= t :actual_state %></strong>
+              </div>
+              <div class="mu-kids-state-image"><%= exercise.initial_state&.html_safe %></div>
+            </div>
+            <div class="mu-kids-state mu-state-final">
+              <strong><%= t :expected_state %></strong>
+              <div class="mu-kids-state-image"><%= exercise.final_state&.html_safe %></div>
+            </div>
           </div>
-          <div class="mu-kids-state mu-state-final">
-            <strong><%= t :expected_state %></strong>
-            <div class="mu-kids-state-image"><%= exercise.final_state&.html_safe %></div>
-          </div>
+          <ol class="indicators mu-kids-indicators"></ol>
         </div>
 
       </div>

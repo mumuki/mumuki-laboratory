@@ -38,8 +38,12 @@ $kids-speech-tabs-width: 40px;
   .mu-kids-blocks {
     margin-top: 15px;
   }
+  .mu-kids-indicators {
+    height: 4vh;
+    padding-top: 2vh;
+  }
   .mu-kids-state {
-    height: calc(#{$kids-height} / 2);
+    height: calc((#{$kids-height} - 8vh) / 2);
   }
   .mu-kids-character {
     height: $kids-characters-height;

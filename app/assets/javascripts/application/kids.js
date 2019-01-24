@@ -99,9 +99,7 @@ mumuki.load(function () {
 
     $muKidsExerciseDescription.width($muKidsExercise.width() - gbsBoard.width() - margin);
 
-    gbsBoard.each(function (i) {
-      gsBoardScale($(gbsBoard[i]));
-    });
+    gbsBoard.each((index, board) => gsBoardScale($(board)));
 
     var $muKidsBlocks = $('.mu-kids-blocks');
     var $blockArea = $muKidsBlocks.find('#blocklyDiv');
@@ -114,7 +112,8 @@ mumuki.load(function () {
     $blockSvg.height($muKidsBlocks.height());
 
     function gsBoardScale($element) {
-      var $table = $element.find('gs-board > table');
+      var $table = $element.find('.active gs-board > table');
+      if(!$table.length) return setTimeout(() => gsBoardScale($element));
       $table.css('transform', 'scale(1)');
       var scaleX = ($element.width() - fullMargin * 2) / $table.width();
       var scaleY = ($element.height() - fullMargin * 2) / $table.height();
@@ -224,10 +223,10 @@ mumuki.load(function () {
     },
 
     resultAction: {}
-
+    
   };
 
-  _createSubmitButton = function () {
+  const _createSubmitButton = function () {
     var submitButton = $('#kids-btn-retry');
     var submissionControl = $('.submission_control');
     return new mumuki.submission.SubmitButton(submitButton, submissionControl);
@@ -256,5 +255,4 @@ mumuki.load(function () {
   mumuki.kids.resultAction.failed = mumuki.kids._showOnCharacterBubble;
   mumuki.kids.resultAction.errored = mumuki.kids._showOnCharacterBubble;
   mumuki.kids.resultAction.pending = mumuki.kids._showOnCharacterBubble;
-
 });
