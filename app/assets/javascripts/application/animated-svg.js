@@ -48,7 +48,7 @@ mumuki.load(function () {
       return this;
     };
 
-    _switch(stateName) {
+    switch(stateName) {
       this.currentState = this.states[stateName];
       this.play();
     };
