@@ -203,6 +203,7 @@ pt:
   something_went_wrong: Oops!, Algo não estava certo ...
   something_went_wrong_explanation: Algo não foi como esperado.
   sort: Ordenar
+  sources: Bibliografia
   start_lesson: Comece esta lição!
   start_practicing: Comece agora!
   status: Estado
@@ -215,6 +216,7 @@ pt:
   submissions_for: Soluções para %{exercise}
   subscribe: se inscrever
   tag: Etiquetas
+  teacher_info: Informação para professores
   tell_us_how: Conte-nos como isso aconteceu com você!
   tell_us_if_our_error: Se você acha que é nosso erro, %{issues}
   terms_and_conditions: Termos e Condições
