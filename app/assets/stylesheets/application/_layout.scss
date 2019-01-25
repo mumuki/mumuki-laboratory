@@ -140,7 +140,11 @@ hr {
   padding-left: 5px;
 }
 
-.mu-edit-link {
+.mu-content-toolbar-item {
   font-size: 60%;
   vertical-align: middle;
+  .fa {
+    margin: 0;
+    padding: 0;
+  }
 }

@@ -17,6 +17,15 @@
   <div class="mu-inline-block-left">
     <h1>
       <%= subject.name %>
+      <% if current_user&.teacher_here? && @guide.teacher_info.present? %>
+        <a
+          class="mu-content-toolbar-item"
+          data-toggle="popover"
+          data-html="true"
+          title="<%= t :teacher_info %>"
+          data-placement="bottom"
+          data-content="<%= @guide.teacher_info_html %>"><%= fixed_fa_icon('question-circle')%></a>
+      <% end %>
       <%= link_to_bibliotheca_guide(@guide) %>
     </h1>
   </div>
@@ -24,25 +33,7 @@
 <div class="row">
   <div class="col-md-12">
     <div class="text-box">
-      <% if current_user&.teacher_here? && @guide.teacher_info.present? %>
-        <ul class="nav nav-tabs">
-          <li role="presentation" class="active">
-            <a href="#student-description" role='tab' data-toggle='tab' aria-controls="student-description"><%= t :description %></a>
-          </li>
-          <li role="presentation">
-            <a href="#teacher-info" role='tab' data-toggle='tab' aria-controls="teacher-info"><%= t :teacher_info %></a>
-          </li>
-        </ul>
-      <% end %>
-
-      <div class="tab-content">
-        <div id="student-description" class="tab-pane fade in active">
-          <%= @guide.description_html %>
-        </div>
-        <div id="teacher-info" class="tab-pane fade">
-          <%= @guide.teacher_info_html %>
-        </div>
-      </div>
+      <%= @guide.description_html %>
 
       <div class="actions">
         <% if !@stats.try(:done?) && @next_exercise %>
