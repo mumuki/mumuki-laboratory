@@ -47,7 +47,7 @@
         <%= @guide.sources_html %>
       </div>
     <% end %>
-    <% if current_user.teacher_here? && @guide.teacher_info.present? %>
+    <% if current_user&.teacher_here? && @guide.teacher_info.present? %>
       <div class="text-box">
         <h3><%= t :teacher_info %></h3>
         <%= @guide.teacher_info_html %>
