@@ -24,7 +24,25 @@
 <div class="row">
   <div class="col-md-12">
     <div class="text-box">
-      <%= @guide.description_html %>
+      <% if current_user&.teacher_here? && @guide.teacher_info.present? %>
+        <ul class="nav nav-tabs">
+          <li role="presentation" class="active">
+            <a href="#student-description" role='tab' data-toggle='tab' aria-controls="student-description"><%= t :description %></a>
+          </li>
+          <li role="presentation">
+            <a href="#teacher-info" role='tab' data-toggle='tab' aria-controls="teacher-info"><%= t :teacher_info %></a>
+          </li>
+        </ul>
+      <% end %>
+
+      <div class="tab-content">
+        <div id="student-description" class="tab-pane fade in active">
+          <%= @guide.description_html %>
+        </div>
+        <div id="teacher-info" class="tab-pane fade">
+          <%= @guide.teacher_info_html %>
+        </div>
+      </div>
 
       <div class="actions">
         <% if !@stats.try(:done?) && @next_exercise %>
@@ -45,12 +63,6 @@
       <div class="text-box">
         <h3><%= t :sources %></h3>
         <%= @guide.sources_html %>
-      </div>
-    <% end %>
-    <% if current_user&.teacher_here? && @guide.teacher_info.present? %>
-      <div class="text-box">
-        <h3><%= t :teacher_info %></h3>
-        <%= @guide.teacher_info_html %>
       </div>
     <% end %>
   </div>
