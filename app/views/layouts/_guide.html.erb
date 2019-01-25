@@ -39,6 +39,23 @@
 <%= restart_guide_link(@guide) if current_user && @guide.started?(current_user) && @guide.resettable? %>
 <%= render partial: 'layouts/progress_listing', locals: {exercises: @guide.exercises} %>
 
+<div class="row">
+  <div class="col-md-12">
+    <% if @guide.sources.present? %>
+      <div class="text-box">
+        <h3><%= t :sources %></h3>
+        <%= @guide.sources_html %>
+      </div>
+    <% end %>
+    <% if current_user.teacher_here? && @guide.teacher_info.present? %>
+      <div class="text-box">
+        <h3><%= t :teacher_info %></h3>
+        <%= @guide.teacher_info_html %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <% if @stats.try :done? %>
   <div class="text-box">
     <%= corollary_box(@guide) %>
