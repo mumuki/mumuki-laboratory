@@ -22,6 +22,20 @@ module LinksHelper
     app.organic_url(Organization.current.name)
   end
 
+  def teacher_info_button(item)
+    if current_user&.teacher_here? && item.teacher_info.present?
+      %Q{
+        <a
+          class="mu-content-toolbar-item"
+          data-toggle="popover"
+          data-html="true"
+          title="#{t :teacher_info}"
+          data-placement="bottom"
+          data-content="#{item.teacher_info_html}">#{fixed_fa_icon('question-circle')}</a>
+      }.html_safe
+    end
+  end
+
   def link_to_bibliotheca_guide(guide)
     edit_link_to_bibliotheca { url_for_bibliotheca_guide(guide) }
   end

@@ -17,16 +17,8 @@
   <div class="mu-inline-block-left">
     <h1>
       <%= subject.name %>
-      <% if current_user&.teacher_here? && @guide.teacher_info.present? %>
-        <a
-          class="mu-content-toolbar-item"
-          data-toggle="popover"
-          data-html="true"
-          title="<%= t :teacher_info %>"
-          data-placement="bottom"
-          data-content="<%= @guide.teacher_info_html %>"><%= fixed_fa_icon('question-circle')%></a>
-      <% end %>
-      <%= link_to_bibliotheca_guide(@guide) %>
+      <%= teacher_info_button @guide%>
+      <%= link_to_bibliotheca_guide @guide %>
     </h1>
   </div>
 </div>
