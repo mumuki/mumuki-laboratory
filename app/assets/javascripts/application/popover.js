@@ -1,1 +1,15 @@
-mumuki.load(() => $('[data-toggle="popover"]').popover());
+mumuki.load(() => {
+  let $popover = $('.mu-popover');
+
+  $('html').click(function(e) {
+    $popover.popover('hide');
+  });
+
+  $popover.popover({
+      html: true,
+      trigger: 'manual'
+  }).click(function(e) {
+      $(this).popover('toggle');
+      e.stopPropagation();
+  });
+});

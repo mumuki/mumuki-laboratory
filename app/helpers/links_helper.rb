@@ -26,7 +26,7 @@ module LinksHelper
     if current_user&.teacher_here? && item.teacher_info.present?
       %Q{
         <a
-          class="mu-content-toolbar-item"
+          class="mu-content-toolbar-item mu-popover"
           data-toggle="popover"
           data-html="true"
           title="#{t :teacher_info}"
