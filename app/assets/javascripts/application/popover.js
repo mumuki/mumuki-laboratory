@@ -7,7 +7,8 @@ mumuki.load(() => {
 
   $popover.popover({
       html: true,
-      trigger: 'manual'
+      trigger: 'manual',
+      container: 'body'
   }).click(function(e) {
       $(this).popover('toggle');
       e.stopPropagation();
