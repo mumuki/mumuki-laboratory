@@ -36,8 +36,10 @@
   </div>
 </div>
 
-<h3 style="display:inline;"><%= t :content %></h3>
-<%= restart_guide_link(@guide) if current_user && @guide.started?(current_user) && @guide.resettable? %>
+<h3>
+  <%= t :content %>
+  <%= restart_guide_link(@guide) if current_user && @guide.started?(current_user) && @guide.resettable? %>
+</h3>
 <%= render partial: 'layouts/progress_listing', locals: {exercises: @guide.exercises} %>
 
 <div class="row">
@@ -53,6 +55,7 @@
 
 <% if @stats.try :done? %>
   <div class="text-box">
+    <h3><%= t :corollary %></h3>
     <%= corollary_box(@guide) %>
     <div class="actions">
       <%= next_lesson_button @guide %>
