@@ -51,7 +51,7 @@
 <div class="row">
   <div class="col-md-12">
     <% if @guide.sources.present? %>
-      <div class="text-box mu-last-box">
+      <div class="text-box <%= last_box_class !@stats&.done? %>">
         <h3><%= t :sources %></h3>
         <%= @guide.sources_html %>
       </div>
