@@ -2,7 +2,9 @@ mumuki.load(() => {
   let $popover = $('.mu-popover');
 
   $('html').click(function(e) {
-    $popover.popover('hide');
+    if (!e.target.closest('.popover')) {
+      $popover.popover('hide');
+    }
   });
 
   $popover.popover({
