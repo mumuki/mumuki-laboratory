@@ -9,10 +9,10 @@ module ApplicationHelper
     "<div class=\"text-center\">#{super(object, {theme: 'twitter-bootstrap-3'}.merge(options))}</div>".html_safe
   end
 
-  def corollary_box(with_corollary)
+  def corollary_box(with_corollary, trailing_boxes = false)
     if with_corollary.corollary.present?
       %Q{
-      <div class="corollary-box">
+      <div class="#{trailing_boxes ? '' : 'mu-last-box'}">
         <p>#{with_corollary.corollary_html}</p>
       </div>
 }.html_safe

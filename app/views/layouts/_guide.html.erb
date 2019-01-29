@@ -42,10 +42,17 @@
 </h3>
 <%= render partial: 'layouts/progress_listing', locals: {exercises: @guide.exercises} %>
 
+
+<% if @stats.try :done? %>
+  <div class="text-box">
+    <%= corollary_box @guide, @guide.sources.present? %>
+  </div>
+<% end %>
+
 <div class="row">
   <div class="col-md-12">
     <% if @guide.sources.present? %>
-      <div class="text-box">
+      <div class="text-box mu-last-box">
         <h3><%= t :sources %></h3>
         <%= @guide.sources_html %>
       </div>
@@ -55,8 +62,6 @@
 
 <% if @stats.try :done? %>
   <div class="text-box">
-    <h3><%= t :corollary %></h3>
-    <%= corollary_box(@guide) %>
     <div class="actions">
       <%= next_lesson_button @guide %>
     </div>
