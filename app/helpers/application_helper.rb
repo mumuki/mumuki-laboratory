@@ -1,6 +1,11 @@
 module ApplicationHelper
   include WithStudentPathNavigation
 
+  # html-escapes an string even if it is html-safe
+  def html_rescape(html)
+    html_escape html.to_str
+  end
+
   def profile_picture
     image_tag(current_user.image_url, height: 40, class: 'img-circle', onError: "this.onerror = null; this.src = '#{image_url('user_shape.png')}'")
   end

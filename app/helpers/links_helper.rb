@@ -31,7 +31,7 @@ module LinksHelper
           data-html="true"
           title="#{t :teacher_info}"
           data-placement="bottom"
-          data-content="#{item.teacher_info_html}">#{fixed_fa_icon('info-circle')}</a>
+          data-content="#{html_rescape item.teacher_info_html}">#{fixed_fa_icon('info-circle')}</a>
       }.html_safe
     end
   end
