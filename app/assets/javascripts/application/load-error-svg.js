@@ -3,7 +3,7 @@ mumuki.load(function () {
 
   mumuki.errors = mumuki.errors || {};
 
-  error_svgs.forEach(function (svgErrorSuffix) {
-    mumuki.animation.addImage(mumuki.errors, 'error_' + svgErrorSuffix, '/');
+  error_svgs.forEach(function (svgErrorName) {
+    mumuki.animation.addImage(mumuki.errors, svgErrorName, '/error/');
   });
 });
