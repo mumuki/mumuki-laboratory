@@ -22,6 +22,20 @@ module LinksHelper
     app.organic_url(Organization.current.name)
   end
 
+  def teacher_info_button(item)
+    if current_user&.teacher_here? && item.teacher_info.present?
+      %Q{
+        <a
+          class="mu-content-toolbar-item mu-popover"
+          data-toggle="popover"
+          data-html="true"
+          title="#{t :teacher_info}"
+          data-placement="bottom"
+          data-content="#{html_rescape item.teacher_info_html}">#{fixed_fa_icon('info-circle')}</a>
+      }.html_safe
+    end
+  end
+
   def link_to_bibliotheca_guide(guide)
     edit_link_to_bibliotheca { url_for_bibliotheca_guide(guide) }
   end
@@ -58,7 +72,7 @@ module LinksHelper
     return unless current_user&.writer?
 
     url = yield
-    link_to fixed_fa_icon(:pencil), url, class: "mu-edit-link", target: "_blank", alt: t(:edit)
+    link_to fixed_fa_icon(:pencil), url, class: "mu-content-toolbar-item", target: "_blank", title: t(:edit)
   end
 
   def url_for_bibliotheca_guide(guide)

@@ -99,7 +99,7 @@ h1 {
   }
 }
 
-.corollary-box {
+.mu-last-box {
   margin-bottom: 45px;
 }
 
@@ -140,7 +140,15 @@ hr {
   padding-left: 5px;
 }
 
-.mu-edit-link {
+.mu-content-toolbar-item {
   font-size: 60%;
   vertical-align: middle;
+  .fa {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+h3 {
+  margin-top: 20px;
 }

@@ -4,7 +4,7 @@ module ResetButtonHelper
   end
 
   def restart_guide_link(guide)
-    link_to restart_icon, guide_progress_path(guide), data: {confirm: t(:confirm_restart)}, method: :delete
+    link_to restart_icon, guide_progress_path(guide), class: 'mu-content-toolbar-item', data: {confirm: t(:confirm_restart)}, method: :delete
   end
 
 end

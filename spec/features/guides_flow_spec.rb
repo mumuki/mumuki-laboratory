@@ -102,7 +102,7 @@ feature 'Guides Flow', organization_workspace: :test do
     context 'not logged user' do
       scenario 'should not see the edit guide link' do
         visit "/guides/#{lesson.guide.id}"
-        expect(page).not_to have_xpath("//a[@alt='Edit']")
+        expect(page).not_to have_xpath("//a[@title='Edit']")
       end
     end
 
@@ -112,14 +112,14 @@ feature 'Guides Flow', organization_workspace: :test do
 
       scenario 'with no permissions should not see the edit guide link' do
         visit "/guides/#{lesson.guide.id}"
-        expect(page).not_to have_xpath("//a[@alt='Edit']")
+        expect(page).not_to have_xpath("//a[@title='Edit']")
       end
 
       scenario 'writer should see the edit guide link' do
         set_current_user! writer
 
         visit "/guides/#{lesson.guide.id}"
-        expect(page).to have_xpath("//a[@alt='Edit']")
+        expect(page).to have_xpath("//a[@title='Edit']")
       end
     end
   end

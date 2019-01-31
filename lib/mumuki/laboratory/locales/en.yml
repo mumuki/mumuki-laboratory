@@ -189,6 +189,7 @@ en:
   something_went_wrong: Something went wrong!
   something_went_wrong_explanation: Something is broken in Mumuki.
   sort: Sort
+  sources: Sources
   start_lesson: Start this lesson!
   start_practicing: Start Practicing!
   start_using_mumuki: Start using Mumuki!
@@ -202,6 +203,7 @@ en:
   submissions_for: Submissions for %{exercise}
   subscribe: Subscribe
   tag: Tags
+  teacher_info: Information for teachers
   tell_us_how: Please tell us how this happened!
   tell_us_if_our_error: If you think this is our fault, %{issues}
   terms_and_conditions: Terms and conditions

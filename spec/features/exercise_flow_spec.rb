@@ -73,7 +73,7 @@ feature 'Exercise Flow', organization_workspace: :test do
 
     scenario 'should not see the edit exercise link' do
       visit "/exercises/#{problem_2.id}"
-      expect(page).not_to have_xpath("//a[@alt='Edit']")
+      expect(page).not_to have_xpath("//a[@title='Edit']")
     end
   end
 
@@ -227,14 +227,14 @@ feature 'Exercise Flow', organization_workspace: :test do
 
     scenario 'with no permissions should not see the edit exercise link' do
       visit "/exercises/#{problem_2.id}"
-      expect(page).not_to have_xpath("//a[@alt='Edit']")
+      expect(page).not_to have_xpath("//a[@title='Edit']")
     end
 
     scenario 'writer should see the edit exercise link' do
       set_current_user! writer
 
       visit "/exercises/#{problem_2.id}"
-      expect(page).to have_xpath("//a[@alt='Edit']")
+      expect(page).to have_xpath("//a[@title='Edit']")
     end
   end
 end

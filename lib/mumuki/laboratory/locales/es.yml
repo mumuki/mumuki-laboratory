@@ -213,6 +213,7 @@ es:
   something_went_wrong: ¡Ups!, algo no anduvo bien...
   something_went_wrong_explanation: Algo no anduvo como se esperaba.
   sort: Ordenar
+  sources: Bibliografía
   start_lesson: ¡Comenzá esta lección!
   start_practicing: ¡Empezá ahora!
   start_using_mumuki: ¡Empezá a usar Mumuki!
@@ -227,6 +228,7 @@ es:
   submissions_count: Soluciones
   submissions_for: Soluciones para %{exercise}
   tag: Etiquetas
+  teacher_info: Información para docentes
   tell_us_how: ¡Contanos cómo te pasó esto!
   tell_us_if_our_error: Si pensás que es un error nuestro, %{issues}
   terms_and_conditions: Términos y condiciones
