@@ -14,7 +14,7 @@ module OrganizationsControllerTemplate
   end
 
   def set_organization!
-    @organization = Organization.find_by! name: params[:id]
+    @organization = Organization.locate! params[:id]
   end
 
   def protection_slug
