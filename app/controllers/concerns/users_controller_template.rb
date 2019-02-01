@@ -18,7 +18,7 @@ module UsersControllerTemplate
   end
 
   def set_user!
-    @user = User.find_by uid: params[:id]
+    @user = User.locate! params[:id]
   end
 
   def set_new_user!
