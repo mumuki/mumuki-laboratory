@@ -36,12 +36,12 @@ mumuki.load(() => {
   function parseAction(character, action) {
     if (!action.type) return characters[character].svgs[action];
 
-    return mumuki.animation[action.type](action.animations.map((animation) =>
+    return muvment.animation[action.type](action.animations.map((animation) =>
       parseAction(character, animation)));
   }
 
   function addClip(character, name) {
-    return mumuki.animation.addImage(characters[character].svgs, name, `/character/${character}/`);
+    return muvment.animation.addImage(characters[character].svgs, name, `/character/${character}/`);
   }
 
   mumuki.characters = characters;

@@ -4,6 +4,6 @@ mumuki.load(function () {
   mumuki.errors = mumuki.errors || {};
 
   error_svgs.forEach(function (svgErrorName) {
-    mumuki.animation.addImage(mumuki.errors, svgErrorName, '/error/');
+    muvment.animation.addImage(mumuki.errors, svgErrorName, '/error/');
   });
 });

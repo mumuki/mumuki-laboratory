@@ -238,8 +238,8 @@ mumuki.load(function () {
 
   function animateSpeech() {
     var image = $('#mu-kids-character-animation')[0];
-    mumuki.animation.sequence([
-      mumuki.animation.oneOf([
+    muvment.animation.sequence([
+      muvment.animation.oneOf([
         mumuki.characters.kibi.svgs.talk,
         mumuki.characters.kibi.svgs.talk2]),
       mumuki.characters.kibi.svgs.blink]).play(image);
