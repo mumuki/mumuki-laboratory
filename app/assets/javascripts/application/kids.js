@@ -130,7 +130,7 @@ mumuki.load(function () {
     },
 
     getCharaterImage: function () {
-      return $('.mu-kids-character > img');
+      return $('.mu-kids-character > img')[0];
     },
 
     getCharacterBubble: function () {
@@ -155,7 +155,7 @@ mumuki.load(function () {
       mumuki.kids._hideMessageOnCharacterBubble();
       var $bubble = mumuki.kids.getCharacterBubble();
       Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
-      mumuki.kids.getCharaterImage().attr('src', '/character/kibi/jump.svg');
+      mumuki.character.actions.blink.play(mumuki.kids.getCharaterImage());
     },
 
     _hideMessageOnCharacterBubble: function () {
@@ -181,7 +181,7 @@ mumuki.load(function () {
 
     _showOnSuccessPopup: function (data) {
       mumuki.kids.getSubmissionResult().html(data.html);
-      mumuki.kids.getCharaterImage().attr('src', '/character/kibi/success_l.svg');
+      mumuki.character.svgs.success_l.play(mumuki.kids.getCharaterImage());
       mumuki.kids._showMessageOnCharacterBubble(data);
       setTimeout(function () {
         var results_kids_modal = mumuki.kids.getResultsModal();
@@ -204,7 +204,7 @@ mumuki.load(function () {
     },
 
     _showOnCharacterBubble: function (data) {
-      mumuki.kids.getCharaterImage().attr('src', '/character/kibi/failure.svg');
+      mumuki.character.svgs.failure.play(mumuki.kids.getCharaterImage());
       mumuki.kids._showMessageOnCharacterBubble(data);
     },
 
@@ -237,12 +237,7 @@ mumuki.load(function () {
   }
 
   function animateSpeech() {
-    var image = $('#mu-kids-character-animation')[0];
-    muvment.animation.sequence([
-      muvment.animation.oneOf([
-        mumuki.characters.kibi.svgs.talk,
-        mumuki.characters.kibi.svgs.talk2]),
-      mumuki.characters.kibi.svgs.blink]).play(image);
+    mumuki.character.actions.talk.play(mumuki.kids.getCharaterImage());
   }
 
   mumuki.showKidsResult = function (data) {
