@@ -1,0 +1,30 @@
+{
+  "main": {
+    "kibi": {
+      "svgs": [
+        "context",
+        "failure",
+        "jump",
+        "success2_l",
+        "success_l"
+      ]
+    }
+  },
+  "extra": {
+    "magnifying_glass": {
+      "svgs": [
+        "apparition",
+        "loop"
+      ],
+      "actions": {
+        "show": {
+          "type": "sequence",
+          "animations": [
+            "apparition",
+            "loop"
+          ]
+        }
+      }
+    }
+  }
+}
