@@ -57,8 +57,8 @@ mumuki.load(() => {
   }
 
   function placeAnimations() {
-    placeClip('mu-kids-character-animation', 'blink');
-    placeAction('mu-kids-character-context', 'context');
+    placeClip('mu-kids-character-animation', 'jump');
+    placeClip('mu-kids-character-context', 'context');
   }
 
   function placeAction(imageId, action) {

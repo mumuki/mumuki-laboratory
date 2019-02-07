@@ -155,7 +155,7 @@ mumuki.load(function () {
       mumuki.kids._hideMessageOnCharacterBubble();
       var $bubble = mumuki.kids.getCharacterBubble();
       Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
-      mumuki.character.actions.blink.play(mumuki.kids.getCharaterImage());
+      mumuki.character.svgs.jump.play(mumuki.kids.getCharaterImage());
     },
 
     _hideMessageOnCharacterBubble: function () {
