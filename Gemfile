@@ -16,7 +16,7 @@ gem 'execjs'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'nprogress-rails'
 gem 'mumuki-styles', '~> 1.18'
-gem 'muvment', '~> 1.0'
+gem 'muvment', '~> 1.1'
 gem 'sitemap_generator'
 gem 'font-awesome-rails', '~> 4.7'
 

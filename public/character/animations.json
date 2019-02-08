@@ -1,7 +1,7 @@
 {
   "main": {
     "kibi": {
-      "svgs": [
+      "clips": [
         "context",
         "failure",
         "jump",
@@ -12,7 +12,7 @@
   },
   "extra": {
     "magnifying_glass": {
-      "svgs": [
+      "clips": [
         "apparition",
         "loop"
       ],

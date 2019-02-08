@@ -10,7 +10,7 @@ mumuki.load(() => {
     return Object.keys(animations).map((character) => {
       newCharacter(character);
 
-      return loadAnimations(character, animations[character].svgs).then(() =>
+      return loadAnimations(character, animations[character].clips).then(() =>
         loadActions(character, animations[character].actions)).then(() =>
         character);
     });
@@ -26,9 +26,7 @@ mumuki.load(() => {
   }
 
   function newCharacter(name) {
-    characters[name] = {};
-    characters[name].svgs = {};
-    characters[name].actions = {};
+    characters[name] = new muvment.Character();
   }
 
   function loadAnimations(character, animations) {
@@ -46,14 +44,14 @@ mumuki.load(() => {
   }
 
   function parseAction(character, action) {
-    if (!action.type) return characters[character].svgs[action];
+    if (!action.type) return characters[character].clips[action];
 
     return muvment.animation[action.type](action.animations.map((animation) =>
       parseAction(character, animation)));
   }
 
   function addClip(character, name) {
-    return muvment.animation.addImage(characters[character].svgs, name, `/character/${character}/`);
+    return muvment.animation.addImage(characters[character].clips, name, `/character/${character}/`);
   }
 
   function placeAnimations() {
@@ -66,7 +64,7 @@ mumuki.load(() => {
   }
 
   function placeClip(imageId, clip) {
-    placeAnimation('svgs', imageId, clip);
+    placeAnimation('clips', imageId, clip);
   }
 
   function placeAnimation(animationType, imageId, clip) {
