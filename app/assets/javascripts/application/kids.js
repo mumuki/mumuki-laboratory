@@ -155,7 +155,7 @@ mumuki.load(function () {
       mumuki.kids._hideMessageOnCharacterBubble();
       var $bubble = mumuki.kids.getCharacterBubble();
       Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
-      mumuki.character.playAnimation('jump', mumuki.kids.getCharaterImage());
+      mumuki.presenterCharacter.playAnimation('jump', mumuki.kids.getCharaterImage());
     },
 
     _hideMessageOnCharacterBubble: function () {
@@ -181,7 +181,7 @@ mumuki.load(function () {
 
     _showOnSuccessPopup: function (data) {
       mumuki.kids.getSubmissionResult().html(data.html);
-      mumuki.character.playAnimation('success_l', mumuki.kids.getCharaterImage());
+      mumuki.presenterCharacter.playAnimation('success_l', mumuki.kids.getCharaterImage());
       mumuki.kids._showMessageOnCharacterBubble(data);
       setTimeout(function () {
         var results_kids_modal = mumuki.kids.getResultsModal();
@@ -204,7 +204,7 @@ mumuki.load(function () {
     },
 
     _showOnCharacterBubble: function (data) {
-      mumuki.character.playAnimation('failure', mumuki.kids.getCharaterImage());
+      mumuki.presenterCharacter.playAnimation('failure', mumuki.kids.getCharaterImage());
       mumuki.kids._showMessageOnCharacterBubble(data);
     },
 
@@ -237,7 +237,7 @@ mumuki.load(function () {
   }
 
   function animateSpeech() {
-    mumuki.character.playAnimation('talk', mumuki.kids.getCharaterImage());
+    mumuki.presenterCharacter.playAnimation('talk', mumuki.kids.getCharaterImage());
   }
 
   mumuki.showKidsResult = function (data) {

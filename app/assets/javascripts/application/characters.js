@@ -20,7 +20,7 @@ mumuki.load(() => {
     var characterFinishedLoadingPromises = loadAnimationGroup(animations);
 
     Promise.race(characterFinishedLoadingPromises).then((character) => {
-      mumuki.character = characters[character];
+      mumuki.presenterCharacter = characters[character];
       placeAnimations();
     });
   }
@@ -69,7 +69,7 @@ mumuki.load(() => {
 
   function placeAnimation(animationType, imageId, clip) {
     let image = $(`#${imageId}`)[0];
-    mumuki.character[animationType][clip].play(image);
+    mumuki.presenterCharacter[animationType][clip].play(image);
   }
 
   mumuki.characters = characters;
