@@ -118,9 +118,9 @@ var mumuki = mumuki || {};
   }
 
   function animateTimeoutError(submitButton) {
-    var ch = new muvment.Scene(document.getElementById('submission-result-error-animation'));
-    ch.addState(mumuki.errors.timeout_1.asState().onStart(submitButton.setSendText.bind(submitButton)).onEndSwitch(ch, 'timeout_2'))
-      .addState(mumuki.errors.timeout_2.asState('timeout_2').onEndSwitch(ch, 'timeout_3'))
+    let scene = new muvment.Scene(document.getElementById('submission-result-error-animation'));
+    scene.addState(mumuki.errors.timeout_1.asState().onStart(submitButton.setSendText.bind(submitButton)).onEndSwitch(scene, 'timeout_2'))
+      .addState(mumuki.errors.timeout_2.asState('timeout_2').onEndSwitch(scene, 'timeout_3'))
       .addState(mumuki.errors.timeout_3.asState('timeout_3').onStart(submitButton.enable.bind(submitButton)))
       .play();
   }
