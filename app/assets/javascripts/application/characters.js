@@ -21,7 +21,7 @@ mumuki.load(() => {
 
     Promise.race(characterFinishedLoadingPromises).then((character) => {
       mumuki.presenterCharacter = characters[character];
-      placeAnimations();
+      placeKidsAnimations();
     });
   }
 
@@ -54,22 +54,14 @@ mumuki.load(() => {
     return muvment.animation.addImage(characters[character].clips, name, `/character/${character}/`);
   }
 
-  function placeAnimations() {
-    placeClip('mu-kids-character-animation', 'jump');
-    placeClip('mu-kids-character-context', 'context');
+  function placeKidsAnimations() {
+    placeAnimation('mu-kids-character-animation', 'jump');
+    placeAnimation('mu-kids-character-context', 'context');
   }
 
-  function placeAction(imageId, action) {
-    placeAnimation('actions', imageId, action);
-  }
-
-  function placeClip(imageId, clip) {
-    placeAnimation('clips', imageId, clip);
-  }
-
-  function placeAnimation(animationType, imageId, clip) {
-    let image = $(`#${imageId}`)[0];
-    mumuki.presenterCharacter[animationType][clip].play(image);
+  function placeAnimation(canvasId, clip) {
+    let canvas = $(`#${canvasId}`)[0];
+    mumuki.presenterCharacter.playAnimation(clip, canvas);
   }
 
   mumuki.characters = characters;
