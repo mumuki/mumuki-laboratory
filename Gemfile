@@ -16,14 +16,15 @@ gem 'execjs'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'nprogress-rails'
 gem 'mumuki-styles', '~> 1.18'
+gem 'muvment', '~> 1.2'
 gem 'sitemap_generator'
 gem 'font-awesome-rails', '~> 4.7'
 
 group :test do
   gem 'rspec-rails', '~> 3.6'
   gem 'factory_bot_rails'
-  gem 'rake', '10.4.2'
   gem 'faker', '~> 1.5'
+  gem 'rake', '10.4.2'
   gem 'capybara', '~> 2.3.0'
 end
 

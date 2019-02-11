@@ -27,6 +27,7 @@
 //= require_tree ../../../vendor/assets/javascripts/codemirror-modes
 //= require analytics
 //= require hotjar
+//= require muvment
 
 //= require_tree ./application
 

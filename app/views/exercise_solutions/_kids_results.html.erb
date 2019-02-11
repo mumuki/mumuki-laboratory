@@ -8,11 +8,11 @@
 </div>
 
 <% if @exercise.corollary.present? %>
-  <img id="mu-kids-corollary-animation" class="capital-animation"/>
+  <img class="capital-animation mu-kids-corollary-animation"/>
   <%= corollary_box @exercise %>
 <% else %>
   <div class="mu-kids-default-success">
-    <img src="/kibi_success_dancing.svg" class="capital-animation"/>
+    <img class="capital-animation mu-kids-character-success"/>
     <p><%= t :kids_default_success %></p>
   </div>
 <% end %>

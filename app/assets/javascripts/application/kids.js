@@ -57,14 +57,9 @@ mumuki.load(function () {
     nextSpeechBlinking = setInterval(() => $nextSpeech.fadeTo('slow', 0.1).fadeTo('slow', 1.0), 1000);
   }
 
-  $nextSpeech.click(function () {
-    showParagraph(currentParagraphIndex + 1);
-    clearInterval(nextSpeechBlinking);
-  });
+  $nextSpeech.click(showNextParagraph);
 
-  $prevSpeech.click(function () {
-    showParagraph(currentParagraphIndex - 1);
-  });
+  $prevSpeech.click(showPrevParagraph);
 
   function getSelectedTabName() {
     return $speechTabs.filter(".active").data('target') || $defaultSpeechTabName;
@@ -160,7 +155,7 @@ mumuki.load(function () {
       mumuki.kids._hideMessageOnCharacterBubble();
       var $bubble = mumuki.kids.getCharacterBubble();
       Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
-      mumuki.kids.getCharaterImage().attr('src', '/kibi_animated.svg');
+      mumuki.presenterCharacter.playAnimation('jump', mumuki.kids.getCharaterImage());
     },
 
     _hideMessageOnCharacterBubble: function () {
@@ -186,7 +181,7 @@ mumuki.load(function () {
 
     _showOnSuccessPopup: function (data) {
       mumuki.kids.getSubmissionResult().html(data.html);
-      mumuki.kids.getCharaterImage().attr('src', '/kibi_success.svg');
+      mumuki.presenterCharacter.playAnimation('success_l', mumuki.kids.getCharaterImage());
       mumuki.kids._showMessageOnCharacterBubble(data);
       setTimeout(function () {
         var results_kids_modal = mumuki.kids.getResultsModal();
@@ -209,18 +204,12 @@ mumuki.load(function () {
     },
 
     _showOnCharacterBubble: function (data) {
-      mumuki.kids.getCharaterImage().attr('src', '/kibi_failure.svg');
+      mumuki.presenterCharacter.playAnimation('failure', mumuki.kids.getCharaterImage());
       mumuki.kids._showMessageOnCharacterBubble(data);
     },
 
     _showCorollaryCharacter: function () {
-      var image = $('#mu-kids-corollary-animation')[0];
-      image && setTimeout(function () {
-        image.src = mumuki.characters.magnifying_glass_apparition.url;
-        setTimeout(function () {
-          image.src = mumuki.characters.magnifying_glass_loop.url;
-        }, mumuki.characters.magnifying_glass_apparition.duration);
-      }, 500);
+      mumuki.characters.magnifying_glass.actions.show.play($('.mu-kids-corollary-animation'));
     },
 
     resultAction: {}
@@ -234,6 +223,21 @@ mumuki.load(function () {
   };
 
   mumuki.kids.submitButton = _createSubmitButton();
+
+  function showPrevParagraph() {
+    animateSpeech();
+    showParagraph(currentParagraphIndex - 1);
+  }
+
+  function showNextParagraph() {
+    animateSpeech();
+    showParagraph(currentParagraphIndex + 1);
+    clearInterval(nextSpeechBlinking);
+  }
+
+  function animateSpeech() {
+    mumuki.presenterCharacter.playAnimation('talk', mumuki.kids.getCharaterImage());
+  }
 
   mumuki.showKidsResult = function (data) {
     mumuki.updateProgressBarAndShowModal(data);
