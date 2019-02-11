@@ -118,7 +118,7 @@ var mumuki = mumuki || {};
   }
 
   function animateTimeoutError(submitButton) {
-    let scene = new muvment.Scene($('#submission-result-error-animation'));
+    let scene = new muvment.Scene($('.submission-result-error-animation'));
     scene.addState(mumuki.errorState('timeout_1').onStart(submitButton.setSendText.bind(submitButton)).onEndSwitch(scene, 'timeout_2'))
       .addState(mumuki.errorState('timeout_2').onEndSwitch(scene, 'timeout_3'))
       .addState(mumuki.errorState('timeout_3').onStart(submitButton.enable.bind(submitButton)))

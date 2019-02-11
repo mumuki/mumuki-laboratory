@@ -9,8 +9,8 @@ mumuki.load(() => {
   });
 
   function placeKidsAnimations() {
-    placeAnimation('.mu-kids-character > img', 'jump');
-    placeAnimation('#mu-kids-character-context', 'context');
+    placeAnimation('.mu-kids-character-animation', 'jump');
+    placeAnimation('.mu-kids-character-context', 'context');
   }
 
   function placeAnimation(selector, clip) {

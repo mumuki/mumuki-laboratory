@@ -209,8 +209,7 @@ mumuki.load(function () {
     },
 
     _showCorollaryCharacter: function () {
-      var image = $('#mu-kids-corollary-animation')[0];
-      mumuki.characters.magnifying_glass.actions.show.play(image);
+      mumuki.characters.magnifying_glass.actions.show.play($('.mu-kids-corollary-animation'));
     },
 
     resultAction: {}
