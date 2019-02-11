@@ -130,7 +130,7 @@ mumuki.load(function () {
     },
 
     getCharaterImage: function () {
-      return $('.mu-kids-character > img')[0];
+      return $('.mu-kids-character > img');
     },
 
     getCharacterBubble: function () {
