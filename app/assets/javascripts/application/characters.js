@@ -2,8 +2,8 @@ mumuki.load(() => {
   let characters = mumuki.characters || {};
 
   muvment.loadCharacters(characters, '/character/animations.json').then((characterFinishedLoadingPromises) => {
-    Promise.race(characterFinishedLoadingPromises).then((character) => {
-      mumuki.presenterCharacter = characters[character];
+    Promise.all(characterFinishedLoadingPromises).then((characterIds) => {
+      mumuki.presenterCharacter = characters[atRandom(characterIds)];
       placeKidsAnimations();
     });
   });
@@ -17,6 +17,10 @@ mumuki.load(() => {
     let canvas = $(selector);
     mumuki.presenterCharacter.playAnimation(clip, canvas);
   }
+
+  function atRandom(array) {
+    return array[Math.floor(Math.random() * array.length)];
+  }  
 
   mumuki.characters = characters;
 });
