@@ -89,15 +89,16 @@ mumuki.load(function () {
     var margin = 15;
     var fullMargin = margin * 2;
 
+    var $muKidsStates = $('.mu-kids-states');
     var gbsBoard = $('.mu-kids-state');
 
-    var dimension = gbsBoard.height() * 1.25 - fullMargin;
-    gbsBoard.width(dimension);
+    var dimension = $muKidsStates.height() / 2 * 1.25 - fullMargin;
+    $muKidsStates.width(dimension);
 
     var $muKidsExercise = $('.mu-kids-exercise');
     var $muKidsExerciseDescription = $('.mu-kids-exercise-description');
 
-    $muKidsExerciseDescription.width($muKidsExercise.width() - gbsBoard.width() - margin);
+    $muKidsExerciseDescription.width($muKidsExercise.width() - $muKidsStates.width() - margin);
 
     gbsBoard.each((index, board) => gsBoardScale($(board)));
 

@@ -27,7 +27,8 @@ $kids-speech-tabs-width: 40px;
   }
 
   .mu-kids-states {
-    margin-bottom: 15px;
+    padding-bottom: 15px;
+    height: $kids-height;
   }
   .mu-kids-character {
     padding: 15px;
@@ -38,12 +39,8 @@ $kids-speech-tabs-width: 40px;
   .mu-kids-blocks {
     margin-top: 15px;
   }
-  .mu-kids-indicators {
-    height: 4vh;
-    padding-top: 2vh;
-  }
   .mu-kids-state {
-    height: calc((#{$kids-height} - 8vh) / 2);
+    height: 50%;
   }
   .mu-kids-character {
     height: $kids-characters-height;
@@ -119,6 +116,9 @@ $kids-speech-tabs-width: 40px;
         ul.results-list li {
           font-size: 13px
         }
+        .mu-kids-states strong {
+          font-size: 16px;
+        }
       }
 
       @media screen and (max-width: $screen-xs-max) {
@@ -131,6 +131,9 @@ $kids-speech-tabs-width: 40px;
         }
         ul.results-list li {
           font-size: 12px
+        }
+        .mu-kids-states strong {
+          font-size: 14px;
         }
       }
 
@@ -421,8 +424,8 @@ $kids-speech-tabs-width: 40px;
     min-height: 100vh;
     max-height: 100vh;
 
-    .mu-kids-state {
-      height: 50vh;
+    .mu-kids-states {
+      height: 100vh;
     }
     .mu-kids-blocks {
       height: calc(100vh - #{$kids-characters-height} - 30px);
