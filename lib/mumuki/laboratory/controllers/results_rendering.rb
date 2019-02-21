@@ -13,7 +13,8 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
       title_html: render_results_title_html(assignment),
       button_html: render_results_button_html(assignment),
       expectations_html: render_results_expectations_html(assignment),
-      remaining_attempts_html: remaining_attempts_text(assignment))
+      remaining_attempts_html: remaining_attempts_text(assignment),
+      test_results: assignment.test_results)
   end
 
   def progress_json
