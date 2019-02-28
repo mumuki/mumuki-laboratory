@@ -193,6 +193,7 @@ mumuki.load(function () {
           results_kids_modal.find('.modal-header').first().html(data.title_html);
           results_kids_modal.find('.modal-footer').first().html(data.button_html);
           mumuki.kids._showCorollaryCharacter();
+          $('.mu-close-modal').click(() => $('#kids-results').modal('hide'));
         }
       }, 1000 * 4);
     },

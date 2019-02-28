@@ -12,4 +12,8 @@ module WithStudentPathNavigation
   def next_exercise_button(exercise)
     next_button(exercise) || next_button(exercise.guide.lesson)
   end
+
+  def close_modal_button
+    %Q{<button class="btn btn-success btn-block mu-close-modal">#{t :keep_learning}</button>}.html_safe
+  end
 end
