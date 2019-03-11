@@ -108,7 +108,7 @@ mumuki.load(function () {
     $blockSvg.height($muKidsBlocks.height());
 
     function gsBoardScale($element) {
-      var $table = $element.find('.active gs-board > table');
+      var $table = $element.find('gs-board > table');
       if(!$table.length) return setTimeout(() => gsBoardScale($element));
       $table.css('transform', 'scale(1)');
       var scaleX = ($element.width() - fullMargin * 2) / $table.width();
