@@ -101,54 +101,67 @@ mumuki.load(function () {
       this._blocksAreaScaler($blocks);
     },
 
-    getResultsModal: function () {
-      return $('#kids-results');
-    },
-
-    getResultsAbortedModal: function () {
-      return $('#kids-results-aborted');
-    },
-
-    getCharaterImage: function () {
-      return $('.mu-kids-character > img');
-    },
-
-    getCharacterBubble: function () {
-      return $('.mu-kids-character-speech-bubble');
-    },
-
-    getSubmissionResult: function () {
-      return $('.submission-results');
-    },
-
-    getOverlay: function () {
-      return $('.mu-kids-overlay');
-    },
-
-    showResult: function (data) {  // This function is called by the custom runner
+    // Displays the kids results, updating the progress bar
+    // firing the modal and running appropriate animations.
+    //
+    // This method needs to be called by the runner's editor.html extension
+    // in order to finish an exercise
+    showResult: function (data) {
       mumuki.updateProgressBarAndShowModal(data);
       if (data.guide_finished_by_solution) return;
       mumuki.kids.resultAction[data.status](data);
     },
 
-    restart: function () {  // This function is called by the custom runner
+    // Restarts the kids exercise.
+    //
+    // This method may need to be called by the runner's editor.html extension
+    // in order to recover from a failed submission
+    restart: function () {
       mumuki.kids._hideMessageOnCharacterBubble();
-      var $bubble = mumuki.kids.getCharacterBubble();
+      var $bubble = mumuki.kids._getCharacterBubble();
       Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
-      mumuki.presenterCharacter.playAnimation('jump', mumuki.kids.getCharaterImage());
+      mumuki.presenterCharacter.playAnimation('jump', mumuki.kids._getCharaterImage());
+    },
+
+    // ===========
+    // Private API
+    // ===========
+
+    _updateSubmissionResult: function (html) {
+      return $('.submission-results').html(html);
+    },
+
+    _getResultsModal: function () {
+      return $('#kids-results');
+    },
+
+    _getResultsAbortedModal: function () {
+      return $('#kids-results-aborted');
+    },
+
+    _getCharaterImage: function () {
+      return $('.mu-kids-character > img');
+    },
+
+    _getCharacterBubble: function () {
+      return $('.mu-kids-character-speech-bubble');
+    },
+
+    _getOverlay: function () {
+      return $('.mu-kids-overlay');
     },
 
     _hideMessageOnCharacterBubble: function () {
-      var $bubble = mumuki.kids.getCharacterBubble();
+      var $bubble = mumuki.kids._getCharacterBubble();
       $bubble.find('.mu-kids-character-speech-bubble-tabs').show();
       $bubble.find('.mu-kids-character-speech-bubble-normal').show();
       $bubble.find('.mu-kids-character-speech-bubble-failed').hide();
       Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
-      mumuki.kids.getOverlay().hide();
+      mumuki.kids._getOverlay().hide();
     },
 
     _showMessageOnCharacterBubble: function (data) {
-      var $bubble = mumuki.kids.getCharacterBubble();
+      var $bubble = mumuki.kids._getCharacterBubble();
       $bubble.find('.mu-kids-character-speech-bubble-tabs').hide();
       $bubble.find('.mu-kids-character-speech-bubble-normal').hide();
       $bubble.find('.mu-kids-character-speech-bubble-failed').show().html(data.title_html);
@@ -156,37 +169,37 @@ mumuki.load(function () {
       if (data.status === 'passed_with_warnings') {
         $bubble.find('.mu-kids-character-speech-bubble-failed').append(data.expectations_html);
       }
-      mumuki.kids.getOverlay().show();
+      mumuki.kids._getOverlay().show();
     },
 
     _showOnSuccessPopup: function (data) {
-      mumuki.kids.getSubmissionResult().html(data.html);
-      mumuki.presenterCharacter.playAnimation('success_l', mumuki.kids.getCharaterImage());
+      mumuki.kids._updateSubmissionResult(data.html);
+      mumuki.presenterCharacter.playAnimation('success_l', mumuki.kids._getCharaterImage());
       mumuki.kids._showMessageOnCharacterBubble(data);
       mumuki.presenterCharacter.playAnimation('success2_l', $('.mu-kids-character-success'));
       setTimeout(function () {
-        var results_kids_modal = mumuki.kids.getResultsModal();
-        if (results_kids_modal) {
-          results_kids_modal.modal({
+        var $resultsKidsModal = mumuki.kids._getResultsModal();
+        if ($resultsKidsModal) {
+          $resultsKidsModal.modal({
             backdrop: 'static',
             keyboard: false
           });
-          results_kids_modal.find('.modal-header').first().html(data.title_html);
-          results_kids_modal.find('.modal-footer').first().html(data.button_html);
+          $resultsKidsModal.find('.modal-header').first().html(data.title_html);
+          $resultsKidsModal.find('.modal-footer').first().html(data.button_html);
           mumuki.kids._showCorollaryCharacter();
-          $('.mu-close-modal').click(() => $('#kids-results').modal('hide'));
+          $('.mu-close-modal').click(() => mumuki.kids._getResultsModal().modal('hide'));
         }
       }, 1000 * 4);
     },
 
     _showOnFailurePopup: function () {
       mumuki.kids.submitButton.disable();
-      mumuki.kids.getResultsAbortedModal().modal();
+      mumuki.kids._getResultsAbortedModal().modal();
       mumuki.submission.animateTimeoutError(mumuki.kids.submitButton);
     },
 
     _showOnCharacterBubble: function (data) {
-      mumuki.presenterCharacter.playAnimation('failure', mumuki.kids.getCharaterImage());
+      mumuki.presenterCharacter.playAnimation('failure', mumuki.kids._getCharaterImage());
       mumuki.kids._showMessageOnCharacterBubble(data);
     },
 
@@ -237,7 +250,7 @@ mumuki.load(function () {
   }
 
   function animateSpeech() {
-    mumuki.presenterCharacter.playAnimation('talk', mumuki.kids.getCharaterImage());
+    mumuki.presenterCharacter.playAnimation('talk', mumuki.kids._getCharaterImage());
   }
 
   mumuki.kids.resultAction.passed = mumuki.kids._showOnSuccessPopup;
