@@ -84,18 +84,18 @@ mumuki.load(function () {
     var margin = 15;
     var fullMargin = margin * 2;
 
-    var $muKidsStates = $('.mu-kids-states');
-    var gbsBoard = $('.mu-kids-state');
+    var $muKidsStatesContainer = $('.mu-kids-states');
+    var $muKidsStates = $('.mu-kids-state');
 
-    var dimension = $muKidsStates.height() / 2 * 1.25 - fullMargin;
-    $muKidsStates.width(dimension);
+    var dimension = $muKidsStatesContainer.height() / 2 * 1.25 - fullMargin;
+    $muKidsStatesContainer.width(dimension);
 
     var $muKidsExercise = $('.mu-kids-exercise');
     var $muKidsExerciseDescription = $('.mu-kids-exercise-description');
 
-    $muKidsExerciseDescription.width($muKidsExercise.width() - $muKidsStates.width() - margin);
+    $muKidsExerciseDescription.width($muKidsExercise.width() - $muKidsStatesContainer.width() - margin);
 
-    gbsBoard.each((index, board) => gsBoardScale($(board)));
+    $muKidsStates.each((index, board) => scaleStates($(board)));
 
     var $muKidsBlocks = $('.mu-kids-blocks');
     var $blockArea = $muKidsBlocks.find('#blocklyDiv');
@@ -107,9 +107,9 @@ mumuki.load(function () {
     $blockSvg.width($muKidsBlocks.width());
     $blockSvg.height($muKidsBlocks.height());
 
-    function gsBoardScale($element) {
+    function scaleStates($element) {
       var $table = $element.find('gs-board > table');
-      if(!$table.length) return setTimeout(() => gsBoardScale($element));
+      if(!$table.length) return setTimeout(() => scaleStates($element));
       $table.css('transform', 'scale(1)');
       var scaleX = ($element.width() - fullMargin * 2) / $table.width();
       var scaleY = ($element.height() - fullMargin * 2) / $table.height();
@@ -215,7 +215,7 @@ mumuki.load(function () {
     },
 
     resultAction: {}
-    
+
   };
 
   const _createSubmitButton = function () {
