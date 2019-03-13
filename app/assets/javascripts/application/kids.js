@@ -55,22 +55,50 @@ mumuki.load(function () {
   }
 
   mumuki.kids = {
-    registerStatesScaler: function(scaler) {
-      this._statesScaler = scaler;
+
+    // ==========
+    // Public API
+    // ==========
+
+    // Sets a function that will be called each
+    // time the states need to be resized. The function takes:
+    //
+    // * $state: a single state area
+    // * fullMargin
+    // * preferredWidth
+    // * preferredHeight
+    //
+    // Runners must call this method on within the runner's editor.js extension
+    registerStateScaler: function(scaler) {
+      this._stateScaler = scaler;
     },
 
-    registerBlocksScaler: function(scaler) {
-      this._blocksScaler = scaler;
+    // Sets a function that will be called each
+    // time the blocks area needs to be resized. The function takes:
+    //
+    // * $blocks: the blocks area
+    //
+    // Runners must call this method on within the runner's editor.js extension
+    registerBlocksAreaScaler: function(scaler) {
+      this._blocksAreaScaler = scaler;
     },
 
-    scaleStates: function ($state, fullMargin) {
+    // Scales a single state.
+    //
+    // This method is called by the kids code, but the runner's editor.js extension may need
+    // to perform additional calls to it.
+    scaleState: function ($state, fullMargin) {
       const preferredWidth = $state.width() - fullMargin * 2;
       const preferredHeight = $state.height() - fullMargin * 2;
-      this._statesScaler($state, fullMargin, preferredWidth, preferredHeight);
+      this._stateScaler($state, fullMargin, preferredWidth, preferredHeight);
     },
 
-    scaleBlocks: function($blocks) {
-      this._blocksScaler($blocks);
+    // Scales the blocks area.
+    //
+    // This method is called by the kids code, but the runner's editor.js extension may need
+    // to perform additional calls to it.
+    scaleBlocksArea: function($blocks) {
+      this._blocksAreaScaler($blocks);
     },
 
     getResultsModal: function () {
@@ -166,9 +194,9 @@ mumuki.load(function () {
       mumuki.characters.magnifying_glass.playAnimation('show', $('.mu-kids-corollary-animation'));
     },
 
-    _statesScaler: function ($state, fullMargin, preferredWidth, preferredHeight) {
+    _stateScaler: function ($state, fullMargin, preferredWidth, preferredHeight) {
       var $table = $state.find('gs-board > table');
-      if(!$table.length) return setTimeout(() => this.scaleStates($state, fullMargin));
+      if(!$table.length) return setTimeout(() => this.scaleState($state, fullMargin));
 
       console.warn("You are using the default states scaler, which is gobstones-specific. Please register your own scaler in the future");
 
@@ -178,7 +206,7 @@ mumuki.load(function () {
       $table.css('transform', 'scale(' + Math.min(scaleX, scaleY) + ')');
     },
 
-    _blocksScaler: function($blocks) {
+    _blocksAreaScaler: function($blocks) {
       console.warn("You are using the default blocks scaler, which is blockly-specific. Please register your own scaler in the future");
 
       var $blockArea = $blocks.find('#blocklyDiv');
@@ -280,8 +308,8 @@ mumuki.load(function () {
 
       $muKidsExerciseDescription.width($muKidsExercise.width() - $muKidsStatesContainer.width() - margin);
 
-      $muKidsStates.each((index, state) => mumuki.kids.scaleStates($(state), fullMargin));
-      mumuki.kids.scaleBlocks($('.mu-kids-blocks'));
+      $muKidsStates.each((index, state) => mumuki.kids.scaleState($(state), fullMargin));
+      mumuki.kids.scaleBlocksArea($('.mu-kids-blocks'));
 
       resizeSpeechParagraphs();
     });

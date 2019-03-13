@@ -175,10 +175,10 @@ In order to be customized by runners, Laboratory exposes the following selectors
 
 ## Methods
 
-* `mumuki.kids.registerStatesScaler`
-* `mumuki.kids.scaleStates`
-* `mumuki.kids.registerBlocksScaler`
-* `mumuki.kids.scaleBlocks`
+* `mumuki.kids.registerStateScaler`
+* `mumuki.kids.scaleState`
+* `mumuki.kids.registerBlocksAreaScaler`
+* `mumuki.kids.scaleBlocksArea`
 * `mumuki.kids.showResult`
 * `mumuki.kids.restart`
 * `mumuki.bridge.Laboratory`
