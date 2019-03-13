@@ -135,7 +135,64 @@ rails s
 bundle exec rspec
 ```
 
-## API Docs
+## JavaScript API Docs
+
+In order to be customized by runners, Laboratory exposes the following selectors and methods
+
+### Public Selectors
+
+* `.mu-final-state`
+* `.mu-initial-state-header`
+* `.mu-initial-state`
+* `.mu-kids-blocks`
+* `.mu-kids-context`
+* `.mu-kids-exercise-description`
+* `.mu-kids-exercise`
+* `.mu-kids-reset-button`
+* `.mu-kids-results-aborted`
+* `.mu-kids-results`
+* `.mu-kids-state-image`
+* `.mu-kids-state`
+* `.mu-kids-states`
+* `.mu-kids-submit-button`
+* `.mu-multiple-scenarios`
+* `.mu-scenarios`
+* `#mu-actual-state-text`
+* `#mu-custom-editor-default-value`
+* `#mu-custom-editor-extra`
+* `#mu-custom-editor-test`
+* `#mu-custom-editor-value`
+* `#mu-initial-state-text`
+
+### Deprecated Selectors
+
+* `#kids-context`: Use `.mu-kids-context` instead
+* `#kids-results-aborted`: Use `.mu-kids-results-aborted` instead
+* `#kids-results`: Use `.mu-kids-results` instead
+* `.mu-state-final`: Use `.mu-final-state` instead
+* `.mu-state-initial`: Use `.mu-initial-state` instead
+* `.mu-kids-gbs-board-initial`: Use `.mu-initial-state` instead
+
+## Methods
+
+* `mumuki.kids.registerStatesScaler`
+* `mumuki.kids.scaleStates`
+* `mumuki.kids.registerBlocksScaler`
+* `mumuki.kids.scaleBlocks`
+* `mumuki.kids.showResult`
+* `mumuki.kids.restart`
+* `mumuki.bridge.Laboratory`
+* `mumuki.MultipleScenarios`
+
+# Call order
+
+0. Laboratory Kids API Initialization
+1. Runner Editor JS
+2. Laboratory Kids Layout Initialization
+3. Runner Editor HTML
+
+
+## REST API Docs
 
 Before using the API, you must create an `ApiClient` using `rails c`, which will generate a private JWT. Use it to authenticate API calls in any Platform application within a `Authorizaion: Bearer <TOKEN>`.
 
