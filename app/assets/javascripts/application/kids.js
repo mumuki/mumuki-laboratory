@@ -183,6 +183,7 @@ mumuki.load(function () {
       mumuki.kids.getSubmissionResult().html(data.html);
       mumuki.presenterCharacter.playAnimation('success_l', mumuki.kids.getCharaterImage());
       mumuki.kids._showMessageOnCharacterBubble(data);
+      mumuki.presenterCharacter.playAnimation('success2_l', $('.mu-kids-character-success'));
       setTimeout(function () {
         var results_kids_modal = mumuki.kids.getResultsModal();
         if (results_kids_modal) {
@@ -210,7 +211,7 @@ mumuki.load(function () {
     },
 
     _showCorollaryCharacter: function () {
-      mumuki.characters.magnifying_glass.actions.show.play($('.mu-kids-corollary-animation'));
+      mumuki.characters.magnifying_glass.playAnimation('show', $('.mu-kids-corollary-animation'));
     },
 
     resultAction: {}
