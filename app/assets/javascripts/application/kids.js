@@ -159,10 +159,11 @@ mumuki.load(function () {
     },
 
     _statesScaler: function ($state, fullMargin, preferredWidth, preferredHeight) {
-      console.warn("You are using the default scaler, which is gobstones-specific");
-      console.warn("Please register your own scaler in the future");
       var $table = $state.find('gs-board > table');
       if(!$table.length) return setTimeout(() => this.scaleStates($state, fullMargin));
+
+      console.warn("You are using the default scaler, which is gobstones-specific. Please register your own scaler in the future");
+
       $table.css('transform', 'scale(1)');
       var scaleX = preferredWidth / $table.width();
       var scaleY = preferredHeight / $table.height();
