@@ -138,6 +138,7 @@ bundle exec rspec
 ## JavaScript API Docs
 
 In order to be customized by runners, Laboratory exposes the following selectors and methods
+which are granted to be safe and stable.
 
 ### Public Selectors
 
@@ -166,25 +167,27 @@ In order to be customized by runners, Laboratory exposes the following selectors
 
 ### Deprecated Selectors
 
+* `.mu-kids-gbs-board-initial`: Use `.mu-initial-state` instead
+* `.mu-state-final`: Use `.mu-final-state` instead
+* `.mu-state-initial`: Use `.mu-initial-state` instead
 * `#kids-context`: Use `.mu-kids-context` instead
 * `#kids-results-aborted`: Use `.mu-kids-results-aborted` instead
 * `#kids-results`: Use `.mu-kids-results` instead
-* `.mu-state-final`: Use `.mu-final-state` instead
-* `.mu-state-initial`: Use `.mu-initial-state` instead
-* `.mu-kids-gbs-board-initial`: Use `.mu-initial-state` instead
 
-## Methods
+### Methods
 
-* `mumuki.kids.registerStateScaler`
-* `mumuki.kids.scaleState`
-* `mumuki.kids.registerBlocksAreaScaler`
-* `mumuki.kids.scaleBlocksArea`
-* `mumuki.kids.showResult`
-* `mumuki.kids.restart`
 * `mumuki.bridge.Laboratory`
+* `mumuki.kids.registerBlocksAreaScaler`
+* `mumuki.kids.registerStateScaler`
+* `mumuki.kids.restart`
+* `mumuki.kids.scaleBlocksArea`
+* `mumuki.kids.scaleState`
+* `mumuki.kids.showResult`
+* `mumuki.locale`
 * `mumuki.MultipleScenarios`
+* `mumuki.version`
 
-# Call order
+### Kids Call order
 
 0. Laboratory Kids API Initialization
 1. Runner Editor JS
