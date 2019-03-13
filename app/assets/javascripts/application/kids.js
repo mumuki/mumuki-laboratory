@@ -59,10 +59,18 @@ mumuki.load(function () {
       this._statesScaler = scaler;
     },
 
+    registerBlocksScaler: function(scaler) {
+      this._blocksScaler = scaler;
+    },
+
     scaleStates: function ($state, fullMargin) {
       const preferredWidth = $state.width() - fullMargin * 2;
       const preferredHeight = $state.height() - fullMargin * 2;
       this._statesScaler($state, fullMargin, preferredWidth, preferredHeight);
+    },
+
+    scaleBlocks: function($blocks) {
+      this._blocksScaler($blocks);
     },
 
     getResultsModal: function () {
@@ -162,12 +170,25 @@ mumuki.load(function () {
       var $table = $state.find('gs-board > table');
       if(!$table.length) return setTimeout(() => this.scaleStates($state, fullMargin));
 
-      console.warn("You are using the default scaler, which is gobstones-specific. Please register your own scaler in the future");
+      console.warn("You are using the default states scaler, which is gobstones-specific. Please register your own scaler in the future");
 
       $table.css('transform', 'scale(1)');
       var scaleX = preferredWidth / $table.width();
       var scaleY = preferredHeight / $table.height();
       $table.css('transform', 'scale(' + Math.min(scaleX, scaleY) + ')');
+    },
+
+    _blocksScaler: function($blocks) {
+      console.warn("You are using the default blocks scaler, which is blockly-specific. Please register your own scaler in the future");
+
+      var $blockArea = $blocks.find('#blocklyDiv');
+      var $blockSvg = $blocks.find('.blocklySvg');
+
+      $blockArea.width($blocks.width());
+      $blockArea.height($blocks.height());
+
+      $blockSvg.width($blocks.width());
+      $blockSvg.height($blocks.height());
     },
 
     resultAction: {}
@@ -260,16 +281,7 @@ mumuki.load(function () {
       $muKidsExerciseDescription.width($muKidsExercise.width() - $muKidsStatesContainer.width() - margin);
 
       $muKidsStates.each((index, state) => mumuki.kids.scaleStates($(state), fullMargin));
-
-      var $muKidsBlocks = $('.mu-kids-blocks');
-      var $blockArea = $muKidsBlocks.find('#blocklyDiv');
-      var $blockSvg = $muKidsBlocks.find('.blocklySvg');
-
-      $blockArea.width($muKidsBlocks.width());
-      $blockArea.height($muKidsBlocks.height());
-
-      $blockSvg.width($muKidsBlocks.width());
-      $blockSvg.height($muKidsBlocks.height());
+      mumuki.kids.scaleBlocks($('.mu-kids-blocks'));
 
       resizeSpeechParagraphs();
     });
