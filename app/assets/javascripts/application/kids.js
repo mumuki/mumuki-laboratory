@@ -212,68 +212,65 @@ mumuki.load(function () {
   mumuki.kids.resultAction.errored = mumuki.kids._showOnCharacterBubble;
   mumuki.kids.resultAction.pending = mumuki.kids._showOnCharacterBubble;
 
-  // ==============
-  // Initialization
-  // ==============
+  $(document).ready(() => {
+    // Speech initialization
 
-  // Speech initialization
+    availableTabs.forEach(function (tabSelector) {
+      tabParagraphs(tabSelector).contents().unwrap().wrapAll('<p>');
+    });
 
-  availableTabs.forEach(function (tabSelector) {
-    tabParagraphs(tabSelector).contents().unwrap().wrapAll('<p>');
-  });
-
-  updateSpeechParagraphs();
-
-  resizeSpeechParagraphs();
-
-  $speechTabs.each(function (i) {
-    var $tab = $($speechTabs[i]);
-    $tab.click(function () {
-      $speechTabs.removeClass('active');
-      $tab.addClass('active');
-      $texts.hide();
-      $bubble.children('.' + $tab.data('target')).show();
-      updateSpeechParagraphs();
-    })
-  });
-
-  if(paragraphCount > 1) {
-    nextSpeechBlinking = setInterval(() => $nextSpeech.fadeTo('slow', 0.1).fadeTo('slow', 1.0), 1000);
-  }
-
-  $nextSpeech.click(showNextParagraph);
-  $prevSpeech.click(showPrevParagraph);
-
-  // States initial resizing
-
-  mumuki.resize(function () {
-    var margin = 15;
-    var fullMargin = margin * 2;
-
-    var $muKidsStatesContainer = $('.mu-kids-states');
-    var $muKidsStates = $('.mu-kids-state');
-
-    var dimension = $muKidsStatesContainer.height() / 2 * 1.25 - fullMargin;
-    $muKidsStatesContainer.width(dimension);
-
-    var $muKidsExercise = $('.mu-kids-exercise');
-    var $muKidsExerciseDescription = $('.mu-kids-exercise-description');
-
-    $muKidsExerciseDescription.width($muKidsExercise.width() - $muKidsStatesContainer.width() - margin);
-
-    $muKidsStates.each((index, state) => mumuki.kids.scaleStates($(state), fullMargin));
-
-    var $muKidsBlocks = $('.mu-kids-blocks');
-    var $blockArea = $muKidsBlocks.find('#blocklyDiv');
-    var $blockSvg = $muKidsBlocks.find('.blocklySvg');
-
-    $blockArea.width($muKidsBlocks.width());
-    $blockArea.height($muKidsBlocks.height());
-
-    $blockSvg.width($muKidsBlocks.width());
-    $blockSvg.height($muKidsBlocks.height());
+    updateSpeechParagraphs();
 
     resizeSpeechParagraphs();
-  });
 
+    $speechTabs.each(function (i) {
+      var $tab = $($speechTabs[i]);
+      $tab.click(function () {
+        $speechTabs.removeClass('active');
+        $tab.addClass('active');
+        $texts.hide();
+        $bubble.children('.' + $tab.data('target')).show();
+        updateSpeechParagraphs();
+      })
+    });
+
+    if(paragraphCount > 1) {
+      nextSpeechBlinking = setInterval(() => $nextSpeech.fadeTo('slow', 0.1).fadeTo('slow', 1.0), 1000);
+    }
+
+    $nextSpeech.click(showNextParagraph);
+    $prevSpeech.click(showPrevParagraph);
+
+    // States initial resizing
+
+    mumuki.resize(function () {
+      var margin = 15;
+      var fullMargin = margin * 2;
+
+      var $muKidsStatesContainer = $('.mu-kids-states');
+      var $muKidsStates = $('.mu-kids-state');
+
+      var dimension = $muKidsStatesContainer.height() / 2 * 1.25 - fullMargin;
+      $muKidsStatesContainer.width(dimension);
+
+      var $muKidsExercise = $('.mu-kids-exercise');
+      var $muKidsExerciseDescription = $('.mu-kids-exercise-description');
+
+      $muKidsExerciseDescription.width($muKidsExercise.width() - $muKidsStatesContainer.width() - margin);
+
+      $muKidsStates.each((index, state) => mumuki.kids.scaleStates($(state), fullMargin));
+
+      var $muKidsBlocks = $('.mu-kids-blocks');
+      var $blockArea = $muKidsBlocks.find('#blocklyDiv');
+      var $blockSvg = $muKidsBlocks.find('.blocklySvg');
+
+      $blockArea.width($muKidsBlocks.width());
+      $blockArea.height($muKidsBlocks.height());
+
+      $blockSvg.width($muKidsBlocks.width());
+      $blockSvg.height($muKidsBlocks.height());
+
+      resizeSpeechParagraphs();
+    });
+  })
 });
