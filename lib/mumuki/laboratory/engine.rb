@@ -1,6 +1,9 @@
 module Mumuki
   module Laboratory
     class Engine < ::Rails::Engine
+      require 'mumuki/styles'
+      require 'muvment'
+
       config.generators.stylesheets = false
       config.generators.javascripts = false
       config.generators.test_framework = :rspec
