@@ -95,7 +95,7 @@ mumuki.load(function () {
 
     $muKidsExerciseDescription.width($muKidsExercise.width() - $muKidsStatesContainer.width() - margin);
 
-    $muKidsStates.each((index, board) => scaleStates($(board)));
+    $muKidsStates.each((index, state) => mumuki.kids.scaleStates($(state), fullMargin));
 
     var $muKidsBlocks = $('.mu-kids-blocks');
     var $blockArea = $muKidsBlocks.find('#blocklyDiv');
@@ -107,19 +107,19 @@ mumuki.load(function () {
     $blockSvg.width($muKidsBlocks.width());
     $blockSvg.height($muKidsBlocks.height());
 
-    function scaleStates($element) {
-      var $table = $element.find('gs-board > table');
-      if(!$table.length) return setTimeout(() => scaleStates($element));
-      $table.css('transform', 'scale(1)');
-      var scaleX = ($element.width() - fullMargin * 2) / $table.width();
-      var scaleY = ($element.height() - fullMargin * 2) / $table.height();
-      $table.css('transform', 'scale(' + Math.min(scaleX, scaleY) + ')');
-    }
-
     resizeSpeechParagraphs();
   });
 
   mumuki.kids = {
+    registerStatesScaler: function(scaler) {
+      this._statesScaler = scaler;
+    },
+
+    scaleStates: function ($state, fullMargin) {
+      const preferredWidth = $state.width() - fullMargin * 2;
+      const preferredHeight = $state.height() - fullMargin * 2;
+      this._statesScaler($state, fullMargin, preferredWidth, preferredHeight);
+    },
 
     getResultsModal: function () {
       return $('#kids-results');
@@ -212,6 +212,17 @@ mumuki.load(function () {
 
     _showCorollaryCharacter: function () {
       mumuki.characters.magnifying_glass.playAnimation('show', $('.mu-kids-corollary-animation'));
+    },
+
+    _statesScaler: function ($state, fullMargin, preferredWidth, preferredHeight) {
+      console.warn("You are using the default scaler, which is gobstones-specific");
+      console.warn("Please register your own scaler in the future");
+      var $table = $state.find('gs-board > table');
+      if(!$table.length) return setTimeout(() => this.scaleStates($state, fullMargin));
+      $table.css('transform', 'scale(1)');
+      var scaleX = preferredWidth / $table.width();
+      var scaleY = preferredHeight / $table.height();
+      $table.css('transform', 'scale(' + Math.min(scaleX, scaleY) + ')');
     },
 
     resultAction: {}
