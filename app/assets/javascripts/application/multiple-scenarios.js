@@ -62,7 +62,7 @@ var mumuki = mumuki || {};
       this.createControls();
       this.createIndicators();
       this.setActiveIndex(0);
-      $('.mu-scenarios').removeClass('hidden');
+      $('.mu-scenario-control').removeClass('hidden');
     }
 
     validScenarioIndex (index) {
