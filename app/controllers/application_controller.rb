@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
 
   def should_choose_organization?
     current_user? &&
-      current_user.has_accessible_organizations? &&
+      current_user.has_student_granted_organizations? &&
       Mumukit::Platform.implicit_organization?(request)
   end
 
@@ -61,7 +61,7 @@ class ApplicationController < ActionController::Base
   end
 
   def validate_user_profile!
-    return if !current_user.has_accessible_organizations? || current_user.profile_completed?
+    return if !current_user.has_student_granted_organizations? || current_user.profile_completed?
     flash.notice = I18n.t :please_fill_profile_data
     redirect_to user_path
   end

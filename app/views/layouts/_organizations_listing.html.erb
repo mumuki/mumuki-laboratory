@@ -1,4 +1,4 @@
-<% if current_user.accessible_organizations.empty? %>
+<% if current_user.student_granted_organizations.empty? %>
   <%= t :not_in_any_organizations %>
 <% else %>
   <% organizations_for(current_user).each do |org| %>
