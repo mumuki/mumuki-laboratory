@@ -107,7 +107,7 @@ pt:
   joining: Bem-vindo ao curso <strong> %{curso} </strong>!
   kids_default_success: Você fez muito bem!
   language: Linguagem
-  languages: Idiomas
+  languages: Linguagens
   last_name: Sobrenome
   last_submission_date: Última solução
   latest_exercises: Últimos exercícios
