@@ -42,6 +42,7 @@ module Mumukit::Platform::OrganizationMapping::Path
   end
 end
 
+require_relative './laboratory/version'
 require_relative './laboratory/extensions'
 require_relative './laboratory/controllers'
 require_relative './laboratory/engine'
