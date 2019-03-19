@@ -58,10 +58,15 @@ Rails.application.routes.draw do
     get '/messages/errors' => 'messages#errors'
 
     # Routes by slug
-    get '/guides/:organization/:repository' => 'guides#show_by_slug', as: :guide_by_slug
-    get '/exercises/:organization/:repository/:bibliotheca_id' => 'exercises#show_by_slug', as: :exercise_by_slug
+    get '/guides/:organization/:repository' => 'guides#show_transparently', as: :transparent_guide
+    get '/topics/:organization/:repository' => 'topics#show_transparently', as: :transparent_topic
+    get '/exercises/:organization/:repository/:bibliotheca_id' => 'exercises#show_transparently', as: :transparent_exercise
+
+    # Join to course
     get '/join/:code' => 'invitations#show', as: :invitation
     post '/join/:code' => 'invitations#join'
+
+    # Notification subscriptions
     get '/user/unsubscribe' => 'users#unsubscribe'
     put '/user' => 'users#update', as: :update_user
 

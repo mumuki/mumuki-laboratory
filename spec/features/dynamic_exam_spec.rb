@@ -17,7 +17,7 @@ feature 'Dynamic Exam', organization_workspace: :test do
 
   context 'not logged user' do
     scenario 'visit exercise by slug' do
-      visit "/exercises/#{problem.slug}"
+      visit "/exercises/#{problem.transparent_id}"
 
       expect(page).to have_text('do f = some_string')
     end
@@ -25,14 +25,14 @@ feature 'Dynamic Exam', organization_workspace: :test do
 
 
   context 'logged user' do
-    scenario 'visit exercise by slug' do
+    scenario 'visit exercise by transparent_id' do
       set_current_user! user
-      visit "/exercises/#{problem.slug}"
+      visit "/exercises/#{problem.transparent_id}"
 
       expect(page).to have_text('do f = some_other_string')
 
       set_current_user! user2
-      visit "/exercises/#{problem.slug}"
+      visit "/exercises/#{problem.transparent_id}"
 
       expect(page).to have_text('do f = some_string')
     end

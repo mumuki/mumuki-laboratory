@@ -54,6 +54,12 @@ class ApplicationController < ActionController::Base
     login_form.button_html I18n.t(:sign_in), options[:class]
   end
 
+  # redirects to the usage in the current organization for the given content
+  # or raises a not found error if unused
+  def redirect_to_usage(content)
+    raise Mumuki::Domain::NotFoundError unless content.usage_in_organization.try { |usage| redirect_to usage }
+  end
+
   private
 
   def login_settings

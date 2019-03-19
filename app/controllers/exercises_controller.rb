@@ -12,8 +12,8 @@ class ExercisesController < ApplicationController
     enable_embedded_rendering
   end
 
-  def show_by_slug
-    redirect_to Guide.by_slug_parts!(params).exercises.find_by!(bibliotheca_id: params[:bibliotheca_id])
+  def show_transparently
+    redirect_to Exercise.find_transparently!(params)
   end
 
   private
