@@ -8,7 +8,7 @@ module EmailHelper
 
 #{t :status}: #{assignment.status}
 
-See #{exercise_by_slug_url(assignment.exercise.slug_parts)}
+See #{transparent_exercise_url(assignment.exercise.transparent_parms)}
 EOM
   end
 

@@ -29,13 +29,13 @@ feature 'Exercise Flow', organization_workspace: :test do
   before { reindex_current_organization! }
 
   context 'inexistent exercise' do
-    scenario 'visit exercise by slug, not in path' do
-      visit "/exercises/#{exercise_not_in_path.slug}"
+    scenario 'visit exercise transparently, not in path' do
+      visit "/exercises/#{exercise_not_in_path.transparent_id}"
       expect(page).to have_text('You may have mistyped the address or the page may have moved')
     end
 
-    scenario 'visit exercise by slug, unknown exercise' do
-      visit '/exercises/an_exercise_slug'
+    scenario 'visit exercise transparently, unknown exercise' do
+      visit '/exercises/an_exercise_transparent_id'
       expect(page).to have_text('You may have mistyped the address or the page may have moved')
     end
 
@@ -51,8 +51,8 @@ feature 'Exercise Flow', organization_workspace: :test do
   end
 
   context 'not logged user' do
-    scenario 'visit exercise by slug' do
-      visit "/exercises/#{problem_1.slug}"
+    scenario 'visit exercise transparently' do
+      visit "/exercises/#{problem_1.transparent_id}"
 
       expect(page).to have_text('Succ1')
       expect(page).to_not have_text('Console')
@@ -82,8 +82,8 @@ feature 'Exercise Flow', organization_workspace: :test do
     before { set_current_user! user }
     let(:writer) { create(:user, permissions: {student: 'private/*', writer: 'private/*'}) }
 
-    scenario 'visit exercise by slug' do
-      visit "/exercises/#{problem_1.slug}"
+    scenario 'visit exercise transparently' do
+      visit "/exercises/#{problem_1.transparent_id}"
 
       expect(page).to have_text('Succ1')
       expect(page).to have_text('Console')

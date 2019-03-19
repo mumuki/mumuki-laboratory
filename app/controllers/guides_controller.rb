@@ -3,8 +3,8 @@ class GuidesController < ApplicationController
     redirect_to_usage Guide.find_by!(id: params[:id])
   end
 
-  def show_by_slug
-    redirect_to_usage Guide.by_slug_parts!(params)
+  def show_transparently
+    redirect_to_usage Guide.find_transparently!(params)
   end
 
   def redirect_to_usage(guide)

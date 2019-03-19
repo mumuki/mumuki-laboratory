@@ -23,7 +23,7 @@ feature 'Progressive Tips', organization_workspace: :test do
 
     scenario '2 failed submissions' do
       assignment.update! attempts_count: 2
-      visit "/exercises/#{problem.slug}"
+      visit "/exercises/#{problem.transparent_id}"
 
       expect(page).to have_text('Try this')
       expect(page).to_not have_text('Try that')

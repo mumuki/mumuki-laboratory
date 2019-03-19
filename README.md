@@ -194,6 +194,13 @@ which are granted to be safe and stable.
 2. Laboratory Kids Layout Initialization
 3. Runner Editor HTML
 
+## Transparent Navigation API Docs
+
+In order to be able to link content, laboratory exposes slug-based routes that will redirect to the actual
+content URL in the current organization transparently:
+
+* `GET <organization-url>/guides/<organization>/<repository>`
+* `GET <organization-url>/exercies/<organization>/<repository>/<bibliotheca-id>`
 
 ## REST API Docs
 
