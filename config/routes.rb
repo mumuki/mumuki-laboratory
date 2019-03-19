@@ -59,6 +59,7 @@ Rails.application.routes.draw do
 
     # Routes by slug
     get '/guides/:organization/:repository' => 'guides#show_transparently', as: :transparent_guide
+    get '/topics/:organization/:repository' => 'topics#show_transparently', as: :transparent_topic
     get '/exercises/:organization/:repository/:bibliotheca_id' => 'exercises#show_transparently', as: :transparent_exercise
 
     # Join to course

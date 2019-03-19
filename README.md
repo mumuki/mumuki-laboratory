@@ -199,6 +199,7 @@ which are granted to be safe and stable.
 In order to be able to link content, laboratory exposes slug-based routes that will redirect to the actual
 content URL in the current organization transparently:
 
+* `GET <organization-url>/topics/<organization>/<repository>`
 * `GET <organization-url>/guides/<organization>/<repository>`
 * `GET <organization-url>/exercies/<organization>/<repository>/<bibliotheca-id>`
 
