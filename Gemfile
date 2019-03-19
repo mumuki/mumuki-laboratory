@@ -39,3 +39,4 @@ group :development do
 
 end
 
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', ref: '744f6be68e3e9ef046b9c3511c1044b617f49eac'
