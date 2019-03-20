@@ -94,6 +94,10 @@ $kids-speech-tabs-width: 40px;
 
   }
 
+  .mu-kids-character-animation {
+    width: 120px;
+  }
+
   .mu-kids-character {
     position: relative;
     display: flex;
@@ -103,7 +107,6 @@ $kids-speech-tabs-width: 40px;
     border: none;
     img {
       height: 100%;
-      width: 120px;
     }
     .mu-kids-character-speech-bubble {
 
