@@ -90,7 +90,7 @@ var mumuki = mumuki || {};
       mumuki.editor.syncContent();
       var solution = getContent();
 
-      bridge.runLocalTests(solution).done(function (data) {
+      bridge._submitSolution(solution).done(function (data) {
         resultsBox.success(data, submitButton);
       }).fail(function () {
         resultsBox.error(submitButton);
