@@ -37,16 +37,28 @@ var mumuki = mumuki || {};
   });
 
   Laboratory.prototype = {
-    runLocalTests: function (solution) {
+
+    // ==========
+    // Public API
+    // ==========
+
+    // Runs tests for the current exercise using the given submission
+    // content.
+    runTests: function(content) {
+      return this._submitSolution({ solution: content });
+    },
+
+    // ===========
+    // Private API
+    // ===========
+
+    _submitSolution: function (solution) {
       if(lastSubmissionFinishedSuccessfully() && sameAsLastSolution(solution)){
         return $.Deferred().resolve(lastSubmission.result);
       } else {
         return sendNewSolution(solution);
       }
     },
-    runTests: function(content) {
-      return this.runLocalTests({ solution: content });
-    }
   };
 
   mumuki.bridge = {

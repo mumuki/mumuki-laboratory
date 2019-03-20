@@ -177,14 +177,20 @@ which are granted to be safe and stable.
 ### Methods
 
 * `mumuki.bridge.Laboratory`
-* `mumuki.kids.registerBlocksAreaScaler`
-* `mumuki.kids.registerStateScaler`
-* `mumuki.kids.restart`
-* `mumuki.kids.scaleBlocksArea`
-* `mumuki.kids.scaleState`
-* `mumuki.kids.showResult`
+  * `.runTests`
+* `mumuki.kids`
+  * `registerBlocksAreaScaler`
+  * `registerStateScaler`
+  * `restart`
+  * `scaleBlocksArea`
+  * `scaleState`
+  * `showResult`
 * `mumuki.locale`
 * `mumuki.MultipleScenarios`
+  * `scenarios`
+  * `currentScenarioIndex`
+  * `resetIndicators`
+  * `updateIndicators`
 * `mumuki.version`
 
 ### Kids Call order
