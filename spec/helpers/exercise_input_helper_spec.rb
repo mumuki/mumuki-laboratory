@@ -25,7 +25,8 @@ describe ApplicationHelper, organization_workspace: :test do
   end
 
   describe 'should_render_need_help_dropdown?' do
-    let(:assignment) { create(:assignment) }
+    let(:student) { create(:user, permissions: Mumukit::Auth::Permissions.parse(student: "*")) }
+    let(:assignment) { create(:assignment, submitter: student) }
 
     context 'when the orga has a community link' do
       let(:organization) { create(:organization, name: 'myorg', community_link: 'com_link') }
@@ -38,6 +39,10 @@ describe ApplicationHelper, organization_workspace: :test do
     context 'when forum enabled' do
       let(:organization) { create(:organization, name: 'myorg', forum_enabled: true) }
       it { expect(should_render_need_help_dropdown? assignment, organization).to be true }
+    end
+    context 'when forum enabled but the minimal role for discussions is teacher' do
+      let(:organization) { create(:organization, name: 'myorg', forum_enabled: true, forum_discussions_minimal_role: 'teacher' ) }
+      it { expect(should_render_need_help_dropdown? assignment, organization).to be false }
     end
     context 'when ask for help is not enabled' do
       it { expect(should_render_need_help_dropdown? assignment).to be false }

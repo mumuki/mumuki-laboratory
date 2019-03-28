@@ -34,6 +34,7 @@ class DiscussionsController < ApplicationController
   end
 
   def create
+    validate_discussions_permission!
     discussion = @debatable.discuss! current_user, discussion_params
     redirect_to [@debatable, discussion]
   end
@@ -67,6 +68,10 @@ class DiscussionsController < ApplicationController
 
   def validate_forum_enabled!
     raise Mumuki::Domain::NotFoundError unless Organization.current.forum_enabled?
+  end
+
+  def validate_discussions_permission!
+    raise Mumuki::Domain::NotFoundError unless Organization.current.can_create_discussions?(current_user)
   end
 
   def validate_not_in_exam!
