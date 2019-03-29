@@ -27,7 +27,10 @@ class ExercisesController < ApplicationController
   end
 
   def start!
-    @exercise.navigable_parent.start! current_user
+    session_id = Mumukit::Login::Controller.new(Mumukit::Platform.web_framework, self) # TODO: Exponer Mumukit::Login::AuthenticationHelpers::mumukit_controller
+      .session.id                                                                      # (o hay alguna forma mejor? code-reviewer responda!)
+
+    @exercise.navigable_parent.start! current_user, session_id
   end
 
   def set_assignment!

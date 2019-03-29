@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190123180147) do
+ActiveRecord::Schema.define(version: 20190329002401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 20190123180147) do
     t.integer "user_id"
     t.boolean "started", default: false
     t.datetime "started_at"
+    t.string "session_id"
     t.index ["exam_id"], name: "index_exam_authorizations_on_exam_id"
     t.index ["user_id"], name: "index_exam_authorizations_on_user_id"
   end
@@ -332,4 +333,9 @@ ActiveRecord::Schema.define(version: 20190123180147) do
     t.index ["uid"], name: "index_users_on_uid", unique: true
   end
 
+  add_foreign_key "chapters", "topics"
+  add_foreign_key "complements", "guides"
+  add_foreign_key "exams", "guides"
+  add_foreign_key "lessons", "guides"
+  add_foreign_key "organizations", "books"
 end
