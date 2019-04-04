@@ -1,7 +1,4 @@
-var mumuki = mumuki || {};
-
-(function (mumuki) {
-
+mumuki.load(function () {
   var Chat = {
     $body: function () {
       return $('body')
@@ -92,6 +89,5 @@ var mumuki = mumuki || {};
   Chat.setMessagesInterval();
   mumuki.Chat = Chat;
 
-}(mumuki));
-
+})
 
