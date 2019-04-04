@@ -1,5 +1,3 @@
-var mumuki = mumuki || {};
-
 mumuki.load(function () {
   var Chat = {
     $body: function () {
