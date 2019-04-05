@@ -4,6 +4,7 @@ $kids-characters-height: 120px;
 $kids-speech-arrow-size: 10px;
 $kids-speech-border-color: lighten($mu-color-disabled, 20%);
 $kids-speech-background-color: #f4f6fb;
+$kids-scrollbar-background-color: #d7d9dd;
 
 $kids-speech-border: 1px solid $kids-speech-border-color;
 
@@ -362,12 +363,13 @@ $kids-speech-tabs-width: 40px;
       ry: 10px !important;
     }
     .blocklyScrollbarHandle {
-      display: none;
-      fill: $kids-speech-background-color !important;
+      fill: $kids-scrollbar-background-color !important;
       stroke: $kids-speech-border-color !important;
       stroke-width: 1px !important;
     }
-    .blocklyScrollbarVertical,
+    .blocklyMainWorkspaceScrollbar {
+      display: none;
+    }
     .blocklyScrollbarHorizontal {
       display: none;
     }
