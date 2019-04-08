@@ -120,7 +120,7 @@ mumuki.load(function () {
       mumuki.kids._hideMessageOnCharacterBubble();
       var $bubble = mumuki.kids._getCharacterBubble();
       Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
-      mumuki.presenterCharacter.playAnimation('jump', mumuki.kids._getCharaterImage());
+      mumuki.presenterCharacter.playAnimation('talk', mumuki.kids._getCharaterImage());
     },
 
     // ===========
