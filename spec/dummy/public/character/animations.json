@@ -7,7 +7,10 @@
         "jump",
         "success2_l",
         "success_l"
-      ]
+      ],
+      "actions": {
+        "talk": "jump"
+      }
     }
   },
   "extra": {
