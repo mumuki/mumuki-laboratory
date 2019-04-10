@@ -5,7 +5,7 @@
 
 <div>
   <div class="row">
-    <% if current_user && !current_user.moderator? %>
+    <% if current_user && !current_user.moderator_here? %>
       <div class="mu-inline-block-right hidden-xs discussion-user-menu">
         <h3>
           <% if @discussion.subscribable? %>

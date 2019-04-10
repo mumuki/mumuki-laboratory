@@ -47,7 +47,7 @@ class DiscussionsController < ApplicationController
   private
 
   def current_content_discussions
-    @debatable.discussions
+    @debatable.discussions_in_organization
   end
 
   def set_debatable

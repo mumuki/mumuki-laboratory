@@ -6,7 +6,7 @@
         <span class="message-date">
           <%= t(:time_since, time: time_ago_in_words(message.created_at)) %>
         </span>
-        <% if user.moderator? %>
+        <% if user.moderator_here? %>
           <%= fa_icon(:star, {'data-toggle': 'tooltip', title: (t :moderator), class: 'moderator-star'}) %>
         <% end %>
         <% if message.authorized? current_user %>
