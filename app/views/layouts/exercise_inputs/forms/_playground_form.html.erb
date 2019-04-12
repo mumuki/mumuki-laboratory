@@ -2,7 +2,7 @@
 
 <% if exercise.extra_visible? %>
   <ul class="nav nav-tabs" role="tablist">
-    <%= console_tab('class="active"') %>
+    <%= console_tab active: true %>
     <% if exercise.extra_visible? %>
       <%= extra_code_tab %>
     <% end %>
