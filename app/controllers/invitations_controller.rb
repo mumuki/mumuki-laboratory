@@ -3,7 +3,7 @@ class InvitationsController < ApplicationController
   before_action :set_invitation!
 
   def show
-    redirect_to_organization! if current_user.student_of? @organization
+    redirect_to_organization! if current_user.student_of? @invitation.course
   end
 
   def join
