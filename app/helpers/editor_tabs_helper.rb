@@ -3,8 +3,8 @@ module EditorTabsHelper
     "<li role='presentation'> <a data-target='#visible-extra' aria-controls='visible-extra' role='tab' data-toggle='tab' class='editor-tab'>#{fa_icon 'code'} #{t 'activerecord.attributes.exercise.extra'}</a> </li>".html_safe
   end
 
-  def console_tab
-    "<li role='presentation'>
+  def console_tab(active: false)
+    "<li role='presentation' class='#{'active' if active}'>
         <a data-target='#console' aria-controls='console' tabindex='0' role='tab' data-toggle='tab' class='editor-tab'>
           #{fa_icon 'terminal'}#{t :console }
         </a>
