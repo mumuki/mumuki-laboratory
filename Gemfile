@@ -36,7 +36,4 @@ group :development do
   gem 'i18n-tasks', '~> 0.8.3'
   gem 'web-console'
   gem 'codeclimate-test-reporter', require: nil
-
 end
-
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', ref: 'c13e77d7c132fd21b0a06d7dfd8a115491ce6fec'

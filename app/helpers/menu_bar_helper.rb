@@ -13,11 +13,11 @@ module MenuBarHelper
   end
 
   def link_to_classroom
-    link_to_application 'graduation-cap', :classroom, :teacher_here?
+    link_to_application 'graduation-cap', :classroom_ui, :teacher_here?
   end
 
   def link_to_bibliotheca
-    link_to_application :book, :bibliotheca, :writer?
+    link_to_application :book, :bibliotheca_ui, :writer?
   end
 
   def link_to_application(icon, app_name, minimal_permissions)
