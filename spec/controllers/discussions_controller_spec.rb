@@ -8,6 +8,24 @@ describe DiscussionsController, organization_workspace: :test do
   before { set_current_user! user }
   before { Organization.current.tap { |it| it.forum_enabled = true }.save! }
 
+  describe 'show' do
+    let(:another_orga) { create(:organization, {name: 'another_orga'}) }
+
+    describe 'a discussion from the current orga' do
+      let(:discussion) { create(:discussion, {organization: Organization.current}) }
+      before {get :show, params: exercise_params.merge({id: discussion.id})}
+
+      it {expect(response.status).to eq 200}
+    end
+
+    describe 'a discussion from another orga' do
+      let(:discussion) { create(:discussion, {organization: another_orga}) }
+      before {get :show, params: exercise_params.merge({id: discussion.id})}
+
+      it {expect(response.status).to eq 404}
+    end
+  end
+
   describe 'post' do
     before { allow_any_instance_of(DiscussionsController).to receive(:discussion_params).and_return title: 'A title' }
     before { post :create, params: exercise_params }

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @messages = current_user.messages.to_a
-    @watched_discussions = current_user.watched_discussions
+    @watched_discussions = current_user.watched_discussions_in_organization
   end
 
   def update
