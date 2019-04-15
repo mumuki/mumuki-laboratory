@@ -207,7 +207,7 @@ content URL in the current organization transparently:
 
 * `GET <organization-url>/topics/<organization>/<repository>`
 * `GET <organization-url>/guides/<organization>/<repository>`
-* `GET <organization-url>/exercies/<organization>/<repository>/<bibliotheca-id>`
+* `GET <organization-url>/exercises/<organization>/<repository>/<bibliotheca-id>`
 
 ## REST API Docs
 
