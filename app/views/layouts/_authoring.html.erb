@@ -6,7 +6,11 @@
           <%= render partial: 'layouts/copyright' %> -
         </span>
       <% end %>
-      <%= raw t :authoring_note, authors: guide.authors, collaborators: "https://raw.githubusercontent.com/#{guide.slug}/master/COLLABORATORS.txt" %>
+      <% if guide.collaborators.present? %>
+        <%= raw t :authoring_note_with_collaborators, authors: guide.authors, collaborators: "https://raw.githubusercontent.com/#{guide.slug}/master/COLLABORATORS.txt" %>
+      <% else %>
+        <%= raw t :authoring_note, authors: guide.authors %>
+      <% end %>
     </p>
   <% end %>
 <% end %>
