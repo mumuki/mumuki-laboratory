@@ -77,7 +77,6 @@ Rails.application.routes.draw do
     get '/theme_stylesheet'     => 'assets#theme_stylesheet'
     get '/extension_javascript' => 'assets#extension_javascript'
 
-
     namespace :api do
       organization_regexp = Regexp.new Mumukit::Platform::Organization::Helpers.valid_name_regex
       uid_regexp = /[^\/]+/
@@ -101,6 +100,8 @@ Rails.application.routes.draw do
     end
   end
 
-  #Rescue not found routes
-  get '*not_found', to: 'application#not_found'
+  # Rescue not found routes
+  get '*not_found', to: 'application#not_found', constraints: -> (req) do
+    !(req.fullpath =~ /^\/rails\/active_storage\/.*/)
+  end
 end

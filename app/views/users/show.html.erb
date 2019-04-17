@@ -43,6 +43,7 @@
               <div><%= f.label(t :email) %></div>
               <div><%= f.text_field :email, readonly: true, class: 'form-control' %></div>
             </fieldset>
+            <%= f.file_field :avatar, direct_upload: true %>
             <br>
             <div><%= f.submit t(:save), class: 'btn btn-success btn-block' %></div>
           </div>

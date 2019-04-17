@@ -16,6 +16,7 @@
 //= require webcomponents-lite
 //= require rails-ujs
 //= require turbolinks
+//= require activestorage
 //= require mumuki-styles
 //= require nprogress
 //= require nprogress-turbolinks

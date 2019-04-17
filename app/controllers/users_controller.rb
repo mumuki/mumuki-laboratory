@@ -8,6 +8,8 @@ class UsersController < ApplicationController
   end
 
   def update
+    current_user.avatar.attach avatar if avatar.present?
+
     current_user.update_and_notify! user_params
     redirect_to root_path, notice: I18n.t(:user_data_updated)
   end
@@ -25,7 +27,11 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name)
+    params.require(:user).permit(:first_name, :last_name, :avatar)
+  end
+
+  def avatar
+    user_params[:avatar]
   end
 
   def set_user!

@@ -126,8 +126,10 @@ ActiveRecord::Schema.define(version: 2019_04_17_042628) do
     t.text "query_results"
     t.text "manual_evaluation_comment"
     t.integer "upvotes_count", default: 0
+    t.bigint "organization_id"
     t.index ["initiator_id"], name: "index_discussions_on_initiator_id"
     t.index ["item_type", "item_id"], name: "index_discussions_on_item_type_and_item_id"
+    t.index ["organization_id"], name: "index_discussions_on_organization_id"
   end
 
   create_table "exam_authorizations", force: :cascade do |t|
@@ -135,6 +137,7 @@ ActiveRecord::Schema.define(version: 2019_04_17_042628) do
     t.integer "user_id"
     t.boolean "started", default: false
     t.datetime "started_at"
+    t.string "session_id"
     t.index ["exam_id"], name: "index_exam_authorizations_on_exam_id"
     t.index ["user_id"], name: "index_exam_authorizations_on_user_id"
   end
@@ -188,6 +191,7 @@ ActiveRecord::Schema.define(version: 2019_04_17_042628) do
     t.text "free_form_editor_source"
     t.text "teacher_info"
     t.text "choices"
+    t.text "settings"
     t.index ["guide_id"], name: "index_exercises_on_guide_id"
     t.index ["language_id"], name: "index_exercises_on_language_id"
   end
@@ -212,6 +216,7 @@ ActiveRecord::Schema.define(version: 2019_04_17_042628) do
     t.text "teacher_info"
     t.text "sources"
     t.text "learn_more"
+    t.text "settings"
     t.index ["name"], name: "index_guides_on_name"
     t.index ["slug"], name: "index_guides_on_slug", unique: true
   end
