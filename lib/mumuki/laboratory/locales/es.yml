@@ -27,6 +27,7 @@ es:
   bibliotheca: Biblioteca
   blocked_forum_explanation: Es decir que no tenés autorización para ver este contenido. <br> ¿Puede que estés en medio de un examen?
   cancel_subscription: Cancelá tu subscripción.
+  change_profile_picture: CAMBIAR FOTO DEL PERFIL
   chapter: Capítulo
   chapter_finished_html: ¡Terminaste %{chapter}! ¡Felicitaciones!
   chapter_number: 'Capítulo %{number}'

@@ -1,7 +1,6 @@
 .profile-picture {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative;
+  display: inline-block;
 }
 
 .mu-avatar-field {
@@ -13,17 +12,22 @@
   z-index: -1;
 }
 
-.mu-avatar-button {
-  margin-top: 10px;
-  font-size: 30px;
-  color: #ff5b81;
-  cursor: pointer
+.mu-avatar-image {
+  cursor: pointer;
 }
 
-.mu-avatar-button:hover {
-  color: #ff285a;
+.mu-avatar-image:hover {
+  filter: brightness(50%);
 }
 
-.mu-avatar-button:active {
-  color: #ff043e;
+.mu-avatar-overlay {
+  position: absolute;
+  left: 0; right: 0; top: 0; bottom: 0;
+  margin: auto;
+  width: 135px;
+  height: 83px;
+  color: white;
+  font-size: medium;
+  pointer-events: none;
+  display: none;
 }

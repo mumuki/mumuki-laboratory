@@ -1,9 +1,11 @@
 mumuki.load(function () {
-  const button = $('.mu-avatar-button');
   const field = $('.mu-avatar-field');
   const image = $('.mu-avatar-image');
+  const overlay = $('.mu-avatar-overlay');
 
-  button.click(() => {
+  image.hover(() => overlay.show(), () => overlay.hide());
+
+  image.click(() => {
     field.trigger('click');
   });
 

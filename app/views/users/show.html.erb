@@ -30,7 +30,11 @@
           <div class="profile-picture col-md-4 text-center">
             <%= image_tag @user.image_url, size: '250x250', class: 'mu-avatar-image img-circle' %>
             <%= f.file_field :avatar, direct_upload: true, accept:'image/*', class: 'mu-avatar-field' %>
-            <i class="mu-avatar-button fa fa-upload"></i>
+            <div class="mu-avatar-overlay">
+              <i class="fa fa-camera"></i>
+              <br />
+              <span><%= t :change_profile_picture %></span>
+            </div>
           </div>
           <div class="col-md-8">
             <fieldset class="form-group">
