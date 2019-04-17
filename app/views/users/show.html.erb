@@ -27,8 +27,10 @@
   <div role="tabpanel" class="tab-pane active" id="info">
     <%= form_for :user, url: update_user_path, method: :put do |f| %>
         <div class="row mu-tab-body">
-          <div class="col-md-4 text-center">
-            <%= image_tag @user.image_url, size: '250x250', class: 'img-circle' %>
+          <div class="profile-picture col-md-4 text-center">
+            <%= image_tag @user.image_url, size: '250x250', class: 'mu-avatar-image img-circle' %>
+            <%= f.file_field :avatar, direct_upload: true, accept:'image/*', class: 'mu-avatar-field' %>
+            <i class="mu-avatar-button fa fa-upload"></i>
           </div>
           <div class="col-md-8">
             <fieldset class="form-group">
@@ -43,7 +45,6 @@
               <div><%= f.label(t :email) %></div>
               <div><%= f.text_field :email, readonly: true, class: 'form-control' %></div>
             </fieldset>
-            <%= f.file_field :avatar, direct_upload: true %>
             <br>
             <div><%= f.submit t(:save), class: 'btn btn-success btn-block' %></div>
           </div>

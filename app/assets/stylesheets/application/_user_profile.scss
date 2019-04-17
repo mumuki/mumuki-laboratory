@@ -1,0 +1,29 @@
+.profile-picture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mu-avatar-field {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.mu-avatar-button {
+  margin-top: 10px;
+  font-size: 30px;
+  color: #ff5b81;
+  cursor: pointer
+}
+
+.mu-avatar-button:hover {
+  color: #ff285a;
+}
+
+.mu-avatar-button:active {
+  color: #ff043e;
+}
