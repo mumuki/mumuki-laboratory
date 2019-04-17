@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 5.2"
 
-  s.add_dependency 'mumuki-domain', '~> 99.99.99' # TODO: Update gem
+  # s.add_dependency 'mumuki-domain', '~> 6.6.1' # TODO: Update and remove the line at Gemfile
   s.add_dependency 'mumukit-login', '~> 6.1'
   s.add_dependency 'mumukit-nuntius', '~> 6.1'
 

@@ -37,3 +37,5 @@ group :development do
   gem 'web-console'
   gem 'codeclimate-test-reporter', require: nil
 end
+
+gem 'mumuki-domain', git: "https://github.com/mumuki/mumuki-domain.git", ref: "16fd2fec450a9d62fec1335f7e5f59a71ed2735e"
