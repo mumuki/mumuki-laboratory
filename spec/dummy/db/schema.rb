@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 20190404181724) do
     t.integer "user_id"
     t.boolean "started", default: false
     t.datetime "started_at"
+    t.string "session_id"
     t.index ["exam_id"], name: "index_exam_authorizations_on_exam_id"
     t.index ["user_id"], name: "index_exam_authorizations_on_user_id"
   end
