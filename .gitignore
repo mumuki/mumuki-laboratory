@@ -27,6 +27,9 @@ Gemfile.lock
 
 .idea
 
+# Ignore all uploaded files
+spec/dummy/storage/*
+
 # Others
 public/sitemap.xml.gz
 public/assets
