@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :authenticate!
   before_action :set_user!
 
+  AVATAR_RESOLUTION = '250x250'
+
   def show
     @messages = current_user.messages.to_a
     @watched_discussions = current_user.watched_discussions_in_organization
@@ -10,7 +12,7 @@ class UsersController < ApplicationController
   def update
     if avatar.present?
       current_user.avatar.attach avatar
-      current_user.image_url = url_for(current_user.avatar)
+      current_user.image_url = url_for resized_avatar
     end
 
     current_user.update_and_notify! user_params
@@ -35,6 +37,10 @@ class UsersController < ApplicationController
 
   def avatar
     user_params[:avatar]
+  end
+
+  def resized_avatar
+    current_user.avatar.variant(resize: AVATAR_RESOLUTION).processed
   end
 
   def set_user!

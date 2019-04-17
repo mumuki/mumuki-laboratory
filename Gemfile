@@ -17,6 +17,7 @@ gem 'rails-i18n', '~> 4.0.0'
 gem 'nprogress-rails'
 gem 'sitemap_generator'
 gem 'font-awesome-rails', '~> 4.7'
+gem 'image_processing', '~> 1.2'
 
 group :test do
   gem 'rspec-rails', '~> 3.6'
