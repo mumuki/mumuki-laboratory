@@ -51,4 +51,7 @@ Rails.application.configure do
 
   config.reminder_sender_email = 'support@mumuki.org'
   config.reminder_frequency = 7
+
+  # Store uploaded files on the local file system in a temporary directory.
+  config.active_storage.service = :test
 end
