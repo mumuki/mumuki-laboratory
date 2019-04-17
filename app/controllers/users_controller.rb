@@ -8,7 +8,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.avatar.attach avatar if avatar.present?
+    if avatar.present?
+      current_user.avatar.attach avatar
+      current_user.image_url = url_for(current_user.avatar)
+    end
 
     current_user.update_and_notify! user_params
     redirect_to root_path, notice: I18n.t(:user_data_updated)
