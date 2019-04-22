@@ -20,7 +20,8 @@ en:
     other: '%{count} attempts remaining'
   author: Author
   authoring: "Authoring"
-  authoring_note: This guide's content was developed by %{authors} and <a href="%{collaborators}" target="_blank">many others</a>, under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons License Share-Alike, 4.0</a>
+  authoring_note_html: This guide's content was developed by %{authors} under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons License Share-Alike, 4.0</a>
+  authoring_note_with_collaborators_html: This guide's content was developed by %{authors} and <a href="%{collaborators}" target="_blank">many others</a>, under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons License Share-Alike, 4.0</a>
   back_to_mumuki: Back to Mumuki!
   bibliotheca: Bibliotheca
   blocked_forum_explanation: You are not allowed to see this content. <br> Are you in the middle of an exam right now?
