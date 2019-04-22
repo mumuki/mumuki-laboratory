@@ -3,7 +3,7 @@ cache: bundler
 sudo: false
 rvm:
 - 2.3.1
-- 2.6.0
+- 2.6.3
 before_script:
 - psql -c 'create database travis_ci_test;' -U postgres
 - cp spec/dummy/config/database.travis.yml spec/dummy/config/database.yml
