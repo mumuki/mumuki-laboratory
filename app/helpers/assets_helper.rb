@@ -9,8 +9,8 @@ module AssetsHelper
 
   def laboratory_assets_include_tags
     %Q{
-      #{stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'}
-      #{javascript_include_tag 'application', 'data-turbolinks-track': 'reload'}
+      #{stylesheet_link_tag 'mumuki_laboratory/application', media: 'all', 'data-turbolinks-track': 'reload'}
+      #{javascript_include_tag 'mumuki_laboratory/application.js', 'data-turbolinks-track': 'reload'}
     }
   end
 
