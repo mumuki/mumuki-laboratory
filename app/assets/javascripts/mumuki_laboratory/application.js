@@ -24,7 +24,7 @@
 
 //= require codemirror.min
 //= require codemirror-autorefresh
-//= require_tree ../../../../vendor/assets/javascripts/codemirror-modes
+//= require codemirror-modes
 //= require analytics
 //= require hotjar
 //= require muvment
