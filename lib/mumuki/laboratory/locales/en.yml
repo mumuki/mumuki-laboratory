@@ -1,7 +1,7 @@
 ---
 en:
   aborted: Oops, we couldn't evaluate your solution
-  abort_explanation: <li>Check that your program does not have recursion or an infinite loop</li> <li>Check that you have an internet connection</li> <li>Wait a while and try again</li>
+  abort_explanation_html: <li>Check that your program does not have recursion or an infinite loop</li> <li>Check that you have an internet connection</li> <li>Wait a while and try again</li>
   about: About
   accept_terms: I accept the terms and conditions
   actions: Actions
@@ -98,7 +98,7 @@ en:
   invitation_for: 'Join %{course}'
   item_not_accessible: "You are not permitted to access this content"
   its_been_a_while: It's been a while since you last used Mumuki.
-  joining: You're about to join
+  joining_html: '¡Welcome to course <strong>%{course}</strong>!'
   keep_learning: Keep learning!
   kids_default_success: You did it great!
   language: Language
@@ -160,7 +160,7 @@ en:
   permissions: Permissions
   please_fill_profile_data: Please complete your profile data to continue!
   please_validate: 'Please validate your data before continue:'
-  powered_by_mumuki: "powered by <span class=\"da da-mumuki-circle\"></span> mumuki"
+  powered_by_mumuki_html: "powered by <span class=\"da da-mumuki-circle\"></span> mumuki"
   previous_exercise: Previous
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'
   processing_your_solution: We are processing you solution
