@@ -42,6 +42,11 @@
   <%= render partial: 'layouts/exercise_inputs/forms/form', locals: {exercise: @exercise} %>
 <% end %>
 
+<%= content_for :no_container do %>
+  <%= render partial: 'layouts/modals/guide_corollary', locals: {guide: @guide} %>
+  <%= render partial: 'layouts/modals/new_message', locals: {exercise: @exercise} if should_render_message_input?(@exercise) %>
+<% end if current_user? %>
+
 <%= render_exercise_input_layout(@exercise) %>
 
 <%= hidden_field_tag default_content_tag_id(@exercise), @default_content %>
@@ -52,8 +57,3 @@
     <%= t :refresh_or_wait %>
   </div>
 </div>
-
-<%= content_for :no_container do %>
-    <%= render partial: 'layouts/modals/guide_corollary', locals: {guide: @guide} %>
-    <%= render partial: 'layouts/modals/new_message', locals: {exercise: @exercise} if should_render_message_input?(@exercise) %>
-<% end if current_user? %>
