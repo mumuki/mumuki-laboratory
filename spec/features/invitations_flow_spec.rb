@@ -9,10 +9,10 @@ feature 'Invitations Flow', organization_workspace: :test do
       create(:lesson, guide: guide)
     ]) }
   let(:book) { organization.book }
-  before {
-    book.chapters = [chapter]
-    book.save!
-  }
+ 
+  before do
+    book.update! chapters: [chapter]
+  end
 
   let(:permissions) { { } }
   let(:user) { create(:user, permissions: permissions) }
