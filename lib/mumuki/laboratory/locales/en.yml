@@ -23,13 +23,13 @@ en:
   authoring_note_html: This guide's content was developed by %{authors} under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons License Share-Alike, 4.0</a>
   authoring_note_with_collaborators_html: This guide's content was developed by %{authors} and <a href="%{collaborators}" target="_blank">many others</a>, under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons License Share-Alike, 4.0</a>
   back_to_mumuki: Back to Mumuki!
-  bibliotheca: Bibliotheca
+  bibliotheca_ui: Bibliotheca
   blocked_forum_explanation: You are not allowed to see this content. <br> Are you in the middle of an exam right now?
   cancel_subscription: Cancel your subscription.
   chapter: Chapter
   chapter_finished_html: You have finished %{chapter}!
   chapter_number: Chapter %{number}
-  classroom: Classroom
+  classroom_ui: Classroom
   clear_console: Clear console
   closed: Closed
   closed_count: '%{count} closed'
