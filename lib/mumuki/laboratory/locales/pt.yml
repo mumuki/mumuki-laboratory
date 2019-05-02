@@ -23,12 +23,12 @@ pt:
   authoring: Autores
   authoring_note: 'Este guia foi desenvolvido por %{authors} e <a href="%{collaborators}" target="_blank"> muitas outras pessoas </a>, nos termos do <a href = "https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"> Creative Commons License Share-Equal, 4.0 </a>.'
   back_to_mumuki: Voltei para Mumuki!
-  bibliotheca: Biblioteca
+  bibliotheca_ui: Biblioteca
   blocked_forum_explanation: Você não tem permissão para ver este conteúdo. <br> Você está no meio de um exame agora?
   chapter: Capítulo
   chapter_finished_html: Você terminou %{chapter}! Parabéns!
   chapter_number: Capítulo %{number}
-  classroom: Sala de aula
+  classroom_ui: Sala de aula
   clear_console: Reiniciar o console
   closed: Fechado
   closed_count: '%{count} fechado'

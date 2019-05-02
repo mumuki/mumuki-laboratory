@@ -24,13 +24,13 @@ es:
   authoring: "Autores"
   authoring_note: Esta guía fue desarrollada por %{authors} y <a href="%{collaborators}" target="_blank">muchas personas más</a>, bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia Creative Commons Compartir-Igual, 4.0</a>.
   back_to_mumuki: ¡Volvé a Mumuki!
-  bibliotheca: Biblioteca
+  bibliotheca_ui: Biblioteca
   blocked_forum_explanation: Es decir que no tenés autorización para ver este contenido. <br> ¿Puede que estés en medio de un examen?
   cancel_subscription: Cancelá tu subscripción.
   chapter: Capítulo
   chapter_finished_html: ¡Terminaste %{chapter}! ¡Felicitaciones!
   chapter_number: 'Capítulo %{number}'
-  classroom: Aula
+  classroom_ui: Aula
   clear_console: Reiniciar consola
   closed: Cerrada
   closed_count:
