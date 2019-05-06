@@ -126,6 +126,15 @@ mumuki.load(() => {
       file.setUpOnRemove(() => this._deleteFile(file));
     }
 
+    updateButtonsVisibility() {
+      const filesCount = this._getFilesCount();
+
+      this._setVisibility(this._addFileButton, filesCount < this.MAX_TABS);
+      this.files.toArray().forEach(file => {
+        this._setVisibility(file.deleteButton, file.name !== this.mainFile && filesCount > 1)
+      });
+    }
+
     _addFile() {
       let name = prompt(this.locales.insert_file_name);
       const alreadyExists = this.files.toArray().some(it => it.name === name);
@@ -151,15 +160,6 @@ mumuki.load(() => {
       if (wasSelected) this.files[previousIndex].select();
 
       this.updateButtonsVisibility();
-    }
-
-    updateButtonsVisibility() {
-      const filesCount = this._getFilesCount();
-
-      this._setVisibility(this._addFileButton, filesCount < this.MAX_TABS);
-      this.files.toArray().forEach(file => {
-        this._setVisibility(file.deleteButton, file.name !== this.mainFile && filesCount > 1)
-      });
     }
 
     _createTab(name, id) {

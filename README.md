@@ -191,6 +191,11 @@ which are granted to be safe and stable.
   * `currentScenarioIndex`
   * `resetIndicators`
   * `updateIndicators`
+* `mumuki.multipleFileEditor`
+  * `setUpAddFile`
+  * `setUpDeleteFiles`
+  * `setUpDeleteFile`
+  * `updateButtonsVisibility`
 * `mumuki.version`
 
 ### Kids Call order
