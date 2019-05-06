@@ -23,6 +23,10 @@ mumuki.load(() => {
       return this.tab.find(File.NAME_CLASS).text(name);
     }
 
+    get deleteButton() {
+      return this.tab.find(File.DELETE_BUTTON_CLASS);
+    }
+
     get isSelected() {
       return this.tab.hasClass("active");
     }
@@ -71,7 +75,15 @@ mumuki.load(() => {
       this.MAX_TABS = 5;
 
       this._addFileButton = this.tabsContainer.siblings('.add-file-button');
-      this._updateButtonsVisibility();
+      this.updateButtonsVisibility();
+    }
+
+    get mainFile() {
+      return this._mainFile || '';
+    }
+
+    set mainFile(mainFile) {
+      this._mainFile = mainFile;
     }
 
     get files() {
@@ -111,7 +123,7 @@ mumuki.load(() => {
     }
 
     setUpDeleteFile(file) {
-      file.setUpOnRemove(this._deleteFile.bind(this));
+      file.setUpOnRemove(() => this._deleteFile(file));
     }
 
     _addFile() {
@@ -126,27 +138,28 @@ mumuki.load(() => {
       const file = this.files.last().get(0).initialize(name);
       this.setUpDeleteFile(file);
 
-      this._updateButtonsVisibility();
+      this.updateButtonsVisibility();
     }
 
     _deleteFile(file) {
-      const index  = this.files.toArray()
-        .map((file) => file.name)
+      const index = this.files.toArray()
+        .map(file => file.name)
         .indexOf(file.name);
       const previousIndex = Math.max(index - 1, 0);
 
       const wasSelected = file.remove();
       if (wasSelected) this.files[previousIndex].select();
 
-      this._updateButtonsVisibility();
+      this.updateButtonsVisibility();
     }
 
-    _updateButtonsVisibility() {
+    updateButtonsVisibility() {
       const filesCount = this._getFilesCount();
-      const deleteButtons = this.tabs.find(File.DELETE_BUTTON_CLASS);
 
       this._setVisibility(this._addFileButton, filesCount < this.MAX_TABS);
-      this._setVisibility(deleteButtons, filesCount > 1);
+      this.files.toArray().forEach(file => {
+        this._setVisibility(file.deleteButton, file.name !== this.mainFile && filesCount > 1)
+      });
     }
 
     _createTab(name, id) {
@@ -212,16 +225,17 @@ mumuki.load(() => {
     }
   }
 
-
   const setUpTabsBehavior = () => {
     const tabsContainer = $('.nav-tabs').last();
     if (!tabsContainer.length) return;
     const editorsContainer = $('.tab-content');
 
     const multipleFileEditor = new MultipleFileEditor(tabsContainer, editorsContainer);
+    mumuki.multipleFileEditor = multipleFileEditor;
     multipleFileEditor.setUpAddFile();
     multipleFileEditor.setUpDeleteFiles();
   };
 
   $(document).ready(setUpTabsBehavior);
+
 });
