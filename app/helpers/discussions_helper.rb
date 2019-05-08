@@ -3,6 +3,10 @@ module DiscussionsHelper
     discussions_link others_discussions_icon(t(:solve_your_doubts)), item_discussions_path(item, default_discussions_params)
   end
 
+  def kids_read_discussions_link(item)
+    discussions_link fixed_fa_icon('question-circle'), item_discussions_path(item, default_discussions_params), title: t(:solve_your_doubts), class: 'mu-kids-discussion-link'
+  end
+
   def solve_discussions_link
     discussions_link others_discussions_icon(t(:solve_doubts)), discussions_path(solve_discussion_params_for(current_user))
   end
@@ -19,8 +23,8 @@ module DiscussionsHelper
     fixed_fa_icon 'comment', text: text
   end
 
-  def discussions_link(item, path, organization=Organization.current)
-    link_to item, path if organization.forum_enabled?
+  def discussions_link(item, path, html_options=nil, organization=Organization.current)
+    link_to item, path, html_options if organization.forum_enabled?
   end
 
   def item_discussion_path(discussion, params={})
