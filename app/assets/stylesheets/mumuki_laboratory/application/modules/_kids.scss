@@ -411,11 +411,12 @@ $statuses-glow-animation: (
       box-shadow: 0 0 0 #ffff7f;
     }
     50% {
-      box-shadow: 0 0 15px 5px $color;
+      box-shadow: 0 0 15px 4px $color;
       color: darken($color, 10%);
+      transform: scale(1.2);
     }
     100% {
-      box-shadow: 0 0 25px 10px transparent;
+      box-shadow: 0 0 25px 4px transparent;
     }
   }
 
@@ -444,6 +445,7 @@ $statuses-glow-animation: (
  50% {
    color: #7f7f00;
    background-color: rgba(255,255,0, 0.5);
+   transform: scale(1.2);
  }
 }
 
