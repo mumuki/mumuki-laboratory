@@ -171,10 +171,14 @@ mumuki.load(function () {
       if (data.status === 'passed_with_warnings') {
         $bubble.find('.mu-kids-character-speech-bubble-failed').append(data.expectations_html);
       }
-      if (data.status === 'failed') {
+      if (this._shouldDisplayDiscussionsLink(data.status)) {
         $bubble.append(discussionsLinkHtml);
       }
       mumuki.kids._getOverlay().show();
+    },
+
+    _shouldDisplayDiscussionsLink: function (status) {
+      return ['failed', 'passed_with_warnings'].some(it => it === status);
     },
 
     _showOnSuccessPopup: function (data) {
