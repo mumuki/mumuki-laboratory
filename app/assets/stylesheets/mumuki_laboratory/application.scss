@@ -1,6 +1,6 @@
-$icon-font-path: '../assets/bootstrap/';
-$fa-font-path: '../assets';
-$da-font-path: '../assets';
+$icon-font-path: asset-path('assets/bootstrap');
+$fa-font-path: asset-path('assets');
+$da-font-path: asset-path('assets');
 
 @import "scss/mumuki-styles";
 @import "codemirror/codemirror.min";
