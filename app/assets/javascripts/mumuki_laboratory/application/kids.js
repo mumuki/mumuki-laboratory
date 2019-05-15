@@ -276,6 +276,10 @@ mumuki.load(function () {
   mumuki.kids.resultAction.errored = mumuki.kids._showOnCharacterBubble;
   mumuki.kids.resultAction.pending = mumuki.kids._showOnCharacterBubble;
 
+  $('.mu-kids-context').on('hidden.bs.modal', function () {
+    animateSpeech();
+  });
+
   $(document).ready(() => {
     // Speech initialization
     if(!$bubble.length) return;
