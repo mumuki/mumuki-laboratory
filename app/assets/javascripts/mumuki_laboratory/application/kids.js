@@ -1,6 +1,5 @@
 mumuki.load(function () {
   var $bubble = $('.mu-kids-character-speech-bubble').children('.mu-kids-character-speech-bubble-normal');
-  if(!$bubble.length) return;
 
   var availableTabs = ['.description', '.hint'];
   var $speechParagraphs, paragraphHeight, scrollHeight, nextSpeechBlinking;
@@ -12,6 +11,8 @@ mumuki.load(function () {
   var $speechTabs = $('.mu-kids-character-speech-bubble-tabs > li:not(.separator)');
   var $defaultSpeechTabName = 'description';
   var $texts = $bubble.children(availableTabs.join(", "));
+  var $hint = $('.mu-kids-hint');
+  var discussionsLinkHtml = $('#mu-kids-discussion-link-html').html();
 
   function floatFromPx(value) {
     return parseFloat(value.substring(0, value.length - 2));
@@ -120,7 +121,7 @@ mumuki.load(function () {
       mumuki.kids._hideMessageOnCharacterBubble();
       var $bubble = mumuki.kids._getCharacterBubble();
       Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
-      mumuki.presenterCharacter.playAnimation('talk', mumuki.kids._getCharaterImage());
+      mumuki.presenterCharacter.playAnimation('talk', mumuki.kids._getCharacterImage());
     },
 
     // ===========
@@ -139,7 +140,7 @@ mumuki.load(function () {
       return $('#kids-results-aborted');
     },
 
-    _getCharaterImage: function () {
+    _getCharacterImage: function () {
       return $('.mu-kids-character > img');
     },
 
@@ -156,6 +157,7 @@ mumuki.load(function () {
       $bubble.find('.mu-kids-character-speech-bubble-tabs').show();
       $bubble.find('.mu-kids-character-speech-bubble-normal').show();
       $bubble.find('.mu-kids-character-speech-bubble-failed').hide();
+      $bubble.find('.mu-kids-discussion-link').remove();
       Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
       mumuki.kids._getOverlay().hide();
     },
@@ -169,12 +171,19 @@ mumuki.load(function () {
       if (data.status === 'passed_with_warnings') {
         $bubble.find('.mu-kids-character-speech-bubble-failed').append(data.expectations_html);
       }
+      if (this._shouldDisplayDiscussionsLink(data.status)) {
+        $bubble.append(discussionsLinkHtml);
+      }
       mumuki.kids._getOverlay().show();
+    },
+
+    _shouldDisplayDiscussionsLink: function (status) {
+      return ['failed', 'passed_with_warnings'].some(it => it === status);
     },
 
     _showOnSuccessPopup: function (data) {
       mumuki.kids._updateSubmissionResult(data.html);
-      mumuki.presenterCharacter.playAnimation('success_l', mumuki.kids._getCharaterImage());
+      mumuki.presenterCharacter.playAnimation('success_l', mumuki.kids._getCharacterImage());
       mumuki.kids._showMessageOnCharacterBubble(data);
       mumuki.presenterCharacter.playAnimation('success2_l', $('.mu-kids-character-success'));
       setTimeout(function () {
@@ -199,7 +208,7 @@ mumuki.load(function () {
     },
 
     _showOnCharacterBubble: function (data) {
-      mumuki.presenterCharacter.playAnimation('failure', mumuki.kids._getCharaterImage());
+      mumuki.presenterCharacter.playAnimation('failure', mumuki.kids._getCharacterImage());
       mumuki.kids._showMessageOnCharacterBubble(data);
     },
 
@@ -250,7 +259,7 @@ mumuki.load(function () {
   }
 
   function animateSpeech() {
-    mumuki.presenterCharacter.playAnimation('talk', mumuki.kids._getCharaterImage());
+    mumuki.presenterCharacter.playAnimation('talk', mumuki.kids._getCharacterImage());
   }
 
   mumuki.kids.resultAction.passed = mumuki.kids._showOnSuccessPopup;
@@ -264,6 +273,7 @@ mumuki.load(function () {
 
   $(document).ready(() => {
     // Speech initialization
+    if(!$bubble.length) return;
 
     availableTabs.forEach(function (tabSelector) {
       tabParagraphs(tabSelector).contents().unwrap().wrapAll('<p>');
@@ -290,6 +300,10 @@ mumuki.load(function () {
 
     $nextSpeech.click(showNextParagraph);
     $prevSpeech.click(showPrevParagraph);
+
+    $hint.click(function () {
+      this.classList.remove('blink');
+    });
 
     // States initial resizing
 

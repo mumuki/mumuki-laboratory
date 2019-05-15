@@ -110,6 +110,18 @@ $kids-speech-tabs-width: 40px;
       height: 100%;
     }
     .mu-kids-character-speech-bubble {
+      &.failed, &.passed_with_warnings {
+        padding-right: 20px;
+      }
+      .mu-kids-discussion-link {
+        i {
+          width: 13px;
+          height: 13px;
+          line-height: 13px;
+          border-radius: 50%;
+        }
+
+      }
 
       @media screen and (max-width: $screen-sm-max) {
         h4 {
@@ -342,49 +354,110 @@ $kids-speech-tabs-width: 40px;
       }
     }
   }
+}
 
-  .mu-kids-blocks {
-    form,
-    [id*="custom-editor"],
-    gs-element-blockly,
-    #blocklyDiv,
-    .blocklySvg {
-      min-width: 100% !important;
-      min-height: 100% !important;
-      width: 100% !important;
-      height: 100% !important;
+.mu-kids-blocks, .mu-read-only-editor {
+  form,
+  [id*="custom-editor"],
+  gs-element-blockly,
+  #blocklyDiv,
+  .blocklySvg {
+    min-width: 100% !important;
+    min-height: 100% !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  gs-element-blockly {
+    padding: 0;
+    margin: 0;
+  }
+  .blocklyMainBackground {
+    rx: 10px !important;
+    ry: 10px !important;
+  }
+  .blocklyScrollbarHandle {
+    fill: $kids-scrollbar-background-color !important;
+    stroke: $kids-speech-border-color !important;
+    stroke-width: 1px !important;
+  }
+  .blocklyMainWorkspaceScrollbar {
+    display: none;
+  }
+  .blocklyScrollbarHorizontal {
+    display: none;
+  }
+  .blocklyToolboxDiv {
+    background-color: $kids-speech-background-color !important;
+    border: $kids-speech-border !important;
+    border-right: none !important;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+  }
+  .blocklyFlyoutBackground {
+    fill: $kids-speech-background-color !important;
+    border: $kids-speech-border !important;
+    border-right: none !important;
+  }
+}
+
+$statuses-glow-animation: (
+  failed: $mu-color-danger,
+  passed_with_warnings: $mu-color-warning
+);
+
+@each $status, $color in $statuses-glow-animation {
+  @keyframes glow-#{$status} {
+    0% {
+      box-shadow: 0 0 0 #ffff7f;
     }
-    gs-element-blockly {
-      padding: 0;
-      margin: 0;
+    50% {
+      box-shadow: 0 0 15px 4px $color;
+      color: darken($color, 10%);
+      transform: scale(1.2);
     }
-    .blocklyMainBackground {
-      rx: 10px !important;
-      ry: 10px !important;
+    100% {
+      box-shadow: 0 0 25px 4px transparent;
     }
-    .blocklyScrollbarHandle {
-      fill: $kids-scrollbar-background-color !important;
-      stroke: $kids-speech-border-color !important;
-      stroke-width: 1px !important;
+  }
+
+  .#{$status} .mu-kids-discussion-link {
+    color: $color;
+    i {
+      -webkit-animation: glow-#{$status} 1.5s ease infinite;
+      -moz-animation: glow-#{$status} 1.5s ease infinite;
+      animation: glow-#{$status} 1.5s ease infinite;
     }
-    .blocklyMainWorkspaceScrollbar {
-      display: none;
-    }
-    .blocklyScrollbarHorizontal {
-      display: none;
-    }
-    .blocklyToolboxDiv {
-      background-color: $kids-speech-background-color !important;
-      border: $kids-speech-border !important;
-      border-right: none !important;
-      border-top-left-radius: 10px !important;
-      border-bottom-left-radius: 10px !important;
-    }
-    .blocklyFlyoutBackground {
-      fill: $kids-speech-background-color !important;
-      border: $kids-speech-border !important;
-      border-right: none !important;
-    }
+  }
+
+}
+
+.mu-kids-hint.blink i {
+  width: 8px;
+  height: 8px;
+  line-height: 12px;
+  margin: 0 2px 4px 0;
+  -webkit-animation: hint-blink 1.5s ease infinite;
+  -moz-animation: hint-blink 1.5s ease infinite;
+  animation: hint-blink 1.5s ease infinite;
+}
+
+@keyframes hint-blink {
+ 50% {
+   color: #7f7f00;
+   background-color: rgba(255,255,0, 0.5);
+   transform: scale(1.2);
+ }
+}
+
+.mu-read-only-editor {
+  #blocklyDiv {
+    height: 400px !important;
+  }
+  #blocklyDiv {
+    border: $kids-speech-border !important;
+  }
+  .blocklyMainBackground {
+    stroke-width: 0px;
   }
 }
 
