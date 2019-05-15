@@ -1,7 +1,7 @@
 // https://codemirror.net/demo/simplemode.html
 
 (function() {
-  var locale = CodeMirror.currentLocale || 'es';
+  var locale = document.querySelector("html").lang || 'es';
 
   var keywords = [
     "program", "procedure", "function", "interactive", "if",
