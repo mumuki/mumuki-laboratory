@@ -36,7 +36,7 @@
       {regex: /"(?:[^\\]|\\.)*?(?:"|$)/, token: "string"},
       // You can match multiple tokens at once. Note that the captured
       // groups must span the whole string in this case
-      {regex: /(function|procedure)(\s+)([a-z$][\w$]*)/, token: ["keyword", null, "variable-2"]},
+      {regex: /(function|procedure)(\s+)([a-zA-Z$][\w$]*)/, token: ["keyword", null, "variable-2"]},
       // Rules are matched in the order in which they appear, so there is
       // no ambiguity between this one and the one above
       {regex: new RegExp(`(?:${buildList(localizedKeywordsAndBuiltins)})\\b`), token: "keyword"},
