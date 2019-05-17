@@ -9,7 +9,7 @@ mumuki.load(() => {
   });
 
   function placeKidsAnimations() {
-    placeAnimation('.mu-kids-character-animation', 'talk');
+    placeAnimation('.mu-kids-character-animation', 'blink');
     placeAnimation('.mu-kids-character-context', 'context');
   }
 

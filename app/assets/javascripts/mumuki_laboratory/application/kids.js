@@ -13,6 +13,7 @@ mumuki.load(function () {
   var $texts = $bubble.children(availableTabs.join(", "));
   var $hint = $('.mu-kids-hint');
   var discussionsLinkHtml = $('#mu-kids-discussion-link-html').html();
+  var $description = $('.mu-kids-description');
 
   function floatFromPx(value) {
     return parseFloat(value.substring(0, value.length - 2));
@@ -262,6 +263,10 @@ mumuki.load(function () {
     mumuki.presenterCharacter.playAnimation('talk', mumuki.kids._getCharacterImage());
   }
 
+  function animateHint() {
+    mumuki.presenterCharacter.playAnimation('hint', mumuki.kids._getCharaterImage());
+  }
+
   mumuki.kids.resultAction.passed = mumuki.kids._showOnSuccessPopup;
   mumuki.kids.resultAction.passed_with_warnings = mumuki.kids._showOnCharacterBubble;
 
@@ -270,6 +275,10 @@ mumuki.load(function () {
   mumuki.kids.resultAction.failed = mumuki.kids._showOnCharacterBubble;
   mumuki.kids.resultAction.errored = mumuki.kids._showOnCharacterBubble;
   mumuki.kids.resultAction.pending = mumuki.kids._showOnCharacterBubble;
+
+  $('.mu-kids-context').on('hidden.bs.modal', function () {
+    animateSpeech();
+  });
 
   $(document).ready(() => {
     // Speech initialization
@@ -300,8 +309,10 @@ mumuki.load(function () {
 
     $nextSpeech.click(showNextParagraph);
     $prevSpeech.click(showPrevParagraph);
+    $description.click(animateSpeech);
 
     $hint.click(function () {
+      animateHint();
       this.classList.remove('blink');
     });
 

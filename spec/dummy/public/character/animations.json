@@ -9,6 +9,7 @@
         "success_l"
       ],
       "actions": {
+        "blink": "jump",
         "talk": "jump"
       }
     }
