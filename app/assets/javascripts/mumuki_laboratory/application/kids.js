@@ -13,7 +13,7 @@ mumuki.load(function () {
   var $texts = $bubble.children(availableTabs.join(", "));
   var $hint = $('.mu-kids-hint');
   var discussionsLinkHtml = $('#mu-kids-discussion-link-html').html();
-  var $descriptionButton = $('[data-target="description"]');
+  var $description = $('.mu-kids-description');
 
   function floatFromPx(value) {
     return parseFloat(value.substring(0, value.length - 2));
@@ -309,7 +309,7 @@ mumuki.load(function () {
 
     $nextSpeech.click(showNextParagraph);
     $prevSpeech.click(showPrevParagraph);
-    $descriptionButton.click(animateSpeech);
+    $description.click(animateSpeech);
 
     $hint.click(function () {
       animateHint();
