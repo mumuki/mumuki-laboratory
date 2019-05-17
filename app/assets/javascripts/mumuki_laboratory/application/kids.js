@@ -264,7 +264,7 @@ mumuki.load(function () {
   }
 
   function animateHint() {
-    mumuki.presenterCharacter.playAnimation('hint', mumuki.kids._getCharaterImage());
+    mumuki.presenterCharacter.playAnimation('hint', mumuki.kids._getCharacterImage());
   }
 
   mumuki.kids.resultAction.passed = mumuki.kids._showOnSuccessPopup;
