@@ -23,6 +23,7 @@
 //= require jquery-console
 
 //= require codemirror.min
+//= require codemirror-simple-mode.js
 //= require codemirror-autorefresh
 //= require codemirror-modes
 //= require analytics
