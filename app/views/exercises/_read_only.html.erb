@@ -1,4 +1,4 @@
-<%= render_runner_assets exercise.language, :layout %>
+<%= render_runner_assets exercise.language, :layout, exercise.custom? %>
 
 <% if exercise.console? %>
   <%= hidden_field_tag(:stateful_console, exercise.stateful_console?) %>
