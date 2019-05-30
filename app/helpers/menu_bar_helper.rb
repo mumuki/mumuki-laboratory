@@ -23,7 +23,10 @@ module MenuBarHelper
   def link_to_application(icon, app_name, minimal_permissions)
     return unless current_user&.send(minimal_permissions)
     url = url_for_application(app_name)
+    menu_item icon, app_name, url
+  end
 
-    link_to fixed_fa_icon(icon, text: t(app_name)), url, role: 'menuitem', tabindex: '-1'
+  def menu_item(icon, name, url)
+    link_to fixed_fa_icon(icon, text: t(name)), url, role: 'menuitem', tabindex: '-1'
   end
 end
