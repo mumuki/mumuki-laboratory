@@ -110,8 +110,8 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
          locale: 'es'}
       end
 
-      context 'with the owner permissions' do
-        let(:api_client) { create :api_client, role: :owner, grant: '*' }
+      context 'with the admin permissions' do
+        let(:api_client) { create :api_client, role: :admin, grant: '*' }
         let(:organization) { Organization.find_by name: 'a-name' }
 
         it { check_status! 200 }
@@ -174,8 +174,8 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
         end
       end
 
-      context 'with owner permissions' do
-        let(:api_client) { create :api_client, role: :owner, grant: '*' }
+      context 'with admin permissions' do
+        let(:api_client) { create :api_client, role: :admin, grant: '*' }
 
         it { check_status! 200 }
       end
@@ -200,8 +200,8 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
       let(:updated_organizaton) { organization.reload }
       let(:update_json) { {contact_email: 'second_email@gmail.com', immersive: true, locale: 'en'} }
 
-      context 'with the owner permissions' do
-        let(:api_client) { create :api_client, role: :owner, grant: 'existing-organization/*' }
+      context 'with the admin permissions' do
+        let(:api_client) { create :api_client, role: :admin, grant: 'existing-organization/*' }
         before { put :update, params: {id: organization.name, organization: update_json} }
 
         it { check_status! 200 }

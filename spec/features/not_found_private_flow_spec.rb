@@ -4,9 +4,9 @@ feature 'not found on app', organization_workspace: :base do
   before { set_subdomain_host! Organization.base.name }
   before { Organization.base.switch! }
 
-  let(:owner) { create(:user, permissions: {owner: '*'}) }
+  let(:admin) { create(:user, permissions: {admin: '*'}) }
   let(:student_api_client) { create :api_client, role: :student, grant: 'central/*' }
-  let(:owner_api_client) { create :api_client, role: :owner, grant: '*' }
+  let(:admin_api_client) { create :api_client, role: :admin, grant: '*' }
 
   scenario 'app without authentication' do
     visit '/nonexistentroute'
@@ -15,7 +15,7 @@ feature 'not found on app', organization_workspace: :base do
   end
 
   scenario 'app with authentication' do
-    set_current_user! owner
+    set_current_user! admin
 
     visit '/nonexistentroute'
 
@@ -30,11 +30,11 @@ feature 'not found on app', organization_workspace: :base do
     expect(page.text).to json_eq errors: [
       'The operation on organization base' +
       ' was forbidden to user foo+1@bar.com' +
-      ' with permissions !student:central/*;teacher:;headmaster:;janitor:;owner:']
+      ' with permissions !student:central/*;teacher:;headmaster:;janitor:;admin:;owner:']
   end
 
   scenario 'api with authentication' do
-    Capybara.current_session.driver.header 'Authorization', "Bearer #{owner_api_client.token}"
+    Capybara.current_session.driver.header 'Authorization', "Bearer #{admin_api_client.token}"
 
     visit '/api/nonexistentroute'
 

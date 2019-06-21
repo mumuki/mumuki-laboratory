@@ -5,8 +5,8 @@ module WithAuthorization
     authorize! :janitor
   end
 
-  def authorize_owner!
-    authorize! :owner
+  def authorize_admin!
+    authorize! :admin
   end
 
   def authorization_slug
