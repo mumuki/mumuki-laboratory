@@ -229,6 +229,7 @@ Permissions are bound to a scope, that states in which context the operation can
   * writer and editor: `organization/content`
   * janitor: `organization/_`
   * moderator: `organization/_`
+  * admin: `_/_`
   * owner: `_/_`
 
 ### Users
@@ -422,7 +423,7 @@ DELETE /course/:id/teachers/:uid
 
 #### Destroy single user
 
-**Minimal permission**: `owner`
+**Minimal permission**: `admin`
 
 ```
 DELETE /users/:uid
@@ -454,7 +455,7 @@ DELETE /organization/:id/courses/:id
 
 #### Destroy single course
 
-**Minimal permission**: `owner`
+**Minimal permission**: `admin`
 
 ```
 DELETE /courses/:id
@@ -543,7 +544,7 @@ post /organizations
 ```
 ... with at least the required fields.
 
-**Minimal permission**: `owner` of that organization
+**Minimal permission**: `admin` of that organization
 
 #### Update organization
 
@@ -552,7 +553,7 @@ put /organizations/:name
 ```
 ... with a partial update.
 
-**Minimal permission**: `owner` of `:name`
+**Minimal permission**: `admin` of `:name`
 
 
 ## Authentication Powered by Auth0

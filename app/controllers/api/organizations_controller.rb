@@ -3,7 +3,7 @@ module Api
     include OrganizationsControllerTemplate
 
     before_action :authorize_janitor!, only: [:show, :index]
-    before_action :authorize_owner!, only: [:update, :create]
+    before_action :authorize_admin!, only: [:update, :create]
 
     def index
       render json: { organizations: Organization.accessible_as(current_user, :janitor) }
