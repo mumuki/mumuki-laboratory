@@ -220,7 +220,7 @@ Before using the API, you must create an `ApiClient` using `rails c`, which will
 
 Before using the API, take a look to the roles hierarchy:
 
-![roles hierarchy](https://yuml.me/diagram/plain/class/[Owner]%5E-[Janitor],[Owner]%5E-[Moderator],%20[Janitor]%5E-[Headmaster],%20[Headmaster]%5E-[Teacher],%20[Teacher]%5E-[Student],%20,%20[Owner]%5E-[Editor],%20[Editor]%5E-[Writer]).
+![roles hierarchy](https://yuml.me/diagram/plain/class/[Admin]%5E-[Janitor],[Admin]%5E-[Moderator],%20[Janitor]%5E-[Headmaster],%20[Headmaster]%5E-[Teacher],%20[Teacher]%5E-[Student],%20,%20[Admin]%5E-[Editor],%20[Editor]%5E-[Writer],%20[Owner]%5E-[Admin]).
 
 Permissions are bound to a scope, that states in which context the operation can be performed. Scopes are simply two-level contexts, expressed as slugss `<first>/<second>`, without any explicit semantic. They exact meaning depends on the role:
 
