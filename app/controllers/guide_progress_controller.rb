@@ -2,7 +2,7 @@ class GuideProgressController < ApplicationController
   before_action :check_resettable!, only: :destroy
 
   def destroy
-    guide.clear_progress! current_user
+    guide.clear_progress! current_user, current_organization
     redirect_back fallback_location: url_for(guide)
   end
 
