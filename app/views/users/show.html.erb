@@ -25,29 +25,7 @@
 
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane active" id="info">
-    <%= form_for :user, url: update_user_path, method: :put do |f| %>
-        <div class="row mu-tab-body">
-          <div class="col-md-4 text-center">
-            <%= image_tag @user.image_url, size: '250x250', class: 'img-circle' %>
-          </div>
-          <div class="col-md-8">
-            <fieldset class="form-group">
-              <div><%= f.label(t :first_name) %></div>
-              <div><%= f.text_field :first_name, class: 'form-control' %></div>
-            </fieldset>
-            <fieldset class="form-group">
-              <div><%= f.label(t :last_name) %></div>
-              <div><%= f.text_field :last_name, class: 'form-control' %></div>
-            </fieldset>
-            <fieldset class="form-group">
-              <div><%= f.label(t :email) %></div>
-              <div><%= f.text_field :email, readonly: true, class: 'form-control' %></div>
-            </fieldset>
-            <br>
-            <div><%= f.submit t(:save), class: 'btn btn-success btn-block' %></div>
-          </div>
-        </div>
-    <% end %>
+    <%= render partial: 'user_form' %>
   </div>
   <div role="tabpanel" class="tab-pane" id="organizations">
     <div class="row mu-tab-body">
