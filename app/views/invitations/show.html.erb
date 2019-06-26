@@ -7,45 +7,7 @@
 <div>
   <span><%= t :please_validate %></span>
 </div>
-
-<%= form_for current_user, method: 'post', url: {action: 'join'} do |f| %>
-
-    <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="info">
-        <div class="row mu-tab-body">
-          <div class="col-md-12">
-            <fieldset class="form-group"> 
-              <div><%= f.label(t :first_name) %></div>
-              <div><%= f.text_field :first_name, class: 'form-control' %></div>
-            </fieldset>
-            <fieldset class="form-group"> 
-              <div><%= f.label(t :last_name) %></div>
-              <div><%= f.text_field :last_name, class: 'form-control' %></div>
-            </fieldset>
-            <fieldset class="form-group"> 
-              <div><%= f.label(t :email) %></div>
-              <div><%= f.text_field :email, class: 'form-control' %></div>
-            </fieldset>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <h3><%= t :terms_and_conditions %></h3>
-
-      <pre class="terms-of-service"><%= simple_format @organization.terms_of_service %></pre>
-
-      <div class="col-md-10">
-        <input id="accept_terms" type="checkbox"> <span><%= t :accept_terms %></span>
-      </div>
-      <div class="col-md-1">
-        <%= f.submit t(:confirm), id: 'confirm_data', class: 'btn btn-success', disabled: true %>
-      </div>
-    </div>
-
-<% end %>
-
+<%= render partial: 'invitation_form' %>
 <script>
   $('#accept_terms').click(function () {
     $("#confirm_data").prop('disabled', function (i, value) {
