@@ -2,6 +2,9 @@ class InvitationsController < ApplicationController
   before_action :authenticate!
   before_action :set_invitation!
 
+  skip_before_action :validate_user_profile!
+  skip_before_action :authorize_if_private!
+
   def show
     redirect_to_organization! if current_user.student_of? @invitation.course
   end
@@ -11,10 +14,6 @@ class InvitationsController < ApplicationController
     current_user.update! user_params
     current_user.notify!
     redirect_to_organization!
-  end
-
-  def authorize_if_private!
-    # This controller must never be authenticated
   end
 
   private
