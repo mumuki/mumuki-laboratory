@@ -67,9 +67,10 @@ class ApplicationController < ActionController::Base
   end
 
   def validate_user_profile!
-    return if !current_user.has_student_granted_organizations? || current_user.profile_completed?
-    flash.notice = I18n.t :please_fill_profile_data
-    redirect_to user_path
+    unless current_user.profile_completed?
+      flash.notice = I18n.t :please_fill_profile_data
+      redirect_to user_path
+    end
   end
 
   def set_locale!
