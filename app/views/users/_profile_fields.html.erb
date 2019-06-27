@@ -1,10 +1,10 @@
 <fieldset class="form-group">
   <div><%= form.label(t :first_name) %></div>
-  <div><%= form.text_field :first_name, class: 'form-control' %></div>
+  <div><%= form.text_field :first_name, required: true, class: 'form-control' %></div>
 </fieldset>
 <fieldset class="form-group">
   <div><%= form.label(t :last_name) %></div>
-  <div><%= form.text_field :last_name, class: 'form-control' %></div>
+  <div><%= form.text_field :last_name, required: true, class: 'form-control' %></div>
 </fieldset>
 <fieldset class="form-group">
   <div><%= form.label(t :email) %></div>
