@@ -19,14 +19,16 @@
       </div>
     </div>
   </div>
+  <% if @organization.terms_of_service.present? %>
+    <div>
+      <h3><%= t :terms_and_conditions %></h3>
+      <pre class="terms-of-service"><%= simple_format @organization.terms_of_service %></pre>
+      <div>
+        <input id="accept_terms" type="checkbox"> <span><%= t :accept_terms %></span>
+      </div>
+    </div>
+  <% end %>
   <div>
-    <h3><%= t :terms_and_conditions %></h3>
-    <pre class="terms-of-service"><%= simple_format @organization.terms_of_service %></pre>
-    <div class="col-md-10">
-      <input id="accept_terms" type="checkbox"> <span><%= t :accept_terms %></span>
-    </div>
-    <div class="col-md-1">
-      <%= f.submit t(:confirm), id: 'confirm_data', class: 'btn btn-success', disabled: true %>
-    </div>
+    <%= f.submit t(:confirm), id: 'confirm_data', class: 'btn btn-success', disabled: @organization.terms_of_service.present? %>
   </div>
 <% end %>
