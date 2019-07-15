@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Choose organization Flow' do
+feature 'not found public on app' do
   let!(:central) { create(:organization, name: 'central') }
   let!(:some_orga) { create(:public_organization, name: 'someorga', profile: profile) }
 

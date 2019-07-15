@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-feature 'Standard Flow', organization_workspace: :test do
-  let!(:user) { create(:user, uid: 'mumuki@test.com', first_name: nil, last_name: nil, gender: nil, birthdate: nil) }
+feature 'Profile Flow', organization_workspace: :test do
+  let!(:user) { create(:user, uid: 'mumuki@test.com', first_name: nil, last_name: nil) }
   let(:haskell) { create(:haskell) }
   let!(:chapter) {
     create(:chapter, name: 'Functional Programming', lessons: [
