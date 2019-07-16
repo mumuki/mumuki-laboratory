@@ -26,9 +26,9 @@ module OrganizationsControllerTemplate
       .require(:organization)
       .permit(:book,
               :name,
-              *Mumukit::Platform::Organization::Profile.attributes,
-              *Mumukit::Platform::Organization::Theme.attributes,
-              *(Mumukit::Platform::Organization::Settings.attributes - [:login_methods]),
+              *Mumuki::Domain::Organization::Profile.attributes,
+              *Mumuki::Domain::Organization::Theme.attributes,
+              *(Mumuki::Domain::Organization::Settings.attributes - [:login_methods]),
               login_methods: [])
       .tap { |it| it.merge!(book: Book.find_by!(slug: it[:book])) if it[:book] }
   end
