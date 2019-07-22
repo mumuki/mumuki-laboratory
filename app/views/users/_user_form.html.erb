@@ -4,18 +4,7 @@
       <%= image_tag @user.image_url, size: '250x250', class: 'img-circle' %>
     </div>
     <div class="col-md-8">
-      <fieldset class="form-group">
-        <div><%= f.label(t :first_name) %></div>
-        <div><%= f.text_field :first_name, class: 'form-control' %></div>
-      </fieldset>
-      <fieldset class="form-group">
-        <div><%= f.label(t :last_name) %></div>
-        <div><%= f.text_field :last_name, class: 'form-control' %></div>
-      </fieldset>
-      <fieldset class="form-group">
-        <div><%= f.label(t :email) %></div>
-        <div><%= f.text_field :email, readonly: true, class: 'form-control' %></div>
-      </fieldset>
+      <%= render partial: 'profile_fields', locals: {form: f} %>
       <div><%= f.submit t(:save), class: 'btn btn-success btn-block' %></div>
     </div>
   </div>

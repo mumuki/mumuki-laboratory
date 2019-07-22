@@ -2,7 +2,6 @@ require 'spec_helper'
 
 feature 'Standard Flow', organization_workspace: :test do
   let!(:user) { create(:user, uid: 'mumuki@test.com', first_name: nil) }
-  let!(:user2) { create(:user, uid: 'johndoe@test.com') }
   let(:haskell) { create(:haskell) }
   let!(:chapter) {
     create(:chapter, name: 'Functional Programming', lessons: [
@@ -27,30 +26,32 @@ feature 'Standard Flow', organization_workspace: :test do
   end
 
   before do
+    OmniAuth.config.mock_auth[:developer] =
+    OmniAuth::AuthHash.new provider: 'developer',
+                           uid: user.uid,
+                           credentials: {},
+                           info: {}
+  end
+
+  before do
     visit '/'
   end
 
   scenario 'redirect to /user if profile uncompleted and has access to organizations' do
-    OmniAuth.config.mock_auth[:developer] =
-      OmniAuth::AuthHash.new provider: 'developer',
-                             uid: 'mumuki@test.com',
-                             credentials: {},
-                             info: {}
-
     user.update! permissions: {student: 'test/*'}
     click_on 'Sign in'
     expect(page).to have_text('Please complete your profile data to continue!')
   end
 
   scenario 'do not redirect to /user if profile is complete' do
-    user2.update! permissions: {student: 'test/*'}
+    user.update! first_name: 'Mercedes', last_name: 'Sosa'
     click_on 'Sign in'
     expect(page).not_to have_text('Please complete your profile data to continue!')
   end
 
-  scenario 'do not redirect to /user if user do not have organizations' do
+  scenario 'does redirect to /user even if user does not have organizations' do
     click_on 'Sign in'
-    expect(page).not_to have_text('Please complete your profile data to continue!')
+    expect(page).to have_text('Please complete your profile data to continue!')
   end
 
   context 'logged in user' do

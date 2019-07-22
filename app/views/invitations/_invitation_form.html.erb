@@ -1,0 +1,23 @@
+<%= form_for current_user, method: 'post', url: {action: 'join'} do |f| %>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="info">
+      <div class="row mu-tab-body">
+        <div class="col-md-12">
+          <%= render partial: 'users/profile_fields', locals: {form: f} %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if @organization.terms_of_service.present? %>
+    <div>
+      <h3><%= t :terms_and_conditions %></h3>
+      <pre class="terms-of-service"><%= simple_format @organization.terms_of_service %></pre>
+      <div>
+        <input id="accept_terms" type="checkbox"> <span><%= t :accept_terms %></span>
+      </div>
+    </div>
+  <% end %>
+  <div>
+    <%= f.submit t(:confirm), id: 'confirm_data', class: 'btn btn-success', disabled: @organization.terms_of_service.present? %>
+  </div>
+<% end %>
