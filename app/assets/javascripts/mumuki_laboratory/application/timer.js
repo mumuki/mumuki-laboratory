@@ -10,6 +10,7 @@ var mumuki = mumuki || {};
 
     setInterval(function () {
       duration = moment.duration(duration - interval, 'milliseconds');
+      if(duration.milliseconds() <= 0) window.location.reload();
       $('#timer').text(duration.hours() + ":" + duration.minutes() + ":" + duration.seconds())
     }, interval);
   };
