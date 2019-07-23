@@ -6,11 +6,16 @@ var mumuki = mumuki || {};
     var currentTime = Date.now();
     var diffTime = endTime - currentTime;
     var duration = moment.duration(diffTime, 'milliseconds');
-    var interval = 1000;
+    var intervalDuration = 1000;
 
-    setInterval(function () {
-      duration = moment.duration(duration - interval, 'milliseconds');
-      $('#timer').text(duration.hours() + ":" + duration.minutes() + ":" + duration.seconds())
-    }, interval);
+    var interval = setInterval(function () {
+      duration = moment.utc(duration - intervalDuration);
+      if(duration.valueOf() <= 0) {
+        clearInterval(interval);
+        window.location.reload();
+      } else {
+        $('#timer').text(duration.format("HH:mm:ss"));
+      }
+    }, intervalDuration);
   };
 })(mumuki);
