@@ -7,6 +7,14 @@
   <div><%= form.text_field :last_name, required: true, class: 'form-control' %></div>
 </fieldset>
 <fieldset class="form-group">
+  <div><%= form.label(t :gender) %></div>
+  <div><%= form.select :gender, options_for_select(User.genders.map { |gender, value| [t(gender), value] }, @user.gender), {}, required: true, class: 'form-control' %></div>
+</fieldset>
+<fieldset class="form-group">
+  <div><%= form.label(t :birth_year) %></div>
+  <div><%= form.select :birth_year, options_for_select((1900..2016).map { |year| [year, year] }, @user.birth_year), {}, required: true, class: 'form-control' %></div>
+</fieldset>
+<fieldset class="form-group">
   <div><%= form.label(t :email) %></div>
   <div><%= form.text_field :email, readonly: true, class: 'form-control' %></div>
 </fieldset>
