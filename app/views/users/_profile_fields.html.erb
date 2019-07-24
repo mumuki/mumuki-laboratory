@@ -8,7 +8,7 @@
 </fieldset>
 <fieldset class="form-group">
   <div><%= form.label(t :gender) %></div>
-  <div><%= form.select :gender, options_for_select(User.genders.map { |gender, value| [t(gender), value] }, @user.gender), {}, required: true, class: 'form-control' %></div>
+  <div><%= form.select :gender, options_for_select(User.genders.map { |gender, _| [t(gender), gender] }, @user.gender), {}, required: true, class: 'form-control' %></div>
 </fieldset>
 <fieldset class="form-group">
   <div><%= form.label(t :birthdate) %></div>
