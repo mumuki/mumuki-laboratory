@@ -24,6 +24,7 @@ en:
   authoring_note_with_collaborators_html: This guide's content was developed by %{authors} and <a href="%{collaborators}" target="_blank">many others</a>, under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons License Share-Alike, 4.0</a>
   back_to_mumuki: Back to Mumuki!
   bibliotheca_ui: Bibliotheca
+  birthdate: Birthdate
   blocked_forum_explanation: You are not allowed to see this content. <br> Are you in the middle of an exam right now?
   cancel_subscription: Cancel your subscription.
   chapter: Chapter
@@ -79,9 +80,11 @@ en:
   explain_redirect: You have registered in another organization
   failed: Oops, something went wrong
   feedback: Feedback
+  female: Female
   finish: Finish
   first_name: First Name
   forbidden_explanation: You are not allowed to see this content.
+  gender: Gender
   go_to: 'Go to %{organization}'
   gone_explanation: This exam is no longer available.
   guide: Guide
@@ -110,6 +113,7 @@ en:
   lesson_number: Lesson %{number}
   let_us_know: please let us know!
   load_solution_into_console: Load your solution into the console
+  male: Male
   manual_evaluation_pending: Thanks for submitting your solution! It will be revised by the course teachers soon
   message_count:
     one: 1 message
@@ -147,6 +151,7 @@ en:
   office: Office
   opened: Open
   opened_count: '%{count} opened'
+  other: Other
   out_of_attempts: You've run out of attempts. You should proceed to the next exercise!
   output: Output
   overview: Overview
