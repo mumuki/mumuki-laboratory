@@ -79,7 +79,7 @@ Rails.application.routes.draw do
 
 
     namespace :api do
-      organization_regexp = Regexp.new Mumukit::Platform::Organization::Helpers.valid_name_regex
+      organization_regexp = Regexp.new Mumukit::Platform::Organization.valid_name_regex
       uid_regexp = /[^\/]+/
 
       resources :users, only: [:create, :update],  constraints: {id: uid_regexp}

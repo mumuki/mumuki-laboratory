@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe IconsHelper do
+describe IconsHelper, organization_workspace: :test do
   helper IconsHelper
   helper FontAwesome::Rails::IconHelper
 

@@ -4,7 +4,7 @@ feature 'Choose organization Flow' do
   let!(:central) { create(:organization, name: 'central') }
   let!(:some_orga) { create(:public_organization, name: 'someorga', profile: profile) }
 
-  let(:profile) { Mumukit::Platform::Organization::Profile.parse json  }
+  let(:profile) { Mumuki::Domain::Organization::Profile.parse json  }
   let(:json) { { contact_email: 'some@email.com', locale: 'en', errors_explanations: { 404 => 'Some explanation'} } }
 
   scenario 'when routes does not exist in implicit central' do
