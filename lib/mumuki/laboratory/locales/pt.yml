@@ -25,6 +25,7 @@ pt:
   authoring_note_with_collaborators_html: 'Este guia foi desenvolvido por %{authors} e <a href="%{collaborators}" target="_blank">muitas outras pessoas </a>, nos termos do <a href = "https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"> Creative Commons License Share-Equal, 4.0 </a>.'
   back_to_mumuki: Voltei para Mumuki!
   bibliotheca_ui: Biblioteca
+  birthdate: Fecha de nacimiento
   blocked_forum_explanation: Você não tem permissão para ver este conteúdo. <br> Você está no meio de um exame agora?
   chapter: Capítulo
   chapter_finished_html: Você terminou %{chapter}! Parabéns!
@@ -82,10 +83,12 @@ pt:
   explain_redirect: Percebemos que você se registrou em outra organização.
   failed: Sua solução não passou as provas
   feedback: Problemas que encontramos
+  female: Feminino
   finish: Terminar
   first_name: Nome
   forbidden_explanation: Isso significa que você não tem autorização para ver esse conteúdo. <br> Você poderia ter entrado com uma conta incorreta?
   fullscreen: Tela completa
+  gender: Gênero
   get_messages: Ver mensagens
   go_to: Vá para %{organization}
   gone_explanation: Opa! Isto é o que é conhecido como %{error}, ou seja, você não pode mais ver esse exame.
@@ -117,6 +120,7 @@ pt:
   lesson_number: Lição %{number}
   let_us_know: Por favor, avise-nos!
   load_solution_into_console: Carregue a solução no console
+  male: Masculino
   manual_evaluation_pending: Obrigado por enviar sua solução! Seus professores irão corrigi-lo em breve
   message_count:
       one: 1 mensagem
@@ -158,6 +162,7 @@ pt:
   opened: Aberto
   opened_count: '%{count} aberto'
   organizations: Organizações
+  other: Outro
   out_of_attempts: Você ficou sem tentativas. Você deve prosseguir para o próximo exercício!
   output: Sair
   overview: Visão global
