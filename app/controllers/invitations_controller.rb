@@ -1,6 +1,7 @@
 class InvitationsController < ApplicationController
   before_action :authenticate!
   before_action :set_invitation!
+  before_action :set_user!
 
   skip_before_action :validate_user_profile!
   skip_before_action :authorize_if_private!
@@ -29,5 +30,9 @@ class InvitationsController < ApplicationController
   def set_invitation!
     @invitation = Invitation.locate!(params[:code]).unexpired
     @organization = @invitation.organization
+  end
+
+  def set_user!
+    @user = current_user
   end
 end
