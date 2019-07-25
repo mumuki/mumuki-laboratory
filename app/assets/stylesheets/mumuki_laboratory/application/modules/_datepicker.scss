@@ -1,0 +1,10 @@
+input[type="date"] {
+  &::-webkit-clear-button {
+    display: none;
+  }
+
+  &::-webkit-inner-spin-button {
+    display: none;
+  }
+}
+
