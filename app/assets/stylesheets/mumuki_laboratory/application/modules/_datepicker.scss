@@ -6,5 +6,8 @@ input[type="date"] {
   &::-webkit-inner-spin-button {
     display: none;
   }
-}
 
+  &.form-control {
+    line-height: 33px;
+  }
+}
