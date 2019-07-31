@@ -9,7 +9,7 @@ feature 'Login Flow', organization_workspace: :test do
     ])
   end
 
-  let!(:user) { create :user, first_name: 'John', last_name: 'Doe', uid: 'johndoe@test.com', gender: 1, birthdate: Date.today }
+  let!(:user) { create :user, first_name: 'John', last_name: 'Doe', uid: 'johndoe@test.com' }
 
   before { reindex_current_organization! }
 
