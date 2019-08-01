@@ -1,4 +1,4 @@
-class Button {
+mumuki.Button = class {
 
   constructor($button, $container) {
     this.$button = $button;
@@ -32,6 +32,5 @@ class Button {
     this.disable();
     this.$button.on('click', (e) => e.preventDefault());
   }
-}
+};
 
-mumuki.Button = Button;

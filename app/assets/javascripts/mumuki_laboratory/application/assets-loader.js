@@ -1,18 +1,26 @@
-mumuki.assetsLoader = {
+const assetsLoader = {
   layout: {
-    onStartLoading: function () {
+    onLoadingStarted: function () {
 
     },
-    onFinishLoading: function () {
+    onLoadingFinished: function () {
 
     }
   },
   editor: {
-    onStartLoading: function () {
+    onLoadingStarted: function () {
       mumuki.kids.disableContextModalButton();
     },
-    onFinishLoading: function () {
+    onLoadingFinished: function () {
       mumuki.kids.enableContextModalButton();
     }
   }
+};
+
+mumuki.assetsLoaderFor = function (kind) {
+  assetsLoader[kind].onLoadingStarted();
+};
+
+mumuki.assetsLoadedFor = function (kind) {
+  assetsLoader[kind].onLoadingFinished();
 };

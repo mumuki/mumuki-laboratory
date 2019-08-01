@@ -13,9 +13,7 @@
 <% if !loads_more_assets && show_loading_for?(language, assets_kind) %>
   <script id="<%= assets_kind %>-loading-script">
     let assetsKind = '<%= assets_kind %>';
-    mumuki.load(() => {
-      mumuki.assetsLoader[assetsKind].onStartLoading();
-    })
+    mumuki.load(() => mumuki.assetsLoaderFor(assetsKind));
   </script>
 <% end %>
 
