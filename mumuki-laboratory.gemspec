@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'mumukit-login', '~> 6.1'
   s.add_dependency 'mumukit-nuntius', '~> 6.1'
 
-  s.add_dependency 'mumuki-styles', '~> 1.21'
+  s.add_dependency 'mumuki-styles', '~> 1.21.1'
   s.add_dependency 'muvment', '~> 1.2'
 
   s.add_dependency 'rack', '~> 2.0'
