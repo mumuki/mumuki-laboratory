@@ -9,3 +9,11 @@
 <% language.assets_urls_for(assets_kind, :css).each do |css| %>
   <link rel="stylesheet" href="<%= css %>" />
 <% end %>
+
+<% if !loads_more_assets && show_loading_for?(language, assets_kind) %>
+  <script id="<%= assets_kind %>-loading-script">
+    let assetsKind = '<%= assets_kind %>';
+    mumuki.load(() => mumuki.assetsLoaderFor(assetsKind));
+  </script>
+<% end %>
+

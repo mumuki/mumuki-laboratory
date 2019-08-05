@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'not found on app', organization_workspace: :base do
+feature 'not found private on app', organization_workspace: :base do
   before { set_subdomain_host! Organization.base.name }
   before { Organization.base.switch! }
 

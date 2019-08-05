@@ -28,45 +28,24 @@ var mumuki = mumuki || {};
     }
   };
 
-  function SubmitButton(submitButton, submissionControls) {
-    this.submitButton = submitButton;
-    this.submissionControls = submissionControls;
-  }
+  class SubmitButton extends mumuki.Button {
 
-  SubmitButton.prototype = {
-    disable: function () {
-      this.submissionControls.attr('disabled', 'disabled');
-    },
-    setWaitingText: function () {
-      document.prevSubmitState = this.submitButton.html();
-      this.submitButton.html('<i class="fa fa-refresh fa-spin"></i> ' + this.submitButton.attr('data-waiting'));
-    },
-    setSendText: function () {
-      this.submitButton.html(document.prevSubmitState);
-    },
-    enable: function () {
-      this.setSendText();
-      this.submissionControls.removeAttr('disabled');
-    },
-    reachedMaxAttempts: function () {
+    reachedMaxAttempts () {
       return $('#attempts-left-text').attr('data-disabled') === "true";
-    },
-    updateAttemptsLeft: function (data) {
+    }
+
+    updateAttemptsLeft (data) {
       $('#attempts-left-text').replaceWith(data['remaining_attempts_html']);
       this.checkAttemptsLeft();
-    },
-    preventSubmission: function () {
-      this.disable();
-      this.submitButton.on('click', function (e) {
-        e.preventDefault();
-      })
-    },
-    checkAttemptsLeft: function () {
+    }
+
+    checkAttemptsLeft () {
       if (this.reachedMaxAttempts()) {
-        this.preventSubmission();
+        this.preventClick();
       }
     }
-  };
+
+  }
 
   mumuki.load(function () {
     var submissionsResults = $('.submission-results');
@@ -119,7 +98,7 @@ var mumuki = mumuki || {};
 
   function animateTimeoutError(submitButton) {
     let scene = new muvment.Scene($('.submission-result-error-animation'));
-    scene.addState(mumuki.errorState('timeout_1').onStart(submitButton.setSendText.bind(submitButton)).onEndSwitch(scene, 'timeout_2'))
+    scene.addState(mumuki.errorState('timeout_1').onStart(submitButton.setOriginalContent.bind(submitButton)).onEndSwitch(scene, 'timeout_2'))
       .addState(mumuki.errorState('timeout_2').onEndSwitch(scene, 'timeout_3'))
       .addState(mumuki.errorState('timeout_3').onStart(submitButton.enable.bind(submitButton)))
       .play();

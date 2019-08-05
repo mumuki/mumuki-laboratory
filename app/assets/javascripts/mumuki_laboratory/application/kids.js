@@ -12,8 +12,9 @@ mumuki.load(function () {
   var $defaultSpeechTabName = 'description';
   var $texts = $bubble.children(availableTabs.join(", "));
   var $hint = $('.mu-kids-hint');
-  var discussionsLinkHtml = $('#mu-kids-discussion-link-html').html();
   var $description = $('.mu-kids-description');
+  var discussionsLinkHtml = $('#mu-kids-discussion-link-html').html();
+  var contextModalButton = new mumuki.Button($('.mu-kids-context .modal-footer button'));
 
   function floatFromPx(value) {
     return parseFloat(value.substring(0, value.length - 2));
@@ -123,6 +124,14 @@ mumuki.load(function () {
       var $bubble = mumuki.kids._getCharacterBubble();
       Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
       mumuki.presenterCharacter.playAnimation('talk', mumuki.kids._getCharacterImage());
+    },
+
+    disableContextModalButton: function () {
+      contextModalButton.setWaiting();
+    },
+
+    enableContextModalButton: function () {
+      contextModalButton.enable();
     },
 
     // ===========

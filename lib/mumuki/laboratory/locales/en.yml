@@ -112,6 +112,7 @@ en:
   lesson: Lesson
   lesson_number: Lesson %{number}
   let_us_know: please let us know!
+  loading: Loading
   load_solution_into_console: Load your solution into the console
   male: Male
   manual_evaluation_pending: Thanks for submitting your solution! It will be revised by the course teachers soon

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Exercise Flow', organization_workspace: :test do
+feature 'Guide Reset Flow', organization_workspace: :test do
   let(:user) { create(:user) }
 
   let!(:problem) { build(:problem) }

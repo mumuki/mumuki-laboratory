@@ -119,6 +119,7 @@ pt:
   lesson: Lição
   lesson_number: Lição %{number}
   let_us_know: Por favor, avise-nos!
+  loading: Carregando
   load_solution_into_console: Carregue a solução no console
   male: Masculino
   manual_evaluation_pending: Obrigado por enviar sua solução! Seus professores irão corrigi-lo em breve
