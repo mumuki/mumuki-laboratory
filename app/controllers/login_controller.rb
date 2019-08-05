@@ -2,6 +2,7 @@ class LoginController < ApplicationController
   Mumukit::Login.configure_login_controller! self
 
   skip_before_action :verify_authenticity_token, if: lambda { Rails.env.development? }
+  skip_before_action :validate_user_profile!
 
   private
 

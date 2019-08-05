@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Standard Flow', organization_workspace: :test do
-  let!(:user) { create(:user, uid: 'mumuki@test.com', first_name: nil) }
+  let!(:user) { create(:user, uid: 'mumuki@test.com', first_name: nil, last_name: nil, gender: nil, birthdate: nil) }
   let(:haskell) { create(:haskell) }
   let!(:chapter) {
     create(:chapter, name: 'Functional Programming', lessons: [
@@ -37,21 +37,35 @@ feature 'Standard Flow', organization_workspace: :test do
     visit '/'
   end
 
-  scenario 'redirect to /user if profile uncompleted and has access to organizations' do
-    user.update! permissions: {student: 'test/*'}
-    click_on 'Sign in'
-    expect(page).to have_text('Please complete your profile data to continue!')
+  context 'user with uncompleted profile' do
+    scenario 'redirect to /user if user has access to organizations' do
+      user.update! permissions: {student: 'test/*'}
+      click_on 'Sign in'
+      expect(page).to have_text('Please complete your profile data to continue!')
+    end
+
+    scenario 'redirect to /user if user does not have access to organizations' do
+      click_on 'Sign in'
+      expect(page).to have_text('Please complete your profile data to continue!')
+    end
+
+    scenario 'is able to log out' do
+      click_on 'Sign in'
+      OmniAuth.config.test_mode = false
+
+      click_on 'Sign Out'
+      expect(page).to_not have_text('Please complete your profile data to continue!')
+      expect(page).to_not have_text('Sign Out')
+      expect(page).to have_text('Sign In')
+    end
   end
 
-  scenario 'do not redirect to /user if profile is complete' do
-    user.update! first_name: 'Mercedes', last_name: 'Sosa'
-    click_on 'Sign in'
-    expect(page).not_to have_text('Please complete your profile data to continue!')
-  end
-
-  scenario 'does redirect to /user even if user does not have organizations' do
-    click_on 'Sign in'
-    expect(page).to have_text('Please complete your profile data to continue!')
+  context 'user with completed profile' do
+    scenario 'do not redirect to /user' do
+      user.update! first_name: 'Mercedes', last_name: 'Sosa', gender: 0, birthdate: Date.new(1935, 9, 7)
+      click_on 'Sign in'
+      expect(page).not_to have_text('Please complete your profile data to continue!')
+    end
   end
 
   context 'logged in user' do
