@@ -46,28 +46,31 @@ feature 'menu bar' do
     let(:janitor) { create(:user, permissions: {student: 'private/*', janitor: 'private/*'}) }
     let(:owner) { create(:user, permissions: {student: 'private/*', owner: 'private/*'}) }
 
-    scenario 'visitor should not see any app' do
+    scenario 'visitor should only see profile' do
       set_current_user! visitor
 
       visit '/'
+      expect(page).to have_text('Profile')
       expect(page).not_to have_text('Classroom')
       expect(page).not_to have_text('Bibliotheca')
     end
 
-    scenario 'teacher should see classroom' do
+    scenario 'teacher should see profile and classroom' do
       set_current_user! teacher
 
       visit '/'
 
+      expect(page).to have_text('Profile')
       expect(page).to have_text('Classroom')
       expect(page).not_to have_text('Bibliotheca')
     end
 
-    scenario 'writer should see bibliotheca' do
+    scenario 'writer should see profile and bibliotheca' do
       set_current_user! writer
 
       visit '/'
 
+      expect(page).to have_text('Profile')
       expect(page).not_to have_text('Classroom')
       expect(page).to have_text('Bibliotheca')
     end
