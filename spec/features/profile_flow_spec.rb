@@ -51,7 +51,7 @@ feature 'Profile Flow', organization_workspace: :test do
 
     scenario 'is able to log out' do
       click_on 'Sign in'
-      OmniAuth.config.test_mode = false
+      set_automatic_login! false
 
       click_on 'Sign Out'
       expect(page).to_not have_text('Please complete your profile data to continue!')

@@ -9,10 +9,10 @@ feature 'menu bar' do
   before { private_organization.switch! }
 
   context 'anonymous user' do
+    before { set_automatic_login! false }
+
     context 'on organization without permissions' do
       scenario 'should not see menu bar' do
-        OmniAuth.config.test_mode = false
-
         visit '/'
 
         expect(page).not_to have_text('Profile')
@@ -27,8 +27,6 @@ feature 'menu bar' do
       before { public_organization.switch! }
 
       scenario 'should not see menu bar' do
-        OmniAuth.config.test_mode = false
-
         visit '/'
 
         expect(page).not_to have_text('Profile')
