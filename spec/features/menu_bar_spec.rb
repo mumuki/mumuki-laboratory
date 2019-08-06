@@ -9,11 +9,32 @@ feature 'menu bar' do
   before { private_organization.switch! }
 
   context 'anonymous user' do
-    scenario 'should not see any app' do
-      visit '/'
+    context 'on organization without permissions' do
+      scenario 'should not see menu bar' do
+        OmniAuth.config.test_mode = false
 
-      expect(page).not_to have_text('Classroom')
-      expect(page).not_to have_text('Bibliotheca')
+        visit '/'
+
+        expect(page).not_to have_text('Profile')
+        expect(page).not_to have_text('Classroom')
+        expect(page).not_to have_text('Bibliotheca')
+      end
+    end
+
+    context 'on organization with permissions' do
+      let(:public_organization) { create(:public_organization, book: book) }
+      before { set_subdomain_host! public_organization.name }
+      before { public_organization.switch! }
+
+      scenario 'should not see menu bar' do
+        OmniAuth.config.test_mode = false
+
+        visit '/'
+
+        expect(page).not_to have_text('Profile')
+        expect(page).not_to have_text('Classroom')
+        expect(page).not_to have_text('Bibliotheca')
+      end
     end
   end
 
