@@ -1,6 +1,7 @@
 module MenuBarHelper
   def menu_bar_links
     [
+      link_to_profile,
       link_to_classroom,
       link_to_bibliotheca,
       solve_discussions_link,
