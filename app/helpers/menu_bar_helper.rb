@@ -10,15 +10,15 @@ module MenuBarHelper
   end
 
   def menu_bar_list_items
-    menu_bar_links.compact.map { |link| list_item(link) }.join.html_safe
+    menu_bar_links.compact.map { |link| li_tag(link) }.join.html_safe
   end
 
-  def list_item(link)
-    "<li>#{link}</li>"
+  def li_tag(link)
+    content_tag :li, link
   end
 
   def link_to_profile
-    list_item(menu_item 'user-o', :profile, user_path)
+    li_tag menu_item('user-o', :profile, user_path)
   end
 
   def link_to_classroom
