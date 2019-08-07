@@ -32,6 +32,8 @@ require_relative './evaluation_helper'
 require_relative './login_helper'
 
 RSpec.configure do |config|
+  config.before(:each) { set_automatic_login! true }
+
   config.before(:each) { I18n.locale = :en }
 
   config.before(:each) do

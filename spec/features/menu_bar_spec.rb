@@ -9,11 +9,30 @@ feature 'menu bar' do
   before { private_organization.switch! }
 
   context 'anonymous user' do
-    scenario 'should not see any app' do
-      visit '/'
+    before { set_automatic_login! false }
 
-      expect(page).not_to have_text('Classroom')
-      expect(page).not_to have_text('Bibliotheca')
+    context 'on organization without permissions' do
+      scenario 'should not see menu bar' do
+        visit '/'
+
+        expect(page).not_to have_text('Profile')
+        expect(page).not_to have_text('Classroom')
+        expect(page).not_to have_text('Bibliotheca')
+      end
+    end
+
+    context 'on organization with permissions' do
+      let(:public_organization) { create(:public_organization, book: book) }
+      before { set_subdomain_host! public_organization.name }
+      before { public_organization.switch! }
+
+      scenario 'should not see menu bar' do
+        visit '/'
+
+        expect(page).not_to have_text('Profile')
+        expect(page).not_to have_text('Classroom')
+        expect(page).not_to have_text('Bibliotheca')
+      end
     end
   end
 
@@ -23,31 +42,74 @@ feature 'menu bar' do
     let(:teacher) { create(:user, permissions: {student: 'private/*', teacher: 'private/*'}) }
     let(:writer) { create(:user, permissions: {student: 'private/*', writer: 'private/*'}) }
     let(:janitor) { create(:user, permissions: {student: 'private/*', janitor: 'private/*'}) }
+    let(:admin) { create(:user, permissions: {student: 'private/*', admin: 'private/*'}) }
     let(:owner) { create(:user, permissions: {student: 'private/*', owner: 'private/*'}) }
 
-    scenario 'visitor should not see any app' do
+    scenario 'visitor should only see profile' do
       set_current_user! visitor
 
       visit '/'
+      expect(page).to have_text('Profile')
       expect(page).not_to have_text('Classroom')
       expect(page).not_to have_text('Bibliotheca')
     end
 
-    scenario 'teacher should see classroom' do
+    scenario 'student should only see profile' do
+      set_current_user! visitor
+
+      visit '/'
+      expect(page).to have_text('Profile')
+      expect(page).not_to have_text('Classroom')
+      expect(page).not_to have_text('Bibliotheca')
+    end
+
+    scenario 'teacher should see profile and classroom' do
       set_current_user! teacher
 
       visit '/'
 
+      expect(page).to have_text('Profile')
       expect(page).to have_text('Classroom')
       expect(page).not_to have_text('Bibliotheca')
     end
 
-    scenario 'writer should see bibliotheca' do
+    scenario 'writer should see profile and bibliotheca' do
       set_current_user! writer
 
       visit '/'
 
+      expect(page).to have_text('Profile')
       expect(page).not_to have_text('Classroom')
+      expect(page).to have_text('Bibliotheca')
+    end
+
+    scenario 'janitor should see profile and classroom' do
+      set_current_user! janitor
+
+      visit '/'
+
+      expect(page).to have_text('Profile')
+      expect(page).to have_text('Classroom')
+      expect(page).not_to have_text('Bibliotheca')
+    end
+
+    scenario 'admin should see profile, classroom and bibliotheca' do
+      set_current_user! admin
+
+      visit '/'
+
+      expect(page).to have_text('Profile')
+      expect(page).to have_text('Classroom')
+      expect(page).to have_text('Bibliotheca')
+    end
+
+    scenario 'owner should see profile, classroom and bibliotheca' do
+      set_current_user! owner
+
+      visit '/'
+
+      expect(page).to have_text('Profile')
+      expect(page).to have_text('Classroom')
       expect(page).to have_text('Bibliotheca')
     end
   end

@@ -8,7 +8,6 @@ Mumukit::Login.configure do |config|
   config.mucookie_sign_salt = 'mucookie test sign salt'
 end
 
-OmniAuth.config.test_mode = true
 OmniAuth.config.mock_auth[:developer] =
   OmniAuth::AuthHash.new provider: 'developer',
                          uid: 'johndoe@test.com',
@@ -17,4 +16,8 @@ OmniAuth.config.mock_auth[:developer] =
 
 def set_current_user!(user)
   allow_any_instance_of(ApplicationController).to receive(:current_user_uid).and_return(user.uid)
+end
+
+def set_automatic_login!(test_mode)
+  OmniAuth.config.test_mode = test_mode
 end

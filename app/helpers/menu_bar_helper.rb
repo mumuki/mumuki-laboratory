@@ -1,6 +1,7 @@
 module MenuBarHelper
   def menu_bar_links
     [
+      link_to_profile,
       link_to_classroom,
       link_to_bibliotheca,
       solve_discussions_link,
@@ -9,7 +10,15 @@ module MenuBarHelper
   end
 
   def menu_bar_list_items
-    menu_bar_links.compact.map { |link| "<li>#{link}<li>" }.join.html_safe
+    menu_bar_links.compact.map { |link| li_tag(link) }.join.html_safe
+  end
+
+  def li_tag(link)
+    content_tag :li, link
+  end
+
+  def link_to_profile
+    li_tag menu_item('user-o', :profile, user_path)
   end
 
   def link_to_classroom
