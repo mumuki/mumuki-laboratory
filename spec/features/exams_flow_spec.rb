@@ -51,7 +51,7 @@ feature 'Exams Flow', organization_workspace: :test do
     expect_any_instance_of(Exam).to receive(:enabled_for?).and_return(false)
     visit "/exams/#{exam.classroom_id}"
 
-    expect(page).to have_text('This exam is no longer available.')
+    expect(page).to have_text('This content is no longer available.')
   end
 
   scenario 'visit exercise for exam with no submission limits' do
