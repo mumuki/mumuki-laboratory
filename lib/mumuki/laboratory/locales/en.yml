@@ -86,7 +86,7 @@ en:
   forbidden_explanation: You are not allowed to see this content.
   gender: Gender
   go_to: 'Go to %{organization}'
-  gone_explanation: This exam is no longer available.
+  gone_explanation: This content is no longer available.
   guide: Guide
   guide_created: Guide created successfully
   guide_finished: You completed %{guide}!

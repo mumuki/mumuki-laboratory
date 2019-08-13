@@ -91,7 +91,7 @@ pt:
   gender: Gênero
   get_messages: Ver mensagens
   go_to: Vá para %{organization}
-  gone_explanation: Opa! Isto é o que é conhecido como %{error}, ou seja, você não pode mais ver esse exame.
+  gone_explanation: Opa! Isto é o que é conhecido como %{error}, ou seja, você não pode mais ver esse conteúdo.
   guide: Lição
   guide_created: Guia criado com sucesso
   guide_finished: Você terminou %{guide}!
