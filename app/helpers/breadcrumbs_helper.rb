@@ -16,12 +16,18 @@ module BreadcrumbsHelper
   def organization_breadcrumb
     if Organization.current.breadcrumb_image_url.present?
       organization_image_breadcrumb
+    else
+      organization_text_breadcrumb
     end
   end
 
   def organization_image_breadcrumb
     link = link_to image_tag(Organization.current.breadcrumb_image_url, class: "da mu-breadcrumb-img"), root_path
     name_me link
+  end
+
+  def organization_text_breadcrumb
+    home_breadcrumb(link_to Organization.current.name, root_path)
   end
 
   def breadcrumb_item_class(last)
