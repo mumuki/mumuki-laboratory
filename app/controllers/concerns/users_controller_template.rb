@@ -1,5 +1,6 @@
 module UsersControllerTemplate
   extend ActiveSupport::Concern
+  include WithUserParams
 
   included do
     before_action :set_user!, only: [:show, :update]
@@ -13,8 +14,8 @@ module UsersControllerTemplate
     current_user.protect_permissions_assignment! user_params[:permissions], @user.permissions_was
   end
 
-  def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :image_url, permissions: Mumukit::Auth::Roles::ROLES)
+  def permissible_params
+    super + [:email, :image_url, permissions: Mumukit::Auth::Roles::ROLES]
   end
 
   def set_user!
@@ -24,5 +25,4 @@ module UsersControllerTemplate
   def set_new_user!
     @user = User.new user_params
   end
-
 end

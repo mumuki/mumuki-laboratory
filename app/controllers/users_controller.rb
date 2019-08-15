@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include WithUserParams
+
   before_action :authenticate!
   before_action :set_user!
 
@@ -22,10 +24,6 @@ class UsersController < ApplicationController
   private
 
   def validate_user_profile!
-  end
-
-  def user_params
-    params.require(:user).permit(User.profile_fields)
   end
 
   def set_user!
