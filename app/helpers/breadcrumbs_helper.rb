@@ -31,7 +31,11 @@ module BreadcrumbsHelper
   end
 
   def organization_text_breadcrumb
-    home_breadcrumb(link_to Organization.current.name, root_path)
+    name_me(link_to organization_name, root_path)
+  end
+
+  def organization_name
+    Organization.current.name
   end
 
   def breadcrumb_item_class(last)
