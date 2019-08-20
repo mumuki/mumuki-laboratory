@@ -9,8 +9,12 @@ module BreadcrumbsHelper
   end
 
   def home_breadcrumb
-    link = link_to "<i class='da da-mumuki' aria-label=#{t(:home)}></i>".html_safe, root_path
+    link = link_to "<i class='da da-mumuki' aria-label=#{t(:home)}></i>".html_safe, mu_home_path
     name_me link, 'brand'
+  end
+
+  def mu_home_path
+    root_path
   end
 
   def organization_breadcrumb
