@@ -1,7 +1,10 @@
 module BreadcrumbsHelper
-
   def breadcrumbs(e, extra=nil)
     breadcrumbs0(e.navigable_name, e, extra, 'last')
+  end
+
+  def home_and_organization_breadcrumbs
+    "#{home_breadcrumb} #{organization_breadcrumb}".html_safe
   end
 
   def home_breadcrumb
@@ -52,7 +55,7 @@ module BreadcrumbsHelper
     return "#{breadcrumbs_for_linkable(e)} #{breadcrumb_list_item(last, extra)}".html_safe if extra
 
     if e.navigation_end?
-      "#{home_breadcrumb} #{organization_breadcrumb} #{breadcrumb_list_item(last, base)}".html_safe
+      "#{home_and_organization_breadcrumbs} #{breadcrumb_list_item(last, base)}".html_safe
     else
       "#{breadcrumbs_for_linkable(e.navigable_parent)} #{breadcrumb_list_item(last, base)}".html_safe
     end
