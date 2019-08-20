@@ -4,13 +4,9 @@ module BreadcrumbsHelper
     breadcrumbs0(e.navigable_name, e, extra, 'last')
   end
 
-  def name_me(link, brand='')
-    "<li class='mu-breadcrumb-list-item #{brand}'>#{link}</li>".html_safe
-  end
-
   def home_breadcrumb
-    link = link_to "<i class='da da-mumuki' aria-label=#{t(:home)}></i>".html_safe, mu_home_path
-    name_me link, 'brand'
+    home = "<i class='da da-mumuki' aria-label=#{t(:home)}></i>".html_safe
+    breadcrumb_list_item_with_link home, mu_home_path, 'brand'
   end
 
   def mu_home_path
@@ -18,32 +14,32 @@ module BreadcrumbsHelper
   end
 
   def organization_breadcrumb
-    if Organization.current.breadcrumb_image_url.present?
-      organization_image_breadcrumb
-    else
-      organization_text_breadcrumb
-    end
+    Organization.current.breadcrumb_image_url.present? ? organization_image_breadcrumb : organization_text_breadcrumb
   end
 
   def organization_image_breadcrumb
-    link = link_to image_tag(Organization.current.breadcrumb_image_url, class: "da mu-breadcrumb-img"), root_path
-    name_me link
+    image = image_tag(Organization.current.breadcrumb_image_url, class: "da mu-breadcrumb-img")
+    breadcrumb_list_item_with_link image, root_path
   end
 
   def organization_text_breadcrumb
-    name_me(link_to organization_name, root_path)
+    breadcrumb_list_item_with_link organization_name, root_path
   end
 
   def organization_name
     Organization.current.name
   end
 
-  def breadcrumb_item_class(last)
-    "class='mu-breadcrumb-list-item #{last}'"
+  def breadcrumb_item_class(clazz)
+    "class='mu-breadcrumb-list-item #{clazz}'"
   end
 
-  def breadcrumb_list_item(last, item)
-    "<li #{breadcrumb_item_class(last)}>#{h item}</li>".html_safe
+  def breadcrumb_list_item(clazz, item)
+    "<li #{breadcrumb_item_class(clazz)}>#{h item}</li>".html_safe
+  end
+
+  def breadcrumb_list_item_with_link(item, where_to, brand='')
+    breadcrumb_list_item brand, (link_to item, where_to)
   end
 
   private
