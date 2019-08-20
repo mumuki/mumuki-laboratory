@@ -3,8 +3,8 @@ module BreadcrumbsHelper
     breadcrumbs0(e.navigable_name, e, extra, 'last')
   end
 
-  def home_and_organization_breadcrumbs
-    "#{home_breadcrumb} #{organization_breadcrumb}".html_safe
+  def home_and_organization_breadcrumbs(link_for_organization: false)
+    "#{home_breadcrumb} #{organization_breadcrumb link_for_organization}".html_safe
   end
 
   def home_breadcrumb
@@ -16,17 +16,21 @@ module BreadcrumbsHelper
     root_path
   end
 
-  def organization_breadcrumb
-    Organization.current.breadcrumb_image_url.present? ? organization_image_breadcrumb : organization_text_breadcrumb
+  def organization_breadcrumb(has_link)
+    Organization.current.breadcrumb_image_url.present? ? organization_image_breadcrumb(has_link) : organization_text_breadcrumb(has_link)
   end
 
-  def organization_image_breadcrumb
+  def organization_image_breadcrumb(has_link)
     image = image_tag(Organization.current.breadcrumb_image_url, class: "da mu-breadcrumb-img")
-    breadcrumb_list_item_with_link image, root_path
+    link_breadcrumb_if has_link, image
   end
 
-  def organization_text_breadcrumb
-    breadcrumb_list_item_with_link organization_name, root_path
+  def organization_text_breadcrumb(has_link)
+    link_breadcrumb_if has_link, organization_name
+  end
+
+  def link_breadcrumb_if(has_link, item)
+    has_link ? breadcrumb_list_item_with_link(item, root_path) : breadcrumb_list_item('', item)
   end
 
   def organization_name
@@ -55,7 +59,7 @@ module BreadcrumbsHelper
     return "#{breadcrumbs_for_linkable(e)} #{breadcrumb_list_item(last, extra)}".html_safe if extra
 
     if e.navigation_end?
-      "#{home_and_organization_breadcrumbs} #{breadcrumb_list_item(last, base)}".html_safe
+      "#{home_and_organization_breadcrumbs(link_for_organization: true)} #{breadcrumb_list_item(last, base)}".html_safe
     else
       "#{breadcrumbs_for_linkable(e.navigable_parent)} #{breadcrumb_list_item(last, base)}".html_safe
     end
