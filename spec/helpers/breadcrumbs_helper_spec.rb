@@ -20,7 +20,7 @@ describe BreadcrumbsHelper, organization_workspace: :test do
   context 'exercise' do
     let(:breadcrumb) { breadcrumbs(exercise) }
 
-    context 'exercise in complement' do
+    context 'in complement' do
       let!(:complement) { create(:complement, name: 'my guide', exercises: [
           create(:exercise, name: 'my exercise')
       ]) }
@@ -28,65 +28,76 @@ describe BreadcrumbsHelper, organization_workspace: :test do
 
       before { reindex_current_organization! }
 
-      it { expect(breadcrumb).to include('da da-mumuki') }
-      it { expect(breadcrumb).to include('test') }
-      it { expect(breadcrumb).to include('my exercise') }
-      it { expect(breadcrumb).to include('my guide') }
-      it { expect(breadcrumb).to be_html_safe }
+      it 'breadcrumb goes mumuki / test organization / guide / exercise' do
+        expect(breadcrumb).to include('da da-mumuki')
+        expect(breadcrumb).to include('test')
+        expect(breadcrumb).to include('my guide')
+        expect(breadcrumb).to include('my exercise')
+        expect(breadcrumb).to be_html_safe
+      end
 
-      it { expect(breadcrumb).to include home_breadcrumb_with_link }
-      it { expect(breadcrumb).to include organization_breadcrumb_with_link }
-      it { expect(breadcrumb).to include "<a href=\"/complements/#{complement.id}-my-guide\">my guide</a>" }
-      it { expect(breadcrumb).to include "<li class='mu-breadcrumb-list-item last'>1. my exercise</li>" }
+      it 'mumuki, organization and guide have links but exercise does not' do
+        expect(breadcrumb).to include home_breadcrumb_with_link
+        expect(breadcrumb).to include organization_breadcrumb_with_link
+        expect(breadcrumb).to include "<a href=\"/complements/#{complement.id}-my-guide\">my guide</a>"
+        expect(breadcrumb).to include "<li class='mu-breadcrumb-list-item last'>1. my exercise</li>"
+      end
     end
 
-    context 'exercise in chapter' do
+    context 'in chapter' do
       let!(:chapter) { create(:chapter, name: 'my chapter', lessons: [lesson]) }
       let(:lesson) { create(:lesson, name: 'my lesson', exercises: [exercise]) }
       let(:exercise) { create(:exercise, name: 'my exercise') }
 
       before { reindex_current_organization! }
 
-      it { expect(breadcrumb).to include('da da-mumuki') }
-      it { expect(breadcrumb).to include('test') }
-      it { expect(breadcrumb).to include('my exercise') }
-      it { expect(breadcrumb).to include('my lesson') }
-      it { expect(breadcrumb).to include('my chapter') }
-      it { expect(breadcrumb).to be_html_safe }
+      it 'breadcrumb goes mumuki / test organization / chapter / lesson / exercise' do
+        expect(breadcrumb).to include('da da-mumuki')
+        expect(breadcrumb).to include('test')
+        expect(breadcrumb).to include('my chapter')
+        expect(breadcrumb).to include('my lesson')
+        expect(breadcrumb).to include('my exercise')
+        expect(breadcrumb).to be_html_safe
+      end
 
-      it { expect(breadcrumb).to include home_breadcrumb_with_link }
-      it { expect(breadcrumb).to include organization_breadcrumb_with_link }
-      it { expect(breadcrumb).to include "<a href=\"/chapters/#{chapter.id}-my-chapter\">my chapter</a>" }
-      it { expect(breadcrumb).to include "<a href=\"/lessons/#{lesson.id}-my-chapter-my-lesson\">1. my lesson</a>" }
-      it { expect(breadcrumb).to include "<li class='mu-breadcrumb-list-item last'>1. my exercise</li>" }
+      it 'mumuki, organization, chapter and lesson have links but exercise does not' do
+        expect(breadcrumb).to include home_breadcrumb_with_link
+        expect(breadcrumb).to include organization_breadcrumb_with_link
+        expect(breadcrumb).to include "<a href=\"/chapters/#{chapter.id}-my-chapter\">my chapter</a>"
+        expect(breadcrumb).to include "<a href=\"/lessons/#{lesson.id}-my-chapter-my-lesson\">1. my lesson</a>"
+        expect(breadcrumb).to include "<li class='mu-breadcrumb-list-item last'>1. my exercise</li>"
+      end
     end
   end
 
   context 'book' do
+    let(:breadcrumb) { home_and_organization_breadcrumbs }
+
     describe 'in organization with text breadcrumb' do
-      let(:breadcrumb) { home_and_organization_breadcrumbs }
+      it 'breadcrumb goes mumuki / test organization' do
+        expect(breadcrumb).to include('da da-mumuki')
+        expect(breadcrumb).to include('test')
+      end
 
-      it { expect(breadcrumb).to include('da da-mumuki') }
-      it { expect(breadcrumb).to include('test') }
-
-      it { expect(breadcrumb).to include home_breadcrumb_with_link }
-      it { expect(breadcrumb).to_not include organization_breadcrumb_with_link }
+      it 'mumuki has link but organization does not' do
+        expect(breadcrumb).to include home_breadcrumb_with_link
+        expect(breadcrumb).to_not include organization_breadcrumb_with_link
+      end
     end
 
     describe 'in organization with image breadcrumb' do
-      let(:breadcrumb) { home_and_organization_breadcrumbs }
+      before { Organization.current.profile = Mumuki::Domain::Organization::Profile.new({breadcrumb_image_url: "organization.jpg"}) }
 
-      let(:organization) { create(:another_test_organization) }
-      before { organization.switch! }
+      it 'breadcrumb goes mumuki / organization logo' do
+        expect(breadcrumb).to include('da da-mumuki')
+        expect(breadcrumb).to_not include('test')
+      end
 
-      before { organization.profile = Mumuki::Domain::Organization::Profile.new({breadcrumb_image_url: "organization.jpg"}) }
-
-      it { expect(breadcrumb).to include('da da-mumuki') }
-      it { expect(breadcrumb).to_not include('test') }
-
-      it { expect(breadcrumb).to include home_breadcrumb_with_link }
-      it { expect(breadcrumb).to_not include organization_breadcrumb_with_link }
-      it { expect(breadcrumb).to include "<li class='mu-breadcrumb-list-item '><img class=\"da mu-breadcrumb-img\" src=\"/images/organization.jpg\"" }
+      it 'mumuki has link but organization logo does not' do
+        expect(breadcrumb).to include home_breadcrumb_with_link
+        expect(breadcrumb).to_not include organization_breadcrumb_with_link
+        expect(breadcrumb).to include "<li class='mu-breadcrumb-list-item '><img class=\"da mu-breadcrumb-img\" src=\"/images/organization.jpg\""
+      end
     end
   end
 end
