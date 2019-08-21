@@ -15,7 +15,7 @@ module BreadcrumbsOrganizationHelper
   end
 
   def link_breadcrumb_if(has_link, item)
-    has_link ? breadcrumb_list_item_with_link(item, root_path) : breadcrumb_list_item('', item)
+    has_link ? breadcrumb_list_item_with_link(item, root_path) : breadcrumb_list_item(item)
   end
 
   def organization_name

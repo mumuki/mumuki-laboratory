@@ -20,12 +20,12 @@ module BreadcrumbsHelper
     "class='mu-breadcrumb-list-item #{clazz}'"
   end
 
-  def breadcrumb_list_item(clazz, item)
+  def breadcrumb_list_item(item, clazz='')
     "<li #{breadcrumb_item_class(clazz)}>#{h item}</li>".html_safe
   end
 
   def breadcrumb_list_item_with_link(item, where_to, brand='')
-    breadcrumb_list_item brand, (link_to item, where_to)
+    breadcrumb_list_item (link_to item, where_to), brand
   end
 
   private
@@ -35,12 +35,12 @@ module BreadcrumbsHelper
   end
 
   def breadcrumbs0(base, e, extra, last)
-    return "#{breadcrumbs_for_linkable(e)} #{breadcrumb_list_item(last, extra)}".html_safe if extra
+    return "#{breadcrumbs_for_linkable(e)} #{breadcrumb_list_item(extra, last)}".html_safe if extra
 
     if e.navigation_end?
-      "#{home_and_organization_breadcrumbs(link_for_organization: true)} #{breadcrumb_list_item(last, base)}".html_safe
+      "#{home_and_organization_breadcrumbs(link_for_organization: true)} #{breadcrumb_list_item(base, last)}".html_safe
     else
-      "#{breadcrumbs_for_linkable(e.navigable_parent)} #{breadcrumb_list_item(last, base)}".html_safe
+      "#{breadcrumbs_for_linkable(e.navigable_parent)} #{breadcrumb_list_item(base, last)}".html_safe
     end
   end
 end
