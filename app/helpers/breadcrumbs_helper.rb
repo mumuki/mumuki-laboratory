@@ -4,7 +4,7 @@ module BreadcrumbsHelper
   end
 
   def home_and_organization_breadcrumbs(link_for_organization: false)
-    "#{home_breadcrumb} #{organization_breadcrumb link_for_organization}".html_safe
+    "#{home_breadcrumb} #{organization_breadcrumb has_link: link_for_organization}".html_safe
   end
 
   def home_breadcrumb
