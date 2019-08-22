@@ -3,7 +3,7 @@ require 'spec_helper'
 describe BreadcrumbsHelper, organization_workspace: :test do
 
   helper BreadcrumbsHelper
-  helper BreadcrumbsOrganizationHelper
+  helper OrganizationBreadcrumbsHelper
   helper LinksHelper
   helper ERB::Util
 

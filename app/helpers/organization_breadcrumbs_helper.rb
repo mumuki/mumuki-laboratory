@@ -1,4 +1,4 @@
-module BreadcrumbsOrganizationHelper
+module OrganizationBreadcrumbsHelper
   def organization_breadcrumb(has_link: false)
     link_breadcrumb_if(has_link, image_or_text_breadcrumb)
   end
