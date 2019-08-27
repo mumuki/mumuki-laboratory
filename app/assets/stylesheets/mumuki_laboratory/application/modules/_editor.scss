@@ -1,3 +1,8 @@
+$multifile-active-tab-background-color: #FFF;
+$multifile-inactive-tab-background-color: #F7F7F7;
+$multifile-active-tab-border-color: #CCCCCC;
+$multifile-inactive-tab-border-color: #ECF0F1;
+
 #console {
   position: relative;
 }
@@ -80,12 +85,15 @@ body.fullscreen {
   justify-content: space-between;
   align-items: center;
   margin-bottom: -6px;
+  margin-left: 30px;
 
   .nav-tabs {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    margin-bottom: 0;
+    z-index: 1;
 
     li {
       position: relative;
@@ -108,15 +116,18 @@ body.fullscreen {
       }
       &.active {
         a {
-          background-color: #f7f7f7;
+          background-color: $multifile-active-tab-background-color;
+          border: 1px solid $multifile-active-tab-border-color;
+          border-bottom: none;
         }
       }
       &:not(.active) > a {
-        background-color: #fff;
-        border: 1px solid #ecf0f1;
+        background-color: $multifile-inactive-tab-background-color;
+        border: 1px solid $multifile-inactive-tab-border-color;
+        border-bottom: 1px solid $multifile-active-tab-border-color;
         cursor: pointer;
         &:hover {
-          background-color: #ecf0f1;
+          background-color: $multifile-inactive-tab-border-color;
         }
       }
     }
