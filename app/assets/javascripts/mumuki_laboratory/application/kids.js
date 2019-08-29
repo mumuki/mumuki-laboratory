@@ -72,7 +72,7 @@ mumuki.load(function () {
     // * preferredHeight
     //
     // Runners must call this method on within the runner's editor.js extension
-    registerStateScaler: function(scaler) {
+    registerStateScaler: function (scaler) {
       this._stateScaler = scaler;
     },
 
@@ -82,7 +82,7 @@ mumuki.load(function () {
     // * $blocks: the blocks area
     //
     // Runners must call this method on within the runner's editor.js extension
-    registerBlocksAreaScaler: function(scaler) {
+    registerBlocksAreaScaler: function (scaler) {
       this._blocksAreaScaler = scaler;
     },
 
@@ -100,7 +100,7 @@ mumuki.load(function () {
     //
     // This method is called by the kids code, but the runner's editor.js extension may need
     // to perform additional calls to it.
-    scaleBlocksArea: function($blocks) {
+    scaleBlocksArea: function ($blocks) {
       this._blocksAreaScaler($blocks);
     },
 
@@ -228,7 +228,7 @@ mumuki.load(function () {
 
     _stateScaler: function ($state, fullMargin, preferredWidth, preferredHeight) {
       var $table = $state.find('gs-board > table');
-      if(!$table.length) return setTimeout(() => this.scaleState($state, fullMargin));
+      if (!$table.length) return setTimeout(() => this.scaleState($state, fullMargin));
 
       console.warn("You are using the default states scaler, which is gobstones-specific. Please register your own scaler in the future");
 
@@ -238,7 +238,7 @@ mumuki.load(function () {
       $table.css('transform', 'scale(' + Math.min(scaleX, scaleY) + ')');
     },
 
-    _blocksAreaScaler: function($blocks) {
+    _blocksAreaScaler: function ($blocks) {
       console.warn("You are using the default blocks scaler, which is blockly-specific. Please register your own scaler in the future");
 
       var $blockArea = $blocks.find('#blocklyDiv');
@@ -291,7 +291,7 @@ mumuki.load(function () {
 
   $(document).ready(() => {
     // Speech initialization
-    if(!$bubble.length) return;
+    if (!$bubble.length) return;
 
     availableTabs.forEach(function (tabSelector) {
       tabParagraphs(tabSelector).contents().unwrap().wrapAll('<p>');
@@ -312,7 +312,7 @@ mumuki.load(function () {
       })
     });
 
-    if(paragraphCount > 1) {
+    if (paragraphCount > 1) {
       nextSpeechBlinking = setInterval(() => $nextSpeech.fadeTo('slow', 0.1).fadeTo('slow', 1.0), 1000);
     }
 
@@ -344,6 +344,8 @@ mumuki.load(function () {
 
       $muKidsStates.each((index, state) => mumuki.kids.scaleState($(state), fullMargin));
       mumuki.kids.scaleBlocksArea($('.mu-kids-blocks'));
+
+      if (paragraphCount <= 1) clearInterval(nextSpeechBlinking);
 
       resizeSpeechParagraphs();
     });
