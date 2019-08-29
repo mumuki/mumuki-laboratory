@@ -1,27 +1,31 @@
 module BreadcrumbsHelper
-
   def breadcrumbs(e, extra=nil)
     breadcrumbs0(e.navigable_name, e, extra, 'last')
   end
 
+  def header_breadcrumbs(link_for_organization: true)
+    "#{home_breadcrumb} #{organization_breadcrumb(has_link: link_for_organization)}".html_safe
+  end
+
   def home_breadcrumb
-    "<li class='mu-breadcrumb-list-item brand '>#{breadcrumb_home_link}</li>".html_safe
+    home = "<i class='da da-mumuki' aria-label=#{t(:home)}></i>".html_safe
+    breadcrumb_item_for_linkable home, mu_home_path, 'brand'
   end
 
-  def breadcrumb_home_link
-    if Organization.current.breadcrumb_image_url.present?
-      link_to image_tag(Organization.current.breadcrumb_image_url, class: "da mu-breadcrumb-img"), root_path
-    else
-      link_to "<i class='da da-mumuki' aria-label=#{t(:home)}></i>".html_safe, root_path
-    end
+  def mu_home_path
+    root_path
   end
 
-  def breadcrumb_item_class(last)
-    "class='mu-breadcrumb-list-item #{last}'"
+  def breadcrumb_item_class(clazz)
+    "class='mu-breadcrumb-list-item #{clazz}'"
   end
 
-  def breadcrumb_list_item(last, item)
-    "<li #{breadcrumb_item_class(last)}>#{h item}</li>".html_safe
+  def breadcrumb_list_item(item, clazz='')
+    "<li #{breadcrumb_item_class(clazz)}>#{h item}</li>".html_safe
+  end
+
+  def breadcrumb_item_for_linkable(e, link_path, clazz='')
+    breadcrumb_list_item link_to(e, link_path), clazz
   end
 
   private
@@ -31,12 +35,12 @@ module BreadcrumbsHelper
   end
 
   def breadcrumbs0(base, e, extra, last)
-    return "#{breadcrumbs_for_linkable(e)} #{breadcrumb_list_item(last, extra)}".html_safe if extra
+    return "#{breadcrumbs_for_linkable(e)} #{breadcrumb_list_item(extra, last)}".html_safe if extra
 
     if e.navigation_end?
-      "#{home_breadcrumb} #{breadcrumb_list_item(last, base)}".html_safe
+      "#{header_breadcrumbs} #{breadcrumb_list_item(base, last)}".html_safe
     else
-      "#{breadcrumbs_for_linkable(e.navigable_parent)} #{breadcrumb_list_item(last, base)}".html_safe
+      "#{breadcrumbs_for_linkable(e.navigable_parent)} #{breadcrumb_list_item(base, last)}".html_safe
     end
   end
 end

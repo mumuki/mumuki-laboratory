@@ -1,3 +1,7 @@
+<%= content_for :breadcrumbs do %>
+  <%= header_breadcrumbs(link_for_organization: false) %>
+<% end %>
+
 <div class="col-md-offset-2 col-md-8">
   <div class="book-header <%= current_user? ? '' : 'logged' %>">
     <h1>ム mumuki<%= Organization.current.title_suffix %></h1>
