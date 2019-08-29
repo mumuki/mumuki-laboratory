@@ -9,6 +9,7 @@ describe BreadcrumbsHelper, organization_workspace: :test do
 
   let(:home_breadcrumb_with_link) { "<li class='mu-breadcrumb-list-item brand'><a href=\"#{root_path}\">" }
   let(:organization_breadcrumb_with_link) { "<li class='mu-breadcrumb-list-item '><a href=\"#{root_path}\">" }
+  let(:organization_breadcrumb_without_link) { "<li class='mu-breadcrumb-list-item last'><a href=\"#{root_path}\">" }
 
   context 'user' do
     let(:user) { create(:user, first_name: "Alfonsina", last_name: "Storni") }
@@ -71,7 +72,7 @@ describe BreadcrumbsHelper, organization_workspace: :test do
   end
 
   context 'book' do
-    let(:breadcrumb) { home_and_organization_breadcrumbs }
+    let(:breadcrumb) { header_breadcrumbs(link_for_organization: false) }
 
     describe 'in organization with text breadcrumb' do
       it 'breadcrumb goes mumuki / test organization' do
@@ -81,7 +82,7 @@ describe BreadcrumbsHelper, organization_workspace: :test do
 
       it 'mumuki has link but organization does not' do
         expect(breadcrumb).to include home_breadcrumb_with_link
-        expect(breadcrumb).to_not include organization_breadcrumb_with_link
+        expect(breadcrumb).to include organization_breadcrumb_without_link
       end
     end
 
@@ -95,8 +96,7 @@ describe BreadcrumbsHelper, organization_workspace: :test do
 
       it 'mumuki has link but organization logo does not' do
         expect(breadcrumb).to include home_breadcrumb_with_link
-        expect(breadcrumb).to_not include organization_breadcrumb_with_link
-        expect(breadcrumb).to include "<li class='mu-breadcrumb-list-item '><img class=\"da mu-breadcrumb-img\" src=\"/images/organization.jpg\""
+        expect(breadcrumb).to include organization_breadcrumb_without_link
       end
     end
   end
