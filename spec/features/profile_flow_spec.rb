@@ -71,12 +71,7 @@ feature 'Profile Flow', organization_workspace: :test do
   context 'logged in user' do
     before { set_current_user! user }
 
-    context 'with no organizations nor messages' do
-      scenario 'visit organizations tab' do
-        visit "/user#organizations"
-
-        expect(page).to have_text('It seems you aren\'t in any organizations yet!')
-      end
+    context 'with no messages' do
 
       scenario 'visit messages tab' do
         visit "/user#messages"
@@ -85,19 +80,7 @@ feature 'Profile Flow', organization_workspace: :test do
       end
     end
 
-    context 'with organizations and messages' do
-      before { allow_any_instance_of(Mumukit::Platform::Application::Organic).to receive(:organization_mapping).and_return(Mumukit::Platform::OrganizationMapping::Path) }
-
-      scenario 'visit organizations tab' do
-        user.make_student_of! organization.slug
-        user.save!
-        visit "/user#organizations"
-
-        expect(page).to_not have_text('It seems you aren\'t in any organizations yet!')
-        expect(page).to have_text('Go to test-organization')
-        expect(page).to have_link(nil, href: 'http://localmumuki.io/test-organization/')
-      end
-
+    context 'with messages' do
       scenario 'visit messages tab' do
         Organization.find_by_name('test').switch!
         problem.submit_solution! user, {content: 'something'}
