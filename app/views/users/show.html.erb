@@ -11,9 +11,6 @@
     <a data-target="#info" aria-controls="info" role="tab" data-toggle="tab"><%= t :profile %></a>
   </li>
   <li role="presentation">
-    <a data-target="#organizations" aria-controls="organizations" role="tab" data-toggle="tab"><%= t :organizations %></a>
-  </li>
-  <li role="presentation">
     <a data-target="#messages" aria-controls="messages" role="tab" data-toggle="tab"><%= t :messages %></a>
   </li>
   <% if @watched_discussions.present? %>
@@ -26,13 +23,6 @@
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane active" id="info">
     <%= render partial: 'user_form' %>
-  </div>
-  <div role="tabpanel" class="tab-pane" id="organizations">
-    <div class="row mu-tab-body">
-      <div class="col-md-12">
-        <%= render partial: 'layouts/organizations_listing' %>
-      </div>
-    </div>
   </div>
   <div role="tabpanel" class="tab-pane" id="messages">
     <% if @messages.empty? %>
