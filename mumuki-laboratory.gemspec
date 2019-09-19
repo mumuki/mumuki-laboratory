@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'muvment', '~> 1.2'
 
   s.add_dependency 'rack', '~> 2.0'
-  s.add_dependency 'omniauth', '~> 1.4.0'
+  s.add_dependency 'omniauth', '~> 1.4'
 
   s.add_dependency 'kaminari', '~> 0.16'
   s.add_dependency 'bootstrap-kaminari-views'
