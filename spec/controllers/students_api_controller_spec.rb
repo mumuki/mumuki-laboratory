@@ -9,7 +9,9 @@ require 'spec_helper'
         first_name: 'Agustin',
         last_name: 'Pina',
         email: 'agus@mumuki.org',
-        uid: 'agus@mumuki.org'
+        uid: 'agus@mumuki.org',
+        gender: 'male',
+        birthdate: '2010-08-25'
     } }
 
     let!(:organization) { create :organization, name: 'anorganization' }
@@ -28,9 +30,12 @@ require 'spec_helper'
         it { expect(User.last.first_name).to eq 'Agustin' }
         it { expect(User.last.uid).to eq 'agus@mumuki.org' }
         it { expect(User.last.email).to eq 'agus@mumuki.org' }
+        it { expect(User.last.gender).to eq 'male' }
+        it { expect(User.last.birthdate).to eq '2010-08-25'.to_datetime }
         it { expect(User.last.permissions.has_permission? role, 'anorganization/acode').to be true }
 
       end
+
       context 'when user exist' do
         context 'and have no permissions' do
           before { create :user, json }
@@ -39,6 +44,7 @@ require 'spec_helper'
           it { expect(User.count).to eq 2 }
           it { expect(User.last.permissions.has_permission? role, 'anorganization/acode').to be true }
         end
+
         context 'and have permissions' do
           before { create :user, json.merge(:permissions => {role => 'foo/bar'}) }
           before { post :create, params: params }
@@ -47,7 +53,6 @@ require 'spec_helper'
           it { expect(User.last.permissions.has_permission? role, 'anorganization/acode').to be true }
           it { expect(User.last.permissions.has_permission? role, 'foo/bar').to be true }
         end
-
 
       end
     end

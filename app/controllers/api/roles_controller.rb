@@ -1,5 +1,7 @@
 module Api
   class RolesController < BaseController
+    include WithUserParams
+
     before_action :set_slug!
     before_action :set_course!
     before_action :set_user!, except: :create
@@ -28,7 +30,11 @@ module Api
     end
 
     def user_params
-      params.require(role).permit(:first_name, :last_name, :email, :uid, :image_url)
+      params.require(role).permit(*permissible_params)
+    end
+
+    def permissible_params
+      super + [:image_url, :email, :uid]
     end
 
     def set_course!
