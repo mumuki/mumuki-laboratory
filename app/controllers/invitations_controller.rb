@@ -1,4 +1,6 @@
 class InvitationsController < ApplicationController
+  include WithUserParams
+
   before_action :authenticate!
   before_action :set_invitation!
   before_action :set_user!
@@ -23,8 +25,8 @@ class InvitationsController < ApplicationController
     redirect_to Mumukit::Platform.laboratory.organic_url(@organization)
   end
 
-  def user_params
-    params.require(:user).permit(:name, :first_name, :last_name, :email)
+  def permissible_params
+    super + [:email, :name]
   end
 
   def set_invitation!
