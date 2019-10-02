@@ -5,11 +5,12 @@ ruby '~> 2.3'
 
 gem 'puma'
 
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-momentjs'
 end
 gem 'uglifier', '~> 2.7'
-gem 'mumuki-domain', '~> 7.0'
 gem 'therubyracer', platforms: :ruby
 gem 'turbolinks', '~> 5.0'
 gem 'sass-rails'

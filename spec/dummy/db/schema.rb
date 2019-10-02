@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190724190355) do
+ActiveRecord::Schema.define(version: 20190929180601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20190724190355) do
     t.text "manual_evaluation_comment"
     t.integer "attemps_count", default: 0
     t.bigint "organization_id"
+    t.datetime "submitted_at"
     t.index ["exercise_id"], name: "index_assignments_on_exercise_id"
     t.index ["organization_id"], name: "index_assignments_on_organization_id"
     t.index ["submission_id"], name: "index_assignments_on_submission_id"
@@ -159,7 +160,6 @@ ActiveRecord::Schema.define(version: 20190724190355) do
     t.text "default_content"
     t.integer "bibliotheca_id", null: false
     t.boolean "extra_visible", default: false
-    t.boolean "new_expectations", default: false
     t.boolean "manual_evaluation", default: false
     t.integer "editor", default: 0, null: false
     t.string "choice_values", default: [], null: false, array: true
@@ -172,6 +172,7 @@ ActiveRecord::Schema.define(version: 20190724190355) do
     t.text "teacher_info"
     t.text "choices"
     t.text "settings"
+    t.text "custom_expectations"
     t.index ["guide_id"], name: "index_exercises_on_guide_id"
     t.index ["language_id"], name: "index_exercises_on_language_id"
   end
@@ -197,6 +198,7 @@ ActiveRecord::Schema.define(version: 20190724190355) do
     t.text "sources"
     t.text "learn_more"
     t.text "settings"
+    t.text "custom_expectations"
     t.index ["name"], name: "index_guides_on_name"
     t.index ["slug"], name: "index_guides_on_slug", unique: true
   end
@@ -238,6 +240,7 @@ ActiveRecord::Schema.define(version: 20190724190355) do
     t.boolean "layout_shows_loading_content"
     t.boolean "editor_shows_loading_content"
     t.boolean "settings", default: false
+    t.boolean "expectations"
     t.index ["name"], name: "index_languages_on_name", unique: true
   end
 
