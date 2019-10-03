@@ -15,7 +15,6 @@ gem 'sass-rails'
 gem 'execjs'
 gem 'rails-i18n', '~> 4.0.0'
 gem 'nprogress-rails'
-gem 'sitemap_generator'
 gem 'font-awesome-rails', '~> 4.7'
 
 group :test do
