@@ -7,9 +7,7 @@ gem 'puma'
 
 gem 'mumuki-domain', github: 'mumuki/mumuki-domain'
 
-source 'https://rails-assets.org' do
-  gem 'rails-assets-momentjs'
-end
+gem 'momentjs-rails', '~> 2.10'
 gem 'uglifier', '~> 2.7'
 gem 'therubyracer', platforms: :ruby
 gem 'turbolinks', '~> 5.0'
