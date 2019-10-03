@@ -7,15 +7,9 @@ gem 'puma'
 
 gem 'mumuki-domain', github: 'mumuki/mumuki-domain'
 
-gem 'momentjs-rails', '~> 2.10'
-gem 'uglifier', '~> 2.7'
-gem 'therubyracer', platforms: :ruby
-gem 'turbolinks', '~> 5.0'
-gem 'sass-rails'
 gem 'execjs'
-gem 'rails-i18n', '~> 4.0.0'
-gem 'nprogress-rails'
-gem 'font-awesome-rails', '~> 4.7'
+gem 'therubyracer', platforms: :ruby
+gem 'uglifier', '~> 2.7'
 
 group :test do
   gem 'rspec-rails', '~> 3.6'
