@@ -10,9 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require momentjs
-//= require momentjs/locale/es
-//= require momentjs/locale/pt
+//= require moment
+//= require moment/es.js
+//= require moment/pt.js
 //= require webcomponents-lite
 //= require rails-ujs
 //= require turbolinks
