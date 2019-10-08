@@ -36,7 +36,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'momentjs-rails', '~> 2.10'
   s.add_dependency 'nprogress-rails', '~> 0.2'
   s.add_dependency 'rails-i18n', '~> 4.0.0'
-  s.add_dependency 'sass-rails', '~> 6.0'
+  s.add_dependency 'sassc-rails', '~> 2.1'
   s.add_dependency 'turbolinks', '~> 5.0'
 
   s.add_development_dependency 'pg', '~> 0.18.0'

@@ -3,7 +3,7 @@ require 'font-awesome-rails'
 require 'momentjs-rails'
 require 'nprogress-rails'
 require 'rails-i18n'
-require 'sass-rails'
+require 'sassc-rails'
 
 module Mumuki
   module Laboratory
