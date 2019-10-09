@@ -1,3 +1,10 @@
+require 'turbolinks'
+require 'font-awesome-rails'
+require 'momentjs-rails'
+require 'nprogress-rails'
+require 'rails-i18n'
+require 'sassc-rails'
+
 module Mumuki
   module Laboratory
     class Engine < ::Rails::Engine

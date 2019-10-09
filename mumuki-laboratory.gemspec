@@ -32,5 +32,13 @@ Gem::Specification.new do |s|
   s.add_dependency 'kaminari', '~> 0.16'
   s.add_dependency 'bootstrap-kaminari-views'
 
+  s.add_dependency 'font-awesome-rails', '~> 4.7'
+  s.add_dependency 'momentjs-rails', '~> 2.10'
+  s.add_dependency 'nprogress-rails', '~> 0.2'
+  s.add_dependency 'rails-i18n', '~> 4.0.0'
+  s.add_dependency 'sassc-rails', '~> 2.1'
+  s.add_dependency 'turbolinks', '~> 5.0'
+  s.add_dependency 'sprockets', '~> 3.7'
+
   s.add_development_dependency 'pg', '~> 0.18.0'
 end
