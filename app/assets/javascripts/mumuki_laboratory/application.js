@@ -15,23 +15,13 @@
 //= require moment/pt.js
 //= require webcomponents-lite
 //= require rails-ujs
-//= require turbolinks
 //= require mumuki-styles
-//= require nprogress
-//= require nprogress-turbolinks
-//= require nprogress-ajax
 //= require jquery-console
 
 //= require codemirror.min
 //= require codemirror-simple-mode.js
 //= require codemirror-autorefresh
 //= require codemirror-modes
-//= require analytics
-//= require hotjar
 //= require muvment
 
 //= require_tree ./application
-
-NProgress.configure({
-  showSpinner: false
-});

@@ -16,30 +16,6 @@
           </ul>
         <% end %>
       </div>
-      <div class="mu-navbar-avatar">
-        <% if current_user? %>
-          <div class="dropdown">
-            <span>
-              <a class="notifications-box <%= has_notifications? ? '' : 'notifications-box-empty' %>" href=<%= "#{user_notifications_path}" %>>
-                <i class="fa fa-bell fa-fw fa-lg"></i>
-                  <span class="badge badge-notifications"><%= notifications_count %></span>
-              </a>
-            </span>
-          </div>
-          <div class="dropdown">
-            <span id="profileDropdown" data-toggle="dropdown" aria-label="<%= t(:user) %>" role="menu" tabindex="0">
-              <%= profile_picture %>
-            </span>
-            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
-              <%= menu_bar_list_items %>
-              <li class="divider"></li>
-              <li><%= link_to(t(:sign_out), logout_path(origin: url_for), role: 'menuitem') %></li>
-            </ul>
-          </div>
-        <% else %>
-          <%= login_button %>
-        <% end %>
-      </div>
     </nav>
   </div>
 <% end %>
