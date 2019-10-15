@@ -198,6 +198,28 @@ which are granted to be safe and stable.
   * `updateButtonsVisibility`
 * `mumuki.version`
 
+### Bridge Response Format
+
+```json
+{
+  "status": "failed",
+  "guide_finished_by_solution": false,
+  "class_for_progress_list_item":"progress-list-item text-center danger active",
+  "html":"...",
+  "title_html":"...",
+  "button_html":"...",
+  "expectations_html":"...",
+  "remaining_attempts_html":null,
+  "test_results":[
+      {
+        "title":null,
+        "status":"failed",
+        "result":"..."
+      }
+  ]
+}
+```
+
 ### Kids Call order
 
 0. Laboratory Kids API Initialization
