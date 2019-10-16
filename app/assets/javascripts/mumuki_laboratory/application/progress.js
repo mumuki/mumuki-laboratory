@@ -12,5 +12,8 @@
   mumuki.load(() => {
     // Update all exercises progress indicators
     mumuki.Connection.renderExercisesProgressBar();
+
+    // Set the editor's current value
+    mumuki.Connection.configureExerciseEditorValue();
   })
 })();

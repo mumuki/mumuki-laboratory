@@ -11,6 +11,18 @@
       $('.progress-list-item').each((_, it) => this._updateProgressListItemClass($(it)));
     }
 
+    configureExerciseEditorValue() {
+      const lastSubmission = mumuki.SubmissionsStore.getLastSubmission(mumuki.currentExerciseId);
+      if (lastSubmission) {
+        // TODO extract
+        if (lastSubmission.content.solution) {
+          $('#mu-custom-editor-value').val(lastSubmission.content.solution.content);
+        } else {
+          mumuki.editor.setContent(lastSubmission.content['solution[content]']);
+        }
+      }
+    }
+
     _updateProgressListItemClass(a) {
       const exerciseId = a.data('mu-exercise-id');
       const status = mumuki.SubmissionsStore.getLastSubmissionStatus(exerciseId);
@@ -27,6 +39,11 @@
     // Does nothing. Progress is rendered by server
     renderExercisesProgressBar() {
     }
+
+    // Does nothing. Editor value is configured by server
+    configureExerciseEditorValue() {
+    }
+
   }
 
   mumuki.goOnline = function () {

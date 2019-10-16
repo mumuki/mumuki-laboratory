@@ -60,10 +60,17 @@ var mumuki = mumuki || {};
     });
   }
 
+  function setContent(content) {
+    mumuki.page.editors.each(function (_, editor) {
+      editor.getDoc().setValue(content);
+    });
+  }
+
   mumuki.editor = mumuki.editor || {};
   mumuki.editor.toggleFullscreen = toggleFullscreen;
   mumuki.editor.indentWithSpaces = indentWithSpaces;
   mumuki.editor.syncContent = syncContent;
+  mumuki.editor.setContent = setContent;
 
   mumuki.page = mumuki.page || {};
   mumuki.page.dynamicEditors = [];
