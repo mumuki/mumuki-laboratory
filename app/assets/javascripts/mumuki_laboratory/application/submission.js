@@ -15,6 +15,7 @@ var mumuki = mumuki || {};
     success: function (data, submitButton) {
       this.submissionsResultsArea.html(data.html);
       data.status === 'aborted' ? this.error(submitButton) : submitButton.enable();
+      submitButton.updateAttemptsLeft(data);
       mumuki.updateCurrentExerciseProgressBarAndShowModal(data);
     },
     error: function (submitButton) {
@@ -22,8 +23,7 @@ var mumuki = mumuki || {};
       this.submissionsErrorTemplate.show();
       animateTimeoutError(submitButton);
     },
-    done: function (data, submitButton) {
-      submitButton.updateAttemptsLeft(data);
+    done: function (submitButton) {
       mumuki.pin.scroll();
     }
   };
@@ -73,9 +73,9 @@ var mumuki = mumuki || {};
         resultsBox.success(data, submitButton);
       }).fail(function () {
         resultsBox.error(submitButton);
-      }).always(function (data) {
+      }).always(function () {
         $(document).renderMuComponents();
-        resultsBox.done(data, submitButton);
+        resultsBox.done(submitButton);
       });
     });
 
