@@ -2,7 +2,7 @@
 
   const OfflineMode = new class {
     // Runs solution by evaluating it locally
-    runNewSolution(exerciseId, solution, bridge) {
+    runNewSolution(exerciseId, solution, _bridge) {
       return mumuki.runSolutionLocally(exerciseId, solution);
     }
 
@@ -20,7 +20,7 @@
 
   const OnlineMode = new class {
     // Runs solution by sending it to server
-    runNewSolution(exerciseId, solution, _bridge) {
+    runNewSolution(exerciseId, solution, bridge) {
       return bridge.submitCurrentExerciseSolution(exerciseId, solution);
     }
 

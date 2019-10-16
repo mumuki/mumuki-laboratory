@@ -9,6 +9,6 @@
       "remaining_attempts_html":null,
       "test_results":[]
     };
-    return Promise.resolve(result)
+    return Promise.resolve(result);
   }
-});
+})();

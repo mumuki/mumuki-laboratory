@@ -69,7 +69,7 @@ var mumuki = mumuki || {};
       mumuki.editor.syncContent();
       var solution = getContent();
 
-      bridge.runCurrentExerciseSolution(solution).done(function (data) {
+      bridge.runCurrentExerciseSolution(solution).then(function (data) {
         resultsBox.success(data, submitButton);
       }).fail(function () {
         resultsBox.error(submitButton);

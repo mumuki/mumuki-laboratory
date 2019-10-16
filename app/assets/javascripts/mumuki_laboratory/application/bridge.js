@@ -35,14 +35,16 @@
     // ===========
 
     _runNewSolution(exerciseId, solution){
-      const responsePromise = mumuki.Connection.runNewSolution(exerciseId, solution);
-      return responsePromise.done((result) => {
+      const responsePromise = mumuki.Connection.runNewSolution(exerciseId, solution, this);
+      return responsePromise.then((result) => {
+        const status = result.status;
 
         result.title_html = mumuki.titleHtmlForStatus(status); // TODO defer rendering calculation
         result.button_html = mumuki.buttonHtmlForStatus(status); // TODO defer rendering calculation
 
         const lastSubmission = { content: solution, result: result };
         mumuki.SubmissionsStore.setLastSubmission(exerciseId, lastSubmission);
+        return result;
       });
     }
   }

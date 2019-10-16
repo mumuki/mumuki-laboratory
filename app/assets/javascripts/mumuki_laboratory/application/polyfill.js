@@ -1,4 +1,5 @@
 (() => {
   // Allow polimorphism between standard promise and jquery promise
-  Promise.prototype.done = Promise.prototype.finally;
-})
+  Promise.prototype.always = Promise.prototype.finally;
+  Promise.prototype.fail = Promise.prototype.catch;
+})();
