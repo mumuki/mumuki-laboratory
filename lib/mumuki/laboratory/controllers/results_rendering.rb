@@ -20,7 +20,6 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
   def progress_json
     {
       guide_finished_by_solution: guide_finished_by_solution?,
-      class_for_progress_list_item: class_for_progress_list_item(@exercise, true)
     }
   end
 
