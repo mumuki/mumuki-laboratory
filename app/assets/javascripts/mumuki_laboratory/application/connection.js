@@ -29,6 +29,13 @@
     }
   }
 
-  // mumuki.Connection = OnlineMode;
-  mumuki.Connection = OfflineMode;
+  mumuki.goOnline = function () {
+    mumuki.Connection = OnlineMode;
+  };
+
+  mumuki.goOffline = function () {
+    mumuki.Connection = OfflineMode;
+  };
+
+  mumuki.goOnline();
 })();

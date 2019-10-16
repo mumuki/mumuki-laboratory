@@ -180,7 +180,7 @@ mumuki.load(function () {
       var $bubble = mumuki.kids._getCharacterBubble();
       $bubble.find('.mu-kids-character-speech-bubble-tabs').hide();
       $bubble.find('.mu-kids-character-speech-bubble-normal').hide();
-      $bubble.find('.mu-kids-character-speech-bubble-failed').show().html(this._titleHtml(data));
+      $bubble.find('.mu-kids-character-speech-bubble-failed').show().html(mumuki.kids._titleHtml(data));
       $bubble.addClass(data.status);
       if (data.status === 'passed_with_warnings') {
         $bubble.find('.mu-kids-character-speech-bubble-failed').append(data.expectations_html);
@@ -207,7 +207,7 @@ mumuki.load(function () {
             backdrop: 'static',
             keyboard: false
           });
-          $resultsKidsModal.find('.modal-header').first().html(this._titleHtml(data));
+          $resultsKidsModal.find('.modal-header').first().html(mumuki.kids._titleHtml(data));
           $resultsKidsModal.find('.modal-footer').first().html(data.button_html);
           mumuki.kids._showCorollaryCharacter();
           $('.mu-close-modal').click(() => mumuki.kids._getResultsModal().modal('hide'));
@@ -232,7 +232,7 @@ mumuki.load(function () {
 
     _stateScaler: function ($state, fullMargin, preferredWidth, preferredHeight) {
       var $table = $state.find('gs-board > table');
-      if (!$table.length) return setTimeout(() => this.scaleState($state, fullMargin));
+      if (!$table.length) return setTimeout(() => mumuki.kids.scaleState($state, fullMargin));
 
       console.warn("You are using the default states scaler, which is gobstones-specific. Please register your own scaler in the future");
 
