@@ -15,7 +15,7 @@ var mumuki = mumuki || {};
     success: function (data, submitButton) {
       this.submissionsResultsArea.html(data.html);
       data.status === 'aborted' ? this.error(submitButton) : submitButton.enable();
-      mumuki.updateProgressBarAndShowModal(data);
+      mumuki.updateCurrentExerciseProgressBarAndShowModal(data);
     },
     error: function (submitButton) {
       this.submissionsResultsArea.html('');
@@ -69,7 +69,7 @@ var mumuki = mumuki || {};
       mumuki.editor.syncContent();
       var solution = getContent();
 
-      bridge._submitSolution(solution).done(function (data) {
+      bridge.runCurrentExerciseSolution(solution).done(function (data) {
         resultsBox.success(data, submitButton);
       }).fail(function () {
         resultsBox.error(submitButton);

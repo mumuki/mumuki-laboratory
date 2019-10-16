@@ -116,7 +116,7 @@ var mumuki = mumuki || {};
         $('.submission-results').show();
         $('.submission-results').html(response.html);
         mumuki.pin.scroll();
-        mumuki.updateProgressBarAndShowModal(response);
+        mumuki.updateCurrentExerciseProgressBarAndShowModal(response);
       } else {
         $('.submission-results').hide();
         $('.progress-list-item.active').attr('class', "progress-list-item text-center danger active");

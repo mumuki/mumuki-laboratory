@@ -7,7 +7,7 @@ mumuki.load(function () {
       url: $(this).data('confirmation-url'),
       xhrFields: {withCredentials: true},
       success: function(data){
-        mumuki.updateProgressBarAndShowModal(data);
+        mumuki.updateCurrentExerciseProgressBarAndShowModal(data);
       }
     }));
 

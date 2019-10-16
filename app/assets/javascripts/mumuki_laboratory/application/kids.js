@@ -110,7 +110,7 @@ mumuki.load(function () {
     // This method needs to be called by the runner's editor.html extension
     // in order to finish an exercise
     showResult: function (data) {
-      mumuki.updateProgressBarAndShowModal(data);
+      mumuki.updateCurrentExerciseProgressBarAndShowModal(data);
       if (data.guide_finished_by_solution) return;
       mumuki.kids.resultAction[data.status](data);
     },
