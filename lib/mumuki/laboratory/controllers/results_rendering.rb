@@ -10,7 +10,6 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
   def render_results_json(assignment, results = {})
     render json: results.merge(progress_json).merge(
       html: render_results_html(assignment),
-      title_html: render_results_title_html(assignment),
       button_html: render_results_button_html(assignment),
       expectations_html: render_results_expectations_html(assignment),
       remaining_attempts_html: remaining_attempts_text(assignment),
@@ -31,11 +30,6 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
   def results_partial(assignment)
     return 'out_of_attempts' unless assignment.attempts_left?
     assignment.input_kids? ? 'exercise_solutions/kids_results' : 'exercise_solutions/results'
-  end
-
-  def render_results_title_html(assignment)
-    render_to_string partial: 'exercise_solutions/results_title',
-                     locals: {contextualization: assignment}
   end
 
   def render_results_button_html(assignment)

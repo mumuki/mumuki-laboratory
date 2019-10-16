@@ -39,7 +39,6 @@
       return responsePromise.then((result) => {
         const status = result.status;
 
-        result.title_html = mumuki.titleHtmlForStatus(status); // TODO defer rendering calculation
         result.button_html = mumuki.buttonHtmlForStatus(status); // TODO defer rendering calculation
 
         const lastSubmission = { content: solution, result: result };

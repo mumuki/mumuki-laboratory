@@ -204,9 +204,7 @@ which are granted to be safe and stable.
 {
   "status": "failed",
   "guide_finished_by_solution": false,
-  "class_for_progress_list_item":"progress-list-item text-center danger active",
   "html":"...",
-  "title_html":"...",
   "button_html":"...",
   "expectations_html":"...",
   "remaining_attempts_html":null,

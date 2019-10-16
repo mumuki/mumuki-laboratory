@@ -18,8 +18,7 @@ describe ExerciseSolutionsController, organization_workspace: :test do
     it { expect(response.status).to eq 200 }
     it { expect(response.body).to json_eq(
                                     {status: :failed, guide_finished_by_solution: false},
-                                    except: [:class_for_progress_list_item,
-                                             :html, :title_html, :button_html,
+                                    except: [:html, :button_html,
                                              :expectations_html, :remaining_attempts_html,
                                              :test_results]) }
     it { expect(Assignment.last.solution).to eq('asd')}
