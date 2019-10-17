@@ -196,6 +196,8 @@ which are granted to be safe and stable.
   * `setUpDeleteFiles`
   * `setUpDeleteFile`
   * `updateButtonsVisibility`
+* `mumuki.registerLocalTestRunner`
+* `mumuki.registerLocalExpectationsRunner`
 * `mumuki.version`
 
 ### Bridge Response Format
