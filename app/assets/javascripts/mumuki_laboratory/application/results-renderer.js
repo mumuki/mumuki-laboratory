@@ -1,4 +1,10 @@
 (() => {
+
+  // ==========================
+  // View function for building
+  // the results UI
+  // ==========================
+
   function _messageForStatus(status) {
     switch (status) { // FIXME i18n
       case "errored":              return "¡Ups! Tu solución no se puede ejecutar";
@@ -56,14 +62,29 @@
       </div>`;
   };
 
-  mumuki.renderCorollaryHtml = function(status, corollary) {
-    // TODO support non-kids layout
-    return `
-      <div class="mu-kids-callout-${mumuki.classForStatus(status)}">
-      </div>
-      <img class="capital-animation mu-kids-corollary-animation"/>
-      <div class="mu-last-box">
-        ${corollary}
-      </div>`;
+  mumuki.renderCorollaryHtml = function(status, exercise) {
+    const statusClass = mumuki.classForStatus(status);
+    console.log(exercise)
+    console.log(exercise.kids)
+    if (exercise.layout == 'input_kids') {
+      return `
+        <div class="mu-kids-callout-${statusClass}">
+        </div>
+        <img class="capital-animation mu-kids-corollary-animation"/>
+        <div class="mu-last-box">
+          ${exercise.corollary}
+        </div>`;
+    } else {
+      return `
+        <div class="bs-callout bs-callout-${statusClass}">
+          <h4 class="text-${statusClass}">
+            <strong><i class="fa ${_iconForStatus(status)}"></i>${_messageForStatus(status)}</strong>
+          </h4>
+        </div>
+        <div>
+          ${status === 'passed' ? exercise.corollary : ''}
+        </div>
+        ${mumuki.renderButtonHtml(status)}`;
+    }
   }
 })();

@@ -51,10 +51,10 @@
       // Caching them may introduce bugs with the next-button
       try {
         const status = result.status;
-        const corollary = mumuki.ExercisesStore.getCorollary(exerciseId);
+        const exercise = mumuki.ExercisesStore.get(exerciseId);
 
         result.button_html = result.button_html || mumuki.renderButtonHtml(status);
-        result.html        = result.html || mumuki.renderCorollaryHtml(status, corollary);
+        result.html        = result.html || mumuki.renderCorollaryHtml(status, exercise);
       } catch (e) {
         console.log(`[Mumuki::Laboratory::Bridge] pre-rendering failed ${e}`);
         throw e;
