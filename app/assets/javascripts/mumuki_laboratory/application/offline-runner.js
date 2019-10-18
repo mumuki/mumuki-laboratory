@@ -16,7 +16,7 @@
   }
 
   mumuki.runSolutionLocally = function (exerciseId, solution) {
-    const exercise = mumuki.ExerciseStore.find(exerciseId);
+    const exercise = mumuki.ExercisesStore.find(exerciseId);
     let result = {};
     mumuki.localTestRunner.runTests(solution, exercise, result);
     mumuki.localExpectationsRunner.runExpectations(solution, exercise, result);
