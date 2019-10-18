@@ -64,8 +64,6 @@
 
   mumuki.renderCorollaryHtml = function(status, exercise) {
     const statusClass = mumuki.classForStatus(status);
-    console.log(exercise)
-    console.log(exercise.kids)
     if (exercise.layout == 'input_kids') {
       return `
         <div class="mu-kids-callout-${statusClass}">
