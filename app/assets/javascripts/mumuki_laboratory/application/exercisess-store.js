@@ -16,6 +16,14 @@
       window.localStorage.setItem(this._keyFor(exerciseId), exerciseJson);
     }
 
+    // Shortcut for getting corollary for an existent exercise
+    // Fails if exercise is missing
+    getCorollary(exerciseId) {
+      const exercise = this.find(exerciseId);
+      if (!exercise) throw new Error(`Missing exercise ${exerciseId}. Can not get corollary`);
+      return exercise.corollary;
+    }
+
     _keyFor(exerciseId) {
       return `/exercise/${exerciseId}`;
     }

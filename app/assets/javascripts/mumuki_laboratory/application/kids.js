@@ -173,7 +173,7 @@ mumuki.load(function () {
     },
 
     _titleHtml: function (data) {
-      return mumuki.titleHtmlForStatus(data.status);
+      return mumuki.renderTitleHtml(data.status);
     },
 
     _showMessageOnCharacterBubble: function (data) {

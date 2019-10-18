@@ -1,6 +1,4 @@
 (() => {
-  // TODO temporary module
-
   function _messageForStatus(status) {
     switch (status) { // FIXME i18n
       case "errored":              return "¡Ups! Tu solución no se puede ejecutar";
@@ -43,11 +41,11 @@
     }
   };
 
-  mumuki.titleHtmlForStatus = function (status) {
+  mumuki.renderTitleHtml = function (status) {
     return `<h4 class="text-${mumuki.classForStatus(status)}"><strong><i class="fa ${_iconForStatus(status)}"></i>${_messageForStatus(status)}</strong></h4>`;
   };
 
-  mumuki.buttonHtmlForStatus = function () {
+  mumuki.renderButtonHtml = function (status) {
     return `
       <div class="row">
         <div class="col-md-12">
@@ -57,4 +55,15 @@
         </div>
       </div>`;
   };
+
+  mumuki.renderCorollaryHtml = function(status, corollary) {
+    // TODO support non-kids layout
+    return `
+      <div class="mu-kids-callout-${mumuki.classForStatus(status)}">
+      </div>
+      <img class="capital-animation mu-kids-corollary-animation"/>
+      <div class="mu-last-box">
+        ${corollary}
+      </div>`;
+  }
 })();

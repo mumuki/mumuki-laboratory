@@ -1,10 +1,9 @@
 (() => {
   const BasicLocalTestRunner = new class {
+    // This basic runner does not perform any test evaluation, but sets a default
+    // passed state, with no test results. This could be improved in the future.
     runTests(solution, exercise, result) {
-      result.status = "passed"; // FIXME hardcoded
-      result.guide_finished_by_solution = false;
-      result.html = "<div class=\"mu-kids-callout-danger\">  </div>  <img class=\"capital-animation mu-kids-corollary-animation\"/><div class=\"mu-last-box\"><p><p>Como ves, para que el tractor siembre lechuga, tenemos que decirle a Mukinita que ponga 2 bolitas verdes.  Y en este ejemplo acabamos de sembrar una hilera de 4 lechugas. </p><p>Pero fue un poco difícil entenderlo, ¿no? </p></p>        </div>      ",
-      result.remaining_attempts_html = null;
+      result.status = "passed";
       result.test_results = []
     }
   }
@@ -15,11 +14,26 @@
     }
   }
 
+  function initialLocalResult() {
+    return {
+      // FIXME use a roadmap
+      guide_finished_by_solution: false,
+      // Attemps will be not considered when offline
+      remaining_attempts_html: null
+    };
+  }
+
   mumuki.runSolutionLocally = function (exerciseId, solution) {
+    console.log('[Mumuki::Laboratory::OfflineRunner] Running solution...');
+
     const exercise = mumuki.ExercisesStore.find(exerciseId);
-    let result = {};
+
+    let result = initialLocalResult();
+
     mumuki.localTestRunner.runTests(solution, exercise, result);
     mumuki.localExpectationsRunner.runExpectations(solution, exercise, result);
+
+    console.log(`[Mumuki::Laboratory::OfflineRunner] Done. Status is ${result.status}...`)
     return Promise.resolve(result);
   };
 
@@ -35,7 +49,7 @@
 
   mumuki.load(() => {
     mumuki.registerLocalTestRunner(BasicLocalTestRunner)
-    mumuki.registerLocalTestRunner(MulangLocalExpectationsRunner)
+    mumuki.registerLocalExpectationsRunner(MulangLocalExpectationsRunner)
   });
 })();
 

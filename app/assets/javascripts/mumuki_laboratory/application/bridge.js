@@ -37,15 +37,26 @@
     _runNewSolution(exerciseId, solution){
       const responsePromise = mumuki.Connection.runNewSolution(exerciseId, solution, this);
       return responsePromise.then((result) => {
-        const status = result.status;
-
-        result.button_html = mumuki.buttonHtmlForStatus(status); // TODO defer rendering calculation
-
+        this._preRenderResult(exerciseId, result);
         const lastSubmission = { content: solution, result: result };
         mumuki.SubmissionsStore.setLastSubmission(exerciseId, lastSubmission);
         return result;
       });
     }
+
+    _preRenderResult(exerciseId, result) {
+      // TODO defer rendering calculation
+      try {
+        const status = result.status;
+        const corollary = mumuki.ExercisesStore.getCorollary(exerciseId);
+        result.button_html = mumuki.renderButtonHtml(status);
+        result.html = mumuki.renderCorollaryHtml(status, corollary);
+      } catch (e) {
+        console.log(`[Mumuki::Laboratory::Bridge] pre-rendering failed ${e}`);
+        throw e;
+      }
+    }
+
   }
 
   mumuki.bridge = {
