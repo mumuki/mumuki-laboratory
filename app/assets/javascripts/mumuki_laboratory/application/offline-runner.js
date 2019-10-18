@@ -9,7 +9,23 @@
   }
 
   const MulangLocalExpectationsRunner = new class {
+    _getMulangSample(solution, exercise, result) {
+      if (result.mulangAst) return {tag: 'MulangSample', ast: result.mulangAst};
+      return {tag: 'CodeSample', language: exercise.language, content: solution}
+    }
+
+    _expectationsFailed(expectationsResult) {
+      return false;
+    }
+
     runExpectations(solution, exercise, result) {
+      const expectationsResults = mulang.analyse({
+        sample: this._getMulangSample(solution, exercise, result),
+        spec: { expectations: exercise.expectations }
+      });
+      if (this._expectationsFailed(expectationsResults) && result.status == 'passed') {
+        result.status = 'passed_with_warnings';
+      }
       result.expectations_html = '';
     }
   }

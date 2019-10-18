@@ -14,6 +14,7 @@
 //= require moment/es.js
 //= require moment/pt.js
 //= require webcomponents-lite
+//= require mulang
 //= require rails-ujs
 //= require mumuki-styles
 //= require jquery-console
