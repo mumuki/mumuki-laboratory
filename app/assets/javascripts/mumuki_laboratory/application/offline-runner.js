@@ -14,18 +14,19 @@
       return {tag: 'CodeSample', language: exercise.language, content: solution}
     }
 
-    _expectationsFailed(expectationsResult) {
-      return false;
+    _expectationsFailed(analysisResult) {
+      return analysisResult.tag === 'AnalysisCompleted' && analysisResult.expectationResults.some((it) => !it.result);
     }
 
     runExpectations(solution, exercise, result) {
-      const expectationsResults = mulang.analyse({
+      const analysisResult = mulang.analyse({
         sample: this._getMulangSample(solution, exercise, result),
         spec: { expectations: exercise.expectations }
       });
-      if (this._expectationsFailed(expectationsResults) && result.status == 'passed') {
+      if (this._expectationsFailed(analysisResult) && result.status == 'passed') {
         result.status = 'passed_with_warnings';
       }
+      console.log(analysisResult);
       result.expectations_html = '';
     }
   }
