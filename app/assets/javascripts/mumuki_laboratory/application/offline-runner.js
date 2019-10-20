@@ -9,25 +9,26 @@
   }
 
   const MulangLocalExpectationsRunner = new class {
-    _getMulangSample(solution, exercise, result) {
-      if (result.mulangAst) return {tag: 'MulangSample', ast: result.mulangAst};
-      return {tag: 'CodeSample', language: exercise.language, content: solution}
+    _getMulangCode(solution, exercise, result) {
+      return result.mulangAst ? mulang.astCode(result.mulangAst) : mulang.nativeCode(exercise.language, solution);
     }
 
     _expectationsFailed(analysisResult) {
-      return analysisResult.tag === 'AnalysisCompleted' && analysisResult.expectationResults.some((it) => !it.result);
+      return analysisResult.expectationResults.some((it) => !it.result);
     }
 
     runExpectations(solution, exercise, result) {
-      const analysisResult = mulang.analyse({
-        sample: this._getMulangSample(solution, exercise, result),
-        spec: { expectations: exercise.expectations }
-      });
-      if (this._expectationsFailed(analysisResult) && result.status == 'passed') {
-        result.status = 'passed_with_warnings';
+      try {
+        const analysisResult = this
+                                ._getMulangCode(solution, exercise, result)
+                                .analyse({ expectations: exercise.expectations });
+        if (this._expectationsFailed(analysisResult) && result.status == 'passed') {
+          result.status = 'passed_with_warnings';
+        }
+        result.expectations_html = '';
+      } catch (e) {
+        console.warn(`[Mumuki::Laboratory::OfflineRunner] Mulang crashed with ${JSON.stringify(e)}`);
       }
-      console.log(analysisResult);
-      result.expectations_html = '';
     }
   }
 
