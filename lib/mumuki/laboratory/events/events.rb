@@ -20,6 +20,10 @@ Mumukit::Nuntius::EventConsumer.handle do
     Exam.import_from_resource_h! body
   end
 
+  event 'UpsertExamStudents' do |body|
+    Exam.upsert_students! body
+  end
+
   # Emitted by assigment manual evaluation in classroom
   event 'AssignmentManuallyEvaluated' do |payload|
     Assignment.evaluate_manually! payload.deep_symbolize_keys[:assignment]
