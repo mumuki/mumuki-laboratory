@@ -40,8 +40,10 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
   end
 
   def render_results_button_html(assignment)
-    render_to_string partial: 'exercise_solutions/kids_results_button',
-                     locals: {assignment: assignment}
+    if assignment.input_kids?
+      render_to_string partial: 'exercise_solutions/kids_results_button',
+                       locals: {assignment: assignment}
+    end
   end
 
   def render_results_expectations_html(assignment)
