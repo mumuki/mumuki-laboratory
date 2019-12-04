@@ -8,13 +8,24 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
   end
 
   def render_results_json(assignment, results = {})
+    if assignment.input_kids?
+      merge_kids_specific_renders(assignment, results)
+      render_results = 'exercise_solutions/kids_results'
+    else
+      render_results = 'exercise_solutions/results'
+    end
+
     render json: results.merge(progress_json).merge(
-      html: render_results_html(assignment),
-      title_html: render_results_title_html(assignment),
-      button_html: render_results_button_html(assignment),
-      expectations_html: render_results_expectations_html(assignment),
-      remaining_attempts_html: remaining_attempts_text(assignment),
-      test_results: assignment.test_results)
+        html: render_results_html(render_results, assignment),
+        remaining_attempts_html: remaining_attempts_text(assignment))
+  end
+
+  def merge_kids_specific_renders(assignment, results)
+    results.merge!(
+        button_html: render_results_button_html(assignment),
+        title_html: render_results_title_html(assignment),
+        expectations_html: render_results_expectations_html(assignment),
+        test_results: assignment.test_results)
   end
 
   def progress_json
@@ -24,14 +35,10 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
     }
   end
 
-  def render_results_html(assignment)
-    render_to_string partial: results_partial(assignment),
+  def render_results_html(results_partial, assignment)
+    results_partial = 'out_of_attempts' unless assignment.attempts_left?
+    render_to_string partial: results_partial,
                      locals: {assignment: assignment}
-  end
-
-  def results_partial(assignment)
-    return 'out_of_attempts' unless assignment.attempts_left?
-    assignment.input_kids? ? 'exercise_solutions/kids_results' : 'exercise_solutions/results'
   end
 
   def render_results_title_html(assignment)
@@ -40,10 +47,8 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
   end
 
   def render_results_button_html(assignment)
-    if assignment.input_kids?
-      render_to_string partial: 'exercise_solutions/kids_results_button',
-                       locals: {assignment: assignment}
-    end
+    render_to_string partial: 'exercise_solutions/kids_results_button',
+                     locals: {assignment: assignment}
   end
 
   def render_results_expectations_html(assignment)
