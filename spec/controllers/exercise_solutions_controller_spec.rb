@@ -3,26 +3,55 @@ require 'spec_helper'
 describe ExerciseSolutionsController, organization_workspace: :test do
   let(:user) { create(:user) }
   let(:problem) { create(:problem) }
-
+  let(:kids_problem) { create(:problem, layout: :input_kids) }
   let!(:chapter) {
     create(:chapter, name: 'Functional Programming', lessons: [
-      create(:lesson, exercises: [problem])
+      create(:lesson, exercises: [problem, kids_problem])
     ]) }
 
   before { reindex_current_organization! }
   before { set_current_user! user }
 
-  context 'when simple content is sent' do
-    before { post :create, params: { exercise_id: problem.id, solution: { content: 'asd' } } }
+  def post_problem(problem)
+    post :create, params: { exercise_id: problem.id, solution: { content: 'asd' } }
+  end
+
+  describe 'when simple content is sent' do
+    before { post_problem(problem) }
 
     it { expect(response.status).to eq 200 }
-    it { expect(response.body).to json_eq(
-                                    {status: :failed, guide_finished_by_solution: false},
-                                    except: [:class_for_progress_list_item,
-                                             :html, :title_html, :button_html,
-                                             :expectations_html, :remaining_attempts_html,
-                                             :test_results]) }
     it { expect(Assignment.last.solution).to eq('asd')}
+
+    context 'for a non-kids exercise' do
+      it { expect(response.body).to json_eq({ status: :failed, guide_finished_by_solution: false },
+                                            except: [:class_for_progress_list_item, :html, :remaining_attempts_html]) }
+
+      it 'does not include kids specific renders' do
+        body = JSON.parse(response.body)
+
+        expect(body.key?('button_html')).to be false
+        expect(body.key?('title_html')).to be false
+        expect(body.key?('expectations_html')).to be false
+        expect(body.key?('test_results')).to be false
+      end
+    end
+
+    context 'for a kids exercise' do
+      before { post_problem(kids_problem) }
+
+      it { expect(response.body).to json_eq({ status: :failed, guide_finished_by_solution: false },
+                                            except: [:class_for_progress_list_item, :html, :remaining_attempts_html,
+                                                     :title_html, :button_html, :expectations_html, :test_results]) }
+
+      it 'includes kids specific renders' do
+        body = JSON.parse(response.body)
+
+        expect(body.key?('button_html')).to be true
+        expect(body.key?('title_html')).to be true
+        expect(body.key?('expectations_html')).to be true
+        expect(body.key?('test_results')).to be true
+      end
+    end
   end
 
   context 'when multifile content is sent' do
