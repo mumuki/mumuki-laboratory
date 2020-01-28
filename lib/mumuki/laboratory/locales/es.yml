@@ -30,6 +30,7 @@ es:
   blocked_forum_explanation: Es decir que no tenés autorización para ver este contenido. <br> ¿Puede que estés en medio de un examen?
   cancel_subscription: Cancelá tu subscripción.
   chapter: Capítulo
+  chapters: Capítulos
   chapter_finished_html: ¡Terminaste %{chapter}! ¡Felicitaciones!
   chapter_number: 'Capítulo %{number}'
   classroom_ui: Aula
@@ -122,6 +123,7 @@ es:
   latest_exercises: Últimos ejercicios
   learning: Aprendizaje
   lesson: Lección
+  lessons: Lecciones
   lesson_number: Lección %{number}
   let_us_know: ¡Por favor avisanos!
   loading: Cargando

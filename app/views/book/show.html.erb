@@ -30,11 +30,11 @@
     </div>
   <% end %>
 
-  <h2><%= t(:content) %></h2>
+  <h2><%= t(:chapters) %></h2>
 
   <% @book.chapters.each do |it| %>
     <div class="chapter">
-      <h3><%= t(:chapter_number, number: it.number) %> <%= link_to_path_element it, mode: :plain %></h3>
+      <h3><%= it.number %>. <%= link_to_path_element it, mode: :plain %></h3>
 
       <div class="text-box">
         <%= it.description_teaser_html %>
