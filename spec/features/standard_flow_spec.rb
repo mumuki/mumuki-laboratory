@@ -23,7 +23,7 @@ feature 'Standard Flow', organization_workspace: :test do
 
     expect(page).to have_text('Values and Functions')
     expect(page).to have_text('Values are everywhere...')
-    expect(page).to have_text('Content')
+    expect(page).to have_text('Exercises')
     expect(page).to have_text('The Basic Values')
     expect(page).to have_text('Start this lesson!')
     expect(page).to_not have_text("Let's say we")

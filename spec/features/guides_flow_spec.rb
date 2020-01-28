@@ -55,14 +55,14 @@ feature 'Guides Flow', organization_workspace: :test do
         visit "/guides/#{complement.guide.id}"
 
         expect(page).to have_text('a complement')
-        expect(page).to have_text('Content')
+        expect(page).to have_text('Exercises')
       end
 
       scenario 'visit lesson by id' do
         visit "/guides/#{lesson.guide.id}"
 
         expect(page).to have_text('awesomeGuide')
-        expect(page).to have_text('Content')
+        expect(page).to have_text('Exercises')
         expect(page).to_not have_text('Creative Commons')
       end
 
@@ -72,7 +72,7 @@ feature 'Guides Flow', organization_workspace: :test do
 
         expect(page).to have_text('awesomeGuide')
         expect(page).to have_text('An awesome guide')
-        expect(page).to have_text('Content')
+        expect(page).to have_text('Exercises')
       end
     end
 
@@ -83,7 +83,7 @@ feature 'Guides Flow', organization_workspace: :test do
         visit "/guides/#{lesson.guide.id}"
 
         expect(page).to have_text('awesomeGuide')
-        expect(page).to have_text('Content')
+        expect(page).to have_text('Exercises')
         expect(page).to have_text('Jon Doe')
         expect(page).to have_text('Creative Commons')
       end

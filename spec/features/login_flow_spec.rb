@@ -19,8 +19,7 @@ feature 'Login Flow', organization_workspace: :test do
     click_on 'Sign in'
 
     expect(page).to have_text('Start Practicing!')
-    expect(page).to have_text('Content')
-    expect(page).to have_text('Chapter')
+    expect(page).to have_text('Chapters')
     expect(page).to_not have_text('Sign in')
     expect(page).to have_text('Sign Out')
   end
@@ -54,8 +53,7 @@ feature 'Login Flow', organization_workspace: :test do
     expect(page).to have_text('Sign Out')
     click_on 'Sign Out'
 
-    expect(page).to have_text('Content')
-    expect(page).to have_text('Chapter')
+    expect(page).to have_text('Chapters')
 
     expect(page).to have_text('Sign in')
     expect(page).to_not have_text('Sign out')
