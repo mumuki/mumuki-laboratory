@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190929180601) do
+ActiveRecord::Schema.define(version: 20191022180238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -162,7 +162,6 @@ ActiveRecord::Schema.define(version: 20190929180601) do
     t.boolean "extra_visible", default: false
     t.boolean "manual_evaluation", default: false
     t.integer "editor", default: 0, null: false
-    t.string "choice_values", default: [], null: false, array: true
     t.text "goal"
     t.string "initial_state"
     t.string "final_state"
