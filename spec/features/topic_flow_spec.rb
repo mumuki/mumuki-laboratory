@@ -15,7 +15,7 @@ feature 'Topic Flow', organization_workspace: :test do
     visit "/topics/#{topic_in_path.transparent_id}"
 
     expect(page).to have_text('Functional Programming')
-    expect(page).to have_text('Content')
+    expect(page).to have_text('Lessons')
   end
 
   scenario 'visit topic in path not transparently' do

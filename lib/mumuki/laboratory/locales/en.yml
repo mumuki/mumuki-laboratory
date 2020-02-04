@@ -28,6 +28,7 @@ en:
   blocked_forum_explanation: You are not allowed to see this content. <br> Are you in the middle of an exam right now?
   cancel_subscription: Cancel your subscription.
   chapter: Chapter
+  chapters: Chapters
   chapter_finished_html: You have finished %{chapter}!
   chapter_number: Chapter %{number}
   classroom_ui: Classroom
@@ -70,6 +71,7 @@ en:
   exam_number: 'Exam %{number}:'
   exams: Exams
   exercise: Exercise
+  exercises: Exercises
   exercise_count: exercises
   exercise_done: All our tests passed!
   exercise_number: Exercise %{number}
@@ -110,6 +112,7 @@ en:
   latest_exercises: Latest exercises
   learning: Learning
   lesson: Lesson
+  lessons: Lessons
   lesson_number: Lesson %{number}
   let_us_know: please let us know!
   loading: Loading
