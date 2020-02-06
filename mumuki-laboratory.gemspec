@@ -19,14 +19,14 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 5.1.6"
 
   s.add_dependency 'mumuki-domain', '~> 7.1.0'
-  s.add_dependency 'mumukit-login', '~> 7.0'
+  s.add_dependency 'mumukit-login', '~> 7.1'
   s.add_dependency 'mumukit-nuntius', '~> 6.1'
   s.add_dependency 'mumukit-auth', '~> 7.7'
 
   s.add_dependency 'mumuki-styles', '~> 1.21.3'
   s.add_dependency 'muvment', '~> 1.2'
 
-  s.add_dependency 'rack', '~> 2.0'
+  s.add_dependency 'rack', '~> 2.1'
   s.add_dependency 'omniauth', '~> 1.4'
 
   s.add_dependency 'kaminari', '~> 0.16'

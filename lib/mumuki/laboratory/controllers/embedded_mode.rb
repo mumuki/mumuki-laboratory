@@ -40,6 +40,6 @@ module Mumuki::Laboratory::Controllers::EmbeddedMode
   private
 
   def allow_parent_iframe!
-    response.set_header 'X-Frame-Options', 'ALLOWALL'
+    response.delete_header 'X-Frame-Options'
   end
 end
