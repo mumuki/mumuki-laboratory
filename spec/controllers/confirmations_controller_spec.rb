@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ExerciseConfirmationsController, organization_workspace: :test do
   let(:user) { create(:user) }
-  let(:reading) { create(:reading) }
+  let(:reading) { create(:reading, guide: create(:indexed_guide)) }
 
   context 'when not authenticated' do
     before { post :create, params: { exercise_id: reading.id } }

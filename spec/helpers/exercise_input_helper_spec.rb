@@ -49,7 +49,7 @@ describe ApplicationHelper, organization_workspace: :test do
     end
     context 'when assignment passed' do
       let(:organization) { create(:organization, name: 'myorg', forum_enabled: true) }
-      let(:assignment) { create(:assignment, status: :passed) }
+      let(:assignment) { create(:assignment, status: :passed, exercise: create(:indexed_exercise)) }
       it { expect(should_render_need_help_dropdown? assignment, organization).to be false }
     end
   end

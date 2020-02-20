@@ -11,7 +11,9 @@ describe IconsHelper, organization_workspace: :test do
   end
 
   describe '#status_icon' do
-    let(:passed_submission) { create(:assignment, status: :passed, expectation_results: []) }
+    let(:passed_submission) {
+      create(:assignment, status: :passed, expectation_results: [], exercise: create(:indexed_exercise))
+    }
     let(:failed_submission) { create(:assignment, status: :failed) }
 
     it { expect(status_icon(passed_submission)).to eq '<i class="fa fa-check-circle text-success status-icon"></i>' }
