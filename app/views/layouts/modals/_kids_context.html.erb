@@ -4,6 +4,8 @@
       <div class="modal-header">
         <h4 class="text-center">
           <strong><%= "#{exercise.number}. #{exercise.name}" %></strong>
+          <%= teacher_info_button @exercise %>
+          <%= link_to_bibliotheca_exercise @exercise %>
         </h4>
       </div>
       <div class="modal-body">
