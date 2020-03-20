@@ -6,7 +6,7 @@ module UsersControllerTemplate
     before_action :set_user!, only: [:show, :update]
     before_action :set_new_user!, only: :create
     before_action :protect_permissions_assignment!, only: [:create, :update]
-    after_action :verify_user_name!, only: [:create, :update]
+    after_action :verify_user_name!, only: :create
   end
 
   private
