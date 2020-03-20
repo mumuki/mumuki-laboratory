@@ -19,7 +19,7 @@ module ContextualizationResultHelper
     if contextualization.exercise.hidden?
       :hidden_done
     elsif contextualization.exercise.choice?
-      contextualization.passed? ? :correct_answer : :wrong_answer
+      contextualization.solved? ? :correct_answer : :wrong_answer
     else
       contextualization.submission_status
     end

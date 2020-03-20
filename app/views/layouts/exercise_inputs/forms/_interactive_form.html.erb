@@ -40,7 +40,7 @@
   <% if current_user? %>
     <div class="row">
       <div class="col-md-12 submission-results">
-        <% if @assignment.passed?  %>
+        <% if @assignment.solved?  %>
           <%= render partial: 'exercise_solutions/results',
                      locals: {assignment: @assignment, guide_finished_by_solution: false} %>
         <% end %>

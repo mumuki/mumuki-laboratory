@@ -44,7 +44,7 @@ module ExerciseInputHelper
   end
 
   def should_render_need_help_dropdown?(assignment, organization = Organization.current)
-    !assignment.passed? && organization.ask_for_help_enabled?(assignment.submitter)
+    !assignment.solved? && organization.ask_for_help_enabled?(assignment.submitter)
   end
 
   def render_submit_button(assignment)
