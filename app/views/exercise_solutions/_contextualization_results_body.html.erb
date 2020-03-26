@@ -1,5 +1,5 @@
-<% if contextualization.results_visible? %>
-  <div>
+<div>
+  <% unless contextualization.results_body_hidden? %>
     <%= render partial: 'exercise_solutions/expectations', locals: {assignment: contextualization} %>
     <% if render_feedback?(contextualization) %>
       <div class="results-item">
@@ -15,7 +15,5 @@
     <div id="results-section" class="<%= 'collapse' if render_feedback?(contextualization) %> results-item">
       <%= render_test_results contextualization %>
     </div>
-  </div>
-<% else %>
-  <div></div>
-<% end %>
+  <% end %>
+</div>

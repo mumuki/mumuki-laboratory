@@ -36,7 +36,6 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
   end
 
   def render_results_html(results_partial, assignment)
-    results_partial = 'out_of_attempts' unless assignment.attempts_left?
     render_to_string partial: results_partial,
                      locals: {assignment: assignment}
   end
