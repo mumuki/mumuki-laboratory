@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200213175736) do
+ActiveRecord::Schema.define(version: 20200312181842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 20200213175736) do
     t.integer "duration"
     t.integer "max_problem_submissions"
     t.integer "max_choice_submissions"
+    t.boolean "results_hidden_for_choices", default: false
     t.index ["classroom_id"], name: "index_exams_on_classroom_id", unique: true
     t.index ["guide_id"], name: "index_exams_on_guide_id"
     t.index ["organization_id"], name: "index_exams_on_organization_id"
