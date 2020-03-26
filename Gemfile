@@ -28,5 +28,5 @@ group :development do
   gem 'web-console'
   gem 'codeclimate-test-reporter', require: nil
 end
-#
-gem 'mumuki-domain', path: '/home/lucho/mumuki/mumuki-domain'
+
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'chore-hidden_results_for_choices'
