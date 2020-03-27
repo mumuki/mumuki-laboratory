@@ -28,3 +28,5 @@ group :development do
   gem 'web-console'
   gem 'codeclimate-test-reporter', require: nil
 end
+
+gem 'mumukit-content-type', github: 'mumuki/mumukit-content-type', branch: 'feature-allow-one-liner-markdown-rendering'
