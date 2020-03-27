@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   include Mumuki::Laboratory::Controllers::EmbeddedMode
 
   before_action :set_current_organization!
+  before_action :validate_archived_organization!
   before_action :set_locale!
   before_action :ensure_user_enabled!, if: :current_user?
   before_action :redirect_to_main_organization!, if: :should_redirect_to_main_organization?
@@ -52,7 +53,7 @@ class ApplicationController < ActionController::Base
   end
 
   # required by Mumukit::Login
-  def login_button(options={})
+  def login_button(options = {})
     login_form.button_html I18n.t(:sign_in), options[:class]
   end
 
@@ -77,6 +78,10 @@ class ApplicationController < ActionController::Base
       flash.notice = I18n.t :please_fill_profile_data
       redirect_to user_path
     end
+  end
+
+  def validate_archived_organization!
+    raise Mumuki::Domain::GoneError if Organization.current.archived? && !current_user.teacher?
   end
 
   def set_locale!
