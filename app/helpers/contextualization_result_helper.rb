@@ -1,6 +1,10 @@
 module ContextualizationResultHelper
   def humanized_expectation_result_item(expectation_result)
-    %Q{<li>#{status_icon(expectation_result[:result])} #{sanitized expectation_result[:explanation]}</li>}.html_safe
+    %Q{<li>#{status_icon(expectation_result[:result])} #{humanized_expectation_explanation expectation_result}</li>}.html_safe
+  end
+
+  def humanized_expectation_explanation(expectation_result)
+    sanitized Mumukit::ContentType::Markdown.to_html(expectation_result[:explanation], one_liner: true)
   end
 
   def render_feedback?(contextualization)
