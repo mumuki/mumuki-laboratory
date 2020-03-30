@@ -1,5 +1,4 @@
 module IconsHelper
-  #FIXME refactor names
   def status_icon(status_like)
     fa_icon *icon_for(status_like.to_submission_status)
   end
