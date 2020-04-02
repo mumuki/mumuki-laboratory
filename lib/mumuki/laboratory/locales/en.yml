@@ -17,6 +17,7 @@ en:
   ask_the_first_question: Be the first one to ask!
   attempts_left:
     zero: "You've run out of attempts "
+    one: "1 attempt remaining"
     other: '%{count} attempts remaining'
   author: Author
   authoring: "Authoring"
@@ -181,6 +182,7 @@ en:
   reset_query: Clear current search filters
   restart: Restart
   results: Results
+  results_hidden: Your solution was submitted successfully!
   retry_exercise: Retry
   running: running
   save: Save

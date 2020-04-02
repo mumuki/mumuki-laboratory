@@ -1,7 +1,6 @@
 module IconsHelper
-  #FIXME refactor names
   def status_icon(status_like)
-    fa_icon *icon_for_status(status_like.to_submission_status)
+    fa_icon *icon_for(status_like.to_submission_status)
   end
 
   def fixed_fa_icon(name, options={})
@@ -19,25 +18,37 @@ module IconsHelper
 
   private
 
-  def status_fa_icon(status)
-    fa_icon(*icon_for_status(status))
+  def contextualization_fa_icon(contextualization)
+    fa_icon(*icon_for(contextualization))
   end
 
   def exercise_status_fa_icon(exercise)
-    status_fa_icon(exercise.status_for(current_user))
+    contextualization_fa_icon(exercise.assignment_for(current_user))
   end
 
   def discussion_status_fa_icon(discussion)
-    status_fa_icon(discussion.status)
+    contextualization_fa_icon(discussion)
   end
 
-  def icon_for_status(s)
-    iconized = s.iconize
+  def icon_for(iconizable)
+    iconized = iconizable.iconize
     [iconized[:type], class: "text-#{iconized[:class]} status-icon"]
   end
 
-  def label_for_status(s)
-    iconized = s.iconize
+  def class_for_exercise(exercise)
+    icon_class_for(exercise.assignment_for(current_user))
+  end
+
+  def icon_class_for(iconizable)
+    iconizable.iconize[:class].to_s
+  end
+
+  def icon_type_for(iconizable)
+    iconizable.iconize[:type].to_s
+  end
+
+  def label_for_contextualization(contextualization)
+    iconized = contextualization.iconize
     %Q{
       <span class="text-#{iconized[:class]} status-label">
         #{fa_icon "#{iconized[:type]}"}

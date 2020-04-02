@@ -3,7 +3,7 @@
   @stats = @guide.stats_for(current_user)
 %>
 
-<div class="<%= "mu-kids-callout-#{class_for_status assignment.submission_status}" %>">
+<div class="<%= "mu-kids-callout-#{icon_class_for assignment}" %>">
   <%= manual_evaluation_comment assignment %>
 </div>
 

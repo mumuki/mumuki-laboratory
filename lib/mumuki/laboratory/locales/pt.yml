@@ -18,7 +18,8 @@ pt:
   ask_the_first_question: Faça a primeira pergunta!
   attempts_left:
     zero: 'Você ficou sem tentativas'
-    other: '%{count} tentativa restante'
+    one: '1 tentativa restante'
+    other: '%{count} tentativas restantes'
   author: Autor
   authoring: Autores
   authoring_note_html: 'Este guia foi desenvolvido por %{authors} nos termos do <a href = "https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"> Creative Commons License Share-Equal, 4.0 </a>.'
@@ -192,6 +193,7 @@ pt:
   reset_query: Limpar filtros de pesquisa atuais
   restart: Reiniciar
   results: Resultados
+  results_hidden: Sua solução foi enviada com sucesso!
   retry_exercise: Tentar novamente
   running: processamento
   save: Salvar

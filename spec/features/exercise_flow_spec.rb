@@ -12,7 +12,7 @@ feature 'Exercise Flow', organization_workspace: :test do
   let!(:problem_4) { build(:problem, name: 'Succ4', description: 'Description of Succ4', layout: :input_bottom, extra: 'x = 2') }
   let!(:problem_5) { build(:problem, name: 'Succ5', description: 'Description of Succ5', layout: :input_right, editor: :upload, hint: 'lele', language: gobstones) }
   let!(:problem_6) { build(:problem, name: 'Succ6', description: 'Description of Succ6', layout: :input_right, editor: :hidden, language: haskell) }
-  let!(:problem_7) { build(:problem, name: 'Succ7', description: 'Description of Succ7', choices: [{value: 'some choice', checked: true}]) }
+  let!(:problem_7) { build(:problem, name: 'Succ7', description: 'Description of Succ7', editor: :single_choice, choices: [{value: 'some choice', checked: true}]) }
   let!(:playground_1) { build(:playground, name: 'Succ5', description: 'Description of Succ4', layout: :input_right) }
   let!(:playground_2) { build(:playground, name: 'Succ6', description: 'Description of Succ4', layout: :input_right, extra: 'x = 4') }
   let!(:reading) { build(:reading, name: 'Reading about Succ', description: 'Lets understand succ history') }
