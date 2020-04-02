@@ -71,6 +71,32 @@ describe BreadcrumbsHelper, organization_workspace: :test do
     end
   end
 
+  context 'discussion' do
+    let!(:chapter) { create(:chapter, name: 'my chapter', lessons: [lesson]) }
+    let(:lesson) { create(:lesson, name: 'my lesson', exercises: [exercise]) }
+    let(:exercise) { create(:exercise, name: 'my exercise') }
+
+    let(:discussion) { create(:discussion, item: debatable) }
+    let(:breadcrumb) { breadcrumbs_for_discussion(discussion, debatable) }
+
+    before { reindex_current_organization! }
+
+    context 'in exercise' do
+      let(:debatable) { exercise }
+
+      it 'breadcrumb goes mumuki / test organization / chapter / lesson / exercise / discussions / discussion' do
+        expect(breadcrumb).to include('da da-mumuki')
+        expect(breadcrumb).to include('test')
+        expect(breadcrumb).to include('my chapter')
+        expect(breadcrumb).to include('my lesson')
+        expect(breadcrumb).to include('my exercise')
+        expect(breadcrumb).to include('discussions')
+        expect(breadcrumb).to include(discussion.title)
+        expect(breadcrumb).to be_html_safe
+      end
+    end
+  end
+
   context 'book' do
     let(:breadcrumb) { header_breadcrumbs(link_for_organization: false) }
 
