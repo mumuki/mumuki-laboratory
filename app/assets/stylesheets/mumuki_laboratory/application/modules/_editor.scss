@@ -13,25 +13,6 @@ $multifile-inactive-tab-border-color: #ECF0F1;
   max-height: none;
 }
 
-.submission-reset {
-  padding: 5px;
-  cursor: pointer;
-}
-
-.editor-resize {
-  position: absolute;
-  padding: 5px;
-  cursor: pointer;
-  z-index: 10;
-  top: 0;
-  right: 0;
-  font-size: 0.5em;
-  &.multiple-files {
-    top: 43px;
-  }
-}
-
-
 body:not(.fullscreen) {
   .CodeMirror-wrap,
   .CodeMirror-scroll {
@@ -68,10 +49,6 @@ body.fullscreen {
       height: inherit;
       overflow-y: scroll;
       overflow-x: auto;
-    }
-    .submission-reset,
-    .editor-resize {
-      margin-right: 15px;
     }
   }
 }
