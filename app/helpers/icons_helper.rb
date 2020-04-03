@@ -52,7 +52,7 @@ module IconsHelper
     %Q{
       <span class="text-#{iconized[:class]} status-label">
         #{fa_icon "#{iconized[:type]}"}
-        <span>#{t s}</span>
+        <span>#{t contextualization.visible_status}</span>
       </span>
     }.html_safe
   end

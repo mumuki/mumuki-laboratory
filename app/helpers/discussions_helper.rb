@@ -132,7 +132,7 @@ module DiscussionsHelper
 
   def discussion_status_filter(status, discussions_count)
     %Q{
-      #{status_fa_icon(status)}
+      #{discussion_status_fa_icon(status)}
       <span>
         #{t("#{status}_count", count: discussions_count)}
       </span>
