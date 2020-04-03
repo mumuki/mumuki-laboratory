@@ -89,6 +89,7 @@ pt:
   finish: Terminar
   first_name: Nome
   forbidden_explanation: Isso significa que você não tem autorização para ver esse conteúdo. <br> Você poderia ter entrado com uma conta incorreta?
+  format: Formato
   fullscreen: Tela completa
   gender: Gênero
   get_messages: Ver mensagens

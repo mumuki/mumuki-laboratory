@@ -87,6 +87,7 @@ en:
   finish: Finish
   first_name: First Name
   forbidden_explanation: You are not allowed to see this content.
+  format: Format
   gender: Gender
   go_to: 'Go to %{organization}'
   gone_explanation: This content is no longer available.

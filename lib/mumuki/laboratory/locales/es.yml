@@ -93,6 +93,7 @@ es:
   finish: Terminar
   first_name: Nombre
   forbidden_explanation: Es decir que no tenés autorización para ver este contenido. <br> ¿Puede que hayas ingresado con una cuenta incorrecta?
+  format: Dar formato
   gender: Género
   go_to: 'Ir a %{organization}'
   gone_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que ya no podés ver este contenido.
