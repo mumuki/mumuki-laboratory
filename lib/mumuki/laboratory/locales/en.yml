@@ -40,6 +40,7 @@ en:
   created_at_desc: Newest
   comment: Comment
   confirm: Confirm
+  confirm_reset: You are about to restart your exercise. Do you want to proceed?
   confirm_restart: You are about to delete your progress for this guide. Do you want to proceed?
   console: Console
   contact_administrator: 'If you think this is not supposed to happen, please contact the admin: %{link}'

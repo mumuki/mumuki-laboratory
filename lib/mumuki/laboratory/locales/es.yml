@@ -43,6 +43,7 @@ es:
   created_at_desc: Nuevas
   comment: Comentar
   confirm: Confirmar
+  confirm_reset: Estás por reiniciar tu ejercicio. ¿Querés continuar?
   confirm_restart: Estás por borrar tu progreso en esta guía. ¿Querés continuar?
   console: Consola
   contact_administrator: 'Si pensás que es un error, comunicate con la persona que administra esta organización: %{link}'
