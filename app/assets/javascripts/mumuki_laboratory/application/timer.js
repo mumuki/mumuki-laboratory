@@ -8,7 +8,7 @@ var mumuki = mumuki || {};
     var duration = moment.duration(diffTime, 'milliseconds');
     var intervalDuration = 1000;
 
-    var interval = setInterval(function () {
+    var interval = mumuki.setInterval(function () {
       duration = moment.utc(duration - intervalDuration);
       if(duration.valueOf() <= 0) {
         clearInterval(interval);

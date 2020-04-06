@@ -313,7 +313,7 @@ mumuki.load(function () {
     });
 
     if (paragraphCount > 1) {
-      nextSpeechBlinking = setInterval(() => $nextSpeech.fadeTo('slow', 0.1).fadeTo('slow', 1.0), 1000);
+      nextSpeechBlinking = mumuki.setInterval(() => $nextSpeech.fadeTo('slow', 0.1).fadeTo('slow', 1.0), 1000);
     }
 
     $nextSpeech.click(showNextParagraph);

@@ -45,7 +45,7 @@ mumuki.load(function () {
       });
     },
     setMessagesInterval: function () {
-      setInterval(Chat.getMessages, 60000);
+      mumuki.setInterval(Chat.getMessages, 60000);
     },
     submitMessagesForm: function (url, readUrl, errorUrl) {
       var $container = $('.mu-view-messages');
