@@ -35,17 +35,3 @@
 NProgress.configure({
   showSpinner: false
 });
-
-const setPersistentInterval = setInterval;
-
-// When using Turbolinks intervals loaded inside <body> aren't destroyed on page changes
-// Overriding behaviour so it acts like a regular setInterval
-window.setInterval = function(intervalFunction, milliseconds) {
-  const interval = setPersistentInterval.apply(this, [intervalFunction, milliseconds]);
-
-  $(document).on('turbolinks:before-cache turbolinks:before-render', function() {
-    clearTimeout(interval);
-  });
-
-  return interval;
-}
