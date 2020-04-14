@@ -23,6 +23,14 @@ var mumuki = mumuki || {};
     })
   }
 
+  function formatContent() {
+    mumuki.page.editors.each(function (_, editor) {
+      editor.setSelection({line: 0, ch: 0}, {line: editor.lineCount()})
+      editor.indentSelection("smart")
+      editor.setSelection({line: 0})
+    });
+  }
+
   function toggleFullscreen() {
     $('body').toggleClass('fullscreen');
     $('.editor-resize .fa-stack-1x').toggleClass('fa-expand').toggleClass('fa-compress');
@@ -61,7 +69,9 @@ var mumuki = mumuki || {};
   }
 
   mumuki.editor = mumuki.editor || {};
+  mumuki.editor.reset = resetEditor;
   mumuki.editor.toggleFullscreen = toggleFullscreen;
+  mumuki.editor.formatContent = formatContent;
   mumuki.editor.indentWithSpaces = indentWithSpaces;
   mumuki.editor.syncContent = syncContent;
 
@@ -80,6 +90,9 @@ var mumuki = mumuki || {};
     });
     $('.editor-resize').click(function () {
       toggleFullscreen();
+    });
+    $('.editor-format').click(function (){
+      formatContent();
     });
   });
 

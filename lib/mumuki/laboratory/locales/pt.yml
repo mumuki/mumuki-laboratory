@@ -38,6 +38,7 @@ pt:
   closed_count: '%{count} fechado'
   comment: Comentar
   confirm: Confirme
+  confirm_reset: Você está prestes a reiniciar seu exercício. Você quer continuar?
   confirm_restart: Você está prestes a apagar o seu progresso neste guia. Você quer continuar?
   console: Consola
   contact_administrator: Se você acha que é um erro, entre em contato com a pessoa que gerencia essa organização %{link}
@@ -89,6 +90,7 @@ pt:
   finish: Terminar
   first_name: Nome
   forbidden_explanation: Isso significa que você não tem autorização para ver esse conteúdo. <br> Você poderia ter entrado com uma conta incorreta?
+  format: Formato
   fullscreen: Tela completa
   gender: Gênero
   get_messages: Ver mensagens

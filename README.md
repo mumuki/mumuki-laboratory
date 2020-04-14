@@ -178,6 +178,10 @@ which are granted to be safe and stable.
 
 * `mumuki.bridge.Laboratory`
   * `.runTests`
+* `mumuki.editor`
+  * `formatContent`
+  * `reset`
+  * `toggleFullscreen`
 * `mumuki.kids`
   * `registerBlocksAreaScaler`
   * `registerStateScaler`
