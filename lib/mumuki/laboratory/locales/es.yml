@@ -211,6 +211,9 @@ es:
   sign_in_action: iniciar sesión
   sign_out: Cerrar Sesión
   sign_up_date: Usuario desde
+  skipped_congratulations: ¡Bien hecho!
+  skipped_description: Venís aprendiendo muy bien, por lo que aprobaste este ejercicio.
+  skipped_solve_anyway: Resolver de todos modos
   solution: Solución
   solved: Resuelta
   solved_count:

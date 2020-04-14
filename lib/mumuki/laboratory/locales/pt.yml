@@ -204,6 +204,9 @@ pt:
   sign_in_action: iniciar sessão
   sign_out: Fechar Sessão
   sign_up_date: Usuário de
+  skipped_congratulations: Bem feito!
+  skipped_description: Você está aprendendo muito bem e passou neste exercício.
+  skipped_solve_anyway: Resolver mesmo assim
   solution: Solução
   solved: Resolvido
   solved_count: '%{count} resolvido'
