@@ -182,6 +182,8 @@ which are granted to be safe and stable.
   * `formatContent`
   * `reset`
   * `toggleFullscreen`
+* `mumuki.elipsis`
+  * `replaceHtml`
 * `mumuki.kids`
   * `registerBlocksAreaScaler`
   * `registerStateScaler`
