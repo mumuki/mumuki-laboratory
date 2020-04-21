@@ -16,23 +16,37 @@ describe ExerciseSolutionsController, organization_workspace: :test do
     post :create, params: { exercise_id: problem.id, solution: { content: 'asd' } }
   end
 
+
   describe 'when simple content is sent' do
-    before { post_problem(problem) }
-
-    it { expect(response.status).to eq 200 }
-    it { expect(Assignment.last.solution).to eq('asd')}
-
     context 'for a non-kids exercise' do
-      it { expect(response.body).to json_eq({ status: :failed, guide_finished_by_solution: false },
-                                            except: [:class_for_progress_list_item, :html, :remaining_attempts_html]) }
+      before { post_problem(problem) }
+      let(:assignment) { Assignment.last }
 
-      it 'does not include kids specific renders' do
-        body = JSON.parse(response.body)
+      context 'without client-side interpolations' do
+        it { expect(response.status).to eq 200 }
+        it { expect(assignment.solution).to eq('asd')}
 
-        expect(body.key?('button_html')).to be false
-        expect(body.key?('title_html')).to be false
-        expect(body.key?('expectations_html')).to be false
-        expect(body.key?('test_results')).to be false
+        it { expect(response.body).to json_eq({ status: :failed, guide_finished_by_solution: false },
+                                              except: [:class_for_progress_list_item, :html, :remaining_attempts_html]) }
+
+
+        it 'does not include kids specific renders' do
+          body = JSON.parse(response.body)
+
+          expect(body.key?('button_html')).to be false
+          expect(body.key?('title_html')).to be false
+          expect(body.key?('expectations_html')).to be false
+          expect(body.key?('test_results')).to be false
+        end
+      end
+
+      context 'with client-side interpolations' do
+        let(:problem) { create(:problem, extra: interpolation) }
+        let(:interpolation) { %q{function longitud(unString) /*<elipsis-for-student@*/ {
+          return unString.length;
+        } /*@elipsis-for-student>*/} }
+
+        it { expect(assignment.extra.strip).to eq interpolation.strip }
       end
     end
 
