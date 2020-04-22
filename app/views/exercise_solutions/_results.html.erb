@@ -34,7 +34,7 @@
     <%= solution_download_link assignment %>
   <% end %>
 
-  <% if assignment.solved? %>
+  <% if assignment.passed? %>
     <%= corollary_box @exercise %>
   <% else %>
     <%= assistance_box assignment %>
