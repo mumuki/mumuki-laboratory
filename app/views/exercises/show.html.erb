@@ -9,23 +9,23 @@
 <% @stats = @exercise.guide.stats_for(current_user) if current_user && @exercise.guide %>
 
 <% if @exercise.navigable_parent.timed? && !current_user.teacher? %>
-    <%= render partial: 'layouts/timer', locals: {end_time: @exercise.navigable_parent.real_end_time(current_user)} %>
+  <%= render partial: 'layouts/timer', locals: {end_time: @exercise.navigable_parent.real_end_time(current_user)} %>
 <% end %>
 
 <% unless @exercise.input_kids? %>
-    <div class="row">
-      <div class="mu-inline-block-right hidden-xs">
-        <h1><%= language_icon @exercise.language %></h1>
-      </div>
-      <div class="mu-inline-block-left">
-        <h1>
-          <span class="hidden-xs"><%= t(:exercise_number, number: @exercise.number) %>:&nbsp;</span>
-          <span><%= @exercise.name %></span>
-          <%= teacher_info_button @exercise %>
-          <%= link_to_bibliotheca_exercise @exercise %>
-        </h1>
-      </div>
+  <div class="row">
+    <div class="mu-inline-block-right hidden-xs">
+      <h1><%= language_icon @exercise.language %></h1>
     </div>
+    <div class="mu-inline-block-left">
+      <h1>
+        <span class="hidden-xs"><%= t(:exercise_number, number: @exercise.number) %>:&nbsp;</span>
+        <span><%= @exercise.name %></span>
+        <%= teacher_info_button @exercise %>
+        <%= link_to_bibliotheca_exercise @exercise %>
+      </h1>
+    </div>
+  </div>
 <% end %>
 
 <div>
@@ -54,6 +54,10 @@
 </div>
 
 <%= content_for :no_container do %>
-    <%= render partial: 'layouts/modals/guide_corollary', locals: {guide: @guide} %>
-    <%= render partial: 'layouts/modals/new_message', locals: {exercise: @exercise} if should_render_message_input?(@exercise) %>
+  <% if @assignment.skipped? %>
+    <%= render partial: 'layouts/exercise_skipped' %>
+  <% end %>
+
+  <%= render partial: 'layouts/modals/guide_corollary', locals: {guide: @guide} %>
+  <%= render partial: 'layouts/modals/new_message', locals: {exercise: @exercise} if should_render_message_input?(@exercise) %>
 <% end if current_user? %>

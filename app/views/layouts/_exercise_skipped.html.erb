@@ -1,0 +1,28 @@
+<div class="modal fade mu-exercise-skipped" id="exercise-skipped" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title text-center title-font"><%= t :skipped_congratulations %></p>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <%= t :skipped_description %>
+          <%= link_to (t :skipped_solve_anyway), "", "data-dismiss" => "modal" %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="row">
+          <div class="col-md-12">
+            <%= next_exercise_button(@exercise) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $("#exercise-skipped").modal({
+    backdrop: 'static',
+    keyboard: false
+  });
+</script>

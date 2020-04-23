@@ -194,6 +194,10 @@ en:
   sign_in_action: sign in
   sign_out: Sign Out
   sign_up_date: User since
+  skipped: You are doing very well, so you've passed this exercise.
+  skipped_congratulations: Well done!
+  skipped_description: You are doing very well, so you've passed this exercise.
+  skipped_solve_anyway: Solve anyway
   solution: Solution
   solved: Solved
   solved_count: '%{count} solved'
