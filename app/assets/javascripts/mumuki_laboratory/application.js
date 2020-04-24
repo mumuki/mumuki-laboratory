@@ -26,6 +26,7 @@
 //= require codemirror-simple-mode.js
 //= require codemirror-autorefresh
 //= require codemirror-modes
+//= require talkify.min
 //= require analytics
 //= require hotjar
 //= require muvment
