@@ -313,7 +313,7 @@
 
                             <td valign="top" class="muMailTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
 
-                              © Copyright 2015-2018&nbsp;<a href="https://mumuki.org/home/">Mumuki Project</a><em>.</em><br>
+                              © Copyright 2015-<%= DateTime.now.year %>&nbsp;<a href="https://mumuki.org/home/">Mumuki Project</a><em>.</em><br>
                               <br>
                               <%= t :stop_emails? %><br>
                               <%= link_to t(:cancel_subscription), @organization.url_for("/user/unsubscribe?id=#{@unsubscribe_code}"), target: :_blank %>
