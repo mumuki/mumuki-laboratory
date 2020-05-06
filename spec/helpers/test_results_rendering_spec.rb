@@ -67,6 +67,15 @@ describe ContextualizationResultHelper do
           it { expect(html).to include "<strong class=\"example-title\">2 is 2</strong>" }
           it { expect(html).to include "<p>something went <em>really</em> wrong</p>" }
         end
+
+        context 'when markdown results with summary' do
+          let(:contextualization) { struct(
+            exercise: struct(hidden?: false),
+            test_results: [{title: 'foo is 2', status: :failed, result: 'foo is undefined', summary: {type: 'undefined_variable', summary: 'you are using things that are **not defined**'}}],
+            output_content_type: Mumukit::ContentType::Markdown) }
+
+          it { expect(html).to eq "" }
+        end
       end
     end
 
