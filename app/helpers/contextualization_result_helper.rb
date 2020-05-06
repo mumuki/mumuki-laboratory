@@ -25,6 +25,11 @@ module ContextualizationResultHelper
     end
   end
 
+  def render_test_result_summary_message(test_result)
+    # TODO markdown on summary message?
+    test_result.dig(:summary, :message)&.prepend(': ')
+  end
+
   def render_test_results(contextualization)
     if contextualization.test_results.present?
       template = contextualization.result.present? ? 'layouts/mixed_results' : 'layouts/test_results'
