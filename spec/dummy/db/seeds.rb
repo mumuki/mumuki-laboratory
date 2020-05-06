@@ -16,6 +16,12 @@ Organization.find_or_create_by!(name: 'private') do |org|
   org.public = false
 end
 
+  Organization.find_or_create_by!(name: 'primaria') do |org|
+    org.book = Book.find_by!(slug: 'mumukiproject/mumuki-libro-primaria')
+    org.login_methods = Mumukit::Login::Settings.login_methods
+    org.public = true
+  end
+
 Organization.find_or_create_by!(name: 'central')
 
 User.find_or_create_by!(uid: 'dev.student@mumuki.org') { |org| org.permissions = {student: 'central/*'} }
