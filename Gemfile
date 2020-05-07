@@ -29,3 +29,5 @@ group :development do
   gem 'codeclimate-test-reporter', require: nil
 end
 
+
+gem 'mumukit-bridge', github: 'mumuki/mumukit-bridge', branch: 'feature-test-summary'
