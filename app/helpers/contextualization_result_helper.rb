@@ -25,7 +25,7 @@ module ContextualizationResultHelper
     end
   end
 
-  def render_test_result_head(test_result)
+  def render_test_result_header(test_result)
     # TODO markdown on summary message?
     title = test_result[:title]
     summary_message = test_result.dig(:summary, :message)

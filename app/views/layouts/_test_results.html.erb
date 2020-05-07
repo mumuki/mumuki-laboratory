@@ -1,5 +1,5 @@
 <% if contextualization.single_visual_result? %>
-  <span class="text-danger"><%= render_test_result_head contextualization.test_results.first %></span>
+  <span class="text-danger"><%= render_test_result_header contextualization.test_results.first %></span>
   <%= contextualization.single_visual_result_html %>
 <% else %>
   <strong><%= t :test_results %>:</strong>
@@ -9,7 +9,7 @@
         <% if test_result[:status].failed? %>
           <span class="text-danger">
             <%= status_icon(test_result[:status]) %>
-            <%= render_test_result_head test_result %>
+            <%= render_test_result_header test_result %>
             <% unless contextualization.visible_success_output? %>
               <a data-toggle="collapse" href="#example-result-<%= index %>"  class="example-see-more"><%= t :view_details %></a>
             <% end %>
