@@ -1,4 +1,5 @@
 <% if contextualization.single_visual_result? %>
+  <span class="text-danger"><%= render_test_result_head contextualization.test_results.first %></span>
   <%= contextualization.single_visual_result_html %>
 <% else %>
   <strong><%= t :test_results %>:</strong>
