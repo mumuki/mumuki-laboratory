@@ -183,7 +183,7 @@ mumuki.load(function () {
       if (data.status === 'passed_with_warnings') {
         this._appendFirstExpectationHtml($failedSppechBubble, data);
       } else if (data.status === 'failed') {
-        this._appendFirstSummaryMessage($failedSppechBubble, data);
+        this._appendFirstSummaryMessage($bubble, $failedSppechBubble, data);
       }
       if (this._shouldDisplayDiscussionsLink(data.status)) {
         $bubble.append(discussionsLinkHtml);
@@ -199,10 +199,17 @@ mumuki.load(function () {
       $failedSppechBubble.append(data.expectations_html);
     },
 
-    _appendFirstSummaryMessage($failedSppechBubble, data) {
+    _appendFirstSummaryMessage($bubble, $failedSppechBubble, data) {
       let summary = data.test_results[0].summary;
       if (summary) {
-        $failedSppechBubble.append(summary.message);
+        $bubble.addClass('with-summary');
+        $failedSppechBubble.append(`
+        <div class="results-item">
+          <ul class="results-list">
+            <li>${summary.message}</li>
+          </ul>
+        </div>
+      `);
       }
     },
 
