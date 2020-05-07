@@ -25,9 +25,16 @@ module ContextualizationResultHelper
     end
   end
 
-  def render_test_result_summary_message(test_result)
+  def render_test_result_head(test_result)
     # TODO markdown on summary message?
-    test_result.dig(:summary, :message)&.prepend(': ')
+    title = test_result[:title]
+    summary_message = test_result.dig(:summary, :message)
+
+    if title.present?
+      %Q{<strong class="example-title">#{title}</strong>#{summary_message&.prepend(': ')}}.html_safe
+    elsif summary_message
+      %Q{<strong class="example-title">#{summary_message}</strong>}.html_safe
+    end
   end
 
   def render_test_results(contextualization)
