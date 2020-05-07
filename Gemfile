@@ -31,3 +31,4 @@ end
 
 
 gem 'mumukit-bridge', github: 'mumuki/mumukit-bridge', branch: 'feature-test-summary'
+gem 'mumuki-domain', github:  'mumuki/mumuki-domain', branch: 'chore-test-results-html-improvements'

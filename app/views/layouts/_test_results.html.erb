@@ -1,6 +1,6 @@
-<% if contextualization.single_visual_result? %>
-  <span class="text-danger"><%= render_test_result_header contextualization.test_results.first %></span>
-  <%= contextualization.single_visual_result_html %>
+<% if contextualization.single_visible_test_result? %>
+  <span class="text-danger"><%= render_test_result_header contextualization.first_test_result %></span>
+  <%= contextualization.first_test_result_html %>
 <% else %>
   <strong><%= t :test_results %>:</strong>
   <ul class="results-list">
@@ -22,7 +22,7 @@
         <% end %>
 
         <div class="example-result collapse <%= 'in' if contextualization.visible_success_output? %>" id="example-result-<%= index %>">
-          <%= contextualization.output_content_type.to_html test_result[:result] %>
+          <%= contextualization.test_result_html test_result %>
         </div>
       </li>
     <% end %>

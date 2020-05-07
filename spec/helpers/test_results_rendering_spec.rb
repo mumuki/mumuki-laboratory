@@ -35,10 +35,11 @@ describe ContextualizationResultHelper do
 
     context 'structured results' do
       context 'when single passed submission' do
-        let(:contextualization) { struct(
-          exercise: struct(hidden?: false),
-          test_results: [{title: '2 is 2', status: :passed, result: ''}],
-          output_content_type: Mumukit::ContentType::Plain) }
+        let(:language) { build(:language, output_content_type: :plain) }
+        let(:problem) { build(:problem, language: language) }
+        let(:contextualization) { Assignment.new(
+          exercise: problem,
+          test_results: [{title: '2 is 2', status: :passed, result: ''}]) }
 
         it { expect(html).to be_html_safe }
         it { expect(html).to include "<i class=\"fa fa-check-circle text-success status-icon\"></i>" }
@@ -47,10 +48,11 @@ describe ContextualizationResultHelper do
 
       context 'when single failed submission' do
         context 'when plain results' do
-          let(:contextualization) { struct(
-            exercise: struct(hidden?: false),
-            test_results: [{title: '2 is 2', status: :failed, result: 'something _went_ wrong'}],
-            output_content_type: Mumukit::ContentType::Plain) }
+          let(:language) { build(:language, output_content_type: :plain) }
+          let(:problem) { build(:problem, language: language) }
+          let(:contextualization) { Assignment.new(
+            exercise: problem,
+            test_results: [{title: '2 is 2', status: :failed, result: 'something _went_ wrong'}]) }
 
           it { expect(html).to include "<i class=\"fa fa-times-circle text-danger status-icon\"></i>" }
           it { expect(html).to include "<strong class=\"example-title\">2 is 2</strong>" }
@@ -58,31 +60,49 @@ describe ContextualizationResultHelper do
         end
 
         context 'when markdown results' do
-          let(:contextualization) { struct(
-            exercise: struct(hidden?: false),
-            test_results: [{title: '2 is 2', status: :failed, result: 'something went _really_ wrong'}],
-            output_content_type: Mumukit::ContentType::Markdown) }
+          let(:language) { build(:language, output_content_type: :markdown) }
+          let(:problem) { build(:problem, language: language) }
+          let(:contextualization) { Assignment.new(
+            exercise: problem,
+            test_results: [{title: '2 is 2', status: :failed, result: 'something went _really_ wrong'}]) }
 
           it { expect(html).to include "<i class=\"fa fa-times-circle text-danger status-icon\"></i>" }
           it { expect(html).to include "<strong class=\"example-title\">2 is 2</strong>" }
           it { expect(html).to include "<p>something went <em>really</em> wrong</p>" }
         end
 
-        context 'when markdown results with summary' do
-          let(:contextualization) { struct(
-            exercise: struct(hidden?: false),
-            test_results: [{title: 'foo is 2', status: :failed, result: 'foo is undefined', summary: {type: 'undefined_variable', summary: 'you are using things that are **not defined**'}}],
-            output_content_type: Mumukit::ContentType::Markdown) }
+        context 'when markdown results with summary and title' do
+          let(:language) { build(:language, output_content_type: :markdown) }
+          let(:problem) { build(:problem, language: language) }
+          let(:contextualization) { Assignment.new(
+            exercise: problem,
+            test_results: [{title: 'foo is 2', status: :failed, result: 'foo is undefined', summary: {type: 'undefined_variable', message: 'you are using things that are **not defined**'}}]) }
 
-          it { expect(html).to eq "" }
+          it { expect(html).to include '<strong class="example-title">foo is 2</strong>: you are using things that are **not defined**' }
+          it { expect(html).to include "<i class=\"fa fa-times-circle text-danger status-icon\"></i>" }
+          it { expect(html).to include '<p>foo is undefined</p>' }
+        end
+
+        context 'when markdown results with summary and no title' do
+          let(:language) { build(:language, output_content_type: :markdown) }
+          let(:problem) { build(:problem, language: language) }
+          let(:contextualization) { Assignment.new(
+            exercise: problem,
+            test_results: [{title: '', status: :failed, result: 'foo is undefined', summary: {type: 'undefined_variable', message: 'you are using things that are **not defined**'}}]) }
+
+          it { expect(html).to include '<strong class="example-title">you are using things that are **not defined**</strong>' }
+          it { expect(html).to include "<i class=\"fa fa-times-circle text-danger status-icon\"></i>" }
+          it { expect(html).to include '<p>foo is undefined</p>' }
         end
       end
     end
 
     context 'unstructured results' do
-      let(:contextualization) { struct(
-        exercise: struct(hidden?: false),
-        result_html: '<pre>ooops, something went wrong</pre>'.html_safe) }
+      let(:language) { build(:language, )}
+      let(:problem) { build(:problem, language: language) }
+      let(:contextualization) { Assignment.new(
+        exercise: problem,
+        result: 'ooops, something went wrong'.html_safe) }
 
       it { expect(html).to be_html_safe }
       it { expect(html).to include '<pre>ooops, something went wrong</pre>' }
