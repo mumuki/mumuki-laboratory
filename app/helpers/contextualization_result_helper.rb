@@ -1,10 +1,19 @@
 module ContextualizationResultHelper
-  def humanized_expectation_result_item(expectation_result)
-    %Q{<li>#{status_icon(expectation_result[:result])} #{humanized_expectation_explanation expectation_result}</li>}.html_safe
+  def humanized_expectation_result(expectation_result)
+    %Q{#{status_icon(expectation_result[:result])} #{humanized_message expectation_result[:explanation]}}.html_safe
   end
 
-  def humanized_expectation_explanation(expectation_result)
-    sanitized Mumukit::ContentType::Markdown.to_html(expectation_result[:explanation], one_liner: true)
+  def humanized_test_result(test_result)
+    {
+      title: humanized_message(test_result[:title]),
+      result: test_result[:result],
+      status: test_result[:status],
+      summary: humanized_message(test_result.dig(:summary, :message))
+    }
+  end
+
+  def humanized_tip(tip)
+    humanized_message tip
   end
 
   def render_feedback?(contextualization)
@@ -23,6 +32,10 @@ module ContextualizationResultHelper
     else
       contextualization.submission_status
     end
+  end
+
+  def humanized_message(message)
+    sanitized Mumukit::ContentType::Markdown.to_html(message, one_liner: true)
   end
 
   def render_test_result_header(test_result)

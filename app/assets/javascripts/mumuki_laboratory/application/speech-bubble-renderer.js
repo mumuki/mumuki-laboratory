@@ -21,21 +21,21 @@
       if (this.responseStatus() !== 'passed' && this.responseData.tips) {
         this._appendFirstTip()
       } else if (this.responseStatus() === 'failed') {
-        this._appendFirstSummaryMessage();
+        this._appendFirstFailedTestResultSummary();
       } else if (this.responseStatus() === 'passed_with_warnings') {
-        this._appendFirstExpectation();
+        this._appendFirstExpectationResult();
       }
     }
 
-    _appendFirstSummaryMessage() {
-      let summary = this.responseData.test_results[0].summary;
-      if (summary) {
-        this._appendResultItem(mumuki.kids.renderSpeechBubbleResultItem(summary.message));
+    _appendFirstFailedTestResultSummary() {
+      let failedTestResult = this.responseData.test_results.filter((it) => it.status !== 'failed')[0]
+      if (failedTestResult && failedTestResult.summary) {
+        this._appendResultItem(mumuki.kids.renderSpeechBubbleResultItem(failedTestResult.summary));
       }
     }
 
-    _appendFirstExpectation() {
-      this._appendResultItem(this.responseData.expectations_html);
+    _appendFirstExpectationResult() {
+      this._appendResultItem(mumuki.kids.renderSpeechBubbleResultItem(this.responseData.expectations[0]));
     }
 
     _appendFirstTip() {

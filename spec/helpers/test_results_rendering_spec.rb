@@ -7,8 +7,8 @@ describe ContextualizationResultHelper do
   helper ContextualizationResultHelper
 
 
-  describe 'humanized_expectation_result_item' do
-    let(:html) { humanized_expectation_result_item expectation_result }
+  describe 'humanized_expectation_result' do
+    let(:html) { humanized_expectation_result expectation_result }
 
     context 'plain explanation' do
       let(:expectation_result) { {result: :failed, explanation: 'you must delegate'} }

@@ -2,7 +2,7 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
   extend ActiveSupport::Concern
 
   included do
-    include ProgressBarHelper, ExerciseInputHelper
+    include ProgressBarHelper, ExerciseInputHelper, ContextualizationResultHelper
 
     before_action :set_guide_previously_done!
   end
@@ -24,9 +24,9 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
     results.merge!(
         button_html: render_results_button_html(assignment),
         title_html: render_results_title_html(assignment),
-        expectations_html: render_results_expectations_html(assignment),
-        tips: assignment.tips, # TODO markdown on summary message?
-        test_results: assignment.test_results) # TODO markdown on summary message?
+        expectations: humanized_expectations_results(assignment),
+        tips: humanized_tips(assignment),
+        test_results: humanized_test_results(assignment))
   end
 
   def progress_json
@@ -51,16 +51,23 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
                      locals: {assignment: assignment}
   end
 
-  def render_results_expectations_html(assignment)
-    render_to_string partial: 'exercise_solutions/expectations',
-                     locals: {assignment: assignment}
-  end
-
   def guide_finished_by_solution?
     !@guide_previously_done && @exercise.guide_done_for?(current_user)
   end
 
   def set_guide_previously_done!
     @guide_previously_done = @exercise.guide_done_for?(current_user)
+  end
+
+  def humanized_expectations_results(assignment)
+    assignment.humanized_expectation_results.map { |it| humanized_expectation_result it }
+  end
+
+  def humanized_tips(assignment)
+    assignment.tips.map { |it| humanized_tip it }
+  end
+
+  def humanized_test_results(assignment)
+    assignment.test_results.map { |it| humanized_test_result it }
   end
 end
