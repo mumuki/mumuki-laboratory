@@ -173,61 +173,11 @@ mumuki.load(function () {
     },
 
     _showMessageOnCharacterBubble: function (data) {
-      let $bubble = mumuki.kids._getCharacterBubble();
-      let $failedSpeechBubble = $bubble.find('.mu-kids-character-speech-bubble-failed');
-
-      $bubble.find('.mu-kids-character-speech-bubble-tabs').hide();
-      $bubble.find('.mu-kids-character-speech-bubble-normal').hide();
-      $failedSpeechBubble.show().html(data.title_html);
-      $bubble.addClass(data.status);
-
-
-      if (data.status !== 'passed' && data.tips) {
-        console.log(data.tips);
-        this._appendFirstTip($bubble, $failedSpeechBubble, data)
-      } else if (data.status === 'failed') {
-        this._appendFirstSummaryMessage($bubble, $failedSpeechBubble, data);
-      } else if (data.status === 'passed_with_warnings') {
-        this._appendFirstExpectation($failedSpeechBubble, data);
-      }
-
-      if (this._shouldDisplayDiscussionsLink(data.status)) {
-        $bubble.append(discussionsLinkHtml);
-      }
+      let renderer = new mumuki.kids.SpeechBubbleRenderer(mumuki.kids._getCharacterBubble());
+      renderer.setDiscussionsLinkHtml(discussionsLinkHtml);
+      renderer.setResponseData(data);
+      renderer.render();
       mumuki.kids._getOverlay().show();
-    },
-
-    _shouldDisplayDiscussionsLink: function (status) {
-      return ['failed', 'passed_with_warnings'].some(it => it === status);
-    },
-
-    _appendFirstSummaryMessage($bubble, $failedSpeechBubble, data) {
-      let summary = data.test_results[0].summary;
-      if (summary) {
-        $bubble.addClass('with-summary');
-        $failedSpeechBubble.append(`
-        <div class="results-item">
-          <ul class="results-list">
-            <li>${summary.message}</li>
-          </ul>
-        </div>
-      `);
-      }
-    },
-
-    _appendFirstExpectation($failedSpeechBubble, data) {
-      $failedSpeechBubble.append(data.expectations_html);
-    },
-
-    _appendFirstTip($bubble, $failedSpeechBubble, data) {
-      $bubble.addClass('with-summary');
-      $failedSpeechBubble.append(`
-      <div class="results-item">
-        <ul class="results-list">
-          <li>${data.tips[0]}</li>
-        </ul>
-      </div>
-    `);
     },
 
     _showOnSuccessPopup: function (data) {
