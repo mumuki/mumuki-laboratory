@@ -4,7 +4,7 @@
 <% else %>
   <strong><%= t :test_results %>:</strong>
   <ul class="results-list">
-    <% contextualization.test_results.each_with_index do |test_result, index| %>
+    <% contextualization.affable_test_results.each_with_index do |test_result, index| %>
       <li>
         <% if test_result[:status].failed? %>
           <span class="text-danger">

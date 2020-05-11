@@ -39,7 +39,3 @@ module ApplicationHelper
     }.html_safe
   end
 end
-
-def sanitized(html)
-  Mumukit::ContentType::Sanitizer.sanitize html
-end

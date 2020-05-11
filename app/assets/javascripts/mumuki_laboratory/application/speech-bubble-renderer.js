@@ -35,7 +35,7 @@
     }
 
     _appendFirstExpectationResult() {
-      this._appendResultItem(mumuki.kids.renderSpeechBubbleResultItem(this.responseData.expectations[0]));
+      this._appendResultItem(mumuki.kids.renderSpeechBubbleResultItem(this.responseData.expectations[0].explanation));
     }
 
     _appendFirstTip() {

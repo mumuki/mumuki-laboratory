@@ -5,8 +5,8 @@
     <% end %>
 
     <ul class="results-list">
-      <% assignment.humanized_expectation_results.each do |it| %>
-        <li><%= humanized_expectation_result it %></li>
+      <% assignment.affable_expectation_results.each do |it| %>
+        <li><%= render_affable_expectation_result it %></li>
       <% end %>
     </ul>
   </div>

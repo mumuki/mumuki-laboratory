@@ -1,19 +1,6 @@
 module ContextualizationResultHelper
-  def humanized_expectation_result(expectation_result)
-    %Q{#{status_icon(expectation_result[:result])} #{humanized_message expectation_result[:explanation]}}.html_safe
-  end
-
-  def humanized_test_result(test_result)
-    {
-      title: humanized_message(test_result[:title]),
-      result: test_result[:result],
-      status: test_result[:status],
-      summary: humanized_message(test_result.dig(:summary, :message))
-    }
-  end
-
-  def humanized_tip(tip)
-    humanized_message tip
+  def render_affable_expectation_result(affable_expectation_result)
+    %Q{#{status_icon(affable_expectation_result[:result])} #{affable_expectation_result[:explanation]}}.html_safe
   end
 
   def render_feedback?(contextualization)
@@ -34,19 +21,14 @@ module ContextualizationResultHelper
     end
   end
 
-  def humanized_message(message)
-    sanitized Mumukit::ContentType::Markdown.to_html(message, one_liner: true)
-  end
-
   def render_test_result_header(test_result)
-    # TODO markdown on summary message?
     title = test_result[:title]
-    summary_message = test_result.dig(:summary, :message)
+    summary = test_result[:summary]
 
     if title.present?
-      %Q{<strong class="example-title">#{title}</strong>#{summary_message&.prepend(': ')}}.html_safe
-    elsif summary_message
-      %Q{<strong class="example-title">#{summary_message}</strong>}.html_safe
+      %Q{<strong class="example-title">#{title}</strong>#{summary&.prepend(': ')}}.html_safe
+    elsif summary
+      %Q{<strong class="example-title">#{summary}</strong>}.html_safe
     end
   end
 

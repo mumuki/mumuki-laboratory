@@ -7,26 +7,19 @@ describe ContextualizationResultHelper do
   helper ContextualizationResultHelper
 
 
-  describe 'humanized_expectation_result' do
-    let(:html) { humanized_expectation_result expectation_result }
+  describe 'render_affable_expectation_result' do
+    let(:html) { render_affable_expectation_result expectation_result }
 
     context 'plain explanation' do
       let(:expectation_result) { {result: :failed, explanation: 'you must delegate'} }
 
-      it { expect(html).to eq '<li><i class="fa fa-times-circle text-danger status-icon"></i> you must delegate</li>' }
-
+      it { expect(html).to eq '<i class="fa fa-times-circle text-danger status-icon"></i> you must delegate' }
     end
 
     context 'html explanation' do
       let(:expectation_result) { {result: :failed, explanation: 'you must use <strong>if</strong>'} }
 
-      it { expect(html).to eq '<li><i class="fa fa-times-circle text-danger status-icon"></i> you must use <strong>if</strong></li>' }
-    end
-
-    context 'markdown explanation' do
-      let(:expectation_result) { {result: :failed, explanation: 'you must call `fooBar`'} }
-
-      it { expect(html).to eq '<li><i class="fa fa-times-circle text-danger status-icon"></i> you must call <code>fooBar</code></li>' }
+      it { expect(html).to eq '<i class="fa fa-times-circle text-danger status-icon"></i> you must use <strong>if</strong>' }
     end
   end
 
@@ -76,9 +69,9 @@ describe ContextualizationResultHelper do
           let(:problem) { build(:problem, language: language) }
           let(:contextualization) { Assignment.new(
             exercise: problem,
-            test_results: [{title: 'foo is 2', status: :failed, result: 'foo is undefined', summary: {type: 'undefined_variable', message: 'you are using things that are **not defined**'}}]) }
+            test_results: [{title: 'foo is 2', status: :failed, result: 'foo is undefined', summary: {type: 'undefined_variable', message: 'you are using things that are _not defined_'}}]) }
 
-          it { expect(html).to include '<strong class="example-title">foo is 2</strong>: you are using things that are **not defined**' }
+          it { expect(html).to include '<strong class="example-title">foo is 2</strong>: you are using things that are <em>not defined</em>' }
           it { expect(html).to include "<i class=\"fa fa-times-circle text-danger status-icon\"></i>" }
           it { expect(html).to include '<p>foo is undefined</p>' }
         end
@@ -88,9 +81,9 @@ describe ContextualizationResultHelper do
           let(:problem) { build(:problem, language: language) }
           let(:contextualization) { Assignment.new(
             exercise: problem,
-            test_results: [{title: '', status: :failed, result: 'foo is undefined', summary: {type: 'undefined_variable', message: 'you are using things that are **not defined**'}}]) }
+            test_results: [{title: '', status: :failed, result: 'foo is undefined', summary: {type: 'undefined_variable', message: 'you are using things that are _not defined_'}}]) }
 
-          it { expect(html).to include '<strong class="example-title">you are using things that are **not defined**</strong>' }
+          it { expect(html).to include '<strong class="example-title">you are using things that are <em>not defined</em></strong>' }
           it { expect(html).to include "<i class=\"fa fa-times-circle text-danger status-icon\"></i>" }
           it { expect(html).to include '<p>foo is undefined</p>' }
         end
