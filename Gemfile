@@ -3,14 +3,11 @@ gemspec
 
 ruby '~> 2.3'
 
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'add-verify-name-logic-to-user'
 gem 'puma'
 
 gem 'execjs'
 gem 'therubyracer', platforms: :ruby
 gem 'uglifier', '~> 2.7'
-
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'chore-solved_submissions'
 
 group :test do
   gem 'rspec-rails', '~> 3.6'
