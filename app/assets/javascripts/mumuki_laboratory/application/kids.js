@@ -174,16 +174,16 @@ mumuki.load(function () {
 
     _showMessageOnCharacterBubble: function (data) {
       let $bubble = mumuki.kids._getCharacterBubble();
-      let $failedSppechBubble = $bubble.find('.mu-kids-character-speech-bubble-failed');
+      let $failedSpeechBubble = $bubble.find('.mu-kids-character-speech-bubble-failed');
 
       $bubble.find('.mu-kids-character-speech-bubble-tabs').hide();
       $bubble.find('.mu-kids-character-speech-bubble-normal').hide();
-      $failedSppechBubble.show().html(data.title_html);
+      $failedSpeechBubble.show().html(data.title_html);
       $bubble.addClass(data.status);
       if (data.status === 'passed_with_warnings') {
-        this._appendFirstExpectationHtml($failedSppechBubble, data);
+        this._appendFirstExpectationHtml($failedSpeechBubble, data);
       } else if (data.status === 'failed') {
-        this._appendFirstSummaryMessage($bubble, $failedSppechBubble, data);
+        this._appendFirstSummaryMessage($bubble, $failedSpeechBubble, data);
       }
       if (this._shouldDisplayDiscussionsLink(data.status)) {
         $bubble.append(discussionsLinkHtml);
@@ -195,15 +195,15 @@ mumuki.load(function () {
       return ['failed', 'passed_with_warnings'].some(it => it === status);
     },
 
-    _appendFirstExpectationHtml($failedSppechBubble, data) {
-      $failedSppechBubble.append(data.expectations_html);
+    _appendFirstExpectationHtml($failedSpeechBubble, data) {
+      $failedSpeechBubble.append(data.expectations_html);
     },
 
-    _appendFirstSummaryMessage($bubble, $failedSppechBubble, data) {
+    _appendFirstSummaryMessage($bubble, $failedSpeechBubble, data) {
       let summary = data.test_results[0].summary;
       if (summary) {
         $bubble.addClass('with-summary');
-        $failedSppechBubble.append(`
+        $failedSpeechBubble.append(`
         <div class="results-item">
           <ul class="results-list">
             <li>${summary.message}</li>
