@@ -35,6 +35,7 @@ describe Api::UsersController, type: :controller, organization_workspace: :base 
     it { expect(User.count).to eq 2 }
     it { expect(User.last.student? 'test/_').to be true }
     it { expect(User.last.uid).to eq 'foo@bar.com' }
+    it { expect(User.last.verified_first_name).to eq 'foo' }
   end
 
 
