@@ -13,7 +13,7 @@ group :test do
   gem 'rspec-rails', '~> 3.6'
   gem 'factory_bot_rails'
   gem 'faker', '~> 1.5'
-  gem 'rake', '10.4.2'
+  gem 'rake', '~> 12.3'
   gem 'capybara', '~> 2.3.0'
 end
 
