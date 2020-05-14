@@ -55,15 +55,16 @@ describe ExerciseSolutionsController, organization_workspace: :test do
 
       it { expect(response.body).to json_eq({ status: :failed, guide_finished_by_solution: false },
                                             except: [:class_for_progress_list_item, :html, :remaining_attempts_html,
-                                                     :title_html, :button_html, :expectations_html, :test_results]) }
+                                                     :title_html, :button_html, :expectations, :test_results, :tips]) }
 
       it 'includes kids specific renders' do
         body = JSON.parse(response.body)
 
         expect(body.key?('button_html')).to be true
         expect(body.key?('title_html')).to be true
-        expect(body.key?('expectations_html')).to be true
+        expect(body.key?('expectations')).to be true
         expect(body.key?('test_results')).to be true
+        expect(body.key?('tips')).to be true
       end
     end
   end
