@@ -173,13 +173,17 @@ mumuki.load(function () {
     },
 
     _showMessageOnCharacterBubble: function (data) {
-      var $bubble = mumuki.kids._getCharacterBubble();
+      let $bubble = mumuki.kids._getCharacterBubble();
+      let $failedSpeechBubble = $bubble.find('.mu-kids-character-speech-bubble-failed');
+
       $bubble.find('.mu-kids-character-speech-bubble-tabs').hide();
       $bubble.find('.mu-kids-character-speech-bubble-normal').hide();
-      $bubble.find('.mu-kids-character-speech-bubble-failed').show().html(data.title_html);
+      $failedSpeechBubble.show().html(data.title_html);
       $bubble.addClass(data.status);
       if (data.status === 'passed_with_warnings') {
-        $bubble.find('.mu-kids-character-speech-bubble-failed').append(data.expectations_html);
+        this._appendFirstExpectationHtml($failedSpeechBubble, data);
+      } else if (data.status === 'failed') {
+        this._appendFirstSummaryMessage($bubble, $failedSpeechBubble, data);
       }
       if (this._shouldDisplayDiscussionsLink(data.status)) {
         $bubble.append(discussionsLinkHtml);
@@ -189,6 +193,24 @@ mumuki.load(function () {
 
     _shouldDisplayDiscussionsLink: function (status) {
       return ['failed', 'passed_with_warnings'].some(it => it === status);
+    },
+
+    _appendFirstExpectationHtml($failedSpeechBubble, data) {
+      $failedSpeechBubble.append(data.expectations_html);
+    },
+
+    _appendFirstSummaryMessage($bubble, $failedSpeechBubble, data) {
+      let summary = data.test_results[0].summary;
+      if (summary) {
+        $bubble.addClass('with-summary');
+        $failedSpeechBubble.append(`
+        <div class="results-item">
+          <ul class="results-list">
+            <li>${summary.message}</li>
+          </ul>
+        </div>
+      `);
+      }
     },
 
     _showOnSuccessPopup: function (data) {

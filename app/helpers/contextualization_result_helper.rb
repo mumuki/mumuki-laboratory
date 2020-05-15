@@ -25,6 +25,18 @@ module ContextualizationResultHelper
     end
   end
 
+  def render_test_result_header(test_result)
+    # TODO markdown on summary message?
+    title = test_result[:title]
+    summary_message = test_result.dig(:summary, :message)
+
+    if title.present?
+      %Q{<strong class="example-title">#{title}</strong>#{summary_message&.prepend(': ')}}.html_safe
+    elsif summary_message
+      %Q{<strong class="example-title">#{summary_message}</strong>}.html_safe
+    end
+  end
+
   def render_test_results(contextualization)
     if contextualization.test_results.present?
       template = contextualization.result.present? ? 'layouts/mixed_results' : 'layouts/test_results'

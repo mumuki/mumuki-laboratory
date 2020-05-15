@@ -25,7 +25,7 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
         button_html: render_results_button_html(assignment),
         title_html: render_results_title_html(assignment),
         expectations_html: render_results_expectations_html(assignment),
-        test_results: assignment.test_results)
+        test_results: assignment.test_results) # TODO markdown on summary message?
   end
 
   def progress_json
