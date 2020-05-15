@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   include Mumuki::Laboratory::Controllers::EmbeddedMode
 
   before_action :set_current_organization!
+  before_action :validate_enabled_organization!
   before_action :validate_archived_organization!
   before_action :set_locale!
   before_action :ensure_user_enabled!, if: :current_user?
@@ -81,7 +82,11 @@ class ApplicationController < ActionController::Base
   end
 
   def validate_archived_organization!
-    raise Mumuki::Domain::GoneError if Organization.current.archived? && !current_user.teacher?
+    raise Mumuki::Domain::ArchivedOrganizationError if Organization.current.archived? && !current_user.teacher?
+  end
+
+  def validate_enabled_organization!
+    raise Mumuki::Domain::DisabledOrganizationError if Organization.current.disabled? && !current_user.teacher?
   end
 
   def set_locale!

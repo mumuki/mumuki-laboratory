@@ -16,6 +16,8 @@ module Mumuki::Laboratory::Controllers::DynamicErrors
     rescue_from Mumuki::Domain::BlockedForumError, with: :blocked_forum
     rescue_from Mumuki::Domain::DisabledError, with: :disabled
     rescue_from ActiveRecord::RecordInvalid, with: :bad_record
+    rescue_from Mumuki::Domain::ArchivedOrganizationError, with: :archived_organization
+    rescue_from Mumuki::Domain::DisabledOrganizationError, with: :disabled_organization
   end
 
   def bad_record(exception)
@@ -52,6 +54,14 @@ module Mumuki::Laboratory::Controllers::DynamicErrors
 
   def gone
     render_error 'gone', 410
+  end
+
+  def archived_organization
+    render_error 'archived_organization', 410
+  end
+
+  def disabled_organization
+    render_error 'disabled_organization', 403
   end
 
   def render_error(template, status, options={})
