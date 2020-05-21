@@ -173,7 +173,7 @@ mumuki.load(function () {
     },
 
     _showMessageOnCharacterBubble: function (data) {
-      let renderer = new mumuki.kids.SpeechBubbleRenderer(mumuki.kids._getCharacterBubble());
+      const renderer = new mumuki.kids.SpeechBubbleRenderer(mumuki.kids._getCharacterBubble());
       renderer.setDiscussionsLinkHtml(discussionsLinkHtml);
       renderer.setResponseData(data);
       renderer.render();

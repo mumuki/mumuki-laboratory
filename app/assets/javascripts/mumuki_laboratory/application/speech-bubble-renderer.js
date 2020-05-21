@@ -28,7 +28,7 @@
     }
 
     _appendFirstFailedTestResultSummary() {
-      let failedTestResult = this.responseData.test_results.filter((it) => it.status !== 'failed')[0]
+      const failedTestResult = this.responseData.test_results.filter((it) => it.status !== 'failed')[0]
       if (failedTestResult && failedTestResult.summary) {
         this._appendResultItem(mumuki.kids.renderSpeechBubbleResultItem(failedTestResult.summary));
       }
