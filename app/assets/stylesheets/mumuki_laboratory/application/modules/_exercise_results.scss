@@ -10,6 +10,9 @@
 ul.results-list {
   list-style-type: none;
   padding-left: 10px;
+  li {
+    text-transform: capitalize
+  }
 }
 
 .results-list pre {
