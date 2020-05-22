@@ -206,22 +206,29 @@ which are granted to be safe and stable.
 
 ### Bridge Response Format
 
-```json
+```javascript
 {
-  "status": "failed",
-  "guide_finished_by_solution": false,
-  "class_for_progress_list_item":"progress-list-item text-center danger active",
-  "html":"...",
-  "title_html":"...",
-  "button_html":"...",
-  "expectations_html":"...",
-  "remaining_attempts_html":null,
-  "test_results":[
-      {
-        "title":null,
-        "status":"failed",
-        "result":"..."
-      }
+  "status": "passed|passed_with_warnings|failed",
+  "guide_finished_by_solution": "boolean",
+  "class_for_progress_list_item": "string",
+  "html": "string",
+  "remaining_attempts_html": "string" ,
+  "title_html": "string",                         // kids-only
+  "button_html": "string",                        // kids-only
+  "expectations": [                               // kids-only
+    {
+      "status": "passed|failed",
+      "explanation": "string"
+    }
+  ],
+  "tips": [ "string" ],                           // kids-only
+  "test_results": [                               // kids-only
+    {
+      "title": "string",
+      "status": "passed|failed",
+      "result": "string",
+      "summary": "string"
+    }
   ]
 }
 ```
@@ -469,7 +476,7 @@ POST /organization/:id/courses/
 
 ```json
 {
-   "name":"....",
+   "name": "....",
 }
 ```
 
@@ -545,7 +552,7 @@ Sample response body:
 ```json
 {
   "organizations": [
-    { "name": "academy", "contact_email": "a@a.com", "locale": "es-AR", "login_methods": ["facebook"], "books": ["libro"], "public": true, "logo_url":"http://..." },
+    { "name": "academy", "contact_email": "a@a.com", "locale": "es-AR", "login_methods": ["facebook"], "books": ["libro"], "public": true, "logo_url": "http://..." },
     { "name": "alcal", "contact_email": "b@b.com", "locale": "en-US", "login_methods": ["facebook", "github"], "books": ["book"], "public": false }
   ]
 }
@@ -561,7 +568,7 @@ get /organizations/:name
 Sample response body:
 
 ```json
-{ "name": "academy", "contact_email": "a@a.com", "locale": "es-AR", "login_methods": ["facebook"], "books": ["libro"], "public": true, "logo_url":"http://..." }
+{ "name": "academy", "contact_email": "a@a.com", "locale": "es-AR", "login_methods": ["facebook"], "books": ["libro"], "public": true, "logo_url": "http://..." }
 ```
 **Minimal permission**: `janitor` of the organization.
 
