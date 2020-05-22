@@ -25,6 +25,6 @@ group :development do
   gem 'pry-stack_explorer'
   gem 'binding_of_caller'
   gem 'i18n-tasks', '~> 0.8.3'
-  gem 'web-console'
+  gem 'web-console', '~> 3.7.0'
   gem 'codeclimate-test-reporter', require: nil
 end
