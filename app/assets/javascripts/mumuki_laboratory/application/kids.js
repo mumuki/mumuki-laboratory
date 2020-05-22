@@ -169,11 +169,11 @@ mumuki.load(function () {
       $bubble.find('.mu-kids-character-speech-bubble-failed').hide();
       $bubble.find('.mu-kids-discussion-link').remove();
       Object.keys(mumuki.kids.resultAction).forEach($bubble.removeClass.bind($bubble));
-      mumuki.kids._getOverlay().hide();
+      mumuki.kids._getOverlay().hide()
     },
 
     _showMessageOnCharacterBubble: function (data) {
-      const renderer = new mumuki.kids.SpeechBubbleRenderer(mumuki.kids._getCharacterBubble());
+      const renderer = new mumuki.renderers.SpeechBubbleRenderer(mumuki.kids._getCharacterBubble());
       renderer.setDiscussionsLinkHtml(discussionsLinkHtml);
       renderer.setResponseData(data);
       renderer.render();

@@ -191,6 +191,9 @@ which are granted to be safe and stable.
   * `scaleBlocksArea`
   * `scaleState`
   * `showResult`
+* `mumuki.renderers`
+  * `SpeechBubbleRenderer`
+  * `renderSpeechBubbleResultItem`
 * `mumuki.locale`
 * `mumuki.MultipleScenarios`
   * `scenarios`

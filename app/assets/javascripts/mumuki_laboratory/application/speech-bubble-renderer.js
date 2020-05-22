@@ -9,7 +9,7 @@
         </div>`;
   }
 
-  // A mumuki.kids.SpeechBubbleRenderer allows to configure an speech bubble
+  // A mumuki.renderers.SpeechBubbleRenderer allows to configure a kids speech bubble
   // with the data of a test response from bridge
   class SpeechBubbleRenderer {
     constructor($bubble) {
@@ -18,28 +18,28 @@
     }
 
     _chooseResultItem() {
-      if (this.responseStatus() !== 'passed' && this.responseData.tips) {
+      if (this._responseStatus() !== 'passed' && this._hasTips()) {
         this._appendFirstTip()
-      } else if (this.responseStatus() === 'failed') {
+      } else if (this._responseStatus() === 'failed') {
         this._appendFirstFailedTestResultSummary();
-      } else if (this.responseStatus() === 'passed_with_warnings') {
+      } else if (this._responseStatus() === 'passed_with_warnings') {
         this._appendFirstExpectationResult();
       }
     }
 
     _appendFirstFailedTestResultSummary() {
-      const failedTestResult = this.responseData.test_results.filter((it) => it.status !== 'failed')[0]
+      const failedTestResult = this._failedTestResults()[0]
       if (failedTestResult && failedTestResult.summary) {
-        this._appendResultItem(mumuki.kids.renderSpeechBubbleResultItem(failedTestResult.summary));
+        this._appendResultItem(mumuki.renderers.renderSpeechBubbleResultItem(failedTestResult.summary));
       }
     }
 
     _appendFirstExpectationResult() {
-      this._appendResultItem(mumuki.kids.renderSpeechBubbleResultItem(this.responseData.expectations[0].explanation));
+      this._appendResultItem(mumuki.renderers.renderSpeechBubbleResultItem(this.responseData.expectations[0].explanation));
     }
 
     _appendFirstTip() {
-      this._appendResultItem(mumuki.kids.renderSpeechBubbleResultItem(this.responseData.tips[0]));
+      this._appendResultItem(mumuki.renderers.renderSpeechBubbleResultItem(this.responseData.tips[0]));
     }
 
     _appendResultItem(item) {
@@ -65,6 +65,14 @@
       return this.responseData.status;
     }
 
+    _hasTips() {
+      return this.responseData.tips && this.responseData.tips.length
+    }
+
+    _failedTestResults() {
+      return this.responseData.test_results.filter((it) => it.status === 'failed');
+    }
+
     setDiscussionsLinkHtml(discussionsLinkHtml) {
       this.discussionsLinkHtml = discussionsLinkHtml;
     }
@@ -79,13 +87,13 @@
       this.$bubble.find('.mu-kids-character-speech-bubble-tabs').hide();
       this.$bubble.find('.mu-kids-character-speech-bubble-normal').hide();
       this.$failedArea.show().html(this.responseData.title_html);
-      this._addClass(this.responseStatus());
+      this._addClass(this._responseStatus());
       this._chooseResultItem();
       this._appendDiscussionsLinkHtml();
     }
   }
 
-  mumuki.kids = mumuki.kids || {};
-  mumuki.kids.SpeechBubbleRenderer = SpeechBubbleRenderer;
-  mumuki.kids.renderSpeechBubbleResultItem = renderSpeechBubbleResultItem;
+  mumuki.renderers = mumuki.renderers || {};
+  mumuki.renderers.SpeechBubbleRenderer = SpeechBubbleRenderer;
+  mumuki.renderers.renderSpeechBubbleResultItem = renderSpeechBubbleResultItem;
 })(mumuki)
