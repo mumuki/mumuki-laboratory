@@ -22,14 +22,7 @@ module ContextualizationResultHelper
   end
 
   def render_test_result_header(test_result)
-    title = test_result[:title]
-    summary = test_result[:summary]
-
-    if title.present?
-      %Q{<strong class="example-title">#{title}</strong>#{summary&.prepend(': ')}}.html_safe
-    elsif summary
-      %Q{<strong class="example-title">#{summary}</strong>}.html_safe
-    end
+    [test_result[:title].presence, test_result[:summary]].compact.join(': ').html_safe
   end
 
   def render_test_results(contextualization)

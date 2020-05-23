@@ -1,13 +1,15 @@
 <% if contextualization.single_visible_test_result? %>
-  <span class="text-danger"><%= render_test_result_header contextualization.first_test_result %></span>
-  <%= contextualization.first_test_result_html %>
+  <div class="mu-single-test-result">
+    <h5 class="text-danger mu-test-result-header"><%= render_test_result_header contextualization.affable_test_results.first %></h5>
+    <%= contextualization.first_test_result_html %>
+  </div>
 <% else %>
   <strong><%= t :test_results %>:</strong>
-  <ul class="results-list">
+  <ul class="results-list mu-multiple-test-results">
     <% contextualization.affable_test_results.each_with_index do |test_result, index| %>
       <li>
         <% if test_result[:status].failed? %>
-          <span class="text-danger">
+          <span class="text-danger mu-test-result-header">
             <%= status_icon(test_result[:status]) %>
             <%= render_test_result_header test_result %>
             <% unless contextualization.visible_success_output? %>
@@ -15,7 +17,7 @@
             <% end %>
           </span>
         <% else %>
-          <span class="text-success example-title">
+          <span class="text-success mu-test-result-header">
             <%= status_icon(test_result[:status]) %>
             <%= test_result[:title] %>
           </span>

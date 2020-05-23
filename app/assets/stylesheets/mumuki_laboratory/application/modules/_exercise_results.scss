@@ -30,3 +30,11 @@ ul.results-list {
     color: white;
   }
 }
+
+.mu-single-test-result {
+  .error-text, /* backward compatibility with gobstones runner */
+  .mu-test-result-header {
+    display: block;
+    line-height: 25px;
+  }
+}
