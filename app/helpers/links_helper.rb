@@ -14,7 +14,7 @@ module LinksHelper
   end
 
   def link_to_status_codes(code)
-    "<a href='https://es.wikipedia.org/wiki/Anexo:C%C3%B3digos_de_estado_HTTP'> #{I18n.t("error_#{code}")} </a>"
+    "<a href='https://es.wikipedia.org/wiki/Anexo:C%C3%B3digos_de_estado_HTTP' target='_blank'> #{I18n.t("error_#{code}")} </a>"
   end
 
   def url_for_application(app_name)
