@@ -7,6 +7,7 @@ class InvitationsController < ApplicationController
 
   skip_before_action :validate_user_profile!
   skip_before_action :authorize_if_private!
+  skip_before_action :validate_active_organization!
 
   def show
     redirect_to_organization! if current_user.student_of? @invitation.course
