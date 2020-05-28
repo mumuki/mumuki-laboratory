@@ -12,7 +12,7 @@ OmniAuth.config.mock_auth[:developer] =
   OmniAuth::AuthHash.new provider: 'developer',
                          uid: 'johndoe@test.com',
                          credentials: {},
-                         info: {first_name: 'John', last_name: 'Doe', name: 'John Doe', nickname: 'johndoe'}
+                         info: { first_name: 'John', last_name: 'Doe', name: 'John Doe', nickname: 'johndoe', image: 'user_shape.png' }
 
 def set_current_user!(user)
   allow_any_instance_of(ApplicationController).to receive(:current_user_uid).and_return(user.uid)

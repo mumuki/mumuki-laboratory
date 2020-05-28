@@ -28,3 +28,5 @@ User.find_or_create_by!(uid: 'dev.student@mumuki.org') { |org| org.permissions =
 User.find_or_create_by!(uid: 'dev.teacher@mumuki.org') { |org| org.permissions = {teacher: 'private/*'} }
 User.find_or_create_by!(uid: 'dev.admin@mumuki.org') { |org| org.permissions = {admin: '*/*'} }
 User.find_or_create_by!(uid: 'dev.owner@mumuki.org') { |org| org.permissions = {owner: '*/*'} }
+
+Avatar.create!(image_url: 'user_shape.png')
