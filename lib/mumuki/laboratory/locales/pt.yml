@@ -57,9 +57,10 @@ pt:
   day: Dia
   days: Dias
   description: Descrição
-  destroy: Excluir
   destroy_message: excluir a mensagem
+  destroy: Excluir
   details: Detalhes
+  disabled_explanation: Você está tentando acessar um recurso que foi desativado ou removido permanentemente
   discussion_updated: Consulta actualizada
   discussions: Consultas
   download: Faça o download do que você fez

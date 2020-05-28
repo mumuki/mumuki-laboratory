@@ -29,6 +29,6 @@ feature 'disable user flow', organization_workspace: :test do
 
       expect(page).to_not have_text('ム mumuki')
       expect(page).to_not have_text(current_organization.book.name)
-      expect(page).to have_text('You are not allowed to see this content')
+      expect(page).to have_text('You are trying to visit a permamently disabled or deleted resource')
     end
 end

@@ -60,9 +60,10 @@ es:
   day: Día
   days: Días
   description: Descripción
-  destroy: Eliminar
   destroy_message: eliminar el mensaje
+  destroy: Eliminar
   details: Detalles
+  disabled_explanation: Estás intentando acceder a un recurso que fue deshabilitado o eliminado de forma permamente
   discussion_updated: Consulta actualizada
   discussions: Consultas
   dont_leave_us: ¡No nos abandones! Aprender a programar es divertido. Sólo tenés que seguir practicando.

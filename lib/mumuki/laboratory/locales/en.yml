@@ -54,8 +54,9 @@ en:
   created_at: Created at
   date: Date
   description: Description
-  destroy: Destroy
   destroy_message: delete the message
+  destroy: Destroy
+  disabled_explanation: You are trying to visit a permamently disabled or deleted resource
   discussion_updated: Discussion updated
   discussions: Discussions
   dont_leave_us: Don't leave us! Learning is fun. You just have to keep at it.
