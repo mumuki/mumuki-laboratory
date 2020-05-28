@@ -1,10 +1,6 @@
 module ContextualizationResultHelper
-  def humanized_expectation_result_item(expectation_result)
-    %Q{<li>#{status_icon(expectation_result[:result])} #{humanized_expectation_explanation expectation_result}</li>}.html_safe
-  end
-
-  def humanized_expectation_explanation(expectation_result)
-    sanitized Mumukit::ContentType::Markdown.to_html(expectation_result[:explanation], one_liner: true)
+  def render_affable_expectation_result(affable_expectation_result)
+    %Q{#{status_icon(affable_expectation_result[:result])} #{affable_expectation_result[:explanation]}}.html_safe
   end
 
   def render_feedback?(contextualization)
@@ -26,15 +22,7 @@ module ContextualizationResultHelper
   end
 
   def render_test_result_header(test_result)
-    # TODO markdown on summary message?
-    title = test_result[:title]
-    summary_message = test_result.dig(:summary, :message)
-
-    if title.present?
-      %Q{<strong class="example-title">#{title}</strong>#{summary_message&.prepend(': ')}}.html_safe
-    elsif summary_message
-      %Q{<strong class="example-title">#{summary_message}</strong>}.html_safe
-    end
+    [test_result[:title].presence, test_result[:summary]].compact.join(': ').html_safe
   end
 
   def render_test_results(contextualization)

@@ -10,6 +10,9 @@
 ul.results-list {
   list-style-type: none;
   padding-left: 10px;
+  li:first-letter {
+    text-transform: capitalize
+  }
 }
 
 .results-list pre {
@@ -25,5 +28,13 @@ ul.results-list {
 
   &:hover, &:focus {
     color: white;
+  }
+}
+
+.mu-single-test-result {
+  .error-text, /* backward compatibility with gobstones runner */
+  .mu-test-result-header {
+    display: block;
+    line-height: 25px;
   }
 }
