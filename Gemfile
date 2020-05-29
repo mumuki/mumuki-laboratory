@@ -9,8 +9,6 @@ gem 'execjs'
 gem 'therubyracer', platforms: :ruby
 gem 'uglifier', '~> 2.7'
 
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'chore-avatar_in_resource_hash'
-
 group :test do
   gem 'rspec-rails', '~> 3.6'
   gem 'factory_bot_rails'
@@ -31,4 +29,4 @@ group :development do
   gem 'codeclimate-test-reporter', require: nil
 end
 
-gem 'mumuki-domain', github:  'mumuki/mumuki-domain', ref: 'a4ce311bb49a9227bbf7f06ef6e0fddd908f4393'
+gem 'mumuki-domain', github:  'mumuki/mumuki-domain'
