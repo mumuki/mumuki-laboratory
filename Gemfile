@@ -9,6 +9,8 @@ gem 'execjs'
 gem 'therubyracer', platforms: :ruby
 gem 'uglifier', '~> 2.7'
 
+gem 'mumukit-login', github: 'mumuki/mumukit-login', branch: 'add-mucookie-store'
+
 group :test do
   gem 'rspec-rails', '~> 3.6'
   gem 'factory_bot_rails'
