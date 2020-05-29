@@ -64,6 +64,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def from_sessions?
+    params['controller'] == 'login'
+  end
+
   def login_settings
     Organization.current.login_settings
   end
