@@ -1,8 +1,4 @@
 module Mumuki::Laboratory::Controllers::Authorization
-  def from_sessions?
-    params['controller'] == 'login'
-  end
-
   def authorize_if_private!
     return if Organization.current.public? || from_sessions?
     authorize! :student

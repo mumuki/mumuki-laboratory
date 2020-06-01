@@ -14,6 +14,7 @@ module Mumuki::Laboratory::Controllers::DynamicErrors
     rescue_from Mumuki::Domain::UnauthorizedError, with: :unauthorized
     rescue_from Mumuki::Domain::GoneError, with: :gone
     rescue_from Mumuki::Domain::BlockedForumError, with: :blocked_forum
+    rescue_from Mumuki::Domain::DisabledError, with: :disabled
     rescue_from ActiveRecord::RecordInvalid, with: :bad_record
   end
 
@@ -39,6 +40,10 @@ module Mumuki::Laboratory::Controllers::DynamicErrors
     message = "The operation on organization #{Organization.current} was forbidden to user #{current_user.uid} with permissions #{current_user.permissions}"
     Rails.logger.info message
     render_error 'forbidden', 403, locals: { explanation: :forbidden_explanation }, error_message: message
+  end
+
+  def disabled
+    render_error 'forbidden', 403, locals: { explanation: :disabled_explanation }
   end
 
   def blocked_forum
