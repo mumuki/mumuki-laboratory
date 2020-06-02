@@ -1,5 +1,5 @@
 module Mumuki
   module Laboratory
-    VERSION = '7.4.3'
+    VERSION = '7.5.0'
   end
 end
