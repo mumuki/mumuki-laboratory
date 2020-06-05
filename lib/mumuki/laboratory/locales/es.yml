@@ -260,6 +260,7 @@ es:
   unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no iniciaste sesión.
   uncategorized: No categorizado
   undo_upvote: No es útil
+  unspecified: Prefiero no decirlo
   unmeet_expectations: Objetivos que no se cumplieron
   unsubscribe: Dejar de recibir notificaciones
   unsubscribed_successfully: Te desuscribiste exitosamente de los recordatorios.

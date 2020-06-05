@@ -248,6 +248,7 @@ pt:
   to_solved: Marcar como resolvida
   unauthorized_explanation: Opa! Isso é o que é conhecido como %{error}, ou seja, você não fez logon.
   uncategorized: Não classificado
+  unspecified: Eu preferiria não dizer
   unmeet_expectations: Objetivos que não foram atendidos
   unsubscribe: Cancelar subscrição
   upload_solution: Carregar solução
