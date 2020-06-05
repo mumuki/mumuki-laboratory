@@ -7,3 +7,7 @@
     <%= image_tag @user.profile_picture, class: 'mu-user-avatar', id: 'mu-user-avatar' %>
   </div>
 </div>
+
+<%= content_for :no_container do %>
+    <%= render partial: 'layouts/modals/avatar_picker' %>
+<% end %>
