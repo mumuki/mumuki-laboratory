@@ -85,12 +85,16 @@ var mumuki = mumuki || {};
     updateCodeMirrorLanguage();
     onSelectUpdateCodeMirror();
 
-    $('.editor-reset').click(function () {
-      resetEditor();
+    $('.editor-reset').click(function (event) {
+      event.stopPropagation();
+      const selection = confirm(this.getAttribute('data-confirm'));
+      if(selection) resetEditor();
     });
+
     $('.editor-resize').click(function () {
       toggleFullscreen();
     });
+
     $('.editor-format').click(function (){
       formatContent();
     });
