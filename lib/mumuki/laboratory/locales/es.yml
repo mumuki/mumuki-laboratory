@@ -33,6 +33,7 @@ es:
   chapters: Capítulos
   chapter_finished_html: ¡Terminaste %{chapter}! ¡Felicitaciones!
   chapter_number: 'Capítulo %{number}'
+  choose_your_avatar: Elegí tu avatar
   classroom_ui: Aula
   clear_console: Reiniciar consola
   closed: Cerrada
