@@ -227,7 +227,6 @@ en:
   tell_us_if_our_error: If you think this is our fault, %{issues}
   terms_and_conditions: Terms and conditions
   test_results: Test results
-  test_results: Tests results
   time_ago: "%{time} ago"
   time_left: You have
   title: Title
@@ -237,6 +236,7 @@ en:
   to_solved: Mark as solved
   unauthorized_explanation: You have no permissions for this content. Maybe you logged in with another account.
   undo_upvote: Undo upvote
+  unspecified: I'd rather not say
   unmeet_expectations: "Goals that weren't met"
   unsubscribe: Unsubscribe
   unsubscribed_successfully: You have successfully unsubscribed from reminders.
