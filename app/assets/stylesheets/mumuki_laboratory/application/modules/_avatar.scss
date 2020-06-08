@@ -3,3 +3,12 @@
   top: 100px;
   right: 15px;
 }
+
+.avatar-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+  padding: 15px;
+}
