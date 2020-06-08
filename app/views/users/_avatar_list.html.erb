@@ -1,6 +1,7 @@
 <div class="row">
   <div class="avatar-list">
     <% avatars_for(current_user).sort_by(&:id).each do |it| %>
+      <img src="<%= it.image_url %>" alt="<%= it.description %>" class='avatar-item'>
     <% end %>
   </div>
 </div>
