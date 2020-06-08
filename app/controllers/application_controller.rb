@@ -22,7 +22,8 @@ class ApplicationController < ActionController::Base
 
   after_action :leave_organization!
 
-  helper_method :login_button,
+  helper_method :current_workspace,
+                :login_button,
                 :notifications_count,
                 :user_notifications_path,
                 :has_notifications?,
@@ -60,6 +61,10 @@ class ApplicationController < ActionController::Base
   # or raises a not found error if unused
   def redirect_to_usage(content)
     raise Mumuki::Domain::NotFoundError unless content.usage_in_organization.try { |usage| redirect_to usage }
+  end
+
+  def current_workspace
+    Mumuki::Domain::Workspace.new(current_user, Organization.current)
   end
 
   private
