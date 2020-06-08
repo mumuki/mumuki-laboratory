@@ -6,6 +6,6 @@ module WithUserParams
   end
 
   def permissible_params
-    User.profile_fields
+    User.profile_fields << :avatar_id
   end
 end
