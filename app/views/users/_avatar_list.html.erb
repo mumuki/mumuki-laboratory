@@ -3,5 +3,9 @@
     <% avatars_for(current_user).sort_by(&:id).each do |it| %>
       <img src="<%= it.image_url %>" alt="<%= it.description %>" avatar_id="<%= it.id %>" class='avatar-item'>
     <% end %>
+
+    <% if @user.image_url %>
+      <%= image_tag @user.image_url, class: 'avatar-item' %>
+    <% end %>
   </div>
 </div>
