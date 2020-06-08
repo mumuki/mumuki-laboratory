@@ -1,4 +1,6 @@
 <div class="row">
   <div class="avatar-list">
+    <% avatars_for(current_user).sort_by(&:id).each do |it| %>
+    <% end %>
   </div>
 </div>
