@@ -8,10 +8,10 @@ mumuki.load(function() {
   $("#user-form").on('submit', function(){
     if (!avatar_id) {
       const image_url = $('#user-avatar').attr('src');
-      $(this).append('<input type="hidden" name="user[image_url]" value="' + image_url + '"/>');
+      $(this).append(`<input type="hidden" name="user[image_url]" value="${image_url}"/>`);
     }
 
-    $(this).append('<input type="hidden" name="user[avatar_id]" value="' + avatar_id + '"/>');
+    $(this).append(`<input type="hidden" name="user[avatar_id]" value="${avatar_id}"/>`);
   });
 
   $('.avatar-item').on('click', function(){
