@@ -6,6 +6,7 @@ $da-font-path: asset-path('assets');
 @import "codemirror/codemirror.min";
 @import "codemirror/show-hint.min";
 @import "application/vendor";
+@import "application/disabled";
 @import "application/tooltip";
 @import "application/hovers";
 @import "application/mixins";

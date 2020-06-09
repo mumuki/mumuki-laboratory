@@ -32,8 +32,8 @@
 
   <h2><%= t(:chapters) %></h2>
 
-  <% @book.enabled_chapters_in(current_workspace).each do |it| %>
-    <div class="chapter">
+  <% @book.chapter_visibilities_in(current_workspace).each do |it, enabled| %>
+    <div class="chapter <%= enabled ? '' : 'mu-disabled' %>">
       <h3><%= it.number %>. <%= link_to_path_element it, mode: :plain %></h3>
 
       <div class="text-box">
