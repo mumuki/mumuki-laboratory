@@ -1,13 +1,15 @@
 mumuki.load(function() {
   let avatarId = "";
+  let $avatarPicker = $('#avatar-picker');
+  let $userAvatar = $('#user-avatar');
 
   $("#edit-avatar-icon").on('click', function(){
-    $('#avatar-picker').modal();
+    $avatarPicker.modal();
   });
 
   $("#user-form").on('submit', function(){
     if (!avatarId) {
-      const imageUrl = $('#user-avatar').attr('src');
+      const imageUrl = $userAvatar.attr('src');
       $(this).append(`<input type="hidden" name="user[image_url]" value="${imageUrl}"/>`);
     }
 
@@ -15,14 +17,10 @@ mumuki.load(function() {
   });
 
   $('.avatar-item').on('click', function(){
-    $('#user-avatar').attr('src', $(this).attr('src'));
-    $('#avatar-picker').modal('hide');
+    $userAvatar.attr('src', $(this).attr('src'));
+    $avatarPicker.modal('hide');
 
     const clickedAvatarId = $(this).attr('avatar_id');
-    if (clickedAvatarId) {
-      avatarId = clickedAvatarId;
-    } else {
-      avatarId = "";
-    }
+    avatarId = clickedAvatarId || "";
   });
 });
