@@ -6,23 +6,23 @@ feature 'Exercise Flow', organization_workspace: :test do
   let(:haskell) { create(:haskell) }
   let(:gobstones) { create(:gobstones) }
 
-  let!(:problem_1) { build(:problem, name: 'Succ1', description: 'Description of Succ1', layout: :input_right, hint: 'lala') }
-  let!(:problem_2) { build(:problem, name: 'Succ2', description: 'Description of Succ2', layout: :input_right, editor: :hidden, language: gobstones) }
-  let!(:problem_3) { build(:problem, name: 'Succ3', description: 'Description of Succ3', layout: :input_right, editor: :upload, hint: 'lele') }
-  let!(:problem_4) { build(:problem, name: 'Succ4', description: 'Description of Succ4', layout: :input_bottom, extra: 'x = 2') }
-  let!(:problem_5) { build(:problem, name: 'Succ5', description: 'Description of Succ5', layout: :input_right, editor: :upload, hint: 'lele', language: gobstones) }
-  let!(:problem_6) { build(:problem, name: 'Succ6', description: 'Description of Succ6', layout: :input_right, editor: :hidden, language: haskell) }
-  let!(:problem_7) { build(:problem, name: 'Succ7', description: 'Description of Succ7', editor: :single_choice, choices: [{value: 'some choice', checked: true}]) }
-  let!(:playground_1) { build(:playground, name: 'Succ5', description: 'Description of Succ4', layout: :input_right) }
-  let!(:playground_2) { build(:playground, name: 'Succ6', description: 'Description of Succ4', layout: :input_right, extra: 'x = 4') }
+  let(:problem_1) { build(:problem, name: 'Succ1', description: 'Description of Succ1', layout: :input_right, hint: 'lala') }
+  let(:problem_2) { build(:problem, name: 'Succ2', description: 'Description of Succ2', layout: :input_right, editor: :hidden, language: gobstones) }
+  let(:problem_3) { build(:problem, name: 'Succ3', description: 'Description of Succ3', layout: :input_right, editor: :upload, hint: 'lele') }
+  let(:problem_4) { build(:problem, name: 'Succ4', description: 'Description of Succ4', layout: :input_bottom, extra: 'x = 2') }
+  let(:problem_5) { build(:problem, name: 'Succ5', description: 'Description of Succ5', layout: :input_right, editor: :upload, hint: 'lele', language: gobstones) }
+  let(:problem_6) { build(:problem, name: 'Succ6', description: 'Description of Succ6', layout: :input_right, editor: :hidden, language: haskell) }
+  let(:problem_7) { build(:problem, name: 'Succ7', description: 'Description of Succ7', editor: :single_choice, choices: [{value: 'some choice', checked: true}]) }
+  let(:playground_1) { build(:playground, name: 'Succ5', description: 'Description of Succ4', layout: :input_right) }
+  let(:playground_2) { build(:playground, name: 'Succ6', description: 'Description of Succ4', layout: :input_right, extra: 'x = 4') }
   let!(:reading) { build(:reading, name: 'Reading about Succ', description: 'Lets understand succ history') }
   let!(:exercise_not_in_path) { create :exercise }
-
+  let(:kids_problem) { build(:problem, name: 'Kids prob', description: 'Description of kids prob', layout: :input_kids, hint: 'lele', language: gobstones) }
 
   let!(:chapter) {
     create(:chapter, name: 'Functional Programming', lessons: [
       create(:lesson, name: 'getting-started', description: 'An awesome guide', language: haskell, exercises: [
-        problem_1, problem_2, problem_3, problem_4, reading, problem_5, problem_6, problem_7, playground_1, playground_2
+        problem_1, problem_2, problem_3, problem_4, reading, problem_5, problem_6, problem_7, playground_1, playground_2, kids_problem
       ])
     ]) }
 
@@ -59,6 +59,15 @@ feature 'Exercise Flow', organization_workspace: :test do
       expect(page).to_not have_text('Solution')
       expect(page).to have_text('need a hint?')
       expect(page).to have_text('Description of Succ1')
+    end
+
+    scenario 'visit kids exercise transparently' do
+      visit "/exercises/#{kids_problem.transparent_id}"
+
+      expect(page).to have_text('Kids prob')
+      expect(page).to_not have_text('Console')
+      expect(page).to_not have_text('Solution')
+      expect(page).to have_text('Description of kids prob')
     end
 
     scenario 'visit exercise by id, upload layout' do
