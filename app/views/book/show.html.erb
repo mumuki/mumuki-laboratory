@@ -33,12 +33,20 @@
   <h2><%= t(:chapters) %></h2>
 
   <% @book.chapter_visibilities_in(current_workspace).each do |it, enabled| %>
-    <div class="chapter <%= enabled ? '' : 'mu-disabled' %>">
-      <h3><%= it.number %>. <%= link_to_path_element it, mode: :plain %></h3>
-
-      <div class="text-box">
-        <%= it.description_teaser_html %>
+    <div class="chapter-container">
+      <div class="chapter <%= enabled ? '' : 'mu-locked' %>">
+        <h3><%= it.number %>. <%= link_to_path_element it, mode: :plain %></h3>
+        <div class="text-box">
+          <%= it.description_teaser_html %>
+        </div>
       </div>
+
+      <% unless enabled  %>
+        <div class="text-center mu-lock">
+          <i class="fa fa-lock fa-5x"></i>
+          <p><%= t :locked_content %></p>
+        </div>
+      <% end %>
     </div>
   <% end %>
   <% if current_user? && @exams.present? %>
