@@ -121,6 +121,7 @@ en:
   let_us_know: please let us know!
   loading: Loading
   load_solution_into_console: Load your solution into the console
+  locked_content: 'This content will be unlocked when you finish previous chapters'
   male: Male
   manual_evaluation_pending: Thanks for submitting your solution! It will be revised by the course teachers soon
   message_count:
