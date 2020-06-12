@@ -5,10 +5,10 @@ feature 'public org', organization_workspace: :test do
   let(:guide) { create(:guide) }
   let(:exam) { create(:exam) }
   let!(:chapter_1) {
-    create(:chapter, name: 'First Steps', lessons: [
+    create(:chapter, name: 'First Steps', number: 1, lessons: [
       create(:lesson, guide: guide)]) }
   let!(:chapter_2) {
-      create(:chapter, name: 'Functional Programming', lessons: [
+      create(:chapter, name: 'Functional Programming', number: 2, lessons: [
         create(:lesson, guide: guide)]) }
   let!(:current_organization) { Organization.current }
   let(:book) { current_organization.book }
@@ -23,7 +23,7 @@ feature 'public org', organization_workspace: :test do
 
       expect(page).to have_text('ム mumuki')
       expect(page).to have_text('First Steps')
-      expect(page).to have_text('Functional Programming')
+      expect(page).to have_selector('.chapter', text: 'Functional Programming')
       expect(page).to have_text(current_organization.book.name)
       expect(page).not_to have_text('Exams')
     end
@@ -35,7 +35,7 @@ feature 'public org', organization_workspace: :test do
 
       expect(page).to have_text('ム mumuki')
       expect(page).to have_text('First Steps')
-      expect(page).to have_text('Functional Programming')
+      expect(page).to have_selector('.chapter', text: 'Functional Programming')
       expect(page).to have_text(current_organization.book.name)
     end
   end
@@ -52,7 +52,7 @@ feature 'public org', organization_workspace: :test do
 
       expect(page).to have_text('ム mumuki')
       expect(page).to have_text('First Steps')
-      expect(page).to have_text('Functional Programming')
+      expect(page).to have_selector('.chapter', text: 'Functional Programming')
       expect(page).to have_text(current_organization.book.name)
       expect(user.reload.last_organization).to eq current_organization
       expect(page).to have_text('Exams')
@@ -65,7 +65,9 @@ feature 'public org', organization_workspace: :test do
 
       expect(page).to have_text('ム mumuki')
       expect(page).to have_text('First Steps')
-      expect(page).to have_text('Functional Programming')
+      expect(page).to have_selector('.chapter', text: 'Functional Programming')
+      expect(page).to_not have_selector('.chapter.mu-locked', text: 'Functional Programming')
+
       expect(page).to have_text(current_organization.book.name)
       expect(user.reload.last_organization).to eq current_organization
     end
@@ -84,7 +86,7 @@ feature 'public org', organization_workspace: :test do
 
       expect(page).to have_text('ム mumuki')
       expect(page).to have_text('First Steps')
-      expect(page).to_not have_text('Functional Programming')
+      expect(page).to have_selector('.chapter.mu-locked', text: 'Functional Programming')
       expect(page).to have_text(current_organization.book.name)
       expect(user.reload.last_organization).to eq current_organization
     end
