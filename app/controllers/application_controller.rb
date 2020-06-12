@@ -14,10 +14,16 @@ class ApplicationController < ActionController::Base
 
   before_action :set_current_organization!
   before_action :set_locale!
+
   before_action :ensure_user_enabled!, if: :current_user?
+  before_action :validate_active_organization!
+
   before_action :redirect_to_main_organization!, if: :should_redirect_to_main_organization?
+
   before_action :authorize_if_private!
+  before_action :validate_active_organization!
   before_action :validate_user_profile!, if: :current_user?
+
   before_action :visit_organization!, if: :current_user?
 
   after_action :leave_organization!
@@ -51,8 +57,14 @@ class ApplicationController < ActionController::Base
     accessible_subject.validate_accessible_for! current_user
   end
 
+  def validate_active_organization!
+    return if current_user&.teacher_here?
+    Organization.current.validate_active!
+  end
+
+
   # required by Mumukit::Login
-  def login_button(options={})
+  def login_button(options = {})
     login_form.button_html I18n.t(:sign_in), options[:class]
   end
 

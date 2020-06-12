@@ -61,6 +61,7 @@ pt:
   destroy: Excluir
   details: Detalhes
   disabled_explanation: Você está tentando acessar um recurso que foi desativado ou removido permanentemente
+  disabled_organization_explanation: Este curso terminou!
   discussion_updated: Consulta actualizada
   discussions: Consultas
   download: Faça o download do que você fez
@@ -96,7 +97,7 @@ pt:
   gender: Gênero
   get_messages: Ver mensagens
   go_to: Vá para %{organization}
-  gone_explanation: Opa! Isto é o que é conhecido como %{error}, ou seja, você não pode mais ver esse conteúdo.
+  gone_explanation: Parece que você não pode mais acessar esse conteúdo.
   guide: Lição
   guide_created: Guia criado com sucesso
   guide_finished: Você terminou %{guide}!
@@ -250,6 +251,7 @@ pt:
   uncategorized: Não classificado
   unspecified: Eu preferiria não dizer
   unmeet_expectations: Objetivos que não foram atendidos
+  unprepared_organization_explanation: Este curso ainda não começou!
   unsubscribe: Cancelar subscrição
   upload_solution: Carregar solução
   uploading_solution: Uploading solution

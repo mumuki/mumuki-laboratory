@@ -16,6 +16,8 @@ module Mumuki::Laboratory::Controllers::DynamicErrors
     rescue_from Mumuki::Domain::BlockedForumError, with: :blocked_forum
     rescue_from Mumuki::Domain::DisabledError, with: :disabled
     rescue_from ActiveRecord::RecordInvalid, with: :bad_record
+    rescue_from Mumuki::Domain::UnpreparedOrganizationError, with: :unprepared_organization
+    rescue_from Mumuki::Domain::DisabledOrganizationError, with: :disabled_organization
   end
 
   def bad_record(exception)
@@ -51,7 +53,15 @@ module Mumuki::Laboratory::Controllers::DynamicErrors
   end
 
   def gone
-    render_error 'gone', 410
+    render_error 'gone', 410, locals: { explanation: :gone_explanation }
+  end
+
+  def unprepared_organization
+    render_error 'forbidden', 403, locals: { explanation: :unprepared_organization_explanation }
+  end
+
+  def disabled_organization
+    render_error 'gone', 410, locals: { explanation: :disabled_organization_explanation }
   end
 
   def render_error(template, status, options={})
