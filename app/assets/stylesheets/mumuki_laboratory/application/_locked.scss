@@ -1,0 +1,29 @@
+.chapter-container {
+  position: relative;
+}
+
+.chapter {
+  position: relative;
+
+  margin: 35px 0;
+  padding-bottom: 15px;
+
+  &.mu-locked {
+    opacity: 20%;
+
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+.mu-lock {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  transform: translateY(20%);
+
+  top: 0px;
+  left: 0px;
+}

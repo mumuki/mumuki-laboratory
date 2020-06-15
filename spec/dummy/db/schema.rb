@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200527180729) do
+ActiveRecord::Schema.define(version: 20200608132959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -298,6 +298,7 @@ ActiveRecord::Schema.define(version: 20200527180729) do
     t.text "settings", default: "{}", null: false
     t.text "theme", default: "{}", null: false
     t.text "profile", default: "{}", null: false
+    t.integer "progressive_display_lookahead"
     t.index ["book_id"], name: "index_organizations_on_book_id"
     t.index ["name"], name: "index_organizations_on_name", unique: true
   end
