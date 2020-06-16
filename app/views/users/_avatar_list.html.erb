@@ -1,7 +1,7 @@
 <div class="row">
   <div class="mu-avatar-list">
-    <% avatars_for(current_user).sort_by(&:id).each do |it| %>
-      <img src="<%= it.image_url %>" alt="<%= it.description %>" mu-avatar-id="<%= it.id %>" class='mu-avatar-item'>
+    <% avatars_for(@user).sort_by(&:id).each do |avatar| %>
+      <%= show_avatar_item(avatar) %>
     <% end %>
 
     <% if @user.image_url %>
