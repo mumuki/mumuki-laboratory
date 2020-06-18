@@ -21,6 +21,10 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: t(:unsubscribed_successfully)
   end
 
+  def permissible_params
+    super << :avatar_id
+  end
+
   private
 
   def validate_user_profile!
