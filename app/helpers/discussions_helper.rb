@@ -106,7 +106,7 @@ module DiscussionsHelper
   end
 
   def discussion_count_for_status(status, discussions)
-    discussions.scoped_query_by(discussion_filter_params, :status).by_status(status).count
+    discussions.scoped_query_by(discussion_filter_params, excluded_params: [:status], excluded_methods: [:page]).by_status(status).count
   end
 
   def discussions_reset_query_link
