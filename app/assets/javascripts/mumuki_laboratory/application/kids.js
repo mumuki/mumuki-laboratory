@@ -323,13 +323,17 @@ mumuki.load(function () {
       var $muKidsStatesContainer = $('.mu-kids-states');
       var $muKidsStates = $('.mu-kids-state');
 
-      var dimension = $muKidsStatesContainer.height() / 2 * 1.25 - fullMargin;
+      var ratio = $muKidsStatesContainer.hasClass('mu-kids-single-state') ? 1 : 2;
+
+      var dimension = $muKidsStatesContainer.height() / ratio * 1.25 - fullMargin;
       $muKidsStatesContainer.width(dimension);
 
       var $muKidsExercise = $('.mu-kids-exercise');
       var $muKidsExerciseDescription = $('.mu-kids-exercise-description');
 
-      $muKidsExerciseDescription.width($muKidsExercise.width() - $muKidsStatesContainer.width() - margin);
+      if (!$muKidsExerciseDescription.hasClass('mu-kids-exercise-description-fixed')) {
+        $muKidsExerciseDescription.width($muKidsExercise.width() - $muKidsStatesContainer.width() - margin);
+      }
 
       $muKidsStates.each((index, state) => mumuki.kids.scaleState($(state), fullMargin));
       mumuki.kids.scaleBlocksArea($('.mu-kids-blocks'));

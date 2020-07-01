@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ExerciseSolutionsController, organization_workspace: :test do
   let(:user) { create(:user) }
   let(:problem) { create(:problem) }
-  let(:kids_problem) { create(:problem, layout: :input_kids) }
+  let(:kids_problem) { create(:problem, layout: :input_primary) }
   let!(:chapter) {
     create(:chapter, name: 'Functional Programming', lessons: [
       create(:lesson, exercises: [problem, kids_problem])

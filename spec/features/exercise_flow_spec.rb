@@ -17,7 +17,7 @@ feature 'Exercise Flow', organization_workspace: :test do
   let(:playground_2) { build(:playground, name: 'Succ6', description: 'Description of Succ4', layout: :input_right, extra: 'x = 4') }
   let!(:reading) { build(:reading, name: 'Reading about Succ', description: 'Lets understand succ history') }
   let!(:exercise_not_in_path) { create :exercise }
-  let(:kids_problem) { build(:problem, name: 'Kids prob', description: 'Description of kids prob', layout: :input_kids, hint: 'lele', language: gobstones) }
+  let(:kids_problem) { build(:problem, name: 'Kids prob', description: 'Description of kids prob', layout: :input_primary, hint: 'lele', language: gobstones) }
 
   let!(:chapter) {
     create(:chapter, name: 'Functional Programming', lessons: [
