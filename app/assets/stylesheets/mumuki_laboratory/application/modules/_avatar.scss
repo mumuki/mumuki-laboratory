@@ -14,6 +14,25 @@
    linear-gradient(-90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
 }
 
+.mu-level {
+  position: relative;
+  top: 0px;
+  right: 72px;
+  width: 44px;
+  height: 44px;
+  border-radius: 20%;
+  background: #ff5b81;
+  display: inline-block;
+  text-align: center;
+  color: white;
+  font-size: x-large;
+}
+
+.mu-level-number {
+  position: relative;
+  text-align: center;
+}
+
 .mu-user-avatar {
   width: 250px;
   height: 250px;
