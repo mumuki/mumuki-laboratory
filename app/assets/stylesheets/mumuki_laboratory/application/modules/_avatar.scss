@@ -23,6 +23,8 @@
   padding: 2px;
   margin: 10px;
 
+  cursor: pointer;
+
   &:hover {
     box-shadow: -3px 3px 10px -3px $mu-color-primary;
     transform: scale(1.025);
