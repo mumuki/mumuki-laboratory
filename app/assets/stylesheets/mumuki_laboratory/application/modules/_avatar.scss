@@ -21,6 +21,11 @@
   border-radius: 50%;
 }
 
+.border-2 {
+  border: 2px solid $mu-color-dark-separator;
+  padding: 2px;
+}
+
 .mu-edit-avatar {
   position: relative;
   top: 100px;
