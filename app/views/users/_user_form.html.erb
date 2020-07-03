@@ -2,7 +2,32 @@
   <div class="row mu-tab-body">
     <div class="col-md-4 text-center">
       <%= image_tag @user.profile_picture, class: 'mu-user-avatar', id: 'mu-user-avatar' %>
-      <i class="fa fa-pencil fa-2x pointer mu-edit-avatar" id="mu-edit-avatar-icon"></i>
+      <div class="experience" ><!-- style="position:relative!important"> -->
+<!--        <svg viewBox="0 0 32 32">-->
+<!--          <circle r="16" cx="16" cy="16" />-->
+
+<!--          <linearGradient id="grad-ucgg-generated" gradientUnits="userSpaceOnUse"-->
+<!--                          x1="0%" y1="0%" x2="100%" y2="0%" gradientTransform="rotate(65)">-->
+<!--            <stop offset="0%" stop-color="#4afaff" stop-opacity="0"/>-->
+<!--            <stop offset="100%" stop-color="#ff0000" stop-opacity="1"/>-->
+<!--          </linearGradient>-->
+<!--          <rect x="0" y="0" width="1" height="1" fill="url(#grad-ucgg-generated)" />-->
+
+<!--          <style>-->
+<!--            circle {-->
+<!--              fill: white;-->
+<!--              stroke: url(#grad-ucgg-generated);-->
+<!--              stroke-width: 1;-->
+<!--              stroke-dasharray: 60 90; /* 2π × 25 ≈ 158 */-->
+<!--            }-->
+
+<!--            svg {-->
+<!--              transform: rotate(-90deg);-->
+<!--              border-radius: 50%;-->
+<!--            }-->
+<!--          </style>-->
+<!--        </svg>-->
+      </div>
     </div>
     <div class="col-md-8">
       <%= render partial: 'profile_fields', locals: {form: f} %>

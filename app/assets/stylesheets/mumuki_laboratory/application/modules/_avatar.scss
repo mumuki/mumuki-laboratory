@@ -1,11 +1,24 @@
+.experience
+{
+  position: absolute;
+  top: -5px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  z-index: -1;
+
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background-image:
+   linear-gradient(-90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+}
+
 .mu-user-avatar {
   width: 250px;
   height: 250px;
 
-  border: 2px solid $mu-color-dark-separator;
   border-radius: 50%;
-
-  padding: 2px;
 }
 
 .mu-edit-avatar {
