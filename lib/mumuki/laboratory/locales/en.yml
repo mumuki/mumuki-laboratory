@@ -185,6 +185,8 @@ en:
   read: Read
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   reset_query: Clear current search filters
+  responses_count_asc: By less moderators replies
+  responses_count_desc: By more moderators replies
   restart: Restart
   results: Results
   results_hidden: Your solution was submitted successfully!
