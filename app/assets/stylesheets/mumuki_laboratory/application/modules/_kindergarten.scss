@@ -1,0 +1,22 @@
+.mu-kindergarten {
+  .gbs_lv.gbs_lvl.style-scope.gs-board,
+  .gbs_lv.gbs_lvr.style-scope.gs-board,
+  tr.style-scope.gs-board:first-child,
+  tr.style-scope.gs-board:last-child {
+    display: none
+  }
+
+  table.gbs_board.style-scope.gs-board {
+    padding: 3px;
+  }
+
+  .mu-kids-state.mu-state-initial {
+    height: 100%;
+  }
+
+  .mu-kids-exercise .mu-kids-blocks {
+    margin-top: 0;
+  }
+}
+
+
