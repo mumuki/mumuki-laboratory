@@ -5,16 +5,11 @@
   display: flex;
   flex-flow: column;
 
-  table.gbs_board.style-scope.gs-board {
-    padding: 3px;
-  }
-
-  .mu-kids-state.mu-state-initial {
+  .mu-kids-exercise-workspace {
+    display: flex;
+    flex-flow: row;
     height: 100%;
-  }
-
-  .mu-kids-blocks {
-    margin-top: 0;
+    width: 100%;
   }
 
   .mu-kids-single-state,
@@ -23,7 +18,16 @@
     height: 100%
   }
 
-  // no board boarder
+  .mu-kids-blocks {
+    margin-top: 0;
+  }
+
+  // no board numbers,
+  // but a thicker border instead
+
+  table.gbs_board.style-scope.gs-board {
+    padding: 3px;
+  }
 
   .gbs_lv.gbs_lvl.style-scope.gs-board,
   .gbs_lv.gbs_lvr.style-scope.gs-board,
@@ -32,7 +36,12 @@
     display: none
   }
 
-  // no final state
+  // no final state,
+  // initial state fills its area
+
+  .mu-kids-state.mu-state-initial {
+    height: 100%;
+  }
 
   .mu-kids-state.mu-state-final {
     display: none;
