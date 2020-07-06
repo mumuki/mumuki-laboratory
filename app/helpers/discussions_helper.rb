@@ -23,31 +23,31 @@ module DiscussionsHelper
     fixed_fa_icon 'comment', text: text
   end
 
-  def discussions_link(item, path, html_options=nil, organization=Organization.current)
+  def discussions_link(item, path, html_options = nil, organization = Organization.current)
     link_to item, path, html_options if organization.forum_enabled?
   end
 
-  def item_discussion_path(discussion, params={})
+  def item_discussion_path(discussion, params = {})
     polymorphic_path([discussion.item, discussion], params)
   end
 
-  def item_discussions_path(item, params={})
+  def item_discussions_path(item, params = {})
     polymorphic_path([item, :discussions], params)
   end
 
   def solve_discussion_params_for(user)
     if user&.moderator_here?
-      { status: :pending_review, sort: :created_at_asc }
+      {status: :pending_review, sort: :created_at_asc}
     else
-      { status: :opened, sort: :created_at_asc }
+      {status: :opened, sort: :created_at_asc}
     end
   end
 
   def default_discussions_params
-    { status: :solved, sort: :upvotes_count_desc }
+    {status: :solved, sort: :upvotes_count_desc}
   end
 
-  def user_avatar(user, image_class='')
+  def user_avatar(user, image_class = '')
     image_tag user.profile_picture, height: 40, class: "img-circle #{image_class}"
   end
 
@@ -118,7 +118,7 @@ module DiscussionsHelper
   end
 
   def discussions_languages(discussions)
-    discussions.map { |it| it.language.name }.uniq
+    @languages ||= discussions.map { |it| it.language.name }.uniq
   end
 
   def discussion_status_filter_link(status, discussions)
@@ -132,14 +132,14 @@ module DiscussionsHelper
 
   def discussion_status_filter(status, discussions_count)
     %Q{
-      #{discussion_status_fa_icon(status)}
+    #{discussion_status_fa_icon(status)}
       <span>
         #{t("#{status}_count", count: discussions_count)}
       </span>
     }.html_safe
   end
 
-  def discussion_dropdown_filter(label, filters, &block)
+  def discussion_dropdown_filter(label, filters, can_select_all = false, &block)
     if filters.present?
       %Q{
         <div class="dropdown discussions-toolbar-filter">
@@ -147,6 +147,7 @@ module DiscussionsHelper
             #{t label} #{fa_icon :'caret-down', class: 'fa-xs'}
           </a>
           <ul class="dropdown-menu" aria-labelledby="dropdown-#{label}">
+            #{discussion_filter_unselect_item(label, can_select_all)}
             #{discussion_filter_list(label, filters, &block)}
           </ul>
         </div>
@@ -159,7 +160,15 @@ module DiscussionsHelper
   end
 
   def discussion_filter_item(label, filter, &block)
-    content_tag(:li, discussion_filter_link(label, filter, &block), class: "#{'selected' if discussion_filter_selected?(label, filter)}")
+    content_tag(:li, discussion_filter_link(label, filter, &block), class: ('selected' if discussion_filter_selected?(label, filter)))
+  end
+
+  def discussion_filter_unselect_item(label, can_select_all)
+    if can_select_all
+      content_tag(:li,
+                  link_to(t(:all), discussion_filter_params_without_page.except(label)),
+                  class: ('selected' unless discussion_filter_params.include?(label)))
+    end
   end
 
   def discussion_filter_selected?(label, filter)
@@ -171,10 +180,11 @@ module DiscussionsHelper
   end
 
   def discussion_info(discussion)
-     "#{t(:time_since, time: time_ago_in_words(discussion.created_at))} · #{t(:message_count, count: discussion.messages.size)}"
+    "#{t(:time_since, time: time_ago_in_words(discussion.created_at))} · #{t(:message_count, count: discussion.messages.size)}"
   end
 
   def discussion_filter_params_without_page
     discussion_filter_params.except(:page)
   end
+
 end
