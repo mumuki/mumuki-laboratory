@@ -28,3 +28,6 @@ group :development do
   gem 'web-console', '~> 3.7.0'
   gem 'codeclimate-test-reporter', require: nil
 end
+
+
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'feature-kindergarten'
