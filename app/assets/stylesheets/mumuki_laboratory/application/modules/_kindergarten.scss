@@ -1,10 +1,9 @@
 .mu-kindergarten {
-  .gbs_lv.gbs_lvl.style-scope.gs-board,
-  .gbs_lv.gbs_lvr.style-scope.gs-board,
-  tr.style-scope.gs-board:first-child,
-  tr.style-scope.gs-board:last-child {
-    display: none
-  }
+
+  // layout
+
+  display: flex;
+  flex-flow: column;
 
   table.gbs_board.style-scope.gs-board {
     padding: 3px;
@@ -16,6 +15,27 @@
 
   .mu-kids-blocks {
     margin-top: 0;
+  }
+
+  .mu-kids-single-state,
+  .mu-kids-blocks {
+    width: 50%;
+    height: 100%
+  }
+
+  // no board boarder
+
+  .gbs_lv.gbs_lvl.style-scope.gs-board,
+  .gbs_lv.gbs_lvr.style-scope.gs-board,
+  tr.style-scope.gs-board:first-child,
+  tr.style-scope.gs-board:last-child {
+    display: none
+  }
+
+  // no final state
+
+  .mu-kids-state.mu-state-final {
+    display: none;
   }
 }
 
