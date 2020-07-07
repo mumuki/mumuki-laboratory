@@ -19,7 +19,7 @@
         <% else %>
           <span class="text-success mu-test-result-header">
             <%= status_icon(test_result[:status]) %>
-            <%= test_result[:title] %>
+            <%= render_test_result_header test_result %>
           </span>
         <% end %>
 
