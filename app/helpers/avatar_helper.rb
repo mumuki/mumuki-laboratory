@@ -16,7 +16,7 @@ module AvatarHelper
     adul6 = Avatar.new(image_url: "https://user-images.githubusercontent.com/11304439/86463650-4c8c3f80-bd04-11ea-8080-7d88ae47a21f.png")
 
     [adul1, adul2, adul3, adul4, adul5, adul6]
-    [y, m, k, desy, desm, desk]
+      #[y, m, k, desy, desm, desk]
   end
 
   def show_avatar_item(item)

@@ -14,6 +14,22 @@
    linear-gradient(-90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
 }
 
+.experience-small
+{
+  position: absolute;
+  top: -5px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  z-index: -1;
+
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background-image:
+    linear-gradient(-90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+}
+
 .mu-level {
   position: relative;
   top: 0px;
@@ -26,6 +42,20 @@
   text-align: center;
   color: white;
   font-size: x-large;
+}
+
+.mu-level-small {
+  position: relative;
+  top: -6px;
+  left: 68px;
+  width: 22px;
+  height: 22px;
+  border-radius: 20%;
+  background: #ff5b81;
+  display: inline-block;
+  text-align: center;
+  color: white;
+  font-size: small;
 }
 
 .mu-level-number {
