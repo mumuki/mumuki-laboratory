@@ -8,24 +8,15 @@
   <ul class="results-list mu-multiple-test-results">
     <% contextualization.affable_test_results.each_with_index do |test_result, index| %>
       <li>
+        <%= render_test_result_header test_result %>
         <% if test_result[:status].failed? %>
-          <span class="text-danger mu-test-result-header">
-            <%= status_icon(test_result[:status]) %>
-            <%= render_test_result_header test_result %>
-            <% unless contextualization.visible_success_output? %>
-              <a data-toggle="collapse" href="#example-result-<%= index %>"  class="example-see-more"><%= t :view_details %></a>
-            <% end %>
-          </span>
-        <% else %>
-          <span class="text-success mu-test-result-header">
-            <%= status_icon(test_result[:status]) %>
-            <%= render_test_result_header test_result %>
-          </span>
+          <% unless contextualization.visible_success_output? %>
+            <a data-toggle="collapse" href="#example-result-<%= index %>"  class="example-see-more"><%= t :view_details %></a>
+            <div class="example-result collapse <%= 'in' if contextualization.visible_success_output? %>" id="example-result-<%= index %>">
+              <%= contextualization.test_result_html test_result %>
+            </div>
+          <% end %>
         <% end %>
-
-        <div class="example-result collapse <%= 'in' if contextualization.visible_success_output? %>" id="example-result-<%= index %>">
-          <%= contextualization.test_result_html test_result %>
-        </div>
       </li>
     <% end %>
   </ul>
