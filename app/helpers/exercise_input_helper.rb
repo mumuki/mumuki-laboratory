@@ -75,7 +75,7 @@ module ExerciseInputHelper
 
   def render_custom_editor(exercise, read_only=false)
     custom_editor_tag = "mu-#{exercise.language}-custom-editor"
-    "<#{custom_editor_tag} class='#{custom_editor_tag}' #{custom_editor_read_only if read_only}> </#{custom_editor_tag}>".html_safe
+    "<#{custom_editor_tag} id='#{custom_editor_tag}' class='#{custom_editor_tag}' #{custom_editor_read_only if read_only}> </#{custom_editor_tag}>".html_safe
   end
 
   def custom_editor_read_only
