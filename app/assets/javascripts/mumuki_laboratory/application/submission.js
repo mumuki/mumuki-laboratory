@@ -44,7 +44,12 @@ var mumuki = mumuki || {};
         this.preventClick();
       }
     }
+  }
 
+  function syncContent() {
+    if (mumuki.submission.contentSyncer) {
+      mumuki.submission.contentSyncer();
+    }
   }
 
   mumuki.load(function () {
@@ -66,7 +71,7 @@ var mumuki = mumuki || {};
       submitButton.setWaitingText();
       resultsBox.waiting();
 
-      mumuki.editor.syncContent();
+      mumuki.submission.syncContent();
       var solution = getContent();
 
       bridge._submitSolution(solution).done(function (data) {
@@ -105,6 +110,7 @@ var mumuki = mumuki || {};
   }
 
   mumuki.submission = {
+    syncContent,
     animateTimeoutError: animateTimeoutError,
     SubmitButton: SubmitButton
   };
