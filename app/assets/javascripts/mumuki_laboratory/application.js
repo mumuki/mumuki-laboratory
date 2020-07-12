@@ -29,7 +29,6 @@
 //= require analytics
 //= require hotjar
 //= require muvment
-//= require headbreaker
 
 //= require_tree ./application
 
