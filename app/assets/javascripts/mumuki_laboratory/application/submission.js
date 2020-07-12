@@ -46,10 +46,35 @@ var mumuki = mumuki || {};
     }
   }
 
-  function syncContent() {
+  /**
+   * Copies current solution from it native rendering components
+   * to the appropriate submission form elements.
+   *
+   * Both editors and runners with a custom editor should
+   * register its own syncer function in order to {@link syncContent} work properly.
+   *
+   * @see registerContentSyncer
+   */
+  function _syncContent() {
     if (mumuki.submission.contentSyncer) {
       mumuki.submission.contentSyncer();
     }
+  }
+
+  /**
+   * Sets a content syncer, that will be used by {@link _syncContent}
+   * in ordet to dump solution into the submission form fields.
+   *
+   * Each editor should have its own syncer registered - otherwise previous or none may be used
+   * causing unpredicatble behaviours - or cleared by passing {@code null}.
+   *
+   * As a particular case, runners with custom editors should set
+   * the {@code #mu-custom-editor-value} value within its syncer.
+   *
+   * @param {() => void} [syncer] the syncer, or null, if no sync'ing is needed
+   */
+  function registerContentSyncer(syncer = null) {
+    mumuki.submission.contentSyncer = syncer;
   }
 
   mumuki.load(function () {
@@ -110,7 +135,8 @@ var mumuki = mumuki || {};
   }
 
   mumuki.submission = {
-    syncContent,
+    _syncContent,
+    registerContentSyncer,
     animateTimeoutError: animateTimeoutError,
     SubmitButton: SubmitButton
   };
