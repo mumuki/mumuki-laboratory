@@ -82,7 +82,7 @@ var mumuki = mumuki || {};
 
   mumuki.load(function () {
     mumuki.page.editors = createCodeMirrors();
-    mumuki.submission.contentSyncer = mumuki.editor.syncContent;
+    mumuki.submission.registerContentSyncer(mumuki.editor.syncContent);
     updateCodeMirrorLanguage();
     onSelectUpdateCodeMirror();
 
