@@ -42,8 +42,12 @@ var mumuki = mumuki || {};
     // Public API
     // ==========
 
-    // Runs tests for the current exercise using the given submission
-    // content.
+    /**
+     * Runs tests for the current exercise using the given submission
+     * content.
+     *
+     * @param {object} content the content object
+     * */
     runTests: function(content) {
       return this._submitSolution({ solution: content });
     },
@@ -52,6 +56,11 @@ var mumuki = mumuki || {};
     // Private API
     // ===========
 
+    /**
+     * Sends a solution object
+     *
+     * @param {{solution: object}} solution the solution object
+     */
     _submitSolution: function (solution) {
       if(lastSubmissionFinishedSuccessfully() && sameAsLastSolution(solution)){
         return $.Deferred().resolve(lastSubmission.result);
