@@ -138,7 +138,7 @@ var mumuki = mumuki || {};
   function _selectSolutionProcessor(submitButton, $submissionsResults) {
     const bridge = new mumuki.bridge.Laboratory();
     let processor;
-    if ($('.kids-exercise').length) {
+    if ($('.mu-kids-exercise').length) {
       processor = _kidsSolutionProcessor(bridge, submitButton);
     } else {
       processor = _classicSolutionProcessor(bridge, submitButton, new ResultsBox($submissionsResults));
