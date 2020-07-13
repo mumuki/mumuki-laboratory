@@ -1,7 +1,7 @@
 <%= form_for :user, url: update_user_path, :html => { id: 'mu-user-form' }, method: :put do |f| %>
   <div class="mu-user-header">
     <h1><%= @user.name %></h1>
-    <div class="btn btn-success btn-block mu-profile-action"></div>
+    <div class="btn btn-success btn-block mu-profile-action"><%= t :edit_profile %></div>
   </div>
   <div class="row mu-tab-body">
     <div class="col-md-4 text-center">
