@@ -1,4 +1,7 @@
 <%= form_for :user, url: update_user_path, :html => { id: 'mu-user-form' }, method: :put do |f| %>
+  <div>
+    <h1><%= @user.name %></h1>
+  </div>
   <div class="row mu-tab-body">
     <div class="col-md-4 text-center">
       <%= image_tag @user.profile_picture, class: 'mu-user-avatar', id: 'mu-user-avatar' %>
