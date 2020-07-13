@@ -158,7 +158,9 @@ which are granted to be safe and stable.
 * `.mu-kids-submit-button`
 * `.mu-multiple-scenarios`
 * `.mu-scenarios`
+* `.mu-submit-button`
 * `#mu-actual-state-text`
+* `#mu-${languageName}-custom-editor`
 * `#mu-custom-editor-default-value`
 * `#mu-custom-editor-extra`
 * `#mu-custom-editor-test`
@@ -178,6 +180,8 @@ which are granted to be safe and stable.
 
 * `mumuki.bridge.Laboratory`
   * `.runTests`
+* `mumuki.CustomEditor`
+  * `addSource`
 * `mumuki.editor`
   * `formatContent`
   * `reset`
@@ -205,6 +209,9 @@ which are granted to be safe and stable.
   * `setUpDeleteFiles`
   * `setUpDeleteFile`
   * `updateButtonsVisibility`
+* `mumuki.submission`
+  * `processSolution`
+  * `registerContentSyncer`
 * `mumuki.version`
 
 ### Bridge Response Format
