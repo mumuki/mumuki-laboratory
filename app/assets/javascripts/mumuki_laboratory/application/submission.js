@@ -122,7 +122,6 @@ var mumuki = mumuki || {};
   /** Processor for kids layouts */
   function _kidsSolutionProcessor(bridge, submitButton) {
     return (solution) => {
-      console.log('Processing kids solution...');
 
       submitButton.wait();
       bridge._submitSolution(solution).always(function (data) {
@@ -135,7 +134,6 @@ var mumuki = mumuki || {};
   /** Processor for non-kids layouts */
   function _classicSolutionProcessor(bridge, submitButton, resultsBox) {
     return (solution) => {
-      console.log('Processing classic solution...');
       submitButton.disable();
       submitButton.setWaitingText();
       resultsBox.waiting();
