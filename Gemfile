@@ -30,4 +30,4 @@ group :development do
 end
 
 
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'feature-kindergarten'
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'master'
