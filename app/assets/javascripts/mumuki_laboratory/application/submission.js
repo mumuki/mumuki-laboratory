@@ -64,6 +64,43 @@ var mumuki = mumuki || {};
   // ============
 
   /**
+   * Syncs and returns the content objects of the standard editor form
+   *
+   * This content object may include keys like {@code content},
+   * {@code content_extra} and {@code content_test}
+   *
+   * @returns {{name: string, value: string}[]}
+   */
+  function getStandardEditorContents() {
+    mumuki.submission._syncContent();
+    return $('.new_solution').serializeArray();
+  }
+
+  /**
+   * Answers a content object with a key for each of the current
+   * editor sources.
+   *
+   * This method will use CustomEditor's sources if availble, or
+   * standard editor's content sources otherwise
+   */
+  function getContent() {
+    let content = {};
+    let contents;
+
+    if (mumuki.CustomEditor.hasSources) {
+      contents = mumuki.CustomEditor.getContents();
+    } else {
+      contents = mumuki.submission.getStandardEditorContents();
+    }
+
+    contents.forEach((it) => {
+      content[it.name] = it.value;
+    });
+
+    return content;
+  }
+
+  /**
    * Copies current solution from it native rendering components
    * to the appropriate submission form elements.
    *
@@ -183,28 +220,13 @@ var mumuki = mumuki || {};
     mumuki.submission._selectSolutionProcessor(submitButton, $submissionsResults);
 
     $btnSubmit.on('click', function (e) {
-      mumuki.submission._syncContent();
-      var solution = getContent();
+      var solution = mumuki.submission.getContent();
       e.preventDefault();
       mumuki.submission.processSolution(solution);
     });
 
     submitButton.checkAttemptsLeft();
   });
-
-  function getEditorsContent() {
-    return $('.new_solution').serializeArray().concat(mumuki.CustomEditor.getContent())
-  }
-
-  function getContent(){
-    var content = {};
-
-    getEditorsContent().forEach(function(it) {
-      content[it.name] = it.value;
-    });
-
-    return content;
-  }
 
 
   /**
@@ -228,6 +250,8 @@ var mumuki = mumuki || {};
 
     _syncContent,
     registerContentSyncer,
+    getStandardEditorContents,
+    getContent,
 
     animateTimeoutError,
     SubmitButton,
