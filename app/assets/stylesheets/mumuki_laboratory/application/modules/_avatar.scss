@@ -1,3 +1,13 @@
+.mu-user-avatar {
+  width: 250px;
+  height: 250px;
+
+  border: 2px solid $mu-color-dark-separator;
+  border-radius: 50%;
+
+  padding: 2px;
+}
+
 .mu-edit-avatar {
   position: relative;
   top: 100px;
@@ -22,6 +32,8 @@
 
   padding: 2px;
   margin: 10px;
+
+  cursor: pointer;
 
   &:hover {
     box-shadow: -3px 3px 10px -3px $mu-color-primary;
