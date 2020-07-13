@@ -212,8 +212,8 @@ var mumuki = mumuki || {};
    * custom editors.
    *
    * Runners can choose to bypass this module under kids layouts, and handling all that low-level details. In order
-   * to do that {@code .kids-submit-button} selector must be overiden. Customizing submission in classic layout
-   * May be accomplish by overriding the internal {@code .btn-submit}, but is discouraged
+   * to do that {@code .mu-kids-submit-button} selector must be overiden. Customizing submission in classic layout
+   * or in a layout-agnostic way can be accomplish by overriding {@code .mu-submit-button}.
    *
    * @see mumuki.kids.showResult
    * @see mumuki.bridge.Laboratory.runTests
