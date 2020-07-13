@@ -243,6 +243,182 @@ which are granted to be safe and stable.
 2. Laboratory Kids Layout Initialization
 3. Runner Editor HTML
 
+## Custom editors
+
+Mumuki provides several editor types: code editors, multiple choice, file upload, and so on.
+However, some runners will requiere custom editors in order to provide better ways of entering
+solutions.
+
+The process to do so is not difficult, but tricky, since there are a few hooks you need to implement. Let's look at them
+
+### 1. Before state: adding layout assets
+
+If you need to provide a custom editor, changes are that you need to also provide to augment the layout, e.g. providing ways
+to render some custom components on descriptions or corollaries. That code will be included first.
+
+In order to do that, add to your runner the layout html, css and js code. Layout code has no further requirements. It can customize any public selector previously.
+
+Although it is not requiered, it is recommended that your layout code works with any of the mumuki layouts:
+
+* `input_right`
+* `input_bottom`
+* `input_primary`
+* `input_kindergarten`
+
+:warning: Not all the same selectors will be available to all layouts.
+
+Then expose code in the `MetadataHook`:
+
+```ruby
+class ... < Mumukit::Hook
+  def metadata
+    {
+      layout_assets_urls: {
+        js: [
+          'assets/....'
+        ],
+        css: [
+          'assets/....'
+        ],
+        html: [
+          'assets/....'
+        ]
+      }
+    }
+  end
+end
+```
+
+Finally, it is _recommended_ that you layout code calls `mumuki.assetsLoadedFor('layout')` when fully loaded.
+
+That's it!
+
+### 2. Adding custom editor assets
+
+The process for registering custom editors is more involving.
+
+#### 2.1 Add your assets and expose them
+
+Add your js, css and html assets to your runner, and expose them in `MetadataHook`:
+
+```ruby
+class ... < Mumukit::Hook
+  def metadata
+    {
+      editor_assets_urls: {
+        js: [
+          'assets/....'
+        ],
+        css: [
+          'assets/....'
+        ],
+        html: [
+          'assets/....'
+        ]
+      }
+    }
+  end
+end
+```
+
+These assets will only be loaded when the editor `custom` is used.
+
+#### 2.2 Add your components to the custom editor
+
+Using JavaScript, append your components the custom-editor root, which can be found using the following selectors:
+
+* `mu-${languageName}-custom-editor`
+* `#mu-${languageName}-custom-editor`
+* `.mu-${languageName}-custom-editor`
+
+```javascript
+$('#mu-mylang-custom-editor').append(/* ... */)
+```
+
+#### 2.3 Extract the test
+
+If necessary, read the test definition from `#mu-custom-editor-test`, and plump into your custom components
+
+```javascript
+const test = $('#mu-custom-editor-test').val()
+//...use test...
+```
+
+#### 2.4 Exposing your content
+
+Before sending a submission, mumuki needs to be able to your read you editor components
+contents. There are two different approaches:
+
+* Register a syncer that writes `#mu-custom-editor-value` or any other custom editor selectors
+* Add one or more content sources
+
+```javascript
+// simplest method - you can register just one
+mumuki.submission.registerContentSyncer(() => {
+  // ... write here your custom component content...
+  $('#mu-custom-editor-value').val(/* ... */);
+});
+
+// alternate method
+// you can register many sources
+mumuki.CustomEditor.addSource({
+  getContent() {
+    return { name: "solution[content]", value: /* ... */ } ;
+  }
+});
+```
+
+#### 2.5 Optional: Sending your solution to the server programatically
+
+Your solution will be automatically sent to the client when the submit button is pressed. However,
+if you need to trigger submission process programatically, call `mumuki.submission.processSolution`:
+
+```javascript
+mumuki.submission.processSolution({solution: {content: /* ... */}});
+```
+
+#### 2.6 Optional: customizing your submit button
+
+You can altenatively override the default submit button UI and behaviour, by replacing it with a custom component. In order to
+do that, override the `.mu-submit-button` or the kis-specific `.mu-kids-submit-button`:
+
+```javascript
+ $(".mu-submit-button").html(/* ... */);
+```
+
+However, doing this is tricky, since you will need to manually update the UI and connecting to the server. See:
+
+* `mumuki.kids.showResult`
+* `mumuki.bridge.Laboratory.runTests`
+* `mumuki.updateProgressBarAndShowModal`
+
+#### 2.7 Register kids scalers
+
+Kids layouts have some special areas:
+
+ * _state area_: its display initial and/or final states of the exercise
+ * _blocks area_: a workspace that contains the building blocks of the solution - which are not necessary programming or blockly blocks, actually
+
+If you want to support kids layouts, you **need** to register scalers that will be called when device is resized. Skip this step otherwise.
+
+```javascript
+mumuki.kids.registerStateScaler(($state, fullMargin, preferredWidth, preferredHeight) => {
+  // ... resize your components ...
+});
+
+mumuki.kids.registerBlocksAreaScaler(($blocks) => {
+  // ... resize your components ...
+});
+```
+
+#### 2.8 Notify when your assets have been loaded
+
+In order to remove loading spinners, you will need to call `mumuki.assetsLoadedFor` when your code is ready.
+
+```javascript
+mumuki.assetsLoadedFor('editor');
+```
+
 ## Transparent Navigation API Docs
 
 In order to be able to link content, laboratory exposes slug-based routes that will redirect to the actual
