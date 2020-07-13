@@ -1,6 +1,11 @@
 var mumuki = mumuki || {};
 
 (function (mumuki) {
+
+  // =============
+  // UI Components
+  // =============
+
   function ResultsBox(submissionsResults) {
     this.submissionsResultsArea = submissionsResults;
     this.processingTemplate = $('#processing-template');
@@ -46,14 +51,19 @@ var mumuki = mumuki || {};
     }
   }
 
+  // ============
+  // Content Sync
+  // ============
+
   /**
    * Copies current solution from it native rendering components
    * to the appropriate submission form elements.
    *
-   * Both editors and runners with a custom editor should
+   * Both editors and runners with a custom editor that don't register a source should
    * register its own syncer function in order to {@link syncContent} work properly.
    *
    * @see registerContentSyncer
+   * @see CustomEditor#addSource
    */
   function _syncContent() {
     if (mumuki.submission._contentSyncer) {
@@ -68,14 +78,18 @@ var mumuki = mumuki || {};
    * Each editor should have its own syncer registered - otherwise previous or none may be used
    * causing unpredicatble behaviours - or cleared by passing {@code null}.
    *
-   * As a particular case, runners with custom editors should set
-   * the {@code #mu-custom-editor-value} value within its syncer.
+   * As a particular case, runners with custom editors that don't add sources using {@link CustomEditor#addSource}
+   * should set the {@code #mu-custom-editor-value} value within its syncer.
    *
    * @param {() => void} [syncer] the syncer, or null, if no sync'ing is needed
    */
   function registerContentSyncer(syncer = null) {
     mumuki.submission._contentSyncer = syncer;
   }
+
+  // ==========
+  // Processing
+  // ==========
 
   /**
    * Process solution, which consist of making buttons wait, sending to server, rendering results,
@@ -98,6 +112,8 @@ var mumuki = mumuki || {};
    * This method is called internally by {@link _selectSolutionProcessor}
    * and should normally not be called by runners editor, but is exposed
    * for further non-standard customizations.
+   *
+   * @param {({solution: object}) => void} processor
    */
   function _registerSolutionProcessor(processor) {
     mumuki.submission._solutionProcessor = processor;
@@ -145,6 +161,11 @@ var mumuki = mumuki || {};
     }
     mumuki.submission._registerSolutionProcessor(processor);
   }
+
+
+  // ===========
+  // Entry Point
+  // ===========
 
   mumuki.load(function () {
     var $submissionsResults = $('.submission-results');
