@@ -6,6 +6,14 @@ var mumuki = mumuki || {};
   // UI Components
   // =============
 
+  function animateTimeoutError(submitButton) {
+    let scene = new muvment.Scene($('.submission-result-error-animation'));
+    scene.addState(mumuki.errorState('timeout_1').onStart(submitButton.setOriginalContent.bind(submitButton)).onEndSwitch(scene, 'timeout_2'))
+      .addState(mumuki.errorState('timeout_2').onEndSwitch(scene, 'timeout_3'))
+      .addState(mumuki.errorState('timeout_3').onStart(submitButton.enable.bind(submitButton)))
+      .play();
+  }
+
   function ResultsBox(submissionsResults) {
     this.submissionsResultsArea = submissionsResults;
     this.processingTemplate = $('#processing-template');
@@ -198,13 +206,6 @@ var mumuki = mumuki || {};
     return content;
   }
 
-  function animateTimeoutError(submitButton) {
-    let scene = new muvment.Scene($('.submission-result-error-animation'));
-    scene.addState(mumuki.errorState('timeout_1').onStart(submitButton.setOriginalContent.bind(submitButton)).onEndSwitch(scene, 'timeout_2'))
-      .addState(mumuki.errorState('timeout_2').onEndSwitch(scene, 'timeout_3'))
-      .addState(mumuki.errorState('timeout_3').onStart(submitButton.enable.bind(submitButton)))
-      .play();
-  }
 
   /**
    * This module contains methods for submitting solution  in at high level, dealing with network communication,
