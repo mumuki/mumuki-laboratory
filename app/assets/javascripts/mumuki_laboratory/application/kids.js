@@ -57,6 +57,25 @@ mumuki.load(function () {
     isVisible ? element.show() : element.hide();
   }
 
+  /**
+   * Assigns propert widths to the states and blocks areas
+   * depending on the presence and type of available states
+   *
+   * @param {*} $muKidsStateImage
+   * @param {*} $muKidsStatesContainer
+   * @param {*} $muKidsBlocks
+   * @param {number} fullMargin
+   */
+  function distributeAreas($muKidsStateImage, $muKidsStatesContainer, $muKidsBlocks, fullMargin) {
+    if ($muKidsStateImage.children().length) {
+      var ratio = $muKidsStatesContainer.hasClass('mu-kids-single-state') ? 1 : 2;
+      $muKidsStatesContainer.width($muKidsStatesContainer.height() / ratio * 1.25 - fullMargin);
+    } else {
+      $muKidsStatesContainer.width(0);
+      $muKidsBlocks.width('100%');
+    }
+  }
+
   mumuki.kids = {
 
     // ==========
@@ -315,29 +334,18 @@ mumuki.load(function () {
     });
 
     // States initial resizing
-
     mumuki.resize(function () {
       var margin = 15;
       var fullMargin = margin * 2;
 
-      var $muKidsStatesContainer = $('.mu-kids-states');
-      var $muKidsStates = $('.mu-kids-state');
-      var $muKidsBlocks = $('.mu-kids-blocks');
+      let $muKidsStatesContainer = $('.mu-kids-states');
+      let $muKidsStates = $('.mu-kids-state');
+      let $muKidsBlocks = $('.mu-kids-blocks');
+      let $muKidsExercise = $('.mu-kids-exercise');
+      let $muKidsExerciseDescription = $('.mu-kids-exercise-description');
+      let $muKidsStateImage = $('.mu-kids-state-image');
 
-      var ratio = $muKidsStatesContainer.hasClass('mu-kids-single-state') ? 1 : 2;
-      let dimension
-
-      if ($('.mu-kids-state-image').children().length) {
-        dimension = $muKidsStatesContainer.height() / ratio * 1.25 - fullMargin;
-      } else {
-        dimension = 0;
-        $muKidsBlocks.width('100%');
-      }
-
-      $muKidsStatesContainer.width(dimension);
-
-      var $muKidsExercise = $('.mu-kids-exercise');
-      var $muKidsExerciseDescription = $('.mu-kids-exercise-description');
+      distributeAreas($muKidsStateImage, $muKidsStatesContainer, $muKidsBlocks, fullMargin);
 
       if (!$muKidsExerciseDescription.hasClass('mu-kids-exercise-description-fixed')) {
         $muKidsExerciseDescription.width($muKidsExercise.width() - $muKidsStatesContainer.width() - margin);
