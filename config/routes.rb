@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     resources :exams, only: :show
 
     # All users
-    resource :user, only: :show
+    resource :user, only: [:show, :edit]
 
     # Current user
     resources :messages, only: [:index, :create]
