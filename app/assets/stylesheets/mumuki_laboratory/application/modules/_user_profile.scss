@@ -12,4 +12,11 @@
   vertical-align: middle;
 
   margin-left: auto;
+
+  transition: background-color 0.3s, border-color 0.3s
+}
+
+.mu-profile-action[disabled], .mu-profile-action[disabled]:hover {
+  background-color: lighten($mu-color-complementary, 15%);
+  border-color: lighten($mu-color-complementary, 15%);
 }
