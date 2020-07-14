@@ -322,10 +322,18 @@ mumuki.load(function () {
 
       var $muKidsStatesContainer = $('.mu-kids-states');
       var $muKidsStates = $('.mu-kids-state');
+      var $muKidsBlocks = $('.mu-kids-blocks');
 
       var ratio = $muKidsStatesContainer.hasClass('mu-kids-single-state') ? 1 : 2;
+      let dimension
 
-      var dimension = $muKidsStatesContainer.height() / ratio * 1.25 - fullMargin;
+      if ($('.mu-kids-state-image').children().length) {
+        dimension = $muKidsStatesContainer.height() / ratio * 1.25 - fullMargin;
+      } else {
+        dimension = 0;
+        $muKidsBlocks.width('100%');
+      }
+
       $muKidsStatesContainer.width(dimension);
 
       var $muKidsExercise = $('.mu-kids-exercise');
@@ -336,7 +344,7 @@ mumuki.load(function () {
       }
 
       $muKidsStates.each((index, state) => mumuki.kids.scaleState($(state), fullMargin));
-      mumuki.kids.scaleBlocksArea($('.mu-kids-blocks'));
+      mumuki.kids.scaleBlocksArea($muKidsBlocks);
 
       if (paragraphCount <= 1) clearInterval(nextSpeechBlinking);
 
