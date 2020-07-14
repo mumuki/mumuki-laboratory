@@ -1,7 +1,7 @@
 <%= form_for :user, url: update_user_path, :html => { id: 'mu-user-form' }, method: :put do |f| %>
   <div class="mu-user-header">
     <h1><%= t(:edit_profile) %></h1>
-    <%= f.submit t(:save), class: 'btn btn-success mu-profile-action' %>
+    <%= f.submit t(:save), disabled: true, class: 'btn btn-success mu-profile-action', id: 'mu-edit-profile-btn' %>
   </div>
   <div class="row mu-tab-body">
     <div class="col-md-4 text-center">
