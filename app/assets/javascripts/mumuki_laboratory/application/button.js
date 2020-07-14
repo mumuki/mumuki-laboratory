@@ -6,6 +6,30 @@ mumuki.Button = class {
     this.originalContent = $button.html();
   }
 
+  // ==============
+  // High level API
+  // ==============
+
+  /**
+   * Puts this button into the waiting state,
+   * disabling its usage and updating its legend
+   */
+  wait() {
+    this.setWaiting();
+  }
+
+  /**
+   * Puts this button again in the normal state,
+   * making it ready-to-use.
+   */
+  continue() {
+    this.enable();
+  }
+
+  // =============
+  // Low level API
+  // =============
+
   disable () {
     this.$container.attr('disabled', 'disabled');
   }
