@@ -253,26 +253,26 @@ which are granted to be safe and stable.
 ## Custom editors
 
 Mumuki provides several editor types: code editors, multiple choice, file upload, and so on.
-However, some runners will requiere custom editors in order to provide better ways of entering
+However, some runners will require custom editors in order to provide better ways of entering
 solutions.
 
-The process to do so is not difficult, but tricky, since there are a few hooks you need to implement. Let's look at them
+The process to do so is not difficult, but tricky, since there are a few hooks you need to implement. Let's look at them:
 
 ### 1. Before state: adding layout assets
 
-If you need to provide a custom editor, changes are that you need to also provide to augment the layout, e.g. providing ways
+If you need to provide a custom editor, chances are that you also need to provide assets to augment the layout, e.g. providing ways
 to render some custom components on descriptions or corollaries. That code will be included first.
 
 In order to do that, add to your runner the layout html, css and js code. Layout code has no further requirements. It can customize any public selector previously.
 
-Although it is not requiered, it is recommended that your layout code works with any of the mumuki layouts:
+Although it is not required, it is recommended that your layout code works with any of the mumuki layouts:
 
 * `input_right`
 * `input_bottom`
 * `input_primary`
 * `input_kindergarten`
 
-:warning: Not all the same selectors will be available to all layouts.
+:warning: Not all the selectors will be available to all layouts.
 
 Then expose code in the `MetadataHook`:
 
@@ -375,10 +375,10 @@ mumuki.CustomEditor.addSource({
 });
 ```
 
-#### 2.5 Optional: Sending your solution to the server programatically
+#### 2.5 Optional: Sending your solution to the server programmatically
 
 Your solution will be automatically sent to the client when the submit button is pressed. However,
-if you need to trigger submission process programatically, call `mumuki.submission.processSolution`:
+if you need to trigger submission process programmatically, call `mumuki.submission.processSolution`:
 
 ```javascript
 mumuki.submission.processSolution({solution: {content: /* ... */}});
@@ -386,8 +386,8 @@ mumuki.submission.processSolution({solution: {content: /* ... */}});
 
 #### 2.6 Optional: customizing your submit button
 
-You can altenatively override the default submit button UI and behaviour, by replacing it with a custom component. In order to
-do that, override the `.mu-submit-button` or the kis-specific `.mu-kids-submit-button`:
+You can alternatively override the default submit button UI and behaviour, by replacing it with a custom component. In order to
+do that, override the `.mu-submit-button` or the kids-specific `.mu-kids-submit-button`:
 
 ```javascript
  $(".mu-submit-button").html(/* ... */);
