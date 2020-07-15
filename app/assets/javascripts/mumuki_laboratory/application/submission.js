@@ -167,10 +167,12 @@ var mumuki = mumuki || {};
   /** Processor for kids layouts */
   function _kidsSolutionProcessor(bridge, submitButton) {
     return (solution) => {
-
       submitButton.wait();
       bridge._submitSolution(solution).always(function (data) {
-        submitButton.continue();
+        submitButton.ready(() => {
+          mumuki.kids.restart();
+          submitButton.continue();
+        });
         mumuki.kids.showResult(data);
       });
     }
@@ -219,9 +221,8 @@ var mumuki = mumuki || {};
 
     mumuki.submission._selectSolutionProcessor(submitButton, $submissionsResults);
 
-    $btnSubmit.on('click', function (e) {
+    submitButton.start(() => {
       var solution = mumuki.submission.getContent();
-      e.preventDefault();
       mumuki.submission.processSolution(solution);
     });
 

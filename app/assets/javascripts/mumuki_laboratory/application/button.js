@@ -11,11 +11,43 @@ mumuki.Button = class {
   // ==============
 
   /**
+   * Initializes the button, configuring the action that will be called
+   * before wating
+   */
+  start(main) {
+    this.main = (e) => {
+      e.preventDefault();
+      main();
+    };
+    this.$button.on('click', this.main)
+  }
+
+  /**
    * Puts this button into the waiting state,
    * disabling its usage and updating its legend
    */
   wait() {
+    this.$button.off('click');
+
     this.setWaiting();
+  }
+
+  /**
+   * Puts this button in ready-to-continue state,
+   * and sets the given callback to be called before continue.
+   *
+   * Going through this state is optional.
+   */
+  ready(secondary) {
+    this.$button.off('click');
+
+    this.undisable();
+    this.setRetryText();
+
+    this.$button.on('click', (e) => {
+      e.preventDefault();
+      secondary();
+    });
   }
 
   /**
@@ -23,7 +55,11 @@ mumuki.Button = class {
    * making it ready-to-use.
    */
   continue() {
+    this.$button.off('click');
+
     this.enable();
+
+    this.$button.on('click', this.main)
   }
 
   // =============
@@ -34,6 +70,10 @@ mumuki.Button = class {
     this.$container.attr('disabled', 'disabled');
   }
 
+  undisable() {
+    this.$container.removeAttr('disabled');
+  }
+
   setWaiting () {
     this.preventClick();
     this.setWaitingText();
@@ -41,11 +81,15 @@ mumuki.Button = class {
 
   enable () {
     this.setOriginalContent();
-    this.$container.removeAttr('disabled');
+    this.undisable();
   }
 
   setWaitingText () {
     this.$button.html('<i class="fa fa-refresh fa-spin"></i> ' + this.$button.attr('data-waiting'));
+  }
+
+  setRetryText() {
+    this.$button.html('<i class="fa fa-undo"></i>');
   }
 
   setOriginalContent () {
