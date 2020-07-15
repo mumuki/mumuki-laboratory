@@ -54,10 +54,10 @@
   // bubble tabs
 
   .mu-kids-character .mu-kids-character-speech-bubble-tabs {
-    li.mu-kids-hint {
+    .mu-kids-hint, .mu-kids-description {
       display: none;
     }
-    li.mu-kids-read-description {
+    .mu-kids-read-description {
       display: flex;
     }
   }

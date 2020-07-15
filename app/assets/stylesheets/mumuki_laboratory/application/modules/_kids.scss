@@ -166,12 +166,6 @@ $kids-speech-tabs-width: 40px;
       ul {
         margin: 0;
       }
-      &.no-tabs {
-        .mu-kids-prev-speech,
-        .mu-kids-next-speech {
-          right: 0px;
-        }
-      }
       .mu-kids-prev-speech,
       .mu-kids-next-speech {
         position: absolute;
@@ -223,9 +217,9 @@ $kids-speech-tabs-width: 40px;
           &:last-child {
             border-radius: 0 0 10px 0
           }
-          &.mu-kids-read-description {
-            display: none;
-          }
+        }
+        .mu-kids-read-description {
+          display: none;
         }
         li.separator {
           cursor: default;
@@ -249,9 +243,6 @@ $kids-speech-tabs-width: 40px;
       display: flex;
       align-items: center;
       padding: 15px 50px 15px 15px;
-      &.no-tabs {
-        padding-right: 25px;
-      }
       color: #333;
       border-radius: 10px;
       background: $kids-speech-background-color;
