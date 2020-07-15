@@ -1,3 +1,20 @@
+/**
+ * A generic button component.
+ *
+ * It exposes three APIs: low level, common and high level.
+ *
+ * The low level allows you to control all aspects of the button, but it is legacy
+ * and should not be used in new code.
+ *
+ * The common API offers the start function, which can be used under both the low
+ * and high level APIs to configure the initial on-click button handler.
+ *
+ * The high level allows to implement a simple state-like button handling
+ * that goes as follow:
+ *
+ * 1. simple flow: {init} -start-> {enabled} -wait-> {waiting} -continue-> {enabled}
+ * 2. extended flow: {init} -start-> {enabled} -wait-> {waiting} -ready-> {ready-to-continue} -continue-> {enabled}
+ */
 mumuki.Button = class {
 
   constructor($button, $container) {
@@ -6,13 +23,13 @@ mumuki.Button = class {
     this.originalContent = $button.html();
   }
 
-  // ==============
-  // High level API
-  // ==============
+  // ==========
+  // Common API
+  // ==========
 
   /**
    * Initializes the button, configuring the action that will be called
-   * before wating
+   * before wating, moving it into the {enabled} state.
    */
   start(main) {
     this.main = (e) => {
@@ -22,8 +39,12 @@ mumuki.Button = class {
     this.$button.on('click', this.main)
   }
 
+  // ==============
+  // High level API
+  // ==============
+
   /**
-   * Puts this button into the waiting state,
+   * Moved this button into the {waiting} state,
    * disabling its usage and updating its legend
    */
   wait() {
@@ -33,7 +54,7 @@ mumuki.Button = class {
   }
 
   /**
-   * Puts this button in ready-to-continue state,
+   * Moves this button into {ready-to-continue} state,
    * and sets the given callback to be called before continue.
    *
    * Going through this state is optional.
@@ -51,7 +72,7 @@ mumuki.Button = class {
   }
 
   /**
-   * Puts this button again in the normal state,
+   * Puts this button back in the {enabled} state,
    * making it ready-to-use.
    */
   continue() {
