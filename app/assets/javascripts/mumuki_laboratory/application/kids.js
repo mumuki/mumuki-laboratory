@@ -326,13 +326,15 @@ mumuki.load(function () {
 
     $speechTabs.each(function (i) {
       var $tab = $($speechTabs[i]);
-      $tab.click(function () {
-        $speechTabs.removeClass('active');
-        $tab.addClass('active');
-        $texts.hide();
-        $bubble.children('.' + $tab.data('target')).show();
-        updateSpeechParagraphs();
-      })
+      if ($tab.data('target')) {
+        $tab.click(function () {
+          $speechTabs.removeClass('active');
+          $tab.addClass('active');
+          $texts.hide();
+          $bubble.children('.' + $tab.data('target')).show();
+          updateSpeechParagraphs();
+        })
+      }
     });
 
     if (paragraphCount > 1) {
