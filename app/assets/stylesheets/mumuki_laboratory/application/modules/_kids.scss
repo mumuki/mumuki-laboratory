@@ -223,6 +223,9 @@ $kids-speech-tabs-width: 40px;
           &:last-child {
             border-radius: 0 0 10px 0
           }
+          &.mu-kids-read-description {
+            display: none;
+          }
         }
         li.separator {
           cursor: default;

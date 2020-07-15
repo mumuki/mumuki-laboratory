@@ -53,7 +53,12 @@
 
   // bubble tabs
 
-  .mu-kids-character .mu-kids-character-speech-bubble-tabs li.mu-kids-hint {
-    display: none;
+  .mu-kids-character .mu-kids-character-speech-bubble-tabs {
+    li.mu-kids-hint {
+      display: none;
+    }
+    li.mu-kids-read-description {
+      display: flex;
+    }
   }
 }
