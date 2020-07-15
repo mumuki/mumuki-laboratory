@@ -1,24 +1,24 @@
 <img class="mu-kids-character-animation" alt="">
-<div class="mu-kids-character-speech-bubble <%= 'no-tabs' unless exercise.hint? %>">
-  <% if exercise.hint? %>
-      <ul class="mu-kids-character-speech-bubble-tabs">
-        <li class="mu-kids-description active" data-target="description" title="<%= t :task %>">
-          <i class="fa fa-fw fa-file-text-o"></i>
-        </li>
-        <li class="separator"></li>
-        <li class="mu-kids-read-description" title="<%= t :read %>">
-          <i class="fa fa-fw fa-volume-up"></i>
-        </li>
-        <li class="separator"></li>
-        <li class="mu-kids-hint blink" data-target="hint" title="<%= t :need_a_hint %>">
-          <i class="fa fa-fw fa-lightbulb-o"></i>
-        </li>
-        <li class="separator"></li>
-        <li class="mu-kids-show-context" title="<%= t :context %>">
-          <i class="fa fa-fw fa-eye"></i>
-        </li>
-      </ul>
-  <% end %>
+<div class="mu-kids-character-speech-bubble">
+  <ul class="mu-kids-character-speech-bubble-tabs">
+    <li class="mu-kids-description active" data-target="description" title="<%= t :task %>">
+      <i class="fa fa-fw fa-file-text-o"></i>
+    </li>
+    <li class="separator"></li>
+    <li class="mu-kids-read-description" title="<%= t :read %>">
+      <i class="fa fa-fw fa-volume-up"></i>
+    </li>
+    <% if exercise.hint? %>
+    <li class="separator"></li>
+    <li class="mu-kids-hint blink" data-target="hint" title="<%= t :need_a_hint %>">
+      <i class="fa fa-fw fa-lightbulb-o"></i>
+    </li>
+    <% end %>
+    <li class="separator"></li>
+    <li class="mu-kids-show-context" title="<%= t :context %>">
+      <i class="fa fa-fw fa-eye"></i>
+    </li>
+  </ul>
   <div class="mu-kids-character-speech-bubble-normal">
     <i class="mu-kids-prev-speech fa fa-fw fa-caret-up"></i>
     <i class="mu-kids-next-speech fa fa-fw fa-caret-down"></i>
