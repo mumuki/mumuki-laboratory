@@ -162,6 +162,7 @@ es:
   navigation_next: Siguiente %{kind}
   navigation_revisit: 'Siguiente pendiente: %{sibling}'
   need_a_hint: ¡Dame una pista!
+  context: 'Contexto'
   need_help: No entiendo, ¡necesito ayuda!
   never: nunca
   new: Nuevo

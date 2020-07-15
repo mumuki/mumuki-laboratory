@@ -15,6 +15,7 @@ mumuki.load(() => {
   let $description = $('.mu-kids-description');
   let discussionsLinkHtml = $('#mu-kids-discussion-link-html').html();
   let $kidsContext = $('#mu-kids-context');
+  let $kidsShowContext = $('.mu-kids-show-context');
   let contextModalButton = new mumuki.Button($('.mu-kids-context .modal-footer button'));
 
   // It is important that context is shown as early as possible
@@ -25,11 +26,10 @@ mumuki.load(() => {
       keyboard: false
     });
   }
-
+  $kidsShowContext.click(() => mumuki.kids.showContext());
   $kidsContext.on('hidden.bs.modal', function () {
     animateSpeech();
   });
-
   showContext();
 
   function floatFromPx(value) {
