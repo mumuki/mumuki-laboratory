@@ -1,20 +1,36 @@
 mumuki.load(function () {
-  var $bubble = $('.mu-kids-character-speech-bubble').children('.mu-kids-character-speech-bubble-normal');
+  let $bubble = $('.mu-kids-character-speech-bubble').children('.mu-kids-character-speech-bubble-normal');
 
-  var availableTabs = ['.description', '.hint'];
-  var $speechParagraphs, paragraphHeight, scrollHeight, nextSpeechBlinking;
-  var currentParagraphIndex = 0;
-  var paragraphCount = 1;
-  var paragraphsLines = 2;
-  var $prevSpeech = $('.mu-kids-character-speech-bubble-normal > .mu-kids-prev-speech').hide();
-  var $nextSpeech = $('.mu-kids-character-speech-bubble-normal > .mu-kids-next-speech');
-  var $speechTabs = $('.mu-kids-character-speech-bubble-tabs > li:not(.separator)');
-  var $defaultSpeechTabName = 'description';
-  var $texts = $bubble.children(availableTabs.join(", "));
-  var $hint = $('.mu-kids-hint');
-  var $description = $('.mu-kids-description');
-  var discussionsLinkHtml = $('#mu-kids-discussion-link-html').html();
-  var contextModalButton = new mumuki.Button($('.mu-kids-context .modal-footer button'));
+  let availableTabs = ['.description', '.hint'];
+  let $speechParagraphs, paragraphHeight, scrollHeight, nextSpeechBlinking;
+  let currentParagraphIndex = 0;
+  let paragraphCount = 1;
+  let paragraphsLines = 2;
+  let $prevSpeech = $('.mu-kids-character-speech-bubble-normal > .mu-kids-prev-speech').hide();
+  let $nextSpeech = $('.mu-kids-character-speech-bubble-normal > .mu-kids-next-speech');
+  let $speechTabs = $('.mu-kids-character-speech-bubble-tabs > li:not(.separator)');
+  let $defaultSpeechTabName = 'description';
+  let $texts = $bubble.children(availableTabs.join(", "));
+  let $hint = $('.mu-kids-hint');
+  let $description = $('.mu-kids-description');
+  let discussionsLinkHtml = $('#mu-kids-discussion-link-html').html();
+  let $kidsContext = $('#mu-kids-context');
+  let contextModalButton = new mumuki.Button($('.mu-kids-context .modal-footer button'));
+
+  // It is important that context is shown as early as possible
+  // in order to display the loading animation
+  function showContext() {
+    $kidsContext.modal({
+      backdrop: 'static',
+      keyboard: false
+    });
+  }
+
+  $kidsContext.on('hidden.bs.modal', function () {
+    animateSpeech();
+  });
+
+  showContext();
 
   function floatFromPx(value) {
     return parseFloat(value.substring(0, value.length - 2));
@@ -152,6 +168,8 @@ mumuki.load(function () {
     enableContextModalButton: function () {
       contextModalButton.enable();
     },
+
+    showContext,
 
     // ===========
     // Private API
@@ -293,9 +311,6 @@ mumuki.load(function () {
   mumuki.kids.resultAction.errored = mumuki.kids._showOnCharacterBubble;
   mumuki.kids.resultAction.pending = mumuki.kids._showOnCharacterBubble;
 
-  $('.mu-kids-context').on('hidden.bs.modal', function () {
-    animateSpeech();
-  });
 
   $(document).ready(() => {
     // Speech initialization

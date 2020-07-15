@@ -172,7 +172,6 @@ which are granted to be safe and stable.
 * `.mu-kids-gbs-board-initial`: Use `.mu-initial-state` instead
 * `.mu-state-final`: Use `.mu-final-state` instead
 * `.mu-state-initial`: Use `.mu-initial-state` instead
-* `#kids-context`: Use `.mu-kids-context` instead
 * `#kids-results-aborted`: Use `.mu-kids-results-aborted` instead
 * `#kids-results`: Use `.mu-kids-results` instead
 
@@ -195,6 +194,7 @@ which are granted to be safe and stable.
   * `scaleBlocksArea`
   * `scaleState`
   * `showResult`
+  * `showContext`
 * `mumuki.renderers`
   * `SpeechBubbleRenderer`
   * `renderSpeechBubbleResultItem`
