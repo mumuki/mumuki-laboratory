@@ -12,7 +12,7 @@ mumuki.load(function() {
   let originalProfilePicture = $userAvatar.attr('src');
 
   $userForm.on('change keyup', function() {
-    toggleEditButtonIf(dataChanged());
+    toggleEditButtonIfThereAreChanges();
   });
 
   $avatarItem.on('click', function() {
@@ -22,11 +22,11 @@ mumuki.load(function() {
     const clickedAvatarId = $(this).attr('mu-avatar-id');
     avatarId = clickedAvatarId || "";
 
-    toggleEditButtonIf(avatarChanged());
+    toggleEditButtonIfThereAreChanges();
   });
 
-  function toggleEditButtonIf(criteria) {
-    if (criteria) {
+  function toggleEditButtonIfThereAreChanges() {
+    if (dataChanged() || avatarChanged()) {
       $editButton.prop('disabled', false);
     } else {
       $editButton.prop('disabled', true);
