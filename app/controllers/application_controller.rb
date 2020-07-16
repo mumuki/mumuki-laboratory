@@ -93,7 +93,7 @@ class ApplicationController < ActionController::Base
   def validate_user_profile!
     unless current_user.profile_completed?
       flash.notice = I18n.t :please_fill_profile_data
-      redirect_to user_path
+      redirect_to edit_user_path
     end
   end
 
