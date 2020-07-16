@@ -9,13 +9,40 @@
 
 <details open>
   <summary class="discussion-summary">
-    <div class="mu-inline-block-right hidden-xs">
-      <h1><%= language_icon @debatable.language %></h1>
-    </div>
     <h3 class="discussion-exercise-title">
-      <span class="hidden-xs"><%= t(:exercise_number, number: exercise.number) %>:&nbsp;</span>
-      <span><%= @debatable.name %></span>
+      <span>
+        <span class="hidden-xs"><%= t(:exercise_number, number: exercise.number) %>:&nbsp;</span>
+        <span><%= @debatable.name %></span>
+      </span>
+      <span class="mu-inline-block-right hidden-xs">
+        <h1 class="no-margin"><%= language_icon @debatable.language %></h1>
+      </span>
     </h3>
+    <div class="discussion-description">
+      <%= label_for_contextualization(@discussion, class: 'hidden-xs') %> ·
+      <span class="discussion-info">
+          <span class="discussion-initiator-name">
+            <%= @discussion.initiator.name %>
+          </span>
+        <span class="hidden-xs"><%= discussion_info(@discussion) %></span>
+      </span>
+      <% if current_user %>
+        <span class="mu-inline-block-right discussion-user-menu no-margin">
+          <% if true || @discussion.subscribable? %>
+            <a class="discussion-subscription" onclick="mumuki.Forum.discussionSubscription('<%= subscription_discussion_url(@discussion) %>')">
+              <%= fa_icon(:eye, class: 'fa-xs') %>
+              <%= span_toggle t(:subscribe), t(:unsubscribe), current_user.subscribed_to?(@discussion), class: 'hidden-sm hidden-xs' %>
+            </a>
+          <% end %>
+          <% if true || @discussion.solved? %>
+            <a class="discussion-upvote" onclick="mumuki.Forum.discussionUpvote('<%= upvote_discussion_url(@discussion) %>')">
+              <%= fa_icon(:star, class: 'fa-xs') %>
+              <%= span_toggle t(:upvote), t(:undo_upvote), current_user.upvoted?(@discussion), class: 'hidden-sm hidden-xs' %>
+            </a>
+          <% end %>
+        </span>
+      <% end %>
+    </div>
   </summary>
 
   <% if should_render_read_only_exercise_tabs?(@discussion) %>
@@ -64,7 +91,7 @@
 
         <div role="tabpanel" class="tab-pane" id="results">
           <div class="mu-tab-body">
-            <%= render layout: 'exercise_solutions/contextualization_results_container', locals: {contextualization: @discussion } do %>
+            <%= render layout: 'exercise_solutions/contextualization_results_container', locals: {contextualization: @discussion} do %>
               <div class="row">
                 <div class="col-md-12 submission-results">
                   <%= render partial: 'exercise_solutions/contextualization_results_body',

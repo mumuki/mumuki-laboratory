@@ -3,7 +3,7 @@ module IconsHelper
     fa_icon *icon_for(status_like.to_submission_status)
   end
 
-  def fixed_fa_icon(name, options={})
+  def fixed_fa_icon(name, options = {})
     fa_icon name, options.merge(class: 'fa-fw fixed-icon')
   end
 
@@ -51,12 +51,12 @@ module IconsHelper
     iconizable.iconize[:type].to_s
   end
 
-  def label_for_contextualization(contextualization)
+  def label_for_contextualization(contextualization, **options)
     iconized = contextualization.iconize
     %Q{
       <span class="text-#{iconized[:class]} status-label">
         #{fa_icon "#{iconized[:type]}"}
-        <span>#{t contextualization.visible_status}</span>
+        <span class="#{options[:class]}">#{t contextualization.visible_status}</span>
       </span>
     }.html_safe
   end
