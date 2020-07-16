@@ -1,5 +1,6 @@
 mumuki.load(function() {
   let avatarId = "";
+  let userImage = "";
   let $avatarPicker = $('#mu-avatar-picker');
   let $userAvatar = $('#mu-user-avatar');
 
@@ -8,12 +9,14 @@ mumuki.load(function() {
   });
 
   $("#mu-user-form").on('submit', function(){
-    if (!avatarId) {
-      const imageUrl = $userAvatar.attr('src');
-      $(this).append(`<input type="hidden" name="user[image_url]" value="${imageUrl}"/>`);
+    if (userImage) {
+      setImageUrl($(this), userImage);
+      setAvatarId($(this), "");
     }
 
-    $(this).append(`<input type="hidden" name="user[avatar_id]" value="${avatarId}"/>`);
+    if (avatarId) {
+      setAvatarId($(this), avatarId);
+    }
   });
 
   $('.mu-avatar-item').on('click', function(){
@@ -23,4 +26,16 @@ mumuki.load(function() {
     const clickedAvatarId = $(this).attr('mu-avatar-id');
     avatarId = clickedAvatarId || "";
   });
+
+  $('#mu-user-image').on('click', function(){
+    userImage = $userAvatar.attr('src');
+  });
+
+  function setImageUrl(form, url) {
+    form.append(`<input type="hidden" name="user[image_url]" value="${url}"/>`);
+  }
+
+  function setAvatarId(form, id) {
+    form.append(`<input type="hidden" name="user[avatar_id]" value=${id}/>`);
+  }
 });
