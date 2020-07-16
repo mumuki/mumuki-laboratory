@@ -8,22 +8,26 @@ mumuki.load(function() {
   let originalProfilePicture = $userAvatar.attr('src');
 
   $avatarItem.on('click', function() {
-    if (avatarChanged()) {
-      $editButton.prop('disabled', false);
-    } else {
-      $editButton.prop('disabled', true);
-    }
+    toggleEditButtonIf(avatarChanged());
   });
 
   $userForm.on('change keyup', function() {
-    if ($userForm.serialize() != originalData) {
+    toggleEditButtonIf(dataChanged());
+  });
+
+  function toggleEditButtonIf(criteria) {
+    if (criteria) {
       $editButton.prop('disabled', false);
     } else {
       $editButton.prop('disabled', true);
     }
-  });
+  }
 
   function avatarChanged() {
     return ($userAvatar.attr('src') != originalProfilePicture);
+  }
+
+  function dataChanged() {
+    return $userForm.serialize() != originalData;
   }
 });
