@@ -1,6 +1,6 @@
 module AvatarHelper
   def avatars_for(user)
-    Avatar.with_current_visual_identity_for user
+    (Avatar.with_current_visual_identity_for(user) + [user.avatar]).compact.uniq
   end
 
   def show_avatar_item(item)
