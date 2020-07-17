@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20200804191643) do
     t.bigint "organization_id"
     t.datetime "submitted_at"
     t.bigint "parent_id"
+    t.integer "top_submission_status", default: 0
     t.index ["exercise_id"], name: "index_assignments_on_exercise_id"
     t.index ["organization_id"], name: "index_assignments_on_organization_id"
     t.index ["parent_id"], name: "index_assignments_on_parent_id"
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 20200804191643) do
   create_table "avatars", force: :cascade do |t|
     t.string "image_url"
     t.string "description"
+    t.integer "target_visual_identity", default: 0
   end
 
   create_table "books", id: :serial, force: :cascade do |t|
@@ -310,6 +312,7 @@ ActiveRecord::Schema.define(version: 20200804191643) do
     t.text "profile", default: "{}", null: false
     t.integer "progressive_display_lookahead"
     t.boolean "incognito_mode_enabled"
+    t.integer "target_visual_identity", default: 0
     t.index ["book_id"], name: "index_organizations_on_book_id"
     t.index ["name"], name: "index_organizations_on_name", unique: true
   end
@@ -362,6 +365,14 @@ ActiveRecord::Schema.define(version: 20200804191643) do
     t.index ["item_type", "item_id"], name: "index_usages_on_item_type_and_item_id"
     t.index ["organization_id"], name: "index_usages_on_organization_id"
     t.index ["parent_item_type", "parent_item_id"], name: "index_usages_on_parent_item_type_and_parent_item_id"
+  end
+
+  create_table "user_stats", force: :cascade do |t|
+    t.integer "exp", default: 0
+    t.bigint "user_id"
+    t.bigint "organization_id"
+    t.index ["organization_id"], name: "index_user_stats_on_organization_id"
+    t.index ["user_id"], name: "index_user_stats_on_user_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
