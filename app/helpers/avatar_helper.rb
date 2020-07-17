@@ -1,6 +1,6 @@
 module AvatarHelper
-  def avatars_for(user)
-    Avatar.all
+  def avatars_for(_user, organization)
+    Avatar.select { |avatar| avatar.target == organization.target }
   end
 
   def show_avatar_item(item)
