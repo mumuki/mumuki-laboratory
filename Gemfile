@@ -28,3 +28,7 @@ group :development do
   gem 'web-console', '~> 3.7.0'
   gem 'codeclimate-test-reporter', require: nil
 end
+#
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'chore_target_visual_identity'
+#
+gem 'mumukit-auth', github: 'mumuki/mumukit-auth', branch: 'master'
