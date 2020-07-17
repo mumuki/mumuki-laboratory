@@ -5,6 +5,8 @@ ruby '~> 2.3'
 
 gem 'puma'
 
+gem 'mumuki-domain', path: '../mumuki-domain'
+
 gem 'execjs'
 gem 'therubyracer', platforms: :ruby
 gem 'uglifier', '~> 2.7'
