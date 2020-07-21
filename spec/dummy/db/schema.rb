@@ -124,6 +124,8 @@ ActiveRecord::Schema.define(version: 20200804191643) do
     t.boolean "requires_moderator_response", default: true
     t.string "last_moderator_access_by_id"
     t.datetime "last_moderator_access_at"
+    t.datetime "last_initiator_message_at"
+    t.datetime "last_moderator_message_at"
     t.index ["initiator_id"], name: "index_discussions_on_initiator_id"
     t.index ["item_type", "item_id"], name: "index_discussions_on_item_type_and_item_id"
     t.index ["organization_id"], name: "index_discussions_on_organization_id"
