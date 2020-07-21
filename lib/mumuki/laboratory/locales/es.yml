@@ -71,6 +71,7 @@ es:
   dont_leave_us: ¡No nos abandones! Aprender a programar es divertido. Sólo tenés que seguir practicando.
   download: "Descargá lo que hiciste"
   edit: Editar
+  edit_profile: Editar perfil
   editor_placeholder: "...escribí tu solución acá..."
   email: Email
   error_description: ¡Ups! <br> Esto es lo que se conoce como <span class="error-link">%{error}</span>.

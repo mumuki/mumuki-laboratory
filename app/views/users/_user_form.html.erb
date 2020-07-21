@@ -1,19 +1,9 @@
-<%= form_for :user, url: update_user_path, :html => { id: 'mu-user-form' }, method: :put do |f| %>
-  <div class="mu-user-header">
-    <h1><%= @user.name %></h1>
+<div class="mu-user-header">
+  <h1><%= @user.name %></h1>
+  <%= edit_profile_button %>
+</div>
+<div class="row mu-tab-body">
+  <div class="col-md-4 text-center">
+    <%= image_tag @user.profile_picture, class: 'mu-user-avatar', id: 'mu-user-avatar' %>
   </div>
-  <div class="row mu-tab-body">
-    <div class="col-md-4 text-center">
-      <%= image_tag @user.profile_picture, class: 'mu-user-avatar', id: 'mu-user-avatar' %>
-      <i class="fa fa-pencil fa-2x pointer mu-edit-avatar" id="mu-edit-avatar-icon"></i>
-    </div>
-    <div class="col-md-8">
-      <%= render partial: 'profile_fields', locals: {form: f} %>
-      <div><%= f.submit t(:save), class: 'btn btn-success btn-block' %></div>
-    </div>
-  </div>
-<% end %>
-
-<%= content_for :no_container do %>
-    <%= render partial: 'layouts/modals/avatar_picker' %>
-<% end %>
+</div>

@@ -64,6 +64,7 @@ en:
   dont_leave_us: Don't leave us! Learning is fun. You just have to keep at it.
   download: Download your solution
   edit: Edit
+  edit_profile: Edit profile
   editor_placeholder: "write your solution here..."
   email: Email
   error_description: This is known as a <span class="error-link">%{error}</span>.
