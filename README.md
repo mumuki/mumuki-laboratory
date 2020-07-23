@@ -220,7 +220,6 @@ which are granted to be safe and stable.
 {
   "status": "passed|passed_with_warnings|failed",
   "guide_finished_by_solution": "boolean",
-  "class_for_progress_list_item": "string",
   "html": "string",
   "remaining_attempts_html": "string" ,
   "title_html": "string",                         // kids-only

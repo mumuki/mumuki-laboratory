@@ -27,7 +27,7 @@ describe ExerciseSolutionsController, organization_workspace: :test do
         it { expect(assignment.solution).to eq('asd')}
 
         it { expect(response.body).to json_eq({ status: :failed, guide_finished_by_solution: false },
-                                              except: [:class_for_progress_list_item, :html, :remaining_attempts_html]) }
+                                              except: [:html, :remaining_attempts_html]) }
 
 
         it 'does not include kids specific renders' do
@@ -54,7 +54,7 @@ describe ExerciseSolutionsController, organization_workspace: :test do
       before { post_problem(kids_problem) }
 
       it { expect(response.body).to json_eq({ status: :failed, guide_finished_by_solution: false },
-                                            except: [:class_for_progress_list_item, :html, :remaining_attempts_html,
+                                            except: [:html, :remaining_attempts_html,
                                                      :title_html, :button_html, :expectations, :test_results, :tips]) }
 
       it 'includes kids specific renders' do

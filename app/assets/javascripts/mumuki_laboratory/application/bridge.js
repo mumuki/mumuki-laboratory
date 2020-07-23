@@ -27,9 +27,18 @@ var mumuki = mumuki || {};
       data: solution
     });
 
-    return $.ajax(request).done(function (result) {
+    return $.ajax(request).then(preRenderResult).done(function (result) {
       lastSubmission = { content: solution, result: result };
     });
+  }
+
+
+  /**
+   * Pre-renders some html parts of submission UI
+   * */
+  function preRenderResult(result) {
+    result.class_for_progress_list_item = mumuki.renderers.progressListItemClassForStatus(result.status, true)
+    return result;
   }
 
   mumuki.load(function () {
@@ -67,7 +76,7 @@ var mumuki = mumuki || {};
       } else {
         return sendNewSolution(solution);
       }
-    },
+    }
   };
 
   mumuki.bridge = {
