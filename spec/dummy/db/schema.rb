@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200608132959) do
+ActiveRecord::Schema.define(version: 20200702165503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,6 +117,10 @@ ActiveRecord::Schema.define(version: 20200608132959) do
     t.text "manual_evaluation_comment"
     t.integer "upvotes_count", default: 0
     t.bigint "organization_id"
+    t.integer "messages_count", default: 0
+    t.integer "useful_messages_count", default: 0
+    t.datetime "last_initiator_message_at"
+    t.datetime "last_moderator_message_at"
     t.index ["initiator_id"], name: "index_discussions_on_initiator_id"
     t.index ["item_type", "item_id"], name: "index_discussions_on_item_type_and_item_id"
     t.index ["organization_id"], name: "index_discussions_on_organization_id"
@@ -143,7 +147,11 @@ ActiveRecord::Schema.define(version: 20200608132959) do
     t.integer "max_problem_submissions"
     t.integer "max_choice_submissions"
     t.boolean "results_hidden_for_choices", default: false
+    t.bigint "course_id"
+    t.integer "passing_criterion_type", default: 0
+    t.integer "passing_criterion_value"
     t.index ["classroom_id"], name: "index_exams_on_classroom_id", unique: true
+    t.index ["course_id"], name: "index_exams_on_course_id"
     t.index ["guide_id"], name: "index_exams_on_guide_id"
     t.index ["organization_id"], name: "index_exams_on_organization_id"
   end
