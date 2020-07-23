@@ -1,12 +1,16 @@
+/**
+ * @typedef {{name: string, value: string}} EditorProperty
+ */
+
+/**
+ * @typedef {{getContent: () => EditorProperty}} CustomEditorSource
+ */
+
 var mumuki = mumuki || {};
 
 (function (mumuki) {
 
   var CustomEditor = {
-    /**
-     * @typedef {{getContent: () => {name: string, value: string}}} CustomEditorSource
-     */
-
     /**
      * @type {CustomEditorSource[]}
      */
@@ -27,7 +31,7 @@ var mumuki = mumuki || {};
     },
 
     /**
-     * @returns {{name: string, value: string}[]}
+     * @returns {EditorProperty[]}
      */
     getContents() {
       return CustomEditor.sources.map( e => e.getContent() );

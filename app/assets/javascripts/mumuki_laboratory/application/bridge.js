@@ -1,3 +1,11 @@
+/**
+ * @typedef {{status: string, test_results: [{status: string, title: string}]}} SubmissionResult
+ */
+
+/**
+ * @typedef {{solution: object, result?: SubmissionResult}} Submission
+ */
+
 var mumuki = mumuki || {};
 
 (function (mumuki) {
@@ -68,7 +76,7 @@ var mumuki = mumuki || {};
     /**
      * Sends a solution object
      *
-     * @param {{solution: object}} solution the solution object
+     * @param {Submission} submission the submission object
      */
     _submitSolution: function (solution) {
       if(lastSubmissionFinishedSuccessfully() && sameAsLastSolution(solution)){
