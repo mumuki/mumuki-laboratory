@@ -1,9 +1,9 @@
 /**
- * @typedef {{status: string, test_results: [{status: string, title: string}]}} SubmissionResult
+ * @typedef {{status: string, test_results: [{status: string, title: string}]}} ClientResult
  */
 
 /**
- * @typedef {{solution: object, result?: SubmissionResult}} Submission
+ * @typedef {{solution: object, client_result?: ClientResult}} Submission
  */
 
 var mumuki = mumuki || {};
