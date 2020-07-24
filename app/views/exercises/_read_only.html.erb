@@ -12,10 +12,10 @@
     <h3 class="discussion-exercise-title">
       <span>
         <span class="hidden-xs"><%= t(:exercise_number, number: exercise.number) %>:&nbsp;</span>
-        <span><%= @debatable.name %></span>
+        <span><%= exercise.name %></span>
       </span>
       <span class="mu-inline-block-right hidden-xs">
-        <h1 class="no-margin"><%= language_icon @debatable.language %></h1>
+        <h1 class="no-margin"><%= language_icon exercise.language %></h1>
       </span>
     </h3>
     <div class="discussion-description">
@@ -24,17 +24,17 @@
           <span class="discussion-initiator-name">
             <%= @discussion.initiator.name %>
           </span>
-        <span class="hidden-xs"><%= discussion_info(@discussion) %></span>
+        <span class="hidden-xs"><%= discussion_info(@discussion) unless @discussion.new_record? %></span>
       </span>
-      <% if current_user %>
+      <% if current_user && @discussion.persisted? %>
         <span class="mu-inline-block-right discussion-user-menu no-margin">
-          <% if true || @discussion.subscribable? %>
+          <% if @discussion.subscribable? %>
             <a class="discussion-subscription" onclick="mumuki.Forum.discussionSubscription('<%= subscription_discussion_url(@discussion) %>')">
               <%= fa_icon(:eye, class: 'fa-xs') %>
               <%= span_toggle t(:subscribe), t(:unsubscribe), current_user.subscribed_to?(@discussion), class: 'hidden-sm hidden-xs' %>
             </a>
           <% end %>
-          <% if true || @discussion.solved? %>
+          <% if @discussion.solved? %>
             <a class="discussion-upvote" onclick="mumuki.Forum.discussionUpvote('<%= upvote_discussion_url(@discussion) %>')">
               <%= fa_icon(:star, class: 'fa-xs') %>
               <%= span_toggle t(:upvote), t(:undo_upvote), current_user.upvoted?(@discussion), class: 'hidden-sm hidden-xs' %>

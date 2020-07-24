@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     root to: 'book#show'
 
     concern :debatable do |options|
-      resources :discussions, options.merge(only: [:index, :show, :create, :update, :destroy]) do
+      resources :discussions, options.merge(only: [:index, :new, :show, :create, :update, :destroy]) do
         post :subscription, on: :member
         post :upvote, on: :member
       end

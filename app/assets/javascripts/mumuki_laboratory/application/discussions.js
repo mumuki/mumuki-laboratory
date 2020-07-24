@@ -1,23 +1,13 @@
 var mumuki = mumuki || {};
 
 mumuki.load(function () {
-  var $newDiscussionModal = $('.new-discussion-modal');
-  var $newDiscussion = $('.discussion-create');
-
-  $newDiscussion.click(function () {
-    $newDiscussionModal.modal({
-      backdrop: 'static',
-      keyboard: false
-    });
-  });
-
   var $subscriptionSpans = $('.discussion-subscription > span');
   var $upvoteSpans = $('.discussion-upvote > span');
 
   function createNewMessageEditor() {
     var $textarea = $("#new-discussion-message");
     var textarea = $textarea[0];
-    if(!textarea) return;
+    if (!textarea) return;
 
     return new mumuki.editor.CodeMirrorBuilder(textarea)
       .setupSimpleEditor()
@@ -39,7 +29,7 @@ mumuki.load(function () {
 
   createReadOnlyEditors();
   createNewMessageEditor();
-  
+
   var Forum = {
     toggleButton: function (spans) {
       spans.toggleClass('hidden');
@@ -64,7 +54,7 @@ mumuki.load(function () {
     discussionPostAndToggle: function (url, elem) {
       Forum.discussionPost(url).done(Forum.toggleButton(elem))
     },
-    discussionMessageToggleApprove : function (url, elem) {
+    discussionMessageToggleApprove: function (url, elem) {
       Forum.discussionPost(url).done(function () {
         elem.toggleClass("selected");
       })

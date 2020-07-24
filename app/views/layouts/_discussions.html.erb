@@ -48,7 +48,8 @@
                   <span class="discussion-status-icon">
                     <%= discussion_status_fa_icon(discussion) %>
                   </span>
-                  <%= discussion.title %>
+                  <span class="hidden-sm hidden-xs"><%= discussion.exercise.friendly %></span>
+                  <span class="hidden-md hidden-lg"><%= discussion.exercise.name %></span>
                 </div>
                 <span class="discussion-description">
                   <%= discussion.description %>

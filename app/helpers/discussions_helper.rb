@@ -96,11 +96,7 @@ module DiscussionsHelper
     %Q{
       <h4>
         <span>#{t(teaser_text)}</span>
-        <a>
-          <span class="discussion-create">
-            #{t(link_text)}
-          </span>
-        </a>
+        #{link_to t(link_text), new_exercise_discussion_path(@debatable) }
       </h4>
     }.html_safe
   end
