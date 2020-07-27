@@ -15,6 +15,7 @@
       case "failed":               return "fa-times-circle";
       case "passed_with_warnings": return "fa-exclamation-circle";
       case "passed":               return "fa-check-circle";
+      case "pending":              return "fa-circle";
     }
   }
 
