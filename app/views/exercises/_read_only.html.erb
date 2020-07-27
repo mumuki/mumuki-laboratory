@@ -36,7 +36,7 @@
           <% end %>
           <% if @discussion.solved? %>
             <a class="discussion-upvote" onclick="mumuki.Forum.discussionUpvote('<%= upvote_discussion_url(@discussion) %>')">
-              <%= fa_icon(:star, class: 'fa-xs') %>
+              <%= fa_icon('thumbs-o-up', class: 'fa-xs') %>
               <%= span_toggle t(:upvote), t(:undo_upvote), current_user.upvoted?(@discussion), class: 'hidden-sm hidden-xs' %>
             </a>
           <% end %>
