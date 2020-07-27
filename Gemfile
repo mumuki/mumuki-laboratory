@@ -37,4 +37,3 @@ group :development, :test do
 end
 
 gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'chore_target_visual_identity'
-gem 'mumukit-auth', github: 'mumuki/mumukit-auth', branch: 'master'
