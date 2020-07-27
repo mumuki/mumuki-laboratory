@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20200717143830) do
   create_table "avatars", force: :cascade do |t|
     t.string "image_url"
     t.string "description"
-    t.integer "target_visual_identity", default: 0
+    t.integer "target_audience", default: 0
   end
 
   create_table "books", id: :serial, force: :cascade do |t|
@@ -301,7 +301,7 @@ ActiveRecord::Schema.define(version: 20200717143830) do
     t.text "theme", default: "{}", null: false
     t.text "profile", default: "{}", null: false
     t.integer "progressive_display_lookahead"
-    t.integer "target_visual_identity", default: 0
+    t.integer "target_audience", default: 0
     t.index ["book_id"], name: "index_organizations_on_book_id"
     t.index ["name"], name: "index_organizations_on_name", unique: true
   end
