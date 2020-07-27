@@ -45,6 +45,6 @@
 
   mumuki.renderers = mumuki.renderers || {};
   mumuki.renderers.classForStatus = classForStatus;
-  mumuki.renderers.classForStatus = iconForStatus;
+  mumuki.renderers.iconForStatus = iconForStatus;
   mumuki.renderers.progressListItemClassForStatus = progressListItemClassForStatus;
 })();
