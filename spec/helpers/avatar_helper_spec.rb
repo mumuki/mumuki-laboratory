@@ -5,11 +5,11 @@ describe AvatarHelper, organization_workspace: :test do
 
   let(:user) { create(:user, avatar: kids_avatars.last) }
 
-  let(:kids_avatars) { create_list(:avatar, 4, target_visual_identity: :kids) }
-  let!(:grown_ups_avatars) { create_list(:avatar, 3, target_visual_identity: :grown_ups) }
+  let(:kids_avatars) { create_list(:avatar, 4, target_audience: :kids) }
+  let!(:grown_ups_avatars) { create_list(:avatar, 3, target_audience: :grown_ups) }
 
-  let!(:kids_organization) { create(:organization, target_visual_identity: :kids) }
-  let!(:grown_ups_organization) { create(:organization, target_visual_identity: :grown_ups, name: 'for_grown_ups') }
+  let!(:kids_organization) { create(:organization, target_audience: :kids) }
+  let!(:grown_ups_organization) { create(:organization, target_audience: :grown_ups, name: 'for_grown_ups') }
 
   describe 'avatars_for' do
     context 'with avatar in same target audience as organization' do
