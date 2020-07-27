@@ -25,11 +25,11 @@
    */
   function classForStatus(status) {
     switch (status) {
-      case "passed": return "success";
-      case "failed": return "danger";
+      case "passed":               return "success";
+      case "failed":               return "danger";
       case "passed_with_warnings": return "warning";
-      case "errored": return "broken";
-      case "pending": return "muted";
+      case "errored":              return "broken";
+      case "pending":              return "muted";
     }
   };
 
