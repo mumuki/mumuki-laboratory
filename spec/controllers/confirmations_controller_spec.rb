@@ -15,6 +15,6 @@ describe ExerciseConfirmationsController, organization_workspace: :test do
     before { post :create, params: { exercise_id: reading.id } }
 
     it { expect(response.status).to eq 200 }
-    it { expect(response.body).to json_like(guide_finished_by_solution: true, class_for_progress_list_item: 'progress-list-item text-center success active') }
+    it { expect(response.body).to json_like(guide_finished_by_solution: true) }
   end
 end
