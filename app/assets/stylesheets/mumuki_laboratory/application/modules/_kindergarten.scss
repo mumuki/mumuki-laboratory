@@ -1,4 +1,4 @@
-.mu-kindergarten {
+.mu-kids-exercise.mu-kindergarten {
 
   // layout
 
@@ -44,6 +44,10 @@
   }
 
   .mu-kids-state.mu-state-final {
+    display: none;
+  }
+
+  .mu-kids-compass-rose {
     display: none;
   }
 }
