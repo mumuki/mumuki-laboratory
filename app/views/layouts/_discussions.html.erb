@@ -20,6 +20,13 @@
       <%= discussion_dropdown_filter :sort, Discussion.sorting_filters do |sorting_filter| %>
         <%= t sorting_filter %>
       <% end %>
+
+      <% if current_user.moderator_here? %>
+        <%= discussion_dropdown_filter :requires_moderator_response, [:true, :false], true do |required| %>
+          <%= t required %>
+        <% end %>
+      <% end %>
+
     </div>
   </div>
   <% if @filtered_discussions.empty? %>

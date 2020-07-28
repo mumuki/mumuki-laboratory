@@ -17,6 +17,11 @@ class DiscussionsMessagesController < AjaxController
     head :ok
   end
 
+  def question
+    current_message.toggle_not_actually_a_question!
+    head :ok
+  end
+
   private
 
   def set_discussion!

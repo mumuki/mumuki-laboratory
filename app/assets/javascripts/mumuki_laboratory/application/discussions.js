@@ -58,6 +58,11 @@ mumuki.load(function () {
       Forum.discussionPost(url).done(function () {
         elem.toggleClass("selected");
       })
+    },
+    discussionMessageToggleNotActuallyAQuestion: function (url, elem) {
+      Forum.discussionPost(url).done(function () {
+        elem.toggleClass("selected");
+      })
     }
   };
 
