@@ -44,7 +44,7 @@ mumuki.Button = class {
   // ==============
 
   /**
-   * Moved this button into the {waiting} state,
+   * Moves this button into the {waiting} state,
    * disabling its usage and updating its legend
    */
   wait() {
