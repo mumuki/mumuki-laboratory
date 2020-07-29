@@ -67,7 +67,7 @@ module DiscussionsHelper
     %Q{
       <span class="discussion-icon fa-stack fa-xs">
         <i class="fa fa-comment-o fa-stack-2x"></i>
-        <i class="fa fa-stack-1x">#{discussion.useful_messages_count}</i>
+        <i class="fa fa-stack-1x">#{discussion.validated_messages_count}</i>
       </span>
     }.html_safe
   end

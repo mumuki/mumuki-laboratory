@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20200702165503) do
     t.integer "upvotes_count", default: 0
     t.bigint "organization_id"
     t.integer "messages_count", default: 0
-    t.integer "useful_messages_count", default: 0
+    t.integer "validated_messages_count", default: 0
     t.datetime "last_initiator_message_at"
     t.datetime "last_moderator_message_at"
     t.index ["initiator_id"], name: "index_discussions_on_initiator_id"

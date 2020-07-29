@@ -340,18 +340,23 @@ summary.discussion-summary {
         .discussion-message-not-actually-a-question {
           cursor: pointer;
           text-decoration: none;
+          i {
+            position: relative;
+            &:after {
+              position: absolute;
+              left: 6px;
+              content: ' ';
+              height: 19px;
+              width: 2px;
+              transform: rotate(-45deg);
+              background-color: #aaaaaa;
+            }
+          }
           &.selected {
             i {
-              position: relative;
               color: $brand-primary;
               &:after {
-                position: absolute;
-                left: 6px;
-                content: ' ';
-                height: 19px;
-                width: 2px;
                 background-color: $brand-primary;
-                transform: rotate(-45deg);
               }
             }
           }
