@@ -132,8 +132,8 @@ pt:
   male: Masculino
   manual_evaluation_pending: Obrigado por enviar sua solução! Seus professores irão corrigi-lo em breve
   message_count:
-      one: 1 mensagem
-      other: '%{count} mensagens'
+    one: 1 mensagem
+    other: '%{count} mensagens'
   message: Mensagem
   messages: Mensagens
   messages_error: As mensagens acima não estão disponíveis no momento. Eu tentei novamente mais tarde!
@@ -195,6 +195,7 @@ pt:
   read: Ler
   read_messages: Ver mensagens
   refresh_or_wait: Se não mostrar automaticamente em alguns segundos, pressione F5
+  requires_attention: Requer atenção
   reset_query: Limpar filtros de pesquisa atuais
   restart: Reiniciar
   results: Resultados

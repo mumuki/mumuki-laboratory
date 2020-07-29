@@ -184,6 +184,7 @@ en:
   progress: Progresss
   read: Read
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
+  requires_attention: Requires attention
   reset_query: Clear current search filters
   responses_count_asc: By less moderators replies
   responses_count_desc: By more moderators replies

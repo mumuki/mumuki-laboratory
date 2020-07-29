@@ -22,9 +22,10 @@
       <% end %>
 
       <% if current_user.moderator_here? %>
-        <%= discussion_dropdown_filter :requires_moderator_response, [:true, :false], true do |required| %>
-          <%= t required %>
-        <% end %>
+        <div class="discussion-requires-attention pull-right">
+          <%= label_tag :requires_moderator_response, t(:requires_attention) %>
+          <%= check_box_tag :requires_moderator_response, true, discussion_filter_params[:requires_moderator_response], class: 'form-input', onclick: 'mumuki.Forum.discussionsToggleCheckbox($(this))' %>
+        </div>
       <% end %>
 
     </div>

@@ -63,6 +63,12 @@ mumuki.load(function () {
       Forum.discussionPost(url).done(function () {
         elem.toggleClass("selected");
       })
+    },
+    discussionsToggleCheckbox: function (elem) {
+      const key = elem.attr('name');
+      const params = new URLSearchParams(location.search);
+      elem.is(':checked') ? params.set(key, elem.val()) : params.delete(key);
+      location.search = params.toString();
     }
   };
 
