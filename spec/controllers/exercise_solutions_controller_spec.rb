@@ -13,18 +13,53 @@ describe ExerciseSolutionsController, organization_workspace: :test do
   before { set_current_user! user }
 
   def post_problem(problem)
-    post :create, params: { exercise_id: problem.id, solution: { content: 'asd' } }
+    post :create, params: { exercise_id: problem.id, solution: { content: 'the content' } }
   end
 
 
-  describe 'when simple content is sent' do
+  context 'when submission contains client_result' do
+    let(:problem) { create(:problem) }
+    let(:assignment) { Assignment.last }
+
+    before { expect_any_instance_of(Language).to receive(:run_tests!).with(bridge_request) }
+    before do
+      post :create, params: {
+        exercise_id: problem.id,
+        solution: { content: 'the content' },
+        client_result: {
+          status: :passed_with_warnings,
+          test_results: [{title: 'everything works', status: 'passed'}]
+        }
+      }
+    end
+
+    let(:bridge_request) do
+      {
+        content: 'the content',
+        custom_expectations: "\n",
+        expectations: [],
+        extra: "",
+        locale: "en",
+        settings: {},
+        test: "dont care",
+        client_result: {
+          status: 'passed_with_warnings',
+          test_results: [{title: 'everything works', status: 'passed'}]
+        }
+      }
+    end
+
+    it { expect(assignment.solution).to eq 'the content' }
+  end
+
+  context 'when simple content is sent' do
     context 'for a non-kids exercise' do
       before { post_problem(problem) }
       let(:assignment) { Assignment.last }
 
       context 'without client-side interpolations' do
         it { expect(response.status).to eq 200 }
-        it { expect(assignment.solution).to eq('asd')}
+        it { expect(assignment.solution).to eq('the content')}
 
         it { expect(response.body).to json_eq({ status: :failed, guide_finished_by_solution: false },
                                               except: [:html, :remaining_attempts_html]) }

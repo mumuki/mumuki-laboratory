@@ -69,7 +69,7 @@ var mumuki = mumuki || {};
    * This content object may include keys like {@code content},
    * {@code content_extra} and {@code content_test}
    *
-   * @returns {{name: string, value: string}[]}
+   * @returns {EditorProperty[]}
    */
   function getStandardEditorContents() {
     mumuki.submission._syncContent();
@@ -145,8 +145,8 @@ var mumuki = mumuki || {};
    * {@link _kidsSolutionProcessor} and {@link _classicSolutionProcessor} - which are automatically choosen depending
    * on the exercise DOM.
    *
-   * @param {{solution: object}} solution
-   */
+   * @param {Submission} solution
+  */
   function processSolution(solution) {
     mumuki.submission._solutionProcessor(solution);
   }

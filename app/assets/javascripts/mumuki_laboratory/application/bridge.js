@@ -1,3 +1,11 @@
+/**
+ * @typedef {{status: string, test_results: [{status: string, title: string}]}} ClientResult
+ */
+
+/**
+ * @typedef {{solution: object, client_result?: ClientResult}} Submission
+ */
+
 var mumuki = mumuki || {};
 
 (function (mumuki) {
@@ -19,16 +27,16 @@ var mumuki = mumuki || {};
     return lastSubmission.result && lastSubmission.result.status !== 'aborted';
   }
 
-  function sendNewSolution(solution){
+  function sendNewSolution(submission){
     var token = new mumuki.CsrfToken();
     var request = token.newRequest({
       type: 'POST',
       url: window.location.origin + window.location.pathname + '/solutions' + window.location.search,
-      data: solution
+      data: submission
     });
 
     return $.ajax(request).then(preRenderResult).done(function (result) {
-      lastSubmission = { content: solution, result: result };
+      lastSubmission = { content: {solution: submission.solution}, result: result };
     });
   }
 
@@ -68,13 +76,13 @@ var mumuki = mumuki || {};
     /**
      * Sends a solution object
      *
-     * @param {{solution: object}} solution the solution object
+     * @param {Submission} submission the submission object
      */
-    _submitSolution: function (solution) {
-      if(lastSubmissionFinishedSuccessfully() && sameAsLastSolution(solution)){
+    _submitSolution: function (submission) {
+      if(lastSubmissionFinishedSuccessfully() && sameAsLastSolution(submission)){
         return $.Deferred().resolve(lastSubmission.result);
       } else {
-        return sendNewSolution(solution);
+        return sendNewSolution(submission);
       }
     }
   };
