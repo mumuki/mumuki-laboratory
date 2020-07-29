@@ -1,5 +1,5 @@
 <%= content_for :breadcrumbs do %>
-  <%= home_breadcrumb %>
+  <%= header_breadcrumbs %> <%= breadcrumb_list_item(t(:discussions), 'last') %>
 <% end %>
 
 <%= content_for :extra_filters do %>
