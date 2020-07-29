@@ -27,7 +27,8 @@ describe ExerciseSolutionsController, organization_workspace: :test do
         exercise_id: problem.id,
         solution: { content: 'the content' },
         client_result: {
-          status: :passed_with_warnings
+          status: :passed_with_warnings,
+          test_results: [{title: 'everything works', status: 'passed'}]
         }
       }
     end
@@ -42,7 +43,8 @@ describe ExerciseSolutionsController, organization_workspace: :test do
         settings: {},
         test: "dont care",
         client_result: {
-          status: 'passed_with_warnings'
+          status: 'passed_with_warnings',
+          test_results: [{title: 'everything works', status: 'passed'}]
         }
       }
     end
