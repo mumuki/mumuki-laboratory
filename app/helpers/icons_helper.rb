@@ -39,6 +39,10 @@ module IconsHelper
     icon_class_for(exercise.assignment_for(current_user))
   end
 
+  def status_class_for(status_like)
+    icon_class_for(status_like.to_submission_status)
+  end
+
   def icon_class_for(iconizable)
     iconizable.iconize[:class].to_s
   end
