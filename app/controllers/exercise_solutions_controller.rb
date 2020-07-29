@@ -24,7 +24,7 @@ class ExerciseSolutionsController < AjaxController
   def solution_params
     {
       content: params.require(:solution).permit!.to_h[:content],
-      client_result: params[:client_result].try { |it| it.permit(:status, test_results: [:title, :status, :resut, :summary]).to_h }
+      client_result: params[:client_result].try { |it| it.permit(:status, test_results: [:title, :status, :result, :summary]).to_h }
     }
   end
 end
