@@ -1,14 +1,25 @@
 /**
- * @typedef {{status: string, test_results: [{status: string, title: string}]}} ClientResult
+ * @typedef {{status: SubmissionStatus, test_results: [{status: SubmissionStatus, title: string}]}} ClientResult
  */
 
 /**
  * @typedef {{solution: object, client_result?: ClientResult}} Submission
  */
 
+/**
+ * @typedef {"errored"|"failed"|"passed_with_warnings"|"passed"|"pending"} SubmissionStatus
+ */
+
+/**
+ * @typedef {{content?: {solution: object}, result?: object}} SubmissionAndResult
+ */
+
 var mumuki = mumuki || {};
 
 (function (mumuki) {
+  /**
+   * @type {SubmissionAndResult}
+   */
   var lastSubmission = {};
 
   function Laboratory(exerciseId){
@@ -27,6 +38,9 @@ var mumuki = mumuki || {};
     return lastSubmission.result && lastSubmission.result.status !== 'aborted';
   }
 
+  /**
+   * @param {Submission} submission the submission object
+   */
   function sendNewSolution(submission){
     var token = new mumuki.CsrfToken();
     var request = token.newRequest({
