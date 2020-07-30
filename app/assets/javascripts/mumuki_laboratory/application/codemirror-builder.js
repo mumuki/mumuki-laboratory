@@ -1,6 +1,4 @@
-var mumuki = mumuki || {};
-
-(function (mumuki) {
+(() => {
   function submit() {
     $('body').removeClass('fullscreen');
     $('.editor-resize .fa-stack-1x').removeClass('fa-compress').addClass('fa-expand');
@@ -102,4 +100,4 @@ var mumuki = mumuki || {};
 
   mumuki.editor = mumuki.editor || {};
   mumuki.editor.CodeMirrorBuilder = CodeMirrorBuilder;
-}(mumuki));
+})();

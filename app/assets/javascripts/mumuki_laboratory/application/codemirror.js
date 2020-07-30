@@ -1,6 +1,4 @@
-var mumuki = mumuki || {};
-
-(function (mumuki) {
+(() => {
   function createCodeMirrors() {
     return $(".editor").map(function (index, textarea) {
       var $textarea = $("#solution_content");
@@ -101,4 +99,4 @@ var mumuki = mumuki || {};
     });
   });
 
-}(mumuki));
+})();
