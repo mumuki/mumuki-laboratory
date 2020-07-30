@@ -27,6 +27,12 @@
       window.localStorage.setItem(this._keyFor(exerciseId), this._asString(submission));
     }
 
+    /**
+     *
+     * @param {number} exerciseId
+     * @param {*} newSolution
+     * @returns {SubmissionResult}
+     */
     getCachedResultFor(exerciseId, newSolution) {
       const lastSubmission = this.getLastSubmission(exerciseId);
       if (!lastSubmission
