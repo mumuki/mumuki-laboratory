@@ -1,5 +1,4 @@
-var mumuki = mumuki || {};
-(function (mumuki) {
+(() => {
   function historicalQueries() {
     var queries = $('#historical_queries').val();
     if (queries) {
@@ -172,4 +171,4 @@ var mumuki = mumuki || {};
     queryConsole.preloadHistoricalQueries();
   });
 
-}(mumuki));
+})();
