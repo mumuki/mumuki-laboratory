@@ -6,11 +6,16 @@
  * @typedef {{getContent: () => EditorProperty}} CustomEditorSource
  */
 
-var mumuki = mumuki || {};
+/**
+ * This module allows custom editors to register
+ * content sources that can not me mapped to standard selectors {@code mu-custom-editor-value},
+ * {@code mu-custom-editor-extra} and {@code mu-custom-editor-test}
+ *
+ * CustomEditor sources are cleared after page reload even when using turbolinks
+ */
+mumuki.CustomEditor = (() => {
 
-(function (mumuki) {
-
-  var CustomEditor = {
+  const CustomEditor = {
     /**
      * @type {CustomEditorSource[]}
      */
@@ -50,14 +55,5 @@ var mumuki = mumuki || {};
     mumuki.CustomEditor.clearSources();
   });
 
-  /**
-   * This module allows custom editors to register
-   * content sources that can not me mapped to standard selectors {@code mu-custom-editor-value},
-   * {@code mu-custom-editor-extra} and {@code mu-custom-editor-test}
-   *
-   * CustomEditor sources are cleared after page reload even when using turbolinks
-   *
-   * @module mumuki.CustomEditor
-   */
-  mumuki.CustomEditor = CustomEditor;
-}(mumuki));
+  return CustomEditor;
+})();

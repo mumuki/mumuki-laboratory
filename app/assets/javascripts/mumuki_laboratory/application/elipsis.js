@@ -7,7 +7,7 @@
 //
 //
 // This module assumes the strings are already markdown-like escaped code strings, not plain code
-(function (mumuki) {
+mumuki.elipsis = (() => {
 
   function elipsis(code) {
     return code
@@ -16,8 +16,7 @@
       .replace(/&lt;description-for-student\[([^\]]*)\]@[\s\S]*?@description-for-student&gt;/g, ' ... $1 ... ');
   }
 
-  mumuki.elipsis = elipsis;
-  mumuki.elipsis.replaceHtml = () => {
+  elipsis.replaceHtml = () => {
     let $elipsis = $('.mu-elipsis');
     $elipsis.each((it, e) =>  {
       let $e = $(e);
@@ -28,4 +27,6 @@
   mumuki.load(() => {
     mumuki.elipsis.replaceHtml();
   });
-})(mumuki);
+
+  return elipsis;
+})();

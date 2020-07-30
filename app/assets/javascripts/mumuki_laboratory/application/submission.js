@@ -1,6 +1,4 @@
-var mumuki = mumuki || {};
-
-(function (mumuki) {
+mumuki.submission = (() => {
 
   // =============
   // UI Components
@@ -247,7 +245,7 @@ var mumuki = mumuki || {};
    *
    * @module mumuki.submission
    */
-  mumuki.submission = {
+  return {
     processSolution,
     _registerSolutionProcessor,
     _selectSolutionProcessor,
@@ -260,5 +258,4 @@ var mumuki = mumuki || {};
     animateTimeoutError,
     SubmitButton,
   };
-
-})(mumuki);
+})();
