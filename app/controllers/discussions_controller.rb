@@ -1,11 +1,6 @@
 class DiscussionsController < ApplicationController
   include Mumuki::Laboratory::Controllers::Content
-
-  # discussions are not enabled for all organitions nor all users
-  # there is no need to validate forum existance when creating; next validation is stronger
-  before_action :validate_forum_enabled!, except: :create
-  before_action :validate_can_create_discusssion!, only: :create
-
+  include WithUserDiscussionValidation
   # users are not allowed to access discussions during exams
   before_action :validate_not_in_exam!
 
@@ -69,14 +64,6 @@ class DiscussionsController < ApplicationController
 
   def discussion_filter_params
     @filter_params ||= params.permit(Discussion.permitted_query_params)
-  end
-
-  def validate_forum_enabled!
-    raise Mumuki::Domain::NotFoundError unless Organization.current.forum_enabled?
-  end
-
-  def validate_can_create_discusssion!
-    raise Mumuki::Domain::NotFoundError unless Organization.current.can_create_discussions?(current_user)
   end
 
   def validate_not_in_exam!

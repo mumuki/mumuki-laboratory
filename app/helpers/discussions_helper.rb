@@ -91,8 +91,6 @@ module DiscussionsHelper
   end
 
   def new_discussion_link(teaser_text, link_text)
-    return '' unless Organization.current.can_create_discussions?(current_user)
-
     %Q{
       <h4>
         <span>#{t(teaser_text)}</span>
