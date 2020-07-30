@@ -1,5 +1,4 @@
-var mumuki = mumuki || {};
-(function (mumuki) {
+mumuki.CsrfToken =  (() => {
   function CsrfToken() {
     this.value = $('meta[name="csrf-token"]').attr('content');
   }
@@ -14,5 +13,5 @@ var mumuki = mumuki || {};
     }
   };
 
-  mumuki.CsrfToken = CsrfToken;
-}(mumuki));
+  return CsrfToken;
+})();

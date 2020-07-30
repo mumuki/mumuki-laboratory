@@ -1,7 +1,5 @@
-var mumuki = mumuki || {};
-
-(function (mumuki) {
-  mumuki.startTimer = function (endDate) {
+mumuki.startTimer = (() => {
+  function startTimer(endDate) {
     var endTime = new Date(endDate).getTime();
     var currentTime = Date.now();
     var diffTime = endTime - currentTime;
@@ -18,4 +16,5 @@ var mumuki = mumuki || {};
       }
     }, intervalDuration);
   };
-})(mumuki);
+  return startTimer
+})();
