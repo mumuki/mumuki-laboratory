@@ -12,28 +12,27 @@ mumuki.submission = (() => {
       .play();
   }
 
-  function ResultsBox(submissionsResults) {
-    this.submissionsResultsArea = submissionsResults;
-    this.processingTemplate = $('#processing-template');
-    this.submissionsErrorTemplate = $(".submission-result-error");
-  }
-
-  ResultsBox.prototype = {
-    waiting: function () {
+  class ResultsBox {
+    constructor(submissionsResults) {
+      this.submissionsResultsArea = submissionsResults;
+      this.processingTemplate = $('#processing-template');
+      this.submissionsErrorTemplate = $(".submission-result-error");
+    }
+    waiting() {
       this.submissionsResultsArea.html(this.processingTemplate.html());
       this.submissionsErrorTemplate.hide();
-    },
-    success: function (data, submitButton) {
+    }
+    success(data, submitButton) {
       this.submissionsResultsArea.html(data.html);
       data.status === 'aborted' ? this.error(submitButton) : submitButton.enable();
       mumuki.updateProgressBarAndShowModal(data);
-    },
-    error: function (submitButton) {
+    }
+    error(submitButton) {
       this.submissionsResultsArea.html('');
       this.submissionsErrorTemplate.show();
       animateTimeoutError(submitButton);
-    },
-    done: function (data, submitButton) {
+    }
+    done(data, submitButton) {
       submitButton.updateAttemptsLeft(data);
       mumuki.pin.scroll();
     }
