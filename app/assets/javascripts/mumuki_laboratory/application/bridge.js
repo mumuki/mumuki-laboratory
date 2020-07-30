@@ -22,13 +22,7 @@
  * @typedef {{content?: {solution: object}, result?: SubmissionResult}} SubmissionAndResult
  */
 
-/** @module mumuki.bridge */
-mumuki.bridge = {};
-mumuki.bridge.Laboratory = (() => {
-  /**
-   * @type {SubmissionAndResult}
-   */
-  var lastSubmission = {};
+mumuki.bridge = (() => {
 
   class Laboratory {
     // ==========
@@ -53,25 +47,26 @@ mumuki.bridge.Laboratory = (() => {
      * Sends a solution object
      *
      * @param {Submission} submission the submission object
+     * @returns {JQuery.Promise<SubmissionResult>}
      */
     _submitSolution(submission) {
-      if(this._lastSubmissionFinishedSuccessfully() && this._sameAsLastSolution(submission)){
-        return $.Deferred().resolve(lastSubmission.result);
+      const lastSubmission = mumuki.SubmissionsStore.getCachedResultFor(mumuki.currentExerciseId, submission);
+      if(lastSubmission){
+        return $.Deferred().resolve(lastSubmission);
       } else {
-        return this._sendNewSolution(submission);
+        return this._sendNewSolution(submission).done(function (result) {
+          mumuki.SubmissionsStore.setLastSubmission(mumuki.currentExerciseId, this._buildLastSubmission(submission, result));
+        });
       }
     }
 
-    _asString(json){
-      return JSON.stringify(json);
-    }
-
-    _sameAsLastSolution(newSolution){
-      return this._asString(lastSubmission.content) === this._asString(newSolution);
-    }
-
-    _lastSubmissionFinishedSuccessfully() {
-      return lastSubmission.result && lastSubmission.result.status !== 'aborted';
+    /**
+     * @param {Submission} submission
+     * @param {SubmissionResult} result
+     * @returns {SubmissionAndResult}
+     */
+    _buildLastSubmission(submission, result) {
+      return { content: {solution: submission.solution}, result: result }
     }
 
     /**
@@ -84,10 +79,7 @@ mumuki.bridge.Laboratory = (() => {
         url: window.location.origin + window.location.pathname + '/solutions' + window.location.search,
         data: submission
       });
-
-      return $.ajax(request).then((result) => this._preRenderResult(result)).done(function (result) {
-        lastSubmission = { content: {solution: submission.solution}, result: result };
-      });
+      return $.ajax(request).then((result) => this._preRenderResult(result));
     }
 
     /**
@@ -102,9 +94,7 @@ mumuki.bridge.Laboratory = (() => {
     }
   }
 
-  mumuki.load(() => {
-    lastSubmission = {};
-  });
-
-  return Laboratory;
+  return {
+    Laboratory
+  };
 })();
