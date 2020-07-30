@@ -91,7 +91,7 @@ describe BreadcrumbsHelper, organization_workspace: :test do
         expect(breadcrumb).to include('my lesson')
         expect(breadcrumb).to include('my exercise')
         expect(breadcrumb).to include('discussions')
-        expect(breadcrumb).to include(discussion.title)
+        expect(breadcrumb).to include(discussion.item.navigable_name)
         expect(breadcrumb).to be_html_safe
       end
     end
