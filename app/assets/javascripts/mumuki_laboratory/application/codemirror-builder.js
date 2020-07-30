@@ -1,12 +1,6 @@
 var mumuki = mumuki || {};
 
 (function (mumuki) {
-
-  function CodeMirrorBuilder(textarea) {
-    this.textarea = textarea;
-    this.$textarea = $(textarea);
-  }
-
   function submit() {
     $('body').removeClass('fullscreen');
     $('.editor-resize .fa-stack-1x').removeClass('fa-compress').addClass('fa-expand');
@@ -29,8 +23,13 @@ var mumuki = mumuki || {};
     autoRefresh: true
   };
 
-  CodeMirrorBuilder.prototype = {
-    setupEditor: function () {
+  class CodeMirrorBuilder {
+    constructor(textarea) {
+      this.textarea = textarea;
+      this.$textarea = $(textarea);
+    }
+
+    setupEditor() {
       this.editor = this.createEditor({
         lineNumbers: true,
         extraKeys: {
@@ -47,8 +46,9 @@ var mumuki = mumuki || {};
       });
 
       return this;
-    },
-    setupSimpleEditor: function () {
+    }
+
+    setupSimpleEditor() {
       this.editor = this.createEditor({
         mode: 'text',
         extraKeys: {
@@ -61,8 +61,9 @@ var mumuki = mumuki || {};
       });
 
       return this;
-    },
-    setupReadOnlyEditor: function () {
+    }
+
+    setupReadOnlyEditor() {
       this.editor = this.createEditor({
         readOnly: true,
         cursorBlinkRate: -1, //Hides the cursor
@@ -70,8 +71,9 @@ var mumuki = mumuki || {};
       });
 
       return this;
-    },
-    setupLanguage: function (language) {
+    }
+
+    setupLanguage(language) {
       var highlightMode = language || this.$textarea.data('editor-language');
       if (highlightMode === 'dynamic') {
         mumuki.page.dynamicEditors.push(this.editor);
@@ -81,16 +83,19 @@ var mumuki = mumuki || {};
       }
 
       return this;
-    },
-    setupMinLines: function (minLines) {
+    }
+
+    setupMinLines(minLines) {
       this.editor.setOption('minLines', minLines);
 
       return this;
-    },
-    build: function () {
+    }
+
+    build() {
       return this.editor;
-    },
-    createEditor: function (customOptions) {
+    }
+
+    createEditor(customOptions) {
       return CodeMirror.fromTextArea(this.textarea, Object.assign({}, codeMirrorDefaults, customOptions));
     }
   };
