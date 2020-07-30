@@ -1,3 +1,5 @@
+/** @type {number} */
+mumuki.currentExerciseId = null;
 (() => {
   mumuki.load(() => {
     // Set global currentExerciseId

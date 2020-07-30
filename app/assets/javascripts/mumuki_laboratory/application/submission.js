@@ -82,6 +82,8 @@ var mumuki = mumuki || {};
    *
    * This method will use CustomEditor's sources if availble, or
    * standard editor's content sources otherwise
+   *
+   * @returns {Submission}
    */
   function getContent() {
     let content = {};
@@ -97,6 +99,7 @@ var mumuki = mumuki || {};
       content[it.name] = it.value;
     });
 
+    // @ts-ignore
     return content;
   }
 
