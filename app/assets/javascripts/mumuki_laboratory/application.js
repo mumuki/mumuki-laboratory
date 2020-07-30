@@ -27,7 +27,6 @@
 //= require codemirror-autorefresh
 //= require codemirror-modes
 //= require analytics
-//= require hotjar
 //= require muvment
 
 //= require_tree ./application
