@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200728163038) do
+ActiveRecord::Schema.define(version: 20200731081757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -120,6 +120,8 @@ ActiveRecord::Schema.define(version: 20200728163038) do
     t.integer "messages_count", default: 0
     t.integer "validated_messages_count", default: 0
     t.boolean "requires_moderator_response", default: true
+    t.string "last_moderator_access_by_id"
+    t.datetime "last_moderator_access_at"
     t.index ["initiator_id"], name: "index_discussions_on_initiator_id"
     t.index ["item_type", "item_id"], name: "index_discussions_on_item_type_and_item_id"
     t.index ["organization_id"], name: "index_discussions_on_organization_id"
