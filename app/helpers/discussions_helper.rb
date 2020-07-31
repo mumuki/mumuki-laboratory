@@ -37,9 +37,9 @@ module DiscussionsHelper
 
   def solve_discussion_params_for(user)
     if user&.moderator_here?
-      {status: :pending_review, sort: :created_at_asc}
+      {status: :pending_review, sort: :responses_count_asc, requires_moderator_response: true}
     else
-      {status: :opened, sort: :created_at_asc}
+      {status: :opened, sort: :responses_count_desc}
     end
   end
 
