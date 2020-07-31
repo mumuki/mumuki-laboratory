@@ -206,8 +206,8 @@ es:
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
   requires_attention: Requiere atención
   reset_query: Borrar los filtros de búsqueda actuales
-  responses_count_asc: Con menos respuestas de moderadores
-  responses_count_desc: Con más respuestas de moderadores
+  responses_count_asc: Con menos respuestas validadas
+  responses_count_desc: Con más respuestas validadas
   restart: Reiniciar
   results_hidden: ¡Tu solución fue enviada con éxito!
   results: Resultados

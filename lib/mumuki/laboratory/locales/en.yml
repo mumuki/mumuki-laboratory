@@ -188,8 +188,8 @@ en:
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   requires_attention: Requires attention
   reset_query: Clear current search filters
-  responses_count_asc: By less moderators replies
-  responses_count_desc: By more moderators replies
+  responses_count_asc: By less validated replies
+  responses_count_desc: By more validated replies
   restart: Restart
   results: Results
   results_hidden: Your solution was submitted successfully!
