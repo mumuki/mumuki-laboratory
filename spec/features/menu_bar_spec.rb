@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 feature 'menu bar' do
-  let(:chapter) { create(:chapter, lessons: [create(:lesson)]) }
+  let(:lesson) { create(:lesson, exercises: create_list(:exercise, 3))}
+  let(:chapter) { create(:chapter, lessons: [lesson]) }
   let(:book) { create(:book, chapters: [chapter], name: 'private', slug: 'mumuki/mumuki-the-private-book') }
   let(:private_organization) { create(:organization, name: 'private', book: book) }
 
@@ -32,6 +33,8 @@ feature 'menu bar' do
         expect(page).not_to have_text('Profile')
         expect(page).not_to have_text('Classroom')
         expect(page).not_to have_text('Bibliotheca')
+        expect(page).not_to have_text('Solve other\'s doubts')
+        expect(page).not_to have_text('My doubts')
       end
     end
   end
@@ -52,15 +55,91 @@ feature 'menu bar' do
       expect(page).to have_text('Profile')
       expect(page).not_to have_text('Classroom')
       expect(page).not_to have_text('Bibliotheca')
+      expect(page).not_to have_text('Solve other\'s doubts')
+      expect(page).not_to have_text('My doubts')
     end
 
-    scenario 'student should only see profile' do
-      set_current_user! visitor
+    context 'student with no discussions should' do
+      scenario 'only see profile if forum is not enabled' do
+        set_current_user! student
 
-      visit '/'
-      expect(page).to have_text('Profile')
-      expect(page).not_to have_text('Classroom')
-      expect(page).not_to have_text('Bibliotheca')
+        visit '/'
+        expect(page).to have_text('Profile')
+        expect(page).not_to have_text('Classroom')
+        expect(page).not_to have_text('Bibliotheca')
+        expect(page).not_to have_text('Solve other\'s doubts')
+        expect(page).not_to have_text('My doubts')
+      end
+
+      scenario 'see profile and solve_other_doubts links if forum is enabled' do
+        set_current_user! student
+        private_organization.update! forum_enabled: true
+
+        visit '/'
+        expect(page).to have_text('Profile')
+        expect(page).not_to have_text('Classroom')
+        expect(page).not_to have_text('Bibliotheca')
+        expect(page).to have_text('Solve other\'s doubts')
+        expect(page).not_to have_text('My doubts')
+      end
+    end
+
+    context 'student with discussions should' do
+      let(:discussion) { create(:discussion, item: lesson.exercises.last, initiator: student)}
+
+      scenario 'only see profile if forum is not enabled' do
+        set_current_user! student
+        student.subscribe_to! discussion
+
+        visit '/'
+        expect(page).to have_text('Profile')
+        expect(page).not_to have_text('Classroom')
+        expect(page).not_to have_text('Bibliotheca')
+        expect(page).not_to have_text('Solve other\'s doubts')
+        expect(page).not_to have_text('My doubts')
+      end
+
+      scenario 'see all discussions links if forum is enabled' do
+        set_current_user! student
+        private_organization.update! forum_enabled: true
+        student.subscribe_to! discussion
+
+        visit '/'
+        expect(page).to have_text('Profile')
+        expect(page).not_to have_text('Classroom')
+        expect(page).not_to have_text('Bibliotheca')
+        expect(page).to have_text('Solve other\'s doubts')
+        expect(page).to have_text('My doubts')
+      end
+
+      scenario 'only see profile if forum is enabled in a forum_only_for_trusted organization' do
+        set_current_user! student
+        student.subscribe_to! discussion
+        private_organization.update! forum_enabled: true
+        private_organization.update! forum_only_for_trusted: true
+
+        visit '/'
+        expect(page).to have_text('Profile')
+        expect(page).not_to have_text('Classroom')
+        expect(page).not_to have_text('Bibliotheca')
+        expect(page).not_to have_text('Solve other\'s doubts')
+        expect(page).not_to have_text('My doubts')
+      end
+
+      scenario 'see all discussions links if forum is enabled in a forum_only_for_trusted organization but it is trusted' do
+        student.update! trusted_for_forum: true
+        set_current_user! student
+        student.subscribe_to! discussion
+        private_organization.update! forum_enabled: true
+        private_organization.update! forum_only_for_trusted: true
+
+        visit '/'
+        expect(page).to have_text('Profile')
+        expect(page).not_to have_text('Classroom')
+        expect(page).not_to have_text('Bibliotheca')
+        expect(page).to have_text('Solve other\'s doubts')
+        expect(page).to have_text('My doubts')
+      end
     end
 
     scenario 'teacher should see profile and classroom' do
@@ -71,6 +150,8 @@ feature 'menu bar' do
       expect(page).to have_text('Profile')
       expect(page).to have_text('Classroom')
       expect(page).not_to have_text('Bibliotheca')
+      expect(page).not_to have_text('Solve other\'s doubts')
+      expect(page).not_to have_text('My doubts')
     end
 
     scenario 'writer should see profile and bibliotheca' do

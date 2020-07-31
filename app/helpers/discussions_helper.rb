@@ -23,8 +23,9 @@ module DiscussionsHelper
     fixed_fa_icon 'comment', text: text
   end
 
-  def discussions_link(item, path, html_options = nil, organization = Organization.current)
-    link_to item, path, html_options if organization.forum_enabled?
+  def discussions_link(item, path, html_options = nil)
+    return unless current_user&.can_discuss_here?
+    link_to item, path, html_options
   end
 
   def item_discussion_path(discussion, params = {})
