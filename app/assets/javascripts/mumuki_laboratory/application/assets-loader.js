@@ -1,4 +1,4 @@
-const assetsLoader = {
+var assetsLoader = {
   layout: {
     onLoadingStarted: function () {
 
