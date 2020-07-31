@@ -1,6 +1,9 @@
 class DiscussionsMessagesController < AjaxController
+  include WithAuthorization
+
   before_action :set_discussion!, only: [:create, :destroy]
-  before_action :authorize_user!, only: [:destroy, :approve]
+  before_action :authorize_user!, only: [:destroy]
+  before_action :authorize_moderator!, only: [:question, :approve]
 
   def create
     @discussion.submit_message! message_params, current_user
