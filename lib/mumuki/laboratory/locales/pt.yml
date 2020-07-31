@@ -62,6 +62,7 @@ pt:
   details: Detalhes
   disabled_explanation: Você está tentando acessar um recurso que foi desativado ou removido permanentemente
   disabled_organization_explanation: Este curso terminou!
+  discussion_description_placeholder: Você pode adicionar mais informações sobre sua dúvida
   discussion_updated: Consulta actualizada
   discussions: Consultas
   download: Faça o download do que você fez

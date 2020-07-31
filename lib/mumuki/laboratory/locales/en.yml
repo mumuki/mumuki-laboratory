@@ -58,6 +58,7 @@ en:
   destroy: Destroy
   disabled_explanation: You are trying to visit a permamently disabled or deleted resource
   disabled_organization_explanation: This path has already finished.
+  discussion_description_placeholder: You can add more information regarding your doubt.
   discussion_updated: Discussion updated
   discussions: Discussions
   dont_leave_us: Don't leave us! Learning is fun. You just have to keep at it.
