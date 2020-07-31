@@ -21,7 +21,12 @@ class DiscussionsController < ApplicationController
     @filtered_discussions = @discussions.scoped_query_by(discussion_filter_params)
   end
 
+  def new
+    @discussion = @debatable.new_discussion_for current_user
+  end
+
   def show
+    @discussion.update_last_moderator_access! current_user
   end
 
   def update

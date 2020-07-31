@@ -1,0 +1,33 @@
+<%= content_for :breadcrumbs do %>
+  <%= breadcrumbs_for_discussion @discussion, @debatable %>
+<% end %>
+
+<%= form_for [@debatable, @discussion] do |f| %>
+  <div>
+    <div class="discussion-context">
+      <%= render partial: 'exercises/read_only', locals: {exercise: @debatable} %>
+    </div>
+  </div>
+
+  <hr class="message-divider">
+
+  <%= render layout: 'discussions/message_container', locals: {user: @discussion.initiator} do %>
+    <div class="discussion-message-bubble" id="new-discussion-description-container">
+      <div class="discussion-message-bubble-header">
+        <div class="discussion-message-bubble-title">
+          <%= @discussion.initiator.name %>
+        </div>
+      </div>
+      <div class="discussion-message-bubble-content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="discussion-new-message-content">
+              <%= f.editor :description, '', {id: 'new-discussion-message', class: 'form-control', placeholder: t(:discussion_description_placeholder)} %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= f.submit t(:save), class: 'btn btn-success btn-block discussion-new-message-button' %>
+  <% end %>
+<% end %>

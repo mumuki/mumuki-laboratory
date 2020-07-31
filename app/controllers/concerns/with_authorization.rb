@@ -13,6 +13,10 @@ module WithAuthorization
     authorize! :owner
   end
 
+  def authorize_moderator!
+    authorize! :moderator
+  end
+
   def authorization_slug
     protection_slug || '_/_'
   end

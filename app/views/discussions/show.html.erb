@@ -3,55 +3,25 @@
 <% end %>
 
 <div>
-  <div class="row">
-    <% if current_user %>
-      <div class="mu-inline-block-right hidden-xs discussion-user-menu">
-        <h3>
-          <% if @discussion.subscribable? %>
-            <a class="discussion-subscription" onclick="mumuki.Forum.discussionSubscription('<%= subscription_discussion_url(@discussion) %>')">
-              <%= fa_icon(:eye, class: 'fa-xs') %>
-              <%= span_toggle t(:subscribe), t(:unsubscribe), current_user.subscribed_to?(@discussion) %>
-            </a>
-          <% end %>
-          <% if @discussion.solved? %>
-            <a class="discussion-upvote" onclick="mumuki.Forum.discussionUpvote('<%= upvote_discussion_url(@discussion) %>')">
-              <%= fa_icon(:star, class: 'fa-xs') %>
-              <%= span_toggle t(:upvote), t(:undo_upvote), current_user.upvoted?(@discussion) %>
-            </a>
-          <% end %>
-        </h3>
-      </div>
-    <% end %>
-    <div class="mu-inline-block-left">
-      <div class="discussion-header">
-        <h3 class="discussion-title">
-          <%= @discussion.title %>
-        </h3>
-      </div>
-      <div class="discussion-description">
-        <%= label_for_contextualization(@discussion) %> ·
-        <span class="discussion-info">
-          <span class="discussion-initiator-name">
-            <%= @discussion.initiator.name %>
-          </span>
-          <%= discussion_info(@discussion) %>
-        </span>
-      </div>
-    </div>
-  </div>
-
   <div class="discussion-context">
     <%= render partial: 'exercises/read_only', locals: {exercise: @debatable} %>
   </div>
-
 </div>
 
 <% if @discussion.has_messages? || @discussion.commentable_by?(current_user) %>
-  <hr class="message-divider">
+  <div>
+    <h3>
+      <%= t :messages %>
+      <% if @discussion.last_moderator_access_visible_for?(current_user) %>
+        <small class="pull-right">
+          <span><%= t :last_seen, name: @discussion.last_moderator_access_by.full_name %></span>
+          <span><%= t :time_since, time: time_ago_in_words(@discussion.last_moderator_access_at) %></span>
+        </small>
+      <% end %>
+    </h3>
+  </div>
 
-  <h3>
-    <%= t :messages %>
-  </h3>
+  <hr class="message-divider">
 
   <% if @discussion.has_messages? %>
     <div class="discussion-messages">

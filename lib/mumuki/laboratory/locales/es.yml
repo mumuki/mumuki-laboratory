@@ -65,6 +65,7 @@ es:
   details: Detalles
   disabled_explanation: Estás intentando acceder a un recurso que fue deshabilitado o eliminado de forma permamente
   disabled_organization_explanation: ¡Este recorrido ha finalizado!
+  discussion_description_placeholder: Podés agregar información para detallar más tu consulta
   discussion_updated: Consulta actualizada
   discussions: Consultas
   dont_leave_us: ¡No nos abandones! Aprender a programar es divertido. Sólo tenés que seguir practicando.
@@ -123,6 +124,7 @@ es:
   language: Lenguaje
   languages: Lenguajes
   last_name: Apellido
+  last_seen: "Visto por %{name}"
   last_submission_date: Última solución
   latest_exercises: Últimos ejercicios
   learning: Aprendizaje
@@ -202,9 +204,10 @@ es:
   read: Leido
   read_messages: Ver mensajes
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
+  requires_attention: Requiere atención
   reset_query: Borrar los filtros de búsqueda actuales
-  responses_count_asc: Con menos respuestas de moderadores
-  responses_count_desc: Con más respuestas de moderadores
+  responses_count_asc: Con menos respuestas validadas
+  responses_count_desc: Con más respuestas validadas
   restart: Reiniciar
   results_hidden: ¡Tu solución fue enviada con éxito!
   results: Resultados
