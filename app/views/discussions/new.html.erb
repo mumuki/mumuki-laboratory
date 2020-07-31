@@ -14,7 +14,7 @@
   <%#= render partial: 'discussions/new_message', locals: {user: current_user} if @discussion.commentable_by?(current_user) %>
 
   <%= render layout: 'discussions/message_container', locals: {user: @discussion.initiator} do %>
-    <div class="discussion-message-bubble">
+    <div class="discussion-message-bubble" id="new-discussion-description-container">
       <div class="discussion-message-bubble-header">
         <div class="discussion-message-bubble-title">
           <%= @discussion.initiator.name %>

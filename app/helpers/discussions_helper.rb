@@ -96,7 +96,7 @@ module DiscussionsHelper
     %Q{
       <h4>
         <span>#{t(teaser_text)}</span>
-        #{link_to t(link_text), new_exercise_discussion_path(@debatable) }
+        #{link_to t(link_text), new_exercise_discussion_path(@debatable, anchor: 'new-discussion-description-container') }
       </h4>
     }.html_safe
   end
