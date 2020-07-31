@@ -1,25 +1,36 @@
 /**
- * @typedef {{status: SubmissionStatus, test_results: [{status: SubmissionStatus, title: string}]}} SubmissionClientResult
+ * @typedef {"errored"|"failed"|"passed_with_warnings"|"passed"|"pending"|"aborted"} SubmissionStatus
  */
 
 /**
  * @typedef {{
  *  status: SubmissionStatus,
- *  class_for_progress_list_item?: string,
- *  guide_finished_by_solution?: boolean
- * }} SubmissionResult
+ *  test_results: [{status: SubmissionStatus, title: string}]
+ * }} SubmissionClientResult
  */
 
 /**
- * @typedef {{solution: object, client_result?: SubmissionClientResult}} Submission
+ * @typedef {{
+  *  status: SubmissionStatus,
+  *  class_for_progress_list_item?: string,
+  *  guide_finished_by_solution?: boolean
+  * }} SubmissionResult
+  */
+
+/**
+ * @typedef {object} Solution
  */
 
 /**
- * @typedef {"errored"|"failed"|"passed_with_warnings"|"passed"|"pending"|"aborted"} SubmissionStatus
+ * @typedef {{
+ *  "solution[content]"?:string,
+ *  solution?: Solution,
+ *  client_result?: SubmissionClientResult
+ * }} Submission
  */
 
 /**
- * @typedef {{content?: {solution: object}, result?: SubmissionResult}} SubmissionAndResult
+ * @typedef {{submission?: Submission, result?: SubmissionResult}} SubmissionAndResult
  */
 
 mumuki.bridge = (() => {
@@ -51,26 +62,18 @@ mumuki.bridge = (() => {
      */
     _submitSolution(submission) {
       const lastSubmission = mumuki.SubmissionsStore.getCachedResultFor(mumuki.currentExerciseId, submission);
-      if(lastSubmission){
+      if (lastSubmission) {
         return $.Deferred().resolve(lastSubmission);
       } else {
         return this._sendNewSolution(submission).done((result) => {
-          mumuki.SubmissionsStore.setLastSubmission(mumuki.currentExerciseId, this._buildLastSubmission(submission, result));
+          mumuki.SubmissionsStore.setLastSubmission(mumuki.currentExerciseId, {submission, result});
         });
       }
     }
 
     /**
-     * @param {Submission} submission
-     * @param {SubmissionResult} result
-     * @returns {SubmissionAndResult}
-     */
-    _buildLastSubmission(submission, result) {
-      return { content: {solution: submission.solution}, result: result }
-    }
-
-    /**
      * @param {Submission} submission the submission object
+     * @returns {JQuery.Promise<SubmissionResult>}
      */
     _sendNewSolution(submission){
       var token = new mumuki.CsrfToken();

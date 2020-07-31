@@ -1,4 +1,4 @@
-(() => {
+mumuki.SubmissionsStore = (() => {
   const SubmissionsStore = new class {
     /**
      * @param {number} exerciseId
@@ -14,33 +14,60 @@
      * @returns {SubmissionAndResult}
      */
     getLastSubmission(exerciseId) {
-      const submission = window.localStorage.getItem(this._keyFor(exerciseId));
-      if (!submission) return null;
-      return JSON.parse(submission);
+      const submissionAndResult = window.localStorage.getItem(this._keyFor(exerciseId));
+      if (!submissionAndResult) return null;
+      return JSON.parse(submissionAndResult);
     }
 
     /**
      * @param {number} exerciseId
-     * @param {SubmissionAndResult} submission
+     * @param {SubmissionAndResult} submissionAndResult
      */
-    setLastSubmission(exerciseId, submission) {
-      window.localStorage.setItem(this._keyFor(exerciseId), this._asString(submission));
+    setLastSubmission(exerciseId, submissionAndResult) {
+      window.localStorage.setItem(this._keyFor(exerciseId), this._asString(submissionAndResult));
     }
 
     /**
+     * Retrieves the last cached, non-aborted result for the given submission
      *
      * @param {number} exerciseId
-     * @param {*} newSolution
-     * @returns {SubmissionResult}
+     * @param {Submission} submission
+     * @returns {SubmissionResult} the cached result for this submission
      */
-    getCachedResultFor(exerciseId, newSolution) {
+    getCachedResultFor(exerciseId, submission) {
       const lastSubmission = this.getLastSubmission(exerciseId);
       if (!lastSubmission
           || lastSubmission.result.status === 'aborted'
-          || !this._solutionEquals(lastSubmission, newSolution)) {
+          || !this.submissionSolutionEquals(lastSubmission.submission, submission)) {
         return null;
       }
       return lastSubmission.result;
+    }
+
+     /**
+     * Extract the submission's solution content
+     *
+     * @param {Submission} submission
+     * @returns {string}
+     */
+    submissionSolutionContent(submission) {
+      if (submission.solution) {
+        return submission.solution.content;
+      } else {
+        return submission['solution[content]'];
+      }
+    }
+
+    /**
+     * Compares two solutions to determine if they are equivalent
+     * from the point of view of the code evaluation
+     *
+     * @param {Submission} one
+     * @param {Submission} other
+     * @returns {boolean}
+     */
+    submissionSolutionEquals(one, other) {
+      return this.submissionSolutionContent(one) === this.submissionSolutionContent(other);
     }
 
     // private API
@@ -52,10 +79,7 @@
     _keyFor(exerciseId) {
       return `/exercise/${exerciseId}/submission`;
     }
-
-    _solutionEquals(submission, solution) {
-      return this._asString(submission.content) === this._asString(solution);
-    }
   };
-  mumuki.SubmissionsStore = SubmissionsStore;
+
+  return SubmissionsStore;
 })();
