@@ -119,6 +119,7 @@ pt:
   language: Linguagem
   languages: Linguagens
   last_name: Sobrenome
+  last_seen: "Visto por %{name}"
   last_submission_date: Última solução
   latest_exercises: Últimos exercícios
   learning: Aprendendo

@@ -113,6 +113,7 @@ en:
   kids_default_success: You did it great!
   language: Language
   last_name: Last Name
+  last_seen: "Seen by %{name}"
   last_submission_date: Last submission
   latest_exercises: Latest exercises
   learning: Learning

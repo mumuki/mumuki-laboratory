@@ -9,11 +9,19 @@
 </div>
 
 <% if @discussion.has_messages? || @discussion.commentable_by?(current_user) %>
-  <hr class="message-divider">
+  <div>
+    <h3>
+      <%= t :messages %>
+      <% if @discussion.last_access_period_visible_for?(current_user) %>
+        <small class="pull-right">
+          <span><%= t :last_seen, name: @discussion.last_moderator_access_by.full_name %></span>
+          <span><%= t :time_since, time: time_ago_in_words(@discussion.last_moderator_access_at) %></span>
+        </small>
+      <% end %>
+    </h3>
+  </div>
 
-  <h3>
-    <%= t :messages %>
-  </h3>
+  <hr class="message-divider">
 
   <% if @discussion.has_messages? %>
     <div class="discussion-messages">

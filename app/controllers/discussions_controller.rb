@@ -26,6 +26,7 @@ class DiscussionsController < ApplicationController
   end
 
   def show
+    @discussion.update_moderator_access! current_user
   end
 
   def update

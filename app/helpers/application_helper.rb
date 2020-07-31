@@ -7,7 +7,11 @@ module ApplicationHelper
   end
 
   def profile_picture
-    image_tag(current_user.profile_picture, height: 40, class: 'img-circle', onError: "this.onerror = null; this.src = '#{image_url('user_shape.png')}'")
+    profile_picture_for current_user
+  end
+
+  def profile_picture_for(user, height = 40)
+    image_tag(user.profile_picture, height: height, class: 'img-circle', onError: "this.onerror = null; this.src = '#{image_url('user_shape.png')}'")
   end
 
   def paginate(object, options = {})

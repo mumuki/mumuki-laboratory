@@ -123,6 +123,7 @@ es:
   language: Lenguaje
   languages: Lenguajes
   last_name: Apellido
+  last_seen: "Visto por %{name}"
   last_submission_date: Última solución
   latest_exercises: Últimos ejercicios
   learning: Aprendizaje
