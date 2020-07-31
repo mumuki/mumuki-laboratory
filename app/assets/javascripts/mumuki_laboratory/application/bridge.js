@@ -54,7 +54,7 @@ mumuki.bridge = (() => {
       if(lastSubmission){
         return $.Deferred().resolve(lastSubmission);
       } else {
-        return this._sendNewSolution(submission).done(function (result) {
+        return this._sendNewSolution(submission).done((result) => {
           mumuki.SubmissionsStore.setLastSubmission(mumuki.currentExerciseId, this._buildLastSubmission(submission, result));
         });
       }
