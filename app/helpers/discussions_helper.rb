@@ -95,8 +95,7 @@ module DiscussionsHelper
 
     %Q{
       <h4>
-        <span>#{t(teaser_text)}</span>
-        #{link_to t(link_text), new_exercise_discussion_path(@debatable, anchor: 'new-discussion-description-container') }
+        #{new_discussion_link_with_teaser teaser_text, link_text}
       </h4>
     }.html_safe
   end
@@ -181,6 +180,30 @@ module DiscussionsHelper
 
   def discussion_filter_params_without_page
     discussion_filter_params.except(:page)
+  end
+
+  private
+
+  def new_discussion_link_with_teaser(teaser_text, link_text)
+    if current_user&.discussed_on_current_assignment? @debatable
+      current_discussion_link_html
+    else
+      new_discussion_link_html(link_text, teaser_text)
+    end
+  end
+
+  def current_discussion_link_html
+    %Q{
+      <span>#{t :has_discussion_opened}</span>
+      #{link_to t(:click_here), polymorphic_path([@debatable, @debatable.current_discussion_for(current_user)]) }
+    }
+  end
+
+  def new_discussion_link_html(link_text, teaser_text)
+    %Q{
+      <span>#{t(teaser_text)}</span>
+      #{link_to t(link_text), new_exercise_discussion_path(@debatable, anchor: 'new-discussion-description-container') }
+    }
   end
 
 end

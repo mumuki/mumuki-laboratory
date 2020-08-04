@@ -45,6 +45,7 @@ class DiscussionsController < ApplicationController
   end
 
   def create
+    @debatable.try_solve_discussions current_user
     discussion = @debatable.discuss! current_user, discussion_params
     redirect_to [@debatable, discussion]
   end
