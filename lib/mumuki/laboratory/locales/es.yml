@@ -73,6 +73,7 @@ es:
   edit: Editar
   editor_placeholder: "...escribí tu solución acá..."
   email: Email
+  enter_clicking_here: ¡Mirala haciendo click acá!
   error_description: ¡Ups! <br> Esto es lo que se conoce como <span class="error-link">%{error}</span>.
   error_401: error 401
   error_403: error 403
@@ -106,6 +107,7 @@ es:
   guide_finished: ¡Terminaste %{guide}!
   guide_internal: guia
   guides_index_title: ¿Qué guía querés hacer hoy?
+  has_discussion_opened: Ya tenés una discusión abierta
   here: acá
   hidden_done: '¡Muy bien!'
   history: Historial

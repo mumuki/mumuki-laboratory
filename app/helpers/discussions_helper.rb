@@ -195,7 +195,7 @@ module DiscussionsHelper
   def current_discussion_link_html
     %Q{
       <span>#{t :has_discussion_opened}</span>
-      #{link_to t(:click_here), polymorphic_path([@debatable, @debatable.current_discussion_for(current_user)]) }
+      #{link_to t(:enter_clicking_here), polymorphic_path([@debatable, @debatable.current_discussion_for(current_user)]) }
     }
   end
 

@@ -69,6 +69,7 @@ pt:
   edit: Editar
   editor_placeholder: ... Escreva sua solução aqui ...
   email: E-mail
+  enter_clicking_here: Entre clicando aqui!
   error_description: Opa! <br> Isto é o que é conhecido como <span class = "error-link"> %{error} </ span>.
   error_401: erro 401
   error_403: erro 403
@@ -104,6 +105,7 @@ pt:
   guide_finished: Você terminou %{guide}!
   guide_internal: guia
   guides_index_title: Qual guia você quer fazer hoje?
+  has_discussion_opened: Você já tem uma discussão aberta
   here: aqui
   hidden_done: Muito bem!
   history: História

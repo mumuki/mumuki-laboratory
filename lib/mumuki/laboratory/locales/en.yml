@@ -66,6 +66,7 @@ en:
   edit: Edit
   editor_placeholder: "write your solution here..."
   email: Email
+  enter_clicking_here: Enter clicking here!
   error_description: This is known as a <span class="error-link">%{error}</span>.
   error_401: 401 error
   error_403: 403 error
@@ -99,6 +100,7 @@ en:
   guide_created: Guide created successfully
   guide_finished: You completed %{guide}!
   guides_index_title: Which guide do you want to do today?
+  has_discussion_opened: You already have an open discussion
   here: here
   hidden_done: 'Good!'
   history: History
