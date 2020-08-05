@@ -1,4 +1,5 @@
-((mumuki)=> {
+mumuki.renderers = mumuki.renderers || {};
+mumuki.renderers.speechBubble = (()=> {
 
   function renderSpeechBubbleResultItem(item) {
     return `
@@ -93,7 +94,13 @@
     }
   }
 
-  mumuki.renderers = mumuki.renderers || {};
-  mumuki.renderers.SpeechBubbleRenderer = SpeechBubbleRenderer;
-  mumuki.renderers.renderSpeechBubbleResultItem = renderSpeechBubbleResultItem;
-})(mumuki)
+  return {
+    SpeechBubbleRenderer,
+    renderSpeechBubbleResultItem
+  }
+})();
+
+/** @deprecated use {@code mumuki.renderers.speechBubble.SpeechBubbleRenderer} instead */
+mumuki.renderers.SpeechBubbleRenderer = mumuki.renderers.speechBubble.SpeechBubbleRenderer;
+/** @deprecated use {@code mumuki.renderers.speechBubble.renderSpeechBubbleResultItem} instead */
+mumuki.renderers.renderSpeechBubbleResultItem = mumuki.renderers.speechBubble.renderSpeechBubbleResultItem;
