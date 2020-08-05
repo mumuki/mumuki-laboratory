@@ -1,4 +1,6 @@
-(() => {
+mumuki.renderers = mumuki.renderers || {};
+mumuki.renderers.results = (() => {
+
 
   // ==========================
   // View function for building
@@ -43,8 +45,16 @@
     return `progress-list-item text-center ${classForStatus(status)} ${active ? 'active' : ''}`;
   };
 
-  mumuki.renderers = mumuki.renderers || {};
-  mumuki.renderers.classForStatus = classForStatus;
-  mumuki.renderers.iconForStatus = iconForStatus;
-  mumuki.renderers.progressListItemClassForStatus = progressListItemClassForStatus;
+  return {
+    classForStatus,
+    iconForStatus,
+    progressListItemClassForStatus
+  }
 })();
+
+/** @deprecated use {@code mumuki.renderers.results.classForStatus} instead */
+mumuki.renderers.classForStatus = mumuki.renderers.results.classForStatus;
+/** @deprecated use {@code mumuki.renderers.results.iconForStatus} instead */
+mumuki.renderers.iconForStatus = mumuki.renderers.results.iconForStatus;
+/** @deprecated use {@code mumuki.renderers.results.progressListItemClassForStatus} instead */
+mumuki.renderers.progressListItemClassForStatus = mumuki.renderers.results.progressListItemClassForStatus;
