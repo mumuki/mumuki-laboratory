@@ -44,5 +44,5 @@
 <div class="discussion-actions">
   <% @discussion.reachable_statuses_for(current_user).each do |status| %>
     <%= discussion_update_status_button(status) %>
-  <% end if current_user %>
+  <% end if current_user&.moderator_here? %>
 </div>
