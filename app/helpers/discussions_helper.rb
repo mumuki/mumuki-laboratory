@@ -113,7 +113,7 @@ module DiscussionsHelper
   end
 
   def discussions_languages(discussions)
-    @languages ||= discussions.map { |it| it.language.name }.uniq
+    @languages ||= discussions.map { |it| it.exercise.language.name }.uniq
   end
 
   def discussion_status_filter_link(status, discussions)
