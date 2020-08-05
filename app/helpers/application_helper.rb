@@ -7,10 +7,14 @@ module ApplicationHelper
   end
 
   def profile_picture
-    image_tag(current_user.profile_picture, height: 40, class: 'img-circle', onError: "this.onerror = null; this.src = '#{image_url('user_shape.png')}'")
+    profile_picture_for current_user
   end
 
-  def paginate(object, options={})
+  def profile_picture_for(user, height = 40)
+    image_tag(user.profile_picture, height: height, class: 'img-circle', onError: "this.onerror = null; this.src = '#{image_url('user_shape.png')}'")
+  end
+
+  def paginate(object, options = {})
     "<div class=\"text-center\">#{super(object, {theme: 'twitter-bootstrap-3'}.merge(options))}</div>".html_safe
   end
 
@@ -32,10 +36,10 @@ module ApplicationHelper
     t :chapter_finished_html, chapter: link_to_path_element(chapter) if chapter
   end
 
-  def span_toggle(hidden_text, active_text, active)
+  def span_toggle(hidden_text, active_text, active, **options)
     %Q{
-      <span class="#{'hidden' if active}">#{hidden_text}</span>
-      <span class="#{'hidden' unless active}">#{active_text}</span>
+      <span class="#{'hidden' if active} #{options[:class]}">#{hidden_text}</span>
+      <span class="#{'hidden' unless active} #{options[:class]}">#{active_text}</span>
     }.html_safe
   end
 end

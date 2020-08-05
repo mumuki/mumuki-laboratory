@@ -21,17 +21,8 @@ module ContextualizationResultHelper
     end
   end
 
-  def render_test_result_title(test_result)
-    [test_result[:title].presence, test_result[:summary]].compact.join(': ')
-  end
-
   def render_test_result_header(test_result)
-    %Q{
-      <span class="text-#{status_class_for(test_result[:status])} mu-test-result-header">
-        #{status_icon(test_result[:status])}
-        #{render_test_result_title test_result}
-      </span>
-    }.html_safe
+    [test_result[:title].presence, test_result[:summary]].compact.join(': ').html_safe
   end
 
   def render_test_results(contextualization)

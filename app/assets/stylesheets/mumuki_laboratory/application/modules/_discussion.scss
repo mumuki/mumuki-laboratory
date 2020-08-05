@@ -201,10 +201,6 @@ $moderator-star-color: #dd9900;
   }
 }
 
-.discussion-create {
-  cursor: pointer;
-}
-
 .discussion-context {
   margin-top: 40px;
 }
@@ -341,6 +337,30 @@ summary.discussion-summary {
             }
           }
         }
+        .discussion-message-not-actually-a-question {
+          cursor: pointer;
+          text-decoration: none;
+          i {
+            position: relative;
+            &:after {
+              position: absolute;
+              left: 6px;
+              content: ' ';
+              height: 19px;
+              width: 2px;
+              transform: rotate(-45deg);
+              background-color: #aaaaaa;
+            }
+          }
+          &.selected {
+            i {
+              color: $brand-primary;
+              &:after {
+                background-color: $brand-primary;
+              }
+            }
+          }
+        }
         i {
           color: #aaaaaa
         }
@@ -383,4 +403,23 @@ $statuses: (
   }
 }
 
+.no-margin {
+  margin: 0 !important;
+}
 
+.discussion-requires-attention {
+  margin-right: 20px;
+  label {
+    font-weight: normal;
+  }
+}
+
+.discussion-moderator-access {
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .moderator-initials {
+    font-size: 14px;
+  }
+}

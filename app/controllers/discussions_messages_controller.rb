@@ -1,8 +1,11 @@
 class DiscussionsMessagesController < AjaxController
   include WithDiscussionValidation
+  include WithAuthorization
+
 
   before_action :set_discussion!, only: [:create, :destroy]
-  before_action :authorize_user!, only: [:destroy, :approve]
+  before_action :authorize_user!, only: [:destroy]
+  before_action :authorize_moderator!, only: [:question, :approve]
 
   def create
     @discussion.submit_message! message_params, current_user
@@ -16,6 +19,11 @@ class DiscussionsMessagesController < AjaxController
 
   def approve
     current_message.toggle_approved!
+    head :ok
+  end
+
+  def question
+    current_message.toggle_not_actually_a_question!
     head :ok
   end
 

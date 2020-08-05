@@ -58,6 +58,7 @@ en:
   destroy: Destroy
   disabled_explanation: You are trying to visit a permamently disabled or deleted resource
   disabled_organization_explanation: This path has already finished.
+  discussion_description_placeholder: You can add more information regarding your doubt.
   discussion_updated: Discussion updated
   discussions: Discussions
   dont_leave_us: Don't leave us! Learning is fun. You just have to keep at it.
@@ -113,6 +114,7 @@ en:
   kids_default_success: You did it great!
   language: Language
   last_name: Last Name
+  last_seen: "Seen by %{name}"
   last_submission_date: Last submission
   latest_exercises: Latest exercises
   learning: Learning
@@ -184,9 +186,10 @@ en:
   progress: Progresss
   read: Read
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
+  requires_attention: Requires attention
   reset_query: Clear current search filters
-  responses_count_asc: By less moderators replies
-  responses_count_desc: By more moderators replies
+  responses_count_asc: By less validated replies
+  responses_count_desc: By more validated replies
   restart: Restart
   results: Results
   results_hidden: Your solution was submitted successfully!

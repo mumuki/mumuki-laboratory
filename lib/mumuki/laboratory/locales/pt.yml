@@ -62,6 +62,7 @@ pt:
   details: Detalhes
   disabled_explanation: Você está tentando acessar um recurso que foi desativado ou removido permanentemente
   disabled_organization_explanation: Este curso terminou!
+  discussion_description_placeholder: Você pode adicionar mais informações sobre sua dúvida
   discussion_updated: Consulta actualizada
   discussions: Consultas
   download: Faça o download do que você fez
@@ -119,6 +120,7 @@ pt:
   language: Linguagem
   languages: Linguagens
   last_name: Sobrenome
+  last_seen: "Visto por %{name}"
   last_submission_date: Última solução
   latest_exercises: Últimos exercícios
   learning: Aprendendo
@@ -132,8 +134,8 @@ pt:
   male: Masculino
   manual_evaluation_pending: Obrigado por enviar sua solução! Seus professores irão corrigi-lo em breve
   message_count:
-      one: 1 mensagem
-      other: '%{count} mensagens'
+    one: 1 mensagem
+    other: '%{count} mensagens'
   message: Mensagem
   messages: Mensagens
   messages_error: As mensagens acima não estão disponíveis no momento. Eu tentei novamente mais tarde!
@@ -195,6 +197,7 @@ pt:
   read: Ler
   read_messages: Ver mensagens
   refresh_or_wait: Se não mostrar automaticamente em alguns segundos, pressione F5
+  requires_attention: Requer atenção
   reset_query: Limpar filtros de pesquisa atuais
   restart: Reiniciar
   results: Resultados

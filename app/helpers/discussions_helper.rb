@@ -38,9 +38,9 @@ module DiscussionsHelper
 
   def solve_discussion_params_for(user)
     if user&.moderator_here?
-      {status: :pending_review, sort: :created_at_asc}
+      {status: :pending_review, sort: :responses_count_asc, requires_moderator_response: true}
     else
-      {status: :opened, sort: :created_at_asc}
+      {status: :opened, sort: :responses_count_desc}
     end
   end
 
@@ -68,7 +68,7 @@ module DiscussionsHelper
     %Q{
       <span class="discussion-icon fa-stack fa-xs">
         <i class="fa fa-comment-o fa-stack-2x"></i>
-        <i class="fa fa-stack-1x">#{discussion.useful_messages_count}</i>
+        <i class="fa fa-stack-1x">#{discussion.validated_messages_count}</i>
       </span>
     }.html_safe
   end
@@ -95,11 +95,7 @@ module DiscussionsHelper
     %Q{
       <h4>
         <span>#{t(teaser_text)}</span>
-        <a>
-          <span class="discussion-create">
-            #{t(link_text)}
-          </span>
-        </a>
+        #{link_to t(link_text), new_exercise_discussion_path(@debatable, anchor: 'new-discussion-description-container') }
       </h4>
     }.html_safe
   end
