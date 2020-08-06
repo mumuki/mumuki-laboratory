@@ -1,0 +1,17 @@
+{
+  "extends": "eslint:recommended",
+  "env": {
+    "browser": true,
+    "es6": true,
+    "mocha": true
+  },
+  "globals": {
+    "$": "readonly",
+    "CodeMirror": "readonly",
+    "expect": "readonly",
+    "moment": "readonly",
+    "mumuki": "writable",
+    "muvment": "readonly",
+    "NProgress": "readonly"
+  }
+}
