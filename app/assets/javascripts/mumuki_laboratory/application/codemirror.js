@@ -80,7 +80,7 @@
 
   mumuki.load(() => {
     mumuki.page.editors = createCodeMirrors();
-    mumuki.submission.registerContentSyncer(mumuki.editor.syncContent);
+    mumuki.editors.registerContentSyncer(mumuki.editor.syncContent);
     updateCodeMirrorLanguage();
     onSelectUpdateCodeMirror();
 
