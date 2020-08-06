@@ -56,81 +56,6 @@ mumuki.submission = (() => {
     }
   }
 
-  // ============
-  // Content Sync
-  // ============
-
-  /**
-   * Syncs and returns the content objects of the standard editor form
-   *
-   * This content object may include keys like {@code content},
-   * {@code content_extra} and {@code content_test}
-   *
-   * @returns {EditorProperty[]}
-   */
-  function getStandardEditorContents() {
-    mumuki.submission._syncContent();
-    return $('.new_solution').serializeArray();
-  }
-
-  /**
-   * Answers a content object with a key for each of the current
-   * editor sources.
-   *
-   * This method will use CustomEditor's sources if availble, or
-   * standard editor's content sources otherwise
-   *
-   * @returns {Submission}
-   */
-  function getContent() {
-    let content = {};
-    let contents;
-
-    if (mumuki.CustomEditor.hasSources) {
-      contents = mumuki.CustomEditor.getContents();
-    } else {
-      contents = mumuki.submission.getStandardEditorContents();
-    }
-
-    contents.forEach((it) => {
-      content[it.name] = it.value;
-    });
-
-    // @ts-ignore
-    return content;
-  }
-
-  /**
-   * Copies current solution from it native rendering components
-   * to the appropriate submission form elements.
-   *
-   * Both editors and runners with a custom editor that don't register a source should
-   * register its own syncer function in order to {@link syncContent} work properly.
-   *
-   * @see registerContentSyncer
-   * @see CustomEditor#addSource
-   */
-  function _syncContent() {
-    if (mumuki.submission._contentSyncer) {
-      mumuki.submission._contentSyncer();
-    }
-  }
-
-  /**
-   * Sets a content syncer, that will be used by {@link _syncContent}
-   * in ordet to dump solution into the submission form fields.
-   *
-   * Each editor should have its own syncer registered - otherwise previous or none may be used
-   * causing unpredicatble behaviours - or cleared by passing {@code null}.
-   *
-   * As a particular case, runners with custom editors that don't add sources using {@link CustomEditor#addSource}
-   * should set the {@code #mu-custom-editor-value} value within its syncer.
-   *
-   * @param {() => void} [syncer] the syncer, or null, if no sync'ing is needed
-   */
-  function registerContentSyncer(syncer = null) {
-    mumuki.submission._contentSyncer = syncer;
-  }
 
   // ==========
   // Processing
@@ -222,8 +147,7 @@ mumuki.submission = (() => {
     mumuki.submission._selectSolutionProcessor(submitButton, $submissionsResults);
 
     submitButton.start(() => {
-      var solution = mumuki.submission.getContent();
-      mumuki.submission.processSolution(solution);
+      mumuki.submission.processSolution(mumuki.editors.getSubmission());
     });
 
     submitButton.checkAttemptsLeft();
@@ -248,11 +172,6 @@ mumuki.submission = (() => {
     processSolution,
     _registerSolutionProcessor,
     _selectSolutionProcessor,
-
-    _syncContent,
-    registerContentSyncer,
-    getStandardEditorContents,
-    getContent,
 
     animateTimeoutError,
     SubmitButton,
