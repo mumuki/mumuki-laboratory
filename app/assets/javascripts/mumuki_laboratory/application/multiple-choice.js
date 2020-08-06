@@ -1,5 +1,5 @@
 mumuki.load(() => {
-	function dumpChoices(evt) {
+	function dumpChoices(_evt) {
 		var indexes = $('.solution-choice:checked').map(function () {
 			return $(this).data('index')
 		}).get().join(':');

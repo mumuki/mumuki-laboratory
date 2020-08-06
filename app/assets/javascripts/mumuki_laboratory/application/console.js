@@ -74,7 +74,7 @@
         self.preloadQuery(queryWithResults);
       });
     }
-  };
+  }
 
   class Query {
     constructor(line, cookie, console) {
@@ -142,7 +142,7 @@
     get _requestData() {
       return {content: this.content, query: this.line, cookie: this.cookie};
     }
-  };
+  }
 
 
   mumuki.load(() => {

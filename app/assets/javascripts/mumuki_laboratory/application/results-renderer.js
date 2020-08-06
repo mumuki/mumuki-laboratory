@@ -33,7 +33,7 @@ mumuki.renderers.results = (() => {
       case "passed":               return "success";
       case "pending":              return "muted";
     }
-  };
+  }
 
 
   /**
@@ -43,7 +43,7 @@ mumuki.renderers.results = (() => {
    */
   function progressListItemClassForStatus(status, active = false) {
     return `progress-list-item text-center ${classForStatus(status)} ${active ? 'active' : ''}`;
-  };
+  }
 
   return {
     classForStatus,
