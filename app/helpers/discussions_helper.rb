@@ -182,4 +182,7 @@ module DiscussionsHelper
     discussion_filter_params.except(:page)
   end
 
+  def should_show_approved_for?(user, message)
+    !user&.moderator_here? && message.approved? && !message.from_moderator?
+  end
 end

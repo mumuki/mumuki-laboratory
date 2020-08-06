@@ -7,11 +7,11 @@
           <%= t(:time_since, time: time_ago_in_words(message.created_at)) %>
         </span>
         <% if user.moderator_here? %>
-          <%= fa_icon(:star, {'data-toggle': 'tooltip', title: (t :moderator), class: 'moderator-star'}) %>
+          <%= fa_icon(:star, 'data-toggle': 'tooltip', title: (t :moderator), class: 'moderator-star') %>
         <% end %>
-        <% if message.authorized? current_user %>
-          <span class="actions">
-            <% if current_user.moderator_here? %>
+        <span class="actions">
+          <% if message.authorized? current_user %>
+            <% if current_user&.moderator_here? %>
               <a class="discussion-message-approved <%= 'selected' if message.approved? %>" onclick="mumuki.Forum.discussionMessageToggleApprove('<%= approve_discussion_message_url(@discussion, message) %>', $(this))">
                 <%= fa_icon(:check, class: 'fa-xs') %>
               </a>
@@ -22,8 +22,13 @@
               <% end %>
             <% end %>
             <%= link_to fa_icon('trash-o'), discussion_message_path(@discussion, message), method: :delete, data: { confirm: t(:are_you_sure, action: t(:destroy_message)) } %>
-          </span>
-        <% end %>
+          <% end %>
+          <% if should_show_approved_for?(current_user, message) %>
+            <span class="discussion-message-approved selected">
+              <%= fa_icon(:check, class: 'fa-xs', 'data-toggle': 'tooltip', title: (t :approved_message)) %>
+            </span>
+          <% end %>
+        </span>
       </div>
     </div>
     <div class="discussion-message-bubble-content">

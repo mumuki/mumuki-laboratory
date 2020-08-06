@@ -11,6 +11,7 @@ es:
   and: y
   appendix: "Apéndice"
   appendix_teaser: ¿Querés saber más? <a href="%{link}">Consultá el apéndice de este capítulo</a>
+  approved_message: Validado por mentor
   are_you_sure: '¿Estás seguro que querés %{action}?'
   ask_a_question: ¡Hacé una pregunta!
   ask_community: Preguntá a la comunidad

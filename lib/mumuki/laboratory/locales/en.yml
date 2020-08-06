@@ -10,6 +10,7 @@ en:
   all: All
   appendix: "Appendix"
   appendix_teaser: Do you want to learn more? <a href="%{link}">Check this chapter's appendix</a>"
+  approved_message: Validated by mentor
   are_you_sure: 'Are you sure you want to %{action}?'
   ask_a_question: Ask a question!
   ask_community: Ask community for help
