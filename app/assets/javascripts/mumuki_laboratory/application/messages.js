@@ -61,7 +61,7 @@ mumuki.load(function () {
         Chat.readMessages(readUrl);
       }
 
-      function error(xhr) {
+      function error(_xhr) {
         Chat.tokenRequest({
           url: errorUrl,
           success: renderHTML,

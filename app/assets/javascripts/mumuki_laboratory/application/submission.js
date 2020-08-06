@@ -36,7 +36,7 @@ mumuki.submission = (() => {
       submitButton.updateAttemptsLeft(data);
       mumuki.pin.scroll();
     }
-  };
+  }
 
   class SubmitButton extends mumuki.Button {
 

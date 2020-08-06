@@ -1,5 +1,5 @@
 mumuki.load(function () {
-  $('.btn-confirmation').on('click change', function (evt) {
+  $('.btn-confirmation').on('click change', function (_evt) {
     var token = new mumuki.CsrfToken();
 
     $.ajax(token.newRequest({
