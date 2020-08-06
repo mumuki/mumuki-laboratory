@@ -135,6 +135,15 @@ rails s
 bundle exec rspec
 ```
 
+## Running JS tests
+
+> You need first to download [geckodriver](https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz), uncrompress
+> it and add it to your path
+
+```bash
+bundle exec rake teaspoon
+```
+
 ## JavaScript API Docs
 
 In order to be customized by runners, Laboratory exposes the following selectors and methods

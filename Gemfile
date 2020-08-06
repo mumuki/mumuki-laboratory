@@ -28,3 +28,10 @@ group :development do
   gem 'web-console', '~> 3.7.0'
   gem 'codeclimate-test-reporter', require: nil
 end
+
+group :development, :test do
+  gem 'coffee-script'
+  gem 'teaspoon', '~> 1.1.5'
+  gem 'teaspoon-jasmine'
+  gem "selenium-webdriver"
+end
