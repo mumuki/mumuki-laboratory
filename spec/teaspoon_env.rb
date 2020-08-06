@@ -3,6 +3,7 @@ unless defined?(Rails)
   require File.expand_path("../dummy/config/environment", __FILE__)
 end
 
+Selenium::WebDriver.logger.level = :debug
 
 Teaspoon.configure do |config|
   # Determines where the Teaspoon routes will be mounted. Changing this to "/jasmine" would allow you to browse to
@@ -106,8 +107,12 @@ Teaspoon.configure do |config|
   # Capybara Webkit: https://github.com/modeset/teaspoon/wiki/Using-Capybara-Webkit
   #  config.driver = :capybara_webkit
   config.driver = :selenium
-  config.driver_options = {client_driver: :firefox}
-
+  config.driver_options = {
+    client_driver: :firefox,
+     selenium_options: {
+      options: Selenium::WebDriver::Firefox::Options.new(log_level: :warn)
+    }
+  }
 
   # Specify the timeout for the driver. Specs are expected to complete within this time frame or the run will be
   # considered a failure. This is to avoid issues that can arise where tests stall.

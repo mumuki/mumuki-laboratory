@@ -141,7 +141,11 @@ bundle exec rspec
 > it and add it to your path
 
 ```bash
+# Run tests
 bundle exec rake teaspoon
+
+# Check for async errors
+bundle exec rake teaspoon | grep 'JavaScript error'
 ```
 
 ## Running `eslint`
