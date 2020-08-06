@@ -5,5 +5,8 @@
     "checkJs": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["app/assets/javascripts/mumuki_laboratory"]
+  "include": [
+    "app/assets/javascripts/mumuki_laboratory",
+    "spec/javascripts/"
+  ]
 }

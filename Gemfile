@@ -29,4 +29,11 @@ group :development do
   gem 'codeclimate-test-reporter', require: nil
 end
 
+group :development, :test do
+  gem 'coffee-script'
+  gem 'teaspoon', '~> 1.1.5'
+  gem 'teaspoon-jasmine'
+  gem "selenium-webdriver"
+end
+
 gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'master'
