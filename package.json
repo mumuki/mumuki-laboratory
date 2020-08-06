@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "eslint": "^7.6.0"
+  },
+  "scripts": {
+    "lint": "eslint app/assets/javascripts/mumuki_laboratory/"
+  }
+}

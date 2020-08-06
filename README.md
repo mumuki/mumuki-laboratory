@@ -144,6 +144,12 @@ bundle exec rspec
 MOZ_HEADLESS=1 bundle exec rake teaspoon
 ```
 
+## Running `eslint`
+
+```bash
+yarn run lint
+```
+
 ## JavaScript API Docs
 
 In order to be customized by runners, Laboratory exposes the following selectors and methods
