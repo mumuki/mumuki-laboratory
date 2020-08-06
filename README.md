@@ -369,14 +369,14 @@ contents. There are two different approaches:
 
 ```javascript
 // simplest method - you can register just one
-mumuki.submission.registerContentSyncer(() => {
+mumuki.editors.registerContentSyncer(() => {
   // ... write here your custom component content...
   $('#mu-custom-editor-value').val(/* ... */);
 });
 
 // alternate method
 // you can register many sources
-mumuki.CustomEditor.addSource({
+mumuki.editors.addCustomSource({
   getContent() {
     return { name: "solution[content]", value: /* ... */ } ;
   }
