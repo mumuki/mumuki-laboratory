@@ -11,6 +11,7 @@ pt:
   and: e
   appendix: Apêndice
   appendix_teaser: Você quer saber mais? <a href="%{link}"> Consulte o apêndice deste capítulo </a>
+  approved_message: Validado pelo mentor
   are_you_sure: 'Tem certeza de que deseja %{action}?'
   ask_a_question: Faça uma pergunta!
   ask_community: Pergunte à comunidade
@@ -142,7 +143,7 @@ pt:
   minute: minuto
   minutes: minutos
   more_messages: Ver as mensagens anteriores
-  moderator: Moderador
+  moderator: Mentor
   mumuki_catchphrase: Aprendi a programar
   mumuki_short_description: Mumuki é a plataforma gratuita e gratuita para aprender a programar, desde a prática até a teoria e no seu idioma
   my_doubts: Minhas duvidas
@@ -164,7 +165,7 @@ pt:
   no_messages: Parece que você ainda não tem uma mensagem!
   no_questions: Parece que ainda não há dúvida.
   no_submissions: Parece que você ainda não tentou resolver este exercício!
-  no_useful_result: Didn't find what you were looking for
+  no_useful_result: Não encontrou o que estava buscando?
   not_found: A página que você pesquisou não existe!
   not_found_explanation: Olhe se você escreveu o endereço corretamente. Mas...
   not_in_any_organizations: Parece que você ainda não está em nenhuma organização!

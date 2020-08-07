@@ -112,8 +112,10 @@ module DiscussionsHelper
     Mumuki::Domain::Status::Discussion::STATUSES
   end
 
+  #TODO: this one uses a long method chain in order to take advantage of eager load
+  # Delegate it once again when polymorphic association is removed
   def discussions_languages(discussions)
-    @languages ||= discussions.map { |it| it.language.name }.uniq
+    @languages ||= discussions.map { |it| it.exercise.language.name }.uniq
   end
 
   def discussion_status_filter_link(status, discussions)
@@ -182,4 +184,7 @@ module DiscussionsHelper
     discussion_filter_params.except(:page)
   end
 
+  def should_show_approved_for?(user, message)
+    !user&.moderator_here? && message.approved? && !message.from_moderator?
+  end
 end

@@ -10,6 +10,7 @@ en:
   all: All
   appendix: "Appendix"
   appendix_teaser: Do you want to learn more? <a href="%{link}">Check this chapter's appendix</a>"
+  approved_message: Validated by mentor
   are_you_sure: 'Are you sure you want to %{action}?'
   ask_a_question: Ask a question!
   ask_community: Ask community for help
@@ -134,7 +135,7 @@ en:
   messages: Messages
   messages_error: Previous messages are unavailable. Please try again later.
   more_messages: More
-  moderator: Moderator
+  moderator: Mentor
   mumuki_catchphrase: Improve your programming skills
   mumuki_short_description: Mumuki is a simple, open and collaborative platform for sharing and solving programming exercises. It is aimed to help people with learning and teaching programing languages and paradigms
   my_doubts: My doubts
@@ -156,7 +157,7 @@ en:
   no_messages: It seems you don't have any messages yet!
   no_questions: It seems there isn't any question yet.
   no_submissions: It seems like you haven't tried to solve this exercise
-  no_useful_result: Não encontrou o que estava buscando?
+  no_useful_result: Didn't find what you were looking for?
   not_found_explanation: 'You may have mistyped the address or the page may have moved.'
   not_in_any_organizations: It seems you aren't in any organizations yet!
   notify_problem_with_exercise: Report a bug

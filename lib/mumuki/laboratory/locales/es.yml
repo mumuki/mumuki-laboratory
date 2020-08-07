@@ -11,6 +11,7 @@ es:
   and: y
   appendix: "Apéndice"
   appendix_teaser: ¿Querés saber más? <a href="%{link}">Consultá el apéndice de este capítulo</a>
+  approved_message: Validado por mentor
   are_you_sure: '¿Estás seguro que querés %{action}?'
   ask_a_question: ¡Hacé una pregunta!
   ask_community: Preguntá a la comunidad
@@ -146,7 +147,7 @@ es:
   minute: minuto
   minutes: minutos
   more_messages: Ver mensajes anteriores
-  moderator: Moderador
+  moderator: Mentor
   mumuki_catchphrase: Aprendé a programar
   mumuki_short_description: Mumuki es la plataforma libre y gratuita para aprender a programar, de la práctica a la teoría y en tu idioma
   my_doubts: Mis consultas

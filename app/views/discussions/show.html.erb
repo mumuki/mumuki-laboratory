@@ -9,6 +9,8 @@
 </div>
 
 <% if @discussion.has_messages? || @discussion.commentable_by?(current_user) %>
+  <hr class="message-divider">
+
   <div>
     <h3>
       <%= t :messages %>
@@ -20,8 +22,6 @@
       <% end %>
     </h3>
   </div>
-
-  <hr class="message-divider">
 
   <% if @discussion.has_messages? %>
     <div class="discussion-messages">
@@ -41,8 +41,10 @@
 
 <% end %>
 
-<div class="discussion-actions">
-  <% @discussion.reachable_statuses_for(current_user).each do |status| %>
-    <%= discussion_update_status_button(status) %>
-  <% end if current_user %>
-</div>
+<% if current_user&.moderator_here? %>
+  <div class="discussion-actions">
+    <% @discussion.reachable_statuses_for(current_user).each do |status| %>
+      <%= discussion_update_status_button(status) %>
+    <% end %>
+  </div>
+<% end %>

@@ -327,9 +327,9 @@ summary.discussion-summary {
         float: right;
         a {
           margin-left: 5px;
+          cursor: pointer;
         }
         .discussion-message-approved {
-          cursor: pointer;
           text-decoration: none;
           &.selected {
             i {
@@ -338,7 +338,6 @@ summary.discussion-summary {
           }
         }
         .discussion-message-not-actually-a-question {
-          cursor: pointer;
           text-decoration: none;
           i {
             position: relative;
