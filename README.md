@@ -214,6 +214,7 @@ which are granted to be safe and stable.
   * `SpeechBubbleRenderer`
   * `renderSpeechBubbleResultItem`
 * `mumuki.locale`
+* `mumuki.currentExerciseId`: the `id` of the currently loaded exercise, if any
 * `mumuki.MultipleScenarios`
   * `scenarios`
   * `currentScenarioIndex`
