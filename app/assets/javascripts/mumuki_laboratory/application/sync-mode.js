@@ -12,7 +12,7 @@ mumuki.syncMode = (() => {
     }
 
     syncEditorContent() {
-      const lastSubmission = mumuki.SubmissionsStore.getLastSubmission(mumuki.currentExerciseId);
+      const lastSubmission = mumuki.SubmissionsStore.getLastSubmissionAndResult(mumuki.currentExerciseId);
       if (lastSubmission) {
         /** @todo extract core module  */
         const content = mumuki.SubmissionsStore.submissionSolutionContent(lastSubmission.submission);
