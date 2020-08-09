@@ -3,7 +3,8 @@ unless defined?(Rails)
   require File.expand_path("../dummy/config/environment", __FILE__)
 end
 
-Selenium::WebDriver.logger.level = :debug
+# Enable this line for more verbose debugging
+# Selenium::WebDriver.logger.level = :debug
 
 Teaspoon.configure do |config|
   # Determines where the Teaspoon routes will be mounted. Changing this to "/jasmine" would allow you to browse to
