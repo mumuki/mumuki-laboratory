@@ -1,3 +1,5 @@
+/** @type {boolean} */
+mumuki.incognitoMode;
 mumuki.syncMode = (() => {
 
   /**
