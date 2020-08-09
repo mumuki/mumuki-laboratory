@@ -143,9 +143,6 @@ bundle exec rspec
 ```bash
 # Run tests
 bundle exec rake teaspoon
-
-# Check for async errors
-bundle exec rake teaspoon | grep 'JavaScript error'
 ```
 
 ## Running `eslint`
