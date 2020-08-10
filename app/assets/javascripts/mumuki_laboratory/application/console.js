@@ -145,7 +145,7 @@
   };
 
 
-  mumuki.load(function () {
+  mumuki.load(() => {
     var prompt = $('#prompt').attr('value');
     var queryConsole = new QueryConsole();
 

@@ -1,4 +1,4 @@
-mumuki.load(function () {
+mumuki.load(() => {
   var Chat = {
     $body: function () {
       return $('body')

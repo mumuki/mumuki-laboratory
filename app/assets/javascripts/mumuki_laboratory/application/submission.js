@@ -212,7 +212,7 @@ mumuki.submission = (() => {
   // Entry Point
   // ===========
 
-  mumuki.load(function () {
+  mumuki.load(() => {
     var $submissionsResults = $('.submission-results');
     if (!$submissionsResults) return;
 

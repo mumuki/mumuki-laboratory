@@ -1,4 +1,4 @@
-mumuki.load(function() {
+mumuki.load(() => {
   $('#upload-input').change(function (evt) {
     var file = evt.target.files[0];
     if (!file) return;

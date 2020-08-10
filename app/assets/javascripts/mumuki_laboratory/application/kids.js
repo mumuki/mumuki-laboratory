@@ -1,4 +1,4 @@
-mumuki.load(function () {
+mumuki.load(() => {
   let $bubble = $('.mu-kids-character-speech-bubble').children('.mu-kids-character-speech-bubble-normal');
 
   let availableTabs = ['.description', '.hint'];
