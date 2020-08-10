@@ -26,11 +26,18 @@ mumuki.load(function() {
   });
 
   function toggleEditButtonIfThereAreChanges() {
-    if (dataChanged() || avatarChanged()) {
+    if (requiredFieldsAreFilled() && (dataChanged() || avatarChanged())) {
       $editButton.prop('disabled', false);
     } else {
       $editButton.prop('disabled', true);
     }
+  }
+
+  function requiredFieldsAreFilled() {
+    return $userForm.find('select, textarea, input').toArray().every(elem => {
+      const $elem = $(elem);
+      return !($elem.prop('required')) || !!$elem.val();
+    });
   }
 
   function dataChanged() {
