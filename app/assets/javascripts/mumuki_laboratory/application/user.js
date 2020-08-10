@@ -1,4 +1,4 @@
-mumuki.load(function () {
+mumuki.load(() => {
   var hash = document.location.hash;
   if (hash) {
     $(".nav-tabs a[data-target='" + hash + "']").tab('show');

@@ -1,4 +1,4 @@
-mumuki.load(function () {
+mumuki.load(() => {
   var $subscriptionSpans = $('.discussion-subscription > span');
   var $upvoteSpans = $('.discussion-upvote > span');
 

@@ -1,4 +1,4 @@
-mumuki.load(function () {
+mumuki.load(() => {
   $('.btn-confirmation').on('click change', function (_evt) {
     var token = new mumuki.CsrfToken();
 
