@@ -47,3 +47,9 @@ class LevelProgression {
     return (this.currentExp - baseExpCurrentLevel) / (baseExpNextLevel - baseExpCurrentLevel);
   }
 }
+
+(function (mumuki) {
+  mumuki.setUpCurrentExp = function (currentExp) {
+    mumuki.gamification = new LevelProgression(currentExp);
+  };
+})(mumuki);
