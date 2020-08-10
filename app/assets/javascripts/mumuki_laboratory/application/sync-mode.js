@@ -59,12 +59,6 @@ mumuki.syncMode = (() => {
     }
   }
 
-  mumuki.load(() => {
-    mumuki.syncMode._selectSyncMode();
-    mumuki.syncMode._current.syncProgress();
-    mumuki.syncMode._current.syncEditorContent();
-  })
-
   return {
     ServerSyncMode,
     ClientSyncMode,
@@ -75,3 +69,9 @@ mumuki.syncMode = (() => {
     _current: null
   }
 })();
+
+mumuki.load(() => {
+  mumuki.syncMode._selectSyncMode();
+  mumuki.syncMode._current.syncProgress();
+  mumuki.syncMode._current.syncEditorContent();
+})
