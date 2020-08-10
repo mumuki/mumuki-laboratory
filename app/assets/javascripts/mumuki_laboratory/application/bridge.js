@@ -1,60 +1,41 @@
 /**
- * @typedef {{status: string, test_results: [{status: string, title: string}]}} ClientResult
+ * @typedef {"errored"|"failed"|"passed_with_warnings"|"passed"|"pending"|"aborted"} SubmissionStatus
  */
 
 /**
- * @typedef {{solution: object, client_result?: ClientResult}} Submission
+ * @typedef {{
+ *  status: SubmissionStatus,
+ *  test_results: [{status: SubmissionStatus, title: string}]
+ * }} SubmissionClientResult
  */
 
-var mumuki = mumuki || {};
+/**
+ * @typedef {{
+  *  status: SubmissionStatus,
+  *  class_for_progress_list_item?: string,
+  *  guide_finished_by_solution?: boolean
+  * }} SubmissionResult
+  */
 
-(function (mumuki) {
-  var lastSubmission = {};
+/**
+ * @typedef {object} Solution
+ */
 
-  function Laboratory(exerciseId){
-    this.exerciseId = exerciseId;
-  }
+/**
+ * @typedef {{
+ *  "solution[content]"?:string,
+ *  solution?: Solution,
+ *  client_result?: SubmissionClientResult
+ * }} Submission
+ */
 
-  function asString(json){
-    return JSON.stringify(json);
-  }
+/**
+ * @typedef {{submission?: Submission, result?: SubmissionResult}} SubmissionAndResult
+ */
 
-  function sameAsLastSolution(newSolution){
-    return asString(lastSubmission.content) === asString(newSolution);
-  }
+mumuki.bridge = (() => {
 
-  function lastSubmissionFinishedSuccessfully(){
-    return lastSubmission.result && lastSubmission.result.status !== 'aborted';
-  }
-
-  function sendNewSolution(submission){
-    var token = new mumuki.CsrfToken();
-    var request = token.newRequest({
-      type: 'POST',
-      url: window.location.origin + window.location.pathname + '/solutions' + window.location.search,
-      data: submission
-    });
-
-    return $.ajax(request).then(preRenderResult).done(function (result) {
-      lastSubmission = { content: {solution: submission.solution}, result: result };
-    });
-  }
-
-
-  /**
-   * Pre-renders some html parts of submission UI
-   * */
-  function preRenderResult(result) {
-    result.class_for_progress_list_item = mumuki.renderers.progressListItemClassForStatus(result.status, true)
-    return result;
-  }
-
-  mumuki.load(function () {
-    lastSubmission = {};
-  });
-
-  Laboratory.prototype = {
-
+  class Laboratory {
     // ==========
     // Public API
     // ==========
@@ -65,9 +46,9 @@ var mumuki = mumuki || {};
      *
      * @param {object} content the content object
      * */
-    runTests: function(content) {
+    runTests(content) {
       return this._submitSolution({ solution: content });
-    },
+    }
 
     // ===========
     // Private API
@@ -77,18 +58,46 @@ var mumuki = mumuki || {};
      * Sends a solution object
      *
      * @param {Submission} submission the submission object
+     * @returns {JQuery.Promise<SubmissionResult>}
      */
-    _submitSolution: function (submission) {
-      if(lastSubmissionFinishedSuccessfully() && sameAsLastSolution(submission)){
-        return $.Deferred().resolve(lastSubmission.result);
+    _submitSolution(submission) {
+      const lastSubmission = mumuki.SubmissionsStore.getCachedResultFor(mumuki.currentExerciseId, submission);
+      if (lastSubmission) {
+        return $.Deferred().resolve(lastSubmission);
       } else {
-        return sendNewSolution(submission);
+        return this._sendNewSolution(submission).done((result) => {
+          mumuki.SubmissionsStore.setLastSubmission(mumuki.currentExerciseId, {submission, result});
+        });
       }
     }
-  };
 
-  mumuki.bridge = {
-    Laboratory: Laboratory
-  };
+    /**
+     * @param {Submission} submission the submission object
+     * @returns {JQuery.Promise<SubmissionResult>}
+     */
+    _sendNewSolution(submission){
+      var token = new mumuki.CsrfToken();
+      var request = token.newRequest({
+        type: 'POST',
+        url: window.location.origin + window.location.pathname + '/solutions' + window.location.search,
+        data: submission
+      });
+      return $.ajax(request).then((result) => this._preRenderResult(result));
+    }
 
-}(mumuki));
+    /**
+     * Pre-renders some html parts of submission UI, adding them to the given result
+     *
+     * @param {SubmissionResult} result
+     * @returns {SubmissionResult}
+     */
+    _preRenderResult(result) {
+      result.class_for_progress_list_item = mumuki.renderers.progressListItemClassForStatus(result.status, true)
+      return result;
+    }
+  }
+
+  return {
+    Laboratory
+  };
+})();

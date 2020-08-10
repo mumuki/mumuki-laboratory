@@ -6,7 +6,7 @@
   // ==========================
 
   /**
-   * @param {string} status
+   * @param {SubmissionStatus} status
    * @returns {string}
    */
   function iconForStatus(status) {
@@ -20,8 +20,7 @@
   }
 
   /**
-   *
-   * @param {string} status
+   * @param {SubmissionStatus} status
    * @returns {string}
    */
   function classForStatus(status) {
@@ -36,7 +35,7 @@
 
 
   /**
-   * @param {string} status
+   * @param {SubmissionStatus} status
    * @param {boolean} [active]
    * @returns {string}
    */
