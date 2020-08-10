@@ -26,11 +26,9 @@ mumuki.load(function() {
   });
 
   function toggleEditButtonIfThereAreChanges() {
-    if (requiredFieldsAreFilled() && (dataChanged() || avatarChanged())) {
-      $editButton.prop('disabled', false);
-    } else {
-      $editButton.prop('disabled', true);
-    }
+    let shouldEnable = requiredFieldsAreFilled() && (dataChanged() || avatarChanged());
+
+    $editButton.prop('disabled', !shouldEnable);
   }
 
   function requiredFieldsAreFilled() {
