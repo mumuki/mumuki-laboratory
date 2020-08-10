@@ -1,6 +1,4 @@
-var mumuki = mumuki || {};
-
-(function (mumuki) {
+(function () {
   // When using Turbolinks, intervals loaded inside <body> aren't destroyed on page changes
   // Use this function instead if you want the behaviour of a regular setInterval
   mumuki.setInterval = function (intervalFunction, milliseconds) {
@@ -14,4 +12,4 @@ var mumuki = mumuki || {};
     return interval;
   }.bind(this);
 
-}(mumuki));
+}());
