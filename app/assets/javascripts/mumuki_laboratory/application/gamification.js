@@ -46,6 +46,16 @@ class LevelProgression {
 
     return (this.currentExp - baseExpCurrentLevel) / (baseExpNextLevel - baseExpCurrentLevel);
   }
+
+  setExpMessage(exp) {
+    let expGained = exp - this.currentExp;
+
+    if (expGained > 0) {
+      this.currentExp = exp;
+      $('#mu-exp-points').html(expGained);
+      $('#mu-level-number').html(this.currentLevel());
+    }
+  }
 }
 
 (function (mumuki) {

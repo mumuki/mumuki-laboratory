@@ -26,6 +26,7 @@ mumuki.submission = (() => {
       this.submissionsResultsArea.html(data.html);
       data.status === 'aborted' ? this.error(submitButton) : submitButton.enable();
       mumuki.updateProgressBarAndShowModal(data);
+      mumuki.gamification.setExpMessage(data.current_exp);
     }
     error(submitButton) {
       this.submissionsResultsArea.html('');
