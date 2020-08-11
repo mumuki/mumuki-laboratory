@@ -31,20 +31,15 @@ mumuki.load(function() {
     $editButton.prop('disabled', !shouldEnable);
   }
 
-  function requiredFieldsAreFilled() {
-    return $userForm.find('select, textarea, input').toArray().every(elem => {
+  const requiredFieldsAreFilled = () =>
+    $userForm.find('select, textarea, input').toArray().every(elem => {
       const $elem = $(elem);
       return !($elem.prop('required')) || !!$elem.val();
     });
-  }
 
-  function dataChanged() {
-    return $userForm.serialize() != originalData;
-  }
+  const dataChanged = () => $userForm.serialize() !== originalData;
 
-  function avatarChanged() {
-    return ($userAvatar.attr('src') != originalProfilePicture);
-  }
+  const avatarChanged = () => $userAvatar.attr('src') !== originalProfilePicture;
 
   $('#mu-user-image').on('click', function(){
     userImage = $userAvatar.attr('src');
