@@ -19,7 +19,7 @@ services:
 - postgresql
 addons:
   addons:
-    firefox: latest
+    firefox: '79.0'
   code_climate:
     repo_token: 820e155f1bff3d5cfcb84eae1caace7cd9ec5a27540f52222620896dc010b3ee
 env:
