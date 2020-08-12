@@ -141,7 +141,7 @@ bundle exec rspec
 > it and add it to your path
 
 ```bash
-bundle exec rake teaspoon
+MOZ_HEADLESS=1 bundle exec rake teaspoon
 ```
 
 ## JavaScript API Docs
