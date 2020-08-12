@@ -5,6 +5,9 @@ rvm:
 - 2.6.3
 before_install:
 - gem install -v 2.0.2 bundler
+- wget https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz
+- mkdir geckodriver && tar -xzf geckodriver-v0.27.0-linux64.tar.gz -C geckodriver && rm geckodriver-v0.27.0-linux64.tar.gz
+- export PATH=$PATH:$PWD/geckodriver
 before_script:
 - psql -c 'create database travis_ci_test;' -U postgres
 - cp spec/dummy/config/database.travis.yml spec/dummy/config/database.yml
