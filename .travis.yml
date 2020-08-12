@@ -13,8 +13,8 @@ before_script:
 - cp spec/dummy/config/database.travis.yml spec/dummy/config/database.yml
 script:
 - bundle exec rake db:schema:load
-- bundle exec rake
 - bundle exec rake teaspoon
+- bundle exec rake
 services:
 - postgresql
 addons:
