@@ -1,6 +1,4 @@
-var mumuki = mumuki || {};
-
-(function (mumuki) {
+mumuki.MultipleScenarios = (() => {
 
   const setControlVisibility = function ($control, visible) {
     visible ? $control.show() : $control.hide();
@@ -147,6 +145,5 @@ var mumuki = mumuki || {};
     }
   }
 
-  mumuki.MultipleScenarios = MultipleScenarios;
-
-}(mumuki));
+  return MultipleScenarios;
+})();

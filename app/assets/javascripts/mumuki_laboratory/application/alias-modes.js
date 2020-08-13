@@ -1,4 +1,4 @@
-mumuki.load(function () {
+mumuki.load(() => {
 
   function CodeMirrorAlias(alias, current) {
     CodeMirror.defineMIME(alias, CodeMirror.mimeModes[current]);

@@ -1,6 +1,4 @@
-var mumuki = mumuki || {};
-
-(function (mumuki) {
+(() => {
   function createCodeMirrors() {
     return $(".editor").map(function (index, textarea) {
       var $textarea = $("#solution_content");
@@ -80,7 +78,7 @@ var mumuki = mumuki || {};
   mumuki.page.editors = [];
 
 
-  mumuki.load(function () {
+  mumuki.load(() => {
     mumuki.page.editors = createCodeMirrors();
     mumuki.submission.registerContentSyncer(mumuki.editor.syncContent);
     updateCodeMirrorLanguage();
@@ -101,4 +99,4 @@ var mumuki = mumuki || {};
     });
   });
 
-}(mumuki));
+})();

@@ -1,5 +1,4 @@
-var mumuki = mumuki || {};
-(function (mumuki) {
+(() => {
   function historicalQueries() {
     var queries = $('#historical_queries').val();
     if (queries) {
@@ -36,40 +35,40 @@ var mumuki = mumuki || {};
     $('.jquery-console-prompt-box:not(:last)').remove()
   }
 
-  function QueryConsole() {
-    this.endpoint = $('#console_endpoint').val();
-    this.token = new mumuki.CsrfToken();
-    this.statefulConsole = $('#stateful_console').val() === "true";
-    this.lines = [];
-  }
-
-  QueryConsole.prototype = {
-    newQuery: function (line) {
+  class QueryConsole {
+    constructor() {
+      this.endpoint = $('#console_endpoint').val();
+      this.token = new mumuki.CsrfToken();
+      this.statefulConsole = $('#stateful_console').val() === "true";
+      this.lines = [];
+      this.controller = null;
+    }
+    newQuery(line) {
       var cookies = this.statefulConsole ? this.lines : [];
       return new Query(line, cookies, this);
-    },
-    clearState: function () {
+    }
+    clearState() {
       this.lines = [];
       clearConsole();
-    },
-    sendQuery: function (queryContent) {
+    }
+    sendQuery(queryContent) {
       this.controller.promptText(queryContent);
       this.controller.typer.commandTrigger();
-    },
-    preloadQuery: function (queryWithResults) {
+    }
+    preloadQuery(queryWithResults) {
       this.lines.push(queryWithResults.query);
       this.enqueuePreloadedQuery(queryWithResults);
       this.sendQuery(queryWithResults.query);
-    },
-    enqueuePreloadedQuery: function (queryWithResults) {
+    }
+    enqueuePreloadedQuery(queryWithResults) {
       this.preloadedQuery = queryWithResults;
-    },
-    dequeuePreloadedQuery: function () {
+    }
+    dequeuePreloadedQuery() {
       var result = this.preloadedQuery;
       this.preloadedQuery = undefined;
       return result;
-    },
-    preloadHistoricalQueries: function () {
+    }
+    preloadHistoricalQueries() {
       var self = this;
       historicalQueries().forEach(function (queryWithResults) {
         self.preloadQuery(queryWithResults);
@@ -77,24 +76,23 @@ var mumuki = mumuki || {};
     }
   };
 
-  function Query(line, cookie, console) {
-    this.console = console;
-    this.line = line;
-    this.cookie = cookie;
-  }
-
-  Query.prototype = {
+  class Query {
+    constructor(line, cookie, console) {
+      this.console = console;
+      this.line = line;
+      this.cookie = cookie;
+    }
     get token() {
       return this.console.token;
-    },
+    }
     get content() {
       var firstEditor = mumuki.page.editors[0];
       if (firstEditor && $("#include_solution").prop("checked"))
         return firstEditor.getValue();
       else
         return '';
-    },
-    submit: function (report, queryConsole, line) {
+    }
+    submit(report, queryConsole, line) {
       var self = this;
       var preloadedQuery = queryConsole.dequeuePreloadedQuery();
       if (preloadedQuery) {
@@ -110,8 +108,8 @@ var mumuki = mumuki || {};
       }).fail(function (response) {
         reportStatus(response.responseText, 'failed', report);
       });
-    },
-    displayGoalResult: function (response) {
+    }
+    displayGoalResult(response) {
       if (response.status == 'passed') {
         $('.submission-results').show();
         $('.submission-results').html(response.html);
@@ -121,15 +119,15 @@ var mumuki = mumuki || {};
         $('.submission-results').hide();
         $('.progress-list-item.active').attr('class', "progress-list-item text-center danger active");
       }
-    },
-    displayQueryResult: function (report, queryConsole, line, response) {
+    }
+    displayQueryResult(report, queryConsole, line, response) {
       if (response.status !== 'errored') {
         queryConsole.lines.push(line);
         reportStatus(response.result, response.status, report);
       } else {
         reportStatus(response.result, 'failed', report);
       }
-    },
+    }
     get _request() {
       var self = this;
       return self.token.newRequest({
@@ -137,17 +135,17 @@ var mumuki = mumuki || {};
         type: 'POST',
         data: self._requestData
       })
-    },
+    }
     get _requestUrl() {
       return this.console.endpoint;
-    },
+    }
     get _requestData() {
       return {content: this.content, query: this.line, cookie: this.cookie};
     }
   };
 
 
-  mumuki.load(function () {
+  mumuki.load(() => {
     var prompt = $('#prompt').attr('value');
     var queryConsole = new QueryConsole();
 
@@ -172,4 +170,4 @@ var mumuki = mumuki || {};
     queryConsole.preloadHistoricalQueries();
   });
 
-}(mumuki));
+})();

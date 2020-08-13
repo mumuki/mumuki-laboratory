@@ -1,3 +1,3 @@
-mumuki.load(function () {
+mumuki.load(() => {
     $('[title]').tooltip();
 });
