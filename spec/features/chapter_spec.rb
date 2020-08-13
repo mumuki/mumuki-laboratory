@@ -50,4 +50,21 @@ feature 'Chapters flow', organization_workspace: :test do
       expect(page).to have_text('endofunctors')
     end
   end
+
+  context 'incognito user' do
+    before { Organization.current.update! incognito_mode_enabled: true }
+    scenario 'show chapter, no appendix' do
+      visit "/chapters/#{chapter.id}"
+
+      expect(page).to have_text('Functional Programming')
+      expect(page).to have_text('The Basic Values')
+
+      expect(page).to have_text('Monads and Functors')
+      expect(page).to have_text('The Maybe Functor')
+
+      expect(page).to_not have_text('Appendix')
+
+      expect(page).to have_text('Sign in')
+    end
+  end
 end

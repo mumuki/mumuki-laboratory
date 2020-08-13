@@ -246,4 +246,19 @@ feature 'Exercise Flow', organization_workspace: :test do
       expect(page).to have_xpath("//a[@title='Edit']")
     end
   end
+
+  context 'incognito user' do
+    before { Organization.current.update! incognito_mode_enabled: true }
+
+    scenario 'visit exercise transparently' do
+      visit "/exercises/#{problem_1.transparent_id}"
+
+      expect(page).to have_text('Succ1')
+      expect(page).to have_text('Console')
+      expect(page).to have_text('need a hint?')
+      expect(page).to have_text('Description of Succ1')
+
+      expect(page).to have_text('Sign in')
+    end
+  end
 end

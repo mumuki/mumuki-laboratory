@@ -91,4 +91,20 @@ feature 'public org', organization_workspace: :test do
       expect(user.reload.last_organization).to eq current_organization
     end
   end
+
+  context 'incognito user' do
+    before { current_organization.update! incognito_mode_enabled: true }
+    scenario 'from inside' do
+      Capybara.current_session.driver.header 'Referer', 'http://google.com'
+
+      visit '/'
+
+      expect(page).to have_text('ム mumuki')
+      expect(page).to have_text('First Steps')
+      expect(page).to have_selector('.chapter', text: 'Functional Programming')
+      expect(page).to have_text(current_organization.book.name)
+
+      expect(page).to have_text('Sign in')
+    end
+  end
 end
