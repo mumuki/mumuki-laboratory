@@ -5,15 +5,21 @@ rvm:
 - 2.6.3
 before_install:
 - gem install -v 2.0.2 bundler
+- wget https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz
+- mkdir geckodriver && tar -xzf geckodriver-v0.27.0-linux64.tar.gz -C geckodriver && rm geckodriver-v0.27.0-linux64.tar.gz
+- export PATH=$PATH:$PWD/geckodriver
 before_script:
 - psql -c 'create database travis_ci_test;' -U postgres
 - cp spec/dummy/config/database.travis.yml spec/dummy/config/database.yml
 script:
 - bundle exec rake db:schema:load
+- bundle exec rake teaspoon
 - bundle exec rake
 services:
 - postgresql
 addons:
+  addons:
+    firefox: '79.0'
   code_climate:
     repo_token: 820e155f1bff3d5cfcb84eae1caace7cd9ec5a27540f52222620896dc010b3ee
 env:
@@ -21,6 +27,8 @@ env:
   - RACK_ENV=test CODECLIMATE_REPO_TOKEN=820e155f1bff3d5cfcb84eae1caace7cd9ec5a27540f52222620896dc010b3ee
   global:
   - secure: IW65qMjgbuuj4kUsBwaY+iV+jaIedgf2V3W7bTLj1SjaNdc8hC9SXBiNWQrT9Ygu5Q67mKzXuu5GTyAvAGftF02UKgT+yDE43p+a9w2+Onx5dGTIXCCREIE9fgmQhAkqgt9+1E99fRWsQzqkpEVINOMvumk+HM/Rxg8B9e5jvB8=
+    global:
+      - MOZ_HEADLESS=1
 deploy:
   - provider: rubygems
     api_key:

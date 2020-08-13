@@ -27,8 +27,14 @@ require 'rspec/core/rake_task'
 desc "Run all specs in spec directory (excluding plugin specs)"
 RSpec::Core::RakeTask.new(:spec => 'app:db:test:prepare')
 
+desc "Force development environment, required by javascript specs"
+task :development do
+  ENV['RACK_ENV'] = 'development'
+  ENV['RAILS_ENV'] = 'development'
+end
+
 desc "Run the javascript specs"
-task :teaspoon => "app:teaspoon"
+task teaspoon: [:development, "app:teaspoon"]
 
 task default: :spec
 
