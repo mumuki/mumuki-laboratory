@@ -1,5 +1,5 @@
 /** @type {boolean} */
-mumuki.incognitoMode;
+mumuki.incognitoUser;
 mumuki.syncMode = (() => {
 
   /**
@@ -50,7 +50,7 @@ mumuki.syncMode = (() => {
 
   /** Selects the most appropriate sync mode */
   function _selectSyncMode() {
-    if (mumuki.incognitoMode) {
+    if (mumuki.incognitoUser) {
       mumuki.syncMode._current = new ClientSyncMode();
     } else {
       mumuki.syncMode._current = new ServerSyncMode();

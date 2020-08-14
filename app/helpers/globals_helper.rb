@@ -6,7 +6,7 @@ module GlobalsHelper
         mumuki.locale = '#{Organization.current.locale}';
         moment.locale('#{Organization.current.locale}');
 
-        mumuki.incognitoMode = #{current_incognito_user?};
+        mumuki.incognitoUser = #{current_incognito_user?};
 
         mumuki.version = '#{Mumuki::Laboratory::VERSION}';
       </script>

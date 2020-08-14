@@ -215,6 +215,7 @@ which are granted to be safe and stable.
   * `renderSpeechBubbleResultItem`
 * `mumuki.locale`
 * `mumuki.currentExerciseId`: the `id` of the currently loaded exercise, if any
+* `mumuki.incognitoUser`: whether the current user is an incognito user
 * `mumuki.MultipleScenarios`
   * `scenarios`
   * `currentScenarioIndex`
