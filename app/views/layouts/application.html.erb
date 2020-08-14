@@ -17,7 +17,7 @@
         <% end %>
       </div>
       <div class="mu-navbar-avatar">
-        <% if current_user? %>
+        <% if current_logged_user? %>
           <div class="dropdown">
             <span>
               <a class="notifications-box <%= has_notifications? ? '' : 'notifications-box-empty' %>" href=<%= "#{user_notifications_path}" %>>

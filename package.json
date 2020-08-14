@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "eslint": "^7.6.0",
+    "@types/jasmine": "^3.5.12",
+    "@types/moment": "^2.13.0"
+  },
+  "scripts": {
+    "lint": "eslint app/assets/javascripts/mumuki_laboratory/"
+  }
+}

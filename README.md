@@ -144,6 +144,12 @@ bundle exec rspec
 MOZ_HEADLESS=1 bundle exec rake teaspoon
 ```
 
+## Running `eslint`
+
+```bash
+yarn run lint
+```
+
 ## JavaScript API Docs
 
 In order to be customized by runners, Laboratory exposes the following selectors and methods
@@ -208,6 +214,8 @@ which are granted to be safe and stable.
   * `SpeechBubbleRenderer`
   * `renderSpeechBubbleResultItem`
 * `mumuki.locale`
+* `mumuki.currentExerciseId`: the `id` of the currently loaded exercise, if any
+* `mumuki.incognitoUser`: whether the current user is an incognito user
 * `mumuki.MultipleScenarios`
   * `scenarios`
   * `currentScenarioIndex`
@@ -369,14 +377,14 @@ contents. There are two different approaches:
 
 ```javascript
 // simplest method - you can register just one
-mumuki.submission.registerContentSyncer(() => {
+mumuki.editors.registerContentSyncer(() => {
   // ... write here your custom component content...
   $('#mu-custom-editor-value').val(/* ... */);
 });
 
 // alternate method
 // you can register many sources
-mumuki.CustomEditor.addSource({
+mumuki.editors.addCustomSource({
   getContent() {
     return { name: "solution[content]", value: /* ... */ } ;
   }

@@ -1,3 +1,8 @@
+mumuki.editor = mumuki.editor || {};
+mumuki.page = mumuki.page || {};
+mumuki.page.dynamicEditors = [];
+mumuki.page.editors = [];
+
 (() => {
   function createCodeMirrors() {
     return $(".editor").map(function (index, textarea) {
@@ -66,21 +71,16 @@
     });
   }
 
-  mumuki.editor = mumuki.editor || {};
   mumuki.editor.reset = resetEditor;
   mumuki.editor.toggleFullscreen = toggleFullscreen;
   mumuki.editor.formatContent = formatContent;
   mumuki.editor.indentWithSpaces = indentWithSpaces;
   mumuki.editor.syncContent = syncContent;
 
-  mumuki.page = mumuki.page || {};
-  mumuki.page.dynamicEditors = [];
-  mumuki.page.editors = [];
-
 
   mumuki.load(() => {
     mumuki.page.editors = createCodeMirrors();
-    mumuki.submission.registerContentSyncer(mumuki.editor.syncContent);
+    mumuki.editors.registerContentSyncer(mumuki.editor.syncContent);
     updateCodeMirrorLanguage();
     onSelectUpdateCodeMirror();
 

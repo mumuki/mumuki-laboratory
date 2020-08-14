@@ -15,6 +15,6 @@ mumuki.startTimer = (() => {
         $('#timer').text(duration.format("HH:mm:ss"));
       }
     }, intervalDuration);
-  };
+  }
   return startTimer
 })();

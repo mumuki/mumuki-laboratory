@@ -1,0 +1,21 @@
+{
+  "extends": "eslint:recommended",
+  "env": {
+    "browser": true,
+    "es6": true,
+    "mocha": true
+  },
+  "globals": {
+    "$": "readonly",
+    "CodeMirror": "readonly",
+    "expect": "readonly",
+    "ga": "readonly",
+    "moment": "readonly",
+    "mumuki": "writable",
+    "muvment": "readonly",
+    "NProgress": "readonly"
+  },
+  "rules": {
+    "no-unused-vars": [2, {"argsIgnorePattern": "^_"}]
+  }
+}

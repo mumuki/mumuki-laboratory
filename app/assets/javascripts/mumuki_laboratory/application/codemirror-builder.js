@@ -96,7 +96,7 @@
     createEditor(customOptions) {
       return CodeMirror.fromTextArea(this.textarea, Object.assign({}, codeMirrorDefaults, customOptions));
     }
-  };
+  }
 
   mumuki.editor = mumuki.editor || {};
   mumuki.editor.CodeMirrorBuilder = CodeMirrorBuilder;
