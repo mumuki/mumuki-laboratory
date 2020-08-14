@@ -32,12 +32,10 @@ mumuki.syncMode = (() => {
   }
 
   /**
-   * Syncs progress and solutions
-   * from server.
+   * Syncs progress and solutions from server.
    *
-   * This class does actually nothing
-   * since that behaviour is actually the default one, son no additional actions
-   * are nedeed.
+   * This class does nothing actually, since a server-side behaviour is the default one
+   * and no additional actions are needed.
    */
   class ServerSyncMode {
     syncProgress() {

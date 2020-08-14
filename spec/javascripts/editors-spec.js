@@ -8,7 +8,7 @@ describe('editors', () => {
     expect(mumuki.CustomEditor.hasSources).toBe(false)
   });
 
-  it('can add a custom soure', () => {
+  it('can add a custom source', () => {
     mumuki.editors.addCustomSource({
       getContent() {
         return { name: "solution[content]", value: 'the value' } ;
