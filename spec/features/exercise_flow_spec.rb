@@ -13,8 +13,8 @@ feature 'Exercise Flow', organization_workspace: :test do
   let(:problem_5) { build(:problem, name: 'Succ5', description: 'Description of Succ5', layout: :input_right, editor: :upload, hint: 'lele', language: gobstones) }
   let(:problem_6) { build(:problem, name: 'Succ6', description: 'Description of Succ6', layout: :input_right, editor: :hidden, language: haskell) }
   let(:problem_7) { build(:problem, name: 'Succ7', description: 'Description of Succ7', editor: :single_choice, choices: [{value: 'some choice', checked: true}]) }
-  let(:playground_1) { build(:playground, name: 'Succ5', description: 'Description of Succ4', layout: :input_right) }
-  let(:playground_2) { build(:playground, name: 'Succ6', description: 'Description of Succ4', layout: :input_right, extra: 'x = 4') }
+  let(:playground_1) { build(:playground, name: 'Succ5', description: 'Description of Succ4', layout: :input_bottom) }
+  let(:playground_2) { build(:playground, name: 'Succ6', description: 'Description of Succ4', layout: :input_bottom, extra: 'x = 4') }
   let!(:reading) { build(:reading, name: 'Reading about Succ', description: 'Lets understand succ history') }
   let!(:exercise_not_in_path) { create :exercise }
   let(:kids_problem) { build(:problem, name: 'Kids prob', description: 'Description of kids prob', layout: :input_primary, hint: 'lele', language: gobstones) }
@@ -129,6 +129,12 @@ feature 'Exercise Flow', organization_workspace: :test do
       expect(page).to have_text('Solution')
       expect(page).to have_text('need a hint?')
       expect(page).to_not have_selector('.upload')
+
+      expect(page).to have_selector('#mu-exercise-id', )
+      expect(page).to have_selector('#mu-exercise-layout')
+
+      expect(page.find("#mu-exercise-id")['value']).to eq(problem_1.id.to_s)
+      expect(page.find("#mu-exercise-layout")['value']).to eq('input_right')
     end
 
     scenario 'visit exercise by id, hidden layout, no hint, not queriable language' do
@@ -142,6 +148,9 @@ feature 'Exercise Flow', organization_workspace: :test do
       expect(page).to_not have_text('Solution')
       expect(page).to_not have_text('need a hint?')
       expect(page).to_not have_selector('.upload')
+
+      expect(page.find("#mu-exercise-id")['value']).to eq(problem_2.id.to_s)
+      expect(page.find("#mu-exercise-layout")['value']).to eq('input_right')
     end
 
     scenario 'visit exercise by id, hidden layout, no hint, queriable language' do
@@ -152,6 +161,9 @@ feature 'Exercise Flow', organization_workspace: :test do
       expect(page).to_not have_text('Solution')
       expect(page).to_not have_text('need a hint?')
       expect(page).to_not have_selector('.upload')
+
+      expect(page.find("#mu-exercise-id")['value']).to eq(problem_6.id.to_s)
+      expect(page.find("#mu-exercise-layout")['value']).to eq('input_right')
     end
 
 
@@ -163,6 +175,9 @@ feature 'Exercise Flow', organization_workspace: :test do
       expect(page).to have_text('Solution')
       expect(page).to have_text('need a hint?')
       expect(page).to have_selector('.upload')
+
+      expect(page.find("#mu-exercise-id")['value']).to eq(problem_3.id.to_s)
+      expect(page.find("#mu-exercise-layout")['value']).to eq('input_right')
     end
 
     scenario 'visit exercise by id, upload layout, not queriable language' do
@@ -174,6 +189,9 @@ feature 'Exercise Flow', organization_workspace: :test do
       expect(page).to have_selector('.upload')
       expect(problem_5.language.extension).to eq('gbs')
       expect(page.find("//div[@class = 'form-group']/input")['accept']).to eq(".gbs")
+
+      expect(page.find("#mu-exercise-id")['value']).to eq(problem_5.id.to_s)
+      expect(page.find("#mu-exercise-layout")['value']).to eq('input_right')
     end
 
     scenario 'visit exercise by id, input_bottom layout, extra, no hint' do
@@ -185,6 +203,9 @@ feature 'Exercise Flow', organization_workspace: :test do
       expect(page).to have_text('Solution')
       expect(page).to_not have_text('need a hint?')
       expect(page).to_not have_selector('.upload')
+
+      expect(page.find("#mu-exercise-id")['value']).to eq(problem_4.id.to_s)
+      expect(page.find("#mu-exercise-layout")['value']).to eq('input_bottom')
     end
 
     scenario 'visit playground by id, no extra, no hint' do
@@ -195,6 +216,9 @@ feature 'Exercise Flow', organization_workspace: :test do
       expect(page).to_not have_text('Solution')
       expect(page).to_not have_text('need a hint?')
       expect(page).to_not have_selector('.upload')
+
+      expect(page.find("#mu-exercise-id")['value']).to eq(playground_1.id.to_s)
+      expect(page.find("#mu-exercise-layout")['value']).to eq('input_bottom')
     end
 
     scenario 'visit playground by id, with extra, no hint' do
@@ -206,6 +230,9 @@ feature 'Exercise Flow', organization_workspace: :test do
       expect(page).to_not have_text('need a hint?')
       expect(page).to have_text('x = 4')
       expect(page).to_not have_selector('.upload')
+
+      expect(page.find("#mu-exercise-id")['value']).to eq(playground_2.id.to_s)
+      expect(page.find("#mu-exercise-layout")['value']).to eq('input_bottom')
     end
 
     scenario 'visit inner reading by id' do
@@ -218,6 +245,9 @@ feature 'Exercise Flow', organization_workspace: :test do
       expect(page).to_not have_text('Solution')
       expect(page).to_not have_text('need a hint?')
       expect(page).to_not have_selector('.upload')
+
+      expect(page.find("#mu-exercise-id")['value']).to eq(reading.id.to_s)
+      expect(page.find("#mu-exercise-layout")['value']).to eq('input_bottom')
     end
 
     scenario 'visit solved choices exercise' do

@@ -12,7 +12,7 @@ mumuki.syncMode = (() => {
     }
 
     syncEditorContent() {
-      const lastSubmission = mumuki.SubmissionsStore.getLastSubmissionAndResult(mumuki.currentExerciseId);
+      const lastSubmission = mumuki.SubmissionsStore.getLastSubmissionAndResult(mumuki.exercise.id);
       if (lastSubmission) {
         /** @todo extract core module  */
         const content = mumuki.SubmissionsStore.submissionSolutionContent(lastSubmission.submission);
@@ -26,7 +26,7 @@ mumuki.syncMode = (() => {
     _getProgressListItemClass($anchor) {
       const exerciseId = $anchor.data('mu-exercise-id');
       const status = mumuki.SubmissionsStore.getLastSubmissionStatus(exerciseId);
-      return mumuki.renderers.progressListItemClassForStatus(status, exerciseId == mumuki.currentExerciseId);
+      return mumuki.renderers.progressListItemClassForStatus(status, exerciseId == mumuki.exercise.id);
     }
 
   }

@@ -61,12 +61,12 @@ mumuki.bridge = (() => {
      * @returns {JQuery.Promise<SubmissionResult>}
      */
     _submitSolution(submission) {
-      const lastSubmission = mumuki.SubmissionsStore.getSubmissionResultFor(mumuki.currentExerciseId, submission);
+      const lastSubmission = mumuki.SubmissionsStore.getSubmissionResultFor(mumuki.exercise.id, submission);
       if (lastSubmission) {
         return $.Deferred().resolve(lastSubmission);
       } else {
         return this._sendNewSolution(submission).done((result) => {
-          mumuki.SubmissionsStore.setSubmissionResultFor(mumuki.currentExerciseId, {submission, result});
+          mumuki.SubmissionsStore.setSubmissionResultFor(mumuki.exercise.id, {submission, result});
         });
       }
     }
