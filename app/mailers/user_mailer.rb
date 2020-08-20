@@ -1,29 +1,37 @@
 class UserMailer < ApplicationMailer
   def welcome_email(user, organization)
-    organization_name = organization[:display_name] || t(:your_new_organization)
-    build_email user, t(:welcome, name: organization_name), { inline: organization.welcome_email_template }, organization
+    with_locale(user, organization) do
+      organization_name = organization[:display_name] || t(:your_new_organization)
+      build_email t(:welcome, name: organization_name), { inline: organization.welcome_email_template }
+    end
   end
 
   def we_miss_you_reminder(user, cycles)
-    build_email user, t(:we_miss_you), "#{cycles.ordinalize}_reminder"
+    with_locale(user) do
+      build_email t(:we_miss_you), "#{cycles.ordinalize}_reminder"
+    end
   end
 
   def no_submissions_reminder(user)
-    build_email user, t(:start_using_mumuki), 'no_submissions_reminder'
+    with_locale(user) do
+      build_email t(:start_using_mumuki), 'no_submissions_reminder'
+    end
   end
 
-  private
-
-  def build_email(user, subject, template, organization = nil)
+  def with_locale(user, organization = nil, &block)
     @user = user
     @unsubscribe_code = User.unsubscription_verifier.generate(user.id)
     @organization = organization || user.last_organization
 
-    I18n.with_locale(@organization.locale) do
-      mail to: user.email,
-           subject: subject,
-           content_type: 'text/html',
-           body: render(template)
-    end
+    I18n.with_locale(@organization.locale, &block)
+  end
+
+  private
+
+  def build_email(subject, template)
+    mail to: @user.email,
+         subject: subject,
+         content_type: 'text/html',
+         body: render(template)
   end
 end
