@@ -48,7 +48,7 @@ module DiscussionsHelper
   end
 
   def user_avatar(user, image_class='')
-    image_tag user.profile_picture, height: 40, class: "img-circle #{image_class}"
+    profile_picture_for(user, class: image_class)
   end
 
   def discussions_link_with_teaser(item)

@@ -7,6 +7,7 @@ pt:
   actions: Ações
   activity: Atividade
   actual_state: Tablero obtido
+  age: Idade
   all: Todos
   and: e
   appendix: Apêndice
@@ -28,6 +29,7 @@ pt:
   bibliotheca_ui: Biblioteca
   birthdate: Fecha de nacimiento
   blocked_forum_explanation: Você não tem permissão para ver este conteúdo. <br> Você está no meio de um exame agora?
+  cancel: Cancelar
   chapter: Capítulo
   chapters: Capítulos
   chapter_finished_html: Você terminou %{chapter}! Parabéns!
@@ -170,6 +172,7 @@ pt:
   not_in_any_organizations: Parece que você ainda não está em nenhuma organização!
   notify_problem_with_exercise: Relatar um erro
   office: Secretariado
+  only_landscape_support: Por favor, gire seu tablet ou celular para realizar exercícios
   opened: Aberto
   opened_count: '%{count} aberto'
   organizations: Organizações
@@ -193,6 +196,7 @@ pt:
   processing_your_solution: Estamos processando sua solução
   profile: Perfil
   profile_of: Perfil de %{username}
+  programming_since: Sou programador
   progress: Progresso
   read: Ler
   read_messages: Ver mensagens
@@ -238,6 +242,7 @@ pt:
   submissions_for: Soluções para %{exercise}
   subscribe: se inscrever
   tag: Etiquetas
+  task: Tarefa
   teacher_info: Informação para professores
   tell_us_how: Conte-nos como isso aconteceu com você!
   tell_us_if_our_error: Se você acha que é nosso erro, %{issues}
@@ -265,6 +270,5 @@ pt:
   want_permissions: O próximo usuário requer permissões
   working: Processamento
   wrong_answer: A resposta não é correta
+  years: anos
   you_must_sign_in_before_submitting: Você deve fazer o login antes de começar a enviar suas soluções
-  task: Tarefa
-  only_landscape_support: Por favor, gire seu tablet ou celular para realizar exercícios

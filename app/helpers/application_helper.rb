@@ -6,8 +6,14 @@ module ApplicationHelper
     html_escape html.to_str
   end
 
-  def profile_picture
-    image_tag(current_user.profile_picture, height: 40, class: 'img-circle', onError: "this.onerror = null; this.src = '#{image_url('user_shape.png')}'")
+  def profile_picture_for(user, **options)
+    options.merge!(height: 40, onError: "this.onerror = null; this.src = '#{image_url(user.placeholder_image_url)}'")
+    avatar_image(user.profile_picture, options)
+  end
+
+  def avatar_image(avatar_url, **options)
+    options.merge!(class: "img-circle #{options[:class]}")
+    image_tag(image_url(avatar_url), options)
   end
 
   def paginate(object, options={})
