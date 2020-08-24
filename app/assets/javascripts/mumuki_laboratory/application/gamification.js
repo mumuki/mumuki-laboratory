@@ -1,67 +1,74 @@
-class Formula {
-  static get QUADRATIC_COEFFICIENT()  { return 25; }
-  static get LINEAR_COEFFICIENT()     { return 100; }
-  static get CONSTANT_TERM()          { return -125; }
-}
-
-class LevelProgression {
-  constructor(currentExp) {
-    this.currentExp = currentExp;
+mumuki.gamification = (() => {
+  class Formula {
+    static get QUADRATIC_COEFFICIENT()  { return 25; }
+    static get LINEAR_COEFFICIENT()     { return 100; }
+    static get CONSTANT_TERM()          { return -125; }
   }
 
-  expToLevelUp() {
-    return this.baseExpNextLevel() - this.currentExp;
-  }
+  class LevelProgression {
+    constructor(currentExp) {
+      this.currentExp = currentExp;
+    }
 
-  baseExpNextLevel() {
-    return this.expFor(this.currentLevel() + 1);
-  }
+    expToLevelUp() {
+      return this.baseExpNextLevel() - this.currentExp;
+    }
 
-  expFor(level) {
-    const ax2 = Formula.QUADRATIC_COEFFICIENT * Math.pow(level, 2);
-    const bx = Formula.LINEAR_COEFFICIENT * level;
-    const c = Formula.CONSTANT_TERM;
+    baseExpNextLevel() {
+      return this.expFor(this.currentLevel() + 1);
+    }
 
-    return ax2 + bx + c;
-  }
+    expFor(level) {
+      const ax2 = Formula.QUADRATIC_COEFFICIENT * Math.pow(level, 2);
+      const bx = Formula.LINEAR_COEFFICIENT * level;
+      const c = Formula.CONSTANT_TERM;
 
-  currentLevel() {
-    return this.levelFor(this.currentExp);
-  }
+      return ax2 + bx + c;
+    }
 
-  levelFor(exp) {
-    const a = Formula.QUADRATIC_COEFFICIENT;
-    const b = Formula.LINEAR_COEFFICIENT;
-    const c = Formula.CONSTANT_TERM;
+    currentLevel() {
+      return this.levelFor(this.currentExp);
+    }
 
-    return Math.floor((-b + Math.sqrt(Math.pow(b, 2) - 4 * a * (c - exp))) / (2 * a));
-  }
+    levelFor(exp) {
+      const a = Formula.QUADRATIC_COEFFICIENT;
+      const b = Formula.LINEAR_COEFFICIENT;
+      const c = Formula.CONSTANT_TERM;
 
-  triggersLevelChange(exp) {
-    return this.levelFor(exp) !== this.currentLevel();
-  }
+      return Math.floor((-b + Math.sqrt(Math.pow(b, 2) - 4 * a * (c - exp))) / (2 * a));
+    }
 
-  currentLevelProgress() {
-    return (this.currentExp - this.baseExpCurrentLevel()) / (this.baseExpNextLevel() - this.baseExpCurrentLevel());
-  }
+    triggersLevelChange(exp) {
+      return this.levelFor(exp) !== this.currentLevel();
+    }
 
-  baseExpCurrentLevel() {
-    return this.expFor(this.currentLevel());
-  }
+    currentLevelProgress() {
+      return (this.currentExp - this.baseExpCurrentLevel()) / (this.baseExpNextLevel() - this.baseExpCurrentLevel());
+    }
 
-  setExpMessage(exp) {
-    let expGained = exp - this.currentExp;
+    baseExpCurrentLevel() {
+      return this.expFor(this.currentLevel());
+    }
 
-    if (expGained > 0) {
-      this.currentExp = exp;
-      $('#mu-exp-points').html(expGained);
-      $('#mu-level-number').html(this.currentLevel());
+    setExpMessage(exp) {
+      let expGained = exp - this.currentExp;
+
+      if (expGained > 0) {
+        this.currentExp = exp;
+        $('#mu-exp-points').html(expGained);
+        $('#mu-level-number').html(this.currentLevel());
+      }
     }
   }
-}
+
+  return {
+    Formula,
+    LevelProgression
+  };
+})();
 
 (function (mumuki) {
   mumuki.setUpCurrentExp = function (currentExp) {
-    mumuki.gamification = new LevelProgression(currentExp);
+    mumuki.gamification = new mumuki.gamification.LevelProgression(currentExp);
   };
 })(mumuki);
