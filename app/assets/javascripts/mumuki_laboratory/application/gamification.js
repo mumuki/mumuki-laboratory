@@ -9,14 +9,6 @@ class LevelProgression {
     this.currentExp = currentExp;
   }
 
-  expFor(level) {
-    const ax2 = Formula.QUADRATIC_COEFFICIENT * Math.pow(level, 2);
-    const bx = Formula.LINEAR_COEFFICIENT * level;
-    const c = Formula.CONSTANT_TERM;
-
-    return ax2 + bx + c;
-  }
-
   expToLevelUp() {
     return this.baseExpNextLevel() - this.currentExp;
   }
@@ -25,16 +17,24 @@ class LevelProgression {
     return this.expFor(this.currentLevel() + 1);
   }
 
+  expFor(level) {
+    const ax2 = Formula.QUADRATIC_COEFFICIENT * Math.pow(level, 2);
+    const bx = Formula.LINEAR_COEFFICIENT * level;
+    const c = Formula.CONSTANT_TERM;
+
+    return ax2 + bx + c;
+  }
+
+  currentLevel() {
+    return this.levelFor(this.currentExp);
+  }
+
   levelFor(exp) {
     const a = Formula.QUADRATIC_COEFFICIENT;
     const b = Formula.LINEAR_COEFFICIENT;
     const c = Formula.CONSTANT_TERM;
 
     return Math.floor((-b + Math.sqrt(Math.pow(b, 2) - 4 * a * (c - exp))) / (2 * a));
-  }
-
-  currentLevel() {
-    return this.levelFor(this.currentExp);
   }
 
   triggersLevelChange(exp) {
