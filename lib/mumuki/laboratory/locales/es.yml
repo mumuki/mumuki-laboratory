@@ -7,6 +7,7 @@ es:
   actions: Acciones
   activity: Actividad
   actual_state: Tablero obtenido
+  age: Edad
   all: Todos
   and: y
   appendix: "Apéndice"
@@ -29,6 +30,7 @@ es:
   bibliotheca_ui: Biblioteca
   birthdate: Fecha de nacimiento
   blocked_forum_explanation: Es decir que no tenés autorización para ver este contenido. <br> ¿Puede que estés en medio de un examen?
+  cancel: Cancelar
   cancel_subscription: Cancelá tu subscripción.
   chapter: Capítulo
   chapters: Capítulos
@@ -206,6 +208,7 @@ es:
   processing_your_solution: Estamos procesando tu solución
   profile: Perfil
   profile_of: Perfil de %{username}
+  programming_since: Programando desde
   progress: Progreso
   read: Leido
   read_messages: Ver mensajes
@@ -297,6 +300,7 @@ es:
     page_gap: "&hellip;"
   working: "Procesando"
   wrong_answer: La respuesta no es correcta
+  years: años
   you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
   you_never_submitted_solutions: Parece que nunca enviaste soluciones desde que creaste tu cuenta.
   your_new_organization: tu nueva organización

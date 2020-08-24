@@ -4,6 +4,6 @@ module AvatarHelper
   end
 
   def show_avatar_item(item)
-    "<img src='#{item.image_url}' alt='#{item.description}' mu-avatar-id='#{item.id}' class='mu-avatar-item'>".html_safe
+    avatar_image(item.image_url, alt: item.description, 'mu-avatar-id': item.id, class: 'mu-avatar-item')
   end
 end

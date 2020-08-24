@@ -1,10 +1,25 @@
 <div class="mu-user-header">
   <h1><%= @user.name %></h1>
-  <%= edit_profile_button %>
+  <div class="mu-profile-actions">
+    <%= edit_profile_button %>
+  </div>
 </div>
 <div class="row mu-tab-body">
   <div class="col-md-4 text-center">
-    <%= image_tag @user.profile_picture, class: 'mu-user-avatar', id: 'mu-user-avatar' %>
+    <%= profile_picture_for(@user, id: 'mu-user-avatar', class: 'mu-user-avatar') %>
+  </div>
+  <div class="col-md-8 mu-profile-info">
+    <% if @user.age.present? %>
+      <div>
+        <span> <strong><%= t :age %>:</strong> <%= "#{@user.age} #{t :years}" %> </span>
+      </div>
+    <% end %>
+    <div>
+      <span> <strong><%= t :email %>:</strong> <%= @user.email %> </span>
+    </div>
+    <div>
+      <span> <strong><%= t :programming_since %>:</strong> <%= t(:time_since, time: time_ago_in_words(@user.created_at)) %> </span>
+    </div>
   </div>
 </div>
 
