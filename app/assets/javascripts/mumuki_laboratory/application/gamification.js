@@ -61,14 +61,25 @@ mumuki.gamification = (() => {
     }
   }
 
+  function _setUpCurrentLevelProgression() {
+    mumuki.gamification._currentLevelProgression = new LevelProgression(currentExp());
+  }
+
+  function currentExp() {
+    return $('#mu-current-exp').val();
+  }
+
   return {
     Formula,
-    LevelProgression
+    LevelProgression,
+
+    _setUpCurrentLevelProgression,
+
+    /** @type {LevelProgression} */
+    _currentLevelProgression: null
   };
 })();
 
-(function (mumuki) {
-  mumuki.setUpCurrentExp = function (currentExp) {
-    mumuki.gamification = new mumuki.gamification.LevelProgression(currentExp);
-  };
-})(mumuki);
+mumuki.load(() => {
+  mumuki.gamification._setUpCurrentLevelProgression();
+});
