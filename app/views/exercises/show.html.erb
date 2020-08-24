@@ -48,6 +48,7 @@
 <%= hidden_field_tag "mu-exercise-id", @exercise.id %>
 <%= hidden_field_tag "mu-exercise-layout", @exercise.layout %>
 <%= hidden_field_tag "mu-exercise-settings", @exercise.settings.to_json %>
+<%= hidden_field_tag "mu-current-exp", UserStats.exp_for(@current_user) %>
 
 <div style="display: none" id="processing-template">
   <div class="bs-callout bs-callout-info">
@@ -64,7 +65,3 @@
   <%= render partial: 'layouts/modals/guide_corollary', locals: {guide: @guide} %>
   <%= render partial: 'layouts/modals/new_message', locals: {exercise: @exercise} if should_render_message_input?(@exercise) %>
 <% end if current_user? %>
-
-<script>
-    mumuki.setUpCurrentExp('<%= UserStats.exp_for(@current_user) %>');
-</script>
