@@ -37,3 +37,5 @@ group :development, :test do
 end
 
 gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'master'
+#
+gem 'mumukit-platform', github: 'mumuki/mumukit-platform', branch: 'add-chile-spanish-to-supported-locales'
