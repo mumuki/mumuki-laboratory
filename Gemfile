@@ -29,4 +29,4 @@ group :development do
   gem 'codeclimate-test-reporter', require: nil
 end
 
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'gamification'
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'chore_user_age'
