@@ -37,5 +37,3 @@ group :development, :test do
 end
 
 gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'gamification'
-
-
