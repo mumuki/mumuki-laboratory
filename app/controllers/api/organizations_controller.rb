@@ -14,13 +14,12 @@ module Api
     end
 
     def create
-      @organization.save_and_notify!
+      @organization.save!
       render json: @organization.to_resource_h
     end
 
     def update
-      @organization.update_and_notify! organization_params
-
+      @organization.update! organization_params
       render json: @organization.to_resource_h
     end
   end

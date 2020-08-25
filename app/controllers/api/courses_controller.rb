@@ -4,7 +4,7 @@ module Api
     before_action :authorize_janitor!, only: :create
 
     def create
-      @course.save_and_notify!
+      @course.save!
       render json: @course
     end
 
