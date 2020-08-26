@@ -3,7 +3,7 @@
   "env": {
     "browser": true,
     "es6": true,
-    "mocha": true
+    "jasmine": true
   },
   "globals": {
     "$": "readonly",

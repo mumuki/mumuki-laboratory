@@ -4,6 +4,7 @@
  */
 
 mumuki.exercise = {
+
   /**
    * The current exercise's id
    *
