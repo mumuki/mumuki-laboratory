@@ -36,7 +36,7 @@ class LevelProgression {
   }
 
   triggersLevelChange(exp) {
-    return this.levelFor(exp) != this.currentLevel();
+    return this.levelFor(exp) !== this.currentLevel();
   }
 
   currentLevelProgress() {
