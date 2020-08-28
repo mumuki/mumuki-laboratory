@@ -4,5 +4,8 @@ gs-board {
     span {
       vertical-align: middle;
     }
+    &.gs-board {
+      background-color: #FFFFFF;
+    }
   }
 }
