@@ -1,7 +1,7 @@
 class UserMailer < ApplicationMailer
   def welcome_email(user, organization)
     with_locale(user, organization) do
-      organization_name = organization[:display_name] || t(:your_new_organization)
+      organization_name = organization.display_name || t(:your_new_organization)
       build_email t(:welcome, name: organization_name), { inline: organization.welcome_email_template }
     end
   end
