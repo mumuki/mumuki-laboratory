@@ -2,6 +2,7 @@
 
 (function() {
   var locale = document.querySelector("html").lang || 'es';
+  var language = new Intl.Locale(locale).language;
 
   var keywords = [
     "program", "procedure", "function", "interactive", "if",
@@ -22,8 +23,8 @@
     en: ["Put", "Grab", "Move", "GoToEdge", "EmptyBoardContents", "numStones", "anyStones", "canMove", "next", "prev", "opposite", "minBool", "maxBool", "minDir", "maxDir", "minColor", "maxColor"]
   };
 
-  const localizedKeywordsAndBuiltins = keywords.concat(builtins[locale]);
-  const localizedAtoms = atoms[locale];
+  const localizedKeywordsAndBuiltins = keywords.concat(builtins[language]);
+  const localizedAtoms = atoms[language];
 
   var buildList = function(values) {
     return values.join('|');
