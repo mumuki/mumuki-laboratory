@@ -4,12 +4,18 @@
 mumuki.events = {
   _handlers: {},
 
+  /**
+   * Enables registration of event handlers for the given event name
+   *
+   * @param {string} eventName
+   */
   enable(eventName) {
     this._handlers[eventName] = this._handlers[eventName] || [];
   },
 
   /**
-   * Registers a listener that will be called whenever the given even is produced
+   * Registers a listener that will be called whenever the given even is produced.
+   * If the event is not enable, the given handler is simply ignored.
    *
    * @param {string} eventName the event to listen to
    * @param {(event: any) => void} handler
