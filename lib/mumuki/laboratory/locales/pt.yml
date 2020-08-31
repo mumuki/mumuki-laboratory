@@ -171,6 +171,7 @@ pt:
   not_in_any_organizations: Parece que você ainda não está em nenhuma organização!
   notify_problem_with_exercise: Relatar um erro
   office: Secretariado
+  only_landscape_support: Por favor, gire seu tablet ou celular para realizar exercícios
   opened: Aberto
   opened_count: '%{count} aberto'
   organizations: Organizações
@@ -240,6 +241,7 @@ pt:
   submissions_for: Soluções para %{exercise}
   subscribe: se inscrever
   tag: Etiquetas
+  task: Tarefa
   teacher_info: Informação para professores
   tell_us_how: Conte-nos como isso aconteceu com você!
   tell_us_if_our_error: Se você acha que é nosso erro, %{issues}
@@ -265,8 +267,8 @@ pt:
   username: Nome de usuário
   view_details: Ver detalhes
   want_permissions: O próximo usuário requer permissões
+  welcome: Convidamos você a {name}!
   working: Processamento
   wrong_answer: A resposta não é correta
   you_must_sign_in_before_submitting: Você deve fazer o login antes de começar a enviar suas soluções
-  task: Tarefa
-  only_landscape_support: Por favor, gire seu tablet ou celular para realizar exercícios
+  your_new_organization: sua nova organização

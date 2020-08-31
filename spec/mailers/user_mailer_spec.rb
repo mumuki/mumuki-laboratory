@@ -148,21 +148,21 @@ RSpec.describe UserMailer, type: :mailer do
 
       context "registered 1 week ago" do
         it { expect(user.should_remind?).to be true }
-        it { expect(reminder.body.encoded).to include("you've never submitted solutions") }
+        it { expect(reminder.body.encoded).to include('you&#39;ve never submitted solutions') }
       end
 
       context "last submission 2 weeks ago" do
         let(:days_since_user_creation) { 16 }
 
         it { expect(user.should_remind?).to be true }
-        it { expect(reminder.body.encoded).to include("you've never submitted solutions") }
+        it { expect(reminder.body.encoded).to include('you&#39;ve never submitted solutions') }
       end
 
       context "last submission 3 weeks ago" do
         let(:days_since_user_creation) { 26 }
 
         it { expect(user.should_remind?).to be true }
-        it { expect(reminder.body.encoded).to include("you've never submitted solutions") }
+        it { expect(reminder.body.encoded).to include('you&#39;ve never submitted solutions') }
       end
 
       context "last submission 4 weeks ago" do
@@ -176,6 +176,21 @@ RSpec.describe UserMailer, type: :mailer do
       let(:days_since_last_reminded) { 2 }
 
       it { expect(user.should_remind?).to be false }
+    end
+  end
+
+  describe 'welcome email' do
+    let(:email) { UserMailer.welcome_email(user, organization) }
+
+    let(:non_custom_welcome_orga) { create :organization }
+    let(:custom_welcome_orga) { create :organization, welcome_email_template: 'hello <%= @user.first_name %>!' }
+
+    let(:user) { create :user, first_name: 'some name' }
+    
+    context 'when organization does have a custom welcome template' do
+      let(:organization) { custom_welcome_orga }
+
+      it { expect(email.body.encoded).to eq 'hello some name!' }
     end
   end
 end

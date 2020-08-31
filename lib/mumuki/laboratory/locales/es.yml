@@ -99,7 +99,9 @@ es:
   first_name: Nombre
   forbidden_explanation: Es decir que no tenés autorización para ver este contenido. <br> ¿Puede que hayas ingresado con una cuenta incorrecta?
   format: Dar formato
+  fullscreen: "Pantalla completa"
   gender: Género
+  get_messages: "Ver mensajes"
   go_to: 'Ir a %{organization}'
   gone_explanation: Este contenido ya no está disponible.
   guide: Lección
@@ -176,6 +178,7 @@ es:
   not_in_any_organizations: ¡Parece que no estás en ninguna organización todavía!
   notify_problem_with_exercise: Reportá un bug
   office: Secretaría
+  only_landscape_support: Por favor, rotá tu tablet o celular para realizar ejercicios
   opened: Abierta
   opened_count:
     one: '1 abierta'
@@ -253,6 +256,7 @@ es:
   submissions_count: Soluciones
   submissions_for: Soluciones para %{exercise}
   tag: Etiquetas
+  task: Consigna
   teacher_info: Información para docentes
   tell_us_how: ¡Contanos cómo te pasó esto!
   tell_us_if_our_error: Si pensás que es un error nuestro, %{issues}
@@ -284,6 +288,7 @@ es:
   view_details: Ver detalles
   want_permissions: El siguiente usuario requiere permisos
   we_miss_you: ¡Te extrañamos!
+  welcome: Te damos la bienvenida a %{name}!
   will_paginate:
     previous_label: "&#8592; Anterior"
     next_label: "Siguiente &#8594;"
@@ -292,7 +297,4 @@ es:
   wrong_answer: La respuesta no es correcta
   you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
   you_never_submitted_solutions: Parece que nunca enviaste soluciones desde que creaste tu cuenta.
-  fullscreen: "Pantalla completa"
-  get_messages: "Ver mensajes"
-  task: Consigna
-  only_landscape_support: Por favor, rotá tu tablet o celular para realizar ejercicios
+  your_new_organization: tu nueva organización
