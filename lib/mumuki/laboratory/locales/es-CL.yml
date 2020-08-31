@@ -1,0 +1,292 @@
+---
+es-CL:
+  aborted: Ups, no pudimos evaluar tu solución
+  abort_explanation_html: <li>Revisa que tu programa no tenga recursión o algún bucle infinito</li><li>Revisa que tengas conexión a internet</li><li>Espera un rato e inténtalo nuevamente</li>
+  about: Detalles
+  accept_terms: Acepto los términos y condiciones
+  actions: Acciones
+  activity: Actividad
+  actual_state: Tablero obtenido
+  all: Todos
+  and: y
+  appendix: "Apéndice"
+  appendix_teaser: ¿Quieres saber más? <a href="%{link}">Consulta el apéndice de este capítulo</a>
+  are_you_sure: '¿Estás seguro que quieres %{action}?'
+  ask_a_question: ¡Haz una pregunta!
+  ask_community: Pregunta a la comunidad
+  ask_redirect: ¿Quieres que te llevemos ahí?
+  ask_the_first_question: ¡Haz la primera pregunta!
+  attempts_left:
+    zero: 'Te quedaste sin intentos'
+    one: '1 intento restante'
+    other: '%{count} intentos restantes'
+  author: Autor
+  authoring: "Autores"
+  authoring_note_html: Esta guía fue desarrollada por %{authors} bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia Creative Commons Compartir-Igual, 4.0</a>.
+  authoring_note_with_collaborators_html: Esta guía fue desarrollada por %{authors} y <a href="%{collaborators}" target="_blank">muchas personas más</a>, bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia Creative Commons Compartir-Igual, 4.0</a>.
+  back_to_mumuki: ¡Vuelve a Mumuki!
+  bibliotheca_ui: Biblioteca
+  birthdate: Fecha de nacimiento
+  blocked_forum_explanation: Es decir que no tienes autorización para ver este contenido. <br> ¿Puede que estés en medio de un examen?
+  cancel_subscription: Cancela tu subscripción.
+  chapter: Capítulo
+  chapters: Capítulos
+  chapter_finished_html: ¡Terminaste %{chapter}! ¡Felicitaciones!
+  chapter_number: 'Capítulo %{number}'
+  classroom_ui: Aula
+  clear_console: Reiniciar consola
+  closed: Cerrada
+  closed_count:
+    one: 1 cerrada
+    other: '%{count} cerradas'
+  created_at_asc: Antiguas
+  created_at_desc: Nuevas
+  comment: Comentar
+  confirm: Confirmar
+  confirm_reset: Estás por reiniciar tu ejercicio. ¿Quieres continuar?
+  confirm_restart: Estás por borrar tu progreso en esta guía. ¿Quieres continuar?
+  console: Consola
+  contact_administrator: 'Si piensas que es un error, comunícate con la persona que administra esta organización: %{link}'
+  content: Contenido
+  continue_exercise: "Continuar"
+  continue_lesson: ¡Continúa esta lección!
+  continue_practicing: ¡Sigue aprendiendo!
+  correct_answer: ¡La respuesta es correcta!
+  create_submission: Enviar
+  created_at: Creado
+  created_exercises: Ejercicios Creados
+  created_guides: Lecciones Creadas
+  date: Fecha
+  day: Día
+  days: Días
+  description: Descripción
+  destroy_message: eliminar el mensaje
+  destroy: Eliminar
+  details: Detalles
+  disabled_explanation: Estás intentando acceder a un recurso que fue deshabilitado o eliminado de forma permanente
+  disabled_organization_explanation: ¡Este recorrido ha finalizado!
+  discussion_updated: Consulta actualizada
+  discussions: Consultas
+  dont_leave_us: ¡No nos abandones! Aprender a programar es divertido. Sólo tienes que seguir practicando.
+  download: "Descarga lo que hiciste"
+  edit: Editar
+  editor_placeholder: "...escribe tu solución acá..."
+  email: Email
+  error_description: ¡Ups! <br> Esto es lo que se conoce como <span class="error-link">%{error}</span>.
+  error_401: error 401
+  error_403: error 403
+  error_404: error 404
+  error_410: error 410
+  error_500: error 500
+  errored: ¡Ups! Tu solución no se puede ejecutar
+  exam_number: 'Examen %{number}:'
+  exams: Exámenes
+  exercise: Ejercicio
+  exercise_count: ejercicios
+  exercise_number: Ejercicio %{number}
+  exercise_success_rate: Tasa de éxito en ejercicios
+  exercises: Ejercicios
+  exit: Salir
+  expectations: Objetivos
+  expected_state: Tablero esperado
+  explain_redirect: Notamos que te registraste en otra organización.
+  failed: Tu solución no pasó las pruebas
+  feedback: Problemas que encontramos
+  female: Mujer
+  finish: Terminar
+  first_name: Nombre
+  forbidden_explanation: Es decir que no tienes autorización para ver este contenido. <br> ¿Puede que hayas ingresado con una cuenta incorrecta?
+  format: Dar formato
+  fullscreen: "Pantalla completa"
+  gender: Género
+  get_messages: "Ver mensajes"
+  go_to: 'Ir a %{organization}'
+  gone_explanation: Este contenido ya no está disponible.
+  guide: Lección
+  guide_created: Guía creada exitosamente
+  guide_finished: ¡Terminaste %{guide}!
+  guide_internal: guia
+  guides_index_title: ¿Qué guía quieres hacer hoy?
+  here: acá
+  hidden_done: '¡Muy bien!'
+  history: Historial
+  home: Inicio
+  hour: hora
+  hours: horas
+  initial_state: Tablero inicial
+  insert_file_name: Ingresa un nombre de archivo
+  invitation: Invitación a curso
+  invitation_for: 'Unirse a %{course}'
+  item_not_accessible: "No tienes permisos para acceder a este contenido"
+  its_been_a_while: Hace un tiempo que no usas Mumuki.
+  joining_html: '¡Te damos la bienvenida al curso <strong>%{course}</strong>!'
+  keep_learning: ¡Sigue aprendiendo!
+  kids_default_success: ¡Lo hiciste muy bien!
+  language: Lenguaje
+  languages: Lenguajes
+  last_name: Apellido
+  last_submission_date: Última solución
+  latest_exercises: Últimos ejercicios
+  learning: Aprendizaje
+  lesson: Lección
+  lessons: Lecciones
+  lesson_number: Lección %{number}
+  let_us_know: ¡Por favor avísanos!
+  loading: Cargando
+  load_solution_into_console: Cargar la solución en la consola
+  locked_content: 'Éste contenido se desbloqueará cuando termines los capítulos anteriores'
+  male: Hombre
+  manual_evaluation_pending: ¡Gracias por enviar tu solución! Tus docentes la corregirán pronto
+  message_count:
+    one: 1 mensaje
+    other: '%{count} mensajes'
+  message: Mensaje
+  messages: Mensajes
+  messages_error: Los mensajes anteriores no están disponibles en este momento. ¡Vuelve a intentar más tarde!
+  minute: minuto
+  minutes: minutos
+  more_messages: Ver mensajes anteriores
+  moderator: Moderador
+  mumuki_catchphrase: Aprende a programar
+  mumuki_short_description: Mumuki es la plataforma libre y gratuita para aprender a programar, de la práctica a la teoría y en tu idioma
+  my_doubts: Mis consultas
+  name: Nombre
+  navigation_continue: 'Siguiente %{kind}: %{sibling}'
+  navigation_next: Siguiente %{kind}
+  navigation_revisit: 'Siguiente pendiente: %{sibling}'
+  need_a_hint: ¡Dame una pista!
+  need_help: No entiendo, ¡necesito ayuda!
+  never: nunca
+  new: Nuevo
+  new_message: ¿Tienes dudas? ¡Levanta la mano!
+  new_discussion: Nueva consulta
+  new_message_placeholder: Escribe el mensaje para tu docente acá...
+  next_exercise: Siguiente
+  next_guide: 'Siguiente Lección: %{name}'
+  no_discussions: No encontramos consultas que coincidan con tu búsqueda.
+  no_exercises: No encontramos ejercicios que coincidan con tu búsqueda.
+  no_guides: No encontramos lecciones que coincidan con tu búsqueda.
+  no_messages: ¡Parece que no tienes ningún mensaje todavía!
+  no_questions: Parece que aún no hay ninguna consulta.
+  no_submissions: ¡Parece que aún no intentaste resolver este ejercicio!
+  no_useful_result: ¿No encontraste lo que estabas buscando?
+  not_found: ¡La página que buscaste no existe!
+  not_found_explanation: Fíjate si escribiste bien la dirección. Peeeeero...
+  not_in_any_organizations: ¡Parece que no estás en ninguna organización todavía!
+  notify_problem_with_exercise: Reporta un bug
+  office: Secretaría
+  only_landscape_support: Por favor, rota tu tablet o celular para realizar ejercicios
+  opened: Abierta
+  opened_count:
+    one: '1 abierta'
+    other: '%{count} abiertas'
+  organizations: Organizaciones
+  other: Otro
+  out_of_attempts: Te quedaste sin intentos. ¡Sigue al próximo ejercicio!
+  output: Salida
+  overview: Vista general
+  passed: ¡Muy bien! Tu solución pasó todas las pruebas
+  passed_with_warnings: Tu solución funcionó, pero hay cosas que mejorar
+  pending: pendiente
+  pending_review: En revisión
+  pending_review_count: '%{count} en revisión'
+  pending_messages: Tienes mensajes sin leer
+  pending_messages_explanation: "¡Tu docente te dejó un mensaje! Revísalo antes de seguir enviando soluciones."
+  permissions: Permisos
+  please_fill_profile_data: ¡Completa tus datos personales para continuar!
+  please_validate: 'Estás a punto de ingresar al curso. Para poder ofrecerte una mejor experiencia, por favor valida que tus datos a continuación sean reales y correctos.'
+  powered_by_mumuki_html: "por <span class=\"da da-mumuki-circle\"></span> mumuki"
+  previous_exercise: Anterior
+  problem_with_exercise: '[Mumuki] Error con el ejercicio: %{title}'
+  processing_your_solution: Estamos procesando tu solución
+  profile: Perfil
+  profile_of: Perfil de %{username}
+  progress: Progreso
+  read: Leído
+  read_messages: Ver mensajes
+  refresh_or_wait: Si no se muestra automáticamente en unos segundos, presiona F5
+  reset_query: Borrar los filtros de búsqueda actuales
+  restart: Reiniciar
+  results_hidden: ¡Tu solución fue enviada con éxito!
+  results: Resultados
+  retry_exercise: Reintentar
+  running: procesando
+  save: Guardar
+  send: Enviar
+  sending_solution: Enviando solución
+  show: Mostrar
+  sign_in: Inicia sesión
+  sign_in_action: iniciar sesión
+  sign_out: Cerrar Sesión
+  sign_up_date: Usuario desde
+  skipped: Vienes aprendiendo muy bien, por lo que aprobaste este ejercicio.
+  skipped_congratulations: ¡Bien hecho!
+  skipped_description: Vienes aprendiendo muy bien, por lo que aprobaste este ejercicio.
+  skipped_solve_anyway: Resolver de todos modos
+  solution: Solución
+  solved: Resuelta
+  solved_count:
+    one: 1 resuelta
+    other: '%{count} resueltas'
+  solved_exercises: Ejercicios Resueltos
+  solve_doubts: Resuelve consultas
+  solve_your_doubts: Consulta tus dudas
+  solve_your_doubts_teaser: ¿Tienes alguna consulta?
+  something_went_wrong: ¡Ups!, algo no anduvo bien...
+  something_went_wrong_explanation: Algo no anduvo como se esperaba.
+  sort: Ordenar
+  sources: Bibliografía
+  start_lesson: ¡Comienza esta lección!
+  start_practicing: ¡Empieza ahora!
+  start_using_mumuki: ¡Empieza a usar Mumuki!
+  status: Estado
+  stay_here: No, quiero quedarme acá
+  stop_emails?: ¿Quieres dejar de recibir estos mails?
+  subscribe: Recibir notificaciones
+  submission: solución
+  submission_date: Fecha de envío
+  submission_for_exercise: Solución para ejercicio
+  submissions: Soluciones
+  submissions_count: Soluciones
+  submissions_for: Soluciones para %{exercise}
+  tag: Etiquetas
+  task: Consigna
+  teacher_info: Información para docentes
+  tell_us_how: ¡Cuéntanos cómo te pasó esto!
+  tell_us_if_our_error: Si piensas que es un error nuestro, %{issues}
+  terms_and_conditions: Términos y condiciones
+  test_results: Resultados de las pruebas
+  time_since: "hace %{time}"
+  time_left: Te quedan
+  title: Título
+  to_closed: Cerrar
+  to_opened: Reabrir
+  to_pending_review: Resolver
+  to_solved: Resolver
+  unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no iniciaste sesión.
+  uncategorized: No categorizado
+  undo_upvote: No es útil
+  unspecified: Prefiero no decirlo
+  unmeet_expectations: Objetivos que no se cumplieron
+  unprepared_organization_explanation: ¡Este recorrido aún no ha comenzado!
+  unsubscribe: Dejar de recibir notificaciones
+  unsubscribed_successfully: Te desuscribiste exitosamente de los recordatorios.
+  upload_solution: "Subir solución"
+  uploading_solution: "Subiendo solución"
+  upvote: Es útil
+  upvotes_count_desc: Más útiles
+  upvotes_count_asc: Menos útiles
+  user_data_updated: Tus datos se actualizaron correctamente
+  user: Usuario
+  username: Nombre de usuario
+  view_details: Ver detalles
+  want_permissions: El siguiente usuario requiere permisos
+  we_miss_you: ¡Te extrañamos!
+  will_paginate:
+    previous_label: "&#8592; Anterior"
+    next_label: "Siguiente &#8594;"
+    page_gap: "&hellip;"
+  working: "Procesando"
+  wrong_answer: La respuesta no es correcta
+  you_must_sign_in_before_submitting: Tienes que iniciar sesión antes de empezar a enviar tus soluciones
+  you_never_submitted_solutions: Parece que nunca enviaste soluciones desde que creaste tu cuenta.
