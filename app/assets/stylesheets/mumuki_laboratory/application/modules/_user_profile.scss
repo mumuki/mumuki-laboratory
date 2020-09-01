@@ -8,12 +8,12 @@
 .mu-profile-actions {
   vertical-align: middle;
   margin-left: auto;
-  transition: background-color 0.3s, border-color 0.3s;
 
   .btn {
     width: 150px;
     height: 55px;
     margin-left: 15px;
+    transition: background-color 0.3s, border-color 0.3s;
 
     &[disabled], &[disabled]:hover {
       background-color: lighten($mu-color-complementary, 15%);
