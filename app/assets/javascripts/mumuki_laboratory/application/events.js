@@ -14,8 +14,8 @@ mumuki.events = {
   },
 
   /**
-   * Registers a listener that will be called whenever the given even is produced.
-   * If the event is not enable, the given handler is simply ignored.
+   * Registers a listener that will be called whenever the given event is produced.
+   * If the event is not enabled, the given handler is simply ignored.
    *
    * @param {string} eventName the event to listen to
    * @param {(event: any) => void} handler
