@@ -268,6 +268,38 @@ which are granted to be safe and stable.
 2. Laboratory Kids Layout Initialization
 3. Runner Editor HTML
 
+## Generic event system
+
+Laboartory provides the `mumuki.events` object, which acts as minimal, generic event system, which is mostly designed for third party components built on top of laboratory and runners. It does nothing by default.
+
+This API has two parts: consumers API and producers API.
+
+```javascript
+// ======
+// producer
+// ======
+
+// you need to call this method in order to enable registration of event handlers
+// otherwise, it will  be ignored
+mumuki.events.enable('myEvent');
+
+// fire the event, with an optional event object as payload
+mumuki.events.fire('myEvent', aPlainOldObject);
+
+// clear all the registered event handlers
+mumuki.events.clear('myEvent');
+
+// ========
+// consumer
+// ========
+
+// register an event handler
+mumuki.events.on('myEvent', (anEventObject) => {
+  // do stuff
+});
+```
+
+
 ## Custom editors
 
 Mumuki provides several editor types: code editors, multiple choice, file upload, and so on.
