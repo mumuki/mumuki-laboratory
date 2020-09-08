@@ -155,13 +155,27 @@ yarn run lint
 Sometimes you will need to check `laboratory` against a local runner. Run the following code in you `rails console`:
 
 ```ruby
-require 'mumuki/laboratory/seed'
+require 'mumuki/domain/seed'
 
 # import a new language
 Mumuki::Domain::Seed.languages_syncer.locate_and_import!  Language, 'http://localhost:9292'
 
 # update an existing language object
 Mumuki::Domain::Seed.languages_syncer.import!  Mumukit::Sync.key(Language, 'http://localhost:9292'), language
+```
+
+## Using a remote content
+
+Likewise, you will sometimes require a guide that is not locally available. Run the following code in `rails console`:
+
+```ruby
+require 'mumuki/domain/seed'
+
+# import a new guide
+Mumuki::Domain::Seed.contents_syncer.locate_and_import!  Guide, slug)
+
+# update an existing guide object
+Mumuki::Domain::Seed.contents_syncer.import!  Mumukit::Sync.key(Guide, slug), guide
 ```
 
 ## JavaScript API Docs
