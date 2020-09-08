@@ -150,6 +150,20 @@ MOZ_HEADLESS=1 bundle exec rake teaspoon
 yarn run lint
 ```
 
+## Using a local runner
+
+Sometimes you will need to check `laboratory` against a local runner. Run the following code in you `rails console`:
+
+```ruby
+require 'mumuki/laboratory/seed'
+
+# import a new language
+Mumuki::Domain::Seed.languages_syncer.locate_and_import!  Language, 'http://localhost:9292'
+
+# update an existing language object
+Mumuki::Domain::Seed.languages_syncer.import!  Mumukit::Sync.key(Language, 'http://localhost:9292'), language
+```
+
 ## JavaScript API Docs
 
 In order to be customized by runners, Laboratory exposes the following selectors and methods
