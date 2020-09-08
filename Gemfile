@@ -36,4 +36,4 @@ group :development, :test do
   gem "selenium-webdriver"
 end
 
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'gamification'
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'master'
