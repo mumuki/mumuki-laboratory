@@ -124,8 +124,6 @@ ActiveRecord::Schema.define(version: 20200804191643) do
     t.boolean "requires_moderator_response", default: true
     t.string "last_moderator_access_by_id"
     t.datetime "last_moderator_access_at"
-    t.datetime "last_initiator_message_at"
-    t.datetime "last_moderator_message_at"
     t.index ["initiator_id"], name: "index_discussions_on_initiator_id"
     t.index ["item_type", "item_id"], name: "index_discussions_on_item_type_and_item_id"
     t.index ["organization_id"], name: "index_discussions_on_organization_id"
@@ -313,8 +311,8 @@ ActiveRecord::Schema.define(version: 20200804191643) do
     t.text "theme", default: "{}", null: false
     t.text "profile", default: "{}", null: false
     t.integer "progressive_display_lookahead"
-    t.boolean "incognito_mode_enabled"
     t.integer "target_audience", default: 0
+    t.boolean "incognito_mode_enabled"
     t.index ["book_id"], name: "index_organizations_on_book_id"
     t.index ["name"], name: "index_organizations_on_name", unique: true
   end
