@@ -1,0 +1,41 @@
+.mu-user-avatar {
+  width: 250px;
+  height: 250px;
+
+  border: 2px solid $mu-color-dark-separator;
+  border-radius: 50%;
+
+  padding: 2px;
+}
+
+.mu-edit-avatar {
+  position: relative;
+  top: 100px;
+  right: 15px;
+}
+
+.mu-avatar-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+  padding: 15px;
+}
+
+.mu-avatar-item {
+  width: 150px;
+  height: 150px;
+
+  border: 2px solid $mu-color-dark-separator;
+
+  padding: 2px;
+  margin: 10px;
+
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: -3px 3px 10px -3px $mu-color-primary;
+    transform: scale(1.025);
+  }
+}

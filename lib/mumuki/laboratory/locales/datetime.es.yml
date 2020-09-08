@@ -3,23 +3,23 @@ es:
   datetime:
     distance_in_words:
       about_x_hours:
-        one: Alrededor de 1 hora
-        other: Alrededor de %{count} horas
+        one: aproximadamente una hora
+        other: aproximadamente %{count} horas
       about_x_months:
-        one: Alrededor de 1 mes
-        other: Alrededor de %{count} meses
+        one: aproximadamente un mes
+        other: aproximadamente %{count} meses
       less_than_x_minutes:
-        one: Hace menos de 1 minuto
-        other: Hace menos de %{count} minutos
+        one: menos de un minuto
+        other: menos de %{count} minutos
       x_days:
-        one: Hace 1 dia
-        other: Hace %{count} dias
+        one: un día
+        other: '%{count} días'
       x_minutes:
-        one: Hace 1 minuto
-        other: Hace %{count} minutos
+        one: un minuto
+        other: '%{count} minutos'
       x_months:
-        one: Hace 1 mes
-        other: Hace %{count} meses
+        one: un mes
+        other: '%{count} meses'
       x_seconds:
-        one: Hace 1 segundo
-        other: Hace %{count} segundos
+        one: un segundo
+        other: '%{count} segundos'

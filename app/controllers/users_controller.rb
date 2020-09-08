@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def update
     current_user.update_and_notify! user_params
-    redirect_to root_path, notice: I18n.t(:user_data_updated)
+    redirect_to user_path, notice: I18n.t(:user_data_updated)
   end
 
   def unsubscribe
@@ -19,6 +19,10 @@ class UsersController < ApplicationController
     User.find(user_id).unsubscribe_from_reminders!
 
     redirect_to root_path, notice: t(:unsubscribed_successfully)
+  end
+
+  def permissible_params
+    super << :avatar_id
   end
 
   private

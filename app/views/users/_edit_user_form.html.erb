@@ -1,0 +1,22 @@
+<%= form_for :user, url: update_user_path, :html => { id: 'mu-user-form' }, method: :put do |f| %>
+  <div class="mu-user-header">
+    <h1><%= t(:edit_profile) %></h1>
+    <div class="mu-profile-actions">
+      <%= link_to t(:cancel), :back, class: 'btn btn-default' if @user.profile_completed? %>
+      <%= f.submit t(:save), disabled: true, class: 'btn btn-success', id: 'mu-edit-profile-btn' %>
+    </div>
+  </div>
+  <div class="row mu-tab-body">
+    <div class="col-md-4 text-center">
+      <%= profile_picture_for(@user, id: 'mu-user-avatar', class: 'mu-user-avatar') %>
+      <i class="fa fa-pencil fa-2x pointer mu-edit-avatar" id="mu-edit-avatar-icon"></i>
+    </div>
+    <div class="col-md-8">
+      <%= render partial: 'profile_fields', locals: {form: f} %>
+    </div>
+  </div>
+<% end %>
+
+<%= content_for :no_container do %>
+  <%= render partial: 'layouts/modals/avatar_picker' %>
+<% end %>

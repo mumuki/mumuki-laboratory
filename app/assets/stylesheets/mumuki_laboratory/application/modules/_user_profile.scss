@@ -1,0 +1,36 @@
+.mu-user-header {
+  padding: 10px 0px;
+
+  display: flex;
+  align-items: center;
+}
+
+.mu-profile-actions {
+  vertical-align: middle;
+  margin-left: auto;
+
+  .btn {
+    width: 150px;
+    height: 55px;
+    margin-left: 15px;
+    transition: background-color 0.3s, border-color 0.3s;
+
+    &[disabled], &[disabled]:hover {
+      background-color: lighten($mu-color-complementary, 15%);
+      border-color: lighten($mu-color-complementary, 15%);
+    }
+  }
+}
+
+.mu-profile-info {
+  font-size: 20px;
+  margin-top: 5px;
+  div {
+    margin-bottom: 15px;
+    .italic {
+      font-style: italic;
+    }
+  }
+
+
+}

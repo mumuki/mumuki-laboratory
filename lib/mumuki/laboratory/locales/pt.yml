@@ -7,6 +7,7 @@ pt:
   actions: Ações
   activity: Atividade
   actual_state: Tablero obtido
+  age: Idade
   all: Todos
   and: e
   appendix: Apêndice
@@ -29,10 +30,12 @@ pt:
   bibliotheca_ui: Biblioteca
   birthdate: Fecha de nacimiento
   blocked_forum_explanation: Você não tem permissão para ver este conteúdo. <br> Você está no meio de um exame agora?
+  cancel: Cancelar
   chapter: Capítulo
   chapters: Capítulos
   chapter_finished_html: Você terminou %{chapter}! Parabéns!
   chapter_number: Capítulo %{number}
+  choose_your_avatar: Escolha seu avatar
   classroom_ui: Sala de aula
   clear_console: Reiniciar o console
   closed: Fechado
@@ -68,6 +71,7 @@ pt:
   discussions: Consultas
   download: Faça o download do que você fez
   edit: Editar
+  edit_profile: Editar perfil
   editor_placeholder: ... Escreva sua solução aqui ...
   email: E-mail
   error_description: Opa! <br> Isto é o que é conhecido como <span class = "error-link"> %{error} </ span>.
@@ -195,6 +199,7 @@ pt:
   processing_your_solution: Estamos processando sua solução
   profile: Perfil
   profile_of: Perfil de %{username}
+  programming_since: Sou programador
   progress: Progresso
   read: Ler
   read_messages: Ver mensagens
@@ -270,5 +275,6 @@ pt:
   welcome: Convidamos você a {name}!
   working: Processamento
   wrong_answer: A resposta não é correta
+  years: anos
   you_must_sign_in_before_submitting: Você deve fazer o login antes de começar a enviar suas soluções
   your_new_organization: sua nova organização
