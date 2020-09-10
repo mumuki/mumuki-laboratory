@@ -178,6 +178,16 @@ Mumuki::Domain::Seed.contents_syncer.locate_and_import!  Guide, slug)
 Mumuki::Domain::Seed.contents_syncer.import!  Mumukit::Sync.key(Guide, slug), guide
 ```
 
+After that you will probably to add it somewhere. The easiest way is to create a complement of `central`:
+
+```ruby
+o = Organization.central
+o.book.complements << Guide.locate!(slug).as_complement_of(o.book)
+o.reindex_usages!
+```
+
+Now you will be able to visit that guide at `http://localhost:3000/central/guides/#{slug}`
+
 ## JavaScript API Docs
 
 In order to be customized by runners, Laboratory exposes the following selectors and methods
