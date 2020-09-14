@@ -8,7 +8,7 @@
   .mu-kids-exercise-workspace {
     display: flex;
     flex-flow: row;
-    height: 100%;
+    height: calc(100% - #{$kids-characters-height});
     width: 100%;
   }
 
@@ -41,6 +41,7 @@
 
   .mu-kids-state.mu-state-initial {
     height: 100%;
+    width: 100%;
   }
 
   .mu-kids-state.mu-state-final {
