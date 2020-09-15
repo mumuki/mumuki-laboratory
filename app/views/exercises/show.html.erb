@@ -47,6 +47,7 @@
 <%= hidden_field_tag default_content_tag_id(@exercise), @default_content %>
 <%= hidden_field_tag "mu-exercise-id", @exercise.id %>
 <%= hidden_field_tag "mu-exercise-layout", @exercise.layout %>
+<%= hidden_field_tag "mu-exercise-settings", @exercise.settings %>
 
 <div style="display: none" id="processing-template">
   <div class="bs-callout bs-callout-info">
