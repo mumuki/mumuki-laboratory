@@ -18,13 +18,13 @@ describe('exercise', () => {
     $('body').html(`
     <input type="hidden" name="mu-exercise-id" id="mu-exercise-id" value="3361" />
     <input type="hidden" name="mu-exercise-layout" id="mu-exercise-layout" value="input_right" />
-    <input type="hidden" name="mu-exercise-settings" id="mu-exercise-settings" value="{\\\\"game_mode\\\\": true}" />`)
+    <input type="hidden" name="mu-exercise-settings" id="mu-exercise-settings" value="{&quot;game_framework&quot;:true}" />`)
 
     mumuki.exercise.load();
 
     expect(mumuki.exercise.id).toBe(3361);
     expect(mumuki.exercise.layout).toBe('input_right');
-    expect(mumuki.exercise.settings).toEqual({game_mode: true});
+    expect(mumuki.exercise.settings.game_framework).toBe(true);
     expect(mumuki.exercise.current).not.toBe(null);
   })
 
