@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20200804191643) do
     t.bigint "organization_id"
     t.datetime "submitted_at"
     t.bigint "parent_id"
-    t.integer "top_submission_status", default: 0
+    t.integer "top_submission_status"
     t.index ["exercise_id"], name: "index_assignments_on_exercise_id"
     t.index ["organization_id"], name: "index_assignments_on_organization_id"
     t.index ["parent_id"], name: "index_assignments_on_parent_id"
