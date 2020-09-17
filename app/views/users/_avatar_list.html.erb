@@ -4,6 +4,10 @@
       <%= show_avatar_item(avatar) %>
     <% end %>
 
+    <% locked_avatars_for(@user).sort_by(&:id).each do |avatar| %>
+      <%= show_locked_avatar_item(avatar) %>
+    <% end %>
+
     <% if @user.image_url %>
       <%= avatar_image @user.image_url, class: 'mu-avatar-item', id: 'mu-user-image' %>
     <% end %>
