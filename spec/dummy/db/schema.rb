@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200804191643) do
+ActiveRecord::Schema.define(version: 20200915123020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20200804191643) do
     t.text "description"
     t.string "slug"
     t.boolean "private", default: false
+    t.bigint "medal_id"
     t.index ["slug"], name: "index_books_on_slug", unique: true
   end
 
@@ -218,6 +219,7 @@ ActiveRecord::Schema.define(version: 20200804191643) do
     t.text "learn_more"
     t.text "settings"
     t.text "custom_expectations"
+    t.bigint "medal_id"
     t.index ["name"], name: "index_guides_on_name"
     t.index ["slug"], name: "index_guides_on_slug", unique: true
   end
@@ -289,6 +291,11 @@ ActiveRecord::Schema.define(version: 20200804191643) do
     t.integer "topic_id"
   end
 
+  create_table "medals", force: :cascade do |t|
+    t.string "image_url"
+    t.string "description"
+  end
+
   create_table "messages", id: :serial, force: :cascade do |t|
     t.string "submission_id"
     t.text "content"
@@ -343,6 +350,7 @@ ActiveRecord::Schema.define(version: 20200804191643) do
     t.text "appendix"
     t.string "slug"
     t.boolean "private", default: false
+    t.bigint "medal_id"
     t.index ["slug"], name: "index_topics_on_slug", unique: true
   end
 
@@ -398,6 +406,8 @@ ActiveRecord::Schema.define(version: 20200804191643) do
     t.bigint "avatar_id"
     t.datetime "disabled_at"
     t.boolean "trusted_for_forum"
+    t.string "avatar_type", default: "Avatar"
+    t.index ["avatar_type", "avatar_id"], name: "index_users_on_avatar_type_and_avatar_id"
     t.index ["disabled_at"], name: "index_users_on_disabled_at"
     t.index ["last_organization_id"], name: "index_users_on_last_organization_id"
     t.index ["uid"], name: "index_users_on_uid", unique: true
