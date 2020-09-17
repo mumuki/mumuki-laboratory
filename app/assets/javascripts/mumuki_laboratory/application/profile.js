@@ -3,7 +3,7 @@ mumuki.load(function() {
   let $userAvatar = $('#mu-user-avatar');
   let $editButton = $('#mu-edit-profile-btn');
   let $avatarPicker = $('#mu-avatar-picker');
-  let $avatarItem = $('.mu-avatar-item');
+  let $avatarItem = $('.mu-avatar-item:not(.mu-locked)');
 
   let userImage = "";
   let avatarId = "";
