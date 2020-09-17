@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def permissible_params
-    super << :avatar_id
+    super << [:avatar_id, :avatar_type]
   end
 
   private
