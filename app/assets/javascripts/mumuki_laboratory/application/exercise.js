@@ -1,6 +1,6 @@
 /**
  * @typedef {"input_right" | "input_bottom" | "input_primary" | "input_kindergarten"} Layout
- * @typedef {{id: number, layout: Layout}} Exercise
+ * @typedef {{id: number, layout: Layout, settings: any}} Exercise
  */
 
 mumuki.exercise = {
@@ -31,6 +31,15 @@ mumuki.exercise = {
   },
 
   /**
+   * The current exercise's settings
+   *
+   * @type {any?}
+   * */
+  get settings() {
+    return this._current ? this._current.settings : null;
+  },
+
+  /**
    * @type {Exercise?}
    */
   get current() {
@@ -46,7 +55,9 @@ mumuki.exercise = {
       this._current = {
         id: Number($muExerciseId.val()),
         // @ts-ignore
-        layout: $('#mu-exercise-layout').val()
+        layout: $('#mu-exercise-layout').val(),
+        // @ts-ignore
+        settings: JSON.parse($('#mu-exercise-settings').val())
       };
     } else {
       this._current = null;

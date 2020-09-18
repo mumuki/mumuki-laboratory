@@ -9,7 +9,9 @@ feature 'Exercise Flow', organization_workspace: :test do
   let(:problem_1) { build(:problem, name: 'Succ1', description: 'Description of Succ1', layout: :input_right, hint: 'lala') }
   let(:problem_2) { build(:problem, name: 'Succ2', description: 'Description of Succ2', layout: :input_right, editor: :hidden, language: gobstones) }
   let(:problem_3) { build(:problem, name: 'Succ3', description: 'Description of Succ3', layout: :input_right, editor: :upload, hint: 'lele') }
-  let(:problem_4) { build(:problem, name: 'Succ4', description: 'Description of Succ4', layout: :input_bottom, extra: 'x = 2') }
+  let(:with_settings_and_extra) do
+    build(:problem, name: 'Succ4', description: 'Description of Succ4', layout: :input_bottom, settings: {foo: 1}, extra: 'x = 2')
+  end
   let(:problem_5) { build(:problem, name: 'Succ5', description: 'Description of Succ5', layout: :input_right, editor: :upload, hint: 'lele', language: gobstones) }
   let(:problem_6) { build(:problem, name: 'Succ6', description: 'Description of Succ6', layout: :input_right, editor: :hidden, language: haskell) }
   let(:problem_7) { build(:problem, name: 'Succ7', description: 'Description of Succ7', editor: :single_choice, choices: [{value: 'some choice', checked: true}]) }
@@ -22,7 +24,7 @@ feature 'Exercise Flow', organization_workspace: :test do
   let!(:chapter) {
     create(:chapter, name: 'Functional Programming', lessons: [
       create(:lesson, name: 'getting-started', description: 'An awesome guide', language: haskell, exercises: [
-        problem_1, problem_2, problem_3, problem_4, reading, problem_5, problem_6, problem_7, playground_1, playground_2, kids_problem
+        problem_1, problem_2, problem_3, with_settings_and_extra, reading, problem_5, problem_6, problem_7, playground_1, playground_2, kids_problem
       ])
     ]) }
 
@@ -194,8 +196,8 @@ feature 'Exercise Flow', organization_workspace: :test do
       expect(page.find("#mu-exercise-layout")['value']).to eq('input_right')
     end
 
-    scenario 'visit exercise by id, input_bottom layout, extra, no hint' do
-      visit "/exercises/#{problem_4.id}"
+    scenario 'visit exercise by id, input_bottom layout, extra, setting, no hint' do
+      visit "/exercises/#{with_settings_and_extra.id}"
 
       expect(page).to have_text('Succ4')
       expect(page).to have_text('x = 2')
@@ -204,8 +206,9 @@ feature 'Exercise Flow', organization_workspace: :test do
       expect(page).to_not have_text('need a hint?')
       expect(page).to_not have_selector('.upload')
 
-      expect(page.find("#mu-exercise-id")['value']).to eq(problem_4.id.to_s)
+      expect(page.find("#mu-exercise-id")['value']).to eq(with_settings_and_extra.id.to_s)
       expect(page.find("#mu-exercise-layout")['value']).to eq('input_bottom')
+      expect(page.find("#mu-exercise-settings")['value']).to eq('{"foo":1}')
     end
 
     scenario 'visit playground by id, no extra, no hint' do
