@@ -16,7 +16,7 @@ mumuki.load(function() {
   });
 
   $avatarItem.on('keypress click', function(e) {
-    if (isEnterOrSpacePress(e) || e.type === 'click') {
+    onClickOrSpacebarOrEnter($(this), e, function() {
       $userAvatar.attr('src', $(this).attr('src'));
       $avatarPicker.modal('hide');
 
@@ -24,7 +24,7 @@ mumuki.load(function() {
       avatarId = clickedAvatarId || "";
 
       toggleEditButtonIfThereAreChanges();
-    }
+    });
   });
 
   function toggleEditButtonIfThereAreChanges() {
@@ -44,9 +44,9 @@ mumuki.load(function() {
   const avatarChanged = () => $userAvatar.attr('src') !== originalProfilePicture;
 
   $('#mu-user-image').on('keypress click', function(e){
-    if (isEnterOrSpacePress(e) || e.type === 'click') {
+    onClickOrSpacebarOrEnter($(this), e, function() {
       userImage = $userAvatar.attr('src');
-    }
+    });
   });
 
   $userForm.on('submit', function(){
@@ -69,12 +69,14 @@ mumuki.load(function() {
   }
 
   $("#mu-edit-avatar-icon").on('keypress click', function(e) {
-    if (isEnterOrSpacePress(e) || e.type === 'click') {
+    onClickOrSpacebarOrEnter($(this), e, function() {
       $avatarPicker.modal();
-    }
+    });
   });
 
-  function isEnterOrSpacePress(press) {
-    return press.which === 13 || press.which === 32;
+  function onClickOrSpacebarOrEnter(element, e, func) {
+    if (e.which === 13 || e.which === 32 || e.type === 'click') {
+      func.apply(element);
+    }
   }
 });
