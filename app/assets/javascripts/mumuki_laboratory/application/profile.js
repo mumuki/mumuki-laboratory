@@ -64,8 +64,13 @@ mumuki.load(function() {
     form.append(`<input type="hidden" name="user[avatar_id]" value=${id}/>`);
   }
 
-  $("#mu-edit-avatar-icon").on('click', function(){
-    $avatarPicker.modal();
+  $("#mu-edit-avatar-icon").on('keypress click', function(e) {
+    if (isEnterOrSpacePress(e) || e.type === 'click') {
+      $avatarPicker.modal();
+    }
   });
 
+  function isEnterOrSpacePress(press) {
+    return press.which === 13 || press.which === 32;
+  }
 });
