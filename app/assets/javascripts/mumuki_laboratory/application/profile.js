@@ -15,14 +15,16 @@ mumuki.load(function() {
     toggleEditButtonIfThereAreChanges();
   });
 
-  $avatarItem.on('click', function() {
-    $userAvatar.attr('src', $(this).attr('src'));
-    $avatarPicker.modal('hide');
+  $avatarItem.on('keypress click', function(e) {
+    if (isEnterOrSpacePress(e) || e.type === 'click') {
+      $userAvatar.attr('src', $(this).attr('src'));
+      $avatarPicker.modal('hide');
 
-    const clickedAvatarId = $(this).attr('mu-avatar-id');
-    avatarId = clickedAvatarId || "";
+      const clickedAvatarId = $(this).attr('mu-avatar-id');
+      avatarId = clickedAvatarId || "";
 
-    toggleEditButtonIfThereAreChanges();
+      toggleEditButtonIfThereAreChanges();
+    }
   });
 
   function toggleEditButtonIfThereAreChanges() {
@@ -41,8 +43,10 @@ mumuki.load(function() {
 
   const avatarChanged = () => $userAvatar.attr('src') !== originalProfilePicture;
 
-  $('#mu-user-image').on('click', function(){
-    userImage = $userAvatar.attr('src');
+  $('#mu-user-image').on('keypress click', function(e){
+    if (isEnterOrSpacePress(e) || e.type === 'click') {
+      userImage = $userAvatar.attr('src');
+    }
   });
 
   $userForm.on('submit', function(){

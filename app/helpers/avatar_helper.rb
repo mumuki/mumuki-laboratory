@@ -4,6 +4,6 @@ module AvatarHelper
   end
 
   def show_avatar_item(item)
-    avatar_image(item.image_url, alt: item.description, 'mu-avatar-id': item.id, class: 'mu-avatar-item')
+    avatar_image(item.image_url, alt: item.description, 'mu-avatar-id': item.id, class: 'mu-avatar-item', tabindex: 0)
   end
 end
