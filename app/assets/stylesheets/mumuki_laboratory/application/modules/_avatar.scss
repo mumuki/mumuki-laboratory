@@ -12,6 +12,16 @@
   position: relative;
   top: 100px;
   right: 15px;
+
+  &:hover {
+    outline: none;
+    opacity: 0.5;
+  }
+
+  &:focus {
+    outline: none;
+    opacity: 0.5;
+  }
 }
 
 .mu-avatar-list {
