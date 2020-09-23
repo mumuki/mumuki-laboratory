@@ -182,15 +182,20 @@ RSpec.describe UserMailer, type: :mailer do
   describe 'welcome email' do
     let(:email) { UserMailer.welcome_email(user, organization) }
 
-    let(:non_custom_welcome_orga) { create :organization }
-    let(:custom_welcome_orga) { create :organization, welcome_email_template: 'hello <%= @user.first_name %>!' }
+    let(:organization) { create :organization, welcome_email_template: 'hello <%= @user.first_name %>!' }
 
     let(:user) { create :user, first_name: 'some name' }
-    
-    context 'when organization does have a custom welcome template' do
-      let(:organization) { custom_welcome_orga }
 
-      it { expect(email.body.encoded).to eq 'hello some name!' }
+    it { expect(email.body.encoded).to eq 'hello some name!' }
+
+    context 'when organization does not have a custom sender address' do
+      it { expect(email.from).to eq ['support@mumuki.org'] }
+    end
+
+    context 'when organization does not have a custom sender address' do
+      before { organization.welcome_email_sender = 'info@mumuki.org' }
+
+      it { expect(email.from).to eq ['info@mumuki.org'] }
     end
   end
 end
