@@ -2,7 +2,7 @@ class UserMailer < ApplicationMailer
   def welcome_email(user, organization)
     with_locale(user, organization) do
       organization_name = organization.display_name || t(:your_new_organization)
-      build_email t(:welcome, name: organization_name), { inline: organization.welcome_email_template }
+      build_email t(:welcome, name: organization_name), { inline: organization.welcome_email_template }, from: organization.welcome_email_sender
     end
   end
 
@@ -28,10 +28,10 @@ class UserMailer < ApplicationMailer
 
   private
 
-  def build_email(subject, template)
-    mail to: @user.email,
-         subject: subject,
-         content_type: 'text/html',
-         body: render(template)
+  def build_email(subject, template, options = {})
+    mail options.compact.merge(to: @user.email,
+                               subject: subject,
+                               content_type: 'text/html',
+                               body: render(template))
   end
 end
