@@ -28,7 +28,7 @@ class UserMailer < ApplicationMailer
 
   private
 
-  def build_email(subject, template, options = {})
+  def build_email(subject, template, **options)
     mail options.compact.merge(to: @user.email,
                                subject: subject,
                                content_type: 'text/html',
