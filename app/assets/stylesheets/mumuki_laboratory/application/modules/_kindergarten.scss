@@ -112,12 +112,14 @@ $bubble-background-color: white;
 $bubble-padding: 30px;
 
 .mu-kindergarten-header {
-  @include display-flex(row nowrap, flex-start, center);
+  @include display-flex(row nowrap, flex-start, flex-start);
+
+  align-self: flex-start;
 
   width: 100%;
 
   .mu-kindergarten-character {
-    @include display-flex(row nowrap, flex-start, center);
+    @include display-flex(row nowrap, flex-start, flex-start);
 
     margin-right: 15px;
 
@@ -132,9 +134,8 @@ $bubble-padding: 30px;
     $bubble-padding: 30px;
 
     .mu-kindergarten-character-speech-bubble {
-      display: flex;
+      @include display-flex(row, flex-start, center);
       position: relative;
-      align-items: center;
 
       padding: $bubble-padding;
       padding-right: $bubble-height / 2 + $bubble-padding;
@@ -149,6 +150,8 @@ $bubble-padding: 30px;
 
       width: 100%;
       max-width: 100%;
+
+      margin-top: 10px;
 
       p {
         margin: 0;
@@ -204,20 +207,25 @@ $bubble-padding: 30px;
     $light-bubble-color: #FAD59F;
     $light-bubble-border: $bubble-border-width solid $light-bubble-color;
 
-    @include display-flex(row-reverse nowrap, flex-start, center);
+    @include display-flex(row-reverse nowrap, flex-start, flex-start);
 
     width: 50%;
     margin-left: 15px;
+
+    margin-top: 10px;
 
     button {
       background: none;
       border: none;
       outline: none;
     }
+
     .mu-hint-light {
       height: 100%;
+
       &.on {
         cursor: pointer;
+
         &:hover {
           filter: brightness(1.15);
         }
@@ -225,26 +233,25 @@ $bubble-padding: 30px;
     }
 
     .mu-kindergarten-light-speech-bubble {
-      display: flex;
+      @include display-flex(column, center, flex-start);
+
       position: relative;
-      align-items: center;
 
       padding: $bubble-padding;
-      padding-right: $bubble-height / 2 + $bubble-padding;
 
       color: #333;
       border-radius: 10px;
       background: $light-bubble-color;
       border: $light-bubble-border;
-      height: $bubble-height;
       min-height: $bubble-height;
-      max-height: $bubble-height;
+      z-index: 1;
 
-      width: 100%;
+      width: 75%;
       max-width: 100%;
 
       p {
         margin: 0;
+        text-align: center;
       }
 
       &:after {
@@ -259,24 +266,47 @@ $bubble-padding: 30px;
         border: $light-bubble-border;
         border-radius: 50%;
       }
-      .mu-kindergarten-hint-media {
-        background: white;
+
+      .mu-kindergarten-exercise-hint {
         width: 100%;
-        margin: 10px;
+      }
+
+      .mu-kindergarten-hint-media {
+
+        @include display-flex(column, center, center);
+
+        background: white;
+        width: calc(100% + #{$bubble-padding} * 10/6);
+        margin: $bubble-padding (-$bubble-padding * 5/6) (-$bubble-padding * 5/6) (-$bubble-padding * 5/6);
+        padding: $bubble-padding * 5/6;
+
+        // height: 0;
+        // padding-bottom: 56.25%;
+
         &:not(.open) {
           display: none;
         }
+
+        .media-object {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
       }
+
       .expand-or-collapse-hint-media {
         $button-width: 60px;
+
         position: absolute;
         width: $button-width;
         height: $button-width / 2;
-        bottom: 0;
+        bottom: 3px;
         left: calc(50% - #{$button-width / 2});
+
         .fa-caret-down {
           color: white;
         }
+
         .fa-caret-up {
           color: $light-bubble-color;
         }
@@ -286,5 +316,6 @@ $bubble-padding: 30px;
         display: none;
       }
     }
+
   }
 }
