@@ -2,12 +2,12 @@
   <div class="mu-kindergarten-character">
     <img class="mu-kids-character-animation" alt="">
     <div class="mu-kindergarten-character-speech-bubble">
-      <%= exercise.description_task %>
+      <span class="mu-kindergarten-exercise-description"><%= exercise.description_task %></span>
       <div class="mu-kindergarten-buttons">
         <button class="mu-kindergarten-show-context" onclick="mumuki.kindergarten.showContext()">
           <i class="fa fa-fw fa-window-maximize"></i>
         </button>
-        <button class="mu-kindergarten-play-description" onclick="mumuki.kindergarten.speak('<%= exercise.splitted_description.drop(1).join("\n") %>', '<%= exercise.locale %>')">
+        <button class="mu-kindergarten-play-description" onclick="mumuki.kindergarten.speak('.mu-kindergarten-exercise-description', '<%= exercise.locale %>')">
           <i class="fa fa-fw fa-volume-up"></i>
         </button>
       </div>
@@ -15,18 +15,19 @@
   </div>
   <div class="mu-kindergarten-hint">
     <% if exercise.hint? %>
-      <img class="mu-hint-light" src="/iluminated-light.png" alt="">
-      <ul class="mu-kids-character-speech-bubble-tabs">
-        <li class="mu-kids-description active" data-target="description" title="<%= t :task %>">
-          <i class="fa fa-fw fa-file-text-o"></i>
-        </li>
-        <li class="separator"></li>
-        <li class="mu-kids-hint blink" data-target="hint" title="<%= t :need_a_hint %>">
-          <i class="fa fa-fw fa-lightbulb-o"></i>
-        </li>
-      </ul>
+      <button class="mu-hint-light" onclick="mumuki.kindergarten.toggleHint()">
+        <img class="mu-hint-light on" src="/iluminated-light.png" alt="">
+      </button>
+      <div class="mu-kindergarten-light-speech-bubble">
+        <span class="mu-kindergarten-exercise-hint">
+          <%= exercise.hint.markdownified %>
+        </span>
+        <button class="expand-or-collapse-hint-media" onclick="mumuki.kindergarten.toggleHintMedia()">
+          <i class="fa fa-fw fa-2x fa-caret-down"></i>
+        </button>
+      </div>
     <% else %>
-      <img class="mu-hint-light" src="/sleeping-light.png" alt="">
+      <img class="mu-hint-light off" src="/sleeping-light.png" alt="">
     <% end %>
   </div>
 </div>

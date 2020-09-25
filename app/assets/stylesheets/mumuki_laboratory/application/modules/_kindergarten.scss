@@ -53,6 +53,12 @@
   }
 }
 
+.mu-kindergarten.container-fluid {
+  .mu-kids-exercise-description,
+  .mu-kids-exercise-description-fixed {
+    padding: 0;
+  }
+}
 
 .mu-kindergarten-context {
 
@@ -97,6 +103,14 @@
   }
 }
 
+$bubble-border-width: 3px;
+$bubble-height: 90px;
+$bubble-border: $bubble-border-width solid $kids-speech-border-color;
+$bubble-ballon-size: 24px;
+
+$bubble-background-color: white;
+$bubble-padding: 30px;
+
 .mu-kindergarten-header {
   @include display-flex(row nowrap, flex-start, center);
 
@@ -104,6 +118,9 @@
 
   .mu-kindergarten-character {
     @include display-flex(row nowrap, flex-start, center);
+
+    margin-right: 15px;
+
     width: 50%;
 
     $bubble-border-width: 3px;
@@ -169,25 +186,105 @@
         height: 50%;
         width: $bubble-height / 2;
       }
+
       .mu-kindergarten-show-context {
         border-top-right-radius: 10px;
       }
+
       .mu-kindergarten-play-description {
         margin-top: -$bubble-border-width;
         border-bottom-right-radius: 10px;
       }
 
     }
-
   }
 
   .mu-kindergarten-hint {
-    @include display-flex(row nowrap, flex-end, center);
-    width: 50%;
 
+    $light-bubble-color: #FAD59F;
+    $light-bubble-border: $bubble-border-width solid $light-bubble-color;
+
+    @include display-flex(row-reverse nowrap, flex-start, center);
+
+    width: 50%;
+    margin-left: 15px;
+
+    button {
+      background: none;
+      border: none;
+      outline: none;
+    }
     .mu-hint-light {
       height: 100%;
+      &.on {
+        cursor: pointer;
+        &:hover {
+          filter: brightness(1.15);
+        }
+      }
+    }
+
+    .mu-kindergarten-light-speech-bubble {
+      display: flex;
+      position: relative;
+      align-items: center;
+
+      padding: $bubble-padding;
+      padding-right: $bubble-height / 2 + $bubble-padding;
+
+      color: #333;
+      border-radius: 10px;
+      background: $light-bubble-color;
+      border: $light-bubble-border;
+      height: $bubble-height;
+      min-height: $bubble-height;
+      max-height: $bubble-height;
+
+      width: 100%;
+      max-width: 100%;
+
+      p {
+        margin: 0;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: -20px;
+        top: $bubble-height / 2 - $bubble-ballon-size / 2;
+        right: -$bubble-ballon-size / 2;
+        width: $bubble-ballon-size;
+        height: $bubble-ballon-size;
+        background: $light-bubble-color;
+        border: $light-bubble-border;
+        border-radius: 50%;
+      }
+      .mu-kindergarten-hint-media {
+        background: white;
+        width: 100%;
+        margin: 10px;
+        &:not(.open) {
+          display: none;
+        }
+      }
+      .expand-or-collapse-hint-media {
+        $button-width: 60px;
+        position: absolute;
+        width: $button-width;
+        height: $button-width / 2;
+        bottom: 0;
+        left: calc(50% - #{$button-width / 2});
+        .fa-caret-down {
+          color: white;
+        }
+        .fa-caret-up {
+          color: $light-bubble-color;
+        }
+      }
+
+      &:not(.open) {
+        display: none;
+      }
     }
   }
-
 }
