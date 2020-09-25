@@ -78,7 +78,6 @@
       border: $border-width solid $mu-color-link;
       border-radius: $border-width;
       box-shadow: none;
-//      position: relative;
 
       .mu-kindergarten-close-button {
         $diameter: 64px;
@@ -96,4 +95,99 @@
       }
     }
   }
+}
+
+.mu-kindergarten-header {
+  @include display-flex(row nowrap, flex-start, center);
+
+  width: 100%;
+
+  .mu-kindergarten-character {
+    @include display-flex(row nowrap, flex-start, center);
+    width: 50%;
+
+    $bubble-border-width: 3px;
+    $bubble-height: 90px;
+    $bubble-border: $bubble-border-width solid $kids-speech-border-color;
+    $bubble-ballon-size: 24px;
+
+    $bubble-background-color: white;
+    $bubble-padding: 30px;
+
+    .mu-kindergarten-character-speech-bubble {
+      display: flex;
+      position: relative;
+      align-items: center;
+
+      padding: $bubble-padding;
+      padding-right: $bubble-height / 2 + $bubble-padding;
+
+      color: #333;
+      border-radius: 10px;
+      background: white;
+      border: $bubble-border;
+      height: $bubble-height;
+      min-height: $bubble-height;
+      max-height: $bubble-height;
+
+      width: 100%;
+      max-width: 100%;
+
+      p {
+        margin: 0;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        bottom: -20px;
+        top: $bubble-height / 2 - $bubble-ballon-size / 2;
+        left: -$bubble-ballon-size / 2;
+        width: $bubble-ballon-size;
+        height: $bubble-ballon-size;
+        background: white;
+        border: $bubble-border;
+        border-left-color: $bubble-background-color;
+        border-top-color: $bubble-background-color;
+        transform: rotate(135deg);
+        border-radius: 50%;
+      }
+    }
+
+    .mu-kindergarten-buttons {
+      display: flex;
+      flex-flow: column;
+      position: absolute;
+      top: -$bubble-border-width;
+      right: -$bubble-border-width;
+      height: calc(100% + #{$bubble-border-width} * 3);
+      border-radius: 10px;
+
+      .mu-kindergarten-show-context,
+      .mu-kindergarten-play-description {
+        border: $bubble-border;
+        height: 50%;
+        width: $bubble-height / 2;
+      }
+      .mu-kindergarten-show-context {
+        border-top-right-radius: 10px;
+      }
+      .mu-kindergarten-play-description {
+        margin-top: -$bubble-border-width;
+        border-bottom-right-radius: 10px;
+      }
+
+    }
+
+  }
+
+  .mu-kindergarten-hint {
+    @include display-flex(row nowrap, flex-end, center);
+    width: 50%;
+
+    .mu-hint-light {
+      height: 100%;
+    }
+  }
+
 }

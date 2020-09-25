@@ -1,0 +1,36 @@
+<div class="mu-kindergarten-header">
+  <div class="mu-kindergarten-character">
+    <img class="mu-kids-character-animation" alt="">
+    <div class="mu-kindergarten-character-speech-bubble">
+      <%= exercise.description_task %>
+      <div class="mu-kindergarten-buttons">
+        <button class="mu-kindergarten-show-context" onclick="mumuki.kindergarten.showContext()">
+          <i class="fa fa-fw fa-window-maximize"></i>
+        </button>
+        <button class="mu-kindergarten-play-description" onclick="mumuki.kindergarten.speak('<%= exercise.splitted_description.drop(1).join("\n") %>', '<%= exercise.locale %>')">
+          <i class="fa fa-fw fa-volume-up"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mu-kindergarten-hint">
+    <% if exercise.hint? %>
+      <img class="mu-hint-light" src="/iluminated-light.png" alt="">
+      <ul class="mu-kids-character-speech-bubble-tabs">
+        <li class="mu-kids-description active" data-target="description" title="<%= t :task %>">
+          <i class="fa fa-fw fa-file-text-o"></i>
+        </li>
+        <li class="separator"></li>
+        <li class="mu-kids-hint blink" data-target="hint" title="<%= t :need_a_hint %>">
+          <i class="fa fa-fw fa-lightbulb-o"></i>
+        </li>
+      </ul>
+    <% else %>
+      <img class="mu-hint-light" src="/sleeping-light.png" alt="">
+    <% end %>
+  </div>
+</div>
+
+<div id="mu-kids-discussion-link-html" class="hidden">
+  <%= kids_read_discussions_link(exercise) %>
+</div>
