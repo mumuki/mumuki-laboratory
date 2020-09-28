@@ -35,5 +35,3 @@ group :development, :test do
   gem 'teaspoon-jasmine'
   gem "selenium-webdriver"
 end
-
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'issue#135-customize-welcome-email-sender'
