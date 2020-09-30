@@ -81,7 +81,9 @@
       left: calc(50vw - #{$width} / 2);
 
       $border-width: 16px;
-      border: $border-width solid $mu-color-link;
+      border-width: $border-width;
+      border-style: solid;
+      border-color: $mu-color-link;
       border-radius: $border-width;
       box-shadow: none;
 
@@ -98,6 +100,15 @@
         background: $mu-color-link;
         top: - $diameter / 2 - $border-width / 2;
         right: - $diameter / 2 - $border-width / 2;
+      }
+
+      @each $class, $color in ('broken': $mu-color-broken, 'danger': $mu-color-danger, 'success': $mu-color-success, 'warning': $mu-color-warning) {
+        &.#{$class} {
+          border-color: $color;
+          .mu-kindergarten-close-button {
+            background: $color;
+          }
+        }
       }
     }
   }
@@ -283,7 +294,7 @@ $bubble-padding: 30px;
         // height: 0;
         // padding-bottom: 56.25%;
 
-        &:not(.open) {
+        &.closed {
           display: none;
         }
 

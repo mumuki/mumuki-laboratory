@@ -24,8 +24,8 @@ mumuki.load(() => {
     toggleHintMedia() {
       const $hintMedia = $('.mu-kindergarten-hint-media');
       const $i = $('.expand-or-collapse-hint-media').children('i');
-      $i.toggleClass('fa-caret-down').toggleClass('fa-caret-up');
-      $hintMedia.toggleClass('open');
+      $i.toggleClass('fa-caret-up').toggleClass('fa-caret-down');
+      $hintMedia.toggleClass('closed');
     }
   };
 
