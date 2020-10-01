@@ -45,6 +45,9 @@
       color: darken($mu-color-disabled, 5%);
       font-size: 18px;
     }
+    .mu-error-status-line {
+      display: none;
+    }
   }
 }
 
