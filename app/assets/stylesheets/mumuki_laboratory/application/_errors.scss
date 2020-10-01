@@ -30,9 +30,11 @@
   .body {
     width: 50%;
     margin: auto;
+    h2 {
+      font-size: 42px;
+    }
     p {
-      color: darken($mu-color-disabled, 5%);
-      font-size: 89%;
+      font-size: 25px;
       padding: 0;
       margin: 0;
       .error-link {
