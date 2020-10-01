@@ -41,6 +41,10 @@
         margin-top: 30px;
       }
     }
+    .mu-maybe {
+      color: darken($mu-color-disabled, 5%);
+      font-size: 18px;
+    }
   }
 }
 

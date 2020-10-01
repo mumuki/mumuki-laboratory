@@ -10,7 +10,7 @@
       <p class="mu-error-explanation-line">
         <%= Organization.current.explain_error(403, explanation).html_safe %>
       </p>
-      <p class="mu-error-contact-line">
+      <p class="mu-error-contact-line mu-maybe">
         <%= t(:contact_administrator, link: mail_to_administrator).html_safe %>
       </p>
     </div>
