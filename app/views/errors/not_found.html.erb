@@ -9,8 +9,5 @@
       <p>
         <%= Organization.current.explain_error(404, :not_found_explanation).html_safe %>
       </p>
-      <p>
-        <%= t(:tell_us_if_our_error, issues: link_to_issues(:let_us_know)).html_safe %>
-      </p>
     </div>
 <% end %>
