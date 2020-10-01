@@ -78,13 +78,19 @@ es:
   edit_profile: Editar perfil
   editor_placeholder: "...escribí tu solución acá..."
   email: Email
-  error_description: ¡Ups! <br> Esto es lo que se conoce como <span class="error-link">%{error}</span>.
+  error_description: Esto es lo que se conoce como <span class="error-link">%{error}</span>.
   error_401: error 401
   error_403: error 403
   error_404: error 404
   error_410: error 410
   error_500: error 500
   errored: ¡Ups! Tu solución no se puede ejecutar
+  error:
+    title:
+      forbidden: ¡Ups! No tenés autorización para ver este contenido
+      gone: ¡Ups! El contenido expiró
+      internal_server_error: ¡Ups! Algo no anduvo bien
+      not_found: ¡Ups!  La página no existe
   exam_number: 'Examen %{number}:'
   exams: Exámenes
   exercise: Ejercicio
@@ -101,7 +107,7 @@ es:
   female: Mujer
   finish: Terminar
   first_name: Nombre
-  forbidden_explanation: Es decir que no tenés autorización para ver este contenido. <br> ¿Puede que hayas ingresado con una cuenta incorrecta?
+  forbidden_explanation: ¿Puede que hayas ingresado con una cuenta incorrecta?
   format: Dar formato
   fullscreen: "Pantalla completa"
   gender: Género

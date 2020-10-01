@@ -3,6 +3,7 @@
       <img class="error-code-img" src="/error/410.svg">
     </div>
     <div class="body">
+      <h2><%= t('error.title.gone') %></h2>
       <p>
         <%= t(:error_description, error: link_to_status_codes(410)).html_safe %>
       </p>

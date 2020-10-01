@@ -78,6 +78,12 @@ en:
   error_410: 410 error
   error_500: 500 error
   errored: Oops, your solution didn't work
+  error:
+    title:
+      forbidden: Oops! You are not allowed to see this content
+      gone: Oops! Content has expired
+      internal_server_error: Oops! Something went wrong
+      not_found: Oops! Page was not found
   exam_number: 'Exam %{number}:'
   exams: Exams
   exercise: Exercise
@@ -95,7 +101,7 @@ en:
   female: Female
   finish: Finish
   first_name: First Name
-  forbidden_explanation: You are not allowed to see this content.
+  forbidden_explanation: Please verify you have logged in with the right account
   format: Format
   fullscreen: "Fullscreen"
   gender: Gender

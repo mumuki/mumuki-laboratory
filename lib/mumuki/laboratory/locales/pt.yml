@@ -74,13 +74,19 @@ pt:
   edit_profile: Editar perfil
   editor_placeholder: ... Escreva sua solução aqui ...
   email: E-mail
-  error_description: Opa! <br> Isto é o que é conhecido como <span class = "error-link"> %{error} </ span>.
+  error_description: Isto é o que é conhecido como <span class = "error-link"> %{error} </ span>.
   error_401: erro 401
   error_403: erro 403
   error_404: erro 404
   error_410: erro 410
   error_500: erro 500
   errored: Opa! Sua solução não pode ser executada
+  error:
+    title:
+      forbidden: Opa! Você não tem autorização para ver esse conteúdo
+      gone: Opa! O conteúdo expirou
+      internal_server_error: Opa! Algo não estava certo
+      not_found: Opa! A página que você pesquisou não existe
   exam_number: 'Revise %{number}:'
   exams: Examesca
   exercise: Exercício
@@ -97,7 +103,7 @@ pt:
   female: Feminino
   finish: Terminar
   first_name: Nome
-  forbidden_explanation: Isso significa que você não tem autorização para ver esse conteúdo. <br> Você poderia ter entrado com uma conta incorreta?
+  forbidden_explanation: Você poderia ter entrado com uma conta incorreta?
   format: Formato
   fullscreen: Tela completa
   gender: Gênero
