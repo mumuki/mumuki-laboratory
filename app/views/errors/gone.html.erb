@@ -4,10 +4,10 @@
     </div>
     <div class="body">
       <h2><%= t('error.title.gone') %></h2>
-      <p>
+      <p class="mu-error-status-line">
         <%= t(:error_description, error: link_to_status_codes(410)).html_safe %>
       </p>
-      <p>
+      <p class="mu-error-explanation-line">
         <%= Organization.current.explain_error(410, explanation).html_safe %>
       </p>
     </div>

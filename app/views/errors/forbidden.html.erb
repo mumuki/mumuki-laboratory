@@ -4,13 +4,13 @@
     </div>
     <div class="body">
       <h2><%= t('error.title.forbidden') %></h2>
-      <p>
+      <p class="mu-error-status-line">
         <%= t(:error_description, error: link_to_status_codes(403)).html_safe %>
       </p>
-      <p>
+      <p class="mu-error-explanation-line">
         <%= Organization.current.explain_error(403, explanation).html_safe %>
       </p>
-      <p>
+      <p class="mu-error-contact-line">
         <%= t(:contact_administrator, link: mail_to_administrator).html_safe %>
       </p>
     </div>
