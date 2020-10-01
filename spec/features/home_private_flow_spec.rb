@@ -49,7 +49,7 @@ feature 'private org' do
       set_current_user! visitor
 
       visit '/'
-      expect(page).to have_text('You are not allowed to see this content.')
+      expect(page).to have_text('You are not allowed to see this content')
       expect(visitor.reload.last_organization).to be nil
     end
 
