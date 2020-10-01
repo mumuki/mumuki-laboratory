@@ -7,11 +7,8 @@
       <p class="mu-error-status-line">
         <%= t(:error_description, error: link_to_status_codes(500)).html_safe %>
       </p>
-      <p class="mu-error-explanation-line">
-        <%= Organization.current.explain_error(500, :something_went_wrong_explanation).html_safe %>
-      </p>
       <p class="mu-error-contact-line">
-        <%= t(:tell_us_if_our_error, issues: link_to_issues(:let_us_know)).html_safe %>
+        <%= link_to_issues(:let_us_know).html_safe %>
       </p>
     </div>
 <% end %>
