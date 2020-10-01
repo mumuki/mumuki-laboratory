@@ -45,7 +45,7 @@ pt:
   confirm_reset: Você está prestes a reiniciar seu exercício. Você quer continuar?
   confirm_restart: Você está prestes a apagar o seu progresso neste guia. Você quer continuar?
   console: Consola
-  contact_administrator: Se você acha que é um erro, entre em contato com a pessoa que gerencia essa organização %{link}
+  contact_administrator: Se você acha que é um erro, entre em contato com %{link}
   content: Conteúdo
   continue_exercise: Continuar
   continue_lesson: Continue esta lição!
@@ -83,7 +83,7 @@ pt:
   errored: Opa! Sua solução não pode ser executada
   error:
     title:
-      forbidden: Opa! Você não tem autorização para ver esse conteúdo
+      forbidden: Você não tem autorização para ver esse conteúdo
       gone: Opa! O conteúdo expirou
       internal_server_error: Opa! Algo não estava certo
       not_found: Opa! A página que você pesquisou não existe

@@ -50,7 +50,7 @@ es:
   confirm_reset: Estás por reiniciar tu ejercicio. ¿Querés continuar?
   confirm_restart: Estás por borrar tu progreso en esta guía. ¿Querés continuar?
   console: Consola
-  contact_administrator: 'Si pensás que es un error, comunicate con la persona que administra esta organización: %{link}'
+  contact_administrator: 'Si pensás que es un error, comunicate con %{link}'
   content: Contenido
   continue_exercise: "Continuar"
   continue_lesson: ¡Continuá esta lección!
@@ -87,7 +87,7 @@ es:
   errored: ¡Ups! Tu solución no se puede ejecutar
   error:
     title:
-      forbidden: ¡Ups! No tenés autorización para ver este contenido
+      forbidden: No tenés autorización para ver este contenido
       gone: ¡Ups! El contenido expiró
       internal_server_error: ¡Ups! Algo no anduvo bien
       not_found: ¡Ups!  La página no existe

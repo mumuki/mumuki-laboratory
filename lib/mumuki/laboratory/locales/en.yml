@@ -47,7 +47,7 @@ en:
   confirm_reset: You are about to restart your exercise. Do you want to proceed?
   confirm_restart: You are about to delete your progress for this guide. Do you want to proceed?
   console: Console
-  contact_administrator: 'If you think this is not supposed to happen, please contact the admin: %{link}'
+  contact_administrator: 'If you think this is not supposed to happen, please contact %{link}'
   content: Content
   continue_exercise: "Continue"
   continue_lesson: Continue this lesson!
@@ -80,7 +80,7 @@ en:
   errored: Oops, your solution didn't work
   error:
     title:
-      forbidden: Oops! You are not allowed to see this content
+      forbidden: You are not allowed to see this content
       gone: Oops! Content has expired
       internal_server_error: Oops! Something went wrong
       not_found: Oops! Page was not found
