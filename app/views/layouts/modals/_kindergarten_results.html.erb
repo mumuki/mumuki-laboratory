@@ -10,8 +10,12 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-12 submission-results">
-              <% if current_user? && @assignment.solved? %>
-                <%= corollary_box @exercise %>
+              <% if current_user? %>
+                <% if @assignment.solved? %>
+                  <%= corollary_box @exercise %>
+                <% else %>
+                  <img src="//feranzures.files.wordpress.com/2010/09/dreamstime_6604144.jpg" alt="failure">
+                <% end %>
               <% end %>
             </div>
           </div>
