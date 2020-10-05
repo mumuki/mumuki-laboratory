@@ -2,7 +2,7 @@
 
 (function() {
   var locale = document.querySelector("html").lang || 'es';
-  var language = new Intl.Locale(locale).language;
+  var language = locale.split("-")[0];
 
   var keywords = [
     "program", "procedure", "function", "interactive", "if",
