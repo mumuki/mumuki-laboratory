@@ -26,8 +26,14 @@ mumuki.load(() => {
       const $i = $('.expand-or-collapse-hint-media').children('i');
       $i.toggleClass('fa-caret-up').toggleClass('fa-caret-down');
       $hintMedia.toggleClass('closed');
-    }
+    },
   };
+
+  mumuki.resize(() => {
+    const $workspace = $('.muzzle-simple');
+    const $konvaJsContent = $('.konvajs-content');
+    Muzzle.scale($konvaJsContent.width(), $workspace.height());
+  })
 
   mumuki.kindergarten.disablePlaySoundButtonIfNotSupported();
 
