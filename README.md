@@ -172,7 +172,7 @@ Likewise, you will sometimes require a guide that is not locally available. Run 
 require 'mumuki/domain/seed'
 
 # import a new guide
-Mumuki::Domain::Seed.contents_syncer.locate_and_import!  Guide, slug)
+Mumuki::Domain::Seed.contents_syncer.locate_and_import! Guide, slug
 
 # update an existing guide object
 Mumuki::Domain::Seed.contents_syncer.import!  Mumukit::Sync.key(Guide, slug), guide
