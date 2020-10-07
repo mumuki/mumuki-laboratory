@@ -13,6 +13,9 @@ echo ''
 echo "[MumukiDevstart::Laboratory] Installing dependencies...."
 bundle install --quiet
 
+echo "[MumukiDevstart::Laboratory] Running migrations (if any)...."
+bundle exec rake db:migrate
+
 echo "[MumukiDevstart::Laboratory] Starting server...."
 MUMUKI_DEV_IP=${1:-localhost}
 MUMUKI_PLATFORM_DOMAIN=$MUMUKI_DEV_IP:3000 \
