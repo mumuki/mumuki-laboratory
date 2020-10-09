@@ -42,12 +42,35 @@ describe("SubmissionsStore", () => {
     });
   });
 
+  describe('submissionSolutionContent', () => {
+    it("works with programatic solutions", () => {
+      expect(mumuki.SubmissionsStore.submissionSolutionContent({solution: {content: 'foo'}})).toEqual('foo');
+    });
+
+    it("works with classic solutions", () => {
+      expect(mumuki.SubmissionsStore.submissionSolutionContent({'solution[content]': 'foo'})).toEqual('foo');
+    });
+
+    it("works with multifile solutions", () => {
+      expect(mumuki.SubmissionsStore.submissionSolutionContent({
+        'solution[content[index.html]]': 'html foo',
+        'solution[content[index.css]]': 'css foo'
+      })).toEqual('[["solution[content[index.html]]","html foo"],["solution[content[index.css]]","css foo"]]');
+    });
+  });
+
   describe('submissionSolutionEquals', () => {
     describe('programatic submissions', () => {
       it("answers true when they are equal", () => {
         expect(mumuki.SubmissionsStore.submissionSolutionEquals(
           {solution: {content: 'foo'}},
           {solution: {content: 'foo'}})).toBe(true);
+      });
+
+      it("answers true when they are equal but empty", () => {
+        expect(mumuki.SubmissionsStore.submissionSolutionEquals(
+          {solution: {content: ''}},
+          {solution: {content: ''}})).toBe(true);
       });
 
       it("answers true when they are equal and there are other spurious keys", () => {
@@ -61,6 +84,12 @@ describe("SubmissionsStore", () => {
           {solution: {content: 'foo'}},
           {solution: {content: 'bar'}})).toBe(false);
       });
+
+      it("answers false when they are not equal but one of them is empty", () => {
+        expect(mumuki.SubmissionsStore.submissionSolutionEquals(
+          {solution: {content: ''}},
+          {solution: {content: 'bar'}})).toBe(false);
+      });
     })
 
     describe('classic submissons', () => {
@@ -68,6 +97,12 @@ describe("SubmissionsStore", () => {
         expect(mumuki.SubmissionsStore.submissionSolutionEquals(
           {'solution[content]': 'foo'},
           {'solution[content]': 'foo'})).toBe(true);
+      });
+
+      it("answers true when they are equal but empty", () => {
+        expect(mumuki.SubmissionsStore.submissionSolutionEquals(
+          {'solution[content]': ''},
+          {'solution[content]': ''})).toBe(true);
       });
 
       it("answers true when they are equal with other spurious keys", () => {
@@ -79,6 +114,12 @@ describe("SubmissionsStore", () => {
       it("answers false when they are not equal", () => {
         expect(mumuki.SubmissionsStore.submissionSolutionEquals(
           {'solution[content]': 'foo'},
+          {'solution[content]': 'bar'})).toBe(false);
+      });
+
+      it("answers false when they are not equal but one of them is empty", () => {
+        expect(mumuki.SubmissionsStore.submissionSolutionEquals(
+          {'solution[content]': ''},
           {'solution[content]': 'bar'})).toBe(false);
       });
     })
