@@ -29,7 +29,7 @@ pt:
   back_to_mumuki: Voltei para Mumuki!
   bibliotheca_ui: Biblioteca
   birthdate: Fecha de nacimiento
-  blocked_forum_explanation: Você não tem permissão para ver este conteúdo. <br> Você está no meio de um exame agora?
+  blocked_forum_explanation: Você está no meio de um exame agora?
   cancel: Cancelar
   chapter: Capítulo
   chapters: Capítulos
@@ -45,7 +45,7 @@ pt:
   confirm_reset: Você está prestes a reiniciar seu exercício. Você quer continuar?
   confirm_restart: Você está prestes a apagar o seu progresso neste guia. Você quer continuar?
   console: Consola
-  contact_administrator: Se você acha que é um erro, entre em contato com a pessoa que gerencia essa organização %{link}
+  contact_administrator: Se você acha que é um erro, entre em contato com %{link}
   content: Conteúdo
   continue_exercise: Continuar
   continue_lesson: Continue esta lição!
@@ -74,13 +74,19 @@ pt:
   edit_profile: Editar perfil
   editor_placeholder: ... Escreva sua solução aqui ...
   email: E-mail
-  error_description: Opa! <br> Isto é o que é conhecido como <span class = "error-link"> %{error} </ span>.
+  error_description: Isto é o que é conhecido como <span class = "error-link"> %{error} </ span>.
   error_401: erro 401
   error_403: erro 403
   error_404: erro 404
   error_410: erro 410
   error_500: erro 500
   errored: Opa! Sua solução não pode ser executada
+  error:
+    title:
+      forbidden: Você não tem autorização para ver esse conteúdo
+      gone: Opa! O conteúdo expirou
+      internal_server_error: Opa! Algo não estava certo
+      not_found: Opa! A página que você pesquisou não existe
   exam_number: 'Revise %{number}:'
   exams: Examesca
   exercise: Exercício
@@ -97,7 +103,7 @@ pt:
   female: Feminino
   finish: Terminar
   first_name: Nome
-  forbidden_explanation: Isso significa que você não tem autorização para ver esse conteúdo. <br> Você poderia ter entrado com uma conta incorreta?
+  forbidden_explanation: Você poderia ter entrado com uma conta incorreta?
   format: Formato
   fullscreen: Tela completa
   gender: Gênero
@@ -171,7 +177,7 @@ pt:
   no_submissions: Parece que você ainda não tentou resolver este exercício!
   no_useful_result: Não encontrou o que estava buscando?
   not_found: A página que você pesquisou não existe!
-  not_found_explanation: Olhe se você escreveu o endereço corretamente. Mas...
+  not_found_explanation: Olhe se você escreveu o endereço corretamente.
   not_in_any_organizations: Parece que você ainda não está em nenhuma organização!
   notify_problem_with_exercise: Relatar um erro
   office: Secretariado
@@ -231,7 +237,6 @@ pt:
   solve_your_doubts: Consulte suas dúvidas
   solve_your_doubts_teaser: Você tem alguma dúvida?
   something_went_wrong: Oops!, Algo não estava certo ...
-  something_went_wrong_explanation: Algo não foi como esperado.
   sort: Ordenar
   sources: Bibliografia
   start_lesson: Comece esta lição!

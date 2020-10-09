@@ -28,7 +28,7 @@ en:
   back_to_mumuki: Back to Mumuki!
   bibliotheca_ui: Bibliotheca
   birthdate: Birthdate
-  blocked_forum_explanation: You are not allowed to see this content. <br> Are you in the middle of an exam right now?
+  blocked_forum_explanation: Are you in the middle of an exam right now?
   cancel: Cancel
   cancel_subscription: Cancel your subscription.
   chapter: Chapter
@@ -47,7 +47,7 @@ en:
   confirm_reset: You are about to restart your exercise. Do you want to proceed?
   confirm_restart: You are about to delete your progress for this guide. Do you want to proceed?
   console: Console
-  contact_administrator: 'If you think this is not supposed to happen, please contact the admin: %{link}'
+  contact_administrator: 'If you think this is not supposed to happen, please contact %{link}'
   content: Content
   continue_exercise: "Continue"
   continue_lesson: Continue this lesson!
@@ -78,6 +78,12 @@ en:
   error_410: 410 error
   error_500: 500 error
   errored: Oops, your solution didn't work
+  error:
+    title:
+      forbidden: You are not allowed to see this content
+      gone: Oops! Content has expired
+      internal_server_error: Oops! Something went wrong
+      not_found: Oops! Page was not found
   exam_number: 'Exam %{number}:'
   exams: Exams
   exercise: Exercise
@@ -95,7 +101,7 @@ en:
   female: Female
   finish: Finish
   first_name: First Name
-  forbidden_explanation: You are not allowed to see this content.
+  forbidden_explanation: Please verify you have logged in with the right account
   format: Format
   fullscreen: "Fullscreen"
   gender: Gender
@@ -222,7 +228,6 @@ en:
   solve_your_doubts: Solve your doubts
   solve_your_doubts_teaser: Do you have any doubts?
   something_went_wrong: Something went wrong!
-  something_went_wrong_explanation: Something is broken in Mumuki.
   sort: Sort
   sources: Sources
   start_lesson: Start this lesson!

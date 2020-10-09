@@ -27,7 +27,7 @@ es-CL:
   back_to_mumuki: ¡Vuelve a Mumuki!
   bibliotheca_ui: Biblioteca
   birthdate: Fecha de nacimiento
-  blocked_forum_explanation: Es decir que no tienes autorización para ver este contenido. <br> ¿Puede que estés en medio de un examen?
+  blocked_forum_explanation: ¿Puede que estés en medio de un examen?
   cancel_subscription: Cancela tu subscripción.
   chapter: Capítulo
   chapters: Capítulos
@@ -46,7 +46,7 @@ es-CL:
   confirm_reset: Estás por reiniciar tu ejercicio. ¿Quieres continuar?
   confirm_restart: Estás por borrar tu progreso en esta guía. ¿Quieres continuar?
   console: Consola
-  contact_administrator: 'Si piensas que es un error, comunícate con la persona que administra esta organización: %{link}'
+  contact_administrator: 'Si piensas que es un error, comunícate con %{link}'
   content: Contenido
   continue_exercise: "Continuar"
   continue_lesson: ¡Continúa esta lección!
@@ -72,13 +72,19 @@ es-CL:
   edit: Editar
   editor_placeholder: "...escribe tu solución acá..."
   email: Email
-  error_description: ¡Ups! <br> Esto es lo que se conoce como <span class="error-link">%{error}</span>.
+  error_description: Esto es lo que se conoce como <span class="error-link">%{error}</span>.
   error_401: error 401
   error_403: error 403
   error_404: error 404
   error_410: error 410
   error_500: error 500
   errored: ¡Ups! Tu solución no se puede ejecutar
+  error:
+    title:
+      forbidden: No tienes autorización para ver este contenido
+      gone: ¡Ups! El contenido expiró
+      internal_server_error: ¡Ups! Algo no anduvo bien
+      not_found: ¡Ups!  La página no existe
   exam_number: 'Examen %{number}:'
   exams: Exámenes
   exercise: Ejercicio
@@ -95,7 +101,7 @@ es-CL:
   female: Mujer
   finish: Terminar
   first_name: Nombre
-  forbidden_explanation: Es decir que no tienes autorización para ver este contenido. <br> ¿Puede que hayas ingresado con una cuenta incorrecta?
+  forbidden_explanation: ¿Puede que hayas ingresado con una cuenta incorrecta?
   format: Dar formato
   fullscreen: "Pantalla completa"
   gender: Género
@@ -171,7 +177,7 @@ es-CL:
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio!
   no_useful_result: ¿No encontraste lo que estabas buscando?
   not_found: ¡La página que buscaste no existe!
-  not_found_explanation: Fíjate si escribiste bien la dirección. Peeeeero...
+  not_found_explanation: Fíjate si escribiste bien la dirección.
   not_in_any_organizations: ¡Parece que no estás en ninguna organización todavía!
   notify_problem_with_exercise: Reporta un bug
   office: Secretaría
@@ -233,7 +239,6 @@ es-CL:
   solve_your_doubts: Consulta tus dudas
   solve_your_doubts_teaser: ¿Tienes alguna consulta?
   something_went_wrong: ¡Ups!, algo no anduvo bien...
-  something_went_wrong_explanation: Algo no anduvo como se esperaba.
   sort: Ordenar
   sources: Bibliografía
   start_lesson: ¡Comienza esta lección!
