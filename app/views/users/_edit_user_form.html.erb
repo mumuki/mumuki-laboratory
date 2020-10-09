@@ -2,8 +2,8 @@
   <div class="mu-user-header">
     <h1><%= t(:edit_profile) %></h1>
     <div class="mu-profile-actions hidden-xs">
-      <%= link_to t(:cancel), :back, class: 'btn btn-default' if @user.profile_completed? %>
-      <%= f.submit t(:save), disabled: true, class: 'btn btn-success mu-edit-profile-btn' %>
+      <%= cancel_edit_profile_button %>
+      <%= save_edit_profile_button f %>
     </div>
   </div>
   <div class="row mu-tab-body">
@@ -16,8 +16,8 @@
     </div>
   </div>
   <div class="mu-profile-actions mobile visible-xs">
-    <%= link_to t(:cancel), :back, class: 'btn btn-default' if @user.profile_completed? %>
-    <%= f.submit t(:save), disabled: true, class: 'btn btn-success mu-edit-profile-btn' %>
+    <%= cancel_edit_profile_button %>
+    <%= save_edit_profile_button f %>
   </div>
 <% end %>
 
