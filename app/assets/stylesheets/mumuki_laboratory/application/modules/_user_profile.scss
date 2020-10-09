@@ -20,6 +20,15 @@
       border-color: lighten($mu-color-complementary, 15%);
     }
   }
+
+  &.mobile {
+    text-align: center;
+    margin: 20px 5px -20px -10px;
+
+    .btn {
+      width: calc(50% - 20px);
+    }
+  }
 }
 
 .mu-profile-info {
