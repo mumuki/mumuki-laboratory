@@ -65,7 +65,7 @@ pt:
   destroy: Excluir
   details: Detalhes
   disabled_explanation: Você está tentando acessar um recurso que foi desativado ou removido permanentemente
-  disabled_organization_explanation: Este curso terminou!
+  disabled_organization_explanation: Este curso terminou
   discussion_description_placeholder: Você pode adicionar mais informações sobre sua dúvida
   discussion_updated: Consulta actualizada
   discussions: Consultas
@@ -268,7 +268,7 @@ pt:
   uncategorized: Não classificado
   unspecified: Eu preferiria não dizer
   unmeet_expectations: Objetivos que não foram atendidos
-  unprepared_organization_explanation: Este curso ainda não começou!
+  unprepared_organization_explanation: Este curso ainda não começou
   unsubscribe: Cancelar subscrição
   upload_solution: Carregar solução
   uploading_solution: Uploading solution

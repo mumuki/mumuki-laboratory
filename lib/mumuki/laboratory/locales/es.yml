@@ -68,7 +68,7 @@ es:
   destroy: Eliminar
   details: Detalles
   disabled_explanation: Estás intentando acceder a un recurso que fue deshabilitado o eliminado de forma permamente
-  disabled_organization_explanation: ¡Este recorrido ha finalizado!
+  disabled_organization_explanation: Este recorrido ha finalizado
   discussion_description_placeholder: Podés agregar información para detallar más tu consulta
   discussion_updated: Consulta actualizada
   discussions: Consultas
@@ -284,7 +284,7 @@ es:
   undo_upvote: No es útil
   unspecified: Prefiero no decirlo
   unmeet_expectations: Objetivos que no se cumplieron
-  unprepared_organization_explanation: ¡Este recorrido aún no ha comenzado!
+  unprepared_organization_explanation: Este recorrido aún no ha comenzado
   unsubscribe: Dejar de recibir notificaciones
   unsubscribed_successfully: Te desuscribiste exitosamente de los recordatorios.
   upload_solution: "Subir solución"
