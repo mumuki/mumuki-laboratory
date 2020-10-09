@@ -1,7 +1,7 @@
 mumuki.load(function() {
   let $userForm = $("#mu-user-form");
   let $userAvatar = $('#mu-user-avatar');
-  let $editButton = $('#mu-edit-profile-btn');
+  let $editButton = $('.mu-edit-profile-btn');
   let $avatarPicker = $('#mu-avatar-picker');
   let $avatarItem = $('.mu-avatar-item');
 
