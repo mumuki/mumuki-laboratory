@@ -22,11 +22,32 @@
  */
 
 /**
- * @typedef {{
- *  "solution[content]"?:string,
- *  solution?: Solution,
- *  client_result?: SubmissionClientResult
- * }} Submission
+ * Contents of a submission expressed as an object
+ * that are created programatically
+ *
+ * @typedef {{solution: Solution}} ProgramaticContents
+ */
+
+/**
+ * Contents of a submission expressed in the form of params
+ * generated and accepted by laboratory HTTP Controllers
+ *
+ * @typedef {{"solution[content]":string}} StandardContents
+ */
+
+/**
+ * Contents of a multifile submission expressed as dictionary of keys in the form
+ * `solution[content[the-filename-goes-here]]`
+ *
+ * @typedef {object} MutifileContents
+ */
+
+/**
+ * @typedef {ProgramaticContents|StandardContents|MutifileContents} Contents
+ */
+
+/**
+ * @typedef {Contents & {client_result?: SubmissionClientResult}} Submission
  */
 
 /**
