@@ -22,17 +22,17 @@
  */
 
 /**
+ * Contents of a submission expressed in the form of params
+ * generated and accepted by laboratory HTTP Controllers
+ *
+ * @typedef {{"solution[content]":string}} ClassicContents
+ */
+
+/**
  * Contents of a submission expressed as an object
  * that are created programatically
  *
  * @typedef {{solution: Solution}} ProgramaticContents
- */
-
-/**
- * Contents of a submission expressed in the form of params
- * generated and accepted by laboratory HTTP Controllers
- *
- * @typedef {{"solution[content]":string}} StandardContents
  */
 
 /**
@@ -43,7 +43,7 @@
  */
 
 /**
- * @typedef {ProgramaticContents|StandardContents|MutifileContents} Contents
+ * @typedef {ClassicContents|ProgramaticContents|MutifileContents} Contents
  */
 
 /**
