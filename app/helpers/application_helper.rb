@@ -7,8 +7,8 @@ module ApplicationHelper
   end
 
   def profile_picture_for(user, **options)
-    options.merge!(height: 40, onError: "this.onerror = null; this.src = '#{image_url(user.placeholder_image_url)}'")
-    avatar_image(user.profile_picture, options)
+    default_options = { height: 40, onError: "this.onerror = null; this.src = '#{image_url(user.placeholder_image_url)}'" }
+    avatar_image(user.profile_picture, default_options.merge(options))
   end
 
   def avatar_image(avatar_url, **options)
