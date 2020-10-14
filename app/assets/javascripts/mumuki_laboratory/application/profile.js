@@ -15,14 +15,16 @@ mumuki.load(function() {
     toggleEditButtonIfThereAreChanges();
   });
 
-  $avatarItem.on('click', function() {
-    $userAvatar.attr('src', $(this).attr('src'));
-    $avatarPicker.modal('hide');
+  $avatarItem.on('keypress click', function(e) {
+    onClickOrSpacebarOrEnter($(this), e, function() {
+      $userAvatar.attr('src', $(this).attr('src'));
+      $avatarPicker.modal('hide');
 
-    const clickedAvatarId = $(this).attr('mu-avatar-id');
-    avatarId = clickedAvatarId || "";
+      const clickedAvatarId = $(this).attr('mu-avatar-id');
+      avatarId = clickedAvatarId || "";
 
-    toggleEditButtonIfThereAreChanges();
+      toggleEditButtonIfThereAreChanges();
+    });
   });
 
   function toggleEditButtonIfThereAreChanges() {
@@ -41,8 +43,10 @@ mumuki.load(function() {
 
   const avatarChanged = () => $userAvatar.attr('src') !== originalProfilePicture;
 
-  $('#mu-user-image').on('click', function(){
-    userImage = $userAvatar.attr('src');
+  $('#mu-user-image').on('keypress click', function(e){
+    onClickOrSpacebarOrEnter($(this), e, function() {
+      userImage = $userAvatar.attr('src');
+    });
   });
 
   $userForm.on('submit', function(){
@@ -64,8 +68,15 @@ mumuki.load(function() {
     form.append(`<input type="hidden" name="user[avatar_id]" value=${id}/>`);
   }
 
-  $("#mu-edit-avatar-icon").on('click', function(){
-    $avatarPicker.modal();
+  $("#mu-edit-avatar-icon").on('keypress click', function(e) {
+    onClickOrSpacebarOrEnter($(this), e, function() {
+      $avatarPicker.modal();
+    });
   });
 
+  function onClickOrSpacebarOrEnter(element, e, func) {
+    if (e.which === 13 || e.which === 32 || e.type === 'click') {
+      func.apply(element);
+    }
+  }
 });

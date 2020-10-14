@@ -5,7 +5,7 @@
     <% end %>
 
     <% if @user.image_url %>
-      <%= avatar_image @user.image_url, class: 'mu-avatar-item', id: 'mu-user-image' %>
+      <%= avatar_image @user.image_url, class: 'mu-avatar-item', id: 'mu-user-image', tabindex: 0 %>
     <% end %>
   </div>
 </div>
