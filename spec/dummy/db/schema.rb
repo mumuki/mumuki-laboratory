@@ -311,8 +311,8 @@ ActiveRecord::Schema.define(version: 20200804191643) do
     t.text "theme", default: "{}", null: false
     t.text "profile", default: "{}", null: false
     t.integer "progressive_display_lookahead"
-    t.integer "target_audience", default: 0
     t.boolean "incognito_mode_enabled"
+    t.integer "target_audience", default: 0
     t.index ["book_id"], name: "index_organizations_on_book_id"
     t.index ["name"], name: "index_organizations_on_name", unique: true
   end
