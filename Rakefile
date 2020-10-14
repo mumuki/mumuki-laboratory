@@ -33,6 +33,10 @@ task :development do
   ENV['RAILS_ENV'] = 'development'
 end
 
+RSpec::Core::RakeTask.new(:capybara => 'app:db:test:prepare') do |t|
+  t.pattern = 'spec/features/*_spec.rb'
+end
+
 desc "Run the javascript specs"
 task teaspoon: [:development, "app:teaspoon"]
 
