@@ -30,9 +30,8 @@ mumuki.load(() => {
   };
 
   mumuki.resize(() => {
-    const $workspace = $('.muzzle-simple');
-    const $konvaJsContent = $('.konvajs-content');
-    Muzzle.scale($konvaJsContent.width(), $workspace.height());
+    mumuki.kids.scaleState($('.mu-kids-states'), 40);
+    mumuki.kids.scaleBlocksArea($('.mu-kids-blocks'));
   })
 
   mumuki.kindergarten.disablePlaySoundButtonIfNotSupported();

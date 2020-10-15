@@ -8,7 +8,7 @@
   .mu-kids-exercise-workspace {
     display: flex;
     flex-flow: row;
-    height: calc(100% - #{$kids-characters-height});
+    height: calc(100% - #{$kids-characters-height} - 15px);
     width: 100%;
 
     .konvajs-content {
@@ -20,12 +20,26 @@
       }
     }
 
-  }
+    .mu-kids-single-state,
+    .mu-kids-blocks {
+      width: 50%;
+      height: 100%;
+    }
 
-  .mu-kids-single-state,
-  .mu-kids-blocks {
-    width: 50%;
-    height: 100%
+    .mu-kids-blocks {
+      padding-bottom: 15px;
+    }
+
+    &.mu-full-workspace {
+      .mu-kids-single-state {
+        display: none
+      }
+      .mu-kids-blocks {
+        width: 100%;
+        height: 100%
+      }
+    }
+
   }
 
   .mu-kids-blocks {
@@ -300,9 +314,6 @@ $bubble-padding: 30px;
         width: calc(100% + #{$bubble-padding} * 10/6);
         margin: $bubble-padding (-$bubble-padding * 5/6) (-$bubble-padding * 5/6) (-$bubble-padding * 5/6);
         padding: $bubble-padding * 5/6;
-
-        // height: 0;
-        // padding-bottom: 56.25%;
 
         &.closed {
           display: none;
