@@ -18,6 +18,17 @@ services:
 - postgresql
 addons:
   firefox: '79.0'
+  hosts:
+    - localmumuki.io
+    - base.localmumuki.io
+    - central.localmumuki.io
+    - empty.localmumuki.io
+    - foo.localmumuki.io
+    - immersive-orga.localmumuki.io
+    - private.localmumuki.io
+    - someorga.localmumuki.io
+    - test.localmumuki.io
+    - the-public-org.localmumuki.io
 env:
   global:
   - secure: IW65qMjgbuuj4kUsBwaY+iV+jaIedgf2V3W7bTLj1SjaNdc8hC9SXBiNWQrT9Ygu5Q67mKzXuu5GTyAvAGftF02UKgT+yDE43p+a9w2+Onx5dGTIXCCREIE9fgmQhAkqgt9+1E99fRWsQzqkpEVINOMvumk+HM/Rxg8B9e5jvB8=
