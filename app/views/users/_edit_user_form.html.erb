@@ -1,9 +1,9 @@
 <%= form_for :user, url: update_user_path, :html => { id: 'mu-user-form' }, method: :put do |f| %>
   <div class="mu-user-header">
     <h1><%= t(:edit_profile) %></h1>
-    <div class="mu-profile-actions">
-      <%= link_to t(:cancel), :back, class: 'btn btn-default' if @user.profile_completed? %>
-      <%= f.submit t(:save), disabled: true, class: 'btn btn-success', id: 'mu-edit-profile-btn' %>
+    <div class="mu-profile-actions hidden-xs">
+      <%= cancel_edit_profile_button %>
+      <%= save_edit_profile_button f %>
     </div>
   </div>
   <div class="row mu-tab-body">
@@ -14,6 +14,10 @@
     <div class="col-md-8">
       <%= render partial: 'profile_fields', locals: {form: f} %>
     </div>
+  </div>
+  <div class="mu-profile-actions mobile visible-xs">
+    <%= cancel_edit_profile_button %>
+    <%= save_edit_profile_button f %>
   </div>
 <% end %>
 
