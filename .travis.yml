@@ -39,7 +39,19 @@ jobs:
     - script: bundle exec rake capybara
       addons:
         chrome: stable
+        apt:
+          packages:
+            - chromium-chromedriver
+        hosts:
+        - localmumuki.io
+        - test.localmumuki.io
+        - the-public-org.localmumuki.io
+        - private.localmumuki.io
       env: MUMUKI_CAPYBARA_DRIVER=selenium_chrome_headless
+      before_script:
+        - psql -c 'create database travis_ci_test;' -U postgres
+        - cp spec/dummy/config/database.travis.yml spec/dummy/config/database.yml
+        - ln -s /usr/lib/chromium-browser/chromedriver "${HOME}/bin/chromedriver"
     - script: bundle exec rake capybara
       env: MUMUKI_CAPYBARA_DRIVER=selenium_headless
 deploy:
