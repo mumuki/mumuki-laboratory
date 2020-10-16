@@ -22,6 +22,15 @@ env:
   global:
   - secure: IW65qMjgbuuj4kUsBwaY+iV+jaIedgf2V3W7bTLj1SjaNdc8hC9SXBiNWQrT9Ygu5Q67mKzXuu5GTyAvAGftF02UKgT+yDE43p+a9w2+Onx5dGTIXCCREIE9fgmQhAkqgt9+1E99fRWsQzqkpEVINOMvumk+HM/Rxg8B9e5jvB8=
   - MOZ_HEADLESS=1
+jobs:
+  include:
+    - {}
+    - script: bundle exec rake capybara
+      addons:
+        chrome: stable
+      env: MUMUKI_CAPYBARA_DRIVER=selenium_chrome_headless
+    - script: bundle exec rake capybara
+      env: MUMUKI_CAPYBARA_DRIVER=selenium_headless
 deploy:
   - provider: rubygems
     api_key:
