@@ -9,12 +9,14 @@ def run_with_selenium?
   selected_driver.to_s.start_with? 'selenium'
 end
 
-Capybara.server_port = 31337
 Capybara.default_driver = selected_driver
 
-# TODO: fix the tests that depend on hidden elements and remove this
 if run_with_selenium?
+  # TODO: fix the tests that depend on hidden elements and remove this
   Capybara.ignore_hidden_elements = false
+
+  # Include port on the URL, so we don't need to forward it via nginx or so
+  Capybara.always_include_port = true
 end
 
 puts "Running Capybara tests with #{selected_driver}, #{Capybara.ignore_hidden_elements ? '' : 'not '}ignoring hidden elements"
