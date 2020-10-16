@@ -53,7 +53,7 @@ mumuki.SubmissionsStore = (() => {
     }
 
      /**
-     * Extract the submission's solution content
+     * Extract the submission's solution content, expressed as a string
      *
      * @param {Submission} submission
      * @returns {string}
@@ -61,8 +61,13 @@ mumuki.SubmissionsStore = (() => {
     submissionSolutionContent(submission) {
       if (submission.solution) {
         return submission.solution.content;
-      } else {
+      } else if (submission['solution[content]'] !== undefined) {
         return submission['solution[content]'];
+      } else {
+        return JSON.stringify(
+          Object
+            .entries(submission)
+            .filter(([key, _]) => key.startsWith('solution[content[')));
       }
     }
 

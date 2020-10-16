@@ -47,6 +47,29 @@ describe('editors', () => {
     expect(mumuki.editors.getSubmission()).toEqual({"solution[content]":"the solution"});
   });
 
+
+  it('reads the form if no sources and exercise is multifile', () => {
+    $('body').html(`
+    <form role="form" class="new_solution">
+      <div class="field form-group editor-code">
+        <textarea
+          class="form-control editor"
+          data-editor-language="html"
+          name="solution[content[index.html]]"
+          id="solution_content[index.html]">some html</textarea>
+        <textarea
+          class="form-control editor"
+          data-editor-language="css"
+          name="solution[content[receta.css]]"
+          id="solution_content[receta.css]">some css</textarea>
+      </div>
+    </form>`)
+    expect(mumuki.editors.getSubmission()).toEqual({
+      "solution[content[index.html]]": "some html",
+      "solution[content[receta.css]]": "some css"
+    });
+  });
+
   it('produces empty submission if no form nor sources', () => {
     $('body').html(``);
     expect(mumuki.editors.getSubmission()).toEqual({});
