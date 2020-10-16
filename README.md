@@ -278,7 +278,8 @@ which are granted to be safe and stable.
   "status": "passed|passed_with_warnings|failed",
   "guide_finished_by_solution": "boolean",
   "html": "string",
-  "remaining_attempts_html": "string" ,
+  "remaining_attempts_html": "string",
+  "current_exp": "integer",
   "title_html": "string",                         // kids-only
   "button_html": "string",                        // kids-only
   "expectations": [                               // kids-only
