@@ -4,56 +4,53 @@ rvm:
 - 2.6.3
 before_install:
 - gem install -v 2.0.2 bundler
-- wget https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz
-- mkdir geckodriver && tar -xzf geckodriver-v0.27.0-linux64.tar.gz -C geckodriver && rm geckodriver-v0.27.0-linux64.tar.gz
-- export PATH=$PATH:$PWD/geckodriver
 before_script:
 - psql -c 'create database travis_ci_test;' -U postgres
 - cp spec/dummy/config/database.travis.yml spec/dummy/config/database.yml
-script:
 - bundle exec rake db:schema:load
-- bundle exec rake teaspoon
-- bundle exec rake
 services:
 - postgresql
-addons:
-  firefox: '79.0'
+_shared_addons: &shared_addons
   hosts:
     - localmumuki.io
-    - base.localmumuki.io
-    - central.localmumuki.io
-    - empty.localmumuki.io
-    - foo.localmumuki.io
-    - immersive-orga.localmumuki.io
-    - private.localmumuki.io
-    - someorga.localmumuki.io
     - test.localmumuki.io
     - the-public-org.localmumuki.io
-env:
-  global:
-  - secure: IW65qMjgbuuj4kUsBwaY+iV+jaIedgf2V3W7bTLj1SjaNdc8hC9SXBiNWQrT9Ygu5Q67mKzXuu5GTyAvAGftF02UKgT+yDE43p+a9w2+Onx5dGTIXCCREIE9fgmQhAkqgt9+1E99fRWsQzqkpEVINOMvumk+HM/Rxg8B9e5jvB8=
-  - MOZ_HEADLESS=1
+    - private.localmumuki.io
 jobs:
   include:
-    - {}
-    - script: bundle exec rake capybara
+    # All Ruby tests, including Capybara with default driver
+    - script: bundle exec rake
+
+    # Capybara and Teaspoon tests on Chrome
+    - script:
+        - bundle exec rake capybara
+        - bundle exec rake teaspoon
       addons:
+        <<: *shared_addons
         chrome: stable
         apt:
           packages:
             - chromium-chromedriver
-        hosts:
-        - localmumuki.io
-        - test.localmumuki.io
-        - the-public-org.localmumuki.io
-        - private.localmumuki.io
       env: MUMUKI_CAPYBARA_DRIVER=selenium_chrome_headless
+      before_install:
+        - gem install -v 2.0.2 bundler
+        - ln -s /usr/lib/chromium-browser/chromedriver "${HOME}/bin/chromedriver"
+
+    # Capybara and Teaspoon tests on Firefox
+    - script:
+        - bundle exec rake capybara
+        - bundle exec rake teaspoon
+      addons:
+        <<: *shared_addons
+        firefox: '79.0'
+      env: MUMUKI_CAPYBARA_DRIVER=selenium_headless MOZ_HEADLESS=1
       before_script:
         - psql -c 'create database travis_ci_test;' -U postgres
         - cp spec/dummy/config/database.travis.yml spec/dummy/config/database.yml
-        - ln -s /usr/lib/chromium-browser/chromedriver "${HOME}/bin/chromedriver"
-    - script: bundle exec rake capybara
-      env: MUMUKI_CAPYBARA_DRIVER=selenium_headless
+        - bundle exec rake db:schema:load
+        - wget https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz
+        - mkdir geckodriver && tar -xzf geckodriver-v0.27.0-linux64.tar.gz -C geckodriver && rm geckodriver-v0.27.0-linux64.tar.gz
+        - export PATH=$PATH:$PWD/geckodriver
 deploy:
   - provider: rubygems
     api_key:
