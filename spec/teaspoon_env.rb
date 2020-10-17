@@ -108,12 +108,22 @@ Teaspoon.configure do |config|
   # Capybara Webkit: https://github.com/modeset/teaspoon/wiki/Using-Capybara-Webkit
   #  config.driver = :capybara_webkit
   config.driver = :selenium
-  config.driver_options = {
-    client_driver: :firefox,
-     selenium_options: {
-      options: Selenium::WebDriver::Firefox::Options.new(log_level: :warn)
-    }
-  }
+  config.driver_options =
+    if ENV['MUMUKI_CAPYBARA_DRIVER'] == 'selenium_chrome_headless'
+      {
+        client_driver: :chrome,
+        selenium_options: {
+          options: Selenium::WebDriver::Chrome::Options.new(args: ['headless', 'disable-gpu'])
+        }
+      }
+    else
+      {
+        client_driver: :firefox,
+        selenium_options: {
+          options: Selenium::WebDriver::Firefox::Options.new(log_level: :warn, args: ['-headless'])
+        }
+      }
+    end
 
   # Specify the timeout for the driver. Specs are expected to complete within this time frame or the run will be
   # considered a failure. This is to avoid issues that can arise where tests stall.
