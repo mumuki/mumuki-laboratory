@@ -1,16 +1,24 @@
 language: ruby
-cache: bundler
+cache:
+  bundler: true
+  directories:
+    - ~/.webdrivers
 rvm:
 - 2.6.3
+env:
+  global:
+    - WD_CACHE_TIME=0
 before_install:
 - gem install -v 2.0.2 bundler
 before_script:
 - psql -c 'create database travis_ci_test;' -U postgres
 - cp spec/dummy/config/database.travis.yml spec/dummy/config/database.yml
 - bundle exec rake db:schema:load
+- export PATH=~/.webdrivers:$PATH
 services:
 - postgresql
-_shared_addons: &shared_addons
+- xvfb
+_hosts: &hosts
   hosts:
     - localmumuki.io
     - test.localmumuki.io
@@ -22,35 +30,22 @@ jobs:
     - script: bundle exec rake
 
     # Capybara and Teaspoon tests on Chrome
-    - script:
+    - env: MUMUKI_CAPYBARA_DRIVER=selenium_chrome_headless
+      script:
         - bundle exec rake capybara
         - bundle exec rake teaspoon
       addons:
-        <<: *shared_addons
         chrome: stable
-        apt:
-          packages:
-            - chromium-chromedriver
-      env: MUMUKI_CAPYBARA_DRIVER=selenium_chrome_headless
-      before_install:
-        - gem install -v 2.0.2 bundler
-        - ln -s /usr/lib/chromium-browser/chromedriver "${HOME}/bin/chromedriver"
+        <<: *hosts
 
     # Capybara and Teaspoon tests on Firefox
-    - script:
+    - env: MUMUKI_CAPYBARA_DRIVER=selenium_headless MOZ_HEADLESS=1
+      script:
         - bundle exec rake capybara
         - bundle exec rake teaspoon
       addons:
-        <<: *shared_addons
         firefox: '79.0'
-      env: MUMUKI_CAPYBARA_DRIVER=selenium_headless MOZ_HEADLESS=1
-      before_script:
-        - psql -c 'create database travis_ci_test;' -U postgres
-        - cp spec/dummy/config/database.travis.yml spec/dummy/config/database.yml
-        - bundle exec rake db:schema:load
-        - wget https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz
-        - mkdir geckodriver && tar -xzf geckodriver-v0.27.0-linux64.tar.gz -C geckodriver && rm geckodriver-v0.27.0-linux64.tar.gz
-        - export PATH=$PATH:$PWD/geckodriver
+        <<: *hosts
 deploy:
   - provider: rubygems
     api_key:

@@ -137,11 +137,10 @@ bundle exec rspec
 
 ## Running JS tests
 
-> You need first to download [geckodriver](https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz), uncrompress
-> it and add it to your path
+The [`webdrivers`](https://github.com/titusfortner/webdrivers) gem automatically installs (and updates) all the necessary Selenium webdrivers. For Teaspoon to work, the `~/.webdrivers` folder should be in your `PATH` - you can do that on the usual places (`.bashrc`, `.zshrc`, `.bash_profile`, etc) or directly on the command:
 
 ```bash
-MOZ_HEADLESS=1 bundle exec rake teaspoon
+PATH=~/.webdrivers:$PATH MOZ_HEADLESS=1 bundle exec rake teaspoon
 ```
 
 ## Running `eslint`
