@@ -69,7 +69,7 @@ jobs:
         - gem install -v 2.0.2 bundler
       before_script:
         - sudo /usr/bin/safaridriver --enable
-        - psql -c 'create database travis_ci_test;' -U postgres
+        - psql -c 'create database travis_ci_test; create database development;' -U postgres
         - cp ./spec/dummy/config/database.travis.yml ./spec/dummy/config/database.yml
         - bundle exec rake db:schema:load
         - export PATH=~/.webdrivers:$PATH
