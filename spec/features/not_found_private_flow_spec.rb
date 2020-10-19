@@ -23,7 +23,7 @@ feature 'not found private on app', organization_workspace: :base do
   end
 
   scenario 'api without authorization' do
-    Capybara.current_session.driver.header 'Authorization', "Bearer #{student_api_client.token}"
+    set_request_header! 'Authorization', "Bearer #{student_api_client.token}"
 
     visit '/api/nonexistentroute'
 
@@ -34,7 +34,7 @@ feature 'not found private on app', organization_workspace: :base do
   end
 
   scenario 'api with authentication' do
-    Capybara.current_session.driver.header 'Authorization', "Bearer #{admin_api_client.token}"
+    set_request_header! 'Authorization', "Bearer #{admin_api_client.token}"
 
     visit '/api/nonexistentroute'
 

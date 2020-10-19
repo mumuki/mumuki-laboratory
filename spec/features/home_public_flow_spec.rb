@@ -17,7 +17,7 @@ feature 'public org', organization_workspace: :test do
 
   context 'anonymous visitor' do
     scenario 'from outside' do
-      Capybara.current_session.driver.header 'Referer', 'http://google.com'
+      set_request_header! 'Referer', 'http://google.com'
 
       visit '/'
 
@@ -29,7 +29,7 @@ feature 'public org', organization_workspace: :test do
     end
 
     scenario 'from inside' do
-      Capybara.current_session.driver.header 'Referer', 'http://en.mumuki.io/exercises/1'
+      set_request_header! 'Referer', 'http://en.mumuki.io/exercises/1'
 
       visit '/'
 
@@ -46,7 +46,7 @@ feature 'public org', organization_workspace: :test do
     before { exam.authorize! user }
 
     scenario 'from outside' do
-      Capybara.current_session.driver.header 'Referer', 'http://google.com'
+      set_request_header! 'Referer', 'http://google.com'
 
       visit '/'
 
@@ -59,7 +59,7 @@ feature 'public org', organization_workspace: :test do
     end
 
     scenario 'from inside' do
-      Capybara.current_session.driver.header 'Referer', 'http://en.mumuki.io/exercises/1'
+      set_request_header! 'Referer', 'http://en.mumuki.io/exercises/1'
 
       visit '/'
 
@@ -80,7 +80,7 @@ feature 'public org', organization_workspace: :test do
     before { exam.authorize! user }
 
     scenario 'from inside' do
-      Capybara.current_session.driver.header 'Referer', 'http://google.com'
+      set_request_header! 'Referer', 'http://google.com'
 
       visit '/'
 
@@ -95,7 +95,7 @@ feature 'public org', organization_workspace: :test do
   context 'incognito user' do
     before { current_organization.update! incognito_mode_enabled: true }
     scenario 'from inside' do
-      Capybara.current_session.driver.header 'Referer', 'http://google.com'
+      set_request_header! 'Referer', 'http://google.com'
 
       visit '/'
 
