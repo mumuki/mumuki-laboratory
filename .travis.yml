@@ -21,6 +21,13 @@ services:
 _hosts: &hosts
   hosts:
     - localmumuki.io
+    - base.localmumuki.io
+    - central.localmumuki.io
+    - empty.localmumuki.io
+    - foo.localmumuki.io
+    - immersive-orga.localmumuki.io
+    - private.localmumuki.io
+    - someorga.localmumuki.io
     - test.localmumuki.io
     - the-public-org.localmumuki.io
     - private.localmumuki.io
