@@ -46,6 +46,27 @@ jobs:
       addons:
         firefox: '79.0'
         <<: *hosts
+
+    # Capybara and Teaspoon tests on Safari
+    - env: MUMUKI_CAPYBARA_DRIVER=selenium_safari
+      os: osx
+      osx_image: xcode10.2
+      addons:
+        postgresql: "9.5"
+        <<: *hosts
+      before_install:
+        - rm -rf /usr/local/var/postgres
+        - initdb /usr/local/var/postgres
+        - pg_ctl -D /usr/local/var/postgres start
+        - createuser -s postgres
+        - gem install -v 2.0.2 bundler
+      before_script:
+        - sudo /usr/bin/safaridriver --enable
+        - psql -c 'create database travis_ci_test;' -U postgres
+        - cp ./spec/dummy/config/database.travis.yml ./spec/dummy/config/database.yml
+        - bundle exec rake db:schema:load
+        - export PATH=~/.webdrivers:$PATH
+      script: bundle exec rake capybara
 deploy:
   - provider: rubygems
     api_key:
