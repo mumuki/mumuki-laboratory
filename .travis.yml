@@ -61,15 +61,13 @@ jobs:
       addons:
         postgresql: "10"
         <<: *hosts
-      before_install:
+      before_script:
         - rm -rf /usr/local/var/postgres
         - initdb /usr/local/var/postgres
         - pg_ctl -D /usr/local/var/postgres start
         - createuser -s postgres
-        - gem install -v 2.0.2 bundler
-      before_script:
         - sudo /usr/bin/safaridriver --enable
-        - psql -c 'create database travis_ci_test; create database development;' -U postgres
+        - psql -c 'create database travis_ci_test;' -U postgres
         - cp ./spec/dummy/config/database.travis.yml ./spec/dummy/config/database.yml
         - bundle exec rake db:schema:load
         - export PATH=~/.webdrivers:$PATH
