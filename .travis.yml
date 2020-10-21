@@ -55,7 +55,7 @@ jobs:
         <<: *hosts
 
     # Capybara and Teaspoon tests on Safari
-    - env: MUMUKI_CAPYBARA_DRIVER=selenium_safari
+    - env: MUMUKI_CAPYBARA_DRIVER=selenium_safari RACK_ENV=test RAILS_ENV=test
       os: osx
       osx_image: xcode10.2
       addons:
