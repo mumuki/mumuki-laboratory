@@ -39,7 +39,7 @@ feature 'Guide Reset Flow', organization_workspace: :test do
       expect(page).to_not have_xpath(restart_xpath)
     end
 
-    scenario 'visit guide with solutions sent for it' do
+    scenario 'visit guide with solutions sent for it', :xpath_no_matches do
       problem.submit_solution! user
 
       visit "/lessons/#{lesson.id}"

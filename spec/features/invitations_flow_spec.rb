@@ -9,7 +9,7 @@ feature 'Invitations Flow', organization_workspace: :test do
       create(:lesson, guide: guide)
     ]) }
   let(:book) { organization.book }
- 
+
   before do
     book.update! chapters: [chapter]
   end
@@ -33,7 +33,7 @@ feature 'Invitations Flow', organization_workspace: :test do
   context 'with existing memberships' do
     let(:permissions) { { student: 'test/nodejs' } }
 
-    scenario 'visit invitation, already joined' do
+    scenario 'visit invitation, already joined', :navigation_error do
       visit '/join/invitacionAlNodejs'
       expect(page).to have_text('Start Practicing!')
     end

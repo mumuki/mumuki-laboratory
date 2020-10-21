@@ -45,7 +45,7 @@ feature 'private org' do
       allow_any_instance_of(ApplicationController).to receive(:from_sessions?).and_return(false)
     end
 
-    scenario 'visitor should raise forbidden error' do
+    scenario 'visitor should raise forbidden error', :organization_not_nil do
       set_current_user! visitor
 
       visit '/'

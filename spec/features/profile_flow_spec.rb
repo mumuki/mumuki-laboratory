@@ -49,7 +49,7 @@ feature 'Profile Flow', organization_workspace: :test do
       expect(page).to have_text('Please complete your profile data to continue!')
     end
 
-    scenario 'is able to log out' do
+    scenario 'is able to log out', :element_not_interactable_error do
       click_on 'Sign in'
       set_automatic_login! false
 
