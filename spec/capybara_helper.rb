@@ -3,6 +3,10 @@ require 'capybara/rspec'
 
 # Test helpers
 
+def page_body
+  find('body')
+end
+
 def set_request_header!(key, value)
   if Capybara.current_session.driver.respond_to? :header
     Capybara.current_session.driver.header key, value
