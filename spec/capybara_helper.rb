@@ -38,14 +38,8 @@ end
 
 def register_safari_driver!
   # No official docs for this, code was taken from https://github.com/teamcapybara/capybara/blob/master/spec/selenium_spec_safari.rb
-  if ::Selenium::WebDriver::Service.respond_to? :driver_path=
-    ::Selenium::WebDriver::Safari::Service
-  else
-    ::Selenium::WebDriver::Safari
-  end.driver_path = '/Applications/Safari Technology Preview.app/Contents/MacOS/safaridriver'
-
   Capybara.register_driver :selenium_safari do |app|
-    Capybara::Selenium::Driver.new(app, browser: :safari, options: browser_options, timeout: 30)
+    Capybara::Selenium::Driver.new(app, browser: :safari, timeout: 30)
   end
 end
 
