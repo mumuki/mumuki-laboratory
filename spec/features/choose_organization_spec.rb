@@ -43,7 +43,7 @@ feature 'Choose organization Flow' do
       expect(page).to have_text('Do you want to go there?')
     end
 
-    scenario 'when visiting with implicit subdomain and permissions to only one immersive organization' do
+    scenario 'when visiting with implicit subdomain and permissions to only one immersive organization', :navigation_error do
       set_current_user! user4
       set_implicit_central!
 
@@ -84,7 +84,7 @@ feature 'Choose organization Flow' do
     end
   end
 
-  scenario 'when organization does not exist' do
+  scenario 'when organization does not exist', :http_response_headers do
     visit '/'
 
     expect(page).to have_http_status(404)

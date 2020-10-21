@@ -182,7 +182,7 @@ feature 'Exercise Flow', organization_workspace: :test do
       expect(page.find("#mu-exercise-layout")['value']).to eq('input_right')
     end
 
-    scenario 'visit exercise by id, upload layout, not queriable language' do
+    scenario 'visit exercise by id, upload layout, not queriable language', :invalid_selector_error do
       visit "/exercises/#{problem_5.id}"
 
       expect(page).to have_text('Succ5')
@@ -272,7 +272,7 @@ feature 'Exercise Flow', organization_workspace: :test do
       expect(page).not_to have_xpath("//a[@title='Edit']")
     end
 
-    scenario 'writer should see the edit exercise link' do
+    scenario 'writer should see the edit exercise link', :xpath_no_matches do
       set_current_user! writer
 
       visit "/exercises/#{problem_2.id}"

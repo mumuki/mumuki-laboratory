@@ -115,7 +115,7 @@ feature 'Guides Flow', organization_workspace: :test do
         expect(page).not_to have_xpath("//a[@title='Edit']")
       end
 
-      scenario 'writer should see the edit guide link' do
+      scenario 'writer should see the edit guide link', :xpath_no_matches do
         set_current_user! writer
 
         visit "/guides/#{lesson.guide.id}"
