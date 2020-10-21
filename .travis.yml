@@ -62,10 +62,9 @@ jobs:
         postgresql: "10"
         <<: *hosts
       before_script:
-        - export PG_DATA=$(brew --prefix)/var/postgres
-        - rm -rf $PG_DATA
-        - initdb $PG_DATA -E utf8
-        - pg_ctl -w start -l postgres.log --pgdata ${PG_DATA}
+        - rm -rf /usr/local/var/postgres
+        - initdb /usr/local/var/postgres
+        - pg_ctl -D /usr/local/var/postgres start
         - createuser -s postgres
         - sudo /usr/bin/safaridriver --enable
         - psql -c 'create database travis_ci_test;' -U postgres
