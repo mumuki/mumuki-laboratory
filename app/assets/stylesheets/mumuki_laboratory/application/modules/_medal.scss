@@ -3,6 +3,12 @@
     float: left;
   }
 
+  &.corollary {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   &.unacquired {
     filter: grayscale(100%);
   }
