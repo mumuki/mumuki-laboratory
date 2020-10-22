@@ -36,5 +36,3 @@ group :development, :test do
   gem 'teaspoon-jasmine'
   gem "selenium-webdriver"
 end
-
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'fix-escaped-chars-on-result-details'
