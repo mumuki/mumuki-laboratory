@@ -1,2 +1,9 @@
 .mu-medal {
+  &.content {
+    float: left;
+  }
+
+  &.unacquired {
+    filter: grayscale(100%);
+  }
 }
