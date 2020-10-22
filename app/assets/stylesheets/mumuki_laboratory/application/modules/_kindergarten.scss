@@ -63,13 +63,22 @@
   // no final state,
   // initial state fills its area
 
-  .mu-kids-state.mu-state-initial {
-    height: 100%;
-    width: 100%;
-  }
-
-  .mu-kids-state.mu-state-final {
-    display: none;
+  .mu-kids-state {
+    &.mu-state-initial {
+      height: 100%;
+      width: 100%;
+    }
+    &.mu-state-final {
+      display: none;
+    }
+    .mu-kids-state-image {
+      padding: 30px;
+      img {
+        padding: 0;
+        border: 5px solid black;
+        border-radius: 30px;
+      }
+    }
   }
 
   .mu-kids-compass-rose {
@@ -110,6 +119,24 @@
       border-color: $mu-color-link;
       border-radius: $border-width;
       box-shadow: none;
+
+      .modal-body {
+        height: 100%;
+        div {
+          height: 100%;
+          .mu-kindergarten-modal-markdown,
+          .submission-result {
+            * {
+              height: 100%;
+            }
+            img {
+              width: 100%;
+              object-position: center;
+              object-fit: contain;
+            }
+          }
+        }
+      }
 
       .mu-kindergarten-close-button {
         $diameter: 64px;
