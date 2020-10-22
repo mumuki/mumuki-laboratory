@@ -122,23 +122,23 @@
 
       .modal-body {
         height: 100%;
-        div {
+        div, p {
           height: 100%;
-          .mu-kindergarten-modal-markdown,
-          .submission-result {
-            * {
-              height: 100%;
+          .mu-kindergarten-context-image-slides {
+            img:not(.active) {
+              display: none;
             }
-            img {
-              width: 100%;
-              object-position: center;
-              object-fit: contain;
-            }
+          }
+          img {
+            width: 100%;
+            height: 100%;
+            object-position: center;
+            object-fit: contain;
           }
         }
       }
 
-      .mu-kindergarten-close-button {
+      .mu-kindergarten-modal-button {
         $diameter: 64px;
         position: absolute;
         border-radius: 50%;
@@ -149,14 +149,21 @@
         border: none;
         padding: 0;
         background: $mu-color-link;
-        top: - $diameter / 2 - $border-width / 2;
-        right: - $diameter / 2 - $border-width / 2;
+        &.mu-next,
+        &.mu-close {
+          top: - $diameter / 2 - $border-width / 2;
+          right: - $diameter / 2 - $border-width / 2;
+        }
+        &.mu-previous {
+          top: - $diameter / 2 - $border-width / 2;
+          left: - $diameter / 2 - $border-width / 2;
+        }
       }
 
       @each $class, $color in ('broken': $mu-color-broken, 'danger': $mu-color-danger, 'success': $mu-color-success, 'warning': $mu-color-warning) {
         &.#{$class} {
           border-color: $color;
-          .mu-kindergarten-close-button {
+          .mu-kindergarten-modal-button {
             background: $color;
           }
         }

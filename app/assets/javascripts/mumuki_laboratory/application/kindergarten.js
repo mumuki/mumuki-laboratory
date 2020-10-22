@@ -27,13 +27,53 @@ mumuki.load(() => {
       $i.toggleClass('fa-caret-up').toggleClass('fa-caret-down');
       $hintMedia.toggleClass('closed');
     },
+    modal: {
+      _activeSlideImage() {
+        return $('.mu-kindergarten-context-image-slides').find('.active');
+      },
+      clickButton(prevOrNext) {
+        this._activeSlideImage().removeClass('active')[prevOrNext]().addClass('active');
+        this.showNextOrCloseButton();
+        this.hidePreviousButtonIfFirstImage();
+      },
+      nextSlide() {
+        this.clickButton('next');
+      },
+      prevSlide() {
+        this.clickButton('prev');
+      },
+      showNextOrCloseButton() {
+        const $next = $('.mu-kindergarten-modal-button.mu-next');
+        const $close = $('.mu-kindergarten-modal-button.mu-close');
+        if (this._activeSlideImage().is(':last-child')) {
+          $next.addClass('hidden');
+          $close.removeClass('hidden');
+        } else {
+          $close.addClass('hidden');
+          $next.removeClass('hidden');
+        }
+      },
+      hidePreviousButtonIfFirstImage() {
+        const $prev = $('.mu-kindergarten-modal-button.mu-previous');
+        if (this._activeSlideImage().is(':first-child')) {
+          $prev.addClass('hidden');
+        } else {
+          $prev.removeClass('hidden');
+        }
+      }
+    }
   };
 
-  mumuki.resize(() => {
-    mumuki.kids.scaleState($('.mu-kids-states'), 40);
-    mumuki.kids.scaleBlocksArea($('.mu-kids-blocks'));
-  })
+  $(document).ready(() => {
 
-  mumuki.kindergarten.disablePlaySoundButtonIfNotSupported();
+    mumuki.resize(() => {
+      mumuki.kids.scaleState($('.mu-kids-states'), 40);
+      mumuki.kids.scaleBlocksArea($('.mu-kids-blocks'));
+    })
+
+    mumuki.kindergarten.disablePlaySoundButtonIfNotSupported();
+    mumuki.kindergarten.modal.showNextOrCloseButton();
+
+  })
 
 });
