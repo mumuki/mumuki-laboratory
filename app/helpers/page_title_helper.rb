@@ -5,7 +5,7 @@ module PageTitleHelper
     if subject && !subject.new_record?
       "#{subject.friendly} - #{name}"
     else
-      "#{name} - #{t :mumuki_catchphrase}"
+      "#{name}"
     end
   end
 end
