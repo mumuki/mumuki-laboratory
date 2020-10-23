@@ -2,6 +2,7 @@ require 'spec_helper'
 
 feature 'not found public on app' do
   let!(:central) { create(:organization, name: 'central') }
+  let!(:base) { create(:organization, name: 'base') }
   let!(:some_orga) { create(:public_organization, name: 'someorga', profile: profile) }
 
   let(:profile) { Mumuki::Domain::Organization::Profile.parse json  }

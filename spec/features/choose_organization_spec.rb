@@ -8,7 +8,7 @@ feature 'Choose organization Flow' do
   let(:user4) { create(:user, permissions: {student: 'immersive-orga/*'}) }
 
   before do
-    %w(pdep central foo immersive-orga).each do |it|
+    %w(pdep central foo immersive-orga base).each do |it|
       create(:organization,
              name: it,
              book: create(:book,
