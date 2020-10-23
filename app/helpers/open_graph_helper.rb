@@ -3,7 +3,7 @@ module OpenGraphHelper
     %Q{
       <meta property="og:site_name" content="#{Organization.current.site_name}" />
       <meta property="og:title" content="#{h page_title(subject)}"/>
-      <meta property="og:description" content="#{Organization.current.central? ? t(:mumuki_short_description) : Organization.current.description}"/>
+      <meta property="og:description" content="#{Organization.current.description}"/>
       <meta property="og:type" content="website"/>
       <meta property="og:image" content="#{Organization.current.open_graph_image_url}"/>
       <meta property="og:url" content="#{request.original_url}"/>
