@@ -197,7 +197,6 @@ pt:
   permissions: Permissões
   please_fill_profile_data: Preencha suas informações pessoais para continuar!
   please_validate: Você está prestes a entrar no curso. Para oferecer uma experiência melhor, valide que seus dados abaixo sejam reais e corretos.
-  powered_by_mumuki_html: por <span class = "da da-mumuki-circle"> </ span> mumuki
   previous_exercise: Anterior
   problem_with_exercise: '[Mumuki] Erro com exercício %{title}'
   processing_your_solution: Estamos processando sua solução

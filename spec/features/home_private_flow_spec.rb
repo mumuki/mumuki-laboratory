@@ -59,7 +59,6 @@ feature 'private org' do
       visit '/'
 
       expect(student.reload.last_organization).to eq current_organization
-      expect(page).to have_text('powered by mumuki')
       expect(page).to have_text(current_organization.description)
       expect(page).to have_text(current_organization.book.description)
     end
@@ -70,7 +69,6 @@ feature 'private org' do
       visit '/'
 
       expect(teacher.reload.last_organization).to eq current_organization
-      expect(page).to have_text('powered by mumuki')
       expect(page).to have_text(current_organization.description)
       expect(page).to have_text(current_organization.book.description)
     end
