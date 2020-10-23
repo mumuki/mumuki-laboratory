@@ -12,8 +12,8 @@ describe PageTitleHelper, organization_workspace: :test do
 
     before { reindex_current_organization! }
 
-    it { expect(page_title nil).to eq 'Mumuki - test - Improve your programming skills' }
-    it { expect(page_title Problem.new).to eq 'Mumuki - test - Improve your programming skills' }
+    it { expect(page_title nil).to eq 'Mumuki - test' }
+    it { expect(page_title Problem.new).to eq 'Mumuki - test' }
     it { expect(page_title exercise).to eq 'C1: A Guide - An Exercise - Mumuki - test' }
   end
 end
