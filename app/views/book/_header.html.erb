@@ -1,0 +1,18 @@
+<div class="book-header <%= current_user? ? '' : 'logged' %>">
+  <h1>ム mumuki<%= Organization.current.title_suffix %></h1>
+
+  <img src="<%= Organization.current.banner_url %>" alt="<%= Organization.current.name %> - Mumuki">
+  <h2><%= @book.name %></h2>
+
+  <% unless Organization.current.central? %>
+    <h3>
+      <small><%= Organization.current.description %></small>
+      <br>
+      <small><%= t :powered_by_mumuki_html %></small>
+    </h3>
+  <% end %>
+</div>
+
+<div class="text-box">
+  <%= @book.description_html %>
+</div>
