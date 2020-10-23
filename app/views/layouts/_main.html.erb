@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <% end %>
 
-  <meta name="description" content="<%= t :mumuki_short_description %>"/>
+  <meta name="description" content="<%= Organization.current.description %>"/>
+
+
 
   <%= open_graph_tags subject %>
   <%= assets_include_tags %>
