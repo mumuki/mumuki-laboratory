@@ -112,7 +112,7 @@ Teaspoon.configure do |config|
   #  config.driver = :capybara_webkit
   config.driver = :selenium
   config.driver_options =
-    case ENV['MUMUKI_CAPYBARA_DRIVER']
+    case ENV['MUMUKI_SELENIUM_DRIVER']
     when 'chrome'
       {
         client_driver: :chrome,

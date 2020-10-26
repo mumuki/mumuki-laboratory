@@ -29,7 +29,7 @@ end
 # Config helpers
 
 def selected_driver
-  case ENV['MUMUKI_CAPYBARA_DRIVER']
+  case ENV['MUMUKI_SELENIUM_DRIVER']
   when 'chrome'
     :selenium_chrome_headless
   when 'firefox'
