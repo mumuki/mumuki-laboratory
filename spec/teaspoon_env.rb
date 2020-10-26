@@ -1,3 +1,6 @@
+require 'selenium-webdriver'
+require 'webdrivers'
+
 unless defined?(Rails)
   ENV["RAILS_ROOT"] = File.expand_path("../dummy", __FILE__)
   require File.expand_path("../dummy/config/environment", __FILE__)
@@ -109,12 +112,17 @@ Teaspoon.configure do |config|
   #  config.driver = :capybara_webkit
   config.driver = :selenium
   config.driver_options =
-    if ENV['MUMUKI_CAPYBARA_DRIVER'] == 'selenium_chrome_headless'
+    case ENV['MUMUKI_CAPYBARA_DRIVER']
+    when 'selenium_chrome_headless'
       {
         client_driver: :chrome,
         selenium_options: {
           options: Selenium::WebDriver::Chrome::Options.new(args: ['headless', 'disable-gpu'])
         }
+      }
+    when 'selenium_safari'
+      {
+        client_driver: :safari,
       }
     else
       {

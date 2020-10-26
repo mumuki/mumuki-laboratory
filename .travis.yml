@@ -71,7 +71,9 @@ jobs:
         - cp ./spec/dummy/config/database.travis.yml ./spec/dummy/config/database.yml
         - bundle exec rake db:schema:load
         - export PATH=~/.webdrivers:$PATH
-      script: bundle exec rake capybara
+      script:
+        - bundle exec rake capybara
+        - bundle exec rake teaspoon
 deploy:
   - provider: rubygems
     api_key:
