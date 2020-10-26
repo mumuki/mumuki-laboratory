@@ -139,21 +139,21 @@ bundle exec rspec
 
 The Capybara config of this project supports running tests on Firefox, Chrome and Safari via Selenium. The [`webdrivers`](https://github.com/titusfortner/webdrivers) gem automatically installs (and updates) all the necessary Selenium webdrivers.
 
-By default, Capybara tests will run with the default dummy-driver (Rack test). If you want to run on a real browser, you should set `MUMUKI_CAPYBARA_DRIVER` variable to `firefox`, `chrome` or `safari`. Also, a Rake task to run just the Capybara tests is available.
+By default, Capybara tests will run with the default dummy-driver (Rack test). If you want to run on a real browser, you should set `MUMUKI_SELENIUM_DRIVER` variable to `firefox`, `chrome` or `safari`. Also, a Rake task to run just the Capybara tests is available.
 
 Some examples:
 
 ```bash
 # Run all tests, using Firefox for Capybara
-MUMUKI_CAPYBARA_DRIVER=firefox bundle exec rake
+MUMUKI_SELENIUM_DRIVER=firefox bundle exec rake
 
 # Run Capybara tests on Chrome
-MUMUKI_CAPYBARA_DRIVER=chrome bundle exec rake capybara
+MUMUKI_SELENIUM_DRIVER=chrome bundle exec rake capybara
 ```
 
 ## Running JS tests
 
-The [`webdrivers`](https://github.com/titusfortner/webdrivers) gem also works with Teaspoon, no need to install anything manually.
+The [`webdrivers`](https://github.com/titusfortner/webdrivers) gem also works with Teaspoon, no need to install anything manually. By default tests run on Firefox, but this behavior can be changed by setting `MUMUKI_SELENIUM_DRIVER` (see section above).
 
 ```bash
 bundle exec rake teaspoon
