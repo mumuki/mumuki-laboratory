@@ -29,7 +29,16 @@ end
 # Config helpers
 
 def selected_driver
-  ENV['MUMUKI_CAPYBARA_DRIVER']&.to_sym || :rack_test
+  case ENV['MUMUKI_CAPYBARA_DRIVER']
+  when 'chrome'
+    :selenium_chrome_headless
+  when 'firefox'
+    :selenium_headless
+  when 'safari'
+    :selenium_safari
+  else
+    :rack_test
+  end
 end
 
 def run_with_selenium?
