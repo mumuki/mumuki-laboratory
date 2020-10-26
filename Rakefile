@@ -25,7 +25,7 @@ require 'rspec/core'
 require 'rspec/core/rake_task'
 
 desc "Run all specs in spec directory (excluding plugin specs)"
-RSpec::Core::RakeTask.new(:spec)
+RSpec::Core::RakeTask.new
 
 desc "Force development environment, required by javascript specs"
 task :development do
@@ -33,7 +33,7 @@ task :development do
   ENV['RAILS_ENV'] = 'development'
 end
 
-RSpec::Core::RakeTask.new(:capybara => 'app:db:test:prepare') do |t|
+RSpec::Core::RakeTask.new(:capybara) do |t|
   t.pattern = 'spec/features/*_spec.rb'
 end
 
