@@ -8,8 +8,9 @@ def page_body
 end
 
 def set_request_header!(key, value)
-  if Capybara.current_session.driver.respond_to? :header
-    Capybara.current_session.driver.header key, value
+  current_driver = Capybara.current_session.driver
+  if current_driver.respond_to? :header
+    current_driver.header key, value
   else
     $custom_headers = {key => value}
   end
