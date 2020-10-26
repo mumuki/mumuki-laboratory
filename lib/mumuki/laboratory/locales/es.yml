@@ -160,8 +160,6 @@ es:
   minutes: minutos
   more_messages: Ver mensajes anteriores
   moderator: Mentor
-  mumuki_catchphrase: Aprendé a programar
-  mumuki_short_description: Mumuki es la plataforma libre y gratuita para aprender a programar, de la práctica a la teoría y en tu idioma
   my_doubts: Mis consultas
   name: Nombre
   navigation_continue: 'Siguiente %{kind}: %{sibling}'
@@ -208,7 +206,6 @@ es:
   permissions: Permisos
   please_fill_profile_data: ¡Completá tus datos personales para continuar!
   please_validate: 'Estás a punto de ingresar al curso. Para poder ofrecerte una mejor experiencia, por favor validá que tus datos a continuación sean reales y correctos.'
-  powered_by_mumuki_html: "por <span class=\"da da-mumuki-circle\"></span> mumuki"
   previous_exercise: Anterior
   problem_with_exercise: '[Mumuki] Error con el ejercicio: %{title}'
   processing_your_solution: Estamos procesando tu solución
@@ -256,7 +253,6 @@ es:
   start_practicing: ¡Empezá ahora!
   start_using_mumuki: ¡Empezá a usar Mumuki!
   status: Estado
-  stay_here: No, quiero quedarme acá
   stop_emails?: ¿Querés dejar de recibir estos mails?
   subscribe: Recibir notificaciones
   submission: solución

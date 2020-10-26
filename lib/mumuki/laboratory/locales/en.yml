@@ -148,8 +148,6 @@ en:
   messages_error: Previous messages are unavailable. Please try again later.
   more_messages: More
   moderator: Mentor
-  mumuki_catchphrase: Improve your programming skills
-  mumuki_short_description: Mumuki is a simple, open and collaborative platform for sharing and solving programming exercises. It is aimed to help people with learning and teaching programing languages and paradigms
   my_doubts: My doubts
   my_submissions: My Submissions
   name: Name
@@ -191,7 +189,6 @@ en:
   permissions: Permissions
   please_fill_profile_data: Please complete your profile data to continue!
   please_validate: 'Please validate your data before continue:'
-  powered_by_mumuki_html: "powered by <span class=\"da da-mumuki-circle\"></span> mumuki"
   previous_exercise: Previous
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'
   processing_your_solution: We are processing you solution
@@ -234,7 +231,6 @@ en:
   start_practicing: Start Practicing!
   start_using_mumuki: Start using Mumuki!
   status: Status
-  stay_here: I want to stay here
   stop_emails?: Want to stop getting emails?
   submission: submission
   submission_date: Submission date

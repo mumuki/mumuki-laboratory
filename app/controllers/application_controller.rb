@@ -40,14 +40,17 @@ class ApplicationController < ActionController::Base
                 :extension_javascript_url
 
   def should_redirect_to_main_organization?
+    # TODO use immersive contexts here
     should_choose_organization? && current_user.has_immersive_main_organization?
   end
 
   def redirect_to_main_organization!
+    # TODO use immersive contexts here
     redirect_to current_user.main_organization.url_for(request.path)
   end
 
   def should_choose_organization?
+    # TODO use immersive contexts here
     current_user? &&
       current_user.has_student_granted_organizations? &&
       Mumukit::Platform.implicit_organization?(request)
