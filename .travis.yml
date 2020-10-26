@@ -36,7 +36,7 @@ jobs:
     - script: bundle exec rake
 
     # Capybara and Teaspoon tests on Chrome
-    - env: MUMUKI_CAPYBARA_DRIVER=selenium_chrome_headless
+    - env: MUMUKI_CAPYBARA_DRIVER=chrome
       script:
         - bundle exec rake capybara
         - bundle exec rake teaspoon
@@ -45,7 +45,7 @@ jobs:
         <<: *hosts
 
     # Capybara and Teaspoon tests on Firefox
-    - env: MUMUKI_CAPYBARA_DRIVER=selenium_headless MOZ_HEADLESS=1
+    - env: MUMUKI_CAPYBARA_DRIVER=firefox
       script:
         - bundle exec rake capybara
         - bundle exec rake teaspoon
@@ -54,7 +54,7 @@ jobs:
         <<: *hosts
 
     # Capybara and Teaspoon tests on Safari
-    - env: MUMUKI_CAPYBARA_DRIVER=selenium_safari RACK_ENV=test RAILS_ENV=test
+    - env: MUMUKI_CAPYBARA_DRIVER=safari RACK_ENV=test RAILS_ENV=test
       os: osx
       osx_image: xcode10.2
       addons:

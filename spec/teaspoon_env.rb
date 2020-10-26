@@ -113,14 +113,14 @@ Teaspoon.configure do |config|
   config.driver = :selenium
   config.driver_options =
     case ENV['MUMUKI_CAPYBARA_DRIVER']
-    when 'selenium_chrome_headless'
+    when 'chrome'
       {
         client_driver: :chrome,
         selenium_options: {
           options: Selenium::WebDriver::Chrome::Options.new(args: ['headless', 'disable-gpu'])
         }
       }
-    when 'selenium_safari'
+    when 'safari'
       {
         client_driver: :safari,
       }
