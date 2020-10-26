@@ -31,6 +31,8 @@ _hosts: &hosts
     - the-public-org.localmumuki.io
     - private.localmumuki.io
 jobs:
+  allow_failures:
+    - os: osx
   include:
     # All Ruby tests, including Capybara with default driver
     - script: bundle exec rake
