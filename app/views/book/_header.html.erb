@@ -1,12 +1,17 @@
+<% @organization = Organization.current %>
 <div class="book-header <%= current_user? ? '' : 'logged' %>">
-  <h1>ム mumuki<%= Organization.current.title_suffix %></h1>
+  <%#
+    H1 is not actually displayed.
+    This weird title structure is kept for backward compatibility only
+  %>
+  <h1><%= @organization.page_name %></h1>
 
-  <img src="<%= Organization.current.banner_url %>" alt="<%= Organization.current.display_name %>">
-  <h2><%= @book.name %></h2>
+  <img src="<%= @organization.banner_url %>" alt="<%= @organization.display_name %>">
+  <h2><%= @organization.page_name %></h2>
 
-  <h3><small><%= Organization.current.description %></small></h3>
+  <h3><small><%= @organization.description %></small></h3>
 </div>
 
 <div class="text-box">
-  <%= @book.description_html %>
+  <%= @organization.page_description_html %>
 </div>

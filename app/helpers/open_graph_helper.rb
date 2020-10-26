@@ -1,7 +1,7 @@
 module OpenGraphHelper
   def open_graph_tags(subject)
     %Q{
-      <meta property="og:site_name" content="#{Organization.current.site_name}" />
+      <meta property="og:site_name" content="#{Organization.current.display_name}" />
       <meta property="og:title" content="#{h page_title(subject)}"/>
       <meta property="og:description" content="#{Organization.current.description}"/>
       <meta property="og:type" content="website"/>

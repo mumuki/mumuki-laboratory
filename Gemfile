@@ -8,6 +8,7 @@ gem 'puma'
 gem 'execjs'
 gem 'therubyracer', platforms: :ruby
 gem 'uglifier', '~> 2.7'
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'feature-display-and-page-fields'
 
 group :test do
   gem 'rspec-rails', '~> 3.6'
