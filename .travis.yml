@@ -14,7 +14,6 @@ before_script:
 - psql -c 'create database travis_ci_test;' -U postgres
 - cp spec/dummy/config/database.travis.yml spec/dummy/config/database.yml
 - bundle exec rake db:schema:load
-- export PATH=~/.webdrivers:$PATH
 services:
 - postgresql
 - xvfb
@@ -70,7 +69,6 @@ jobs:
         - psql -c 'create database travis_ci_test;' -U postgres
         - cp ./spec/dummy/config/database.travis.yml ./spec/dummy/config/database.yml
         - bundle exec rake db:schema:load
-        - export PATH=~/.webdrivers:$PATH
       script:
         - bundle exec rake capybara
         - bundle exec rake teaspoon
