@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200804191643) do
+ActiveRecord::Schema.define(version: 20201026225312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,8 @@ ActiveRecord::Schema.define(version: 20200804191643) do
     t.bigint "organization_id"
     t.datetime "submitted_at"
     t.bigint "parent_id"
-    t.integer "top_submission_status"
+    t.integer "top_submission_status", default: 0
+    t.boolean "misplaced"
     t.index ["exercise_id"], name: "index_assignments_on_exercise_id"
     t.index ["organization_id"], name: "index_assignments_on_organization_id"
     t.index ["parent_id"], name: "index_assignments_on_parent_id"
@@ -124,9 +125,12 @@ ActiveRecord::Schema.define(version: 20200804191643) do
     t.boolean "requires_moderator_response", default: true
     t.string "last_moderator_access_by_id"
     t.datetime "last_moderator_access_at"
+    t.bigint "status_updated_by_id"
+    t.datetime "status_updated_at"
     t.index ["initiator_id"], name: "index_discussions_on_initiator_id"
     t.index ["item_type", "item_id"], name: "index_discussions_on_item_type_and_item_id"
     t.index ["organization_id"], name: "index_discussions_on_organization_id"
+    t.index ["status_updated_by_id"], name: "index_discussions_on_status_updated_by_id"
   end
 
   create_table "exam_authorizations", force: :cascade do |t|
@@ -311,8 +315,11 @@ ActiveRecord::Schema.define(version: 20200804191643) do
     t.text "theme", default: "{}", null: false
     t.text "profile", default: "{}", null: false
     t.integer "progressive_display_lookahead"
-    t.integer "target_audience", default: 0
     t.boolean "incognito_mode_enabled"
+    t.integer "target_audience", default: 0
+    t.text "display_name"
+    t.text "display_description"
+    t.boolean "wins_page"
     t.index ["book_id"], name: "index_organizations_on_book_id"
     t.index ["name"], name: "index_organizations_on_name", unique: true
   end
