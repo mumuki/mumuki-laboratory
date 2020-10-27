@@ -107,8 +107,8 @@
       $width: 800px;
       $height: $width * 0.625;
 
-      height: $height;
       width: $width;
+      height: $height;
 
       top: calc(50vh - #{$height} / 2);
       left: calc(50vw - #{$width} / 2);
@@ -160,15 +160,51 @@
         }
       }
 
-      @each $class, $color in ('broken': $mu-color-broken, 'danger': $mu-color-danger, 'success': $mu-color-success, 'warning': $mu-color-warning) {
+      $mu-statuses-colors: (
+        'broken': $mu-color-broken,
+        'danger': $mu-color-danger,
+        'success': $mu-color-success,
+        'warning': $mu-color-warning,
+        'passed': $mu-color-success,
+        'passed-with-warnings': $mu-color-warning,
+        'failed': $mu-color-danger,
+        'aborted': $mu-color-broken,
+        'pending': $mu-color-info
+      );
+
+      @each $class, $color in $mu-statuses-colors {
         &.#{$class} {
           border-color: $color;
           .mu-kindergarten-modal-button {
             background: $color;
           }
         }
+        .submission-results {
+          width: 100%;
+          height: 100%;
+          .mu-kids-callout-#{$class},
+          p {
+            display: none;
+          }
+          .mu-kids-default-#{$class} {
+            width: 100%;
+            height: 100%;
+            img {
+              width: 100%;
+              height: 100%;
+              object-position: center;
+              object-fit: contain;
+            }
+          }
+        }
       }
     }
+  }
+}
+
+#kids-results.mu-kindergarten-context {
+  .modal-body{
+    height: calc(100% - 95px);
   }
 }
 

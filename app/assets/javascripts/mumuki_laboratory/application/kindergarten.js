@@ -27,6 +27,11 @@ mumuki.load(() => {
       $i.toggleClass('fa-caret-up').toggleClass('fa-caret-down');
       $hintMedia.toggleClass('closed');
     },
+    showOrHideExpandHintButton() {
+      const $button = $('.expand-or-collapse-hint-media');
+      const $hintMedia = $('.mu-kindergarten-hint-media');
+      if (!$hintMedia.get(0)) $button.addClass('hidden');
+    },
     modal: {
       _activeSlideImage() {
         return $('.mu-kindergarten-context-image-slides').find('.active');
@@ -61,18 +66,33 @@ mumuki.load(() => {
           $prev.removeClass('hidden');
         }
       }
+    },
+    resultPopup: {
+      _showOnSuccessPopup(data) {
+        mumuki.kids._showOnSuccessPopup(data);
+        $('#kids-results .modal-content').addClass(data.status);
+      }
     }
   };
 
   $(document).ready(() => {
 
-    mumuki.resize(() => {
-      mumuki.kids.scaleState($('.mu-kids-states'), 40);
-      mumuki.kids.scaleBlocksArea($('.mu-kids-blocks'));
-    })
+    if ($('.mu-kindergarten').get(0)) {
 
-    mumuki.kindergarten.disablePlaySoundButtonIfNotSupported();
-    mumuki.kindergarten.modal.showNextOrCloseButton();
+      mumuki.resize(() => {
+        mumuki.kids.scaleState($('.mu-kids-states'), 40);
+        mumuki.kids.scaleBlocksArea($('.mu-kids-blocks'));
+      })
+
+      mumuki.kindergarten.showOrHideExpandHintButton();
+      mumuki.kindergarten.disablePlaySoundButtonIfNotSupported();
+
+      mumuki.kindergarten.modal.showNextOrCloseButton();
+
+      mumuki.kids.resultAction.passed = mumuki.kindergarten.resultPopup._showOnSuccessPopup;
+      mumuki.kids.resultAction.passed_with_warnings = mumuki.kindergarten.resultPopup._showOnSuccessPopup;
+      
+    }
 
   })
 
