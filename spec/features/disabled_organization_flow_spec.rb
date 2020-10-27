@@ -17,7 +17,6 @@ feature 'disable user flow', organization_workspace: :test do
   scenario 'enabled organization' do
     visit '/'
 
-    expect(page).to have_text('ム mumuki')
     expect(page).to have_text(current_organization.book.name)
     expect(user.reload.last_organization).to eq current_organization
   end
@@ -29,7 +28,6 @@ feature 'disable user flow', organization_workspace: :test do
     scenario 'visit /' do
       visit '/'
 
-      expect(page).to_not have_text('ム mumuki')
       expect(page).to_not have_text(current_organization.book.name)
       expect(page).to have_text(I18n.t(:unprepared_organization_explanation))
     end
@@ -37,7 +35,6 @@ feature 'disable user flow', organization_workspace: :test do
     scenario 'visit /user' do
       visit '/test/user'
 
-      expect(page).to_not have_text('ム mumuki')
       expect(page).to_not have_text(current_organization.book.name)
       expect(page).to have_text(I18n.t(:unprepared_organization_explanation))
     end
@@ -51,7 +48,6 @@ feature 'disable user flow', organization_workspace: :test do
     scenario 'visit /' do
       visit '/'
 
-      expect(page).to_not have_text('ム mumuki')
       expect(page).to_not have_text(current_organization.book.name)
       expect(page).to have_text(I18n.t(:disabled_organization_explanation))
     end
@@ -59,7 +55,6 @@ feature 'disable user flow', organization_workspace: :test do
     scenario 'visit /user' do
       visit '/test/user'
 
-      expect(page).to_not have_text('ム mumuki')
       expect(page).to_not have_text(current_organization.book.name)
       expect(page).to have_text(I18n.t(:disabled_organization_explanation))
     end

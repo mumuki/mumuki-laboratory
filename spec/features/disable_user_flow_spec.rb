@@ -17,7 +17,6 @@ feature 'disable user flow', organization_workspace: :test do
     scenario 'enabled visitor' do
       visit '/'
 
-      expect(page).to have_text('ム mumuki')
       expect(page).to have_text(current_organization.book.name)
       expect(user.reload.last_organization).to eq current_organization
     end
@@ -27,7 +26,6 @@ feature 'disable user flow', organization_workspace: :test do
 
       visit '/'
 
-      expect(page).to_not have_text('ム mumuki')
       expect(page).to_not have_text(current_organization.book.name)
       expect(page).to have_text('You are trying to visit a permamently disabled or deleted resource')
     end

@@ -21,7 +21,6 @@ feature 'public org', organization_workspace: :test do
 
       visit '/'
 
-      expect(page).to have_text('ム mumuki')
       expect(page).to have_text('First Steps')
       expect(page).to have_selector('.chapter', text: 'Functional Programming')
       expect(page).to have_text(current_organization.book.name)
@@ -33,7 +32,6 @@ feature 'public org', organization_workspace: :test do
 
       visit '/'
 
-      expect(page).to have_text('ム mumuki')
       expect(page).to have_text('First Steps')
       expect(page).to have_selector('.chapter', text: 'Functional Programming')
       expect(page).to have_text(current_organization.book.name)
@@ -50,7 +48,6 @@ feature 'public org', organization_workspace: :test do
 
       visit '/'
 
-      expect(page).to have_text('ム mumuki')
       expect(page).to have_text('First Steps')
       expect(page).to have_selector('.chapter', text: 'Functional Programming')
       expect(page).to have_text(current_organization.book.name)
@@ -63,7 +60,6 @@ feature 'public org', organization_workspace: :test do
 
       visit '/'
 
-      expect(page).to have_text('ム mumuki')
       expect(page).to have_text('First Steps')
       expect(page).to have_selector('.chapter', text: 'Functional Programming')
       expect(page).to_not have_selector('.chapter.mu-locked', text: 'Functional Programming')
@@ -84,7 +80,6 @@ feature 'public org', organization_workspace: :test do
 
       visit '/'
 
-      expect(page).to have_text('ム mumuki')
       expect(page).to have_text('First Steps')
       expect(page).to have_selector('.chapter.mu-locked', text: 'Functional Programming')
       expect(page).to have_text(current_organization.book.name)
@@ -99,7 +94,6 @@ feature 'public org', organization_workspace: :test do
 
       visit '/'
 
-      expect(page).to have_text('ム mumuki')
       expect(page).to have_text('First Steps')
       expect(page).to have_selector('.chapter', text: 'Functional Programming')
       expect(page).to have_text(current_organization.book.name)
