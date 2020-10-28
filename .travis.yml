@@ -8,8 +8,6 @@ rvm:
 env:
   global:
     - WD_CACHE_TIME=0
-before_install:
-- gem install -v 2.0.2 bundler
 before_script:
 - psql -c 'create database travis_ci_test;' -U postgres
 - cp spec/dummy/config/database.travis.yml spec/dummy/config/database.yml
@@ -37,43 +35,34 @@ jobs:
     # All Ruby tests, including Capybara with default driver
     - script: bundle exec rake
 
-    # Capybara and Teaspoon tests on Chrome
+    # Web tests on Chrome
     - env: MUMUKI_SELENIUM_DRIVER=chrome
-      script:
-        - bundle exec rake capybara
-        - bundle exec rake teaspoon
+      script: bundle exec rake spec:web
       addons:
         chrome: stable
         <<: *hosts
 
-    # Capybara and Teaspoon tests on Firefox
+    # Web tests on Firefox
     - env: MUMUKI_SELENIUM_DRIVER=firefox
-      script:
-        - bundle exec rake capybara
-        - bundle exec rake teaspoon
+      script: bundle exec rake spec:web
       addons:
         firefox: '79.0'
         <<: *hosts
 
-    # Capybara and Teaspoon tests on Safari
+    # Web tests on Safari
     - env: MUMUKI_SELENIUM_DRIVER=safari RACK_ENV=test RAILS_ENV=test
       os: osx
       osx_image: xcode10.2
       addons:
-        postgresql: "10"
+        postgresql: '10'
         <<: *hosts
-      before_script:
+      before_install:
         - rm -rf /usr/local/var/postgres
         - initdb /usr/local/var/postgres
         - pg_ctl -D /usr/local/var/postgres start
         - createuser -s postgres
         - sudo /usr/bin/safaridriver --enable
-        - psql -c 'create database travis_ci_test;' -U postgres
-        - cp ./spec/dummy/config/database.travis.yml ./spec/dummy/config/database.yml
-        - bundle exec rake db:schema:load
-      script:
-        - bundle exec rake capybara
-        - bundle exec rake teaspoon
+      script: bundle exec rake spec:web
 deploy:
   - provider: rubygems
     api_key:

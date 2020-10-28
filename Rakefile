@@ -33,12 +33,15 @@ task :development do
   ENV['RAILS_ENV'] = 'development'
 end
 
-RSpec::Core::RakeTask.new(:capybara) do |t|
+RSpec::Core::RakeTask.new('spec:web:capybara') do |t|
   t.pattern = 'spec/features/*_spec.rb'
 end
 
 desc "Run the javascript specs"
-task teaspoon: [:development, "app:teaspoon"]
+task 'spec:web:teaspoon': [:development, "app:teaspoon"]
+
+desc "Run all the web-related tests"
+task 'spec:web': ['spec:web:capybara', 'spec:web:teaspoon']
 
 task default: :spec
 
