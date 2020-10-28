@@ -44,4 +44,5 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'pg', '~> 0.18.0'
   s.add_development_dependency 'bundler', '~> 2.0'
+  s.add_development_dependency 'webdrivers', '~> 4.4'
 end

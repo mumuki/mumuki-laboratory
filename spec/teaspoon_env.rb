@@ -1,3 +1,6 @@
+require 'selenium-webdriver'
+require 'webdrivers'
+
 unless defined?(Rails)
   ENV["RAILS_ROOT"] = File.expand_path("../dummy", __FILE__)
   require File.expand_path("../dummy/config/environment", __FILE__)
@@ -108,12 +111,27 @@ Teaspoon.configure do |config|
   # Capybara Webkit: https://github.com/modeset/teaspoon/wiki/Using-Capybara-Webkit
   #  config.driver = :capybara_webkit
   config.driver = :selenium
-  config.driver_options = {
-    client_driver: :firefox,
-     selenium_options: {
-      options: Selenium::WebDriver::Firefox::Options.new(log_level: :warn)
-    }
-  }
+  config.driver_options =
+    case ENV['MUMUKI_SELENIUM_DRIVER']
+    when 'chrome'
+      {
+        client_driver: :chrome,
+        selenium_options: {
+          options: Selenium::WebDriver::Chrome::Options.new(args: ['headless', 'disable-gpu'])
+        }
+      }
+    when 'safari'
+      {
+        client_driver: :safari,
+      }
+    else
+      {
+        client_driver: :firefox,
+        selenium_options: {
+          options: Selenium::WebDriver::Firefox::Options.new(log_level: :warn, args: ['-headless'])
+        }
+      }
+    end
 
   # Specify the timeout for the driver. Specs are expected to complete within this time frame or the run will be
   # considered a failure. This is to avoid issues that can arise where tests stall.

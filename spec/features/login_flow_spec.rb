@@ -24,7 +24,7 @@ feature 'Login Flow', organization_workspace: :test do
     expect(page).to have_text('Sign Out')
   end
 
-  scenario 'can login and keeps session' do
+  scenario 'can login and keeps session', :navigation_error do
     visit '/'
 
     click_on 'Sign in'
@@ -45,7 +45,7 @@ feature 'Login Flow', organization_workspace: :test do
     expect(page).to have_text('awesomeRubyGuide')
   end
 
-  scenario 'can logout' do
+  scenario 'can logout', :element_not_interactable_error do
     visit '/'
 
     click_on 'Sign in'

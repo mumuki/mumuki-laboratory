@@ -22,8 +22,8 @@ feature 'not found private on app', organization_workspace: :base do
     expect(page).to have_text 'You may have mistyped the address or the page may have moved'
   end
 
-  scenario 'api without authorization' do
-    Capybara.current_session.driver.header 'Authorization', "Bearer #{student_api_client.token}"
+  scenario 'api without authorization', :json_eq_error do
+    set_request_header! 'Authorization', "Bearer #{student_api_client.token}"
 
     visit '/api/nonexistentroute'
 
@@ -33,8 +33,8 @@ feature 'not found private on app', organization_workspace: :base do
       ' with permissions !student:central/*;teacher:;headmaster:;janitor:;admin:;owner:']
   end
 
-  scenario 'api with authentication' do
-    Capybara.current_session.driver.header 'Authorization', "Bearer #{admin_api_client.token}"
+  scenario 'api with authentication', :json_eq_error do
+    set_request_header! 'Authorization', "Bearer #{admin_api_client.token}"
 
     visit '/api/nonexistentroute'
 

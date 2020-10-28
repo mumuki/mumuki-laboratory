@@ -132,16 +132,35 @@ rails s
 ## Running tests
 
 ```bash
-bundle exec rspec
+# Run all tests
+bundle exec rake
+
+# Run only web tests (i.e. Capybara and Teaspoon)
+bundle exec rake spec:web
+```
+
+## Running Capybara tests with Selenium
+
+The Capybara config of this project supports running tests on Firefox, Chrome and Safari via Selenium. The [`webdrivers`](https://github.com/titusfortner/webdrivers) gem automatically installs (and updates) all the necessary Selenium webdrivers.
+
+By default, Capybara tests will run with the default dummy-driver (Rack test). If you want to run on a real browser, you should set `MUMUKI_SELENIUM_DRIVER` variable to `firefox`, `chrome` or `safari`. Also, a Rake task to run just the Capybara tests is available.
+
+Some examples:
+
+```bash
+# Run web tests, using Firefox
+MUMUKI_SELENIUM_DRIVER=firefox bundle exec rake spec:web
+
+# Run Capybara tests on Chrome
+MUMUKI_SELENIUM_DRIVER=chrome bundle exec rake spec:web:capybara
 ```
 
 ## Running JS tests
 
-> You need first to download [geckodriver](https://github.com/mozilla/geckodriver/releases/download/v0.27.0/geckodriver-v0.27.0-linux64.tar.gz), uncrompress
-> it and add it to your path
+The [`webdrivers`](https://github.com/titusfortner/webdrivers) gem also works with Teaspoon, no need to install anything manually. By default tests run on Firefox, but this behavior can be changed by setting `MUMUKI_SELENIUM_DRIVER` (see section above).
 
 ```bash
-MOZ_HEADLESS=1 bundle exec rake teaspoon
+bundle exec rake spec:web:teaspoon
 ```
 
 ## Running `eslint`
