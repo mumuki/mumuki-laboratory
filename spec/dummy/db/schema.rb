@@ -240,6 +240,7 @@ ActiveRecord::Schema.define(version: 20201027134205) do
     t.boolean "dirty_by_submission", default: false
     t.integer "children_passed_count"
     t.integer "children_count"
+    t.boolean "once_completed", default: false
     t.index ["content_type", "content_id"], name: "index_indicators_on_content_type_and_content_id"
     t.index ["organization_id"], name: "index_indicators_on_organization_id"
     t.index ["parent_id"], name: "index_indicators_on_parent_id"
