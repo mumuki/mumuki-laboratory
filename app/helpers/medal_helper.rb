@@ -1,4 +1,8 @@
 module MedalHelper
+  def should_display_medal?(content, organization)
+    content.medal.present? && organization.gamification_enabled?
+  end
+
   def corollary_medal_for(content)
     medal_image_for content, 'corollary'
   end
