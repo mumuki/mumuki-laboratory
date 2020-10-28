@@ -8,6 +8,8 @@ rvm:
 env:
   global:
     - WD_CACHE_TIME=0
+before_install:
+ - gem install bundler
 before_script:
 - psql -c 'create database travis_ci_test;' -U postgres
 - cp spec/dummy/config/database.travis.yml spec/dummy/config/database.yml
@@ -62,6 +64,7 @@ jobs:
         - pg_ctl -D /usr/local/var/postgres start
         - createuser -s postgres
         - sudo /usr/bin/safaridriver --enable
+        - gem install bundler
       script: bundle exec rake spec:web
 deploy:
   - provider: rubygems
