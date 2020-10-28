@@ -1,6 +1,8 @@
 .mu-medal {
   &.content {
-    float: left;
+    height: 80px;
+    position: relative;
+    top: -3px;
   }
 
   &.corollary {
