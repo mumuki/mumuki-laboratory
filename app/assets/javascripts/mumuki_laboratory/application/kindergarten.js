@@ -9,6 +9,7 @@ mumuki.load(() => {
     },
     showContext() {
       mumuki.kids.showContext();
+      this.modal.showFirstSlideImage();
     },
     disablePlaySoundButtonIfNotSupported() {
       if (!window.speechSynthesis) {
@@ -33,8 +34,11 @@ mumuki.load(() => {
       if (!$hintMedia.get(0)) $button.addClass('hidden');
     },
     modal: {
+      _imageSlides() {
+        return $('.mu-kindergarten-context-image-slides');
+      },
       _activeSlideImage() {
-        return $('.mu-kindergarten-context-image-slides').find('.active');
+        return this._imageSlides().find('.active');
       },
       clickButton(prevOrNext) {
         this._activeSlideImage().removeClass('active')[prevOrNext]().addClass('active');
@@ -50,20 +54,24 @@ mumuki.load(() => {
       showNextOrCloseButton() {
         const $next = $('.mu-kindergarten-modal-button.mu-next');
         const $close = $('.mu-kindergarten-modal-button.mu-close');
-        if (this._activeSlideImage().is(':last-child')) {
-          $next.addClass('hidden');
-          $close.removeClass('hidden');
-        } else {
-          $close.addClass('hidden');
-          $next.removeClass('hidden');
-        }
+        const isLastChild = this._activeSlideImage().is(':last-child');
+        this.addClassIf($next, 'hidden', () => isLastChild);
+        this.addClassIf($close, 'hidden', () => !isLastChild);
       },
       hidePreviousButtonIfFirstImage() {
         const $prev = $('.mu-kindergarten-modal-button.mu-previous');
-        if (this._activeSlideImage().is(':first-child')) {
-          $prev.addClass('hidden');
+        this.addClassIf($prev, 'hidden', () => this._activeSlideImage().is(':first-child'))
+      },
+      showFirstSlideImage() {
+        this._imageSlides().find('img').each((i, el) => this.addClassIf($(el), 'active', () => i === 0))
+        this.showNextOrCloseButton();
+        this.hidePreviousButtonIfFirstImage();
+      },
+      addClassIf(element, clazz, criteria) {
+        if (criteria()) {
+          element.addClass(clazz)
         } else {
-          $prev.removeClass('hidden');
+          element.removeClass(clazz);
         }
       }
     },
@@ -91,7 +99,7 @@ mumuki.load(() => {
 
       mumuki.kids.resultAction.passed = mumuki.kindergarten.resultPopup._showOnSuccessPopup;
       mumuki.kids.resultAction.passed_with_warnings = mumuki.kindergarten.resultPopup._showOnSuccessPopup;
-      
+
     }
 
   })
