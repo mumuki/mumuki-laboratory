@@ -79,6 +79,11 @@ mumuki.load(() => {
       _showOnSuccessPopup(data) {
         mumuki.kids._showOnSuccessPopup(data);
         $('#kids-results .modal-content').addClass(data.status);
+      },
+      _showOnFailurePopup() {
+        mumuki.kids.submitButton.disable();
+        mumuki.kids._getResultsAbortedModal().modal();
+        mumuki.presenterCharacter.playAnimation('failure', mumuki.kids._getCharacterImage());
       }
     }
   };
@@ -99,6 +104,10 @@ mumuki.load(() => {
 
       mumuki.kids.resultAction.passed = mumuki.kindergarten.resultPopup._showOnSuccessPopup;
       mumuki.kids.resultAction.passed_with_warnings = mumuki.kindergarten.resultPopup._showOnSuccessPopup;
+
+      mumuki.kids.resultAction.failed = mumuki.kindergarten.resultPopup._showOnFailurePopup;
+      mumuki.kids.resultAction.errored = mumuki.kindergarten.resultPopup._showOnFailurePopup;
+      mumuki.kids.resultAction.pending = mumuki.kindergarten.resultPopup._showOnFailurePopup;
 
     }
 
