@@ -334,8 +334,14 @@ $bubble-padding: 30px;
     }
 
     .mu-hint-light {
-      height: 100%;
+      $light-height: 80px;
+      padding-left: 15px;
 
+      &.off {
+        height: $light-height * 0.75;
+        margin-right: 11px;
+        margin-top: 21px;
+      }
       &.on {
         cursor: pointer;
 
