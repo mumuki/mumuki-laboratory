@@ -4,7 +4,7 @@
     <div class="mu-kindergarten-character-speech-bubble">
       <span class="mu-kindergarten-exercise-description"><%= exercise.description_task %></span>
       <div class="mu-kindergarten-buttons">
-        <button class="mu-kindergarten-show-context" onclick="mumuki.kindergarten.showContext()">
+        <button class="mu-kindergarten-show-context" onclick="mumuki.kindergarten.context.showContext()">
           <i class="fa fa-fw fa-window-maximize"></i>
         </button>
         <button class="mu-kindergarten-play-description" onclick="mumuki.kindergarten.speech.click('.mu-kindergarten-exercise-description', '<%= exercise.locale %>')">
@@ -15,14 +15,14 @@
   </div>
   <div class="mu-kindergarten-hint">
     <% if exercise.hint? %>
-      <button class="mu-hint-light" onclick="mumuki.kindergarten.toggleHint()">
+      <button class="mu-hint-light" onclick="mumuki.kindergarten.hint.toggle()">
         <img class="mu-hint-light on" src="/iluminated-light.png" alt="">
       </button>
       <div class="mu-kindergarten-light-speech-bubble">
         <span class="mu-kindergarten-exercise-hint">
           <%= exercise.hint.markdownified %>
         </span>
-        <button class="expand-or-collapse-hint-media" onclick="mumuki.kindergarten.toggleHintMedia()">
+        <button class="expand-or-collapse-hint-media" onclick="mumuki.kindergarten.hint.toggleMedia()">
           <i class="fa fa-fw fa-2x fa-caret-up"></i>
         </button>
       </div>
