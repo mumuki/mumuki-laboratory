@@ -5,10 +5,11 @@
       <span class="mu-kindergarten-exercise-description"><%= exercise.description_task %></span>
       <div class="mu-kindergarten-buttons">
         <button class="mu-kindergarten-show-context" onclick="mumuki.kindergarten.context.showContext()">
-          <i class="fa fa-fw fa-window-maximize"></i>
+          <img class="mu-kindergarten-button-image" src="https://mumuki.io/static/show-context.svg" alt="">
         </button>
         <button class="mu-kindergarten-play-description" onclick="mumuki.kindergarten.speech.click('.mu-kindergarten-exercise-description', '<%= exercise.locale %>')">
-          <i class="fa fa-fw fa-volume-up"></i>
+          <img class="mu-kindergarten-button-image mu-kindergarten-play" src="https://mumuki.io/static/audio-play.svg" alt="">
+          <img class="mu-kindergarten-button-image mu-kindergarten-stop hidden" src="https://mumuki.io/static/audio-stop.svg" alt="">
         </button>
       </div>
     </div>

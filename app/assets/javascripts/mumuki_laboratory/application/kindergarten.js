@@ -21,14 +21,16 @@ mumuki.load(() => {
         msg.lang = locale.split('_')[0];
         msg.pitch = 0;
         msg.onend = () => this.stop();
-        this._action('fa-stop-circle', 'fa-volume-up', true, (speech) => speech.speak(msg))
+        this._action('play', 'stop', true, (speech) => speech.speak(msg))
       },
       stop() {
-        this._action('fa-volume-up', 'fa-stop-circle', false, (speech) => speech.cancel())
+        this._action('stop', 'play', false, (speech) => speech.cancel())
       },
-      _action(add, remove, isPlaying, callback) {
-        $('.mu-kindergarten-play-description').children('i').removeClass(remove).addClass(add);
+      _action(add, remove, isPlaying, callback = () => {}) {
         callback(window.speechSynthesis);
+        const $button = $('.mu-kindergarten-play-description')
+        $button.find(`.mu-kindergarten-${add}`).addClass('hidden');
+        $button.find(`.mu-kindergarten-${remove}`).removeClass('hidden');
         this._isPlaying = isPlaying;
       },
       verifyBrowserSupport() {
@@ -36,7 +38,7 @@ mumuki.load(() => {
           const $button = $('.mu-kindergarten-play-description')
           $button.prop('disabled', true);
           $button.css('cursor', 'not-allowed');
-          $button.children('i').removeClass('fa-volume-up').addClass('fa-volume-off');
+          this._action('play', 'stop', false)
         }
       }
     },
