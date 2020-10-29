@@ -1,3 +1,6 @@
+$modal-header-height: 95px;
+$modal-footer-height: 95px;
+
 .mu-kids-exercise.mu-kindergarten {
 
   // layout
@@ -204,7 +207,12 @@
 
 #kids-results.mu-kindergarten-context {
   .modal-body{
-    height: calc(100% - 95px);
+    height: calc(100% - #{$modal-header-height} - #{$modal-footer-height});
+  }
+}
+#kids-results-aborted.mu-kindergarten-context {
+  .modal-body{
+    height: calc(100% - #{$modal-header-height}
   }
 }
 

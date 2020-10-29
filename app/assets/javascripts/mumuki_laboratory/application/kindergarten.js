@@ -112,6 +112,7 @@ mumuki.load(() => {
         mumuki.kids.resultAction.pending = this._showOnFailurePopup;
       },
       _showOnSuccessPopup(data) {
+        $('.submission-results').html(data.title_html);
         mumuki.kids._showOnSuccessPopup(data);
         $('#kids-results .modal-content').addClass(data.status);
       },
