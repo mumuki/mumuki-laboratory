@@ -1,11 +1,30 @@
 mumuki.load(() => {
   mumuki.kindergarten = {
-    speak(selector, locale) {
-      const msg = new SpeechSynthesisUtterance();
-      msg.text = $(selector).text();
-      msg.lang = locale.split('_')[0];
-      msg.pitch = 0;
-      window.speechSynthesis.speak(msg);
+    speech: {
+      _isPlaying: false,
+      click(selector, locale) {
+        if (this._isPlaying) {
+          this.stop();
+        } else {
+          this.play(selector, locale);
+        }
+      },
+      play(selector, locale) {
+        const msg = new SpeechSynthesisUtterance();
+        msg.text = $(selector).text();
+        msg.lang = locale.split('_')[0];
+        msg.pitch = 0;
+        msg.onend = () => this.stop();
+        this.action('fa-stop-circle', 'fa-volume-up', true, (speech) => speech.speak(msg))
+      },
+      stop() {
+        this.action('fa-volume-up', 'fa-stop-circle', false, (speech) => speech.cancel())
+      },
+      action(add, remove, isPlaying, callback) {
+        $('.mu-kindergarten-play-description').children('i').removeClass(remove).addClass(add);
+        callback(window.speechSynthesis);
+        this._isPlaying = isPlaying;
+      }
     },
     showContext() {
       mumuki.kids.showContext();
@@ -93,7 +112,7 @@ mumuki.load(() => {
     if ($('.mu-kindergarten').get(0)) {
 
       mumuki.resize(() => {
-        mumuki.kids.scaleState($('.mu-kids-states'), 40);
+        mumuki.kids.scaleState($('.mu-kids-states'), 100);
         mumuki.kids.scaleBlocksArea($('.mu-kids-blocks'));
       })
 
