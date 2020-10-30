@@ -15,8 +15,11 @@
     <h1><%= language_icon @guide.language %></h1>
   </div>
   <div class="mu-inline-block-left">
-    <h1>
+    <h1 class="pull-left">
       <%= subject.name %>
+      <% if should_display_medal? @guide, Organization.current %>
+        <%= content_medal_for(@guide, current_user) %>
+      <% end %>
       <%= teacher_info_button @guide%>
       <%= link_to_bibliotheca_guide @guide %>
     </h1>

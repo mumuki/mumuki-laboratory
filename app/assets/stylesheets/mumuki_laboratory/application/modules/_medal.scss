@@ -1,0 +1,17 @@
+.mu-medal {
+  &.content {
+    height: 80px;
+    position: relative;
+    top: -3px;
+  }
+
+  &.corollary {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &.unacquired {
+    filter: grayscale(100%);
+  }
+}

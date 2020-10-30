@@ -16,6 +16,15 @@
             </div>
           </div>
           <div class="row">
+            <div class="col-md-12 mu-last-box">
+              <hr>
+              <% if should_display_medal? @guide, Organization.current %>
+                <p><%= t :unlocked_medal_as_avatar %></p>
+                <%= corollary_medal_for guide %>
+              <% end %>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-md-12 text-center">
               <%= next_lesson_button guide %>
             </div>

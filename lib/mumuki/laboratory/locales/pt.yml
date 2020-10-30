@@ -262,6 +262,7 @@ pt:
   to_solved: Marcar como resolvida
   unauthorized_explanation: Opa! Isso é o que é conhecido como %{error}, ou seja, você não fez logon.
   uncategorized: Não classificado
+  unlocked_medal_as_avatar: Você ganhou essa medalha! Agora você pode escolhê-la como avatar.
   unspecified: Eu preferiria não dizer
   unmeet_expectations: Objetivos que não foram atendidos
   unprepared_organization_explanation: Este curso ainda não começou
