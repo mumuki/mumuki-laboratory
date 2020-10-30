@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   before_action :ensure_user_enabled!, if: :current_user?
   before_action :validate_active_organization!
 
-  before_action :redirect_to_main_organization!, if: :should_redirect_to_main_organization?
+  before_action :redirect_to_proper_context!, if: :immersive_context_wrong?
 
   before_action :authorize_if_private!
   before_action :validate_active_organization!
@@ -39,21 +39,20 @@ class ApplicationController < ActionController::Base
                 :theme_stylesheet_url,
                 :extension_javascript_url
 
-  def should_redirect_to_main_organization?
-    # TODO use immersive contexts here
-    should_choose_organization? && current_user.has_immersive_main_organization?
+  def immersive_context_wrong?
+    current_immersive_context != Organization.current
   end
 
-  def redirect_to_main_organization!
-    # TODO use immersive contexts here
-    redirect_to current_user.main_organization.url_for(request.path)
+  def redirect_to_proper_context!
+    # TODO: redirect to subject (if it exists on the immersive context)
+    redirect_to current_immersive_context.url_for('/')
   end
 
   def should_choose_organization?
-    # TODO use immersive contexts here
-    current_user? &&
-      current_user.has_student_granted_organizations? &&
-      Mumukit::Platform.implicit_organization?(request)
+    return false unless current_user?
+
+    # TODO: replace `nil` with `subject` to consider exercise, guide, etc
+    current_user.immersive_organizations_at(nil).size > 1
   end
 
   # ensures contents are accessible to current user
@@ -84,6 +83,11 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def current_immersive_context
+    # TODO: replace `nil` with `subject` to consider exercise, guide, etc
+    current_user&.current_immersive_context_at(nil) || Organization.current
+  end
 
   def from_sessions?
     params['controller'] == 'login'

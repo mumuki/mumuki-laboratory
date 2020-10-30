@@ -8,7 +8,7 @@ gem 'puma'
 gem 'execjs'
 gem 'therubyracer', platforms: :ruby
 gem 'uglifier', '~> 2.7'
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', ref: 'ddcdafd2fc95aefe49948cbe5e04b5b32943b9b3'
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', ref: '11f51cddad0c91845311a25ffb1b9e1b69327bc2'
 
 group :test do
   gem 'rspec-rails', '~> 3.6'
