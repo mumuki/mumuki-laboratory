@@ -17,10 +17,25 @@
     margin-bottom: 15px;
   }
 
-  &.corollary {
-    display: block;
+  &.outline-corollary {
+    height: 150px;
+    position: absolute;
+
     margin-left: auto;
     margin-right: auto;
+    left: 0;
+    right: 0;
+  }
+
+  &.content-corollary {
+    height: 107px;
+    border-radius: 50%;
+
+    display: block;
+    position: relative;
+    top: 35px;
+
+    margin: 0 auto 20px;
   }
 
   &.unacquired {

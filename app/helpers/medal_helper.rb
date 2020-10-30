@@ -4,15 +4,19 @@ module MedalHelper
   end
 
   def corollary_medal_for(content)
-    medal_image_for content, 'corollary'
+    medal_image_for content, 'content-corollary'
   end
 
   def content_medal_for(content, user)
     medal_image_for content, "content #{completion_class_for content, user}"
   end
 
-  def medal_outline
+  def content_medal_outline
     image_tag '/medal/outline.svg', class: "mu-medal outline"
+  end
+
+  def corollary_medal_outline
+    image_tag '/medal/outline.svg', class: "mu-medal outline-corollary"
   end
 
   private
