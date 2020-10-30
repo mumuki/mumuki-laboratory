@@ -144,6 +144,7 @@ pt:
   locked_content: 'Este conteúdo será desbloqueado quando você terminar os capítulos anteriores'
   male: Masculino
   manual_evaluation_pending: Obrigado por enviar sua solução! Seus professores irão corrigi-lo em breve
+  medal: Medalha
   message_count:
     one: 1 mensagem
     other: '%{count} mensagens'

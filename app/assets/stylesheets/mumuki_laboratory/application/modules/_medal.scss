@@ -1,14 +1,45 @@
 .mu-medal {
-  &.content {
-    height: 80px;
-    position: relative;
-    top: -3px;
+  &.outline {
+    position: absolute;
+
+    &.content {
+      height: 100px;
+
+      margin-left: 10px;
+    }
+
+    &.corollary {
+      height: 150px;
+
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+    }
   }
 
-  &.corollary {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  &.inlay {
+    position: relative;
+    border-radius: 50%;
+
+    &.content {
+      height: 70px;
+
+      left: 25px;
+      top: 24px;
+
+      margin-right: 30px;
+      margin-bottom: 15px;
+    }
+
+    &.corollary {
+      height: 107px;
+
+      display: block;
+      top: 35px;
+
+      margin: 0 auto 20px;
+    }
   }
 
   &.unacquired {
