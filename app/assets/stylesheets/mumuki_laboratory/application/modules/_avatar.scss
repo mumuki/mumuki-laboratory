@@ -54,4 +54,9 @@
     box-shadow: -3px 3px 10px -3px $mu-color-primary;
     transform: scale(1.025);
   }
+  
+  &.mu-locked {
+    filter: grayscale(100%);
+    cursor: default;
+  }
 }

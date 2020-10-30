@@ -1,7 +1,11 @@
 <div class="row">
   <div class="mu-avatar-list">
-    <% avatars_for(@user).sort_by(&:id).each do |avatar| %>
+    <% avatars_for(@user).each do |avatar| %>
       <%= show_avatar_item(avatar) %>
+    <% end %>
+
+    <% locked_avatars_for(@user).sort_by(&:id).each do |avatar| %>
+      <%= show_locked_avatar_item(avatar) %>
     <% end %>
 
     <% if @user.image_url %>

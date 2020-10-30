@@ -3,10 +3,11 @@ mumuki.load(function() {
   let $userAvatar = $('#mu-user-avatar');
   let $editButton = $('.mu-edit-profile-btn');
   let $avatarPicker = $('#mu-avatar-picker');
-  let $avatarItem = $('.mu-avatar-item');
+  let $avatarItem = $('.mu-avatar-item:not(.mu-locked)');
 
   let userImage = "";
   let avatarId = "";
+  let avatarType = "";
 
   let originalData = $userForm.serialize();
   let originalProfilePicture = $userAvatar.attr('src');
@@ -21,7 +22,9 @@ mumuki.load(function() {
       $avatarPicker.modal('hide');
 
       const clickedAvatarId = $(this).attr('mu-avatar-id');
+      const clickedAvatarType = $(this).attr('type');
       avatarId = clickedAvatarId || "";
+      avatarType = clickedAvatarType || "";
 
       toggleEditButtonIfThereAreChanges();
     });
@@ -52,11 +55,11 @@ mumuki.load(function() {
   $userForm.on('submit', function(){
     if (userImage) {
       setImageUrl($(this), userImage);
-      setAvatarId($(this), "");
+      setAvatarIdAndType($(this), "", "");
     }
 
     if (avatarId) {
-      setAvatarId($(this), avatarId);
+      setAvatarIdAndType($(this), avatarId, avatarType);
     }
   });
 
@@ -64,8 +67,9 @@ mumuki.load(function() {
     form.append(`<input type="hidden" name="user[image_url]" value="${url}"/>`);
   }
 
-  function setAvatarId(form, id) {
-    form.append(`<input type="hidden" name="user[avatar_id]" value=${id}/>`);
+  function setAvatarIdAndType(form, id, type) {
+    form.append(`<input type="hidden" name="user[avatar_id]" value="${id}"/>`);
+    form.append(`<input type="hidden" name="user[avatar_type]" value="${type}"/>`);
   }
 
   $("#mu-edit-avatar-icon").on('keypress click', function(e) {
