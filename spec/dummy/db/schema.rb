@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201026225312) do
+ActiveRecord::Schema.define(version: 20201027134205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20201026225312) do
     t.bigint "organization_id"
     t.datetime "submitted_at"
     t.bigint "parent_id"
-    t.integer "top_submission_status", default: 0
+    t.integer "top_submission_status"
     t.boolean "misplaced"
     t.index ["exercise_id"], name: "index_assignments_on_exercise_id"
     t.index ["organization_id"], name: "index_assignments_on_organization_id"
@@ -320,6 +320,7 @@ ActiveRecord::Schema.define(version: 20201026225312) do
     t.text "display_name"
     t.text "display_description"
     t.boolean "wins_page"
+    t.boolean "immersible"
     t.index ["book_id"], name: "index_organizations_on_book_id"
     t.index ["name"], name: "index_organizations_on_name", unique: true
   end

@@ -42,6 +42,7 @@ RSpec.configure do |config|
       set_subdomain_host! 'test'
       create(:public_organization,
           name: 'test',
+          immersible: true,
           book: create(:book, name: 'test', slug: 'mumuki/mumuki-the-book')).switch!
     elsif RSpec.current_example.metadata[:organization_workspace] == :base
       set_subdomain_host! 'base'
