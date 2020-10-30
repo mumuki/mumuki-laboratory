@@ -8,7 +8,7 @@ gem 'puma'
 gem 'execjs'
 gem 'therubyracer', platforms: :ruby
 gem 'uglifier', '~> 2.7'
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', ref: '11f51cddad0c91845311a25ffb1b9e1b69327bc2'
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'master'
 
 group :test do
   gem 'rspec-rails', '~> 3.6'
@@ -36,5 +36,3 @@ group :development, :test do
   gem 'teaspoon-jasmine'
   gem "selenium-webdriver"
 end
-
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'master'
