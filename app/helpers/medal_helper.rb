@@ -4,11 +4,11 @@ module MedalHelper
   end
 
   def corollary_medal_for(content)
-    medal_image_for content, 'content-corollary'
+    medal_image_for content, 'inlay-corollary'
   end
 
   def content_medal_for(content, user)
-    medal_image_for content, "content #{completion_class_for content, user}"
+    medal_image_for content, "inlay #{completion_class_for content, user}"
   end
 
   def content_medal_outline
