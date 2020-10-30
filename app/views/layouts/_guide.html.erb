@@ -16,14 +16,11 @@
   </div>
   <div class="mu-inline-block-left guide-header">
     <h1> <%= subject.name %> </h1>
-    <div>
-      <% if should_display_medal? @guide, Organization.current %>
-        <%= content_medal_outline %>
-        <%= content_medal_for(@guide, current_user) %>
-      <% end %>
-      <%= teacher_info_button @guide%>
-      <%= link_to_bibliotheca_guide @guide %>
-    </div>
+    <% if should_display_medal? @guide, Organization.current %>
+      <%= content_medal_for(@guide, current_user) %>
+    <% end %>
+    <%= teacher_info_button @guide%>
+    <%= link_to_bibliotheca_guide @guide %>
   </div>
 </div>
 <div class="row">
