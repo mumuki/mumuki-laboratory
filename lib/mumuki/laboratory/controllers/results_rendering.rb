@@ -28,7 +28,7 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
         title_html: render_results_title(assignment),
         expectations: assignment.affable_expectation_results,
         tips: assignment.affable_tips,
-        test_results: assignment.affable_test_results)
+        test_results: assignment.sanitized_affable_test_results) # these results could include escaped characters so they should be rendered as HTML to display properly
   end
 
   def progress_json
