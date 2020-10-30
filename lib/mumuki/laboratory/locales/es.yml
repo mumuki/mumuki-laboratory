@@ -150,6 +150,7 @@ es:
   locked_content: 'Este contenido se desbloqueará cuando termines los capítulos anteriores'
   male: Hombre
   manual_evaluation_pending: ¡Gracias por enviar tu solución! Tus docentes la corregirán pronto
+  medal: Medalla
   message_count:
     one: 1 mensaje
     other: '%{count} mensajes'

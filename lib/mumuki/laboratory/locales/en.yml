@@ -140,6 +140,7 @@ en:
   locked_content: 'This content will be unlocked when you finish previous chapters'
   male: Male
   manual_evaluation_pending: Thanks for submitting your solution! It will be revised by the course teachers soon
+  medal: Medal
   message_count:
     one: 1 message
     other: '%{count} messages'

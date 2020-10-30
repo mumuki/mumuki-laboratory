@@ -27,10 +27,10 @@ module MedalHelper
   end
 
   def outline_image(clazz)
-    image_tag '/medal/outline.svg', class: "mu-medal outline #{clazz}"
+    image_tag '/medal/outline.svg', class: "mu-medal outline #{clazz}", alt: I18n.t(:medal)
   end
 
   def inlay_image_for(content, clazz)
-    image_tag content.medal.image_url, class: "mu-medal inlay #{clazz}"
+    image_tag content.medal.image_url, class: "mu-medal inlay #{clazz}", alt: content.medal.description
   end
 end
