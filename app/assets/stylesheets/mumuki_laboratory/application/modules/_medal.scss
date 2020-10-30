@@ -1,8 +1,20 @@
 .mu-medal {
+  &.outline {
+    height: 100px;
+    position: absolute;
+    margin-left: 10px;
+  }
+
   &.content {
-    height: 80px;
+    height: 70px;
+    border-radius: 50%;
+
     position: relative;
-    top: -3px;
+    left: 25px;
+    top: 24px;
+
+    margin-right: 30px;
+    margin-bottom: 15px;
   }
 
   &.corollary {

@@ -18,6 +18,7 @@
     <h1> <%= subject.name %> </h1>
     <div>
       <% if should_display_medal? @guide, Organization.current %>
+        <%= medal_outline %>
         <%= content_medal_for(@guide, current_user) %>
       <% end %>
       <%= teacher_info_button @guide%>

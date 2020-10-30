@@ -11,6 +11,10 @@ module MedalHelper
     medal_image_for content, "content #{completion_class_for content, user}"
   end
 
+  def medal_outline
+    image_tag '/medal/outline.svg', class: "mu-medal outline"
+  end
+
   private
 
   def medal_image_for(content, clazz)
