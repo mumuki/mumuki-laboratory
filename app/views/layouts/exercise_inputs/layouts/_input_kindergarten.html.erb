@@ -1,40 +1,40 @@
 <% content_for :no_container do %>
 
-    <div <%= turbolinks_enable_for exercise %>>
+  <div <%= turbolinks_enable_for exercise %>>
 
-      <div class="mu-kids-landscape-support container-fluid">
-        <img class="mu-kids-character-animation"/>
-        <h3><%= t :only_landscape_support %></h3>
-      </div>
-
-      <div class="mu-kids-exercise mu-kindergarten container-fluid">
-
-        <div class="mu-kids-exercise-description mu-kids-exercise-description-fixed">
-          <div class="mu-kids-character">
-            <%= render partial: 'layouts/kids', locals: {exercise: exercise} %>
-          </div>
-        </div>
-        <div class="mu-kids-exercise-workspace">
-          <div class="mu-exercise-content mu-kids-blocks">
-            <%= yield :exercise_content %>
-          </div>
-          <div class="mu-kids-states mu-kids-single-state mu-multiple-scenarios">
-            <div class="mu-scenarios">
-              <div class="mu-kids-state mu-state-initial mu-kids-gbs-board-initial mu-initial-state">
-                <div class="mu-kids-state-image"><%= exercise.initial_state&.html_safe %></div>
-              </div>
-              <div class="mu-kids-state mu-state-final mu-final-state">
-                <div class="mu-kids-state-image"><%= exercise.final_state&.html_safe %></div>
-              </div>
-            </div>
-            <ol class="indicators"></ol>
-          </div>
-        </div>
-      </div>
-
-      <%= render partial: 'layouts/modals/kids_results', locals: {exercise: exercise, assignment: @assignment} %>
-      <%= render partial: 'layouts/modals/kids_results_aborted' %>
-      <%= render partial: 'layouts/modals/kids_context', locals: {exercise: exercise, assignment: @assignment} %>
-
+    <div class="mu-kids-landscape-support container-fluid">
+      <img class="mu-kids-character-animation"/>
+      <h3><%= t :only_landscape_support %></h3>
     </div>
+
+    <div class="mu-kids-exercise mu-kindergarten container-fluid">
+
+      <div class="mu-kids-exercise-description mu-kids-exercise-description-fixed">
+        <div class="mu-kids-character">
+          <%= render partial: 'layouts/kindergarten', locals: {exercise: exercise} %>
+        </div>
+      </div>
+      <div class="mu-kids-exercise-workspace <%= 'mu-full-workspace' if kindergarten_full_workspace? exercise %>">
+        <div class="mu-exercise-content mu-kids-blocks">
+          <%= yield :exercise_content %>
+        </div>
+        <div class="mu-kids-states mu-kids-single-state mu-multiple-scenarios">
+          <div class="mu-scenarios">
+            <div class="mu-kids-state mu-state-initial mu-kids-gbs-board-initial mu-initial-state">
+              <div class="mu-kids-state-image"><%= exercise.initial_state&.html_safe %></div>
+            </div>
+            <div class="mu-kids-state mu-state-final mu-final-state">
+              <div class="mu-kids-state-image"><%= exercise.final_state&.html_safe %></div>
+            </div>
+          </div>
+          <ol class="indicators"></ol>
+        </div>
+      </div>
+    </div>
+
+    <%= render partial: 'layouts/modals/kindergarten_results', locals: {exercise: exercise, assignment: @assignment} %>
+    <%= render partial: 'layouts/modals/kindergarten_results_aborted' %>
+    <%= render partial: 'layouts/modals/kindergarten_context', locals: {exercise: exercise, assignment: @assignment} %>
+
+  </div>
 <% end %>
