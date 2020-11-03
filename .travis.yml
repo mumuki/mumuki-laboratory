@@ -39,6 +39,7 @@ jobs:
 
     # Web tests on Chrome
     - env: MUMUKI_SELENIUM_DRIVER=chrome
+      if: tag IS blank
       script: bundle exec rake spec:web
       addons:
         chrome: stable
@@ -46,6 +47,7 @@ jobs:
 
     # Web tests on Firefox
     - env: MUMUKI_SELENIUM_DRIVER=firefox
+      if: tag IS blank
       script: bundle exec rake spec:web
       addons:
         firefox: '79.0'
@@ -53,6 +55,7 @@ jobs:
 
     # Web tests on Safari
     - env: MUMUKI_SELENIUM_DRIVER=safari RACK_ENV=test RAILS_ENV=test
+      if: tag IS blank
       os: osx
       osx_image: xcode10.2
       addons:
