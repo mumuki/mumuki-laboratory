@@ -3,7 +3,9 @@ pt:
   aborted: Opa, não pudemos avaliar sua solução
   abort_explanation_html: <li>Verifique se o seu programa não possui recursão ou um loop infinito</li> <li>Verifique se você tem uma conexão com a internet</li> <li>Espere um pouco e tente novamente</li>
   about: Detalhes
-  accept_terms: Aceito os termos e condições
+  accept: Aceitar
+  accept_terms: Eu li e aceito ceito os termos e condições
+  accept_terms_to_continue: Aceite os termos e condições para continuar
   actions: Ações
   activity: Atividade
   actual_state: Tablero obtido
@@ -105,6 +107,8 @@ pt:
   first_name: Nome
   forbidden_explanation: Você poderia ter entrado com uma conta incorreta?
   format: Formato
+  forum_terms: Regras do fórum
+  forum_terms_link: Se você tiver alguma dúvida, consulte as %{terms_link}
   fullscreen: Tela completa
   gender: Gênero
   get_messages: Ver mensagens
@@ -252,7 +256,10 @@ pt:
   teacher_info: Informação para professores
   tell_us_how: Conte-nos como isso aconteceu com você!
   tell_us_if_our_error: Se você acha que é nosso erro, %{issues}
+  terms_accepted: Os termos e condições foram aceitos
   terms_and_conditions: Termos e Condições
+  terms_and_conditions_continue_disclaimer: Ao continuar, você concorda %{terms_link}
+  terms_and_conditions_must_be_accepted: Você deve aceitar os Termos e Condições
   test_results: Resultados do teste
   time_since: "há %{time}"
   time_left: Te deixam
