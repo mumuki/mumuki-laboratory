@@ -51,6 +51,14 @@ module LinksHelper
             body: permissions_help_email_body(current_user)
   end
 
+  def link_to_profile_terms
+    link_to t(:terms_and_conditions).downcase, user_terms_path, target: '_blank'
+  end
+
+  def link_to_forum_terms
+    link_to t(:forum_terms).downcase, discussions_terms_path, target: '_blank'
+  end
+
   def turbolinks_enable_for(exercise)
     %Q{data-turbolinks="#{!exercise.input_kids?}"}.html_safe
   end
