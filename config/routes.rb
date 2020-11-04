@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       end
     end
 
+    get '/discussions/terms' => 'book_discussions#terms'
     concerns :debatable, controller: 'book_discussions', only: :index
 
     resources :discussions, only: [] do
@@ -53,6 +54,7 @@ Rails.application.routes.draw do
 
     # All users
     resource :user, only: [:show, :edit]
+    get '/user/terms' => 'users#terms'
 
     # Current user
     resources :messages, only: [:index, :create]
