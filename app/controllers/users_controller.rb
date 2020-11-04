@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   before_action :authenticate!, except: :terms
   before_action :set_user!
-  
+
   def show
     @messages = current_user.messages.to_a
     @watched_discussions = current_user.watched_discussions_in_organization
@@ -13,11 +13,6 @@ class UsersController < ApplicationController
     current_user.update_and_notify! user_params
     current_user.accept_profile_terms!
     redirect_to user_path, notice: I18n.t(:user_data_updated)
-  end
-
-  def accept_general_terms
-    current_user.accept_profile_terms!
-    redirect_to root_path, notice: I18n.t(:terms_accepted)
   end
 
   def terms
