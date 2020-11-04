@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201027134205) do
+ActiveRecord::Schema.define(version: 20201027152806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -350,6 +350,15 @@ ActiveRecord::Schema.define(version: 20201027134205) do
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
+  create_table "terms", force: :cascade do |t|
+    t.string "locale"
+    t.string "scope"
+    t.text "content"
+    t.text "header"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "topics", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "locale"
@@ -416,6 +425,14 @@ ActiveRecord::Schema.define(version: 20201027134205) do
     t.datetime "disabled_at"
     t.boolean "trusted_for_forum"
     t.string "avatar_type", default: "Avatar"
+    t.datetime "headmaster_terms_accepted_at"
+    t.datetime "janitor_terms_accepted_at"
+    t.datetime "moderator_terms_accepted_at"
+    t.datetime "student_terms_accepted_at"
+    t.datetime "teacher_terms_accepted_at"
+    t.datetime "privacy_terms_accepted_at"
+    t.datetime "legal_terms_accepted_at"
+    t.datetime "forum_terms_accepted_at"
     t.index ["avatar_type", "avatar_id"], name: "index_users_on_avatar_type_and_avatar_id"
     t.index ["disabled_at"], name: "index_users_on_disabled_at"
     t.index ["last_organization_id"], name: "index_users_on_last_organization_id"
