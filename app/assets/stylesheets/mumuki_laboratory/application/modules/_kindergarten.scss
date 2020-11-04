@@ -214,6 +214,9 @@ $modal-footer-height: 95px;
   .modal-body{
     height: calc(100% - #{$modal-header-height});
   }
+  h4.modal-header {
+    margin: 0;
+  }
 }
 
 $bubble-border-width: 3px;
