@@ -1,0 +1,44 @@
+summary.terms-summary {
+  font-size: 29px;
+  outline: 0;
+  cursor: pointer;
+  .terms-summary-title {
+    display: inline;
+  }
+}
+
+.terms-card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+  &:not(:first-child) {
+    border-top: none;
+  }
+  .terms-card-header {
+    cursor: pointer;
+    font-weight: bold;
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+  }
+  &:first-child .terms-card-header{
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+  }
+}
+.terms-card-body {
+  padding: 1.25rem;
+}
+
+.terms-acceptance-btn {
+  margin-top: 10px;
+  display: block
+}
