@@ -3,6 +3,7 @@ class LoginController < ApplicationController
 
   skip_before_action :verify_authenticity_token, if: lambda { Rails.env.development? }
   skip_before_action :validate_user_profile!
+  skip_before_action :validate_accepted_role_terms!
   skip_before_action :validate_active_organization!
 
   private

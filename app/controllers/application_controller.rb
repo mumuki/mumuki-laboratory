@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
   before_action :authorize_if_private!
   before_action :validate_active_organization!
   before_action :validate_user_profile!, if: :current_user?
+  before_action :validate_accepted_role_terms!, if: :current_user?
 
   before_action :visit_organization!, if: :current_user?
 
@@ -101,6 +102,13 @@ class ApplicationController < ActionController::Base
     unless current_user.profile_completed?
       flash.notice = I18n.t :please_fill_profile_data
       redirect_to edit_user_path
+    end
+  end
+
+  def validate_accepted_role_terms!
+    if current_user.has_role_terms_to_accept?
+      flash.notice = I18n.t :accept_terms_to_continue
+      redirect_to user_terms_path
     end
   end
 

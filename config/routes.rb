@@ -55,6 +55,7 @@ Rails.application.routes.draw do
     # All users
     resource :user, only: [:show, :edit]
     get '/user/terms' => 'users#terms'
+    post '/user/terms' => 'users#accept_profile_terms'
 
     # Current user
     resources :messages, only: [:index, :create]
