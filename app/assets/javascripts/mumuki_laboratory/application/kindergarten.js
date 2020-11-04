@@ -118,9 +118,10 @@ mumuki.load(() => {
         mumuki.kids._showOnSuccessPopup(data);
         $('#kids-results .modal-content').addClass(data.status);
       },
-      _showOnFailurePopup() {
-        mumuki.kids.submitButton.disable();
+      _showOnFailurePopup(data) {
         mumuki.kids._getResultsAbortedModal().modal();
+        $('#kids-results-aborted .modal-header').html(data.title_html);
+        $('#kids-results-aborted .modal-content').addClass(data.status);
         mumuki.presenterCharacter.playAnimation('failure', mumuki.kids._getCharacterImage());
       }
     }
