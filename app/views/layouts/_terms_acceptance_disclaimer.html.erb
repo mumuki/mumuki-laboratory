@@ -1,0 +1,6 @@
+<% if user.has_profile_terms_to_accept? %>
+  <br>
+  <span>
+    <%= t(:terms_and_conditions_continue_disclaimer, terms_link: link_to_profile_terms).html_safe %>
+  </span>
+<% end %>
