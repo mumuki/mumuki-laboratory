@@ -1,0 +1,10 @@
+<div class="mu-user-header">
+  <h1><%= t :forum_terms %></h1>
+</div>
+
+<div>
+  <% @forum_terms.each do |term| %>
+    <%= term.content_html %>
+  <% end %>
+</div>
+
