@@ -8,7 +8,7 @@ module OverlappedButtonsHelper
   end
 
   def restart_guide_link(guide)
-    link_to restart_icon, guide_progress_path(guide), class: 'mu-content-toolbar-item', data: {confirm: t(:confirm_restart)}, method: :delete
+    link_to restart_icon, guide_progress_path(guide), class: 'mu-content-toolbar-item mu-restart-guide', data: {confirm: t(:confirm_restart)}, method: :delete
   end
 
   def overlapped_button_icon(key, icon)
