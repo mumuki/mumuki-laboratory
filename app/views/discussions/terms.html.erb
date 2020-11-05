@@ -2,9 +2,11 @@
   <h1><%= t :forum_terms %></h1>
 </div>
 
-<div>
+<div class="forum-terms">
   <% @forum_terms.each do |term| %>
-    <%= term.content_html %>
+    <div class="forum-term">
+      <%= term.content_html %>
+    </div>
   <% end %>
 </div>
 
