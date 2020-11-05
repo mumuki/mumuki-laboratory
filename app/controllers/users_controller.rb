@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include WithUserParams
 
-  before_action :authenticate!
+  before_action :authenticate!, except: :terms
   before_action :set_user!
 
   def show
@@ -11,7 +11,12 @@ class UsersController < ApplicationController
 
   def update
     current_user.update_and_notify! user_params
+    current_user.accept_profile_terms!
     redirect_to user_path, notice: I18n.t(:user_data_updated)
+  end
+
+  def terms
+    @profile_terms ||= Term.profile_terms_for(current_user)
   end
 
   def unsubscribe
@@ -33,4 +38,5 @@ class UsersController < ApplicationController
   def set_user!
     @user = current_user
   end
+
 end

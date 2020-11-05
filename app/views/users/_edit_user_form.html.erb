@@ -13,6 +13,7 @@
     </div>
     <div class="col-md-8">
       <%= render partial: 'profile_fields', locals: {form: f} %>
+      <%= render partial: 'layouts/terms_acceptance_disclaimer', locals: {user: @user} %>
     </div>
   </div>
   <div class="mu-profile-actions mobile visible-xs">

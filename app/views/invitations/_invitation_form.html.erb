@@ -4,6 +4,7 @@
       <div class="row mu-tab-body">
         <div class="col-md-12">
           <%= render partial: 'users/profile_fields', locals: {form: f} %>
+          <%= render partial: 'layouts/terms_acceptance_disclaimer', locals: {user: @user} %>
         </div>
       </div>
     </div>

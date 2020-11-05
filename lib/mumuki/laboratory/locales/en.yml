@@ -3,7 +3,9 @@ en:
   aborted: Oops, we couldn't evaluate your solution
   abort_explanation_html: <li>Check that your program does not have recursion or an infinite loop</li> <li>Check that you have an internet connection</li> <li>Wait a while and try again</li>
   about: About
-  accept_terms: I accept the terms and conditions
+  accept: Accept
+  accept_terms: I have read and accept the terms and conditions
+  accept_terms_to_continue: Accept terms to continue
   actions: Actions
   activity: Activity
   actual_state: Obtained board
@@ -103,6 +105,8 @@ en:
   first_name: First Name
   forbidden_explanation: Please verify you have logged in with the right account
   format: Format
+  forum_terms: Forum rules
+  forum_terms_link: If you have any questions, please check %{terms_link}
   fullscreen: "Fullscreen"
   gender: Gender
   get_messages: "View messages"
@@ -244,7 +248,10 @@ en:
   teacher_info: Information for teachers
   tell_us_how: Please tell us how this happened!
   tell_us_if_our_error: If you think this is our fault, %{issues}
+  terms_accepted: The terms and conditions were accepted
   terms_and_conditions: Terms and conditions
+  terms_and_conditions_continue_disclaimer: By continuing you agree to %{terms_link}
+  terms_and_conditions_must_be_accepted: You must accept the terms and conditions
   test_results: Test results
   time_ago: "%{time} ago"
   time_left: You have

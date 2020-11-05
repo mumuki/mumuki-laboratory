@@ -1,0 +1,18 @@
+<%= content_for :breadcrumbs do %>
+  <% if current_user? %>
+    <%= breadcrumbs @user %>
+  <% else %>
+    <%= header_breadcrumbs %>
+  <% end %>
+<% end %>
+
+<div class="mu-user-header">
+  <h1><%= t(:terms_and_conditions) %></h1>
+</div>
+
+<div>
+  <% @profile_terms.each do |term| %>
+    <%= render partial: 'term', locals: {term: term, collapsed: current_user&.has_accepted?(term)} %>
+  <% end %>
+</div>
+
