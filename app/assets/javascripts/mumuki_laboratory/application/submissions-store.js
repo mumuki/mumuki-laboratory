@@ -83,6 +83,10 @@ mumuki.SubmissionsStore = (() => {
       return this.submissionSolutionContent(one) === this.submissionSolutionContent(other);
     }
 
+    clear() {
+      window.localStorage.clear();
+    }
+
     // private API
 
     _asString(object) {
@@ -96,3 +100,11 @@ mumuki.SubmissionsStore = (() => {
 
   return SubmissionsStore;
 })();
+
+mumuki.load(() => {
+  $('.mu-restart-guide').on("confirm:complete", (e) => {
+    if (e.detail[0]) {
+      mumuki.SubmissionsStore.clear();
+    }
+  })
+})
