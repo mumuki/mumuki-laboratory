@@ -2,7 +2,7 @@
   <%= t :not_in_any_organizations %>
 <% else %>
   <% organizations_for(current_user).each do |org| %>
-      <div class="col-md-6 mu-organization-card public">
+      <div class="col-md-6 mu-organization-card <%= org.public? ? 'public' : 'private' %>">
         <div class="mu-organization-card-header">
           <%= image_tag(org.banner_url, alt: org.display_name, height: 50, class: 'pull-left') %>
         </div>
