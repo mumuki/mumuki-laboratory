@@ -14,15 +14,6 @@ $modal-footer-height: 95px;
     height: calc(100% - #{$kids-characters-height} - 15px);
     width: 100%;
 
-    .konvajs-content {
-      width: unset !important;
-      height: unset !important;
-      canvas {
-        width: unset !important;
-        height: unset !important;
-      }
-    }
-
     .mu-kids-single-state,
     .mu-kids-blocks {
       width: 50%;
