@@ -46,8 +46,8 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_proper_context!
-    # TODO: redirect to subject (if it exists on the immersive context)
-    redirect_to current_immersive_context.url_for('/')
+    current_immersive_context.switch!
+    redirect_to immersive_subject || Organization.current.url_for(default_immersive_url)
   end
 
   def should_choose_organization?
@@ -86,6 +86,11 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def default_immersive_url
+    # TODO: redirect to original path
+    '/'
+  end
+
   def current_immersive_context
     # TODO: replace `nil` with `subject` to consider exercise, guide, etc
     current_user&.current_immersive_context_at(nil) || Organization.current
@@ -119,6 +124,10 @@ class ApplicationController < ActionController::Base
   end
 
   def subject #TODO may be used to remove breadcrumbs duplication
+    nil
+  end
+
+  def immersive_subject
     nil
   end
 

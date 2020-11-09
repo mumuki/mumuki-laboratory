@@ -1,6 +1,7 @@
 class ExercisesController < ApplicationController
   include Mumuki::Laboratory::Controllers::Content
   include Mumuki::Laboratory::Controllers::ExerciseSeed
+  include Mumuki::Laboratory::Controllers::ImmersiveNavigation
 
   before_action :set_guide!, only: :show
   before_action :set_assignment!, only: :show, if: :current_user?

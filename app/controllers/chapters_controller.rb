@@ -2,6 +2,7 @@ require 'addressable/uri'
 
 class ChaptersController < ApplicationController
   include Mumuki::Laboratory::Controllers::Content
+  include Mumuki::Laboratory::Controllers::ImmersiveNavigation
 
   def show
   end

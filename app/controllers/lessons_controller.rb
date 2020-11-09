@@ -1,4 +1,5 @@
 class LessonsController < GuideContainerController
+  include Mumuki::Laboratory::Controllers::ImmersiveNavigation
 
   private
 

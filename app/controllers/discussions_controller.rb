@@ -46,6 +46,10 @@ class DiscussionsController < ApplicationController
 
   private
 
+  def default_immersive_url
+    '/'
+  end
+
   def current_content_discussions
     @debatable.discussions_in_organization
   end
