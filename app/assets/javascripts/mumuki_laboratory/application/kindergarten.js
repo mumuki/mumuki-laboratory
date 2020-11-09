@@ -6,6 +6,9 @@ mumuki.load(() => {
       this.context.showNextOrCloseButton();
       this.result.configureCallbacks();
     },
+    isAvailable() {
+      return !!$('.mu-kindergarten').get(0);
+    },
     speech: {
       _isPlaying: false,
       click(selector, locale) {
@@ -129,14 +132,14 @@ mumuki.load(() => {
 
   $(document).ready(() => {
 
-    if ($('.mu-kindergarten').get(0)) {
+    if (mumuki.kindergarten.isAvailable()) {
 
       mumuki.resize(() => {
-        mumuki.kids.scaleState($('.mu-kids-states'), 100);
+        mumuki.kids.scaleState($('.mu-kids-states'), 50);
         mumuki.kids.scaleBlocksArea($('.mu-kids-blocks'));
       })
 
-      mumuki.kindergarten.initialize()
+      mumuki.kindergarten.initialize();
 
     }
 
