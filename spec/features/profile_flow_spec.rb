@@ -5,10 +5,9 @@ feature 'Profile Flow', organization_workspace: :test do
   let(:haskell) { create(:haskell) }
   let!(:chapter) {
     create(:chapter, name: 'Functional Programming', lessons: [
-        build(:lesson, name: 'Values and Functions', language: haskell, description: 'Values are everywhere...', exercises: [
-            build(:exercise, name: 'The Basic Values', description: "Let's say we want to declare a variable...")
-        ])
+        build(:lesson, name: 'Values and Functions', language: haskell, description: 'Values are everywhere...', exercises: [exercise])
     ]) }
+  let(:exercise) { build(:exercise, name: 'The Basic Values', description: "Let's say we want to declare a variable...") }
   let(:problem) { create :problem}
   let(:message) {
     {'exercise_id' => problem.id,
@@ -57,6 +56,17 @@ feature 'Profile Flow', organization_workspace: :test do
       expect(page).to_not have_text('Please complete your profile data to continue!')
       expect(page).to_not have_text('Sign Out')
       expect(page).to have_text('Sign In')
+    end
+  end
+
+  context 'user with uncompleted profile' do
+    scenario 'redirect to /user if user has access to organizations' do
+      visit "/exercises/#{exercise.transparent_id}"
+      user.update! last_name: 'foo', birthdate: Time.now - 20.years, gender: 'female'
+      click_on 'Sign in'
+      fill_in(:first_name, with: 'baz')
+      click_on 'Update'
+      expect(page).to have_text('Please complete your profile data to continue!')
     end
   end
 
