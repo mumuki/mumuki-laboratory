@@ -114,6 +114,11 @@ $modal-footer-height: 95px;
       border-radius: $border-width;
       box-shadow: none;
 
+      .modal-header {
+        text-align: center;
+        text-transform: uppercase;
+      }
+
       .modal-body {
         height: 100%;
         div, p {

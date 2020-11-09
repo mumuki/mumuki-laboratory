@@ -8,7 +8,7 @@ module ContextualizationResultHelper
   end
 
   def t_contextualization_status(contextualization)
-    t contextualization_status contextualization
+    t contextualization_status(contextualization)
   end
 
   def contextualization_status(contextualization)
@@ -16,6 +16,14 @@ module ContextualizationResultHelper
       :hidden_done
     elsif contextualization.exercise.choice?
       contextualization.solved? ? :correct_answer : :wrong_answer
+    else
+      contextualization_status_translation_key contextualization
+    end
+  end
+
+  def contextualization_status_translation_key(contextualization)
+    if contextualization.exercise.input_kindergarten?
+      "kindergarten_#{contextualization.submission_status}"
     else
       contextualization.submission_status
     end
