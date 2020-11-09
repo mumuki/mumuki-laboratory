@@ -2,12 +2,12 @@
   <%= t :not_in_any_organizations %>
 <% else %>
   <% organizations_for(current_user).each do |org| %>
-      <div class="row">
-        <div class="col-md-6 organization-row">
-          <%= image_tag(org.banner_url, height: 50, class: 'pull-left') %>
+      <div class="col-md-6 mu-organization-card public">
+        <div class="mu-organization-card-header">
+          <%= image_tag(org.banner_url, alt: org.display_name, height: 50, class: 'pull-left') %>
         </div>
-        <div class="col-md-6 organization-row">
-          <%= link_to(t(:go_to, organization: org.name), org.url, class: 'btn btn-success pull-right') %>
+        <div class="mu-organization-card-body" style="text-align: center; ">
+          <p><%= org.display_name %></p>
         </div>
       </div>
   <% end %>
