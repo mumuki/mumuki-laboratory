@@ -1,3 +1,50 @@
+# TODO: mover a domain
+Exercise.class_eval do
+  def content_used_in?(organization)
+    used_in? organization
+  end
+
+  def navigable_content_in(organization = Organization.current)
+    self if self.used_in?(organization)
+  end
+end
+
+Guide.class_eval do
+  def used_in?(organization)
+    usage_in_organization(organization).present?
+  end
+end
+
+# TODO: mover a domain
+Container.class_eval do
+  def content_used_in?(organization)
+    content.used_in? organization
+  end
+
+  def navigable_content_in(organization = Organization.current)
+    content.usage_in_organization(organization)
+  end
+end
+
+User.class_eval do
+  def current_immersive_context_at(exercise)
+    if Organization.current?
+      immersive_organization_at(exercise)
+    else
+      main_organization
+    end
+  end
+
+  def immersive_organizations_at(path_item, current = Organization.current)
+    return [] unless current.immersible?
+
+    usage_filter = path_item ? lambda { |it| path_item.content_used_in?(it) } : lambda { |_| true }
+    student_granted_organizations
+        .select { |it| current.immersed_in?(it) }
+        .select(&usage_filter)
+  end
+end
+
 class ApplicationController < ActionController::Base
   Mumukit::Login.configure_controller! self
 
@@ -39,22 +86,21 @@ class ApplicationController < ActionController::Base
                 :subject,
                 :should_choose_organization?,
                 :theme_stylesheet_url,
-                :extension_javascript_url
+                :extension_javascript_url,
+                :current_immersive_path
 
   def immersive_context_wrong?
     current_immersive_context != Organization.current
   end
 
   def redirect_to_proper_context!
-    current_immersive_context.switch!
-    redirect_to immersive_subject || Organization.current.url_for(default_immersive_url)
+    redirect_to current_immersive_path
   end
 
   def should_choose_organization?
     return false unless current_user?
 
-    # TODO: replace `nil` with `subject` to consider exercise, guide, etc
-    current_user.immersive_organizations_at(nil).size > 1
+    current_user.immersive_organizations_at(subject).size > 1
   end
 
   # ensures contents are accessible to current user
@@ -67,7 +113,6 @@ class ApplicationController < ActionController::Base
     return if current_user&.teacher_here?
     Organization.current.validate_active!
   end
-
 
   # required by Mumukit::Login
   def login_button(options = {})
@@ -84,16 +129,21 @@ class ApplicationController < ActionController::Base
     Mumuki::Domain::Workspace.new(current_user, Organization.current)
   end
 
+  def current_immersive_path
+    resource = immersive_subject ? polymorphic_url(immersive_subject, routing_type: :path) : default_immersive_path
+    current_immersive_context.url_for resource
+  end
+
   private
 
-  def default_immersive_url
+  def default_immersive_path
     # TODO: redirect to original path
     '/'
   end
 
   def current_immersive_context
-    # TODO: replace `nil` with `subject` to consider exercise, guide, etc
-    current_user&.current_immersive_context_at(nil) || Organization.current
+    # TODO: ver si esto va acá o en el current_immersive_context_at
+    current_user&.current_immersive_context_at(subject) || current_user&.current_immersive_context_at(nil) || Organization.current
   end
 
   def from_sessions?

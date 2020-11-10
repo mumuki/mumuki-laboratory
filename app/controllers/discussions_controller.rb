@@ -46,7 +46,7 @@ class DiscussionsController < ApplicationController
 
   private
 
-  def default_immersive_url
+  def default_immersive_path
     '/'
   end
 
