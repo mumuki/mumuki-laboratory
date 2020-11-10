@@ -34,7 +34,7 @@ module Mumukit::Platform::OrganizationMapping::Path
     patch :organization_name do |request, domain, hyper|
       name = hyper.(request, domain)
       if %w(auth login logout).include? name
-        'central'
+        'base'
       else
         name
       end
