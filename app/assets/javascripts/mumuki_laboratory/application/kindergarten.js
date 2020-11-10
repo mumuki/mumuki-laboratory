@@ -111,10 +111,16 @@ mumuki.load(() => {
       configureCallbacks() {
         mumuki.kids.resultAction.passed = this._showOnSuccessPopup;
         mumuki.kids.resultAction.passed_with_warnings = this._showOnSuccessPopup;
-
         mumuki.kids.resultAction.failed = this._showOnFailurePopup;
         mumuki.kids.resultAction.errored = this._showOnFailurePopup;
         mumuki.kids.resultAction.pending = this._showOnFailurePopup;
+
+        mumuki.kindergarten.result._show = mumuki.kids.showResult;
+        mumuki.kids.showResult = mumuki.kindergarten.result.show.bind(mumuki.kids);
+      },
+      show(data) {
+          data.guide_finished_by_solution = false;
+          mumuki.kindergarten.result._show(data);
       },
       _showOnSuccessPopup(data) {
         $('.submission-results').html(data.title_html);
