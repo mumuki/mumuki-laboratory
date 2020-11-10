@@ -109,8 +109,8 @@ mumuki.load(() => {
     },
     result: {
       configureCallbacks() {
-        mumuki.kids.resultAction.passed = this._showOnSuccessPopup;
-        mumuki.kids.resultAction.passed_with_warnings = this._showOnSuccessPopup;
+        mumuki.kids.resultAction.passed = this._showSuccessOnPopup;
+        mumuki.kids.resultAction.passed_with_warnings = this._showSuccessOnPopup;
         mumuki.kids.resultAction.failed = this._showOnFailurePopup;
         mumuki.kids.resultAction.errored = this._showOnFailurePopup;
         mumuki.kids.resultAction.pending = this._showOnFailurePopup;
@@ -122,16 +122,18 @@ mumuki.load(() => {
           data.guide_finished_by_solution = false;
           mumuki.kindergarten.result._show(data);
       },
-      _showOnSuccessPopup(data) {
+      _showOnPopup(data) {
         $('.submission-results').html(data.title_html);
+        $('#kids-results .modal-content').removeClass().addClass('modal-content').addClass(data.status);
         mumuki.kids._showOnSuccessPopup(data);
-        $('#kids-results .modal-content').addClass(data.status);
+      },
+      _showSuccessOnPopup(data) {
+        data.animation = 'success_l';
+        mumuki.kindergarten.result._showOnPopup(data);
       },
       _showOnFailurePopup(data) {
-        mumuki.kids._getResultsAbortedModal().modal();
-        $('#kids-results-aborted .modal-header').html(data.title_html);
-        $('#kids-results-aborted .modal-content').addClass(data.status);
-        mumuki.presenterCharacter.playAnimation('failure', mumuki.kids._getCharacterImage());
+        data.animation = 'failure';
+        mumuki.kindergarten.result._showOnPopup(data);
       }
     }
   };

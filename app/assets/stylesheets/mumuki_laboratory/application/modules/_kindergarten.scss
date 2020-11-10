@@ -136,7 +136,8 @@ $modal-footer-height: 95px;
       border-radius: $border-width;
       box-shadow: none;
 
-      .modal-header {
+      .modal-header,
+      .modal-footer {
         text-align: center;
         text-transform: uppercase;
       }

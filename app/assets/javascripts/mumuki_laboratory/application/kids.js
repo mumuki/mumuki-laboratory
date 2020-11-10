@@ -219,9 +219,9 @@ mumuki.load(() => {
 
     _showOnSuccessPopup: function (data) {
       mumuki.kids._updateSubmissionResult(data.html);
-      mumuki.presenterCharacter.playAnimation('success_l', mumuki.kids._getCharacterImage());
+      mumuki.presenterCharacter.playAnimation(data.animation || 'success_l', mumuki.kids._getCharacterImage());
       mumuki.kids._showMessageOnCharacterBubble(data);
-      mumuki.presenterCharacter.playAnimation('success2_l', $('.mu-kids-character-success'));
+      mumuki.presenterCharacter.playAnimation(data.animation || 'success2_l', $('.mu-kids-character-success'));
       setTimeout(function () {
         var $resultsKidsModal = mumuki.kids._getResultsModal();
         if ($resultsKidsModal) {
