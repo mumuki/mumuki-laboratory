@@ -35,3 +35,5 @@ group :development, :test do
   gem 'teaspoon-jasmine'
   gem "selenium-webdriver"
 end
+#
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'chore-terms-redirection'
