@@ -29,7 +29,13 @@
   padding: 1.25rem;
 }
 
-.terms-acceptance-btn {
-  margin-top: 10px;
-  display: block
+.terms-acceptance {
+  margin-top: 30px;
+
+  .terms-acceptance-btn {
+    margin-top: 10px;
+    display: block
+  }
 }
+
+
