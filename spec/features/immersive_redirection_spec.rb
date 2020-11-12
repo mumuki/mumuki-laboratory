@@ -33,6 +33,7 @@ feature 'Immersive redirection Flow', organization_workspace: :test do
   shared_examples 'immersive redirection' do |organization_name|
     scenario 'should redirect to immersive organization' do
       expect(page).to have_text organization_name
+      expect(page).not_to have_text "Go to #{organization_name}"
     end
   end
 
@@ -46,6 +47,18 @@ feature 'Immersive redirection Flow', organization_workspace: :test do
   shared_examples 'navigate to main page' do
     scenario 'should navigate to main page' do
       expect(page).to have_text 'Start Practicing!'
+    end
+  end
+
+  shared_examples 'navigate to discussions main page' do
+    scenario 'should navigate to discussions main page' do
+      expect(page).to have_text 'Discussions'
+    end
+  end
+
+  shared_examples 'navigate to user profile' do
+    scenario 'should navigate to user profile' do
+      expect(page).to have_text user.full_name
     end
   end
 
@@ -65,14 +78,25 @@ feature 'Immersive redirection Flow', organization_workspace: :test do
       it_behaves_like 'navigate to main page'
     end
 
-    feature 'when navigating to a discussion' do
-      before { visit discussions_path }
-      it_behaves_like 'immersive redirection', 'immersive-orga'
-      it_behaves_like 'navigate to main page'
+    context 'when navigating to a discussion' do
+      feature 'and forum enabled' do
+        before { immersive_orga.update(forum_enabled: true) }
+        before { visit discussions_path }
+        it_behaves_like 'immersive redirection', 'immersive-orga'
+        it_behaves_like 'navigate to discussions main page'
+      end
+
+      feature 'and forum not enabled' do
+        before { visit discussions_path }
+        it_behaves_like 'immersive redirection', 'immersive-orga'
+        it_behaves_like 'navigate to main page'
+      end
     end
 
     feature 'when navigating to another route' do
-
+      before { visit update_user_path }
+      it_behaves_like 'immersive redirection', 'immersive-orga'
+      it_behaves_like 'navigate to user profile'
     end
   end
 
@@ -88,9 +112,16 @@ feature 'Immersive redirection Flow', organization_workspace: :test do
       end
     end
 
+    def choose_organization(name)
+      within '.modal' do
+        click_on "Go to #{name}"
+      end
+    end
+
     feature 'when content is present in one of them' do
       before { visit lesson_path(lesson_two) }
       it_behaves_like 'immersive redirection', 'private'
+      it_behaves_like 'navigate to content', 'guide two'
     end
 
     feature 'when content is present in two of them' do
@@ -98,28 +129,50 @@ feature 'Immersive redirection Flow', organization_workspace: :test do
       it_behaves_like 'organization chooser'
 
       context 'after choosing an organization' do
-        before {
-          within '.organization-row' do
-            click_link
-          end
-        }
+        before { choose_organization 'private' }
         it_behaves_like 'immersive redirection', 'private'
         it_behaves_like 'navigate to content', 'guide one'
       end
     end
 
     describe 'when content is not present on any of them' do
-      # TODO: está tirando 404
       before { visit lesson_path(lesson_three) }
       it_behaves_like 'organization chooser'
 
       context 'after choosing an organization' do
-        before {
-          save_and_open_page
-          within :xpath, "//*[@data-organization='private']" do
-            click_link
-          end
-        }
+        before { choose_organization 'immersive-orga' }
+        it_behaves_like 'immersive redirection', 'immersive-orga'
+        it_behaves_like 'navigate to main page'
+      end
+    end
+
+    feature 'when navigating to another route' do
+      before { visit update_user_path }
+      it_behaves_like 'organization chooser'
+
+      context 'after choosing an organization' do
+        before { choose_organization 'immersive-orga' }
+        it_behaves_like 'immersive redirection', 'immersive-orga'
+        it_behaves_like 'navigate to user profile'
+      end
+    end
+
+    context 'when navigating to a discussion' do
+      before { immersive_orga.update(forum_enabled: true) }
+      before { visit discussions_path }
+
+      it_behaves_like 'organization chooser'
+
+      feature 'and forum enabled' do
+        before { choose_organization 'immersive-orga' }
+
+        it_behaves_like 'immersive redirection', 'immersive-orga'
+        it_behaves_like 'navigate to discussions main page'
+      end
+
+      feature 'and forum not enabled' do
+        before { choose_organization 'private' }
+
         it_behaves_like 'immersive redirection', 'private'
         it_behaves_like 'navigate to main page'
       end

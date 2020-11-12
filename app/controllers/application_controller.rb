@@ -1,50 +1,3 @@
-# TODO: mover a domain
-Exercise.class_eval do
-  def content_used_in?(organization)
-    used_in? organization
-  end
-
-  def navigable_content_in(organization = Organization.current)
-    self if self.used_in?(organization)
-  end
-end
-
-Guide.class_eval do
-  def used_in?(organization)
-    usage_in_organization(organization).present?
-  end
-end
-
-# TODO: mover a domain
-Container.class_eval do
-  def content_used_in?(organization)
-    content.used_in? organization
-  end
-
-  def navigable_content_in(organization = Organization.current)
-    content.usage_in_organization(organization)
-  end
-end
-
-User.class_eval do
-  def current_immersive_context_at(exercise)
-    if Organization.current?
-      immersive_organization_at(exercise)
-    else
-      main_organization
-    end
-  end
-
-  def immersive_organizations_at(path_item, current = Organization.current)
-    return [] unless current.immersible?
-
-    usage_filter = path_item ? lambda { |it| path_item.content_used_in?(it) } : lambda { |_| true }
-    student_granted_organizations
-        .select { |it| current.immersed_in?(it) }
-        .select(&usage_filter)
-  end
-end
-
 class ApplicationController < ActionController::Base
   Mumukit::Login.configure_controller! self
 
@@ -94,13 +47,13 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_proper_context!
-    redirect_to current_immersive_path
+    redirect_to current_immersive_path_for(*current_immersive_context_and_content)
   end
 
   def should_choose_organization?
     return false unless current_user?
 
-    current_user.immersive_organizations_at(subject).size > 1
+    current_user.immersive_organizations_with_content_at(subject).size > 1
   end
 
   # ensures contents are accessible to current user
@@ -129,21 +82,34 @@ class ApplicationController < ActionController::Base
     Mumuki::Domain::Workspace.new(current_user, Organization.current)
   end
 
-  def current_immersive_path
-    resource = immersive_subject ? polymorphic_url(immersive_subject, routing_type: :path) : default_immersive_path
-    current_immersive_context.url_for resource
+  def current_immersive_path(context)
+    current_immersive_path_for context, subject&.navigable_content_in(context)
+  end
+
+  def current_immersive_path_for(context, content)
+    resource = content ? without_orga(polymorphic_url(content, routing_type: :path)) : default_immersive_path_for(context)
+    context.url_for resource
   end
 
   private
 
-  def default_immersive_path
-    # TODO: redirect to original path
-    '/'
+  def without_orga(path)
+    # TODO: esto está muy mal, pero no encontré cómo sacarle el /orga de manera elegante (solo para path mapping)
+    return path if ENV['RAILS_ENV'] == 'test'
+
+    path.split("/").drop(2).join("/")
+  end
+
+  def default_immersive_path_for(context)
+    subject.present? ? '/' : without_orga(request.path_info)
   end
 
   def current_immersive_context
-    # TODO: ver si esto va acá o en el current_immersive_context_at
-    current_user&.current_immersive_context_at(subject) || current_user&.current_immersive_context_at(nil) || Organization.current
+    current_immersive_context_and_content&.first || Organization.current
+  end
+
+  def current_immersive_context_and_content
+    current_user&.current_immersive_context_and_content_at(subject) || [Organization.current, nil]
   end
 
   def from_sessions?
@@ -174,10 +140,6 @@ class ApplicationController < ActionController::Base
   end
 
   def subject #TODO may be used to remove breadcrumbs duplication
-    nil
-  end
-
-  def immersive_subject
     nil
   end
 

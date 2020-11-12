@@ -6,8 +6,8 @@
         <div class="col-md-6 organization-row">
           <%= image_tag(org.banner_url, height: 50, class: 'pull-left') %>
         </div>
-        <div class="col-md-6 organization-row" data-organization="<%= org.name %>">
-          <%= link_to(t(:go_to, organization: org.name), current_immersive_path, class: 'btn btn-success pull-right') %>
+        <div class="col-md-6 organization-row">
+          <%= link_to(t(:go_to, organization: org.name), current_immersive_path(org), class: 'btn btn-success pull-right') %>
         </div>
       </div>
   <% end %>

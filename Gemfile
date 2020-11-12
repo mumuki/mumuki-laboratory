@@ -33,6 +33,7 @@ group :development, :test do
   gem 'teaspoon', '~> 1.1.5'
   gem 'teaspoon-jasmine'
   gem "selenium-webdriver"
+  gem 'mumuki-domain', github: 'mumuki/mumuki-domain', ref: 'e4b9ccd'
 end
 
 gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'master'
