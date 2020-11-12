@@ -10,7 +10,6 @@ mumuki.load(() => {
     }
 
     initialize() {
-      super.initialize();
       this.speech.verifyBrowserSupport();
       this.hint.showOrHideExpandHintButton();
       this.context.showNextOrCloseButton();
@@ -61,7 +60,6 @@ mumuki.load(() => {
       this.scaleState(this.$states(), 50);
       this.scaleBlocksArea(this.$blocks());
     }
-
 
     // ==========================
     // == Called by the runner ==

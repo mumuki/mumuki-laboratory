@@ -35,7 +35,6 @@ mumuki.load(() => {
     // ================
 
     initialize() {
-      super.initialize();
       this.$contextModal().on('hidden.bs.modal', this.animateSpeech.bind(this));
     }
 
@@ -118,18 +117,6 @@ mumuki.load(() => {
 
     onSubmissionResultModalOpen(_data) {
       this._showCorollaryCharacter();
-    }
-
-    // =================
-    // == Private API ==
-    // =================
-
-    _openSubmissionResultModal(data) {
-      this.$resultsModal().modal({ backdrop: 'static', keyboard: false })
-      this.$resultsModal().find('.modal-header').first().html(data.title_html)
-      this.$resultsModal().find('.modal-footer').first().html(data.button_html)
-      $('.mu-close-modal').click(() => this.$resultsModal().modal('hide'));
-      this.onSubmissionResultModalOpen(data);
     }
 
     // ==========================
