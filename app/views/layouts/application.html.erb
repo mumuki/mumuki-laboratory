@@ -18,10 +18,11 @@
       </div>
       <div class="mu-navbar-avatar">
         <% if current_logged_user? %>
+          <i class ="fa fa-star fa-fw fa-2x"></i>
           <div class="dropdown">
             <span>
               <a class="notifications-box <%= has_notifications? ? '' : 'notifications-box-empty' %>" href=<%= "#{user_notifications_path}" %>>
-                <i class="fa fa-bell fa-fw fa-lg"></i>
+                <i class="fa fa-bell fa-fw fa-2x"></i>
                   <span class="badge badge-notifications"><%= notifications_count %></span>
               </a>
             </span>
