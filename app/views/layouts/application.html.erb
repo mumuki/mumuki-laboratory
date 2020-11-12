@@ -1,4 +1,5 @@
 <%= content_for :navbar do %>
+  <%= hidden_field_tag "mu-current-exp", UserStats.exp_for(@current_user) %>
   <div class="<%= exercise_container_type %>">
     <nav class="mu-navbar">
       <div class="mu-navbar-breadcrumb hidden-xs">
@@ -77,3 +78,4 @@
 <% end %>
 
 <%= render partial: 'layouts/main' %>
+
