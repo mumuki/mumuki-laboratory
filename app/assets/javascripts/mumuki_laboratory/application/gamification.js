@@ -56,8 +56,13 @@ mumuki.gamification = (() => {
       if (expGained > 0) {
         this.currentExp = exp;
         $('#mu-exp-points').html(expGained);
-        $('#mu-level-number').html(this.currentLevel());
+
+        this.updateLevel();
       }
+    }
+
+    updateLevel() {
+      $('.mu-level-number').html(this.currentLevel());
     }
   }
 
@@ -82,4 +87,5 @@ mumuki.gamification = (() => {
 
 mumuki.load(() => {
   mumuki.gamification._setUpCurrentLevelProgression();
+  mumuki.gamification._currentLevelProgression.updateLevel();
 });
