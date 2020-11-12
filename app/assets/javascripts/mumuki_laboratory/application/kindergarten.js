@@ -2,7 +2,7 @@ mumuki.load(() => {
 
   mumuki.isKindergartenExercise = () => !!$('.mu-kindergarten').get(0);
 
-  class MumukiKindergarten extends MumukiInteractiveExercise {
+  class MumukiKindergarten extends mumuki.Kids {
 
     constructor() {
       super();
@@ -96,7 +96,8 @@ mumuki.load(() => {
         stop() {
           this._action('stop', 'play', false, (speech) => speech.cancel())
         },
-        _action(add, remove, isPlaying, callback = () => {}) {
+        _action(add, remove, isPlaying, callback = () => {
+        }) {
           callback(window.speechSynthesis);
           const $button = $('.mu-kindergarten-play-description')
           $button.find(`.mu-kindergarten-${add}`).addClass('hidden');
@@ -116,7 +117,7 @@ mumuki.load(() => {
     }
 
     get hint() {
-      return  {
+      return {
         toggle() {
           $('.mu-kindergarten-light-speech-bubble').toggleClass('open');
         },
@@ -137,7 +138,7 @@ mumuki.load(() => {
     get context() {
       return {
         showContext() {
-          mumuki.kindergarten.showContext();
+          mumuki.kids.showContext();
           this._showFirstSlideImage();
         },
         nextSlide() {
@@ -187,7 +188,6 @@ mumuki.load(() => {
 
   if (mumuki.isKindergartenExercise()) {
     mumuki.kids = new MumukiKindergarten();
-    mumuki.kindergarten = mumuki.kids;
   }
 
 });
