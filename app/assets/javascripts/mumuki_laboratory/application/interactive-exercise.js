@@ -4,16 +4,177 @@ class MumukiInteractiveExercise {
     this.submitButton = new mumuki.submission.SubmitButton($('#kids-btn-retry'), $('.submission_control'));
     this.resultActions = {};
     this.initialize();
+    this.showContext();
     $(document).ready(this.onReady.bind(this));
   }
 
-  // ==========
-  // Public API
-  // ==========
+  // ================
+  // == Public API ==
+  // ================
 
   initialize() {
-    this.showContext();
+    // SubClasses may override this method
   }
+
+  showContext() {
+    this.$contextModal().modal({
+      backdrop: 'static',
+      keyboard: false
+    });
+  }
+
+  showNonAbortedPopup(data, animation_name1, animation_name2, open_modal_delay_ms = 0) {
+    this.$submissionResult().html(data.html);
+    mumuki.presenterCharacter.playAnimation(animation_name1, this.$characterImage());
+    mumuki.presenterCharacter.playAnimation(animation_name2, $('.mu-kids-character-success'));
+    setTimeout(() => this._openSubmissionResultModal(data), open_modal_delay_ms);
+    this.onNonAbortedPopupCall(data);
+  }
+
+  showAbortedPopup(_data) {
+    this.submitButton.disable();
+    this.$resultsAbortedModal().modal();
+    mumuki.submission.animateTimeoutError(this.submitButton);
+  }
+
+  $states() {
+    return $('.mu-kids-states');
+  }
+
+  $state() {
+    return $('.mu-kids-state');
+  }
+
+  $blocks() {
+    return $('.mu-kids-blocks');
+  }
+
+  $exercise() {
+    return $('.mu-kids-exercise');
+  }
+
+  $exerciseDescription() {
+    return $('.mu-kids-exercise-description');
+  }
+
+  $stateImage() {
+    return $('.mu-kids-state-image');
+  }
+
+  $contextModal() {
+    return $('#mu-kids-context');
+  }
+
+  $resultsModal() {
+    return $('#kids-results');
+  }
+
+  $resultsAbortedModal() {
+    return $('#kids-results-aborted');
+  }
+
+  $characterImage() {
+    return $('.mu-kids-character > img');
+  }
+
+  $submissionResult() {
+    return $('.submission-results');
+  }
+
+  // ==================
+  // == Hook Methods ==
+  // ==================
+
+  _showSuccessPopup() {
+    this._mustImplementThisMethod()
+  }
+
+  _showFailurePopup() {
+    this._mustImplementThisMethod()
+  }
+
+  $contextModalButton() {
+    this._mustImplementThisMethod()
+  }
+
+  // ====================
+  // == Event Callback ==
+  // ====================
+
+  onReady() {
+    // SubClasses may override this method
+  }
+
+  onResize() {
+    // SubClasses may override this method
+  }
+
+  onNonAbortedPopupCall(_data) {
+    // SubClasses may override this method
+  }
+
+  onSubmissionResultModalOpen(_data) {
+    // SubClasses may override this method
+  }
+
+  // =================
+  // == Private API ==
+  // =================
+
+  _openSubmissionResultModal(data) {
+    this.$resultsModal().modal({ backdrop: 'static', keyboard: false })
+    this.$resultsModal().find('.modal-header').first().html(data.title_html)
+    this.$resultsModal().find('.modal-footer').first().html(data.button_html)
+    $('.mu-close-modal').click(() => this.$resultsModal().modal('hide'));
+    this.onSubmissionResultModalOpen(data);
+  }
+
+  // ==========================
+  // == Called by the runner ==
+  // ==========================
+
+  // Displays the exercise results, updating the progress bar
+  // firing the modal and running appropriate animations.
+  //
+  // This method needs to be called by the runner's editor.html extension
+  // in order to finish an exercise
+  showResult(data) {
+    mumuki.progress.updateProgressBarAndShowModal(data);
+    if (data.guide_finished_by_solution) return;
+    this.resultActions[data.status](data);
+  }
+
+  // Restarts the kids exercise.
+  //
+  // This method may need to be called by the runner's editor.html extension
+  // in order to recover from a failed submission
+  restart() {
+    this._mustImplementThisMethod();
+  }
+
+  // =================================
+  // == Called by the assets loader ==
+  // =================================
+
+  disableContextModalButton() {
+    this.$contextModalButton().setWaiting();
+  }
+
+  enableContextModalButton() {
+    this.$contextModalButton().enable();
+  }
+
+  // ============
+  // == Helper ==
+  // ============
+
+  _mustImplementThisMethod() {
+    throw new Error('TODO: implement method')
+  }
+
+  // ============
+  // == Scaler ==
+  // ============
 
   // Sets a function that will be called each
   // time the states need to be resized. The function takes:
@@ -56,145 +217,6 @@ class MumukiInteractiveExercise {
     this._blocksAreaScaler($blocks);
   }
 
-  // Displays the kids results, updating the progress bar
-  // firing the modal and running appropriate animations.
-  //
-  // This method needs to be called by the runner's editor.html extension
-  // in order to finish an exercise
-  showContext() {
-    this.$contextModal().modal({
-      backdrop: 'static',
-      keyboard: false
-    });
-  }
-
-  // Displays the interactive results, updating the progress bar
-  // firing the modal and running appropriate animations.
-  //
-  // This method needs to be called by the runner's editor.html extension
-  // in order to finish an exercise
-  showResult(data) {
-    mumuki.progress.updateProgressBarAndShowModal(data);
-    if (data.guide_finished_by_solution) return;
-    this.resultActions[data.status](data);
-  }
-
-  disableContextModalButton() {
-    this.$contextModalButton().setWaiting();
-  }
-
-  enableContextModalButton() {
-    this.$contextModalButton().enable();
-  }
-
-  // ===========
-
-  $states() {
-    return $('.mu-kids-states');
-  }
-  $state() {
-    return $('.mu-kids-state');
-  }
-
-  $blocks() {
-    return $('.mu-kids-blocks');
-  }
-
-  $exercise() {
-    return $('.mu-kids-exercise');
-  }
-
-  $exerciseDescription() {
-    return $('.mu-kids-exercise-description');
-  }
-
-  $stateImage() {
-    return $('.mu-kids-state-image');
-  }
-
-
-  // ===========
-  // Private API
-  // ===========
-
-  _mustImplementThisMethod() {
-    throw new Error('TODO: implement method')
-  }
-
-  // Restarts the kids exercise.
-  //
-  // This method may need to be called by the runner's editor.html extension
-  // in order to recover from a failed submission
-  restart() {
-    this._mustImplementThisMethod();
-  }
-
-  _showCorollaryCharacter() {
-    this._mustImplementThisMethod();
-  }
-
-  _updateSubmissionResult(html) {
-    return this.$submissionResult().html(html);
-  }
-
-  $contextModal() {
-    this._mustImplementThisMethod()
-  }
-
-  $resultsModal() {
-    this._mustImplementThisMethod()
-  }
-
-  $resultsAbortedModal() {
-    this._mustImplementThisMethod()
-  }
-
-  $characterImage() {
-    this._mustImplementThisMethod()
-  }
-
-  $submissionResult() {
-    this._mustImplementThisMethod()
-  }
-
-  $contextModalButton() {
-    this._mustImplementThisMethod()
-  }
-
-  _showOnSuccessPopup() {
-    this._mustImplementThisMethod()
-  }
-
-  _showOnFailurePopup() {
-    this._mustImplementThisMethod()
-  }
-
-  _showMessageOnCharacterBubble() {
-    this._mustImplementThisMethod();
-  }
-
-  openSubmissionResultModal(data) {
-    this.$resultsModal().modal({ backdrop: 'static', keyboard: false })
-    this.$resultsModal().find('.modal-header').first().html(data.title_html)
-    this.$resultsModal().find('.modal-footer').first().html(data.button_html)
-    this._showCorollaryCharacter();
-    $('.mu-close-modal').click(() => this.$resultsModal().modal('hide'));
-  }
-
-  _showOnNonAbortedPopup(data, animation_name1, animation_name2, open_modal_delay_ms = 0) {
-    this._updateSubmissionResult(data.html);
-    mumuki.presenterCharacter.playAnimation(animation_name1, this.$characterImage());
-    this._showMessageOnCharacterBubble(data);
-    mumuki.presenterCharacter.playAnimation(animation_name2, $('.mu-kids-character-success'));
-    setTimeout(this.openSubmissionResultModal.bind(this, data), open_modal_delay_ms);
-  }
-
-  _showOnAbortedPopup(_data) {
-    this.submitButton.disable();
-    this.$resultsAbortedModal().modal();
-    mumuki.submission.animateTimeoutError(this.submitButton);
-  }
-
   _stateScaler($state, fullMargin, preferredWidth, preferredHeight) {
     const $table = $state.find('gs-board > table');
     if (!$table.length) return setTimeout(() => this.scaleState($state, fullMargin));
@@ -220,15 +242,4 @@ class MumukiInteractiveExercise {
     $blockSvg.height($blocks.height());
   }
 
-  // ======
-  // Events
-  // ======
-
-  onReady() {
-    // SubClasses should override this method
-  }
-
-  onResize() {
-    // SubClasses should override this method
-  }
 }

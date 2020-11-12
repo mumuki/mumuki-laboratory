@@ -22,18 +22,130 @@ mumuki.load(() => {
       this._$texts = this.$characterSpeechBubbleNormal().children(this._availableTabs.join(", "));
       this._$hint = $('.mu-kids-hint');
       this._$description = $('.mu-kids-description');
-      this.resultActions.passed = this._showOnSuccessPopup.bind(this);
+      this.resultActions.passed = this._showSuccessPopup.bind(this);
       this.resultActions.passed_with_warnings = this._showOnCharacterBubble.bind(this);
       this.resultActions.failed = this._showOnCharacterBubble.bind(this);
       this.resultActions.errored = this._showOnCharacterBubble.bind(this);
       this.resultActions.pending = this._showOnCharacterBubble.bind(this);
-      this.resultActions.aborted = this._showOnAbortedPopup.bind(this);
+      this.resultActions.aborted = this.showAbortedPopup.bind(this);
     }
+
+    // ================
+    // == Public API ==
+    // ================
 
     initialize() {
       super.initialize();
       this.$contextModal().on('hidden.bs.modal', this.animateSpeech.bind(this));
     }
+
+    // ==================
+    // == Hook Methods ==
+    // ==================
+
+    _showSuccessPopup(data) {
+      this.showNonAbortedPopup(data, 'success_l', 'success2_l', 4000);
+    }
+
+    _showFailurePopup(data) {
+      this._showOnCharacterBubble(data);
+    }
+
+    $contextModalButton() {
+      return this._$contextModalButton;
+    }
+
+    // ====================
+    // == Event Callback ==
+    // ====================
+
+    onReady() {
+      mumuki.resize(this.onResize.bind(this));
+
+      this._availableTabs.forEach((selector) => this._tabParagraphs(selector).contents().unwrap().wrapAll('<p>'));
+
+      this._updateSpeechParagraphs();
+      this._resizeSpeechParagraphs();
+
+      this._$speechTabs.each((i) => {
+        const $tab = $(this._$speechTabs[i]);
+        if ($tab.data('target')) {
+          $tab.click(() => {
+            this._$speechTabs.removeClass('active');
+            $tab.addClass('active');
+            this._$texts.hide();
+            this.$characterSpeechBubbleNormal().children('.' + $tab.data('target')).show();
+            this._updateSpeechParagraphs();
+          })
+        }
+      });
+
+      if (this._paragraphCount > 1) {
+        this._nextSpeechBlinking = mumuki.setInterval(() => this._$nextSpeech.fadeTo('slow', 0.1).fadeTo('slow', 1.0), 1000);
+      }
+
+      this._$nextSpeech.click(this._showNextParagraph.bind(this));
+      this._$prevSpeech.click(this._showPrevParagraph.bind(this));
+      this._$description.click(this.animateSpeech.bind(this));
+
+      this._$hint.click(() => {
+        this.animateHint();
+        this._$hint.removeClass('blink');
+      });
+    }
+
+    onResize() {
+      const FULL_MARGIN = 30;
+
+      distributeAreas(this.$stateImage(), this.$states(), this.$blocks(), FULL_MARGIN);
+
+      if (!this.$exerciseDescription().hasClass('mu-kids-exercise-description-fixed')) {
+        this.$exerciseDescription().width(this.$exercise().width() - this.$states().width() - FULL_MARGIN / 2);
+      }
+
+      this.$state().each((_index, state) => this.scaleState($(state), FULL_MARGIN));
+      this.scaleBlocksArea(this.$blocks());
+
+      if (this._paragraphCount <= 1) clearInterval(this._nextSpeechBlinking);
+
+      this._updateSpeechParagraphs();
+      this._resizeSpeechParagraphs();
+    }
+
+    onNonAbortedPopupCall(data) {
+      this._showMessageOnCharacterBubble(data);
+    }
+
+    onSubmissionResultModalOpen(_data) {
+      this._showCorollaryCharacter();
+    }
+
+    // =================
+    // == Private API ==
+    // =================
+
+    _openSubmissionResultModal(data) {
+      this.$resultsModal().modal({ backdrop: 'static', keyboard: false })
+      this.$resultsModal().find('.modal-header').first().html(data.title_html)
+      this.$resultsModal().find('.modal-footer').first().html(data.button_html)
+      $('.mu-close-modal').click(() => this.$resultsModal().modal('hide'));
+      this.onSubmissionResultModalOpen(data);
+    }
+
+    // ==========================
+    // == Called by the runner ==
+    // ==========================
+
+    restart() {
+      this._hideMessageOnCharacterBubble();
+      const $bubble = this.$characterSpeechBubble();
+      Object.keys(this.resultActions).forEach($bubble.removeClass.bind($bubble));
+      mumuki.presenterCharacter.playAnimation('talk', this.$characterImage());
+    }
+
+    // =======================
+    // == Specific Behavior ==
+    // =======================
 
     _hideMessageOnCharacterBubble() {
       const $bubble = this.$characterSpeechBubble();
@@ -68,18 +180,6 @@ mumuki.load(() => {
 
     animateHint() {
       mumuki.presenterCharacter.playAnimation('hint', this.$characterImage());
-    }
-
-    // ===========
-    // Show Modals
-    // ===========
-
-    _showOnSuccessPopup(data) {
-      this._showOnNonAbortedPopup(data, 'success_l', 'success2_l', 4000);
-    }
-
-    _showOnFailurePopup(data) {
-      this._showOnCharacterBubble(data);
     }
 
     _showPrevParagraph() {
@@ -130,32 +230,8 @@ mumuki.load(() => {
       return this._$speechTabs.filter('.active').data('target') || 'description';
     }
 
-    // ===============
-    // Own JQ Elements
-    // ===============
-
     $characterSpeechBubbleNormal() {
       return this.$characterSpeechBubble().children('.mu-kids-character-speech-bubble-normal');
-    }
-
-    // ============
-    // Hook Methods
-    // ============
-
-    $contextModal() {
-      return $('#mu-kids-context');
-    }
-
-    $resultsModal() {
-      return $('#kids-results');
-    }
-
-    $resultsAbortedModal() {
-      return $('#kids-results-aborted');
-    }
-
-    $characterImage() {
-      return $('.mu-kids-character > img');
     }
 
     $characterSpeechBubble() {
@@ -164,79 +240,6 @@ mumuki.load(() => {
 
     $overlay() {
       return $('.mu-kids-overlay');
-    }
-
-    $submissionResult() {
-      return $('.submission-results');
-    }
-
-    $contextModalButton() {
-      return this._$contextModalButton;
-    }
-
-    restart() {
-      this._hideMessageOnCharacterBubble();
-      const $bubble = this.$characterSpeechBubble();
-      Object.keys(this.resultActions).forEach($bubble.removeClass.bind($bubble));
-      mumuki.presenterCharacter.playAnimation('talk', this.$characterImage());
-    }
-
-    // ======
-    // Events
-    // ======
-
-    onReady() {
-      mumuki.resize(this.onResize.bind(this));
-      // Speech initialization
-
-      this._availableTabs.forEach((selector) => this._tabParagraphs(selector).contents().unwrap().wrapAll('<p>'));
-
-      this._updateSpeechParagraphs();
-      this._resizeSpeechParagraphs();
-
-      this._$speechTabs.each((i) => {
-        const $tab = $(this._$speechTabs[i]);
-        if ($tab.data('target')) {
-          $tab.click(() => {
-            this._$speechTabs.removeClass('active');
-            $tab.addClass('active');
-            this._$texts.hide();
-            this.$characterSpeechBubbleNormal().children('.' + $tab.data('target')).show();
-            this._updateSpeechParagraphs();
-          })
-        }
-      });
-
-      if (this._paragraphCount > 1) {
-        this._nextSpeechBlinking = mumuki.setInterval(() => this._$nextSpeech.fadeTo('slow', 0.1).fadeTo('slow', 1.0), 1000);
-      }
-
-      this._$nextSpeech.click(this._showNextParagraph.bind(this));
-      this._$prevSpeech.click(this._showPrevParagraph.bind(this));
-      this._$description.click(this.animateSpeech.bind(this));
-
-      this._$hint.click(() => {
-        this.animateHint();
-        this._$hint.removeClass('blink');
-      });
-    }
-
-    onResize() {
-      const FULL_MARGIN = 30;
-
-      distributeAreas(this.$stateImage(), this.$states(), this.$blocks(), FULL_MARGIN);
-
-      if (!this.$exerciseDescription().hasClass('mu-kids-exercise-description-fixed')) {
-        this.$exerciseDescription().width(this.$exercise().width() - this.$states().width() - FULL_MARGIN / 2);
-      }
-
-      this.$state().each((_index, state) => this.scaleState($(state), FULL_MARGIN));
-      this.scaleBlocksArea(this.$blocks());
-
-      if (this._paragraphCount <= 1) clearInterval(this._nextSpeechBlinking);
-
-      this._updateSpeechParagraphs();
-      this._resizeSpeechParagraphs();
     }
 
   }

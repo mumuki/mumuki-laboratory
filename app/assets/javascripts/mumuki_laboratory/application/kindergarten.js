@@ -14,76 +14,44 @@ mumuki.load(() => {
       this.speech.verifyBrowserSupport();
       this.hint.showOrHideExpandHintButton();
       this.context.showNextOrCloseButton();
-      this.resultActions.passed = this._showOnSuccessPopup.bind(this);
-      this.resultActions.passed_with_warnings = this._showOnSuccessPopup.bind(this);
-      this.resultActions.failed = this._showOnFailurePopup.bind(this);
-      this.resultActions.errored = this._showOnFailurePopup.bind(this);
-      this.resultActions.pending = this._showOnFailurePopup.bind(this);
-      this.resultActions.aborted = this._showOnAbortedPopup.bind(this);
+      this.resultActions.passed = this._showSuccessPopup.bind(this);
+      this.resultActions.passed_with_warnings = this._showSuccessPopup.bind(this);
+      this.resultActions.failed = this._showFailurePopup.bind(this);
+      this.resultActions.errored = this._showFailurePopup.bind(this);
+      this.resultActions.pending = this._showFailurePopup.bind(this);
+      this.resultActions.aborted = this.showAbortedPopup.bind(this);
     }
 
-    // ===========
-    // Show Modals
-    // ===========
+    // ================
+    // == Public API ==
+    // ================
 
-    _showMessageOnCharacterBubble() {
-      // Do nothing
-    }
-
-    _showOnNonAbortedPopup(data, animation_name1, animation_name2) {
+    showNonAbortedPopup(data, animation_name1, animation_name2) {
       data.guide_finished_by_solution = false;
       this.$submissionResult().html(data.title_html);
       this.$resultsModal().find('.modal-content').removeClass().addClass('modal-content').addClass(data.status);
-      super._showOnNonAbortedPopup(data, animation_name1, animation_name2);
+      super.showNonAbortedPopup(data, animation_name1, animation_name2, 1000);
     }
 
-    _showOnSuccessPopup(data) {
-      this._showOnNonAbortedPopup(data, 'success_l', 'success2_l');
+    // ==================
+    // == Hook Methods ==
+    // ==================
+
+    _showSuccessPopup(data) {
+      this.showNonAbortedPopup(data, 'success_l', 'success2_l');
     }
 
-    _showOnFailurePopup(data) {
-      this._showOnNonAbortedPopup(data, 'failure', 'failure');
-    }
-
-    _showCorollaryCharacter() {
-      // Do nothing
-    }
-
-    // ============
-    // Hook Methods
-    // ============
-
-    $contextModal() {
-      return $('#mu-kids-context');
-    }
-
-    $resultsModal() {
-      return $('#kids-results');
-    }
-
-    $resultsAbortedModal() {
-      return $('#kids-results-aborted');
-    }
-
-    $characterImage() {
-      return $('.mu-kids-character > img');
-    }
-
-    $submissionResult() {
-      return $('.submission-results');
+    _showFailurePopup(data) {
+      this.showNonAbortedPopup(data, 'failure', 'failure');
     }
 
     $contextModalButton() {
       return this._$contextModalButton;
     }
 
-    restart() {
-      mumuki.presenterCharacter.playAnimation('talk', this.$characterImage());
-    }
-
-    // ======
-    // Events
-    // ======
+    // ====================
+    // == Event Callback ==
+    // ====================
 
     onReady() {
       mumuki.resize(this.onResize.bind(this));
@@ -93,6 +61,19 @@ mumuki.load(() => {
       this.scaleState(this.$states(), 50);
       this.scaleBlocksArea(this.$blocks());
     }
+
+
+    // ==========================
+    // == Called by the runner ==
+    // ==========================
+
+    restart() {
+      mumuki.presenterCharacter.playAnimation('talk', this.$characterImage());
+    }
+
+    // =======================
+    // == Specific Behavior ==
+    // =======================
 
     get speech() {
       return {
@@ -201,6 +182,7 @@ mumuki.load(() => {
         }
       }
     }
+
   }
 
   if (mumuki.isKindergartenExercise()) {
