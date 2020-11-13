@@ -45,6 +45,11 @@ mumuki.load(() => {
       this.$contextModal.on('hidden.bs.modal', this.animateSpeech.bind(this));
     }
 
+    showAbortedPopup(data) {
+      super.showAbortedPopup(data);
+      mumuki.submission.animateTimeoutError(this.submitButton);
+    }
+
     // ==================
     // == Hook Methods ==
     // ==================

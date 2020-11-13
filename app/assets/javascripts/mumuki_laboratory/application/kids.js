@@ -43,7 +43,6 @@ mumuki.Kids = class {
   showAbortedPopup(_data) {
     this.submitButton.disable();
     this.$resultsAbortedModal.modal();
-    mumuki.submission.animateTimeoutError(this.submitButton);
   }
 
   // ==================
