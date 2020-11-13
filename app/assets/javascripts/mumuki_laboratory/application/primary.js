@@ -6,11 +6,23 @@ mumuki.load(() => {
 
     constructor() {
       super();
+    }
+
+    // ================
+    // == Public API ==
+    // ================
+
+    initialize() {
+      super.initialize();
+      this.$characterSpeechBubble = $('.mu-kids-character-speech-bubble');
+      this.$characterSpeechBubbleNormal = this.$characterSpeechBubble.children('.mu-kids-character-speech-bubble-normal');
+      this.$overlay = $('.mu-kids-overlay');
+      this.$contextModalButton = new mumuki.Button($('.mu-kids-context .modal-footer button'));
+
       this._paragraphHeight = undefined;
       this._currentParagraphIndex = 0;
       this._paragraphCount = 1;
       this._paragraphsLines = 2;
-      this._$contextModalButton = new mumuki.Button($('.mu-kids-context .modal-footer button'));
       this._availableTabs = ['.description', '.hint'];
       this._$speechParagraphs = undefined;
       this._paragraphHeight = undefined;
@@ -19,23 +31,18 @@ mumuki.load(() => {
       this._$prevSpeech = $('.mu-kids-character-speech-bubble-normal > .mu-kids-prev-speech').hide();
       this._$nextSpeech = $('.mu-kids-character-speech-bubble-normal > .mu-kids-next-speech');
       this._$speechTabs = $('.mu-kids-character-speech-bubble-tabs > li:not(.separator)');
-      this._$texts = this.$characterSpeechBubbleNormal().children(this._availableTabs.join(", "));
+      this._$texts = this.$characterSpeechBubbleNormal.children(this._availableTabs.join(", "));
       this._$hint = $('.mu-kids-hint');
       this._$description = $('.mu-kids-description');
+
       this.resultActions.passed = this._showSuccessPopup.bind(this);
       this.resultActions.passed_with_warnings = this._showOnCharacterBubble.bind(this);
       this.resultActions.failed = this._showOnCharacterBubble.bind(this);
       this.resultActions.errored = this._showOnCharacterBubble.bind(this);
       this.resultActions.pending = this._showOnCharacterBubble.bind(this);
       this.resultActions.aborted = this.showAbortedPopup.bind(this);
-    }
 
-    // ================
-    // == Public API ==
-    // ================
-
-    initialize() {
-      this.$contextModal().on('hidden.bs.modal', this.animateSpeech.bind(this));
+      this.$contextModal.on('hidden.bs.modal', this.animateSpeech.bind(this));
     }
 
     // ==================
@@ -43,15 +50,11 @@ mumuki.load(() => {
     // ==================
 
     _showSuccessPopup(data) {
-      this.showNonAbortedPopup(data, 'success_l', 'success2_l', 4000);
+      this.showNonAbortedPopup(data, 'success2_l', 4000);
     }
 
     _showFailurePopup(data) {
       this._showOnCharacterBubble(data);
-    }
-
-    $contextModalButton() {
-      return this._$contextModalButton;
     }
 
     // ====================
@@ -73,7 +76,7 @@ mumuki.load(() => {
             this._$speechTabs.removeClass('active');
             $tab.addClass('active');
             this._$texts.hide();
-            this.$characterSpeechBubbleNormal().children('.' + $tab.data('target')).show();
+            this.$characterSpeechBubbleNormal.children('.' + $tab.data('target')).show();
             this._updateSpeechParagraphs();
           })
         }
@@ -96,14 +99,14 @@ mumuki.load(() => {
     onResize() {
       const FULL_MARGIN = 30;
 
-      distributeAreas(this.$stateImage(), this.$states(), this.$blocks(), FULL_MARGIN);
+      distributeAreas(this.$stateImage, this.$states, this.$blocks, FULL_MARGIN);
 
-      if (!this.$exerciseDescription().hasClass('mu-kids-exercise-description-fixed')) {
-        this.$exerciseDescription().width(this.$exercise().width() - this.$states().width() - FULL_MARGIN / 2);
+      if (!this.$exerciseDescription.hasClass('mu-kids-exercise-description-fixed')) {
+        this.$exerciseDescription.width(this.$exercise.width() - this.$states.width() - FULL_MARGIN / 2);
       }
 
-      this.$state().each((_index, state) => this.scaleState($(state), FULL_MARGIN));
-      this.scaleBlocksArea(this.$blocks());
+      this.$state.each((_index, state) => this.scaleState($(state), FULL_MARGIN));
+      this.scaleBlocksArea(this.$blocks);
 
       if (this._paragraphCount <= 1) clearInterval(this._nextSpeechBlinking);
 
@@ -125,9 +128,9 @@ mumuki.load(() => {
 
     restart() {
       this._hideMessageOnCharacterBubble();
-      const $bubble = this.$characterSpeechBubble();
+      const $bubble = this.$characterSpeechBubble;
       Object.keys(this.resultActions).forEach($bubble.removeClass.bind($bubble));
-      mumuki.presenterCharacter.playAnimation('talk', this.$characterImage());
+      mumuki.presenterCharacter.playAnimation('talk', this.$bubbleCharacterAnimation);
     }
 
     // =======================
@@ -135,25 +138,25 @@ mumuki.load(() => {
     // =======================
 
     _hideMessageOnCharacterBubble() {
-      const $bubble = this.$characterSpeechBubble();
+      const $bubble = this.$characterSpeechBubble;
       $bubble.find('.mu-kids-character-speech-bubble-tabs').show();
       $bubble.find('.mu-kids-character-speech-bubble-normal').show();
       $bubble.find('.mu-kids-character-speech-bubble-failed').hide();
       $bubble.find('.mu-kids-discussion-link').remove();
       Object.keys(this.resultActions).forEach($bubble.removeClass.bind($bubble));
-      this.$overlay().hide();
+      this.$overlay.hide();
     }
 
     _showMessageOnCharacterBubble(data) {
-      const renderer = new mumuki.renderers.speechBubble.SpeechBubbleRenderer(this.$characterSpeechBubble());
+      const renderer = new mumuki.renderers.speechBubble.SpeechBubbleRenderer(this.$characterSpeechBubble);
       renderer.setDiscussionsLinkHtml($('#mu-kids-discussion-link-html').html());
       renderer.setResponseData(data);
       renderer.render();
-      this.$overlay().show();
+      this.$overlay.show();
     }
 
     _showOnCharacterBubble(data) {
-      mumuki.presenterCharacter.playAnimation('failure', this.$characterImage());
+      mumuki.presenterCharacter.playAnimation('failure', this.$bubbleCharacterAnimation);
       this._showMessageOnCharacterBubble(data);
     }
 
@@ -162,11 +165,11 @@ mumuki.load(() => {
     }
 
     animateSpeech() {
-      mumuki.presenterCharacter.playAnimation('talk', this.$characterImage());
+      mumuki.presenterCharacter.playAnimation('talk', this.$bubbleCharacterAnimation);
     }
 
     animateHint() {
-      mumuki.presenterCharacter.playAnimation('hint', this.$characterImage());
+      mumuki.presenterCharacter.playAnimation('hint', this.$bubbleCharacterAnimation);
     }
 
     _showPrevParagraph() {
@@ -182,7 +185,7 @@ mumuki.load(() => {
 
     _resizeSpeechParagraphs(paragraphIndex) {
       const previousParagraphCount = this._paragraphCount;
-      this._scrollHeight = this.$characterSpeechBubbleNormal()[0].scrollHeight;
+      this._scrollHeight = this.$characterSpeechBubbleNormal[0].scrollHeight;
       this._paragraphHeight = floatFromPx(this._$speechParagraphs.css('line-height')) * this._paragraphsLines;
       this._paragraphCount = Math.ceil(this._scrollHeight / this._paragraphHeight);
       const newParagraphIndex = Math.floor((this._paragraphCount / previousParagraphCount) * this._currentParagraphIndex);
@@ -190,7 +193,7 @@ mumuki.load(() => {
     }
 
     _showParagraph(index) {
-      this.$characterSpeechBubbleNormal()[0].scrollTop = index * this._paragraphHeight;
+      this.$characterSpeechBubbleNormal[0].scrollTop = index * this._paragraphHeight;
       this._currentParagraphIndex = index;
       this._checkArrowsSpeechVisibility();
     }
@@ -215,18 +218,6 @@ mumuki.load(() => {
 
     _getSelectedTabName() {
       return this._$speechTabs.filter('.active').data('target') || 'description';
-    }
-
-    $characterSpeechBubbleNormal() {
-      return this.$characterSpeechBubble().children('.mu-kids-character-speech-bubble-normal');
-    }
-
-    $characterSpeechBubble() {
-      return $('.mu-kids-character-speech-bubble');
-    }
-
-    $overlay() {
-      return $('.mu-kids-overlay');
     }
 
   }
