@@ -31,12 +31,25 @@ end
 
 module Mumukit::Platform::OrganizationMapping::Path
   class << self
-    patch :organization_name do |request, domain, hyper|
-      name = hyper.(request, domain)
-      if %w(auth login logout).include? name
-        'base'
+    alias_method :__organization_name__, :organization_name
+    def in_actual_organization?(request, domain = nil)
+      actual_organization_name(request, domain).present?
+    end
+
+    def actual_organization_name(request, domain)
+      name = __organization_name__(request, domain)
+      name unless %w(auth login logout).include? name
+    end
+
+    def organization_name(request, domain)
+      actual_organization_name(request, domain) || 'base'
+    end
+
+    patch :inorganic_path_for do |request, hyper|
+      if in_actual_organization?(request)
+        hyper.call
       else
-        name
+        path_for(request)
       end
     end
   end
