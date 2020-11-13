@@ -190,6 +190,7 @@ $modal-footer-height: 95px;
         'passed': $mu-color-success,
         'passed-with-warnings': $mu-color-warning,
         'failed': $mu-color-danger,
+        'errored': $mu-color-broken,
         'aborted': $mu-color-broken,
         'pending': $mu-color-info
       );

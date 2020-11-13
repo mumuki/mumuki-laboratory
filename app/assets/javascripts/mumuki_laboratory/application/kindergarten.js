@@ -35,6 +35,14 @@ mumuki.load(() => {
       super.showNonAbortedPopup(data, animation_name, 1000);
     }
 
+    showAbortedPopup(data) {
+      const $closeResultAbortedModalButton = new mumuki.Button(this.$resultsAbortedModal.find('.mu-close'));
+      $closeResultAbortedModalButton.setWaiting();
+      mumuki.presenterCharacter.playAnimation('failed', $('.mu-kids-character-result-aborted'));
+      super.showAbortedPopup(data);
+      setTimeout(() => $closeResultAbortedModalButton.enable(), 2500);
+    }
+
     // ==================
     // == Hook Methods ==
     // ==================

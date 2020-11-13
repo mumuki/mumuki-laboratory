@@ -9,8 +9,10 @@ mumuki.load(() => {
   });
 
   function placeKidsAnimations() {
+    placeAnimation('.mu-kids-character-result-aborted', 'failure');
     placeAnimation('.mu-kids-character-animation', 'blink');
     placeAnimation('.mu-kids-character-context', 'context');
+    placeAnimation('.mu-kids-character-result', 'blink');
   }
 
   function placeAnimation(selector, clip) {
@@ -20,7 +22,7 @@ mumuki.load(() => {
 
   function atRandom(array) {
     return array[Math.floor(Math.random() * array.length)];
-  }  
+  }
 
   mumuki.characters = characters;
 });
