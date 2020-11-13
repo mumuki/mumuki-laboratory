@@ -52,7 +52,7 @@ module LinksHelper
   end
 
   def link_to_profile_terms
-    link_to t(:terms_and_conditions).downcase, user_terms_path, target: '_blank'
+    link_to t(:terms_and_conditions).downcase, terms_user_path, target: '_blank'
   end
 
   def link_to_forum_terms
