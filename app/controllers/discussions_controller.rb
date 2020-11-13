@@ -47,7 +47,7 @@ class DiscussionsController < ApplicationController
   private
 
   def default_immersive_path_for(context)
-    context.forum_enabled? ? without_orga(discussions_path) : '/'
+    context.forum_enabled? ? discussions_path : root_path
   end
 
   def current_content_discussions

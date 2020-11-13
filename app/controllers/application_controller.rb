@@ -87,21 +87,18 @@ class ApplicationController < ActionController::Base
   end
 
   def current_immersive_path_for(context, content)
-    resource = content ? without_orga(polymorphic_url(content, routing_type: :path)) : default_immersive_path_for(context)
+    resource = content ? polymorphic_path(content) : default_immersive_path_for(context)
     context.url_for resource
   end
 
   private
 
-  def without_orga(path)
-    # TODO: esto está muy mal, pero no encontré cómo sacarle el /orga de manera elegante (solo para path mapping)
-    return path if ENV['RAILS_ENV'] == 'test'
-
-    path.split("/").drop(2).join("/")
+  def default_immersive_path_for(context)
+    subject.present? ? root_path : inorganic_path_for(request)
   end
 
-  def default_immersive_path_for(context)
-    subject.present? ? '/' : without_orga(request.path_info)
+  def inorganic_path_for(request)
+    Mumukit::Platform.organization_mapping.inorganic_path_for(request)
   end
 
   def current_immersive_context
