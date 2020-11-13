@@ -19,7 +19,10 @@
       </div>
       <div class="mu-navbar-avatar">
         <% if current_logged_user? %>
-          <i class="fa fa-star fa-fw fa-2x navbar-icon"></i>
+          <% if Organization.current.gamification_enabled? %>
+            <i class="fa fa-star fa-fw fa-2x navbar-icon"></i>
+            <span class="mu-level-number"></span>
+          <% end %>
           <div class="dropdown">
             <span>
               <a class="notifications-box <%= has_notifications? ? '' : 'notifications-box-empty' %>" href=<%= "#{user_notifications_path}" %>>
