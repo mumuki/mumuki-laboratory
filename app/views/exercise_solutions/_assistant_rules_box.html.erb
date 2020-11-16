@@ -1,0 +1,13 @@
+<% if assistance_rules_passed? assignment %>
+  <hr>
+  <%= assistance_box assignment %>
+  <a data-toggle="collapse" href="#assistance-details-section" class="example-see-more">
+    <%= t :view_details %>
+  </a>
+  <div id="assistance-details-section" class="<%= 'collapse' if assistance_rules_passed?(assignment) %> results-item">
+    <hr>
+    <%= yield %>
+  </div>
+<% else %>
+  <%= yield %>
+<% end %>
