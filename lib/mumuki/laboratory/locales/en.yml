@@ -129,6 +129,9 @@ en:
   joining_html: '¡Welcome to course <strong>%{course}</strong>!'
   keep_learning: Keep learning!
   kids_default_success: You did it great!
+  kindergarten_passed: "Your program worked great!"
+  kindergarten_failed: "There's an error in your program. Try again!"
+  kindergarten_aborted: "Ups! Something went wrong"
   language: Language
   last_name: Last Name
   last_seen: "Seen by %{name}"

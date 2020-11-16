@@ -14,15 +14,6 @@ $modal-footer-height: 95px;
     height: calc(100% - #{$kids-characters-height} - 15px);
     width: 100%;
 
-    .konvajs-content {
-      width: unset !important;
-      height: unset !important;
-      canvas {
-        width: unset !important;
-        height: unset !important;
-      }
-    }
-
     .mu-kids-single-state,
     .mu-kids-blocks {
       width: 50%;
@@ -30,7 +21,7 @@ $modal-footer-height: 95px;
     }
 
     .mu-kids-blocks {
-      padding-bottom: 15px;
+      margin-right: 15px;
     }
 
     &.mu-full-workspace {
@@ -78,7 +69,7 @@ $modal-footer-height: 95px;
       padding: 30px;
       img {
         padding: 0;
-        border: 5px solid black;
+        border: 3px solid black;
         border-radius: 30px;
       }
     }
@@ -107,14 +98,36 @@ $modal-footer-height: 95px;
     .modal-content {
       position: absolute;
 
-      $width: 800px;
-      $height: $width * 0.625;
+      $width-lg: 800px;
+      $height-lg: $width-lg * 0.625;
 
-      width: $width;
-      height: $height;
+      width: $width-lg;
+      height: $height-lg;
 
-      top: calc(50vh - #{$height} / 2);
-      left: calc(50vw - #{$width} / 2);
+      top: calc(50vh - #{$height-lg} / 2);
+      left: calc(50vw - #{$width-lg} / 2);
+
+      @media (orientation: landscape)  and (max-height: $height-lg + 50px) {
+        $height-sm: 85vh;
+        $width-sm: $height-sm / 0.625;
+
+        width: $width-sm;
+        height: $height-sm;
+
+        top: calc(50vh - #{$height-sm} / 2);
+        left: calc(50vw - #{$width-sm} / 2);
+      }
+
+      @media (orientation: portrait) {
+        $height-sm: 85vh;
+        $width-sm: 85vw;
+
+        width: $width-sm;
+        height: $height-sm;
+
+        top: calc(50vh - #{$height-sm} / 2);
+        left: calc(50vw - #{$width-sm} / 2);
+      }
 
       $border-width: 16px;
       border-width: $border-width;
@@ -122,6 +135,12 @@ $modal-footer-height: 95px;
       border-color: $mu-color-link;
       border-radius: $border-width;
       box-shadow: none;
+
+      .modal-header,
+      .modal-footer {
+        text-align: center;
+        text-transform: uppercase;
+      }
 
       .modal-body {
         height: 100%;

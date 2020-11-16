@@ -137,7 +137,10 @@ es:
   its_been_a_while: Hace un tiempo que no usás Mumuki.
   joining_html: '¡Te damos la bienvenida al curso <strong>%{course}</strong>!'
   keep_learning: ¡Seguí aprendiendo!
-  kids_default_success: ¡Lo hiciste muy bien!
+  kids_default_success: "¡Lo hiciste muy bien!"
+  kindergarten_passed: "¡Tu programa está muy bien!"
+  kindergarten_failed: "Hay un error en tu programa. ¡Intentá de nuevo!"
+  kindergarten_aborted: "¡Ups! Hubo un problema técnico"
   language: Lenguaje
   languages: Lenguajes
   last_name: Apellido
