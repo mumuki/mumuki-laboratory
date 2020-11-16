@@ -87,7 +87,11 @@ def exclude_selenium_failing_tests!
       :json_eq_error,
       :navigation_error,
       :organization_not_nil,
-      :xpath_no_matches
+      :xpath_no_matches,
+
+      # Fails because Rails redirection doesn't include Capybara port.
+      # It can be fixed by using path mapping instead of subdomain.
+      :subdomain_redirection_without_port
     )
   end
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Immersive redirection Flow', organization_workspace: :test do
+feature 'Immersive redirection Flow', organization_workspace: :test, subdomain_redirection_without_port: true do
   def create_guide(name)
     create(:guide, name: name)
   end
