@@ -16,3 +16,66 @@
 .title-font {
   font-size: 1.33em;
 }
+
+
+.modal.mu-organization-chooser {
+
+  .modal-dialog {
+
+    $card-height: 90px;
+
+    width: 800px;
+
+    .mu-organization-card {
+      flex-direction: row;
+
+      cursor: pointer;
+
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .mu-organization-card-header {
+        width: 50%;
+        border-bottom: unset;
+        border-right: 1px solid $mu-color-dark-separator;
+        height: $card-height;
+      }
+
+      .mu-organization-card-body {
+        display: flex;
+        padding: 15px;
+        height: $card-height;
+        width: 50%;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-bottom: unset;
+      }
+
+    }
+
+    @media (max-width: 830px) {
+      width: calc(100% - 30px);
+
+      .mu-organization-card {
+        flex-direction: column;
+
+        .mu-organization-card-header {
+          width: 100%;
+          border-right: unset;
+          border-bottom: 1px solid $mu-color-dark-separator;
+          height: $card-height;
+        }
+
+        .mu-organization-card-body {
+          width: 100%;
+        }
+
+      }
+    }
+  }
+}

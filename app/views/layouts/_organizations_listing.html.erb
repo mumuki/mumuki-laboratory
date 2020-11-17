@@ -2,13 +2,13 @@
   <%= t :not_in_any_organizations %>
 <% else %>
   <% organizations_for(current_user).each do |org| %>
-      <div class="col-md-6 mu-organization-card <%= org.public? ? 'public' : 'private' %>">
+      <a href="/<%= org.name %>" class="mu-organization-card <%= org.public? ? 'public' : 'private' %>">
         <div class="mu-organization-card-header">
-          <%= image_tag(org.banner_url, alt: org.display_name, height: 50, class: 'pull-left') %>
+          <%= image_tag(org.banner_url, alt: org.display_name, height: 50) %>
         </div>
-        <div class="mu-organization-card-body" style="text-align: center; ">
-          <p><%= org.display_name %></p>
+        <div class="mu-organization-card-body">
+          <div><%= org.display_name %> - <%= org.description %></div>
         </div>
-      </div>
+      </a>
   <% end %>
 <% end %>
