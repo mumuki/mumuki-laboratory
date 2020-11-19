@@ -139,6 +139,7 @@ es-CL:
   lessons: Lecciones
   lesson_number: Lección %{number}
   let_us_know: ¡Por favor avísanos!
+  level: Nivel
   loading: Cargando
   load_solution_into_console: Cargar la solución en la consola
   locked_content: 'Éste contenido se desbloqueará cuando termines los capítulos anteriores'

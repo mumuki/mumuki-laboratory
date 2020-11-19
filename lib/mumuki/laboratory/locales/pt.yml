@@ -149,6 +149,7 @@ pt:
   lessons: Lições
   lesson_number: Lição %{number}
   let_us_know: Por favor, avise-nos!
+  level: Nível
   loading: Carregando
   load_solution_into_console: Carregue a solução no console
   locked_content: 'Este conteúdo será desbloqueado quando você terminar os capítulos anteriores'
