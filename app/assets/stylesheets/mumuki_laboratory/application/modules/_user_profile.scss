@@ -37,6 +37,12 @@
   align-items: center;
   text-align: center;
 
+  .mu-level-progress {
+    position: relative;
+    top: -275px;
+    margin-bottom: -275px;
+  }
+
   .mu-level-number {
     position: absolute;
     margin-top: 11px;
