@@ -7,6 +7,12 @@
 <div class="row mu-tab-body">
   <div class="col-md-4 mu-profile-info-left">
     <%= profile_picture_for(@user, id: 'mu-user-avatar', class: 'mu-user-avatar') %>
+    <% if Organization.current.gamification_enabled? %>
+      <div>
+        <i class="fa fa-star fa-fw fa-4x"></i>
+        <span class="mu-level-number"></span>
+      </div>
+    <% end %>
   </div>
   <div class="col-md-8 mu-profile-info-right">
     <% if @user.age.present? %>
