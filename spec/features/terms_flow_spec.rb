@@ -10,8 +10,11 @@ feature 'Terms Flow', organization_workspace: :test do
 
   let(:test_organization) { Organization.locate!("test") }
 
+  let!(:exercise) { create(:indexed_exercise) }
   let(:expected_terms) { [] }
   let(:unexpected_terms) { all_terms_scopes - expected_terms }
+
+  before { reindex_current_organization! }
 
   shared_context 'has expected terms' do
     scenario 'with expected terms' do
@@ -63,25 +66,86 @@ feature 'Terms Flow', organization_workspace: :test do
 
     describe 'visit user terms path' do
       let(:terms_path) { '/user/terms' }
-      let(:expected_terms) { general_terms_scopes + [:janitor] }
+      let(:expected_terms) { general_terms_scopes + %w(janitor) }
 
       it_behaves_like 'has expected terms'
+    end
+
+    context 'with accepted general terms' do
+      before { janitor.accept_profile_terms! }
+
+      context 'visit forum' do
+        let(:terms_path) { '/discussions/terms' }
+
+        context 'with enabled forum' do
+          let(:expected_terms) { forum_terms_scopes }
+          before { test_organization.update! forum_enabled: true }
+
+          it_behaves_like 'has expected terms'
+        end
+      end
+
+      scenario 'visit any other path' do
+        visit '/'
+
+        expect(page).to have_text('Start Practicing')
+      end
+    end
+
+    context 'with unaccepted general terms' do
+
+      context 'visit forum' do
+        let(:terms_path) { '/discussions/terms' }
+        before { test_organization.update! forum_enabled: true }
+
+        scenario 'with enabled forum' do
+          visit '/'
+
+          expect(page).to have_text('Accept terms')
+        end
+      end
+
+      scenario 'visit any other path' do
+        visit '/'
+
+        expect(page).to have_text('Accept terms')
+      end
+
+      scenario 'visit user path' do
+        visit '/user'
+
+        expect(page).to have_text(janitor.first_name)
+      end
+    end
+  end
+
+  context 'without user logged in' do
+    describe 'visit user terms path' do
+      let(:terms_path) { '/user/terms' }
+      let(:expected_terms) { general_terms_scopes }
+
+      it_behaves_like 'has expected terms'
+    end
+
+    scenario 'visit any other path' do
+      visit '/'
+
+      expect(page).to have_text('Start Practicing')
     end
 
     context 'visit forum' do
       let(:terms_path) { '/discussions/terms' }
 
-      context 'with disabled forum' do
-        it_behaves_like 'has expected terms'
-      end
-
       context 'with enabled forum' do
-        let(:expected_terms) { forum_terms_scopes }
         before { test_organization.update! forum_enabled: true }
 
-        it_behaves_like 'has expected terms'
+        scenario 'visit forum' do
+          visit '/discussions/terms'
+          expect(page).to have_text('You may have mistyped the address or the page may have moved')
+        end
       end
     end
   end
+
 end
 
