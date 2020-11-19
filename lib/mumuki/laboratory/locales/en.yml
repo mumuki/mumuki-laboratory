@@ -139,6 +139,7 @@ en:
   lessons: Lessons
   lesson_number: Lesson %{number}
   let_us_know: please let us know!
+  level: Level
   loading: Loading
   load_solution_into_console: Load your solution into the console
   locked_content: 'This content will be unlocked when you finish previous chapters'
