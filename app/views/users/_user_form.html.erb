@@ -5,10 +5,10 @@
   </div>
 </div>
 <div class="row mu-tab-body">
-  <div class="col-md-4 text-center">
+  <div class="col-md-4 mu-profile-info-left">
     <%= profile_picture_for(@user, id: 'mu-user-avatar', class: 'mu-user-avatar') %>
   </div>
-  <div class="col-md-8 mu-profile-info">
+  <div class="col-md-8 mu-profile-info-right">
     <% if @user.age.present? %>
       <div>
         <span> <strong><%= t :age %>:</strong> <%= "#{@user.age} #{t :years}" %> </span>
