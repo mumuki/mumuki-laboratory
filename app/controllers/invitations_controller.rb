@@ -15,8 +15,7 @@ class InvitationsController < ApplicationController
 
   def join
     current_user.accept_invitation! @invitation
-    current_user.update! user_params
-    current_user.notify!
+    current_user.update_and_notify! user_params
     redirect_to_organization!
   end
 

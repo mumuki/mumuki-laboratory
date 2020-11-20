@@ -5,7 +5,6 @@ module Api
 
     def create
       @course.save!
-      @course.notify!
       render json: @course
     end
 

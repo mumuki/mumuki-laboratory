@@ -4,14 +4,12 @@ module Api
     before_action :authorize_janitor!
 
     def create
-      @user.save!
-      @user.notify!
+      @user.save_and_notify!
       render json: @user.to_resource_h
     end
 
     def update
-      @user.update! user_params.except([:email, :permissions, :uid])
-      @user.notify!
+      @user.update_and_notify! user_params.except([:email, :permissions, :uid])
       render json: @user.to_resource_h
     end
   end
