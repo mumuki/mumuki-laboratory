@@ -12,7 +12,8 @@ class UsersController < ApplicationController
   def update
     current_user.update_and_notify! user_params
     current_user.accept_profile_terms!
-    redirect_to user_path, notice: I18n.t(:user_data_updated)
+    flash.notice = I18n.t(:user_data_updated)
+    redirect_after! :profile_completion, fallback_location: user_path
   end
 
   def terms
