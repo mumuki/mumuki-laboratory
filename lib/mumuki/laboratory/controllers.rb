@@ -2,6 +2,7 @@ module Mumuki::Laboratory::Controllers
 end
 
 require_relative './controllers/authorization'
+require_relative './controllers/action_redirector'
 require_relative './controllers/disabling'
 require_relative './controllers/current_organization'
 require_relative './controllers/dynamic_errors'

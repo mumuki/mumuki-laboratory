@@ -5,10 +5,9 @@ feature 'Profile Flow', organization_workspace: :test do
   let(:haskell) { create(:haskell) }
   let!(:chapter) {
     create(:chapter, name: 'Functional Programming', lessons: [
-        build(:lesson, name: 'Values and Functions', language: haskell, description: 'Values are everywhere...', exercises: [
-            build(:exercise, name: 'The Basic Values', description: "Let's say we want to declare a variable...")
-        ])
+        build(:lesson, name: 'Values and Functions', language: haskell, description: 'Values are everywhere...', exercises: [exercise])
     ]) }
+  let(:exercise) { build(:exercise, name: 'The Basic Values', description: "Let's say we want to declare a variable...") }
   let(:problem) { create :problem}
   let(:message) {
     {'exercise_id' => problem.id,
@@ -70,6 +69,39 @@ feature 'Profile Flow', organization_workspace: :test do
 
   context 'logged in user' do
     before { set_current_user! user }
+
+    context 'user with uncompleted profile after saving' do
+      before { user.update! last_name: 'last_name', birthdate: Time.now - 20.years, gender: 'female' }
+
+      let(:button_options) do
+        # Match :first is used because there are two buttons: mobile and desktop.
+        { class: 'mu-edit-profile-btn', match: :first }.tap do |options|
+          options.merge!(disabled: true) unless run_with_selenium?
+        end
+      end
+
+      context 'when visiting an exercise' do
+        scenario 'is redirected to previous path' do
+          visit "/exercises/#{exercise.transparent_id}"
+          fill_in('user_first_name', with: 'first_name')
+
+          click_on(button_options)
+          expect(page).to have_text(exercise.description)
+        end
+      end
+
+      context 'when visiting profile edition' do
+        scenario 'is redirected to read only profile' do
+          visit "/user/edit"
+          fill_in('user_first_name', with: 'first_name')
+
+          # Match :first is used because there are two buttons: mobile and desktop.
+          click_on(button_options)
+          expect(page).to have_text('Your data was updated successfuly')
+          expect(page).to have_text('Profile')
+        end
+      end
+    end
 
     context 'with no messages' do
 

@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   include Mumuki::Laboratory::Controllers::DynamicErrors
   include Mumuki::Laboratory::Controllers::EmbeddedMode
   include Mumuki::Laboratory::Controllers::IncognitoMode
+  include Mumuki::Laboratory::Controllers::ActionRedirector
 
   before_action :set_current_organization!
   before_action :set_locale!
@@ -99,6 +100,7 @@ class ApplicationController < ActionController::Base
 
   def validate_user_profile!
     unless current_user.profile_completed?
+      save_location_before! :profile_completion
       flash.notice = I18n.t :please_fill_profile_data
       redirect_to edit_user_path
     end
