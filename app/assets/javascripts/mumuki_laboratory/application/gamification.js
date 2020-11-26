@@ -64,6 +64,10 @@ mumuki.gamification = (() => {
     updateLevel() {
       $('.mu-level-number').html(this.currentLevel());
       $('#mu-level-progress').attr("stroke-dasharray", `${this.currentLevelProgress() * 250}, 999`);
+
+      if (this.currentLevelProgress() == 0) {
+        $('#mu-level-progress').attr("display", "none");
+      }
     }
   }
 
