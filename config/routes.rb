@@ -52,11 +52,15 @@ Rails.application.routes.draw do
     resources :complements, only: :show
     resources :exams, only: :show
 
-    # All users
-    resource :user, only: [:show, :edit]
-    get '/user/terms' => 'users#terms'
-
     # Current user
+    resource :user, only: [:show, :edit, :update] do
+      get :terms
+      post :terms, to: 'users#accept_profile_terms'
+
+      # Notification subscriptions
+      get :unsubscribe
+    end
+
     resources :messages, only: [:index, :create]
     get '/messages/errors' => 'messages#errors'
 
@@ -68,10 +72,6 @@ Rails.application.routes.draw do
     # Join to course
     get '/join/:code' => 'invitations#show', as: :invitation
     post '/join/:code' => 'invitations#join'
-
-    # Notification subscriptions
-    get '/user/unsubscribe' => 'users#unsubscribe'
-    put '/user' => 'users#update', as: :update_user
 
     # Route for reading messages
     post '/messages/read_messages/:exercise_id' => 'messages#read_messages', as: :read_messages

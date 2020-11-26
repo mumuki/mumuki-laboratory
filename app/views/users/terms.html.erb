@@ -16,3 +16,15 @@
   <% end %>
 </div>
 
+<% if @user&.has_role_terms_to_accept? %>
+  <div class="terms-acceptance">
+    <%= form_for :user, url: terms_user_path, method: :post  do |f| %>
+      <span class="terms-acceptance-checkbox">
+        <%= f.check_box :terms_of_service, required: true, onInvalid: "this.setCustomValidity('#{t(:terms_and_conditions_must_be_accepted)}')", onChange: "this.setCustomValidity(validity.valueMissing ? '#{t(:terms_and_conditions_must_be_accepted)}' : '')" %>
+        <%= t(:accept_terms) %>
+      </span>
+      <%= f.submit t(:accept), class: 'btn btn-success terms-acceptance-btn' %>
+    <% end %>
+  </div>
+<% end %>
+

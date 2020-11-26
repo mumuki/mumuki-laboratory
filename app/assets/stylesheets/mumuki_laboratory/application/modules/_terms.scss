@@ -1,12 +1,3 @@
-summary.terms-summary {
-  font-size: 29px;
-  outline: 0;
-  cursor: pointer;
-  .terms-summary-title {
-    display: inline;
-  }
-}
-
 .terms-card {
   position: relative;
   display: -ms-flexbox;
@@ -38,7 +29,13 @@ summary.terms-summary {
   padding: 1.25rem;
 }
 
-.terms-acceptance-btn {
-  margin-top: 10px;
-  display: block
+.terms-acceptance {
+  margin-top: 30px;
+
+  .terms-acceptance-btn {
+    margin-top: 10px;
+    display: block
+  }
 }
+
+
