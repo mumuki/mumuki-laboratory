@@ -38,6 +38,7 @@ class ApplicationController < ActionController::Base
                 :has_notifications?,
                 :subject,
                 :should_choose_organization?,
+                :current_immersive_organizations,
                 :theme_stylesheet_url,
                 :extension_javascript_url,
                 :current_immersive_path
@@ -52,8 +53,11 @@ class ApplicationController < ActionController::Base
 
   def should_choose_organization?
     return false unless current_user?
+    current_immersive_organizations.multiple?
+  end
 
-    current_user.immersive_organizations_with_content_at(subject).size > 1
+  def current_immersive_organizations
+    current_user.immersive_organizations_with_content_at(subject)
   end
 
   # ensures contents are accessible to current user
