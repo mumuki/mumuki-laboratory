@@ -7,7 +7,7 @@ module AssistanceBoxHelper
     end
   end
 
-  def assistance_rules_passed?(assignment)
-    Mumukit::Assistant. parse(assignment.exercise.assistance_rules).rules.any? { |rule| rule.matches? assignment }
+  def should_display_assistance_box?(assignment)
+    assignment.tips.present? && !assignment.solved?
   end
 end
