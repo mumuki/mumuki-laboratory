@@ -51,11 +51,12 @@ mumuki.gamification = (() => {
     }
 
     setExpMessage(exp) {
-      let expGained = exp - this.currentExp;
+      let newExpEarned = exp - this.currentExp;
 
-      if (expGained > 0) {
+      if (newExpEarned > 0) {
         this.currentExp = exp;
-        $('#mu-exp-points').html(expGained);
+        $('#mu-exp-points').html(newExpEarned);
+        $('#mu-exp-earned-message').toggleClass("hidden", "visible");
 
         this.updateLevel();
       }
