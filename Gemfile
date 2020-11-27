@@ -38,5 +38,5 @@ group :development, :test do
   gem 'coffee-script'
   gem 'teaspoon', '~> 1.1.5'
   gem 'teaspoon-jasmine'
-  gem "selenium-webdriver"
+  gem 'selenium-webdriver'
 end
