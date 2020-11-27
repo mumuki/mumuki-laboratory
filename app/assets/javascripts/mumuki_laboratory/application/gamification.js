@@ -8,6 +8,7 @@ mumuki.gamification = (() => {
   class LevelProgression {
     constructor(currentExp) {
       this.currentExp = currentExp;
+      this.lastExpGained = 0;
     }
 
     expToLevelUp() {
@@ -81,7 +82,7 @@ mumuki.gamification = (() => {
       $('.mu-level-number').html(this.currentLevel());
       $('.mu-level-tooltip').attr("title", (_, value) => `${value} ${this.currentLevel()}`);
 
-      if (this.currentLevelProgress() == 0) {
+      if (this.currentLevelProgress() === 0) {
         $muLevelProgress.attr("display", "none");
       }
 
