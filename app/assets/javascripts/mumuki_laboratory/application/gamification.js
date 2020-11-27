@@ -79,6 +79,16 @@ mumuki.gamification = (() => {
       if (this.currentLevelProgress() == 0) {
         $muLevelProgress.attr("display", "none");
       }
+
+      $muLevelProgress.animate(
+        {'progress': this.currentLevelProgress() * 250},
+        {
+          step: function(progress) {
+            let pattern = progress + ", 999";
+            $(this).attr("stroke-dasharray", pattern);
+          },
+          duration: 1000
+        });
     }
   }
 
