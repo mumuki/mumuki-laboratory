@@ -62,11 +62,13 @@ mumuki.gamification = (() => {
     }
 
     updateLevel() {
+      const $muLevelProgress = $('#mu-level-progress');
+
       $('.mu-level-number').html(this.currentLevel());
-      $('#mu-level-progress').attr("stroke-dasharray", `${this.currentLevelProgress() * 250}, 999`);
+      $('.mu-level-tooltip').attr("title", (_, value) => `${value} ${this.currentLevel()}`);
 
       if (this.currentLevelProgress() == 0) {
-        $('#mu-level-progress').attr("display", "none");
+        $muLevelProgress.attr("display", "none");
       }
     }
   }
