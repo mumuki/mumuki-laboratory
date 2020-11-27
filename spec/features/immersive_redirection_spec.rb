@@ -94,7 +94,7 @@ feature 'Immersive redirection Flow', organization_workspace: :test, subdomain_r
     end
 
     feature 'when navigating to another route' do
-      before { visit update_user_path }
+      before { visit user_path }
       it_behaves_like 'immersive redirection', 'immersive-orga'
       it_behaves_like 'navigate to user profile'
     end
@@ -147,7 +147,7 @@ feature 'Immersive redirection Flow', organization_workspace: :test, subdomain_r
     end
 
     feature 'when navigating to another route' do
-      before { visit update_user_path }
+      before { visit user_path }
       it_behaves_like 'organization chooser'
 
       context 'after choosing an organization' do
