@@ -61,6 +61,10 @@
     <%= render partial: 'layouts/exercise_skipped' %>
   <% end %>
 
+  <% if Organization.current.gamification_enabled? %>
+    <%= render partial: 'layouts/modals/level_up' %>
+  <% end %>
+
   <%= render partial: 'layouts/modals/guide_corollary', locals: {guide: @guide} %>
   <%= render partial: 'layouts/modals/new_message', locals: {exercise: @exercise} if should_render_message_input?(@exercise) %>
 <% end if current_user? %>
