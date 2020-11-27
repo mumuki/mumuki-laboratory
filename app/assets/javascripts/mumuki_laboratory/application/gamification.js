@@ -38,8 +38,8 @@ mumuki.gamification = (() => {
       return Math.floor((-b + Math.sqrt(Math.pow(b, 2) - 4 * a * (c - exp))) / (2 * a));
     }
 
-    triggersLevelChange(exp) {
-      return this.levelFor(exp) !== this.currentLevel();
+    triggersLevelChange(newExp) {
+      return this.levelFor(this.currentExp + newExp) !== this.currentLevel();
     }
 
     currentLevelProgress() {
@@ -54,11 +54,19 @@ mumuki.gamification = (() => {
       let newExpEarned = exp - this.currentExp;
 
       if (newExpEarned > 0) {
-        this.currentExp = exp;
+        this.showLevelUpModalIfLevelUp(newExpEarned);
+
         $('#mu-exp-points').html(newExpEarned);
         $('#mu-exp-earned-message').toggleClass("hidden", "visible");
 
+        this.currentExp = exp;
         this.updateLevel();
+      }
+    }
+
+    showLevelUpModalIfLevelUp(newExpEarned) {
+      if (this.triggersLevelChange(newExpEarned)) {
+        $('#mu-level-up').modal();
       }
     }
 
