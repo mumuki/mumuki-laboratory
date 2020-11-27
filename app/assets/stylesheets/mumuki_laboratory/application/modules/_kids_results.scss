@@ -47,3 +47,51 @@ $capital-animation-width: 135px;
   }
 }
 
+.mu-kids-modal-border {
+
+  .modal-dialog {
+
+    .modal-content {
+
+      position: absolute;
+
+      $width-lg: 800px;
+
+      width: $width-lg;
+      left: calc(50% - #{$width-lg} / 2);
+
+      @media (max-width: $width-lg + 30px) {
+        width: calc(100vw - 30px);
+      }
+
+      $border-width: 16px;
+      border-width: $border-width;
+      border-style: solid;
+      border-color: $mu-color-link;
+      border-radius: $border-width;
+      box-shadow: none;
+
+      $mu-statuses-colors: (
+        'broken': $mu-color-broken,
+        'danger': $mu-color-danger,
+        'success': $mu-color-success,
+        'warning': $mu-color-warning,
+        'passed': $mu-color-success,
+        'passed-with-warnings': $mu-color-warning,
+        'failed': $mu-color-danger,
+        'errored': $mu-color-broken,
+        'aborted': $mu-color-broken,
+        'pending': $mu-color-info
+      );
+
+      @each $class, $color in $mu-statuses-colors {
+        &.#{$class} {
+          border-color: $color;
+          .mu-kindergarten-modal-button {
+            background: $color;
+          }
+        }
+      }
+    }
+  }
+}
