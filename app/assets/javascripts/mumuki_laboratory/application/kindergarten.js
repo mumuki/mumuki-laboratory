@@ -29,10 +29,9 @@ mumuki.load(() => {
     // ================
 
     showNonAbortedPopup(data, animation_name) {
-      data.guide_finished_by_solution = false;
       this.$submissionResult.html(data.title_html);
       this.$resultsModal.find('.modal-content').removeClass().addClass('modal-content').addClass(data.status);
-      super.showNonAbortedPopup(data, animation_name, 1000);
+      super.showNonAbortedPopup(data, animation_name);
     }
 
     showAbortedPopup(data) {
@@ -71,6 +70,11 @@ mumuki.load(() => {
     // ==========================
     // == Called by the runner ==
     // ==========================
+
+    showResult(data) {
+      data.guide_finished_by_solution = false;
+      super.showResult(data);
+    }
 
     restart() {
       mumuki.presenterCharacter.playAnimation('talk', this.$bubbleCharacterAnimation);
