@@ -93,6 +93,7 @@ es-CL:
   exercise_success_rate: Tasa de éxito en ejercicios
   exercises: Ejercicios
   exit: Salir
+  exp_points: puntos de experiencia.
   expectations: Objetivos
   expected_state: Tablero esperado
   explain_redirect: Notamos que te registraste en otra organización.
@@ -295,5 +296,6 @@ es-CL:
     page_gap: "&hellip;"
   working: "Procesando"
   wrong_answer: La respuesta no es correcta
+  you_earned: Ganaste
   you_must_sign_in_before_submitting: Tienes que iniciar sesión antes de empezar a enviar tus soluciones
   you_never_submitted_solutions: Parece que nunca enviaste soluciones desde que creaste tu cuenta.
