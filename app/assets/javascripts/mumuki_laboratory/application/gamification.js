@@ -102,7 +102,7 @@ mumuki.gamification = (() => {
   }
 
   function currentExp() {
-    return $('#mu-current-exp').val();
+    return parseInt($('#mu-current-exp').val());
   }
 
   return {
