@@ -50,6 +50,10 @@ mumuki.gamification = (() => {
       return this.expFor(this.currentLevel());
     }
 
+    exercisesToNextLevel() {
+      return Math.ceil(this.expToLevelUp() / 100);
+    }
+
     setExpMessage(exp) {
       let newExpEarned = exp - this.currentExp;
 
@@ -73,6 +77,7 @@ mumuki.gamification = (() => {
     updateLevel() {
       const $muLevelProgress = $('#mu-level-progress');
 
+      $('#mu-solve-more-exercises span').text(this.exercisesToNextLevel());
       $('.mu-level-number').html(this.currentLevel());
       $('.mu-level-tooltip').attr("title", (_, value) => `${value} ${this.currentLevel()}`);
 
