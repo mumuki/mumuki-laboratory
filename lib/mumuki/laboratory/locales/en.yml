@@ -147,6 +147,7 @@ en:
   lesson_number: Lesson %{number}
   let_us_know: please let us know!
   level: Level
+  level_up: Level up!
   loading: Loading
   load_solution_into_console: Load your solution into the console
   locked_content: 'This content will be unlocked when you finish previous chapters'
@@ -235,6 +236,7 @@ en:
   solved: Solved
   solved_count: '%{count} solved'
   solve_doubts: Solve other's doubts
+  solve_more_exercises_to_level_up: Solve <span>number</span> more exercises to advance to the next level.
   solve_your_doubts: Solve your doubts
   solve_your_doubts_teaser: Do you have any doubts?
   something_went_wrong: Something went wrong!
