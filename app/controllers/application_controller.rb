@@ -38,23 +38,26 @@ class ApplicationController < ActionController::Base
                 :has_notifications?,
                 :subject,
                 :should_choose_organization?,
+                :current_immersive_organizations,
                 :theme_stylesheet_url,
-                :extension_javascript_url
+                :extension_javascript_url,
+                :current_immersive_path
 
   def immersive_context_wrong?
     current_immersive_context != Organization.current
   end
 
   def redirect_to_proper_context!
-    # TODO: redirect to subject (if it exists on the immersive context)
-    redirect_to current_immersive_context.url_for('/')
+    redirect_to current_immersive_path_for(*current_immersive_context_and_content)
   end
 
   def should_choose_organization?
     return false unless current_user?
+    current_immersive_organizations.multiple?
+  end
 
-    # TODO: replace `nil` with `subject` to consider exercise, guide, etc
-    current_user.immersive_organizations_at(nil).size > 1
+  def current_immersive_organizations
+    current_user.immersive_organizations_with_content_at(subject)
   end
 
   # ensures contents are accessible to current user
@@ -67,7 +70,6 @@ class ApplicationController < ActionController::Base
     return if current_user&.teacher_here?
     Organization.current.validate_active!
   end
-
 
   # required by Mumukit::Login
   def login_button(options = {})
@@ -84,11 +86,31 @@ class ApplicationController < ActionController::Base
     Mumuki::Domain::Workspace.new(current_user, Organization.current)
   end
 
+  def current_immersive_path(context)
+    current_immersive_path_for context, subject&.navigable_content_in(context)
+  end
+
+  def current_immersive_path_for(context, content)
+    resource = content ? polymorphic_path(content) : default_immersive_path_for(context)
+    context.url_for resource
+  end
+
   private
 
+  def default_immersive_path_for(context)
+    subject.present? ? root_path : inorganic_path_for(request)
+  end
+
+  def inorganic_path_for(request)
+    Mumukit::Platform.organization_mapping.inorganic_path_for(request)
+  end
+
   def current_immersive_context
-    # TODO: replace `nil` with `subject` to consider exercise, guide, etc
-    current_user&.current_immersive_context_at(nil) || Organization.current
+    current_immersive_context_and_content&.first || Organization.current
+  end
+
+  def current_immersive_context_and_content
+    current_user&.current_immersive_context_and_content_at(subject) || [Organization.current, nil]
   end
 
   def from_sessions?

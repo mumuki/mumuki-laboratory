@@ -1,4 +1,6 @@
 class GuidesController < ApplicationController
+  include Mumuki::Laboratory::Controllers::ImmersiveNavigation
+
   def show
     redirect_to_usage Guide.find_by!(id: params[:id])
   end

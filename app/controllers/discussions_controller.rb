@@ -46,6 +46,10 @@ class DiscussionsController < ApplicationController
 
   private
 
+  def default_immersive_path_for(context)
+    context.forum_enabled? ? discussions_path : root_path
+  end
+
   def current_content_discussions
     @debatable.discussions_in_organization
   end

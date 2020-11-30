@@ -1,14 +1,10 @@
-<% if current_user.student_granted_organizations.empty? %>
-  <%= t :not_in_any_organizations %>
-<% else %>
-  <% organizations_for(current_user).each do |org| %>
-      <div class="row">
-        <div class="col-md-6 organization-row">
-          <%= image_tag(org.banner_url, height: 50, class: 'pull-left') %>
-        </div>
-        <div class="col-md-6 organization-row">
-          <%= link_to(t(:go_to, organization: org.name), org.url, class: 'btn btn-success pull-right') %>
-        </div>
+<% current_immersive_organizations.each do |organization| %>
+    <div class="row">
+      <div class="col-md-6 organization-row">
+        <%= image_tag(organization.banner_url, height: 50, class: 'pull-left') %>
       </div>
-  <% end %>
+      <div class="col-md-6 organization-row">
+        <%= link_to(t(:go_to, organization: organization.name), current_immersive_path(organization), class: 'btn btn-success pull-right') %>
+      </div>
+    </div>
 <% end %>

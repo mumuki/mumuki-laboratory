@@ -29,7 +29,6 @@ _hosts: &hosts
     - someorga.localmumuki.io
     - test.localmumuki.io
     - the-public-org.localmumuki.io
-    - private.localmumuki.io
 jobs:
   allow_failures:
     - os: osx

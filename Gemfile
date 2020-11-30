@@ -15,6 +15,12 @@ group :test do
   gem 'faker', '~> 2.2'
   gem 'rake', '~> 12.3'
   gem 'capybara', '~> 3.33.0'
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-remote'
+  gem 'pry-byebug' unless Gem.win_platform?
+  gem 'pry-stack_explorer'
+  gem 'binding_of_caller'
 end
 
 group :development do
@@ -34,5 +40,3 @@ group :development, :test do
   gem 'teaspoon-jasmine'
   gem "selenium-webdriver"
 end
-
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'master'
