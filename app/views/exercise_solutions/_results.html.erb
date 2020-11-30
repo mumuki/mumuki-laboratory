@@ -11,24 +11,26 @@
   <%= render layout: 'exercise_solutions/contextualization_results_container', locals: {contextualization: assignment} do %>
     <%= manual_evaluation_comment assignment %>
     <% unless assignment.manual_evaluation_comment? %>
-      <%= render partial: 'exercise_solutions/contextualization_results_body', locals: {contextualization: assignment} %>
-      <% if should_render_need_help_dropdown?(assignment) %>
-        <div class="notify-problem-box">
-          <div class="dropdown">
-            <%= link_to fa_icon(:'question-circle', text: t(:need_help)), "", {'data-toggle': 'dropdown'} %>
-            <ul class="dropdown-menu" aria-labelledby="helpDropdown">
-              <li>
-                <%= read_discussions_link(@exercise) %>
-              </li>
-              <li>
-                <%= render_community_link %>
-              </li>
-              <li>
-                <%= report_bug_link(assignment) %>
-              </li>
-            </ul>
+      <%= render layout: 'exercise_solutions/assistant_rules_box', locals: {assignment: assignment } do %>
+        <%= render partial: 'exercise_solutions/contextualization_results_body', locals: {contextualization: assignment} %>
+        <% if should_render_need_help_dropdown?(assignment) %>
+          <div class="notify-problem-box">
+            <div class="dropdown">
+              <%= link_to fa_icon(:'question-circle', text: t(:need_help)), "", {'data-toggle': 'dropdown'} %>
+              <ul class="dropdown-menu" aria-labelledby="helpDropdown">
+                <li>
+                  <%= read_discussions_link(@exercise) %>
+                </li>
+                <li>
+                  <%= render_community_link %>
+                </li>
+                <li>
+                  <%= report_bug_link(assignment) %>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     <% end %>
     <%= solution_download_link assignment %>
@@ -36,8 +38,6 @@
 
   <% if assignment.passed? %>
     <%= corollary_box @exercise %>
-  <% else %>
-    <%= assistance_box assignment %>
   <% end %>
 <% end %>
 
