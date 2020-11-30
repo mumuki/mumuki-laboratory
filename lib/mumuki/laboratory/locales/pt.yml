@@ -145,6 +145,7 @@ pt:
   lesson_number: Lição %{number}
   let_us_know: Por favor, avise-nos!
   level: Nível
+  level_up: Você sobe de nível!
   loading: Carregando
   load_solution_into_console: Carregue a solução no console
   locked_content: 'Este conteúdo será desbloqueado quando você terminar os capítulos anteriores'
@@ -238,6 +239,7 @@ pt:
   solved_count: '%{count} resolvido'
   solved_exercises: Exercícios resolvidos
   solve_doubts: Resolvi dúvidas
+  solve_more_exercises_to_level_up: Resolva mais <span>number</span> exercícios para avançar para o próximo nível.
   solve_your_doubts: Consulte suas dúvidas
   solve_your_doubts_teaser: Você tem alguma dúvida?
   something_went_wrong: Oops!, Algo não estava certo ...

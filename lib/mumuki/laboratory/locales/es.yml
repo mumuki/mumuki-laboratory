@@ -151,6 +151,7 @@ es:
   lesson_number: Lección %{number}
   let_us_know: ¡Por favor avisanos!
   level: Nivel
+  level_up: ¡Subiste de nivel!
   loading: Cargando
   load_solution_into_console: Cargar la solución en la consola
   locked_content: 'Este contenido se desbloqueará cuando termines los capítulos anteriores'
@@ -251,6 +252,7 @@ es:
     other: '%{count} resueltas'
   solved_exercises: Ejercicios Resueltos
   solve_doubts: Resolvé consultas
+  solve_more_exercises_to_level_up: Resolvé <span>number</span> ejercicios más para pasar al siguiente nivel.
   solve_your_doubts: Consultá tus dudas
   solve_your_doubts_teaser: ¿Tenés alguna consulta?
   something_went_wrong: ¡Ups!, algo no anduvo bien...
