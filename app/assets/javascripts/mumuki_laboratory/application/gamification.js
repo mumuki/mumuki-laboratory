@@ -38,8 +38,8 @@ mumuki.gamification = (() => {
       return Math.floor((-b + Math.sqrt(Math.pow(b, 2) - 4 * a * (c - exp))) / (2 * a));
     }
 
-    triggersLevelChange(exp) {
-      return this.levelFor(exp) !== this.currentLevel();
+    triggersLevelChange(newExp) {
+      return this.levelFor(this.currentExp + newExp) !== this.currentLevel();
     }
 
     currentLevelProgress() {
@@ -50,20 +50,34 @@ mumuki.gamification = (() => {
       return this.expFor(this.currentLevel());
     }
 
+    exercisesToNextLevel() {
+      return Math.ceil(this.expToLevelUp() / 100);
+    }
+
     setExpMessage(exp) {
-      let expGained = exp - this.currentExp;
+      let newExpEarned = exp - this.currentExp;
 
-      if (expGained > 0) {
+      if (newExpEarned > 0) {
+        this.showLevelUpModalIfLevelUp(newExpEarned);
+
+        $('#mu-exp-points').html(newExpEarned);
+        $('#mu-exp-earned-message').toggleClass("hidden", "visible");
+
         this.currentExp = exp;
-        $('#mu-exp-points').html(expGained);
-
         this.updateLevel();
+      }
+    }
+
+    showLevelUpModalIfLevelUp(newExpEarned) {
+      if (this.triggersLevelChange(newExpEarned)) {
+        $('#mu-level-up').modal();
       }
     }
 
     updateLevel() {
       const $muLevelProgress = $('#mu-level-progress');
 
+      $('#mu-solve-more-exercises span').text(this.exercisesToNextLevel());
       $('.mu-level-number').html(this.currentLevel());
       $('.mu-level-tooltip').attr("title", (_, value) => `${value} ${this.currentLevel()}`);
 
@@ -88,7 +102,7 @@ mumuki.gamification = (() => {
   }
 
   function currentExp() {
-    return $('#mu-current-exp').val();
+    return parseInt($('#mu-current-exp').val());
   }
 
   return {

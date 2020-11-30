@@ -97,6 +97,7 @@ pt:
   exercise_success_rate: Taxa de sucesso em exercícios
   exercises: Exercícios
   exit: Sair
+  exp_points: pontos de experiência.
   expectations: Objetivos
   expected_state: Tabuleiro esperado
   explain_redirect: Percebemos que você se registrou em outra organização.
@@ -150,6 +151,7 @@ pt:
   lesson_number: Lição %{number}
   let_us_know: Por favor, avise-nos!
   level: Nível
+  level_up: Você sobe de nível!
   loading: Carregando
   load_solution_into_console: Carregue a solução no console
   locked_content: 'Este conteúdo será desbloqueado quando você terminar os capítulos anteriores'
@@ -243,6 +245,7 @@ pt:
   solved_count: '%{count} resolvido'
   solved_exercises: Exercícios resolvidos
   solve_doubts: Resolvi dúvidas
+  solve_more_exercises_to_level_up: Resolva mais <span>number</span> exercícios para avançar para o próximo nível.
   solve_your_doubts: Consulte suas dúvidas
   solve_your_doubts_teaser: Você tem alguma dúvida?
   something_went_wrong: Oops!, Algo não estava certo ...
@@ -293,5 +296,6 @@ pt:
   working: Processamento
   wrong_answer: A resposta não é correta
   years: anos
+  you_earned: Você ganhou
   you_must_sign_in_before_submitting: Você deve fazer o login antes de começar a enviar suas soluções
   your_new_organization: sua nova organização

@@ -1,4 +1,13 @@
 <div class="<%= "bs-callout bs-callout-#{icon_class_for contextualization.submission_status}" %>">
   <%= render partial: 'exercise_solutions/results_title', locals: {contextualization: contextualization} %>
+
+  <% if Organization.current.gamification_enabled? %>
+    <div id="mu-exp-earned-message" class="hidden">
+      <span><%= t(:you_earned) %></span>
+      <strong><span id="mu-exp-points"></span></strong>
+      <span><%= t(:exp_points) %></span>
+    </div>
+  <% end %>
+
   <%= yield %>
 </div>
