@@ -56,8 +56,30 @@ mumuki.gamification = (() => {
       if (expGained > 0) {
         this.currentExp = exp;
         $('#mu-exp-points').html(expGained);
-        $('#mu-level-number').html(this.currentLevel());
+
+        this.updateLevel();
       }
+    }
+
+    updateLevel() {
+      const $muLevelProgress = $('#mu-level-progress');
+
+      $('.mu-level-number').html(this.currentLevel());
+      $('.mu-level-tooltip').attr("title", (_, value) => `${value} ${this.currentLevel()}`);
+
+      if (this.currentLevelProgress() == 0) {
+        $muLevelProgress.attr("display", "none");
+      }
+
+      $muLevelProgress.animate(
+        {'progress': this.currentLevelProgress() * 250},
+        {
+          step: function(progress) {
+            let pattern = progress + ", 999";
+            $(this).attr("stroke-dasharray", pattern);
+          },
+          duration: 1000
+        });
     }
   }
 
@@ -82,4 +104,5 @@ mumuki.gamification = (() => {
 
 mumuki.load(() => {
   mumuki.gamification._setUpCurrentLevelProgression();
+  mumuki.gamification._currentLevelProgression.updateLevel();
 });

@@ -31,7 +31,35 @@
   }
 }
 
-.mu-profile-info {
+.mu-profile-info-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  .mu-level-progress {
+    position: relative;
+    top: -275px;
+    margin-bottom: -275px;
+  }
+
+  .mu-level-number {
+    position: absolute;
+    margin-top: 11px;
+    margin-left: -86px;
+    width: 87px;
+
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+.mu-profile-info-right {
   font-size: 20px;
   margin-top: 5px;
   div {
@@ -40,6 +68,4 @@
       font-style: italic;
     }
   }
-
-
 }
