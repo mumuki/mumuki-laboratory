@@ -26,6 +26,25 @@ describe DiscussionsController, organization_workspace: :test do
     end
   end
 
+  describe 'index' do
+    context 'when user is banned from forum' do
+      before { user.update! banned_from_forum: true }
+      before { get :index, params: exercise_params }
+
+      it { expect(response.status).to eq 404 }
+    end
+
+    context 'when user has exam in progress' do
+      let!(:exam) { create(:exam) }
+      before { exam.authorize! user }
+      before { exam.start! user }
+
+      before { get :index, params: exercise_params }
+
+      it { expect(response.status).to eq 403 }
+    end
+  end
+
   describe 'post' do
     before { allow_any_instance_of(DiscussionsController).to receive(:discussion_params).and_return title: 'A title' }
     before { post :create, params: exercise_params }
