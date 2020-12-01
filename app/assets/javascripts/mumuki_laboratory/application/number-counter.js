@@ -1,5 +1,4 @@
-mumuki.animateNumberCounter = (selector, valueTo, seconds = 2) => {
-  debugger;
+mumuki.animateNumberCounter = (selector, valueTo, seconds = 1) => {
   const $numberCounter = $(selector);
 
   if ($numberCounter.text()) return;
