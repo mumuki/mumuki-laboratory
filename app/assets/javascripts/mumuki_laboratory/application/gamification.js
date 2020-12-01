@@ -8,7 +8,9 @@ mumuki.gamification = (() => {
   class LevelProgression {
     constructor(currentExp) {
       this.currentExp = currentExp;
-      this.lastExpGained = 0;
+      this.lastEarnedExp = 0;
+      this._levelUpShower = this.defaultLevelUpShower;
+      this._gainedExperienceShower = this.defaultGainedExperienceShower;
     }
 
     expToLevelUp() {
@@ -56,23 +58,42 @@ mumuki.gamification = (() => {
     }
 
     setExpMessage(exp) {
-      let newExpEarned = exp - this.currentExp;
+      this.lastEarnedExp = exp - this.currentExp;
 
-      if (newExpEarned > 0) {
-        this.showLevelUpModalIfLevelUp(newExpEarned);
-
-        $('#mu-exp-points').html(newExpEarned);
-        $('#mu-exp-earned-message').toggleClass("hidden", "visible");
+      if (this.lastEarnedExp > 0) {
+        this.showLevelUpModalIfLevelUp(this.lastEarnedExp);
+        this._gainedExperienceShower();
 
         this.currentExp = exp;
         this.updateLevel();
       }
     }
 
+    defaultGainedExperienceShower() {
+      $('#mu-exp-points').html(this.lastEarnedExp);
+      $('#mu-exp-earned-message').removeClass('hidden');
+    }
+
+    defaultLevelUpShower() {
+      $('#mu-level-up').modal();
+    }
+
+    registerLevelUpShower(shower) {
+      this._levelUpShower = shower;
+    }
+
+    registerGainedExperienceShower(shower) {
+      this._gainedExperienceShower = shower;
+    }
+
     showLevelUpModalIfLevelUp(newExpEarned) {
       if (this.triggersLevelChange(newExpEarned)) {
-        $('#mu-level-up').modal();
+        this._levelUpShower();
       }
+    }
+
+    animateExperienceCounter(selector) {
+      mumuki.animateNumberCounter(selector, this.lastEarnedExp);
     }
 
     updateLevel() {
@@ -99,7 +120,7 @@ mumuki.gamification = (() => {
   }
 
   function _setUpCurrentLevelProgression() {
-    mumuki.gamification._currentLevelProgression = new LevelProgression(currentExp());
+    mumuki.gamification.currentLevelProgression = new LevelProgression(currentExp());
   }
 
   function currentExp() {
@@ -113,11 +134,11 @@ mumuki.gamification = (() => {
     _setUpCurrentLevelProgression,
 
     /** @type {LevelProgression} */
-    _currentLevelProgression: null
+    currentLevelProgression: null
   };
 })();
 
 mumuki.load(() => {
   mumuki.gamification._setUpCurrentLevelProgression();
-  mumuki.gamification._currentLevelProgression.updateLevel();
+  mumuki.gamification.currentLevelProgression.updateLevel();
 });
