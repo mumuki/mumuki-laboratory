@@ -10,7 +10,7 @@ mumuki.load(() => {
 
     initialize() {
       super.initialize();
-      this.$contextModalButton = new mumuki.Button($('#mu-kids-context .mu-kindergarten-modal-button.mu-close'));
+      this.$contextModalButton = new mumuki.Button($('#mu-kids-context .mu-kids-modal-button.mu-close'));
 
       this.resultActions.passed = this._showSuccessPopup.bind(this);
       this.resultActions.passed_with_warnings = this._showSuccessPopup.bind(this);
@@ -148,7 +148,7 @@ mumuki.load(() => {
     }
 
     get context() {
-      return new mumuki.Carrousel('.mu-kindergarten-context-image-slides', () => mumuki.kids.showContext());
+      return new mumuki.ModalCarrousel('.mu-kindergarten-context-image-slides', () => mumuki.kids.showContext());
     }
 
   }

@@ -12,7 +12,7 @@ mumuki.animateNumberCounter = (selector, valueTo, seconds = 1) => {
     if (initValue >= valueTo) return;
     const nextValue = initValue + incrementStep;
     // TODO: this one should be xp agnostic
-    $numberCounter.text(`+${Math.min(Math.round(nextValue), valueTo)}xp`);
+    $numberCounter.text(`+${Math.min(Math.round(nextValue), valueTo)}exp`);
     setTimeout(() => _increment(nextValue), delay);
   }
 };

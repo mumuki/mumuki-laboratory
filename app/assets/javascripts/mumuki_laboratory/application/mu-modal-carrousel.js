@@ -1,6 +1,6 @@
-mumuki.Carrousel = (() => {
+mumuki.ModalCarrousel = (() => {
 
-  class MuCarrousel {
+  class MuModalCarrousel {
     constructor(containerSelector, onShow = () => {}) {
       this.$container = $(containerSelector);
       this.onShow = onShow;
@@ -30,15 +30,17 @@ mumuki.Carrousel = (() => {
     }
 
     showNextOrCloseButton() {
-      const $next = $('.mu-kindergarten-modal-button.mu-next');
-      const $close = $('.mu-kindergarten-modal-button.mu-close');
+      const $next = $('.mu-kids-modal-button.mu-next');
+      const $close = $('.mu-kids-modal-button.mu-close');
+      const $footer = $('.modal-footer');
       const isLastChild = this._activeSlide().is(':last-child');
       this._addClassIf($next, 'hidden', () => isLastChild);
       this._addClassIf($close, 'hidden', () => !isLastChild);
+      this._addClassIf($footer, 'hidden', () => !isLastChild);
     }
 
     _hidePreviousButtonIfFirstSlide() {
-      const $prev = $('.mu-kindergarten-modal-button.mu-previous');
+      const $prev = $('.mu-kids-modal-button.mu-previous');
       this._addClassIf($prev, 'hidden', () => this._activeSlide().is(':first-child'))
     }
 
@@ -57,5 +59,5 @@ mumuki.Carrousel = (() => {
     }
   }
 
-  return MuCarrousel;
+  return MuModalCarrousel;
 })();

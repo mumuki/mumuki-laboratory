@@ -89,7 +89,7 @@ $capital-animation-width: 135px;
         }
       }
 
-      .mu-kindergarten-modal-button {
+      .mu-kids-modal-button {
         $diameter: 64px;
         position: absolute;
         border-radius: 50%;
@@ -127,7 +127,7 @@ $capital-animation-width: 135px;
       @each $class, $color in $mu-statuses-colors {
         &.#{$class} {
           border-color: $color;
-          .mu-kindergarten-modal-button {
+          .mu-kids-modal-button {
             background: $color;
           }
         }
