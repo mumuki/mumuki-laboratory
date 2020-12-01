@@ -33,8 +33,8 @@ mumuki.Kids = class {
     mumuki.gamification.currentLevelProgression.animateExperienceCounter('.mu-kids-results .mu-experience');
   }
 
-  levelUpShower() {
-    $('.mu-kindergarten-context-image-slides').append('<div>ALTO NIVELAZO REYYY</div>');
+  levelUpShower(levelUpHtml) {
+    $('.mu-kindergarten-context-image-slides').append(levelUpHtml);
   }
 
   showContext() {
@@ -95,7 +95,7 @@ mumuki.Kids = class {
   _openSubmissionResultModal(data) {
     this.$resultsModal.modal({ backdrop: 'static', keyboard: false });
     this.$resultsModal.find('.modal-header').first().html(data.title_html);
-    mumuki.gamification.currentLevelProgression.setExpMessage(data.current_exp);
+    mumuki.gamification.currentLevelProgression.setExpMessage(data);
     this.$resultsModal.find('.modal-footer').first().html(data.button_html);
     $('.mu-close-modal').click(() => this.$resultsModal.modal('hide'));
     this.onSubmissionResultModalOpen(data);

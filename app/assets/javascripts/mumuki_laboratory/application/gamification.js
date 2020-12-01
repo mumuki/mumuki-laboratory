@@ -57,11 +57,12 @@ mumuki.gamification = (() => {
       return Math.ceil(this.expToLevelUp() / 100);
     }
 
-    setExpMessage(exp) {
+    setExpMessage(data) {
+      const exp = data.current_exp;
       this.lastEarnedExp = exp - this.currentExp;
 
       if (this.lastEarnedExp > 0) {
-        this.showLevelUpModalIfLevelUp(this.lastEarnedExp);
+        this.showLevelUpModalIfLevelUp(data.level_up_html);
         this._gainedExperienceShower();
 
         this.currentExp = exp;
@@ -74,7 +75,7 @@ mumuki.gamification = (() => {
       $('#mu-exp-earned-message').removeClass('hidden');
     }
 
-    defaultLevelUpShower() {
+    defaultLevelUpShower(_levelUpHtml) {
       $('#mu-level-up').modal();
     }
 
@@ -86,9 +87,9 @@ mumuki.gamification = (() => {
       this._gainedExperienceShower = shower;
     }
 
-    showLevelUpModalIfLevelUp(newExpEarned) {
-      if (this.triggersLevelChange(newExpEarned)) {
-        this._levelUpShower();
+    showLevelUpModalIfLevelUp(levelUpHtml) {
+      if (this.triggersLevelChange(this.lastEarnedExp)) {
+        this._levelUpShower(levelUpHtml);
       }
     }
 

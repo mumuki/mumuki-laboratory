@@ -29,6 +29,7 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
         title_html: render_results_title(assignment),
         expectations: assignment.affable_expectation_results,
         tips: assignment.affable_tips,
+        level_up_html: render_results('layouts/modals/kids_level_up', assignment),
         test_results: assignment.sanitized_affable_test_results) # these results could include escaped characters so they should be rendered as HTML to display properly
   end
 
