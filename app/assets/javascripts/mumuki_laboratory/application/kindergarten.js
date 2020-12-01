@@ -187,7 +187,7 @@ mumuki.load(() => {
         },
         _addClassIf(element, clazz, criteria) {
           if (criteria()) {
-            element.addClass(clazz)
+            element.addClass(clazz);
           } else {
             element.removeClass(clazz);
           }

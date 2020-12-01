@@ -24,6 +24,16 @@ mumuki.Kids = class {
     this.$resultsAbortedModal = $('#kids-results-aborted');
     this.$bubbleCharacterAnimation = $('.mu-kids-character-animation');
     this.$submissionResult =  $('.submission-results');
+    mumuki.gamification.currentLevelProgression.registerLevelUpShower(this.levelUpShower);
+    mumuki.gamification.currentLevelProgression.registerGainedExperienceShower(this.gainedExperienceShower);
+  }
+
+  gainedExperienceShower() {
+    mumuki.gamification.currentLevelProgression.animateExperienceCounter('.mu-kids-results .mu-experience');
+  }
+
+  levelUpShower() {
+    //Habilitar la flecha en results
   }
 
   showContext() {
@@ -84,7 +94,6 @@ mumuki.Kids = class {
   _openSubmissionResultModal(data) {
     this.$resultsModal.modal({ backdrop: 'static', keyboard: false });
     this.$resultsModal.find('.modal-header').first().html(data.title_html);
-    mumuki.numberCounter('.mu-experience');
     this.$resultsModal.find('.modal-footer').first().html(data.button_html);
     $('.mu-close-modal').click(() => this.$resultsModal.modal('hide'));
     this.onSubmissionResultModalOpen(data);
@@ -101,6 +110,7 @@ mumuki.Kids = class {
   // in order to finish an exercise
   showResult(data) {
     mumuki.progress.updateProgressBarAndShowModal(data);
+    mumuki.gamification.currentLevelProgression.setExpMessage(data.current_exp);
     if (data.guide_finished_by_solution) return;
     this.resultActions[data.status](data);
   }
