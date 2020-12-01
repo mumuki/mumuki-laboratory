@@ -21,7 +21,7 @@ mumuki.Kids = class {
     this.$stateImage = $('.mu-kids-state-image');
     this.$contextModal = $('#mu-kids-context');
     this.$resultsModal = $('#kids-results');
-    this.resultsCarrousel = new mumuki.Carrousel('.mu-kindergarten-context-image-slides');
+    this.resultsCarrousel = new mumuki.Carrousel('.mu-kids-results-carrousel');
     this.$resultsAbortedModal = $('#kids-results-aborted');
     this.$bubbleCharacterAnimation = $('.mu-kids-character-animation');
     this.$submissionResult =  $('.submission-results');
@@ -34,7 +34,7 @@ mumuki.Kids = class {
   }
 
   levelUpShower(levelUpHtml) {
-    $('.mu-kindergarten-context-image-slides').append(levelUpHtml);
+    $('.mu-kids-results-carrousel').append(levelUpHtml);
   }
 
   showContext() {
