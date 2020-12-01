@@ -30,7 +30,8 @@ mumuki.load(() => {
 
     showNonAbortedPopup(data, animation_name) {
       this.$submissionResult.html(data.title_html);
-      this.$resultsModal.find('.modal-content').removeClass().addClass('modal-content').addClass(data.status);
+      // TODO: FIXME
+      this.$resultsModal.find('.modal-content').removeClass().addClass('modal-content kindergarten').addClass(data.status);
       super.showNonAbortedPopup(data, animation_name);
     }
 

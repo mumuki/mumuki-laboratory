@@ -87,157 +87,69 @@ $modal-footer-height: 95px;
   }
 }
 
-.mu-kindergarten-context {
+.modal-content.kindergarten {
+  $width-lg: 800px;
+  $height-lg: $width-lg * 0.625;
 
-  .modal-dialog {
+  width: $width-lg;
+  height: $height-lg;
 
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
+  top: calc(50vh - #{$height-lg} / 2);
 
-    .modal-content {
-      position: absolute;
+  @media (orientation: landscape)  and (max-height: $height-lg + 50px) {
+    $height-sm: 85vh;
+    $width-sm: $height-sm / 0.625;
 
-      $width-lg: 800px;
-      $height-lg: $width-lg * 0.625;
+    width: $width-sm;
+    height: $height-sm;
 
-      width: $width-lg;
-      height: $height-lg;
+    top: calc(50vh - #{$height-sm} / 2);
+    left: calc(50vw - #{$width-sm} / 2);
+  }
 
-      top: calc(50vh - #{$height-lg} / 2);
-      left: calc(50vw - #{$width-lg} / 2);
+  @media (orientation: portrait) {
+    $height-sm: 85vh;
+    $width-sm: 85vw;
 
-      @media (orientation: landscape)  and (max-height: $height-lg + 50px) {
-        $height-sm: 85vh;
-        $width-sm: $height-sm / 0.625;
+    width: $width-sm;
+    height: $height-sm;
 
-        width: $width-sm;
-        height: $height-sm;
+    top: calc(50vh - #{$height-sm} / 2);
+    left: calc(50vw - #{$width-sm} / 2);
+  }
 
-        top: calc(50vh - #{$height-sm} / 2);
-        left: calc(50vw - #{$width-sm} / 2);
-      }
+  .modal-header,
+  .modal-footer {
+    text-align: center;
+    text-transform: uppercase;
+  }
 
-      @media (orientation: portrait) {
-        $height-sm: 85vh;
-        $width-sm: 85vw;
-
-        width: $width-sm;
-        height: $height-sm;
-
-        top: calc(50vh - #{$height-sm} / 2);
-        left: calc(50vw - #{$width-sm} / 2);
-      }
-
-      $border-width: 16px;
-      border-width: $border-width;
-      border-style: solid;
-      border-color: $mu-color-link;
-      border-radius: $border-width;
-      box-shadow: none;
-
-      .modal-header,
-      .modal-footer {
-        text-align: center;
-        text-transform: uppercase;
-      }
-
-      .modal-body {
-        height: 100%;
-        div, p {
-          height: 100%;
-          .mu-kindergarten-context-image-slides {
-            > :not(.active) {
-              display: none;
-            }
-          }
-          img {
-            width: 100%;
-            height: 100%;
-            object-position: center;
-            object-fit: contain;
-          }
-        }
-      }
-
-      .mu-kindergarten-modal-button {
-        $diameter: 64px;
-        position: absolute;
-        border-radius: 50%;
-        height: $diameter;
-        width: $diameter;
-        color: white;
-        font-weight: bold;
-        border: none;
-        padding: 0;
-        background: $mu-color-link;
-        &.mu-next,
-        &.mu-close {
-          top: - $diameter / 2 - $border-width / 2;
-          right: - $diameter / 2 - $border-width / 2;
-        }
-        &.mu-previous {
-          top: - $diameter / 2 - $border-width / 2;
-          left: - $diameter / 2 - $border-width / 2;
-        }
-      }
-
-      $mu-statuses-colors: (
-        'broken': $mu-color-broken,
-        'danger': $mu-color-danger,
-        'success': $mu-color-success,
-        'warning': $mu-color-warning,
-        'passed': $mu-color-success,
-        'passed-with-warnings': $mu-color-warning,
-        'failed': $mu-color-danger,
-        'errored': $mu-color-broken,
-        'aborted': $mu-color-broken,
-        'pending': $mu-color-info
-      );
-
-      @each $class, $color in $mu-statuses-colors {
-        &.#{$class} {
-          border-color: $color;
-          .mu-kindergarten-modal-button {
-            background: $color;
-          }
-        }
-        .submission-results {
-          width: 100%;
-          height: 100%;
-          .mu-kids-callout-#{$class},
-          p {
-            display: none;
-          }
-          .mu-kids-default-#{$class} {
-            width: 100%;
-            height: 100%;
-            img {
-              width: 100%;
-              height: 100%;
-              object-position: center;
-              object-fit: contain;
-            }
-          }
-        }
-      }
+  .modal-body.mu-kids-context-body {
+    height: 100%;
+    div img, p img {
+      width: 100%;
+      height: 100%;
+      object-position: center;
+      object-fit: contain;
     }
   }
 }
 
-#kids-results.mu-kindergarten-context,
 #kids-results.mu-kids-modal-border {
   .modal-body{
     height: calc(100% - #{$modal-header-height} - #{$modal-footer-height});
   }
 }
 
-#kids-results-aborted.mu-kindergarten-context {
-  .modal-body{
-    height: calc(100% - #{$modal-header-height});
-  }
-  h4.modal-header {
-    margin: 0;
+#kids-results-aborted.mu-kids-modal-border {
+  .modal-content.kindergarten {
+    .modal-body {
+      height: calc(100% - #{$modal-header-height});
+    }
+
+    h4.modal-header {
+      margin: 0;
+    }
   }
 }
 

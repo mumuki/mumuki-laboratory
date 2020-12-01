@@ -51,6 +51,10 @@ $capital-animation-width: 135px;
 
   .modal-dialog {
 
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+
     .modal-content {
 
       position: absolute;
@@ -58,6 +62,8 @@ $capital-animation-width: 135px;
       $width-lg: 800px;
 
       width: $width-lg;
+
+      top: 60px;
       left: calc(50% - #{$width-lg} / 2);
 
       @media (max-width: $width-lg + 30px) {
@@ -74,7 +80,8 @@ $capital-animation-width: 135px;
       .modal-body {
         div, p {
           height: 100%;
-          .mu-kids-results-carrousel {
+          .mu-kids-results-carrousel,
+          .mu-kindergarten-context-image-slides {
             > :not(.active) {
               display: none;
             }
@@ -122,6 +129,24 @@ $capital-animation-width: 135px;
           border-color: $color;
           .mu-kindergarten-modal-button {
             background: $color;
+          }
+        }
+        .submission-results.kindergarten {
+          width: 100%;
+          height: 100%;
+          .mu-kids-callout-#{$class},
+          p {
+            display: none;
+          }
+          .mu-kids-default-#{$class} {
+            width: 100%;
+            height: 100%;
+            img {
+              width: 100%;
+              height: 100%;
+              object-position: center;
+              object-fit: contain;
+            }
           }
         }
       }
