@@ -21,6 +21,7 @@ mumuki.Kids = class {
     this.$stateImage = $('.mu-kids-state-image');
     this.$contextModal = $('#mu-kids-context');
     this.$resultsModal = $('#kids-results');
+    this.resultsCarrousel = new mumuki.Carrousel('.mu-kindergarten-context-image-slides');
     this.$resultsAbortedModal = $('#kids-results-aborted');
     this.$bubbleCharacterAnimation = $('.mu-kids-character-animation');
     this.$submissionResult =  $('.submission-results');
@@ -33,7 +34,7 @@ mumuki.Kids = class {
   }
 
   levelUpShower() {
-    //Habilitar la flecha en results
+    $('.mu-kindergarten-context-image-slides').append('<div>ALTO NIVELAZO REYYY</div>');
   }
 
   showContext() {
@@ -84,7 +85,7 @@ mumuki.Kids = class {
   }
 
   onSubmissionResultModalOpen(_data) {
-    // SubClasses may override this method
+    this.resultsCarrousel.show();
   }
 
   // =================
@@ -94,6 +95,7 @@ mumuki.Kids = class {
   _openSubmissionResultModal(data) {
     this.$resultsModal.modal({ backdrop: 'static', keyboard: false });
     this.$resultsModal.find('.modal-header').first().html(data.title_html);
+    mumuki.gamification.currentLevelProgression.setExpMessage(data.current_exp);
     this.$resultsModal.find('.modal-footer').first().html(data.button_html);
     $('.mu-close-modal').click(() => this.$resultsModal.modal('hide'));
     this.onSubmissionResultModalOpen(data);
@@ -110,7 +112,6 @@ mumuki.Kids = class {
   // in order to finish an exercise
   showResult(data) {
     mumuki.progress.updateProgressBarAndShowModal(data);
-    mumuki.gamification.currentLevelProgression.setExpMessage(data.current_exp);
     if (data.guide_finished_by_solution) return;
     this.resultActions[data.status](data);
   }

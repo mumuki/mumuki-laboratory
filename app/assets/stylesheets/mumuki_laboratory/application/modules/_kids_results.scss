@@ -71,6 +71,39 @@ $capital-animation-width: 135px;
       border-radius: $border-width;
       box-shadow: none;
 
+      .modal-body {
+        div, p {
+          height: 100%;
+          .mu-kindergarten-context-image-slides {
+            > :not(.active) {
+              display: none;
+            }
+          }
+        }
+      }
+
+      .mu-kindergarten-modal-button {
+        $diameter: 64px;
+        position: absolute;
+        border-radius: 50%;
+        height: $diameter;
+        width: $diameter;
+        color: white;
+        font-weight: bold;
+        border: none;
+        padding: 0;
+        background: $mu-color-link;
+        &.mu-next,
+        &.mu-close {
+          top: - $diameter / 2 - $border-width / 2;
+          right: - $diameter / 2 - $border-width / 2;
+        }
+        &.mu-previous {
+          top: - $diameter / 2 - $border-width / 2;
+          left: - $diameter / 2 - $border-width / 2;
+        }
+      }
+
       $mu-statuses-colors: (
         'broken': $mu-color-broken,
         'danger': $mu-color-danger,

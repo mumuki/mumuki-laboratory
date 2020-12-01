@@ -147,52 +147,7 @@ mumuki.load(() => {
     }
 
     get context() {
-      return {
-        showContext() {
-          mumuki.kids.showContext();
-          this._showFirstSlideImage();
-        },
-        nextSlide() {
-          this._clickButton('next');
-        },
-        prevSlide() {
-          this._clickButton('prev');
-        },
-        _imageSlides() {
-          return $('.mu-kindergarten-context-image-slides');
-        },
-        _activeSlideImage() {
-          return this._imageSlides().find('.active');
-        },
-        _clickButton(prevOrNext) {
-          this._activeSlideImage().removeClass('active')[prevOrNext]().addClass('active');
-          this.showNextOrCloseButton();
-          this._hidePreviousButtonIfFirstImage();
-        },
-        showNextOrCloseButton() {
-          const $next = $('.mu-kindergarten-modal-button.mu-next');
-          const $close = $('.mu-kindergarten-modal-button.mu-close');
-          const isLastChild = this._activeSlideImage().is(':last-child');
-          this._addClassIf($next, 'hidden', () => isLastChild);
-          this._addClassIf($close, 'hidden', () => !isLastChild);
-        },
-        _hidePreviousButtonIfFirstImage() {
-          const $prev = $('.mu-kindergarten-modal-button.mu-previous');
-          this._addClassIf($prev, 'hidden', () => this._activeSlideImage().is(':first-child'))
-        },
-        _showFirstSlideImage() {
-          this._imageSlides().find('img').each((i, el) => this._addClassIf($(el), 'active', () => i === 0))
-          this.showNextOrCloseButton();
-          this._hidePreviousButtonIfFirstImage();
-        },
-        _addClassIf(element, clazz, criteria) {
-          if (criteria()) {
-            element.addClass(clazz);
-          } else {
-            element.removeClass(clazz);
-          }
-        }
-      }
+      return new mumuki.Carrousel('.mu-kindergarten-context-image-slides', () => mumuki.kids.showContext());
     }
 
   }
