@@ -5,6 +5,16 @@ mumuki.gamification = (() => {
     static get CONSTANT_TERM()          { return -125; }
   }
 
+  class DummyLevelProgression {
+    setExpMessage() {}
+
+    registerLevelUpAction() {}
+
+    registerGainedExperienceAction() {}
+
+    updateLevel() {}
+  }
+
   class LevelProgression {
     constructor(currentExp) {
       this.currentExp = currentExp;
@@ -121,7 +131,15 @@ mumuki.gamification = (() => {
   }
 
   function _setUpCurrentLevelProgression() {
-    mumuki.gamification.currentLevelProgression = new LevelProgression(currentExp());
+    if (_gamificationEnabled()) {
+      mumuki.gamification.currentLevelProgression = new LevelProgression(currentExp());
+    } else {
+      mumuki.gamification.currentLevelProgression = new DummyLevelProgression();
+    }
+  }
+
+  function _gamificationEnabled() {
+    return $('#mu-current-exp').length;
   }
 
   function currentExp() {
@@ -134,7 +152,7 @@ mumuki.gamification = (() => {
 
     _setUpCurrentLevelProgression,
 
-    /** @type {LevelProgression} */
+    /** @type {LevelProgression|DummyLevelProgression} */
     currentLevelProgression: null
   };
 })();
