@@ -9,8 +9,8 @@ mumuki.gamification = (() => {
     constructor(currentExp) {
       this.currentExp = currentExp;
       this.lastEarnedExp = 0;
-      this._levelUpShower = this.defaultLevelUpShower;
-      this._gainedExperienceShower = this.defaultGainedExperienceShower;
+      this._levelUpAction = this.defaultLevelUpAction;
+      this._gainedExperienceAction = this.defaultGainedExperienceAction;
     }
 
     expToLevelUp() {
@@ -63,33 +63,33 @@ mumuki.gamification = (() => {
 
       if (this.lastEarnedExp > 0) {
         this.showLevelUpModalIfLevelUp(data.level_up_html);
-        this._gainedExperienceShower();
+        this._gainedExperienceAction();
 
         this.currentExp = exp;
         this.updateLevel();
       }
     }
 
-    defaultGainedExperienceShower() {
+    defaultGainedExperienceAction() {
       $('#mu-exp-points').html(this.lastEarnedExp);
       $('#mu-exp-earned-message').removeClass('hidden');
     }
 
-    defaultLevelUpShower(_levelUpHtml) {
+    defaultLevelUpAction(_levelUpHtml) {
       $('#mu-level-up').modal();
     }
 
-    registerLevelUpShower(shower) {
-      this._levelUpShower = shower;
+    registerLevelUpAction(action) {
+      this._levelUpAction = action;
     }
 
-    registerGainedExperienceShower(shower) {
-      this._gainedExperienceShower = shower;
+    registerGainedExperienceAction(action) {
+      this._gainedExperienceAction = action;
     }
 
     showLevelUpModalIfLevelUp(levelUpHtml) {
       if (this.triggersLevelChange(this.lastEarnedExp)) {
-        this._levelUpShower(levelUpHtml);
+        this._levelUpAction(levelUpHtml);
       }
     }
 

@@ -25,15 +25,15 @@ mumuki.Kids = class {
     this.$resultsAbortedModal = $('#kids-results-aborted');
     this.$bubbleCharacterAnimation = $('.mu-kids-character-animation');
     this.$submissionResult =  $('.submission-results');
-    mumuki.gamification.currentLevelProgression.registerLevelUpShower(this.levelUpShower);
-    mumuki.gamification.currentLevelProgression.registerGainedExperienceShower(this.gainedExperienceShower);
+    mumuki.gamification.currentLevelProgression.registerLevelUpAction(this.levelUpAction);
+    mumuki.gamification.currentLevelProgression.registerGainedExperienceAction(this.gainedExperienceAction);
   }
 
-  gainedExperienceShower() {
+  gainedExperienceAction() {
     mumuki.gamification.currentLevelProgression.animateExperienceCounter('.mu-kids-results .mu-experience');
   }
 
-  levelUpShower(levelUpHtml) {
+  levelUpAction(levelUpHtml) {
     $('.mu-kids-results-carrousel').append(levelUpHtml);
   }
 
