@@ -1,3 +1,14 @@
+@mixin full-size-character {
+  width: 100%;
+  height: 100%;
+  img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: contain;
+  }
+}
+
 @each $class in success, warning, danger, broken {
   .mu-kids-callout-#{$class} {
     h4 {
@@ -47,3 +58,109 @@ $capital-animation-width: 135px;
   }
 }
 
+.mu-kids-modal-border {
+
+  .modal-dialog {
+
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+
+    .modal-content {
+
+      position: absolute;
+
+      $width-lg: 800px;
+
+      width: $width-lg;
+
+      top: 60px;
+      left: calc(50% - #{$width-lg} / 2);
+
+      @media (max-width: $width-lg + 30px) {
+        width: calc(100vw - 30px);
+      }
+
+      $border-width: 16px;
+      border-width: $border-width;
+      border-style: solid;
+      border-color: $mu-color-link;
+      border-radius: $border-width;
+      box-shadow: none;
+
+      .modal-body {
+        div, p {
+          height: 100%;
+          .mu-kids-results-carrousel,
+          .mu-kindergarten-context-image-slides {
+            > :not(.active) {
+              display: none;
+            }
+          }
+        }
+        .mu-level p {
+          height: unset;
+        }
+      }
+
+      .mu-kids-modal-button {
+        $diameter: 64px;
+        position: absolute;
+        border-radius: 50%;
+        height: $diameter;
+        width: $diameter;
+        color: white;
+        font-weight: bold;
+        border: none;
+        padding: 0;
+        background: $mu-color-link;
+        &.mu-next,
+        &.mu-close {
+          top: - $diameter / 2 - $border-width / 2;
+          right: - $diameter / 2 - $border-width / 2;
+        }
+        &.mu-previous {
+          top: - $diameter / 2 - $border-width / 2;
+          left: - $diameter / 2 - $border-width / 2;
+        }
+      }
+
+      $mu-statuses-colors: (
+        'broken': $mu-color-broken,
+        'danger': $mu-color-danger,
+        'success': $mu-color-success,
+        'warning': $mu-color-warning,
+        'passed': $mu-color-success,
+        'passed-with-warnings': $mu-color-warning,
+        'failed': $mu-color-danger,
+        'errored': $mu-color-broken,
+        'aborted': $mu-color-broken,
+        'pending': $mu-color-info
+      );
+
+      @each $class, $color in $mu-statuses-colors {
+        &.#{$class} {
+          border-color: $color;
+          .mu-kids-modal-button {
+            background: $color;
+          }
+        }
+        .mu-kids-character.kindergarten {
+          @include full-size-character;
+        }
+
+        .submission-results.kindergarten {
+          width: 100%;
+          height: 100%;
+          .mu-kids-callout-#{$class},
+          p {
+            display: none;
+          }
+          .mu-kids-default-#{$class} {
+            @include full-size-character;
+          }
+        }
+      }
+    }
+  }
+}

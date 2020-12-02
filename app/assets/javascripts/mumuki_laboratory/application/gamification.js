@@ -5,9 +5,22 @@ mumuki.gamification = (() => {
     static get CONSTANT_TERM()          { return -125; }
   }
 
+  class DummyLevelProgression {
+    setExpMessage() {}
+
+    registerLevelUpAction() {}
+
+    registerGainedExperienceAction() {}
+
+    updateLevel() {}
+  }
+
   class LevelProgression {
     constructor(currentExp) {
       this.currentExp = currentExp;
+      this.lastEarnedExp = 0;
+      this._levelUpAction = this.defaultLevelUpAction;
+      this._gainedExperienceAction = this.defaultGainedExperienceAction;
     }
 
     expToLevelUp() {
@@ -54,24 +67,44 @@ mumuki.gamification = (() => {
       return Math.ceil(this.expToLevelUp() / 100);
     }
 
-    setExpMessage(exp) {
-      let newExpEarned = exp - this.currentExp;
+    setExpMessage(data) {
+      const exp = data.current_exp;
+      this.lastEarnedExp = exp - this.currentExp;
 
-      if (newExpEarned > 0) {
-        this.showLevelUpModalIfLevelUp(newExpEarned);
-
-        $('#mu-exp-points').html(newExpEarned);
-        $('#mu-exp-earned-message').toggleClass("hidden", "visible");
+      if (this.lastEarnedExp > 0) {
+        this.levelUpActionIfLevelUp(data.level_up_html);
+        this._gainedExperienceAction();
 
         this.currentExp = exp;
         this.updateLevel();
       }
     }
 
-    showLevelUpModalIfLevelUp(newExpEarned) {
-      if (this.triggersLevelChange(newExpEarned)) {
-        $('#mu-level-up').modal();
+    defaultGainedExperienceAction() {
+      $('#mu-exp-points').html(this.lastEarnedExp);
+      $('#mu-exp-earned-message').removeClass('hidden');
+    }
+
+    defaultLevelUpAction(_levelUpHtml) {
+      $('#mu-level-up').modal();
+    }
+
+    registerLevelUpAction(action) {
+      this._levelUpAction = action;
+    }
+
+    registerGainedExperienceAction(action) {
+      this._gainedExperienceAction = action;
+    }
+
+    levelUpActionIfLevelUp(levelUpHtml) {
+      if (this.triggersLevelChange(this.lastEarnedExp)) {
+        this._levelUpAction(levelUpHtml);
       }
+    }
+
+    animateExperienceCounter(selector) {
+      mumuki.animateNumberCounter(selector, this.lastEarnedExp);
     }
 
     updateLevel() {
@@ -81,7 +114,7 @@ mumuki.gamification = (() => {
       $('.mu-level-number').html(this.currentLevel());
       $('.mu-level-tooltip').attr("title", (_, value) => `${value} ${this.currentLevel()}`);
 
-      if (this.currentLevelProgress() == 0) {
+      if (this.currentLevelProgress() === 0) {
         $muLevelProgress.attr("display", "none");
       }
 
@@ -98,7 +131,15 @@ mumuki.gamification = (() => {
   }
 
   function _setUpCurrentLevelProgression() {
-    mumuki.gamification._currentLevelProgression = new LevelProgression(currentExp());
+    if (_gamificationEnabled()) {
+      mumuki.gamification.currentLevelProgression = new LevelProgression(currentExp());
+    } else {
+      mumuki.gamification.currentLevelProgression = new DummyLevelProgression();
+    }
+  }
+
+  function _gamificationEnabled() {
+    return $('#mu-current-exp').length;
   }
 
   function currentExp() {
@@ -111,12 +152,12 @@ mumuki.gamification = (() => {
 
     _setUpCurrentLevelProgression,
 
-    /** @type {LevelProgression} */
-    _currentLevelProgression: null
+    /** @type {LevelProgression|DummyLevelProgression} */
+    currentLevelProgression: null
   };
 })();
 
 mumuki.load(() => {
   mumuki.gamification._setUpCurrentLevelProgression();
-  mumuki.gamification._currentLevelProgression.updateLevel();
+  mumuki.gamification.currentLevelProgression.updateLevel();
 });

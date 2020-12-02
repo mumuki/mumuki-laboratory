@@ -61,7 +61,7 @@
     <%= render partial: 'layouts/exercise_skipped' %>
   <% end %>
 
-  <% if Organization.current.gamification_enabled? %>
+  <% if in_gamified_context? %>
     <%= render partial: 'layouts/modals/level_up' %>
   <% end %>
 

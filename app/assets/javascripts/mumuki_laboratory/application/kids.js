@@ -21,9 +21,20 @@ mumuki.Kids = class {
     this.$stateImage = $('.mu-kids-state-image');
     this.$contextModal = $('#mu-kids-context');
     this.$resultsModal = $('#kids-results');
+    this.resultsCarrousel = new mumuki.ModalCarrousel('.mu-kids-results-carrousel');
     this.$resultsAbortedModal = $('#kids-results-aborted');
     this.$bubbleCharacterAnimation = $('.mu-kids-character-animation');
     this.$submissionResult =  $('.submission-results');
+    mumuki.gamification.currentLevelProgression.registerLevelUpAction(this.levelUpAction);
+    mumuki.gamification.currentLevelProgression.registerGainedExperienceAction(this.gainedExperienceAction);
+  }
+
+  gainedExperienceAction() {
+    mumuki.gamification.currentLevelProgression.animateExperienceCounter('.mu-kids-results .mu-experience');
+  }
+
+  levelUpAction(levelUpHtml) {
+    $('.mu-kids-results-carrousel').append(levelUpHtml);
   }
 
   showContext() {
@@ -74,7 +85,7 @@ mumuki.Kids = class {
   }
 
   onSubmissionResultModalOpen(_data) {
-    // SubClasses may override this method
+    this.resultsCarrousel.show();
   }
 
   // =================
@@ -82,9 +93,10 @@ mumuki.Kids = class {
   // =================
 
   _openSubmissionResultModal(data) {
-    this.$resultsModal.modal({ backdrop: 'static', keyboard: false })
-    this.$resultsModal.find('.modal-header').first().html(data.title_html)
-    this.$resultsModal.find('.modal-footer').first().html(data.button_html)
+    this.$resultsModal.modal({ backdrop: 'static', keyboard: false });
+    this.$resultsModal.find('.modal-header').first().html(data.title_html);
+    mumuki.gamification.currentLevelProgression.setExpMessage(data);
+    this.$resultsModal.find('.modal-footer').first().html(data.button_html);
     $('.mu-close-modal').click(() => this.$resultsModal.modal('hide'));
     this.onSubmissionResultModalOpen(data);
   }

@@ -123,8 +123,9 @@ mumuki.load(() => {
       this._showMessageOnCharacterBubble(data);
     }
 
-    onSubmissionResultModalOpen(_data) {
+    onSubmissionResultModalOpen(data) {
       this._showCorollaryCharacter();
+      super.onSubmissionResultModalOpen(data);
     }
 
     // ==========================
