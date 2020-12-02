@@ -1,3 +1,14 @@
+@mixin full-size-character {
+  width: 100%;
+  height: 100%;
+  img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: contain;
+  }
+}
+
 @each $class in success, warning, danger, broken {
   .mu-kids-callout-#{$class} {
     h4 {
@@ -87,6 +98,9 @@ $capital-animation-width: 135px;
             }
           }
         }
+        .mu-level p {
+          height: unset;
+        }
       }
 
       .mu-kids-modal-button {
@@ -131,6 +145,10 @@ $capital-animation-width: 135px;
             background: $color;
           }
         }
+        .mu-kids-character.kindergarten {
+          @include full-size-character;
+        }
+
         .submission-results.kindergarten {
           width: 100%;
           height: 100%;
@@ -139,14 +157,7 @@ $capital-animation-width: 135px;
             display: none;
           }
           .mu-kids-default-#{$class} {
-            width: 100%;
-            height: 100%;
-            img {
-              width: 100%;
-              height: 100%;
-              object-position: center;
-              object-fit: contain;
-            }
+            @include full-size-character;
           }
         }
       }
