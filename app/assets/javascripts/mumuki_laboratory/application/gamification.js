@@ -62,7 +62,7 @@ mumuki.gamification = (() => {
       this.lastEarnedExp = exp - this.currentExp;
 
       if (this.lastEarnedExp > 0) {
-        this.showLevelUpModalIfLevelUp(data.level_up_html);
+        this.levelUpActionIfLevelUp(data.level_up_html);
         this._gainedExperienceAction();
 
         this.currentExp = exp;
@@ -87,7 +87,7 @@ mumuki.gamification = (() => {
       this._gainedExperienceAction = action;
     }
 
-    showLevelUpModalIfLevelUp(levelUpHtml) {
+    levelUpActionIfLevelUp(levelUpHtml) {
       if (this.triggersLevelChange(this.lastEarnedExp)) {
         this._levelUpAction(levelUpHtml);
       }
