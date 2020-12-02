@@ -89,7 +89,7 @@ describe ExerciseSolutionsController, organization_workspace: :test do
 
       it { expect(response.body).to json_eq({ status: :failed, guide_finished_by_solution: false },
                                             except: [:html, :remaining_attempts_html, :title_html, :button_html,
-                                                     :expectations, :test_results, :tips, :current_exp]) }
+                                                     :expectations, :test_results, :tips, :current_exp, :level_up_html]) }
 
       it 'includes kids specific renders' do
         body = JSON.parse(response.body)
