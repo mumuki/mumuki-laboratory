@@ -20,10 +20,12 @@
       <div class="mu-navbar-avatar">
         <% if current_logged_user? %>
           <% if in_gamified_context? %>
-            <i class="fa fa-star fa-fw fa-2x navbar-icon mu-level-tooltip" data-toggle="tooltip" data-placement="bottom" level="<%= t(:level) %>"></i>
-            <span class="mu-level-number"></span>
+            <div class="mu-navbar-element">
+              <i class="fa fa-star fa-fw fa-2x navbar-icon mu-level-tooltip" data-toggle="tooltip" data-placement="bottom" level="<%= t(:level) %>"></i>
+              <span class="mu-level-number"></span>
+            </div>
           <% end %>
-          <div class="dropdown">
+          <div class="dropdown mu-navbar-element">
             <span>
               <a class="notifications-box <%= has_notifications? ? '' : 'notifications-box-empty' %>" href=<%= "#{user_notifications_path}" %>>
                 <i class="fa fa-bell fa-fw fa-2x navbar-icon"></i>
@@ -31,7 +33,7 @@
               </a>
             </span>
           </div>
-          <div class="dropdown">
+          <div class="dropdown mu-navbar-element">
             <div id="profileDropdown" class="profile-dropdown navbar-icon" data-toggle="dropdown" aria-label="<%= t(:user) %>" role="menu" tabindex="0">
               <%= profile_picture_for current_user %>
               <span class="caret"></span>
