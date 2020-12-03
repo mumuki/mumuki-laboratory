@@ -17,7 +17,7 @@ mumuki.progress = (() => {
   function updateWholeProgressBar(f) {
     $('.progress-list-item').each((_, it) => {
       const $anchor = $(it);
-      $anchor.attr('class', f($anchor))
+      $anchor.attr('class', f($anchor));
     });
   }
 

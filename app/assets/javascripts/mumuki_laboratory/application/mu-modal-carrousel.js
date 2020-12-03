@@ -41,7 +41,7 @@ mumuki.ModalCarrousel = (() => {
 
     _hidePreviousButtonIfFirstSlide() {
       const $prev = $('.mu-kids-modal-button.mu-previous');
-      this._addClassIf($prev, 'hidden', () => this._activeSlide().is(':first-child'))
+      this._addClassIf($prev, 'hidden', () => this._activeSlide().is(':first-child'));
     }
 
     _showFirstSlide() {

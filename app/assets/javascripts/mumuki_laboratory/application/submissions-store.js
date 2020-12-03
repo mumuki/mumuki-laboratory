@@ -96,7 +96,7 @@ mumuki.SubmissionsStore = (() => {
     _keyFor(exerciseId) {
       return `/exercise/${exerciseId}/submission`;
     }
-  };
+  }();
 
   return SubmissionsStore;
 })();
@@ -106,5 +106,5 @@ mumuki.load(() => {
     if (e.detail[0]) {
       mumuki.SubmissionsStore.clear();
     }
-  })
-})
+  });
+});

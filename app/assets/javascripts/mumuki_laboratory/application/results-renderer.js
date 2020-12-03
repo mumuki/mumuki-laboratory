@@ -49,7 +49,7 @@ mumuki.renderers.results = (() => {
     classForStatus,
     iconForStatus,
     progressListItemClassForStatus
-  }
+  };
 })();
 
 /** @deprecated use {@code mumuki.renderers.results.classForStatus} instead */

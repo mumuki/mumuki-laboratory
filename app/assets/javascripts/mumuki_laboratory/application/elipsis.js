@@ -21,7 +21,7 @@ mumuki.elipsis = (() => {
     $elipsis.each((it, e) =>  {
       let $e = $(e);
       $e.html(mumuki.elipsis($e.html()));
-    })
+    });
   };
 
   mumuki.load(() => {

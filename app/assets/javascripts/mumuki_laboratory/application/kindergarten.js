@@ -103,27 +103,27 @@ mumuki.load(() => {
           this._action('play', 'stop', true, (speech) => {
             mumuki.presenterCharacter.playAnimation('talk', mumuki.kids.$bubbleCharacterAnimation);
             speech.speak(msg);
-          })
+          });
         },
         stop() {
-          this._action('stop', 'play', false, (speech) => speech.cancel())
+          this._action('stop', 'play', false, (speech) => speech.cancel());
         },
         _action(add, remove, isPlaying, callback) {
           callback(window.speechSynthesis);
-          const $button = $('.mu-kindergarten-play-description')
+          const $button = $('.mu-kindergarten-play-description');
           $button.find(`.mu-kindergarten-${add}`).addClass('hidden');
           $button.find(`.mu-kindergarten-${remove}`).removeClass('hidden');
           this._isPlaying = isPlaying;
         },
         verifyBrowserSupport() {
           if (!window.speechSynthesis) {
-            const $button = $('.mu-kindergarten-play-description')
+            const $button = $('.mu-kindergarten-play-description');
             $button.prop('disabled', true);
             $button.css('cursor', 'not-allowed');
-            this._action('play', 'stop', false)
+            this._action('play', 'stop', false);
           }
         }
-      }
+      };
 
     }
 
@@ -143,7 +143,7 @@ mumuki.load(() => {
           const $hintMedia = $('.mu-kindergarten-hint-media');
           if (!$hintMedia.get(0)) $button.addClass('hidden');
         },
-      }
+      };
     }
 
     get context() {

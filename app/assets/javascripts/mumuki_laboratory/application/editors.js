@@ -99,6 +99,6 @@ mumuki.editors = {
    * @param {CustomEditorSource} source
    */
   addCustomSource(source) {
-    mumuki.CustomEditor.addSource(source)
+    mumuki.CustomEditor.addSource(source);
   }
 };

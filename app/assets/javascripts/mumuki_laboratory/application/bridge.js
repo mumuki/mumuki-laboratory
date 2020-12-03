@@ -113,7 +113,7 @@ mumuki.bridge = (() => {
      * @returns {SubmissionResult}
      */
     _preRenderResult(result) {
-      result.class_for_progress_list_item = mumuki.renderers.progressListItemClassForStatus(result.status, true)
+      result.class_for_progress_list_item = mumuki.renderers.progressListItemClassForStatus(result.status, true);
       return result;
     }
   }

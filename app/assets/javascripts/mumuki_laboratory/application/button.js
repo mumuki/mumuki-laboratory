@@ -36,7 +36,7 @@ mumuki.Button = class {
       e.preventDefault();
       main();
     };
-    this.$button.on('click', this.main)
+    this.$button.on('click', this.main);
   }
 
   // ==============
@@ -80,7 +80,7 @@ mumuki.Button = class {
 
     this.enable();
 
-    this.$button.on('click', this.main)
+    this.$button.on('click', this.main);
   }
 
   // =============

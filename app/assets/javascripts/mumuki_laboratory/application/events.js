@@ -34,7 +34,7 @@ mumuki.events = {
    */
   fire(eventName, value = null) {
     if (this._handlers[eventName]) {
-      this._handlers[eventName].forEach(it => it(value))
+      this._handlers[eventName].forEach(it => it(value));
     }
   },
 
@@ -48,4 +48,4 @@ mumuki.events = {
       this._handlers[eventName] = [];
     }
   }
-}
+};

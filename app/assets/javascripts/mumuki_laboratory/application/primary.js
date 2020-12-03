@@ -83,7 +83,7 @@ mumuki.load(() => {
             this._$texts.hide();
             this.$characterSpeechBubbleNormal.children('.' + $tab.data('target')).show();
             this._updateSpeechParagraphs();
-          })
+          });
         }
       });
 

@@ -101,7 +101,7 @@ mumuki.submission = (() => {
         });
         mumuki.kids.showResult(data);
       });
-    }
+    };
   }
 
   /** Processor for non-kids layouts */
@@ -118,7 +118,7 @@ mumuki.submission = (() => {
         $(document).renderMuComponents();
         resultsBox.done(data, submitButton);
       });
-    }
+    };
   }
 
   /** Selects the most appropriate solution processor */

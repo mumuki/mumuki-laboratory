@@ -7,7 +7,7 @@ mumuki.onInputsReady = (() => {
 			if ($(inputsSelector).length === 0) return;
 
 			callback(event);
-		})
+		});
 	}
 
 	return onInputsReady;

@@ -1,7 +1,7 @@
 mumuki.load(() => {
   var Chat = {
     $body: function () {
-      return $('body')
+      return $('body');
     },
     $newMessageModal: function () {
       return $('.new-message-modal');
@@ -18,7 +18,7 @@ mumuki.load(() => {
       $('.notifications-box').toggleClass('notifications-box-empty', !data.has_messages);
       $('.pending-messages-filter').removeClass('pending-messages-filter');
       $('button.btn-submit').removeClass('disabled');
-      $('.pending-messages-text').remove()
+      $('.pending-messages-text').remove();
     },
     readMessages: function (url) {
       Chat.tokenRequest({
@@ -26,10 +26,10 @@ mumuki.load(() => {
         method: 'POST',
         success: Chat.setMessages,
         xhrFields: {withCredentials: true}
-      })
+      });
     },
     tokenRequest: function (data) {
-      $.ajax(Chat.token.newRequest(data))
+      $.ajax(Chat.token.newRequest(data));
     },
     getMessages: function () {
       if ($('.badge-messages').length == 0) {
@@ -74,7 +74,7 @@ mumuki.load(() => {
         success: success,
         error: error,
         xhrFields: {withCredentials: true}
-      })
+      });
     },
     openNewMessageModal: function () {
       Chat.$newMessageModal().modal({backdrop: false, keyboard: false});
@@ -89,5 +89,5 @@ mumuki.load(() => {
   Chat.setMessagesInterval();
   mumuki.Chat = Chat;
 
-})
+});
 

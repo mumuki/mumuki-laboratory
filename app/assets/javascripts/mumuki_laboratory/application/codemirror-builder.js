@@ -38,7 +38,7 @@
             mumuki.editor.toggleFullscreen();
           },
           'Tab': function (cm) {
-            mumuki.editor.indentWithSpaces(cm)
+            mumuki.editor.indentWithSpaces(cm);
           }
         }
       });
@@ -53,7 +53,7 @@
           'Cmd-Enter': submitMessage,
           'Ctrl-Enter': submitMessage,
           'Tab': function (cm) {
-            mumuki.editor.indentWithSpaces(cm)
+            mumuki.editor.indentWithSpaces(cm);
           }
         }
       });

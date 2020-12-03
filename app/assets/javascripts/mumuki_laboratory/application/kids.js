@@ -61,11 +61,11 @@ mumuki.Kids = class {
   // ==================
 
   _showSuccessPopup() {
-    this._mustImplementThisMethod()
+    this._mustImplementThisMethod();
   }
 
   _showFailurePopup() {
-    this._mustImplementThisMethod()
+    this._mustImplementThisMethod();
   }
 
   // ====================
@@ -141,7 +141,7 @@ mumuki.Kids = class {
   // ============
 
   _mustImplementThisMethod() {
-    throw new Error('TODO: implement method')
+    throw new Error('TODO: implement method');
   }
 
   // ============
@@ -214,4 +214,4 @@ mumuki.Kids = class {
     $blockSvg.height($blocks.height());
   }
 
-}
+};

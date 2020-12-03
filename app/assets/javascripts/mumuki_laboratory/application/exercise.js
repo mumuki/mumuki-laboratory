@@ -63,6 +63,6 @@ mumuki.exercise = {
       this._current = null;
     }
   }
-}
+};
 
-mumuki.load(() => mumuki.exercise.load())
+mumuki.load(() => mumuki.exercise.load());
