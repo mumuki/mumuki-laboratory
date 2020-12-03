@@ -25,13 +25,11 @@
               <span class="mu-level-number"></span>
             </div>
           <% end %>
-          <div class="dropdown mu-navbar-element">
-            <span>
-              <a class="notifications-box <%= has_notifications? ? '' : 'notifications-box-empty' %>" href=<%= "#{user_notifications_path}" %>>
-                <i class="fa fa-bell fa-fw fa-2x navbar-icon"></i>
-                  <span class="badge badge-notifications"><%= notifications_count %></span>
-              </a>
-            </span>
+          <div class="dropdown mu-navbar-element notifications-box <%= 'notifications-box-empty' unless has_notifications? %>">
+            <a href=<%= "#{user_notifications_path}" %>>
+              <i class="fa fa-bell fa-fw fa-2x navbar-icon"></i>
+                <span class="badge badge-notifications"><%= notifications_count %></span>
+            </a>
           </div>
           <div class="dropdown mu-navbar-element">
             <div id="profileDropdown" class="profile-dropdown navbar-icon" data-toggle="dropdown" aria-label="<%= t(:user) %>" role="menu" tabindex="0">
