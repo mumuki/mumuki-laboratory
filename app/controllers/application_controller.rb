@@ -131,6 +131,7 @@ class ApplicationController < ActionController::Base
 
   def validate_accepted_role_terms!
     if current_user&.has_role_terms_to_accept?
+      save_location_before! :terms_acceptance
       flash.notice = I18n.t :accept_terms_to_continue
       redirect_to terms_user_path
     end
