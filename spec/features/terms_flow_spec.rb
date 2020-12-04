@@ -14,6 +14,10 @@ feature 'Terms Flow', organization_workspace: :test do
   let(:expected_terms) { [] }
   let(:unexpected_terms) { all_terms_scopes - expected_terms }
 
+  let(:student) { create(:user, uid: 'user.student@mumuki.org', permissions: {student: 'test/*'}) }
+
+  let(:janitor) { create(:user, uid: 'user.janitor@mumuki.org', permissions: {student: 'test/*', janitor: 'other/*'}) }
+
   before { reindex_current_organization! }
 
   shared_context 'has expected terms' do
@@ -31,8 +35,6 @@ feature 'Terms Flow', organization_workspace: :test do
   end
 
   context 'with student logged in' do
-    let(:student) { create(:user, uid: 'test@mumuki.org', permissions: {student: 'test/*'}) }
-
     before { set_current_user! student }
 
     describe 'visit user terms path' do
@@ -60,8 +62,6 @@ feature 'Terms Flow', organization_workspace: :test do
   end
 
   context 'with janitor logged in' do
-    let(:janitor) { create(:user, uid: 'test@mumuki.org', permissions: {student: 'test/*', janitor: 'other/*'}) }
-
     before { set_current_user! janitor }
 
     describe 'visit user terms path' do
@@ -92,23 +92,27 @@ feature 'Terms Flow', organization_workspace: :test do
       end
     end
 
-    context 'with unaccepted general terms' do
+    context 'with unaccepted role terms' do
 
       context 'visit forum' do
         let(:terms_path) { '/discussions/terms' }
         before { test_organization.update! forum_enabled: true }
 
         scenario 'with enabled forum' do
-          visit '/'
-
+          visit '/discussions'
           expect(page).to have_text('Accept terms')
+
+          click_on 'Accept'
+          expect(page).to have_text('Discussions')
         end
       end
 
       scenario 'visit any other path' do
         visit '/'
-
         expect(page).to have_text('Accept terms')
+
+        click_on 'Accept'
+        expect(page).to have_text(test_organization.book.name)
       end
 
       scenario 'visit user path' do

@@ -19,7 +19,8 @@ class UsersController < ApplicationController
 
   def accept_profile_terms
     current_user.accept_profile_terms!
-    redirect_to root_path, notice: I18n.t(:terms_accepted)
+    flash.notice = I18n.t(:terms_accepted)
+    redirect_after! :terms_acceptance, fallback_location: root_path
   end
 
   def terms
