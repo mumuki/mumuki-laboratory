@@ -47,7 +47,7 @@ module Mumukit::Platform::OrganizationMapping::Path
 
     patch :inorganic_path_for do |request, hyper|
       if in_actual_organization?(request)
-        hyper.call
+        hyper.call(request)
       else
         path_for(request)
       end
