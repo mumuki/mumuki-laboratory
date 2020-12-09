@@ -13,14 +13,27 @@
 </div>
 
 <% if @chapter.lessons.present? %>
-<div>
-  <h3><%= t(:lessons) %></h3>
+  <% if @chapter.mono_lesson? %>
+    <% @lesson = @chapter.first_lesson %>
+    <%= render partial: "layouts/guide_content", locals: {
+      'subject': @lesson,
+      '@guide': @lesson.guide,
+      '@subtitle': true,
+      '@next_exercise': @lesson.first_exercise
+    }.merge_if(current_user, {
+      '@stats': @lesson.stats_for(current_user),
+      '@next_exercise': @lesson.next_exercise(current_user)
+    }) %>
+  <% else %>
+    <div>
+      <h3><%= t(:lessons) %></h3>
 
-  <% @chapter.lessons.each do |lesson| %>
-    <h4><%= lesson.number %>. <%= link_to_path_element lesson, mode: :plain %></h4>
-    <%= render partial: 'layouts/progress_listing', locals: {exercises: lesson.exercises} %>
+      <% @chapter.lessons.each do |lesson| %>
+        <h4><%= lesson.number %>. <%= link_to_path_element lesson, mode: :plain %></h4>
+        <%= render partial: 'layouts/progress_listing', locals: {exercises: lesson.exercises} %>
+      <% end %>
+    </div>
   <% end %>
-</div>
 <% end %>
 
 <% if @chapter.appendix.present? %>

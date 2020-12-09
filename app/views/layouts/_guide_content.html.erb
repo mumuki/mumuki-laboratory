@@ -6,7 +6,38 @@
   <%= render partial: 'layouts/timer', locals: {end_time: subject.real_end_time(current_user)} %>
 <% end %>
 
-<%= yield if block_given? %>
+<div class="row">
+  <div class="mu-inline-block-right">
+    <<%= @subtitle ? 'h2' : 'h1' %>><%= language_icon @guide.language %></<%= @subtitle ? 'h2' : 'h1' %>>
+  </div>
+  <div class="mu-inline-block-left guide-header">
+    <<%= @subtitle ? 'h2' : 'h1' %> class="pull-left">
+      <span class="pull-left">
+        <%= subject.name %>
+      </span>
+      <% if current_user? && should_display_medal?(@guide, Organization.current) %>
+        <div class="pull-left">
+          <%= content_medal_for(@guide, current_user) %>
+        </div>
+      <% end %>
+      <%= teacher_info_button @guide%>
+      <%= link_to_bibliotheca_guide @guide %>
+    </<%= @subtitle ? 'h2' : 'h1' %>>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="text-box">
+      <%= @guide.description_html %>
+
+      <div class="actions">
+        <% if !@stats.try(:done?) && @next_exercise %>
+          <%= link_to t(lesson_practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-success' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <h3>
   <%= t :exercises %>
@@ -25,14 +56,6 @@
   <div class="text-box <%= last_box_class !@stats&.done? %>">
     <h3><%= t :sources %></h3>
     <%= @guide.sources_html %>
-  </div>
-<% end %>
-
-<% if !@stats.try(:done?) && @next_exercise %>
-  <div class="text-box">
-    <div class="actions">
-      <%= link_to t(lesson_practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-success' %>
-    </div>
   </div>
 <% end %>
 
