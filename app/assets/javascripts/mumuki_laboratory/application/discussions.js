@@ -34,33 +34,33 @@ mumuki.load(() => {
     },
     token: new mumuki.CsrfToken(),
     tokenRequest: function (data) {
-      return $.ajax(Forum.token.newRequest(data))
+      return $.ajax(Forum.token.newRequest(data));
     },
     discussionPost: function (url) {
       return Forum.tokenRequest({
         url: url,
         method: 'POST',
         xhrFields: {withCredentials: true}
-      })
+      });
     },
     discussionSubscription: function (url) {
-      Forum.discussionPostAndToggle(url, $subscriptionSpans)
+      Forum.discussionPostAndToggle(url, $subscriptionSpans);
     },
     discussionUpvote: function (url) {
-      Forum.discussionPostAndToggle(url, $upvoteSpans)
+      Forum.discussionPostAndToggle(url, $upvoteSpans);
     },
     discussionPostAndToggle: function (url, elem) {
-      Forum.discussionPost(url).done(Forum.toggleButton(elem))
+      Forum.discussionPost(url).done(Forum.toggleButton(elem));
     },
     discussionMessageToggleApprove: function (url, elem) {
       Forum.discussionPost(url).done(function () {
         elem.toggleClass("selected");
-      })
+      });
     },
     discussionMessageToggleNotActuallyAQuestion: function (url, elem) {
       Forum.discussionPost(url).done(function () {
         elem.toggleClass("selected");
-      })
+      });
     },
     discussionsToggleCheckbox: function (elem) {
       const key = elem.attr('name');

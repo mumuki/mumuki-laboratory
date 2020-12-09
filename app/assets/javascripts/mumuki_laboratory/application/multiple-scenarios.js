@@ -73,7 +73,7 @@ mumuki.MultipleScenarios = (() => {
         if (this.validScenarioIndex(newScenarioIndex)) {
           this.setActiveIndex(newScenarioIndex);
         }
-      })
+      });
     }
 
     createControls () {

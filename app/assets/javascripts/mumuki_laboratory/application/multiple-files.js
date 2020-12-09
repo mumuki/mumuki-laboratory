@@ -103,11 +103,11 @@ mumuki.load(() => {
     }
 
     get highlightModes() {
-      return this._getDataFromHiddenInput('#highlight-modes')
+      return this._getDataFromHiddenInput('#highlight-modes');
     }
 
     get locales() {
-      return this._getDataFromHiddenInput('#multifile-locales')
+      return this._getDataFromHiddenInput('#multifile-locales');
     }
 
     setUpAddFile() {
@@ -131,7 +131,7 @@ mumuki.load(() => {
 
       this._setVisibility(this._addFileButton, filesCount < this.MAX_TABS);
       this.files.toArray().forEach(file => {
-        this._setVisibility(file.deleteButton, file.name !== this.mainFile && filesCount > 1)
+        this._setVisibility(file.deleteButton, file.name !== this.mainFile && filesCount > 1);
       });
     }
 

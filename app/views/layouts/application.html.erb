@@ -20,7 +20,7 @@
       <div class="mu-navbar-avatar">
         <% if current_logged_user? %>
           <% if in_gamified_context? %>
-            <i class="fa fa-star fa-fw fa-2x navbar-icon mu-level-tooltip" data-toggle="tooltip" data-placement="bottom" title="<%= t(:level) %>"></i>
+            <i class="fa fa-star fa-fw fa-2x navbar-icon mu-level-tooltip" data-toggle="tooltip" data-placement="bottom" level="<%= t(:level) %>"></i>
             <span class="mu-level-number"></span>
           <% end %>
           <div class="dropdown">

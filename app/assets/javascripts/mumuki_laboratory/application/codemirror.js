@@ -23,14 +23,14 @@ mumuki.page.editors = [];
   function resetEditor() {
     mumuki.page.dynamicEditors.forEach(function (e) {
       setDefaultContent(e, $('#default_content').val());
-    })
+    });
   }
 
   function formatContent() {
     mumuki.page.editors.each(function (_, editor) {
-      editor.setSelection({line: 0, ch: 0}, {line: editor.lineCount()})
-      editor.indentSelection("smart")
-      editor.setSelection({line: 0})
+      editor.setSelection({line: 0, ch: 0}, {line: editor.lineCount()});
+      editor.indentSelection("smart");
+      editor.setSelection({line: 0});
     });
   }
 
@@ -56,7 +56,7 @@ mumuki.page.editors = [];
     if (language !== undefined) {
       mumuki.page.dynamicEditors.forEach(function (e) {
         setEditorLanguage(e, language);
-      })
+      });
     }
   }
 

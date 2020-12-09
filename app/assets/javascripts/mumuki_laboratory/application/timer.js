@@ -16,5 +16,5 @@ mumuki.startTimer = (() => {
       }
     }, intervalDuration);
   }
-  return startTimer
+  return startTimer;
 })();

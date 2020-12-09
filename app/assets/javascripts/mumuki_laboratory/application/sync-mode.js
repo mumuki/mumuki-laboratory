@@ -65,11 +65,11 @@ mumuki.syncMode = (() => {
 
     /** @type {ClientSyncMode|ServerSyncMode}*/
     _current: null
-  }
+  };
 })();
 
 mumuki.load(() => {
   mumuki.syncMode._selectSyncMode();
   mumuki.syncMode._current.syncProgress();
   mumuki.syncMode._current.syncEditorContent();
-})
+});

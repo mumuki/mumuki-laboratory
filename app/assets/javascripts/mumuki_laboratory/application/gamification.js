@@ -108,12 +108,22 @@ mumuki.gamification = (() => {
     }
 
     updateLevel() {
-      const $muLevelProgress = $('#mu-level-progress');
-
       $('#mu-solve-more-exercises span').text(this.exercisesToNextLevel());
       $('.mu-level-number').html(this.currentLevel());
-      $('.mu-level-tooltip').attr("title", (_, value) => `${value} ${this.currentLevel()}`);
 
+      this.updateTooltip();
+      this.animateProgressIfAny();
+    }
+
+    updateTooltip() {
+      const $muLevelTooltip = $('.mu-level-tooltip');
+
+      $muLevelTooltip.attr("data-original-title", `${$muLevelTooltip.attr("level")} ${this.currentLevel()}`);
+      $muLevelTooltip.attr("title", "");
+    }
+
+    animateProgressIfAny() {
+      const $muLevelProgress = $('#mu-level-progress');
       if (this.currentLevelProgress() === 0) {
         $muLevelProgress.attr("display", "none");
       }

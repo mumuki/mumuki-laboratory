@@ -1,7 +1,7 @@
 mumuki.load(() => {
 	function dumpChoices(_evt) {
 		var indexes = $('.solution-choice:checked').map(function () {
-			return $(this).data('index')
+			return $(this).data('index');
 		}).get().join(':');
 		$('#solution_content').attr('value', indexes);
 	}

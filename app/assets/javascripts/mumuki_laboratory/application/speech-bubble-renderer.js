@@ -20,7 +20,7 @@ mumuki.renderers.speechBubble = (()=> {
 
     _chooseResultItem() {
       if (this._responseStatus() !== 'passed' && this._hasTips()) {
-        this._appendFirstTip()
+        this._appendFirstTip();
       } else if (this._responseStatus() === 'failed') {
         this._appendFirstFailedTestResultSummary();
       } else if (this._responseStatus() === 'passed_with_warnings') {
@@ -29,7 +29,7 @@ mumuki.renderers.speechBubble = (()=> {
     }
 
     _appendFirstFailedTestResultSummary() {
-      const failedTestResult = this._failedTestResults()[0]
+      const failedTestResult = this._failedTestResults()[0];
       if (failedTestResult && failedTestResult.summary) {
         this._appendResultItem(mumuki.renderers.renderSpeechBubbleResultItem(failedTestResult.summary));
       }
@@ -67,7 +67,7 @@ mumuki.renderers.speechBubble = (()=> {
     }
 
     _hasTips() {
-      return this.responseData.tips && this.responseData.tips.length
+      return this.responseData.tips && this.responseData.tips.length;
     }
 
     _failedTestResults() {
@@ -97,7 +97,7 @@ mumuki.renderers.speechBubble = (()=> {
   return {
     SpeechBubbleRenderer,
     renderSpeechBubbleResultItem
-  }
+  };
 })();
 
 /** @deprecated use {@code mumuki.renderers.speechBubble.SpeechBubbleRenderer} instead */

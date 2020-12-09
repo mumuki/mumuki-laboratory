@@ -11,5 +11,5 @@ mumuki.pin = (() => {
         smoothScrollToElement(scrollPin);
       }
     }
-  }
+  };
 })();

@@ -32,7 +32,7 @@
   function clearConsole() {
     $('.jquery-console-message-error').remove();
     $('.jquery-console-message-value').remove();
-    $('.jquery-console-prompt-box:not(:last)').remove()
+    $('.jquery-console-prompt-box:not(:last)').remove();
   }
 
   class QueryConsole {
@@ -134,7 +134,7 @@
         url: self._requestUrl,
         type: 'POST',
         data: self._requestData
-      })
+      });
     }
     get _requestUrl() {
       return this.console.endpoint;
