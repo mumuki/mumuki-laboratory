@@ -5,6 +5,15 @@ on: push
 jobs:
   test_and_deploy:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        ports:
+        - 5432:5432
+        image: postgres:10.15
+        env:
+          POSTGRES_DB: mumuki_test
+          POSTGRES_USER: mumuki
+          POSTGRES_PASSWORD: mumuki
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
@@ -13,6 +22,8 @@ jobs:
         ruby-version: 2.6.3
     - name: Install dependencies
       run: bundle install
+    - name: Run migrations
+      run: bundle exec rake db:schema:load
     - name: Run tests
       run: bundle exec rake
     - name: Deploy
