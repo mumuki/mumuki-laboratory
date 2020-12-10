@@ -112,7 +112,7 @@ es:
   first_name: Nombre
   forbidden_explanation: ¿Puede que hayas ingresado con una cuenta incorrecta?
   format: Dar formato
-  forum_terms: Reglas del foro
+  forum_terms: Reglas del espacio de consulta
   forum_terms_link: Si tenés alguna duda, consultá las %{terms_link}
   fullscreen: "Pantalla completa"
   gender: Género

@@ -55,27 +55,36 @@
     <div class="<%= exercise_container_type %>">
       <hr>
 
-      <div class="row">
+      <div class="row footer-row">
         <div class="col-md-12">
           <%= yield :authoring %>
         </div>
       </div>
 
-      <div id="footer-copyright" class="row">
-        <div class="col-md-4 text-left">
-          <p>
-            <%= render partial: 'layouts/copyright' %>
-          </p>
+      <div class="row footer-row">
+
+        <div class="col-md-4 text-center">
+          <p><%= link_to_profile_terms %></p>
+          <% if current_user&.can_discuss_here? %>
+            <p><%= link_to_forum_terms %></p>
+          <% end %>
         </div>
 
         <div class="col-md-4 text-center">
+          <a href="https://auth0.com/" target="_blank">
+            <img height="40" alt="JWT Auth for open source projects" src="//cdn.auth0.com/oss/badges/a0-badge-light.png"/>
+          </a>
           <%= login_form.footer_html %>
         </div>
 
         <div id="footer-social" class="col-md-4 text-right" lang="en">
-          <%= render partial: 'layouts/social_media' %>
+          <p><%= render partial: 'layouts/social_media' %></p>
+          <p id="footer-copyright">
+            <%= render partial: 'layouts/copyright' %>
+          </p>
         </div>
       </div>
+
     </div>
   </footer>
 <% end %>
