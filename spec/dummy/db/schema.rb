@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201027152806) do
+ActiveRecord::Schema.define(version: 20201130163114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -433,6 +433,7 @@ ActiveRecord::Schema.define(version: 20201027152806) do
     t.datetime "privacy_terms_accepted_at"
     t.datetime "legal_terms_accepted_at"
     t.datetime "forum_terms_accepted_at"
+    t.boolean "banned_from_forum"
     t.index ["avatar_type", "avatar_id"], name: "index_users_on_avatar_type_and_avatar_id"
     t.index ["disabled_at"], name: "index_users_on_disabled_at"
     t.index ["last_organization_id"], name: "index_users_on_last_organization_id"

@@ -1,8 +1,6 @@
 class DiscussionsController < ApplicationController
   include Mumuki::Laboratory::Controllers::Content
   include WithUserDiscussionValidation
-  # users are not allowed to access discussions during exams
-  before_action :validate_not_in_exam!
 
   before_action :set_debatable, except: [:subscription]
   before_action :authenticate!, only: [:update, :create]
@@ -73,9 +71,5 @@ class DiscussionsController < ApplicationController
 
   def discussion_filter_params
     @filter_params ||= params.permit(Discussion.permitted_query_params)
-  end
-
-  def validate_not_in_exam!
-    raise Mumuki::Domain::BlockedForumError if current_user&.currently_in_exam?
   end
 end
