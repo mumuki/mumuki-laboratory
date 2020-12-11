@@ -1,3 +1,12 @@
+<%
+
+  @lesson ||= @chapter.first_lesson
+  @guide ||= @lesson.guide
+  @stats ||= @lesson.stats_for(current_user) if current_user?
+  @next_exercise ||= (current_user? ? @lesson.next_exercise(current_user) : @lesson.first_exercise)
+
+%>
+
 <%= content_for :breadcrumbs do %>
   <%= breadcrumbs @chapter %>
 <% end %>
@@ -6,6 +15,7 @@
   <h1>
     <span class="hidden-xs"><%= t(:chapter_number, number: @chapter.number) %>:&nbsp;</span>
     <span><%= @chapter.name %></span>
+    <%= render_if_mono_lesson partial: 'layouts/guide_title_icons' %>
   </h1>
 
   <%= @chapter.description_html %>
@@ -13,18 +23,7 @@
 </div>
 
 <% if @chapter.lessons.present? %>
-  <% if @chapter.mono_lesson? %>
-    <% @lesson = @chapter.first_lesson %>
-    <%= render partial: "layouts/guide_content", locals: {
-      'subject': @lesson,
-      '@guide': @lesson.guide,
-      '@subtitle': true,
-      '@next_exercise': @lesson.first_exercise
-    }.merge_if(current_user, {
-      '@stats': @lesson.stats_for(current_user),
-      '@next_exercise': @lesson.next_exercise(current_user)
-    }) %>
-  <% else %>
+  <%= render_if_mono_lesson partial: 'layouts/mono_lesson', locals: { subject: @lesson } do %>
     <div>
       <h3><%= t(:lessons) %></h3>
 
