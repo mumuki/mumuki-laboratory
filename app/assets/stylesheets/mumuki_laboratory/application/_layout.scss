@@ -25,16 +25,13 @@ body {
   margin-bottom: 110px;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 110px;
-  .container {
-    margin-top: 23px;
+.mu-footer {
+  &.container {
+    margin-top: 45px;
   }
-  .footer-row {
-    margin-top: 10px;
+  .mu-footer-terms {
+    font-size: 15px;
+    text-align: center;
   }
 }
 
