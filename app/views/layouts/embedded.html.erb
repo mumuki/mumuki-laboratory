@@ -1,22 +1,25 @@
 <% content_for :footer do %>
   <footer class="footer">
-    <div class="<%= exercise_container_type %>">
-      <hr>
-
-      <div class="row">
-        <div class="col-md-12">
+    <div class="mu-footer <%= exercise_container_type %>">
+      <div class="mu-footer-row">
+        <div class="mu-footer-authoring">
           <%= yield :authoring %>
         </div>
       </div>
 
-      <div id="footer-copyright" class="row hidden-xs hidden-sm">
-        <div class="col-sm-8 text-left">
-          <p>
-            <%= render partial: 'layouts/copyright' %>
-          </p>
+      <div class="mu-footer-row">
+        <div class="mu-footer-copyright">
+          <%= render partial: 'layouts/copyright' %>
         </div>
 
-        <div id="footer-social" class="col-sm-4 text-right" lang="en">
+        <div class="mu-footer-terms">
+          <div><%= link_to_profile_terms %></div>
+          <% if current_user&.can_discuss_here? %>
+            <div><%= link_to_forum_terms %></div>
+          <% end %>
+        </div>
+
+        <div id="footer-social" class="mu-footer-social" lang="en">
           <%= render partial: 'layouts/social_media' %>
         </div>
       </div>
