@@ -89,7 +89,6 @@ pt:
       gone: Opa! O conteúdo expirou
       internal_server_error: Opa! Algo não estava certo
       not_found: Opa! A página que você pesquisou não existe
-  exam_number: 'Revise %{number}:'
   exams: Examesca
   exercise: Exercício
   exercise_count: exercícios
