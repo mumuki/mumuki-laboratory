@@ -1,3 +1,7 @@
+mumuki.load(() => {
+  mumuki.isKidsExercise = () => $('.mu-kids-exercise').length >= 0;
+})
+
 mumuki.Kids = class {
 
   constructor() {
@@ -11,8 +15,9 @@ mumuki.Kids = class {
   // ================
 
   initialize() {
-    this.submitButton = new mumuki.submission.SubmitButton($('#kids-btn-retry'), $('.submission_control'));
+    this.submitButton = new mumuki.submission.KidsSubmitButton($('#kids-btn-retry'), $('.submission_control'));
     this.resultActions = {};
+    this.$overlay = $('.mu-kids-overlay');
     this.$states = $('.mu-kids-states');
     this.$state = $('.mu-kids-state');
     this.$blocks = $('.mu-kids-blocks');
@@ -54,6 +59,14 @@ mumuki.Kids = class {
   showAbortedPopup(_data) {
     this.submitButton.disable();
     this.$resultsAbortedModal.modal();
+  }
+
+  showOverlay() {
+    this.$overlay.show();
+  }
+
+  hideOverlay() {
+    this.$overlay.hide();
   }
 
   // ==================

@@ -16,7 +16,6 @@ mumuki.load(() => {
       super.initialize();
       this.$characterSpeechBubble = $('.mu-kids-character-speech-bubble');
       this.$characterSpeechBubbleNormal = this.$characterSpeechBubble.children('.mu-kids-character-speech-bubble-normal');
-      this.$overlay = $('.mu-kids-overlay');
       this.$contextModalButton = new mumuki.Button($('.mu-kids-context .modal-footer button'));
 
       this._paragraphHeight = undefined;
@@ -158,7 +157,6 @@ mumuki.load(() => {
       renderer.setDiscussionsLinkHtml($('#mu-kids-discussion-link-html').html());
       renderer.setResponseData(data);
       renderer.render();
-      this.$overlay.show();
     }
 
     _showOnCharacterBubble(data) {
