@@ -32,6 +32,14 @@ mumuki.Kids = class {
     this.$submissionResult =  $('.submission-results');
     mumuki.gamification.currentLevelProgression.registerLevelUpAction(this.levelUpAction);
     mumuki.gamification.currentLevelProgression.registerGainedExperienceAction(this.gainedExperienceAction);
+    this.$resultsModal.on('hidden.bs.modal', this.resetExerciseIfSubmitless);
+    this.$resultsAbortedModal.on('hidden.bs.modal', this.resetExerciseIfSubmitless);
+  }
+
+  resetExerciseIfSubmitless() {
+    if ($('.mu-submitless-exercise').get(0)) {
+      mumuki.kids.submitButton.continue();
+    }
   }
 
   gainedExperienceAction() {

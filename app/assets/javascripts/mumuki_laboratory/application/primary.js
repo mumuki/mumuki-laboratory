@@ -136,6 +136,7 @@ mumuki.load(() => {
       const $bubble = this.$characterSpeechBubble;
       Object.keys(this.resultActions).forEach($bubble.removeClass.bind($bubble));
       mumuki.presenterCharacter.playAnimation('talk', this.$bubbleCharacterAnimation);
+      this.hideOverlay();
     }
 
     // =======================
@@ -149,7 +150,6 @@ mumuki.load(() => {
       $bubble.find('.mu-kids-character-speech-bubble-failed').hide();
       $bubble.find('.mu-kids-discussion-link').remove();
       Object.keys(this.resultActions).forEach($bubble.removeClass.bind($bubble));
-      this.$overlay.hide();
     }
 
     _showMessageOnCharacterBubble(data) {

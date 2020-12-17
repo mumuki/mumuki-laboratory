@@ -78,6 +78,7 @@ mumuki.load(() => {
 
     restart() {
       mumuki.presenterCharacter.playAnimation('talk', this.$bubbleCharacterAnimation);
+      this.hideOverlay();
     }
 
     // =======================
