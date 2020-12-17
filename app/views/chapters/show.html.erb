@@ -15,7 +15,7 @@
   <h1>
     <span class="hidden-xs"><%= t(:chapter_number, number: @chapter.number) %>:&nbsp;</span>
     <span><%= @chapter.name %></span>
-    <%= render_if_mono_lesson partial: 'layouts/guide_title_icons' %>
+    <%= render partial: 'layouts/guide_title_icons' if @chapter.mono_lesson? %>
   </h1>
 
   <%= @chapter.description_html %>
@@ -23,7 +23,9 @@
 </div>
 
 <% if @chapter.lessons.present? %>
-  <%= render_if_mono_lesson partial: 'layouts/mono_lesson', locals: { subject: @lesson } do %>
+  <% if @chapter.mono_lesson? %>
+    <%= render partial: 'layouts/guide_container', locals: { subject: @mono_lesson } %>
+  <% else %>
     <div>
       <h3><%= t(:lessons) %></h3>
 
@@ -33,6 +35,7 @@
       <% end %>
     </div>
   <% end %>
+
 <% end %>
 
 <% if @chapter.appendix.present? %>
