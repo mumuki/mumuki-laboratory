@@ -1,12 +1,3 @@
-<%
-
-  @lesson ||= @chapter.first_lesson
-  @guide ||= @lesson.guide
-  @stats ||= @lesson.stats_for(current_user) if current_user?
-  @next_exercise ||= (current_user? ? @lesson.next_exercise(current_user) : @lesson.first_exercise)
-
-%>
-
 <%= content_for :breadcrumbs do %>
   <%= breadcrumbs @chapter %>
 <% end %>
