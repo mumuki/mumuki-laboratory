@@ -10,6 +10,11 @@ $kids-speech-border: 1px solid $kids-speech-border-color;
 
 $kids-speech-tabs-width: 40px;
 
+.mu-exercise-content {
+  border-radius: 10px;
+  border: 1px solid #dddddd;
+}
+
 .mu-kids-exercise {
   height: $kids-height;
   min-height: $kids-height;
