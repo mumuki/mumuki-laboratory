@@ -151,6 +151,7 @@ pt:
   let_us_know: Por favor, avise-nos!
   level: Nível
   level_up: Você sobe de nível!
+  listen_statement: Ouça a declaração
   loading: Carregando
   load_solution_into_console: Carregue a solução no console
   locked_content: 'Este conteúdo será desbloqueado quando você terminar os capítulos anteriores'
@@ -184,6 +185,7 @@ pt:
   no_exercises: Não encontramos exercícios que correspondam à sua pesquisa.
   no_guides: Não encontramos lições que correspondam à sua pesquisa.
   no_messages: Parece que você ainda não tem uma mensagem!
+  no_need_hint: Este exercício não tem dica
   no_questions: Parece que ainda não há dúvida.
   no_submissions: Parece que você ainda não tentou resolver este exercício!
   no_useful_result: Não encontrou o que estava buscando?
@@ -228,6 +230,7 @@ pt:
   retry_exercise: Tentar novamente
   running: processamento
   save: Salvar
+  see_context: Veja a animação desde o início
   send: Enviar
   sending_solution: Solução de envio
   show: Mostrar

@@ -147,6 +147,7 @@ en:
   let_us_know: please let us know!
   level: Level
   level_up: Level up!
+  listen_statement: Listen to the statement
   loading: Loading
   load_solution_into_console: Load your solution into the console
   locked_content: 'This content will be unlocked when you finish previous chapters'
@@ -178,6 +179,7 @@ en:
   no_exercises: Nobody created an exercise for this search yet
   no_guides: Nobody created a guide for this search yet
   no_messages: It seems you don't have any messages yet!
+  no_need_hint: This exercise has no hint
   no_questions: It seems there isn't any question yet.
   no_submissions: It seems like you haven't tried to solve this exercise
   no_useful_result: Didn't find what you were looking for?
@@ -221,6 +223,7 @@ en:
   retry_exercise: Retry
   running: running
   save: Save
+  see_context: Watch the animation of the beginning
   sending_solution: Sending solution
   show: Show
   sign_in: Sign in
