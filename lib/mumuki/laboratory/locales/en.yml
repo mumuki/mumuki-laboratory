@@ -86,7 +86,6 @@ en:
       gone: Oops! Content has expired
       internal_server_error: Oops! Something went wrong
       not_found: Oops! Page was not found
-  exam_number: 'Exam %{number}:'
   exams: Exams
   exercise: Exercise
   exercises: Exercises

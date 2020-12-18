@@ -85,7 +85,6 @@ es-CL:
       gone: ¡Ups! El contenido expiró
       internal_server_error: ¡Ups! Algo no anduvo bien
       not_found: ¡Ups!  La página no existe
-  exam_number: 'Examen %{number}:'
   exams: Exámenes
   exercise: Ejercicio
   exercise_count: ejercicios
