@@ -102,6 +102,7 @@ feature 'Terms Flow', organization_workspace: :test do
           visit '/discussions'
           expect(page).to have_text('Accept terms')
 
+          check :user_terms_of_service
           click_on 'Accept'
           expect(page).to have_text('Discussions')
         end
@@ -111,6 +112,7 @@ feature 'Terms Flow', organization_workspace: :test do
         visit '/'
         expect(page).to have_text('Accept terms')
 
+        check :user_terms_of_service
         click_on 'Accept'
         expect(page).to have_text(test_organization.book.name)
       end
