@@ -1,0 +1,7 @@
+.mu-uppercase {
+  text-transform: uppercase;
+
+  code, .editor-code {
+    text-transform: initial;
+  }
+}
