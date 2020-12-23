@@ -1,3 +1,4 @@
+<div class='guide-title-icons'>
 <% if current_user? && should_display_medal?(@guide, Organization.current) %>
   <div class="pull-left">
     <%= content_medal_for(@guide, current_user) %>
@@ -5,3 +6,4 @@
 <% end %>
 <%= teacher_info_button @guide %>
 <%= link_to_bibliotheca_guide @guide %>
+</div>
