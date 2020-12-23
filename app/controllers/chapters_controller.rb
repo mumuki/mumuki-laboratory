@@ -1,6 +1,6 @@
 require 'addressable/uri'
 
-# It acts as a guide container in mono_lesson contexts
+# It acts as a guide container in monolesson contexts
 class ChaptersController < GuideContainerController
   include Mumuki::Laboratory::Controllers::ImmersiveNavigation
 
@@ -11,7 +11,7 @@ class ChaptersController < GuideContainerController
   private
 
   def set_guide
-    @mono_lesson = subject.mono_lesson
-    @guide = @mono_lesson&.guide
+    @monolesson = subject.monolesson
+    @guide = @monolesson&.guide
   end
 end
