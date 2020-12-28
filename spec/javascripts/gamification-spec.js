@@ -33,11 +33,11 @@ describe('gamification', () => {
 
     describe('triggers level change', () => {
       it('does not trigger when small exp difference', () => {
-        expect(new mumuki.gamification.LevelProgression(1000).triggersLevelChange(1050)).toBe(false);
+        expect(new mumuki.gamification.LevelProgression(1000).triggersLevelChange(50)).toBe(false);
       });
 
       it('does trigger when big exp difference', () => {
-        expect(new mumuki.gamification.LevelProgression(1000).triggersLevelChange(1500)).toBe(true);
+        expect(new mumuki.gamification.LevelProgression(1000).triggersLevelChange(500)).toBe(true);
       });
     });
 
