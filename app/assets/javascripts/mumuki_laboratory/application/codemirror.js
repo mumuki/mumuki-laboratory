@@ -36,7 +36,7 @@ mumuki.page.editors = [];
 
   function toggleFullscreen() {
     $('body').toggleClass('fullscreen');
-    $('.editor-resize .fa-stack-1x').toggleClass('fa-expand').toggleClass('fa-compress');
+    $('.editor-resize .fas').toggleClass('fa-expand fa-compress');
   }
 
   function indentWithSpaces(cm) {
