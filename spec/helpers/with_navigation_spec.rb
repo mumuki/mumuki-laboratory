@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe WithStudentPathNavigation, organization_workspace: :test do
   helper WithStudentPathNavigation
-  helper FontAwesome::Rails::IconHelper
+  helper FontAwesome5::Rails::IconHelper
 
   describe '#next_button' do
     let(:current_user) { create(:user) }

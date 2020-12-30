@@ -3,7 +3,7 @@ require 'ostruct'
 
 describe ContextualizationResultHelper do
   helper IconsHelper
-  helper FontAwesome::Rails::IconHelper
+  helper FontAwesome5::Rails::IconHelper
   helper ContextualizationResultHelper
 
 
