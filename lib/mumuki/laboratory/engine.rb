@@ -1,5 +1,5 @@
 require 'turbolinks'
-require 'font-awesome-rails'
+require 'font_awesome5_rails'
 require 'momentjs-rails'
 require 'nprogress-rails'
 require 'rails-i18n'

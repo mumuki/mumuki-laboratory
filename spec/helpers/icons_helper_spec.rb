@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe IconsHelper, organization_workspace: :test do
   helper IconsHelper
-  helper FontAwesome::Rails::IconHelper
+  helper FontAwesome5::Rails::IconHelper
 
   describe '#language_icon' do
     let(:haskell) { create(:language, name: 'Haskell') }
