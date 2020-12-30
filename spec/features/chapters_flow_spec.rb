@@ -4,14 +4,21 @@ feature 'Chapters flow', organization_workspace: :test do
   let(:haskell) { create(:haskell) }
 
   let!(:chapter) {
-    create(:chapter, name: 'Functional Programming', lessons: [
-      create(:lesson, name: 'Values and Functions', language: haskell, description: 'Values are everywhere...', exercises: [
-        create(:exercise, name: 'The Basic Values', description: "Let's say we want to declare a variable...")
-      ]),
-      create(:lesson, name: 'Monads and Functors', language: haskell, description: 'Monds are everywhere too...', exercises: [
-        create(:exercise, name: 'The Maybe Functor', description: "Let's say we want to model absense of value...")
-      ])
-    ]) }
+    create(:chapter, name: 'Functional Programming', lessons: lessons) }
+
+  let(:lessons) { [lesson_1, lesson_2] }
+
+  let(:lesson_1) {
+    create(:lesson, name: 'Values and Functions', language: haskell, description: 'Values are everywhere...', exercises: [
+      create(:exercise, name: 'The Basic Values', description: "Let's say we want to declare a variable...")
+    ])
+  }
+
+  let(:lesson_2) {
+    create(:lesson, name: 'Monads and Functors', language: haskell, description: 'Monds are everywhere too...', exercises: [
+      create(:exercise, name: 'The Maybe Functor', description: "Let's say we want to model absense of value...")
+    ])
+  }
 
   before { reindex_current_organization! }
 
@@ -66,5 +73,9 @@ feature 'Chapters flow', organization_workspace: :test do
 
       expect(page).to have_text('Sign in')
     end
+  end
+
+  context 'monolesson' do
+
   end
 end
