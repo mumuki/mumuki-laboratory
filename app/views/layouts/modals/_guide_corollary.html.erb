@@ -1,9 +1,19 @@
-<div class="modal fade guide-corollary mu-kids-modal-border" id="guide-done" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade guide-corollary <%= 'mu-kids-modal-border' if Organization.current.kids? %>" id="guide-done" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
+      <% if Organization.current.kids? %>
+        <button type="button" class="mu-kids-modal-button mu-close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">
+            <i class="fa fa-fw fa-times fa-3x"></i>
+          </span>
+        </button>
+      <% end %>
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span></button>
+        <% if Organization.current.grown_ups? %>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        <% end %>
         <div class="guide-corollary-title">
           <h3 class="text-left" id="gridSystemModalLabel"><%= t :guide_finished, guide: guide.name %> </h3>
         </div>
