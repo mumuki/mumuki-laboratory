@@ -16,6 +16,6 @@ module OverlappedButtonsHelper
   end
 
   def overlapped_button_icon(key, icon, extra_title='')
-    fa_icon(icon, title: t(key) + extra_title, class: 'fa-fw', role: 'button', 'aria-label': t(key))
+    fa_icon(icon, title: t(key) + extra_title, class: 'fa-fw', role: 'button', 'aria-label': t(key), 'data-placement': 'left')
   end
 end
