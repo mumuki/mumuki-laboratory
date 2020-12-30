@@ -1,7 +1,7 @@
 (() => {
   function submit() {
     $('body').removeClass('fullscreen');
-    $('.editor-resize .fa-stack-1x').removeClass('fa-compress').addClass('fa-expand');
+    $('.editor-resize .fas').toggleClass('fa-expand fa-compress');
     $('.btn-submit').click();
   }
 
