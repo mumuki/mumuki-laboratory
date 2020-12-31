@@ -16,7 +16,7 @@ describe IconsHelper, organization_workspace: :test do
     }
     let(:failed_submission) { create(:assignment, status: :failed) }
 
-    it { expect(status_icon(passed_submission)).to eq '<i class="fa fa-check-circle text-success status-icon"></i>' }
-    it { expect(status_icon(failed_submission)).to eq '<i class="fa fa-times-circle text-danger status-icon"></i>' }
+    it { expect(status_icon(passed_submission)).to eq '<i class="fas fa-check-circle text-success status-icon"></i>' }
+    it { expect(status_icon(failed_submission)).to eq '<i class="fas fa-times-circle text-danger status-icon"></i>' }
   end
 end

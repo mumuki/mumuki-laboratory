@@ -67,8 +67,8 @@ module DiscussionsHelper
   def discussion_messages_icon(discussion)
     %Q{
       <span class="discussion-icon fa-stack fa-xs">
-        <i class="fa fa-comment-o fa-stack-2x"></i>
-        <i class="fa fa-stack-1x">#{discussion.validated_messages_count}</i>
+        <i class="far fa-comment fa-stack-2x"></i>
+        <i class="fas fa-stack-1x">#{discussion.validated_messages_count}</i>
       </span>
     }.html_safe
   end
@@ -77,8 +77,8 @@ module DiscussionsHelper
     if discussion.upvotes_count > 0
       %Q{
         <span class="discussion-icon fa-stack fa-xs">
-          <i class="fa fa-star-o fa-stack-2x"></i>
-          <i class="fa fa-stack-1x">#{discussion.upvotes_count}</i>
+          <i class="far fa-star fa-stack-2x"></i>
+          <i class="fas fa-stack-1x">#{discussion.upvotes_count}</i>
         </span>
       }.html_safe
     end
