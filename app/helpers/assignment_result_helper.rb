@@ -15,7 +15,7 @@ module AssignmentResultHelper
 
   def render_community_link
     if community_link?
-      link_to fa_icon(:facebook, text: I18n.t(:ask_community), class: 'fa-fw'), community_link, target: '_blank'
+      link_to fa_icon('facebook-f', type: :brand, text: I18n.t(:ask_community), class: 'fa-fw'), community_link, target: '_blank'
     end
   end
 

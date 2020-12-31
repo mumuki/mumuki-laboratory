@@ -10,7 +10,7 @@
       <div class="dropdown hamburguer-breadcrumb hidden-sm hidden-md hidden-lg">
         <% if content_for? :breadcrumbs %>
         <span class="hamburguer" id="profileDropdown" data-toggle="dropdown">
-          <i class="fa fa-bars"></i>
+          <i class="fas fa-bars"></i>
         </span>
           <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="profileDropdown">
             <%= yield :breadcrumbs %>
@@ -21,13 +21,13 @@
         <% if current_logged_user? %>
           <% if in_gamified_context? %>
             <div class="mu-navbar-element">
-              <i class="fa fa-star fa-fw fa-2x mu-navbar-icon mu-level-tooltip" data-toggle="tooltip" data-placement="bottom" level="<%= t(:level) %>"></i>
+              <i class="fas fa-star fa-fw fa-2x mu-navbar-icon mu-level-tooltip" data-toggle="tooltip" data-placement="bottom" level="<%= t(:level) %>"></i>
               <span class="mu-level-number"></span>
             </div>
           <% end %>
           <div class="dropdown mu-navbar-element notifications-box <%= 'notifications-box-empty' unless has_notifications? %>">
             <a href=<%= "#{user_notifications_path}" %>>
-              <i class="fa fa-bell fa-fw fa-2x mu-navbar-icon"></i>
+              <i class="fas fa-bell fa-fw fa-2x mu-navbar-icon"></i>
                 <span class="badge badge-notifications"><%= notifications_count %></span>
             </a>
           </div>

@@ -17,11 +17,11 @@
               </a>
               <% if message.from_initiator? %>
                 <a class="discussion-message-not-actually-a-question <%= 'selected' if message.not_actually_a_question? %>" onclick="mumuki.Forum.discussionMessageToggleNotActuallyAQuestion('<%= question_discussion_message_url(@discussion, message) %>', $(this))">
-                  <%= fa_icon('question-circle-o', class: 'fa-xs') %>
+                  <%= fa_icon('question-circle', type: 'regular', class: 'fa-xs') %>
                 </a>
               <% end %>
             <% end %>
-            <%= link_to fa_icon('trash-o'), discussion_message_path(@discussion, message), method: :delete, data: { confirm: t(:are_you_sure, action: t(:destroy_message)) } %>
+            <%= link_to fa_icon('trash-alt', type: :regular), discussion_message_path(@discussion, message), method: :delete, data: { confirm: t(:are_you_sure, action: t(:destroy_message)) } %>
           <% end %>
           <% if should_show_approved_for?(current_user, message) %>
             <span class="discussion-message-approved selected">
