@@ -141,7 +141,7 @@ es-CL:
   let_us_know: ¡Por favor avísanos!
   level: Nivel
   level_up: ¡Subiste de nivel!
-  listen_statement: Escuchá la consigna
+  listen_statement: Escucha la consigna
   loading: Cargando
   load_solution_into_console: Cargar la solución en la consola
   locked_content: 'Éste contenido se desbloqueará cuando termines los capítulos anteriores'
@@ -221,7 +221,7 @@ es-CL:
   retry_exercise: Reintentar
   running: procesando
   save: Guardar
-  see_context: Mirá la animación del principio
+  see_context: Mira la animación del principio
   send: Enviar
   sending_solution: Enviando solución
   show: Mostrar
