@@ -18,7 +18,7 @@ module MenuBarHelper
   end
 
   def link_to_profile
-    li_tag menu_item('user', :profile, user_path)
+    menu_item('user', :profile, user_path)
   end
 
   def link_to_classroom
