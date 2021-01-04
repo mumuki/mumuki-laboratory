@@ -20,7 +20,7 @@
 <% if @chapter.lessons.present? %>
   <% if @chapter.monolesson? %>
     <div class='mu-monolesson'>
-      <%= render partial: 'layouts/guide_container', locals: { subject: @monolesson } %>
+      <%= render partial: 'layouts/guide', locals: { subject: @monolesson } %>
     </div>
   <% else %>
     <div>
