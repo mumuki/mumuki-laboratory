@@ -33,6 +33,8 @@ feature 'Chapters flow', organization_workspace: :test do
         expect(page).to have_text('Monads and Functors')
         expect(page).to have_text('The Maybe Functor')
 
+        expect(page).to have_text(chapter.description)
+
         expect(page).to_not have_text('Appendix')
         expect(page).to have_text('Lessons')
       end
@@ -73,6 +75,10 @@ feature 'Chapters flow', organization_workspace: :test do
 
         expect(page).to have_text('Functional Programming')
         expect(page).to have_text('The Basic Values')
+
+        expect(page).to have_text(chapter.description)
+
+        expect(page).not_to have_text("Let's say we want to declare a variable...")
 
         expect(page).to have_text('Appendix')
         expect(page).not_to have_text('Lessons')
