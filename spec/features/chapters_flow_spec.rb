@@ -22,40 +22,69 @@ feature 'Chapters flow', organization_workspace: :test do
 
   before { reindex_current_organization! }
 
-  context 'no appendix' do
-    scenario 'show chapter, no appendix' do
-      visit "/chapters/#{chapter.id}"
+  context 'multilesson' do
+    context 'no appendix' do
+      scenario 'show chapter, no appendix' do
+        visit "/chapters/#{chapter.id}"
 
-      expect(page).to have_text('Functional Programming')
-      expect(page).to have_text('The Basic Values')
+        expect(page).to have_text('Functional Programming')
+        expect(page).to have_text('The Basic Values')
 
-      expect(page).to have_text('Monads and Functors')
-      expect(page).to have_text('The Maybe Functor')
+        expect(page).to have_text('Monads and Functors')
+        expect(page).to have_text('The Maybe Functor')
 
-      expect(page).to_not have_text('Appendix')
+        expect(page).to_not have_text('Appendix')
+        expect(page).to have_text('Lessons')
+      end
+    end
+
+    context 'with appendix' do
+      before { chapter.topic.update appendix: 'Check this article about endofunctors' }
+
+      scenario 'show chapter, with appendix' do
+        visit "/chapters/#{chapter.id}"
+
+        expect(page).to have_text('Functional Programming')
+        expect(page).to have_text('The Basic Values')
+
+        expect(page).to have_text('Monads and Functors')
+        expect(page).to have_text('The Maybe Functor')
+
+        expect(page).to have_text('Appendix')
+        expect(page).to have_text('Lessons')
+      end
+
+      scenario 'show appendix' do
+        visit "/chapters/#{chapter.id}/appendix"
+        expect(page).to have_text('Appendix')
+        expect(page).to have_text('endofunctors')
+      end
     end
   end
 
-  context 'with appendix' do
-    before { chapter.topic.update appendix: 'Check this article about endofunctors' }
+  context 'monolesson' do
+    let(:lessons) { [lesson_1] }
 
-    scenario 'show chapter, with appendix' do
-      visit "/chapters/#{chapter.id}"
+    context 'with appendix' do
+      before { chapter.topic.update appendix: 'Check this article about endofunctors' }
 
-      expect(page).to have_text('Functional Programming')
-      expect(page).to have_text('The Basic Values')
+      scenario 'show chapter, with appendix' do
+        visit "/chapters/#{chapter.id}"
 
-      expect(page).to have_text('Monads and Functors')
-      expect(page).to have_text('The Maybe Functor')
+        expect(page).to have_text('Functional Programming')
+        expect(page).to have_text('The Basic Values')
 
-      expect(page).to have_text('Appendix')
+        expect(page).to have_text('Appendix')
+        expect(page).not_to have_text('Lessons')
+      end
+
+      scenario 'show appendix' do
+        visit "/chapters/#{chapter.id}/appendix"
+        expect(page).to have_text('Appendix')
+        expect(page).to have_text('endofunctors')
+      end
     end
 
-    scenario 'show appendix' do
-      visit "/chapters/#{chapter.id}/appendix"
-      expect(page).to have_text('Appendix')
-      expect(page).to have_text('endofunctors')
-    end
   end
 
   context 'incognito user' do
@@ -73,9 +102,5 @@ feature 'Chapters flow', organization_workspace: :test do
 
       expect(page).to have_text('Sign in')
     end
-  end
-
-  context 'monolesson' do
-
   end
 end

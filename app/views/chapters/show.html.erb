@@ -3,11 +3,11 @@
 <% end %>
 
 <div class="chapter-description">
-  <h1>
-    <span class="hidden-xs"><%= t(:chapter_number, number: @chapter.number) %>:&nbsp;</span>
-    <span><%= @chapter.name %></span>
+  <h1 class="pull-left">
+    <span class="hidden-xs pull-left"><%= t(:chapter_number, number: @chapter.number) %>:&nbsp;</span>
+    <span class="pull-left"><%= @chapter.name %></span>
     <% if @chapter.monolesson? %>
-      <div class='mu-monolesson'>
+      <div class='mu-monolesson pull-left'>
         <%= render partial: 'layouts/guide_title_icons' %>
       </div>
     <% end %>
