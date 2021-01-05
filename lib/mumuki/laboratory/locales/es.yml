@@ -157,6 +157,7 @@ es:
   let_us_know: ¡Por favor avisanos!
   level: Nivel
   level_up: ¡Subiste de nivel!
+  listen_statement: Escuchá la consigna
   loading: Cargando
   load_solution_into_console: Cargar la solución en la consola
   locked_content: 'Este contenido se desbloqueará cuando termines los capítulos anteriores'
@@ -191,6 +192,7 @@ es:
   no_exercises: No encontramos ejercicios que coincidan con tu búsqueda.
   no_guides: No encontramos lecciones que coincidan con tu búsqueda.
   no_messages: ¡Parece que no tenés ningun mensaje todavía!
+  no_need_hint: Este ejercicio no tiene pista
   no_questions: Parece que aún no hay ninguna consulta.
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio aún!
   no_useful_result: ¿No encontraste lo que estabas buscando?
@@ -239,6 +241,7 @@ es:
   retry_exercise: Reintentar
   running: procesando
   save: Guardar
+  see_context: Mirá la animación del principio
   send: Enviar
   sending_solution: Enviando solución
   show: Mostrar
@@ -324,3 +327,4 @@ es:
   you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
   you_never_submitted_solutions: Parece que nunca enviaste soluciones desde que creaste tu cuenta.
   your_new_organization: tu nueva organización
+

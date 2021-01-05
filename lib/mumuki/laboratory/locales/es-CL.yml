@@ -141,6 +141,7 @@ es-CL:
   let_us_know: ¡Por favor avísanos!
   level: Nivel
   level_up: ¡Subiste de nivel!
+  listen_statement: Escucha la consigna
   loading: Cargando
   load_solution_into_console: Cargar la solución en la consola
   locked_content: 'Éste contenido se desbloqueará cuando termines los capítulos anteriores'
@@ -175,6 +176,7 @@ es-CL:
   no_exercises: No encontramos ejercicios que coincidan con tu búsqueda.
   no_guides: No encontramos lecciones que coincidan con tu búsqueda.
   no_messages: ¡Parece que no tienes ningún mensaje todavía!
+  no_need_hint: 'Este ejercicio no tiene pista'
   no_questions: Parece que aún no hay ninguna consulta.
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio!
   no_useful_result: ¿No encontraste lo que estabas buscando?
@@ -219,6 +221,7 @@ es-CL:
   retry_exercise: Reintentar
   running: procesando
   save: Guardar
+  see_context: Mira la animación del principio
   send: Enviar
   sending_solution: Enviando solución
   show: Mostrar

@@ -33,12 +33,6 @@
   <div class="col-md-12">
     <div class="text-box">
       <%= @guide.description_html %>
-
-      <div class="actions">
-        <% if !@stats.try(:done?) && @next_exercise %>
-          <%= link_to t(lesson_practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-success' %>
-        <% end %>
-      </div>
     </div>
   </div>
 </div>
@@ -60,6 +54,14 @@
   <div class="text-box <%= last_box_class !@stats&.done? %>">
     <h3><%= t :sources %></h3>
     <%= @guide.sources_html %>
+  </div>
+<% end %>
+
+<% if !@stats.try(:done?) && @next_exercise %>
+  <div class="text-box">
+    <div class="actions">
+      <%= link_to t(lesson_practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-success' %>
+    </div>
   </div>
 <% end %>
 
