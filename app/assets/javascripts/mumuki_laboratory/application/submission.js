@@ -55,6 +55,47 @@ mumuki.submission = (() => {
         this.preventClick();
       }
     }
+
+    solutionProcessor(bridge, $submissionsResults, solution) {
+      const resultsBox = new ResultsBox($submissionsResults);
+      this.disable();
+      this.setWaitingText();
+      resultsBox.waiting();
+      return bridge
+        ._submitSolution(solution)
+        .done((data) => resultsBox.success(data, this))
+        .fail(() => resultsBox.error(this))
+        .always((data) => {
+          $(document).renderMuComponents();
+          resultsBox.done(data, this);
+        });
+    }
+  }
+
+  class KidsSubmitButton extends SubmitButton {
+
+    wait() {
+      mumuki.kids.showOverlay();
+      super.wait();
+    }
+
+    continue() {
+      mumuki.kids.hideOverlay();
+      super.continue();
+    }
+
+    solutionProcessor(bridge, $submissionsResults, solution) {
+      this.wait();
+      return bridge
+        ._submitSolution(solution)
+        .always((data) => {
+          this.ready(() => {
+            mumuki.kids.restart();
+            this.continue();
+          });
+          mumuki.kids.showResult(data);
+        });
+    }
   }
 
 
@@ -74,7 +115,7 @@ mumuki.submission = (() => {
    * @param {Submission} solution
   */
   function processSolution(solution) {
-    mumuki.submission._solutionProcessor(solution);
+    return mumuki.submission._solutionProcessor(solution);
   }
 
   /**
@@ -90,46 +131,10 @@ mumuki.submission = (() => {
     mumuki.submission._solutionProcessor = processor;
   }
 
-  /** Processor for kids layouts */
-  function _kidsSolutionProcessor(bridge, submitButton) {
-    return (solution) => {
-      submitButton.wait();
-      bridge._submitSolution(solution).always(function (data) {
-        submitButton.ready(() => {
-          mumuki.kids.restart();
-          submitButton.continue();
-        });
-        mumuki.kids.showResult(data);
-      });
-    };
-  }
-
-  /** Processor for non-kids layouts */
-  function _classicSolutionProcessor(bridge, submitButton, resultsBox) {
-    return (solution) => {
-      submitButton.disable();
-      submitButton.setWaitingText();
-      resultsBox.waiting();
-      bridge._submitSolution(solution).done(function (data) {
-        resultsBox.success(data, submitButton);
-      }).fail(function () {
-        resultsBox.error(submitButton);
-      }).always(function (data) {
-        $(document).renderMuComponents();
-        resultsBox.done(data, submitButton);
-      });
-    };
-  }
-
   /** Selects the most appropriate solution processor */
   function _selectSolutionProcessor(submitButton, $submissionsResults) {
     const bridge = new mumuki.bridge.Laboratory();
-    let processor;
-    if ($('.mu-kids-exercise').length) {
-      processor = _kidsSolutionProcessor(bridge, submitButton);
-    } else {
-      processor = _classicSolutionProcessor(bridge, submitButton, new ResultsBox($submissionsResults));
-    }
+    const processor = submitButton.solutionProcessor.bind(submitButton, bridge, $submissionsResults);
     mumuki.submission._registerSolutionProcessor(processor);
   }
 
@@ -143,8 +148,8 @@ mumuki.submission = (() => {
     if (!$submissionsResults) return;
 
     const $btnSubmit = $('.btn-submit');
-    const submitButton = new SubmitButton($btnSubmit, $('.submission_control'));
-
+    const buttonClass = mumuki.isKidsExercise() ? KidsSubmitButton : SubmitButton;
+    const submitButton = new buttonClass($btnSubmit, $('.submission_control'));
     mumuki.submission._selectSolutionProcessor(submitButton, $submissionsResults);
 
     submitButton.start(() => {
@@ -153,7 +158,6 @@ mumuki.submission = (() => {
 
     submitButton.checkAttemptsLeft();
   });
-
 
   /**
    * This module contains methods for submitting solution  in at high level, dealing with network communication,
@@ -176,5 +180,6 @@ mumuki.submission = (() => {
 
     animateTimeoutError,
     SubmitButton,
+    KidsSubmitButton,
   };
 })();

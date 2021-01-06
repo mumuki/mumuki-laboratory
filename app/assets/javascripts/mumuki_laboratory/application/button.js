@@ -49,7 +49,6 @@ mumuki.Button = class {
    */
   wait() {
     this.$button.off('click');
-
     this.setWaiting();
   }
 
@@ -77,7 +76,6 @@ mumuki.Button = class {
    */
   continue() {
     this.$button.off('click');
-
     this.enable();
 
     this.$button.on('click', this.main);

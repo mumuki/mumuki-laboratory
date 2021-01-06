@@ -15,6 +15,10 @@ $kids-speech-tabs-width: 40px;
   border: 1px solid #dddddd;
 }
 
+.mu-kids-exercise-workspace.mu-submitless-exercise .mu-kids-submit-button {
+  display: none;
+}
+
 .mu-kids-exercise {
   height: $kids-height;
   min-height: $kids-height;
