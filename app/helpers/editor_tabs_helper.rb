@@ -14,7 +14,7 @@ module EditorTabsHelper
   def messages_tab(exercise, organization = Organization.current)
     "<li id='messages-tab' role='presentation'>
         <a data-target='#messages' tabindex='0' aria-controls='console' role='tab' data-toggle='tab' class='editor-tab'>
-          #{fa_icon 'comments-o'} #{t :messages }
+          #{fa_icon 'comments', type: :regular} #{t :messages }
         </a>
      </li>".html_safe if organization.raise_hand_enabled? && exercise.has_messages_for?(current_user)
   end

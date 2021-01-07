@@ -5,11 +5,11 @@
       <ul class="nav nav-tabs">
         <% @files.each_with_index do |file, index| %>
           <li role="presentation" class="file-tab <%= 'active' if index == 0 %>" data-target="#editor-file-<%= index %>" tabindex='0' data-toggle='tab'>
-            <a class="file-name" href="#"><%= file.name %></a> <i class="delete-file-button fa fa-times"></i>
+            <a class="file-name" href="#"><%= file.name %></a> <i class="delete-file-button fas fa-times"></i>
           </li>
         <% end %>
       </ul>
-      <i class="add-file-button fa fa-plus"></i>
+      <i class="add-file-button fas fa-plus"></i>
     </span>
 
     <%= multifile_hidden_inputs %>
@@ -27,14 +27,9 @@
     </div>
 
     <div class="mu-overlapped multiple-files">
-      <a class="editor-resize" title="<%= t(:fullscreen) %> (F11)">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-square-o fa-stack-2x"></i>
-          <i class="fa fa-expand fa-stack-1x"></i>
-        </span>
-      </a>
+      <a class="editor-resize"> <%= expand_icon %></a>
+      <a class="editor-format"><%= format_icon %></a>
       <!--<a class="editor-reset submission-reset" data-confirm="<%= t(:confirm_reset) %>"><%= restart_icon %></a> -->
     </div>
-
   </div>
 </div>

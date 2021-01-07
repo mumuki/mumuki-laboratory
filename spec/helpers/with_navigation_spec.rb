@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe WithStudentPathNavigation, organization_workspace: :test do
   helper WithStudentPathNavigation
-  helper FontAwesome::Rails::IconHelper
+  helper FontAwesome5::Rails::IconHelper
 
   describe '#next_button' do
     let(:current_user) { create(:user) }
@@ -14,9 +14,9 @@ describe WithStudentPathNavigation, organization_workspace: :test do
       let!(:exercise_3) { create(:exercise, id: 13, name: 'exercise 3', guide: guide) }
 
       context 'when user did not submit any solution' do
-        it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success btn-block\" role=\"button\" href=\"/exercises/#{exercise_2.friendly_name}\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
-        it { expect(next_button(exercise_2)).to eq "<a class=\"btn btn-success btn-block\" role=\"button\" href=\"/exercises/#{exercise_3.friendly_name}\">Next: exercise 3 <i class=\"fa fa-chevron-right\"></i></a>" }
-        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning btn-block\" role=\"button\" href=\"/exercises/#{exercise_1.friendly_name}\">Next pending: exercise 1 <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success btn-block\" role=\"button\" href=\"/exercises/#{exercise_2.friendly_name}\"><span class=\"fa5-text-r\">Next: exercise 2</span><i class=\"fas fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise_2)).to eq "<a class=\"btn btn-success btn-block\" role=\"button\" href=\"/exercises/#{exercise_3.friendly_name}\"><span class=\"fa5-text-r\">Next: exercise 3</span><i class=\"fas fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning btn-block\" role=\"button\" href=\"/exercises/#{exercise_1.friendly_name}\"><span class=\"fa5-text-r\">Next pending: exercise 1</span><i class=\"fas fa-chevron-right\"></i></a>" }
       end
 
       context 'when on last unresolved exercise' do
@@ -25,9 +25,9 @@ describe WithStudentPathNavigation, organization_workspace: :test do
           exercise_3.submit_solution!(current_user).passed!
         end
 
-        it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success btn-block\" role=\"button\" href=\"/exercises/#{exercise_2.friendly_name}\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success btn-block\" role=\"button\" href=\"/exercises/#{exercise_2.friendly_name}\"><span class=\"fa5-text-r\">Next: exercise 2</span><i class=\"fas fa-chevron-right\"></i></a>" }
         it { expect(next_button(exercise_2)).to be nil }
-        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning btn-block\" role=\"button\" href=\"/exercises/#{exercise_2.friendly_name}\">Next pending: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning btn-block\" role=\"button\" href=\"/exercises/#{exercise_2.friendly_name}\"><span class=\"fa5-text-r\">Next pending: exercise 2</span><i class=\"fas fa-chevron-right\"></i></a>" }
       end
 
       context 'when user did submit a solution' do
@@ -35,9 +35,9 @@ describe WithStudentPathNavigation, organization_workspace: :test do
           exercise_1.submit_solution!(current_user).passed!
         end
 
-        it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success btn-block\" role=\"button\" href=\"/exercises/#{exercise_2.friendly_name}\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
-        it { expect(next_button(exercise_2)).to eq "<a class=\"btn btn-success btn-block\" role=\"button\" href=\"/exercises/#{exercise_3.friendly_name}\">Next: exercise 3 <i class=\"fa fa-chevron-right\"></i></a>" }
-        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning btn-block\" role=\"button\" href=\"/exercises/#{exercise_2.friendly_name}\">Next pending: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise_1)).to eq "<a class=\"btn btn-success btn-block\" role=\"button\" href=\"/exercises/#{exercise_2.friendly_name}\"><span class=\"fa5-text-r\">Next: exercise 2</span><i class=\"fas fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise_2)).to eq "<a class=\"btn btn-success btn-block\" role=\"button\" href=\"/exercises/#{exercise_3.friendly_name}\"><span class=\"fa5-text-r\">Next: exercise 3</span><i class=\"fas fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise_3)).to eq "<a class=\"btn btn-warning btn-block\" role=\"button\" href=\"/exercises/#{exercise_2.friendly_name}\"><span class=\"fa5-text-r\">Next pending: exercise 2</span><i class=\"fas fa-chevron-right\"></i></a>" }
       end
     end
 
@@ -46,8 +46,8 @@ describe WithStudentPathNavigation, organization_workspace: :test do
       let!(:exercise) { create(:exercise, id: 12, name: 'exercise 2', guide: guide) }
 
       context 'when user did not submit any exercise' do
-        it { expect(next_button(reading)).to eq "<a class=\"btn-confirmation btn btn-success btn-block\" data-confirmation-url=\"/exercises/#{reading.friendly_name}/confirmations\" role=\"button\" href=\"/exercises/#{exercise.friendly_name}\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
-        it { expect(next_button(exercise)).to eq "<a class=\"btn btn-warning btn-block\" role=\"button\" href=\"/exercises/#{reading.friendly_name}\">Next pending: exercise 1 <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(reading)).to eq "<a class=\"btn-confirmation btn btn-success btn-block\" data-confirmation-url=\"/exercises/#{reading.friendly_name}/confirmations\" role=\"button\" href=\"/exercises/#{exercise.friendly_name}\"><span class=\"fa5-text-r\">Next: exercise 2</span><i class=\"fas fa-chevron-right\"></i></a>" }
+        it { expect(next_button(exercise)).to eq "<a class=\"btn btn-warning btn-block\" role=\"button\" href=\"/exercises/#{reading.friendly_name}\"><span class=\"fa5-text-r\">Next pending: exercise 1</span><i class=\"fas fa-chevron-right\"></i></a>" }
       end
 
       context 'when user finished just reading' do
@@ -55,7 +55,7 @@ describe WithStudentPathNavigation, organization_workspace: :test do
           reading.submit_confirmation!(current_user)
         end
 
-        it { expect(next_button(reading)).to eq "<a class=\"btn-confirmation btn btn-success btn-block\" data-confirmation-url=\"/exercises/#{reading.friendly_name}/confirmations\" role=\"button\" href=\"/exercises/#{exercise.friendly_name}\">Next: exercise 2 <i class=\"fa fa-chevron-right\"></i></a>" }
+        it { expect(next_button(reading)).to eq "<a class=\"btn-confirmation btn btn-success btn-block\" data-confirmation-url=\"/exercises/#{reading.friendly_name}/confirmations\" role=\"button\" href=\"/exercises/#{exercise.friendly_name}\"><span class=\"fa5-text-r\">Next: exercise 2</span><i class=\"fas fa-chevron-right\"></i></a>" }
         it { expect(next_button(exercise)).to eq nil }
       end
     end
@@ -83,12 +83,12 @@ describe WithStudentPathNavigation, organization_workspace: :test do
         let(:lessons) { [lesson_1, lesson_2, lesson_3] }
 
         context 'one suggestion' do
-          it { expect(next_button(lesson_2)).to include "<a class=\"btn btn-success btn-block\" role=\"button\" href=\"/lessons/#{lesson_3.friendly_name}\">Next: #{lesson_3.name} <i class=\"fa fa-chevron-right\"></i></a>" }
+          it { expect(next_button(lesson_2)).to include "<a class=\"btn btn-success btn-block\" role=\"button\" href=\"/lessons/#{lesson_3.friendly_name}\"><span class=\"fa5-text-r\">Next: #{lesson_3.name}</span><i class=\"fas fa-chevron-right\"></i></a>" }
           it { expect(next_button(lesson_1)).to be_html_safe }
         end
 
         context 'many suggestions' do
-          it { expect(next_button(lesson_1)).to include "<a class=\"btn btn-success btn-block\" role=\"button\" href=\"/lessons/#{lesson_2.friendly_name}\">Next: #{lesson_2.name} <i class=\"fa fa-chevron-right\"></i></a>" }
+          it { expect(next_button(lesson_1)).to include "<a class=\"btn btn-success btn-block\" role=\"button\" href=\"/lessons/#{lesson_2.friendly_name}\"><span class=\"fa5-text-r\">Next: #{lesson_2.name}</span><i class=\"fas fa-chevron-right\"></i></a>" }
           it { expect(next_button(lesson_1)).to be_html_safe }
         end
       end

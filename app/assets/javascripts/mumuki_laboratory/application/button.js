@@ -104,11 +104,11 @@ mumuki.Button = class {
   }
 
   setWaitingText () {
-    this.$button.html('<i class="fa fa-refresh fa-spin"></i> ' + this.$button.attr('data-waiting'));
+    this.$button.html('<i class="fas fa-sync-alt fa-spin"></i> ' + this.$button.attr('data-waiting'));
   }
 
   setRetryText() {
-    this.$button.html('<i class="fa fa-undo"></i>');
+    this.$button.html('<i class="fas fa-undo"></i>');
   }
 
   setOriginalContent () {

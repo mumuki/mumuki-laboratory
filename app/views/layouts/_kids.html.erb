@@ -3,17 +3,17 @@
   <% if exercise.hint? %>
       <ul class="mu-kids-character-speech-bubble-tabs">
         <li class="mu-kids-description active" data-target="description" title="<%= t :task %>">
-          <i class="fa fa-fw fa-file-text-o"></i>
+          <i class="far fa-fw fa-file-alt"></i>
         </li>
         <li class="separator"></li>
         <li class="mu-kids-hint blink" data-target="hint" title="<%= t :need_a_hint %>">
-          <i class="fa fa-fw fa-lightbulb-o"></i>
+          <i class="far fa-fw fa-lightbulb"></i>
         </li>
       </ul>
   <% end %>
   <div class="mu-kids-character-speech-bubble-normal">
-    <i class="mu-kids-prev-speech fa fa-fw fa-caret-up"></i>
-    <i class="mu-kids-next-speech fa fa-fw fa-caret-down"></i>
+    <i class="mu-kids-prev-speech fas fa-fw fa-caret-up"></i>
+    <i class="mu-kids-next-speech fas fa-fw fa-caret-down"></i>
     <div class="description"><%= exercise.description_task %></div>
     <div class="hint" style="display: none"><%= exercise.hint_html %></div>
   </div>
