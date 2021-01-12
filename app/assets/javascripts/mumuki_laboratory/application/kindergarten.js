@@ -13,7 +13,7 @@ mumuki.load(() => {
       this.$contextModalButton = new mumuki.Button($('#mu-kids-context .mu-kids-modal-button.mu-close'));
 
       this.resultActions.passed = this._showSuccessPopup.bind(this);
-      this.resultActions.passed_with_warnings = this._showSuccessPopup.bind(this);
+      this.resultActions.passed_with_warnings = this._showPassedWithWarnings.bind(this);
       this.resultActions.failed = this._showFailurePopup.bind(this);
       this.resultActions.errored = this._showFailurePopup.bind(this);
       this.resultActions.pending = this._showFailurePopup.bind(this);
@@ -48,6 +48,10 @@ mumuki.load(() => {
 
     _showSuccessPopup(data) {
       this.showNonAbortedPopup(data, 'success2_l');
+    }
+
+    _showPassedWithWarnings(data) {
+      this.showNonAbortedPopup(data, 'passed_with_warnings');
     }
 
     _showFailurePopup(data) {

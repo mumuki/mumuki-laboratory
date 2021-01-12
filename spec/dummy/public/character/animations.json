@@ -5,6 +5,7 @@
         "context",
         "failure",
         "jump",
+        "passed_with_warnings",
         "success2_l",
         "success_l"
       ],
