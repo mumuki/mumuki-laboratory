@@ -37,24 +37,24 @@ mumuki.renderers.results = (() => {
 
   /**
    * @param {SubmissionStatus} status
-   * @param {Boolean} isGemifiedContext
+   * @param {Boolean} isGamifiedContext
    * @returns {string}
    */
-  function translatedTitleHtml(status, isGemifiedContext) {
+  function translatedTitleHtml(status, isGamifiedContext) {
     return `
       <h4 class="text-${classForStatus(status)} %>">
         <strong><i class="fa-fw fas ${iconForStatus(status)}"></i> ${mumuki.I18n.t(status)}</strong>
-        ${gemifiedContextHtml(isGemifiedContext)}
+        ${gamifiedContextHtml(isGamifiedContext)}
       </h4>
     `
   }
 
   /**
-   * @param {Boolean} isGemifiedContext
+   * @param {Boolean} isGamifiedContext
    * @returns {string}
    */
-  function gemifiedContextHtml(isGemifiedContext) {
-    return (!isGemifiedContext) ? '' : `
+  function gamifiedContextHtml(isGamifiedContext) {
+    return (!isGamifiedContext) ? '' : `
       <strong><small class="text-success">
         <span class="mu-experience"></span>
       </small></strong>
