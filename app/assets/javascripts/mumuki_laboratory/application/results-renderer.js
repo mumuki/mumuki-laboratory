@@ -35,6 +35,32 @@ mumuki.renderers.results = (() => {
     }
   }
 
+  /**
+   * @param {SubmissionStatus} status
+   * @param {Boolean} isGamifiedContext
+   * @returns {string}
+   */
+  function translatedTitleHtml(status, isGamifiedContext) {
+    return `
+      <h4 class="text-${classForStatus(status)} %>">
+        <strong><i class="fa-fw fas ${iconForStatus(status)}"></i> ${mumuki.I18n.t(status)}</strong>
+        ${gamifiedContextHtml(isGamifiedContext)}
+      </h4>
+    `
+  }
+
+  /**
+   * @param {Boolean} isGamifiedContext
+   * @returns {string}
+   */
+  function gamifiedContextHtml(isGamifiedContext) {
+    return (!isGamifiedContext) ? '' : `
+      <strong><small class="text-success">
+        <span class="mu-experience"></span>
+      </small></strong>
+    `
+  }
+
 
   /**
    * @param {SubmissionStatus} status
@@ -48,7 +74,8 @@ mumuki.renderers.results = (() => {
   return {
     classForStatus,
     iconForStatus,
-    progressListItemClassForStatus
+    progressListItemClassForStatus,
+    translatedTitleHtml
   };
 })();
 

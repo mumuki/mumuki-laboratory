@@ -1,5 +1,5 @@
 mumuki.load(() => {
-  mumuki.isKidsExercise = () => $('.mu-kids-exercise').length >= 0;
+  mumuki.isKidsExercise = () => $('.mu-kids-exercise').length > 0;
 })
 
 mumuki.Kids = class {

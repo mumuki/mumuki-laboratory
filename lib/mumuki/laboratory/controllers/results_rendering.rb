@@ -20,7 +20,8 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
                   .merge(
                     html: render_results(layout, assignment),
                     remaining_attempts_html: remaining_attempts_text(assignment),
-                    current_exp: UserStats.exp_for(assignment.submitter))
+                    current_exp: UserStats.exp_for(assignment.submitter),
+                    in_gamified_context: Organization.current.gamification_enabled?)
   end
 
   def merge_kids_specific_renders(assignment, results)
