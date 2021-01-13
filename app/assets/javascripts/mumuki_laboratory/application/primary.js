@@ -57,6 +57,10 @@ mumuki.load(() => {
       this.showNonAbortedPopup(data, 'success2_l', 4000);
     }
 
+    _showPassedWithWarnings(data) {
+      this.showNonAbortedPopup(data, 'passed_with_warnings', 4000);
+    }
+
     _showFailurePopup(data) {
       this._showOnCharacterBubble(data);
     }
