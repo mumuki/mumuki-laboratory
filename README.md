@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/mumuki/mumuki-laboratory.svg?branch=master)](https://travis-ci.com/mumuki/mumuki-laboratory)
+![Build status](https://github.com/mumuki/mumuki-laboratory/workflows/Test%20and%20deploy/badge.svg?branch=master)
 [![Code Climate](https://codeclimate.com/github/mumuki/mumuki-laboratory/badges/gpa.svg)](https://codeclimate.com/github/mumuki/mumuki-laboratory)
 [![Issue Count](https://codeclimate.com/github/mumuki/mumuki-laboratory/badges/issue_count.svg)](https://codeclimate.com/github/mumuki/mumuki-laboratory)
 
