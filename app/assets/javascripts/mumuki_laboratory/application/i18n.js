@@ -42,7 +42,7 @@ mumuki.I18n = (() => {
   return new class {
 
     translate(key, data = {}) {
-      const translationValue = translations[mumuki.locale] && translations[mumuki.locale][key]
+      const translationValue = this._translationValue(key);
       switch (typeof(translationValue)) {
         case 'string': return translationValue;
         case 'function': return translationValue(data);
@@ -57,6 +57,16 @@ mumuki.I18n = (() => {
     register(translationsToOverride) {
       const locales = Object.keys(translations);
       locales.forEach((it) => translations[it] = Object.assign(translations[it], translationsToOverride[it]));
+    }
+
+    _prefixTranslationKey(key) {
+      this._prefix = $('[data-i18n-prefix]');
+      return this._prefix.get(0) ? `${this._prefix.data('i18n-prefix')}_${key}` : key;
+    }
+
+    _translationValue(key) {
+      let translationLocale = translations[mumuki.locale];
+      return translationLocale && (translationLocale[this._prefixTranslationKey(key)] || translationLocale[key]);
     }
 
   }

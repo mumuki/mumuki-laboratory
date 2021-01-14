@@ -46,4 +46,34 @@ describe('I18n', () => {
     })
   })
 
-})
+  describe('with some prefix', () => {
+
+    fixture.set(`
+        <div class="mu-kindergarten" data-i18n-prefix="testing">
+            <button class="mu-kids-button">Click me<button>
+            <div class="mu-kids-overlay" style="display: none"></div>
+        </div>
+    `);
+
+    beforeEach(() => {
+      mumuki.locale = 'en';
+      mumuki.I18n.register({
+        en: {
+          testing_failed: 'Ops! Execution failed',
+        }
+      })
+    });
+
+    it('Using prefix with existing translation key', () => {
+      expect(mumuki.I18n.t('passed')).toBe('Everything is in order! Your solution passed all our tests!');
+    });
+    it('Use prefix with none existing translation key but default key exists', () => {
+      expect(mumuki.I18n.t('failed')).toBe('Ops! Execution failed');
+    });
+    it('No key found', () => {
+      expect(mumuki.I18n.t('foo')).toBe('Translation missing: en, `foo`');
+    })
+
+  });
+
+});
