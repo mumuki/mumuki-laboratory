@@ -134,54 +134,6 @@ jobs:
       env:
         DISPLAY: :99
 
-  test-safari:
-    env:
-      MUMUKI_SELENIUM_DRIVER: safari
-      RACK_ENV: test
-      RAILS_ENV: test
-    runs-on: macos-10.15
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@21351ecc0a7c196081abca5dc55b08f085efe09a
-      with:
-        ruby-version: 2.6.3
-        bundler: 2.1.4
-    - name: Setup PostgreSQL
-      run: |
-        rm -rf /usr/local/var/postgres
-        initdb /usr/local/var/postgres
-        pg_ctl -D /usr/local/var/postgres start
-        echo "create role mumuki with createdb login password 'mumuki'" | sudo -u runner psql postgres
-        sudo /usr/bin/safaridriver --enable
-        gem install pg -v "$(grep "'pg'" mumuki-laboratory.gemspec | grep -o -E '~> ([[:digit:]]+\.){2}[[:digit:]]+')" -- --with-cflags="-Wno-error=implicit-function-declaration"
-    - name: Install dependencies
-      run: bundle install
-      env:
-        CXX: clang++
-        GYPFLAGS: -Dmac_deployment_target=10.15
-    - name: Create database
-      run: bundle exec rake db:create
-    - name: Load schema
-      run: bundle exec rake db:schema:load
-    - name: Setup hosts
-      run: |
-        echo '
-
-          127.0.0.1 localmumuki.io
-          127.0.0.1 base.localmumuki.io
-          127.0.0.1 central.localmumuki.io
-          127.0.0.1 empty.localmumuki.io
-          127.0.0.1 foo.localmumuki.io
-          127.0.0.1 immersive-orga.localmumuki.io
-          127.0.0.1 private.localmumuki.io
-          127.0.0.1 someorga.localmumuki.io
-          127.0.0.1 test.localmumuki.io
-          127.0.0.1 the-public-org.localmumuki.io
-        ' | sudo tee -a /etc/hosts
-    - name: Run web tests
-      run: bundle exec rake spec:web
-
   deploy:
     if: ${{ startsWith(github.ref, 'refs/tags/v') }}
     needs:
