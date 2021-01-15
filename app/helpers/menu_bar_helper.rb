@@ -42,4 +42,8 @@ module MenuBarHelper
   def menu_item(icon, name, url)
     link_to fixed_fa_icon(icon, text: t(name)), url, role: 'menuitem', tabindex: '-1'
   end
+
+  def any_menu_bar_links?
+    menu_bar_links.any?
+  end
 end
