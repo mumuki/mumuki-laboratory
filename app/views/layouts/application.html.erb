@@ -38,7 +38,9 @@
             </div>
             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
               <%= menu_bar_list_items %>
-              <li class="divider"></li>
+              <% if any_menu_bar_links? %>
+                <li class="divider"></li>
+              <% end %>
               <%= logout_link %>
             </ul>
           </div>
