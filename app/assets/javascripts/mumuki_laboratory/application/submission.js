@@ -56,13 +56,16 @@ mumuki.submission = (() => {
       }
     }
 
+    solutionSender(bridge, solution) {
+      return bridge._submitSolution(solution);
+    }
+
     solutionProcessor(bridge, $submissionsResults, solution) {
       const resultsBox = new ResultsBox($submissionsResults);
       this.disable();
       this.setWaitingText();
       resultsBox.waiting();
-      return bridge
-        ._submitSolution(solution)
+      return this.solutionSender(bridge, solution)
         .done((data) => resultsBox.success(data, this))
         .fail(() => resultsBox.error(this))
         .always((data) => {
@@ -86,18 +89,16 @@ mumuki.submission = (() => {
 
     solutionProcessor(bridge, $submissionsResults, solution) {
       this.wait();
-      return bridge
-        ._submitSolution(solution)
+      return this.solutionSender(bridge, solution)
+        .then((data) => mumuki.kids.showResult(data))
         .always((data) => {
           this.ready(() => {
             mumuki.kids.restart();
             this.continue();
           });
-          mumuki.kids.showResult(data);
         });
     }
   }
-
 
   // ==========
   // Processing
@@ -108,14 +109,26 @@ mumuki.submission = (() => {
    * restoring buttons state.
    *
    * The actual implementation of this method depends on contextual {@link _solutionProcessor}, which can
-   * be configured using {@link _registerSolutionProcessor}. Currently there are only two available processors -
-   * {@link _kidsSolutionProcessor} and {@link _classicSolutionProcessor} - which are automatically choosen depending
-   * on the exercise DOM.
+   * be configured using {@link _registerSolutionProcessor}. Currently there are only two available processors
+   * which are automatically choosen depending on the exercise DOM.
    *
    * @param {Submission} solution
   */
   function processSolution(solution) {
     return mumuki.submission._solutionProcessor(solution);
+  }
+
+  /**
+   * Send solution, which consist of sending to server.
+   *
+   * The actual implementation of this method depends on contextual {@link _solutionProcessor}, which can
+   * be configured using {@link _registerSolutionProcessor}. Currently there are only two available processors
+   * which are automatically choosen depending on the exercise DOM.
+   *
+   * @param {Submission} solution
+   */
+  function sendSolution(solution) {
+    return mumuki.submission._solutionSender(solution);
   }
 
   /**
@@ -125,17 +138,19 @@ mumuki.submission = (() => {
    * and should normally not be called by runners editor, but is exposed
    * for further non-standard customizations.
    *
-   * @param {({solution: object}) => void} processor
+   * @param {SubmitButton} submitButton
+   * @param {$ElementType} $submissionsResults
+   * @param {mumuki.bridge} bridge
    */
-  function _registerSolutionProcessor(processor) {
-    mumuki.submission._solutionProcessor = processor;
+  function _registerSolutionProcessor(submitButton, $submissionsResults, bridge) {
+    mumuki.submission._solutionSender = submitButton.solutionSender.bind(submitButton, bridge);
+    mumuki.submission._solutionProcessor = submitButton.solutionProcessor.bind(submitButton, bridge, $submissionsResults);
   }
 
   /** Selects the most appropriate solution processor */
   function _selectSolutionProcessor(submitButton, $submissionsResults) {
     const bridge = new mumuki.bridge.Laboratory();
-    const processor = submitButton.solutionProcessor.bind(submitButton, bridge, $submissionsResults);
-    mumuki.submission._registerSolutionProcessor(processor);
+    mumuki.submission._registerSolutionProcessor(submitButton, $submissionsResults, bridge);
   }
 
 
@@ -175,6 +190,8 @@ mumuki.submission = (() => {
    */
   return {
     processSolution,
+    sendSolution,
+
     _registerSolutionProcessor,
     _selectSolutionProcessor,
 
