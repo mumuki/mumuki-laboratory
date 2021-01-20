@@ -3,16 +3,21 @@
 <% end %>
 
 <div class="row">
+  <div class="mu-inline-block-left">
+    <h1><%= t :forum %></h1>
+  </div>
+</div>
+<div class="row">
   <% if @debatable.respond_to? :language %>
     <div class="mu-inline-block-right hidden-xs">
-      <h1><%= language_icon @debatable.language %></h1>
+      <h3><%= language_icon @debatable.language %></h3>
     </div>
   <% end %>
   <div class="mu-inline-block-left">
-    <h1>
+    <h3>
       <span class="hidden-xs"><%= t("#{@debatable_class.downcase}_number", number: @debatable.number) %>:&nbsp;</span>
       <span><%= @debatable.name %></span>
-    </h1>
+    </h3>
   </div>
 </div>
 
@@ -23,7 +28,9 @@
   <%= new_discussion_link(:no_useful_result, :ask_a_question) %>
 <% end %>
 
-  <%= content_for :no_container do %>
+<%= content_for :no_container do %>
 <% end if current_user? %>
+
+<%= forum_terms_link %>
 
 
