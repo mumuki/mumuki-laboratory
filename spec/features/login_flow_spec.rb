@@ -42,7 +42,7 @@ feature 'Login Flow', organization_workspace: :test do
 
     expect(page).to_not have_text('Sign in')
     expect(page).to have_text('Sign Out')
-    expect(page).to have_text('awesomeRubyGuide')
+    expect(page).to have_text('C1')
   end
 
   scenario 'can logout', :element_not_interactable_error do

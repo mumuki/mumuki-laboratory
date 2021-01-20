@@ -3,9 +3,14 @@
 <% end %>
 
 <div class="chapter-description">
-  <h1>
-    <span class="hidden-xs"><%= t(:chapter_number, number: @chapter.number) %>:&nbsp;</span>
-    <span><%= @chapter.name %></span>
+  <h1 class="pull-left">
+    <span class="hidden-xs pull-left"><%= t(:chapter_number, number: @chapter.number) %>:&nbsp;</span>
+    <span class="pull-left"><%= @chapter.name %></span>
+    <% if @chapter.monolesson? %>
+      <div class="mu-monolesson pull-left">
+        <%= render partial: 'layouts/guide_title_icons' %>
+      </div>
+    <% end %>
   </h1>
 
   <%= @chapter.description_html %>
@@ -13,14 +18,21 @@
 </div>
 
 <% if @chapter.lessons.present? %>
-<div>
-  <h3><%= t(:lessons) %></h3>
+  <% if @chapter.monolesson? %>
+    <div class="mu-monolesson">
+      <%= render partial: 'layouts/guide', locals: { subject: @monolesson } %>
+    </div>
+  <% else %>
+    <div>
+      <h3><%= t(:lessons) %></h3>
 
-  <% @chapter.lessons.each do |lesson| %>
-    <h4><%= lesson.number %>. <%= link_to_path_element lesson, mode: :plain %></h4>
-    <%= render partial: 'layouts/progress_listing', locals: {exercises: lesson.exercises} %>
+      <% @chapter.lessons.each do |lesson| %>
+        <h4><%= lesson.number %>. <%= link_to_path_element lesson, mode: :plain %></h4>
+        <%= render partial: 'layouts/progress_listing', locals: { exercises: lesson.exercises } %>
+      <% end %>
+    </div>
   <% end %>
-</div>
+
 <% end %>
 
 <% if @chapter.appendix.present? %>
