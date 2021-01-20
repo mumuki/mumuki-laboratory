@@ -103,7 +103,7 @@ es-CL:
   first_name: Nombre
   forbidden_explanation: ¿Puede que hayas ingresado con una cuenta incorrecta?
   format: Dar formato
-  forum_terms_link: Si tienes alguna duda, accede a las %{terms_link}
+  forum_terms_link: No olvides que al participar debes cumplir las %{terms_link}
   fullscreen: "Pantalla completa"
   gender: Género
   get_messages: "Ver mensajes"
