@@ -111,6 +111,7 @@ es:
   first_name: Nombre
   forbidden_explanation: ¿Puede que hayas ingresado con una cuenta incorrecta?
   format: Dar formato
+  forum: Espacio de Consultas
   forum_terms: Reglas del Espacio de Consultas
   forum_terms_link: No olvides que al participar debés cumplir las %{terms_link}
   fullscreen: "Pantalla completa"

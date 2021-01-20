@@ -105,6 +105,7 @@ en:
   first_name: First Name
   forbidden_explanation: Please verify you have logged in with the right account
   format: Format
+  forum: Forum
   forum_terms: Forum rules
   forum_terms_link: If you have any questions, please check %{terms_link}
   fullscreen: "Fullscreen"
