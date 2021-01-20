@@ -132,12 +132,6 @@ pt:
   item_not_accessible: Você não tem permissões para acessar este conteúdo
   joining_html: Bem-vindo ao curso <strong> %{curso} </strong>!
   kids_default_success: Você fez muito bem!
-  kindergarten_passed: "O seu programa é muito bom!"
-  kindergarten_passed_with_warnings: "O seu programa é muito bom!"
-  kindergarten_pending: "Houve um erro no seu programa. Tenta novamente!"
-  kindergarten_failed: "Houve um erro no seu programa. Tenta novamente!"
-  kindergarten_errored: "Houve um erro no seu programa. Tenta novamente!"
-  kindergarten_aborted: "Opa! Houve um problema técnico"
   language: Linguagem
   languages: Linguagens
   last_name: Sobrenome

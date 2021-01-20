@@ -17,14 +17,6 @@ module ContextualizationResultHelper
     elsif contextualization.exercise.choice?
       contextualization.solved? ? :correct_answer : :wrong_answer
     else
-      contextualization_status_translation_key contextualization
-    end
-  end
-
-  def contextualization_status_translation_key(contextualization)
-    if contextualization.exercise.input_kindergarten?
-      "kindergarten_#{contextualization.submission_status}"
-    else
       contextualization.submission_status
     end
   end
