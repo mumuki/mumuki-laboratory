@@ -263,7 +263,7 @@ es-CL:
   teacher_info: Información para docentes
   tell_us_how: ¡Cuéntanos cómo te pasó esto!
   tell_us_if_our_error: Si piensas que es un error nuestro, %{issues}
-  terms_and_conditions: Términos y condiciones
+  terms_and_conditions: Términos y Condiciones
   terms_and_conditions_continue_disclaimer: Al continuar aceptas los %{terms_link}
   terms_and_conditions_must_be_accepted: Tienes que aceptar los términos y condiciones
   test_results: Resultados de las pruebas

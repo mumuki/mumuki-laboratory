@@ -111,7 +111,7 @@ es:
   first_name: Nombre
   forbidden_explanation: ¿Puede que hayas ingresado con una cuenta incorrecta?
   format: Dar formato
-  forum_terms: Reglas del espacio de consultas
+  forum_terms: Reglas del Espacio de Consultas
   forum_terms_link: Si tenés alguna duda, accedé a las %{terms_link}
   fullscreen: "Pantalla completa"
   gender: Género
@@ -278,7 +278,7 @@ es:
   tell_us_how: ¡Contanos cómo te pasó esto!
   tell_us_if_our_error: Si pensás que es un error nuestro, %{issues}
   terms_accepted: Los términos y condiciones fueron aceptados
-  terms_and_conditions: Términos y condiciones
+  terms_and_conditions: Términos y Condiciones
   terms_and_conditions_continue_disclaimer: Al continuar estás aceptando los %{terms_link}
   terms_and_conditions_must_be_accepted: Tenés que aceptar los términos y condiciones
   test_results: Resultados de las pruebas
