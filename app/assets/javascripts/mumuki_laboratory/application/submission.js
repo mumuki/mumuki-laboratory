@@ -119,11 +119,13 @@ mumuki.submission = (() => {
   }
 
   /**
-   * Send solution, which consist of sending to server.
+   * Just sends solution to the server without any further processing afterwards.
    *
-   * The actual implementation of this method depends on contextual {@link _solutionProcessor}, which can
-   * be configured using {@link _registerSolutionProcessor}. Currently there are only two available processors
-   * which are automatically choosen depending on the exercise DOM.
+   * Consider using {@link processSolution} instead if you want the whole functionality (making buttons wait, sending to server, rendering results,
+   * restoring buttons state).
+   * The implementation of this method isn't contextual, it always sends the solution using bridge module.
+   *
+   * @see mumuki.bridge
    *
    * @param {Submission} solution
    */

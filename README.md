@@ -285,6 +285,7 @@ which are granted to be safe and stable.
   * `updateButtonsVisibility`
 * `mumuki.submission`
   * `processSolution`
+  * `sendSolution`
   * `registerContentSyncer`
 * `mumuki.version`
 
@@ -481,16 +482,27 @@ mumuki.editors.addCustomSource({
 });
 ```
 
-#### 2.5 Optional: Sending your solution to the server programmatically
+#### 2.5 Optional: Triggering submission processing programmatically
 
-Your solution will be automatically sent to the client when the submit button is pressed. However,
-if you need to trigger submission process programmatically, call `mumuki.submission.processSolution`:
+Your solution will be automatically sent to the client and processed when the submit button is pressed.
+However, if you need to trigger the whole submission process programmatically,
+call `mumuki.submission.processSolution`:
 
 ```javascript
 mumuki.submission.processSolution({solution: {content: /* ... */}});
 ```
 
-#### 2.6 Optional: customizing your submit button
+#### 2.6 Optional: Sending your solution to the server programmatically
+
+Your solution will be automatically sent to the client when the submit button is pressed, as part of the
+solution processing. However, if you just need to send your submission to the server programmatically,
+call `mumuki.submission.sendSolution`:
+
+```javascript
+mumuki.submission.sendSolution({solution: {content: /* ... */}});
+```
+
+#### 2.7 Optional: customizing your submit button
 
 You can alternatively override the default submit button UI and behaviour, by replacing it with a custom component. In order to
 do that, override the `.mu-submit-button` or the kids-specific `.mu-kids-submit-button`:
@@ -505,7 +517,7 @@ However, doing this is tricky, since you will need to manually update the UI and
 * `mumuki.bridge.Laboratory.runTests`
 * `mumuki.updateProgressBarAndShowModal`
 
-#### 2.7 Register kids scalers
+#### 2.8 Register kids scalers
 
 Kids layouts have some special areas:
 
@@ -524,7 +536,7 @@ mumuki.kids.registerBlocksAreaScaler(($blocks) => {
 });
 ```
 
-#### 2.8 Notify when your assets have been loaded
+#### 2.9 Notify when your assets have been loaded
 
 In order to remove loading spinners, you will need to call `mumuki.assetsLoadedFor` when your code is ready.
 
