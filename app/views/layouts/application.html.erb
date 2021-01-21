@@ -26,10 +26,17 @@
             </div>
           <% end %>
           <div class="dropdown mu-navbar-element notifications-box <%= 'notifications-box-empty' unless has_notifications? %>">
-            <a href=<%= "#{user_notifications_path}" %>>
+            <div id="notificationsDropdown" class="profile-dropdown" data-toggle="dropdown" aria-label="<%= t(:notifications) %>" role="menu" tabindex="0">
               <i class="fas fa-bell fa-fw fa-2x mu-navbar-icon"></i>
-                <span class="badge badge-notifications"><%= notifications_count %></span>
-            </a>
+              <span class="badge badge-notifications"><%= notifications_count %></span>
+            </div>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationsDropdown">
+              <% notifications.each do |it| %>
+                <li>
+                  <%= menu_item(it.preview_icon, it.preview_description, url_for(it.preview_item)) %>
+                </li>
+              <% end %>
+            </ul>
           </div>
           <div class="dropdown mu-navbar-element">
             <div id="profileDropdown" class="profile-dropdown" data-toggle="dropdown" aria-label="<%= t(:user) %>" role="menu" tabindex="0">

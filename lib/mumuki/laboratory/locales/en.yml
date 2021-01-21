@@ -180,6 +180,7 @@ en:
   no_useful_result: Didn't find what you were looking for?
   not_found_explanation: 'You may have mistyped the address or the page may have moved.'
   not_in_any_organizations: It seems you aren't in any organizations yet!
+  notifications: Notifications
   notify_problem_with_exercise: Report a bug
   office: Office
   only_landscape_support: Please, rotate your tablet or cellphone to continue practicing
