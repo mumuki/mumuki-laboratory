@@ -10,7 +10,7 @@
 
 <div class="row">
   <div class="mu-inline-block-left">
-    <h1><%= @debatable.name %></h1>
+    <h1><%= t :forum %></h1>
   </div>
 </div>
 
@@ -21,3 +21,5 @@
     <%= render partial: 'layouts/discussions' %>
   <% end %>
 </div>
+
+<%= forum_terms_link %>

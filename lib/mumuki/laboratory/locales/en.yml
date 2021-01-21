@@ -105,6 +105,7 @@ en:
   first_name: First Name
   forbidden_explanation: Please verify you have logged in with the right account
   format: Format
+  forum: Forum
   forum_terms: Forum rules
   forum_terms_link: If you have any questions, please check %{terms_link}
   fullscreen: "Fullscreen"
@@ -255,7 +256,7 @@ en:
   tell_us_how: Please tell us how this happened!
   tell_us_if_our_error: If you think this is our fault, %{issues}
   terms_accepted: The terms and conditions were accepted
-  terms_and_conditions: Terms and conditions
+  terms_and_conditions: Terms and Conditions
   terms_and_conditions_continue_disclaimer: By continuing you agree to %{terms_link}
   terms_and_conditions_must_be_accepted: You must accept the terms and conditions
   test_results: Test results

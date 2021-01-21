@@ -52,6 +52,14 @@ module DiscussionsHelper
     profile_picture_for(user, class: image_class)
   end
 
+  def forum_terms_link
+    %Q{
+      <span>
+        #{ t(:forum_terms_link, terms_link: link_to_forum_terms).html_safe }
+      </span>
+    }.html_safe
+  end
+
   def discussions_link_with_teaser(item)
     %Q{
       <div>
