@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201130163114) do
+ActiveRecord::Schema.define(version: 20210119190204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,6 +134,20 @@ ActiveRecord::Schema.define(version: 20201130163114) do
     t.index ["status_updated_by_id"], name: "index_discussions_on_status_updated_by_id"
   end
 
+  create_table "exam_authorization_requests", force: :cascade do |t|
+    t.integer "status", default: 0
+    t.bigint "exam_id"
+    t.bigint "exam_registration_id"
+    t.bigint "user_id"
+    t.bigint "organization_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exam_id"], name: "index_exam_authorization_requests_on_exam_id"
+    t.index ["exam_registration_id"], name: "index_exam_authorization_requests_on_exam_registration_id"
+    t.index ["organization_id"], name: "index_exam_authorization_requests_on_organization_id"
+    t.index ["user_id"], name: "index_exam_authorization_requests_on_user_id"
+  end
+
   create_table "exam_authorizations", force: :cascade do |t|
     t.integer "exam_id"
     t.integer "user_id"
@@ -141,6 +155,25 @@ ActiveRecord::Schema.define(version: 20201130163114) do
     t.datetime "started_at"
     t.index ["exam_id"], name: "index_exam_authorizations_on_exam_id"
     t.index ["user_id"], name: "index_exam_authorizations_on_user_id"
+  end
+
+  create_table "exam_registrations", force: :cascade do |t|
+    t.string "description"
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
+    t.integer "authorization_criterion_type", default: 0
+    t.integer "authorization_criterion_value"
+    t.bigint "organization_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_exam_registrations_on_organization_id"
+  end
+
+  create_table "exam_registrations_exams", id: false, force: :cascade do |t|
+    t.bigint "exam_id", null: false
+    t.bigint "exam_registration_id", null: false
+    t.index ["exam_id"], name: "index_exam_registrations_exams_on_exam_id"
+    t.index ["exam_registration_id"], name: "index_exam_registrations_exams_on_exam_registration_id"
   end
 
   create_table "exams", id: :serial, force: :cascade do |t|
@@ -314,6 +347,20 @@ ActiveRecord::Schema.define(version: 20201130163114) do
     t.boolean "not_actually_a_question", default: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "priority", default: 100
+    t.boolean "read", default: false
+    t.string "target_type"
+    t.bigint "target_id"
+    t.bigint "user_id"
+    t.bigint "organization_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_notifications_on_organization_id"
+    t.index ["target_type", "target_id"], name: "index_notifications_on_target_type_and_target_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "organizations", id: :serial, force: :cascade do |t|
     t.string "name"
     t.integer "book_id"
@@ -329,6 +376,7 @@ ActiveRecord::Schema.define(version: 20201130163114) do
     t.text "display_description"
     t.boolean "wins_page"
     t.boolean "immersible"
+    t.boolean "prevent_manual_evaluation_content"
     t.index ["book_id"], name: "index_organizations_on_book_id"
     t.index ["name"], name: "index_organizations_on_name", unique: true
   end
