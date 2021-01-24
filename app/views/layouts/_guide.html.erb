@@ -10,7 +10,7 @@
 
 <h3>
   <%= t :exercises %>
-  <%= restart_guide_link(@guide) if current_user && @guide.started?(current_user) && @guide.resettable? %>
+  <%= restart_guide_link(@guide) if current_user && @stats.started? && @guide.resettable? %>
 </h3>
 
 <%= render partial: 'layouts/progress_listing', locals: { guide: @guide } %>
