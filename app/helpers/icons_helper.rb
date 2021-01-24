@@ -31,10 +31,6 @@ module IconsHelper
     [iconized[:type], class: "text-#{iconized[:class]} status-icon"]
   end
 
-  def class_for_exercise(exercise)
-    icon_class_for(exercise.assignment_for(current_user))
-  end
-
   def icon_class_for(iconizable)
     iconizable.iconize[:class].to_s
   end
