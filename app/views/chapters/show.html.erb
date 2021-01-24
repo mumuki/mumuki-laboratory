@@ -26,7 +26,7 @@
     <div>
       <h3><%= t(:lessons) %></h3>
 
-      <% @chapter.lessons.each do |lesson| %>
+      <% @chapter.lessons.includes(guide: :exercises).each do |lesson| %>
         <h4><%= lesson.number %>. <%= link_to_path_element lesson, mode: :plain %></h4>
         <%= render partial: 'layouts/progress_listing', locals: { exercises: lesson.exercises } %>
       <% end %>
