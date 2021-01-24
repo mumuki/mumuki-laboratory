@@ -13,7 +13,7 @@
   <%= restart_guide_link(@guide) if current_user && @guide.started?(current_user) && @guide.resettable? %>
 </h3>
 
-<%= render partial: 'layouts/progress_listing', locals: {exercises: @guide.exercises} %>
+<%= render partial: 'layouts/progress_listing', locals: { guide: @guide } %>
 
 <% if @stats&.done? %>
   <div class="text-box">
