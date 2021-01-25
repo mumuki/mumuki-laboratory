@@ -108,7 +108,7 @@ en:
   forum: Forum
   forum_terms: Forum rules
   forum_terms_link: If you have any questions, please check %{terms_link}
-  fullscreen: "Fullscreen"
+  fullscreen: "Fullscreen (F11)"
   gender: Gender
   get_messages: "View messages"
   go_to: 'Go to %{organization}'
