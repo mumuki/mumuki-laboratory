@@ -62,7 +62,7 @@ mumuki.page.editors = [];
 
   function setEditorLanguage(editor, language) {
     editor.setOption("mode", language);
-    editor.setOption('theme', 'default ' + language);
+    editor.setOption('theme', 'mu-light ' + language);
   }
 
   function syncContent(){
