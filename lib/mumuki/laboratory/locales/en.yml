@@ -233,6 +233,7 @@ en:
   running: running
   save: Save
   see_context: Watch exercise introduction animation
+  select_file: Select file
   sending_solution: Sending solution
   show: Show
   sign_in: Sign in
@@ -289,7 +290,6 @@ en:
   unprepared_organization_explanation: This path hasn't started yet.
   unsubscribe: Unsubscribe
   unsubscribed_successfully: You have successfully unsubscribed from reminders.
-  upload_solution: Upload Solution
   uploading_solution: "Uploading solution"
   upvote: Upvote
   upvotes_count_desc: Most voted

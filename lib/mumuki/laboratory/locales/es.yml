@@ -251,6 +251,7 @@ es:
   running: procesando
   save: Guardar
   see_context: Mirá la animación del principio
+  select_file: Seleccionar archivo
   send: Enviar
   sending_solution: Enviando solución
   show: Mostrar
@@ -313,7 +314,6 @@ es:
   unprepared_organization_explanation: Este recorrido aún no ha comenzado
   unsubscribe: Dejar de recibir notificaciones
   unsubscribed_successfully: Te desuscribiste exitosamente de los recordatorios.
-  upload_solution: "Subir solución"
   uploading_solution: "Subiendo solución"
   upvote: Es útil
   upvotes_count_desc: Más útiles
