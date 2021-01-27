@@ -8,10 +8,8 @@ mumuki.load(() => {
       var contents = e.target.result;
       $('#solution_content').html(contents);
       $(evt.target).val("");
-      $('form.new_solution').submit();
     };
     reader.readAsText(file);
-    return false;
   });
 });
 
