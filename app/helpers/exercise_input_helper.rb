@@ -93,6 +93,7 @@ module ExerciseInputHelper
   def submit_button_options(exercise)
     if exercise.upload?
       struct tag: :button,
+             classes: 'disabled',
              fa_icon: :play,
              waiting_t: :uploading_solution,
              t: :create_submission
