@@ -110,7 +110,7 @@ pt:
   forum: Espaço de Consulta
   forum_terms: Regras do Espaço de Consulta
   forum_terms_link: Se você tiver alguma dúvida, consulte as %{terms_link}
-  fullscreen: Tela completa
+  fullscreen: Tela cheia (F11)
   gender: Gênero
   get_messages: Ver mensagens
   go_to: Vá para %{organization}

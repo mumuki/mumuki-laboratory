@@ -114,7 +114,7 @@ es:
   forum: Espacio de Consultas
   forum_terms: Reglas del Espacio de Consultas
   forum_terms_link: No olvides que al participar debés cumplir las %{terms_link}
-  fullscreen: "Pantalla completa"
+  fullscreen: "Pantalla completa (F11)"
   gender: Género
   get_messages: "Ver mensajes"
   go_to: 'Ir a %{organization}'

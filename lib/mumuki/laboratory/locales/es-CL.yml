@@ -104,7 +104,7 @@ es-CL:
   forbidden_explanation: ¿Puede que hayas ingresado con una cuenta incorrecta?
   format: Dar formato
   forum_terms_link: No olvides que al participar debes cumplir las %{terms_link}
-  fullscreen: "Pantalla completa"
+  fullscreen: "Pantalla completa (F11)"
   gender: Género
   get_messages: "Ver mensajes"
   go_to: 'Ir a %{organization}'
