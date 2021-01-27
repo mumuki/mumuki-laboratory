@@ -53,12 +53,11 @@ module ExerciseInputHelper
     waiting_text = t(options.waiting_t) if options.waiting_t.present?
     %Q{
       <div class="btn-submit-container">
-        <#{options.tag} for="#{options.for}"
-                       class="btn btn-success btn-block btn-submit #{options.classes}"
+        <button class="btn btn-success btn-block btn-submit #{options.classes}"
                        data-waiting="#{waiting_text}">
-          #{fa_icon options.fa_icon}
+          #{fa_icon 'play'}
           #{text} #{remaining_attempts_text(assignment)}
-       </#{options.tag}>
+       </button>
       </div>
     }.html_safe
   end
@@ -92,26 +91,18 @@ module ExerciseInputHelper
 
   def submit_button_options(exercise)
     if exercise.upload?
-      struct tag: :button,
-             classes: 'disabled',
-             fa_icon: :play,
+      struct classes: 'disabled',
              waiting_t: :uploading_solution,
              t: :create_submission
     elsif exercise.hidden?
-      struct tag: :button,
-             classes: 'submission_control',
+      struct classes: 'submission_control',
              waiting_t: :working,
-             fa_icon: :play,
              t: :continue_exercise
     elsif exercise.input_kids?
-      struct tag: :button,
-             classes: 'submission_control',
-             fa_icon: :play
+      struct classes: 'submission_control'
     else
-      struct tag: :button,
-             classes: 'submission_control',
+      struct classes: 'submission_control',
              waiting_t: :sending_solution,
-             fa_icon: :play,
              t: :create_submission
     end
   end
