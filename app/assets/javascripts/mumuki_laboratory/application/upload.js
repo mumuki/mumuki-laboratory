@@ -4,6 +4,8 @@ mumuki.load(() => {
     if (!file) return;
 
     $('.btn-submit').removeClass('disabled');
+    $('#mu-upload-text').removeClass('fa-upload').addClass('fa-file-alt');
+    $('#mu-upload-label span').text(file.name);
 
     var reader = new FileReader();
     reader.onload = function (e) {
