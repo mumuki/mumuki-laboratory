@@ -92,11 +92,10 @@ module ExerciseInputHelper
 
   def submit_button_options(exercise)
     if exercise.upload?
-      struct for: 'upload-input',
-             tag: :label,
+      struct tag: :button,
+             fa_icon: :play,
              waiting_t: :uploading_solution,
-             fa_icon: :upload,
-             t: :upload_solution
+             t: :create_submission
     elsif exercise.hidden?
       struct tag: :button,
              classes: 'submission_control',
