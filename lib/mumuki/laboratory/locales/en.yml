@@ -1,7 +1,9 @@
 ---
 en:
+  abort_explanation_html: "<li>Check that your program does not have recursion or
+    an infinite loop</li> <li>Check that you have an internet connection</li> <li>Wait
+    a while and try again</li>"
   aborted: Oops, we couldn't evaluate your solution
-  abort_explanation_html: <li>Check that your program does not have recursion or an infinite loop</li> <li>Check that you have an internet connection</li> <li>Wait a while and try again</li>
   about: About
   accept: Accept
   accept_terms: I have read and accept the terms and conditions
@@ -11,22 +13,28 @@ en:
   actual_state: Obtained board
   age: Age
   all: All
-  appendix: "Appendix"
-  appendix_teaser: Do you want to learn more? <a href="%{link}">Check this chapter's appendix</a>"
+  appendix: Appendix
+  appendix_teaser: Do you want to learn more? <a href="%{link}">Check this chapter's
+    appendix</a>"
   approved_message: Validated by mentor
-  are_you_sure: 'Are you sure you want to %{action}?'
+  are_you_sure: Are you sure you want to %{action}?
   ask_a_question: Ask a question!
   ask_community: Ask community for help
   ask_redirect: Do you want to go there?
   ask_the_first_question: Be the first one to ask!
   attempts_left:
-    zero: "You've run out of attempts "
-    one: "1 attempt remaining"
-    other: '%{count} attempts remaining'
+    zero: 'You''ve run out of attempts '
+    one: 1 attempt remaining
+    other: "%{count} attempts remaining"
   author: Author
-  authoring: "Authoring"
-  authoring_note_html: This guide's content was developed by %{authors} under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons License Share-Alike, 4.0</a>
-  authoring_note_with_collaborators_html: This guide's content was developed by %{authors} and <a href="%{collaborators}" target="_blank">many others</a>, under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons License Share-Alike, 4.0</a>
+  authoring: Authoring
+  authoring_note_html: This guide's content was developed by %{authors} under the
+    terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+    Commons License Share-Alike, 4.0</a>
+  authoring_note_with_collaborators_html: This guide's content was developed by %{authors}
+    and <a href="%{collaborators}" target="_blank">many others</a>, under the terms
+    of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+    Commons License Share-Alike, 4.0</a>
   back_to_mumuki: Back to Mumuki!
   bibliotheca_ui: Bibliotheca
   birthdate: Birthdate
@@ -34,37 +42,41 @@ en:
   cancel: Cancel
   cancel_subscription: Cancel your subscription.
   chapter: Chapter
-  chapters: Chapters
   chapter_finished_html: You have finished %{chapter}!
   chapter_number: Chapter %{number}
+  chapters: Chapters
   choose_your_avatar: Choose your avatar
   classroom_ui: Classroom
   clear_console: Clear console
   closed: Closed
-  closed_count: '%{count} closed'
-  created_at_asc: Oldest
-  created_at_desc: Newest
+  closed_count: "%{count} closed"
   comment: Comment
   confirm: Confirm
   confirm_reset: You are about to restart your exercise. Do you want to proceed?
-  confirm_restart: You are about to delete your progress for this guide. Do you want to proceed?
+  confirm_restart: You are about to delete your progress for this guide. Do you want
+    to proceed?
   console: Console
-  contact_administrator: 'If you think this is not supposed to happen, please contact %{link}'
+  contact_administrator: If you think this is not supposed to happen, please contact
+    %{link}
   content: Content
-  continue_exercise: "Continue"
+  continue_exercise: Continue
   continue_lesson: Continue this lesson!
   continue_practicing: Continue practicing!
   corollary: To think about
   correct_answer: The answer is correct!
   create_submission: Submit
   created_at: Created at
+  created_at_asc: Oldest
+  created_at_desc: Newest
   date: Date
   description: Description
-  destroy_message: delete the message
   destroy: Destroy
-  disabled_explanation: You are trying to visit a permamently disabled or deleted resource
+  destroy_message: delete the message
+  disabled_explanation: You are trying to visit a permamently disabled or deleted
+    resource
   disabled_organization_explanation: This path has already finished.
-  discussion_description_placeholder: You can add more information regarding your doubt.
+  discussion_description_placeholder: You can add more information regarding your
+    doubt.
   discussion_new_message: New message on %{title}
   discussion_updated: Discussion updated
   discussions: Discussions
@@ -72,30 +84,41 @@ en:
   download: Download your solution
   edit: Edit
   edit_profile: Edit profile
-  editor_placeholder: "write your solution here..."
+  editor_placeholder: write your solution here...
+  eeee: s
   email: Email
-  error_description: This is known as a <span class="error-link">%{error}</span>.
-  error_401: 401 error
-  error_403: 403 error
-  error_404: 404 error
-  error_410: 410 error
-  error_500: 500 error
-  errored: Oops, your solution didn't work
   error:
     title:
       forbidden: You are not allowed to see this content
       gone: Oops! Content has expired
       internal_server_error: Oops! Something went wrong
       not_found: Oops! Page was not found
-  exams: Exams
-  exam_authorization_request_updated: Your registration to %{description} has been updated
+  error_401: 401 error
+  error_403: 403 error
+  error_404: 404 error
+  error_410: 410 error
+  error_500: 500 error
+  error_description: This is known as a <span class="error-link">%{error}</span>.
+  errored: Oops, your solution didn't work
+  exam_authorization_request_approved_html: Your request was approved, don't forget
+    to log in at <strong>%{date}</strong>. Good luck!
+  exam_authorization_request_created: Your registration to the exam has been saved!
+  exam_authorization_request_rejected: Tu solicitud fue rechazada.
+  exam_authorization_request_updated: Your registration to %{description} has been
+    updated
+  exam_registration_choose_exam: Choose date and time to attend to the exam
+  exam_registration_explanation_html: You have until <strong>%{date}</strong> to register.
+    After that date, your request will be processed and you will receive a confirmation.
+    <br> Don't forget to check the notifications!
   exam_registration_open: Registrations open for %{description}!
+  exam_registration_to: Registration to %{description}
+  exams: Exams
   exercise: Exercise
-  exercises: Exercises
   exercise_count: exercises
   exercise_done: All our tests passed!
   exercise_number: Exercise %{number}
   exercise_success_rate: Exercises success rate
+  exercises: Exercises
   exit: Exit
   exp_points: experience points.
   expectations: Expectations
@@ -111,55 +134,57 @@ en:
   forum: Forum
   forum_terms: Forum rules
   forum_terms_link: If you have any questions, please check %{terms_link}
-  fullscreen: "Fullscreen (F11)"
+  fullscreen: Fullscreen (F11)
   gender: Gender
-  get_messages: "View messages"
-  go_to: 'Go to %{organization}'
+  get_messages: View messages
+  go_to: Go to %{organization}
   gone_explanation: This content is no longer available.
   guide: Guide
   guide_created: Guide created successfully
   guide_finished: You completed %{guide}!
   guides_index_title: Which guide do you want to do today?
   here: here
-  hidden_done: 'Good!'
+  hidden_done: Good!
   history: History
   home: Home
+  important_info: Important information
   initial_state: Initial board
   insert_file_name: Insert a file name
   invitation: Invitation to course
-  invitation_for: 'Join %{course}'
-  item_not_accessible: "You are not permitted to access this content"
+  invitation_for: Join %{course}
+  item_not_accessible: You are not permitted to access this content
   its_been_a_while: It's been a while since you last used Mumuki.
-  joining_html: '¡Welcome to course <strong>%{course}</strong>!'
+  joining_html: "¡Welcome to course <strong>%{course}</strong>!"
   keep_learning: Keep learning!
   kids_default_success: You did it great!
   language: Language
   last_name: Last Name
-  last_seen: "Seen by %{name}"
+  last_seen: Seen by %{name}
   last_submission_date: Last submission
   latest_exercises: Latest exercises
   learning: Learning
   lesson: Lesson
-  lessons: Lessons
   lesson_number: Lesson %{number}
+  lessons: Lessons
   let_us_know: please let us know!
   level: Level
   level_up: Level up!
   listen_statement: Listen to the statement
-  loading: Loading
   load_solution_into_console: Load your solution into the console
-  locked_content: 'This content will be unlocked when you finish previous chapters'
+  loading: Loading
+  locked_content: This content will be unlocked when you finish previous chapters
   male: Male
-  manual_evaluation_pending: Thanks for submitting your solution! It will be revised by the course teachers soon
+  manual_evaluation_pending: Thanks for submitting your solution! It will be revised
+    by the course teachers soon
   medal: Medal
+  message: Message
   message_count:
     one: 1 message
-    other: '%{count} messages'
-  message: Message
+    other: "%{count} messages"
   messages: Messages
   messages_error: Previous messages are unavailable. Please try again later.
-  more_messages: More
   moderator: Mentor
+  more_messages: More
   my_doubts: My doubts
   my_submissions: My Submissions
   name: Name
@@ -182,14 +207,14 @@ en:
   no_questions: It seems there isn't any question yet.
   no_submissions: It seems like you haven't tried to solve this exercise
   no_useful_result: Didn't find what you were looking for?
-  not_found_explanation: 'You may have mistyped the address or the page may have moved.'
+  not_found_explanation: You may have mistyped the address or the page may have moved.
   not_in_any_organizations: It seems you aren't in any organizations yet!
   notifications: Notifications
   notify_problem_with_exercise: Report a bug
   office: Office
   only_landscape_support: Please, rotate your tablet or cellphone to continue practicing
   opened: Open
-  opened_count: '%{count} opened'
+  opened_count: "%{count} opened"
   other: Other
   out_of_attempts: You've run out of attempts. You should proceed to the next exercise!
   output: Output
@@ -198,14 +223,15 @@ en:
   passed_with_warnings: It worked, but you can do better
   pending: pending
   pending_messages: You have unread messages
-  pending_messages_explanation: You can't send new solutions until you read pending messages
+  pending_messages_explanation: You can't send new solutions until you read pending
+    messages
   pending_review: Pending review
-  pending_review_count: '%{count} for review'
+  pending_review_count: "%{count} for review"
   permissions: Permissions
   please_fill_profile_data: Please complete your profile data to continue!
   please_validate: 'Please validate your data before continue:'
   previous_exercise: Previous
-  problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'
+  problem_with_exercise: "[Mumuki] Problem with exercise: %{title}"
   processing_your_solution: We are processing you solution
   profile: Profile
   profile_of: Profile of %{username}
@@ -235,12 +261,13 @@ en:
   skipped_description: You are doing very well, so you've passed this exercise.
   skipped_solve_anyway: Solve anyway
   solution: Solution
-  solved: Solved
-  solved_count: '%{count} solved'
   solve_doubts: Solve other's doubts
-  solve_more_exercises_to_level_up: Solve <span>number</span> more exercises to advance to the next level.
+  solve_more_exercises_to_level_up: Solve <span>number</span> more exercises to advance
+    to the next level.
   solve_your_doubts: Solve your doubts
   solve_your_doubts_teaser: Do you have any doubts?
+  solved: Solved
+  solved_count: "%{count} solved"
   something_went_wrong: Something went wrong!
   sort: Sort
   sources: Sources
@@ -272,19 +299,20 @@ en:
   to_opened: Reopen
   to_pending_review: Mark as solved
   to_solved: Mark as solved
-  unauthorized_explanation: You have no permissions for this content. Maybe you logged in with another account.
+  unauthorized_explanation: You have no permissions for this content. Maybe you logged
+    in with another account.
   undo_upvote: Undo upvote
   unlocked_medal_as_avatar: You earned this medal! You can now choose it as an avatar.
-  unspecified: I'd rather not say
-  unmeet_expectations: "Goals that weren't met"
+  unmeet_expectations: Goals that weren't met
   unprepared_organization_explanation: This path hasn't started yet.
+  unspecified: I'd rather not say
   unsubscribe: Unsubscribe
   unsubscribed_successfully: You have successfully unsubscribed from reminders.
   upload_solution: Upload Solution
-  uploading_solution: "Uploading solution"
+  uploading_solution: Uploading solution
   upvote: Upvote
-  upvotes_count_desc: Most voted
   upvotes_count_asc: Least voted
+  upvotes_count_desc: Most voted
   user: User
   user_data_updated: Your data was updated successfuly
   username: Username
@@ -292,10 +320,11 @@ en:
   want_permissions: The next user requires permissions
   we_miss_you: We miss you!
   welcome: Welcome to %{name}!
-  working: "Working"
+  working: Working
   wrong_answer: The answer is wrong
   years: years old
   you_earned: You earned
   you_must_sign_in_before_submitting: You must sign in before submitting your solutions
-  you_never_submitted_solutions: It seems that you've never submitted solutions since you created your account.
+  you_never_submitted_solutions: It seems that you've never submitted solutions since
+    you created your account.
   your_new_organization: your new organization
