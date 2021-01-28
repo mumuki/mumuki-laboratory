@@ -66,6 +66,7 @@ es-CL:
   disabled_explanation: Estás intentando acceder a un recurso que fue deshabilitado o eliminado de forma permanente
   disabled_organization_explanation: ¡Este recorrido ha finalizado!
   discussion_updated: Consulta actualizada
+  discussion_new_message: Mensaje nuevo en %{title}
   discussions: Consultas
   dont_leave_us: ¡No nos abandones! Aprender a programar es divertido. Sólo tienes que seguir practicando.
   download: "Descarga lo que hiciste"
@@ -86,6 +87,8 @@ es-CL:
       internal_server_error: ¡Ups! Algo no anduvo bien
       not_found: ¡Ups!  La página no existe
   exams: Exámenes
+  exam_authorization_request_updated: Hay novedades sobre tu inscripción a %{description}
+  exam_registration_open: ¡Ya puedes inscribirte a %{description}!
   exercise: Ejercicio
   exercise_count: ejercicios
   exercise_number: Ejercicio %{number}
@@ -168,6 +171,7 @@ es-CL:
   never: nunca
   new: Nuevo
   new_message: ¿Tienes dudas? ¡Levanta la mano!
+  new_message_received: Tienes un nuevo mensaje de %{sender}
   new_discussion: Nueva consulta
   new_message_placeholder: Escribe el mensaje para tu docente acá...
   next_exercise: Siguiente

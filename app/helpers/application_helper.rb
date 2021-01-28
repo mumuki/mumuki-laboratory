@@ -44,4 +44,8 @@ module ApplicationHelper
       <span class="#{'hidden' unless active} #{options[:class]}">#{active_text}</span>
     }.html_safe
   end
+
+  def notification_preview_for(target)
+    render "notifications/#{target.class.name.underscore}", { target: target }
+  end
 end

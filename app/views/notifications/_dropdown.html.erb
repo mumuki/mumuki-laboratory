@@ -1,0 +1,13 @@
+<div class="dropdown mu-navbar-element notifications-box <%= 'notifications-box-empty' unless has_notifications? %>">
+  <div id="notificationsDropdown" class="profile-dropdown" data-toggle="dropdown" aria-label="<%= t(:notifications) %>" role="menu" tabindex="0">
+    <i class="fas fa-bell fa-fw fa-2x mu-navbar-icon"></i>
+    <span class="badge badge-notifications"><%= notifications_count %></span>
+  </div>
+  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationsDropdown">
+    <% notifications.each do |it| %>
+      <li>
+        <%= notification_preview_for it.target %>
+      </li>
+    <% end %>
+  </ul>
+</div>

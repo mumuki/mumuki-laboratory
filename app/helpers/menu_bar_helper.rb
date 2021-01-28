@@ -39,8 +39,8 @@ module MenuBarHelper
     li_tag menu_item('sign-out-alt', :sign_out, logout_path(origin: url_for))
   end
 
-  def menu_item(icon, name, url)
-    link_to fixed_fa_icon(icon, text: t(name)), url, role: 'menuitem', tabindex: '-1'
+  def menu_item(icon, name, url, translation_params = {})
+    link_to fixed_fa_icon(icon, text: t(name, translation_params)), url, role: 'menuitem', tabindex: '-1'
   end
 
   def any_menu_bar_links?

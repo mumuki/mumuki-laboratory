@@ -65,6 +65,7 @@ en:
   disabled_explanation: You are trying to visit a permamently disabled or deleted resource
   disabled_organization_explanation: This path has already finished.
   discussion_description_placeholder: You can add more information regarding your doubt.
+  discussion_new_message: New message on %{title}
   discussion_updated: Discussion updated
   discussions: Discussions
   dont_leave_us: Don't leave us! Learning is fun. You just have to keep at it.
@@ -87,6 +88,8 @@ en:
       internal_server_error: Oops! Something went wrong
       not_found: Oops! Page was not found
   exams: Exams
+  exam_authorization_request_updated: Your registration to %{description} has been updated
+  exam_registration_open: Registrations open for %{description}!
   exercise: Exercise
   exercises: Exercises
   exercise_count: exercises
@@ -168,6 +171,7 @@ en:
   never: never
   new: New
   new_message_placeholder: Write a message for your teacher...
+  new_message_received: You have a new message from %{sender}
   next_exercise: Next
   next_lesson: 'Next Guide: %{name}'
   no_discussions: No discussions matched your search.
