@@ -3,7 +3,7 @@
     <i class="fas fa-bell fa-fw fa-2x mu-navbar-icon"></i>
     <span class="badge badge-notifications"><%= notifications_count %></span>
   </div>
-  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationsDropdown">
+  <ul id="notificationsPanel" class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationsDropdown">
     <% notifications.each do |it| %>
       <li>
         <%= notification_preview_for it.target %>
