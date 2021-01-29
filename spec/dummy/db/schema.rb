@@ -482,6 +482,7 @@ ActiveRecord::Schema.define(version: 20210119190204) do
     t.datetime "legal_terms_accepted_at"
     t.datetime "forum_terms_accepted_at"
     t.boolean "banned_from_forum"
+    t.boolean "uppercase_mode"
     t.index ["avatar_type", "avatar_id"], name: "index_users_on_avatar_type_and_avatar_id"
     t.index ["disabled_at"], name: "index_users_on_disabled_at"
     t.index ["last_organization_id"], name: "index_users_on_last_organization_id"
