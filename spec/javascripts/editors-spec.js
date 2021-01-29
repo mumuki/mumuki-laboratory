@@ -1,11 +1,10 @@
 describe('editors', () => {
-
   beforeEach(() => {
-    mumuki.CustomEditor.clearSources()
-  })
+    mumuki.CustomEditor.clearSources();
+  });
 
   it('has initially no sources', () => {
-    expect(mumuki.CustomEditor.hasSources).toBe(false)
+    expect(mumuki.CustomEditor.hasSources).toBe(false);
   });
 
   it('can add a custom source', () => {
@@ -26,7 +25,7 @@ describe('editors', () => {
       <div class="field form-group editor-code">
         <textarea class="form-control editor" name="solution[content]" id="solution_content">the standard solution</textarea>
       </div>
-    </form>`)
+    </form>`);
 
     mumuki.editors.addCustomSource({
       getContent() {
@@ -43,10 +42,9 @@ describe('editors', () => {
       <div class="field form-group editor-code">
         <textarea class="form-control editor" name="solution[content]" id="solution_content">the solution</textarea>
       </div>
-    </form>`)
+    </form>`);
     expect(mumuki.editors.getSubmission()).toEqual({"solution[content]":"the solution"});
   });
-
 
   it('reads the form if no sources and exercise is multifile', () => {
     $('body').html(`
@@ -63,7 +61,7 @@ describe('editors', () => {
           name="solution[content[receta.css]]"
           id="solution_content[receta.css]">some css</textarea>
       </div>
-    </form>`)
+    </form>`);
     expect(mumuki.editors.getSubmission()).toEqual({
       "solution[content[index.html]]": "some html",
       "solution[content[receta.css]]": "some css"
@@ -74,4 +72,4 @@ describe('editors', () => {
     $('body').html(``);
     expect(mumuki.editors.getSubmission()).toEqual({});
   });
-})
+});

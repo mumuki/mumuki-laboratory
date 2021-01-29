@@ -6,6 +6,5 @@ describe('results renderers', () => {
             <li>fix that</li>
           </ul>
         </div>`);
-  })
-
-})
+  });
+});

@@ -6,39 +6,39 @@ describe("SubmissionsStore", () => {
   const passedEmptyProgramSubmissionAndResult = { submission: emptyProgramSubmission, result: passedSubmissionResult };
 
   beforeEach(() => {
-    window.localStorage.clear()
+    window.localStorage.clear();
   });
 
   describe('getLastSubmission', () => {
     it("answers null if submission not present", () => {
-      expect(mumuki.SubmissionsStore.getLastSubmissionAndResult(1)).toBe(null)
+      expect(mumuki.SubmissionsStore.getLastSubmissionAndResult(1)).toBe(null);
     });
 
     it("answers the last submission result if already sent", () => {
-      mumuki.SubmissionsStore.setSubmissionResultFor(1, passedEmptyProgramSubmissionAndResult)
-      expect(mumuki.SubmissionsStore.getLastSubmissionAndResult(1)).toEqual(passedEmptyProgramSubmissionAndResult)
+      mumuki.SubmissionsStore.setSubmissionResultFor(1, passedEmptyProgramSubmissionAndResult);
+      expect(mumuki.SubmissionsStore.getLastSubmissionAndResult(1)).toEqual(passedEmptyProgramSubmissionAndResult);
     });
   });
 
   describe('getLastSubmissionStatus', () => {
     it("answers pending if submission not present", () => {
-      expect(mumuki.SubmissionsStore.getLastSubmissionStatus(1)).toBe('pending')
+      expect(mumuki.SubmissionsStore.getLastSubmissionStatus(1)).toBe('pending');
     });
 
     it("answers the last submission status if previously sent", () => {
-      mumuki.SubmissionsStore.setSubmissionResultFor(1, passedEmptyProgramSubmissionAndResult)
-      expect(mumuki.SubmissionsStore.getLastSubmissionStatus(1)).toBe('passed')
+      mumuki.SubmissionsStore.setSubmissionResultFor(1, passedEmptyProgramSubmissionAndResult);
+      expect(mumuki.SubmissionsStore.getLastSubmissionStatus(1)).toBe('passed');
     });
   });
 
   describe('getCachedResultFor', () => {
     it("answers null if submission not present", () => {
-      expect(mumuki.SubmissionsStore.getSubmissionResultFor(1, emptyProgramSubmission)).toBe(null)
+      expect(mumuki.SubmissionsStore.getSubmissionResultFor(1, emptyProgramSubmission)).toBe(null);
     });
 
     it("answers the last submission if previously sent", () => {
-      mumuki.SubmissionsStore.setSubmissionResultFor(1, passedEmptyProgramSubmissionAndResult)
-      expect(mumuki.SubmissionsStore.getSubmissionResultFor(1, emptyProgramSubmission)).toEqual(passedSubmissionResult)
+      mumuki.SubmissionsStore.setSubmissionResultFor(1, passedEmptyProgramSubmissionAndResult);
+      expect(mumuki.SubmissionsStore.getSubmissionResultFor(1, emptyProgramSubmission)).toEqual(passedSubmissionResult);
     });
   });
 
@@ -90,7 +90,7 @@ describe("SubmissionsStore", () => {
           {solution: {content: ''}},
           {solution: {content: 'bar'}})).toBe(false);
       });
-    })
+    });
 
     describe('classic submissons', () => {
       it("answers true when they are equal", () => {
@@ -122,7 +122,7 @@ describe("SubmissionsStore", () => {
           {'solution[content]': ''},
           {'solution[content]': 'bar'})).toBe(false);
       });
-    })
+    });
 
     describe('multifile submissions', () => {
       it("answers true when they are equal", () => {
@@ -172,6 +172,6 @@ describe("SubmissionsStore", () => {
             'solution[content[index.html]]': 'html foo'
           })).toBe(false);
       });
-    })
+    });
   });
-})
+});
