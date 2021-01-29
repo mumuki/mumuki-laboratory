@@ -101,6 +101,7 @@ es-CL:
     conectarte el <strong>%{date}</strong>. ¡Buena suerte!
   exam_authorization_request_created: "¡Tu inscripción al exámen se registró exitosamente!"
   exam_authorization_request_rejected: Tu solicitud fue rechazada.
+  exam_authorization_request_saved: "¡Tu inscripción al exámen se modificó exitosamente!"
   exam_authorization_request_updated: Hay novedades sobre tu inscripción a %{description}
   exam_registration_choose_exam: Selecciona día y horario en el que te gustaría rendir
     el exámen

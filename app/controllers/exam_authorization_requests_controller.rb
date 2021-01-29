@@ -7,21 +7,16 @@ class ExamAuthorizationRequestsController < ApplicationController
   def create
     authorization_request = ExamAuthorizationRequest.create! authorization_request_params
     current_user.read_notification! authorization_request.exam_registration
-    send_updated_notice!
-    redirect_to root_path
+    flash.notice = I18n.t :exam_authorization_request_created
   end
 
   def update
     ExamAuthorizationRequest.update params[:id], authorization_request_params
-    send_updated_notice!
+    flash.notice = I18n.t :exam_authorization_request_saved
     redirect_to root_path
   end
 
   private
-
-  def send_updated_notice!
-    flash.notice = I18n.t :exam_authorization_request_created
-  end
 
   def authorization_request_params
     params

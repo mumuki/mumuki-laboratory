@@ -1,7 +1,9 @@
 ---
 pt:
+  abort_explanation_html: "<li>Verifique se o seu programa não possui recursão ou
+    um loop infinito</li> <li>Verifique se você tem uma conexão com a internet</li>
+    <li>Espere um pouco e tente novamente</li>"
   aborted: Opa, não pudemos avaliar sua solução
-  abort_explanation_html: <li>Verifique se o seu programa não possui recursão ou um loop infinito</li> <li>Verifique se você tem uma conexão com a internet</li> <li>Espere um pouco e tente novamente</li>
   about: Detalhes
   accept: Aceitar
   accept_terms: Eu li e aceito ceito os termos e condições
@@ -13,39 +15,46 @@ pt:
   all: Todos
   and: e
   appendix: Apêndice
-  appendix_teaser: Você quer saber mais? <a href="%{link}"> Consulte o apêndice deste capítulo </a>
+  appendix_teaser: Você quer saber mais? <a href="%{link}"> Consulte o apêndice deste
+    capítulo </a>
   approved_message: Validado pelo mentor
-  are_you_sure: 'Tem certeza de que deseja %{action}?'
+  are_you_sure: Tem certeza de que deseja %{action}?
   ask_a_question: Faça uma pergunta!
   ask_community: Pergunte à comunidade
   ask_redirect: Você quer que nós o levemos para lá?
   ask_the_first_question: Faça a primeira pergunta!
   attempts_left:
-    zero: 'Você ficou sem tentativas'
-    one: '1 tentativa restante'
-    other: '%{count} tentativas restantes'
+    zero: Você ficou sem tentativas
+    one: 1 tentativa restante
+    other: "%{count} tentativas restantes"
   author: Autor
   authoring: Autores
-  authoring_note_html: 'Este guia foi desenvolvido por %{authors} nos termos do <a href = "https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"> Creative Commons License Share-Equal, 4.0 </a>.'
-  authoring_note_with_collaborators_html: 'Este guia foi desenvolvido por %{authors} e <a href="%{collaborators}" target="_blank">muitas outras pessoas </a>, nos termos do <a href = "https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"> Creative Commons License Share-Equal, 4.0 </a>.'
+  authoring_note_html: Este guia foi desenvolvido por %{authors} nos termos do <a
+    href = "https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"> Creative
+    Commons License Share-Equal, 4.0 </a>.
+  authoring_note_with_collaborators_html: Este guia foi desenvolvido por %{authors}
+    e <a href="%{collaborators}" target="_blank">muitas outras pessoas </a>, nos termos
+    do <a href = "https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+    Creative Commons License Share-Equal, 4.0 </a>.
   back_to_mumuki: Voltei para Mumuki!
   bibliotheca_ui: Biblioteca
   birthdate: Fecha de nacimiento
   blocked_forum_explanation: Você está no meio de um exame agora?
   cancel: Cancelar
   chapter: Capítulo
-  chapters: Capítulos
   chapter_finished_html: Você terminou %{chapter}! Parabéns!
   chapter_number: Capítulo %{number}
+  chapters: Capítulos
   choose_your_avatar: Escolha seu avatar
   classroom_ui: Sala de aula
   clear_console: Reiniciar o console
   closed: Fechado
-  closed_count: '%{count} fechado'
+  closed_count: "%{count} fechado"
   comment: Comentar
   confirm: Confirme
   confirm_reset: Você está prestes a reiniciar seu exercício. Você quer continuar?
-  confirm_restart: Você está prestes a apagar o seu progresso neste guia. Você quer continuar?
+  confirm_restart: Você está prestes a apagar o seu progresso neste guia. Você quer
+    continuar?
   console: Consola
   contact_administrator: Se você acha que é um erro, entre em contato com %{link}
   content: Conteúdo
@@ -63,36 +72,41 @@ pt:
   day: Dia
   days: Dias
   description: Descrição
-  destroy_message: excluir a mensagem
   destroy: Excluir
+  destroy_message: excluir a mensagem
   details: Detalhes
-  disabled_explanation: Você está tentando acessar um recurso que foi desativado ou removido permanentemente
+  disabled_explanation: Você está tentando acessar um recurso que foi desativado ou
+    removido permanentemente
   disabled_organization_explanation: Este curso terminou
-  discussion_description_placeholder: Você pode adicionar mais informações sobre sua dúvida
+  discussion_description_placeholder: Você pode adicionar mais informações sobre sua
+    dúvida
   discussion_new_message: Nova mensagem em %{title}
   discussion_updated: Consulta actualizada
   discussions: Consultas
   download: Faça o download do que você fez
   edit: Editar
   edit_profile: Editar perfil
-  editor_placeholder: ... Escreva sua solução aqui ...
+  editor_placeholder: "... Escreva sua solução aqui ..."
   email: E-mail
-  error_description: Isto é o que é conhecido como <span class = "error-link"> %{error} </ span>.
-  error_401: erro 401
-  error_403: erro 403
-  error_404: erro 404
-  error_410: erro 410
-  error_500: erro 500
-  errored: Opa! Sua solução não pode ser executada
   error:
     title:
       forbidden: Você não tem autorização para ver esse conteúdo
       gone: Opa! O conteúdo expirou
       internal_server_error: Opa! Algo não estava certo
       not_found: Opa! A página que você pesquisou não existe
-  exams: Examesca
+  error_401: erro 401
+  error_403: erro 403
+  error_404: erro 404
+  error_410: erro 410
+  error_500: erro 500
+  error_description: Isto é o que é conhecido como <span class = "error-link"> %{error}
+    </ span>.
+  errored: Opa! Sua solução não pode ser executada
+  exam_authorization_request_saved: "Seu registro de exame foi modificado com sucesso!"
+  exam_authorization_request_created: "Seu registro de exame foi salvo com sucesso!"
   exam_authorization_request_updated: Há notícias sobre seu registro para %{description}
-  exam_registration_open: ¡Inscrições abertas para %{description}!
+  exam_registration_open: "¡Inscrições abertas para %{description}!"
+  exams: Examesca
   exercise: Exercício
   exercise_count: exercícios
   exercise_number: Exercício %{number}
@@ -139,38 +153,41 @@ pt:
   language: Linguagem
   languages: Linguagens
   last_name: Sobrenome
-  last_seen: "Visto por %{name}"
+  last_seen: Visto por %{name}
   last_submission_date: Última solução
   latest_exercises: Últimos exercícios
   learning: Aprendendo
   lesson: Lição
-  lessons: Lições
   lesson_number: Lição %{number}
+  lessons: Lições
   let_us_know: Por favor, avise-nos!
   level: Nível
   level_up: Você sobe de nível!
   listen_statement: Ouça a declaração
-  loading: Carregando
   load_solution_into_console: Carregue a solução no console
-  locked_content: 'Este conteúdo será desbloqueado quando você terminar os capítulos anteriores'
+  loading: Carregando
+  locked_content: Este conteúdo será desbloqueado quando você terminar os capítulos
+    anteriores
   male: Masculino
-  manual_evaluation_pending: Obrigado por enviar sua solução! Seus professores irão corrigi-lo em breve
+  manual_evaluation_pending: Obrigado por enviar sua solução! Seus professores irão
+    corrigi-lo em breve
   medal: Medalha
+  message: Mensagem
   message_count:
     one: 1 mensagem
-    other: '%{count} mensagens'
-  message: Mensagem
+    other: "%{count} mensagens"
   messages: Mensagens
-  messages_error: As mensagens acima não estão disponíveis no momento. Eu tentei novamente mais tarde!
+  messages_error: As mensagens acima não estão disponíveis no momento. Eu tentei novamente
+    mais tarde!
   minute: minuto
   minutes: minutos
-  more_messages: Ver as mensagens anteriores
   moderator: Mentor
+  more_messages: Ver as mensagens anteriores
   my_doubts: Minhas duvidas
   name: Nome
-  navigation_continue: "Próximo %{kind}: %{sibling}"
+  navigation_continue: 'Próximo %{kind}: %{sibling}'
   navigation_next: Próximo %{kind}
-  navigation_revisit: "Próximo pendente: %{sibling}"
+  navigation_revisit: 'Próximo pendente: %{sibling}'
   need_a_hint: Dá-me uma dica!
   need_help: Não entendo, preciso de ajuda!
   never: nunca
@@ -196,24 +213,27 @@ pt:
   office: Secretariado
   only_landscape_support: Por favor, gire seu tablet ou celular para realizar exercícios
   opened: Aberto
-  opened_count: '%{count} aberto'
+  opened_count: "%{count} aberto"
   organizations: Organizações
   other: Outro
-  out_of_attempts: Você ficou sem tentativas. Você deve prosseguir para o próximo exercício!
+  out_of_attempts: Você ficou sem tentativas. Você deve prosseguir para o próximo
+    exercício!
   output: Sair
   overview: Visão global
   passed: Muito bem! Sua solução passou todos os testes
   passed_with_warnings: Sua solução funcionou, mas há coisas para melhorar
   pending: pendente
   pending_messages: Você tem mensagens não lidas
-  pending_messages_explanation: Seu professor deixou uma mensagem para você! Verifique antes de continuar a enviar soluções.
+  pending_messages_explanation: Seu professor deixou uma mensagem para você! Verifique
+    antes de continuar a enviar soluções.
   pending_review: Sendo revisto
-  pending_review_count: '%{count} sendo revisto'
+  pending_review_count: "%{count} sendo revisto"
   permissions: Permissões
   please_fill_profile_data: Preencha suas informações pessoais para continuar!
-  please_validate: Você está prestes a entrar no curso. Para oferecer uma experiência melhor, valide que seus dados abaixo sejam reais e corretos.
+  please_validate: Você está prestes a entrar no curso. Para oferecer uma experiência
+    melhor, valide que seus dados abaixo sejam reais e corretos.
   previous_exercise: Anterior
-  problem_with_exercise: '[Mumuki] Erro com exercício %{title}'
+  problem_with_exercise: "[Mumuki] Erro com exercício %{title}"
   processing_your_solution: Estamos processando sua solução
   profile: Perfil
   profile_of: Perfil de %{username}
@@ -243,13 +263,14 @@ pt:
   skipped_description: Você está aprendendo muito bem e passou neste exercício.
   skipped_solve_anyway: Resolver mesmo assim
   solution: Solução
-  solved: Resolvido
-  solved_count: '%{count} resolvido'
-  solved_exercises: Exercícios resolvidos
   solve_doubts: Resolvi dúvidas
-  solve_more_exercises_to_level_up: Resolva mais <span>number</span> exercícios para avançar para o próximo nível.
+  solve_more_exercises_to_level_up: Resolva mais <span>number</span> exercícios para
+    avançar para o próximo nível.
   solve_your_doubts: Consulte suas dúvidas
   solve_your_doubts_teaser: Você tem alguma dúvida?
+  solved: Resolvido
+  solved_count: "%{count} resolvido"
+  solved_exercises: Exercícios resolvidos
   something_went_wrong: Oops!, Algo não estava certo ...
   sort: Ordenar
   sources: Bibliografia
@@ -273,19 +294,21 @@ pt:
   terms_and_conditions_continue_disclaimer: Ao continuar, você concorda %{terms_link}
   terms_and_conditions_must_be_accepted: Você deve aceitar os Termos e Condições
   test_results: Resultados do teste
-  time_since: "há %{time}"
   time_left: Te deixam
+  time_since: há %{time}
   title: Título
   to_closed: Fechar
   to_opened: Reabrir
   to_pending_review: Marcar como resolvida
   to_solved: Marcar como resolvida
-  unauthorized_explanation: Opa! Isso é o que é conhecido como %{error}, ou seja, você não fez logon.
+  unauthorized_explanation: Opa! Isso é o que é conhecido como %{error}, ou seja,
+    você não fez logon.
   uncategorized: Não classificado
-  unlocked_medal_as_avatar: Você ganhou essa medalha! Agora você pode escolhê-la como avatar.
-  unspecified: Eu preferiria não dizer
+  unlocked_medal_as_avatar: Você ganhou essa medalha! Agora você pode escolhê-la como
+    avatar.
   unmeet_expectations: Objetivos que não foram atendidos
   unprepared_organization_explanation: Este curso ainda não começou
+  unspecified: Eu preferiria não dizer
   unsubscribe: Cancelar subscrição
   upload_solution: Carregar solução
   uploading_solution: Uploading solution
@@ -299,5 +322,6 @@ pt:
   wrong_answer: A resposta não é correta
   years: anos
   you_earned: Você ganhou
-  you_must_sign_in_before_submitting: Você deve fazer o login antes de começar a enviar suas soluções
+  you_must_sign_in_before_submitting: Você deve fazer o login antes de começar a enviar
+    suas soluções
   your_new_organization: sua nova organização

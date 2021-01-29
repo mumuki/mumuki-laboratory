@@ -103,7 +103,8 @@ en:
   exam_authorization_request_approved_html: Your request was approved, don't forget
     to log in at <strong>%{date}</strong>. Good luck!
   exam_authorization_request_created: Your registration to the exam has been saved!
-  exam_authorization_request_rejected: Tu solicitud fue rechazada.
+  exam_authorization_request_rejected: Your request was rejected.
+  exam_authorization_request_saved: Your registration to the exam has been updated!
   exam_authorization_request_updated: Your registration to %{description} has been
     updated
   exam_registration_choose_exam: Choose date and time to attend to the exam
