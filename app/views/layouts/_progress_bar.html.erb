@@ -2,13 +2,15 @@
   <% assignments = guide.assignments_for(current_user) %>
   <% assignments.each do |assignment| %>
     <% exercise = assignment.exercise %>
-    <a
-      <%= turbolinks_enable_for exercise %>
-      href="<%= exercise_path(exercise)%>"
-      aria-label="<%= exercise.navigable_name %>"
-      title="<%= exercise.navigable_name %>"
-      data-mu-exercise-id="<%= exercise.id %>"
-      class="<%= class_for_progress_list_item(assignment, exercise == current)%>">
-    </a>
+    <% cache [:progress_list_item, exercise, assignment.status, Organization.current, exercise == current] do %>
+      <a
+        <%= turbolinks_enable_for exercise %>
+        href="<%= exercise_path(exercise)%>"
+        aria-label="<%= exercise.navigable_name %>"
+        title="<%= exercise.navigable_name %>"
+        data-mu-exercise-id="<%= exercise.id %>"
+        class="<%= class_for_progress_list_item(assignment, exercise == current)%>">
+      </a>
+    <% end %>
   <% end %>
 </div>
