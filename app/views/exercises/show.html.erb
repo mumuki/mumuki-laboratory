@@ -30,7 +30,7 @@
 
 <div>
   <% if @stats && standalone_mode? %>
-      <%= render partial: 'layouts/progress_bar', locals: {actual: @exercise, guide: @exercise.guide, stats: @stats} %>
+      <%= render partial: 'layouts/progress_bar', locals: {current: @exercise, guide: @exercise.guide, stats: @stats} %>
   <% end %>
 </div>
 

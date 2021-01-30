@@ -8,7 +8,7 @@
       aria-label="<%= exercise.navigable_name %>"
       title="<%= exercise.navigable_name %>"
       data-mu-exercise-id="<%= exercise.id %>"
-      class="<%= class_for_progress_list_item(assignment, exercise == actual)%>">
+      class="<%= class_for_progress_list_item(assignment, exercise == current)%>">
     </a>
   <% end %>
 </div>
