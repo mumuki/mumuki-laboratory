@@ -6,10 +6,8 @@
 
 <%= render partial: 'layouts/authoring', locals: {guide: @guide} %>
 
-<% @stats = @exercise.stats_for(current_user) %>
-
-<% if @exercise.navigable_parent.timed? && !current_user.teacher? %>
-  <%= render partial: 'layouts/timer', locals: {end_time: @exercise.navigable_parent.real_end_time(current_user)} %>
+<% if @navigable_parent.timed? && !current_user.teacher? %>
+  <%= render partial: 'layouts/timer', locals: {end_time: @navigable_parent.real_end_time(current_user)} %>
 <% end %>
 
 <% unless @exercise.input_kids? %>
@@ -29,9 +27,7 @@
 <% end %>
 
 <div>
-  <% if @stats && standalone_mode? %>
-      <%= render partial: 'layouts/progress_bar', locals: {current: @exercise, guide: @exercise.guide, stats: @stats} %>
-  <% end %>
+  <%= render partial: 'layouts/progress_bar' if current_user? && standalone_mode? %>
 </div>
 
 <% content_for :assignment do %>

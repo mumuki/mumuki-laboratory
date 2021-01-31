@@ -3,8 +3,10 @@ class ExercisesController < ApplicationController
   include Mumuki::Laboratory::Controllers::ExerciseSeed
   include Mumuki::Laboratory::Controllers::ImmersiveNavigation
 
-  before_action :set_guide!, only: :show
+  before_action :set_parents!, only: :show
+  before_action :set_progress!, only: :show, if: :current_user?
   before_action :set_assignment!, only: :show, if: :current_user?
+
   before_action :validate_accessible!, only: :show
   before_action :start!, only: :show
 
@@ -20,15 +22,15 @@ class ExercisesController < ApplicationController
   private
 
   def subject
-    @exercise ||= Exercise.find_by(id: params[:id])
+    @exercise ||= Exercise.find(params[:id])
   end
 
   def accessible_subject
-    subject.navigable_parent
+    @navigable_parent
   end
 
   def start!
-    @exercise.navigable_parent.start! current_user
+    @navigable_parent.start! current_user
   end
 
   def set_assignment!
@@ -38,9 +40,14 @@ class ExercisesController < ApplicationController
     @default_content = @assignment.default_content
   end
 
-  def set_guide!
-    raise Mumuki::Domain::NotFoundError if @exercise.nil?
+  def set_parents!
     @guide = @exercise.guide
+    @navigable_parent = @exercise.navigable_parent
+  end
+
+  def set_progress!
+    @stats = @guide.stats_for(current_user)
+    @assignments = @guide.assignments_for(current_user)
   end
 
   def exercise_params
