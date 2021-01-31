@@ -1,9 +1,10 @@
 class ExercisesController < ApplicationController
+  before_action :set_parents!, only: :show
+
   include Mumuki::Laboratory::Controllers::Content
   include Mumuki::Laboratory::Controllers::ExerciseSeed
   include Mumuki::Laboratory::Controllers::ImmersiveNavigation
 
-  before_action :set_parents!, only: :show
   before_action :set_progress!, only: :show, if: :current_user?
   before_action :set_assignment!, only: :show, if: :current_user?
 
@@ -55,5 +56,13 @@ class ExercisesController < ApplicationController
              :extra, :language_id, :hint, :tag_list,
              :guide_id, :number,
              :layout, :expectations_yaml)
+  end
+
+
+  def subject_used_here?
+    # overriden because of performance reasons
+    # this method will be called only on show, so it is safe
+    # to check for navigable_parent presence
+    @navigable_parent.present?
   end
 end
