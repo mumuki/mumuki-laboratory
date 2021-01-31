@@ -46,8 +46,7 @@ class ExercisesController < ApplicationController
   end
 
   def set_progress!
-    @stats = @guide.stats_for(current_user)
-    @assignments = @guide.assignments_for(current_user)
+    @assignments, @stats = @guide.assignments_and_stats_for(current_user)
   end
 
   def exercise_params
