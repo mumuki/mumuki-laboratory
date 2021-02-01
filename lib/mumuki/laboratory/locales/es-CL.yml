@@ -13,6 +13,7 @@ es-CL:
   appendix_teaser: ¿Quieres saber más? <a href="%{link}">Consulta el apéndice de este capítulo</a>
   are_you_sure: '¿Estás seguro que quieres %{action}?'
   ask_a_question: ¡Haz una pregunta!
+  approved_messages: validados
   ask_community: Pregunta a la comunidad
   ask_redirect: ¿Quieres que te llevemos ahí?
   ask_the_first_question: ¡Haz la primera pregunta!
@@ -269,6 +270,8 @@ es-CL:
   solve_your_doubts: Consulta tus dudas
   solve_your_doubts_teaser: ¿Tienes alguna consulta?
   something_went_wrong: ¡Ups!, algo no anduvo bien...
+  solved_exercises_count: resueltos
+  solved_exercises_percentage: realizado
   sort: Ordenar
   sources: Bibliografía
   start_lesson: ¡Comienza esta lección!

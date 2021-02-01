@@ -17,6 +17,7 @@ es:
   approved_message: Validado por mentor
   are_you_sure: '¿Estás seguro que querés %{action}?'
   ask_a_question: ¡Hacé una pregunta!
+  approved_messages: validados
   ask_community: Preguntá a la comunidad
   ask_redirect: ¿Querés que te llevemos ahí?
   ask_the_first_question: ¡Hacé la primera pregunta!
@@ -284,6 +285,8 @@ es:
   solve_your_doubts: Consultá tus dudas
   solve_your_doubts_teaser: ¿Tenés alguna consulta?
   something_went_wrong: ¡Ups!, algo no anduvo bien...
+  solved_exercises_count: resueltos
+  solved_exercises_percentage: realizado
   sort: Ordenar
   sources: Bibliografía
   start_lesson: ¡Comenzá esta lección!

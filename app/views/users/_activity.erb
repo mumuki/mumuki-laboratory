@@ -1,0 +1,34 @@
+<style>
+  .user-activity-info {
+    padding: 0.5em;
+  }
+</style>
+
+<div class="row mu-tab-body">
+  <div class="col-md-6">
+    <%= render partial: 'activity_indicator',
+               locals: {
+                 title: t(:exercises),
+                 stats: [{name: t(:solved_exercises_count), value: @activity.exercises.solved_count},
+                         {name: t(:solved_exercises_percentage), value: @activity.exercises.solved_percentage}]
+               } %>
+
+    <%= render partial: 'activity_indicator',
+               locals: {
+                 title: t(:forum),
+                 stats: [{name: t(:messages), value: @activity.messages.count},
+                         {name: t(:approved_messages), value: @activity.messages.approved}]
+               } %>
+  </div>
+
+  <div class="col-md-3 col-md-offset-3">
+    <ul class="nav nav-pills nav-stacked">
+      <li class="active"><a href="#">Total</a></li>
+      <li><a href="#">Semana 01/02</a></li>
+      <li><a href="#">Semana 25/01</a></li>
+      <li><a href="#">Semana 18/01</a></li>
+      <li><a href="#">Semana 11/01</a></li>
+      <li><a href="#">Semana 04/01</a></li>
+    </ul>
+  </div>
+</div>

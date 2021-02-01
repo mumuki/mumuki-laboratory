@@ -15,7 +15,12 @@ pt:
   appendix: Apêndice
   appendix_teaser: Você quer saber mais? <a href="%{link}"> Consulte o apêndice deste capítulo </a>
   approved_message: Validado pelo mentor
+<<<<<<< HEAD
   are_you_sure: 'Tem certeza de que deseja %{action}?'
+=======
+  approved_messages: validados
+  are_you_sure: Tem certeza de que deseja %{action}?
+>>>>>>> Create Activity tab with fake data
   ask_a_question: Faça uma pergunta!
   ask_community: Pergunte à comunidade
   ask_redirect: Você quer que nós o levemos para lá?
@@ -96,9 +101,13 @@ pt:
   error_500: erro 500
   error_description: Isto é o que é conhecido como <span class = "error-link"> %{error} </ span>.
   errored: Opa! Sua solução não pode ser executada
+<<<<<<< HEAD
   exam_authorization_request_approved_html: Sua solicitação foi aprovada, não se esqueça de conectar em <strong>%{date}</strong>. Boa sorte!
   exam_authorization_request_created: Seu registro de exame foi salvo com sucesso!
   exam_authorization_request_rejected: Seu pedido foi rejeitado.
+=======
+  exam_authorization_request_created: Seu registro de exame foi salvo com sucesso!
+>>>>>>> Create Activity tab with fake data
   exam_authorization_request_saved: Seu registro de exame foi modificado com sucesso!
   exam_authorization_request_updated: Há notícias sobre seu registro para %{description}
   exam_registration_choose_exam: Selecione o dia e a hora em que gostaria de fazer o exame
@@ -270,6 +279,14 @@ pt:
   solve_more_exercises_to_level_up: Resolva mais <span>number</span> exercícios para avançar para o próximo nível.
   solve_your_doubts: Consulte suas dúvidas
   solve_your_doubts_teaser: Você tem alguma dúvida?
+<<<<<<< HEAD
+=======
+  solved: Resolvido
+  solved_count: "%{count} resolvido"
+  solved_exercises: Exercícios resolvidos
+  solved_exercises_count: resolvidos
+  solved_exercises_percentage: realizado
+>>>>>>> Create Activity tab with fake data
   something_went_wrong: Oops!, Algo não estava certo ...
   sort: Ordenar
   sources: Bibliografia
