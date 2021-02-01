@@ -3,8 +3,6 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
 
   included do
     include ProgressBarHelper, ExerciseInputHelper
-
-    before_action :set_guide_previously_done!
   end
 
   def render_results_json(assignment, results = {})
@@ -56,10 +54,7 @@ module Mumuki::Laboratory::Controllers::ResultsRendering
   end
 
   def guide_finished_by_solution?
-    !@guide_previously_done && @exercise.guide_done_for?(current_user)
+    @stats.almost_but_not_done? && @exercise.guide_done_for?(current_user)
   end
 
-  def set_guide_previously_done!
-    @guide_previously_done = @exercise.guide_done_for?(current_user)
-  end
 end

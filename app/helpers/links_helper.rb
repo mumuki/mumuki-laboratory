@@ -1,8 +1,10 @@
 module LinksHelper
 
   def link_to_path_element(element, options={})
-    name = extract_name element, options
-    link_to name, element, options
+    mode = options[:mode]
+    Rails.cache.fetch [:link, element, mode, Organization.current] do
+      link_to extract_name(element, mode), element
+    end
   end
 
   def link_to_error_404
@@ -65,15 +67,8 @@ module LinksHelper
 
   private
 
-  def extract_name(named, options)
-    case options.delete(:mode)
-      when :plain
-        named.name
-      when :friendly
-        named.friendly
-      else
-        named.navigable_name
-    end
+  def extract_name(named, mode )
+    mode == :plain ? named.name : named.navigable_name
   end
 
   def edit_link_to_bibliotheca

@@ -1,12 +1,15 @@
 <div class="progress-list-flex">
-  <% guide.exercises.each do |e| %>
-    <a
-      <%= turbolinks_enable_for e %>
-      href="<%= exercise_path(e)%>"
-      aria-label="<%= e.navigable_name %>"
-      title="<%= e.navigable_name %>"
-      data-mu-exercise-id="<%= e.id %>"
-      class="<%= class_for_progress_list_item(e, e == actual)%>">
-    </a>
+  <% @assignments.each do |assignment| %>
+    <% exercise = assignment.exercise %>
+    <% cache [:progress_list_item, exercise, assignment.status, Organization.current, exercise == @exercise] do %>
+      <a
+        <%= turbolinks_enable_for exercise %>
+        href="<%= exercise_path(exercise)%>"
+        aria-label="<%= exercise.navigable_name %>"
+        title="<%= exercise.navigable_name %>"
+        data-mu-exercise-id="<%= exercise.id %>"
+        class="<%= class_for_progress_list_item(assignment, exercise == @exercise)%>">
+      </a>
+    <% end %>
   <% end %>
 </div>

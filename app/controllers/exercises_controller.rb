@@ -1,10 +1,13 @@
 class ExercisesController < ApplicationController
+  before_action :set_parents!, only: :show
+
   include Mumuki::Laboratory::Controllers::Content
   include Mumuki::Laboratory::Controllers::ExerciseSeed
   include Mumuki::Laboratory::Controllers::ImmersiveNavigation
 
-  before_action :set_guide!, only: :show
+  before_action :set_progress!, only: :show, if: :current_user?
   before_action :set_assignment!, only: :show, if: :current_user?
+
   before_action :validate_accessible!, only: :show
   before_action :start!, only: :show
 
@@ -20,15 +23,15 @@ class ExercisesController < ApplicationController
   private
 
   def subject
-    @exercise ||= Exercise.find_by(id: params[:id])
+    @exercise ||= Exercise.find(params[:id])
   end
 
   def accessible_subject
-    subject.navigable_parent
+    @navigable_parent
   end
 
   def start!
-    @exercise.navigable_parent.start! current_user
+    @navigable_parent.start! current_user
   end
 
   def set_assignment!
@@ -38,9 +41,13 @@ class ExercisesController < ApplicationController
     @default_content = @assignment.default_content
   end
 
-  def set_guide!
-    raise Mumuki::Domain::NotFoundError if @exercise.nil?
+  def set_parents!
     @guide = @exercise.guide
+    @navigable_parent = @exercise.navigable_parent
+  end
+
+  def set_progress!
+    @assignments, @stats = @guide.assignments_and_stats_for(current_user)
   end
 
   def exercise_params
@@ -49,5 +56,13 @@ class ExercisesController < ApplicationController
              :extra, :language_id, :hint, :tag_list,
              :guide_id, :number,
              :layout, :expectations_yaml)
+  end
+
+
+  def subject_used_here?
+    # overriden because of performance reasons
+    # this method will be called only on show, so it is safe
+    # to check for navigable_parent presence
+    @navigable_parent.present?
   end
 end

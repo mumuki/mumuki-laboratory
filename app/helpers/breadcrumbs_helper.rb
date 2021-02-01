@@ -2,7 +2,9 @@ module BreadcrumbsHelper
   include DiscussionsHelper
 
   def breadcrumbs(e, extra=nil)
-    breadcrumbs0(e.navigable_name, e, extra, 'last')
+    Rails.cache.fetch [:breadcrumb, e, extra, Organization.current] do
+      breadcrumbs0(e.navigable_name, e, extra, 'last')
+    end
   end
 
   def header_breadcrumbs(link_for_organization: true)
