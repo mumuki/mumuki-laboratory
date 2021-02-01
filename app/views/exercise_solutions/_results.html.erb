@@ -1,8 +1,3 @@
-<%
-  @guide = @exercise.guide
-  @stats = @guide.stats_for(current_user)
-%>
-
 <% if assignment.results_hidden? %>
   <%= render partial: 'exercise_solutions/results_hidden', locals: {assignment: assignment} %>
 <% elsif !assignment.attempts_left? %>
