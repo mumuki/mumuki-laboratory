@@ -2,7 +2,7 @@
 
 <%= render partial: 'layouts/authoring', locals: {guide: @guide} %>
 
-<% if subject.timed? && subject.started?(current_user) && !current_user.teacher? %>
+<% if subject.timed? && @stats.started? && !current_user.teacher? %>
   <%= render partial: 'layouts/timer', locals: {end_time: subject.real_end_time(current_user)} %>
 <% end %>
 
@@ -10,10 +10,10 @@
 
 <h3>
   <%= t :exercises %>
-  <%= restart_guide_link(@guide) if current_user && @guide.started?(current_user) && @guide.resettable? %>
+  <%= restart_guide_link(@guide) if current_user && @stats.started? && @guide.resettable? %>
 </h3>
 
-<%= render partial: 'layouts/progress_listing', locals: {exercises: @guide.exercises} %>
+<%= render partial: 'layouts/progress_listing', locals: { guide: @guide } %>
 
 <% if @stats&.done? %>
   <div class="text-box">
