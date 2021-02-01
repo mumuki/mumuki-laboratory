@@ -13,6 +13,7 @@ feature 'Notifications Flow', organization_workspace: :test do
   end
 
   def find_notification_number(number)
+    find('#notificationsDropdown').click
     find "#notificationsPanel li:nth-child(#{number}) a"
   end
 
