@@ -111,6 +111,7 @@ en:
   failed: Oops, something went wrong
   feedback: Feedback
   female: Female
+  file_exceeds_max_size: "File size should not exceed %{size_kb}kb. Please select another file."
   finish: Finish
   first_name: First Name
   forbidden_explanation: Please verify you have logged in with the right account

@@ -1,7 +1,13 @@
 <div class="form-group">
-  <textarea id="solution_content" type="text" name="solution[content]" style="display: none"></textarea>
-  <input id="upload-input" type="file" class="upload submission-control" accept=".<%= @exercise.language.extension %>" />
-  <label id="mu-upload-label" for="upload-input" class="btn btn-success">
-    <%= fa_icon(:upload, text: t(:select_file), id: "mu-upload-text") %>
-  </label>
+  <% @max_file_size = 256000 %>
+
+  <textarea id="solution_content" type="text" name="solution[content]" class="hidden"></textarea>
+  <input id="upload-input" type="file" class="upload submission-control hidden" mu-upload-file-limit=<%= @max_file_size %> accept=".<%= @exercise.language.extension %>" />
+  <div>
+    <label id="mu-upload-label" for="upload-input" class="btn btn-success">
+      <%= fa_icon(:upload, text: t(:select_file), id: "mu-upload-text") %>
+    </label>
+    <div id="mu-upload-file-limit-exceeded" class="hidden">
+      <%= fa_icon("exclamation-triangle", text: t(:file_exceeds_max_size, size_kb: (@max_file_size / 1000))) %></div>
+  </div>
 </div>

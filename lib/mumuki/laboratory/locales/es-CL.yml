@@ -109,6 +109,7 @@ es-CL:
   failed: Tu solución no pasó las pruebas
   feedback: Problemas que encontramos
   female: Mujer
+  file_exceeds_max_size: "El tamaño de archivo no debe exceder %{size_kb}kb. Por favor selecciona otro archivo."
   finish: Terminar
   first_name: Nombre
   forbidden_explanation: ¿Puede que hayas ingresado con una cuenta incorrecta?
