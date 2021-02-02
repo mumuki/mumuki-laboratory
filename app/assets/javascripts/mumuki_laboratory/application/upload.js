@@ -1,5 +1,5 @@
 mumuki.load(() => {
-  let $uploadInput = $('#upload-input');
+  let $uploadInput = $('#mu-upload-input');
   let maxFileSize = $uploadInput.attr("mu-upload-file-limit");
   let $uploadFileLimitExceeded = $('#mu-upload-file-limit-exceeded');
   let $uploadLabel = $('#mu-upload-label span');
