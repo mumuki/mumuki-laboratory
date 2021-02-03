@@ -62,6 +62,8 @@ Rails.application.routes.draw do
 
       # Notification subscriptions
       get :unsubscribe
+
+      get :messages
     end
 
     resources :messages, only: [:index, :create]
