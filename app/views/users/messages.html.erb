@@ -1,0 +1,24 @@
+<%= content_for :breadcrumbs do %>
+  <%= breadcrumbs @user %>
+<% end %>
+
+<%= render partial: 'layouts/user_menu' %>
+
+<div class="col-md-9 mu-tab-body">
+  <% if @messages.empty? %>
+    <div class="mu-tab-body">
+      <%= t :no_messages %>
+    </div>
+  <% else %>
+    <table class="table table-striped">
+      <% @messages.each do |message| %>
+        <tr>
+          <td><%= icon_for_read(message.read?) %></td>
+          <td><%= link_to message.exercise.name, exercise_path(message.exercise.id) %></td>
+          <td><%= mail_to message.sender %></td>
+          <td><%= time_ago_in_words message.created_at %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>
