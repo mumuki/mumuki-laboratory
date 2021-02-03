@@ -64,6 +64,7 @@ Rails.application.routes.draw do
       get :unsubscribe
 
       get :messages
+      get :discussions
     end
 
     resources :messages, only: [:index, :create]

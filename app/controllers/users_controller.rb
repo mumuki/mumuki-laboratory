@@ -5,10 +5,6 @@ class UsersController < ApplicationController
   before_action :set_user!
   skip_before_action :validate_accepted_role_terms!
 
-  def show
-    @watched_discussions = current_user.watched_discussions_in_organization
-  end
-
   def update
     current_user.update_and_notify! user_params
     current_user.accept_profile_terms!
@@ -28,6 +24,10 @@ class UsersController < ApplicationController
 
   def messages
     @messages ||= current_user.messages_in_organization
+  end
+
+  def discussions
+    @watched_discussions = current_user.watched_discussions_in_organization
   end
 
   def unsubscribe
