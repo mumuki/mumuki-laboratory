@@ -104,7 +104,7 @@ feature 'Profile Flow', organization_workspace: :test do
 
     context 'with no messages' do
 
-      scenario 'visit messages tab' do
+      pending 'visit messages tab' do
         visit "/user#messages"
 
         expect(page).to have_text('It seems you don\'t have any messages yet!')
@@ -112,7 +112,7 @@ feature 'Profile Flow', organization_workspace: :test do
     end
 
     context 'with messages' do
-      scenario 'visit messages tab' do
+      pending 'visit messages tab' do
         Organization.find_by_name('test').switch!
         problem.submit_solution! user, {content: 'something'}
         Message.import_from_resource_h! message
