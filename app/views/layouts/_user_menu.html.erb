@@ -8,6 +8,19 @@
         <%= profile_user_menu_link %>
       </div>
     </div>
+    <div class="mu-user-menu-section">
+      <div class="mu-user-menu-header">
+        <%= t(:messages) %>
+      </div>
+      <div class="mu-user-menu-item">
+        <%= messages_user_menu_link %>
+      </div>
+      <% if @watched_discussions.present? %>
+        <div class="mu-user-menu-item">
+          <%= discussions_user_menu_link %>
+        </div>
+      <% end %>
+    </div>
   </div>
   <div class="mu-user-menu-vertical-divider hidden-sm hidden-xs"></div>
 </div>
