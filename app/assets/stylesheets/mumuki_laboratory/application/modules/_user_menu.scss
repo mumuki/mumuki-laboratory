@@ -17,6 +17,10 @@
 .mu-user-menu-item {
   font-size: 17px;
   margin-bottom: 5px;
+
+  a {
+    color: $brand-primary;
+  }
 }
 
 .mu-user-menu-vertical-divider {
