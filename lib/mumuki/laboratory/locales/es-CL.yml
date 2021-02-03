@@ -171,6 +171,7 @@ es-CL:
   moderation: Mentoría
   moderator: Mentor
   more_messages: Ver mensajes anteriores
+  my_account: Mi cuenta
   my_doubts: Mis consultas
   name: Nombre
   navigation_continue: 'Siguiente %{kind}: %{sibling}'

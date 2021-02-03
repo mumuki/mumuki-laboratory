@@ -176,6 +176,7 @@ pt:
   moderation: Mentoria
   moderator: Mentor
   more_messages: Ver as mensagens anteriores
+  my_account: Minha conta
   my_doubts: Minhas duvidas
   name: Nome
   navigation_continue: "Próximo %{kind}: %{sibling}"
