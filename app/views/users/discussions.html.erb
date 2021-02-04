@@ -5,6 +5,9 @@
 <%= render partial: 'layouts/user_menu' %>
 
 <div class="col-md-9 mu-tab-body">
+  <div class="mu-user-header">
+    <h1><%= t(:discussions) %></h1>
+  </div>
   <table class="table table-striped">
     <% @watched_discussions.each do |discussion| %>
       <tr>
