@@ -15,7 +15,7 @@
       <div class="mu-user-menu-item">
         <%= messages_user_menu_link %>
       </div>
-      <% if @watched_discussions.present? %>
+      <% if should_show_discussions? %>
         <div class="mu-user-menu-item">
           <%= discussions_user_menu_link %>
         </div>
