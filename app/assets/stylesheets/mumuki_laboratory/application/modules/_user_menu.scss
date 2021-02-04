@@ -23,7 +23,14 @@
   }
 }
 
-.mu-user-menu-vertical-divider {
-  border-left: 3px solid $mu-color-separator;
+.mu-user-menu-divider {
   display: inline-block;
+
+  &.vertical {
+    border-left: 3px solid $mu-color-separator;
+  }
+
+  &.horizontal {
+    border-top: 3px solid $mu-color-separator;
+  }
 }
