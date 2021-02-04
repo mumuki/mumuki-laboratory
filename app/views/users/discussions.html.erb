@@ -8,15 +8,21 @@
   <div class="mu-user-header">
     <h1><%= t(:discussions) %></h1>
   </div>
-  <table class="table table-striped">
-    <% @watched_discussions.each do |discussion| %>
-      <tr>
-        <td>
-          <%= icon_for_read(discussion.read_by?(@user)) %>
-        </td>
-        <td><%= link_to discussion.item.name, item_discussion_path(discussion) %></td>
-        <td><%= time_ago_in_words discussion.last_message_date %></td>
-      </tr>
-    <% end %>
-  </table>
+  <% if @watched_discussions.empty? %>
+    <div class="mu-tab-body">
+      <%= t :discussions_will_be_here %>
+    </div>
+  <% else %>
+    <table class="table table-striped">
+      <% @watched_discussions.each do |discussion| %>
+        <tr>
+          <td>
+            <%= icon_for_read(discussion.read_by?(@user)) %>
+          </td>
+          <td><%= link_to discussion.item.name, item_discussion_path(discussion) %></td>
+          <td><%= time_ago_in_words discussion.last_message_date %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
 </div>

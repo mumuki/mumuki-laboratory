@@ -75,6 +75,7 @@ es:
   discussion_updated: Consulta actualizada
   new_discussion_message: Mensaje nuevo en %{title}
   discussions: Consultas
+  discussions_will_be_here: Las preguntas que realices en el espacio de consultas aparecerán aquí.
   dont_leave_us: ¡No nos abandones! Aprender a programar es divertido. Sólo tenés que seguir practicando.
   download: "Descargá lo que hiciste"
   edit: Editar

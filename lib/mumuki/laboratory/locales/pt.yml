@@ -72,6 +72,7 @@ pt:
   new_discussion_message: Nova mensagem em %{title}
   discussion_updated: Consulta actualizada
   discussions: Consultas
+  discussions_will_be_here: As perguntas que você fizer no espaço de consulta aparecerão aqui.
   download: Faça o download do que você fez
   edit: Editar
   edit_profile: Editar perfil

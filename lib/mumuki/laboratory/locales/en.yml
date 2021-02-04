@@ -68,6 +68,7 @@ en:
   new_discussion_message: New message on %{title}
   discussion_updated: Discussion updated
   discussions: Discussions
+  discussions_will_be_here: Your posts in the forum will appear here.
   dont_leave_us: Don't leave us! Learning is fun. You just have to keep at it.
   download: Download your solution
   edit: Edit
