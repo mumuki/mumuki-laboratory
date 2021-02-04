@@ -1,0 +1,46 @@
+<style>
+
+  .mu-certificate-box {
+    overflow: hidden;
+    height: 210mm;
+    width: 297mm;
+    max-height: 210mm;
+    max-width: 297mm;
+    min-height: 210mm;
+    min-width: 297mm;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+    border: 1px solid lightgrey;
+  }
+
+  .mu-certificate-box section {
+    background: transparent;
+    z-index: 10;
+  }
+
+  .background-image {
+    position: absolute;
+    height: 210mm;
+    width: 297mm;
+    margin: 0;
+    padding: 0;
+    z-index: 0;
+  }
+
+  .mu-certificate-box .mu-certificate-validate-url {
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+    font-size: 0.66em;
+    color: grey;
+    z-index: 10;
+  }
+
+</style>
+
+<div class="mu-certificate-box">
+  <img src="<%= certificate.background_image_url %>" class="background-image" />
+  <%= ERB.new(certificate.template_html_erb).result(certificate.locals.instance_eval { binding }).html_safe %>
+  <span class="mu-certificate-validate-url"><%= verify_certificate_url certificate.code %></span>
+</div>

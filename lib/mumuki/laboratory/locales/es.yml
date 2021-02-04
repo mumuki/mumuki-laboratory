@@ -34,6 +34,10 @@ es:
   blocked_forum_explanation: ¿Puede que estés en medio de un examen?
   cancel: Cancelar
   cancel_subscription: Cancelá tu subscripción.
+  certificate: Certificado
+  certificates: Certificados
+  certificates_will_be_here: Tus certificados en esta organización aparecerán acá
+  certificate_verified_legend: "La cuenta de <strong>%{full_name}</strong> está verificada. Mumuki certifica que completó el curso de <strong>%{description}.</strong>"
   chapter: Capítulo
   chapters: Capítulos
   chapter_finished_html: ¡Terminaste %{chapter}! ¡Felicitaciones!
@@ -46,6 +50,7 @@ es:
     one: 1 cerrada
     other: '%{count} cerradas'
   comment: Comentar
+  completed_by: Completado por
   confirm: Confirmar
   confirm_reset: Estás por reiniciar tu ejercicio. ¿Querés continuar?
   confirm_restart: Estás por borrar tu progreso en esta guía. ¿Querés continuar?
@@ -165,6 +170,7 @@ es:
   let_us_know: ¡Por favor avisanos!
   level: Nivel
   level_up: ¡Subiste de nivel!
+  linkedin_profile_button_locale: es_ES
   listen_statement: Escuchá la consigna
   loading: Cargando
   load_solution_into_console: Cargar la solución en la consola

@@ -1,0 +1,20 @@
+<%= wicked_pdf_stylesheet_link_tag 'pdf' -%>
+<%= wicked_pdf_stylesheet_link_tag 'mumuki_laboratory/application', media: 'all' %>
+<style>
+  html, body {
+    overflow: hidden;
+    height: 210mm;
+    width: 297mm;
+    max-height: 210mm;
+    max-width: 297mm;
+    min-height: 210mm;
+    min-width: 297mm;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+  }
+</style>
+
+<%= render partial: 'certificates/certificate', locals: { certificate: certificate } %>
+
