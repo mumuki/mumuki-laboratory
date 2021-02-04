@@ -4,8 +4,8 @@
     <%= edit_profile_button %>
   </div>
 </div>
-<div class="row mu-tab-body">
-  <div class="col-md-4 mu-profile-info-left">
+<div class="mu-profile-info">
+  <div class="mu-profile-info-left">
     <%= profile_picture_for(@user, id: 'mu-user-avatar', class: 'mu-user-avatar') %>
     <% if in_gamified_context? %>
       <svg class="mu-level-progress" width="300" height="300" viewBox="0 0 100 100">
@@ -18,7 +18,7 @@
       </div>
     <% end %>
   </div>
-  <div class="col-md-8 mu-profile-info-right">
+  <div class="mu-profile-info-right">
     <% if @user.age.present? %>
       <div>
         <span> <strong><%= t :age %>:</strong> <%= "#{@user.age} #{t :years}" %> </span>
@@ -31,8 +31,7 @@
       <span> <strong><%= t :programming_since %>:</strong> <%= t(:time_since, time: time_ago_in_words(@user.created_at)) %> </span>
     </div>
   </div>
-
-  <div class="mu-profile-actions mobile visible-xs">
-    <%= edit_profile_button %>
-  </div>
+</div>
+<div class="mu-profile-actions mobile visible-xs">
+  <%= edit_profile_button %>
 </div>
