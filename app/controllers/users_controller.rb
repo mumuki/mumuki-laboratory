@@ -30,6 +30,10 @@ class UsersController < ApplicationController
     @watched_discussions = current_user.watched_discussions_in_organization
   end
 
+  def activity
+    @activity = UserStats.stats_for(current_user).activity
+  end
+
   def certificates
     @certificates ||= current_user.certificates_in_organization
   end
