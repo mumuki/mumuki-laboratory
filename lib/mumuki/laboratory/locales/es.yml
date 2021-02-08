@@ -319,6 +319,7 @@ es:
   to_pending_review: Resolver
   to_solved: Resolver
   unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no iniciaste sesión.
+  total: Total
   uncategorized: No categorizado
   undo_upvote: No es útil
   unlocked_medal_as_avatar: ¡Obtuviste esta medalla! Ya podés elegirla como avatar.
@@ -338,6 +339,7 @@ es:
   want_permissions: El siguiente usuario requiere permisos
   we_miss_you: ¡Te extrañamos!
   welcome: ¡Te damos la bienvenida a %{name}!
+  week_of: Semana del %{date}
   will_paginate:
     previous_label: "&#8592; Anterior"
     next_label: "Siguiente &#8594;"

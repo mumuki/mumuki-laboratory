@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
 
   def activity
-    @activity = UserStats.stats_for(current_user).activity
+    @activity = UserStats.stats_for(current_user).activity date_range_params
   end
 
   def certificates
@@ -58,4 +58,13 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def date_range_params
+    from = params[:date_from].try { |it| Date.parse it }
+    to = params[:date_to].try { |it| Date.parse it }
+    if from && to
+      from.beginning_of_day..(to - 1.day).end_of_day
+    else
+      nil
+    end
+  end
 end

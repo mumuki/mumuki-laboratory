@@ -1,9 +1,3 @@
-<style>
-  .user-activity-info {
-    padding: 0.5em;
-  }
-</style>
-
 <div class="row mu-tab-body">
   <div class="col-md-6">
     <%= render partial: 'activity_indicator',
@@ -23,12 +17,14 @@
 
   <div class="col-md-3 col-md-offset-3">
     <ul class="nav nav-pills nav-stacked">
-      <li class="active"><a href="#">Total</a></li>
-      <li><a href="#">Semana 01/02</a></li>
-      <li><a href="#">Semana 25/01</a></li>
-      <li><a href="#">Semana 18/01</a></li>
-      <li><a href="#">Semana 11/01</a></li>
-      <li><a href="#">Semana 04/01</a></li>
+      <li <%= !params[:date_from] && 'class=active' %>>
+        <%= link_to t(:total), activity_user_path %>
+      </li>
+      <% activity_selector_week_range.each do |(week_start, week_end)| %>
+        <li <%= params[:date_from] == week_start.iso8601 && 'class=active' %>>
+          <%= link_to t(:week_of, date: l(week_start)), activity_user_path(date_from: week_start, date_to: week_end) %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>
