@@ -344,8 +344,9 @@ summary.discussion-summary {
             &:after {
               position: absolute;
               left: 10px;
+              top: -6px;
               content: ' ';
-              height: 19px;
+              height: 30px;
               width: 2px;
               transform: rotate(-45deg);
               background-color: #aaaaaa;
