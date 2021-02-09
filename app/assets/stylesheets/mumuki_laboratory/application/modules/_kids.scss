@@ -127,7 +127,7 @@ $kids-speech-tabs-width: 40px;
 
       }
 
-      @media screen and (max-width: $screen-sm-max) {
+      @include media-breakpoint-only(md) {
         h4 {
           &.text-warning {
             font-size: 18px;
@@ -142,7 +142,7 @@ $kids-speech-tabs-width: 40px;
         }
       }
 
-      @media screen and (max-width: $screen-xs-max) {
+      @include media-breakpoint-down(sm) {
         h4 {
           font-size: 20px;
           &.text-warning {
@@ -500,7 +500,7 @@ $statuses-glow-animation: (
   }
 }
 
-@media screen and (max-height: $screen-xs-min) {
+@media screen and (max-height: map_get($grid-breakpoints, sm)) {
   .mu-kids-exercise {
     height: 100vh;
     min-height: 100vh;

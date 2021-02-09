@@ -14,7 +14,7 @@
   padding-left: 2px;
   cursor: pointer;
 
-  @media only screen and (min-width: $screen-md-min) {
+  @include media-breakpoint-up(md) {
     padding-left: 15px;
     cursor: auto;
 
@@ -32,7 +32,7 @@
   margin-top: 30px;
 
   &.mu-hidden-sm-screen {
-    @media only screen and (max-width: $screen-sm-max) {
+    @include media-breakpoint-down(md) {
       display: none;
     }
   }
