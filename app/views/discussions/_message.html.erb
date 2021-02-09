@@ -3,12 +3,12 @@
     <div class="discussion-message-bubble-header">
       <div class="discussion-message-bubble-title">
         <%= user.name %>
+        <% if user.moderator_here? %>
+          <span class="moderator-badge"><%= t(:moderator) %></span>
+        <% end %>
         <span class="message-date">
           <%= t(:time_since, time: time_ago_in_words(message.created_at)) %>
         </span>
-        <% if user.moderator_here? %>
-          <%= fa_icon(:star, 'data-toggle': 'tooltip', title: (t :moderator), class: 'moderator-star') %>
-        <% end %>
         <span class="actions">
           <% if message.authorized? current_user %>
             <% if current_user&.moderator_here? %>

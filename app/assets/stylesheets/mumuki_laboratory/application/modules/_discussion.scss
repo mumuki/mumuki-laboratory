@@ -5,7 +5,7 @@ $discussion-toolbar-color: #f6f6fa;
 $message-divider-color: #ecf0f1;
 $discussion-button-color: #fafafa;
 $toolbar-filter-color: #808080;
-$moderator-star-color: #dd9900;
+$moderator-badge-color: #dd9900;
 
 .discussions-list {
   margin: 30px 0;
@@ -177,8 +177,17 @@ $moderator-star-color: #dd9900;
   width: 100%;
 }
 
-.moderator-star {
-  color: $moderator-star-color;
+.moderator-badge {
+  position: relative;
+  top: -2px;
+  margin: 2px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: white;
+  background-color: $moderator-badge-color;
+  border: solid $moderator-badge-color 1px;
+  border-radius: 5px;
+  padding-inline: 5px;
 }
 
 .discussion-user-menu {
