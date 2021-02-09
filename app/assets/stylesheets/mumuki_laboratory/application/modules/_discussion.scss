@@ -331,7 +331,10 @@ summary.discussion-summary {
         }
         .discussion-message-approved {
           text-decoration: none;
-          &.selected {
+          i {
+            transition: color 0.3s;
+          }
+          &:hover, &.selected {
             i {
               color: $brand-success;
             }
@@ -341,6 +344,7 @@ summary.discussion-summary {
           text-decoration: none;
           i {
             position: relative;
+            transition: color 0.3s;
             &:after {
               position: absolute;
               left: 10px;
@@ -350,14 +354,23 @@ summary.discussion-summary {
               width: 2px;
               transform: rotate(-45deg);
               background-color: #aaaaaa;
+              transition: background-color 0.3s;
             }
           }
-          &.selected {
+          &:hover, &.selected {
             i {
               color: $brand-primary;
               &:after {
                 background-color: $brand-primary;
               }
+            }
+          }
+        }
+        .discussion-delete-message {
+          i {
+            transition: color 0.3s;
+            &:hover {
+              color: black;
             }
           }
         }

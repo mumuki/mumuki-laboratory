@@ -21,7 +21,7 @@
                 </a>
               <% end %>
             <% end %>
-            <%= link_to fa_icon('trash-alt', type: :regular, class: 'fa-lg'), discussion_message_path(@discussion, message), method: :delete, data: { confirm: t(:are_you_sure, action: t(:destroy_message)) } %>
+            <%= link_to fa_icon('trash-alt', type: :regular, class: 'fa-lg'), discussion_message_path(@discussion, message), method: :delete, data: { confirm: t(:are_you_sure, action: t(:destroy_message)) }, class: 'discussion-delete-message' %>
           <% end %>
           <% if should_show_approved_for?(current_user, message) %>
             <span class="discussion-message-approved selected">
