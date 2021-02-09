@@ -13,19 +13,19 @@
           <% if message.authorized? current_user %>
             <% if current_user&.moderator_here? %>
               <a class="discussion-message-approved <%= 'selected' if message.approved? %>" onclick="mumuki.Forum.discussionMessageToggleApprove('<%= approve_discussion_message_url(@discussion, message) %>', $(this))">
-                <%= fa_icon(:check, class: 'fa-xs') %>
+                <%= fa_icon(:check, class: 'fa-lg') %>
               </a>
               <% if message.from_initiator? %>
                 <a class="discussion-message-not-actually-a-question <%= 'selected' if message.not_actually_a_question? %>" onclick="mumuki.Forum.discussionMessageToggleNotActuallyAQuestion('<%= question_discussion_message_url(@discussion, message) %>', $(this))">
-                  <%= fa_icon('question-circle', type: 'regular', class: 'fa-xs') %>
+                  <%= fa_icon('question-circle', type: 'regular', class: 'fa-lg') %>
                 </a>
               <% end %>
             <% end %>
-            <%= link_to fa_icon('trash-alt', type: :regular), discussion_message_path(@discussion, message), method: :delete, data: { confirm: t(:are_you_sure, action: t(:destroy_message)) } %>
+            <%= link_to fa_icon('trash-alt', type: :regular, class: 'fa-lg'), discussion_message_path(@discussion, message), method: :delete, data: { confirm: t(:are_you_sure, action: t(:destroy_message)) } %>
           <% end %>
           <% if should_show_approved_for?(current_user, message) %>
             <span class="discussion-message-approved selected">
-              <%= fa_icon(:check, class: 'fa-xs', 'data-toggle': 'tooltip', title: (t :approved_message)) %>
+              <%= fa_icon(:check, class: 'fa-lg', 'data-toggle': 'tooltip', title: (t :approved_message)) %>
             </span>
           <% end %>
         </span>

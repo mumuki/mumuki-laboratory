@@ -326,7 +326,7 @@ summary.discussion-summary {
       .actions {
         float: right;
         a {
-          margin-left: 5px;
+          margin-left: 20px;
           cursor: pointer;
         }
         .discussion-message-approved {
@@ -343,7 +343,7 @@ summary.discussion-summary {
             position: relative;
             &:after {
               position: absolute;
-              left: 6px;
+              left: 10px;
               content: ' ';
               height: 19px;
               width: 2px;
