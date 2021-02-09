@@ -168,7 +168,7 @@ es:
   minute: minuto
   minutes: minutos
   more_messages: Ver mensajes anteriores
-  moderator: Mentor
+  moderation: Mentoría
   my_doubts: Mis consultas
   name: Nombre
   navigation_continue: 'Siguiente %{kind}: %{sibling}'

@@ -4,7 +4,7 @@
       <div class="discussion-message-bubble-title">
         <%= user.name %>
         <% if user.moderator_here? %>
-          <span class="moderator-badge"><%= t(:moderator) %></span>
+          <span class="moderator-badge"><%= t(:moderation) %></span>
         <% end %>
         <span class="message-date">
           <%= t(:time_since, time: time_ago_in_words(message.created_at)) %>
