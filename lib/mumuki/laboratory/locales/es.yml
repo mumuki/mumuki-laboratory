@@ -1,9 +1,7 @@
 ---
 es:
-  abort_explanation_html: "<li>Revisá que tu programa no tenga recursión o algún bucle
-    infinito</li><li>Revisá que tengas conexión a internet</li><li>Esperá un rato
-    e intentalo nuevamente</li>"
   aborted: Ups, no pudimos evaluar tu solución
+  abort_explanation_html: <li>Revisá que tu programa no tenga recursión o algún bucle infinito</li><li>Revisá que tengas conexión a internet</li><li>Esperá un rato e intentalo nuevamente</li>
   about: Detalles
   accept: Aceptar
   accept_terms: He leido y acepto los términos y condiciones
@@ -15,55 +13,49 @@ es:
   all: Todos
   and: y
   appendix: Apéndice
-  appendix_teaser: ¿Querés saber más? <a href="%{link}">Consultá el apéndice de este
-    capítulo</a>
+  appendix_teaser: ¿Querés saber más? <a href="%{link}">Consultá el apéndice de este capítulo</a>
   approved_message: Validado por mentor
-  are_you_sure: "¿Estás seguro que querés %{action}?"
-  ask_a_question: "¡Hacé una pregunta!"
+  are_you_sure: '¿Estás seguro que querés %{action}?'
+  ask_a_question: ¡Hacé una pregunta!
   ask_community: Preguntá a la comunidad
-  ask_redirect: "¿Querés que te llevemos ahí?"
-  ask_the_first_question: "¡Hacé la primera pregunta!"
+  ask_redirect: ¿Querés que te llevemos ahí?
+  ask_the_first_question: ¡Hacé la primera pregunta!
   attempts_left:
-    zero: Te quedaste sin intentos
-    one: 1 intento restante
-    other: "%{count} intentos restantes"
+    zero: 'Te quedaste sin intentos'
+    one: '1 intento restante'
+    other: '%{count} intentos restantes'
   author: Autor
   authoring: Autores
-  authoring_note_html: Esta guía fue desarrollada por %{authors} bajo los términos
-    de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia
-    Creative Commons Compartir-Igual, 4.0</a>.
-  authoring_note_with_collaborators_html: Esta guía fue desarrollada por %{authors}
-    y <a href="%{collaborators}" target="_blank">muchas personas más</a>, bajo los
-    términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia
-    Creative Commons Compartir-Igual, 4.0</a>.
-  back_to_mumuki: "¡Volvé a Mumuki!"
+  authoring_note_html: Esta guía fue desarrollada por %{authors} bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia Creative Commons Compartir-Igual, 4.0</a>.
+  authoring_note_with_collaborators_html: Esta guía fue desarrollada por %{authors} y <a href="%{collaborators}" target="_blank">muchas personas más</a>, bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia Creative Commons Compartir-Igual, 4.0</a>.
+  back_to_mumuki: ¡Volvé a Mumuki!
   bibliotheca_ui: Biblioteca
   birthdate: Fecha de nacimiento
-  blocked_forum_explanation: "¿Puede que estés en medio de un examen?"
+  blocked_forum_explanation: ¿Puede que estés en medio de un examen?
   cancel: Cancelar
   cancel_subscription: Cancelá tu subscripción.
   chapter: Capítulo
-  chapter_finished_html: "¡Terminaste %{chapter}! ¡Felicitaciones!"
-  chapter_number: Capítulo %{number}
   chapters: Capítulos
+  chapter_finished_html: ¡Terminaste %{chapter}! ¡Felicitaciones!
+  chapter_number: 'Capítulo %{number}'
   choose_your_avatar: Elegí tu avatar
   classroom_ui: Aula
   clear_console: Reiniciar consola
   closed: Cerrada
   closed_count:
     one: 1 cerrada
-    other: "%{count} cerradas"
+    other: '%{count} cerradas'
   comment: Comentar
   confirm: Confirmar
   confirm_reset: Estás por reiniciar tu ejercicio. ¿Querés continuar?
   confirm_restart: Estás por borrar tu progreso en esta guía. ¿Querés continuar?
   console: Consola
-  contact_administrator: Si pensás que es un error, comunicate con %{link}
+  contact_administrator: 'Si pensás que es un error, comunicate con %{link}'
   content: Contenido
   continue_exercise: Continuar
-  continue_lesson: "¡Continuá esta lección!"
-  continue_practicing: "¡Seguí aprendiendo!"
-  correct_answer: "¡La respuesta es correcta!"
+  continue_lesson: ¡Continuá esta lección!
+  continue_practicing: ¡Seguí aprendiendo!
+  correct_answer: ¡La respuesta es correcta!
   create_submission: Enviar
   created_at: Creado
   created_at_asc: Antiguas
@@ -74,50 +66,42 @@ es:
   day: Día
   days: Días
   description: Descripción
-  destroy: Eliminar
   destroy_message: eliminar el mensaje
+  destroy: Eliminar
   details: Detalles
-  disabled_explanation: Estás intentando acceder a un recurso que fue deshabilitado
-    o eliminado de forma permamente
+  disabled_explanation: Estás intentando acceder a un recurso que fue deshabilitado o eliminado de forma permamente
   disabled_organization_explanation: Este recorrido ha finalizado
-  discussion_description_placeholder: Podés agregar información para detallar más
-    tu consulta
-  discussion_new_message: Mensaje nuevo en %{title}
+  discussion_description_placeholder: Podés agregar información para detallar más tu consulta
   discussion_updated: Consulta actualizada
+  new_discussion_message: Mensaje nuevo en %{title}
   discussions: Consultas
-  dont_leave_us: "¡No nos abandones! Aprender a programar es divertido. Sólo tenés
-    que seguir practicando."
-  download: Descargá lo que hiciste
+  dont_leave_us: ¡No nos abandones! Aprender a programar es divertido. Sólo tenés que seguir practicando.
+  download: "Descargá lo que hiciste"
   edit: Editar
   edit_profile: Editar perfil
   editor_placeholder: "...escribí tu solución acá..."
-  eeee: s
   email: Email
-  error:
-    title:
-      forbidden: No tenés autorización para ver este contenido
-      gone: "¡Ups! El contenido expiró"
-      internal_server_error: "¡Ups! Algo no anduvo bien"
-      not_found: "¡Ups!  La página no existe"
+  error_description: Esto es lo que se conoce como <span class="error-link">%{error}</span>.
   error_401: error 401
   error_403: error 403
   error_404: error 404
   error_410: error 410
   error_500: error 500
-  error_description: Esto es lo que se conoce como <span class="error-link">%{error}</span>.
-  errored: "¡Ups! Tu solución no se puede ejecutar"
-  exam_authorization_request_approved_html: Tu solicitud fue aprobada, no olvides
-    conectarte el <strong>%{date}</strong>. ¡Buena suerte!
-  exam_authorization_request_created: "¡Tu inscripción al exámen se registró exitosamente!"
+  error:
+    title:
+      forbidden: No tenés autorización para ver este contenido
+      gone: ¡Ups! El contenido expiró
+      internal_server_error: ¡Ups! Algo no anduvo bien
+      not_found: ¡Ups!  La página no existe
+  errored: ¡Ups! Tu solución no se puede ejecutar
+  exam_authorization_request_approved_html: Tu solicitud fue aprobada, no olvides conectarte el <strong>%{date}</strong>. ¡Buena suerte!
+  exam_authorization_request_created: ¡Tu inscripción al exámen se registró exitosamente!
   exam_authorization_request_rejected: Tu solicitud fue rechazada.
-  exam_authorization_request_saved: "¡Tu inscripción al exámen se modificó exitosamente!"
+  exam_authorization_request_saved: ¡Tu inscripción al exámen se modificó exitosamente!
   exam_authorization_request_updated: Hay novedades sobre tu inscripción a %{description}
-  exam_registration_choose_exam: Seleccioná día y horario en el que te gustaría rendir
-    el exámen
-  exam_registration_explanation_html: Tenés tiempo hasta el <strong>%{date}</strong>
-    para inscribirte. Pasada esa fecha, tu solicitud será evaluada y recibirás una
-    confirmación. <br> ¡No te olvides de revisar las notificaciones!
-  exam_registration_open: "¡Ya podés inscribirte a %{description}!"
+  exam_registration_choose_exam: Seleccioná día y horario en el que te gustaría rendir el exámen
+  exam_registration_explanation_html: Tenés tiempo hasta el <strong>%{date}</strong> para inscribirte. Pasada esa fecha, tu solicitud será evaluada y recibirás una confirmación. <br> ¡No te olvides de revisar las notificaciones!
+  exam_registration_open: ¡Ya podés inscribirte a %{description}!
   exam_registration_to: Inscripción a %{description}
   exams: Exámenes
   exercise: Ejercicio
@@ -135,23 +119,23 @@ es:
   female: Mujer
   finish: Terminar
   first_name: Nombre
-  forbidden_explanation: "¿Puede que hayas ingresado con una cuenta incorrecta?"
+  forbidden_explanation: ¿Puede que hayas ingresado con una cuenta incorrecta?
   format: Dar formato
   forum: Espacio de Consultas
   forum_terms: Reglas del Espacio de Consultas
   forum_terms_link: No olvides que al participar debés cumplir las %{terms_link}
-  fullscreen: Pantalla completa (F11)
+  fullscreen: "Pantalla completa (F11)"
   gender: Género
-  get_messages: Ver mensajes
-  go_to: Ir a %{organization}
+  get_messages: "Ver mensajes"
+  go_to: 'Ir a %{organization}'
   gone_explanation: Este contenido ya no está disponible.
   guide: Lección
   guide_created: Guía creada exitosamente
-  guide_finished: "¡Terminaste %{guide}!"
+  guide_finished: ¡Terminaste %{guide}!
   guide_internal: guia
-  guides_index_title: "¿Qué guía querés hacer hoy?"
+  guides_index_title: ¿Qué guía querés hacer hoy?
   here: acá
-  hidden_done: "¡Muy bien!"
+  hidden_done: '¡Muy bien!'
   history: Historial
   home: Inicio
   hour: hora
@@ -160,42 +144,41 @@ es:
   initial_state: Tablero inicial
   insert_file_name: Ingresa un nombre de archivo
   invitation: Invitación a curso
-  invitation_for: Unirse a %{course}
+  invitation_for: 'Unirse a %{course}'
   item_not_accessible: No tenés permisos para acceder a este contenido
   its_been_a_while: Hace un tiempo que no usás Mumuki.
-  joining_html: "¡Te damos la bienvenida al curso <strong>%{course}</strong>!"
-  keep_learning: "¡Seguí aprendiendo!"
-  kids_default_success: "¡Lo hiciste muy bien!"
+  joining_html: '¡Te damos la bienvenida al curso <strong>%{course}</strong>!'
+  keep_learning: ¡Seguí aprendiendo!
+  kids_default_success: ¡Lo hiciste muy bien!
   language: Lenguaje
   languages: Lenguajes
   last_name: Apellido
-  last_seen: Visto por %{name}
+  last_seen: "Visto por %{name}"
   last_submission_date: Última solución
   latest_exercises: Últimos ejercicios
   learning: Aprendizaje
   lesson: Lección
-  lesson_number: Lección %{number}
   lessons: Lecciones
-  let_us_know: "¡Por favor avisanos!"
+  lesson_number: Lección %{number}
+  let_us_know: ¡Por favor avisanos!
   level: Nivel
-  level_up: "¡Subiste de nivel!"
+  level_up: ¡Subiste de nivel!
   listen_statement: Escuchá la consigna
-  load_solution_into_console: Cargar la solución en la consola
   loading: Cargando
-  locked_content: Este contenido se desbloqueará cuando termines los capítulos anteriores
+  load_solution_into_console: Cargar la solución en la consola
+  locked_content: 'Este contenido se desbloqueará cuando termines los capítulos anteriores'
   male: Hombre
-  manual_evaluation_pending: "¡Gracias por enviar tu solución! Tus docentes la corregirán
-    pronto"
+  manual_evaluation_pending: ¡Gracias por enviar tu solución! Tus docentes la corregirán pronto
   medal: Medalla
-  message: Mensaje
   message_count:
     one: 1 mensaje
-    other: "%{count} mensajes"
+    other: '%{count} mensajes'
+  message: Mensaje
   messages: Mensajes
-  messages_error: Los mensajes anteriores no están disponibles en este momento. ¡Volvé
-    a intentar mas tarde!
+  messages_error: Los mensajes anteriores no están disponibles en este momento. ¡Volvé a intentar mas tarde!
   minute: minuto
   minutes: minutos
+  moderation: Mentoría
   moderator: Mentor
   more_messages: Ver mensajes anteriores
   my_doubts: Mis consultas
@@ -203,12 +186,12 @@ es:
   navigation_continue: 'Siguiente %{kind}: %{sibling}'
   navigation_next: Siguiente %{kind}
   navigation_revisit: 'Siguiente pendiente: %{sibling}'
-  need_a_hint: "¡Dame una pista!"
+  need_a_hint: ¡Dame una pista!
   need_help: No entiendo, ¡necesito ayuda!
   never: nunca
   new: Nuevo
   new_discussion: Nueva consulta
-  new_message: "¿Tenés dudas? ¡Levantá la mano!"
+  new_message: ¿Tenés dudas? ¡Levantá la mano!
   new_message_placeholder: Escribí el mensaje para tu docente acá...
   new_message_received: Tenés un nuevo mensaje de %{sender}
   next_exercise: Siguiente
@@ -216,41 +199,39 @@ es:
   no_discussions: No encontramos consultas que coincidan con tu búsqueda.
   no_exercises: No encontramos ejercicios que coincidan con tu búsqueda.
   no_guides: No encontramos lecciones que coincidan con tu búsqueda.
-  no_messages: "¡Parece que no tenés ningun mensaje todavía!"
+  no_messages: ¡Parece que no tenés ningun mensaje todavía!
   no_need_hint: Este ejercicio no tiene pista
   no_questions: Parece que aún no hay ninguna consulta.
-  no_submissions: "¡Parece que aún no intentaste resolver este ejercicio aún!"
-  no_useful_result: "¿No encontraste lo que estabas buscando?"
-  not_found: "¡La página que buscaste no existe!"
+  no_submissions: ¡Parece que aún no intentaste resolver este ejercicio aún!
+  no_useful_result: ¿No encontraste lo que estabas buscando?
+  not_found: ¡La página que buscaste no existe!
   not_found_explanation: Fijate si escribiste bien la dirección.
-  not_in_any_organizations: "¡Parece que no estás en ninguna organización todavía!"
+  not_in_any_organizations: ¡Parece que no estás en ninguna organización todavía!
   notifications: Notificaciones
   notify_problem_with_exercise: Reportá un bug
   office: Secretaría
   only_landscape_support: Por favor, rotá tu tablet o celular para realizar ejercicios
   opened: Abierta
   opened_count:
-    one: 1 abierta
-    other: "%{count} abiertas"
+    one: '1 abierta'
+    other: '%{count} abiertas'
   organizations: Organizaciones
   other: Otro
   out_of_attempts: Te quedaste sin intentos. ¡Seguí al proximo ejercicio!
   output: Salida
   overview: Vista general
-  passed: "¡Muy bien! Tu solución pasó todas las pruebas"
+  passed: ¡Muy bien! Tu solución pasó todas las pruebas
   passed_with_warnings: Tu solución funcionó, pero hay cosas que mejorar
   pending: pendiente
-  pending_messages: Tenés mensajes sin leer
-  pending_messages_explanation: "¡Tu docente te dejó un mensaje! Revisalo antes de
-    seguir enviando soluciones."
   pending_review: En revisión
-  pending_review_count: "%{count} en revisión"
+  pending_review_count: '%{count} en revisión'
+  pending_messages: Tenés mensajes sin leer
+  pending_messages_explanation: "¡Tu docente te dejó un mensaje! Revisalo antes de seguir enviando soluciones."
   permissions: Permisos
-  please_fill_profile_data: "¡Completá tus datos personales para continuar!"
-  please_validate: Estás a punto de ingresar al curso. Para poder ofrecerte una mejor
-    experiencia, por favor validá que tus datos a continuación sean reales y correctos.
+  please_fill_profile_data: ¡Completá tus datos personales para continuar!
+  please_validate: 'Estás a punto de ingresar al curso. Para poder ofrecerte una mejor experiencia, por favor validá que tus datos a continuación sean reales y correctos.'
   previous_exercise: Anterior
-  problem_with_exercise: "[Mumuki] Error con el ejercicio: %{title}"
+  problem_with_exercise: '[Mumuki] Error con el ejercicio: %{title}'
   processing_your_solution: Estamos procesando tu solución
   profile: Perfil
   profile_of: Perfil de %{username}
@@ -264,8 +245,8 @@ es:
   responses_count_asc: Con menos respuestas validadas
   responses_count_desc: Con más respuestas validadas
   restart: Reiniciar
+  results_hidden: ¡Tu solución fue enviada con éxito!
   results: Resultados
-  results_hidden: "¡Tu solución fue enviada con éxito!"
   retry_exercise: Reintentar
   running: procesando
   save: Guardar
@@ -278,28 +259,27 @@ es:
   sign_out: Cerrar Sesión
   sign_up_date: Usuario desde
   skipped: Venís aprendiendo muy bien, por lo que aprobaste este ejercicio.
-  skipped_congratulations: "¡Bien hecho!"
+  skipped_congratulations: ¡Bien hecho!
   skipped_description: Venís aprendiendo muy bien, por lo que aprobaste este ejercicio.
   skipped_solve_anyway: Resolver de todos modos
   solution: Solución
-  solve_doubts: Resolvé consultas
-  solve_more_exercises_to_level_up: Resolvé <span>number</span> ejercicios más para
-    pasar al siguiente nivel.
-  solve_your_doubts: Consultá tus dudas
-  solve_your_doubts_teaser: "¿Tenés alguna consulta?"
   solved: Resuelta
   solved_count:
     one: 1 resuelta
-    other: "%{count} resueltas"
+    other: '%{count} resueltas'
   solved_exercises: Ejercicios Resueltos
-  something_went_wrong: "¡Ups!, algo no anduvo bien..."
+  solve_doubts: Resolvé consultas
+  solve_more_exercises_to_level_up: Resolvé <span>number</span> ejercicios más para pasar al siguiente nivel.
+  solve_your_doubts: Consultá tus dudas
+  solve_your_doubts_teaser: ¿Tenés alguna consulta?
+  something_went_wrong: ¡Ups!, algo no anduvo bien...
   sort: Ordenar
   sources: Bibliografía
-  start_lesson: "¡Comenzá esta lección!"
-  start_practicing: "¡Empezá ahora!"
-  start_using_mumuki: "¡Empezá a usar Mumuki!"
+  start_lesson: ¡Comenzá esta lección!
+  start_practicing: ¡Empezá ahora!
+  start_using_mumuki: ¡Empezá a usar Mumuki!
   status: Estado
-  stop_emails?: "¿Querés dejar de recibir estos mails?"
+  stop_emails?: ¿Querés dejar de recibir estos mails?
   submission: solución
   submission_date: Fecha de envío
   submission_for_exercise: Solucion para ejercicio
@@ -310,52 +290,49 @@ es:
   tag: Etiquetas
   task: Consigna
   teacher_info: Información para docentes
-  tell_us_how: "¡Contanos cómo te pasó esto!"
+  tell_us_how: ¡Contanos cómo te pasó esto!
   tell_us_if_our_error: Si pensás que es un error nuestro, %{issues}
   terms_accepted: Los términos y condiciones fueron aceptados
   terms_and_conditions: Términos y Condiciones
   terms_and_conditions_continue_disclaimer: Al continuar estás aceptando los %{terms_link}
   terms_and_conditions_must_be_accepted: Tenés que aceptar los términos y condiciones
   test_results: Resultados de las pruebas
+  time_since: "hace %{time}"
   time_left: Te quedan
-  time_since: hace %{time}
   title: Título
   to_closed: Cerrar
   to_opened: Reabrir
   to_pending_review: Resolver
   to_solved: Resolver
-  unauthorized_explanation: "¡Ups! Esto es lo que se conoce como %{error}, es decir
-    que no iniciaste sesión."
+  unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no iniciaste sesión.
   uncategorized: No categorizado
   undo_upvote: No es útil
-  unlocked_medal_as_avatar: "¡Obtuviste esta medalla! Ya podés elegirla como avatar."
+  unlocked_medal_as_avatar: ¡Obtuviste esta medalla! Ya podés elegirla como avatar.
+  unspecified: Prefiero no decirlo
   unmeet_expectations: Objetivos que no se cumplieron
   unprepared_organization_explanation: Este recorrido aún no ha comenzado
-  unspecified: Prefiero no decirlo
   unsubscribe: Dejar de recibir notificaciones
   unsubscribed_successfully: Te desuscribiste exitosamente de los recordatorios.
-  upload_solution: Subir solución
-  uploading_solution: Subiendo solución
+  upload_solution: "Subir solución"
+  uploading_solution: "Subiendo solución"
   upvote: Es útil
-  upvotes_count_asc: Menos útiles
   upvotes_count_desc: Más útiles
-  user: Usuario
+  upvotes_count_asc: Menos útiles
   user_data_updated: Tus datos se actualizaron correctamente
+  user: Usuario
   username: Nombre de usuario
   view_details: Ver detalles
   want_permissions: El siguiente usuario requiere permisos
-  we_miss_you: "¡Te extrañamos!"
-  welcome: "¡Te damos la bienvenida a %{name}!"
+  we_miss_you: ¡Te extrañamos!
+  welcome: ¡Te damos la bienvenida a %{name}!
   will_paginate:
     previous_label: "&#8592; Anterior"
-    next_label: Siguiente &#8594;
+    next_label: "Siguiente &#8594;"
     page_gap: "&hellip;"
-  working: Procesando
+  working: "Procesando"
   wrong_answer: La respuesta no es correcta
   years: años
   you_earned: Ganaste
-  you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a
-    enviar tus soluciones
-  you_never_submitted_solutions: Parece que nunca enviaste soluciones desde que creaste
-    tu cuenta.
+  you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
+  you_never_submitted_solutions: Parece que nunca enviaste soluciones desde que creaste tu cuenta.
   your_new_organization: tu nueva organización
