@@ -44,6 +44,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'wkhtmltopdf-binary', '~> 0.12'
   s.add_dependency 'wicked_pdf', '~> 1.4'
+  s.add_dependency 'rqrcode', '~> 1.2'
 
   s.add_development_dependency 'pg', '~> 0.18.0'
   s.add_development_dependency 'bundler', '~> 2.0', '< 2.2'

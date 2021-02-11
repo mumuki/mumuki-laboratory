@@ -28,19 +28,15 @@
     z-index: 0;
   }
 
-  .mu-certificate-box .mu-certificate-validate-url {
+  .qr-code {
     position: absolute;
-    bottom: 0;
-    right: 5px;
-    font-size: 0.66em;
-    color: grey;
     z-index: 10;
   }
 
 </style>
 
 <div class="mu-certificate-box">
-  <img src="<%= certificate.background_image_url %>" class="background-image" />
+  <img src="<%= certificate.background_image_url %>" class="background-image"/>
   <%= ERB.new(certificate.template_html_erb).result(certificate.locals.instance_eval { binding }).html_safe %>
-  <span class="mu-certificate-validate-url"><%= verify_certificate_url certificate.code %></span>
+  <div><img class="qr-code" src="<%= qr certificate %>"/></div>
 </div>

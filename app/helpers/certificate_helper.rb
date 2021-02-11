@@ -1,3 +1,5 @@
+require 'rqrcode'
+
 module CertificateHelper
   def linkedin_url_to_post(certificate)
     URI::HTTPS.build host: 'www.linkedin.com',
@@ -13,5 +15,10 @@ module CertificateHelper
 
   def certificates_current_user?(certificate)
     certificate.user == current_user
+  end
+
+  def qr(certificate)
+    qr = RQRCode::QRCode.new(verify_certificate_url certificate.code).as_svg(color: '0B465D')
+    "data:image/svg+xml,#{URI.encode(qr)}"
   end
 end
