@@ -162,7 +162,8 @@ pt:
   minute: minuto
   minutes: minutos
   more_messages: Ver as mensagens anteriores
-  moderator: Mentor
+  moderation: Mentoria
+  moderator: "Mentor"
   my_doubts: Minhas duvidas
   name: Nome
   navigation_continue: "Próximo %{kind}: %{sibling}"
