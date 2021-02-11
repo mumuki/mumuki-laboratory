@@ -22,6 +22,9 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :exam_registrations, only: [:show]
+    resources :exam_authorization_requests, only: [:show, :create, :update]
+
     resources :book, only: [:show]
     resources :chapters, only: [:show] do
       concerns :debatable, debatable_class: 'Chapter'

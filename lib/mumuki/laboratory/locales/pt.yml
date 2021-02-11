@@ -69,6 +69,7 @@ pt:
   disabled_explanation: Você está tentando acessar um recurso que foi desativado ou removido permanentemente
   disabled_organization_explanation: Este curso terminou
   discussion_description_placeholder: Você pode adicionar mais informações sobre sua dúvida
+  new_discussion_message: Nova mensagem em %{title}
   discussion_updated: Consulta actualizada
   discussions: Consultas
   download: Faça o download do que você fez
@@ -76,19 +77,28 @@ pt:
   edit_profile: Editar perfil
   editor_placeholder: ... Escreva sua solução aqui ...
   email: E-mail
-  error_description: Isto é o que é conhecido como <span class = "error-link"> %{error} </ span>.
-  error_401: erro 401
-  error_403: erro 403
-  error_404: erro 404
-  error_410: erro 410
-  error_500: erro 500
-  errored: Opa! Sua solução não pode ser executada
   error:
     title:
       forbidden: Você não tem autorização para ver esse conteúdo
       gone: Opa! O conteúdo expirou
       internal_server_error: Opa! Algo não estava certo
       not_found: Opa! A página que você pesquisou não existe
+  error_401: erro 401
+  error_403: erro 403
+  error_404: erro 404
+  error_410: erro 410
+  error_500: erro 500
+  error_description: Isto é o que é conhecido como <span class = "error-link"> %{error} </ span>.
+  errored: Opa! Sua solução não pode ser executada
+  exam_authorization_request_approved_html: Sua solicitação foi aprovada, não se esqueça de conectar em <strong>%{date}</strong>. Boa sorte!
+  exam_authorization_request_created: Seu registro de exame foi salvo com sucesso!
+  exam_authorization_request_rejected: Seu pedido foi rejeitado.
+  exam_authorization_request_saved: Seu registro de exame foi modificado com sucesso!
+  exam_authorization_request_updated: Há notícias sobre seu registro para %{description}
+  exam_registration_choose_exam: Selecione o dia e a hora em que gostaria de fazer o exame
+  exam_registration_explanation_html: Você tem tempo até <strong>%{date}</strong> para se inscrever. Após essa data, sua inscrição será avaliada e você receberá uma confirmação. <br> Não se esqueça de verificar as notificações!
+  exam_registration_open: "¡Inscrições abertas para %{description}!"
+  exam_registration_to: Inscrição a %{description}
   exams: Examesca
   exercise: Exercício
   exercise_count: exercícios
@@ -126,6 +136,7 @@ pt:
   home: Home
   hour: hora
   hours: horas
+  important_info: Informação importante
   initial_state: Tabuleiro inicial
   insert_file_name: Insira um nome de arquivo
   invitation: Convite para o curso
@@ -175,6 +186,7 @@ pt:
   new: Novo
   new_message: Você tem dúvidas? Levante a mão!
   new_message_placeholder: Escreva sua mensagem para o seu professor aqui ...
+  new_message_received: Você tem uma nova mensagem de %{sender}
   next_exercise: Em seguida
   next_guide: Próxima Lição %{nome}
   no_discussions: Não encontramos consultas que correspondam à sua pesquisa.
@@ -188,6 +200,7 @@ pt:
   not_found: A página que você pesquisou não existe!
   not_found_explanation: Olhe se você escreveu o endereço corretamente.
   not_in_any_organizations: Parece que você ainda não está em nenhuma organização!
+  notifications: Notificações
   notify_problem_with_exercise: Relatar um erro
   office: Secretariado
   only_landscape_support: Por favor, gire seu tablet ou celular para realizar exercícios

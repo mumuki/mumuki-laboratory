@@ -9,7 +9,7 @@ es-CL:
   actual_state: Tablero obtenido
   all: Todos
   and: y
-  appendix: "Apéndice"
+  appendix: Apéndice
   appendix_teaser: ¿Quieres saber más? <a href="%{link}">Consulta el apéndice de este capítulo</a>
   are_you_sure: '¿Estás seguro que quieres %{action}?'
   ask_a_question: ¡Haz una pregunta!
@@ -21,7 +21,7 @@ es-CL:
     one: '1 intento restante'
     other: '%{count} intentos restantes'
   author: Autor
-  authoring: "Autores"
+  authoring: Autores
   authoring_note_html: Esta guía fue desarrollada por %{authors} bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia Creative Commons Compartir-Igual, 4.0</a>.
   authoring_note_with_collaborators_html: Esta guía fue desarrollada por %{authors} y <a href="%{collaborators}" target="_blank">muchas personas más</a>, bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia Creative Commons Compartir-Igual, 4.0</a>.
   back_to_mumuki: ¡Vuelve a Mumuki!
@@ -65,6 +65,7 @@ es-CL:
   details: Detalles
   disabled_explanation: Estás intentando acceder a un recurso que fue deshabilitado o eliminado de forma permanente
   disabled_organization_explanation: ¡Este recorrido ha finalizado!
+  new_discussion_message: Mensaje nuevo en %{title}
   discussion_updated: Consulta actualizada
   discussions: Consultas
   dont_leave_us: ¡No nos abandones! Aprender a programar es divertido. Sólo tienes que seguir practicando.
@@ -78,13 +79,22 @@ es-CL:
   error_404: error 404
   error_410: error 410
   error_500: error 500
-  errored: ¡Ups! Tu solución no se puede ejecutar
   error:
     title:
       forbidden: No tienes autorización para ver este contenido
       gone: ¡Ups! El contenido expiró
       internal_server_error: ¡Ups! Algo no anduvo bien
       not_found: ¡Ups!  La página no existe
+  errored: ¡Ups! Tu solución no se puede ejecutar
+  exam_authorization_request_approved_html: Tu solicitud fue aprobada, no olvides conectarte el <strong>%{date}</strong>. ¡Buena suerte!
+  exam_authorization_request_created: ¡Tu inscripción al exámen se registró exitosamente!
+  exam_authorization_request_rejected: Tu solicitud fue rechazada.
+  exam_authorization_request_saved: ¡Tu inscripción al exámen se modificó exitosamente!
+  exam_authorization_request_updated: Hay novedades sobre tu inscripción a %{description}
+  exam_registration_choose_exam: Seleccioná día y horario en el que te gustaría rendir el exámen
+  exam_registration_explanation_html: Tienes tiempo hasta el <strong>%{date}</strong> para inscribirte. Pasada esa fecha, tu solicitud será evaluada y recibirás una confirmación. <br> ¡No olvides revisar las notificaciones!
+  exam_registration_open: ¡Ya puedes inscribirte a %{description}!
+  exam_registration_to: Inscripción a %{description}
   exams: Exámenes
   exercise: Ejercicio
   exercise_count: ejercicios
@@ -120,6 +130,7 @@ es-CL:
   home: Inicio
   hour: hora
   hours: horas
+  important_info: Información importante
   initial_state: Tablero inicial
   insert_file_name: Ingresa un nombre de archivo
   invitation: Invitación a curso
@@ -168,22 +179,24 @@ es-CL:
   need_help: No entiendo, ¡necesito ayuda!
   never: nunca
   new: Nuevo
-  new_message: ¿Tienes dudas? ¡Levanta la mano!
   new_discussion: Nueva consulta
+  new_message: ¿Tienes dudas? ¡Levanta la mano!
   new_message_placeholder: Escribe el mensaje para tu docente acá...
+  new_message_received: Tienes un nuevo mensaje de %{sender}
   next_exercise: Siguiente
   next_guide: 'Siguiente Lección: %{name}'
   no_discussions: No encontramos consultas que coincidan con tu búsqueda.
   no_exercises: No encontramos ejercicios que coincidan con tu búsqueda.
   no_guides: No encontramos lecciones que coincidan con tu búsqueda.
   no_messages: ¡Parece que no tienes ningún mensaje todavía!
-  no_need_hint: 'Este ejercicio no tiene pista'
+  no_need_hint: Este ejercicio no tiene pista
   no_questions: Parece que aún no hay ninguna consulta.
   no_submissions: ¡Parece que aún no intentaste resolver este ejercicio!
   no_useful_result: ¿No encontraste lo que estabas buscando?
   not_found: ¡La página que buscaste no existe!
   not_found_explanation: Fíjate si escribiste bien la dirección.
   not_in_any_organizations: ¡Parece que no estás en ninguna organización todavía!
+  notifications: Notificaciones
   notify_problem_with_exercise: Reporta un bug
   office: Secretaría
   only_landscape_support: Por favor, rota tu tablet o celular para realizar ejercicios

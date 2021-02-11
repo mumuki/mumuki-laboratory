@@ -1,0 +1,17 @@
+<%= content_for :breadcrumbs do %>
+  <%= breadcrumbs @authorization_request %>
+<% end %>
+
+<div class="row">
+  <div class="mu-inline-block-left">
+    <h1>
+      <%= t :exam_registration_to, description: @authorization_request.exam_registration.description %>
+    </h1>
+  </div>
+</div>
+
+<% if @authorization_request.approved? %>
+  <%= t :exam_authorization_request_approved_html, date: l(@authorization_request.exam.start_time, format: :long) %>
+<% else %>
+  <%= t :exam_authorization_request_rejected %>
+<% end %>

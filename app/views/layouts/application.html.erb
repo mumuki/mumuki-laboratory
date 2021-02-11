@@ -25,12 +25,7 @@
               <span class="mu-level-number"></span>
             </div>
           <% end %>
-          <div class="dropdown mu-navbar-element notifications-box <%= 'notifications-box-empty' unless has_notifications? %>">
-            <a href=<%= "#{user_notifications_path}" %>>
-              <i class="fas fa-bell fa-fw fa-2x mu-navbar-icon"></i>
-                <span class="badge badge-notifications"><%= notifications_count %></span>
-            </a>
-          </div>
+          <%= render partial: 'notifications/dropdown' %>
           <div class="dropdown mu-navbar-element">
             <div id="profileDropdown" class="profile-dropdown" data-toggle="dropdown" aria-label="<%= t(:user) %>" role="menu" tabindex="0">
               <%= profile_picture_for current_user %>

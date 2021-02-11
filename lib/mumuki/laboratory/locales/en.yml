@@ -11,20 +11,20 @@ en:
   actual_state: Obtained board
   age: Age
   all: All
-  appendix: "Appendix"
+  appendix: Appendix
   appendix_teaser: Do you want to learn more? <a href="%{link}">Check this chapter's appendix</a>"
   approved_message: Validated by mentor
-  are_you_sure: 'Are you sure you want to %{action}?'
+  are_you_sure: Are you sure you want to %{action}?
   ask_a_question: Ask a question!
   ask_community: Ask community for help
   ask_redirect: Do you want to go there?
   ask_the_first_question: Be the first one to ask!
   attempts_left:
-    zero: "You've run out of attempts "
+    zero: "You've run out of attempts"
     one: "1 attempt remaining"
     other: '%{count} attempts remaining'
   author: Author
-  authoring: "Authoring"
+  authoring: Authoring
   authoring_note_html: This guide's content was developed by %{authors} under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons License Share-Alike, 4.0</a>
   authoring_note_with_collaborators_html: This guide's content was developed by %{authors} and <a href="%{collaborators}" target="_blank">many others</a>, under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons License Share-Alike, 4.0</a>
   back_to_mumuki: Back to Mumuki!
@@ -51,7 +51,7 @@ en:
   console: Console
   contact_administrator: 'If you think this is not supposed to happen, please contact %{link}'
   content: Content
-  continue_exercise: "Continue"
+  continue_exercise: Continue
   continue_lesson: Continue this lesson!
   continue_practicing: Continue practicing!
   corollary: To think about
@@ -60,11 +60,12 @@ en:
   created_at: Created at
   date: Date
   description: Description
-  destroy_message: delete the message
   destroy: Destroy
+  destroy_message: delete the message
   disabled_explanation: You are trying to visit a permamently disabled or deleted resource
   disabled_organization_explanation: This path has already finished.
   discussion_description_placeholder: You can add more information regarding your doubt.
+  new_discussion_message: New message on %{title}
   discussion_updated: Discussion updated
   discussions: Discussions
   dont_leave_us: Don't leave us! Learning is fun. You just have to keep at it.
@@ -73,19 +74,28 @@ en:
   edit_profile: Edit profile
   editor_placeholder: "write your solution here..."
   email: Email
-  error_description: This is known as a <span class="error-link">%{error}</span>.
-  error_401: 401 error
-  error_403: 403 error
-  error_404: 404 error
-  error_410: 410 error
-  error_500: 500 error
-  errored: Oops, your solution didn't work
   error:
     title:
       forbidden: You are not allowed to see this content
       gone: Oops! Content has expired
       internal_server_error: Oops! Something went wrong
       not_found: Oops! Page was not found
+  error_401: 401 error
+  error_403: 403 error
+  error_404: 404 error
+  error_410: 410 error
+  error_500: 500 error
+  error_description: This is known as a <span class="error-link">%{error}</span>.
+  errored: Oops, your solution didn't work
+  exam_authorization_request_approved_html: Your request was approved, don't forget to log in at <strong>%{date}</strong>. Good luck!
+  exam_authorization_request_created: Your registration to the exam has been saved!
+  exam_authorization_request_rejected: Your request was rejected.
+  exam_authorization_request_saved: Your registration to the exam has been updated!
+  exam_authorization_request_updated: Your registration to %{description} has been updated
+  exam_registration_choose_exam: Choose date and time to attend to the exam
+  exam_registration_explanation_html: You have until <strong>%{date}</strong> to register. After that date, your request will be processed and you will receive a confirmation. <br> Don't forget to check the notifications!
+  exam_registration_open: Registrations open for %{description}!
+  exam_registration_to: Registration to %{description}
   exams: Exams
   exercise: Exercise
   exercises: Exercises
@@ -121,6 +131,7 @@ en:
   hidden_done: 'Good!'
   history: History
   home: Home
+  important_info: Important information
   initial_state: Initial board
   insert_file_name: Insert a file name
   invitation: Invitation to course
@@ -169,6 +180,7 @@ en:
   never: never
   new: New
   new_message_placeholder: Write a message for your teacher...
+  new_message_received: You have a new message from %{sender}
   next_exercise: Next
   next_lesson: 'Next Guide: %{name}'
   no_discussions: No discussions matched your search.
@@ -181,6 +193,7 @@ en:
   no_useful_result: Didn't find what you were looking for?
   not_found_explanation: 'You may have mistyped the address or the page may have moved.'
   not_in_any_organizations: It seems you aren't in any organizations yet!
+  notifications: Notifications
   notify_problem_with_exercise: Report a bug
   office: Office
   only_landscape_support: Please, rotate your tablet or cellphone to continue practicing
