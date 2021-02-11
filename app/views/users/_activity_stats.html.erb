@@ -3,15 +3,13 @@
     <%= render partial: 'activity_indicator',
                locals: {
                  title: t(:exercises),
-                 stats: [{name: t(:solved_exercises_count, count: @activity[:exercises][:solved_count]), value: @activity[:exercises][:solved_count]},
-                         {name: t(:solved_exercises_percentage), value: "#{@activity[:exercises][:solved_count] / @activity[:exercises][:count] * 100}%"}]
+                 stats: exercises_activity_stats
                } %>
 
     <%= render partial: 'activity_indicator',
                locals: {
                  title: t(:forum),
-                 stats: [{name: t(:messages_pluralized, count: @activity[:messages][:count]), value: @activity[:messages][:count]},
-                         {name: t(:approved_messages, count: @activity[:messages][:approved]), value: @activity[:messages][:approved]}]
+                 stats: messages_activity_stats
                } %>
   </div>
 
