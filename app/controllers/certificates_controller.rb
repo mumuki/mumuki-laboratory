@@ -1,6 +1,9 @@
 class CertificatesController < ApplicationController
   before_action :authorize_if_private!, only: [:show]
   before_action :set_certificate!
+  before_action :validate_current_user!, only: [:download]
+
+  include CertificateHelper
 
   def verify
   end
@@ -9,13 +12,7 @@ class CertificatesController < ApplicationController
   end
 
   def download
-    pdf_html = render_to_string(partial: 'certificates/download', locals: { certificate: @certificate })
-    pdf = WickedPdf.new.pdf_from_string pdf_html,
-                                        orientation: 'Landscape',
-                                        page_size: 'A5',
-                                        margin: { top: 0.5, left: 1, bottom: 0.5, right: 1 }
-
-    send_data pdf, filename: "#{@certificate.title.parameterize.underscore}.pdf"
+    send_data pdf_for(@certificate), filename: @certificate.filename
   end
 
   private
@@ -24,4 +21,7 @@ class CertificatesController < ApplicationController
     @certificate = Certificate.find_by! code: params[:code]
   end
 
+  def validate_current_user!
+    raise Mumuki::Domain::NotFoundError.new unless certificates_current_user? @certificate
+  end
 end

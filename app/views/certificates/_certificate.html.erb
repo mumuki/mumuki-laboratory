@@ -38,5 +38,5 @@
 <div class="mu-certificate-box">
   <img src="<%= certificate.background_image_url %>" class="background-image"/>
   <%= ERB.new(certificate.template_html_erb).result(certificate.locals.instance_eval { binding }).html_safe %>
-  <div><img class="qr-code" src="<%= qr certificate %>"/></div>
+  <div><img class="qr-code" src="<%= qr_for certificate %>"/></div>
 </div>

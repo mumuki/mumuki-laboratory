@@ -1,4 +1,6 @@
 class UserMailer < ApplicationMailer
+  include CertificateHelper
+
   def welcome_email(user, organization)
     with_locale(user, organization) do
       organization_name = organization.display_name || t(:your_new_organization)
@@ -15,6 +17,13 @@ class UserMailer < ApplicationMailer
   def no_submissions_reminder(user)
     with_locale(user) do
       build_email t(:start_using_mumuki), 'no_submissions_reminder'
+    end
+  end
+
+  def certificate(certificate)
+    attachments[certificate.filename] = pdf_for(certificate)
+    with_locale(certificate.user) do
+      build_email t(:certificate), 'new_certificate'
     end
   end
 
