@@ -20,7 +20,7 @@
       <li <%= !params[:date_from] && 'class=active' %>>
         <%= link_to t(:total), activity_user_path %>
       </li>
-      <% activity_selector_week_range.each do |(week_start, week_end)| %>
+      <% activity_selector_week_range_for.each do |(week_start, week_end)| %>
         <li <%= params[:date_from] == week_start.iso8601 && 'class=active' %>>
           <%= link_to t(:week_of, date: l(week_start)), activity_user_path(date_from: week_start, date_to: week_end) %>
         </li>

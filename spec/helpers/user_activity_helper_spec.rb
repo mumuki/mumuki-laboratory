@@ -3,13 +3,15 @@ require 'spec_helper'
 describe UserActivityHelper, organization_workspace: :test do
   helper UserActivityHelper
 
+  let(:organization) { Organization.current }
+
   before do
     # Set today date to Wednesday to test week always starts on Monday
     allow(Date).to receive(:today).and_return(Date.new(2021, 2, 10))
   end
 
-  describe 'activity_selector_week_range' do
-    let(:range) { activity_selector_week_range }
+  describe 'activity_selector_week_range_for' do
+    let(:range) { activity_selector_week_range_for organization }
     let(:closest_monday) { Date.new(2021, 2, 8) }
 
     context 'organization without in preparation until' do
@@ -19,7 +21,6 @@ describe UserActivityHelper, organization_workspace: :test do
     end
 
     context 'organization with in preparation until' do
-      let(:organization) { Organization.current }
       before { organization.update! in_preparation_until: 3.week.ago }
 
       it { expect(range.length).to eq 4 }
