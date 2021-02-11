@@ -14,7 +14,8 @@ en:
   appendix: Appendix
   appendix_teaser: Do you want to learn more? <a href="%{link}">Check this chapter's appendix</a>"
   approved_message: Validated by mentor
-  approved_messages: validated
+  approved_messages:
+    other: validated
   are_you_sure: Are you sure you want to %{action}?
   ask_a_question: Ask a question!
   ask_community: Ask community for help
@@ -177,6 +178,9 @@ en:
   messages: Messages
   messages_error: Previous messages are unavailable. Please try again later.
   moderation: Mentoring
+  messages_pluralized:
+    one: Message
+    other: Messages
   moderator: Mentor
   more_messages: More
   my_account: My account

@@ -16,7 +16,9 @@ pt:
   appendix_teaser: Você quer saber mais? <a href="%{link}"> Consulte o apêndice deste capítulo </a>
   approved_message: Validado pelo mentor
   are_you_sure: 'Tem certeza de que deseja %{action}?'
-  approved_messages: validados
+  approved_messages:
+    one: validado
+    other: validados
   ask_a_question: Faça uma pergunta!
   ask_community: Pergunte à comunidade
   ask_redirect: Você quer que nós o levemos para lá?
@@ -180,6 +182,10 @@ pt:
   message: Mensagem
   messages: Mensagens
   messages_error: As mensagens acima não estão disponíveis no momento. Eu tentei novamente mais tarde!
+    mais tarde!
+  messages_pluralized:
+    one: Mensagem
+    other: Mensagens
   minute: minuto
   minutes: minutos
   moderation: Mentoria

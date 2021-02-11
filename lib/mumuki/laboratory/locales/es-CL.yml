@@ -13,7 +13,9 @@ es-CL:
   appendix_teaser: ¿Quieres saber más? <a href="%{link}">Consulta el apéndice de este capítulo</a>
   are_you_sure: '¿Estás seguro que quieres %{action}?'
   ask_a_question: ¡Haz una pregunta!
-  approved_messages: validados
+  approved_messages:
+    one: validado
+    other: validados
   ask_community: Pregunta a la comunidad
   ask_redirect: ¿Quieres que te llevemos ahí?
   ask_the_first_question: ¡Haz la primera pregunta!
@@ -175,6 +177,9 @@ es-CL:
   message: Mensaje
   messages: Mensajes
   messages_error: Los mensajes anteriores no están disponibles en este momento. ¡Vuelve a intentar más tarde!
+  messages_pluralized:
+    one: Mensaje
+    other: Mensajes
   minute: minuto
   minutes: minutos
   moderation: Mentoría
