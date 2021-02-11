@@ -10,11 +10,12 @@ describe UserActivityHelper, organization_workspace: :test do
 
   describe 'activity_selector_week_range' do
     let(:range) { activity_selector_week_range }
+    let(:closest_monday) { Date.new(2021, 2, 8) }
 
     context 'organization without in preparation until' do
       it { expect(range.length).to eq 9 }
-      it { expect(range.first).to eq [Date.new(2021, 2, 8), 1.week.since.to_date] }
-      it { expect(range.last).to eq [8.week.ago.to_date, 7.week.ago.to_date] }
+      it { expect(range.first).to eq [closest_monday, 1.week.since(closest_monday).to_date] }
+      it { expect(range.last).to eq [8.week.ago(closest_monday).to_date, 7.week.ago(closest_monday).to_date] }
     end
 
     context 'organization with in preparation until' do
@@ -22,8 +23,8 @@ describe UserActivityHelper, organization_workspace: :test do
       before { organization.update! in_preparation_until: 3.week.ago }
 
       it { expect(range.length).to eq 4 }
-      it { expect(range.first).to eq [Date.new(2021, 2, 8), 1.week.since.to_date] }
-      it { expect(range.last).to eq [3.week.ago.to_date, 2.week.ago.to_date] }
+      it { expect(range.first).to eq [closest_monday, 1.week.since(closest_monday).to_date] }
+      it { expect(range.last).to eq [3.week.ago(closest_monday).to_date, 2.week.ago(closest_monday).to_date] }
     end
   end
 end
