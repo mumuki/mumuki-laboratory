@@ -158,6 +158,7 @@ es-CL:
   minutes: minutos
   more_messages: Ver mensajes anteriores
   moderation: Moderación
+  moderator: "Mentor"
   my_doubts: Mis consultas
   name: Nombre
   navigation_continue: 'Siguiente %{kind}: %{sibling}'
