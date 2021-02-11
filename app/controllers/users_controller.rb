@@ -11,9 +11,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update_and_notify! user_params
+    update_and_flash!(:user_data_updated)
     current_user.accept_profile_terms!
-    flash.notice = I18n.t(:user_data_updated)
     redirect_after! :profile_completion, fallback_location: user_path
   end
 
@@ -25,6 +24,11 @@ class UsersController < ApplicationController
 
   def terms
     @profile_terms ||= Term.profile_terms_for(current_user)
+  end
+
+  def update_preferences
+    update_and_flash!(:user_preferences_updated)
+    redirect_to preferences_user_path
   end
 
   def preferences
@@ -51,4 +55,8 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def update_and_flash!(notice)
+    current_user.update_and_notify! user_params
+    flash.notice = I18n.t(notice)
+  end
 end

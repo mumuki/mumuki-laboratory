@@ -64,7 +64,7 @@ Rails.application.routes.draw do
       get :unsubscribe
 
       get :preferences
-      put :preferences, to: 'users#update'
+      put :preferences, to: 'users#update_preferences'
     end
 
     resources :messages, only: [:index, :create]

@@ -320,6 +320,7 @@ es:
   upvotes_count_desc: Más útiles
   upvotes_count_asc: Menos útiles
   user_data_updated: Tus datos se actualizaron correctamente
+  user_preferences_updated: Tus preferencias se actualizaron correctamente
   user: Usuario
   username: Nombre de usuario
   view_details: Ver detalles
