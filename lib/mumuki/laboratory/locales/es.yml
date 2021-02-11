@@ -167,9 +167,9 @@ es:
   messages_error: Los mensajes anteriores no están disponibles en este momento. ¡Volvé a intentar mas tarde!
   minute: minuto
   minutes: minutos
-  more_messages: Ver mensajes anteriores
   moderation: Mentoría
-  moderator: "Mentor"
+  moderator: Mentor
+  more_messages: Ver mensajes anteriores
   my_doubts: Mis consultas
   name: Nombre
   navigation_continue: 'Siguiente %{kind}: %{sibling}'

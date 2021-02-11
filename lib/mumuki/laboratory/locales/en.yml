@@ -155,9 +155,9 @@ en:
   message: Message
   messages: Messages
   messages_error: Previous messages are unavailable. Please try again later.
-  moderator: "Mentor"
-  more_messages: More
   moderation: Mentoring
+  moderator: Mentor
+  more_messages: More
   my_doubts: My doubts
   my_submissions: My Submissions
   name: Name
