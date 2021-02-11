@@ -59,10 +59,10 @@ class UsersController < ApplicationController
   end
 
   def date_range_params
-    from = params[:date_from].try { |it| Date.parse it }
+    @date_from = params[:date_from].try { |it| Date.parse it }
     to = params[:date_to].try { |it| Date.parse it }
-    if from && to
-      from.beginning_of_day..(to - 1.day).end_of_day
+    if @date_from && to
+      @date_from.beginning_of_day..(to - 1.day).end_of_day
     else
       nil
     end

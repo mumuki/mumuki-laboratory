@@ -17,11 +17,11 @@
 
   <div class="col-md-3 col-md-offset-3">
     <ul class="nav nav-pills nav-stacked">
-      <li <%= !params[:date_from] && 'class=active' %>>
+      <li <%= mark_period_if_active nil %>>
         <%= link_to t(:total), activity_user_path %>
       </li>
       <% activity_selector_week_range_for.each do |(week_start, week_end)| %>
-        <li <%= params[:date_from] == week_start.iso8601 && 'class=active' %>>
+        <li <%= mark_period_if_active week_start %>>
           <%= link_to t(:week_of, date: l(week_start)), activity_user_path(date_from: week_start, date_to: week_end) %>
         </li>
       <% end %>

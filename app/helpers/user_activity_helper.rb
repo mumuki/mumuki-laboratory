@@ -8,7 +8,15 @@ module UserActivityHelper
         .map { |it| [it, it + 7.days] }
   end
 
+  def mark_period_if_active(period_start)
+    active_period?(period_start) && 'class=active'
+  end
+
   private
+
+  def active_period?(period_start)
+    period_start ? @date_from == period_start : !@date_from
+  end
 
   def min_week
     8.week.ago.to_date
