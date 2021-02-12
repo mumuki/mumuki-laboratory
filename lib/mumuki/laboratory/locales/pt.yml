@@ -244,6 +244,8 @@ pt:
   send: Enviar
   sending_solution: Solução de envio
   show: Mostrar
+  show_texts_as_uppercase: Mostrar texto em maiúsculas
+  show_texts_as_uppercase_detail: Converta a maioria dos textos em letras maiúsculas para simplificar a leitura.
   sign_in: Iniciar sessão
   sign_in_action: iniciar sessão
   sign_out: Fechar Sessão

@@ -12,6 +12,11 @@
   </div>
   <div class="row mu-tab-body">
     <div class="col-md-12">
+      <span class="field checkbox complementary complementary-checkbox">
+        <%= f.check_box :uppercase_mode?, class: 'form-control' %>
+        <%= label_tag :uppercase_mode, t(:show_texts_as_uppercase) %>
+        <p class="mu-preference-detail"><%= t(:show_texts_as_uppercase_detail) %></p>
+      </span>
     </div>
   </div>
   <div class="mu-profile-actions mobile visible-xs">
