@@ -153,5 +153,35 @@ feature 'Terms Flow', organization_workspace: :test do
     end
   end
 
+  context 'with incognito mode' do
+    before { test_organization.update! incognito_mode_enabled: true }
+
+    describe 'visit user terms path' do
+      let(:terms_path) { '/user/terms' }
+      let(:expected_terms) { general_terms_scopes }
+
+      it_behaves_like 'has expected terms'
+    end
+
+    scenario 'visit any other path' do
+      visit '/'
+
+      expect(page).to have_text('Start Practicing')
+    end
+
+    context 'visit forum' do
+      let(:terms_path) { '/discussions/terms' }
+
+      context 'with enabled forum' do
+        before { test_organization.update! forum_enabled: true }
+
+        scenario 'visit forum' do
+          visit '/discussions/terms'
+          expect(page).to have_text('You may have mistyped the address or the page may have moved')
+        end
+      end
+    end
+  end
+
 end
 
