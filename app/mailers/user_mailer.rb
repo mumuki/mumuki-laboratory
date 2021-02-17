@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  include CertificateHelper
+  include WithCertificateRender
 
   def welcome_email(user, organization)
     with_locale(user, organization) do
@@ -21,9 +21,9 @@ class UserMailer < ApplicationMailer
   end
 
   def certificate(certificate)
-    attachments[certificate.filename] = pdf_for(certificate)
-    with_locale(certificate.user) do
-      build_email t(:certificate), 'new_certificate'
+    with_locale certificate.user, certificate.organization do
+      attachments[certificate.filename] = pdf_for(certificate)
+      mail to: certificate.user.email, subject: t(:certificate)
     end
   end
 

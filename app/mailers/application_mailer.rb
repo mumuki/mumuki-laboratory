@@ -13,4 +13,3 @@ class ApplicationMailer < ActionMailer::Base
     mailer_environment_variables.all? { |env_var| ENV[env_var].present? }
   end
 end
-
