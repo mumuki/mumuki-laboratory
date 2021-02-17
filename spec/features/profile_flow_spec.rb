@@ -95,7 +95,6 @@ feature 'Profile Flow', organization_workspace: :test do
           visit "/user/edit"
           fill_in('user_first_name', with: 'first_name')
 
-          # Match :first is used because there are two buttons: mobile and desktop.
           click_on(button_options)
           expect(page).to have_text('Your data was updated successfully')
           expect(page).to have_text('Profile')
