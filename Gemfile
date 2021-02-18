@@ -41,4 +41,4 @@ group :development, :test do
   gem 'selenium-webdriver'
 end
 #
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'incognito-polyfill'
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'master'
