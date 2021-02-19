@@ -121,5 +121,17 @@ feature 'Profile Flow', organization_workspace: :test do
         expect(page).to have_text(problem.name)
       end
     end
+
+    context 'visit certificates tab' do
+      before { Organization.find_by_name('test').switch! }
+      before { create :certificate, user: user, code: 'abc' }
+      before { visit '/user#certificates' }
+
+      scenario { expect(page).to have_text('Test - Certification to test') }
+      scenario { expect(page).to have_link(href: /certificates\/verify\/abc/) }
+      scenario { expect(page).to have_link(href: /linkedin.com\/profile\/add/) }
+      scenario { expect(page).to have_link(href: /certificates\/download\/abc/) }
+    end
+
   end
 end

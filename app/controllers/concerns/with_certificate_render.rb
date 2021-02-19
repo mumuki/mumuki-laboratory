@@ -1,3 +1,4 @@
+require 'wicked_pdf'
 require 'rqrcode'
 
 module WithCertificateRender
