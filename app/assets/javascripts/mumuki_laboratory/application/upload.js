@@ -12,17 +12,11 @@ mumuki.load(() => {
     if (!file) return;
 
     if (file.size > maxFileSize) {
-      $uploadFileLimitExceeded.removeClass('hidden');
-      $uploadLabel.text($uploadLabelText);
-      $uploadIcon.addClass('fa-upload').removeClass('fa-file-alt');
-      $btnSubmit.addClass('disabled');
+      showFileExceedsMaxSize();
       return;
     }
 
-    $uploadFileLimitExceeded.addClass('hidden');
-    $uploadLabel.text(file.name);
-    $uploadIcon.removeClass('fa-upload').addClass('fa-file-alt');
-    $btnSubmit.removeClass('disabled');
+    allowSubmissionFor(file.name);
 
     var reader = new FileReader();
     reader.onload = function (e) {
@@ -32,5 +26,19 @@ mumuki.load(() => {
     };
     reader.readAsText(file);
   });
+
+  function showFileExceedsMaxSize() {
+    $uploadFileLimitExceeded.removeClass('hidden');
+    $uploadLabel.text($uploadLabelText);
+    $uploadIcon.addClass('fa-upload').removeClass('fa-file-alt');
+    $btnSubmit.addClass('disabled');
+  }
+
+  function allowSubmissionFor(filename) {
+    $uploadFileLimitExceeded.addClass('hidden');
+    $uploadLabel.text(filename);
+    $uploadIcon.removeClass('fa-upload').addClass('fa-file-alt');
+    $btnSubmit.removeClass('disabled');
+  }
 });
 
