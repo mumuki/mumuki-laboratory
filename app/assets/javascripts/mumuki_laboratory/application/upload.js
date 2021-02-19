@@ -2,12 +2,6 @@ mumuki.upload = (() => {
   class FileUploader {
     constructor(file) {
       this.file = file;
-
-      this.$uploadFileLimitExceeded = $('#mu-upload-file-limit-exceeded');
-      this.$uploadLabel = $('#mu-upload-label span');
-      this.$uploadLabelText = this.$uploadLabel.text();
-      this.$uploadIcon = $('#mu-upload-icon');
-      this.$btnSubmit = $('.btn-submit');
     }
 
     uploadFileIfValid() {
@@ -15,10 +9,10 @@ mumuki.upload = (() => {
 
       let maxFileSize = $('#mu-upload-input').attr("mu-upload-file-limit");
       if (this.file.size > maxFileSize) {
-        return this.showFileExceedsMaxSize();
+        return mumuki.upload.ui.showFileExceedsMaxSize();
       }
 
-      this.allowSubmissionFor(this.file.name);
+      mumuki.upload.ui.allowSubmissionFor(this.file.name);
 
       var reader = new FileReader();
       reader.onload = function (e) {
@@ -26,6 +20,16 @@ mumuki.upload = (() => {
         $('#solution_content').html(contents);
       };
       reader.readAsText(this.file);
+    }
+  }
+
+  class UI {
+    constructor() {
+      this.$uploadFileLimitExceeded = $('#mu-upload-file-limit-exceeded');
+      this.$uploadLabel = $('#mu-upload-label span');
+      this.$uploadLabelText = this.$uploadLabel.text();
+      this.$uploadIcon = $('#mu-upload-icon');
+      this.$btnSubmit = $('.btn-submit');
     }
 
     showFileExceedsMaxSize() {
@@ -43,14 +47,24 @@ mumuki.upload = (() => {
     }
   }
 
+  function _setUI() {
+    mumuki.upload.ui = new UI();
+  }
+
   return {
-    FileUploader
+    FileUploader,
+    UI,
+
+    _setUI,
+
+    /** @type {UI} */
+    ui: null
   };
 })();
 
 mumuki.load(() => {
   $('#mu-upload-input').change(function (evt) {
+    if (!mumuki.upload.ui) mumuki.upload._setUI();
     return new mumuki.upload.FileUploader(evt.target.files[0]).uploadFileIfValid();
   });
 });
-
