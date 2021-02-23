@@ -1,20 +1,10 @@
 module WithAuthorization
   extend ActiveSupport::Concern
 
-  def authorize_janitor!
-    authorize! :janitor
-  end
-
-  def authorize_admin!
-    authorize! :admin
-  end
-
-  def authorize_owner!
-    authorize! :owner
-  end
-
-  def authorize_moderator!
-    authorize! :moderator
+  (Mumukit::Auth::Roles::ROLES - [:editor, :writer]).each do |role|
+    define_method "authorize_#{role}!" do
+      authorize! role
+    end
   end
 
   def authorization_slug
