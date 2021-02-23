@@ -14,12 +14,14 @@ mumuki.upload = (() => {
 
       mumuki.upload.ui.allowSubmissionFor(this.file.name);
 
-      var reader = new FileReader();
+      const reader = new FileReader();
       reader.onload = function (e) {
-        var contents = e.target.result;
+        const contents = e.target.result;
         $('#solution_content').html(contents);
       };
       reader.readAsText(this.file);
+
+      return reader;
     }
   }
 

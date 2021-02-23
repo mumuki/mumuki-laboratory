@@ -9,10 +9,28 @@ describe('upload', () => {
     <div id="mu-upload-file-limit-exceeded" class="hidden"></div>
   `);
 
+  beforeEach(() => {
+    mumuki.upload._setUI();
+  });
+
+  function reader(file, done) {
+    let fileReader = new mumuki.upload.FileUploader(file).uploadFileIfValid();
+    if (fileReader) {
+      fileReader.addEventListener('load', () => done());
+      fileReader.addEventListener('error', done);
+      return fileReader;
+    } else {
+      done();
+    }
+  }
+
   describe('no file is uploaded', () => {
-    beforeEach(() => {
-      mumuki.upload._setUI();
-      new mumuki.upload.FileUploader(null).uploadFileIfValid();
+    beforeEach((done) => {
+      reader(null, done);
+    });
+
+    it('loads no solution', function () {
+      expect($('#solution_content').html()).toEqual('');
     });
 
     it('does not allow submitting', function () {
@@ -25,9 +43,12 @@ describe('upload', () => {
   });
 
   describe('small file is uploaded', () => {
-    beforeEach(() => {
-      mumuki.upload._setUI();
-      new mumuki.upload.FileUploader(new File(["short solution"], "short.txt")).uploadFileIfValid();
+    beforeEach((done) => {
+      reader(new File(["short solution"], "short.txt"), done);
+    });
+
+    it('loads solution', function () {
+      expect($('#solution_content').html()).toEqual('short solution');
     });
 
     it('allows submitting', function () {
@@ -37,12 +58,15 @@ describe('upload', () => {
     it('does not exceed max file size', function () {
       expect($('#mu-upload-file-limit-exceeded').hasClass('hidden')).toBe(true);
     });
-   });
+  });
 
   describe('large file is uploaded', () => {
-    beforeEach(() => {
-      mumuki.upload._setUI();
-      new mumuki.upload.FileUploader(new File(["solution that is too long to be allowed"], "long.txt")).uploadFileIfValid();
+    beforeEach((done) => {
+      reader(new File(["solution that is too long to be allowed"], "long.txt"), done);
+    });
+
+    it('loads no solution', function () {
+      expect($('#solution_content').html()).toEqual('');
     });
 
     it('does not allow submitting', function () {
