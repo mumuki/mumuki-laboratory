@@ -113,6 +113,7 @@ pt:
   failed: Sua solução não passou as provas
   feedback: Problemas que encontramos
   female: Feminino
+  file_exceeds_max_size: "O tamanho do arquivo não deve exceder %{size_kb}kb. Selecione outro arquivo."
   finish: Terminar
   first_name: Nome
   forbidden_explanation: Você poderia ter entrado com uma conta incorreta?
@@ -240,6 +241,7 @@ pt:
   running: processamento
   save: Salvar
   see_context: Veja a animação desde o início
+  select_file: Selecione o arquivo
   send: Enviar
   sending_solution: Solução de envio
   show: Mostrar
@@ -296,7 +298,6 @@ pt:
   unmeet_expectations: Objetivos que não foram atendidos
   unprepared_organization_explanation: Este curso ainda não começou
   unsubscribe: Cancelar subscrição
-  upload_solution: Carregar solução
   uploading_solution: Uploading solution
   user: Usuário
   user_data_updated: Os seus dados foram atualizados corretamente

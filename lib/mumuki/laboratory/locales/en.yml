@@ -111,6 +111,7 @@ en:
   failed: Oops, something went wrong
   feedback: Feedback
   female: Female
+  file_exceeds_max_size: "File size should not exceed %{size_kb}kb. Please select another file."
   finish: Finish
   first_name: First Name
   forbidden_explanation: Please verify you have logged in with the right account
@@ -233,6 +234,7 @@ en:
   running: running
   save: Save
   see_context: Watch exercise introduction animation
+  select_file: Select file
   sending_solution: Sending solution
   show: Show
   sign_in: Sign in
@@ -289,7 +291,6 @@ en:
   unprepared_organization_explanation: This path hasn't started yet.
   unsubscribe: Unsubscribe
   unsubscribed_successfully: You have successfully unsubscribed from reminders.
-  upload_solution: Upload Solution
   uploading_solution: "Uploading solution"
   upvote: Upvote
   upvotes_count_desc: Most voted
