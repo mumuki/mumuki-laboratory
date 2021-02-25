@@ -127,7 +127,7 @@ feature 'Profile Flow', organization_workspace: :test do
       before { create :certificate, user: user, code: 'abc' }
       before { visit '/user#certificates' }
 
-      scenario { expect(page).to have_text('Test - Certification to test') }
+      scenario { expect(page).to have_text('Test - Certificate program to test') }
       scenario { expect(page).to have_link(href: /certificates\/verify\/abc/) }
       scenario { expect(page).to have_link(href: /linkedin.com\/profile\/add/) }
       scenario { expect(page).to have_link(href: /certificates\/download\/abc/) }

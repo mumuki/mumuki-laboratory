@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Certifications flow', organization_workspace: :test do
+feature 'Certificate Programs flow', organization_workspace: :test do
 
   let(:user) { create :user, first_name: 'Foo', last_name: 'Bar' }
 

@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
 
   def certificates
-    @certificates ||= current_user.certificates_in(Organization.current)
+    @certificates ||= current_user.certificates_in_organization
   end
 
   def unsubscribe
