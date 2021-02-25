@@ -10,8 +10,4 @@ module UserMenuHelper
   def discussions_user_menu_link
     link_to t(:discussions), discussions_user_path
   end
-
-  def should_show_discussions?
-    Organization.current.forum_enabled?
-  end
 end
