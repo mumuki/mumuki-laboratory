@@ -5,8 +5,6 @@ class CertificatesController < ApplicationController
   before_action :set_certificate!
   before_action :validate_current_user!, only: [:download]
 
-  helper_method :certificates_current_user?
-
   def verify
   end
 
@@ -24,10 +22,7 @@ class CertificatesController < ApplicationController
   end
 
   def validate_current_user!
-    raise Mumuki::Domain::NotFoundError.new unless certificates_current_user? @certificate
+    raise Mumuki::Domain::NotFoundError unless @certificate.for_user? current_user
   end
 
-  def certificates_current_user?(certificate)
-    certificate.user == current_user
-  end
 end

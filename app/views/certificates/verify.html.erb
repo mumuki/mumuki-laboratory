@@ -17,9 +17,9 @@
           <span><%= t(:certificate_verified_legend, description: @certificate.description, full_name: @certificate.user.formal_full_name).html_safe %></span>
         </div>
       </div>
-      <% if certificates_current_user? @certificate %>
+      <% if @certificate.for_user? current_user %>
         <div class="row mu-certificate-buttons">
-          <a href="<%= linkedin_url_to_post @certificate %>" target="_blank">
+          <a href="<%= linkedin_post_url @certificate %>" target="_blank">
             <img src="https://download.linkedin.com/desktop/add2profile/buttons/<%= t :linkedin_profile_button_locale %>.png" alt="LinkedIn Add to Profile button">
           </a>
           <a class="btn btn-success mu-certificate-download-btn pull-right" href="<%= download_certificate_path @certificate.code %>" target="_blank">
