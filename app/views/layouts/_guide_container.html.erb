@@ -9,12 +9,8 @@
       <h1><%= language_icon @guide.language %></h1>
     </div>
     <div class="mu-inline-block-left">
-      <h1 class="pull-left">
-        <span class="pull-left">
-          <%= subject.name %>
-        </span>
-        <%= render partial: 'layouts/guide_title_icons' %>
-      </h1>
+      <h1> <%= subject.name %> </h1>
+      <%= render partial: 'layouts/guide_title_icons' %>
     </div>
   </div>
   <div class="row">
