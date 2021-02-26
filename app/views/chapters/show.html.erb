@@ -2,16 +2,16 @@
   <%= breadcrumbs @chapter %>
 <% end %>
 
-<div class="chapter-description">
-  <h1 class="pull-left">
-    <span class="hidden-xs pull-left"><%= t(:chapter_number, number: @chapter.number) %>:&nbsp;</span>
-    <span class="pull-left"><%= @chapter.name %></span>
-    <% if @chapter.monolesson? %>
-      <div class="mu-monolesson pull-left">
-        <%= render partial: 'layouts/guide_title_icons' %>
-      </div>
-    <% end %>
-  </h1>
+<div>
+  <h1 class="hidden-xs"><%= full_title_for @chapter %></h1>
+  <h1 class="visible-xs"><%= short_title_for @chapter %></h1>
+
+  <% if @chapter.monolesson? %>
+    <div class="mu-monolesson pull-left">
+      <%= render partial: 'layouts/guide_title_icons' %>
+    </div>
+  <% end %>
+
 
   <%= @chapter.description_html %>
 
