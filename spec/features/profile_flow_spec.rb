@@ -112,14 +112,36 @@ feature 'Profile Flow', organization_workspace: :test do
     end
 
     context 'with messages' do
+      let(:test_organization) { Organization.locate! 'test' }
+      before { test_organization.switch! }
+
       scenario 'visit messages tab' do
-        Organization.find_by_name('test').switch!
         problem.submit_solution! user, {content: 'something'}
         Message.import_from_resource_h! message
         visit "/user#messages"
 
         expect(page).to_not have_text('It seems you don\'t have any messages yet!')
         expect(page).to have_text(problem.name)
+      end
+
+      context 'in a prevent_manual_evaluation_content organization' do
+        let(:problem) { create(:exercise, manual_evaluation: true) }
+        let(:new_book) { create(:book_with_full_tree, exercises: [problem])}
+
+        before { test_organization.update! prevent_manual_evaluation_content: true }
+        before do
+          test_organization.update! book: new_book
+          reindex_current_organization!
+        end
+
+        scenario 'with messages in a exercise with manual_evaluation' do
+          problem.submit_solution! user, {content: 'other thing'}
+          Message.import_from_resource_h! message
+          visit "/user#messages"
+
+          expect(page).to_not have_text('It seems you don\'t have any messages yet!')
+          expect(page).to have_text(problem.name)
+        end
       end
     end
   end
