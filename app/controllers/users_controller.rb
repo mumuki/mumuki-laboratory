@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   skip_before_action :validate_accepted_role_terms!
 
   def show
-    @messages = current_user.messages.to_a
+    @messages = current_user.messages_in_organization
     @watched_discussions = current_user.watched_discussions_in_organization
   end
 
