@@ -11,11 +11,9 @@
       <%= render partial: 'layouts/guide_title_icons' %>
     </div>
   <% end %>
-
-
-  <%= @chapter.description_html %>
-
 </div>
+
+<%= @chapter.description_html %>
 
 <% if @chapter.lessons.present? %>
   <% if @chapter.monolesson? %>
