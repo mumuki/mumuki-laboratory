@@ -2,16 +2,23 @@
   <%= breadcrumbs @chapter %>
 <% end %>
 
-<div>
-  <h1 class="hidden-xs"><%= full_title_for @chapter %></h1>
-  <h1 class="visible-xs"><%= short_title_for @chapter %></h1>
+<div class="row">
+  <div class="mu-inline-block-left">
+    <h1 class="hidden-xs"><%= full_title_for @chapter %></h1>
+    <h1 class="visible-xs"><%= short_title_for @chapter %></h1>
 
-  <% if @chapter.monolesson? %>
-    <%= render partial: 'layouts/guide_title_icons' %>
-  <% end %>
+    <% if @chapter.monolesson? %>
+      <%= render partial: 'layouts/guide_title_icons' %>
+    <% end %>
+  </div>
 </div>
-
-<%= @chapter.description_html %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="text-box">
+      <%= @chapter.description_html %>
+    </div>
+  </div>
+</div>
 
 <% if @chapter.lessons.present? %>
   <% if @chapter.monolesson? %>
