@@ -18,12 +18,12 @@
       <h1><%= language_icon @exercise.language %></h1>
     </div>
     <div class="mu-inline-block-left">
-      <h1>
-        <span class="hidden-xs"><%= t(:exercise_number, number: @exercise.number) %>:&nbsp;</span>
-        <span><%= @exercise.name %></span>
+      <h1 class="hidden-xs"><%= full_title_for @exercise %></h1>
+      <h1 class="visible-xs"><%= short_title_for @exercise %></h1>
+      <div class="mu-content-title-icons">
         <%= teacher_info_button @exercise %>
         <%= link_to_bibliotheca_exercise @exercise %>
-      </h1>
+      </div>
     </div>
   </div>
 <% end %>
