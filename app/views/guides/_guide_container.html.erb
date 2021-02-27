@@ -2,7 +2,7 @@
   <%= breadcrumbs subject %>
 <% end %>
 
-<%= render layout: 'layouts/guide', locals: { subject: subject } do %>
+<%= render layout: 'guides/guide', locals: { subject: subject } do %>
 
   <div class="row">
     <div class="mu-inline-block-right hidden-xs">
@@ -10,7 +10,7 @@
     </div>
     <div class="mu-inline-block-left">
       <h1><%= short_title_for @guide %></h1>
-      <%= render partial: 'layouts/guide_title_icons' %>
+      <%= render partial: 'guides/guide_title_icons' %>
     </div>
   </div>
   <div class="row">

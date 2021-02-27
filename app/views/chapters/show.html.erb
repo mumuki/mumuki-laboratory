@@ -8,7 +8,7 @@
     <h1 class="visible-xs"><%= short_title_for @chapter %></h1>
 
     <% if @chapter.monolesson? %>
-      <%= render partial: 'layouts/guide_title_icons' %>
+      <%= render partial: 'guides/guide_title_icons' %>
     <% end %>
   </div>
 </div>
@@ -22,7 +22,7 @@
 
 <% if @chapter.lessons.present? %>
   <% if @chapter.monolesson? %>
-    <div> <%= render partial: 'layouts/guide', locals: { subject: @monolesson } %> </div>
+    <div> <%= render partial: 'guides/guide', locals: { subject: @monolesson } %> </div>
   <% else %>
     <div>
       <h3><%= t(:lessons) %></h3>
