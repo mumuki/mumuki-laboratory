@@ -9,7 +9,7 @@
       <h1><%= language_icon @guide.language %></h1>
     </div>
     <div class="mu-inline-block-left">
-      <h1> <%= subject.name %> </h1>
+      <h1><%= short_title_for @guide %></h1>
       <%= render partial: 'layouts/guide_title_icons' %>
     </div>
   </div>
