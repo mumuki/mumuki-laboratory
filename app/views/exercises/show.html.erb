@@ -55,7 +55,7 @@
 
 <%= content_for :no_container do %>
   <% if @assignment.skipped? %>
-    <%= render partial: 'layouts/exercise_skipped' %>
+    <%= render partial: 'exercises/exercise_skipped' %>
   <% end %>
 
   <% if in_gamified_context? %>
