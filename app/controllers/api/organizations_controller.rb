@@ -21,6 +21,10 @@ module Api
       @organization.update! organization_params
       render json: @organization.to_resource_h
     end
+
+    def authorization_slug
+      '_/_'
+    end
   end
 
 end

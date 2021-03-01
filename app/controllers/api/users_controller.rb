@@ -13,5 +13,9 @@ module Api
       @user.verify_name!
       render json: @user.to_resource_h
     end
+
+    def authorization_slug
+      '_/_'
+    end
   end
 end

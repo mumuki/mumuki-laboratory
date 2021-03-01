@@ -1,5 +1,4 @@
 class DiscussionsMessagesController < AjaxController
-  include WithAuthorization
   include WithUserDiscussionValidation
 
   before_action :set_discussion!, only: [:create, :destroy]
