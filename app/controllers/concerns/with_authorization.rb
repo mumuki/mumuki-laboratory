@@ -1,17 +1,12 @@
 module WithAuthorization
   extend ActiveSupport::Concern
 
-  (Mumukit::Auth::Roles::ROLES - [:editor, :writer]).each do |role|
-    define_method "authorize_#{role}!" do
-      authorize! role
-    end
-  end
-
   def authorization_slug
     protection_slug || '_/_'
   end
 
   def protection_slug
+    warn "protection_slug is nil, which is not probably what you want" unless @slug
     @slug
   end
 end
