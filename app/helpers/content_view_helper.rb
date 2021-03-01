@@ -14,6 +14,6 @@ module ContentViewHelper
   end
 
   def content_type(content)
-    content.is_a?(Exercise) ? "exercise" : content.class.name.downcase
+    content.model_name.element
   end
 end
