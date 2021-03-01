@@ -1,27 +1,12 @@
 module WithAuthorization
   extend ActiveSupport::Concern
 
-  def authorize_janitor!
-    authorize! :janitor
-  end
-
-  def authorize_admin!
-    authorize! :admin
-  end
-
-  def authorize_owner!
-    authorize! :owner
-  end
-
-  def authorize_moderator!
-    authorize! :moderator
-  end
-
   def authorization_slug
     protection_slug || '_/_'
   end
 
   def protection_slug
+    warn "protection_slug is nil, which is not probably what you want" unless @slug
     @slug
   end
 end
