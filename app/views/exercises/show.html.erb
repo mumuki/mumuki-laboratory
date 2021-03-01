@@ -18,12 +18,9 @@
       <h1><%= language_icon @exercise.language %></h1>
     </div>
     <div class="mu-inline-block-left">
-      <h1>
-        <span class="hidden-xs"><%= t(:exercise_number, number: @exercise.number) %>:&nbsp;</span>
-        <span><%= @exercise.name %></span>
-        <%= teacher_info_button @exercise %>
-        <%= link_to_bibliotheca_exercise @exercise %>
-      </h1>
+      <h1 class="hidden-xs"><%= full_title_for @exercise %></h1>
+      <h1 class="visible-xs"><%= short_title_for @exercise %></h1>
+      <%= render partial: 'exercises/exercise_title_icons' %>
     </div>
   </div>
 <% end %>
@@ -58,7 +55,7 @@
 
 <%= content_for :no_container do %>
   <% if @assignment.skipped? %>
-    <%= render partial: 'layouts/exercise_skipped' %>
+    <%= render partial: 'exercises/exercise_skipped' %>
   <% end %>
 
   <% if in_gamified_context? %>

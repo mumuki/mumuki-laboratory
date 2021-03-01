@@ -26,7 +26,7 @@ module LinksHelper
     if current_user&.teacher_here? && item.teacher_info.present?
       %Q{
         <a
-          class="mu-content-toolbar-item mu-popover"
+          class="mu-popover"
           data-toggle="popover"
           data-html="true"
           title="#{t :teacher_info}"
@@ -80,7 +80,7 @@ module LinksHelper
     return unless current_user&.writer?
 
     url = yield
-    link_to fixed_fa_icon('pencil-alt'), url, class: "mu-content-toolbar-item", target: "_blank", title: t(:edit)
+    link_to fixed_fa_icon('pencil-alt'), url, target: "_blank", title: t(:edit)
   end
 
   def url_for_bibliotheca_guide(guide)

@@ -1,0 +1,24 @@
+<%= content_for :breadcrumbs do %>
+  <%= breadcrumbs subject %>
+<% end %>
+
+<%= render layout: 'guides/guide', locals: { subject: subject } do %>
+
+  <div class="row">
+    <div class="mu-inline-block-right hidden-xs">
+      <h1><%= language_icon @guide.language %></h1>
+    </div>
+    <div class="mu-inline-block-left">
+      <h1><%= short_title_for @guide %></h1>
+      <%= render partial: 'guides/guide_title_icons' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="text-box">
+        <%= @guide.description_html %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

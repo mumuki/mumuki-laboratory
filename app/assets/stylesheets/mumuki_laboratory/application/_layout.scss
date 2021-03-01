@@ -122,6 +122,9 @@ hr {
 
 /* TODO: move to mumuki-styles */
 .mu-inline-block-left {
+  display: flex;
+  align-items: center;
+
   margin-left: 15px;
 }
 
