@@ -9,7 +9,8 @@ module Api
     end
 
     def update
-      @user.update_and_notify! user_params.except([:email, :permissions, :uid])
+      @user.assign_attributes user_name_params
+      @user.verify_name!
       render json: @user.to_resource_h
     end
   end
