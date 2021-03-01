@@ -34,7 +34,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
 
         context 'with wildcard permissions' do
           before { get :index }
-          let(:api_client) { create :api_client, role: :janitor, grant: '*' }
+          let(:api_client) { create :api_client, role: :admin, grant: '*' }
 
           it { check_status! 200 }
 
@@ -42,7 +42,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
         end
         context 'with non-wildcard permissions' do
           before { get :index }
-          let(:api_client) { create :api_client, role: :janitor, grant: 'public/*:private/*' }
+          let(:api_client) { create :api_client, role: :admin, grant: 'public/*:private/*' }
 
           it { check_status! 200 }
 
@@ -54,14 +54,14 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
         context 'with a public organization' do
           before { get :show, params: {id: 'public'} }
 
-          context 'with a user without janitor permissions' do
+          context 'with a user without admin permissions' do
             let(:api_client) { create :api_client, role: :editor, grant: 'another_organization/*' }
 
             it { check_status! 403 }
           end
 
-          context 'with a user with janitor' do
-            let(:api_client) { create :api_client, role: :janitor, grant: 'public/*' }
+          context 'with a user with admin' do
+            let(:api_client) { create :api_client, role: :admin, grant: 'public/*' }
 
             it { check_status! 200 }
           end
@@ -70,7 +70,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
         context 'with an organization that has a dot in its name' do
           before { get :show, params: {id: 'dot.org'} }
 
-          let(:api_client) { create :api_client, role: :janitor, grant: 'dot.org/*' }
+          let(:api_client) { create :api_client, role: :admin, grant: 'dot.org/*' }
           it { check_status! 200 }
         end
 
@@ -84,7 +84,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
           end
 
           context 'with a user with permissions' do
-            let(:api_client) { create :api_client, role: :janitor, grant: 'private/*' }
+            let(:api_client) { create :api_client, role: :admin, grant: 'private/*' }
 
             it { check_status! 200 }
             it { expect(response.body).to json_like(private_organization.to_resource_h) }
@@ -181,7 +181,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
       end
 
 
-      context 'with not-janitor permissions' do
+      context 'with non-admin permissions' do
         let(:api_client) { create :api_client, role: :editor, grant: '*' }
 
         it { check_status! 403 }
@@ -228,7 +228,14 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
         it { expect(updated_organizaton.contact_email).to eq 'second_email@gmail.com' }
       end
 
-      context 'with not-janitor permissions' do
+      context 'with janitor permissions' do
+        let(:api_client) { create :api_client, role: :janitor, grant: 'existing-organization/*' }
+        before { put :update, params: {id: 'existing-organization', organization: update_json} }
+
+        it { check_status! 403 }
+      end
+
+      context 'with non-admin permissions' do
         let(:api_client) { create :api_client, role: :teacher, grant: 'existing-organization/*' }
         before { put :update, params: {id: 'existing-organization', organization: update_json} }
 
