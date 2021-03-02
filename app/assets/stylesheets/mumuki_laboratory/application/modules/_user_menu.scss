@@ -1,17 +1,12 @@
 .mu-user-menu {
   display: flex;
-  justify-content: space-around;
-}
-
-.mu-user-menu-section {
-  margin-bottom: 30px;
 }
 
 .mu-user-menu-header {
   font-size: 15px;
   color: $mu-color-disabled;
   text-transform: uppercase;
-  margin-bottom: 5px;
+  margin-bottom: 30px;
 }
 
 .mu-user-menu-item {
@@ -24,13 +19,14 @@
 }
 
 .mu-user-menu-divider {
-  display: inline-block;
-
   &.vertical {
-    border-left: 3px solid $mu-color-separator;
+    border-left: 2px solid $mu-color-separator;
   }
 
   &.horizontal {
-    border-top: 3px solid $mu-color-separator;
+    border-top: 2px solid $mu-color-separator;
+
+    margin: 25px 0;
+    width: 100%
   }
 }
