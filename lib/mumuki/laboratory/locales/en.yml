@@ -173,6 +173,7 @@ en:
   more_messages: More
   my_account: My account
   my_doubts: My doubts
+  my_profile: My profile
   my_submissions: My Submissions
   name: Name
   navigation_continue: 'Next: %{sibling}'
@@ -219,7 +220,6 @@ en:
   previous_exercise: Previous
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'
   processing_your_solution: We are processing you solution
-  profile: Profile
   profile_of: Profile of %{username}
   programming_since: Started programming
   progress: Progresss

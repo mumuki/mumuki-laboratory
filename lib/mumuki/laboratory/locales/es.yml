@@ -185,6 +185,7 @@ es:
   more_messages: Ver mensajes anteriores
   my_account: Mi cuenta
   my_doubts: Mis consultas
+  my_profile: Mi perfil
   name: Nombre
   navigation_continue: 'Siguiente %{kind}: %{sibling}'
   navigation_next: Siguiente %{kind}
@@ -236,7 +237,6 @@ es:
   previous_exercise: Anterior
   problem_with_exercise: '[Mumuki] Error con el ejercicio: %{title}'
   processing_your_solution: Estamos procesando tu solución
-  profile: Perfil
   profile_of: Perfil de %{username}
   programming_since: Programando desde
   progress: Progreso
