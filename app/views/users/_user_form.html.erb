@@ -1,5 +1,5 @@
 <div class="mu-user-header">
-  <h1><%= @user.name %></h1>
+  <h1><%= t(:profile) %></h1>
   <div class="mu-profile-actions hidden-xs">
     <%= edit_profile_button %>
   </div>
@@ -19,6 +19,9 @@
     <% end %>
   </div>
   <div class="mu-profile-info-right">
+    <div>
+      <span> <strong><%= t :name %>:</strong> <%= "#{@user.name}" %> </span>
+    </div>
     <% if @user.age.present? %>
       <div>
         <span> <strong><%= t :age %>:</strong> <%= "#{@user.age} #{t :years}" %> </span>
