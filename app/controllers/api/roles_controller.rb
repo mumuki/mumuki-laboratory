@@ -48,6 +48,10 @@ module Api
     def set_slug!
       @slug = Mumukit::Auth::Slug.join_s params.to_unsafe_h
     end
+
+    def authorization_slug
+      @slug
+    end
   end
 
 end

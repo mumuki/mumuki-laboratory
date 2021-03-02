@@ -18,7 +18,7 @@ module Api
       @course = Course.new course_params
     end
 
-    def protection_slug
+    def authorization_slug
       @course.slug
     end
   end
