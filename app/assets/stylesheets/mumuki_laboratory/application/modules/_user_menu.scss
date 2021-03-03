@@ -7,6 +7,16 @@
   color: $mu-color-disabled;
   text-transform: uppercase;
   margin-bottom: 30px;
+
+  @media only screen and (min-width: $screen-md-min) {
+    i {
+      display: none;
+    }
+
+    span {
+      padding-left: 0px;
+    }
+  }
 }
 
 .mu-user-menu-item {
