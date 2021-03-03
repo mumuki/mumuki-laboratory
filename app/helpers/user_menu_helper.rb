@@ -1,4 +1,12 @@
 module UserMenuHelper
+  def user_menu_header
+    content_tag :div, t(:my_account), class: 'mu-user-menu-header'
+  end
+
+  def user_menu_divider
+    content_tag :div, '', class: 'mu-user-menu-divider horizontal'
+  end
+
   def profile_user_menu_link
     user_menu_item t(:my_profile), user_path, 'show'
   end
