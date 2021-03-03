@@ -3,22 +3,12 @@
     <div class="mu-user-menu-header">
       <%= t(:my_account) %>
     </div>
-    <div class="mu-user-menu-item">
-      <%= profile_user_menu_link %>
-    </div>
+    <%= profile_user_menu_link %>
     <div class="mu-user-menu-divider horizontal"></div>
-    <div class="mu-user-menu-item">
-      <%= messages_user_menu_link %>
-    </div>
-    <% if current_user&.can_discuss_here? %>
-      <div class="mu-user-menu-item">
-        <%= discussions_user_menu_link %>
-      </div>
-    <% end %>
+    <%= messages_user_menu_link %>
+    <%= discussions_user_menu_link %>
     <div class="mu-user-menu-divider horizontal"></div>
-    <div class="mu-user-menu-item">
-      <%= certificates_user_menu_link %>
-    </div>
+    <%= certificates_user_menu_link %>
   </div>
   <div class="mu-user-menu-divider vertical hidden-sm hidden-xs"></div>
 </div>
