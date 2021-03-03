@@ -1,6 +1,6 @@
 <%= content_for :breadcrumbs do %>
   <% if current_logged_user? %>
-    <%= breadcrumbs @user %>
+    <%= breadcrumbs_for_my_account %>
   <% else %>
     <%= header_breadcrumbs %>
   <% end %>

@@ -1,0 +1,35 @@
+.mu-user-menu {
+  display: flex;
+}
+
+.mu-user-menu-header {
+  font-size: 15px;
+  color: $mu-color-disabled;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.mu-user-menu-item {
+  font-size: 17px;
+  margin-bottom: 5px;
+
+  a {
+    color: $brand-primary;
+    &.active {
+      font-weight: bold;
+    }
+  }
+}
+
+.mu-user-menu-divider {
+  &.vertical {
+    border-left: 2px solid $mu-color-separator;
+  }
+
+  &.horizontal {
+    border-top: 2px solid $mu-color-separator;
+
+    margin: 25px 0;
+    width: 100%
+  }
+}

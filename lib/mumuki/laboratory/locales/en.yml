@@ -68,6 +68,7 @@ en:
   new_discussion_message: New message on %{title}
   discussion_updated: Discussion updated
   discussions: Discussions
+  discussions_will_be_here: Your posts in the forum will appear here.
   dont_leave_us: Don't leave us! Learning is fun. You just have to keep at it.
   download: Download your solution
   edit: Edit
@@ -170,7 +171,9 @@ en:
   moderation: Mentoring
   moderator: Mentor
   more_messages: More
+  my_account: My account
   my_doubts: My doubts
+  my_profile: My profile
   my_submissions: My Submissions
   name: Name
   navigation_continue: 'Next: %{sibling}'
@@ -217,7 +220,6 @@ en:
   previous_exercise: Previous
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'
   processing_your_solution: We are processing you solution
-  profile: Profile
   profile_of: Profile of %{username}
   programming_since: Started programming
   progress: Progresss

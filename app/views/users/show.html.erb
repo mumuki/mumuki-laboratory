@@ -1,56 +1,9 @@
 <%= content_for :breadcrumbs do %>
-    <%= breadcrumbs @user %>
+  <%= breadcrumbs_for_my_account %>
 <% end %>
 
-<ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active">
-    <a data-target="#info" aria-controls="info" role="tab" data-toggle="tab"><%= t :profile %></a>
-  </li>
-  <li role="presentation">
-    <a data-target="#messages" aria-controls="messages" role="tab" data-toggle="tab"><%= t :messages %></a>
-  </li>
-  <% if @watched_discussions.present? %>
-    <li role="presentation">
-      <a data-target="#discussions" aria-controls="discussions" role="tab" data-toggle="tab"><%= t :discussions %></a>
-    </li>
-  <% end %>
-</ul>
+<%= render partial: 'layouts/user_menu' %>
 
-<div class="tab-content">
-  <div role="tabpanel" class="tab-pane active" id="info">
-    <%= render partial: 'user_form' %>
-  </div>
-  <div role="tabpanel" class="tab-pane" id="messages">
-    <% if @messages.empty? %>
-        <div class="row mu-tab-body col-md-12">
-          <%= t :no_messages %>
-        </div>
-    <% else %>
-      <table class="table table-striped">
-        <% @messages.each do |message| %>
-            <tr>
-              <td><%= icon_for_read(message.read?) %></td>
-              <td><%= link_to message.exercise.name, exercise_path(message.exercise.id) %></td>
-              <td><%= mail_to message.sender %></td>
-              <td><%= time_ago_in_words message.created_at %></td>
-            </tr>
-        <% end %>
-      </table>
-    <% end %>
-  </div>
-  <% if @watched_discussions.present? %>
-    <div role="tabpanel" class="tab-pane" id="discussions">
-      <table class="table table-striped">
-        <% @watched_discussions.each do |discussion| %>
-          <tr>
-            <td>
-              <%= icon_for_read(discussion.read_by?(@user)) %>
-            </td>
-            <td><%= link_to discussion.item.name, item_discussion_path(discussion) %></td>
-            <td><%= time_ago_in_words discussion.last_message_date %></td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
-  <% end %>
+<div class="col-md-9 mu-tab-body">
+  <%= render partial: 'user_form' %>
 </div>

@@ -16,7 +16,7 @@ feature 'menu bar' do
       scenario 'should not see menu bar' do
         visit '/'
 
-        expect(page).not_to have_text('Profile')
+        expect(page).not_to have_text('My account')
         expect(page).not_to have_text('Classroom')
         expect(page).not_to have_text('Bibliotheca')
       end
@@ -30,7 +30,7 @@ feature 'menu bar' do
       scenario 'should not see menu bar' do
         visit '/'
 
-        expect(page).not_to have_text('Profile')
+        expect(page).not_to have_text('My account')
         expect(page).not_to have_text('Classroom')
         expect(page).not_to have_text('Bibliotheca')
         expect(page).not_to have_text('Solve other\'s doubts')
@@ -48,11 +48,11 @@ feature 'menu bar' do
     let(:admin) { create(:user, permissions: {student: 'private/*', admin: 'private/*'}) }
     let(:owner) { create(:user, permissions: {student: 'private/*', owner: 'private/*'}) }
 
-    scenario 'visitor should only see profile' do
+    scenario 'visitor should only see their account' do
       set_current_user! visitor
 
       visit '/'
-      expect(page).to have_text('Profile')
+      expect(page).to have_text('My account')
       expect(page).not_to have_text('Classroom')
       expect(page).not_to have_text('Bibliotheca')
       expect(page).not_to have_text('Solve other\'s doubts')
@@ -60,23 +60,23 @@ feature 'menu bar' do
     end
 
     context 'student with no discussions should' do
-      scenario 'only see profile if forum is not enabled' do
+      scenario 'only see their account if forum is not enabled' do
         set_current_user! student
 
         visit '/'
-        expect(page).to have_text('Profile')
+        expect(page).to have_text('My account')
         expect(page).not_to have_text('Classroom')
         expect(page).not_to have_text('Bibliotheca')
         expect(page).not_to have_text('Solve other\'s doubts')
         expect(page).not_to have_text('My doubts')
       end
 
-      scenario 'see profile and solve_other_doubts links if forum is enabled' do
+      scenario 'see their account and solve_other_doubts links if forum is enabled' do
         set_current_user! student
         private_organization.update! forum_enabled: true
 
         visit '/'
-        expect(page).to have_text('Profile')
+        expect(page).to have_text('My account')
         expect(page).not_to have_text('Classroom')
         expect(page).not_to have_text('Bibliotheca')
         expect(page).to have_text('Solve other\'s doubts')
@@ -87,12 +87,12 @@ feature 'menu bar' do
     context 'student with discussions should' do
       let(:discussion) { create(:discussion, item: lesson.exercises.last, initiator: student)}
 
-      scenario 'only see profile if forum is not enabled' do
+      scenario 'only see their account if forum is not enabled' do
         set_current_user! student
         student.subscribe_to! discussion
 
         visit '/'
-        expect(page).to have_text('Profile')
+        expect(page).to have_text('My account')
         expect(page).not_to have_text('Classroom')
         expect(page).not_to have_text('Bibliotheca')
         expect(page).not_to have_text('Solve other\'s doubts')
@@ -105,21 +105,21 @@ feature 'menu bar' do
         student.subscribe_to! discussion
 
         visit '/'
-        expect(page).to have_text('Profile')
+        expect(page).to have_text('My account')
         expect(page).not_to have_text('Classroom')
         expect(page).not_to have_text('Bibliotheca')
         expect(page).to have_text('Solve other\'s doubts')
         expect(page).to have_text('My doubts')
       end
 
-      scenario 'only see profile if forum is enabled in a forum_only_for_trusted organization' do
+      scenario 'only see their account if forum is enabled in a forum_only_for_trusted organization' do
         set_current_user! student
         student.subscribe_to! discussion
         private_organization.update! forum_enabled: true
         private_organization.update! forum_only_for_trusted: true
 
         visit '/'
-        expect(page).to have_text('Profile')
+        expect(page).to have_text('My account')
         expect(page).not_to have_text('Classroom')
         expect(page).not_to have_text('Bibliotheca')
         expect(page).not_to have_text('Solve other\'s doubts')
@@ -134,7 +134,7 @@ feature 'menu bar' do
         private_organization.update! forum_only_for_trusted: true
 
         visit '/'
-        expect(page).to have_text('Profile')
+        expect(page).to have_text('My account')
         expect(page).not_to have_text('Classroom')
         expect(page).not_to have_text('Bibliotheca')
         expect(page).to have_text('Solve other\'s doubts')
@@ -142,54 +142,54 @@ feature 'menu bar' do
       end
     end
 
-    scenario 'teacher should see profile and classroom' do
+    scenario 'teacher should see their account and classroom' do
       set_current_user! teacher
 
       visit '/'
 
-      expect(page).to have_text('Profile')
+      expect(page).to have_text('My account')
       expect(page).to have_text('Classroom')
       expect(page).not_to have_text('Bibliotheca')
       expect(page).not_to have_text('Solve other\'s doubts')
       expect(page).not_to have_text('My doubts')
     end
 
-    scenario 'writer should see profile and bibliotheca' do
+    scenario 'writer should see their account and bibliotheca' do
       set_current_user! writer
 
       visit '/'
 
-      expect(page).to have_text('Profile')
+      expect(page).to have_text('My account')
       expect(page).not_to have_text('Classroom')
       expect(page).to have_text('Bibliotheca')
     end
 
-    scenario 'janitor should see profile and classroom' do
+    scenario 'janitor should see their account and classroom' do
       set_current_user! janitor
 
       visit '/'
 
-      expect(page).to have_text('Profile')
+      expect(page).to have_text('My account')
       expect(page).to have_text('Classroom')
       expect(page).not_to have_text('Bibliotheca')
     end
 
-    scenario 'admin should see profile, classroom and bibliotheca' do
+    scenario 'admin should their account, classroom and bibliotheca' do
       set_current_user! admin
 
       visit '/'
 
-      expect(page).to have_text('Profile')
+      expect(page).to have_text('My account')
       expect(page).to have_text('Classroom')
       expect(page).to have_text('Bibliotheca')
     end
 
-    scenario 'owner should see profile, classroom and bibliotheca' do
+    scenario 'owner should see their account, classroom and bibliotheca' do
       set_current_user! owner
 
       visit '/'
 
-      expect(page).to have_text('Profile')
+      expect(page).to have_text('My account')
       expect(page).to have_text('Classroom')
       expect(page).to have_text('Bibliotheca')
     end

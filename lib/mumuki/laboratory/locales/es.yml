@@ -75,6 +75,7 @@ es:
   discussion_updated: Consulta actualizada
   new_discussion_message: Mensaje nuevo en %{title}
   discussions: Consultas
+  discussions_will_be_here: Las preguntas que realices en el espacio de consultas aparecerán aquí.
   dont_leave_us: ¡No nos abandones! Aprender a programar es divertido. Sólo tenés que seguir practicando.
   download: "Descargá lo que hiciste"
   edit: Editar
@@ -182,7 +183,9 @@ es:
   moderation: Mentoría
   moderator: Mentor
   more_messages: Ver mensajes anteriores
+  my_account: Mi cuenta
   my_doubts: Mis consultas
+  my_profile: Mi perfil
   name: Nombre
   navigation_continue: 'Siguiente %{kind}: %{sibling}'
   navigation_next: Siguiente %{kind}
@@ -234,7 +237,6 @@ es:
   previous_exercise: Anterior
   problem_with_exercise: '[Mumuki] Error con el ejercicio: %{title}'
   processing_your_solution: Estamos procesando tu solución
-  profile: Perfil
   profile_of: Perfil de %{username}
   programming_since: Programando desde
   progress: Progreso

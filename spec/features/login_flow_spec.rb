@@ -64,6 +64,6 @@ feature 'Login Flow', organization_workspace: :test do
 
     expect(page).to_not have_text('Sign in')
     expect(page).to have_text('Sign Out')
-    expect(page).to have_text('Profile')
+    expect(page).to have_text('My profile')
   end
 end

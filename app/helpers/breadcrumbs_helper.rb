@@ -41,6 +41,10 @@ module BreadcrumbsHelper
     discussion.friendly.truncate_words(4)
   end
 
+  def breadcrumbs_for_my_account
+    header_breadcrumbs + breadcrumb_list_item(t(:my_account), 'last')
+  end
+
   private
 
   def breadcrumbs_for_linkable(e, extra=nil, last='')

@@ -97,31 +97,29 @@ feature 'Profile Flow', organization_workspace: :test do
 
           click_on(button_options)
           expect(page).to have_text('Your data was updated successfully')
-          expect(page).to have_text('Profile')
+          expect(page).to have_text('My profile')
         end
       end
     end
 
     context 'with no messages' do
-
-      scenario 'visit messages tab' do
-        visit "/user#messages"
+      scenario 'visit messages' do
+        visit "/user/messages"
 
         expect(page).to have_text('It seems you don\'t have any messages yet!')
       end
     end
 
     context 'with messages' do
-      scenario 'visit messages tab' do
+      scenario 'visit messages' do
         Organization.find_by_name('test').switch!
         problem.submit_solution! user, {content: 'something'}
         Message.import_from_resource_h! message
-        visit "/user#messages"
+        visit "/user/messages"
 
         expect(page).to_not have_text('It seems you don\'t have any messages yet!')
         expect(page).to have_text(problem.name)
       end
     end
   end
-
 end
