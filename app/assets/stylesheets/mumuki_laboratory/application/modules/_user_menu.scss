@@ -15,6 +15,9 @@
 
   a {
     color: $brand-primary;
+    &.active {
+      font-weight: bold;
+    }
   }
 }
 
