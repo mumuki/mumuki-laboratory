@@ -71,6 +71,29 @@ ActiveRecord::Schema.define(version: 20210119190204) do
     t.index ["slug"], name: "index_books_on_slug", unique: true
   end
 
+  create_table "certificate_programs", force: :cascade do |t|
+    t.string "title"
+    t.string "template_html_erb"
+    t.text "description"
+    t.string "background_image_url"
+    t.bigint "organization_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_certificate_programs_on_organization_id"
+  end
+
+  create_table "certificates", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "certificate_program_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["certificate_program_id"], name: "index_certificates_on_certificate_program_id"
+    t.index ["user_id"], name: "index_certificates_on_user_id"
+  end
+
   create_table "chapters", id: :serial, force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
