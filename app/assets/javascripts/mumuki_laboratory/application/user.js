@@ -1,9 +1,6 @@
 mumuki.load(() => {
-  var hash = document.location.hash;
-  if (hash) {
-    $(".nav-tabs a[data-target='" + hash + "']").tab('show');
-  }
-  $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-    window.location.hash = $(e.target).attr('data-target');
+  $('.mu-user-menu-header').click(() => {
+    $('.mu-user-menu').toggleClass('hidden-sm-screen');
+    $('#mu-user-menu-header-icon').toggleClass('fa-chevron-up fa-chevron-down');
   });
 });

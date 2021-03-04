@@ -1,6 +1,6 @@
 module UserMenuHelper
   def user_menu_header
-    content_tag :div, fa_icon('chevron-up', text: t(:my_account)), class: 'mu-user-menu-header'
+    content_tag :div, fa_icon('chevron-up', text: t(:my_account), id: 'mu-user-menu-header-icon'), class: 'mu-user-menu-header'
   end
 
   def user_menu_divider

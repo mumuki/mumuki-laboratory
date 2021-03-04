@@ -1,5 +1,11 @@
 .mu-user-menu {
   display: flex;
+
+  &.hidden-sm-screen {
+    @media only screen and (max-width: $screen-sm-max) {
+      display: none;
+    }
+  }
 }
 
 .mu-user-menu-header {
