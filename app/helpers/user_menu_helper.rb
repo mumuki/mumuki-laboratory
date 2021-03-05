@@ -1,6 +1,6 @@
 module UserMenuHelper
   def user_menu_header
-    content_tag :div, fa_icon('chevron-down', text: t(:my_account), id: 'mu-user-menu-header-icon'), class: 'mu-user-menu-header'
+    content_tag :div, user_menu_header_icon, class: 'mu-user-menu-header'
   end
 
   def user_menu_divider
@@ -28,5 +28,9 @@ module UserMenuHelper
   def user_menu_item(label, path, active_on)
     link_klass = 'active' if action_name == active_on
     content_tag :div, link_to(label, path, { class: link_klass }.compact), class: 'mu-user-menu-item'
+  end
+
+  def user_menu_header_icon
+    fa_icon('chevron-down', text: t(:my_account), id: 'mu-user-menu-header-icon', right: true)
   end
 end

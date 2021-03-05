@@ -13,9 +13,11 @@
   color: $mu-color-disabled;
   text-transform: uppercase;
   margin-bottom: 30px;
-  padding-left: 15px;
+  padding-left: 2px;
 
   @media only screen and (min-width: $screen-md-min) {
+    padding-left: 15px;
+
     i {
       display: none;
     }
