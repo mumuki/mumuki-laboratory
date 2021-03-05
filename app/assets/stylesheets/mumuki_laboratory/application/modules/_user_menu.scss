@@ -1,11 +1,9 @@
 .mu-user-menu {
   display: flex;
+}
 
-  &.hidden-sm-screen {
-    @media only screen and (max-width: $screen-sm-max) {
-      display: none;
-    }
-  }
+.mu-user-menu-content {
+  flex-grow: 1;
 }
 
 .mu-user-menu-header {
@@ -24,6 +22,14 @@
 
     span {
       padding-left: 0px;
+    }
+  }
+}
+
+.mu-user-menu-items {
+  &.hidden-sm-screen {
+    @media only screen and (max-width: $screen-sm-max) {
+      display: none;
     }
   }
 }

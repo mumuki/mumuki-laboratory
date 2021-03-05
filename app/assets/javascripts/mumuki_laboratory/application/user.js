@@ -3,7 +3,7 @@ mumuki.load(() => {
   let onUserProfile = document.querySelector('.mu-profile-info') !== null;
 
   $userMenuHeader.click(() => {
-    $('.mu-user-menu').toggleClass('hidden-sm-screen');
+    $('.mu-user-menu-items').toggleClass('hidden-sm-screen');
     $('#mu-user-menu-header-icon').toggleClass('fa-chevron-up fa-chevron-down');
   });
 
