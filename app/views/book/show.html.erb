@@ -2,7 +2,7 @@
   <%= header_breadcrumbs(link_for_organization: false) %>
 <% end %>
 
-<div class="col-md-offset-2 col-md-8">
+<div class="col-lg-8 offset-lg-2">
   <%= render partial: 'book/header' %>
 
   <% @book.next_lesson_for(current_user).try do |lesson| %>
