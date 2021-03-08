@@ -148,7 +148,7 @@ module DiscussionsHelper
     if filters.present?
       %Q{
         <div class="dropdown discussions-toolbar-filter">
-          <a id="dropdown-#{label}" data-toggle="dropdown" role="menu">
+          <a id="dropdown-#{label}" data-bs-toggle="dropdown" role="menu">
             #{t label} #{fa_icon :'caret-down', class: 'fa-xs'}
           </a>
           <ul class="dropdown-menu" aria-labelledby="dropdown-#{label}">

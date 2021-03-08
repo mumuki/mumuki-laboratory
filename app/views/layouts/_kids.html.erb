@@ -2,11 +2,11 @@
 <div class="mu-kids-character-speech-bubble <%= 'no-tabs' unless exercise.hint? %>">
   <% if exercise.hint? %>
       <ul class="mu-kids-character-speech-bubble-tabs">
-        <li class="mu-kids-description active" data-target="description" title="<%= t :task %>">
+        <li class="mu-kids-description active" data-bs-target="description" title="<%= t :task %>">
           <i class="far fa-fw fa-file-alt"></i>
         </li>
         <li class="separator"></li>
-        <li class="mu-kids-hint blink" data-target="hint" title="<%= t :need_a_hint %>">
+        <li class="mu-kids-hint blink" data-bs-target="hint" title="<%= t :need_a_hint %>">
           <i class="far fa-fw fa-lightbulb"></i>
         </li>
       </ul>

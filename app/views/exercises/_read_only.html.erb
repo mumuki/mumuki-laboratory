@@ -50,19 +50,19 @@
     <ul class="nav nav-tabs discussion-tabs" role="tablist">
       <% if @discussion.has_submission? %>
         <li role="presentation" class="active">
-          <a data-target="#solution" aria-controls="solution" role="tab" data-toggle="tab" class="editor-tab">
+          <a data-bs-target="#solution" aria-controls="solution" role="tab" data-bs-toggle="tab" class="editor-tab">
             <%= t :solution %>
           </a>
         </li>
         <li role="presentation">
-          <a data-target="#results" aria-controls="results" role="tab" data-toggle="tab" class="editor-tab">
+          <a data-bs-target="#results" aria-controls="results" role="tab" data-bs-toggle="tab" class="editor-tab">
             <%= t :results %>
           </a>
         </li>
       <% end %>
 
       <li role="presentation" <%= "class=active" unless @discussion.has_submission? %>>
-        <a data-target="#content" aria-controls="content" role="tab" data-toggle="tab" class="editor-tab">
+        <a data-bs-target="#content" aria-controls="content" role="tab" data-bs-toggle="tab" class="editor-tab">
           <%= t :description %>
         </a>
       </li>

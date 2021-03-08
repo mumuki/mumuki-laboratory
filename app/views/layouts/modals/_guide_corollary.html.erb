@@ -2,7 +2,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <% if Organization.current.kids? %>
-        <button type="button" class="mu-kids-modal-button mu-close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="mu-kids-modal-button mu-close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">
             <i class="fas fa-fw fa-times fa-3x"></i>
           </span>
@@ -10,7 +10,7 @@
       <% end %>
       <div class="modal-header">
         <% if Organization.current.grown_ups? %>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         <% end %>

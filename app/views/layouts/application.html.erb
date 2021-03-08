@@ -9,7 +9,7 @@
       </div>
       <div class="dropdown hamburguer-breadcrumb d-block d-sm-none">
         <% if content_for? :breadcrumbs %>
-        <span class="hamburguer" id="profileDropdown" data-toggle="dropdown">
+        <span class="hamburguer" id="profileDropdown" data-bs-toggle="dropdown">
           <i class="fas fa-bars"></i>
         </span>
           <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="profileDropdown">
@@ -21,13 +21,13 @@
         <% if current_logged_user? %>
           <% if in_gamified_context? %>
             <div class="mu-navbar-element">
-              <i class="fas fa-star fa-fw fa-2x mu-navbar-icon mu-level-tooltip" data-toggle="tooltip" data-placement="bottom" level="<%= t(:level) %>"></i>
+              <i class="fas fa-star fa-fw fa-2x mu-navbar-icon mu-level-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" level="<%= t(:level) %>"></i>
               <span class="mu-level-number"></span>
             </div>
           <% end %>
           <%= render partial: 'notifications/dropdown' %>
           <div class="dropdown mu-navbar-element">
-            <div id="profileDropdown" class="profile-dropdown" data-toggle="dropdown" aria-label="<%= t(:user) %>" role="menu" tabindex="0">
+            <div id="profileDropdown" class="profile-dropdown" data-bs-toggle="dropdown" aria-label="<%= t(:user) %>" role="menu" tabindex="0">
               <%= profile_picture_for current_user %>
               <span class="caret"></span>
             </div>

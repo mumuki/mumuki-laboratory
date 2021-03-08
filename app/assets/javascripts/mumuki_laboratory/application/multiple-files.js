@@ -171,7 +171,7 @@ mumuki.load(() => {
 
     _createTab(name, id) {
       const tab = this.tabs.last().clone();
-      tab.attr('data-target', `#${id}`);
+      tab.attr('data-bs-target', `#${id}`);
 
       return tab;
     }

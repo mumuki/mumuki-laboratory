@@ -25,7 +25,7 @@
           <% end %>
           <% if should_show_approved_for?(current_user, message) %>
             <span class="discussion-message-approved selected">
-              <%= fa_icon(:check, class: 'fa-lg', 'data-toggle': 'tooltip', title: (t :approved_message)) %>
+              <%= fa_icon(:check, class: 'fa-lg', 'data-bs-toggle': 'tooltip', title: (t :approved_message)) %>
             </span>
           <% end %>
         </span>

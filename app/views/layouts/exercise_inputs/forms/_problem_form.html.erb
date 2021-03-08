@@ -4,7 +4,7 @@
 <% if should_render_problem_tabs? exercise, current_user %>
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
-      <a data-target="#editor" aria-controls="editor" tabindex="0" role="tab" data-toggle="tab" class="editor-tab"><%= fa_icon 'pen-square' %> <%= t :solution %></a>
+      <a data-bs-target="#editor" aria-controls="editor" tabindex="0" role="tab" data-bs-toggle="tab" class="editor-tab"><%= fa_icon 'pen-square' %> <%= t :solution %></a>
     </li>
     <% if exercise.extra_visible? %>
       <%= extra_code_tab %>

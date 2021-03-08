@@ -27,11 +27,11 @@ module LinksHelper
       %Q{
         <a
           class="mu-popover"
-          data-toggle="popover"
-          data-html="true"
+          data-bs-toggle="popover"
+          data-bs-html="true"
           title="#{t :teacher_info}"
-          data-placement="bottom"
-          data-content="#{html_rescape item.teacher_info_html}">#{fixed_fa_icon('info-circle')}</a>
+          data-bs-placement="bottom"
+          data-bs-content="#{html_rescape item.teacher_info_html}">#{fixed_fa_icon('info-circle')}</a>
       }.html_safe
     end
   end

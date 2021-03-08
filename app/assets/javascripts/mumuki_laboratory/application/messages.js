@@ -53,7 +53,7 @@ mumuki.load(() => {
       function renderHTML(data) {
         $container.empty();
         $container.html(data);
-        $("a[data-target='#messages']").click();
+        $("a[data-bs-target='#messages']").click();
       }
 
       function success(data) {

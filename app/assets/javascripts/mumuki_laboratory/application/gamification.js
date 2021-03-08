@@ -118,7 +118,7 @@ mumuki.gamification = (() => {
     updateTooltip() {
       const $muLevelTooltip = $('.mu-level-tooltip');
 
-      $muLevelTooltip.attr("data-original-title", `${$muLevelTooltip.attr("level")} ${this.currentLevel()}`);
+      $muLevelTooltip.attr("data-bs-original-title", `${$muLevelTooltip.attr("level")} ${this.currentLevel()}`);
       $muLevelTooltip.attr("title", "");
     }
 
