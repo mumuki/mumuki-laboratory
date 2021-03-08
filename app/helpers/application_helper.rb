@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def avatar_image(avatar_url, **options)
-    options.merge!(class: "img-circle #{options[:class]}")
+    options.merge!(class: "rounded-circle #{options[:class]}")
     image_tag(image_url(avatar_url), options)
   end
 
