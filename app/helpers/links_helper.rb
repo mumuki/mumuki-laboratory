@@ -84,6 +84,6 @@ module LinksHelper
   end
 
   def url_for_bibliotheca_guide(guide)
-    "#{url_for_application(:bibliotheca_ui)}/#/guides/#{guide.slug}"
+    "#{url_for_application(:bibliotheca_ui).chomp('/')}/guides/#{guide.slug}"
   end
 end

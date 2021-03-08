@@ -26,4 +26,14 @@ describe ApplicationHelper, organization_workspace: :test do
     it { expect(link_to_path_element(lesson)).to start_with '<a href="/lessons/1-foo">foo' }
   end
 
+  describe 'bibliotheca links' do
+    let(:current_user) { create(:user) }
+    let(:lesson) { create(:lesson, id: 1, name: 'foo') }
+    let(:guide) { lesson.guide }
+
+    before { current_user.make_editor_of! guide.slug  }
+
+    it { expect(url_for_bibliotheca_guide(guide)).to start_with 'http://bibliotheca.localmumuki.io/#/guides/mumuki/mumuki-test-lesson' }
+  end
+
 end
