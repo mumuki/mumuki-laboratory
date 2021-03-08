@@ -11,33 +11,33 @@
   <summary class="discussion-summary">
     <h3 class="discussion-exercise-title">
       <span>
-        <span class="hidden-xs"><%= t(:exercise_number, number: exercise.number) %>:&nbsp;</span>
+        <span class="d-none d-sm-inline"><%= t(:exercise_number, number: exercise.number) %>:&nbsp;</span>
         <span><%= exercise.name %></span>
       </span>
-      <span class="mu-inline-block-right hidden-xs">
+      <span class="mu-inline-block-right d-none d-sm-inline">
         <h1 class="no-margin"><%= language_icon exercise.language %></h1>
       </span>
     </h3>
     <div class="discussion-description">
-      <%= label_for_contextualization(@discussion, class: 'hidden-xs') %> ·
+      <%= label_for_contextualization(@discussion, class: 'd-none d-sm-inline') %> ·
       <span class="discussion-info">
           <span class="discussion-initiator-name">
             <%= @discussion.initiator.name %>
           </span>
-        <span class="hidden-xs"><%= discussion_info(@discussion) unless @discussion.new_record? %></span>
+        <span class="d-none d-sm-inline"><%= discussion_info(@discussion) unless @discussion.new_record? %></span>
       </span>
       <% if current_user && @discussion.persisted? %>
         <span class="mu-inline-block-right discussion-user-menu no-margin">
           <% if @discussion.subscribable? %>
             <a class="discussion-subscription" onclick="mumuki.Forum.discussionSubscription('<%= subscription_discussion_url(@discussion) %>')">
               <%= fa_icon(:eye, class: 'fa-xs') %>
-              <%= span_toggle t(:subscribe), t(:unsubscribe), current_user.subscribed_to?(@discussion), class: 'hidden-sm hidden-xs' %>
+              <%= span_toggle t(:subscribe), t(:unsubscribe), current_user.subscribed_to?(@discussion), class: 'd-none d-md-block' %>
             </a>
           <% end %>
           <% if @discussion.solved? %>
             <a class="discussion-upvote" onclick="mumuki.Forum.discussionUpvote('<%= upvote_discussion_url(@discussion) %>')">
               <%= fa_icon('thumbs-up', type: :regular, class: 'fa-xs') %>
-              <%= span_toggle t(:upvote), t(:undo_upvote), current_user.upvoted?(@discussion), class: 'hidden-sm hidden-xs' %>
+              <%= span_toggle t(:upvote), t(:undo_upvote), current_user.upvoted?(@discussion), class: 'd-none d-md-block' %>
             </a>
           <% end %>
         </span>

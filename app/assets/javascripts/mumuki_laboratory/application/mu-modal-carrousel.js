@@ -34,14 +34,14 @@ mumuki.ModalCarrousel = (() => {
       const $close = $('.mu-kids-modal-button.mu-close');
       const $footer = $('.modal-footer');
       const isLastChild = this._activeSlide().is(':last-child');
-      this._addClassIf($next, 'hidden', () => isLastChild);
-      this._addClassIf($close, 'hidden', () => !isLastChild);
-      this._addClassIf($footer, 'hidden', () => !isLastChild);
+      this._addClassIf($next, 'd-none', () => isLastChild);
+      this._addClassIf($close, 'd-none', () => !isLastChild);
+      this._addClassIf($footer, 'd-none', () => !isLastChild);
     }
 
     _hidePreviousButtonIfFirstSlide() {
       const $prev = $('.mu-kids-modal-button.mu-previous');
-      this._addClassIf($prev, 'hidden', () => this._activeSlide().is(':first-child'));
+      this._addClassIf($prev, 'd-none', () => this._activeSlide().is(':first-child'));
     }
 
     _showFirstSlide() {

@@ -40,8 +40,8 @@ module ApplicationHelper
 
   def span_toggle(hidden_text, active_text, active, **options)
     %Q{
-      <span class="#{'hidden' if active} #{options[:class]}">#{hidden_text}</span>
-      <span class="#{'hidden' unless active} #{options[:class]}">#{active_text}</span>
+      <span class="#{'d-none' if active} #{options[:class]}">#{hidden_text}</span>
+      <span class="#{'d-none' unless active} #{options[:class]}">#{active_text}</span>
     }.html_safe
   end
 

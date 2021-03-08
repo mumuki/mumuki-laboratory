@@ -9,13 +9,13 @@
 </div>
 <div class="row">
   <% if @debatable.respond_to? :language %>
-    <div class="mu-inline-block-right hidden-xs">
+    <div class="mu-inline-block-right d-none d-sm-block">
       <h3><%= language_icon @debatable.language %></h3>
     </div>
   <% end %>
   <div class="mu-inline-block-left">
     <h3>
-      <span class="hidden-xs"><%= t("#{@debatable_class.downcase}_number", number: @debatable.number) %>:&nbsp;</span>
+      <span class="d-none d-sm-block"><%= t("#{@debatable_class.downcase}_number", number: @debatable.number) %>:&nbsp;</span>
       <span><%= @debatable.name %></span>
     </h3>
   </div>

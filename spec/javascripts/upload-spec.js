@@ -2,11 +2,11 @@ describe('upload', () => {
   const fileSizeLimit = 20;
 
   fixture.set(`
-    <textarea id="solution_content" type="text" name="solution[content]" class="hidden"></textarea>
-    <input id="mu-upload-input" type="file" class="upload submission-control hidden" mu-upload-file-limit=${fileSizeLimit} accept=".txt" />
+    <textarea id="solution_content" type="text" name="solution[content]" class="d-none"></textarea>
+    <input id="mu-upload-input" type="file" class="upload submission-control d-none" mu-upload-file-limit=${fileSizeLimit} accept=".txt" />
     <label id="mu-upload-label" for="mu-upload-input" class="btn btn-success"></label>
     <button class="btn btn-success btn-block btn-submit disabled"></button>
-    <div id="mu-upload-file-limit-exceeded" class="hidden"></div>
+    <div id="mu-upload-file-limit-exceeded" class="d-none"></div>
   `);
 
   beforeEach(() => {
@@ -38,7 +38,7 @@ describe('upload', () => {
     });
 
     it('does not exceed max file size', function () {
-      expect($('#mu-upload-file-limit-exceeded').hasClass('hidden')).toBe(true);
+      expect($('#mu-upload-file-limit-exceeded').hasClass('d-none')).toBe(true);
     });
   });
 
@@ -56,7 +56,7 @@ describe('upload', () => {
     });
 
     it('does not exceed max file size', function () {
-      expect($('#mu-upload-file-limit-exceeded').hasClass('hidden')).toBe(true);
+      expect($('#mu-upload-file-limit-exceeded').hasClass('d-none')).toBe(true);
     });
   });
 
@@ -74,7 +74,7 @@ describe('upload', () => {
     });
 
     it('exceeds max file size', function () {
-      expect($('#mu-upload-file-limit-exceeded').hasClass('hidden')).toBe(false);
+      expect($('#mu-upload-file-limit-exceeded').hasClass('d-none')).toBe(false);
     });
   });
 });

@@ -2,7 +2,7 @@
   <%= render partial: 'exercise_solutions/results_title', locals: {contextualization: contextualization} %>
 
   <% if in_gamified_context? %>
-    <div id="mu-exp-earned-message" class="hidden">
+    <div id="mu-exp-earned-message" class="d-none">
       <span><%= t(:you_earned) %></span>
       <strong><span id="mu-exp-points"></span></strong>
       <span><%= t(:exp_points) %></span>

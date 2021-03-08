@@ -2,12 +2,12 @@
   <%= hidden_field_tag("mu-current-exp", UserStats.exp_for(@current_user)) if in_gamified_context? %>
   <div class="<%= exercise_container_type %>">
     <nav class="mu-navbar">
-      <div class="mu-navbar-breadcrumb hidden-xs">
+      <div class="mu-navbar-breadcrumb d-none d-sm-block">
         <ul class="mu-breadcrumb-list">
           <%= yield :breadcrumbs %>
         </ul>
       </div>
-      <div class="dropdown hamburguer-breadcrumb hidden-sm hidden-md hidden-lg">
+      <div class="dropdown hamburguer-breadcrumb d-block d-sm-none">
         <% if content_for? :breadcrumbs %>
         <span class="hamburguer" id="profileDropdown" data-toggle="dropdown">
           <i class="fas fa-bars"></i>

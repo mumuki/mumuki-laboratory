@@ -34,7 +34,7 @@ mumuki.load(() => {
 
   var Forum = {
     toggleButton: function (spans) {
-      spans.toggleClass('hidden');
+      spans.toggleClass('d-none');
     },
     token: new mumuki.CsrfToken(),
     tokenRequest: function (data) {
@@ -102,13 +102,13 @@ mumuki.load(() => {
   }
 
   function togglePreviewAndEditButtons() {
-    $messagePreviewButton.toggleClass('hidden');
-    $messageEditButton.toggleClass('hidden');
+    $messagePreviewButton.toggleClass('d-none');
+    $messageEditButton.toggleClass('d-none');
   }
 
   function togglePreviewAndContentMessage() {
-    $newMessagePreview.toggleClass('hidden');
-    $newMessageContent.toggleClass('hidden');
+    $newMessagePreview.toggleClass('d-none');
+    $newMessageContent.toggleClass('d-none');
   }
 
   mumuki.Forum = Forum;

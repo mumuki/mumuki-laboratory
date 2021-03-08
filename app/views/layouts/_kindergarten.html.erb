@@ -9,7 +9,7 @@
         </button>
         <button class="mu-kindergarten-play-description" onclick="mumuki.kids.speech.click('.mu-kindergarten-exercise-description', '<%= exercise.locale %>')">
           <img class="mu-kindergarten-button-image mu-kindergarten-play" src="https://mumuki.io/static/audio-play.svg" alt="" title="<%= t :listen_statement %>">
-          <img class="mu-kindergarten-button-image mu-kindergarten-stop hidden" src="https://mumuki.io/static/audio-stop.svg" alt="">
+          <img class="mu-kindergarten-button-image mu-kindergarten-stop d-none" src="https://mumuki.io/static/audio-stop.svg" alt="">
         </button>
       </div>
     </div>
@@ -33,6 +33,6 @@
   </div>
 </div>
 
-<div id="mu-kids-discussion-link-html" class="hidden">
+<div id="mu-kids-discussion-link-html" class="d-none">
   <%= kids_read_discussions_link(exercise) %>
 </div>

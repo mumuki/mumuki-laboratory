@@ -60,7 +60,7 @@ mumuki.MultipleScenarios = (() => {
       this.createControls();
       this.createIndicators();
       this.setActiveIndex(0);
-      $('.mu-scenario-control').removeClass('hidden');
+      $('.mu-scenario-control').removeClass('d-none');
     }
 
     validScenarioIndex (index) {

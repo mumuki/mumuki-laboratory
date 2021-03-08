@@ -116,8 +116,8 @@ mumuki.load(() => {
         _action(add, remove, isPlaying, callback) {
           callback(window.speechSynthesis);
           const $button = $('.mu-kindergarten-play-description');
-          $button.find(`.mu-kindergarten-${add}`).addClass('hidden');
-          $button.find(`.mu-kindergarten-${remove}`).removeClass('hidden');
+          $button.find(`.mu-kindergarten-${add}`).addClass('d-none');
+          $button.find(`.mu-kindergarten-${remove}`).removeClass('d-none');
           this._isPlaying = isPlaying;
         },
         verifyBrowserSupport() {
@@ -146,7 +146,7 @@ mumuki.load(() => {
         showOrHideExpandHintButton() {
           const $button = $('.expand-or-collapse-hint-media');
           const $hintMedia = $('.mu-kindergarten-hint-media');
-          if (!$hintMedia.get(0)) $button.addClass('hidden');
+          if (!$hintMedia.get(0)) $button.addClass('d-none');
         },
       };
     }

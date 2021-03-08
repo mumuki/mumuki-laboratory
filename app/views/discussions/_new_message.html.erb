@@ -12,7 +12,7 @@
             <div class="discussion-new-message-content">
               <%= f.editor :content, '', { id: 'discussion-new-message', class: 'form-control', placeholder: t(:message) } %>
             </div>
-            <div class="discussion-message-content hidden" id="discussion-new-message-preview"></div>
+            <div class="discussion-message-content d-none" id="discussion-new-message-preview"></div>
           </div>
         </div>
       </div>
@@ -21,7 +21,7 @@
       <% if user.moderator_here? %>
         <button class="btn btn-default discussion-new-message-preview-button preview" type="button" error-text="<%= t :preview_error %>"
                 onclick="mumuki.Forum.discussionMessagePreview('<%= preview_discussion_message_url %>')"> <%= fa_icon('eye', text: t(:preview)) %> </button>
-        <button class="btn btn-default discussion-new-message-preview-button edit hidden" type="button"
+        <button class="btn btn-default discussion-new-message-preview-button edit d-none" type="button"
                 onclick="mumuki.Forum.hidePreviewAndShowEditor()"> <%= fa_icon('pencil-alt', text: t(:edit_message)) %> </button>
       <% end %>
       <%= button_tag type: 'submit', class: 'btn btn-success discussion-new-message-button', data: { disable: true } do %>

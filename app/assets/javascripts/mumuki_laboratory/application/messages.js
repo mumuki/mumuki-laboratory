@@ -10,7 +10,7 @@ mumuki.load(() => {
       return Chat.$newMessageModal().find('.modal-body, .modal-footer');
     },
     collapseNewMessageModal: function () {
-      Chat.$newMessageModalComponents().toggleClass('hidden');
+      Chat.$newMessageModalComponents().toggleClass('d-none');
     },
     token: new mumuki.CsrfToken(),
     setMessages: function (data) {

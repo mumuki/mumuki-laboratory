@@ -19,15 +19,15 @@
               </small>
             </div>
           </div>
-          <div class="modal-body hidden">
+          <div class="modal-body d-none">
             <div class="container-fluid">
               <div class="row">
                 <%= f.text_area :content, class: 'form-control mu-message-textarea', placeholder: t(:new_message_placeholder) %>
-                <%= f.text_field :exercise_id, value: exercise.id, class: 'hidden' %>
+                <%= f.text_field :exercise_id, value: exercise.id, class: 'd-none' %>
               </div>
             </div>
           </div>
-          <div class="modal-footer hidden">
+          <div class="modal-footer d-none">
             <button class="btn btn-success btn-block"> <%= t :send %> </button>
           </div>
         </div>

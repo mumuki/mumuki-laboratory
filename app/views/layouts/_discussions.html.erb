@@ -2,14 +2,14 @@
   <%= discussions_reset_query_link %>
   <div class="discussions-toolbar">
     <div class="discussions-toolbar-status">
-      <div class="hidden-xs hidden-sm">
+      <div class="d-none d-lg-block">
         <% discussions_statuses.each do |status| %>
           <%= discussion_status_filter_link(status, @discussions) %>
         <% end %>
       </div>
     </div>
     <div>
-      <div class="hidden-md hidden-lg ">
+      <div class="d-lg-none">
         <%= discussion_dropdown_filter :status, discussions_statuses do |status_filter| %>
           <%= t status_filter %>
         <% end %>
@@ -56,7 +56,7 @@
                   <span class="discussion-status-icon">
                     <%= discussion_status_fa_icon(discussion) %>
                   </span>
-                  <span class="hidden-sm hidden-xs"><%= discussion.exercise.guide.name %> -</span>
+                  <span class="d-none d-lg-inline"><%= discussion.exercise.guide.name %> -</span>
                   <span><%= discussion.exercise.name %></span>
                   <% if discussion.last_moderator_access_visible_for?(current_user) %>
                     <div class="pull-right discussion-moderator-access" >

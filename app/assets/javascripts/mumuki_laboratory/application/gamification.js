@@ -82,7 +82,7 @@ mumuki.gamification = (() => {
 
     defaultGainedExperienceAction() {
       $('#mu-exp-points').html(this.lastEarnedExp);
-      $('#mu-exp-earned-message').removeClass('hidden');
+      $('#mu-exp-earned-message').removeClass('d-none');
     }
 
     defaultLevelUpAction(_levelUpHtml) {
