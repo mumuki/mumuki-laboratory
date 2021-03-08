@@ -30,6 +30,10 @@ class UsersController < ApplicationController
     @watched_discussions = current_user.watched_discussions_in_organization
   end
 
+  def certificates
+    @certificates ||= current_user.certificates_in_organization
+  end
+
   def unsubscribe
     user_id = User.unsubscription_verifier.verify(params[:id])
     User.find(user_id).unsubscribe_from_reminders!

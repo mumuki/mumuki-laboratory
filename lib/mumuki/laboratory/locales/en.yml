@@ -33,6 +33,10 @@ en:
   blocked_forum_explanation: Are you in the middle of an exam right now?
   cancel: Cancel
   cancel_subscription: Cancel your subscription.
+  certificate: Certificate
+  certificates: Certificates
+  certificates_will_be_here: Your certificates in the organization will appear here.
+  certificate_verified_legend: "<strong>%{full_name}</strong>'s account is verified. Mumuki certifies their successful completion of <strong>%{description}</strong>."
   chapter: Chapter
   chapters: Chapters
   chapter_finished_html: You have finished %{chapter}!
@@ -45,6 +49,7 @@ en:
   created_at_asc: Oldest
   created_at_desc: Newest
   comment: Comment
+  completed_by: Completed by
   confirm: Confirm
   confirm_reset: You are about to restart your exercise. Do you want to proceed?
   confirm_restart: You are about to delete your progress for this guide. Do you want to proceed?
@@ -155,6 +160,7 @@ en:
   let_us_know: please let us know!
   level: Level
   level_up: Level up!
+  linkedin_profile_button_locale: en_US
   listen_statement: Listen to the statement
   loading: Loading
   load_solution_into_console: Load your solution into the console

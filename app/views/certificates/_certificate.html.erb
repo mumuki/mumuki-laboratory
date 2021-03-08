@@ -1,0 +1,44 @@
+<style>
+
+  .mu-certificate-box {
+    overflow: hidden;
+    height: 210mm;
+    width: 297mm;
+    max-height: 210mm;
+    max-width: 297mm;
+    min-height: 210mm;
+    min-width: 297mm;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+    border: 1px solid lightgrey;
+  }
+
+  .mu-certificate-box section {
+    background: transparent;
+    z-index: 10;
+  }
+
+  .background-image {
+    position: absolute;
+    height: 210mm;
+    width: 297mm;
+    margin: 0;
+    padding: 0;
+    z-index: 0;
+  }
+
+  .qr-code {
+    position: absolute;
+    z-index: 10;
+  }
+
+</style>
+
+<div class="mu-certificate-box">
+  <img src="<%= certificate.background_image_url %>" class="background-image"/>
+  <%= render inline: certificate.template_html_erb, locals: certificate.template_locals %>
+  <a href="<%= verify_certificate_path certificate.code %>" target="_blank">
+    <div><img class="qr-code" src="<%= qr_for certificate %>"/></div>
+  </a>
+</div>
