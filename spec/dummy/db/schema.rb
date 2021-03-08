@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210302181654) do
+ActiveRecord::Schema.define(version: 20210308145910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -368,6 +368,9 @@ ActiveRecord::Schema.define(version: 20210302181654) do
     t.integer "discussion_id"
     t.boolean "approved", default: false
     t.boolean "not_actually_a_question", default: false
+    t.datetime "approved_at"
+    t.bigint "approved_by_id"
+    t.index ["approved_by_id"], name: "index_messages_on_approved_by_id"
   end
 
   create_table "notifications", force: :cascade do |t|
