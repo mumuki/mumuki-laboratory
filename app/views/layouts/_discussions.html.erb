@@ -22,7 +22,7 @@
       <% end %>
 
       <% if current_user&.moderator_here? %>
-        <div class="discussion-requires-attention pull-right">
+        <div class="discussion-requires-attention float-end">
           <%= label_tag :requires_moderator_response, t(:requires_attention) %>
           <%= check_box_tag :requires_moderator_response, true, discussion_filter_params[:requires_moderator_response], class: 'form-input', onclick: 'mumuki.Forum.discussionsToggleCheckbox($(this))' %>
         </div>
@@ -59,7 +59,7 @@
                   <span class="d-none d-lg-inline"><%= discussion.exercise.guide.name %> -</span>
                   <span><%= discussion.exercise.name %></span>
                   <% if discussion.last_moderator_access_visible_for?(current_user) %>
-                    <div class="pull-right discussion-moderator-access" >
+                    <div class="float-end discussion-moderator-access" >
                       <%= profile_picture_for(discussion.last_moderator_access_by, height: 32) %>
                       <span class="moderator-initials">
                         <%= discussion.last_moderator_access_by.name_initials %>
