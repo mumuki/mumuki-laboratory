@@ -125,7 +125,7 @@ feature 'Profile Flow', organization_workspace: :test do
     context 'visit certificates tab' do
       before { Organization.find_by_name('test').switch! }
       before { create :certificate, user: user, code: 'abc' }
-      before { visit '/user#certificates' }
+      before { visit '/user/certificates' }
 
       scenario { expect(page).to have_text('Test - Certificate program to test') }
       scenario { expect(page).to have_link(href: /certificates\/verify\/abc/) }
