@@ -36,7 +36,11 @@
               <% if any_menu_bar_links? %>
                 <li class="divider"></li>
               <% end %>
-              <%= logout_link %>
+              <% if faqs_enabled_here? %>
+                <%= menu_link_to_faqs %>
+                <li class="divider"></li>
+              <% end %>
+              <%= logout_menu_link %>
             </ul>
           </div>
         <% else %>
@@ -62,6 +66,7 @@
         </div>
 
         <div class="mu-footer-terms">
+          <div><%= link_to_faqs %></div>
           <div><%= link_to_profile_terms %></div>
           <% if current_user&.can_discuss_here? %>
             <div><%= link_to_forum_terms %></div>
