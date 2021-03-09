@@ -1,0 +1,62 @@
+.mu-faqs-container {
+  position: relative;
+  display: table;
+
+  .mu-faqs-content {
+    padding-top: 50px;
+
+    @media (min-width: $container-sm) {
+      width: 75%;
+      float: right;
+    }
+
+    .mu-faqs-group {
+      padding: 32px;
+      box-shadow: 0 0.375em 2.8125em 0 #d2d5d9;
+      margin-bottom: 32px;
+      h2 {
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+      h3 {
+        color: #1A94A3; // should be $brand-secondary
+        margin-top: 40px;
+      }
+    }
+  }
+
+  .mu-faqs-navbar {
+    top: 0;
+    position: sticky;
+    width: 25%;
+    padding-top: 50px;
+
+    @media (min-width: $container-sm) {
+      display: hidden;
+    }
+
+    ul {
+      border-left: 1px solid $mu-color-disabled;
+      list-style: none;
+      padding-left: 0px;
+      li {
+        padding: 8px 10px 8px 15px;
+        cursor: pointer;
+        &.active {
+          border-left: 3px solid transparent;
+          border-color: darken($brand-primary, 5%);
+          margin-left: -3px;
+        }
+        a {
+          color: $brand-primary;
+          &:hover {
+            text-decoration: none;
+          }
+          @media (min-width: $container-lg) {
+            font-size: 1.1em;
+          }
+        }
+      }
+    }
+  }
+}
