@@ -68,6 +68,8 @@ Rails.application.routes.draw do
       get :certificates
     end
 
+    resources :faqs, only: [:index]
+
     resources :messages, only: [:index, :create]
     get '/messages/errors' => 'messages#errors'
 
