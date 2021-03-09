@@ -19,6 +19,7 @@ feature 'menu bar' do
         expect(page).not_to have_text('My account')
         expect(page).not_to have_text('Classroom')
         expect(page).not_to have_text('Bibliotheca')
+        expect(page).not_to have_text('FAQs')
       end
     end
 
@@ -35,6 +36,7 @@ feature 'menu bar' do
         expect(page).not_to have_text('Bibliotheca')
         expect(page).not_to have_text('Solve other\'s doubts')
         expect(page).not_to have_text('My doubts')
+        expect(page).not_to have_text('FAQs')
       end
     end
   end
@@ -57,6 +59,7 @@ feature 'menu bar' do
       expect(page).not_to have_text('Bibliotheca')
       expect(page).not_to have_text('Solve other\'s doubts')
       expect(page).not_to have_text('My doubts')
+      expect(page).not_to have_text('FAQs')
     end
 
     context 'student with no discussions should' do
@@ -69,6 +72,7 @@ feature 'menu bar' do
         expect(page).not_to have_text('Bibliotheca')
         expect(page).not_to have_text('Solve other\'s doubts')
         expect(page).not_to have_text('My doubts')
+        expect(page).not_to have_text('FAQs')
       end
 
       scenario 'see their account and solve_other_doubts links if forum is enabled' do
@@ -81,6 +85,17 @@ feature 'menu bar' do
         expect(page).not_to have_text('Bibliotheca')
         expect(page).to have_text('Solve other\'s doubts')
         expect(page).not_to have_text('My doubts')
+        expect(page).not_to have_text('FAQs')
+      end
+    end
+
+    context 'organization with faqs' do
+      before { Organization.current.update! faqs: "Some faqs" }
+
+      scenario 'should see FAQs link' do
+        visit '/'
+
+        expect(page).to have_text('FAQs')
       end
     end
 
@@ -97,6 +112,7 @@ feature 'menu bar' do
         expect(page).not_to have_text('Bibliotheca')
         expect(page).not_to have_text('Solve other\'s doubts')
         expect(page).not_to have_text('My doubts')
+        expect(page).not_to have_text('FAQs')
       end
 
       scenario 'see all discussions links if forum is enabled' do
@@ -110,6 +126,7 @@ feature 'menu bar' do
         expect(page).not_to have_text('Bibliotheca')
         expect(page).to have_text('Solve other\'s doubts')
         expect(page).to have_text('My doubts')
+        expect(page).not_to have_text('FAQs')
       end
 
       scenario 'only see their account if forum is enabled in a forum_only_for_trusted organization' do
@@ -124,6 +141,7 @@ feature 'menu bar' do
         expect(page).not_to have_text('Bibliotheca')
         expect(page).not_to have_text('Solve other\'s doubts')
         expect(page).not_to have_text('My doubts')
+        expect(page).not_to have_text('FAQs')
       end
 
       scenario 'see all discussions links if forum is enabled in a forum_only_for_trusted organization but it is trusted' do
@@ -139,6 +157,7 @@ feature 'menu bar' do
         expect(page).not_to have_text('Bibliotheca')
         expect(page).to have_text('Solve other\'s doubts')
         expect(page).to have_text('My doubts')
+        expect(page).not_to have_text('FAQs')
       end
     end
 
@@ -152,6 +171,7 @@ feature 'menu bar' do
       expect(page).not_to have_text('Bibliotheca')
       expect(page).not_to have_text('Solve other\'s doubts')
       expect(page).not_to have_text('My doubts')
+      expect(page).not_to have_text('FAQs')
     end
 
     scenario 'writer should see their account and bibliotheca' do
