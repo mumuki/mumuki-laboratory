@@ -3,7 +3,8 @@
                   placeholder: t(:editor_placeholder),
                   class: 'form-control editor',
                   value: @current_content,
-                  data: {lines: 17} %>
+                  data: {lines: 17},
+                  autocomplete: 'off' %>
   <div class="mu-overlapped">
     <a class="editor-resize"> <%= expand_icon %></a>
     <a class="editor-format"><%= format_icon %></a>
