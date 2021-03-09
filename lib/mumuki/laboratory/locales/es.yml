@@ -121,6 +121,7 @@ es:
   expected_state: Tablero esperado
   explain_redirect: Notamos que te registraste en otra organización.
   failed: Tu solución no pasó las pruebas
+  faqs: Preguntas Frecuentes
   feedback: Problemas que encontramos
   female: Mujer
   file_exceeds_max_size: "El tamaño de archivo no debe exceder %{size_kb}kb. Por favor seleccioná otro archivo."

@@ -115,6 +115,7 @@ en:
   expected_state: Expected board
   explain_redirect: You have registered in another organization
   failed: Oops, something went wrong
+  faqs: FAQs
   feedback: Feedback
   female: Female
   file_exceeds_max_size: "File size should not exceed %{size_kb}kb. Please select another file."
