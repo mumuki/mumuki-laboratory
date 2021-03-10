@@ -1,6 +1,10 @@
 .mu-user-activity-indicator {
   text-align: center;
-  padding: 0.5em;
+  border-radius: 10px;
+
+  &.jumbotron {
+    padding: 0.5em 0;
+  }
 }
 
 .mu-user-activity-selector {
