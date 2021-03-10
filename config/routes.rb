@@ -71,6 +71,7 @@ Rails.application.routes.draw do
       get :activity
       get :certificates
       get :exam_authorizations
+      get :delete
 
       get :notifications
       post 'notifications/:id/toggle_read', action: :toggle_read

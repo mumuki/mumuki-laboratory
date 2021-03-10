@@ -198,4 +198,11 @@ RSpec.describe UserMailer, type: :mailer do
       it { expect(email.from).to eq ['info@mumuki.org'] }
     end
   end
+
+  describe 'delete account email' do
+    let(:user) { create(:user, delete_account_token: 'SecreT1234', last_organization: central) }
+    let(:email) { UserMailer.delete_account(user) }
+
+    it { expect(email.body.encoded).to include 'central.localmumuki.io/user/delete?token=SecreT1234' }
+  end
 end

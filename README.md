@@ -205,6 +205,17 @@ o.reindex_usages!
 
 Now you will be able to visit that guide at `http://localhost:3000/central/guides/#{slug}`
 
+## Debugging email sender
+
+The development environment is configured to "send" emails via `mailcatcher`, a mock server, if it is available. Run these commands to install and run it - and do it _before_ the emails are sent, so it can actually _catch_ them:
+
+```bash
+gem install mailcatcher
+mailcatcher
+```
+
+Once up and running, go to http://localhost:1080/ to see which emails have been sent. Unfortunately, the developers recommend not to install it via Bundler, so it has to be done this way. :woman_shrugging:
+
 ## JavaScript API Docs
 
 In order to be customized by runners, Laboratory exposes the following selectors and methods
