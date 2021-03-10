@@ -4,8 +4,11 @@
 
 <%= render partial: 'layouts/user_menu' %>
 
-<div class="row mu-tab-body">
-  <div class="col-md-6">
+<div class="col-md-9 mu-tab-body">
+  <div class="mu-user-header">
+    <h1><%= t(:activity) %></h1>
+  </div>
+  <div class="col-md-8">
     <%= render partial: 'activity_indicator',
                locals: {
                  title: t(:exercises),
@@ -19,7 +22,7 @@
                } %>
   </div>
 
-  <div class="col-md-3 col-md-offset-3">
+  <div class="col-md-4">
     <ul class="nav nav-pills nav-stacked">
       <li <%= mark_period_if_active nil %>>
         <%= link_to t(:total), activity_user_path %>
