@@ -1,11 +1,14 @@
 .mu-faqs-container {
   position: relative;
   display: table;
+  width: 100%;
 
   .mu-faqs-content {
     padding-top: 50px;
 
-    @media (min-width: $container-sm) {
+    width: 100%;
+
+    @media (min-width: 768px) {
       width: 75%;
       float: right;
     }
@@ -14,13 +17,36 @@
       padding: 32px;
       box-shadow: 0 0.375em 2.8125em 0 #d2d5d9;
       margin-bottom: 32px;
+
+      @media (max-width: 767px) {
+        &:not(.active) {
+          h3, p {
+            display: none
+          }
+          h2 {
+            margin-bottom: 0px;
+          }
+        }
+      }
+
       h2 {
         margin-top: 0;
         margin-bottom: 20px;
       }
+
       h3 {
         color: #1A94A3; // should be $brand-secondary
         margin-top: 40px;
+      }
+
+      .mu-faqs-group-icon {
+        float: right;
+        margin-top: 10px;
+        cursor: pointer;
+        display: none;
+        @media (max-width: 767px) {
+          display: unset;
+        }
       }
     }
   }
@@ -30,10 +56,6 @@
     position: sticky;
     width: 25%;
     padding-top: 50px;
-
-    @media (min-width: $container-sm) {
-      display: hidden;
-    }
 
     ul {
       border-left: 1px solid $mu-color-disabled;

@@ -32,9 +32,8 @@ mumuki.faqs = class {
   }
 
   _createNavbarItem($faqsNavbar, faqGroup) {
-    const $newLink = $('<a></a>').attr("href",`#${faqGroup.id}`)
-      .html(`${faqGroup.children[0].textContent}`);
-    const $navItem = $('<li></li>').html($newLink);
+    const $navItem = $(`<li><a href="#${faqGroup.id}">`)
+      .html(`${faqGroup.querySelector('h2').textContent}`);
     $faqsNavbar.append($navItem);
     return $navItem;
   }
@@ -51,8 +50,19 @@ mumuki.faqs = class {
   _createFaqsGroups() {
     const elemsGroups = this._buildFaqsGroups();
     elemsGroups.forEach((group, index) => {
-      $(group).wrapAll(`<div class='mu-faqs-group' id='mu-faqs-group-${index}'>`)
+      $(group).wrapAll(`<div class='mu-faqs-group' id='mu-faqs-group-${index}'>`);
     });
+    this._createFaqsIcons();
+  }
+
+  _createFaqsIcons() {
+    const $faqIcon = $('<i class="mu-faqs-group-icon fa fa-plus">');
+    $faqIcon.click(function(e){
+      const $elem = $(this);
+      $elem.toggleClass('fa-plus fa-minus');
+      $elem.closest('.mu-faqs-group').toggleClass('active');
+    })
+    $('.mu-faqs-group').prepend($faqIcon);
   }
 
   _buildFaqsGroups() {
