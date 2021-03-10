@@ -12,6 +12,9 @@ class UsersController < ApplicationController
     redirect_after! :profile_completion, fallback_location: user_path
   end
 
+  def destroy
+  end
+
   def accept_profile_terms
     current_user.accept_profile_terms!
     flash.notice = I18n.t(:terms_accepted)

@@ -64,6 +64,13 @@ en:
   create_submission: Submit
   created_at: Created at
   date: Date
+  delete_account: Delete account
+  delete_account_agree: I understand the consequences and want to delete my account
+  delete_account_confirmation_email_explain_html: <p>We sent you an email to <a href="%{user_email}">%{user_email}</a> to continue with the removal process.
+  delete_account_confirmation_request: To confirm this action, please write
+  delete_account_confirmation_text: delete my account
+  delete_account_explain: After deleting your account, you will lose access to all the contents and to your progress.
+  delete_account_modal_explain_html: <p>You're about to delete <strong>%{name}</strong> account</p><p>By doing that, you will lose access to the following paths:</p>
   description: Description
   destroy: Destroy
   destroy_message: delete the message
