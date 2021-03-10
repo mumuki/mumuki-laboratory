@@ -1,0 +1,19 @@
+<div>
+  <h3 class="text-danger"><%= t :delete_account %></h3>
+  <div class="row">
+    <div class="col-md-8">
+      <p><%= t :delete_account_explain %></p>
+    </div>
+    <div class="col-md-4">
+      <div class="pull-right">
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#user-delete-account-modal">
+          <%= t :delete_account %>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= content_for :no_container do %>
+  <%= render partial: 'user_delete_modal' %>
+<% end %>

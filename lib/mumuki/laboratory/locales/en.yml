@@ -74,6 +74,13 @@ en:
   created_at: Created at
   date: Date
   date_and_time: Date and time
+  delete_account: Delete account
+  delete_account_agree: I understand the consequences and want to delete my account
+  delete_account_confirmation_email_explain_html: <p>We sent you an email to <a href="%{user_email}">%{user_email}</a> to continue with the removal process.
+  delete_account_confirmation_request: To confirm this action, please write
+  delete_account_confirmation_text: delete my account
+  delete_account_explain: After deleting your account, you will lose access to all the contents and to your progress.
+  delete_account_modal_explain_html: <p>You're about to delete <strong>%{name}</strong> account</p><p>By doing that, you will lose access to the following paths:</p>
   deleted_by: Deleted by %{deleter}
   deleted_message_warning: If you repeateadly violate these or other rules, you may be prohibited from accessing the forum or you may suffer more severe consequences, such as being expulsed from the course.
   deletion_motive:
