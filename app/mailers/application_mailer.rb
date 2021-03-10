@@ -1,5 +1,6 @@
 class ApplicationMailer < ActionMailer::Base
   default from: Rails.configuration.reminder_sender_email
+  add_template_helper MailerHelper
   layout 'mailer'
 
   def self.mailer_environment_variables

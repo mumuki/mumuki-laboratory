@@ -26,10 +26,13 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.perform_deliveries = false
-
+  config.reminder_sender_email = 'support@mumuki.org'
   config.action_mailer.perform_caching = false
+  config.action_mailer.raise_delivery_errors = false
+
+  # Settings for mailcatcher, run `mailcatcher` and go to http://localhost:1080/ to see which emails have been sent.
+  config.action_mailer.smtp_settings = { :address => '127.0.0.1', :port => 1025 }
+  config.action_mailer.delivery_method = :smtp
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
