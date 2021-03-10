@@ -1,0 +1,44 @@
+<script>
+  function checkConfirmationText() {
+    const val = $('#confirmDeleteInput').val();
+    $('#delete-account-button').prop('disabled', val !== '<%= t :delete_account_confirmation_text %>');
+  }
+</script>
+
+<div class="modal fade" id="user-delete-account-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><%= t :delete_account %></h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <%= t :delete_account_modal_explain_html, name: @user.name %>
+          </div>
+          <div class="row">
+            <% @user.student_granted_organizations.each do |organization| %>
+              <div class="col-md-4 text-center">
+                <%= image_tag(organization.banner_url, width: '100%', class: 'pull-left') %>
+                <p><%= organization.name %></p>
+              </div>
+            <% end %>
+          </div>
+          <div class="row">
+            <%= t :delete_account_confirmation_request %> <i><%= t :delete_account_confirmation_text %></i>.
+          </div>
+          <div class="row">
+            <%= form_for :user, method: :delete do |f| %>
+              <div class="form-group">
+                <input class="form-control" type="text" id="confirmDeleteInput" autocomplete="off" onkeyup="checkConfirmationText()">
+              </div>
+              <%= f.submit t(:delete_account_agree), class: 'btn btn-danger', id: 'delete-account-button', disabled: true %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

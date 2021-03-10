@@ -75,6 +75,13 @@ pt:
   created_guides: Lições criadas
   date: Data
   date_and_time: Data e hora
+  delete_account: Deletar conta
+  delete_account_agree: Eu entendo as consequências e quero excluir minha conta
+  delete_account_confirmation_email_explain_html: <p> Enviamos a você um e-mail para <a href="%{user_email}">%{user_email}</a> para continuar com o processo de remoção.
+  delete_account_confirmation_request: Para confirmar esta ação, por favor escreva
+  delete_account_confirmation_text: deletar minha conta
+  delete_account_explain: Depois de excluir sua conta, você perderá o acesso a todo o conteúdo e ao seu progresso.
+  delete_account_modal_explain_html: <p>Você está prestes a excluir a conta <strong>%{name}</strong></p><p>Ao fazer isso, você perderá o acesso aos seguintes caminhos:</p>
   deleted_by: Removido pelo
   deleted_message_warning: Se você violar repetidamente essas ou outras regras da Área de Consulta, seu acesso a ela pode ser proibido ou você pode sofrer consequências mais graves, como a expulsão do curso.
   deletion_motive:

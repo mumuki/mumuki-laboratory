@@ -33,6 +33,8 @@
     <div>
       <span> <strong><%= t :programming_since %>:</strong> <%= friendly_time(@user.created_at, :time_since) %> </span>
     </div>
+    <hr>
+    <%= render partial: 'user_delete_account' %>
   </div>
 </div>
 <div class="mu-profile-actions mobile d-block d-md-none">
