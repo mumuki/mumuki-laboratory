@@ -1,25 +1,17 @@
-<div class="col-md-3 mu-tab-body mu-user-menu">
-  <div class="col-md-12">
-    <div class="mu-user-menu-header">
-      <%= t(:my_account) %>
-    </div>
-    <div class="mu-user-menu-item">
-      <%= profile_user_menu_link %>
-    </div>
-    <div class="mu-user-menu-divider horizontal"></div>
-    <div class="mu-user-menu-item">
-      <%= messages_user_menu_link %>
-    </div>
-    <% if current_user&.can_discuss_here? %>
-      <div class="mu-user-menu-item">
+<div class="col-md-3 mu-tab-body">
+  <div class="mu-user-menu">
+    <div class="mu-user-menu-content">
+      <%= user_menu_header %>
+      <div class="col-xs-12 mu-user-menu-items hidden-sm-screen">
+        <%= profile_user_menu_link %>
+        <%= user_menu_divider %>
+        <%= messages_user_menu_link %>
         <%= discussions_user_menu_link %>
+        <%= user_menu_divider %>
+        <%= certificates_user_menu_link %>
       </div>
-    <% end %>
-    <div class="mu-user-menu-divider horizontal"></div>
-    <div class="mu-user-menu-item">
-      <%= certificates_user_menu_link %>
     </div>
+    <div class="mu-user-menu-divider vertical hidden-sm hidden-xs"></div>
   </div>
-  <div class="mu-user-menu-divider vertical hidden-sm hidden-xs"></div>
 </div>
 <div class="mu-user-menu-divider horizontal visible-sm visible-xs"></div>

@@ -1,12 +1,41 @@
 .mu-user-menu {
   display: flex;
+  margin-top: 25px;
+}
+
+.mu-user-menu-content {
+  flex-grow: 1;
 }
 
 .mu-user-menu-header {
   font-size: 15px;
   color: $mu-color-disabled;
   text-transform: uppercase;
-  margin-bottom: 30px;
+  padding-left: 2px;
+  cursor: pointer;
+
+  @media only screen and (min-width: $screen-md-min) {
+    padding-left: 15px;
+    cursor: auto;
+
+    i {
+      display: none;
+    }
+
+    span {
+      padding-left: 0px;
+    }
+  }
+}
+
+.mu-user-menu-items {
+  margin-top: 30px;
+
+  &.hidden-sm-screen {
+    @media only screen and (max-width: $screen-sm-max) {
+      display: none;
+    }
+  }
 }
 
 .mu-user-menu-item {
@@ -30,6 +59,5 @@
     border-top: 2px solid $mu-color-separator;
 
     margin: 25px 0;
-    width: 100%
   }
 }

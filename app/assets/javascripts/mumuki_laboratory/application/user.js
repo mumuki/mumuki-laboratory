@@ -1,9 +1,20 @@
 mumuki.load(() => {
-  var hash = document.location.hash;
-  if (hash) {
-    $(".nav-tabs a[data-target='" + hash + "']").tab('show');
+  const $userMenuHeader = $('.mu-user-menu-header');
+  let onUserProfile = document.querySelector('.mu-profile-info') !== null;
+
+  $userMenuHeader.click(() => {
+    $('.mu-user-menu-items').toggleClass('hidden-sm-screen');
+    $('#mu-user-menu-header-icon').toggleClass('fa-chevron-up fa-chevron-down');
+  });
+
+  if (onUserProfile) {
+    $userMenuHeader.click();
   }
-  $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-    window.location.hash = $(e.target).attr('data-target');
+
+  $('.mu-user-menu-item .active').click((e) => {
+    if (onUserProfile) {
+      e.preventDefault();
+      $userMenuHeader.click();
+    }
   });
 });

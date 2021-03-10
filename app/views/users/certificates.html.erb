@@ -4,15 +4,15 @@
 
 <%= render partial: 'layouts/user_menu' %>
 
-<div class="mu-user-header">
-  <h1><%= t(:certificates) %></h1>
-</div>
-<% if @certificates.empty? %>
-  <div class="mu-tab-body">
-    <%= t :certificates_will_be_here %>
+<div class="col-md-9 mu-tab-body">
+  <div class="mu-user-header">
+    <h1><%= t(:certificates) %></h1>
   </div>
-<% else %>
-  <div class="col-md-9 mu-tab-body">
+  <% if @certificates.empty? %>
+    <div class="mu-tab-body">
+      <%= t :certificates_will_be_here %>
+    </div>
+  <% else %>
     <div class="col-md-12">
       <div class="mu-list-group">
         <% @certificates.each do |certificate| %>
@@ -28,5 +28,5 @@
         <% end %>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
