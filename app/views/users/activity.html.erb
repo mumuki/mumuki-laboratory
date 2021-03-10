@@ -1,5 +1,7 @@
 <%= content_for :breadcrumbs do %>
-  <%= breadcrumbs @user %>
+  <%= breadcrumbs_for_my_account %>
 <% end %>
+
+<%= render partial: 'layouts/user_menu' %>
 
 <%= render partial: 'activity_stats' %>
