@@ -77,6 +77,7 @@ es:
   delete_account_confirmation_text: quiero eliminar mi cuenta
   delete_account_explain: Al eliminar tu cuenta, perderás acceso a todos los contenidos, así como a tu progreso.
   delete_account_modal_explain_html: <p>Estás a punto de eliminar la cuenta de <strong>%{name}</strong></p><p>Al hacerlo, perderás acceso a los siguientes recorridos:</p>
+  delete_account_mumuki: Eliminar tu cuenta de Mumuki
   description: Descripción
   destroy_message: eliminar el mensaje
   destroy: Eliminar

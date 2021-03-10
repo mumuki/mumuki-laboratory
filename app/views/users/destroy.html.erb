@@ -11,7 +11,7 @@
 </div>
 
 <div class="row">
-  <div class="mu-inline-block-left">
-    <%= t :delete_account_confirmation_email_explain_html, user_email: @user.email, support_email: 'soporte@mumuki.org' %>
+  <div class="col-md-12">
+    <%= t :delete_account_confirmation_email_explain_html, user_email: @user.email, support_email: Rails.configuration.reminder_sender_email %>
   </div>
 </div>

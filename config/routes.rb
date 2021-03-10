@@ -66,6 +66,7 @@ Rails.application.routes.draw do
       get :messages
       get :discussions
       get :certificates
+      get :delete
     end
 
     resources :faqs, only: [:index]

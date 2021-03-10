@@ -13,6 +13,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    current_user.generate_delete_account_token!
+    UserMailer.delete_account(current_user).deliver_now
   end
 
   def accept_profile_terms
@@ -42,6 +44,9 @@ class UsersController < ApplicationController
     User.find(user_id).unsubscribe_from_reminders!
 
     redirect_to root_path, notice: t(:unsubscribed_successfully)
+  end
+
+  def delete
   end
 
   def permissible_params
