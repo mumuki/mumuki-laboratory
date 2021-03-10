@@ -281,16 +281,15 @@ es:
   skipped_solve_anyway: Resolver de todos modos
   solution: Solución
   solved: Resuelta
-  solved_count:
-    one: 1 resuelta
-    other: '%{count} resueltas'
   solved_exercises: Ejercicios Resueltos
   solve_doubts: Resolvé consultas
   solve_more_exercises_to_level_up: Resolvé <span>number</span> ejercicios más para pasar al siguiente nivel.
   solve_your_doubts: Consultá tus dudas
   solve_your_doubts_teaser: ¿Tenés alguna consulta?
   something_went_wrong: ¡Ups!, algo no anduvo bien...
-  solved_exercises_count: resueltos
+  solved_exercises_count:
+    one: resuelto
+    other: resueltos
   solved_exercises_percentage: realizado
   sort: Ordenar
   sources: Bibliografía

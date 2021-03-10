@@ -261,7 +261,6 @@ en:
   skipped_solve_anyway: Solve anyway
   solution: Solution
   solved: Solved
-  solved_count: '%{count} solved'
   solve_doubts: Solve other's doubts
   solve_more_exercises_to_level_up: Solve <span>number</span> more exercises to advance to the next level.
   solve_your_doubts: Solve your doubts

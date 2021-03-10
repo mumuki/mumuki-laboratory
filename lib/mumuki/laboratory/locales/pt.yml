@@ -271,13 +271,14 @@ pt:
   skipped_solve_anyway: Resolver mesmo assim
   solution: Solução
   solved: Resolvido
-  solved_count: '%{count} resolvido'
   solved_exercises: Exercícios resolvidos
   solve_doubts: Resolvi dúvidas
   solve_more_exercises_to_level_up: Resolva mais <span>number</span> exercícios para avançar para o próximo nível.
   solve_your_doubts: Consulte suas dúvidas
   solve_your_doubts_teaser: Você tem alguma dúvida?
-  solved_exercises_count: resolvidos
+  solved_exercises_count:
+    one: resolvido
+    other: resolvidos
   solved_exercises_percentage: realizado
   something_went_wrong: Oops!, Algo não estava certo ...
   sort: Ordenar
