@@ -75,26 +75,34 @@ def register_request_headers_workaround!
   EOR
 end
 
-def exclude_selenium_failing_tests!
+def exclude_tests_with_tags!(tags)
   RSpec.configure do |config|
-    config.filter_run_excluding(
-      # Response headers are not supported by Selenium Driver
-      :http_response_headers,
-
-      # TODO: the following ignored groups should be fixed
-      :element_not_interactable_error,
-      :toast_interferes_with_view,
-      :invalid_selector_error,
-      :json_eq_error,
-      :navigation_error,
-      :organization_not_nil,
-      :xpath_no_matches,
-
-      # Fails because Rails redirection doesn't include Capybara port.
-      # It can be fixed by using path mapping instead of subdomain.
-      :subdomain_redirection_without_port
-    )
+    config.filter_run_excluding(tags)
   end
+end
+
+def exclude_selenium_failing_tests!
+  exclude_tests_with_tags! [
+    # Response headers are not supported by Selenium Driver
+    :http_response_headers,
+
+    # TODO: the following ignored groups should be fixed
+    :element_not_interactable_error,
+    :toast_interferes_with_view,
+    :invalid_selector_error,
+    :json_eq_error,
+    :navigation_error,
+    :organization_not_nil,
+    :xpath_no_matches,
+
+    # Fails because Rails redirection doesn't include Capybara port.
+    # It can be fixed by using path mapping instead of subdomain.
+    :subdomain_redirection_without_port
+   ]
+end
+
+def exclude_js_dependant_tests!
+  exclude_tests_with_tags! [:requires_js]
 end
 
 # Configuration
@@ -111,6 +119,8 @@ if run_with_selenium?
 
   # Include port on the URL, so we don't need to forward it via nginx or so
   Capybara.always_include_port = true
+else
+  exclude_js_dependant_tests!
 end
 
 puts "Running Capybara tests with #{selected_driver}, #{Capybara.ignore_hidden_elements ? '' : 'not '}ignoring hidden elements"

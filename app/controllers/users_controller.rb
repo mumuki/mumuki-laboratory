@@ -64,6 +64,10 @@ class UsersController < ApplicationController
   end
 
   def delete_confirmation
+    redirect_to delete_confirmation_invalid_user_path unless @user.delete_account_token_matches? params[:token]
+  end
+
+  def delete_confirmation_invalid
   end
 
   def disable
