@@ -85,8 +85,10 @@ es:
   delete_account_confirmation_request: Para confirmar esta acción, escribí
   delete_account_confirmation_text: quiero eliminar mi cuenta
   delete_account_explain: Al eliminar tu cuenta, perderás acceso a todos los contenidos, así como a tu progreso.
+  delete_account_invalid_token: Lo sentimos, el enlace que te trajo hasta aquí ha expirado o es inválido.
   delete_account_modal_explain_html: <p>Estás a punto de eliminar la cuenta de <strong>%{name}</strong></p><p>Al hacerlo, perderás acceso a los siguientes recorridos:</p>
   delete_account_mumuki: Eliminar tu cuenta de Mumuki
+  delete_account_try_again_html: Si todavía querés eliminar tu cuenta, volvé a iniciar el proceso desde <a href="%{profile_url}">tu perfil</a>.
   deleted_by: Eliminado por %{deleter}
   deleted_message_warning: Si infringís reiteradamente estas u otras reglas del Espacio de Consultas, se te puede prohibir el acceso al mismo o podrás sufrir consecuencias más severas, como la expulsión del curso.
   deletion_motive:

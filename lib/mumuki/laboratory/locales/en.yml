@@ -80,8 +80,10 @@ en:
   delete_account_confirmation_request: To confirm this action, please write
   delete_account_confirmation_text: delete my account
   delete_account_explain: After deleting your account, you will lose access to all the contents and to your progress.
+  delete_account_invalid_token: We are sorry, the link has expired or is invalid.
   delete_account_modal_explain_html: <p>You're about to delete <strong>%{name}</strong> account</p><p>By doing that, you will lose access to the following paths:</p>
   delete_account_mumuki: Delete your Mumuki account
+  delete_account_try_again_html: If you still want to delete your account, begin the process again from <a href="%{profile_url}">your profile</a>.
   deleted_by: Deleted by %{deleter}
   deleted_message_warning: If you repeateadly violate these or other rules, you may be prohibited from accessing the forum or you may suffer more severe consequences, such as being expulsed from the course.
   deletion_motive:

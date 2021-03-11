@@ -81,9 +81,11 @@ pt:
   delete_account_confirmation_request: Para confirmar esta ação, por favor escreva
   delete_account_confirmation_text: deletar minha conta
   delete_account_explain: Depois de excluir sua conta, você perderá o acesso a todo o conteúdo e ao seu progresso.
+  delete_account_invalid_token:
   delete_account_modal_explain_html: <p>Você está prestes a excluir a conta <strong>%{name}</strong></p><p>Ao fazer isso, você perderá o acesso aos seguintes caminhos:</p>
   delete_account_mumuki: Exclua sua conta Mumuki
-  deleted_by: Removido pelo
+  delete_account_try_again_html: Se você ainda deseja excluir sua conta, reinicie o processo em <a href="%{profile_url}">seu perfil</a>.
+  deleted_by: Removido pelo %{deleter}
   deleted_message_warning: Se você violar repetidamente essas ou outras regras da Área de Consulta, seu acesso a ela pode ser proibido ou você pode sofrer consequências mais graves, como a expulsão do curso.
   deletion_motive:
     inappropriate_content:
