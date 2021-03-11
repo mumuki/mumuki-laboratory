@@ -14,11 +14,6 @@ class UsersController < ApplicationController
     redirect_after! :profile_completion, fallback_location: user_path
   end
 
-  def destroy
-    current_user.generate_delete_account_token!
-    UserMailer.delete_account(current_user).deliver_now
-  end
-
   def accept_profile_terms
     current_user.accept_profile_terms!
     flash.notice = I18n.t(:terms_accepted)
@@ -59,7 +54,21 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: t(:unsubscribed_successfully)
   end
 
-  def delete
+  def delete_request
+  end
+
+  def send_delete_confirmation_email
+    current_user.generate_delete_account_token!
+    UserMailer.delete_account(current_user).deliver_now
+    redirect_to delete_request_user_path
+  end
+
+  def delete_confirmation
+  end
+
+  def disable
+    current_user.disable!
+    redirect_to root_path
   end
 
   def permissible_params

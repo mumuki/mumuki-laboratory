@@ -1,4 +1,4 @@
-<script>
+<script type="text/javascript" charset="utf-8">
   function checkConfirmationText() {
     const val = $('#confirmDeleteInput').val();
     $('#delete-account-button').prop('disabled', val !== '<%= t :delete_account_confirmation_text %>');
@@ -30,7 +30,7 @@
             <%= t :delete_account_confirmation_request %> <i><%= t :delete_account_confirmation_text %></i>.
           </div>
           <div class="row">
-            <%= form_for :user, method: :delete do |f| %>
+            <%= form_with url: submit_url do |f| %>
               <div class="form-group">
                 <input class="form-control" type="text" id="confirmDeleteInput" autocomplete="off" onkeyup="checkConfirmationText()">
               </div>

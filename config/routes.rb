@@ -71,12 +71,16 @@ Rails.application.routes.draw do
       get :activity
       get :certificates
       get :exam_authorizations
-      get :delete
 
       get :notifications
       post 'notifications/:id/toggle_read', action: :toggle_read
       get 'notifications/manage', action: :show_manage_notifications
       post 'notifications/manage', action: :manage_notifications
+
+      get :delete_request
+      post :delete_request, to: 'users#send_delete_confirmation_email'
+      get :delete_confirmation
+      post :delete_confirmation, to: 'users#disable'
     end
 
     resources :faqs, only: [:index]
