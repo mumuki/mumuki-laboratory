@@ -66,7 +66,10 @@ Rails.application.routes.draw do
       get :messages
       get :discussions
       get :certificates
-      get :delete
+      get :delete_request
+      post :delete_request, to: 'users#send_delete_confirmation_email'
+      get :delete_confirmation
+      post :delete_confirmation, to: 'users#disable'
     end
 
     resources :faqs, only: [:index]

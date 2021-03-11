@@ -1,0 +1,11 @@
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    $('#user-delete-account-modal').modal();
+  });
+</script>
+
+<%= render partial: 'user_delete_confirmation' %>
+
+<%= content_for :no_container do %>
+  <%= render partial: 'user_delete_modal', locals: { submit_url: delete_confirmation_user_url } %>
+<% end %>
