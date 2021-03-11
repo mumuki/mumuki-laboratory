@@ -18,6 +18,10 @@
   <%= login_form.header_html %>
 </head>
 <body>
+
+<%= hidden_field_tag "mu-user-id", current_user&.id %>
+<%= hidden_field_tag "mu-organization-id", Organization.current.id %>
+
 <% if should_choose_organization? %>
     <%= render partial: 'layouts/organization_chooser' %>
 <% end %>

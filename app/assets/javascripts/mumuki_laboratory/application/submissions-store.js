@@ -94,7 +94,7 @@ mumuki.SubmissionsStore = (() => {
     }
 
     _keyFor(exerciseId) {
-      return `/exercise/${exerciseId}/submission`;
+      return `/organization/${mumuki.organization.id}/user/${mumuki.user.id}/exercise/${exerciseId}/submission`;
     }
   }();
 
