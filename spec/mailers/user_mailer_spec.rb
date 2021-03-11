@@ -203,6 +203,6 @@ RSpec.describe UserMailer, type: :mailer do
     let(:user) { create(:user, delete_account_token: 'SecreT1234', last_organization: central) }
     let(:email) { UserMailer.delete_account(user) }
 
-    it { expect(email.body.encoded).to include 'central.localmumuki.io/user/delete?token=SecreT1234' }
+    it { expect(email.body.encoded).to include 'central.localmumuki.io/user/delete_confirmation?token=SecreT1234' }
   end
 end

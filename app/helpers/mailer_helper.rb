@@ -1,6 +1,6 @@
 module MailerHelper
   def delete_account_url_for(user)
-    delete_user_url host: organic_domain_for(user), token: user.delete_account_token
+    delete_confirmation_user_url host: organic_domain_for(user), token: user.delete_account_token
   end
 
   private

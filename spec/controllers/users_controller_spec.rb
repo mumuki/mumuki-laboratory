@@ -69,9 +69,9 @@ describe UsersController, type: :controller, organization_workspace: :test do
     end
   end
 
-  context 'delete' do
+  context 'send_delete_confirmation_email' do
     let(:last_email) { ActionMailer::Base.deliveries.last }
-    before { delete :destroy }
+    before { post :send_delete_confirmation_email }
 
     context 'sends a delete confirmation email' do
       it { expect(last_email.to).to eq ['pirulo@mail.com'] }
@@ -80,6 +80,10 @@ describe UsersController, type: :controller, organization_workspace: :test do
 
     context 'adds a delete token to the user' do
       it { expect(user.reload.delete_account_token).not_to be_nil }
+    end
+
+    context 'redirects to confirmation view' do
+      it { expect(response).to redirect_to(delete_request_user_path) }
     end
   end
 end
