@@ -1,6 +1,6 @@
 <script type="text/javascript" charset="utf-8">
   function checkConfirmationText() {
-    const val = $('#confirmDeleteInput').val();
+    const val = $('#confirm-delete-input').val();
     $('#delete-account-button').prop('disabled', val !== '<%= t :delete_account_confirmation_text %>');
   }
 </script>
@@ -32,7 +32,7 @@
           <div class="row">
             <%= form_with url: submit_url do |f| %>
               <div class="form-group">
-                <input class="form-control" type="text" id="confirmDeleteInput" autocomplete="off" onkeyup="checkConfirmationText()">
+                <input class="form-control" type="text" id="confirm-delete-input" autocomplete="off" onkeyup="checkConfirmationText()">
               </div>
               <%= f.submit t(:delete_account_agree), class: 'btn btn-danger', id: 'delete-account-button', disabled: true %>
             <% end %>
