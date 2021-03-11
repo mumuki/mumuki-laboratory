@@ -56,7 +56,7 @@ Rails.application.routes.draw do
     resources :exams, only: :show
 
     # Current user
-    resource :user, only: [:show, :edit, :update, :destroy] do
+    resource :user, only: [:show, :edit, :update] do
       get :terms
       post :terms, to: 'users#accept_profile_terms'
 
