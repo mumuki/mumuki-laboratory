@@ -37,13 +37,11 @@ def selected_driver
     :selenium_headless
   when 'safari'
     :selenium_safari
-  else
-    :rack_test
   end
 end
 
 def run_with_selenium?
-  selected_driver.to_s.start_with? 'selenium'
+  selected_driver
 end
 
 def register_safari_driver!
@@ -75,12 +73,6 @@ def register_request_headers_workaround!
   EOR
 end
 
-def exclude_tests_with_tags!(tags)
-  RSpec.configure do |config|
-    config.filter_run_excluding(tags)
-  end
-end
-
 def exclude_selenium_failing_tests!
   exclude_tests_with_tags! [
     # Response headers are not supported by Selenium Driver
@@ -105,10 +97,15 @@ def exclude_js_dependant_tests!
   exclude_tests_with_tags! [:requires_js]
 end
 
-# Configuration
-
 register_safari_driver! if selected_driver == :selenium_safari
-Capybara.default_driver = selected_driver
+
+# If no driver is selected, it will use RackTest (fastest) except for tests that explicitly require JS support.
+# See https://github.com/teamcapybara/capybara#using-capybara-with-rspec for more details about this behavior.
+Capybara.default_driver = selected_driver || :rack_test
+Capybara.javascript_driver = selected_driver || :selenium_headless
+
+# Include port on the URL, so we don't need to forward it via nginx or so.
+Capybara.always_include_port = true
 
 # TODO: fix the tests that depend on hidden elements and remove this
 Capybara.ignore_hidden_elements = false
@@ -116,11 +113,6 @@ Capybara.ignore_hidden_elements = false
 if run_with_selenium?
   register_request_headers_workaround!
   exclude_selenium_failing_tests!
-
-  # Include port on the URL, so we don't need to forward it via nginx or so
-  Capybara.always_include_port = true
-else
-  exclude_js_dependant_tests!
 end
 
-puts "Running Capybara tests with #{selected_driver}, #{Capybara.ignore_hidden_elements ? '' : 'not '}ignoring hidden elements"
+puts "Running Capybara tests with #{Capybara.default_driver}, #{Capybara.ignore_hidden_elements ? '' : 'not '}ignoring hidden elements"
