@@ -30,8 +30,18 @@ jobs:
       run: bundle install
     - name: Load schema
       run: bundle exec rake db:schema:load
+    - name: Setup hosts
+      run: |
+        echo '
+
+          127.0.0.1 test.localmumuki.io
+        ' | sudo tee -a /etc/hosts
+    - name: Setup Xvfb
+      run: Xvfb :99 &
     - name: Run tests
       run: bundle exec rake
+      env:
+        DISPLAY: :99
 
   test-firefox:
     env:

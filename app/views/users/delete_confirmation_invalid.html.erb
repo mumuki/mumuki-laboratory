@@ -1,0 +1,22 @@
+<%= content_for :breadcrumbs do %>
+  <%= breadcrumbs @user %>
+<% end %>
+
+<div class="row">
+  <div class="mu-inline-block-left">
+    <h1>
+      <%= t :delete_account %>
+    </h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <p>
+      <%= t :delete_account_invalid_token %>
+    </p>
+    <p>
+      <%= t :delete_account_try_again_html, profile_url: user_path %>
+    </p>
+  </div>
+</div>

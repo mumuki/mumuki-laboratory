@@ -67,6 +67,11 @@ pt:
   date: Data
   day: Dia
   days: Dias
+  delete_account: Deletar conta
+  delete_account_agree: 
+  delete_account_confirmation_email_explain_html:
+  delete_account_explain:
+  delete_account_modal_explain_html:
   description: Descrição
   destroy_message: excluir a mensagem
   destroy: Excluir

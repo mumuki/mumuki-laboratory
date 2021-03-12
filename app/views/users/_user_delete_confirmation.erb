@@ -1,0 +1,17 @@
+<%= content_for :breadcrumbs do %>
+  <%= breadcrumbs @user %>
+<% end %>
+
+<div class="row">
+  <div class="mu-inline-block-left">
+    <h1>
+      <%= t :delete_account %>
+    </h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= t :delete_account_confirmation_email_explain_html, user_email: @user.email, support_email: Rails.configuration.reminder_sender_email %>
+  </div>
+</div>

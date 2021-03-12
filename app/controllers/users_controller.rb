@@ -41,6 +41,27 @@ class UsersController < ApplicationController
     redirect_to root_path, notice: t(:unsubscribed_successfully)
   end
 
+  def delete_request
+  end
+
+  def send_delete_confirmation_email
+    current_user.generate_delete_account_token!
+    UserMailer.delete_account(current_user).deliver_now
+    redirect_to delete_request_user_path
+  end
+
+  def delete_confirmation
+    redirect_to delete_confirmation_invalid_user_path unless @user.delete_account_token_matches? params[:token]
+  end
+
+  def delete_confirmation_invalid
+  end
+
+  def disable
+    current_user.disable!
+    redirect_to root_path
+  end
+
   def permissible_params
     super << [:avatar_id, :avatar_type]
   end
