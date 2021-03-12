@@ -75,7 +75,7 @@ end
 
 def exclude_selenium_failing_tests!
   RSpec.configure do |config|
-    config.filter_run_excluding [
+    config.filter_run_excluding(
       # Response headers are not supported by Selenium Driver
       :http_response_headers,
 
@@ -90,7 +90,7 @@ def exclude_selenium_failing_tests!
       # Fails because Rails redirection doesn't include Capybara port.
       # It can be fixed by using path mapping instead of subdomain.
       :subdomain_redirection_without_port
-    ]
+    )
   end
 end
 
