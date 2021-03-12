@@ -195,4 +195,8 @@ module DiscussionsHelper
   def should_show_approved_for?(user, message)
     !user&.moderator_here? && message.approved? && !message.from_moderator?
   end
+
+  def discussion_user_name(user)
+    user.name
+  end
 end
