@@ -12,7 +12,7 @@ module DiscussionsHelper
   end
 
   def user_discussions_link
-    discussions_link user_discussions_icon(t(:my_doubts)), user_path(anchor: 'discussions') if current_user.watched_discussions.present?
+    discussions_link(user_discussions_icon(t(:my_doubts)), discussions_user_path) if current_user.watched_discussions.present?
   end
 
   def others_discussions_icon(text)
