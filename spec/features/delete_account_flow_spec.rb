@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Delete account Flow', organization_workspace: :test, requires_js: true do
+feature 'Delete account Flow', organization_workspace: :test, js: true do
   before { set_current_user! user }
 
   def accept_delete_confirmation_modal!
