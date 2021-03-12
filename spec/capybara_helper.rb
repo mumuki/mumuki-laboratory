@@ -74,27 +74,25 @@ def register_request_headers_workaround!
 end
 
 def exclude_selenium_failing_tests!
-  exclude_tests_with_tags! [
-    # Response headers are not supported by Selenium Driver
-    :http_response_headers,
+  RSpec.configure do |config|
+    config.filter_run_excluding(
+      # Response headers are not supported by Selenium Driver
+      :http_response_headers,
 
-    # TODO: the following ignored groups should be fixed
-    :element_not_interactable_error,
-    :toast_interferes_with_view,
-    :invalid_selector_error,
-    :json_eq_error,
-    :navigation_error,
-    :organization_not_nil,
-    :xpath_no_matches,
+      # TODO: the following ignored groups should be fixed
+      :element_not_interactable_error,
+      :toast_interferes_with_view,
+      :invalid_selector_error,
+      :json_eq_error,
+      :navigation_error,
+      :organization_not_nil,
+      :xpath_no_matches,
 
-    # Fails because Rails redirection doesn't include Capybara port.
-    # It can be fixed by using path mapping instead of subdomain.
-    :subdomain_redirection_without_port
-   ]
-end
-
-def exclude_js_dependant_tests!
-  exclude_tests_with_tags! [:requires_js]
+      # Fails because Rails redirection doesn't include Capybara port.
+      # It can be fixed by using path mapping instead of subdomain.
+      :subdomain_redirection_without_port
+    )
+  end
 end
 
 register_safari_driver! if selected_driver == :selenium_safari
