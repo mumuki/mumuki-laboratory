@@ -30,6 +30,10 @@ class UsersController < ApplicationController
     @watched_discussions = current_user.watched_discussions_in_organization
   end
 
+  def activity
+    @activity = UserStats.stats_for(current_user).activity date_range_params
+  end
+
   def certificates
     @certificates ||= current_user.certificates_in_organization
   end
@@ -54,4 +58,13 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def date_range_params
+    @date_from = params[:date_from].try { |it| Date.parse it }
+    to = params[:date_to].try { |it| Date.parse it }
+    if @date_from && to
+      @date_from.beginning_of_day..(to - 1.day).end_of_day
+    else
+      nil
+    end
+  end
 end

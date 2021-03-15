@@ -31,7 +31,7 @@
 .mu-user-menu-items {
   margin-top: 30px;
 
-  &.hidden-sm-screen {
+  &.mu-hidden-sm-screen {
     @media only screen and (max-width: $screen-sm-max) {
       display: none;
     }

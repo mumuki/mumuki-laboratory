@@ -17,6 +17,9 @@ es:
   approved_message: Validado por mentor
   are_you_sure: '¿Estás seguro que querés %{action}?'
   ask_a_question: ¡Hacé una pregunta!
+  approved_messages:
+    one: validado
+    other: validados
   ask_community: Preguntá a la comunidad
   ask_redirect: ¿Querés que te llevemos ahí?
   ask_the_first_question: ¡Hacé la primera pregunta!
@@ -185,6 +188,9 @@ es:
   message: Mensaje
   messages: Mensajes
   messages_error: Los mensajes anteriores no están disponibles en este momento. ¡Volvé a intentar mas tarde!
+  messages_pluralized:
+    one: Mensaje
+    other: Mensajes
   minute: minuto
   minutes: minutos
   moderation: Mentoría
@@ -275,15 +281,16 @@ es:
   skipped_solve_anyway: Resolver de todos modos
   solution: Solución
   solved: Resuelta
-  solved_count:
-    one: 1 resuelta
-    other: '%{count} resueltas'
   solved_exercises: Ejercicios Resueltos
   solve_doubts: Resolvé consultas
   solve_more_exercises_to_level_up: Resolvé <span>number</span> ejercicios más para pasar al siguiente nivel.
   solve_your_doubts: Consultá tus dudas
   solve_your_doubts_teaser: ¿Tenés alguna consulta?
   something_went_wrong: ¡Ups!, algo no anduvo bien...
+  solved_exercises_count:
+    one: resuelto
+    other: resueltos
+  solved_exercises_percentage: realizado
   sort: Ordenar
   sources: Bibliografía
   start_lesson: ¡Comenzá esta lección!
@@ -316,6 +323,7 @@ es:
   to_pending_review: Resolver
   to_solved: Resolver
   unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no iniciaste sesión.
+  total: Total
   uncategorized: No categorizado
   undo_upvote: No es útil
   unlocked_medal_as_avatar: ¡Obtuviste esta medalla! Ya podés elegirla como avatar.
@@ -335,6 +343,7 @@ es:
   want_permissions: El siguiente usuario requiere permisos
   we_miss_you: ¡Te extrañamos!
   welcome: ¡Te damos la bienvenida a %{name}!
+  week_of: Semana del %{date}
   will_paginate:
     previous_label: "&#8592; Anterior"
     next_label: "Siguiente &#8594;"

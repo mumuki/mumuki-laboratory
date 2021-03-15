@@ -19,6 +19,10 @@ module UserMenuHelper
     user_menu_item t(:discussions), discussions_user_path, 'discussions' if current_user&.can_discuss_here?
   end
 
+  def activity_user_menu_link
+    user_menu_item t(:activity), activity_user_path, 'activity'
+  end
+
   def certificates_user_menu_link
     user_menu_item t(:certificates), certificates_user_path, 'certificates'
   end

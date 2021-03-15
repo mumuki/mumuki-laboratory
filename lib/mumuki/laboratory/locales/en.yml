@@ -14,6 +14,8 @@ en:
   appendix: Appendix
   appendix_teaser: Do you want to learn more? <a href="%{link}">Check this chapter's appendix</a>"
   approved_message: Validated by mentor
+  approved_messages:
+    other: validated
   are_you_sure: Are you sure you want to %{action}?
   ask_a_question: Ask a question!
   ask_community: Ask community for help
@@ -176,6 +178,9 @@ en:
   messages: Messages
   messages_error: Previous messages are unavailable. Please try again later.
   moderation: Mentoring
+  messages_pluralized:
+    one: Message
+    other: Messages
   moderator: Mentor
   more_messages: More
   my_account: My account
@@ -256,11 +261,12 @@ en:
   skipped_solve_anyway: Solve anyway
   solution: Solution
   solved: Solved
-  solved_count: '%{count} solved'
   solve_doubts: Solve other's doubts
   solve_more_exercises_to_level_up: Solve <span>number</span> more exercises to advance to the next level.
   solve_your_doubts: Solve your doubts
   solve_your_doubts_teaser: Do you have any doubts?
+  solved_exercises_count: solved
+  solved_exercises_percentage: done
   something_went_wrong: Something went wrong!
   sort: Sort
   sources: Sources
@@ -293,6 +299,7 @@ en:
   to_pending_review: Mark as solved
   to_solved: Mark as solved
   unauthorized_explanation: You have no permissions for this content. Maybe you logged in with another account.
+  total: Total
   undo_upvote: Undo upvote
   unlocked_medal_as_avatar: You earned this medal! You can now choose it as an avatar.
   unspecified: I'd rather not say
@@ -310,6 +317,7 @@ en:
   view_details: View details
   want_permissions: The next user requires permissions
   we_miss_you: We miss you!
+  week_of: Week of %{date}
   welcome: Welcome to %{name}!
   working: "Working"
   wrong_answer: The answer is wrong

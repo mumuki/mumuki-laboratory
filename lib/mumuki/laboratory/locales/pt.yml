@@ -16,6 +16,9 @@ pt:
   appendix_teaser: Você quer saber mais? <a href="%{link}"> Consulte o apêndice deste capítulo </a>
   approved_message: Validado pelo mentor
   are_you_sure: 'Tem certeza de que deseja %{action}?'
+  approved_messages:
+    one: validado
+    other: validados
   ask_a_question: Faça uma pergunta!
   ask_community: Pergunte à comunidade
   ask_redirect: Você quer que nós o levemos para lá?
@@ -179,6 +182,10 @@ pt:
   message: Mensagem
   messages: Mensagens
   messages_error: As mensagens acima não estão disponíveis no momento. Eu tentei novamente mais tarde!
+    mais tarde!
+  messages_pluralized:
+    one: Mensagem
+    other: Mensagens
   minute: minuto
   minutes: minutos
   moderation: Mentoria
@@ -264,12 +271,15 @@ pt:
   skipped_solve_anyway: Resolver mesmo assim
   solution: Solução
   solved: Resolvido
-  solved_count: '%{count} resolvido'
   solved_exercises: Exercícios resolvidos
   solve_doubts: Resolvi dúvidas
   solve_more_exercises_to_level_up: Resolva mais <span>number</span> exercícios para avançar para o próximo nível.
   solve_your_doubts: Consulte suas dúvidas
   solve_your_doubts_teaser: Você tem alguma dúvida?
+  solved_exercises_count:
+    one: resolvido
+    other: resolvidos
+  solved_exercises_percentage: realizado
   something_went_wrong: Oops!, Algo não estava certo ...
   sort: Ordenar
   sources: Bibliografia
@@ -301,6 +311,7 @@ pt:
   to_pending_review: Marcar como resolvida
   to_solved: Marcar como resolvida
   unauthorized_explanation: Opa! Isso é o que é conhecido como %{error}, ou seja, você não fez logon.
+  total: Total
   uncategorized: Não classificado
   unlocked_medal_as_avatar: Você ganhou essa medalha! Agora você pode escolhê-la como avatar.
   unspecified: Eu preferiria não dizer
@@ -313,6 +324,7 @@ pt:
   username: Nome de usuário
   view_details: Ver detalhes
   want_permissions: O próximo usuário requer permissões
+  week_of: Semana de %{date}
   welcome: Convidamos você a {name}!
   working: Processamento
   wrong_answer: A resposta não é correta
