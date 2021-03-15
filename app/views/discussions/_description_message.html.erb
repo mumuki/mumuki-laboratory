@@ -2,7 +2,7 @@
   <div class="discussion-message-bubble">
     <div class="discussion-message-bubble-header">
       <div class="discussion-message-bubble-title">
-        <%= discussion.initiator.name %>
+        <%= discussion_user_name(discussion.initiator) %>
         <span class="message-date">
           <%= t(:time_since, time: time_ago_in_words(discussion.created_at)) %>
         </span>
