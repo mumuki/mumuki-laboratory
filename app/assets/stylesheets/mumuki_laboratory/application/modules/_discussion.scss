@@ -287,9 +287,21 @@ summary.discussion-summary {
   }
 }
 
+.discussion-new-message-buttons {
+  display: flex;
+  margin: 0 -10px;
+
+  .btn {
+    margin: 15px 10px;
+  }
+}
+
+.discussion-new-message-preview-button {
+  flex-grow: 0.2;
+}
+
 .discussion-new-message-button {
-  border-radius: 0;
-  margin-top: 15px;
+  flex-grow: 1;
 }
 
 .discussion-message {

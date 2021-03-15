@@ -229,6 +229,7 @@ en:
   permissions: Permissions
   please_fill_profile_data: Please complete your profile data to continue!
   please_validate: 'Please validate your data before continue:'
+  preview: Preview
   previous_exercise: Previous
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'
   processing_your_solution: We are processing you solution
