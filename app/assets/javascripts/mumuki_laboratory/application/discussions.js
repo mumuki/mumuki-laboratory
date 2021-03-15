@@ -1,6 +1,7 @@
 mumuki.load(() => {
   var $subscriptionSpans = $('.discussion-subscription > span');
   var $upvoteSpans = $('.discussion-upvote > span');
+  let $messagePreview = $('#mu-message-preview');
 
   function createNewMessageEditor() {
     var $textarea = $("#new-discussion-message");
@@ -26,7 +27,7 @@ mumuki.load(() => {
   }
 
   createReadOnlyEditors();
-  createNewMessageEditor();
+  let editor = createNewMessageEditor();
 
   var Forum = {
     toggleButton: function (spans) {
@@ -67,6 +68,16 @@ mumuki.load(() => {
       const params = new URLSearchParams(location.search);
       elem.is(':checked') ? params.set(key, elem.val()) : params.delete(key);
       location.search = params.toString();
+    },
+    discussionMessagePreview: function (url) {
+      return Forum.tokenRequest({
+        url: url,
+        method: 'GET',
+        processData: false,
+        dataType: 'json',
+        data: new URLSearchParams({ content: encodeURIComponent(editor.getValue()) } ),
+        xhrFields: {withCredentials: true}
+      });
     }
   };
 
