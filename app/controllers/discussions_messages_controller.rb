@@ -15,6 +15,10 @@ class DiscussionsMessagesController < AjaxController
     redirect_back(fallback_location: root_path)
   end
 
+  def preview
+    render json: { preview: Message.new(content: URI.decode(params[:content])).content_html }
+  end
+
   def approve
     current_message.toggle_approved!
     head :ok

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
         post :approve, on: :member
         post :question, on: :member
       end
+      get '/messages/preview', to: 'discussions_messages#preview', as: :preview_message
     end
 
     resources :exam_registrations, only: [:show]
