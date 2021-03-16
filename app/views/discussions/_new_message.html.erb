@@ -12,12 +12,13 @@
             <div class="discussion-new-message-content">
               <%= f.editor :content, '', { id: 'new-discussion-message', class: 'form-control', placeholder: t(:message) } %>
             </div>
+            <div id="mu-message-preview"></div>
           </div>
         </div>
       </div>
     </div>
     <div class="discussion-new-message-buttons">
-      <button class="btn btn-default discussion-new-message-preview-button"> <%= t :preview %> </button>
+      <button class="btn btn-default discussion-new-message-preview-button" type="button" onclick="mumuki.Forum.discussionMessagePreview('<%= discussion_preview_message_url(@discussion) %>')"> <%= t :preview %> </button>
       <%= f.submit t(:comment), class: 'btn btn-success discussion-new-message-button' %>
     </div>
   <% end %>
