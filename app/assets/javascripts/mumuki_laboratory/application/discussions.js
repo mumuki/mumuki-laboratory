@@ -2,7 +2,8 @@ mumuki.load(() => {
   var $subscriptionSpans = $('.discussion-subscription > span');
   var $upvoteSpans = $('.discussion-upvote > span');
   let $messagePreviewButton = $('.discussion-new-message-preview-button');
-  let $messagePreview = $('#mu-message-preview');
+  let $discussionNewMessageContent = $('.discussion-new-message-content')
+  let $newDiscussionMessagePreview = $('#new-discussion-message-preview');
 
   function createNewMessageEditor() {
     var $textarea = $("#new-discussion-message");
@@ -86,7 +87,9 @@ mumuki.load(() => {
   };
 
   function showPreview(preview) {
-    $messagePreview.html($.parseHTML(preview));
+    $newDiscussionMessagePreview.html($.parseHTML(preview));
+    $newDiscussionMessagePreview.toggleClass('hidden');
+    $discussionNewMessageContent.toggleClass('hidden');
   }
 
   mumuki.Forum = Forum;
