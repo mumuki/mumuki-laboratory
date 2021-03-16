@@ -18,7 +18,8 @@
       </div>
     </div>
     <div class="discussion-new-message-buttons">
-      <button class="btn btn-default discussion-new-message-preview-button" type="button" onclick="mumuki.Forum.discussionMessagePreview('<%= discussion_preview_message_url(@discussion) %>')"> <%= t :preview %> </button>
+      <button class="btn btn-default discussion-new-message-preview-button preview" type="button" onclick="mumuki.Forum.discussionMessagePreview('<%= discussion_preview_message_url(@discussion) %>')"> <%= t :preview %> </button>
+      <button class="btn btn-default discussion-new-message-preview-button edit hidden" type="button" onclick="mumuki.Forum.hidePreviewAndShowEditor()"> <%= t :edit_message %> </button>
       <%= f.submit t(:comment), class: 'btn btn-success discussion-new-message-button' %>
     </div>
   <% end %>

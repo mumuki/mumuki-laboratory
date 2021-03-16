@@ -80,6 +80,7 @@ es-CL:
   dont_leave_us: ¡No nos abandones! Aprender a programar es divertido. Sólo tienes que seguir practicando.
   download: "Descarga lo que hiciste"
   edit: Editar
+  edit_message: Editar mensaje
   editor_placeholder: "...escribe tu solución acá..."
   email: Email
   error_description: Esto es lo que se conoce como <span class="error-link">%{error}</span>.

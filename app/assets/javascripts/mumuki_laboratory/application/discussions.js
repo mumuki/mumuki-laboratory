@@ -1,8 +1,9 @@
 mumuki.load(() => {
   var $subscriptionSpans = $('.discussion-subscription > span');
   var $upvoteSpans = $('.discussion-upvote > span');
-  let $messagePreviewButton = $('.discussion-new-message-preview-button');
-  let $discussionNewMessageContent = $('.discussion-new-message-content')
+  let $messagePreviewButton = $('.discussion-new-message-preview-button.preview');
+  let $messageEditButton = $('.discussion-new-message-preview-button.edit');
+  let $discussionNewMessageContent = $('.discussion-new-message-content');
   let $newDiscussionMessagePreview = $('#new-discussion-message-preview');
 
   function createNewMessageEditor() {
@@ -83,11 +84,25 @@ mumuki.load(() => {
         },
         xhrFields: {withCredentials: true}
       });
+    },
+    hidePreviewAndShowEditor: function(elem) {
+      togglePreviewAndEditButtons();
+      togglePreviewAndContentMessage();
     }
   };
 
   function showPreview(preview) {
     $newDiscussionMessagePreview.html($.parseHTML(preview));
+    togglePreviewAndEditButtons();
+    togglePreviewAndContentMessage();
+  }
+
+  function togglePreviewAndEditButtons() {
+    $messagePreviewButton.toggleClass('hidden');
+    $messageEditButton.toggleClass('hidden');
+  }
+
+  function togglePreviewAndContentMessage() {
     $newDiscussionMessagePreview.toggleClass('hidden');
     $discussionNewMessageContent.toggleClass('hidden');
   }
