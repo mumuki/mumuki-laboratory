@@ -16,7 +16,7 @@ class DiscussionsMessagesController < AjaxController
   end
 
   def approve
-    current_message.toggle_approved!
+    current_message.toggle_approved! current_user
     head :ok
   end
 
