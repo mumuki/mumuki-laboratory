@@ -41,4 +41,4 @@ group :development, :test do
   gem 'selenium-webdriver'
 end
 
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'feature-moderator-stats'
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'master'
