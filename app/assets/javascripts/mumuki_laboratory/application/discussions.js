@@ -3,11 +3,11 @@ mumuki.load(() => {
   var $upvoteSpans = $('.discussion-upvote > span');
   let $messagePreviewButton = $('.discussion-new-message-preview-button.preview');
   let $messageEditButton = $('.discussion-new-message-preview-button.edit');
-  let $discussionNewMessageContent = $('.discussion-new-message-content');
-  let $newDiscussionMessagePreview = $('#new-discussion-message-preview');
+  let $newMessageContent = $('.discussion-new-message-content');
+  let $newMessagePreview = $('#discussion-new-message-preview');
 
   function createNewMessageEditor() {
-    var $textarea = $("#new-discussion-message");
+    var $textarea = $("#discussion-new-message");
     var textarea = $textarea[0];
     if (!textarea) return;
 
@@ -96,7 +96,7 @@ mumuki.load(() => {
   };
 
   function showPreview(preview) {
-    $newDiscussionMessagePreview.html($.parseHTML(preview));
+    $newMessagePreview.html($.parseHTML(preview));
     togglePreviewAndEditButtons();
     togglePreviewAndContentMessage();
   }
@@ -107,8 +107,8 @@ mumuki.load(() => {
   }
 
   function togglePreviewAndContentMessage() {
-    $newDiscussionMessagePreview.toggleClass('hidden');
-    $discussionNewMessageContent.toggleClass('hidden');
+    $newMessagePreview.toggleClass('hidden');
+    $newMessageContent.toggleClass('hidden');
   }
 
   mumuki.Forum = Forum;
