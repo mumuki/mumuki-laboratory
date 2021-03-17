@@ -19,7 +19,7 @@
     </div>
     <div class="discussion-new-message-buttons">
       <% if user.moderator_here? %>
-        <button class="btn btn-default discussion-new-message-preview-button preview" type="button"
+        <button class="btn btn-default discussion-new-message-preview-button preview" type="button" error-text="<%= t :preview_error %>"
                 onclick="mumuki.Forum.discussionMessagePreview('<%= discussion_preview_message_url(@discussion) %>')"> <%= t :preview %> </button>
         <button class="btn btn-default discussion-new-message-preview-button edit hidden" type="button"
                 onclick="mumuki.Forum.hidePreviewAndShowEditor()"> <%= t :edit_message %> </button>

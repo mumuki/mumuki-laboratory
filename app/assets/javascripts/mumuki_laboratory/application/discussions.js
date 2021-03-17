@@ -82,6 +82,10 @@ mumuki.load(() => {
         success: function (response) {
           showPreview(response.preview);
         },
+        error: function (e) {
+          error = $messagePreviewButton.attr('error-text');
+          showPreview(error);
+        },
         xhrFields: {withCredentials: true}
       });
     },

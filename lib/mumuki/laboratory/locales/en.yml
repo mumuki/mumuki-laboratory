@@ -231,6 +231,7 @@ en:
   please_fill_profile_data: Please complete your profile data to continue!
   please_validate: 'Please validate your data before continue:'
   preview: Preview
+  preview_error: The preview cannot be shown. Check your internet connection or try with a shorter message.
   previous_exercise: Previous
   problem_with_exercise: '[Mumuki] Problem with exercise: %{title}'
   processing_your_solution: We are processing you solution
