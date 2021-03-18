@@ -290,6 +290,9 @@ es:
   solve_your_doubts: Consultá tus dudas
   solve_your_doubts_teaser: ¿Tenés alguna consulta?
   something_went_wrong: ¡Ups!, algo no anduvo bien...
+  solved_count:
+    one: 1 resuelta
+    other: '%{count} resueltas'
   solved_exercises_count:
     one: resuelto
     other: resueltos

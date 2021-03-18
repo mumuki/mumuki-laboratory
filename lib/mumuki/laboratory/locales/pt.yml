@@ -275,6 +275,9 @@ pt:
   solution: Solução
   solved: Resolvido
   solved_exercises: Exercícios resolvidos
+  solved_count:
+    one: 1 resolvido
+    other: '%{count} resolvidos'
   solve_doubts: Resolvi dúvidas
   solve_more_exercises_to_level_up: Resolva mais <span>number</span> exercícios para avançar para o próximo nível.
   solve_your_doubts: Consulte suas dúvidas

@@ -268,6 +268,7 @@ en:
   solve_more_exercises_to_level_up: Solve <span>number</span> more exercises to advance to the next level.
   solve_your_doubts: Solve your doubts
   solve_your_doubts_teaser: Do you have any doubts?
+  solved_count: '%{count} solved'
   solved_exercises_count: solved
   solved_exercises_percentage: done
   something_went_wrong: Something went wrong!
