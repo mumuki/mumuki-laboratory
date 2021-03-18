@@ -21,6 +21,7 @@ Rails.application.routes.draw do
         post :question, on: :member
       end
     end
+    get '/discussions/messages/preview', to: 'discussions_messages#preview', as: :preview_discussion_message
 
     resources :exam_registrations, only: [:show]
     resources :exam_authorization_requests, only: [:show, :create, :update]

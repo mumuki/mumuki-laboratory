@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe DiscussionsMessagesController, organization_workspace: :test do
+describe DiscussionsMessagesController, type: :controller, organization_workspace: :test do
   let(:student) { create(:user, permissions: {student: 'test/*'}) }
   let(:moderator) { create(:user, permissions: {moderator: 'test/*', student: 'test/*'}) }
 
@@ -68,6 +68,25 @@ describe DiscussionsMessagesController, organization_workspace: :test do
 
       it { expect(response.status).to eq 200 }
       it { expect(message.reload.not_actually_a_question).to be true }
+    end
+
+    describe 'preview' do
+      let(:message) { create(:message, content: 'Message in **bold** and _italics_', discussion: discussion, sender: student.uid) }
+
+      describe 'for student' do
+        before { set_current_user! student }
+        before { get :preview, params: {content: message.content} }
+
+        it { expect(response.status).to eq 403 }
+      end
+
+      describe 'for moderator' do
+        before { set_current_user! moderator }
+        before { get :preview, params: {content: message.content} }
+
+        it { expect(response.status).to eq 200 }
+        it { expect(JSON.parse(response.body)['preview']).to eq "<p>Message in <strong>bold</strong> and <em>italics</em></p>\n" }
+      end
     end
   end
 end

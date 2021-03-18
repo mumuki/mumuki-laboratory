@@ -169,6 +169,7 @@ feature 'Discussion Flow', organization_workspace: :test do
           expect(page).to have_text(problem_2.name)
           expect(page).to have_text('Open')
           expect(page).to have_text('Messages')
+          expect(page).not_to have_text('Preview')
           expect(page).not_to have_xpath("//div[@class='discussion-actions']")
         end
 
@@ -180,6 +181,7 @@ feature 'Discussion Flow', organization_workspace: :test do
             expect(page).to have_text(problem_2.name)
             expect(page).to have_text('Open')
             expect(page).to have_text('Messages')
+            expect(page).to have_text('Preview')
             expect(page).to have_xpath("//div[@class='discussion-actions']")
           end
         end
