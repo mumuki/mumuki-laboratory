@@ -78,7 +78,7 @@ mumuki.load(() => {
         method: 'GET',
         processData: false,
         dataType: 'json',
-        data: new URLSearchParams({ content: encodeURIComponent(editor.getValue()) } ),
+        data: new URLSearchParams({ content: editor.getValue() } ),
         success: function (response) {
           showPreview(response.preview);
         },

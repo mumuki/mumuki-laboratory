@@ -16,7 +16,7 @@ class DiscussionsMessagesController < AjaxController
   end
 
   def preview
-    render json: { preview: Message.new(content: URI.decode(params[:content])).content_html }
+    render json: { preview: Message.new(content: params[:content]).content_html }
   end
 
   def approve
