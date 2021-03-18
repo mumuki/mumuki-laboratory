@@ -20,11 +20,13 @@
     <div class="discussion-new-message-buttons">
       <% if user.moderator_here? %>
         <button class="btn btn-default discussion-new-message-preview-button preview" type="button" error-text="<%= t :preview_error %>"
-                onclick="mumuki.Forum.discussionMessagePreview('<%= preview_discussion_message_url %>')"> <%= t :preview %> </button>
+                onclick="mumuki.Forum.discussionMessagePreview('<%= preview_discussion_message_url %>')"> <%= fa_icon('eye', text: t(:preview)) %> </button>
         <button class="btn btn-default discussion-new-message-preview-button edit hidden" type="button"
-                onclick="mumuki.Forum.hidePreviewAndShowEditor()"> <%= t :edit_message %> </button>
+                onclick="mumuki.Forum.hidePreviewAndShowEditor()"> <%= fa_icon('pencil-alt', text: t(:edit_message)) %> </button>
       <% end %>
-      <%= f.submit t(:comment), class: 'btn btn-success discussion-new-message-button' %>
+      <%= button_tag type: 'submit', class: 'btn btn-success discussion-new-message-button', data: { disable: true } do %>
+        <%= fa_icon('comment', text: t(:comment)) %>
+      <% end %>
     </div>
   <% end %>
 <% end %>
