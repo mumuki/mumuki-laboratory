@@ -37,7 +37,9 @@
         <%= render partial: 'discussions/description_message', locals: {discussion: @discussion} %>
       <% end %>
       <% @discussion.messages.each do |message| %>
-        <%= render partial: 'discussions/message', locals: {user: message.sender_user, message: message} %>
+        <% unless message.self_deleted? %>
+          <%= render partial: 'discussions/message', locals: {user: message.sender_user, message: message} %>
+        <% end %>
       <% end %>
       <% if @discussion.commentable_by?(current_user) %>
         <hr class="message-divider">
