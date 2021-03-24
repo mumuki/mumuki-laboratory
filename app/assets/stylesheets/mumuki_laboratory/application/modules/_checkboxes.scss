@@ -1,5 +1,5 @@
 .complementary label::after {
-  background-color: $brand-complementary;
+  background-color: $complementary;
   color: white;
   top: 6px;
 }
@@ -14,7 +14,7 @@
     height: 17px;
     line-height: 14px;
     border-radius: 3px;
-    border: 1px solid $brand-complementary;
+    border: 1px solid $complementary;
   }
   input[type="checkbox"]:disabled.mu-read-only + label {
     opacity: 1;

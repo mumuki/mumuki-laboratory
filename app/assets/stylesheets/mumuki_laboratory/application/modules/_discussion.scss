@@ -44,11 +44,11 @@ $moderator-badge-color: #dd9900;
 
   .discussion-pagination .pagination li {
     a, span {
-      background-color: lighten($brand-primary, 10%);
+      background-color: lighten($primary, 10%);
     }
     &:hover, &.active, &.active:hover {
       a, span {
-        background-color: $brand-primary;
+        background-color: $primary;
       }
     }
   }
@@ -263,7 +263,7 @@ $moderator-badge-color: #dd9900;
   white-space: nowrap;
   .CodeMirror {
     border: unset;
-    color: $brand-primary;
+    color: $primary;
     font-family: $font-family-sans-serif;
     padding: 15px;
   }
@@ -357,7 +357,7 @@ summary.discussion-summary {
           }
           &:hover, &.selected {
             i {
-              color: $brand-success;
+              color: $success;
             }
           }
         }
@@ -380,9 +380,9 @@ summary.discussion-summary {
           }
           &:hover, &.selected {
             i {
-              color: $brand-primary;
+              color: $primary;
               &:after {
-                background-color: $brand-primary;
+                background-color: $primary;
               }
             }
           }
@@ -413,10 +413,10 @@ summary.discussion-summary {
 }
 
 $statuses: (
-  closed: ($brand-danger white $brand-danger),
+  closed: ($danger white $danger),
   opened: (white #333333 #eaeaea),
-  solved: ($brand-success white $brand-success),
-  pending_review: ($brand-success white $brand-success)
+  solved: ($success white $success),
+  pending_review: ($success white $success)
 );
 
 @each $status, $style in $statuses {
