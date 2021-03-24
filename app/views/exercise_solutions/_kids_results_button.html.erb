@@ -4,7 +4,7 @@
       <% if assignment.solved? %>
         <%= next_exercise_button(@exercise) || close_modal_button %>
       <% else %>
-        <button class="btn btn-success btn-block submission-control" id="kids-btn-retry" data-bs-dismiss="modal" aria-label="<%= t :retry_exercise %>"> <%= t :retry_exercise %> </button>
+        <button class="btn btn-complementary btn-block submission-control" id="kids-btn-retry" data-bs-dismiss="modal" aria-label="<%= t :retry_exercise %>"> <%= t :retry_exercise %> </button>
       <% end %>
     </div>
   </div>

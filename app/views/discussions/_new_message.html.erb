@@ -24,7 +24,7 @@
         <button class="btn btn-default discussion-new-message-preview-button edit d-none" type="button"
                 onclick="mumuki.Forum.hidePreviewAndShowEditor()"> <%= fa_icon('pencil-alt', text: t(:edit_message)) %> </button>
       <% end %>
-      <%= button_tag type: 'submit', class: 'btn btn-success discussion-new-message-button', data: { disable: true } do %>
+      <%= button_tag type: 'submit', class: 'btn btn-complementary discussion-new-message-button', data: { disable: true } do %>
         <%= fa_icon('comment', text: t(:comment)) %>
       <% end %>
     </div>

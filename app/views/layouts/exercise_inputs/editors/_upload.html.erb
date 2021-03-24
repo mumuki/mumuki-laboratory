@@ -4,7 +4,7 @@
   <textarea id="solution_content" type="text" name="solution[content]" class="d-none"></textarea>
   <input id="mu-upload-input" type="file" class="upload submission-control d-none" mu-upload-file-limit=<%= @max_file_size %> accept=".<%= @exercise.language.extension %>" />
   <div>
-    <label id="mu-upload-label" for="mu-upload-input" class="btn btn-success">
+    <label id="mu-upload-label" for="mu-upload-input" class="btn btn-complementary">
       <%= fa_icon(:upload, text: t(:select_file), id: "mu-upload-icon") %>
     </label>
     <div id="mu-upload-file-limit-exceeded" class="d-none">

@@ -4,7 +4,7 @@
         <%= image_tag(organization.banner_url, height: 50, class: 'float-start') %>
       </div>
       <div class="col-md-6 organization-row">
-        <%= link_to(t(:go_to, organization: organization.name), current_immersive_path(organization), class: 'btn btn-success float-end') %>
+        <%= link_to(t(:go_to, organization: organization.name), current_immersive_path(organization), class: 'btn btn-complementary float-end') %>
       </div>
     </div>
 <% end %>

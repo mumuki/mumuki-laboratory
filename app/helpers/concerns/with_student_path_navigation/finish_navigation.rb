@@ -6,7 +6,7 @@ module WithStudentPathNavigation
     end
 
     def clazz
-      'btn btn-success btn-block'
+      'btn btn-complementary btn-block'
     end
   end
 end
