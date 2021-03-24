@@ -40,7 +40,7 @@ module MenuBarHelper
   end
 
   def menu_item(icon, name, url, translation_params = {})
-    link_to fixed_fa_icon(icon, text: t(name, translation_params)), url, role: 'menuitem', tabindex: '-1'
+    link_to fixed_fa_icon(icon, text: t(name, translation_params)), url, role: 'menuitem', tabindex: '-1', class: 'dropdown-item'
   end
 
   def any_menu_bar_links?
