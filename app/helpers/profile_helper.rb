@@ -4,7 +4,7 @@ module ProfileHelper
   end
 
   def cancel_edit_profile_button
-    link_to t(:cancel), :user, class: 'btn btn-default' if current_user.profile_completed?
+    link_to t(:cancel), :user, class: 'btn btn-secondary' if current_user.profile_completed?
   end
 
   def save_edit_profile_button(form)
