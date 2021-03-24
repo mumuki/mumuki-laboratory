@@ -9,14 +9,10 @@
         </button>
       <% end %>
       <div class="modal-header">
+        <h3 class="modal-title"><%= t :guide_finished, guide: guide.name %></h3>
         <% if Organization.current.grown_ups? %>
-          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <% end %>
-        <div class="guide-corollary-title">
-          <h3 class="text-start"><%= t :guide_finished, guide: guide.name %> </h3>
-        </div>
       </div>
       <div class="modal-body">
         <div class="container-fluid">
