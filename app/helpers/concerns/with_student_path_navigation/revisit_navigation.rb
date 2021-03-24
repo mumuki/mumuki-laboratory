@@ -13,7 +13,7 @@ module WithStudentPathNavigation
     end
 
     def clazz
-      'btn btn-warning btn-block'
+      'btn btn-warning w-100'
     end
 
     def sibling_for(navigable)

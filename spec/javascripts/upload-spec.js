@@ -5,7 +5,7 @@ describe('upload', () => {
     <textarea id="solution_content" type="text" name="solution[content]" class="d-none"></textarea>
     <input id="mu-upload-input" type="file" class="upload submission-control d-none" mu-upload-file-limit=${fileSizeLimit} accept=".txt" />
     <label id="mu-upload-label" for="mu-upload-input" class="btn btn-complementary"></label>
-    <button class="btn btn-complementary btn-block btn-submit disabled"></button>
+    <button class="btn btn-complementary w-100 btn-submit disabled"></button>
     <div id="mu-upload-file-limit-exceeded" class="d-none"></div>
   `);
 
