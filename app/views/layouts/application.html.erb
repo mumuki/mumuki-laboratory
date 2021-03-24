@@ -27,9 +27,8 @@
           <% end %>
           <%= render partial: 'notifications/dropdown' %>
           <div class="dropdown mu-navbar-element">
-            <div id="profileDropdown" class="profile-dropdown" data-bs-toggle="dropdown" aria-label="<%= t(:user) %>" role="menu" tabindex="0">
+            <div id="profileDropdown" class="profile-dropdown dropdown-toggle" data-bs-toggle="dropdown" aria-label="<%= t(:user) %>" role="menu" tabindex="0">
               <%= profile_picture_for current_user %>
-              <span class="caret"></span>
             </div>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
               <%= menu_bar_list_items %>
