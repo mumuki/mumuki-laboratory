@@ -34,11 +34,11 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
               <%= menu_bar_list_items %>
               <% if any_menu_bar_links? %>
-                <li class="divider"></li>
+                <li class="dropdown-divider"></li>
               <% end %>
               <% if faqs_enabled_here? %>
                 <%= menu_link_to_faqs %>
-                <li class="divider"></li>
+                <li class="dropdown-divider"></li>
               <% end %>
               <%= logout_menu_link %>
             </ul>
