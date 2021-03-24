@@ -1,4 +1,4 @@
-<div class="dropdown mu-navbar-element notifications-box <%= 'notifications-box-empty' unless has_notifications? %>">
+<div class="dropdown mu-navbar-element notifications-box <%= 'd-none' unless has_notifications? %>">
   <div id="notificationsDropdown" class="profile-dropdown" data-bs-toggle="dropdown" aria-label="<%= t(:notifications) %>" role="menu" tabindex="0">
     <i class="fas fa-bell fa-fw fa-2x mu-navbar-icon"></i>
     <span class="badge badge-notifications"><%= notifications_count %></span>

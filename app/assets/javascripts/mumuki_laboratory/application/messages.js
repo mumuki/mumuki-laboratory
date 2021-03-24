@@ -15,7 +15,7 @@ mumuki.load(() => {
     token: new mumuki.CsrfToken(),
     setMessages: function (data) {
       $('.badge-notifications').html(data.messages_count);
-      $('.notifications-box').toggleClass('notifications-box-empty', !data.has_messages);
+      $('.notifications-box').toggleClass('d-none', !data.has_messages);
       $('.pending-messages-filter').removeClass('pending-messages-filter');
       $('button.btn-submit').removeClass('disabled');
       $('.pending-messages-text').remove();
