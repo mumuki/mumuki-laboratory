@@ -86,7 +86,7 @@ mumuki.gamification = (() => {
     }
 
     defaultLevelUpAction(_levelUpHtml) {
-      $('#mu-level-up').modal();
+      new bootstrap.Modal('#mu-level-up').show();
     }
 
     registerLevelUpAction(action) {
