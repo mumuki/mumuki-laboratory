@@ -72,12 +72,6 @@ mumuki.load(function() {
     form.append(`<input type="hidden" name="user[avatar_type]" value="${type}"/>`);
   }
 
-  $("#mu-edit-avatar-icon").on('keypress click', function(e) {
-    onClickOrSpacebarOrEnter($(this), e, function() {
-      $avatarPicker.modal();
-    });
-  });
-
   function onClickOrSpacebarOrEnter(element, e, func) {
     if (e.which === 13 || e.which === 32 || e.type === 'click') {
       func.apply(element);

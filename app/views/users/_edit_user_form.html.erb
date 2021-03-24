@@ -9,7 +9,7 @@
   <div class="row mu-tab-body">
     <div class="col-md-4 text-center">
       <%= profile_picture_for(@user, id: 'mu-user-avatar', class: 'mu-user-avatar') %>
-      <i class="fas fa-pencil-alt fa-2x pointer mu-edit-avatar" id="mu-edit-avatar-icon" tabindex="0"></i>
+      <button class="fas fa-pencil-alt fa-2x btn mu-edit-avatar" type="button" data-bs-toggle="modal" data-bs-target="#mu-avatar-picker" tabindex="0"></button>
     </div>
     <div class="col-md-8">
       <%= render partial: 'profile_fields', locals: {form: f} %>
