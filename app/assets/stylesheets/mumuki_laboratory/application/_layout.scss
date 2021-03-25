@@ -110,16 +110,8 @@ hr {
 /* TODO: move to mumuki-styles */
 .mu-inline-block-left {
   display: flex;
+  flex-grow: 1;
   align-items: center;
-
-  margin-left: 15px;
-}
-
-.mu-inline-block-right {
-  float: right !important;
-  display: inline-block;
-  margin-right: 15px;
-  margin-left: 10px;
 }
 
 .mu-org-link {

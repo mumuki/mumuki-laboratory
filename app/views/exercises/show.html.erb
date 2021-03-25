@@ -13,14 +13,14 @@
 <% end %>
 
 <% unless @exercise.input_kids? %>
-  <div class="row">
-    <div class="mu-inline-block-right d-none d-sm-block">
-      <h1><%= language_icon @exercise.language %></h1>
-    </div>
+  <div class="d-flex">
     <div class="mu-inline-block-left">
       <h1 class="d-none d-sm-block"><%= full_title_for @exercise %></h1>
       <h1 class="d-block d-sm-none"><%= short_title_for @exercise %></h1>
       <%= render partial: 'exercises/exercise_title_icons' %>
+    </div>
+    <div class="d-none d-sm-block">
+      <h1><%= language_icon @exercise.language %></h1>
     </div>
   </div>
 <% end %>
