@@ -7,11 +7,11 @@
     </div>
   </div>
   <div class="row mu-tab-body">
-    <div class="col-md-4 text-center">
+    <div class="col-md-6 col-lg-4 mu-user-avatar-container">
       <%= profile_picture_for(@user, id: 'mu-user-avatar', class: 'mu-user-avatar') %>
       <button class="fas fa-pencil-alt fa-2x btn mu-edit-avatar" type="button" data-bs-toggle="modal" data-bs-target="#mu-avatar-picker" tabindex="0"></button>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-6 col-lg-8">
       <%= render partial: 'profile_fields', locals: {form: f} %>
       <%= render partial: 'layouts/terms_acceptance_disclaimer', locals: {user: @user} %>
     </div>
