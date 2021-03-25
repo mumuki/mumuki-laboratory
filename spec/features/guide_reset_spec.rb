@@ -18,7 +18,7 @@ feature 'Guide Reset Flow', organization_workspace: :test do
 
   before { reindex_current_organization! }
 
-  let(:restart_xpath) { "//i[@title='#{I18n.t(:restart)}']" }
+  let(:restart_xpath) { "//a[@title='#{I18n.t(:restart)}']" }
 
   context 'no logged in user' do
     scenario 'visit guide' do
