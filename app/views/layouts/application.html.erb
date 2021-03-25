@@ -6,14 +6,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#muNavbar" aria-controls="muNavbar" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="muNavbar">
-          <div class="mu-navbar-breadcrumb">
-            <ul class="navbar-nav mu-breadcrumb-list">
-              <%= yield :breadcrumbs %>
-            </ul>
-          </div>
-        </div>
-        <div class="mu-navbar-avatar">
+        <div class="mu-navbar-avatar order-lg-2">
           <% if current_logged_user? %>
             <% if in_gamified_context? %>
               <div class="mu-navbar-element">
@@ -41,6 +34,13 @@
           <% else %>
             <%= login_button %>
           <% end %>
+        </div>
+        <div class="collapse navbar-collapse" id="muNavbar">
+          <div class="mu-navbar-breadcrumb order-lg-1">
+            <ul class="navbar-nav mu-breadcrumb-list">
+              <%= yield :breadcrumbs %>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
