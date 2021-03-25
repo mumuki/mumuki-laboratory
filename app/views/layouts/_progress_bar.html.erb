@@ -6,6 +6,8 @@
       <%= turbolinks_enable_for exercise %>
       href="<%= exercise_path(exercise)%>"
       aria-label="<%= exercise.navigable_name %>"
+      data-bs-toggle="tooltip"
+      data-bs-placement="bottom"
       title="<%= exercise.navigable_name %>"
       data-mu-exercise-id="<%= exercise.id %>"
       class="<%= class_for_progress_list_item(assignment, exercise == actual)%>">
