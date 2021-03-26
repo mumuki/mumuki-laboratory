@@ -4,8 +4,8 @@
     <span class="files-tabs">
       <ul class="nav nav-tabs">
         <% @files.each_with_index do |file, index| %>
-          <li role="presentation" class="file-tab <%= 'active' if index == 0 %>" data-bs-target="#editor-file-<%= index %>" tabindex='0' data-bs-toggle='tab'>
-            <a class="file-name" href="#"><%= file.name %></a> <i class="delete-file-button fas fa-times"></i>
+          <li role="presentation" class="file-tab" data-bs-target="#editor-file-<%= index %>" tabindex='0' data-bs-toggle='tab'>
+            <a class="file-name nav-link <%= 'active' if index == 0 %>" href="#"><%= file.name %></a> <i class="delete-file-button fas fa-times"></i>
           </li>
         <% end %>
       </ul>
