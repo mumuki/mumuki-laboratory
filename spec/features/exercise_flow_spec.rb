@@ -190,7 +190,7 @@ feature 'Exercise Flow', organization_workspace: :test do
       expect(page).to have_text('need a hint?')
       expect(page).to have_selector('.upload')
       expect(problem_5.language.extension).to eq('gbs')
-      expect(page.find("//div[@class = 'form-group']/input")['accept']).to eq(".gbs")
+      expect(page.find("//input[@id = 'mu-upload-input']")['accept']).to eq(".gbs")
 
       expect(page.find("#mu-exercise-id")['value']).to eq(problem_5.id.to_s)
       expect(page.find("#mu-exercise-layout")['value']).to eq('input_right')

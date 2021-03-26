@@ -1,4 +1,4 @@
-<div class="form-group">
+<div>
   <% @exercise.pretty_choices.each do |choice| %>
     <div class="field radio complementary complementary-radio">
       <%= form.radio_button(:content, choice.value, checked: checked?(choice, @current_content), id: choice.id, required: true) %>

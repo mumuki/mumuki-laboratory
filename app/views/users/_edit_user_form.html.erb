@@ -1,4 +1,4 @@
-<%= form_for :user, url: user_path, :html => { id: 'mu-user-form' }, method: :put do |f| %>
+<%= form_for :user, url: user_path, :html => { id: 'mu-user-form', class: 'mu-form' }, method: :put do |f| %>
   <div class="mu-user-header">
     <h1><%= t(:edit_profile) %></h1>
     <div class="mu-profile-actions d-none d-md-block">

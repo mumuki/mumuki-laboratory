@@ -30,7 +30,7 @@
     <% end %>
     <%= form_for([exercise, @solution],
                  remote: true,
-                 html: {role: 'form', class: "new_solution mu-editor mu-editor-overlap #{pending_messages_filter(@assignment)}"}) do |f| %>
+                 html: {role: 'form', class: "new_solution mu-editor mu-editor-overlap mu-form #{pending_messages_filter(@assignment)}"}) do |f| %>
       <%= render_exercise_input_editor f, exercise %>
 
       <div class="actions mu-submit-button">
