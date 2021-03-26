@@ -11,7 +11,7 @@
 <% end %>
 
 <div class="tab-content">
-  <div role="tabpanel" class="tab-pane mu-input-panel fade in active <%= pending_messages_filter(@assignment) %>" id="console">
+  <div role="tabpanel" class="tab-pane mu-input-panel fade show active <%= pending_messages_filter(@assignment) %>" id="console">
     <% if @assignment.pending_messages? %>
         <span class="pending-messages-text"> <%= t :pending_messages_explanation %>
           <a href="javascript:{}"

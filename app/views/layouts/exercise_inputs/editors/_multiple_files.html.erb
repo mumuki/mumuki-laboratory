@@ -16,7 +16,7 @@
 
     <div class="tab-content">
       <% @files.each_with_index do |file, index| %>
-        <div role="tabpanel" class="file-editor tab-pane mu-input-panel <%= 'fade in active' if index == 0 %>" id="editor-file-<%= index %>">
+        <div role="tabpanel" class="file-editor tab-pane mu-input-panel <%= 'fade show active' if index == 0 %>" id="editor-file-<%= index %>">
           <%= form.editor "content[#{file.name}]", file.highlight_mode,
                           placeholder: t(:editor_placeholder),
                           class: 'form-control editor',

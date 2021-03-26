@@ -58,12 +58,12 @@ mumuki.load(() => {
 
     _selectElement(element) {
       element.addClass('active');
-      element.addClass('in');
+      element.addClass('show');
     }
 
     _unselectElement(element) {
       element.removeClass('active');
-      element.removeClass('in');
+      element.removeClass('show');
     }
   }
 

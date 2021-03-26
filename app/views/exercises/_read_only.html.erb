@@ -81,7 +81,7 @@
       <% if @discussion.has_submission? %>
         <div role="tabpanel" class="tab-pane active" id="solution">
           <div class="mu-tab-body">
-            <div role="tabpanel" class="tab-pane mu-input-panel fade in active" id="editor">
+            <div role="tabpanel" class="tab-pane mu-input-panel fade show active" id="editor">
               <div class="mu-read-only-editor">
                 <%= render_exercise_read_only_editor exercise, @discussion.solution %>
               </div>
