@@ -24,16 +24,12 @@
                    } %>
       </div>
       <div class="col-lg-4 mu-tab-body">
-        <ul class="nav nav-pills nav-stacked">
-          <li <%= mark_period_if_active nil %>>
-            <%= link_to t(:total), activity_user_path %>
-          </li>
+        <div class="nav nav-pills flex-column">
+          <%= link_to t(:total), activity_user_path, class: mark_period_if_active(nil) %>
           <% activity_selector_week_range_for.each do |(week_start, week_end)| %>
-            <li <%= mark_period_if_active week_start %>>
-              <%= link_to t(:week_of, date: l(week_start)), activity_user_path(date_from: week_start, date_to: week_end) %>
-            </li>
+            <%= link_to t(:week_of, date: l(week_start)), activity_user_path(date_from: week_start, date_to: week_end), class: mark_period_if_active(week_start) %>
           <% end %>
-        </ul>
+        </div>
       </div>
     </div>
   </div>
