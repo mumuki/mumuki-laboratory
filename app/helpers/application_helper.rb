@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def paginate(object, options = {})
-    "<div class=\"text-center\">#{super(object, {theme: 'twitter-bootstrap-3'}.merge(options))}</div>".html_safe
+    super(object, {theme: 'bootstrap-5', pagination_class: 'flex-wrap justify-content-center'}.merge(options))
   end
 
   def last_box_class(trailing_boxes)

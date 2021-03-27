@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'omniauth', '~> 1.4'
 
   s.add_dependency 'kaminari', '~> 0.16'
-  s.add_dependency 'bootstrap-kaminari-views'
+  s.add_dependency 'bootstrap5-kaminari-views', '~> 0.0.1'
 
   s.add_dependency 'font_awesome5_rails', '~> 1.3'
   s.add_dependency 'momentjs-rails', '~> 2.10'
