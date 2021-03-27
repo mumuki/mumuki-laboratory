@@ -27,9 +27,9 @@
     </div>
 
     <div class="mu-overlapped multiple-files">
-      <a class="editor-resize"> <%= expand_icon %></a>
-      <a class="editor-format"><%= format_icon %></a>
-      <a class="editor-reset submission-reset" data-confirm="<%= t(:confirm_reset) %>" data-multiple-files="true"><%= restart_icon %></a>
+      <%= expand_icon %>
+      <%= format_icon %>
+      <%= restart_icon 'editor', {'data-confirm': t(:confirm_reset), 'data-multiple-files': 'true'} %>
     </div>
   </div>
 </div>

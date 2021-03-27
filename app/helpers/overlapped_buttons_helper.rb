@@ -7,8 +7,8 @@ module OverlappedButtonsHelper
     overlapped_link :format, :indent, class: 'editor-format'
   end
 
-  def restart_icon
-    overlapped_link :restart, :undo, class: 'editor-reset submission-reset', 'data-confirm': t(:confirm_reset)
+  def restart_icon(source='console', **options)
+    overlapped_link :restart, :undo, class: "#{source}-reset submission-reset", **options
   end
 
   def restart_guide_link(guide)
