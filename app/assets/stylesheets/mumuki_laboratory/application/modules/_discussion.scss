@@ -7,6 +7,15 @@ $discussion-button-color: #fafafa;
 $toolbar-filter-color: #808080;
 $moderator-badge-color: #dd9900;
 
+.discussions {
+  margin-bottom: 20px;
+
+  a {
+    color: unset;
+    text-decoration: unset;
+  }
+}
+
 .discussions-list {
   margin: 30px 0;
   .discussion {
@@ -20,8 +29,6 @@ $moderator-badge-color: #dd9900;
     border: 1px solid $discussion-message-border-color;
   }
   a {
-    color: unset;
-    text-decoration: unset;
     &:not(:last-child) > .discussion {
       border-bottom: 0;
     }
@@ -40,17 +47,6 @@ $moderator-badge-color: #dd9900;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-  }
-
-  .discussion-pagination .pagination li {
-    a, span {
-      background-color: lighten($primary, 10%);
-    }
-    &:hover, &.active, &.active:hover {
-      a, span {
-        background-color: $primary;
-      }
-    }
   }
 
   .discussion-language-icon {
