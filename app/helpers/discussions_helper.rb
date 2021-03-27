@@ -161,17 +161,17 @@ module DiscussionsHelper
   end
 
   def discussion_filter_list(label, filters, &block)
-    filters.map { |it| discussion_filter_item(label, it, &block) }.join("\n")
+    filters.map { |it| discussion_filter_item(label, it, 'dropdown-item', &block) }.join("\n")
   end
 
-  def discussion_filter_item(label, filter, &block)
-    content_tag(:li, discussion_filter_link(label, filter, &block), class: ('selected' if discussion_filter_selected?(label, filter)))
+  def discussion_filter_item(label, filter, link_class=nil, &block)
+    content_tag(:li, discussion_filter_link(label, filter, link_class, &block), class: ('selected' if discussion_filter_selected?(label, filter)))
   end
 
   def discussion_filter_unselect_item(label, can_select_all)
     if can_select_all
       content_tag(:li,
-                  link_to(t(:all), discussion_filter_params_without_page.except(label)),
+                  link_to(t(:all), discussion_filter_params_without_page.except(label), class: 'dropdown-item'),
                   class: ('selected' unless discussion_filter_params.include?(label)))
     end
   end
@@ -180,8 +180,8 @@ module DiscussionsHelper
     filter.to_s == discussion_filter_params[label]
   end
 
-  def discussion_filter_link(label, filter, &block)
-    link_to capture(filter, &block), discussion_filter_params_without_page.merge(Hash[label, filter])
+  def discussion_filter_link(label, filter, clazz, &block)
+    link_to capture(filter, &block), discussion_filter_params_without_page.merge(Hash[label, filter]), class: clazz
   end
 
   def discussion_info(discussion)
