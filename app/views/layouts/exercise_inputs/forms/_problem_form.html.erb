@@ -48,9 +48,9 @@
         <%= restart_icon %>
       </div>
     </div>
-    <div class="field checkbox complementary complementary-checkbox mu-editor">
-      <input checked="checked" data-index="1" id="include_solution" type="checkbox">
-      <label for="include_solution"><p><%= t(:load_solution_into_console) %></p></label>
+    <div class="form-check">
+      <input checked="checked" data-index="1" id="include_solution" type="checkbox" class="form-check-input">
+      <label class="form-check-label" for="include_solution"><p><%= t(:load_solution_into_console) %></p></label>
     </div>
   </div>
   <div role="tabpanel" class="tab-pane mu-input-panel fade mu-elipsis" id="visible-extra">

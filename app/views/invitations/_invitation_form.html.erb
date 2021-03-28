@@ -13,8 +13,9 @@
     <div>
       <h3><%= t :terms_and_conditions %></h3>
       <pre class="terms-of-service"><%= simple_format @organization.terms_of_service %></pre>
-      <div>
-        <input id="accept_terms" type="checkbox"> <span><%= t :accept_terms %></span>
+      <div class="form-check mb-3">
+        <input id="accept_terms" type="checkbox" class="form-check-input">
+        <label class="form-check-label"><%= t :accept_terms %></label>
       </div>
     </div>
   <% end %>

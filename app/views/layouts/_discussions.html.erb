@@ -24,7 +24,7 @@
       <% if current_user&.moderator_here? %>
         <div class="discussion-requires-attention float-end">
           <%= label_tag :requires_moderator_response, t(:requires_attention) %>
-          <%= check_box_tag :requires_moderator_response, true, discussion_filter_params[:requires_moderator_response], class: 'form-input', onclick: 'mumuki.Forum.discussionsToggleCheckbox($(this))' %>
+          <%= check_box_tag :requires_moderator_response, true, discussion_filter_params[:requires_moderator_response], class: 'form-check-input', onclick: 'mumuki.Forum.discussionsToggleCheckbox($(this))' %>
         </div>
       <% end %>
 
