@@ -199,4 +199,12 @@ module DiscussionsHelper
   def discussion_user_name(user)
     user.name
   end
+
+  def subscription_icon
+    fa_icon :bell, text: t(:subscribe)
+  end
+
+  def unsubscription_icon
+    fa_icon :bell, type: :regular, text: t(:unsubscribe)
+  end
 end

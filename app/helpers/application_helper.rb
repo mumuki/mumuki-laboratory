@@ -38,6 +38,13 @@ module ApplicationHelper
     t :chapter_finished_html, chapter: link_to_path_element(chapter) if chapter
   end
 
+  def btn_toggle(hidden_text, active_text, active, **options)
+    %Q{
+      <button class="btn btn-complementary #{'d-none' if active} #{options[:class]}" onclick="#{options[:onclick]}">#{hidden_text}</button>
+      <button class="btn btn-secondary #{'d-none' unless active} #{options[:class]}" onclick="#{options[:onclick]}">#{active_text}</button>
+    }.html_safe
+  end
+
   def span_toggle(hidden_text, active_text, active, **options)
     %Q{
       <span class="#{'d-none' if active} #{options[:class]}">#{hidden_text}</span>

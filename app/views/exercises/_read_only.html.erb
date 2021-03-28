@@ -30,22 +30,6 @@
               </span>
               <span class="d-none d-sm-inline"><%= discussion_info(@discussion) unless @discussion.new_record? %></span>
             </span>
-            <% if current_user && @discussion.persisted? %>
-              <span class="mu-inline-block-right discussion-user-menu no-margin">
-                <% if @discussion.subscribable? %>
-                  <a class="discussion-subscription" onclick="mumuki.Forum.discussionSubscription('<%= subscription_discussion_url(@discussion) %>')">
-                    <%= fa_icon(:eye, class: 'fa-xs') %>
-                    <%= span_toggle t(:subscribe), t(:unsubscribe), current_user.subscribed_to?(@discussion), class: 'd-none d-md-block' %>
-                  </a>
-                <% end %>
-                <% if @discussion.solved? %>
-                  <a class="discussion-upvote" onclick="mumuki.Forum.discussionUpvote('<%= upvote_discussion_url(@discussion) %>')">
-                    <%= fa_icon('thumbs-up', type: :regular, class: 'fa-xs') %>
-                    <%= span_toggle t(:upvote), t(:undo_upvote), current_user.upvoted?(@discussion), class: 'd-none d-md-block' %>
-                  </a>
-                <% end %>
-              </span>
-            <% end %>
           </div>
         </div>
       </button>

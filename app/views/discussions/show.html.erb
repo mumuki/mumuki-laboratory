@@ -12,15 +12,29 @@
   <hr class="message-divider">
 
   <div>
-    <h3>
-      <%= t :messages %>
-      <% if @discussion.last_moderator_access_visible_for?(current_user) %>
-        <small class="float-end">
-          <span><%= t :last_seen, name: @discussion.last_moderator_access_by.full_name %></span>
-          <span><%= t :time_since, time: time_ago_in_words(@discussion.last_moderator_access_at) %></span>
-        </small>
-      <% end %>
-    </h3>
+    <h3><%= t :messages %></h3>
+    <% if current_user && @discussion.persisted? %>
+      <span>
+        <% if @discussion.subscribable? %>
+          <div class="discussion-subscription">
+            <%= btn_toggle subscription_icon, unsubscription_icon, current_user.subscribed_to?(@discussion), class: 'btn-sm',
+                           onclick: "mumuki.Forum.discussionSubscription('#{subscription_discussion_url(@discussion)}')" %>
+          </div>
+        <% end %>
+        <% if @discussion.solved? %>
+          <a class="discussion-upvote" onclick="mumuki.Forum.discussionUpvote('<%= upvote_discussion_url(@discussion) %>')">
+            <%= fa_icon('thumbs-up', type: :regular, class: 'fa-xs') %>
+            <%= span_toggle t(:upvote), t(:undo_upvote), current_user.upvoted?(@discussion), class: 'd-none d-md-block' %>
+          </a>
+        <% end %>
+      </span>
+    <% end %>
+    <% if @discussion.last_moderator_access_visible_for?(current_user) %>
+      <small class="float-end">
+        <span><%= t :last_seen, name: @discussion.last_moderator_access_by.full_name %></span>
+        <span><%= t :time_since, time: time_ago_in_words(@discussion.last_moderator_access_at) %></span>
+      </small>
+    <% end %>
   </div>
 
   <% if @discussion.has_messages? %>

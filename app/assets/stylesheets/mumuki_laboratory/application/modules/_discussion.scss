@@ -194,26 +194,6 @@ $moderator-badge-color: #dd9900;
   padding-inline: 5px;
 }
 
-.discussion-user-menu {
-  a {
-    padding: 5px 10px;
-    font-size: 15px;
-    line-height: 20px;
-    border: 1px solid rgba(27, 31, 35, 0.2);
-    border-radius: 0.25em;
-    background-color: $discussion-button-color;
-    font-weight: bold;
-    color: black;
-    cursor: pointer;
-    margin-left: 10px;
-    &:hover {
-      text-decoration: none;
-      background-color: darken($discussion-button-color, 5%);
-      color: black;
-    }
-  }
-}
-
 .discussion-context {
   margin-top: 40px;
 }

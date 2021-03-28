@@ -1,5 +1,5 @@
 mumuki.load(() => {
-  var $subscriptionSpans = $('.discussion-subscription > span');
+  var $subscriptionButtons = $('.discussion-subscription > button');
   var $upvoteSpans = $('.discussion-upvote > span');
   let $messagePreviewButton = $('.discussion-new-message-preview-button.preview');
   let $messageEditButton = $('.discussion-new-message-preview-button.edit');
@@ -33,8 +33,8 @@ mumuki.load(() => {
   let editor = createNewMessageEditor();
 
   var Forum = {
-    toggleButton: function (spans) {
-      spans.toggleClass('d-none');
+    toggleButton: function (elements) {
+      elements.toggleClass('d-none');
     },
     token: new mumuki.CsrfToken(),
     tokenRequest: function (data) {
@@ -48,7 +48,7 @@ mumuki.load(() => {
       });
     },
     discussionSubscription: function (url) {
-      Forum.discussionPostAndToggle(url, $subscriptionSpans);
+      Forum.discussionPostAndToggle(url, $subscriptionButtons);
     },
     discussionUpvote: function (url) {
       Forum.discussionPostAndToggle(url, $upvoteSpans);
