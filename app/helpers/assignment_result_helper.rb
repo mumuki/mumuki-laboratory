@@ -15,7 +15,8 @@ module AssignmentResultHelper
 
   def render_community_link
     if community_link?
-      link_to fa_icon('facebook-f', type: :brand, text: I18n.t(:ask_community), class: 'fa-fw'), community_link, target: '_blank'
+      link_to fa_icon('facebook-f', type: :brand, text: I18n.t(:ask_community), class: 'fa-fw'),
+              community_link, target: '_blank', class: 'dropdown-item'
     end
   end
 
@@ -25,7 +26,7 @@ module AssignmentResultHelper
         fa_icon(:bug, text: t(:notify_problem_with_exercise), class: 'fa-fw'),
         subject: t(:problem_with_exercise, title: @exercise.name),
         body: assignment_help_email_body(assignment),
-        class: 'warning'
+        class: 'dropdown-item'
     end
   end
 

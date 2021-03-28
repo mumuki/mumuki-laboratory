@@ -1,6 +1,6 @@
 module DiscussionsHelper
   def read_discussions_link(item)
-    discussions_link others_discussions_icon(t(:solve_your_doubts)), item_discussions_path(item, default_discussions_params)
+    discussions_link others_discussions_icon(t(:solve_your_doubts)), item_discussions_path(item, default_discussions_params), class: 'dropdown-item'
   end
 
   def kids_read_discussions_link(item)
@@ -57,18 +57,6 @@ module DiscussionsHelper
       <span>
         #{ t(:forum_terms_link, terms_link: link_to_forum_terms).html_safe }
       </span>
-    }.html_safe
-  end
-
-  def discussions_link_with_teaser(item)
-    %Q{
-      <div>
-        <h3>#{t(:discussions)}</h3>
-        <p>
-          #{t(:solve_your_doubts_teaser)}
-          #{read_discussions_link(item)}
-        </p>
-      </div>
     }.html_safe
   end
 
