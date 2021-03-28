@@ -11,12 +11,12 @@
 <% if @discussion.has_messages? || @discussion.commentable_by?(current_user) %>
   <hr class="message-divider">
 
-  <div>
-    <h3><%= t :messages %></h3>
+  <div class="d-flex flex-wrap">
+    <h3 class="flex-grow-1 me-3"><%= t :messages %></h3>
     <% if current_user && @discussion.persisted? %>
-      <span>
+      <span class="d-flex">
         <% if @discussion.subscribable? %>
-          <div class="discussion-subscription">
+          <div class="discussion-subscription me-1">
             <%= btn_toggle subscription_icon, unsubscription_icon, current_user.subscribed_to?(@discussion), class: 'btn-sm',
                            onclick: "mumuki.Forum.discussionSubscription('#{subscription_discussion_url(@discussion)}')" %>
           </div>
