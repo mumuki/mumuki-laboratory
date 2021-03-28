@@ -3,22 +3,20 @@
 <% end %>
 
 <div class="row">
-  <div class="mu-inline-block-left">
-    <h1><%= t :forum %></h1>
-  </div>
+  <h1><%= t :forum %></h1>
 </div>
-<div class="row">
-  <% if @debatable.respond_to? :language %>
-    <div class="mu-inline-block-right d-none d-sm-block">
-      <h3><%= language_icon @debatable.language %></h3>
-    </div>
-  <% end %>
+<div class="d-flex">
   <div class="mu-inline-block-left">
     <h3>
-      <span class="d-none d-sm-block"><%= t("#{@debatable_class.downcase}_number", number: @debatable.number) %>:&nbsp;</span>
+      <span class="d-none d-sm-inline"><%= t("#{@debatable_class.downcase}_number", number: @debatable.number) %>:&nbsp;</span>
       <span><%= @debatable.name %></span>
     </h3>
   </div>
+  <% if @debatable.respond_to? :language %>
+    <div class="d-none d-sm-block ms-3">
+      <h3><%= language_icon @debatable.language %></h3>
+    </div>
+  <% end %>
 </div>
 
 <% if @discussions.empty? %>
