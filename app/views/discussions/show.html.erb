@@ -22,10 +22,10 @@
           </div>
         <% end %>
         <% if @discussion.solved? %>
-          <a class="discussion-upvote" onclick="mumuki.Forum.discussionUpvote('<%= upvote_discussion_url(@discussion) %>')">
-            <%= fa_icon('thumbs-up', type: :regular, class: 'fa-xs') %>
-            <%= span_toggle t(:upvote), t(:undo_upvote), current_user.upvoted?(@discussion), class: 'd-none d-md-block' %>
-          </a>
+          <div class="discussion-upvote">
+            <%= btn_toggle upvote_icon, undo_upvote_icon, current_user.upvoted?(@discussion), class: 'btn-sm',
+                           onclick: "mumuki.Forum.discussionUpvote('#{upvote_discussion_url(@discussion)}')" %>
+          </div>
         <% end %>
       </span>
     <% end %>

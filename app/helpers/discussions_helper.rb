@@ -207,4 +207,12 @@ module DiscussionsHelper
   def unsubscription_icon
     fa_icon :bell, type: :regular, text: t(:unsubscribe)
   end
+
+  def upvote_icon
+    fa_icon 'thumbs-up', text: t(:upvote)
+  end
+
+  def undo_upvote_icon
+    fa_icon 'thumbs-up', type: :regular, text: t(:undo_upvote)
+  end
 end
