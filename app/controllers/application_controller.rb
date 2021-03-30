@@ -43,6 +43,8 @@ class ApplicationController < ActionController::Base
                 :extension_javascript_url,
                 :current_immersive_path
 
+  add_flash_types :info
+
   def immersive_context_wrong?
     current_immersive_context != Organization.current
   end
@@ -124,7 +126,7 @@ class ApplicationController < ActionController::Base
   def validate_user_profile!
     unless current_user.profile_completed?
       save_location_before! :profile_completion
-      flash.notice = I18n.t :please_fill_profile_data
+      flash[:info] = I18n.t :please_fill_profile_data
       redirect_to edit_user_path
     end
   end
@@ -132,7 +134,7 @@ class ApplicationController < ActionController::Base
   def validate_accepted_role_terms!
     if current_user&.has_role_terms_to_accept?
       save_location_before! :terms_acceptance
-      flash.notice = I18n.t :accept_terms_to_continue
+      flash[:info] = I18n.t :accept_terms_to_continue
       redirect_to terms_user_path
     end
   end

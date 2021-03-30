@@ -7,6 +7,10 @@ module ToastHelper
     toast_for('error', 'times-circle', text)
   end
 
+  def toast_info(text)
+    toast_for('info', 'info-circle', text)
+  end
+
   private
 
   def toast_for(type, icon, text)
