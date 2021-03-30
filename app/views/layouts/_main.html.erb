@@ -29,16 +29,26 @@
 <%= yield :navbar %>
 
 <div class="<%= exercise_container_type %><%= @kids ? '-fluid' : '' %>" id="wrap">
-  <div id="toast-container" class="toast-bottom-left">
+  <div class="toast-container bottom-0 start-0 p-3">
     <% if notice %>
-      <div class="alert toast toast-success" role="alert">
-        <%= notice.html_safe %>
-        <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+      <div class="toast mu-toast-success" role="alert">
+        <div class="toast-body">
+          <div class="d-flex align-items-center">
+            <%= fa_icon 'check-circle', class: 'fa-lg me-3' %>
+            <span class="flex-grow-1 text-break"><%= notice.html_safe %></span>
+            <button type="button" class="btn-close btn-close-white mx-2 flex-shrink-0" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
       </div>
     <% elsif alert %>
-      <div class="alert toast toast-error" role="alert">
-        <%= alert.html_safe %>
-        <button type="button" class="close" data-bs-dismiss="alert">&times;</button>
+      <div class="toast mu-toast-error" role="alert">
+        <div class="toast-body">
+          <div class="d-flex align-items-center">
+            <%= fa_icon 'times-circle', class: 'fa-lg me-3' %>
+            <span class="flex-grow-1 text-break"><%= alert.html_safe %></span>
+            <button type="button" class="btn-close btn-close-white mx-2 flex-shrink-0" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
