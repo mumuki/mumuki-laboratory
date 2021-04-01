@@ -51,10 +51,13 @@ mumuki.Kids = class {
   }
 
   showContext() {
-    new bootstrap.Modal(document.getElementById('mu-kids-context'), {
-      backdrop: 'static',
-      keyboard: false
-    }).show();
+    let context = document.getElementById('mu-kids-context');
+    if (context) {
+      new bootstrap.Modal(context, {
+        backdrop: 'static',
+        keyboard: false
+      }).show();
+    }
   }
 
   showNonAbortedPopup(data, animation_name, open_modal_delay_ms = 0) {
