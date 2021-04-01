@@ -25,13 +25,16 @@ module LinksHelper
   def teacher_info_button(item)
     if current_user&.teacher_here? && item.teacher_info.present?
       %Q{
-        <a
-          class="mu-popover"
-          data-bs-toggle="popover"
-          data-bs-html="true"
-          title="#{t :teacher_info}"
-          data-bs-placement="bottom"
-          data-bs-content="#{html_rescape item.teacher_info_html}">#{fixed_fa_icon('info-circle')}</a>
+        <div data-bs-toggle="tooltip" title="#{t :teacher_info}">
+          <a
+            class="mu-popover"
+            data-bs-toggle="popover"
+            data-bs-html="true"
+            title="#{t :teacher_info}"
+            data-bs-placement="bottom"
+            data-bs-content="#{html_rescape item.teacher_info_html}">#{fixed_fa_icon('info-circle')}
+          </a>
+        </div>
       }.html_safe
     end
   end
@@ -88,7 +91,7 @@ module LinksHelper
     return unless current_user&.writer?
 
     url = yield
-    link_to fixed_fa_icon('pencil-alt'), url, target: "_blank", title: t(:edit)
+    link_to fixed_fa_icon('pencil-alt'), url, target: "_blank", 'data-bs-toggle': 'tooltip', title: t(:edit)
   end
 
   def url_for_bibliotheca_guide(guide)
