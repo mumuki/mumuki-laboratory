@@ -46,7 +46,7 @@
 <%= hidden_field_tag "mu-exercise-layout", @exercise.layout %>
 <%= hidden_field_tag "mu-exercise-settings", @exercise.settings.to_json %>
 
-<div style="display: none" id="processing-template">
+<div class="d-none" id="processing-template">
   <div class="bs-callout bs-callout-info">
     <h4><i class="fas fa-sync-alt fa-spin"></i> <strong><%= t :processing_your_solution %></strong></h4>
     <%= t :refresh_or_wait %>

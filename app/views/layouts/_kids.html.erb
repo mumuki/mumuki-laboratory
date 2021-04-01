@@ -15,9 +15,9 @@
     <i class="mu-kids-prev-speech fas fa-fw fa-caret-up"></i>
     <i class="mu-kids-next-speech fas fa-fw fa-caret-down"></i>
     <div class="description"><%= exercise.description_task %></div>
-    <div class="hint" style="display: none"><%= exercise.hint_html %></div>
+    <div class="hint"><%= exercise.hint_html %></div>
   </div>
-  <div class="mu-kids-character-speech-bubble-failed <%= current_user? && @assignment.status %>" style="display: none"></div>
+  <div class="mu-kids-character-speech-bubble-failed <%= current_user? && @assignment.status %> d-none"></div>
 </div>
 <div id="mu-kids-discussion-link-html" class="d-none">
   <%= kids_read_discussions_link(exercise) %>
