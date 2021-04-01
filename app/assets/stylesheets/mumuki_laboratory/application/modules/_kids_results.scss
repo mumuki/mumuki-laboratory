@@ -58,29 +58,16 @@ $capital-animation-width: 135px;
   }
 }
 
-.mu-kids-modal-border {
-
+.mu-kids-modal {
   .modal-dialog {
+    @extend .modal-lg;
+    @extend .modal-dialog-centered;
 
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
+    .modal-header {
+      @extend .justify-content-center;
+    }
 
     .modal-content {
-
-      position: absolute;
-
-      $width-lg: 800px;
-
-      width: $width-lg;
-
-      top: 60px;
-      left: calc(50% - #{$width-lg} / 2);
-
-      @media (max-width: $width-lg + 30px) {
-        width: calc(100vw - 30px);
-      }
-
       $border-width: 16px;
       border-width: $border-width;
       border-style: solid;
