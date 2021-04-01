@@ -2,10 +2,12 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="text-center">
+        <h4 class="text-center d-flex">
           <strong><%= "#{exercise.number}. #{exercise.name}" %></strong>
-          <%= teacher_info_button exercise %>
-          <%= link_to_bibliotheca_exercise exercise %>
+          <div class="d-flex ms-2">
+            <%= teacher_info_button exercise %>
+            <%= link_to_bibliotheca_exercise exercise %>
+          </div>
         </h4>
       </div>
       <div class="modal-body">
