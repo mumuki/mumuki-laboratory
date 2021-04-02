@@ -1,10 +1,8 @@
-<div>
-  <input class="d-none" id="solution_content" type="text" name="solution[content]">
-  <% @exercise.pretty_choices.each do |choice| %>
-    <div class="form-check">
-      <%= check_box_tag(choice.id, '1', checked?(choice, @current_content), class: 'solution-choice form-check-input', 'data-index' => choice.index) %>
-      <%= label_tag(choice.id, choice.text, class: 'form-check-label') %>
-    </div>
-  <% end %>
-</div>
+<input class="d-none" id="solution_content" type="text" name="solution[content]">
+<% @exercise.pretty_choices.each do |choice| %>
+  <div class="form-check">
+    <%= check_box_tag(choice.id, '1', checked?(choice, @current_content), class: 'solution-choice form-check-input', 'data-index' => choice.index) %>
+    <%= label_tag(choice.id, choice.text, class: 'form-check-label') %>
+  </div>
+<% end %>
 

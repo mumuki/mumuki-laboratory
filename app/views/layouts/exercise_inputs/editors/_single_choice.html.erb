@@ -1,8 +1,6 @@
-<div>
-  <% @exercise.pretty_choices.each do |choice| %>
-    <div class="form-check">
-      <%= form.radio_button(:content, choice.value, checked: checked?(choice, @current_content), id: choice.id, required: true, class: 'form-check-input') %>
-      <%= label_tag(choice.id, choice.text, class: 'form-check-label' ) %>
-    </div>
-  <% end %>
-</div>
+<% @exercise.pretty_choices.each do |choice| %>
+  <div class="form-check">
+    <%= form.radio_button(:content, choice.value, checked: checked?(choice, @current_content), id: choice.id, required: true, class: 'form-check-input') %>
+    <%= label_tag(choice.id, choice.text, class: 'form-check-label' ) %>
+  </div>
+<% end %>
