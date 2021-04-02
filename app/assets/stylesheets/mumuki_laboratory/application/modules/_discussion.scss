@@ -143,6 +143,10 @@ $moderator-badge-color: #dd9900;
   border-bottom: none;
   .discussions-toolbar-status {
     float: left;
+
+    a {
+      text-decoration: unset;
+    }
     li {
       text-decoration: none;
       display: inline;
@@ -163,6 +167,11 @@ $moderator-badge-color: #dd9900;
     float: right;
     margin-right: 20px;
     cursor: pointer;
+
+    > a {
+      text-decoration: unset;
+      color: $primary;
+    }
     li.selected {
       a {
         font-weight: bold;
