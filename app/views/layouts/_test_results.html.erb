@@ -13,7 +13,7 @@
             <%= status_icon(test_result[:status]) %>
             <%= render_test_result_header test_result %>
             <% unless contextualization.visible_success_output? %>
-              <a data-bs-toggle="collapse" href="#example-result-<%= index %>"  class="example-see-more"><%= t :view_details %></a>
+              <a data-bs-toggle="collapse" href="#example-result-<%= index %>" class="badge bg-danger mu-view-details"><%= t :view_details %></a>
             <% end %>
           </span>
         <% else %>
