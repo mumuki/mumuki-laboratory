@@ -28,7 +28,7 @@ mumuki.load(() => {
     }
 
     get isSelected() {
-      return this.tab.hasClass("active");
+      return this.tab.children().first().hasClass("active");
     }
 
     setUpOnRemove(handler) {
@@ -164,14 +164,18 @@ mumuki.load(() => {
       const previousIndex = Math.max(index - 1, 0);
 
       const wasSelected = file.remove();
-      if (wasSelected) this.files[previousIndex].select();
+      if (wasSelected) {
+        this.tabs.children()[previousIndex].click();
+      }
 
       this.updateButtonsVisibility();
     }
 
     _createTab(name, id) {
       const tab = this.tabs.last().clone();
-      tab.attr('data-bs-target', `#${id}`);
+      let link = tab.children().first();
+      link.attr('data-bs-target', `#${id}`);
+      link.removeClass('active');
 
       return tab;
     }

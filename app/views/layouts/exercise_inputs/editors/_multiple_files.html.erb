@@ -1,11 +1,11 @@
 <div class="editor-code">
-
   <div class="editor-files">
     <span class="files-tabs">
-      <ul class="nav nav-tabs">
+      <ul class="nav nav-tabs" role="tablist">
         <% @files.each_with_index do |file, index| %>
-          <li role="presentation" class="file-tab" data-bs-target="#editor-file-<%= index %>" tabindex='0' data-bs-toggle='tab'>
-            <a class="file-name nav-link <%= 'active' if index == 0 %>" href="#"><%= file.name %></a> <i class="delete-file-button fas fa-times"></i>
+          <li class="nav-item file-tab" role="presentation">
+            <a class="file-name nav-link <%= 'active' if index == 0 %>" href="#" role="tab" data-bs-target="#editor-file-<%= index %>"
+               tabindex='0' data-bs-toggle='tab'><%= file.name %></a> <i class="delete-file-button fas fa-times"></i>
           </li>
         <% end %>
       </ul>
