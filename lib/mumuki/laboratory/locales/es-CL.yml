@@ -65,6 +65,13 @@ es-CL:
   created_exercises: Ejercicios Creados
   created_guides: Lecciones Creadas
   date: Fecha
+  deletion_motive:
+    inappropriate_content:
+      present: Incluye contenido inapropiado
+      past: Incluía contenido inapropiado
+    shares_solution:
+      present: Comparte la solución correcta
+      past: Compartía la solución correcta
   day: Día
   days: Días
   description: Descripción
@@ -176,6 +183,7 @@ es-CL:
     one: 1 mensaje
     other: '%{count} mensajes'
   message: Mensaje
+  message_deleted: Este mensaje fue eliminado porque %{motive}, lo cual infringe las %{forum_terms}.
   messages: Mensajes
   messages_error: Los mensajes anteriores no están disponibles en este momento. ¡Vuelve a intentar más tarde!
   messages_pluralized:
