@@ -203,4 +203,9 @@ module DiscussionsHelper
   def undo_upvote_icon
     fa_icon 'thumbs-up', type: :regular, text: t(:undo_upvote)
   end
+
+  def discussion_delete_message_link(discussion, message)
+    link_to fa_icon('trash-alt', type: :regular, class: 'fa-lg'), discussion_message_path(discussion, message, motive: :self_deleted),
+            method: :delete, data: { confirm: t(:are_you_sure, action: t(:destroy_message)) }, class: 'discussion-delete-message'
+  end
 end
