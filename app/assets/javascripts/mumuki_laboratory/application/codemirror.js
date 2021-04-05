@@ -86,8 +86,10 @@ mumuki.page.editors = [];
 
     $('.editor-reset').click(function (event) {
       event.stopPropagation();
+      const isMultipleFiles = $(event.target).parent().data('multiple-files');
       const selection = confirm(this.getAttribute('data-confirm'));
-      if(selection) resetEditor();
+      if (selection && !isMultipleFiles) resetEditor();
+      if (selection && isMultipleFiles) mumuki.multipleFileEditor.resetEditor();
     });
 
     $('.editor-resize').click(function () {

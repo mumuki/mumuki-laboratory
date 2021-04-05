@@ -135,6 +135,13 @@ mumuki.load(() => {
       });
     }
 
+    resetEditor() {
+      const defaultContents = this._getDataFromHiddenInput('#multifile-default-content');
+      mumuki.page.editors.each(function (i, editor) {
+        editor.getDoc().setValue(defaultContents[i].content);
+      });
+    }
+
     _addFile() {
       let name = prompt(this.locales.insert_file_name);
       const alreadyExists = this.files.toArray().some(it => it.name === name);
