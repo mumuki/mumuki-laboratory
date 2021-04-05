@@ -5,3 +5,10 @@
   padding: 0.5em 0;
   margin-bottom: 30px;
 }
+
+.mu-user-activity-week-selector {
+  &:hover {
+    background-color: $mu-color-separator;
+    text-decoration: none;
+  }
+}
