@@ -23,7 +23,11 @@
                 </a>
               <% end %>
             <% end %>
-            <%= discussion_delete_message_link @discussion, message %>
+            <% if message.from_user? current_user %>
+              <%= discussion_delete_message_link @discussion, message %>
+            <% else %>
+              <%= discussion_delete_message_dropdown @discussion, message %>
+            <% end %>
           <% end %>
           <% if should_show_approved_for?(current_user, message) %>
             <span class="discussion-message-approved selected">

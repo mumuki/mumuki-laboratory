@@ -208,4 +208,25 @@ module DiscussionsHelper
     link_to fa_icon('trash-alt', type: :regular, class: 'fa-lg'), discussion_message_path(discussion, message, motive: :self_deleted),
             method: :delete, data: { confirm: t(:are_you_sure, action: t(:destroy_message)) }, class: 'discussion-delete-message'
   end
+
+  def discussion_delete_message_dropdown(discussion, message)
+    %Q{
+      <div class="dropdown">
+        #{content_tag :div, fa_icon('trash-alt', type: :regular, class: 'fa-lg'), role: 'menu', 'data-toggle': 'dropdown',
+                      class: 'discussion-delete-message', id: 'deleteDiscussionDropdown'}
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="deleteDiscussionDropdown">
+          <li>
+            #{link_to fa_icon('times-circle', text: t("deletion_motive.#{:inappropriate_content}.present"), class: 'fa-fw fixed-icon'),
+                      discussion_message_path(discussion, message, motive: :inappropriate_content), method: :delete,
+                      role: 'menuitem', data: { confirm: t(:are_you_sure, action: t(:destroy_message)) } }
+          </li>
+          <li>
+            #{link_to fa_icon(:code, text: t("deletion_motive.#{:shares_solution}.present"), class: 'fa-fw fixed-icon'),
+                      discussion_message_path(discussion, message, motive: :shares_solution), method: :delete,
+                      role: 'menuitem', data: { confirm: t(:are_you_sure, action: t(:destroy_message)) } }
+          </li>
+        </ul>
+      </div>
+    }.html_safe
+  end
 end
