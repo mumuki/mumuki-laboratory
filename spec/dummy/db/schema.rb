@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210308145910) do
+ActiveRecord::Schema.define(version: 20210318195238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,14 +79,16 @@ ActiveRecord::Schema.define(version: 20210308145910) do
     t.bigint "organization_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.index ["organization_id"], name: "index_certificate_programs_on_organization_id"
   end
 
   create_table "certificates", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "certificate_program_id"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.datetime "started_at"
+    t.datetime "ended_at"
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -121,6 +123,8 @@ ActiveRecord::Schema.define(version: 20210308145910) do
     t.integer "organization_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "period_start"
+    t.datetime "period_end"
   end
 
   create_table "discussions", force: :cascade do |t|
@@ -510,6 +514,8 @@ ActiveRecord::Schema.define(version: 20210308145910) do
     t.datetime "forum_terms_accepted_at"
     t.boolean "banned_from_forum"
     t.boolean "uppercase_mode"
+    t.string "delete_account_token"
+    t.datetime "delete_account_token_expiration_date"
     t.index ["avatar_type", "avatar_id"], name: "index_users_on_avatar_type_and_avatar_id"
     t.index ["disabled_at"], name: "index_users_on_disabled_at"
     t.index ["last_organization_id"], name: "index_users_on_last_organization_id"
