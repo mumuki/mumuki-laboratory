@@ -20,10 +20,18 @@ mumuki.page.editors = [];
     $("#exercise_language_id").change(updateCodeMirrorLanguage);
   }
 
-  function resetEditor() {
+  function resetSimpleEditor() {
     mumuki.page.dynamicEditors.forEach(function (e) {
       setDefaultContent(e, $('#default_content').val());
     });
+  }
+
+  function resetEditor(isMultipleFiles) {
+    if (!isMultipleFiles) {
+      resetSimpleEditor();
+    } else {
+      mumuki.multipleFileEditor.resetEditor();
+    }
   }
 
   function formatContent() {
@@ -86,10 +94,8 @@ mumuki.page.editors = [];
 
     $('.editor-reset').click(function (event) {
       event.stopPropagation();
-      const isMultipleFiles = $(event.target).parent().data('multiple-files');
       const selection = confirm(this.getAttribute('data-confirm'));
-      if (selection && !isMultipleFiles) resetEditor();
-      if (selection && isMultipleFiles) mumuki.multipleFileEditor.resetEditor();
+      if (selection) resetEditor($(event.target).parent().data('multiple-files'));
     });
 
     $('.editor-resize').click(function () {
