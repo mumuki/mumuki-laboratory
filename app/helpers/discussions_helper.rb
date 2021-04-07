@@ -229,4 +229,8 @@ module DiscussionsHelper
       </div>
     }.html_safe
   end
+
+  def message_deleted_text(message)
+    t(:message_deleted, motive: t("deletion_motive.#{message.deletion_motive}.past").downcase, forum_terms: link_to_forum_terms).html_safe
+  end
 end

@@ -39,7 +39,11 @@
     </div>
     <div class="discussion-message-bubble-content">
       <div class="discussion-message-content">
-        <%= message.content_html %>
+        <% if message.deleted? %>
+          <em><%= message_deleted_text message %></em>
+        <% else %>
+          <%= message.content_html %>
+        <% end %>
       </div>
     </div>
   </div>
