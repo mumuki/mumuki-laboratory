@@ -41,6 +41,15 @@
       <div class="discussion-message-content">
         <% if message.deleted? %>
           <em><%= message_deleted_text message %></em>
+          <% if current_user&.moderator_here? %>
+            <a href='<%= "#deletedMessage#{message.id}" %>' data-toggle="collapse">
+              <%= t :show_message %>
+            </a>
+            <div id='<%= "deletedMessage#{message.id}" %>' class="collapse">
+              <hr>
+              <%= message.content_html %>
+            </div>
+          <% end %>
         <% else %>
           <%= message.content_html %>
         <% end %>

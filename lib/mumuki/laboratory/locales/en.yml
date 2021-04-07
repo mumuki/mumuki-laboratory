@@ -262,6 +262,7 @@ en:
   select_file: Select file
   sending_solution: Sending solution
   show: Show
+  show_message: Show message
   sign_in: Sign in
   sign_in_action: sign in
   sign_out: Sign Out

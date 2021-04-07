@@ -271,6 +271,7 @@ pt:
   send: Enviar
   sending_solution: Solução de envio
   show: Mostrar
+  show_message: Mostrar mensagem
   sign_in: Iniciar sessão
   sign_in_action: iniciar sessão
   sign_out: Fechar Sessão
