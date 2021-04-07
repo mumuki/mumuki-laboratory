@@ -71,6 +71,7 @@ es:
   created_exercises: Ejercicios Creados
   created_guides: Lecciones Creadas
   date: Fecha
+  deleted_by: Eliminado por %{deleter}
   deletion_motive:
     inappropriate_content:
       present: Incluye contenido inapropiado

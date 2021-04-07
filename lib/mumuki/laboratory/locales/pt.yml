@@ -67,6 +67,7 @@ pt:
   created_exercises: Exercícios criados
   created_guides: Lições criadas
   date: Data
+  deleted_by: Removido pelo
   deletion_motive:
     inappropriate_content:
       present: Inclui conteúdo impróprio

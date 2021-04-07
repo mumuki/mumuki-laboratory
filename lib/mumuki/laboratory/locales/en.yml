@@ -66,6 +66,7 @@ en:
   create_submission: Submit
   created_at: Created at
   date: Date
+  deleted_by: Deleted by %{deleter}
   deletion_motive:
     inappropriate_content:
       present: Includes inappropriate content
