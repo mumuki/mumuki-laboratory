@@ -10,7 +10,7 @@
           <%= t(:time_since, time: time_ago_in_words(message.created_at)) %>
         </span>
         <span class="actions">
-          <% if message.authorized? current_user %>
+          <% if message.authorized?(current_user) && !message.deleted? %>
             <% if current_user&.moderator_here? %>
               <a class="discussion-message-approved <%= 'selected' if message.approved? %>"
                  onclick="mumuki.Forum.discussionMessageToggleApprove('<%= approve_discussion_message_url(@discussion, message) %>', $(this))">
