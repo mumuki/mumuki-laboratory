@@ -31,6 +31,9 @@
 }
 .terms-card-body {
   padding: 1.25rem;
+  p {
+    text-align: justify;
+  }
 }
 
 .terms-acceptance {
@@ -41,5 +44,3 @@
     display: block
   }
 }
-
-
