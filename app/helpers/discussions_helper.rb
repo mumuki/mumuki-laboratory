@@ -211,8 +211,8 @@ module DiscussionsHelper
 
   def discussion_delete_message_dropdown(discussion, message)
     %Q{
-      <div class="dropdown">
-        #{content_tag :div, fa_icon('trash-alt', type: :regular, class: 'fa-lg'), role: 'menu', 'data-toggle': 'dropdown',
+      <span class="dropdown">
+        #{content_tag :span, fa_icon('trash-alt', type: :regular, class: 'fa-lg'), role: 'menu', 'data-toggle': 'dropdown',
                       class: 'discussion-delete-message', id: 'deleteDiscussionDropdown'}
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="deleteDiscussionDropdown">
           <li>
@@ -226,7 +226,7 @@ module DiscussionsHelper
                       role: 'menuitem', data: { confirm: t(:are_you_sure, action: t(:destroy_message)) } }
           </li>
         </ul>
-      </div>
+      </span>
     }.html_safe
   end
 
