@@ -319,7 +319,7 @@ en:
   user_data_updated: Your data was updated successfully
   username: Username
   view_details: View details
-  want_permissions: The next user requires permissions
+  want_permissions: The following user requires permissions for the organization
   we_miss_you: We miss you!
   week_of: Week of %{date}
   welcome: Welcome to %{name}!
