@@ -19,6 +19,6 @@ module WithStudentPathNavigation
   private
 
   def navigation_flows
-    [ContinueNavigation, RevisitNavigation, FinishNavigation]
+    [ContinueNavigation, RevisitNavigation, NextParentNavigation, FinishNavigation]
   end
 end
