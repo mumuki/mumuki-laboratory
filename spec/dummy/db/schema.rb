@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210318195238) do
+ActiveRecord::Schema.define(version: 20210330175706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -201,6 +201,13 @@ ActiveRecord::Schema.define(version: 20210318195238) do
     t.bigint "exam_registration_id", null: false
     t.index ["exam_id"], name: "index_exam_registrations_exams_on_exam_id"
     t.index ["exam_registration_id"], name: "index_exam_registrations_exams_on_exam_registration_id"
+  end
+
+  create_table "exam_registrations_users", id: false, force: :cascade do |t|
+    t.bigint "exam_registration_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["exam_registration_id"], name: "index_exam_registrations_users_on_exam_registration_id"
+    t.index ["user_id"], name: "index_exam_registrations_users_on_user_id"
   end
 
   create_table "exams", id: :serial, force: :cascade do |t|
