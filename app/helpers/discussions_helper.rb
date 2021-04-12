@@ -215,18 +215,20 @@ module DiscussionsHelper
         #{content_tag :span, fa_icon('trash-alt', type: :regular, class: 'fa-lg'), role: 'menu', 'data-toggle': 'dropdown',
                       class: 'discussion-delete-message', id: 'deleteDiscussionDropdown'}
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="deleteDiscussionDropdown">
-          <li>
-            #{link_to fa_icon('times-circle', text: t("deletion_motive.#{:inappropriate_content}.present"), class: 'fa-fw fixed-icon'),
-                      discussion_message_path(discussion, message, motive: :inappropriate_content), method: :delete,
-                      role: 'menuitem', data: { confirm: t(:are_you_sure, action: t(:destroy_message)) } }
-          </li>
-          <li>
-            #{link_to fa_icon(:code, text: t("deletion_motive.#{:shares_solution}.present"), class: 'fa-fw fixed-icon'),
-                      discussion_message_path(discussion, message, motive: :shares_solution), method: :delete,
-                      role: 'menuitem', data: { confirm: t(:are_you_sure, action: t(:destroy_message)) } }
-          </li>
+          #{discussion_delete_message_option discussion, message, :inappropriate_content, 'times-circle'}
+          #{discussion_delete_message_option discussion, message, :shares_solution, :code}
         </ul>
       </span>
+    }.html_safe
+  end
+
+  def discussion_delete_message_option(discussion, message, motive, icon)
+    %Q{
+      <li>
+        #{link_to fa_icon(icon, text: t("deletion_motive.#{motive}.present"), class: 'fa-fw fixed-icon'),
+                  discussion_message_path(discussion, message, motive: motive), method: :delete,
+                  role: 'menuitem', data: { confirm: t(:are_you_sure, action: t(:destroy_message)) } }
+      </li>
     }.html_safe
   end
 
