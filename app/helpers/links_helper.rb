@@ -48,7 +48,7 @@ module LinksHelper
     mail_to Organization.current.contact_email,
             Organization.current.contact_email,
             subject: I18n.t(:permissions),
-            body: permissions_help_email_body(current_user)
+            body: permissions_help_email_body(current_user, Organization.current)
   end
 
   def link_to_profile_terms

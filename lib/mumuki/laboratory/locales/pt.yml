@@ -329,7 +329,7 @@ pt:
   user_data_updated: Os seus dados foram atualizados corretamente
   username: Nome de usuário
   view_details: Ver detalhes
-  want_permissions: O próximo usuário requer permissões
+  want_permissions: O próximo usuário requer permissões para a organização
   week_of: Semana de %{date}
   welcome: Convidamos você a {name}!
   working: Processamento

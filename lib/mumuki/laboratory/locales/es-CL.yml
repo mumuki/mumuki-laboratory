@@ -330,7 +330,7 @@ es-CL:
   user: Usuario
   username: Nombre de usuario
   view_details: Ver detalles
-  want_permissions: El siguiente usuario requiere permisos
+  want_permissions: El siguiente usuario requiere permisos para la organización
   we_miss_you: ¡Te extrañamos!
   week_of: Semana del %{date}
   will_paginate:
