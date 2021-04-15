@@ -76,6 +76,9 @@ pt:
     shares_solution:
       present: Compartilhe a solução correta
       past: Compartilhou a solução correta
+    discloses_personal_information:
+      present: Divulga informações pessoais
+      past: Divulgar informações pessoais
   day: Dia
   days: Dias
   description: Descrição

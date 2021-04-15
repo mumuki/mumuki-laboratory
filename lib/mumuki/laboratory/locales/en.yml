@@ -75,6 +75,9 @@ en:
     shares_solution:
       present: Shares the correct solution
       past: Shared the correct solution
+    discloses_personal_information:
+      present: Discloses personal information
+      past: Disclosed personal information
   description: Description
   destroy: Destroy
   destroy_message: delete the message

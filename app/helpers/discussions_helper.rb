@@ -217,6 +217,7 @@ module DiscussionsHelper
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="deleteDiscussionDropdown">
           #{discussion_delete_message_option discussion, message, :inappropriate_content, 'times-circle'}
           #{discussion_delete_message_option discussion, message, :shares_solution, :code}
+          #{discussion_delete_message_option discussion, message, :discloses_personal_information, 'user-tag'}
         </ul>
       </span>
     }.html_safe

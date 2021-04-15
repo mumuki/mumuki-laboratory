@@ -80,6 +80,9 @@ es:
     shares_solution:
       present: Comparte la solución correcta
       past: Compartía la solución correcta
+    discloses_personal_information:
+      present: Divulga información personal
+      past: Divulgaba información personal
   day: Día
   days: Días
   description: Descripción
