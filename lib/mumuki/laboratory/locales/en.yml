@@ -67,6 +67,7 @@ en:
   created_at: Created at
   date: Date
   deleted_by: Deleted by %{deleter}
+  deleted_message_warning: If you repeateadly violate these or other rules, you may be prohibited from accessing the forum or you may suffer more severe consequences, such as being expulsed from the course.
   deletion_motive:
     inappropriate_content:
       present: Includes inappropriate content

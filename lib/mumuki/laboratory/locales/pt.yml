@@ -68,6 +68,7 @@ pt:
   created_guides: Lições criadas
   date: Data
   deleted_by: Removido pelo
+  deleted_message_warning: Se você violar repetidamente essas ou outras regras da Área de Consulta, seu acesso a ela pode ser proibido ou você pode sofrer consequências mais graves, como a expulsão do curso.
   deletion_motive:
     inappropriate_content:
       present: Inclui conteúdo impróprio

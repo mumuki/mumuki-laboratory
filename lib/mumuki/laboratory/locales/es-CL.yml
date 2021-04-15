@@ -66,6 +66,7 @@ es-CL:
   created_guides: Lecciones Creadas
   date: Fecha
   deleted_by: Eliminado por %{deleter}
+  deleted_message_warning: Si infringes reiteradamente estas u otras reglas del Espacio de Consultas, se te puede prohibir el acceso al mismo o podrás sufrir consecuencias más severas, como la expulsión del curso.
   deletion_motive:
     inappropriate_content:
       present: Incluye contenido inapropiado

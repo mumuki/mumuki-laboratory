@@ -41,6 +41,9 @@
       <div class="discussion-message-content">
         <% if message.deleted? %>
           <em><%= message_deleted_text message %></em>
+          <% if message.from_user? current_user %>
+            <p><%= t :deleted_message_warning %></p>
+          <% end %>
           <% if current_user&.moderator_here? %>
             <hr>
             <%= t :deleted_by, deleter: message.deleted_by.name %>
