@@ -68,6 +68,7 @@ Rails.application.routes.draw do
       get :discussions
       get :activity
       get :certificates
+      get :exam_authorizations
 
     end
 

@@ -8,6 +8,7 @@ class ExamAuthorizationRequestsController < ApplicationController
     authorization_request = ExamAuthorizationRequest.create! authorization_request_params
     current_user.read_notification! authorization_request.exam_registration
     flash.notice = I18n.t :exam_authorization_request_created
+    redirect_to root_path
   end
 
   def update

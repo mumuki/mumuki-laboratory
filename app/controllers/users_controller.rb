@@ -38,6 +38,10 @@ class UsersController < ApplicationController
     @certificates ||= current_user.certificates_in_organization
   end
 
+  def exam_authorizations
+    @exam_authorization_requests ||= ExamAuthorizationRequest.where(user: current_user)
+  end
+
   def unsubscribe
     user_id = User.unsubscription_verifier.verify(params[:id])
     User.find(user_id).unsubscribe_from_reminders!
