@@ -92,8 +92,7 @@ feature 'Terms Flow', organization_workspace: :test do
       end
     end
 
-    context 'with unaccepted role terms' do
-
+    context 'with unaccepted role terms', :toast_interferes_with_view do
       context 'visit forum' do
         let(:terms_path) { '/discussions/terms' }
         before { test_organization.update! forum_enabled: true }
