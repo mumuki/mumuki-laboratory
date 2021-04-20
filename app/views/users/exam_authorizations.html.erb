@@ -25,7 +25,7 @@
                   <span><strong><%= it.exam_registration.description %></strong> - <small><%= l(it.exam.start_time, format: :long) %></small></span>
                 </button>
               </h2>
-              <div id="<%= "exam_authorization_collapse_item_#{index}" %>" class="accordion-collapse collapse show" aria-labelledby="<%= "exam_authorization_accordion_item_#{index}" %>" data-bs-parent="#exam_authorization_accordion">
+              <div id="<%= "exam_authorization_collapse_item_#{index}" %>" class="accordion-collapse collapse" aria-labelledby="<%= "exam_authorization_accordion_item_#{index}" %>" data-bs-parent="#exam_authorization_accordion">
                 <div class="accordion-body p-0">
                   <div class="m-0 border-bottom-0 border-top-0 border-right-0 bs-callout bs-callout-<%= it.icon[:type] %>">
                     <p><%= render partial: "exam_authorization_requests/#{it.status}", locals: { authorization_request: it } %></p>
