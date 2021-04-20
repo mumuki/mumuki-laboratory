@@ -1,6 +1,6 @@
 module DiscussionsHelper
   def read_discussions_link(item)
-    discussions_link others_discussions_icon(t(:solve_your_doubts)), item_discussions_path(item, default_discussions_params)
+    discussions_link others_discussions_icon(t(:solve_your_doubts)), item_discussions_path(item, default_discussions_params), class: 'dropdown-item'
   end
 
   def kids_read_discussions_link(item)
@@ -8,11 +8,11 @@ module DiscussionsHelper
   end
 
   def solve_discussions_link
-    discussions_link others_discussions_icon(t(:solve_doubts)), discussions_path(solve_discussion_params_for(current_user))
+    discussions_link others_discussions_icon(t(:solve_doubts)), discussions_path(solve_discussion_params_for(current_user)), class: 'dropdown-item'
   end
 
   def user_discussions_link
-    discussions_link(user_discussions_icon(t(:my_doubts)), discussions_user_path) if current_user.watched_discussions.present?
+    discussions_link(user_discussions_icon(t(:my_doubts)), discussions_user_path, class: 'dropdown-item') if current_user.watched_discussions.present?
   end
 
   def others_discussions_icon(text)
@@ -57,18 +57,6 @@ module DiscussionsHelper
       <span>
         #{ t(:forum_terms_link, terms_link: link_to_forum_terms).html_safe }
       </span>
-    }.html_safe
-  end
-
-  def discussions_link_with_teaser(item)
-    %Q{
-      <div>
-        <h3>#{t(:discussions)}</h3>
-        <p>
-          #{t(:solve_your_doubts_teaser)}
-          #{read_discussions_link(item)}
-        </p>
-      </div>
     }.html_safe
   end
 
@@ -148,7 +136,7 @@ module DiscussionsHelper
     if filters.present?
       %Q{
         <div class="dropdown discussions-toolbar-filter">
-          <a id="dropdown-#{label}" data-toggle="dropdown" role="menu">
+          <a id="dropdown-#{label}" data-bs-toggle="dropdown" role="menu">
             #{t label} #{fa_icon :'caret-down', class: 'fa-xs'}
           </a>
           <ul class="dropdown-menu" aria-labelledby="dropdown-#{label}">
@@ -161,17 +149,17 @@ module DiscussionsHelper
   end
 
   def discussion_filter_list(label, filters, &block)
-    filters.map { |it| discussion_filter_item(label, it, &block) }.join("\n")
+    filters.map { |it| discussion_filter_item(label, it, 'dropdown-item', &block) }.join("\n")
   end
 
-  def discussion_filter_item(label, filter, &block)
-    content_tag(:li, discussion_filter_link(label, filter, &block), class: ('selected' if discussion_filter_selected?(label, filter)))
+  def discussion_filter_item(label, filter, link_class=nil, &block)
+    content_tag(:li, discussion_filter_link(label, filter, link_class, &block), class: ('selected' if discussion_filter_selected?(label, filter)))
   end
 
   def discussion_filter_unselect_item(label, can_select_all)
     if can_select_all
       content_tag(:li,
-                  link_to(t(:all), discussion_filter_params_without_page.except(label)),
+                  link_to(t(:all), discussion_filter_params_without_page.except(label), class: 'dropdown-item'),
                   class: ('selected' unless discussion_filter_params.include?(label)))
     end
   end
@@ -180,8 +168,8 @@ module DiscussionsHelper
     filter.to_s == discussion_filter_params[label]
   end
 
-  def discussion_filter_link(label, filter, &block)
-    link_to capture(filter, &block), discussion_filter_params_without_page.merge(Hash[label, filter])
+  def discussion_filter_link(label, filter, clazz, &block)
+    link_to capture(filter, &block), discussion_filter_params_without_page.merge(Hash[label, filter]), class: clazz
   end
 
   def discussion_info(discussion)
@@ -198,5 +186,21 @@ module DiscussionsHelper
 
   def discussion_user_name(user)
     user.name
+  end
+
+  def subscription_icon
+    fa_icon :bell, text: t(:subscribe)
+  end
+
+  def unsubscription_icon
+    fa_icon :bell, type: :regular, text: t(:unsubscribe)
+  end
+
+  def upvote_icon
+    fa_icon 'thumbs-up', text: t(:upvote)
+  end
+
+  def undo_upvote_icon
+    fa_icon 'thumbs-up', type: :regular, text: t(:undo_upvote)
   end
 end

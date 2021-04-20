@@ -79,12 +79,12 @@ mumuki.load(() => {
 
       this._$speechTabs.each((i) => {
         const $tab = $(this._$speechTabs[i]);
-        if ($tab.data('target')) {
+        if ($tab.data('bs-target')) {
           $tab.click(() => {
             this._$speechTabs.removeClass('active');
             $tab.addClass('active');
             this._$texts.hide();
-            this.$characterSpeechBubbleNormal.children('.' + $tab.data('target')).show();
+            this.$characterSpeechBubbleNormal.children('.' + $tab.data('bs-target')).show();
             this._updateSpeechParagraphs();
           });
         }
@@ -225,7 +225,7 @@ mumuki.load(() => {
     }
 
     _getSelectedTabName() {
-      return this._$speechTabs.filter('.active').data('target') || 'description';
+      return this._$speechTabs.filter('.active').data('bs-target') || 'description';
     }
 
   }

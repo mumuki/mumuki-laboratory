@@ -51,10 +51,13 @@ mumuki.Kids = class {
   }
 
   showContext() {
-    this.$contextModal.modal({
-      backdrop: 'static',
-      keyboard: false
-    });
+    let context = document.getElementById('mu-kids-context');
+    if (context) {
+      new bootstrap.Modal(context, {
+        backdrop: 'static',
+        keyboard: false
+      }).show();
+    }
   }
 
   showNonAbortedPopup(data, animation_name, open_modal_delay_ms = 0) {
@@ -66,7 +69,7 @@ mumuki.Kids = class {
 
   showAbortedPopup(_data) {
     this.submitButton.disable();
-    this.$resultsAbortedModal.modal();
+    new bootstrap.Modal(document.getElementById('kids-results-aborted')).show();
   }
 
   showOverlay() {
@@ -114,11 +117,12 @@ mumuki.Kids = class {
   // =================
 
   _openSubmissionResultModal(data) {
-    this.$resultsModal.modal({ backdrop: 'static', keyboard: false });
+    let modal = new bootstrap.Modal(document.getElementById('kids-results'), { backdrop: 'static', keyboard: false });
+    modal.show();
     this.$resultsModal.find('.modal-header').first().html(data.title_html);
     mumuki.gamification.currentLevelProgression.setExpMessage(data);
     this.$resultsModal.find('.modal-footer').first().html(data.button_html);
-    $('.mu-close-modal').click(() => this.$resultsModal.modal('hide'));
+    $('.mu-close-modal').click(() => modal.hide());
     this.onSubmissionResultModalOpen(data);
   }
 

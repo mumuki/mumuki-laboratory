@@ -3,9 +3,9 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <div class="hint-box <%= 'hidden' if exercise.hint.blank? %>">
+    <div class="hint-box <%= 'd-none' if exercise.hint.blank? %>">
       <% if exercise.hint.present? %>
-        <a data-toggle="collapse" href="#hint-section" class="text-info">
+        <a data-bs-toggle="collapse" href="#hint-section" class="text-info">
           <%= fa_icon 'lightbulb', type: :regular %> <%= t :need_a_hint %>
         </a>
 

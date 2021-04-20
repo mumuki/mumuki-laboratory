@@ -35,14 +35,14 @@ mumuki.upload = (() => {
     }
 
     showFileExceedsMaxSize() {
-      this.$uploadFileLimitExceeded.removeClass('hidden');
+      this.$uploadFileLimitExceeded.removeClass('d-none');
       this.$uploadLabel.text(this.$uploadLabelText);
       this.$uploadIcon.addClass('fa-upload').removeClass('fa-file-alt');
       this.$btnSubmit.addClass('disabled');
     }
 
     allowSubmissionFor(filename) {
-      this.$uploadFileLimitExceeded.addClass('hidden');
+      this.$uploadFileLimitExceeded.addClass('d-none');
       this.$uploadLabel.text(filename);
       this.$uploadIcon.removeClass('fa-upload').addClass('fa-file-alt');
       this.$btnSubmit.removeClass('disabled');

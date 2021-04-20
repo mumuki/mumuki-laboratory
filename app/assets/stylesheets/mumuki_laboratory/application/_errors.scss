@@ -19,7 +19,7 @@
         width: calc(100%);
         object-position: 50% 50%;
         overflow: hidden;
-        @media (max-width: $screen-lg) {
+        @include media-breakpoint-down(xl) {
           object-fit: none;
         }
       }

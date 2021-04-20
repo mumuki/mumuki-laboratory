@@ -7,6 +7,23 @@ $discussion-button-color: #fafafa;
 $toolbar-filter-color: #808080;
 $moderator-badge-color: #dd9900;
 
+.discussions {
+  margin-bottom: 20px;
+
+  a {
+    color: unset;
+    text-decoration: unset;
+  }
+}
+
+.mu-discussion-accordion button {
+  color: $primary;
+
+  &:not(.collapsed) {
+    background-color: $mu-color-highlight-background;
+  }
+}
+
 .discussions-list {
   margin: 30px 0;
   .discussion {
@@ -20,8 +37,6 @@ $moderator-badge-color: #dd9900;
     border: 1px solid $discussion-message-border-color;
   }
   a {
-    color: unset;
-    text-decoration: unset;
     &:not(:last-child) > .discussion {
       border-bottom: 0;
     }
@@ -40,17 +55,6 @@ $moderator-badge-color: #dd9900;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-  }
-
-  .discussion-pagination .pagination li {
-    a, span {
-      background-color: lighten($brand-primary, 10%);
-    }
-    &:hover, &.active, &.active:hover {
-      a, span {
-        background-color: $brand-primary;
-      }
-    }
   }
 
   .discussion-language-icon {
@@ -139,6 +143,10 @@ $moderator-badge-color: #dd9900;
   border-bottom: none;
   .discussions-toolbar-status {
     float: left;
+
+    a {
+      text-decoration: unset;
+    }
     li {
       text-decoration: none;
       display: inline;
@@ -159,6 +167,11 @@ $moderator-badge-color: #dd9900;
     float: right;
     margin-right: 20px;
     cursor: pointer;
+
+    > a {
+      text-decoration: unset;
+      color: $primary;
+    }
     li.selected {
       a {
         font-weight: bold;
@@ -190,26 +203,6 @@ $moderator-badge-color: #dd9900;
   padding-inline: 5px;
 }
 
-.discussion-user-menu {
-  a {
-    padding: 5px 10px;
-    font-size: 15px;
-    line-height: 20px;
-    border: 1px solid rgba(27, 31, 35, 0.2);
-    border-radius: 0.25em;
-    background-color: $discussion-button-color;
-    font-weight: bold;
-    color: black;
-    cursor: pointer;
-    margin-left: 10px;
-    &:hover {
-      text-decoration: none;
-      background-color: darken($discussion-button-color, 5%);
-      color: black;
-    }
-  }
-}
-
 .discussion-context {
   margin-top: 40px;
 }
@@ -231,10 +224,6 @@ $moderator-badge-color: #dd9900;
     margin-right: 2px;
     font-size: 18px;
   }
-}
-
-.discussion-tabs {
-  margin-top: 20px;
 }
 
 .discussion-info {
@@ -263,7 +252,7 @@ $moderator-badge-color: #dd9900;
   white-space: nowrap;
   .CodeMirror {
     border: unset;
-    color: $brand-primary;
+    color: $primary;
     font-family: $font-family-sans-serif;
     padding: 15px;
   }
@@ -274,16 +263,6 @@ $moderator-badge-color: #dd9900;
   }
   &:focus {
     border-color: white;
-  }
-}
-
-summary.discussion-summary {
-  display: list-item;
-  font-size: 29px;
-  outline: 0;
-  cursor: pointer;
-  .discussion-exercise-title {
-    display: inline;
   }
 }
 
@@ -357,7 +336,7 @@ summary.discussion-summary {
           }
           &:hover, &.selected {
             i {
-              color: $brand-success;
+              color: $success;
             }
           }
         }
@@ -380,9 +359,9 @@ summary.discussion-summary {
           }
           &:hover, &.selected {
             i {
-              color: $brand-primary;
+              color: $primary;
               &:after {
-                background-color: $brand-primary;
+                background-color: $primary;
               }
             }
           }
@@ -413,10 +392,10 @@ summary.discussion-summary {
 }
 
 $statuses: (
-  closed: ($brand-danger white $brand-danger),
+  closed: ($danger white $danger),
   opened: (white #333333 #eaeaea),
-  solved: ($brand-success white $brand-success),
-  pending_review: ($brand-success white $brand-success)
+  solved: ($success white $success),
+  pending_review: ($success white $success)
 );
 
 @each $status, $style in $statuses {
@@ -435,10 +414,6 @@ $statuses: (
       background-color: darken($background-color, 3%);
     }
   }
-}
-
-.no-margin {
-  margin: 0 !important;
 }
 
 .discussion-requires-attention {

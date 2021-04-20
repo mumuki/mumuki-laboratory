@@ -53,10 +53,9 @@ module ExerciseInputHelper
     waiting_text = t(options.waiting_t) if options.waiting_t.present?
     %Q{
       <div class="btn-submit-container">
-        <button class="btn btn-success btn-block btn-submit #{options.classes}"
+        <button class="btn btn-complementary w-100 btn-submit #{options.classes}"
                        data-waiting="#{waiting_text}">
-          #{fa_icon 'play'}
-          #{text} #{remaining_attempts_text(assignment)}
+          #{fa_icon 'play', text: ([text, remaining_attempts_text(assignment)].join('')).html_safe}
        </button>
       </div>
     }.html_safe

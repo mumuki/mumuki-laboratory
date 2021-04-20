@@ -31,7 +31,7 @@
 <% if !@stats.try(:done?) && @next_exercise %>
   <div class="text-box">
     <div class="actions">
-      <%= link_to t(lesson_practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-success' %>
+      <%= link_to t(lesson_practice_key_for(@stats)), exercise_path(@next_exercise), class: 'btn btn-complementary' %>
     </div>
   </div>
 <% end %>

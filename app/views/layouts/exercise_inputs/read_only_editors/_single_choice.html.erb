@@ -1,8 +1,8 @@
-<div class="form-group">
+<div class="mu-form">
   <% exercise.pretty_choices.each do |choice| %>
-    <div class="field radio complementary complementary-radio">
-      <%= radio_button_tag :content, choice.value, checked?(choice, content), disabled: true, class: 'mu-read-only' %>
-      <%= label_tag(choice.id, choice.text) %>
+    <div class="form-check">
+      <%= radio_button_tag :content, choice.value, checked?(choice, content), disabled: true, class: 'form-check-input mu-read-only-input' %>
+      <%= label_tag(choice.id, choice.text, class: 'form-check-label') %>
     </div>
   <% end %>
 </div>

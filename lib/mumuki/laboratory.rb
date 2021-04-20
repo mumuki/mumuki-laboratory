@@ -14,7 +14,7 @@ require 'mumukit/nuntius'
 require 'mumukit/platform'
 
 require 'kaminari'
-require 'bootstrap-kaminari-views'
+require 'bootstrap5-kaminari-views'
 
 Mumukit::Nuntius.configure do |config|
   config.app_name = 'laboratory'

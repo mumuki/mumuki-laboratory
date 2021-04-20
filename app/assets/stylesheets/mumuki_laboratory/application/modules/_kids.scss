@@ -1,4 +1,4 @@
-$kids-height: calc(100vh - 80px - 30px) !default;
+$kids-height: calc(100vh - 100px - 30px) !default;
 
 $kids-characters-height: 120px;
 $kids-speech-arrow-size: 10px;
@@ -18,6 +18,12 @@ $kids-speech-tabs-width: 40px;
   height: $kids-height;
   min-height: $kids-height;
   max-height: $kids-height;
+  @include media-breakpoint-down(lg) {
+    //slightly larger navbar on lg, xl, xxl
+    height: calc(#{$kids-height} + 30px);
+    min-height: calc(#{$kids-height} + 30px);
+    max-height: calc(#{$kids-height} + 30px);
+  }
 
   display: flex;
   flex-direction: row;
@@ -34,6 +40,10 @@ $kids-speech-tabs-width: 40px;
   .mu-kids-states {
     padding-bottom: 15px;
     height: $kids-height;
+    @include media-breakpoint-down(lg) {
+      //slightly larger navbar on lg, xl, xxl
+      height: calc(#{$kids-height} + 30px);
+    }
   }
   .mu-kids-character {
     padding: 15px;
@@ -52,6 +62,11 @@ $kids-speech-tabs-width: 40px;
   }
   .mu-kids-blocks {
     height: calc(#{$kids-height} - #{$kids-characters-height} - 30px);
+    @include media-breakpoint-down(lg) {
+      //slightly larger navbar on lg, xl, xxl
+      height: calc(#{$kids-height} - #{$kids-characters-height});
+    }
+
     margin-left: 0;
     margin-right: 0;
     position: relative;
@@ -127,7 +142,7 @@ $kids-speech-tabs-width: 40px;
 
       }
 
-      @media screen and (max-width: $screen-sm-max) {
+      @include media-breakpoint-only(md) {
         h4 {
           &.text-warning {
             font-size: 18px;
@@ -142,7 +157,7 @@ $kids-speech-tabs-width: 40px;
         }
       }
 
-      @media screen and (max-width: $screen-xs-max) {
+      @include media-breakpoint-down(sm) {
         h4 {
           font-size: 20px;
           &.text-warning {
@@ -500,7 +515,7 @@ $statuses-glow-animation: (
   }
 }
 
-@media screen and (max-height: $screen-xs-min) {
+@media screen and (max-height: map_get($grid-breakpoints, sm)) {
   .mu-kids-exercise {
     height: 100vh;
     min-height: 100vh;

@@ -25,14 +25,14 @@ Gem::Specification.new do |s|
   s.add_dependency 'mumukit-auth', '~> 7.8'
   s.add_dependency 'mumukit-content-type', '~> 1.9'
 
-  s.add_dependency 'mumuki-styles', '~> 2.0'
+  s.add_dependency 'mumuki-styles', '~> 3.0'
   s.add_dependency 'muvment', '~> 1.2'
 
   s.add_dependency 'rack', '~> 2.1'
   s.add_dependency 'omniauth', '~> 1.4'
 
   s.add_dependency 'kaminari', '~> 0.16'
-  s.add_dependency 'bootstrap-kaminari-views'
+  s.add_dependency 'bootstrap5-kaminari-views', '~> 0.0.1'
 
   s.add_dependency 'font_awesome5_rails', '~> 1.3'
   s.add_dependency 'momentjs-rails', '~> 2.10'

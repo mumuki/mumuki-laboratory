@@ -16,7 +16,7 @@
         <% if should_render_need_help_dropdown?(assignment) %>
           <div class="notify-problem-box">
             <div class="dropdown">
-              <%= link_to fa_icon(:'question-circle', text: t(:need_help)), "", {'data-toggle': 'dropdown'} %>
+              <%= link_to fa_icon(:'question-circle', text: t(:need_help)), "", {'data-bs-toggle': 'dropdown'} %>
               <ul class="dropdown-menu" aria-labelledby="helpDropdown">
                 <li>
                   <%= read_discussions_link(@exercise) %>

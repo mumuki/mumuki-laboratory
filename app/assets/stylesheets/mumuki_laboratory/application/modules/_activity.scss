@@ -2,11 +2,13 @@
   text-align: center;
   border-radius: 10px;
 
-  &.jumbotron {
-    padding: 0.5em 0;
-  }
+  padding: 0.5em 0;
+  margin-bottom: 30px;
 }
 
-.mu-user-activity-selector {
-  padding-top: 15px;
+.mu-user-activity-week-selector {
+  &:hover {
+    background-color: $mu-color-separator;
+    text-decoration: none;
+  }
 }

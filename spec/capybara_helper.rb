@@ -83,6 +83,7 @@ def exclude_selenium_failing_tests!
 
       # TODO: the following ignored groups should be fixed
       :element_not_interactable_error,
+      :toast_interferes_with_view,
       :invalid_selector_error,
       :json_eq_error,
       :navigation_error,

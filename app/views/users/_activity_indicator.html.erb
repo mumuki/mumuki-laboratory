@@ -1,17 +1,17 @@
-<div class="row">
-  <div class="col-md-12">
-    <h3><%= title %></h3>
-  </div>
-</div>
-<div class="row">
-  <% stats.each do |s| %>
-    <div class="col-md-6">
-      <div class="jumbotron mu-user-activity-indicator">
-        <h1>
-          <%= s[:value] %>
-          <p><%= s[:name].downcase %></p>
-        </h1>
-      </div>
+<div class="mb-3">
+  <div class="row">
+    <div class="col-md-12">
+      <h3><%= title %></h3>
     </div>
-  <% end %>
+  </div>
+  <div class="row">
+    <% stats.each do |s| %>
+      <div class="col-md-6">
+        <div class="mu-user-activity-indicator bg-light">
+          <h1 class="display-1"><%= s[:value] %></h1>
+          <h4><%= s[:name].downcase %></h4>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

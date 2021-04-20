@@ -4,7 +4,7 @@ describe('KidsButton', () => {
   fixture.set(`
       <div class="mu-kindergarten">
           <button class="mu-kids-button">Click me<button>
-          <div class="mu-kids-overlay" style="display: none"></div>
+          <div class="mu-kids-overlay d-none"></div>
       </div>
   `);
 
@@ -18,7 +18,7 @@ describe('KidsButton', () => {
   });
 
   it('overlay is hidden by default', () => {
-    expect(mumuki.kids.$overlay.css('display')).toBe('none');
+    expect(mumuki.kids.$overlay.hasClass('d-none'));
   });
 
   it('call showOverlay on wait', () => {

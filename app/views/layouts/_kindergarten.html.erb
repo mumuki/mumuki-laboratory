@@ -5,11 +5,13 @@
       <span class="mu-kindergarten-exercise-description"><%= exercise.description_task %></span>
       <div class="mu-kindergarten-buttons">
         <button class="mu-kindergarten-show-context" onclick="mumuki.kids.context.show()">
-          <img class="mu-kindergarten-button-image" src="https://mumuki.io/static/show-context.svg" alt="" title="<%= t :see_context %>">
+          <img class="mu-kindergarten-button-image" src="https://mumuki.io/static/show-context.svg"
+               alt="" data-bs-toggle="tooltip" title="<%= t :see_context %>">
         </button>
         <button class="mu-kindergarten-play-description" onclick="mumuki.kids.speech.click('.mu-kindergarten-exercise-description', '<%= exercise.locale %>')">
-          <img class="mu-kindergarten-button-image mu-kindergarten-play" src="https://mumuki.io/static/audio-play.svg" alt="" title="<%= t :listen_statement %>">
-          <img class="mu-kindergarten-button-image mu-kindergarten-stop hidden" src="https://mumuki.io/static/audio-stop.svg" alt="">
+          <img class="mu-kindergarten-button-image mu-kindergarten-play" src="https://mumuki.io/static/audio-play.svg"
+               alt="" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<%= t :listen_statement %>">
+          <img class="mu-kindergarten-button-image mu-kindergarten-stop d-none" src="https://mumuki.io/static/audio-stop.svg" alt="">
         </button>
       </div>
     </div>
@@ -17,7 +19,8 @@
   <div class="mu-kindergarten-hint">
     <% if exercise.hint? %>
       <button class="mu-hint-light" onclick="mumuki.kids.hint.toggle()">
-        <img class="mu-hint-light on" src="https://mumuki.io/static/lamparita_on.svg" alt="" title="<%= t :need_a_hint %>">
+        <img class="mu-hint-light on" src="https://mumuki.io/static/lamparita_on.svg"
+             alt="" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= t :need_a_hint %>">
       </button>
       <div class="mu-kindergarten-light-speech-bubble">
         <span class="mu-kindergarten-exercise-hint">
@@ -28,11 +31,12 @@
         </button>
       </div>
     <% else %>
-      <img class="mu-hint-light off" src="https://mumuki.io/static/lamparita_off.svg" alt="" title="<%= t :no_need_hint %>">
+      <img class="mu-hint-light off" src="https://mumuki.io/static/lamparita_off.svg"
+           alt="" data-bs-toggle="tooltip" data-bs-placement="left" title="<%= t :no_need_hint %>">
     <% end %>
   </div>
 </div>
 
-<div id="mu-kids-discussion-link-html" class="hidden">
+<div id="mu-kids-discussion-link-html" class="d-none">
   <%= kids_read_discussions_link(exercise) %>
 </div>

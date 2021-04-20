@@ -66,15 +66,15 @@
         cursor: pointer;
         &.active {
           border-left: 3px solid transparent;
-          border-color: darken($brand-primary, 5%);
+          border-color: darken($primary, 5%);
           margin-left: -3px;
         }
         a {
-          color: $brand-primary;
+          color: $primary;
           &:hover {
             text-decoration: none;
           }
-          @media (min-width: $container-lg) {
+          @include media-breakpoint-up(xl) {
             font-size: 1.1em;
           }
         }

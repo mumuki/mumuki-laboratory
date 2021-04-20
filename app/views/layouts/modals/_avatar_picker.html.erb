@@ -2,11 +2,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span></button>
-        <div class="modal-title">
-          <h3 class="text-left" id="gridSystemModalLabel"><%= t :choose_your_avatar %> </h3>
-        </div>
+        <h3 class="modal-title"><%= t :choose_your_avatar %></h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <%= render partial: 'avatar_list' %>

@@ -20,18 +20,17 @@
         <%= t :exam_registration_explanation_html, date: l(@registration.end_time, format: :long) %>
       </p>
     </div>
-    <%= form_for @authorization_request do |f| %>
+    <%= form_for @authorization_request, html: {class: 'mu-form'} do |f| %>
       <%= f.hidden_field :exam_registration_id, value: @registration.id %>
-      <div class="form-group">
-        <%= f.label :exam_id, t(:exam_registration_choose_exam) %>
-        <% @registration.exams.each do |exam| %>
-          <div class="field radio complementary complementary-radio">
-            <%= f.radio_button(:exam_id, exam.id, id: exam.id, required: true, checked: @authorization_request.exam_id == exam.id) %>
-            <%= label_tag exam.id, l(exam.start_time, format: :long) %>
-          </div>
-        <% end %>
-      </div>
-      <button class="btn btn-success"> <%= t :save %> </button>
+      <%= f.label :exam_id, t(:exam_registration_choose_exam) %>
+      <% @registration.exams.each do |exam| %>
+        <div class="form-check">
+          <%= f.radio_button(:exam_id, exam.id, id: exam.id, required: true, class: 'form-check-input mu-read-only-input',
+                             checked: @authorization_request.exam_id == exam.id) %>
+          <%= label_tag exam.id, l(exam.start_time, format: :long), class: 'form-check-label' %>
+        </div>
+      <% end %>
+      <button class="btn btn-complementary"> <%= t :save %> </button>
     <% end %>
   </div>
 </div>

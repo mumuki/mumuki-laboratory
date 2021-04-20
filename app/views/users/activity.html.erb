@@ -2,36 +2,36 @@
   <%= breadcrumbs_for_my_account %>
 <% end %>
 
-<%= render partial: 'layouts/user_menu' %>
+<div class="row">
+  <%= render partial: 'layouts/user_menu' %>
 
-<div class="col-md-9 mu-tab-body">
-  <div class="mu-user-header">
-    <h1><%= t(:activity) %></h1>
-  </div>
-  <div class="col-md-8">
-    <%= render partial: 'activity_indicator',
-               locals: {
-                 title: t(:exercises),
-                 stats: exercises_activity_stats
-               } %>
+  <div class="col-md-9">
+    <div class="mu-user-header">
+      <h1><%= t(:activity) %></h1>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 mu-tab-body">
+        <%= render partial: 'activity_indicator',
+                   locals: {
+                     title: t(:exercises),
+                     stats: exercises_activity_stats
+                   } %>
 
-    <%= render partial: 'activity_indicator',
-               locals: {
-                 title: t(:forum),
-                 stats: messages_activity_stats
-               } %>
-  </div>
-
-  <div class="col-md-4">
-    <ul class="nav nav-pills nav-stacked mu-user-activity-selector">
-      <li <%= mark_period_if_active nil %>>
-        <%= link_to t(:total), activity_user_path %>
-      </li>
-      <% activity_selector_week_range_for.each do |(week_start, week_end)| %>
-        <li <%= mark_period_if_active week_start %>>
-          <%= link_to t(:week_of, date: l(week_start)), activity_user_path(date_from: week_start, date_to: week_end) %>
-        </li>
-      <% end %>
-    </ul>
+        <%= render partial: 'activity_indicator',
+                   locals: {
+                     title: t(:forum),
+                     stats: messages_activity_stats
+                   } %>
+      </div>
+      <div class="col-lg-4 mu-tab-body">
+        <div class="nav nav-pills flex-column">
+          <%= link_to t(:total), activity_user_path, class: "mu-user-activity-week-selector #{mark_period_if_active(nil)}" %>
+          <% activity_selector_week_range_for.each do |(week_start, week_end)| %>
+            <%= link_to t(:week_of, date: l(week_start)), activity_user_path(date_from: week_start, date_to: week_end),
+                        class: "mu-user-activity-week-selector #{mark_period_if_active(week_start)}" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 .exercise-assignment blockquote {
   @include border-radius(4px);
-  background-color: $brand-info-light;
-  border-left: 8px solid $brand-info;
+  background-color: $info-light;
+  border-left: 8px solid $info;
   font-size: 15px;
   margin: 10px 0;
 }
@@ -16,15 +16,6 @@
 }
 
 .mu-editor {
-  .form-group {
-    margin: 10px 0;
-  }
-  input[type=radio] {
-    margin: 4px;
-    & + label {
-      font-weight: normal;
-    }
-  }
   label p {
     margin: 0;
   }

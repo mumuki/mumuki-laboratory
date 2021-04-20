@@ -10,12 +10,12 @@ mumuki.load(() => {
       return Chat.$newMessageModal().find('.modal-body, .modal-footer');
     },
     collapseNewMessageModal: function () {
-      Chat.$newMessageModalComponents().toggleClass('hidden');
+      Chat.$newMessageModalComponents().toggleClass('d-none');
     },
     token: new mumuki.CsrfToken(),
     setMessages: function (data) {
       $('.badge-notifications').html(data.messages_count);
-      $('.notifications-box').toggleClass('notifications-box-empty', !data.has_messages);
+      $('.notifications-box').toggleClass('d-none', !data.has_messages);
       $('.pending-messages-filter').removeClass('pending-messages-filter');
       $('button.btn-submit').removeClass('disabled');
       $('.pending-messages-text').remove();
@@ -53,7 +53,7 @@ mumuki.load(() => {
       function renderHTML(data) {
         $container.empty();
         $container.html(data);
-        $("a[data-target='#messages']").click();
+        $("a[data-bs-target='#messages']").click();
       }
 
       function success(data) {

@@ -9,7 +9,7 @@ module UserActivityHelper
   end
 
   def mark_period_if_active(period_start)
-    active_period?(period_start) && 'class=active'
+    active_period?(period_start) ? 'nav-link active' : 'nav-link'
   end
 
   def solved_exercises_percentage

@@ -22,7 +22,7 @@ describe('editors', () => {
   it('reads the custom sources if present, ignoring the form', () => {
     $('body').html(`
     <form role="form" class="new_solution">
-      <div class="field form-group editor-code">
+      <div class="editor-code">
         <textarea class="form-control editor" name="solution[content]" id="solution_content">the standard solution</textarea>
       </div>
     </form>`);
@@ -39,7 +39,7 @@ describe('editors', () => {
   it('reads the form if no sources', () => {
     $('body').html(`
     <form role="form" class="new_solution">
-      <div class="field form-group editor-code">
+      <div class="editor-code">
         <textarea class="form-control editor" name="solution[content]" id="solution_content">the solution</textarea>
       </div>
     </form>`);
@@ -49,7 +49,7 @@ describe('editors', () => {
   it('reads the form if no sources and exercise is multifile', () => {
     $('body').html(`
     <form role="form" class="new_solution">
-      <div class="field form-group editor-code">
+      <div class="editor-code">
         <textarea
           class="form-control editor"
           data-editor-language="html"

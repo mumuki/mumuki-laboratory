@@ -6,7 +6,7 @@ mumuki.progress = (() => {
    * */
   function updateProgressBarAndShowModal(data) {
     $('.progress-list-item.active').attr('class', data.class_for_progress_list_item);
-    if(data.guide_finished_by_solution) $('#guide-done').modal();
+    if(data.guide_finished_by_solution) new bootstrap.Modal('#guide-done').show();
   }
 
   /**

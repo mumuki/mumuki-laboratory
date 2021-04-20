@@ -4,7 +4,7 @@ module MessagesHelper
   end
 
   def hidden_pending(assignment)
-    assignment.pending_messages? ? '' : 'hidden'
+    assignment.pending_messages? ? '' : 'd-none'
   end
 
   def disabled_submit_class(assignment)

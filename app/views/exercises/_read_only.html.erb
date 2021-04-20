@@ -7,127 +7,130 @@
 <%= hidden_field_tag(:exercise_language, exercise.highlight_mode) %>
 <%= hidden_field_tag :console_endpoint, exercise_queries_path(exercise) %>
 
-<details open>
-  <summary class="discussion-summary">
-    <h3 class="discussion-exercise-title">
-      <span>
-        <span class="hidden-xs"><%= t(:exercise_number, number: exercise.number) %>:&nbsp;</span>
-        <span><%= exercise.name %></span>
-      </span>
-      <span class="mu-inline-block-right hidden-xs">
-        <h1 class="no-margin"><%= language_icon exercise.language %></h1>
-      </span>
-    </h3>
-    <div class="discussion-description">
-      <%= label_for_contextualization(@discussion, class: 'hidden-xs') %> ·
-      <span class="discussion-info">
-          <span class="discussion-initiator-name">
-            <%= @discussion.initiator.name %>
-          </span>
-        <span class="hidden-xs"><%= discussion_info(@discussion) unless @discussion.new_record? %></span>
-      </span>
-      <% if current_user && @discussion.persisted? %>
-        <span class="mu-inline-block-right discussion-user-menu no-margin">
-          <% if @discussion.subscribable? %>
-            <a class="discussion-subscription" onclick="mumuki.Forum.discussionSubscription('<%= subscription_discussion_url(@discussion) %>')">
-              <%= fa_icon(:eye, class: 'fa-xs') %>
-              <%= span_toggle t(:subscribe), t(:unsubscribe), current_user.subscribed_to?(@discussion), class: 'hidden-sm hidden-xs' %>
-            </a>
+<div class="accordion mu-discussion-accordion" id="mu-discussion-accordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="mu-discussion-accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" aria-expanded="true"
+              data-bs-target="#mu-discussion-accordion-body" aria-controls="mu-discussion-accordion-body">
+        <div class="flex-grow-1">
+          <h3 class="d-flex">
+            <span class="flex-grow-1">
+              <span class="d-none d-sm-inline"><%= t(:exercise_number, number: exercise.number) %>:&nbsp;</span>
+              <span><%= exercise.name %></span>
+            </span>
+            <span class="d-none d-sm-inline mx-3">
+              <h1 class="m-0"><%= language_icon exercise.language %></h1>
+            </span>
+          </h3>
+          <div class="discussion-description">
+            <%= label_for_contextualization(@discussion, class: 'd-none d-sm-inline') %> ·
+            <span class="discussion-info">
+              <span class="discussion-initiator-name">
+                <%= @discussion.initiator.name %>
+              </span>
+              <span class="d-none d-sm-inline"><%= discussion_info(@discussion) unless @discussion.new_record? %></span>
+            </span>
+          </div>
+          <% if @discussion.last_moderator_access_visible_for?(current_user) %>
+            <h5 class="my-2 me-3">
+              <span class="badge bg-primary text-wrap">
+                <%= t :last_seen, name: @discussion.last_moderator_access_by.full_name %>
+                <%= t :time_since, time: time_ago_in_words(@discussion.last_moderator_access_at) %>
+              </span>
+            </h5>
           <% end %>
-          <% if @discussion.solved? %>
-            <a class="discussion-upvote" onclick="mumuki.Forum.discussionUpvote('<%= upvote_discussion_url(@discussion) %>')">
-              <%= fa_icon('thumbs-up', type: :regular, class: 'fa-xs') %>
-              <%= span_toggle t(:upvote), t(:undo_upvote), current_user.upvoted?(@discussion), class: 'hidden-sm hidden-xs' %>
-            </a>
+        </div>
+      </button>
+    </h2>
+
+    <div class="accordion-body accordion-collapse collapse show" id="mu-discussion-accordion-body"
+         aria-labelledby="#mu-discussion-accordion-header" data-bs-parent="#mu-discussion-accordion">
+
+      <% if should_render_read_only_exercise_tabs?(@discussion) %>
+        <ul class="nav nav-tabs discussion-tabs" role="tablist">
+
+          <% if @discussion.has_submission? %>
+            <li role="presentation">
+              <a class="editor-tab nav-link active" data-bs-target="#solution" aria-controls="solution" role="tab" data-bs-toggle="tab">
+                <%= t :solution %>
+              </a>
+            </li>
+            <li role="presentation">
+              <a class="editor-tab nav-link" data-bs-target="#results" aria-controls="results" role="tab" data-bs-toggle="tab">
+                <%= t :results %>
+              </a>
+            </li>
           <% end %>
-        </span>
-      <% end %>
-    </div>
-  </summary>
 
-  <% if should_render_read_only_exercise_tabs?(@discussion) %>
+          <li role="presentation">
+            <a class="editor-tab nav-link <%= "active" unless @discussion.has_submission? %>" data-bs-target="#content" aria-controls="content" role="tab" data-bs-toggle="tab">
+              <%= t :description %>
+            </a>
+          </li>
 
-    <ul class="nav nav-tabs discussion-tabs" role="tablist">
-      <% if @discussion.has_submission? %>
-        <li role="presentation" class="active">
-          <a data-target="#solution" aria-controls="solution" role="tab" data-toggle="tab" class="editor-tab">
-            <%= t :solution %>
-          </a>
-        </li>
-        <li role="presentation">
-          <a data-target="#results" aria-controls="results" role="tab" data-toggle="tab" class="editor-tab">
-            <%= t :results %>
-          </a>
-        </li>
-      <% end %>
+          <% if exercise.extra_visible? %>
+            <%= extra_code_tab %>
+          <% end %>
 
-      <li role="presentation" <%= "class=active" unless @discussion.has_submission? %>>
-        <a data-target="#content" aria-controls="content" role="tab" data-toggle="tab" class="editor-tab">
-          <%= t :description %>
-        </a>
-      </li>
+          <% if exercise.queriable? %>
+            <%= console_tab %>
+          <% end %>
+        </ul>
 
-      <% if exercise.extra_visible? %>
-        <%= extra_code_tab %>
-      <% end %>
+        <div class="tab-content">
+          <% if @discussion.has_submission? %>
+            <div role="tabpanel" class="tab-pane active" id="solution">
+              <div class="mu-tab-body">
+                <div role="tabpanel" class="tab-pane mu-input-panel fade show active" id="editor">
+                  <div class="mu-read-only-editor">
+                    <%= render_exercise_read_only_editor exercise, @discussion.solution %>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-      <% if exercise.queriable? %>
-        <%= console_tab %>
-      <% end %>
-    </ul>
+            <div role="tabpanel" class="tab-pane" id="results">
+              <div class="mu-tab-body">
+                <%= render layout: 'exercise_solutions/contextualization_results_container', locals: { contextualization: @discussion } do %>
+                  <div class="row">
+                    <div class="col-md-12 submission-results">
+                      <%= render partial: 'exercise_solutions/contextualization_results_body',
+                                 locals: { contextualization: @discussion, guide_finished_by_solution: false } %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
 
-    <div class="tab-content">
-
-      <% if @discussion.has_submission? %>
-        <div role="tabpanel" class="tab-pane active" id="solution">
-          <div class="mu-tab-body">
-            <div role="tabpanel" class="tab-pane mu-input-panel fade in active" id="editor">
-              <div class="mu-read-only-editor">
-                <%= render_exercise_read_only_editor exercise, @discussion.solution %>
+          <div role="tabpanel" class="tab-pane <%= 'active' unless @discussion.has_submission? %>" id="content">
+            <div class="mu-tab-body">
+              <div class="exercise-assignment">
+                <%= render partial: 'exercises/exercise_assignment', locals: { exercise: exercise } %>
               </div>
             </div>
           </div>
-        </div>
 
-        <div role="tabpanel" class="tab-pane" id="results">
-          <div class="mu-tab-body">
-            <%= render layout: 'exercise_solutions/contextualization_results_container', locals: {contextualization: @discussion} do %>
-              <div class="row">
-                <div class="col-md-12 submission-results">
-                  <%= render partial: 'exercise_solutions/contextualization_results_body',
-                             locals: {contextualization: @discussion, guide_finished_by_solution: false} %>
-                </div>
+          <div role="tabpanel" class="tab-pane mu-input-panel fade" id="console">
+            <div class="mu-overlapped-container">
+              <div class="console">
               </div>
-            <% end %>
+              <div class="mu-overlapped">
+                <%= restart_icon %>
+              </div>
+            </div>
           </div>
+
+          <div role="tabpanel" class="tab-pane mu-input-panel fade mu-elipsis" id="visible-extra">
+            <%= @discussion.extra_preview_html %>
+          </div>
+        </div>
+      <% else %>
+        <div class="exercise-assignment">
+          <%= render partial: 'exercises/exercise_assignment', locals: { exercise: exercise } %>
         </div>
       <% end %>
-
-      <div role="tabpanel" class="tab-pane <%= 'active' unless @discussion.has_submission? %>" id="content">
-        <div class="mu-tab-body">
-          <div class="exercise-assignment">
-            <%= render partial: 'exercises/exercise_assignment', locals: {exercise: exercise} %>
-          </div>
-        </div>
-      </div>
-
-      <div role="tabpanel" class="tab-pane mu-input-panel fade" id="console">
-        <div class="mu-overlapped-container">
-          <div class="console">
-          </div>
-          <div class="mu-overlapped">
-            <a class="console-reset submission-reset"><%= restart_icon %></a>
-          </div>
-        </div>
-      </div>
-
-      <div role="tabpanel" class="tab-pane mu-input-panel fade mu-elipsis" id="visible-extra">
-        <%= @discussion.extra_preview_html %>
-      </div>
     </div>
-  <% else %>
-    <div class="exercise-assignment">
-      <%= render partial: 'exercises/exercise_assignment', locals: {exercise: exercise} %>
-    </div>
-  <% end %>
-</details>
+  </div>
+</div>
+

@@ -1,11 +1,13 @@
-<div class="modal fade mu-kids-context mu-kids-modal-border" id="mu-kids-context" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade mu-kids-context mu-kids-modal" id="mu-kids-context" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="text-center">
+        <h4 class="text-center d-flex">
           <strong><%= "#{exercise.number}. #{exercise.name}" %></strong>
-          <%= teacher_info_button exercise %>
-          <%= link_to_bibliotheca_exercise exercise %>
+          <div class="d-flex ms-2">
+            <%= teacher_info_button exercise %>
+            <%= link_to_bibliotheca_exercise exercise %>
+          </div>
         </h4>
       </div>
       <div class="modal-body">
@@ -19,7 +21,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-success btn-block" data-waiting="<%= t :loading %>" data-dismiss="modal" aria-label="<%= t :continue_exercise %>"> <%= t :continue_exercise %> </button>
+        <button class="btn btn-complementary w-100" data-waiting="<%= t :loading %>" data-bs-dismiss="modal" aria-label="<%= t :continue_exercise %>"> <%= t :continue_exercise %> </button>
       </div>
     </div>
   </div>

@@ -29,17 +29,13 @@
 <%= yield :navbar %>
 
 <div class="<%= exercise_container_type %><%= @kids ? '-fluid' : '' %>" id="wrap">
-  <div id="toast-container" class="toast-bottom-left">
+  <div class="toast-container bottom-0 start-0 p-3">
     <% if notice %>
-      <div class="alert toast toast-success" role="alert">
-        <%= notice.html_safe %>
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-      </div>
+      <%= toast_notice(notice) %>
     <% elsif alert %>
-      <div class="alert toast toast-error" role="alert">
-        <%= alert.html_safe %>
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-      </div>
+      <%= toast_alert(alert) %>
+    <% elsif info %>
+      <%= toast_info(info) %>
     <% end %>
   </div>
 

@@ -94,28 +94,20 @@ $modal-footer-height: 95px;
   width: $width-lg;
   height: $height-lg;
 
-  top: calc(50vh - #{$height-lg} / 2);
-
   @media (orientation: landscape)  and (max-height: $height-lg + 50px) {
     $height-sm: 85vh;
     $width-sm: $height-sm / 0.625;
 
     width: $width-sm;
     height: $height-sm;
-
-    top: calc(50vh - #{$height-sm} / 2);
-    left: calc(50vw - #{$width-sm} / 2);
   }
 
   @media (orientation: portrait) {
-    $height-sm: 85vh;
+    $height-sm: 75vh;
     $width-sm: 85vw;
 
     width: $width-sm;
     height: $height-sm;
-
-    top: calc(50vh - #{$height-sm} / 2);
-    left: calc(50vw - #{$width-sm} / 2);
   }
 
   .modal-header,

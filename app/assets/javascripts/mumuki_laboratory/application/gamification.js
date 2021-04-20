@@ -82,11 +82,11 @@ mumuki.gamification = (() => {
 
     defaultGainedExperienceAction() {
       $('#mu-exp-points').html(this.lastEarnedExp);
-      $('#mu-exp-earned-message').removeClass('hidden');
+      $('#mu-exp-earned-message').removeClass('d-none');
     }
 
     defaultLevelUpAction(_levelUpHtml) {
-      $('#mu-level-up').modal();
+      new bootstrap.Modal('#mu-level-up').show();
     }
 
     registerLevelUpAction(action) {
@@ -118,7 +118,7 @@ mumuki.gamification = (() => {
     updateTooltip() {
       const $muLevelTooltip = $('.mu-level-tooltip');
 
-      $muLevelTooltip.attr("data-original-title", `${$muLevelTooltip.attr("level")} ${this.currentLevel()}`);
+      $muLevelTooltip.attr("data-bs-original-title", `${$muLevelTooltip.attr("level")} ${this.currentLevel()}`);
       $muLevelTooltip.attr("title", "");
     }
 

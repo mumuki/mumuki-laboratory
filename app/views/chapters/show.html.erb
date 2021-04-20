@@ -4,8 +4,8 @@
 
 <div class="row">
   <div class="mu-inline-block-left">
-    <h1 class="hidden-xs"><%= full_title_for @chapter %></h1>
-    <h1 class="visible-xs"><%= short_title_for @chapter %></h1>
+    <h1 class="d-none d-sm-block"><%= full_title_for @chapter %></h1>
+    <h1 class="d-block d-sm-none"><%= short_title_for @chapter %></h1>
 
     <% if @chapter.monolesson? %>
       <%= render partial: 'guides/guide_title_icons' %>

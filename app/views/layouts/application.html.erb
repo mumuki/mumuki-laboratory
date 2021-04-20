@@ -1,54 +1,51 @@
 <%= content_for :navbar do %>
   <%= hidden_field_tag("mu-current-exp", UserStats.exp_for(@current_user)) if in_gamified_context? %>
-  <div class="<%= exercise_container_type %>">
-    <nav class="mu-navbar">
-      <div class="mu-navbar-breadcrumb hidden-xs">
-        <ul class="mu-breadcrumb-list">
-          <%= yield :breadcrumbs %>
-        </ul>
-      </div>
-      <div class="dropdown hamburguer-breadcrumb hidden-sm hidden-md hidden-lg">
-        <% if content_for? :breadcrumbs %>
-        <span class="hamburguer" id="profileDropdown" data-toggle="dropdown">
-          <i class="fas fa-bars"></i>
-        </span>
-          <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="profileDropdown">
-            <%= yield :breadcrumbs %>
-          </ul>
-        <% end %>
-      </div>
-      <div class="mu-navbar-avatar">
-        <% if current_logged_user? %>
-          <% if in_gamified_context? %>
-            <div class="mu-navbar-element">
-              <i class="fas fa-star fa-fw fa-2x mu-navbar-icon mu-level-tooltip" data-toggle="tooltip" data-placement="bottom" level="<%= t(:level) %>"></i>
-              <span class="mu-level-number"></span>
+  <div class="<%= exercise_container_type %> px-0">
+    <nav class="navbar navbar-light navbar-expand-lg mu-navbar">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#muNavbar" aria-controls="muNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="mu-navbar-avatar order-lg-2">
+          <% if current_logged_user? %>
+            <% if in_gamified_context? %>
+              <div class="mu-navbar-element">
+                <i class="fas fa-star fa-fw fa-2x mu-navbar-icon mu-level-tooltip" data-bs-toggle="tooltip" data-bs-placement="bottom" level="<%= t(:level) %>"></i>
+                <span class="mu-level-number"></span>
+              </div>
+            <% end %>
+            <%= render partial: 'notifications/dropdown' %>
+            <div class="dropdown mu-navbar-element">
+              <div id="profileDropdown" class="profile-dropdown dropdown-toggle" data-bs-toggle="dropdown" aria-label="<%= t(:user) %>" role="menu" tabindex="0">
+                <%= profile_picture_for current_user %>
+              </div>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                <%= menu_bar_list_items %>
+                <% if any_menu_bar_links? %>
+                  <li class="dropdown-divider"></li>
+                <% end %>
+                <% if faqs_enabled_here? %>
+                  <%= menu_link_to_faqs %>
+                  <li class="dropdown-divider"></li>
+                <% end %>
+                <%= logout_menu_link %>
+              </ul>
             </div>
+          <% else %>
+            <%= login_button %>
           <% end %>
-          <%= render partial: 'notifications/dropdown' %>
-          <div class="dropdown mu-navbar-element">
-            <div id="profileDropdown" class="profile-dropdown" data-toggle="dropdown" aria-label="<%= t(:user) %>" role="menu" tabindex="0">
-              <%= profile_picture_for current_user %>
-              <span class="caret"></span>
-            </div>
-            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
-              <%= menu_bar_list_items %>
-              <% if any_menu_bar_links? %>
-                <li class="divider"></li>
-              <% end %>
-              <% if faqs_enabled_here? %>
-                <%= menu_link_to_faqs %>
-                <li class="divider"></li>
-              <% end %>
-              <%= logout_menu_link %>
+        </div>
+        <div class="collapse navbar-collapse mu-navbar-breadcrumb-container" id="muNavbar">
+          <div class="mu-navbar-breadcrumb order-lg-1">
+            <ul class="navbar-nav mu-breadcrumb-list">
+              <%= yield :breadcrumbs %>
             </ul>
           </div>
-        <% else %>
-          <%= login_button %>
-        <% end %>
+        </div>
       </div>
     </nav>
   </div>
+
 <% end %>
 
 <% content_for :footer do %>

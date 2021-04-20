@@ -4,13 +4,13 @@
 
 <%= render layout: 'guides/guide', locals: { subject: subject } do %>
 
-  <div class="row">
-    <div class="mu-inline-block-right hidden-xs">
-      <h1><%= language_icon @guide.language %></h1>
-    </div>
+  <div class="d-flex">
     <div class="mu-inline-block-left">
       <h1><%= short_title_for @guide %></h1>
       <%= render partial: 'guides/guide_title_icons' %>
+    </div>
+    <div class="d-none d-sm-block">
+      <h1><%= language_icon @guide.language %></h1>
     </div>
   </div>
   <div class="row">

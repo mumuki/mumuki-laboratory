@@ -1,6 +1,6 @@
 mumuki.load(() => {
-  var $subscriptionSpans = $('.discussion-subscription > span');
-  var $upvoteSpans = $('.discussion-upvote > span');
+  var $subscriptionButtons = $('.discussion-subscription > button');
+  var $upvoteButtons = $('.discussion-upvote > button');
   let $messagePreviewButton = $('.discussion-new-message-preview-button.preview');
   let $messageEditButton = $('.discussion-new-message-preview-button.edit');
   let $newMessageContent = $('.discussion-new-message-content');
@@ -33,8 +33,8 @@ mumuki.load(() => {
   let editor = createNewMessageEditor();
 
   var Forum = {
-    toggleButton: function (spans) {
-      spans.toggleClass('hidden');
+    toggleButton: function (elements) {
+      elements.toggleClass('d-none');
     },
     token: new mumuki.CsrfToken(),
     tokenRequest: function (data) {
@@ -48,10 +48,10 @@ mumuki.load(() => {
       });
     },
     discussionSubscription: function (url) {
-      Forum.discussionPostAndToggle(url, $subscriptionSpans);
+      Forum.discussionPostAndToggle(url, $subscriptionButtons);
     },
     discussionUpvote: function (url) {
-      Forum.discussionPostAndToggle(url, $upvoteSpans);
+      Forum.discussionPostAndToggle(url, $upvoteButtons);
     },
     discussionPostAndToggle: function (url, elem) {
       Forum.discussionPost(url).done(Forum.toggleButton(elem));
@@ -102,13 +102,13 @@ mumuki.load(() => {
   }
 
   function togglePreviewAndEditButtons() {
-    $messagePreviewButton.toggleClass('hidden');
-    $messageEditButton.toggleClass('hidden');
+    $messagePreviewButton.toggleClass('d-none');
+    $messageEditButton.toggleClass('d-none');
   }
 
   function togglePreviewAndContentMessage() {
-    $newMessagePreview.toggleClass('hidden');
-    $newMessageContent.toggleClass('hidden');
+    $newMessagePreview.toggleClass('d-none');
+    $newMessageContent.toggleClass('d-none');
   }
 
   mumuki.Forum = Forum;

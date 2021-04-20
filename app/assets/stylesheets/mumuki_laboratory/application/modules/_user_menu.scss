@@ -11,11 +11,9 @@
   font-size: 15px;
   color: $mu-color-disabled;
   text-transform: uppercase;
-  padding-left: 2px;
   cursor: pointer;
 
-  @media only screen and (min-width: $screen-md-min) {
-    padding-left: 15px;
+  @include media-breakpoint-up(md) {
     cursor: auto;
 
     i {
@@ -23,7 +21,7 @@
     }
 
     span {
-      padding-left: 0px;
+      padding-left: 0;
     }
   }
 }
@@ -31,8 +29,13 @@
 .mu-user-menu-items {
   margin-top: 30px;
 
+  @include media-breakpoint-down(md) {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
   &.mu-hidden-sm-screen {
-    @media only screen and (max-width: $screen-sm-max) {
+    @include media-breakpoint-down(md) {
       display: none;
     }
   }
@@ -43,7 +46,7 @@
   margin-bottom: 5px;
 
   a {
-    color: $brand-primary;
+    color: $primary;
     &.active {
       font-weight: bold;
     }
@@ -59,5 +62,9 @@
     border-top: 2px solid $mu-color-separator;
 
     margin: 25px 0;
+
+    @include media-breakpoint-up(md) {
+      margin-right: 15px;
+    }
   }
 }

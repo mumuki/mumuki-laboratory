@@ -2,21 +2,17 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <% if Organization.current.kids? %>
-        <button type="button" class="mu-kids-modal-button mu-close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="mu-kids-modal-button mu-close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">
             <i class="fas fa-fw fa-times fa-3x"></i>
           </span>
         </button>
       <% end %>
       <div class="modal-header">
+        <h3 class="modal-title"><%= t :guide_finished, guide: guide.name %></h3>
         <% if Organization.current.grown_ups? %>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <% end %>
-        <div class="guide-corollary-title">
-          <h3 class="text-left" id="gridSystemModalLabel"><%= t :guide_finished, guide: guide.name %> </h3>
-        </div>
       </div>
       <div class="modal-body">
         <div class="container-fluid">
@@ -27,8 +23,8 @@
           </div>
           <div class="row">
             <div class="col-md-12 mu-last-box">
-              <hr>
               <% if should_display_medal? @guide, Organization.current %>
+                <hr>
                 <p><%= t :unlocked_medal_as_avatar %></p>
                 <%= corollary_medal_for guide %>
               <% end %>

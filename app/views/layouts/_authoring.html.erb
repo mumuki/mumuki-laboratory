@@ -2,7 +2,7 @@
   <%= content_for :authoring do %>
     <p class="small">
       <% if embedded_mode? %>
-        <span class="hidden-md hidden-lg hidden-xl">
+        <span class="d-md-none">
           <%= render partial: 'layouts/copyright' %> -
         </span>
       <% end %>

@@ -59,25 +59,23 @@ body.fullscreen {
 
 .files-tabs {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: -6px;
-  margin-left: 30px;
 
   .nav-tabs {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 0;
+    flex-grow: 1;
+    margin-left: 30px;
+    margin-bottom: -6px;
+    border-bottom: 0;
     z-index: 1;
 
-    li {
+    .file-tab {
       position: relative;
-      width: 100%;
+      flex-grow: 1;
+      flex-basis: 0;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+
       a {
         white-space: nowrap;
         overflow: hidden;
@@ -85,24 +83,24 @@ body.fullscreen {
         margin-right: 0;
         padding: 5px 10px;
       }
+
       .delete-file-button {
         position: absolute;
         right: 16px;
         top: 12px;
         cursor: pointer;
       }
-      &.active {
-        a {
-          background-color: $multifile-active-tab-background-color;
-          border: 1px solid $multifile-active-tab-border-color;
-          border-bottom: none;
-        }
+
+      > a.active {
+        background-color: $multifile-active-tab-background-color;
+        border: 1px solid $multifile-active-tab-border-color;
+        border-bottom: 2px solid transparent;
       }
-      &:not(.active) > a {
+
+      > a:not(.active) {
         background-color: $multifile-inactive-tab-background-color;
         border: 1px solid $multifile-inactive-tab-border-color;
         border-bottom: 1px solid $multifile-active-tab-border-color;
-        cursor: pointer;
         &:hover {
           background-color: $multifile-inactive-tab-border-color;
         }

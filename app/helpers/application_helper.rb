@@ -12,12 +12,12 @@ module ApplicationHelper
   end
 
   def avatar_image(avatar_url, **options)
-    options.merge!(class: "img-circle #{options[:class]}")
+    options.merge!(class: "rounded-circle #{options[:class]}")
     image_tag(image_url(avatar_url), options)
   end
 
   def paginate(object, options = {})
-    "<div class=\"text-center\">#{super(object, {theme: 'twitter-bootstrap-3'}.merge(options))}</div>".html_safe
+    super(object, {theme: 'bootstrap-5', pagination_class: 'flex-wrap justify-content-center'}.merge(options))
   end
 
   def last_box_class(trailing_boxes)
@@ -38,10 +38,10 @@ module ApplicationHelper
     t :chapter_finished_html, chapter: link_to_path_element(chapter) if chapter
   end
 
-  def span_toggle(hidden_text, active_text, active, **options)
+  def btn_toggle(hidden_text, active_text, active, **options)
     %Q{
-      <span class="#{'hidden' if active} #{options[:class]}">#{hidden_text}</span>
-      <span class="#{'hidden' unless active} #{options[:class]}">#{active_text}</span>
+      <button class="btn btn-complementary #{'d-none' if active} #{options[:class]}" onclick="#{options[:onclick]}">#{hidden_text}</button>
+      <button class="btn btn-secondary #{'d-none' unless active} #{options[:class]}" onclick="#{options[:onclick]}">#{active_text}</button>
     }.html_safe
   end
 

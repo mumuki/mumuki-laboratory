@@ -10,7 +10,7 @@
   .brand {
     font-size: 38px;
     padding: 8px 3px 0;
-    color: $brand-primary;
+    color: $primary;
     &:hover, &:focus {
       text-decoration: none;
     }
@@ -52,7 +52,7 @@
 
 .mu-navbar-avatar {
   justify-self: flex-end;
-  .img-circle {
+  .rounded-circle {
     cursor: pointer;
   }
 }
