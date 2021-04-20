@@ -1,0 +1,6 @@
+<%= render layout: 'exam_authorization_requests/into_callout' do %>
+  <%= t :exam_authorization_pending_explanation_html,
+        date: l(@authorization_request.exam.start_time, format: :long),
+        end_time: l(@authorization_request.exam_registration.end_time, format: :long),
+        edit_path: url_for(@authorization_request.exam_registration) %>
+<% end %>

@@ -111,6 +111,7 @@ pt:
   error_500: erro 500
   error_description: Isto é o que é conhecido como <span class = "error-link"> %{error} </ span>.
   errored: Opa! Sua solução não pode ser executada
+  exam_authorization_pending_explanation_html: Você se inscreveu para o exame no turno de <strong>%{date}</strong>. <br> Você tem tempo até <strong>%{date}</strong> para se inscrever. Após essa data, sua inscrição será avaliada e você receberá uma confirmação. <br> Não se esqueça de verificar as notificações!
   exam_authorization_request_approved_html: Sua solicitação foi aprovada, não se esqueça de conectar em <strong>%{date}</strong>. Boa sorte!
   exam_authorization_request_created: Seu registro de exame foi salvo com sucesso!
   exam_authorization_request_rejected: Seu pedido foi rejeitado.

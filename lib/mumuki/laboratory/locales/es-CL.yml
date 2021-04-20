@@ -108,6 +108,7 @@ es-CL:
       internal_server_error: ¡Ups! Algo no anduvo bien
       not_found: ¡Ups!  La página no existe
   errored: ¡Ups! Tu solución no se puede ejecutar
+  exam_authorization_pending_explanation_html: Te inscribiste al examen en el turno del <strong>%{date}</strong>. <br> Tienes tiempo hasta el <strong>%{end_time}</strong> para inscribirte. Pasada esa fecha, tu solicitud será evaluada y recibirás una confirmación. <br> ¡No olvides revisar las notificaciones!
   exam_authorization_request_approved_html: Tu solicitud fue aprobada, no olvides conectarte el <strong>%{date}</strong>. ¡Buena suerte!
   exam_authorization_request_created: ¡Tu inscripción al exámen se registró exitosamente!
   exam_authorization_request_rejected: Tu solicitud fue rechazada.

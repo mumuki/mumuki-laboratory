@@ -10,8 +10,4 @@
   </div>
 </div>
 
-<% if @authorization_request.approved? %>
-  <%= t :exam_authorization_request_approved_html, date: l(@authorization_request.exam.start_time, format: :long) %>
-<% else %>
-  <%= t :exam_authorization_request_rejected %>
-<% end %>
+<%= render partial: "exam_authorization_requests/#{@authorization_request.status}" %>
