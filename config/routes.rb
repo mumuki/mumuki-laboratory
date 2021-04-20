@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     get '/discussions/messages/preview', to: 'discussions_messages#preview', as: :preview_discussion_message
 
     resources :exam_registrations, only: [:show]
-    resources :exam_authorization_requests, only: [:show, :create, :update]
+    resources :exam_authorization_requests, only: [:create, :update]
 
     resources :book, only: [:show]
     resources :chapters, only: [:show] do

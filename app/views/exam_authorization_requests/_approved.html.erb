@@ -1,3 +1,1 @@
-<%= render layout: 'exam_authorization_requests/into_callout' do %>
-  <%= t :exam_authorization_request_approved_html, date: l(@authorization_request.exam.start_time, format: :long) %>
-<% end %>
+<%= t :exam_authorization_request_approved_html, date: l(authorization_request.exam.start_time, format: :long) %>
