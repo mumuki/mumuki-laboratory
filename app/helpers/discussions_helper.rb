@@ -185,7 +185,7 @@ module DiscussionsHelper
   end
 
   def discussion_user_name(user)
-    user.name
+    user.abbreviated_name
   end
 
   def subscription_icon
