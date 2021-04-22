@@ -101,10 +101,6 @@ class ApplicationController < ActionController::Base
     subject.present? ? root_path : request.path_info
   end
 
-  def inorganic_path_for(request)
-    Mumukit::Platform.organization_mapping.inorganic_path_for(request)
-  end
-
   def current_immersive_context
     current_immersive_context_and_content&.first || Organization.current
   end
