@@ -93,5 +93,28 @@ describe WithStudentPathNavigation, organization_workspace: :test do
         end
       end
     end
+
+    context "when there's a next chapter" do
+      let(:organization) { create :organization, book: book }
+
+      let(:book) { create(:book, chapters: [
+        chapter_1,
+        chapter_2
+      ]) }
+
+      let(:chapter_1) { create(:chapter, lessons: [lesson_1]) }
+      let(:chapter_2) { create(:chapter, lessons: [create(:lesson, exercises: [ create(:exercise) ])]) }
+
+      let(:lesson_1) { create(:lesson, exercises: [ exercise_1 ]) }
+      let(:exercise_1) { create(:exercise) }
+
+      before do
+        organization.switch!
+        reindex_current_organization!
+        exercise_1.submit_solution!(current_user).passed!
+      end
+
+      it { expect(next_button(lesson_1)).to include "<a class=\"btn btn-complementary w-100\" role=\"button\" href=\"/chapters/#{chapter_2.friendly_name}\"><span class=\"fa5-text-r\">Next: #{chapter_2.name}</span><i class=\"fas fa-chevron-right\"></i></a>" }
+    end
   end
 end

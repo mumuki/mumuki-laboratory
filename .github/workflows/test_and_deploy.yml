@@ -54,13 +54,12 @@ jobs:
       with:
         ruby-version: 2.6.3
         bundler: 2.1.4
+        bundler-cache: true
     - name: Setup Firefox
       run: |
         wget --no-verbose -O /tmp/firefox-79.0.tar.bz2 'https://download.mozilla.org/?product=firefox-79.0&lang=en-US&os=linux64'
         tar xjf /tmp/firefox-79.0.tar.bz2 -C /opt/
         sudo ln -sf /opt/firefox/firefox /usr/lib/firefox/firefox
-    - name: Install dependencies
-      run: bundle install
     - name: Load schema
       run: bundle exec rake db:schema:load
     - name: Setup hosts
@@ -107,8 +106,7 @@ jobs:
       with:
         ruby-version: 2.6.3
         bundler: 2.1.4
-    - name: Install dependencies
-      run: bundle install
+        bundler-cache: true
     - name: Load schema
       run: bundle exec rake db:schema:load
     - name: Setup hosts
