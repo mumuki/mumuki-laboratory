@@ -1,7 +1,7 @@
 <% if should_display_assistance_box? assignment %>
   <hr>
   <%= assistance_box assignment %>
-  <a data-bs-toggle="collapse" href="#assistance-details-section" class="badge bg-danger mu-view-details">
+  <a data-bs-toggle="collapse" href="#assistance-details-section" class="badge bg-light text-dark mu-view-details">
     <%= t :view_details %>
   </a>
   <div id="assistance-details-section" class="<%= 'collapse' if should_display_assistance_box?(assignment) %> in results-item">
