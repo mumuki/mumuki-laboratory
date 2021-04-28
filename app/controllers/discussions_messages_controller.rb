@@ -14,7 +14,6 @@ class DiscussionsMessagesController < AjaxController
     authorize_moderator! unless params[:motive] == :self_deleted.to_s
 
     current_message.soft_delete! params[:motive], current_user
-    current_message.update! not_actually_a_question: true
     redirect_back(fallback_location: root_path)
   end
 

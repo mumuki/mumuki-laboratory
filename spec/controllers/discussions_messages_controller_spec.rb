@@ -48,7 +48,6 @@ describe DiscussionsMessagesController, type: :controller, organization_workspac
         it { expect(message.deleted_by).to eq student }
         it { expect(message.deleted_at).to_not eq nil }
         it { expect(message.deletion_motive).to eq 'self_deleted' }
-        it { expect(message.not_actually_a_question).to be true }
       end
 
       describe 'own message with forbidden motive' do
@@ -62,7 +61,6 @@ describe DiscussionsMessagesController, type: :controller, organization_workspac
         it { expect(message.deleted_by).to eq nil }
         it { expect(message.deleted_at).to eq nil }
         it { expect(message.deletion_motive).to eq nil }
-        it { expect(message.not_actually_a_question).to be false }
       end
 
       describe 'someone else\'s message' do
@@ -77,7 +75,6 @@ describe DiscussionsMessagesController, type: :controller, organization_workspac
         it { expect(message.deleted_by).to eq nil }
         it { expect(message.deleted_at).to eq nil }
         it { expect(message.deletion_motive).to eq nil }
-        it { expect(message.not_actually_a_question).to be false }
       end
     end
 
@@ -93,7 +90,6 @@ describe DiscussionsMessagesController, type: :controller, organization_workspac
       it { expect(message.deleted_by).to eq moderator }
       it { expect(message.deleted_at).to_not eq nil }
       it { expect(message.deletion_motive).to eq 'inappropriate_content' }
-      it { expect(message.not_actually_a_question).to be true }
     end
   end
 
