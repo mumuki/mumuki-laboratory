@@ -48,7 +48,7 @@
             <hr>
             <%= t :deleted_by, deleter: message.deleted_by.name %>
             <%= t(:time_since, time: time_ago_in_words(message.deleted_at)) %>.
-            <a href='<%= "#deletedMessage#{message.id}" %>' data-toggle="collapse">
+            <a href='<%= "#deletedMessage#{message.id}" %>' data-bs-toggle="collapse">
               <%= t :show_message %>
             </a>
             <div id='<%= "deletedMessage#{message.id}" %>' class="collapse">

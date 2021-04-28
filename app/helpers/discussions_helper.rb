@@ -212,7 +212,7 @@ module DiscussionsHelper
   def discussion_delete_message_dropdown(discussion, message)
     %Q{
       <span class="dropdown">
-        #{content_tag :span, fa_icon('trash-alt', type: :regular, class: 'fa-lg'), role: 'menu', 'data-toggle': 'dropdown',
+        #{content_tag :span, fa_icon('trash-alt', type: :regular, class: 'fa-lg'), role: 'menu', 'data-bs-toggle': 'dropdown',
                       class: 'discussion-delete-message', id: 'deleteDiscussionDropdown'}
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="deleteDiscussionDropdown">
           #{discussion_delete_message_option discussion, message, :inappropriate_content, 'times-circle'}
@@ -227,7 +227,7 @@ module DiscussionsHelper
     %Q{
       <li>
         #{link_to fa_icon(icon, text: t("deletion_motive.#{motive}.present"), class: 'fa-fw fixed-icon'),
-                  discussion_message_path(discussion, message, motive: motive), method: :delete,
+                  discussion_message_path(discussion, message, motive: motive), method: :delete, class: 'dropdown-item',
                   role: 'menuitem', data: { confirm: t(:are_you_sure, action: t(:destroy_message)) } }
       </li>
     }.html_safe
