@@ -325,7 +325,7 @@ $moderator-badge-color: #dd9900;
       }
       .actions {
         float: right;
-        a {
+        > a, .dropdown {
           margin-left: 20px;
           cursor: pointer;
         }

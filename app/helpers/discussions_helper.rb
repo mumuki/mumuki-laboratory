@@ -173,7 +173,7 @@ module DiscussionsHelper
   end
 
   def discussion_info(discussion)
-    "#{t(:time_since, time: time_ago_in_words(discussion.created_at))} · #{t(:message_count, count: discussion.messages.size)}"
+    "#{t(:time_since, time: time_ago_in_words(discussion.created_at))} · #{t(:message_count, count: discussion.visible_messages.size)}"
   end
 
   def discussion_filter_params_without_page
@@ -202,5 +202,38 @@ module DiscussionsHelper
 
   def undo_upvote_icon
     fa_icon 'thumbs-up', type: :regular, text: t(:undo_upvote)
+  end
+
+  def discussion_delete_message_link(discussion, message)
+    link_to fa_icon('trash-alt', type: :regular, class: 'fa-lg'), discussion_message_path(discussion, message, motive: :self_deleted),
+            method: :delete, data: { confirm: t(:are_you_sure, action: t(:destroy_message)) }, class: 'discussion-delete-message'
+  end
+
+  def discussion_delete_message_dropdown(discussion, message)
+    %Q{
+      <span class="dropdown">
+        #{content_tag :span, fa_icon('trash-alt', type: :regular, class: 'fa-lg'), role: 'menu', 'data-bs-toggle': 'dropdown',
+                      class: 'discussion-delete-message', id: 'deleteDiscussionDropdown'}
+        <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="deleteDiscussionDropdown">
+          #{discussion_delete_message_option discussion, message, :inappropriate_content, 'times-circle'}
+          #{discussion_delete_message_option discussion, message, :shares_solution, :code}
+          #{discussion_delete_message_option discussion, message, :discloses_personal_information, 'user-tag'}
+        </ul>
+      </span>
+    }.html_safe
+  end
+
+  def discussion_delete_message_option(discussion, message, motive, icon)
+    %Q{
+      <li>
+        #{link_to fa_icon(icon, text: t("deletion_motive.#{motive}.present"), class: 'fa-fw fixed-icon'),
+                  discussion_message_path(discussion, message, motive: motive), method: :delete, class: 'dropdown-item',
+                  role: 'menuitem', data: { confirm: t(:are_you_sure, action: t(:destroy_message)) } }
+      </li>
+    }.html_safe
+  end
+
+  def message_deleted_text(message)
+    t(:message_deleted, motive: t("deletion_motive.#{message.deletion_motive}.past").downcase, forum_terms: link_to_forum_terms).html_safe
   end
 end

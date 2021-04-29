@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210330175706) do
+ActiveRecord::Schema.define(version: 20210318191512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -381,7 +381,11 @@ ActiveRecord::Schema.define(version: 20210330175706) do
     t.boolean "not_actually_a_question", default: false
     t.datetime "approved_at"
     t.bigint "approved_by_id"
+    t.integer "deletion_motive"
+    t.datetime "deleted_at"
+    t.bigint "deleted_by_id"
     t.index ["approved_by_id"], name: "index_messages_on_approved_by_id"
+    t.index ["deleted_by_id"], name: "index_messages_on_deleted_by_id"
   end
 
   create_table "notifications", force: :cascade do |t|

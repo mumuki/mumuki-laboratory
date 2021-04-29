@@ -36,8 +36,8 @@
       <% if @discussion.description.present? %>
         <%= render partial: 'discussions/description_message', locals: {discussion: @discussion} %>
       <% end %>
-      <% @discussion.messages.each do |message| %>
-        <%= render partial: 'discussions/message', locals: {user: message.sender_user, message: message} %>
+      <% @discussion.visible_messages.each do |message| %>
+          <%= render partial: 'discussions/message', locals: {user: message.sender_user, message: message} %>
       <% end %>
       <% if @discussion.commentable_by?(current_user) %>
         <hr class="message-divider">
