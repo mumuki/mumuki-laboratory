@@ -152,13 +152,15 @@ $moderator-badge-color: #dd9900;
       display: inline;
       margin-right: 15px;
       &:not(.selected) .status-icon, span {
-        color: $toolbar-filter-color;
+        filter: contrast(0%);
       }
       &:hover span {
         color: darken($toolbar-filter-color, 20%);
+        filter: contrast(100%);
       }
       &.selected span {
         color: darken($toolbar-filter-color, 40%);
+        filter: contrast(100%);
         font-weight: bold;
       }
     }
@@ -245,6 +247,7 @@ $moderator-badge-color: #dd9900;
 .discussion-new-message-content {
   resize: none;
   min-height: 150px;
+  padding: 0;
   border-radius: 0;
   border-color: transparent;
   overflow: hidden;
