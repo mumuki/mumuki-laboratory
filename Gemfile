@@ -35,4 +35,4 @@ group :development, :test do
   gem 'binding_of_caller'
 end
 
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'feature-soft-delete-forum-messages'
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'master'
