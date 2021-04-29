@@ -20,7 +20,7 @@ mumuki.submission = (() => {
     }
     waiting() {
       this.submissionsResultsArea.html(this.processingTemplate.html());
-      this.submissionsErrorTemplate.hide();
+      this.submissionsErrorTemplate.addClass('d-none');
     }
     success(data, submitButton) {
       this.submissionsResultsArea.html(data.html);
@@ -30,7 +30,8 @@ mumuki.submission = (() => {
     }
     error(submitButton) {
       this.submissionsResultsArea.html('');
-      this.submissionsErrorTemplate.show();
+      this.submissionsErrorTemplate.addClass('d-block');
+      this.submissionsErrorTemplate.removeClass('d-none');
       animateTimeoutError(submitButton);
     }
     done(data, submitButton) {
