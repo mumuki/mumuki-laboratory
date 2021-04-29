@@ -31,6 +31,68 @@ describe DiscussionsMessagesController, type: :controller, organization_workspac
     end
   end
 
+  describe 'delete' do
+    let(:message) { create(:message, discussion: discussion, sender: student.uid) }
+
+    describe 'for student' do
+      before { set_current_user! student }
+
+      describe 'own message with permitted motive' do
+        before do
+          delete :destroy, params: {id: message.id, discussion_id: discussion.id, motive: :self_deleted}
+          message.reload
+        end
+
+        it { expect(response.status).to eq 302 }
+        it { expect(message.deleted?).to be true }
+        it { expect(message.deleted_by).to eq student }
+        it { expect(message.deleted_at).to_not eq nil }
+        it { expect(message.deletion_motive).to eq 'self_deleted' }
+      end
+
+      describe 'own message with forbidden motive' do
+        before do
+          delete :destroy, params: {id: message.id, discussion_id: discussion.id, motive: :shares_solution}
+          message.reload
+        end
+
+        it { expect(response.status).to eq 403 }
+        it { expect(message.deleted?).to be false }
+        it { expect(message.deleted_by).to eq nil }
+        it { expect(message.deleted_at).to eq nil }
+        it { expect(message.deletion_motive).to eq nil }
+      end
+
+      describe 'someone else\'s message' do
+        let(:message) { create(:message, discussion: discussion, sender: moderator.uid) }
+        before do
+          delete :destroy, params: {id: message.id, discussion_id: discussion.id, motive: :self_deleted}
+          message.reload
+        end
+
+        it { expect(response.status).to eq 403 }
+        it { expect(message.deleted?).to be false }
+        it { expect(message.deleted_by).to eq nil }
+        it { expect(message.deleted_at).to eq nil }
+        it { expect(message.deletion_motive).to eq nil }
+      end
+    end
+
+    describe 'for moderator' do
+      before do
+        set_current_user! moderator
+        delete :destroy, params: {id: message.id, discussion_id: discussion.id, motive: :inappropriate_content}
+        message.reload
+      end
+
+      it { expect(response.status).to eq 302 }
+      it { expect(message.deleted?).to be true }
+      it { expect(message.deleted_by).to eq moderator }
+      it { expect(message.deleted_at).to_not eq nil }
+      it { expect(message.deletion_motive).to eq 'inappropriate_content' }
+    end
+  end
+
   describe 'approve' do
     let(:message) { create(:message, discussion: discussion, sender: student.uid) }
 
@@ -42,7 +104,7 @@ describe DiscussionsMessagesController, type: :controller, organization_workspac
       it { expect(message.reload.approved).to be false }
     end
 
-    describe 'for student' do
+    describe 'for moderator' do
       before { set_current_user! moderator }
       before { post :approve, params: {id: message.id, discussion_id: discussion.id} }
 
@@ -62,7 +124,7 @@ describe DiscussionsMessagesController, type: :controller, organization_workspac
       it { expect(message.reload.not_actually_a_question).to be false }
     end
 
-    describe 'for student' do
+    describe 'for moderator' do
       before { set_current_user! moderator }
       before { post :question, params: {id: message.id, discussion_id: discussion.id} }
 

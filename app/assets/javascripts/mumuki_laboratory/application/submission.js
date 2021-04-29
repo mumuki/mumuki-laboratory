@@ -69,7 +69,7 @@ mumuki.submission = (() => {
         .done((data) => resultsBox.success(data, this))
         .fail(() => resultsBox.error(this))
         .always((data) => {
-          $(document).renderMuComponents();
+          $(document).renderMuComponents({ webBrowser: { allowScript: true } });
           resultsBox.done(data, this);
         });
     }

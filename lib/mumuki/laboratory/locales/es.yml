@@ -71,6 +71,18 @@ es:
   created_exercises: Ejercicios Creados
   created_guides: Lecciones Creadas
   date: Fecha
+  deleted_by: Eliminado por %{deleter}
+  deleted_message_warning: Si infringís reiteradamente estas u otras reglas del Espacio de Consultas, se te puede prohibir el acceso al mismo o podrás sufrir consecuencias más severas, como la expulsión del curso.
+  deletion_motive:
+    inappropriate_content:
+      present: Incluye contenido inapropiado
+      past: Incluía contenido inapropiado
+    shares_solution:
+      present: Comparte la solución correcta
+      past: Compartía la solución correcta
+    discloses_personal_information:
+      present: Divulga información personal
+      past: Divulgaba información personal
   day: Día
   days: Días
   description: Descripción
@@ -187,6 +199,7 @@ es:
     one: 1 mensaje
     other: '%{count} mensajes'
   message: Mensaje
+  message_deleted: Este mensaje fue eliminado porque %{motive}, lo cual infringe las %{forum_terms}.
   messages: Mensajes
   messages_error: Los mensajes anteriores no están disponibles en este momento. ¡Volvé a intentar mas tarde!
   messages_pluralized:
@@ -274,6 +287,7 @@ es:
   send: Enviar
   sending_solution: Enviando solución
   show: Mostrar
+  show_message: Mostrar mensaje
   sign_in: Iniciá sesión
   sign_in_action: iniciar sesión
   sign_out: Cerrar Sesión

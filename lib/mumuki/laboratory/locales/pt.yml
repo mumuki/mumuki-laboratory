@@ -1,4 +1,3 @@
----
 pt:
   aborted: Opa, não pudemos avaliar sua solução
   abort_explanation_html: <li>Verifique se o seu programa não possui recursão ou um loop infinito</li> <li>Verifique se você tem uma conexão com a internet</li> <li>Espere um pouco e tente novamente</li>
@@ -68,6 +67,18 @@ pt:
   created_exercises: Exercícios criados
   created_guides: Lições criadas
   date: Data
+  deleted_by: Removido pelo
+  deleted_message_warning: Se você violar repetidamente essas ou outras regras da Área de Consulta, seu acesso a ela pode ser proibido ou você pode sofrer consequências mais graves, como a expulsão do curso.
+  deletion_motive:
+    inappropriate_content:
+      present: Inclui conteúdo impróprio
+      past: Incluiu conteúdo impróprio
+    shares_solution:
+      present: Compartilhe a solução correta
+      past: Compartilhou a solução correta
+    discloses_personal_information:
+      present: Divulga informações pessoais
+      past: Divulgar informações pessoais
   day: Dia
   days: Dias
   description: Descrição
@@ -181,6 +192,7 @@ pt:
     one: 1 mensagem
     other: '%{count} mensagens'
   message: Mensagem
+  message_deleted: Esta mensagem foi excluída porque %{motive}, o que viola as %{forum_terms}.
   messages: Mensagens
   messages_error: As mensagens acima não estão disponíveis no momento. Eu tentei novamente mais tarde!
     mais tarde!
@@ -264,6 +276,7 @@ pt:
   send: Enviar
   sending_solution: Solução de envio
   show: Mostrar
+  show_message: Mostrar mensagem
   sign_in: Iniciar sessão
   sign_in_action: iniciar sessão
   sign_out: Fechar Sessão

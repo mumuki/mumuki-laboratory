@@ -46,7 +46,7 @@ describe BreadcrumbsHelper, organization_workspace: :test do
     end
 
     context 'in chapter' do
-      let!(:chapter) { create(:chapter, name: 'my chapter', lessons: [lesson]) }
+      let!(:chapter) { create(:chapter, name: 'my chapter', lessons: [lesson], number: 1) }
       let(:lesson) { create(:lesson, name: 'my lesson', exercises: [exercise]) }
       let(:exercise) { create(:exercise, name: 'my exercise') }
 
@@ -64,7 +64,7 @@ describe BreadcrumbsHelper, organization_workspace: :test do
       it 'mumuki, organization, chapter and lesson have links but exercise does not' do
         expect(breadcrumb).to include home_breadcrumb_with_link
         expect(breadcrumb).to include organization_breadcrumb_with_link
-        expect(breadcrumb).to include "<a href=\"/chapters/#{chapter.id}-my-chapter\">my chapter</a>"
+        expect(breadcrumb).to include "<a href=\"/chapters/#{chapter.id}-my-chapter\">1. my chapter</a>"
         expect(breadcrumb).to include "<a href=\"/lessons/#{lesson.id}-my-chapter-my-lesson\">1. my lesson</a>"
         expect(breadcrumb).to include "<li class='mu-breadcrumb-list-item last'>1. my exercise</li>"
       end

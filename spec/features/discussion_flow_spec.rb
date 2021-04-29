@@ -162,7 +162,12 @@ feature 'Discussion Flow', organization_workspace: :test do
       end
 
       context 'and forum enabled' do
-        before { Organization.current.update! forum_enabled: true }
+        let!(:problem_2_discussion_message) { create(:message, discussion: problem_2_discussions.first, sender: another_student.uid) }
+        let!(:another_problem_2_discussion_message) { create(:message, discussion: problem_2_discussions.first, sender: another_student.uid) }
+        before do
+          Organization.current.update! forum_enabled: true
+          another_problem_2_discussion_message.soft_delete! :inappropriate_content, moderator
+        end
 
         scenario 'newly created discussion' do
           visit current_path
@@ -170,7 +175,14 @@ feature 'Discussion Flow', organization_workspace: :test do
           expect(page).to have_text('Open')
           expect(page).to have_text('Messages')
           expect(page).not_to have_text('Preview')
+          expect(page).to have_text(problem_2_discussion_message.content)
+          expect(page).not_to have_text(another_problem_2_discussion_message.content)
           expect(page).not_to have_xpath("//div[@class='discussion-actions']")
+          expect(page).to_not have_text('Includes inappropriate content')
+          expect(page).to_not have_text('Shares the correct solution')
+          expect(page).to_not have_text('Discloses personal information')
+          expect(page).to have_text('included inappropriate content')
+          expect(page).to_not have_text ("Deleted by #{moderator.name}")
         end
 
         context 'for moderator' do
@@ -182,11 +194,17 @@ feature 'Discussion Flow', organization_workspace: :test do
             expect(page).to have_text('Open')
             expect(page).to have_text('Messages')
             expect(page).to have_text('Preview')
+            expect(page).to have_text(problem_2_discussion_message.content)
+            expect(page).to have_text(another_problem_2_discussion_message.content)
             expect(page).to have_xpath("//div[@class='discussion-actions']")
+            expect(page).to have_text('Includes inappropriate content')
+            expect(page).to have_text('Shares the correct solution')
+            expect(page).to have_text('Discloses personal information')
+            expect(page).to have_text('included inappropriate content')
+            expect(page).to have_text ("Deleted by #{moderator.name}")
           end
         end
       end
     end
   end
-
 end
