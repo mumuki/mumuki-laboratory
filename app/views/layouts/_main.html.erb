@@ -28,7 +28,7 @@
 
 <%= yield :navbar %>
 
-<div class="<%= exercise_container_type %><%= @kids ? '-fluid' : '' %>" id="wrap">
+<div class="<%= exercise_container_type %><%= @kids ? '-fluid' : '' %> mb-5" id="wrap">
   <div class="toast-container bottom-0 start-0 p-3">
     <% if notice %>
       <%= toast_notice(notice) %>
