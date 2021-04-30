@@ -151,7 +151,7 @@ mumuki.load(() => {
       const $bubble = this.$characterSpeechBubble;
       $bubble.find('.mu-kids-character-speech-bubble-tabs').show();
       $bubble.find('.mu-kids-character-speech-bubble-normal').show();
-      $bubble.find('.mu-kids-character-speech-bubble-failed').hide();
+      $bubble.find('.mu-kids-character-speech-bubble-failed').addClass('d-none').removeClass('d-block');
       $bubble.find('.mu-kids-discussion-link').remove();
       Object.keys(this.resultActions).forEach($bubble.removeClass.bind($bubble));
     }

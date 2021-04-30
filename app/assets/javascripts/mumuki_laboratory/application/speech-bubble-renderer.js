@@ -87,7 +87,7 @@ mumuki.renderers.speechBubble = (()=> {
     render() {
       this.$bubble.find('.mu-kids-character-speech-bubble-tabs').hide();
       this.$bubble.find('.mu-kids-character-speech-bubble-normal').hide();
-      this.$failedArea.show().html(this.responseData.title_html);
+      this.$failedArea.removeClass('d-none').addClass('d-block').html(this.responseData.title_html);
       this._addClass(this._responseStatus());
       this._chooseResultItem();
       this._appendDiscussionsLinkHtml();
