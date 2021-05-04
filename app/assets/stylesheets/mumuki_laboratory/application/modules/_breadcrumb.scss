@@ -61,4 +61,8 @@
   object-fit: contain;
   height: 38px;
   position: relative;
+
+  @include media-breakpoint-down(lg) {
+    max-width: 70vw;
+  }
 }
