@@ -23,7 +23,7 @@
           </span>
         <% end %>
 
-        <div class="example-result collapse <%= 'in' if contextualization.visible_success_output? %>" id="example-result-<%= index %>">
+        <div class="example-result collapse <%= 'show' if contextualization.visible_success_output? %>" id="example-result-<%= index %>">
           <%= contextualization.test_result_html test_result %>
         </div>
       </li>
