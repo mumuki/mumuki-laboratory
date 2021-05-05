@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   end
 
   def exam_authorizations
-    @exam_authorization_requests ||= ExamAuthorizationRequest.where(user: current_user)
+    @exam_authorization_requests ||= ExamAuthorizationRequest.where(user: current_user, organization: Organization.current)
   end
 
   def unsubscribe
