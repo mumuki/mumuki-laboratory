@@ -22,34 +22,6 @@
 
 }
 
-.hamburguer-breadcrumb {
-  .hamburguer {
-    font-size: 2.5rem;
-    cursor: pointer;
-  }
-  li {
-    a {
-      padding: 15px;
-    }
-    &:first-child {
-      i {
-        &:before {
-          font-family: 'dev-awesome', serif;
-          content: "\f10b";
-        }
-        &:after {
-          font-family: 'Lato', serif;
-          content: "mumuki";
-          padding: 5px;
-        }
-      }
-    }
-    &:last-child {
-      display: none;
-    }
-  }
-}
-
 .mu-navbar-avatar {
   justify-self: flex-end;
   .rounded-circle {
