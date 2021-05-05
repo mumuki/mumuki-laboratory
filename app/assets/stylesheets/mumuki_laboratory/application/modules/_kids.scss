@@ -195,7 +195,6 @@ $kids-speech-tabs-width: 40px;
       .mu-kids-next-speech {
         position: absolute;
         right: $kids-speech-tabs-width;
-        font-size: 90%;
         color: darken($mu-color-disabled, 25%);
         &:hover {
           cursor: pointer;
