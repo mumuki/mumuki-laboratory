@@ -27,6 +27,10 @@ module UserMenuHelper
     user_menu_item t(:certificates), certificates_user_path, 'certificates'
   end
 
+  def exam_authorizations_user_menu_link
+    user_menu_item t(:exams), exam_authorizations_user_path, 'exam_authorizations'
+  end
+
   private
 
   def user_menu_item(label, path, active_on)

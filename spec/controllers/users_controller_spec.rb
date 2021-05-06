@@ -18,4 +18,5 @@ describe UsersController, type: :controller, organization_workspace: :test do
     it { expect(User.last.first_name).to eq 'foo' }
     it { expect(User.last.verified_first_name).to be_nil }
   end
+
 end

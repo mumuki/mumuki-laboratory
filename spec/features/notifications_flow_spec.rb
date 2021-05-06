@@ -37,10 +37,9 @@ feature 'Notifications Flow', organization_workspace: :test do
       expect(page).to have_text 'Choose date and time to attend to the exam'
     end
 
-    scenario 'removes notification after target is processed' do
-      # Notification for exam authorization request is considered read after user click
+    scenario 'does not remove exam authorization notification after click it ' do
       find_notification_number(1).click
-      expect(notifications_bell).to have_text('1')
+      expect(notifications_bell).to have_text('2')
     end
   end
 end
