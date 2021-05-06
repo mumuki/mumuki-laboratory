@@ -126,6 +126,7 @@ es:
   exam_registration_explanation_html: Tenés tiempo hasta el <strong>%{date}</strong> para inscribirte. Pasada esa fecha, tu solicitud será evaluada y recibirás una confirmación. <br> ¡No te olvides de revisar las notificaciones!
   exam_registration_open: ¡Ya podés inscribirte a %{description}!
   exam_registration_to: Inscripción a %{description}
+  exams_will_be_here: Tus exámenes en esta organización aparecerán acá
   exams: Exámenes
   exercise: Ejercicio
   exercise_count: ejercicios

@@ -121,6 +121,7 @@ pt:
   exam_registration_explanation_html: Você tem tempo até <strong>%{date}</strong> para se inscrever. Após essa data, sua inscrição será avaliada e você receberá uma confirmação. <br> Não se esqueça de verificar as notificações!
   exam_registration_open: "¡Inscrições abertas para %{description}!"
   exam_registration_to: Inscrição a %{description}
+  exams_will_be_here: Seus Examesca nesta organização aparecerão aqui
   exams: Examesca
   exercise: Exercício
   exercise_count: exercícios

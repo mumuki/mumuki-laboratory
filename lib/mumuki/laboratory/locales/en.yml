@@ -118,6 +118,7 @@ en:
   exam_registration_explanation_html: You have until <strong>%{date}</strong> to register. After that date, your request will be processed and you will receive a confirmation. <br> Don't forget to check the notifications!
   exam_registration_open: Registrations open for %{description}!
   exam_registration_to: Registration to %{description}
+  exams_will_be_here: Your exams in the organization will appear here.
   exams: Exams
   exercise: Exercise
   exercises: Exercises
