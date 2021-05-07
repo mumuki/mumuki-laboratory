@@ -26,6 +26,7 @@ module OrganizationsControllerTemplate
       .require(:organization)
       .permit(:book,
               :name,
+              :faqs,
               *Mumuki::Domain::Organization::Profile.attributes,
               *Mumuki::Domain::Organization::Theme.attributes,
               *(Mumuki::Domain::Organization::Settings.attributes - [:login_methods]),

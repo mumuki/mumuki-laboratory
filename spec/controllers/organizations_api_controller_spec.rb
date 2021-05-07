@@ -143,7 +143,8 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
              logo_url: 'http://a-logo-url.com',
              theme_stylesheet: '.theme { color: red }',
              extension_javascript: 'window.a = function() { }',
-             terms_of_service: 'A TOS'}
+             terms_of_service: 'A TOS',
+             faqs: 'some faqs'}
           end
 
           it { expect(organization.public?).to eq false }
@@ -153,6 +154,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
           it { expect(organization.theme_stylesheet).to eq ".theme { color: red }" }
           it { expect(organization.extension_javascript).to eq "window.a = function() { }" }
           it { expect(organization.terms_of_service).to eq 'A TOS' }
+          it { expect(organization.faqs).to eq 'some faqs' }
         end
 
         context 'with missing values' do
