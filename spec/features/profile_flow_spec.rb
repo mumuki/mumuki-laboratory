@@ -73,19 +73,12 @@ feature 'Profile Flow', organization_workspace: :test do
     context 'user with uncompleted profile after saving' do
       before { user.update! last_name: 'last_name', birthdate: Time.now - 20.years, gender: 'female' }
 
-      let(:button_options) do
-        # Match :first is used because there are two buttons: mobile and desktop.
-        { class: 'mu-edit-profile-btn', match: :first }.tap do |options|
-          options.merge!(disabled: true) unless run_with_selenium?
-        end
-      end
-
       context 'when visiting an exercise' do
         scenario 'is redirected to previous path' do
           visit "/exercises/#{exercise.transparent_id}"
           fill_in('user_first_name', with: 'first_name')
 
-          click_on(button_options)
+          click_on(class: 'mu-edit-profile-btn', match: :first)
           expect(page).to have_text(exercise.description)
         end
       end
@@ -95,7 +88,7 @@ feature 'Profile Flow', organization_workspace: :test do
           visit "/user/edit"
           fill_in('user_first_name', with: 'first_name')
 
-          click_on(button_options)
+          click_on(class: 'mu-edit-profile-btn', match: :first)
           expect(page).to have_text('Your data was updated successfully')
           expect(page).to have_text('My profile')
         end
