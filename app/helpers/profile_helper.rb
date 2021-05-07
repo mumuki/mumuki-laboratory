@@ -8,6 +8,6 @@ module ProfileHelper
   end
 
   def save_edit_profile_button(form)
-    form.submit t(:save), disabled: true, class: 'btn btn-complementary mu-edit-profile-btn'
+    form.submit t(:save), class: 'btn btn-complementary mu-edit-profile-btn'
   end
 end

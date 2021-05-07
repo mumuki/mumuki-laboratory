@@ -9,11 +9,10 @@ mumuki.load(function() {
   let avatarId = "";
   let avatarType = "";
 
-  let originalData = $userForm.serialize();
-  let originalProfilePicture = $userAvatar.attr('src');
+  toggleEditButtonIfRequiredFieldsNotCompleted();
 
   $userForm.on('change keyup', function() {
-    toggleEditButtonIfThereAreChanges();
+    toggleEditButtonIfRequiredFieldsNotCompleted();
   });
 
   $avatarItem.on('keypress click', function(e) {
@@ -25,26 +24,19 @@ mumuki.load(function() {
       const clickedAvatarType = $(this).attr('type');
       avatarId = clickedAvatarId || "";
       avatarType = clickedAvatarType || "";
-
-      toggleEditButtonIfThereAreChanges();
     });
   });
 
-  function toggleEditButtonIfThereAreChanges() {
-    let shouldEnable = requiredFieldsAreFilled() && (dataChanged() || avatarChanged());
-
-    $editButton.prop('disabled', !shouldEnable);
+  function toggleEditButtonIfRequiredFieldsNotCompleted() {
+    $editButton.prop('disabled', !requiredFieldsAreCompleted());
   }
 
-  const requiredFieldsAreFilled = () =>
-    $userForm.find('select, textarea, input').toArray().every(elem => {
+  function requiredFieldsAreCompleted() {
+    return $userForm.find('select, textarea, input').toArray().every(elem => {
       const $elem = $(elem);
       return !($elem.prop('required')) || !!$elem.val();
     });
-
-  const dataChanged = () => $userForm.serialize() !== originalData;
-
-  const avatarChanged = () => $userAvatar.attr('src') !== originalProfilePicture;
+  }
 
   $('#mu-user-image').on('keypress click', function(e){
     onClickOrSpacebarOrEnter($(this), e, function() {
