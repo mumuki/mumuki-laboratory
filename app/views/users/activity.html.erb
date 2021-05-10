@@ -17,11 +17,13 @@
                      stats: exercises_activity_stats
                    } %>
 
-        <%= render partial: 'activity_indicator',
-                   locals: {
-                     title: t(:forum),
-                     stats: messages_activity_stats
-                   } %>
+        <% if Organization.current.forum_enabled? %>
+          <%= render partial: 'activity_indicator',
+                     locals: {
+                       title: t(:forum),
+                       stats: messages_activity_stats
+                     } %>
+          <% end %>
       </div>
       <div class="col-lg-4 mu-tab-body">
         <div class="nav nav-pills flex-column">
