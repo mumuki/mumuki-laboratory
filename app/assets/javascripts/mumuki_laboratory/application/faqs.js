@@ -25,9 +25,9 @@ mumuki.faqs = class {
   _createNavbar() {
     const $faqsNavbar = $(".mu-faqs-navbar nav ul");
     $('.mu-faqs-group').each((_index, faqGroup) => {
-      const $navItem = this._createNavbarItem($faqsNavbar, faqGroup)
+      const $navItem = this._createNavbarItem($faqsNavbar, faqGroup);
       const $faqGroup = $(faqGroup);
-      this._configureClickFor($navItem, $faqGroup, $faqsNavbar)
+      this._configureClickFor($navItem, $faqGroup, $faqsNavbar);
     });
   }
 
@@ -56,12 +56,12 @@ mumuki.faqs = class {
   }
 
   _createFaqsIcons() {
-    const $faqIcon = $('<i class="mu-faqs-group-icon fa fa-plus">');
+    const $faqIcon = $('<i class="mu-faqs-group-icon fas fa-chevron-down">');
     $faqIcon.click(function(e){
       const $elem = $(this);
-      $elem.toggleClass('fa-plus fa-minus');
+      $elem.toggleClass('fa-chevron-down fa-chevron-up');
       $elem.closest('.mu-faqs-group').toggleClass('active');
-    })
+    });
     $('.mu-faqs-group').prepend($faqIcon);
   }
 
@@ -75,7 +75,7 @@ mumuki.faqs = class {
         newGroup = [];
       }
       newGroup.push(elem);
-      previousNodeName = elem.nodeName
+      previousNodeName = elem.nodeName;
     });
 
     elemsGroups.push(newGroup);

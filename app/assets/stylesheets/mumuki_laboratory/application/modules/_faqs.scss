@@ -8,7 +8,7 @@
 
     width: 100%;
 
-    @media (min-width: 768px) {
+    @include media-breakpoint-up(md) {
       width: 75%;
       float: right;
     }
@@ -17,8 +17,9 @@
       padding: 32px;
       box-shadow: 0 0.375em 2.8125em 0 #d2d5d9;
       margin-bottom: 32px;
+      word-wrap: anywhere;
 
-      @media (max-width: 767px) {
+      @include media-breakpoint-down(md) {
         &:not(.active) {
           h3, p {
             display: none
@@ -44,7 +45,7 @@
         margin-top: 10px;
         cursor: pointer;
         display: none;
-        @media (max-width: 767px) {
+        @include media-breakpoint-down(md) {
           display: unset;
         }
       }
