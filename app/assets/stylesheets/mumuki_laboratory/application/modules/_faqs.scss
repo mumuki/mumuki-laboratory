@@ -17,6 +17,7 @@
       padding: 32px;
       box-shadow: 0 0.375em 2.8125em 0 #d2d5d9;
       margin-bottom: 32px;
+      word-wrap: anywhere;
 
       @media (max-width: 767px) {
         &:not(.active) {
