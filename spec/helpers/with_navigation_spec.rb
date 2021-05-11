@@ -131,5 +131,27 @@ describe WithStudentPathNavigation, organization_workspace: :test do
       it { expect { next_button(exercise) }.to_not raise_error }
       it { expect(next_button(exercise)).to be_nil }
     end
+
+    context "when there are manual_evaluation exercises" do
+      let(:book) { create :book, topics: [topic] }
+      let(:topic) { create :topic, lessons: [lesson_1, lesson_2] }
+      let(:lesson_1) { create :lesson, exercises: [create(:exercise, manual_evaluation: true)] }
+      let(:lesson_2) { create :lesson, exercises: [regular_exercise] }
+      let(:regular_exercise) { create :exercise }
+
+      before { organization.switch!.reindex_usages! }
+
+      context 'on organization with prevent_manual_evaluation_content' do
+        let(:organization) { create :organization, prevent_manual_evaluation_content: true, book: book }
+
+        it { expect(next_button(lesson_2)).to be_nil }
+      end
+
+      context 'on organization without prevent_manual_evaluation_content' do
+        let(:organization) { create :organization, book: book }
+
+        it { expect(next_button(lesson_2)).to eq "<a class=\"btn btn-warning w-100\" role=\"button\" href=\"/lessons/#{lesson_1.friendly_name}\"><span class=\"fa5-text-r\">Next pending: #{lesson_1.name}</span><i class=\"fas fa-chevron-right\"></i></a>" }
+      end
+    end
   end
 end
