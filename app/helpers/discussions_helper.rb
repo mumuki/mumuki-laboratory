@@ -83,8 +83,12 @@ module DiscussionsHelper
   def discussion_update_status_button(status)
     button_to t("to_#{status}"),
               item_discussion_path(@discussion, {status: status}),
-              class: "btn btn-discussion-#{status}",
+              class: "btn btn-#{btn_type_for_discussion_statuses[status.to_sym]}",
               method: :put
+  end
+
+  def btn_type_for_discussion_statuses
+    { closed: 'danger', solved: 'success', opened: 'light' }
   end
 
   def new_discussion_link(teaser_text, link_text)
@@ -173,7 +177,7 @@ module DiscussionsHelper
   end
 
   def discussion_info(discussion)
-    "#{t(:time_since, time: time_ago_in_words(discussion.created_at))} · #{t(:message_count, count: discussion.visible_messages.size)}"
+    "#{t(:time_since, time: time_ago_in_words(discussion.created_at))} · #{t(:reply_count, count: discussion.visible_messages.size)}"
   end
 
   def discussion_filter_params_without_page
@@ -186,6 +190,10 @@ module DiscussionsHelper
 
   def discussion_user_name(user)
     user.abbreviated_name
+  end
+
+  def linked_discussion_user_name(user)
+    content_tag :a, discussion_user_name(user)
   end
 
   def subscription_icon

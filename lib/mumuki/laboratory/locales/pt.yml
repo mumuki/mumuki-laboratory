@@ -190,9 +190,6 @@ pt:
   male: Masculino
   manual_evaluation_pending: Obrigado por enviar sua solução! Seus professores irão corrigi-lo em breve
   medal: Medalha
-  message_count:
-    one: 1 mensagem
-    other: '%{count} mensagens'
   message: Mensagem
   message_deleted: Esta mensagem foi excluída porque %{motive}, o que viola as %{forum_terms}.
   messages: Mensagens
@@ -265,6 +262,9 @@ pt:
   read: Ler
   read_messages: Ver mensagens
   refresh_or_wait: Se não mostrar automaticamente em alguns segundos, pressione F5
+  reply_count:
+    one: 1 resposta
+    other: '%{count} respostas'
   requires_attention: Requer atenção
   reset_query: Limpar filtros de pesquisa atuais
   restart: Reiniciar

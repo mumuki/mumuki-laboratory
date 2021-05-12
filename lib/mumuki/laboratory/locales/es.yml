@@ -197,9 +197,6 @@ es:
   male: Hombre
   manual_evaluation_pending: ¡Gracias por enviar tu solución! Tus docentes la corregirán pronto
   medal: Medalla
-  message_count:
-    one: 1 mensaje
-    other: '%{count} mensajes'
   message: Mensaje
   message_deleted: Este mensaje fue eliminado porque %{motive}, lo cual infringe las %{forum_terms}.
   messages: Mensajes
@@ -274,6 +271,9 @@ es:
   read: Leido
   read_messages: Ver mensajes
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
+  reply_count:
+    one: 1 respuesta
+    other: '%{count} respuestas'
   requires_attention: Requiere atención
   reset_query: Borrar los filtros de búsqueda actuales
   responses_count_asc: Con menos respuestas validadas
