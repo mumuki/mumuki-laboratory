@@ -28,7 +28,7 @@
               <span class="discussion-initiator-name">
                 <%= discussion_user_name @discussion.initiator %>
               </span>
-              <span class="d-none d-sm-inline"><%= discussion_info(@discussion) unless @discussion.new_record? %></span>
+              <span><%= discussion_info(@discussion) unless @discussion.new_record? %></span>
             </span>
           </div>
           <% if @discussion.last_moderator_access_visible_for?(current_user) %>
