@@ -192,6 +192,10 @@ module DiscussionsHelper
     user.abbreviated_name
   end
 
+  def linked_discussion_user_name(user)
+    content_tag :a, discussion_user_name(user)
+  end
+
   def subscription_icon
     fa_icon :bell, text: t(:subscribe)
   end
