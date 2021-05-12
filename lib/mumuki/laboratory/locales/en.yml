@@ -186,9 +186,6 @@ en:
   male: Male
   manual_evaluation_pending: Thanks for submitting your solution! It will be revised by the course teachers soon
   medal: Medal
-  message_count:
-    one: 1 message
-    other: '%{count} messages'
   message: Message
   message_deleted: This message was deleted because it %{motive}, which violates the %{forum_terms}.
   messages: Messages
@@ -255,6 +252,9 @@ en:
   progress: Progresss
   read: Read
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
+  reply_count:
+    one: 1 reply
+    other: '%{count} replies'
   requires_attention: Requires attention
   reset_query: Clear current search filters
   responses_count_asc: By less validated replies
