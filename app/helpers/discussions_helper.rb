@@ -83,8 +83,12 @@ module DiscussionsHelper
   def discussion_update_status_button(status)
     button_to t("to_#{status}"),
               item_discussion_path(@discussion, {status: status}),
-              class: "btn btn-discussion-#{status}",
+              class: "btn btn-#{btn_type_for_discussion_statuses[status.to_sym]}",
               method: :put
+  end
+
+  def btn_type_for_discussion_statuses
+    { closed: 'danger', solved: 'success', opened: 'light' }
   end
 
   def new_discussion_link(teaser_text, link_text)

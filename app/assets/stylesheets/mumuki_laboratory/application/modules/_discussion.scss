@@ -394,31 +394,6 @@ $moderator-badge-color: #dd9900;
   }
 }
 
-$statuses: (
-  closed: ($danger white $danger),
-  opened: (white #333333 #eaeaea),
-  solved: ($success white $success),
-  pending_review: ($success white $success)
-);
-
-@each $status, $style in $statuses {
-  $background-color: nth($style, 1);
-  $font-color: nth($style, 2);
-  $border-color: nth($style, 3);
-
-  .btn-discussion-#{$status} {
-    background-color: $background-color;
-    color: $font-color;
-    border-color: $border-color;
-    margin-left: 5px;
-    &:hover {
-      color: $font-color;
-      border-color: darken($border-color, 3%);
-      background-color: darken($background-color, 3%);
-    }
-  }
-}
-
 .discussion-requires-attention {
   margin-right: 20px;
   label {
