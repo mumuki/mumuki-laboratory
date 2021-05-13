@@ -5,7 +5,7 @@
 <div class="row">
   <%= render partial: 'layouts/user_menu' %>
 
-  <div class="col-md-9">
+  <div class="col-md-9 mu-tab-body">
     <div class="mu-user-header">
       <h1><%= t(:activity) %></h1>
     </div>
@@ -17,11 +17,13 @@
                      stats: exercises_activity_stats
                    } %>
 
-        <%= render partial: 'activity_indicator',
-                   locals: {
-                     title: t(:forum),
-                     stats: messages_activity_stats
-                   } %>
+        <% if Organization.current.forum_enabled? %>
+          <%= render partial: 'activity_indicator',
+                     locals: {
+                       title: t(:forum),
+                       stats: messages_activity_stats
+                     } %>
+          <% end %>
       </div>
       <div class="col-lg-4 mu-tab-body">
         <div class="nav nav-pills flex-column">
