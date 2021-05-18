@@ -1,6 +1,8 @@
 class ExamAuthorizationRequestsController < ApplicationController
   def create
-    authorization_request = ExamAuthorizationRequest.create! authorization_request_params
+    authorization_request = ExamAuthorizationRequest.find_or_create_by! create_authorization_request_params do |it|
+      it.assign_attributes authorization_request_params
+    end
     current_user.read_notification! authorization_request.exam_registration
     flash.notice = I18n.t :exam_authorization_request_created
     redirect_to root_path
@@ -13,6 +15,10 @@ class ExamAuthorizationRequestsController < ApplicationController
   end
 
   private
+
+  def create_authorization_request_params
+    authorization_request_params.slice :exam_registration_id, :user, :organization
+  end
 
   def authorization_request_params
     params
