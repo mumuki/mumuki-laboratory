@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :discussions, options.merge(only: [:index, :new, :show, :create, :update, :destroy]) do
         post :subscription, on: :member
         post :upvote, on: :member
+        post :responsible, on: :member
       end
     end
 

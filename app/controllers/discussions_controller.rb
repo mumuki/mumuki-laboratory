@@ -6,6 +6,7 @@ class DiscussionsController < ApplicationController
   before_action :authenticate!, only: [:update, :create]
   before_action :discussion_filter_params, only: :index
   before_action :read_discussion, only: :show
+  before_action :authorize_moderator!, only: [:responsible]
 
   helper_method :discussion_filter_params
 
@@ -34,6 +35,11 @@ class DiscussionsController < ApplicationController
 
   def upvote
     current_user&.toggle_upvote!(subject)
+    head :ok
+  end
+
+  def responsible
+    subject.toggle_responsible! current_user
     head :ok
   end
 
