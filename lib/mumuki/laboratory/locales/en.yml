@@ -163,6 +163,8 @@ en:
   invitation_for: 'Join %{course}'
   item_not_accessible: "You are not permitted to access this content"
   its_been_a_while: It's been a while since you last used Mumuki.
+  i_will_reply: I'll reply
+  i_wont_reply: I won't reply
   joining_html: '¡Welcome to course <strong>%{course}</strong>!'
   keep_learning: Keep learning!
   kids_default_success: You did it great!

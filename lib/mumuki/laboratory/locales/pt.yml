@@ -167,6 +167,8 @@ pt:
   invitation: Convite para o curso
   invitation_for: Participe %{curso}
   item_not_accessible: Você não tem permissões para acessar este conteúdo
+  i_will_reply: Eu respondo
+  i_wont_reply: Eu não respondo
   joining_html: Bem-vindo ao curso <strong> %{curso} </strong>!
   kids_default_success: Você fez muito bem!
   language: Linguagem

@@ -196,6 +196,14 @@ module DiscussionsHelper
     content_tag :a, discussion_user_name(user)
   end
 
+  def responsible_icon
+    fa_icon 'hand-paper', text: t(:i_will_reply)
+  end
+
+  def not_responsible_icon
+    fa_icon 'hand-rock', type: :regular, text: t(:i_wont_reply)
+  end
+
   def subscription_icon
     fa_icon :bell, text: t(:subscribe)
   end

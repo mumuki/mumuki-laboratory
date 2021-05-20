@@ -163,6 +163,8 @@ es-CL:
   invitation_for: 'Unirse a %{course}'
   item_not_accessible: "No tienes permisos para acceder a este contenido"
   its_been_a_while: Hace un tiempo que no usas Mumuki.
+  i_will_reply: Yo respondo
+  i_wont_reply: Mejor no respondo
   joining_html: '¡Te damos la bienvenida al curso <strong>%{course}</strong>!'
   keep_learning: ¡Sigue aprendiendo!
   kids_default_success: ¡Lo hiciste muy bien!
