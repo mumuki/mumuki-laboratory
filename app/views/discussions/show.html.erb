@@ -15,6 +15,12 @@
     <h3 class="flex-grow-1 me-3"><%= t :messages %></h3>
     <% if current_user && @discussion.persisted? %>
       <span class="d-flex">
+        <% if current_user.moderator_here? %>
+          <div class="discussion-responsible me-1">
+            <%= btn_toggle responsible_icon, not_responsible_icon, @discussion.any_responsible?, class: 'btn-sm',
+                           onclick: "mumuki.Forum.discussionResponsible('#{responsible_discussion_url(@discussion)}')" %>
+          </div>
+        <% end %>
         <% if @discussion.subscribable? %>
           <div class="discussion-subscription me-1">
             <%= btn_toggle subscription_icon, unsubscription_icon, current_user.subscribed_to?(@discussion), class: 'btn-sm',

@@ -1,6 +1,7 @@
 mumuki.load(() => {
   var $subscriptionButtons = $('.discussion-subscription > button');
   var $upvoteButtons = $('.discussion-upvote > button');
+  var $responsibleButton = $('.discussion-responsible > button');
   let $messagePreviewButton = $('.discussion-new-message-preview-button.preview');
   let $messageEditButton = $('.discussion-new-message-preview-button.edit');
   let $newMessageContent = $('.discussion-new-message-content');
@@ -52,6 +53,9 @@ mumuki.load(() => {
     },
     discussionUpvote: function (url) {
       Forum.discussionPostAndToggle(url, $upvoteButtons);
+    },
+    discussionResponsible: function (url) {
+      Forum.discussionPostAndToggle(url, $responsibleButton);
     },
     discussionPostAndToggle: function (url, elem) {
       Forum.discussionPost(url).done(Forum.toggleButton(elem));
