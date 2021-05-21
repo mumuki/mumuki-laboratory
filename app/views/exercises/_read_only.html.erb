@@ -33,7 +33,7 @@
           </div>
           <% if @discussion.current_responsible_visible_for?(current_user) %>
             <h5 class="my-2 me-3">
-              <span class="badge bg-primary text-wrap">
+              <span class="badge bg-primary text-wrap responsible-moderator-badge">
                 <%= responsible_moderator_text_for(@discussion, current_user) %>
               </span>
             </h5>

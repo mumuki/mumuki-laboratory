@@ -56,6 +56,7 @@ mumuki.load(() => {
     },
     discussionResponsible: function (url) {
       Forum.discussionPostAndToggle(url, $responsibleButton);
+      $('.responsible-moderator-badge').toggleClass('d-none');
     },
     discussionPostAndToggle: function (url, elem) {
       Forum.discussionPost(url).done(Forum.toggleButton(elem));
