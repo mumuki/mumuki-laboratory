@@ -34,7 +34,7 @@
           <% if @discussion.current_responsible_visible_for?(current_user) %>
             <h5 class="my-2 me-3">
               <span class="badge bg-primary text-wrap">
-                <%= t :moderator_will_reply, moderator: discussion_user_name(@discussion.responsible_moderator_by) %>
+                <%= responsible_moderator_text_for(@discussion, current_user) %>
               </span>
             </h5>
           <% end %>

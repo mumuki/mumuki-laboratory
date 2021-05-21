@@ -196,6 +196,14 @@ module DiscussionsHelper
     content_tag :a, discussion_user_name(user)
   end
 
+  def responsible_moderator_text_for(discussion, user)
+    if discussion.responsible?(user)
+      t :you_will_reply
+    else
+      t :moderator_will_reply, moderator: discussion_user_name(@discussion.responsible_moderator_by)
+    end
+  end
+
   def responsible_icon
     fa_icon 'hand-paper', text: t(:i_will_reply)
   end
