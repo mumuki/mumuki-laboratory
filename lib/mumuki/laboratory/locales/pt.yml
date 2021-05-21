@@ -174,7 +174,6 @@ pt:
   language: Linguagem
   languages: Linguagens
   last_name: Sobrenome
-  last_seen: "Visto por %{name}"
   last_submission_date: Última solução
   latest_exercises: Últimos exercícios
   learning: Aprendendo
@@ -204,6 +203,7 @@ pt:
   minutes: minutos
   moderation: Mentoria
   moderator: Mentor
+  moderator_will_reply: "%{moderator} vai responder"
   more_messages: Ver as mensagens anteriores
   my_account: Minha conta
   my_doubts: Minhas duvidas

@@ -199,6 +199,7 @@ es-CL:
   minutes: minutos
   moderation: Mentoría
   moderator: Mentor
+  moderator_will_reply: "%{moderator} va a responder"
   more_messages: Ver mensajes anteriores
   my_account: Mi cuenta
   my_doubts: Mis consultas
