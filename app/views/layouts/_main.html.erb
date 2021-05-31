@@ -28,17 +28,11 @@
 
 <%= yield :navbar %>
 
-<div class="<%= exercise_container_type %><%= ' mb-5' unless input_kids? %>" id="wrap">
-  <div class="toast-container bottom-0 start-0 p-3">
-    <% if notice %>
-      <%= toast_notice(notice) %>
-    <% elsif alert %>
-      <%= toast_alert(alert) %>
-    <% elsif info %>
-      <%= toast_info(info) %>
-    <% end %>
-  </div>
+<div class="toast-container bottom-0 start-0 p-3">
+  <%= render partial: 'layouts/toast' %>
+</div>
 
+<div class="<%= exercise_container_type %><%= ' mb-5' unless input_kids? %>" id="wrap">
   <%= yield %>
 </div>
 
