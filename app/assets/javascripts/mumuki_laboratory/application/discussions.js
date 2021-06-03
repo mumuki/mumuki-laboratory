@@ -55,11 +55,17 @@ mumuki.load(() => {
       Forum.discussionPostAndToggle(url, $upvoteButtons);
     },
     discussionResponsible: function (url) {
-      Forum.discussionPostAndToggle(url, $responsibleButton);
+      Forum.discussionPostToggleAndRenderToast(url, $responsibleButton);
       $('.responsible-moderator-badge').toggleClass('d-none');
     },
     discussionPostAndToggle: function (url, elem) {
       Forum.discussionPost(url).done(Forum.toggleButton(elem));
+    },
+    discussionPostToggleAndRenderToast: function (url, elem) {
+      Forum.discussionPost(url).done(function (response) {
+        Forum.toggleButton(elem);
+        mumuki.toast.addToast(response);
+      });
     },
     discussionMessageToggleApprove: function (url, elem) {
       Forum.discussionPost(url).done(function () {

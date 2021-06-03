@@ -39,7 +39,10 @@ class DiscussionsController < ApplicationController
 
   def responsible
     subject.toggle_responsible! current_user
-    head :ok
+    subject.any_responsible? ?
+      flash.now.notice = I18n.t(:you_will_reply_notice) : flash.now.notice = I18n.t(:you_wont_reply_notice)
+
+    render :partial => 'layouts/toast'
   end
 
   def create
