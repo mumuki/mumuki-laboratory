@@ -58,11 +58,11 @@
                   </span>
                   <span class="d-none d-lg-inline"><%= discussion.exercise.guide.name %> -</span>
                   <span><%= discussion.exercise.name %></span>
-                  <% if discussion.last_moderator_access_visible_for?(current_user) %>
+                  <% if discussion.current_responsible_visible_for?(current_user) %>
                     <div class="float-end discussion-moderator-access" >
-                      <%= profile_picture_for(discussion.last_moderator_access_by, height: 32) %>
+                      <%= profile_picture_for(discussion.responsible_moderator_by, height: 32) %>
                       <span class="moderator-initials">
-                        <%= discussion.last_moderator_access_by.name_initials %>
+                        <%= discussion.responsible_moderator_by.name_initials %>
                       </span>
                     </div>
                   <% end %>
