@@ -62,10 +62,14 @@ mumuki.load(() => {
       Forum.discussionPost(url).done(Forum.toggleButton(elem));
     },
     discussionPostToggleAndRenderToast: function (url, elem) {
-      Forum.discussionPost(url).done(function (response) {
-        Forum.toggleButton(elem);
-        mumuki.toast.addToast(response);
-      });
+      Forum.discussionPost(url)
+        .done(function (response) {
+          Forum.toggleButton(elem);
+          mumuki.toast.addToast(response);
+        })
+        .fail(function (response) {
+          mumuki.toast.addToast(response.responseText);
+        });
     },
     discussionMessageToggleApprove: function (url, elem) {
       Forum.discussionPost(url).done(function () {

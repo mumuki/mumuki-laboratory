@@ -43,11 +43,14 @@ class DiscussionsController < ApplicationController
 
       subject.any_responsible? ?
         flash.now.notice = I18n.t(:you_will_reply_notice) : flash.now.notice = I18n.t(:you_wont_reply_notice)
+
+      status = :ok
     else
       flash.now.alert = I18n.t(:someone_else_will_reply)
+      status = :conflict
     end
 
-    render :partial => 'layouts/toast'
+    render :partial => 'layouts/toast', status: status
   end
 
   def create
