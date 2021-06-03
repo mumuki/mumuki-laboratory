@@ -303,6 +303,7 @@ pt:
     one: resolvido
     other: resolvidos
   solved_exercises_percentage: realizado
+  someone_else_will_reply: Alguém já marcou que responderá.
   something_went_wrong: Oops!, Algo não estava certo ...
   sort: Ordenar
   sources: Bibliografia

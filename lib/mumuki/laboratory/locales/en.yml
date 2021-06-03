@@ -289,6 +289,7 @@ en:
   solved_count: '%{count} solved'
   solved_exercises_count: solved
   solved_exercises_percentage: done
+  someone_else_will_reply: Someone else already marked they'll reply.
   something_went_wrong: Something went wrong!
   sort: Sort
   sources: Sources
