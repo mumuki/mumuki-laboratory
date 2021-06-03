@@ -276,6 +276,7 @@ es:
   reply_count:
     one: 1 respuesta
     other: '%{count} respuestas'
+  reply_not_required: Ya no se requiere una respuesta. Por favor, actualizá para ver la discusión actualizada.
   requires_attention: Requiere atención
   reset_query: Borrar los filtros de búsqueda actuales
   responses_count_asc: Con menos respuestas validadas

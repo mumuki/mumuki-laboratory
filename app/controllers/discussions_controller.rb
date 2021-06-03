@@ -46,7 +46,9 @@ class DiscussionsController < ApplicationController
 
       status = :ok
     else
-      flash.now.alert = I18n.t(:someone_else_will_reply)
+      subject.any_responsible? ?
+        flash.now.alert = I18n.t(:someone_else_will_reply) : flash.now.alert = I18n.t(:reply_not_required)
+
       status = :conflict
     end
 

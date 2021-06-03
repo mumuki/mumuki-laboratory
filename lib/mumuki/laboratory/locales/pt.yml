@@ -267,6 +267,7 @@ pt:
   reply_count:
     one: 1 resposta
     other: '%{count} respostas'
+  reply_not_required: Uma resposta não é mais necessária. Por favor, atualize para ver a consulta atualizada.
   requires_attention: Requer atenção
   reset_query: Limpar filtros de pesquisa atuais
   restart: Reiniciar

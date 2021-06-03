@@ -257,6 +257,7 @@ en:
   reply_count:
     one: 1 reply
     other: '%{count} replies'
+  reply_not_required: A reply is no longer required. Please refresh to see the updated discussion.
   requires_attention: Requires attention
   reset_query: Clear current search filters
   responses_count_asc: By less validated replies

@@ -265,6 +265,7 @@ es-CL:
   reply_count:
     one: 1 respuesta
     other: '%{count} respuestas'
+  reply_not_required: Ya no se requiere una respuesta. Por favor, actualiza para ver la discusión actualizada.
   reset_query: Borrar los filtros de búsqueda actuales
   restart: Reiniciar
   results_hidden: ¡Tu solución fue enviada con éxito!
