@@ -198,18 +198,18 @@ module DiscussionsHelper
 
   def responsible_moderator_text_for(discussion, user)
     if discussion.responsible?(user)
-      t :you_will_reply
+      t('moderator_take_care.you_are')
     else
-      t :moderator_will_reply, moderator: discussion_user_name(@discussion.responsible_moderator_by)
+      t('moderator_take_care.moderator_is', moderator: discussion_user_name(@discussion.responsible_moderator_by))
     end
   end
 
   def responsible_icon
-    fa_icon 'hand-paper', text: t(:i_will_reply)
+    fa_icon 'hand-paper', text: t('moderator_take_care.i_will')
   end
 
   def not_responsible_icon
-    fa_icon 'hand-rock', type: :regular, text: t(:i_wont_reply)
+    fa_icon 'hand-rock', type: :regular, text: t('moderator_take_care.i_wont')
   end
 
   def subscription_icon

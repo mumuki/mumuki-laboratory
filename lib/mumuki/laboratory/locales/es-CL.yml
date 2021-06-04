@@ -163,8 +163,6 @@ es-CL:
   invitation_for: 'Unirse a %{course}'
   item_not_accessible: "No tienes permisos para acceder a este contenido"
   its_been_a_while: Hace un tiempo que no usas Mumuki.
-  i_will_reply: Yo respondo
-  i_wont_reply: Mejor no respondo
   joining_html: '¡Te damos la bienvenida al curso <strong>%{course}</strong>!'
   keep_learning: ¡Sigue aprendiendo!
   kids_default_success: ¡Lo hiciste muy bien!
@@ -199,7 +197,15 @@ es-CL:
   minutes: minutos
   moderation: Mentoría
   moderator: Mentor
-  moderator_will_reply: "%{moderator} va a responder"
+  moderator_take_care:
+    i_will: Yo me ocupo
+    i_wont: Mejor no me ocupo
+    moderator_is: "%{moderator} se está ocupando"
+    status_changed: La consulta cambió de estado. Por favor, actualiza la página.
+    someone_else_will: Alguien más ya marcó que se va a ocupar.
+    you_are: Te estás ocupando
+    you_will_confirmation: Te vas a ocupar de esta consulta. Si cambias de parecer, toca nuevamente el botón.
+    you_wont_confirmation: No te vas a ocupar de esta consulta.
   more_messages: Ver mensajes anteriores
   my_account: Mi cuenta
   my_doubts: Mis consultas
@@ -265,7 +271,6 @@ es-CL:
   reply_count:
     one: 1 respuesta
     other: '%{count} respuestas'
-  reply_not_required: Ya no se requiere una respuesta. Por favor, actualiza para ver la discusión actualizada.
   reset_query: Borrar los filtros de búsqueda actuales
   restart: Reiniciar
   results_hidden: ¡Tu solución fue enviada con éxito!
@@ -294,7 +299,6 @@ es-CL:
   solve_more_exercises_to_level_up: Resuelve <span>number</span> ejercicios más para pasar al siguiente nivel.
   solve_your_doubts: Consulta tus dudas
   solve_your_doubts_teaser: ¿Tienes alguna consulta?
-  someone_else_will_reply: Alguien más ya marcó que va a contestar.
   something_went_wrong: ¡Ups!, algo no anduvo bien...
   solved_count:
     one: 1 resuelta
@@ -363,6 +367,3 @@ es-CL:
   you_earned: Ganaste
   you_must_sign_in_before_submitting: Tienes que iniciar sesión antes de empezar a enviar tus soluciones
   you_never_submitted_solutions: Parece que nunca enviaste soluciones desde que creaste tu cuenta.
-  you_will_reply: Vas a responder
-  you_will_reply_notice: Vas a responder a esta consulta. Si cambias de parecer, toca nuevamente el botón.
-  you_wont_reply_notice: No vas a responder a esta consulta.

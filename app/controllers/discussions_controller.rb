@@ -42,12 +42,14 @@ class DiscussionsController < ApplicationController
       subject.toggle_responsible! current_user
 
       subject.any_responsible? ?
-        flash.now.notice = I18n.t(:you_will_reply_notice) : flash.now.notice = I18n.t(:you_wont_reply_notice)
+        flash.now.notice = I18n.t('moderator_take_care.you_will_confirmation') :
+        flash.now.notice = I18n.t('moderator_take_care.you_wont_confirmation')
 
       status = :ok
     else
       subject.any_responsible? ?
-        flash.now.alert = I18n.t(:someone_else_will_reply) : flash.now.alert = I18n.t(:reply_not_required)
+        flash.now.alert = I18n.t('moderator_take_care.someone_else_will') :
+        flash.now.alert = I18n.t('moderator_take_care.status_changed')
 
       status = :conflict
     end

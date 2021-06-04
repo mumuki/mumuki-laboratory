@@ -167,8 +167,6 @@ pt:
   invitation: Convite para o curso
   invitation_for: Participe %{curso}
   item_not_accessible: Você não tem permissões para acessar este conteúdo
-  i_will_reply: Eu respondo
-  i_wont_reply: Eu não respondo
   joining_html: Bem-vindo ao curso <strong> %{curso} </strong>!
   kids_default_success: Você fez muito bem!
   language: Linguagem
@@ -203,7 +201,15 @@ pt:
   minutes: minutos
   moderation: Mentoria
   moderator: Mentor
-  moderator_will_reply: "%{moderator} vai responder"
+  moderator_take_care:
+    i_will: Eu cuidarei disso
+    i_wont: Eu não vou cuidar
+    moderator_is: "%{moderator} está cuidando"
+    status_changed: A consulta mudou de estado. Por favor, atualize para ver a consulta atualizada.
+    someone_else_will: Alguém já marcou que vai cuidar disso.
+    you_are: Você está cuidando
+    you_will_confirmation: Você vai cuidar dessa consulta. Se mudar de ideia, clique no botão novamente.
+    you_wont_confirmation: Você não vai cuidar dessa consulta.
   more_messages: Ver as mensagens anteriores
   my_account: Minha conta
   my_doubts: Minhas duvidas
@@ -267,7 +273,6 @@ pt:
   reply_count:
     one: 1 resposta
     other: '%{count} respostas'
-  reply_not_required: Uma resposta não é mais necessária. Por favor, atualize para ver a consulta atualizada.
   requires_attention: Requer atenção
   reset_query: Limpar filtros de pesquisa atuais
   restart: Reiniciar
@@ -304,7 +309,6 @@ pt:
     one: resolvido
     other: resolvidos
   solved_exercises_percentage: realizado
-  someone_else_will_reply: Alguém já marcou que responderá.
   something_went_wrong: Oops!, Algo não estava certo ...
   sort: Ordenar
   sources: Bibliografia
@@ -356,7 +360,4 @@ pt:
   years: anos
   you_earned: Você ganhou
   you_must_sign_in_before_submitting: Você deve fazer o login antes de começar a enviar suas soluções
-  you_will_reply: Você vai responder
-  you_will_reply_notice: Você vai responder a esta consulta. Se mudar de ideia, clique no botão novamente.
-  you_wont_reply_notice: Você não vai responder a esta consulta.
   your_new_organization: sua nova organização

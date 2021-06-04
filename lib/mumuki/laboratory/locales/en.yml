@@ -163,8 +163,6 @@ en:
   invitation_for: 'Join %{course}'
   item_not_accessible: "You are not permitted to access this content"
   its_been_a_while: It's been a while since you last used Mumuki.
-  i_will_reply: I'll reply
-  i_wont_reply: I won't reply
   joining_html: '¡Welcome to course <strong>%{course}</strong>!'
   keep_learning: Keep learning!
   kids_default_success: You did it great!
@@ -196,7 +194,15 @@ en:
     other: Messages
   moderation: Mentoring
   moderator: Mentor
-  moderator_will_reply: "%{moderator} will reply"
+  moderator_take_care:
+    i_will: I'll take care of it
+    i_wont: I won't take care of it
+    moderator_is: "%{moderator} is taking care of it"
+    status_changed: The discussion status changed. Please refresh the page.
+    someone_else_will: Someone else already marked they'll take care of it.
+    you_are: You're taking care of it
+    you_will_confirmation: You'll take care of this discussion. If you change your mind, click the button again.
+    you_wont_confirmation: You won't take care of this discussion.
   more_messages: More
   my_account: My account
   my_doubts: My doubts
@@ -257,7 +263,6 @@ en:
   reply_count:
     one: 1 reply
     other: '%{count} replies'
-  reply_not_required: A reply is no longer required. Please refresh to see the updated discussion.
   requires_attention: Requires attention
   reset_query: Clear current search filters
   responses_count_asc: By less validated replies
@@ -290,7 +295,6 @@ en:
   solved_count: '%{count} solved'
   solved_exercises_count: solved
   solved_exercises_percentage: done
-  someone_else_will_reply: Someone else already marked they'll reply.
   something_went_wrong: Something went wrong!
   sort: Sort
   sources: Sources
@@ -349,7 +353,4 @@ en:
   you_earned: You earned
   you_must_sign_in_before_submitting: You must sign in before submitting your solutions
   you_never_submitted_solutions: It seems that you've never submitted solutions since you created your account.
-  you_will_reply: You'll reply
-  you_will_reply_notice: You'll reply to this discussion. If you change your mind, click the button again.
-  you_wont_reply_notice: You won't reply to this discussion.
   your_new_organization: your new organization
