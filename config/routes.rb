@@ -9,9 +9,10 @@ Rails.application.routes.draw do
       resources :discussions, options.merge(only: [:index, :new, :show, :create, :update, :destroy]) do
         post :subscription, on: :member
         post :upvote, on: :member
-        post :responsible, on: :member
       end
     end
+
+    post '/discussions/:id/responsible' => 'discussions#responsible', as: :responsible_discussion
 
     get '/discussions/terms' => 'book_discussions#terms'
     concerns :debatable, controller: 'book_discussions', only: :index

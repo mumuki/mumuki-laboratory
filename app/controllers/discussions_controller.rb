@@ -2,7 +2,7 @@ class DiscussionsController < ApplicationController
   include Mumuki::Laboratory::Controllers::Content
   include WithUserDiscussionValidation
 
-  before_action :set_debatable, except: [:subscription]
+  before_action :set_debatable, except: [:subscription, :responsible]
   before_action :authenticate!, only: [:update, :create]
   before_action :discussion_filter_params, only: :index
   before_action :read_discussion, only: :show
