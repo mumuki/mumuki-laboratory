@@ -179,7 +179,6 @@ es:
   language: Lenguaje
   languages: Lenguajes
   last_name: Apellido
-  last_seen: "Visto por %{name}"
   last_submission_date: Última solución
   latest_exercises: Últimos ejercicios
   learning: Aprendizaje
@@ -208,6 +207,15 @@ es:
   minutes: minutos
   moderation: Mentoría
   moderator: Mentor
+  moderator_take_care:
+    i_will: Yo me ocupo
+    i_wont: Mejor no me ocupo
+    moderator_is: "%{moderator} se está ocupando"
+    status_changed: La consulta cambió de estado. Por favor, actualizá la página.
+    someone_else_will: Alguien más ya marcó que se va a ocupar.
+    you_are: Te estás ocupando
+    you_will_confirmation: Te vas a ocupar de esta consulta. Si cambiás de parecer, tocá nuevamente el botón.
+    you_wont_confirmation: No te vas a ocupar de esta consulta.
   more_messages: Ver mensajes anteriores
   my_account: Mi cuenta
   my_doubts: Mis consultas

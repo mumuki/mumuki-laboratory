@@ -172,7 +172,6 @@ pt:
   language: Linguagem
   languages: Linguagens
   last_name: Sobrenome
-  last_seen: "Visto por %{name}"
   last_submission_date: Última solução
   latest_exercises: Últimos exercícios
   learning: Aprendendo
@@ -202,6 +201,15 @@ pt:
   minutes: minutos
   moderation: Mentoria
   moderator: Mentor
+  moderator_take_care:
+    i_will: Eu cuidarei disso
+    i_wont: Eu não vou cuidar
+    moderator_is: "%{moderator} está cuidando"
+    status_changed: A consulta mudou de estado. Por favor, atualize para ver a consulta atualizada.
+    someone_else_will: Alguém já marcou que vai cuidar disso.
+    you_are: Você está cuidando
+    you_will_confirmation: Você vai cuidar dessa consulta. Se mudar de ideia, clique no botão novamente.
+    you_wont_confirmation: Você não vai cuidar dessa consulta.
   more_messages: Ver as mensagens anteriores
   my_account: Minha conta
   my_doubts: Minhas duvidas

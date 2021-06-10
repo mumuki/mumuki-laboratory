@@ -31,11 +31,10 @@
               <span><%= discussion_info(@discussion) unless @discussion.new_record? %></span>
             </span>
           </div>
-          <% if @discussion.last_moderator_access_visible_for?(current_user) %>
+          <% if @discussion.current_responsible_visible_for?(current_user) %>
             <h5 class="my-2 me-3">
-              <span class="badge bg-primary text-wrap">
-                <%= t :last_seen, name: discussion_user_name(@discussion.last_moderator_access_by) %>
-                <%= t :time_since, time: time_ago_in_words(@discussion.last_moderator_access_at) %>
+              <span class="badge bg-primary text-wrap responsible-moderator-badge">
+                <%= responsible_moderator_text_for(@discussion, current_user) %>
               </span>
             </h5>
           <% end %>

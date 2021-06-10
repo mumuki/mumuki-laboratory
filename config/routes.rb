@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       end
     end
 
+    post '/discussions/:id/responsible' => 'discussions#responsible', as: :responsible_discussion
+
     get '/discussions/terms' => 'book_discussions#terms'
     concerns :debatable, controller: 'book_discussions', only: :index
 

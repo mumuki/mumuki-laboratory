@@ -62,6 +62,48 @@ describe DiscussionsController, organization_workspace: :test do
     end
   end
 
+  describe 'responsible' do
+    let(:discussion) { create(:discussion, {organization: Organization.current}) }
+
+    describe 'user wants to be responsible' do
+      before { post :responsible, params: {id: discussion.id} }
+
+      it { expect(response.status).to eq 403 }
+      it { expect(discussion.reload.responsible? user).to be false }
+    end
+
+    describe 'moderator' do
+      let(:moderator) { create(:user, permissions: {student: '*', moderator: '*'}) }
+      before { set_current_user! moderator }
+
+      describe 'wants to be responsible' do
+        before { post :responsible, params: {id: discussion.id} }
+
+        it { expect(response.status).to eq 200 }
+        it { expect(discussion.reload.responsible? moderator).to be true }
+      end
+
+      describe 'wants to be responsible but changes their mind' do
+        before { 2.times{ post :responsible, params: {id: discussion.id} } }
+
+        it { expect(response.status).to eq 200 }
+        it { expect(discussion.reload.responsible? moderator).to be false }
+      end
+
+      describe 'wants to be responsible but someone else already is' do
+        let(:another_moderator) { create(:user, permissions: {student: '*', moderator: '*'}) }
+        before do
+          discussion.toggle_responsible! another_moderator
+          post :responsible, params: {id: discussion.id}
+        end
+
+        it { expect(response.status).to eq 409 }
+        it { expect(discussion.reload.responsible? moderator).to be false }
+        it { expect(discussion.reload.responsible? another_moderator).to be true }
+      end
+    end
+  end
+
   describe 'when the minimal role for discussions is teacher' do
     before { Organization.current.tap { |it| it.forum_discussions_minimal_role = 'teacher' }.save! }
 

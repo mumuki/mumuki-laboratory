@@ -168,7 +168,6 @@ en:
   kids_default_success: You did it great!
   language: Language
   last_name: Last Name
-  last_seen: "Seen by %{name}"
   last_submission_date: Last submission
   latest_exercises: Latest exercises
   learning: Learning
@@ -190,11 +189,20 @@ en:
   message_deleted: This message was deleted because it %{motive}, which violates the %{forum_terms}.
   messages: Messages
   messages_error: Previous messages are unavailable. Please try again later.
-  moderation: Mentoring
   messages_pluralized:
     one: Message
     other: Messages
+  moderation: Mentoring
   moderator: Mentor
+  moderator_take_care:
+    i_will: I'll take care of it
+    i_wont: I won't take care of it
+    moderator_is: "%{moderator} is taking care of it"
+    status_changed: The discussion status changed. Please refresh the page.
+    someone_else_will: Someone else already marked they'll take care of it.
+    you_are: You're taking care of it
+    you_will_confirmation: You'll take care of this discussion. If you change your mind, click the button again.
+    you_wont_confirmation: You won't take care of this discussion.
   more_messages: More
   my_account: My account
   my_doubts: My doubts

@@ -174,6 +174,7 @@ feature 'Discussion Flow', organization_workspace: :test do
           expect(page).to have_text(problem_2.name)
           expect(page).to have_text('Open')
           expect(page).to have_text('Messages')
+          expect(page).to_not have_text('I\'ll take care')
           expect(page).not_to have_text('Preview')
           expect(page).to have_text(problem_2_discussion_message.content)
           expect(page).not_to have_text(another_problem_2_discussion_message.content)
@@ -188,20 +189,43 @@ feature 'Discussion Flow', organization_workspace: :test do
         context 'for moderator' do
           before { set_current_user! moderator }
 
-          scenario 'newly created discussion' do
-            visit current_path
-            expect(page).to have_text(problem_2.name)
-            expect(page).to have_text('Open')
-            expect(page).to have_text('Messages')
-            expect(page).to have_text('Preview')
-            expect(page).to have_text(problem_2_discussion_message.content)
-            expect(page).to have_text(another_problem_2_discussion_message.content)
-            expect(page).to have_xpath("//div[@class='discussion-actions']")
-            expect(page).to have_text('Includes inappropriate content')
-            expect(page).to have_text('Shares the correct solution')
-            expect(page).to have_text('Discloses personal information')
-            expect(page).to have_text('included inappropriate content')
-            expect(page).to have_text ("Deleted by #{moderator.name}")
+          context 'on a newly created discussion' do
+            scenario do
+              visit current_path
+              expect(page).to have_text(problem_2.name)
+              expect(page).to have_text('Open')
+              expect(page).to have_text('Messages')
+              expect(page).to have_text('I\'ll take care')
+              expect(page).to have_text('Preview')
+              expect(page).to have_text(problem_2_discussion_message.content)
+              expect(page).to have_text(another_problem_2_discussion_message.content)
+              expect(page).to have_xpath("//div[@class='discussion-actions']")
+              expect(page).to have_text('Includes inappropriate content')
+              expect(page).to have_text('Shares the correct solution')
+              expect(page).to have_text('Discloses personal information')
+              expect(page).to have_text('included inappropriate content')
+              expect(page).to have_text ("Deleted by #{moderator.name}")
+            end
+          end
+
+          context 'on a discussion where they are responsible' do
+            before { problem_2_discussions.first.toggle_responsible! moderator }
+
+            scenario do
+              visit current_path
+              expect(page).to have_text('I won\'t take care')
+            end
+          end
+
+          context 'on a discussion where someone else is responsible' do
+            let(:another_moderator) { create(:user, permissions: {moderator: '*', student: '*'}) }
+            before { problem_2_discussions.first.toggle_responsible! another_moderator }
+
+            scenario do
+              visit current_path
+              expect(page).not_to have_text('I\'ll take care')
+              expect(page).not_to have_text('I won\'t take care')
+            end
           end
         end
       end

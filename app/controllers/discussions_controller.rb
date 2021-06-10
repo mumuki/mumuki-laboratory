@@ -2,10 +2,11 @@ class DiscussionsController < ApplicationController
   include Mumuki::Laboratory::Controllers::Content
   include WithUserDiscussionValidation
 
-  before_action :set_debatable, except: [:subscription]
+  before_action :set_debatable, except: [:subscription, :responsible]
   before_action :authenticate!, only: [:update, :create]
   before_action :discussion_filter_params, only: :index
   before_action :read_discussion, only: :show
+  before_action :authorize_moderator!, only: [:responsible]
 
   helper_method :discussion_filter_params
 
@@ -19,7 +20,6 @@ class DiscussionsController < ApplicationController
   end
 
   def show
-    @discussion.update_last_moderator_access! current_user
   end
 
   def update
@@ -35,6 +35,20 @@ class DiscussionsController < ApplicationController
   def upvote
     current_user&.toggle_upvote!(subject)
     head :ok
+  end
+
+  def responsible
+    if subject.can_toggle_responsible? current_user
+      subject.toggle_responsible! current_user
+
+      set_flash_responsible_confirmation!
+      status = :ok
+    else
+      set_flash_responsible_alert!
+      status = :conflict
+    end
+
+    render :partial => 'layouts/toast', status: status
   end
 
   def create
@@ -55,6 +69,19 @@ class DiscussionsController < ApplicationController
   def set_debatable
     @debatable_class = params[:debatable_class]
     @debatable = Discussion.debatable_for(@debatable_class, params)
+  end
+
+  def set_flash_responsible_confirmation!
+    subject.any_responsible? ?
+      flash.now.notice = I18n.t('moderator_take_care.you_will_confirmation') :
+      flash.now.notice = I18n.t('moderator_take_care.you_wont_confirmation')
+
+  end
+
+  def set_flash_responsible_alert!
+    subject.any_responsible? ?
+      flash.now.alert = I18n.t('moderator_take_care.someone_else_will') :
+      flash.now.alert = I18n.t('moderator_take_care.status_changed')
   end
 
   def subject
