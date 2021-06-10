@@ -41,16 +41,10 @@ class DiscussionsController < ApplicationController
     if subject.can_toggle_responsible? current_user
       subject.toggle_responsible! current_user
 
-      subject.any_responsible? ?
-        flash.now.notice = I18n.t('moderator_take_care.you_will_confirmation') :
-        flash.now.notice = I18n.t('moderator_take_care.you_wont_confirmation')
-
+      set_flash_responsible_confirmation!
       status = :ok
     else
-      subject.any_responsible? ?
-        flash.now.alert = I18n.t('moderator_take_care.someone_else_will') :
-        flash.now.alert = I18n.t('moderator_take_care.status_changed')
-
+      set_flash_responsible_alert!
       status = :conflict
     end
 
@@ -75,6 +69,19 @@ class DiscussionsController < ApplicationController
   def set_debatable
     @debatable_class = params[:debatable_class]
     @debatable = Discussion.debatable_for(@debatable_class, params)
+  end
+
+  def set_flash_responsible_confirmation!
+    subject.any_responsible? ?
+      flash.now.notice = I18n.t('moderator_take_care.you_will_confirmation') :
+      flash.now.notice = I18n.t('moderator_take_care.you_wont_confirmation')
+
+  end
+
+  def set_flash_responsible_alert!
+    subject.any_responsible? ?
+      flash.now.alert = I18n.t('moderator_take_care.someone_else_will') :
+      flash.now.alert = I18n.t('moderator_take_care.status_changed')
   end
 
   def subject
