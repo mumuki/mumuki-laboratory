@@ -1,1 +1,2 @@
-<%= t :exam_authorization_request_approved_html, date: l(authorization_request.exam.start_time.in_time_zone(-3), format: :long) %>
+<%= t :exam_authorization_request_approved_html, date: l(authorization_request.exam.start_time, format: :long),
+                                                 location: Organization.current.time_zone %>

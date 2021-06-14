@@ -17,7 +17,7 @@
         <strong><%= fa_icon :info_circle %> <%= t :important_info %></strong>
       </h4>
       <p>
-        <%= t :exam_registration_explanation_html, date: l(@registration.end_time.in_time_zone(-3), format: :long) %>
+        <%= t :exam_registration_explanation_html, date: l(@registration.end_time, format: :long) %>
       </p>
     </div>
     <%= form_for @authorization_request, html: {class: 'mu-form'} do |f| %>
@@ -27,7 +27,7 @@
         <div class="form-check">
           <%= f.radio_button(:exam_id, exam.id, id: exam.id, required: true, class: 'form-check-input mu-read-only-input',
                              checked: @authorization_request.exam_id == exam.id) %>
-          <%= label_tag exam.id, l(exam.start_time.in_time_zone(-3), format: :long), class: 'form-check-label' %>
+          <%= label_tag exam.id, l(exam.start_time, format: :long), class: 'form-check-label' %>
         </div>
       <% end %>
       <button class="btn btn-complementary"> <%= t :save %> </button>

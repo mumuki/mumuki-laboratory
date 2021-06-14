@@ -108,8 +108,8 @@ en:
   error_500: 500 error
   error_description: This is known as a <span class="error-link">%{error}</span>.
   errored: Oops, your solution didn't work
-  exam_authorization_pending_explanation_html: You have until <strong>%{end_time}</strong> to register. After that date, your request will be processed and you will receive a confirmation. <br> Don't forget to check the notifications!
-  exam_authorization_request_approved_html: Your request was approved, don't forget to log in at <strong>%{date}</strong>. Good luck!
+  exam_authorization_pending_explanation_html: You have until <strong>%{end_time}</strong> (%{location} time) to register. After that date, your request will be processed and you will receive a confirmation. <br> Don't forget to check the notifications!
+  exam_authorization_request_approved_html: Your request was approved, don't forget to log in at <strong>%{date}</strong> (%{location} time). Good luck!
   exam_authorization_request_created: Your registration to the exam has been saved!
   exam_authorization_request_rejected: Your request was rejected because you didn't meet the requirements.
   exam_authorization_request_saved: Your registration to the exam has been updated!
