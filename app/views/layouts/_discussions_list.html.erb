@@ -17,12 +17,9 @@
               <span class="d-none d-lg-inline"><%= discussion.exercise.guide.name %> -</span>
               <span><%= discussion.exercise.name %></span>
               <% if discussion.current_responsible_visible_for?(current_user) %>
-                <div class="float-end discussion-moderator-access" >
-                  <%= profile_picture_for(discussion.responsible_moderator_by, height: 32) %>
-                  <span class="moderator-initials">
-                    <%= discussion.responsible_moderator_by.name_initials %>
-                  </span>
-                </div>
+                <span class="badge bg-light text-dark">
+                  <%= responsible_moderator_text_for(discussion, current_user)%>
+                </span>
               <% end %>
 
             </div>
