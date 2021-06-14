@@ -1,0 +1,37 @@
+<div class="discussions">
+  <% @filtered_discussions.each do |discussion| %>
+    <%= link_to exercise_discussion_path(discussion.exercise.id, discussion) do %>
+      <div class="discussion">
+        <div class="discussion-row">
+          <%= discussion_messages_icon(discussion) %>
+          <% unless @debatable.respond_to? :language %>
+            <div class="discussion-language-icon">
+              <%= language_icon(discussion.exercise.language) %>
+            </div>
+          <% end %>
+          <div>
+            <div class="discussion-title">
+              <span class="discussion-status-icon">
+                <%= discussion_status_fa_icon(discussion) %>
+              </span>
+              <span class="d-none d-lg-inline"><%= discussion.exercise.guide.name %> -</span>
+              <span><%= discussion.exercise.name %></span>
+              <% if discussion.current_responsible_visible_for?(current_user) %>
+                <div class="float-end discussion-moderator-access" >
+                  <%= profile_picture_for(discussion.responsible_moderator_by, height: 32) %>
+                  <span class="moderator-initials">
+                    <%= discussion.responsible_moderator_by.name_initials %>
+                  </span>
+                </div>
+              <% end %>
+
+            </div>
+            <span class="discussion-description">
+              <%= discussion.description %>
+            </span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
