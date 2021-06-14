@@ -198,6 +198,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
                 terms_of_service: 'A TOS',
                 public: false,
                 login_methods: ['facebook', 'user_pass'],
+                time_zone: 'UTC',
                 book: book }
       let(:updated_organizaton) { organization.reload }
       let(:update_json) { {contact_email: 'second_email@gmail.com', immersive: true, locale: 'en'} }
@@ -214,7 +215,8 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
                                               description: "a great org",
                                               locale: 'en',
                                               contact_email: "second_email@gmail.com",
-                                              terms_of_service: 'A TOS'
+                                              terms_of_service: 'A TOS',
+                                              time_zone: 'UTC'
                                             },
                                             settings: {
                                               login_methods: ["facebook", "user_pass"],
