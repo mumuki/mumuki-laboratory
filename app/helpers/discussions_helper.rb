@@ -200,7 +200,7 @@ module DiscussionsHelper
     if discussion.responsible?(user)
       t('moderator_take_care.you_are')
     else
-      t('moderator_take_care.moderator_is', moderator: discussion_user_name(@discussion.responsible_moderator_by))
+      t('moderator_take_care.moderator_is', moderator: discussion_user_name(discussion.responsible_moderator_by))
     end
   end
 
