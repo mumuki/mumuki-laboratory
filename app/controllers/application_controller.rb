@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   before_action :set_current_organization!
   before_action :set_locale!
-  before_action :set_time_zone
+  before_action :set_time_zone!
 
   before_action :ensure_user_enabled!, if: :current_user?
   before_action :validate_active_organization!
@@ -31,6 +31,7 @@ class ApplicationController < ActionController::Base
   before_action :visit_organization!, if: :current_user?
 
   after_action :leave_organization!
+  after_action :unset_time_zone!
 
   helper_method :current_workspace,
                 :login_button,
@@ -144,8 +145,12 @@ class ApplicationController < ActionController::Base
     I18n.locale = Organization.current.locale
   end
 
-  def set_time_zone
+  def set_time_zone!
     Time.zone = Organization.current.time_zone
+  end
+
+  def unset_time_zone!
+    Time.zone = nil
   end
 
   def subject #TODO may be used to remove breadcrumbs duplication
