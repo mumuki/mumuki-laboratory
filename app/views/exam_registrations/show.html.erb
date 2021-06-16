@@ -28,7 +28,7 @@
           <div class="form-check">
             <%= f.radio_button(:exam_id, exam.id, id: exam.id, required: true, class: 'form-check-input mu-read-only-input',
                                checked: @authorization_request.exam_id == exam.id) %>
-            <%= label_tag exam.id, l(exam.start_time, format: :long), class: 'form-check-label' %>
+            <%= label_tag exam.id, "#{l(exam.start_time, format: :long)} #{current_time_zone_html}".html_safe, class: 'form-check-label' %>
           </div>
         <% end %>
         <button class="btn btn-complementary"> <%= t :save %> </button>
