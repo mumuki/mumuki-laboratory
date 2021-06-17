@@ -108,14 +108,15 @@ en:
   error_500: 500 error
   error_description: This is known as a <span class="error-link">%{error}</span>.
   errored: Oops, your solution didn't work
-  exam_authorization_pending_explanation_html: You have until <strong>%{end_time}</strong> to register. After that date, your request will be processed and you will receive a confirmation. <br> Don't forget to check the notifications!
-  exam_authorization_request_approved_html: Your request was approved, don't forget to log in at <strong>%{date}</strong>. Good luck!
+  exam_authorization_pending_explanation_html: You have until <strong>%{end_time}</strong> (%{location} time) to register. After that date, your request will be processed and you will receive a confirmation. <br> Don't forget to check the notifications!
+  exam_authorization_request_approved_html: Your request was approved, don't forget to log in at <strong>%{date}</strong> (%{location} time). Good luck!
   exam_authorization_request_created: Your registration to the exam has been saved!
   exam_authorization_request_rejected: Your request was rejected because you didn't meet the requirements.
   exam_authorization_request_saved: Your registration to the exam has been updated!
   exam_authorization_request_updated: Your registration to %{description} has been updated
   exam_registration_choose_exam: Choose date and time to attend to the exam
-  exam_registration_explanation_html: You have until <strong>%{date}</strong> to register. After that date, your request will be processed and you will receive a confirmation. <br> Don't forget to check the notifications!
+  exam_registration_explanation_html: You have until <strong>%{date}</strong> (%{location} time) to register. After that date, your request will be processed and you will receive a confirmation. <br> Don't forget to check the notifications!
+  exam_registration_finished_html: Registration for this exam ended on <strong>%{date}</strong> (%{location} time)
   exam_registration_open: Registrations open for %{description}!
   exam_registration_to: Registration to %{description}
   exams_will_be_here: Your exams in the organization will appear here.
