@@ -1,4 +1,7 @@
 class ExamAuthorizationRequestsController < ApplicationController
+
+  before_action :verify_registration_opened!, on: [:create, :update]
+
   def create
     authorization_request = ExamAuthorizationRequest.find_or_create_by! create_authorization_request_params do |it|
       it.assign_attributes authorization_request_params
@@ -24,5 +27,10 @@ class ExamAuthorizationRequestsController < ApplicationController
     params
         .require(:exam_authorization_request).permit(:exam_id, :exam_registration_id)
         .merge(user: current_user, organization: Organization.current)
+  end
+
+  def verify_registration_opened!
+    exam_registration = ExamRegistration.find(authorization_request_params[:exam_registration_id])
+    raise Mumuki::Domain::GoneError if exam_registration.end_time.past?
   end
 end
