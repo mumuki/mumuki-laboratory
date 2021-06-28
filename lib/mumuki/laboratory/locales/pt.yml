@@ -223,6 +223,9 @@ pt:
   need_help: Não entendo, preciso de ajuda!
   never: nunca
   new: Novo
+  new_certificate_mailer_title: 'Parabéns'
+  new_certificate_mailer_p1: 'Seu novo certificado está pronto'
+  new_certificate_mailer_p2: 'Você pode baixá-lo do anexo deste e-mail ou visualizá-lo em seu perfil Mumuki'
   new_message: Você tem dúvidas? Levante a mão!
   new_message_placeholder: Escreva sua mensagem para o seu professor aqui ...
   new_message_received: Você tem uma nova mensagem de %{sender}
