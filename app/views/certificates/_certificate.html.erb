@@ -38,7 +38,7 @@
 <div class="mu-certificate-box">
   <img src="<%= certificate.background_image_url %>" class="background-image"/>
   <%= render inline: certificate.template_html_erb, locals: certificate.template_locals %>
-  <a href="<%= verify_certificate_path certificate.code %>" target="_blank">
+  <a href="<%= verify_certificate_url certificate.organization, certificate.code %>" target="_blank">
     <div><img class="qr-code" src="<%= qr_for certificate %>"/></div>
   </a>
 </div>
