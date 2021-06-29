@@ -217,6 +217,9 @@ en:
   need_help: I need help!
   never: never
   new: New
+  new_certificate_mailer_title: 'Congratulations'
+  new_certificate_mailer_p1: 'Your new certificate is ready'
+  new_certificate_mailer_p2: 'You can find it attached to this email or you can view it in your Mumuki profile'
   new_message_placeholder: Write a message for your teacher...
   new_message_received: You have a new message from %{sender}
   next_exercise: Next

@@ -10,7 +10,7 @@ module WithCertificateRender
   end
 
   def qr_for(certificate)
-    qr = RQRCode::QRCode.new(verify_certificate_url certificate.code).as_svg(color: '0B465D')
+    qr = RQRCode::QRCode.new(verify_certificate_url certificate.organization, certificate.code).as_svg(color: '0B465D')
     "data:image/svg+xml,#{URI.encode(qr)}"
   end
 

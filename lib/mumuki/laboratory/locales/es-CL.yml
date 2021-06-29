@@ -221,6 +221,9 @@ es-CL:
   new: Nuevo
   new_discussion: Nueva consulta
   new_message: ¿Tienes dudas? ¡Levanta la mano!
+  new_certificate_mailer_title: 'Felicitaciones'
+  new_certificate_mailer_p1: 'Ya está listo tu nuevo certificado'
+  new_certificate_mailer_p2: 'Podés descargarlo desde el adjunto de este mail o bien visualizarlo en tu perfil de Mumuki'
   new_message_placeholder: Escribe el mensaje para tu docente acá...
   new_message_received: Tienes un nuevo mensaje de %{sender}
   next_exercise: Siguiente
