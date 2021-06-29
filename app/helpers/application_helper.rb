@@ -48,4 +48,8 @@ module ApplicationHelper
   def notification_preview_for(target)
     render "notifications/#{target.class.name.underscore}", { target: target }
   end
+
+  def current_time_zone_html
+    %Q{(<span class="select-date-timezone">#{Organization.current.time_zone}</span>)}.html_safe
+  end
 end
