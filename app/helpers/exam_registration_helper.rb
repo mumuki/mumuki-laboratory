@@ -8,6 +8,6 @@ module ExamRegistrationHelper
   end
 
   def current_time_zone_html
-    %Q{(<span class="select-date-timezone">#{Organization.current&.time_zone}</span>)}.html_safe
+    %Q{(<span class="select-date-timezone">#{Organization.current.time_zone}</span>)}.html_safe
   end
 end
