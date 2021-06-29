@@ -107,7 +107,9 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
          name: 'a-name',
          public: false,
          book: book.slug,
-         locale: 'es'}
+         locale: 'es',
+         time_zone: 'Buenos Aires'
+        }
       end
 
       context 'with the admin permissions' do
@@ -138,6 +140,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
              description: 'A description',
              book: book.slug,
              locale: 'es',
+             time_zone: 'Montevideo',
              public: false,
              login_methods: %w(facebook github),
              logo_url: 'http://a-logo-url.com',
@@ -155,6 +158,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
           it { expect(organization.extension_javascript).to eq "window.a = function() { }" }
           it { expect(organization.terms_of_service).to eq 'A TOS' }
           it { expect(organization.faqs).to eq 'some faqs' }
+          it { expect(organization.time_zone).to eq 'Montevideo' }
         end
 
         context 'with missing values' do
@@ -166,6 +170,7 @@ describe Api::OrganizationsController, type: :controller, organization_workspace
             {
                 errors: {
                     name: ["can't be blank"],
+                    time_zone: ["can't be blank"],
                     locale: ['is not included in the list']
                 }
             }
