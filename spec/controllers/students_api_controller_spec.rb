@@ -31,7 +31,7 @@ require 'spec_helper'
         it { expect(User.last.uid).to eq 'agus@mumuki.org' }
         it { expect(User.last.email).to eq 'agus@mumuki.org' }
         it { expect(User.last.gender).to eq 'male' }
-        it { expect(User.last.birthdate).to eq '2010-08-25'.to_datetime }
+        it { expect(User.last.birthdate).to eq '2010-08-25'.in_time_zone }
         it { expect(User.last.permissions.has_permission? role, 'anorganization/acode').to be true }
 
       end
