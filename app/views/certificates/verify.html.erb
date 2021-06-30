@@ -22,9 +22,8 @@
           <a href="<%= linkedin_post_url @certificate %>" target="_blank">
             <img src="https://download.linkedin.com/desktop/add2profile/buttons/<%= t :linkedin_profile_button_locale %>.png" alt="LinkedIn Add to Profile button">
           </a>
-          <a class="btn btn-complementary mu-certificate-download-btn pull-right" href="<%= download_certificate_path @certificate.code %>" target="_blank">
-            <i class="fas fa-fw fa-lg fa-download mu-certificate-download-btn-icon"></i>
-            <span class="mu-certificate-download-btn-text"><%= t :certificate %></span>
+          <a class="btn btn-complementary mu-certificate-download-btn pull-end" href="<%= download_certificate_path @certificate.code %>" target="_blank">
+            <%= fa_icon(:download, class: 'fa-fw fa-lg mu-certificate-download-btn-icon', text: t(:certificate)) %>
           </a>
         </div>
       <% end %>
