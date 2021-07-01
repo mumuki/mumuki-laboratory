@@ -95,18 +95,14 @@ class ApplicationController < ActionController::Base
   end
 
   def current_immersive_path_for(context, content)
-    resource = content ? polymorphic_path(content) : default_immersive_path_for(context)
-    context.url_for resource
+    resource_path = content ? polymorphic_path(content) : default_immersive_path_for(context)
+    context.retenantized_url_for(resource_path)
   end
 
   private
 
   def default_immersive_path_for(context)
-    subject.present? ? root_path : inorganic_path_for(request)
-  end
-
-  def inorganic_path_for(request)
-    Mumukit::Platform.organization_mapping.inorganic_path_for(request)
+    subject.present? ? root_path : request.path_info
   end
 
   def current_immersive_context

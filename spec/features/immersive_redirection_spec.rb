@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'Immersive redirection Flow', organization_workspace: :test, subdomain_redirection_without_port: true do
   def create_guide(name)
-    create(:guide, name: name)
+    create(:guide, name: name, exercises: create_list(:exercise, 3))
   end
 
   def create_immersive_organization(name, guides)
@@ -26,6 +26,9 @@ feature 'Immersive redirection Flow', organization_workspace: :test, subdomain_r
   let(:lesson_one) { create(:lesson, guide: guide_one) }
   let(:lesson_two) { create(:lesson, guide: guide_two) }
   let(:lesson_three) { create(:lesson, guide: guide_three) }
+
+  let(:discussion_exercise) { guide_one.exercises.first }
+  let(:discussion) { create(:discussion, item: discussion_exercise, organization: Organization.current) }
 
   before { book.update! chapters: [create(:chapter, lessons: [lesson_one, lesson_two, lesson_three])] }
   before { set_current_user! user }
@@ -79,6 +82,21 @@ feature 'Immersive redirection Flow', organization_workspace: :test, subdomain_r
     end
 
     context 'when navigating to a discussion' do
+      feature 'and forum enabled' do
+        before { immersive_orga.update(forum_enabled: true) }
+        before { visit exercise_discussion_path(discussion_exercise, discussion) }
+        it_behaves_like 'immersive redirection', 'immersive-orga'
+        it_behaves_like 'navigate to discussions main page'
+      end
+
+      feature 'and forum not enabled' do
+        before { visit exercise_discussion_path(discussion_exercise, discussion) }
+        it_behaves_like 'immersive redirection', 'immersive-orga'
+        it_behaves_like 'navigate to main page'
+      end
+    end
+
+    context 'when navigating to discussions page' do
       feature 'and forum enabled' do
         before { immersive_orga.update(forum_enabled: true) }
         before { visit discussions_path }
