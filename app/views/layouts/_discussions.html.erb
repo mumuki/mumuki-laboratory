@@ -17,7 +17,7 @@
 
       <%= yield :extra_filters %>
 
-      <%= discussion_dropdown_filter :sort, Discussion.sorting_filters do |sorting_filter| %>
+      <%= discussion_dropdown_filter :sort, @sorting_filters do |sorting_filter| %>
         <%= t sorting_filter %>
       <% end %>
 

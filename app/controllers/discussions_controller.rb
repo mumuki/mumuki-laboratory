@@ -11,7 +11,8 @@ class DiscussionsController < ApplicationController
   helper_method :discussion_filter_params
 
   def index
-    @discussions = current_content_discussions.for_user(current_user)
+    @discussions = Discussion.in_context_of(@debatable, current_user)
+    @sorting_filters = @discussions.contextual_sorting_filters
     @filtered_discussions = @discussions.scoped_query_by(discussion_filter_params)
   end
 
@@ -60,10 +61,6 @@ class DiscussionsController < ApplicationController
 
   def default_immersive_path_for(context)
     context.forum_enabled? ? discussions_path : root_path
-  end
-
-  def current_content_discussions
-    @debatable.discussions_in_organization
   end
 
   def set_debatable
