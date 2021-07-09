@@ -354,6 +354,7 @@ pt:
   user_data_updated: Os seus dados foram atualizados corretamente
   username: Nome de usuário
   verified_full_name: Nome verificado
+  verified_full_name_notice: Seu nome verificado foi fornecido por %{organization}. Se houver algum erro, escreva um e-mail para %{contact}.
   view_details: Ver detalhes
   want_permissions: O próximo usuário requer permissões para a organização
   week_of: Semana de %{date}

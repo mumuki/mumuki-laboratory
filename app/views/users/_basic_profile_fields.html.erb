@@ -22,4 +22,9 @@
 <% if @user.has_verified_full_name? %>
   <label><%= (t :verified_full_name) %></label>
   <input class="form-control" readonly="readonly" value="<%= @user.verified_full_name %>">
+  <p class="fs-7">
+    <%= fa_icon("question-circle", text: (t :verified_full_name_notice,
+                                            organization: Organization.current.display_name,
+                                            contact: Organization.current.contact_email)) %>
+  </p>
 <% end %>
