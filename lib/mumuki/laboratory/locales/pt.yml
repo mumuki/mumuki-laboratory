@@ -353,6 +353,7 @@ pt:
   user: Usuário
   user_data_updated: Os seus dados foram atualizados corretamente
   username: Nome de usuário
+  verified_full_name: Nome verificado
   view_details: Ver detalhes
   want_permissions: O próximo usuário requer permissões para a organização
   week_of: Semana de %{date}

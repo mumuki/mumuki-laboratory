@@ -356,6 +356,7 @@ es-CL:
   user_data_updated: Tus datos se actualizaron correctamente
   user: Usuario
   username: Nombre de usuario
+  verified_full_name: Nombre verificado
   view_details: Ver detalles
   want_permissions: El siguiente usuario requiere permisos para la organización
   we_miss_you: ¡Te extrañamos!

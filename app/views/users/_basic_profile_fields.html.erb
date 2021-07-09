@@ -18,3 +18,8 @@
   <div><%= form.label(t :email) %></div>
   <div><%= form.text_field :email, readonly: true, class: 'form-control' %></div>
 </fieldset>
+
+<% if @user.has_verified_full_name? %>
+  <label><%= (t :verified_full_name) %></label>
+  <input class="form-control" readonly="readonly" value="<%= @user.verified_full_name %>">
+<% end %>
