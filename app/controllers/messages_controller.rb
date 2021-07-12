@@ -2,7 +2,8 @@ class MessagesController < AjaxController
   before_action :set_exercise!, only: [:create, :read_messages]
 
   def index
-    render json: {has_messages: has_messages?, messages_count: messages_count}
+    pending_messages = current_user.unread_messages
+    render json: {has_messages: pending_messages.present?, messages_count: pending_messages.count}
   end
 
   def read_messages
