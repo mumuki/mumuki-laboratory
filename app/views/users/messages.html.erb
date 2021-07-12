@@ -16,7 +16,7 @@
     <% else %>
       <table class="table table-striped">
         <% @messages.each do |message| %>
-          <tr>
+          <tr class="<%= staleness_class(message) %>" >
             <td><%= icon_for_read(message.read?) %></td>
             <td><%= link_to message.exercise.name, exercise_path(message.exercise.id) %></td>
             <td><%= mail_to message.sender %></td>

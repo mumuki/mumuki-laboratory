@@ -193,7 +193,6 @@ pt:
   message: Mensagem
   message_deleted: Esta mensagem foi excluída porque %{motive}, o que viola as %{forum_terms}.
   messages: Mensagens
-  messages_error: As mensagens acima não estão disponíveis no momento. Eu tentei novamente mais tarde!
     mais tarde!
   messages_pluralized:
     one: Mensagem
@@ -211,7 +210,6 @@ pt:
     you_are: Você está cuidando
     you_will_confirmation: Você vai cuidar dessa consulta. Se mudar de ideia, clique no botão novamente.
     you_wont_confirmation: Você não vai cuidar dessa consulta.
-  more_messages: Ver as mensagens anteriores
   my_account: Minha conta
   my_doubts: Minhas duvidas
   my_profile: Meu perfil
