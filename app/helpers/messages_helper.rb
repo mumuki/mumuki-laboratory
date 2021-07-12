@@ -1,8 +1,4 @@
 module MessagesHelper
-  def messages_url(exercise)
-    exercise.messages_url_for(current_user) if current_user?
-  end
-
   def hidden_pending(assignment)
     assignment.pending_messages? ? '' : 'd-none'
   end
