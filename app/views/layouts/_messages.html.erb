@@ -1,12 +1,6 @@
 <div class="mu-view-messages">
   <div class="mu-messages">
     <ol class="mu-chat">
-      <li>
-        <a href="javascript:{}"
-           onclick="mumuki.Chat.readMessages('<%= read_messages_path(@exercise) %>')">
-          <%= t :more_messages %>
-        </a>
-      </li>
       <% messages.each do |message| %>
           <li class="<%= sender_class(message) %> <%= staleness_class(message) %>">
             <div class="message">
