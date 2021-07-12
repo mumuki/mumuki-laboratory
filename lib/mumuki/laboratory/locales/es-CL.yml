@@ -190,7 +190,6 @@ es-CL:
   message: Mensaje
   message_deleted: Este mensaje fue eliminado porque %{motive}, lo cual infringe las %{forum_terms}.
   messages: Mensajes
-  messages_error: Los mensajes anteriores no están disponibles en este momento. ¡Vuelve a intentar más tarde!
   messages_pluralized:
     one: Mensaje
     other: Mensajes

@@ -193,7 +193,6 @@ pt:
   message: Mensagem
   message_deleted: Esta mensagem foi excluída porque %{motive}, o que viola as %{forum_terms}.
   messages: Mensagens
-  messages_error: As mensagens acima não estão disponíveis no momento. Eu tentei novamente mais tarde!
     mais tarde!
   messages_pluralized:
     one: Mensagem
