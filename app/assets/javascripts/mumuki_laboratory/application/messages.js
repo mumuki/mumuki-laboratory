@@ -19,6 +19,7 @@ mumuki.load(() => {
       $('.pending-messages-filter').removeClass('pending-messages-filter');
       $('button.btn-submit').removeClass('disabled');
       $('.pending-messages-text').remove();
+      $("a[data-bs-target='#messages']")[0].click();
     },
     readMessages: function (url) {
       Chat.tokenRequest({
@@ -46,10 +47,6 @@ mumuki.load(() => {
     },
     setMessagesInterval: function () {
       mumuki.setInterval(Chat.getMessages, 60000);
-    },
-    submitMessagesForm: function (readUrl, errorUrl) {
-      $("a[data-bs-target='#messages']")[0].click();
-      this.readMessages(readUrl);
     },
     openNewMessageModal: function () {
       Chat.$newMessageModal().modal({backdrop: false, keyboard: false});

@@ -23,7 +23,7 @@
     <% if @assignment.pending_messages? %>
         <span class="pending-messages-text"> <%= t :pending_messages_explanation %>
           <a href="javascript:{}"
-             onclick="mumuki.Chat.submitMessagesForm('<%= read_messages_path(exercise) %>')"
+             onclick="mumuki.Chat.readMessages('<%= read_messages_path(exercise) %>')"
              class="<%= hidden_pending(@assignment) %>"
              data-waiting="<%= t(:sending_solution) %>">
             <%= t :get_messages %>
