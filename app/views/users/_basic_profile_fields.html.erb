@@ -19,7 +19,7 @@
   <div><%= form.text_field :email, readonly: true, class: 'form-control' %></div>
 </fieldset>
 
-<% if @user.has_verified_full_name? %>
+<% if show_verified_full_name_notice?(@user, Organization.current) %>
   <label><%= (t :verified_full_name) %></label>
   <input class="form-control" readonly="readonly" value="<%= @user.verified_full_name %>">
   <p class="fs-7">
