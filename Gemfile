@@ -34,3 +34,5 @@ group :development, :test do
   gem 'pry-stack_explorer'
   gem 'binding_of_caller'
 end
+
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', ref: '3031843ee7df4aec45addec64e902072bfb45307'
