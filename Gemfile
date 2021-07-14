@@ -35,4 +35,4 @@ group :development, :test do
   gem 'binding_of_caller'
 end
 
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', ref: '3031843ee7df4aec45addec64e902072bfb45307'
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'chore-misc-time-zone-fixes'

@@ -71,7 +71,7 @@ feature 'Profile Flow', organization_workspace: :test do
     before { set_current_user! user }
 
     context 'user with uncompleted profile after saving' do
-      before { user.update! last_name: 'last_name', birthdate: Time.now - 20.years, gender: 'female' }
+      before { user.update! last_name: 'last_name', birthdate: 20.years.ago, gender: 'female' }
 
       context 'when visiting an exercise' do
         scenario 'is redirected to previous path' do
