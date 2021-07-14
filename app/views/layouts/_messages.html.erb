@@ -1,14 +1,8 @@
 <div class="mu-view-messages">
   <div class="mu-messages">
     <ol class="mu-chat">
-      <li>
-        <a href="javascript:{}"
-           onclick="mumuki.Chat.submitMessagesForm('<%= messages_url(@exercise) %>', '<%= read_messages_path(@exercise) %>', '<%= messages_errors_path %>')">
-          <%= t :more_messages %>
-        </a>
-      </li>
       <% messages.each do |message| %>
-          <li class="<%= sender_class(message) %>">
+          <li class="<%= sender_class(message) %> <%= staleness_class(message) %>">
             <div class="message">
               <p> <%= message.content_html %></p>
               <div class="sender"><%= message.sender unless message.sender == current_user_uid %></div>

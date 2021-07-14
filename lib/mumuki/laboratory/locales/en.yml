@@ -189,7 +189,6 @@ en:
   message: Message
   message_deleted: This message was deleted because it %{motive}, which violates the %{forum_terms}.
   messages: Messages
-  messages_error: Previous messages are unavailable. Please try again later.
   messages_pluralized:
     one: Message
     other: Messages
@@ -204,7 +203,6 @@ en:
     you_are: You're taking care of it
     you_will_confirmation: You'll take care of this discussion. If you change your mind, click the button again.
     you_wont_confirmation: You won't take care of this discussion.
-  more_messages: More
   my_account: My account
   my_doubts: My doubts
   my_profile: My profile

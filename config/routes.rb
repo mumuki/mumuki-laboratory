@@ -77,7 +77,6 @@ Rails.application.routes.draw do
     resources :faqs, only: [:index]
 
     resources :messages, only: [:index, :create]
-    get '/messages/errors' => 'messages#errors'
 
     get 'certificates/verify/:code', to: 'certificates#verify', as: :verify_certificate
     get 'certificates/download/:code', to: 'certificates#download', as: :download_certificate

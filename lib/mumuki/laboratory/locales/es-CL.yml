@@ -190,7 +190,6 @@ es-CL:
   message: Mensaje
   message_deleted: Este mensaje fue eliminado porque %{motive}, lo cual infringe las %{forum_terms}.
   messages: Mensajes
-  messages_error: Los mensajes anteriores no están disponibles en este momento. ¡Vuelve a intentar más tarde!
   messages_pluralized:
     one: Mensaje
     other: Mensajes
@@ -207,7 +206,6 @@ es-CL:
     you_are: Te estás ocupando
     you_will_confirmation: Te vas a ocupar de esta consulta. Si cambias de parecer, toca nuevamente el botón.
     you_wont_confirmation: No te vas a ocupar de esta consulta.
-  more_messages: Ver mensajes anteriores
   my_account: Mi cuenta
   my_doubts: Mis consultas
   my_profile: Mi perfil
