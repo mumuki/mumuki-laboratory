@@ -371,6 +371,8 @@ es:
   user_data_updated: Tus datos se actualizaron correctamente
   user: Usuario
   username: Nombre de usuario
+  verified_full_name: Nombre verificado
+  verified_full_name_notice: Tu nombre verificado fue provisto por %{organization}. Si hay algún error, por favor escribí a %{contact}.
   view_details: Ver detalles
   want_permissions: El siguiente usuario requiere permisos para la organización
   we_miss_you: ¡Te extrañamos!

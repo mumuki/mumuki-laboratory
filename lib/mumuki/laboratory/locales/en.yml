@@ -344,6 +344,8 @@ en:
   user: User
   user_data_updated: Your data was updated successfully
   username: Username
+  verified_full_name: Verified name
+  verified_full_name_notice: Your verified name was provided by %{organization}. If there's a mistake, please send an email to %{contact}.
   view_details: View details
   want_permissions: The following user requires permissions for the organization
   we_miss_you: We miss you!

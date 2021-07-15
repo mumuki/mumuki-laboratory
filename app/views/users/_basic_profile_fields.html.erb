@@ -1,0 +1,30 @@
+<fieldset>
+  <div><%= form.label(t :first_name) %></div>
+  <div><%= form.text_field :first_name, required: true, class: 'form-control' %></div>
+</fieldset>
+<fieldset>
+  <div><%= form.label(t :last_name) %></div>
+  <div><%= form.text_field :last_name, required: true, class: 'form-control' %></div>
+</fieldset>
+<fieldset>
+  <div><%= form.label(t :gender) %></div>
+  <div><%= form.select :gender, options_for_select(User.genders.map { |gender, _| [t(gender), gender] }, @user.gender), {}, required: true, class: 'form-control form-select' %></div>
+</fieldset>
+<fieldset>
+  <div><%= form.label(t :birthdate) %></div>
+  <div><%= form.date_field :birthdate, min: Date.new(1900), max: 3.years.ago.end_of_year, required: true, class: 'form-control' %></div>
+</fieldset>
+<fieldset>
+  <div><%= form.label(t :email) %></div>
+  <div><%= form.text_field :email, readonly: true, class: 'form-control' %></div>
+</fieldset>
+
+<% if show_verified_full_name_notice?(@user, Organization.current) %>
+  <label><%= (t :verified_full_name) %></label>
+  <input class="form-control" readonly="readonly" value="<%= @user.verified_full_name %>">
+  <p class="fs-7">
+    <%= fa_icon("question-circle", text: (t :verified_full_name_notice,
+                                            organization: Organization.current.display_name,
+                                            contact: Organization.current.contact_email)) %>
+  </p>
+<% end %>
