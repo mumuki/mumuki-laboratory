@@ -136,6 +136,7 @@ pt:
   explain_redirect: Percebemos que você se registrou em outra organização.
   failed: Sua solução não passou as provas
   faqs: Informação importante
+  faqs_abbreviated: Informação
   feedback: Problemas que encontramos
   female: Feminino
   file_exceeds_max_size: "O tamanho do arquivo não deve exceder %{size_kb}kb. Selecione outro arquivo."
