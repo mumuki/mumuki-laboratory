@@ -22,7 +22,8 @@
                   <%= language_icon(discussion.exercise.language) %>
                 </div>
               <% end %>
-              <%= discussion_messages_icon(discussion) %>
+              <%= discussion_messages_count(discussion) %>
+              <%= discussion_validated_messages_count(discussion) %>
             </div>
           </div>
           <span class="discussion-description">
