@@ -58,12 +58,9 @@ $moderator-badge-color: #dd9900;
   }
 
   .discussion-language-icon {
-    float: right;
-    margin-right: 10px;
-    margin-top: 6px;
-    -ms-transform: scale(1.4, 1.4);
-    -webkit-transform: scale(1.4, 1.4);
-    transform: scale(1.4, 1.4);
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
   }
 
   .discussion-icon {
@@ -105,6 +102,10 @@ $moderator-badge-color: #dd9900;
   .discussion-title {
     font-size: 18px;
     font-weight: bold;
+  }
+  .discussion-title-icons {
+    display: flex;
+    align-items: center;
   }
   .discussion-description {
     overflow: hidden;

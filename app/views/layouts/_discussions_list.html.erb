@@ -3,7 +3,7 @@
     <%= link_to exercise_discussion_path(discussion.exercise.id, discussion) do %>
       <div class="discussion">
         <div class="discussion-row">
-          <div class="d-flex">
+          <div class="d-flex justify-content-between">
             <div class="discussion-title">
               <span class="discussion-status-icon">
                 <%= discussion_status_fa_icon(discussion) %>
@@ -17,12 +17,12 @@
               <% end %>
             </div>
             <div class="discussion-title-icons">
-              <%= discussion_messages_icon(discussion) %>
               <% unless @debatable.respond_to? :language %>
                 <div class="discussion-language-icon">
                   <%= language_icon(discussion.exercise.language) %>
                 </div>
               <% end %>
+              <%= discussion_messages_icon(discussion) %>
             </div>
           </div>
           <span class="discussion-description">
