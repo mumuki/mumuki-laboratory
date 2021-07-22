@@ -15,11 +15,11 @@ es:
   appendix: Apéndice
   appendix_teaser: ¿Querés saber más? <a href="%{link}">Consultá el apéndice de este capítulo</a>
   approved_message: Validado por mentor
-  are_you_sure: '¿Estás seguro que querés %{action}?'
-  ask_a_question: ¡Hacé una pregunta!
   approved_messages:
     one: validado
     other: validados
+  are_you_sure: '¿Estás seguro que querés %{action}?'
+  ask_a_question: ¡Hacé una pregunta!
   ask_community: Preguntá a la comunidad
   ask_redirect: ¿Querés que te llevemos ahí?
   ask_the_first_question: ¡Hacé la primera pregunta!
