@@ -111,6 +111,12 @@ $moderator-badge-color: #dd9900;
     display: block;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin-bottom: 20px;
+  }
+  .discussion-initiator {
+    img {
+      margin-top: -2px;
+    }
   }
 }
 

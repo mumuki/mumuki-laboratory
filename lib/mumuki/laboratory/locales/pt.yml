@@ -22,6 +22,7 @@ pt:
   ask_community: Pergunte à comunidade
   ask_redirect: Você quer que nós o levemos para lá?
   ask_the_first_question: Faça a primeira pergunta!
+  asked_time_since: "consultou há %{time}"
   attempts_left:
     zero: 'Você ficou sem tentativas'
     one: '1 tentativa restante'

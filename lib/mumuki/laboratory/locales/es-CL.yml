@@ -20,6 +20,7 @@ es-CL:
   ask_community: Pregunta a la comunidad
   ask_redirect: ¿Quieres que te llevemos ahí?
   ask_the_first_question: ¡Haz la primera pregunta!
+  asked_time_since: "consultó hace %{time}"
   attempts_left:
     zero: 'Te quedaste sin intentos'
     one: '1 intento restante'

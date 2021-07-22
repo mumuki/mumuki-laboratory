@@ -26,6 +26,11 @@
             <span class="discussion-description">
               <%= discussion.description %>
             </span>
+            <span class="discussion-initiator">
+              <%= profile_picture_for(discussion.initiator, height: 20) %>
+              <strong><%= discussion_user_name discussion.initiator %></strong>
+              <%= t(:asked_time_since, time: time_ago_in_words(discussion.created_at)) %>
+            </span>
           </div>
         </div>
       </div>
