@@ -71,8 +71,7 @@ module DiscussionsHelper
   def discussion_validated_messages_count(discussion)
     %Q{
       <span class="discussion-validated-messages-count">
-        #{fa_icon :comment, type: :regular}
-        #{fa_icon :check, text: discussion.validated_messages_count}
+        #{fa_icon :comment, type: :regular}#{fa_icon :check, text: discussion.validated_messages_count}
       </span>
     }.html_safe
   end
