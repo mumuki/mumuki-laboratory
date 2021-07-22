@@ -63,16 +63,12 @@ $moderator-badge-color: #dd9900;
     font-size: 1.3rem;
   }
 
-  .discussion-icon {
-    -ms-transform: scale(0.8, 0.8);
-    -webkit-transform: scale(0.8, 0.8);
-    transform: scale(0.8, 0.8);
-    margin-left: 5px;
-    float: right;
-    .fa-stack-1x {
-      -ms-transform: scale(0.9, 0.9);
-      -webkit-transform: scale(0.9, 0.9);
-      transform: scale(0.9, 0.9);
+  .discussion-validated-messages-count {
+    .fa-check {
+      font-size: 0.5rem;
+      position: absolute;
+      margin-left: -16px;
+      margin-top: 11px;
     }
   }
 }
