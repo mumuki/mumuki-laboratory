@@ -60,14 +60,13 @@ $moderator-badge-color: #dd9900;
   .discussion-language-icon {
     display: flex;
     align-items: center;
-    font-size: 1.3rem;
   }
 
   .discussion-validated-messages-count {
     .fa-check {
       font-size: 0.5rem;
       position: absolute;
-      margin-left: -16px;
+      margin-left: -13px;
       margin-top: 11px;
     }
   }
@@ -101,7 +100,12 @@ $moderator-badge-color: #dd9900;
   }
   .discussion-title-icons {
     display: flex;
+    flex-shrink: 0;
     align-items: center;
+
+    > * {
+      padding-left: 20px;
+    }
   }
   .discussion-description {
     overflow: hidden;
