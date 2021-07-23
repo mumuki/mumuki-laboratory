@@ -271,6 +271,7 @@ pt:
   profile_of: Perfil de %{username}
   programming_since: Sou programador
   progress: Progresso
+  publish_discussion: Postar consulta
   read: Ler
   read_messages: Ver mensagens
   refresh_or_wait: Se não mostrar automaticamente em alguns segundos, pressione F5

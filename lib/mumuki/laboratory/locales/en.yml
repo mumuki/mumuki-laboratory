@@ -261,7 +261,8 @@ en:
   processing_your_solution: We are processing you solution
   profile_of: Profile of %{username}
   programming_since: Started programming
-  progress: Progresss
+  progress: Progress
+  publish_discussion: Publish discussion
   read: Read
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   reply_count:

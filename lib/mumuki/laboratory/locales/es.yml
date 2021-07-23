@@ -280,6 +280,7 @@ es:
   profile_of: Perfil de %{username}
   programming_since: Programando desde
   progress: Progreso
+  publish_discussion: Publicar consulta
   read: Leido
   read_messages: Ver mensajes
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5

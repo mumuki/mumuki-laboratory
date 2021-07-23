@@ -270,6 +270,7 @@ es-CL:
   processing_your_solution: Estamos procesando tu solución
   profile_of: Perfil de %{username}
   progress: Progreso
+  publish_discussion: Publicar consulta
   read: Leído
   read_messages: Ver mensajes
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presiona F5
