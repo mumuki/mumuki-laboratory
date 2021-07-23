@@ -58,8 +58,8 @@ $moderator-badge-color: #dd9900;
   }
 
   .discussion-language-icon {
-    display: flex;
-    align-items: center;
+    display: inline;
+    padding-right: 5px;
   }
 
   .discussion-validated-messages-count {
@@ -88,7 +88,7 @@ $moderator-badge-color: #dd9900;
 }
 
 .discussion-status-icon {
-  padding-right: 10px;
+  padding-right: 5px;
 }
 
 .discussion-row {
@@ -118,10 +118,6 @@ $moderator-badge-color: #dd9900;
   }
   .discussion-initiator {
     font-size: calc(#{$font-size-base} * 0.85);
-
-    img {
-      margin-top: -2px;
-    }
   }
 }
 

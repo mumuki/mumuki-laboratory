@@ -5,9 +5,9 @@
         <div class="discussion-row">
           <div class="d-flex justify-content-between">
             <div class="discussion-title">
-              <span class="discussion-status-icon">
-                <%= discussion_status_fa_icon(discussion) %>
-              </span>
+              <div class="discussion-language-icon">
+                <%= language_icon(discussion.exercise.language) %>
+              </div>
               <span class="d-none d-lg-inline"><%= discussion.exercise.guide.name %> -</span>
               <span><%= discussion.exercise.name %></span>
               <% if discussion.current_responsible_visible_for?(current_user) %>
@@ -17,11 +17,6 @@
               <% end %>
             </div>
             <div class="discussion-title-icons">
-              <% unless @debatable.respond_to? :language %>
-                <div class="discussion-language-icon">
-                  <%= language_icon(discussion.exercise.language) %>
-                </div>
-              <% end %>
               <%= discussion_messages_count(discussion) %>
               <%= discussion_validated_messages_count(discussion) %>
             </div>
@@ -30,7 +25,9 @@
             <%= discussion.description %>
           </span>
           <span class="discussion-initiator">
-            <%= profile_picture_for(discussion.initiator, height: 20) %>
+            <span class="discussion-status-icon">
+              <%= discussion_status_fa_icon(discussion) %>
+            </span>
             <strong><%= discussion_user_name discussion.initiator %></strong>
             <%= t(:asked_time_since, time: time_ago_in_words(discussion.created_at)) %>
           </span>
