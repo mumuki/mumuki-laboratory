@@ -25,6 +25,11 @@
           </tr>
         <% end %>
       </table>
+
+      <div class="discussion-pagination">
+        <%= paginate @watched_discussions, nav_class: 'pagination' %>
+      </div>
+
     <% end %>
   </div>
 </div>
