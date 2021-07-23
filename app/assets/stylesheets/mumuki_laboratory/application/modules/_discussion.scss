@@ -64,10 +64,10 @@ $moderator-badge-color: #dd9900;
 
   .discussion-validated-messages-count {
     .fa-check {
-      font-size: 0.5rem;
+      font-size: calc(#{$font-size-base} * 0.5);
       position: absolute;
       margin-left: -13px;
-      margin-top: 11px;
+      margin-top: 10px;
     }
   }
 }
@@ -102,6 +102,7 @@ $moderator-badge-color: #dd9900;
     display: flex;
     flex-shrink: 0;
     align-items: center;
+    font-size: calc(#{$font-size-base} * 0.95);
 
     > * {
       padding-left: 20px;
@@ -113,8 +114,11 @@ $moderator-badge-color: #dd9900;
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-bottom: 20px;
+    font-size: calc(#{$font-size-base} * 0.95);
   }
   .discussion-initiator {
+    font-size: calc(#{$font-size-base} * 0.85);
+
     img {
       margin-top: -2px;
     }
