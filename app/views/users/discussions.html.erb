@@ -16,6 +16,12 @@
     <% else %>
       <div class="table-responsive mb-3">
         <table class="table table-striped">
+          <tr>
+            <td></td>
+            <td><strong><%= t(:exercise) %></strong></td>
+            <td><strong><%= t(:discussion_created_by) %></strong></td>
+            <td><strong><%= t(:last_message) %></strong></td>
+          </tr>
           <% @watched_discussions.each do |discussion| %>
             <tr>
               <td>

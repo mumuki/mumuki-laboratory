@@ -88,6 +88,7 @@ es-CL:
   disabled_explanation: Estás intentando acceder a un recurso que fue deshabilitado o eliminado de forma permanente
   disabled_organization_explanation: ¡Este recorrido ha finalizado!
   new_discussion_message: Mensaje nuevo en %{title}
+  discussion_created_by: Creada por
   discussion_updated: Consulta actualizada
   discussions: Consultas
   discussions_will_be_here: Las preguntas que realices en el espacio de consultas aparecerán aquí.
@@ -172,6 +173,7 @@ es-CL:
   kids_default_success: ¡Lo hiciste muy bien!
   language: Lenguaje
   languages: Lenguajes
+  last_message: Último mensaje
   last_name: Apellido
   last_submission_date: Última solución
   latest_exercises: Últimos ejercicios

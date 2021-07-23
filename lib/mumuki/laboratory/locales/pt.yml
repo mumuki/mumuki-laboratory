@@ -90,6 +90,7 @@ pt:
   disabled_organization_explanation: Este curso terminou
   discussion_description_placeholder: Você pode adicionar mais informações sobre sua dúvida
   new_discussion_message: Nova mensagem em %{title}
+  discussion_created_by: Criada por
   discussion_updated: Consulta actualizada
   discussions: Consultas
   discussions_will_be_here: As perguntas que você fizer no espaço de consulta aparecerão aqui.
@@ -174,6 +175,7 @@ pt:
   kids_default_success: Você fez muito bem!
   language: Linguagem
   languages: Linguagens
+  last_message: Última mensagem
   last_name: Sobrenome
   last_submission_date: Última solução
   latest_exercises: Últimos exercícios
