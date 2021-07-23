@@ -24,7 +24,7 @@
           </tr>
           <% @watched_discussions.each do |discussion| %>
             <tr>
-              <td>
+              <td class="text-center">
                 <%= icon_for_read(discussion.read_by?(@user)) %>
               </td>
               <td><%= link_to discussion.item.name, item_discussion_path(discussion) %></td>
