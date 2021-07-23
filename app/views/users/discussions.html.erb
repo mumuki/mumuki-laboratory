@@ -14,17 +14,19 @@
         <%= t :discussions_will_be_here %>
       </div>
     <% else %>
-      <table class="table table-striped">
-        <% @watched_discussions.each do |discussion| %>
-          <tr>
-            <td>
-              <%= icon_for_read(discussion.read_by?(@user)) %>
-            </td>
-            <td><%= link_to discussion.item.name, item_discussion_path(discussion) %></td>
-            <td><%= time_ago_in_words discussion.last_message_date %></td>
-          </tr>
-        <% end %>
-      </table>
+      <div class="table-responsive mb-3">
+        <table class="table table-striped">
+          <% @watched_discussions.each do |discussion| %>
+            <tr>
+              <td>
+                <%= icon_for_read(discussion.read_by?(@user)) %>
+              </td>
+              <td><%= link_to discussion.item.name, item_discussion_path(discussion) %></td>
+              <td><%= time_ago_in_words discussion.last_message_date %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
 
       <div class="discussion-pagination">
         <%= paginate @watched_discussions, nav_class: 'pagination' %>
