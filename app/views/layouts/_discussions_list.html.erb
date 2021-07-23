@@ -1,6 +1,6 @@
 <div class="discussions">
   <% @filtered_discussions.each do |discussion| %>
-    <%= link_to exercise_discussion_path(discussion.exercise.id, discussion) do %>
+    <%= link_to exercise_discussion_path(discussion.exercise.id, discussion), class: 'discussion-link' do %>
       <div class="discussion">
         <div class="discussion-row">
           <div class="d-flex justify-content-between">
