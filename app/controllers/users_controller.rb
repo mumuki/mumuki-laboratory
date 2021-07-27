@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def discussions
-    @watched_discussions = current_user.watched_discussions_in_organization.scoped_query_by(discussion_filter_params)
+    @watched_discussions = current_user.watched_discussions_in_organization.scoped_query_by(discussion_filter_params).unread_first
   end
 
   def activity
