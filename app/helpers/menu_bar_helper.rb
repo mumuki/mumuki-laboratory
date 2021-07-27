@@ -48,6 +48,6 @@ module MenuBarHelper
   end
 
   def menu_link_to_faqs
-    li_tag menu_item('question', :faqs, faqs_path)
+    li_tag menu_item(:info, :faqs_abbreviated, faqs_path)
   end
 end
