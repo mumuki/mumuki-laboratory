@@ -97,6 +97,8 @@ es:
   discussion_updated: Consulta actualizada
   new_discussion_message: Mensaje nuevo en %{title}
   discussions: Consultas
+  discussions_read: Leídas
+  discussions_unread: No leídas
   discussions_will_be_here: Las preguntas que realices en el espacio de consultas aparecerán aquí.
   dont_leave_us: ¡No nos abandones! Aprender a programar es divertido. Sólo tenés que seguir practicando.
   download: "Descargá lo que hiciste"
@@ -283,7 +285,6 @@ es:
   programming_since: Programando desde
   progress: Progreso
   publish_discussion: Publicar consulta
-  read: Leido
   read_messages: Ver mensajes
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5
   reply_count:

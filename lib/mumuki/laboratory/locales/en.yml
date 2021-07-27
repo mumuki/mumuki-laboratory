@@ -89,6 +89,8 @@ en:
   new_discussion_message: New message on %{title}
   discussion_updated: Discussion updated
   discussions: Discussions
+  discussions_read: Read
+  discussions_unread: Unread
   discussions_will_be_here: Your posts in the forum will appear here.
   dont_leave_us: Don't leave us! Learning is fun. You just have to keep at it.
   download: Download your solution
@@ -265,7 +267,6 @@ en:
   programming_since: Started programming
   progress: Progress
   publish_discussion: Publish discussion
-  read: Read
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   reply_count:
     one: 1 reply

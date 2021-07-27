@@ -15,14 +15,25 @@
       </div>
     <% else %>
       <div class="table-responsive mb-3">
-        <table class="table table-striped">
-          <tr>
-            <td></td>
-            <td><strong><%= t(:exercise) %></strong></td>
-            <td><strong><%= t(:discussion_created_by) %></strong></td>
-            <td><strong><%= t(:last_message) %></strong></td>
-          </tr>
+        <table class="table">
           <% @watched_discussions.each do |discussion| %>
+            <% if discussion.read_by?(@user) != @last_read %>
+              <tr></tr>
+              <thead>
+                <tr>
+                  <td class="<%= @last_read.nil? ? '' : 'pt-5' %>" colspan="4">
+                    <% @last_read = discussion.read_by?(@user) %>
+                    <strong><%= @last_read ? t(:discussions_read) : t(:discussions_unread) %></strong></td>
+                </tr>
+              </thead>
+              <tr>
+                <td></td>
+                <td><strong><%= t(:exercise) %></strong></td>
+                <td><strong><%= t(:discussion_created_by) %></strong></td>
+                <td><strong><%= t(:last_message) %></strong></td>
+              </tr>
+
+            <% end %>
             <tr>
               <td class="text-center">
                 <%= icon_for_read(discussion.read_by?(@user)) %>

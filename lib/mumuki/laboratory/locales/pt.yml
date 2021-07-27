@@ -93,6 +93,8 @@ pt:
   discussion_created_by: Criada por
   discussion_updated: Consulta actualizada
   discussions: Consultas
+  discussions_read: Não lidas
+  discussions_unread: Não lidos
   discussions_will_be_here: As perguntas que você fizer no espaço de consulta aparecerão aqui.
   download: Faça o download do que você fez
   edit: Editar
@@ -274,7 +276,6 @@ pt:
   programming_since: Sou programador
   progress: Progresso
   publish_discussion: Postar consulta
-  read: Ler
   read_messages: Ver mensagens
   refresh_or_wait: Se não mostrar automaticamente em alguns segundos, pressione F5
   reply_count:
