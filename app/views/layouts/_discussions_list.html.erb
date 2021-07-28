@@ -11,7 +11,7 @@
               <span class="d-none d-lg-inline"><%= discussion.exercise.guide.name %> -</span>
               <span><%= discussion.exercise.name %></span>
               <% if discussion.current_responsible_visible_for?(current_user) %>
-                <span class="badge bg-light text-dark">
+                <span class="badge ms-1 bg-dark">
                   <%= responsible_moderator_text_for(discussion, current_user)%>
                 </span>
               <% end %>
