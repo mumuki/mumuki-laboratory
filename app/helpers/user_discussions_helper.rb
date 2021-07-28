@@ -14,11 +14,11 @@ module UserDiscussionsHelper
 
   def user_discussions_table_header
     %Q{
-      <tr>
+      <tr class="fw-bold">
         <td></td>
-        <td><strong>#{t(:exercise)}</strong></td>
-        <td><strong>#{t(:discussion_created_by)}</strong></td>
-        <td><strong>#{t(:last_message)}</strong></td>
+        <td>#{t(:exercise)}</td>
+        <td>#{t(:discussion_created_by)}</td>
+        <td>#{t(:last_message)}</td>
       </tr>
     }.html_safe
   end
