@@ -26,13 +26,7 @@
                     <strong><%= @last_read ? t(:discussions_read) : t(:discussions_unread) %></strong></td>
                 </tr>
               </thead>
-              <tr>
-                <td></td>
-                <td><strong><%= t(:exercise) %></strong></td>
-                <td><strong><%= t(:discussion_created_by) %></strong></td>
-                <td><strong><%= t(:last_message) %></strong></td>
-              </tr>
-
+              <%= user_discussions_table_header %>
             <% end %>
             <tr>
               <td class="text-center">
