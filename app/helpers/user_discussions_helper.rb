@@ -1,4 +1,17 @@
 module UserDiscussionsHelper
+  def user_discussions_table_title(discussion, user, last_read)
+    %Q{
+      <tr></tr>
+      <thead>
+        <tr>
+          <td class="#{last_read.nil? ? '' : 'pt-5'}" colspan="4">
+            <strong>#{discussion.read_by?(user) ? t(:discussions_read) : t(:discussions_unread)}</strong>
+          </td>
+        </tr>
+      </thead>
+    }.html_safe
+  end
+
   def user_discussions_table_header
     %Q{
       <tr>

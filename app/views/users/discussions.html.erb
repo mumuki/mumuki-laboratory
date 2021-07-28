@@ -18,14 +18,9 @@
         <table class="table">
           <% @watched_discussions.each do |discussion| %>
             <% if discussion.read_by?(@user) != @last_read %>
-              <tr></tr>
-              <thead>
-                <tr>
-                  <td class="<%= @last_read.nil? ? '' : 'pt-5' %>" colspan="4">
-                    <% @last_read = discussion.read_by?(@user) %>
-                    <strong><%= @last_read ? t(:discussions_read) : t(:discussions_unread) %></strong></td>
-                </tr>
-              </thead>
+              <%= user_discussions_table_title(discussion, @user, @last_read) %>
+              <% @last_read = discussion.read_by?(@user) %>
+
               <%= user_discussions_table_header %>
             <% end %>
 
