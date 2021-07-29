@@ -88,8 +88,11 @@ es-CL:
   disabled_explanation: Estás intentando acceder a un recurso que fue deshabilitado o eliminado de forma permanente
   disabled_organization_explanation: ¡Este recorrido ha finalizado!
   new_discussion_message: Mensaje nuevo en %{title}
+  discussion_created_by: Creada por
   discussion_updated: Consulta actualizada
   discussions: Consultas
+  discussions_read: Leídas
+  discussions_unread: No leídas
   discussions_will_be_here: Las preguntas que realices en el espacio de consultas aparecerán aquí.
   dont_leave_us: ¡No nos abandones! Aprender a programar es divertido. Sólo tienes que seguir practicando.
   download: "Descarga lo que hiciste"
@@ -172,6 +175,7 @@ es-CL:
   kids_default_success: ¡Lo hiciste muy bien!
   language: Lenguaje
   languages: Lenguajes
+  last_message: Último mensaje
   last_name: Apellido
   last_submission_date: Última solución
   latest_exercises: Últimos ejercicios
@@ -271,7 +275,6 @@ es-CL:
   profile_of: Perfil de %{username}
   progress: Progreso
   publish_discussion: Publicar consulta
-  read: Leído
   read_messages: Ver mensajes
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presiona F5
   reply_count:

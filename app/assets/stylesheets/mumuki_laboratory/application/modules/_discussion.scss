@@ -50,13 +50,6 @@ $moderator-badge-color: #dd9900;
     }
   }
 
-  .discussion-pagination {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-
   .discussion-language-icon {
     display: inline;
     padding-right: 5px;
@@ -70,6 +63,13 @@ $moderator-badge-color: #dd9900;
       margin-top: 10px;
     }
   }
+}
+
+.discussion-pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .discussions-no-filtered-results {

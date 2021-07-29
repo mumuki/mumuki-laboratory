@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def discussions
-    @watched_discussions = current_user.watched_discussions_in_organization
+    @watched_discussions = current_user.watched_discussions_in_organization.scoped_query_by(discussion_filter_params).unread_first
   end
 
   def activity
@@ -70,5 +70,9 @@ class UsersController < ApplicationController
     else
       nil
     end
+  end
+
+  def discussion_filter_params
+    @filter_params ||= params.permit([:page])
   end
 end

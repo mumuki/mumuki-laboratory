@@ -84,10 +84,13 @@ en:
   destroy_message: delete the message
   disabled_explanation: You are trying to visit a permamently disabled or deleted resource
   disabled_organization_explanation: This path has already finished.
+  discussion_created_by: Created by
   discussion_description_placeholder: You can add more information regarding your doubt.
   new_discussion_message: New message on %{title}
   discussion_updated: Discussion updated
   discussions: Discussions
+  discussions_read: Read
+  discussions_unread: Unread
   discussions_will_be_here: Your posts in the forum will appear here.
   dont_leave_us: Don't leave us! Learning is fun. You just have to keep at it.
   download: Download your solution
@@ -170,6 +173,7 @@ en:
   keep_learning: Keep learning!
   kids_default_success: You did it great!
   language: Language
+  last_message: Last message
   last_name: Last Name
   last_submission_date: Last submission
   latest_exercises: Latest exercises
@@ -263,7 +267,6 @@ en:
   programming_since: Started programming
   progress: Progress
   publish_discussion: Publish discussion
-  read: Read
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   reply_count:
     one: 1 reply
