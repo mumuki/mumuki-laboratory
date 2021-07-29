@@ -14,15 +14,16 @@ es:
   and: y
   appendix: Apéndice
   appendix_teaser: ¿Querés saber más? <a href="%{link}">Consultá el apéndice de este capítulo</a>
-  approved_message: Validado por mentor
-  are_you_sure: '¿Estás seguro que querés %{action}?'
-  ask_a_question: ¡Hacé una pregunta!
+  approved_message: Validado por mentorías
   approved_messages:
     one: validado
     other: validados
+  are_you_sure: '¿Confirmás que querés %{action}?'
+  ask_a_question: ¡Hacé una pregunta!
   ask_community: Preguntá a la comunidad
   ask_redirect: ¿Querés que te llevemos ahí?
   ask_the_first_question: ¡Hacé la primera pregunta!
+  asked_time_since: "consultó hace %{time}"
   attempts_left:
     zero: 'Te quedaste sin intentos'
     one: '1 intento restante'
@@ -279,6 +280,7 @@ es:
   profile_of: Perfil de %{username}
   programming_since: Programando desde
   progress: Progreso
+  publish_discussion: Publicar consulta
   read: Leido
   read_messages: Ver mensajes
   refresh_or_wait: Si no se muestra automáticamente en unos segundos, presioná F5

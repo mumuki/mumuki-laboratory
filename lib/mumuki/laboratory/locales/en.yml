@@ -21,6 +21,7 @@ en:
   ask_community: Ask community for help
   ask_redirect: Do you want to go there?
   ask_the_first_question: Be the first one to ask!
+  asked_time_since: asked %{time} ago
   attempts_left:
     zero: "You've run out of attempts"
     one: "1 attempt remaining"
@@ -260,7 +261,8 @@ en:
   processing_your_solution: We are processing you solution
   profile_of: Profile of %{username}
   programming_since: Started programming
-  progress: Progresss
+  progress: Progress
+  publish_discussion: Publish discussion
   read: Read
   refresh_or_wait: Please press F5 if results are not displayed after a few seconds
   reply_count:
@@ -322,7 +324,7 @@ en:
   terms_and_conditions_continue_disclaimer: By continuing you agree to %{terms_link}
   terms_and_conditions_must_be_accepted: You must accept the terms and conditions
   test_results: Test results
-  time_ago: "%{time} ago"
+  time_since: "%{time} ago"
   time_left: You have
   title: Title
   to_closed: Close

@@ -58,24 +58,16 @@ $moderator-badge-color: #dd9900;
   }
 
   .discussion-language-icon {
-    float: right;
-    margin-right: 10px;
-    margin-top: 6px;
-    -ms-transform: scale(1.4, 1.4);
-    -webkit-transform: scale(1.4, 1.4);
-    transform: scale(1.4, 1.4);
+    display: inline;
+    padding-right: 5px;
   }
 
-  .discussion-icon {
-    -ms-transform: scale(0.8, 0.8);
-    -webkit-transform: scale(0.8, 0.8);
-    transform: scale(0.8, 0.8);
-    margin-left: 5px;
-    float: right;
-    .fa-stack-1x {
-      -ms-transform: scale(0.9, 0.9);
-      -webkit-transform: scale(0.9, 0.9);
-      transform: scale(0.9, 0.9);
+  .discussion-validated-messages-count {
+    .fa-check {
+      font-size: calc(#{$font-size-base} * 0.5);
+      position: absolute;
+      margin-left: -13px;
+      margin-top: 10px;
     }
   }
 }
@@ -96,7 +88,7 @@ $moderator-badge-color: #dd9900;
 }
 
 .discussion-status-icon {
-  padding-right: 10px;
+  padding-left: 2px;
 }
 
 .discussion-row {
@@ -106,11 +98,26 @@ $moderator-badge-color: #dd9900;
     font-size: 18px;
     font-weight: bold;
   }
+  .discussion-title-icons {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    font-size: calc(#{$font-size-base} * 0.95);
+
+    > * {
+      padding-left: 20px;
+    }
+  }
   .discussion-description {
     overflow: hidden;
     display: block;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin-bottom: 20px;
+    font-size: calc(#{$font-size-base} * 0.95);
+  }
+  .discussion-initiator {
+    font-size: calc(#{$font-size-base} * 0.85);
   }
 }
 
@@ -308,6 +315,7 @@ $moderator-badge-color: #dd9900;
   border: 1px solid $discussion-message-border-color;
   border-radius: 3px;
   position: relative;
+  margin-bottom: 20px;
   .discussion-message-bubble-header {
     background-color: $mu-color-highlight-background;
     height: 40px;
@@ -398,15 +406,5 @@ $moderator-badge-color: #dd9900;
   margin-right: 20px;
   label {
     font-weight: normal;
-  }
-}
-
-.discussion-moderator-access {
-  margin-right: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  .moderator-initials {
-    font-size: 14px;
   }
 }

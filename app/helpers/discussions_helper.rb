@@ -60,11 +60,18 @@ module DiscussionsHelper
     }.html_safe
   end
 
-  def discussion_messages_icon(discussion)
+  def discussion_messages_count(discussion)
     %Q{
-      <span class="discussion-icon fa-stack fa-xs">
-        <i class="far fa-comment fa-stack-2x"></i>
-        <i class="fas fa-stack-1x">#{discussion.validated_messages_count}</i>
+      <span class="discussion-messages-count">
+        #{fa_icon :comments, type: :regular, text: discussion.messages_count}
+      </span>
+    }.html_safe
+  end
+
+  def discussion_validated_messages_count(discussion)
+    %Q{
+      <span class="discussion-validated-messages-count">
+        #{fa_icon :comment, type: :regular}#{fa_icon :check, text: discussion.validated_messages_count}
       </span>
     }.html_safe
   end

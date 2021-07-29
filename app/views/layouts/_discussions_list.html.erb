@@ -1,0 +1,38 @@
+<div class="discussions">
+  <% @filtered_discussions.each do |discussion| %>
+    <%= link_to exercise_discussion_path(discussion.exercise.id, discussion), class: 'discussion-link' do %>
+      <div class="discussion">
+        <div class="discussion-row">
+          <div class="d-flex justify-content-between">
+            <div class="discussion-title">
+              <div class="discussion-language-icon">
+                <%= language_icon(discussion.exercise.language) %>
+              </div>
+              <span class="d-none d-lg-inline"><%= discussion.exercise.guide.name %> -</span>
+              <span><%= discussion.exercise.name %></span>
+              <% if discussion.current_responsible_visible_for?(current_user) %>
+                <span class="badge ms-1 bg-dark">
+                  <%= responsible_moderator_text_for(discussion, current_user)%>
+                </span>
+              <% end %>
+            </div>
+            <div class="discussion-title-icons">
+              <%= discussion_messages_count(discussion) %>
+              <%= discussion_validated_messages_count(discussion) %>
+            </div>
+          </div>
+          <span class="discussion-description">
+            <%= discussion.description %>
+          </span>
+          <span class="discussion-initiator">
+            <strong><%= discussion_user_name discussion.initiator %></strong>
+            <%= t(:asked_time_since, time: time_ago_in_words(discussion.created_at)) %>
+            <span class="discussion-status-icon">
+              <%= discussion_status_fa_icon(discussion) %>
+            </span>
+          </span>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

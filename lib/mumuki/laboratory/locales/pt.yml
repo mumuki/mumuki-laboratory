@@ -14,14 +14,15 @@ pt:
   appendix: Apêndice
   appendix_teaser: Você quer saber mais? <a href="%{link}"> Consulte o apêndice deste capítulo </a>
   approved_message: Validado pelo mentor
-  are_you_sure: 'Tem certeza de que deseja %{action}?'
   approved_messages:
     one: validado
     other: validados
+  are_you_sure: 'Tem certeza de que deseja %{action}?'
   ask_a_question: Faça uma pergunta!
   ask_community: Pergunte à comunidade
   ask_redirect: Você quer que nós o levemos para lá?
   ask_the_first_question: Faça a primeira pergunta!
+  asked_time_since: "consultou há %{time}"
   attempts_left:
     zero: 'Você ficou sem tentativas'
     one: '1 tentativa restante'
@@ -270,6 +271,7 @@ pt:
   profile_of: Perfil de %{username}
   programming_since: Sou programador
   progress: Progresso
+  publish_discussion: Postar consulta
   read: Ler
   read_messages: Ver mensagens
   refresh_or_wait: Se não mostrar automaticamente em alguns segundos, pressione F5
