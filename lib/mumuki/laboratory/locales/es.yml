@@ -14,11 +14,11 @@ es:
   and: y
   appendix: Apéndice
   appendix_teaser: ¿Querés saber más? <a href="%{link}">Consultá el apéndice de este capítulo</a>
-  approved_message: Validado por mentor
+  approved_message: Validado por mentorías
   approved_messages:
     one: validado
     other: validados
-  are_you_sure: '¿Estás seguro que querés %{action}?'
+  are_you_sure: '¿Confirmás que querés %{action}?'
   ask_a_question: ¡Hacé una pregunta!
   ask_community: Preguntá a la comunidad
   ask_redirect: ¿Querés que te llevemos ahí?
