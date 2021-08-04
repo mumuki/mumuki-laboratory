@@ -27,6 +27,14 @@ class UserMailer < ApplicationMailer
     end
   end
 
+  def notification(notification)
+    @notification = notification
+
+    with_locale(notification.user, notification.organization) do
+      build_email notification.custom_title, 'notification'
+    end
+  end
+
   def with_locale(user, organization = nil, &block)
     @user = user
     @unsubscribe_code = User.unsubscription_verifier.generate(user.id)
