@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   before_action :authenticate!, except: :terms
   before_action :set_user!
+  before_action :set_notification!, only: :toggle_read
+  before_action :verify_owns_notification!, only: :toggle_read
   skip_before_action :validate_accepted_role_terms!
 
   def update
@@ -57,7 +59,20 @@ class UsersController < ApplicationController
     @notifications = @user.custom_notifications.order(created_at: :desc).page(params[:page])
   end
 
+  def toggle_read
+    @notification.toggle! :read
+    redirect_to notifications_user_path
+  end
+
   private
+
+  def set_notification!
+    @notification = Notification.find(params[:id])
+  end
+
+  def verify_owns_notification!
+    raise Mumuki::Domain::NotFoundError unless @notification.user == @user
+  end
 
   def validate_user_profile!
   end
