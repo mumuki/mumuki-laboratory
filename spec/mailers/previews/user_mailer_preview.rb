@@ -6,4 +6,17 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.we_miss_you_reminder(User.new, 1)
   end
 
+  def custom_content_plain_text_notification
+    notification = Notification.new user: user,
+                                    organization: organization,
+                                    subject: :custom,
+                                    custom_content_plain_text: 'Welcome to Mumuki!',
+                                    custom_title: 'Welcome!'
+
+    UserMailer.notification notification
+  end
+
+  def custom_content_html_notification
+    #TODO
+  end
 end
