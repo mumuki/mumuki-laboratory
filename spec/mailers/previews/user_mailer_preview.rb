@@ -19,4 +19,10 @@ class UserMailerPreview < ActionMailer::Preview
   def custom_content_html_notification
     #TODO
   end
+
+  def certificate
+    certificate = Certificate.last
+
+    UserMailer.certificate(certificate)
+  end
 end
