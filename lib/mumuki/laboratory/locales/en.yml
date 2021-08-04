@@ -162,6 +162,7 @@ en:
   hidden_done: 'Good!'
   history: History
   home: Home
+  i_want_emails_of: I want to receive emails of
   important_info: Important information
   initial_state: Initial board
   insert_file_name: Insert a file name
@@ -190,6 +191,8 @@ en:
   load_solution_into_console: Load your solution into the console
   locked_content: 'This content will be unlocked when you finish previous chapters'
   male: Male
+  manage_notification_subscriptions: Manage your notification subscriptions
+  manage_notifications: Manage notifications
   manual_evaluation_pending: Thanks for submitting your solution! It will be revised by the course teachers soon
   medal: Medal
   message: Message
@@ -211,6 +214,7 @@ en:
     you_wont_confirmation: You won't take care of this discussion.
   my_account: My account
   my_doubts: My doubts
+  my_notifications: My notifications
   my_profile: My profile
   my_submissions: My Submissions
   name: Name
@@ -238,7 +242,12 @@ en:
   no_useful_result: Didn't find what you were looking for?
   not_found_explanation: 'You may have mistyped the address or the page may have moved.'
   not_in_any_organizations: It seems you aren't in any organizations yet!
+  notification_subject:
+    custom: General announcements
+    exam_authorization_request_updated: Exam registrations updated
+    exam_registration: Exam registrations enabled
   notifications: Notifications
+  notifications_will_be_here: Notifications will be here
   notify_problem_with_exercise: Report a bug
   office: Office
   only_landscape_support: Please, rotate your tablet or cellphone to continue practicing
@@ -258,6 +267,7 @@ en:
   permissions: Permissions
   please_fill_profile_data: Please complete your profile data to continue!
   please_validate: 'Please validate your data before continue:'
+  preferences_updated_successfully: Preferences updated successfully
   preview: Preview
   preview_error: The preview cannot be shown. Check your internet connection or try with a shorter message.
   previous_exercise: Previous
@@ -361,6 +371,7 @@ en:
   wrong_answer: The answer is wrong
   years: years old
   you_earned: You earned
+  you_have_a_new_notification: You have a new notification!
   you_must_sign_in_before_submitting: You must sign in before submitting your solutions
   you_never_submitted_solutions: It seems that you've never submitted solutions since you created your account.
   your_new_organization: your new organization

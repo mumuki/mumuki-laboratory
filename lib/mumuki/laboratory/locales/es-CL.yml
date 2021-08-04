@@ -163,6 +163,7 @@ es-CL:
   home: Inicio
   hour: hora
   hours: horas
+  i_want_emails_of: Quiero recibir emails de
   important_info: Información importante
   initial_state: Tablero inicial
   insert_file_name: Ingresa un nombre de archivo
@@ -192,6 +193,8 @@ es-CL:
   load_solution_into_console: Cargar la solución en la consola
   locked_content: 'Éste contenido se desbloqueará cuando termines los capítulos anteriores'
   male: Hombre
+  manage_notification_subscriptions: Administrá tus notificaciones
+  manage_notifications: Administrar notificaciones
   manual_evaluation_pending: ¡Gracias por enviar tu solución! Tus docentes la corregirán pronto
   medal: Medalla
   message: Mensaje
@@ -215,6 +218,7 @@ es-CL:
     you_wont_confirmation: No te vas a ocupar de esta consulta.
   my_account: Mi cuenta
   my_doubts: Mis consultas
+  my_notifications: Mis notificaciones
   my_profile: Mi perfil
   name: Nombre
   navigation_continue: 'Siguiente %{kind}: %{sibling}'
@@ -244,7 +248,12 @@ es-CL:
   not_found: ¡La página que buscaste no existe!
   not_found_explanation: Fíjate si escribiste bien la dirección.
   not_in_any_organizations: ¡Parece que no estás en ninguna organización todavía!
+  notification_subject:
+    custom: Anuncios generales
+    exam_authorization_request_updated: Cambios sobre inscripciones a exámenes
+    exam_registration: Inscripciones a exámenes habilitadas
   notifications: Notificaciones
+  notifications_will_be_here: Tus notificaciones aparecerán aquí
   notify_problem_with_exercise: Reporta un bug
   office: Secretaría
   only_landscape_support: Por favor, rota tu tablet o celular para realizar ejercicios
@@ -267,6 +276,7 @@ es-CL:
   permissions: Permisos
   please_fill_profile_data: ¡Completa tus datos personales para continuar!
   please_validate: 'Estás a punto de ingresar al curso. Para poder ofrecerte una mejor experiencia, por favor valida que tus datos a continuación sean reales y correctos.'
+  preferences_updated_successfully: Tus preferencias se actualizaron correctamente
   preview: Vista previa
   preview_error: No se puede mostrar la vista previa. Revisa tu conexión a internet o prueba con un mensaje más corto.
   previous_exercise: Anterior
@@ -376,5 +386,6 @@ es-CL:
   working: "Procesando"
   wrong_answer: La respuesta no es correcta
   you_earned: Ganaste
+  you_have_a_new_notification: ¡Tenés una nueva notificación!
   you_must_sign_in_before_submitting: Tienes que iniciar sesión antes de empezar a enviar tus soluciones
   you_never_submitted_solutions: Parece que nunca enviaste soluciones desde que creaste tu cuenta.
