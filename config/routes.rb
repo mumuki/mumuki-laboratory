@@ -72,6 +72,7 @@ Rails.application.routes.draw do
       get :certificates
       get :exam_authorizations
 
+      get :notifications
     end
 
     resources :faqs, only: [:index]

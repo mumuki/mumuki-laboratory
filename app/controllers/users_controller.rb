@@ -53,6 +53,10 @@ class UsersController < ApplicationController
     super << [:avatar_id, :avatar_type]
   end
 
+  def notifications
+    @notifications = @user.custom_notifications.order(created_at: :desc).page(params[:page])
+  end
+
   private
 
   def validate_user_profile!
