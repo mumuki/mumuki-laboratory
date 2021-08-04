@@ -4,10 +4,10 @@ module Mumuki::Laboratory::Controllers::Notifications
   end
 
   def notifications_count
-    notifications.size
+    user_notifications.size
   end
 
-  def notifications
+  def user_notifications
     current_user.try(:unread_notifications) || []
   end
 end
