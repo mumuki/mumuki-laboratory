@@ -64,7 +64,22 @@ class UsersController < ApplicationController
     redirect_to notifications_user_path
   end
 
+  def show_manage_notifications
+    render 'manage_notifications'
+  end
+
+  def manage_notifications
+    @user.update! ignored_notifications: manage_notifications_params.reject { |_, allowed| allowed.to_boolean }.keys
+
+    flash.notice = I18n.t(:preferences_updated_successfully)
+    redirect_to notifications_user_path
+  end
+
   private
+
+  def manage_notifications_params
+    params.require(:notifications)
+  end
 
   def set_notification!
     @notification = Notification.find(params[:id])

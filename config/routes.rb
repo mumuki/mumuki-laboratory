@@ -74,6 +74,8 @@ Rails.application.routes.draw do
 
       get :notifications
       post 'notifications/:id/toggle_read', action: :toggle_read
+      get 'notifications/manage', action: :show_manage_notifications
+      post 'notifications/manage', action: :manage_notifications
     end
 
     resources :faqs, only: [:index]
