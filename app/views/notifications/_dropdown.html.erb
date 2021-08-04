@@ -6,7 +6,7 @@
   <ul id="notificationsPanel" class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown">
     <% user_notifications.each do |it| %>
       <li>
-        <%= notification_preview_for it.target %>
+        <%= notification_preview_for it %>
       </li>
     <% end %>
   </ul>

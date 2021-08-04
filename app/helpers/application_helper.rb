@@ -45,8 +45,8 @@ module ApplicationHelper
     }.html_safe
   end
 
-  def notification_preview_for(target)
-    render "notifications/#{target.class.name.underscore}", { target: target }
+  def notification_preview_for(notification)
+    render "notifications/previews/#{notification.subject}", { notification: notification }
   end
 
   def current_time_zone_html
