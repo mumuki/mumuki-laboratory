@@ -22,7 +22,8 @@ feature 'Notifications Flow', organization_workspace: :test do
     let(:exam_authorization_request) { create(:exam_authorization_request, exam_registration: exam_registration, user: user) }
 
     let!(:notifications) do
-      [exam_registration, exam_authorization_request].map { |target| create(:notification, user: user, target: target ) }
+      create(:notification, user: user, target: exam_registration, subject: :exam_registration )
+      create(:notification, user: user, target: exam_authorization_request, subject: :exam_authorization_request_updated )
     end
 
     before { visit '/' }
