@@ -21,7 +21,7 @@
 
       @include media-breakpoint-down(md) {
         &:not(.active) {
-          h3, p {
+          h3, p, ul {
             display: none
           }
           h2 {
