@@ -89,7 +89,7 @@ pt:
   disabled_explanation: Você está tentando acessar um recurso que foi desativado ou removido permanentemente
   disabled_organization_explanation: Este curso terminou
   discussion_description_placeholder: Você pode adicionar mais informações sobre sua dúvida
-  new_discussion_message: Nova mensagem em %{title}
+  new_discussion_message: Nova resposta em %{title}
   discussion_created_by: Criada por
   discussion_updated: Consulta actualizada
   discussions: Consultas

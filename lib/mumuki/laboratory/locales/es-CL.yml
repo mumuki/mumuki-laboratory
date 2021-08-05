@@ -87,7 +87,7 @@ es-CL:
   details: Detalles
   disabled_explanation: Estás intentando acceder a un recurso que fue deshabilitado o eliminado de forma permanente
   disabled_organization_explanation: ¡Este recorrido ha finalizado!
-  new_discussion_message: Mensaje nuevo en %{title}
+  new_discussion_message: Respuesta nueva en %{title}
   discussion_created_by: Creada por
   discussion_updated: Consulta actualizada
   discussions: Consultas

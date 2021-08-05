@@ -86,7 +86,7 @@ en:
   disabled_organization_explanation: This path has already finished.
   discussion_created_by: Created by
   discussion_description_placeholder: You can add more information regarding your doubt.
-  new_discussion_message: New message on %{title}
+  new_discussion_message: New reply on %{title}
   discussion_updated: Discussion updated
   discussions: Discussions
   discussions_read: Read
