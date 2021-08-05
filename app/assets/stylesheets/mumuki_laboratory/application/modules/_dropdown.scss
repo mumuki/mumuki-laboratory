@@ -7,3 +7,8 @@
   @extend .d-inline-block;
   @extend .text-truncate;
 }
+
+.mu-stealth-link {
+  text-decoration: none;
+  color: unset;
+}
