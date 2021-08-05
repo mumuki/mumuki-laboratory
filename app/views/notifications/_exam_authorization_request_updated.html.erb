@@ -1,0 +1,2 @@
+<% target = notification.target %>
+<%= link_to t(:exam_authorization_request_updated, description: target.exam_registration.description), notification.organization.url_for('/user/exam_authorizations'), style: 'text-decoration: none; color: unset;' %>

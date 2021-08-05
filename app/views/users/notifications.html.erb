@@ -35,7 +35,7 @@
                 <%= link_to icon_for_read(notification.read?), "notifications/#{notification.id}/toggle_read", tooltip_options(:read).merge(method: :post, role: :button) %>
               </td>
               <td class="col-md-8 text-break">
-                <%= notification.custom_content_plain_text %>
+                <%= render partial: "notifications/#{notification.subject}", locals: { notification: notification } %>
               </td>
               <td class="col-md-3">
                 <%= t(:time_since, time: time_ago_in_words(notification.created_at)) %>
