@@ -35,6 +35,8 @@ es-CL:
   blocked_forum_explanation: ¿Puede que estés en medio de un examen?
   cancel_subscription: Cancela tu subscripción.
   certificate: Certificado
+  certificate_available: Ya está disponible tu certificado
+  certificate_download: Descargalo desde el adjunto de este mail o visualizalo en tu perfil de Mumuki
   certificates: Certificados
   certificates_will_be_here: Tus certificados en esta organización aparecerán aquí
   certificate_verified_legend: "La cuenta de <strong>%{full_name}</strong> ha sido verificada. Mumuki certifica que completó el curso de <strong>%{description}.</strong>"
@@ -55,6 +57,7 @@ es-CL:
   confirm: Confirmar
   confirm_reset: Estás por reiniciar tu ejercicio. ¿Quieres continuar?
   confirm_restart: Estás por borrar tu progreso en esta guía. ¿Quieres continuar?
+  congratulations: ¡Felicitaciones!
   console: Consola
   contact_administrator: 'Si piensas que es un error, comunícate con %{link}'
   content: Contenido
@@ -192,6 +195,25 @@ es-CL:
   loading: Cargando
   load_solution_into_console: Cargar la solución en la consola
   locked_content: 'Éste contenido se desbloqueará cuando termines los capítulos anteriores'
+  mailer:
+    title:
+      exam_authorization_request_updated: Tenés cambios en tu inscripción al examen
+      exam_authorization_request_rejected: Inscripción rechazada
+      exam_registration: Apertura de inscripciones
+      custom: ¡Tenés una nueva notificación!
+    subtitle:
+      exam_authorization_request_approved: Tu solicitud de inscripción al examen fue aprobada.
+      exam_authorization_request_rejected: Tu solicitud de inscripción al examen fue rechazada ya que no se cumplieron los requisitos.
+      exam_registration: ¡Ya podés inscribirte al examen!
+    text:
+      exam_authorization_request_approved: Podrás rendir el examen el día %{exam_start_date} ingresando a la plataforma. ¡Éxitos!
+      exam_authorization_request_rejected: ¡No te desanimes! Hiciste un gran esfuerzo y esperamos que continúes aprendiendo programación.
+      exam_registration: Tenés tiempo de inscribirte hasta el %{exam_registration_deadline}. Para que tu inscripción sea aceptada debés cumplir con los requisitos.
+    button:
+      exam_registration: Inscribirme al Examen
+      exam_authorization_request_approved: Ir a la plataforma
+      exam_authorization_request_rejected: Mis exámenes
+      custom: Mis notificaciones
   male: Hombre
   manage_notification_subscriptions: Administrá tus notificaciones
   manage_notifications: Administrar notificaciones

@@ -1,7 +1,7 @@
 <%= render partial: 'user_mailer/mail_template', locals: {
-  title: t(:new_certificate_mailer_title),
-  subtitle: t(:new_certificate_mailer_p1),
-  text: t(:new_certificate_mailer_p2),
+  title: t(:congratulations),
+  subtitle: t(:certificate_available),
+  text: t(:certificate_download),
   button: t(:my_profile),
-  url: @organization.url_for('/user')
+  url: @organization.url_for('/user/certificates')
 } %>
