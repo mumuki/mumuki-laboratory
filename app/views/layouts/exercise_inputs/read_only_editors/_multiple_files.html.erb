@@ -4,10 +4,10 @@
 
   <div class="editor-files">
     <span class="files-tabs">
-      <ul class="nav nav-tabs">
+      <ul class="nav nav-tabs" role="tablist">
         <% files.each_with_index do |file, index| %>
-          <li role="presentation" class="file-tab <%= 'active' if index == 0 %>" data-bs-target="#editor-file-<%= index %>" tabindex='0' data-bs-toggle='tab'>
-            <a class="file-name" href="#"><%= file.name %></a>
+          <li role="presentation" class="nav-item file-tab">
+            <a class="file-name nav-link <%= 'active' if index == 0 %>" href="#" data-bs-target="#editor-file-<%= index %>" tabindex="0" data-bs-toggle="tab"><%= file.name %></a>
           </li>
         <% end %>
       </ul>
@@ -17,7 +17,7 @@
 
     <div class="tab-content">
       <% files.each_with_index do |file, index| %>
-        <div role="tabpanel" class="file-editor tab-pane mu-input-panel <%= 'fade in active' if index == 0 %>" id="editor-file-<%= index %>">
+        <div role="tabpanel" class="file-editor tab-pane mu-input-panel fade <%= 'show active' if index == 0 %>" id="editor-file-<%= index %>">
           <div class=<%="content[#{file.name}]"%>>
             <%= read_only_editor file.content, file.highlight_mode %>
           </div>
