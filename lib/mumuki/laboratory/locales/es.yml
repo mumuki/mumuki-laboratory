@@ -95,7 +95,7 @@ es:
   discussion_created_by: Creada por
   discussion_description_placeholder: Podés agregar información para detallar más tu consulta
   discussion_updated: Consulta actualizada
-  new_discussion_message: Mensaje nuevo en %{title}
+  new_discussion_message: Respuesta nueva en %{title}
   discussions: Consultas
   discussions_read: Leídas
   discussions_unread: No leídas
