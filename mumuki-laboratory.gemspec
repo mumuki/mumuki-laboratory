@@ -25,8 +25,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'mumukit-auth', '~> 7.8'
   s.add_dependency 'mumukit-content-type', '~> 1.9'
 
-  # Use ~> 3.0 once allow-javascript option is fixed
-  s.add_dependency 'mumuki-styles', '~> 3.0.2.2'
+  s.add_dependency 'mumuki-styles', '~> 3.0'
   s.add_dependency 'muvment', '~> 1.2'
 
   s.add_dependency 'rack', '~> 2.1'
