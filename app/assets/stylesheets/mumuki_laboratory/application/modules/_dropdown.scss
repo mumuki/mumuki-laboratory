@@ -1,3 +1,14 @@
 .fixed-icon {
   margin-right: 5px;
 }
+
+.mu-notification-preview {
+  max-width: 350px;
+  @extend .d-inline-block;
+  @extend .text-truncate;
+}
+
+.mu-stealth-link {
+  text-decoration: none;
+  color: unset;
+}

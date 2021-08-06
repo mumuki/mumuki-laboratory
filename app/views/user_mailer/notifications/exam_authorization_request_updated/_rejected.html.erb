@@ -1,0 +1,7 @@
+<%= render partial: 'user_mailer/mail_template', locals: {
+  title: t("mailer.title.exam_authorization_request_rejected"),
+  subtitle: t("mailer.subtitle.exam_authorization_request_rejected"),
+  text: t("mailer.text.exam_authorization_request_rejected"),
+  button: t("mailer.button.exam_authorization_request_rejected"),
+  url: @organization.url_for('/user/exam_authorizations')
+} %>

@@ -23,7 +23,15 @@ class UserMailer < ApplicationMailer
   def certificate(certificate)
     with_locale certificate.user, certificate.organization do
       attachments[certificate.filename] = pdf_for(certificate)
-      mail to: certificate.user.email, subject: certificate.description
+      mail to: certificate.user.email, subject: t(:certificate_available)
+    end
+  end
+
+  def notification(notification)
+    @notification = notification
+
+    with_locale(notification.user, notification.organization) do
+      build_email notification.custom_title || t("mailer.title.#{notification.subject}"), 'notification'
     end
   end
 

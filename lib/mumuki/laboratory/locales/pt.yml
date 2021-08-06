@@ -37,6 +37,8 @@ pt:
   blocked_forum_explanation: Você está no meio de um exame agora?
   cancel: Cancelar
   certificate: Certificado
+  certificate_available: Seu certificado já está disponível
+  certificate_download: Baixe-o do anexo deste e-mail ou visualize-o em seu perfil Mumuki.
   certificates: Certificados
   certificates_will_be_here: Seus certificados nesta organização aparecerão aqui
   certificate_verified_legend: "A conta de <strong>% {full_name} </strong> foi verificada. Mumuki certifica a conclusão com sucesso de <strong>% {description} </strong>."
@@ -54,6 +56,7 @@ pt:
   confirm: Confirme
   confirm_reset: Você está prestes a reiniciar seu exercício. Você quer continuar?
   confirm_restart: Você está prestes a apagar o seu progresso neste guia. Você quer continuar?
+  congratulations: Parabéns!
   console: Consola
   contact_administrator: Se você acha que é um erro, entre em contato com %{link}
   content: Conteúdo
@@ -167,6 +170,7 @@ pt:
   home: Home
   hour: hora
   hours: horas
+  i_want_emails_of: Quero receber e-mails de
   important_info: Informação importante
   initial_state: Tabuleiro inicial
   insert_file_name: Insira um nome de arquivo
@@ -193,7 +197,28 @@ pt:
   loading: Carregando
   load_solution_into_console: Carregue a solução no console
   locked_content: 'Este conteúdo será desbloqueado quando você terminar os capítulos anteriores'
+  mailer:
+    title:
+      exam_authorization_request_updated: Você tem alterações no registro do seu exame
+      exam_authorization_request_rejected: Inscrição rejeitada
+      exam_registration: Abertura de inscrições
+      custom: Você tem uma nova notificação!
+    subtitle:
+      exam_authorization_request_approved: Seu pedido de inscrição para o exame foi aprovado.
+      exam_authorization_request_rejected: Sua inscrição para o exame foi rejeitada porque os requisitos não foram atendidos.
+      exam_registration: Agora você pode se inscrever para o exame!
+    text:
+      exam_authorization_request_approved: Você poderá fazer o exame em %{exam_start_date} ao entrar na plataforma. Êxitos!
+      exam_authorization_request_rejected: Não te desanimes! Você fez um grande esforço e esperamos que continue aprendendo programação.
+      exam_registration: Você tem tempo para se registrar até o exam_registration_deadline. Para que seu registro seja aceito, você deve atender aos requisitos.
+    button:
+      exam_registration: Assinar o exame
+      exam_authorization_request_approved: Vá para a plataforma
+      exam_authorization_request_rejected: Meus exames
+      custom: Minhas notificações
   male: Masculino
+  manage_notification_subscriptions: Gerenciar suas notificações
+  manage_notifications: Gerenciar notificações
   manual_evaluation_pending: Obrigado por enviar sua solução! Seus professores irão corrigi-lo em breve
   medal: Medalha
   message: Mensagem
@@ -218,6 +243,7 @@ pt:
     you_wont_confirmation: Você não vai cuidar dessa consulta.
   my_account: Minha conta
   my_doubts: Minhas duvidas
+  my_notifications: Minhas notificações
   my_profile: Meu perfil
   name: Nome
   navigation_continue: "Próximo %{kind}: %{sibling}"
@@ -246,7 +272,12 @@ pt:
   not_found: A página que você pesquisou não existe!
   not_found_explanation: Olhe se você escreveu o endereço corretamente.
   not_in_any_organizations: Parece que você ainda não está em nenhuma organização!
+  notification_subject:
+    custom: Anúncios gerais
+    exam_authorization_request_updated: Mudanças no registro do exame
+    exam_registration: Inscrição para exames qualificados
   notifications: Notificações
+  notifications_will_be_here: Suas notificações aparecerão aqui
   notify_problem_with_exercise: Relatar um erro
   office: Secretariado
   only_landscape_support: Por favor, gire seu tablet ou celular para realizar exercícios
@@ -267,6 +298,7 @@ pt:
   permissions: Permissões
   please_fill_profile_data: Preencha suas informações pessoais para continuar!
   please_validate: Você está prestes a entrar no curso. Para oferecer uma experiência melhor, valide que seus dados abaixo sejam reais e corretos.
+  preferences_updated_successfully: Suas preferências foram atualizadas com sucesso
   preview: Vista prévia
   preview_error: A visualizaçao não pode ser mostrada. Verifique sua conexão com a internet ou tente com uma mensagem mais curta.
   previous_exercise: Anterior
@@ -369,5 +401,6 @@ pt:
   wrong_answer: A resposta não é correta
   years: anos
   you_earned: Você ganhou
+  you_have_a_new_notification: Você tem uma nova notificação!
   you_must_sign_in_before_submitting: Você deve fazer o login antes de começar a enviar suas soluções
   your_new_organization: sua nova organização

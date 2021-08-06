@@ -50,6 +50,6 @@ module IconsHelper
   end
 
   def icon_for_read(read)
-    tag('i', class: "fa#{read ? 'r' : 's'} fa-envelope#{read ? '-open' : ''}")
+    tag.i(class: "fa#{read ? 'r' : 's'} fa-envelope#{read ? '-open' : ''}")
   end
 end

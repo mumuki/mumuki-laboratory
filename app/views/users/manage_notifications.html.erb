@@ -1,0 +1,26 @@
+<%= content_for :breadcrumbs do %>
+  <%= breadcrumbs_for_my_account %>
+<% end %>
+
+<div class="row">
+  <%= form_for :notifications, html: {class: 'mu-form'} do |f| %>
+    <div class="mu-tab-body">
+      <div class="mu-user-header">
+        <h1><%= t(:manage_notifications) %></h1>
+        <div class="mu-profile-actions d-none d-md-block">
+          <a class="btn btn-secondary" href="<%= notifications_user_path %>">Cancelar</a>
+          <button type="submit" class="btn btn-complementary"><%= t :submit %></button>
+        </div>
+      </div>
+
+      <p><%= t(:i_want_emails_of) %>:</p>
+      <% Notification.subjects.keys.each do |subject| %>
+        <div class="form-check">
+          <%= label_tag subject, t("notification_subject.#{subject}"), class: 'form-check-label' %>
+          <%= f.check_box subject, checked: !@user.ignored_notifications.include?(subject), class: 'form-check-input' %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+

@@ -1,0 +1,11 @@
+<% if @notification.custom_content_html.present? %>
+  <%= render inline: @notification.custom_content_html %>
+<% else %>
+  <%= render partial: 'user_mailer/mail_template', locals: {
+    title: t("mailer.title.custom"),
+    subtitle: '',
+    text: @notification.custom_content_plain_text,
+    button: t("mailer.button.custom"),
+    url: @organization.url_for('/user/notifications')
+  } %>
+<% end %>

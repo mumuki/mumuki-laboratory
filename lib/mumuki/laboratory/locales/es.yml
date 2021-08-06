@@ -39,9 +39,11 @@ es:
   cancel: Cancelar
   cancel_subscription: Cancelá tu subscripción.
   certificate: Certificado
+  certificate_available: Ya está disponible tu certificado
+  certificate_download: Descargalo desde el adjunto de este mail o visualizalo en tu perfil de Mumuki
+  certificate_verified_legend: "La cuenta de <strong>%{full_name}</strong> está verificada. Mumuki certifica que completó el curso de <strong>%{description}.</strong>"
   certificates: Certificados
   certificates_will_be_here: Tus certificados en esta organización aparecerán acá
-  certificate_verified_legend: "La cuenta de <strong>%{full_name}</strong> está verificada. Mumuki certifica que completó el curso de <strong>%{description}.</strong>"
   chapter: Capítulo
   chapters: Capítulos
   chapter_finished_html: ¡Terminaste %{chapter}! ¡Felicitaciones!
@@ -58,6 +60,7 @@ es:
   confirm: Confirmar
   confirm_reset: Estás por reiniciar tu ejercicio. ¿Querés continuar?
   confirm_restart: Estás por borrar tu progreso en esta guía. ¿Querés continuar?
+  congratulations: ¡Felicitaciones!
   console: Consola
   contact_administrator: 'Si pensás que es un error, comunicate con %{link}'
   content: Contenido
@@ -172,6 +175,7 @@ es:
   home: Inicio
   hour: hora
   hours: horas
+  i_want_emails_of: Quiero recibir emails de
   important_info: Información importante
   initial_state: Tablero inicial
   insert_file_name: Ingresa un nombre de archivo
@@ -200,7 +204,28 @@ es:
   loading: Cargando
   load_solution_into_console: Cargar la solución en la consola
   locked_content: 'Este contenido se desbloqueará cuando termines los capítulos anteriores'
+  mailer:
+    title:
+      exam_authorization_request_updated: Tenés cambios en tu inscripción al examen
+      exam_authorization_request_rejected: Inscripción rechazada
+      exam_registration: Apertura de inscripciones
+      custom: ¡Tenés una nueva notificación!
+    subtitle:
+      exam_authorization_request_approved: Tu solicitud de inscripción al examen fue aprobada.
+      exam_authorization_request_rejected: Tu solicitud de inscripción al examen fue rechazada ya que no se cumplieron los requisitos.
+      exam_registration: ¡Ya podés inscribirte al examen!
+    text:
+      exam_authorization_request_approved: Podrás rendir el examen el día %{exam_start_date} ingresando a la plataforma. ¡Éxitos!
+      exam_authorization_request_rejected: ¡No te desanimes! Hiciste un gran esfuerzo y esperamos que continúes aprendiendo programación.
+      exam_registration: Tenés tiempo de inscribirte hasta el %{exam_registration_deadline}. Para que tu inscripción sea aceptada debés cumplir con los requisitos.
+    button:
+      exam_registration: Inscribirme al Examen
+      exam_authorization_request_approved: Ir a la plataforma
+      exam_authorization_request_rejected: Mis exámenes
+      custom: Mis notificaciones
   male: Hombre
+  manage_notification_subscriptions: Administrá tus notificaciones
+  manage_notifications: Administrar notificaciones
   manual_evaluation_pending: ¡Gracias por enviar tu solución! Tus docentes la corregirán pronto
   medal: Medalla
   message: Mensaje
@@ -224,6 +249,7 @@ es:
     you_wont_confirmation: No te vas a ocupar de esta consulta.
   my_account: Mi cuenta
   my_doubts: Mis consultas
+  my_notifications: Mis notificaciones
   my_profile: Mi perfil
   name: Nombre
   navigation_continue: 'Siguiente %{kind}: %{sibling}'
@@ -253,7 +279,12 @@ es:
   not_found: ¡La página que buscaste no existe!
   not_found_explanation: Fijate si escribiste bien la dirección.
   not_in_any_organizations: ¡Parece que no estás en ninguna organización todavía!
+  notification_subject:
+    custom: Anuncios generales
+    exam_authorization_request_updated: Cambios sobre inscripciones a exámenes
+    exam_registration: Inscripciones a exámenes habilitadas
   notifications: Notificaciones
+  notifications_will_be_here: Tus notificaciones aparecerán aquí
   notify_problem_with_exercise: Reportá un bug
   office: Secretaría
   only_landscape_support: Por favor, rotá tu tablet o celular para realizar ejercicios
@@ -276,6 +307,7 @@ es:
   permissions: Permisos
   please_fill_profile_data: ¡Completá tus datos personales para continuar!
   please_validate: 'Estás a punto de ingresar al curso. Para poder ofrecerte una mejor experiencia, por favor validá que tus datos a continuación sean reales y correctos.'
+  preferences_updated_successfully: Tus preferencias se actualizaron correctamente
   preview: Vista previa
   preview_error: No se puede mostrar la vista previa. Revisá tu conexión a internet o probá con un mensaje más corto.
   previous_exercise: Anterior
@@ -392,6 +424,7 @@ es:
   wrong_answer: La respuesta no es correcta
   years: años
   you_earned: Ganaste
+  you_have_a_new_notification: ¡Tenés una nueva notificación!
   you_must_sign_in_before_submitting: Tenés que iniciar sesión antes de empezar a enviar tus soluciones
   you_never_submitted_solutions: Parece que nunca enviaste soluciones desde que creaste tu cuenta.
   your_new_organization: tu nueva organización

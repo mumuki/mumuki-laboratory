@@ -1,0 +1,54 @@
+<%= content_for :breadcrumbs do %>
+  <%= breadcrumbs_for_my_account %>
+<% end %>
+
+<div class="row">
+  <%= render partial: 'layouts/user_menu' %>
+
+  <div class="col-md-9 mu-tab-body">
+    <div class="mu-user-header d-flex justify-content-between">
+      <span>
+        <h1><%= t(:notifications) %></h1>
+      </span>
+      <span>
+        <a href="notifications/manage" class="btn btn-complementary"><%= t(:manage_notifications) %></a>
+      </span>
+    </div>
+    <% if @notifications.empty? %>
+      <div class="mu-tab-body">
+        <%= t :notifications_will_be_here %>
+      </div>
+    <% else %>
+
+
+      <div class="table-responsive mb-3">
+        <table class="table">
+          <tr class="fw-bold">
+            <td></td>
+            <td><%= t(:content) %></td>
+            <td><%= t(:created_at) %></td>
+          </tr>
+
+          <% @notifications.each do |notification| %>
+            <tr class="<%= background_for_notification notification %>" >
+              <td class="col-md-1">
+                <%= link_to icon_for_read(notification.read?), "notifications/#{notification.id}/toggle_read", tooltip_options(:read).merge(method: :post, role: :button) %>
+              </td>
+              <td class="col-md-8 text-break">
+                <%= render partial: "notifications/#{notification.subject}", locals: { notification: notification } %>
+              </td>
+              <td class="col-md-3">
+                <%= t(:time_since, time: time_ago_in_words(notification.created_at)) %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+
+      <div class="notification-pagination">
+        <%= paginate @notifications, nav_class: 'pagination' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

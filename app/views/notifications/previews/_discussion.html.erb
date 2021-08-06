@@ -1,0 +1,2 @@
+<% target = notification.target %>
+<%= notification_preview_item :comments, :new_discussion_message, url_for([target.item, target]), { title: target.item.name.truncate_words(3) } %>

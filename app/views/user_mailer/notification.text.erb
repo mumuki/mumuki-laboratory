@@ -1,0 +1,6 @@
+<%= t :you_have_a_new_notification %>
+
+<%= render(partial: "notifications/#{@notification.subject}", locals: { notification: @notification }) %>
+
+
+© Copyright 2015-<%= Time.current.year %> Mumuki.
