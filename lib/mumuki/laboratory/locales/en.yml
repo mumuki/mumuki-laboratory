@@ -366,6 +366,7 @@ en:
   to_opened: Reopen
   to_pending_review: Mark as solved
   to_solved: Mark as solved
+  toggle_read: "Toggle read/unread"
   unauthorized_explanation: You have no permissions for this content. Maybe you logged in with another account.
   total: Total
   undo_upvote: Undo upvote
