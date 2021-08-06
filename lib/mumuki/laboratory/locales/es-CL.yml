@@ -378,6 +378,7 @@ es-CL:
   to_opened: Reabrir
   to_pending_review: Resolver
   to_solved: Resolver
+  toggle_read: "Marcar como leído/no leído"
   unauthorized_explanation: ¡Ups! Esto es lo que se conoce como %{error}, es decir que no iniciaste sesión.
   total: Total
   uncategorized: No categorizado

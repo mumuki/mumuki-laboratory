@@ -32,7 +32,7 @@
           <% @notifications.each do |notification| %>
             <tr class="<%= background_for_notification notification %>" >
               <td class="col-md-1">
-                <%= link_to icon_for_read(notification.read?), "notifications/#{notification.id}/toggle_read", tooltip_options(:read).merge(method: :post, role: :button) %>
+                <%= link_to icon_for_read(notification.read?), "notifications/#{notification.id}/toggle_read", tooltip_options(:toggle_read).merge(method: :post, role: :button) %>
               </td>
               <td class="col-md-8 text-break">
                 <%= render partial: "notifications/#{notification.subject}", locals: { notification: notification } %>

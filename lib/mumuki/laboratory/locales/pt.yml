@@ -379,6 +379,7 @@ pt:
   to_opened: Reabrir
   to_pending_review: Marcar como resolvida
   to_solved: Marcar como resolvida
+  toggle_read: "Marcar como lido / não lido"
   unauthorized_explanation: Opa! Isso é o que é conhecido como %{error}, ou seja, você não fez logon.
   total: Total
   uncategorized: Não classificado
