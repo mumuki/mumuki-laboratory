@@ -47,6 +47,12 @@
  */
 
 /**
+ * A submission, composed by:
+ *
+ *  * its actual contents
+ *  * the client results
+ *  * the _pristine flag, that tells whether the submission has been sent without previous results
+ *
  * @typedef {Contents & {client_result?: SubmissionClientResult, _pristine: boolean}} Submission
  */
 
