@@ -71,11 +71,22 @@ mumuki.renderers.results = (() => {
     return `progress-list-item text-center ${classForStatus(status)} ${active ? 'active' : ''}`;
   }
 
+  /**
+   * Pre-renders some html parts of submission UI, adding them to the given result
+   *
+   * @param {SubmissionResult} result
+   */
+  function preRenderResult(result) {
+    result.class_for_progress_list_item = progressListItemClassForStatus(result.status, true);
+    result.title_html = translatedTitleHtml(result.status, result.in_gamified_context);
+  }
+
   return {
     classForStatus,
     iconForStatus,
     progressListItemClassForStatus,
-    translatedTitleHtml
+    translatedTitleHtml,
+    preRenderResult
   };
 })();
 
