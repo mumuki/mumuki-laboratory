@@ -1,0 +1,5 @@
+<%= render partial: 'user_mailer/mail_template', locals: {
+  title: '¡Hola, Matías!<br>Te damos la bienvenida a Mumuki'.html_safe,
+  text: @organization.welcome_email_template.html_safe,
+  url: @organization.url_for('/user'),
+} %>

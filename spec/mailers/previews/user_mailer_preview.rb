@@ -46,6 +46,10 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.notification notification
   end
 
+  def welcome_preview
+    UserMailer.welcome_email user, organization
+  end
+
   private
 
   def exam_registration
@@ -89,7 +93,8 @@ class UserMailerPreview < ActionMailer::Preview
   end
 
   def organization
-    Organization.central
+    Organization.new Organization.central.as_json.merge welcome_email_sender: 'test@mumuki.org',
+                                                        welcome_email_template: template
   end
 
   def certificate
@@ -104,5 +109,40 @@ class UserMailerPreview < ActionMailer::Preview
 
   def notification(**hash)
     Notification.new({user: user, organization: organization}.merge hash)
+  end
+
+  def template
+    <<~HTML
+      <p>Queremos compartirte unos consejos para que puedas aprovechar la plataforma al máximo:</p>
+
+      <ul style="padding-left: 24px;">
+        <li>Para conocer todas las funcionalidades de la plataforma, leé atentamente el <a href="https://www.argentina.gob.ar/sites/default/files/ap_manual_de_uso_plataforma_mumuki_para_estudiantes.pdf" target="_blank" style="color: #17687D;">Manual de Uso</a>.</li>
+        <li>Si tenés dudas sobre el curso o el examen, revisá la sección de <a href="https://mumuki.io/argentina-programa/faqs" target="_blank" style="color: #17687D;">Información Importante</a>.</li>
+        <li>Para reforzar y ampliar los conocimientos de cada capítulo, consultá los apéndices, que se encuentran debajo del listado de lecciones.</li>
+      </ul>
+
+      <hr style="margin: 32px 0; margin-right: 75%; border: 1px solid rgba(0, 0, 0, 0.24);">
+
+      <h2 style="font-size: 24px; font-weight: normal; line-height: 32px; margin-bottom: 32px;">
+        Seguí aprendiendo con estas lecturas
+      </h2>
+
+      <div style="padding: 0 32px; font-size: 18px; width: 100%; display: inline-flex;">
+        <div style="width: 50%; max-width: 205px; color: unset; text-decoration: none; margin-right: 32px;">
+          <img src="https://miro.medium.com/max/1400/1*GFbm2AwdDhOuqczuwvFpUA.png" alt="" style="object-fit: cover; height: 205px; width: 100%;">
+          <p>15 palabras sobre programación que deberías conocer</p>
+          <div style="height: 40px;">
+            <a target="_blank" href="https://medium.com/proyecto-mumuki/15-palabras-sobre-programaci%C3%B3n-que-deber%C3%ADas-conocer-7055158bb258" style="height: 100%; padding: 8px 16px 10px; background: #17687D; border-radius: 20px; color: white; text-decoration: none;">Leer ahora</a>
+          </div>
+        </div>
+        <div style="width: 50%; max-width: 205px; color: unset; text-decoration: none;">
+          <img src="https://miro.medium.com/max/1400/1*y7Fcbu90Efnv64C-VpmtIQ.png" alt="" style="object-fit: cover; height: 205px; width: 100%;">
+          <p>Errores comunes que cometemos cuando aprendemos a programar</p>
+          <div style="height: 40px;">
+            <a target="_blank" href="https://medium.com/proyecto-mumuki/errores-comunes-que-cometemos-cuando-aprendemos-a-programar-b42b9c982acc" style="height: 100%; padding: 8px 16px 10px; background: #17687D; border-radius: 20px; color: white; text-decoration: none;">Leer ahora</a>
+          </div>
+        </div>
+      </div>
+    HTML
   end
 end
