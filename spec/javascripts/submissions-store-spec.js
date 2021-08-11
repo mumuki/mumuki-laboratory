@@ -18,6 +18,17 @@ describe("SubmissionsStore", () => {
       mumuki.SubmissionsStore.setSubmissionResultFor(1, passedEmptyProgramSubmissionAndResult);
       expect(mumuki.SubmissionsStore.getLastSubmissionAndResult(1)).toEqual(passedEmptyProgramSubmissionAndResult);
     });
+
+    it("answers the last submission result, ignoring pristiness", () => {
+      mumuki.SubmissionsStore.setSubmissionResultFor(1, {
+        submission: {
+          ...emptyProgramSubmission,
+          _pristine: true
+        },
+        result: passedSubmissionResult
+      });
+      expect(mumuki.SubmissionsStore.getLastSubmissionAndResult(1)).toEqual(passedEmptyProgramSubmissionAndResult);
+    });
   });
 
   describe('getLastSubmissionStatus', () => {

@@ -47,7 +47,7 @@
  */
 
 /**
- * @typedef {Contents & {client_result?: SubmissionClientResult}} Submission
+ * @typedef {Contents & {client_result?: SubmissionClientResult, _pristine: boolean}} Submission
  */
 
 /**
@@ -83,13 +83,12 @@ mumuki.bridge = (() => {
      */
     _submitSolution(submission) {
       const lastSubmission = mumuki.SubmissionsStore.getSubmissionResultFor(mumuki.exercise.id, submission);
-      if (!mumuki.submission.pristine && lastSubmission) {
-        return $.Deferred().resolve(lastSubmission);
-      } else {
+      if (submission._pristine || !lastSubmission) {
         return this._sendNewSolution(submission).done((result) => {
-          mumuki.submission.pristine = false;
           mumuki.SubmissionsStore.setSubmissionResultFor(mumuki.exercise.id, {submission, result});
         });
+      } else {
+        return $.Deferred().resolve(lastSubmission);
       }
     }
 

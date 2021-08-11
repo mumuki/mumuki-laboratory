@@ -89,8 +89,14 @@ mumuki.SubmissionsStore = (() => {
 
     // private API
 
-    _asString(object) {
-      return JSON.stringify(object);
+    /**
+     * Serializes the submission and result.
+     * Private attributes are ignored
+     */
+    _asString(submissionAndResult) {
+      return JSON.stringify(submissionAndResult, (key, value) => {
+        if (!key.startsWith("_")) return value
+      });
     }
 
     _keyFor(exerciseId) {
