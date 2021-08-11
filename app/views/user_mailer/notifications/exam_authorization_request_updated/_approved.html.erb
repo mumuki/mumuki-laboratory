@@ -1,7 +1,7 @@
 <%= render partial: 'user_mailer/mail_template', locals: {
   title: t(:congratulations),
   subtitle: t('mailer.subtitle.exam_authorization_request_approved'),
-  text: t('mailer.text.exam_authorization_request_approved', exam_start_date: l(@notification.target.exam.start_time, format: :long)),
+  text: t('mailer.text.exam_authorization_request_approved', exam_start_date: "#{l(@notification.target.exam.start_time.in_time_zone(@organization.time_zone), format: :long)} (#{@organization.time_zone})"),
   button: t('mailer.button.exam_authorization_request_approved'),
   url: @organization.url
 } %>
