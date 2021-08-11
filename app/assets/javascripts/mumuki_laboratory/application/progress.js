@@ -2,11 +2,11 @@ mumuki.progress = (() => {
   /**
    * Updates the current exercise progress indicator
    *
-   * @param {SubmissionResult} data
+   * @param {SubmissionResult} result
    * */
-  function updateProgressBarAndShowModal(data) {
-    $('.progress-list-item.active').attr('class', data.class_for_progress_list_item);
-    if(data.guide_finished_by_solution) new bootstrap.Modal('#guide-done').show();
+  function updateProgressBarAndShowModal(result) {
+    $('.progress-list-item.active').attr('class', result.class_for_progress_list_item);
+    if(result.guide_finished_by_solution) new bootstrap.Modal('#guide-done').show();
   }
 
   /**

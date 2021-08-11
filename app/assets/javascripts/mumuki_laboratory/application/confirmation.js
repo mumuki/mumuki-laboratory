@@ -1,17 +1,19 @@
 mumuki.load(() => {
-  $('.btn-confirmation').on('click change', function (_evt) {
-    var token = new mumuki.CsrfToken();
+  $('.btn-confirmation').on('click change', function (_event) {
+    const token = new mumuki.CsrfToken();
+    const $element = $(this);
 
     $.ajax(token.newRequest({
       method: 'POST',
-      url: $(this).data('confirmation-url'),
+      url: $element.data('confirmation-url'),
       xhrFields: {withCredentials: true},
-      success: function(data){
-        mumuki.updateProgressBarAndShowModal(data);
+      success: function(result) {
+        result.status = "passed";
+        mumuki.renderers.results.preRenderResult(result)
+        mumuki.updateProgressBarAndShowModal(result);
+        window.location = $element.attr("href");
       }
     }));
-
-    return true;
+    return false;
   });
 });
-

@@ -13,7 +13,9 @@
  * @typedef {{
   *  status: SubmissionStatus,
   *  class_for_progress_list_item?: string,
-  *  guide_finished_by_solution?: boolean
+  *  guide_finished_by_solution?: boolean,
+  *  title_html?: string,
+  *  in_gamified_context?: boolean
   * }} SubmissionResult
   */
 
@@ -113,14 +115,12 @@ mumuki.bridge = (() => {
     }
 
     /**
-     * Pre-renders some html parts of submission UI, adding them to the given result
-     *
      * @param {SubmissionResult} result
      * @returns {SubmissionResult}
+     * @see mumuki.renderers.results.preRenderResult
      */
     _preRenderResult(result) {
-      result.class_for_progress_list_item = mumuki.renderers.results.progressListItemClassForStatus(result.status, true);
-      result.title_html = mumuki.renderers.results.translatedTitleHtml(result.status, result.in_gamified_context);
+      mumuki.renderers.results.preRenderResult(result);
       return result;
     }
   }
