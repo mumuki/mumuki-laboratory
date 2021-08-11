@@ -55,12 +55,14 @@ mumuki.editors = {
    * @returns {Submission}
    */
   getSubmission() {
-    let content = {};
+    let submission = {
+      _pristine: $('.submission-results').children().length === 0
+    };
     let contents = this.getContents();
     contents.forEach((it) => {
-      content[it.name] = it.value;
+      submission[it.name] = it.value;
     });
-    return content;
+    return submission;
   },
 
   /**

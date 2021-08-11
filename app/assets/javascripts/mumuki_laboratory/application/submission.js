@@ -169,7 +169,6 @@ mumuki.submission = (() => {
     const buttonClass = mumuki.isKidsExercise() ? KidsSubmitButton : SubmitButton;
     const submitButton = new buttonClass($btnSubmit, $('.submission_control'));
     mumuki.submission._selectSolutionProcessor(submitButton, $submissionsResults);
-    mumuki.submission.pristine = !$submissionsResults.children().length;
 
     submitButton.start(() => {
       mumuki.submission.processSolution(mumuki.editors.getSubmission());

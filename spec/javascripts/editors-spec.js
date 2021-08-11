@@ -33,7 +33,7 @@ describe('editors', () => {
       }
     });
 
-    expect(mumuki.editors.getSubmission()).toEqual({"solution[content]":"the custom solution"});
+    expect(mumuki.editors.getSubmission()).toEqual({"_pristine": true, "solution[content]":"the custom solution"});
   });
 
   it('reads the form if no sources', () => {
@@ -43,7 +43,24 @@ describe('editors', () => {
         <textarea class="form-control editor" name="solution[content]" id="solution_content">the solution</textarea>
       </div>
     </form>`);
-    expect(mumuki.editors.getSubmission()).toEqual({"solution[content]":"the solution"});
+    expect(mumuki.editors.getSubmission()).toEqual({"_pristine": true, "solution[content]":"the solution"});
+  });
+
+  it('reads the form when it is not the first submission', () => {
+    $('body').html(`
+    <form role="form" class="new_solution">
+      <div class="editor-code">
+        <textarea class="form-control editor" name="solution[content]" id="solution_content">the solution</textarea>
+      </div>
+    </form>
+    <div class=" submission-results">
+      <div class="bs-callout bs-callout-success">
+        <h4 class="text-success">
+          <strong><i class="fas fa-check-circle"></i> ¡Muy bien!</strong>
+        </h4>
+      </div>
+    </div>`);
+    expect(mumuki.editors.getSubmission()).toEqual({"_pristine": false, "solution[content]":"the solution"});
   });
 
   it('reads the form if no sources and exercise is multifile', () => {
@@ -63,6 +80,7 @@ describe('editors', () => {
       </div>
     </form>`);
     expect(mumuki.editors.getSubmission()).toEqual({
+      "_pristine": true,
       "solution[content[index.html]]": "some html",
       "solution[content[receta.css]]": "some css"
     });
@@ -70,6 +88,6 @@ describe('editors', () => {
 
   it('produces empty submission if no form nor sources', () => {
     $('body').html(``);
-    expect(mumuki.editors.getSubmission()).toEqual({});
+    expect(mumuki.editors.getSubmission()).toEqual({_pristine: true});
   });
 });
