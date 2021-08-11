@@ -83,10 +83,11 @@ mumuki.bridge = (() => {
      */
     _submitSolution(submission) {
       const lastSubmission = mumuki.SubmissionsStore.getSubmissionResultFor(mumuki.exercise.id, submission);
-      if (lastSubmission) {
+      if (!mumuki.submission.pristine && lastSubmission) {
         return $.Deferred().resolve(lastSubmission);
       } else {
         return this._sendNewSolution(submission).done((result) => {
+          mumuki.submission.pristine = false;
           mumuki.SubmissionsStore.setSubmissionResultFor(mumuki.exercise.id, {submission, result});
         });
       }
