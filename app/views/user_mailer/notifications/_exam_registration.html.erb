@@ -1,7 +1,7 @@
 <%= render partial: 'user_mailer/mail_template', locals: {
   title: t("mailer.title.exam_registration"),
   subtitle: t("mailer.subtitle.exam_registration"),
-  text: t("mailer.text.exam_registration", exam_registration_deadline: l(@notification.target.end_time, format: :long)),
+  text: t("mailer.text.exam_registration", exam_registration_deadline: local_time(@notification.target.end_time, @organization.time_zone)),
   button: t("mailer.button.exam_registration"),
   url: exam_registration_url(@organization, @notification.target)
 } %>

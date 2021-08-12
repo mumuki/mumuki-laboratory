@@ -1,6 +1,8 @@
 class UserMailer < ApplicationMailer
   include WithCertificateRender
 
+  helper :time_zone
+
   def welcome_email(user, organization)
     with_locale(user, organization) do
       organization_name = organization.display_name || t(:your_new_organization)
