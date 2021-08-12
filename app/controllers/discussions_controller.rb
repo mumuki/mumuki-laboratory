@@ -39,17 +39,19 @@ class DiscussionsController < ApplicationController
   end
 
   def responsible
-    if subject.can_toggle_responsible? current_user
-      subject.toggle_responsible! current_user
+    subject.with_pg_lock proc {
+      if subject.can_toggle_responsible? current_user
+        subject.toggle_responsible! current_user
 
-      set_flash_responsible_confirmation!
-      status = :ok
-    else
-      set_flash_responsible_alert!
-      status = :conflict
-    end
+        set_flash_responsible_confirmation!
+        status = :ok
+      else
+        set_flash_responsible_alert!
+        status = :conflict
+      end
 
-    render :partial => 'layouts/toast', status: status
+      render :partial => 'layouts/toast', status: status
+    }
   end
 
   def create
