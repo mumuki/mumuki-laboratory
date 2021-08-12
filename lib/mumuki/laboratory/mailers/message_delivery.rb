@@ -10,6 +10,6 @@ class ActionMailer::MessageDelivery
   private
 
   def in_rake_task?
-    defined? Rake.application
+    Rake.respond_to? :application
   end
 end
