@@ -36,7 +36,7 @@ module MenuBarHelper
   end
 
   def logout_menu_link
-    li_tag menu_item('sign-out-alt', :sign_out, logout_path(origin: url_for))
+    li_tag menu_item('sign-out-alt', :sign_out, logout_path(origin: url_for, organization: Organization.current))
   end
 
   def menu_item(icon, name, url, css_class = nil, **translation_params)
