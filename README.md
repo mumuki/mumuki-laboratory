@@ -559,15 +559,16 @@ Before using the API, you must create an `ApiClient` using `rails c`, which will
 
 Before using the API, take a look to the roles hierarchy:
 
-![roles hierarchy](https://yuml.me/diagram/plain/class/[Admin]%5E-[Janitor],[Admin]%5E-[Moderator],%20[Janitor]%5E-[Headmaster],%20[Headmaster]%5E-[Teacher],%20[Teacher]%5E-[Student],%20,%20[Admin]%5E-[Editor],%20[Editor]%5E-[Writer],%20[Owner]%5E-[Admin]).
+![roles hierarchy](https://yuml.me/diagram/plain/class/[Admin]%5E-[Janitor],[Admin]%5E-[Forum%20Supervisor],[Forum%20Supervisor]%5E-[Moderator],[Janitor]%5E-[Headmaster],[Headmaster]%5E-[Teacher],[Teacher]%5E-[Student],[Student]%5E-[Ex%20Student],[Admin]%5E-[Editor],[Editor]%5E-[Writer],[Owner]%5E-[Admin]).
 
 Permissions are bound to a scope, that states in which context the operation can be performed. Scopes are simply two-level contexts, expressed as slugss `<first>/<second>`, without any explicit semantic. They exact meaning depends on the role:
 
+  * ex_student: `organization/course`
   * student: `organization/course`
   * teacher and headmaster: `organization/course`
   * writer and editor: `organization/content`
   * janitor: `organization/_`
-  * moderator: `organization/_`
+  * moderator and forum_supervisor: `organization/_`
   * admin: `_/_`
   * owner: `_/_`
 
