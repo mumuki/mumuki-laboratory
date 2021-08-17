@@ -9,12 +9,13 @@ mumuki.load(() => {
 
   function createNewMessageEditor() {
     var $textarea = $("#discussion-new-message");
-    var textarea = $textarea[0];
-    if (!textarea) return;
+    var editorContainer = $(".mu-spell-checked-editor")[0];
+    if (!editorContainer) return;
 
-    return new mumuki.editor.CodeMirrorBuilder(textarea)
-      .setupSimpleEditor()
+    return new mumuki.editor.CodeMirrorBuilder(editorContainer)
+      .setupSpellCheckedEditor()
       .setupMinLines($textarea.data('lines'))
+      .setupLanguage()
       .build();
   }
 

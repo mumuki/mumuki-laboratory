@@ -10,7 +10,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="discussion-new-message-content">
-              <%= f.editor :content, '', { id: 'discussion-new-message', class: 'form-control', placeholder: t(:message) } %>
+              <%= spell_checked_editor 'message[content]', { id: 'discussion-new-message', placeholder: t(:message) } %>
             </div>
             <div class="discussion-message-content d-none" id="discussion-new-message-preview"></div>
           </div>

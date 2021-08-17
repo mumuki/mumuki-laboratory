@@ -71,6 +71,15 @@
       return this;
     }
 
+    setupSpellCheckedEditor() {
+      this.editor = this.createEditor({
+        inputStyle: 'contenteditable',
+        spellcheck: true
+      });
+
+      return this;
+    }
+
     setupLanguage(language) {
       var highlightMode = language || this.$textarea.data('editor-language');
       if (highlightMode === 'dynamic') {

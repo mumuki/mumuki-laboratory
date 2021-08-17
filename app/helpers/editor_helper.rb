@@ -10,4 +10,9 @@ module EditorHelper
     editor_options = editor_defaults(language, options, 'read-only-editor')
     text_area_tag :solution_content, content, editor_options
   end
+
+  def spell_checked_editor(name, options = {})
+    editor_options = editor_defaults('markdown', options, 'form-control mu-spell-checked-editor')
+    text_area_tag name, '', editor_options
+  end
 end
