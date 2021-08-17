@@ -106,6 +106,6 @@ class DiscussionsController < ApplicationController
   end
 
   def validate_access_mode!
-    current_access_mode.validate_discuss_here? subject
+    current_access_mode.validate_discuss_here! subject
   end
 end
