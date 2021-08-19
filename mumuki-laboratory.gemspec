@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'mumuki-domain', '~> 9.12.0'
   s.add_dependency 'mumukit-bridge', '~> 4.1'
-  s.add_dependency 'mumukit-login', '~> 7.6'
+  s.add_dependency 'mumukit-login', '~> 7.7'
   s.add_dependency 'mumukit-nuntius', '~> 6.1'
   s.add_dependency 'mumukit-auth', '~> 7.8'
   s.add_dependency 'mumukit-content-type', '~> 1.9'
