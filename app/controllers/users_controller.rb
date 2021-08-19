@@ -108,4 +108,8 @@ class UsersController < ApplicationController
   def discussion_filter_params
     @filter_params ||= params.permit([:page])
   end
+
+  def authorization_minimum_role
+    :ex_student
+  end
 end
