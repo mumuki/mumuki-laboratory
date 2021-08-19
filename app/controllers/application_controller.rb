@@ -19,9 +19,9 @@ class ApplicationController < ActionController::Base
   before_action :set_time_zone!
 
   before_action :ensure_user_enabled!, if: :current_user?
-  before_action :validate_active_organization!
 
   before_action :redirect_to_proper_context!, if: :immersive_context_wrong?
+  before_action :validate_active_organization!
 
   before_action :authorize_if_private!
   before_action :validate_user_profile!, if: :current_user?
