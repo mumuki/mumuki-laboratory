@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
   before_action :authorize_if_private!
   before_action :validate_user_profile!, if: :current_user?
   before_action :validate_accepted_role_terms!, if: :current_user?
+  before_action :ensure_restore_progress!, if: :current_user?
 
   before_action :visit_organization!, if: :current_user?
 
@@ -163,5 +164,11 @@ class ApplicationController < ActionController::Base
 
   def current_access_mode
     Organization.current.access_mode(current_user)
+  end
+
+  def ensure_restore_progress!
+    if current_access_mode.restore_indicators?(Organization.current.book)
+      current_user.restore_organization_progress!(Organization.current)
+    end
   end
 end
