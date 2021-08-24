@@ -38,3 +38,14 @@
     max-width: 70vw;
   }
 }
+
+.mu-read-only {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  background-color: $mu-color-complementary;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
