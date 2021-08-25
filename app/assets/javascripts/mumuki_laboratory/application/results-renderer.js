@@ -27,11 +27,12 @@ mumuki.renderers.results = (() => {
    */
   function classForStatus(status) {
     switch (status) {
-      case "errored":              return "broken";
-      case "failed":               return "danger";
-      case "passed_with_warnings": return "warning";
-      case "passed":               return "success";
-      case "pending":              return "muted";
+      case "errored":                   return "broken";
+      case "failed":                    return "danger";
+      case "manual_evaluation_pending": return "info";
+      case "passed_with_warnings":      return "warning";
+      case "passed":                    return "success";
+      case "pending":                   return "muted";
     }
   }
 
