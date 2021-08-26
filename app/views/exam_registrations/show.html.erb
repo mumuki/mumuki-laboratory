@@ -20,7 +20,7 @@
         <%= t exam_registration_view[:t], date: l(@registration.end_time, format: :long), location: Organization.current.time_zone %>
       </p>
     </div>
-    <% unless @registration.end_time.past? %>
+    <% unless @registration.ended? %>
       <%= form_for @authorization_request, html: {class: 'mu-form'} do |f| %>
         <%= f.hidden_field :exam_registration_id, value: @registration.id %>
         <div class="mb-4">
