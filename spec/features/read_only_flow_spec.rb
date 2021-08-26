@@ -257,6 +257,19 @@ feature 'Read Only Flow' do
           visit "/exercises/#{exercise112.id}/discussions/new"
           expect(page).to have_text('You are not allowed to see this content')
         end
+        scenario 'reattach book' do
+          expect(book.has_progress_for?(user, organization)).to eq true
+          visit "/"
+          expect(page).to have_text('Chapters')
+          organization.update! book: create(:book_with_full_tree)
+          organization.reload
+          visit "/"
+          expect(page).not_to have_text('Chapters')
+          organization.update! book: book
+          organization.reload
+          visit "/"
+          expect(page).to have_text('Chapters')
+        end
       end
 
       context 'and user is outsider of organization' do
