@@ -125,11 +125,11 @@ es:
   errored: ¡Ups! Tu solución no se puede ejecutar
   exam_authorization_pending_explanation_html: Tenés tiempo hasta el <strong>%{end_time}</strong> (hora de %{location}) para cambiar el turno haciendo click <strong><a href="%{edit_path}">acá</a></strong>. Pasada esa fecha, tu solicitud será evaluada y recibirás una confirmación. <br> ¡No te olvides de revisar las notificaciones!
   exam_authorization_request_approved_html: Tu solicitud fue aprobada, no olvides conectarte el <strong>%{date}</strong> (hora de %{location}). ¡Buena suerte!
-  exam_authorization_request_created: ¡Tu inscripción al exámen se registró exitosamente!
+  exam_authorization_request_created: ¡Tu inscripción al examen se registró exitosamente!
   exam_authorization_request_rejected: Tu solicitud fue rechazada porque no cumpliste con los requisitos para rendir el examen.
-  exam_authorization_request_saved: ¡Tu inscripción al exámen se modificó exitosamente!
+  exam_authorization_request_saved: ¡Tu inscripción al examen se modificó exitosamente!
   exam_authorization_request_updated: Hay novedades sobre tu inscripción a %{description}
-  exam_registration_choose_exam: Seleccioná día y horario en el que te gustaría rendir el exámen
+  exam_registration_choose_exam: Seleccioná día y horario en el que te gustaría rendir el examen
   exam_registration_explanation_html: Tenés tiempo hasta el <strong>%{date}</strong> (hora de %{location}) para inscribirte. Pasada esa fecha, tu solicitud será evaluada y recibirás una confirmación. <br> ¡No te olvides de revisar las notificaciones!
   exam_registration_finished_html: La inscripción a este examen finalizó el <strong>%{date}</strong> (hora de %{location})
   exam_registration_open: ¡Ya podés inscribirte a %{description}!
