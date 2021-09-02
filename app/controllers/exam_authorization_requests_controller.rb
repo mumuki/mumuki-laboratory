@@ -31,6 +31,6 @@ class ExamAuthorizationRequestsController < ApplicationController
 
   def verify_registration_opened!
     exam_registration = ExamRegistration.find(authorization_request_params[:exam_registration_id])
-    raise Mumuki::Domain::GoneError if exam_registration.end_time.past?
+    raise Mumuki::Domain::GoneError if exam_registration.ended?
   end
 end
