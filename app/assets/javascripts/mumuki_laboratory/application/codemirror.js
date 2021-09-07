@@ -6,10 +6,11 @@ mumuki.page.editors = [];
 (() => {
   function createCodeMirrors() {
     return $(".editor").map(function (index, textarea) {
-      var $textarea = $("#solution_content");
+      const $textarea = $("#solution_content");
+      const readonly = $textarea.data('readonly');
 
       return new mumuki.editor.CodeMirrorBuilder(textarea)
-        .setupEditor()
+        .setupEditor(readonly)
         .setupMinLines($textarea.data('lines'))
         .setupLanguage()
         .build();

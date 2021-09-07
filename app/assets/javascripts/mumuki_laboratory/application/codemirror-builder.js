@@ -27,7 +27,11 @@
       this.$textarea = $(textarea);
     }
 
-    setupEditor() {
+    setupEditor(readonly = false) {
+      return readonly ? this._setupReadOnlyEditor() : this._setupCommonEditor();
+    }
+
+    _setupCommonEditor() {
       this.editor = this.createEditor({
         lineNumbers: true,
         extraKeys: {
@@ -61,7 +65,7 @@
       return this;
     }
 
-    setupReadOnlyEditor() {
+    _setupReadOnlyEditor() {
       this.editor = this.createEditor({
         readOnly: true,
         cursorBlinkRate: -1, //Hides the cursor
