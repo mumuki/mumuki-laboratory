@@ -87,7 +87,7 @@
     }
     get content() {
       var firstEditor = mumuki.page.editors[0];
-      if (firstEditor && $("#include_solution").prop("checked"))
+      if (firstEditor && this.includeSolution())
         return firstEditor.getValue();
       else
         return '';
@@ -141,6 +141,12 @@
     }
     get _requestData() {
       return {content: this.content, query: this.line, cookie: this.cookie};
+    }
+    includeSolution() {
+      return !this._includeSolutionCheckbox || this._includeSolutionCheckbox.checked;
+    }
+    get _includeSolutionCheckbox() {
+      return $("#include_solution")[0];
     }
   }
 
