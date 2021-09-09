@@ -47,22 +47,18 @@
 
       <% if should_render_read_only_exercise_tabs?(@discussion) %>
         <ul class="nav nav-tabs discussion-tabs" role="tablist">
-
-          <% if @discussion.has_submission? %>
-            <li role="presentation">
-              <a class="editor-tab nav-link active" data-bs-target="#solution" aria-controls="solution" role="tab" data-bs-toggle="tab">
-                <%= t :solution %>
-              </a>
-            </li>
-            <li role="presentation">
-              <a class="editor-tab nav-link" data-bs-target="#results" aria-controls="results" role="tab" data-bs-toggle="tab">
-                <%= t :results %>
-              </a>
-            </li>
-          <% end %>
-
           <li role="presentation">
-            <a class="editor-tab nav-link <%= "active" unless @discussion.has_submission? %>" data-bs-target="#content" aria-controls="content" role="tab" data-bs-toggle="tab">
+            <a class="editor-tab nav-link active" data-bs-target="#solution" aria-controls="solution" role="tab" data-bs-toggle="tab">
+              <%= t :solution %>
+            </a>
+          </li>
+          <li role="presentation">
+            <a class="editor-tab nav-link" data-bs-target="#results" aria-controls="results" role="tab" data-bs-toggle="tab">
+              <%= t :results %>
+            </a>
+          </li>
+          <li role="presentation">
+            <a class="editor-tab nav-link" data-bs-target="#content" aria-controls="content" role="tab" data-bs-toggle="tab">
               <%= t :description %>
             </a>
           </li>
@@ -77,32 +73,28 @@
         </ul>
 
         <div class="tab-content">
-          <% if @discussion.has_submission? %>
-            <div role="tabpanel" class="tab-pane active" id="solution">
-              <div class="mu-tab-body">
-                <div role="tabpanel" class="tab-pane mu-input-panel fade show active" id="editor">
-                  <div class="mu-read-only-editor">
-                    <%= render_exercise_read_only_editor exercise, @discussion.solution %>
+          <div role="tabpanel" class="tab-pane mu-input-panel fade show active" id="solution">
+            <div class="mu-tab-body">
+              <div class="mu-read-only-editor">
+                <%= render_exercise_read_only_editor exercise, @discussion.solution %>
+              </div>
+            </div>
+          </div>
+
+          <div role="tabpanel" class="tab-pane fade" id="results">
+            <div class="mu-tab-body">
+              <%= render layout: 'exercise_solutions/contextualization_results_container', locals: { contextualization: @discussion } do %>
+                <div class="row">
+                  <div class="col-md-12 submission-results">
+                    <%= render partial: 'exercise_solutions/contextualization_results_body',
+                               locals: { contextualization: @discussion, guide_finished_by_solution: false } %>
                   </div>
                 </div>
-              </div>
+              <% end %>
             </div>
+          </div>
 
-            <div role="tabpanel" class="tab-pane" id="results">
-              <div class="mu-tab-body">
-                <%= render layout: 'exercise_solutions/contextualization_results_container', locals: { contextualization: @discussion } do %>
-                  <div class="row">
-                    <div class="col-md-12 submission-results">
-                      <%= render partial: 'exercise_solutions/contextualization_results_body',
-                                 locals: { contextualization: @discussion, guide_finished_by_solution: false } %>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-
-          <div role="tabpanel" class="tab-pane <%= 'active' unless @discussion.has_submission? %>" id="content">
+          <div role="tabpanel" class="tab-pane fade" id="content">
             <div class="mu-tab-body">
               <div class="exercise-assignment">
                 <%= render partial: 'exercises/exercise_assignment', locals: { exercise: exercise } %>
