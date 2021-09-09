@@ -73,17 +73,15 @@
         </ul>
 
         <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="solution">
+          <div role="tabpanel" class="tab-pane mu-input-panel fade show active" id="solution">
             <div class="mu-tab-body">
-              <div role="tabpanel" class="tab-pane mu-input-panel fade show active" id="editor">
-                <div class="mu-read-only-editor">
-                  <%= render_exercise_read_only_editor exercise, @discussion.solution %>
-                </div>
+              <div class="mu-read-only-editor">
+                <%= render_exercise_read_only_editor exercise, @discussion.solution %>
               </div>
             </div>
           </div>
 
-          <div role="tabpanel" class="tab-pane" id="results">
+          <div role="tabpanel" class="tab-pane fade" id="results">
             <div class="mu-tab-body">
               <%= render layout: 'exercise_solutions/contextualization_results_container', locals: { contextualization: @discussion } do %>
                 <div class="row">
@@ -96,7 +94,7 @@
             </div>
           </div>
 
-          <div role="tabpanel" class="tab-pane" id="content">
+          <div role="tabpanel" class="tab-pane fade" id="content">
             <div class="mu-tab-body">
               <div class="exercise-assignment">
                 <%= render partial: 'exercises/exercise_assignment', locals: { exercise: exercise } %>
