@@ -19,19 +19,6 @@ mumuki.load(() => {
       .build();
   }
 
-  function createReadOnlyEditors() {
-    return $(".read-only-editor").map(function (index, textarea) {
-      var $textarea = $("#solution_content");
-
-      return new mumuki.editor.CodeMirrorBuilder(textarea)
-        .setupReadOnlyEditor()
-        .setupMinLines($textarea.data('lines'))
-        .setupLanguage()
-        .build();
-    });
-  }
-
-  createReadOnlyEditors();
   let editor = createNewMessageEditor();
 
   var Forum = {

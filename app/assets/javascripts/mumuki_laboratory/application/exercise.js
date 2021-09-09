@@ -1,3 +1,23 @@
+(() => {
+  function solutionChangedSinceLastSubmission() {
+    return  mumuki.exercise.id &&
+            mumuki.SubmissionsStore.getLastSubmissionAndResult(mumuki.exercise.id) &&
+            !mumuki.SubmissionsStore.getSubmissionResultFor(mumuki.exercise.id, mumuki.editors.getSubmission());
+  }
+
+  window.addEventListener("beforeunload", (event) => {
+    if (solutionChangedSinceLastSubmission()) {
+      event.returnValue = 'unsaved_progress';
+    } else {
+      delete event['returnValue'];
+    }
+  });
+
+  window.addEventListener("turbolinks:before-visit", (event) => {
+    if (solutionChangedSinceLastSubmission() && !confirm(mumuki.I18n.t('unsaved_progress'))) event.preventDefault();
+  });
+})();
+
 /**
  * @typedef {"input_right" | "input_bottom" | "input_primary" | "input_kindergarten"} Layout
  * @typedef {{id: number, layout: Layout, settings: any}} Exercise

@@ -7,7 +7,7 @@ module EditorHelper
   end
 
   def read_only_editor(content, language, options = {})
-    editor_options = editor_defaults(language, options, 'read-only-editor')
+    editor_options = editor_defaults(language, options.deep_merge(data: { readonly: true }), 'editor')
     text_area_tag :solution_content, content, editor_options
   end
 

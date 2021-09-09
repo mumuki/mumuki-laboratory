@@ -9,6 +9,7 @@ mumuki.I18n = (() => {
       passed_with_warnings: () => "Tu solución funcionó, pero hay cosas que mejorar",
       pending: () => "Pendiente",
       skipped: () => "Venís aprendiendo muy bien, por lo que aprobaste este ejercicio",
+      unsaved_progress: () => "Tu solución tiene cambios sin guardar, ¿Querés salir de todos modos?",
     },
     'es-CL': {
       aborted: () => "Ups, no pudimos evaluar tu solución",
@@ -18,6 +19,7 @@ mumuki.I18n = (() => {
       passed_with_warnings: () => "Tu solución funcionó, pero hay cosas que mejorar",
       pending: () => "Pendiente",
       skipped: () => "Vienes aprendiendo muy bien, por lo que aprobaste este ejercicio",
+      unsaved_progress: () => "Tu solución tiene cambios sin guardar, ¿Quieres salir de todos modos?",
     },
     'en': {
       aborted: () => "Oops, we couldn't evaluate your solution",
@@ -27,6 +29,7 @@ mumuki.I18n = (() => {
       passed_with_warnings: () => "It worked, but you can do better",
       pending: () => "Pending",
       skipped: () => "You are doing very well, so you've passed this exercise",
+      unsaved_progress: () => "Your solution has unsaved changes, leave anyways?",
     },
     'pt': {
       aborted: () => "Opa, não pudemos avaliar sua solução",
@@ -36,6 +39,7 @@ mumuki.I18n = (() => {
       passed_with_warnings: () => "Sua solução funcionou, mas há coisas para melhorar",
       pending: () => "Pendente",
       skipped: () => "Você está aprendendo muito bem e passou neste exercício",
+      unsaved_progress: () => "Sua solução tem alterações não salvas. Deseja sair mesmo assim?",
     }
   }
 
