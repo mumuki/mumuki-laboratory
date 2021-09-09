@@ -38,6 +38,12 @@ mumuki.load(() => {
     toggleButton: function (elements) {
       elements.toggleClass('d-none');
     },
+    disableButton: function (elements) {
+      elements.attr('disabled', true);
+    },
+    reenableButton: function (elements) {
+      elements.attr('disabled', false);
+    },
     token: new mumuki.CsrfToken(),
     tokenRequest: function (data) {
       return $.ajax(Forum.token.newRequest(data));
@@ -56,6 +62,7 @@ mumuki.load(() => {
       Forum.discussionPostAndToggle(url, $upvoteButtons);
     },
     discussionResponsible: function (url) {
+      Forum.disableButton($responsibleButton);
       Forum.discussionPostToggleAndRenderToast(url, $responsibleButton);
       $('.responsible-moderator-badge').toggleClass('d-none');
     },
@@ -66,6 +73,7 @@ mumuki.load(() => {
       Forum.discussionPost(url)
         .done(function (response) {
           Forum.toggleButton(elem);
+          Forum.reenableButton(elem);
           mumuki.toast.addToast(response);
         })
         .fail(function (response) {
