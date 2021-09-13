@@ -31,7 +31,11 @@
       <span> <strong><%= t :email %>:</strong> <%= @user.email %> </span>
     </div>
     <div>
-      <span> <strong><%= t :programming_since %>:</strong> <%= t(:time_since, time: time_ago_in_words(@user.created_at)) %> </span>
+      <span> <strong><%= t :programming_since %>:</strong>
+        <time title="<%= @user.created_at %>">
+          <%= t(:time_since, time: time_ago_in_words(@user.created_at)) %>
+        </time>
+      </span>
     </div>
   </div>
 </div>

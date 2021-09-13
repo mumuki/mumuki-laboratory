@@ -38,7 +38,9 @@
                 <%= render partial: "notifications/#{notification.subject}", locals: { notification: notification } %>
               </td>
               <td class="col-md-3">
-                <%= t(:time_since, time: time_ago_in_words(notification.created_at)) %>
+                <time title="<%= notification.created_at %>">
+                  <%= t(:time_since, time: time_ago_in_words(notification.created_at)) %>
+                </time>
               </td>
             </tr>
           <% end %>

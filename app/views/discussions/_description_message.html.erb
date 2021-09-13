@@ -4,7 +4,9 @@
       <div class="discussion-message-bubble-title">
         <%= linked_discussion_user_name(discussion.initiator) %>
         <span class="message-date">
-          <%= t(:time_since, time: time_ago_in_words(discussion.created_at)) %>
+          <time title="<%= discussion.created_at %>">
+            <%= t(:time_since, time: time_ago_in_words(discussion.created_at)) %>
+          </time>
         </span>
       </div>
     </div>

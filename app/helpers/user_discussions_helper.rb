@@ -31,7 +31,11 @@ module UserDiscussionsHelper
         </td>
         <td>#{link_to discussion.item.name, item_discussion_path(discussion)}</td>
         <td>#{discussion_user_name discussion.initiator}</td>
-        <td>#{t(:time_since, time: time_ago_in_words(discussion.last_message_date))}</td>
+        <td>
+          <time title="#{discussion.last_message_date}">
+            #{t(:time_since, time: time_ago_in_words(discussion.last_message_date))}
+          </time>
+        </td>
       </tr>
     HTML
   end

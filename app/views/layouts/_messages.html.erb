@@ -6,7 +6,9 @@
             <div class="message">
               <p> <%= message.content_html %></p>
               <div class="sender"><%= message.sender unless message.sender == current_user_uid %></div>
-              <time><%= time_ago_in_words message.created_at %></time>
+              <time title="<%= message.created_at %>">
+                <%= time_ago_in_words message.created_at %>
+              </time>
             </div>
           </li>
       <% end %>

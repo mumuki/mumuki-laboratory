@@ -7,7 +7,9 @@
           <span class="moderator-badge"><%= t(:moderation) %></span>
         <% end %>
         <span class="message-date">
-          <%= t(:time_since, time: time_ago_in_words(message.created_at)) %>
+          <time title="<%= message.created_at %>">
+            <%= t(:time_since, time: time_ago_in_words(message.created_at)) %>
+          </time>
         </span>
         <span class="actions">
           <% if message.authorized?(current_user) && !message.deleted? %>
@@ -47,7 +49,9 @@
           <% if current_user&.moderator_here? %>
             <hr>
             <%= t :deleted_by, deleter: message.deleted_by.name %>
-            <%= t(:time_since, time: time_ago_in_words(message.deleted_at)) %>.
+            <time title="<%= message.created_at %>">
+              <%= t(:time_since, time: time_ago_in_words(message.deleted_at)) %>.
+            </time>
             <a href='<%= "#deletedMessage#{message.id}" %>' data-bs-toggle="collapse">
               <%= t :show_message %>
             </a>
