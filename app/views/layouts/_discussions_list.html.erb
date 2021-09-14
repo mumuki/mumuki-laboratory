@@ -26,9 +26,7 @@
           </span>
           <span class="discussion-initiator">
             <strong><%= discussion_user_name discussion.initiator %></strong>
-            <time title="<%= discussion.created_at %>">
-              <%= t(:asked_time_since, time: time_ago_in_words(discussion.created_at)) %>
-            </time>
+            <%= friendly_time(discussion.created_at, :asked_time_since) %>
             <span class="discussion-status-icon">
               <%= discussion_status_fa_icon(discussion) %>
             </span>

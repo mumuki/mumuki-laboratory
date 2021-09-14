@@ -20,11 +20,7 @@
             <td><%= icon_for_read(message.read?) %></td>
             <td><%= link_to message.exercise.name, exercise_path(message.exercise.id) %></td>
             <td><%= mail_to message.sender %></td>
-            <td>
-              <time title="<%= message.created_at %>">
-                <%= time_ago_in_words message.created_at %>
-              </time>
-            </td>
+            <td><%= friendly_time(message.created_at) %></td>
           </tr>
         <% end %>
       </table>
