@@ -30,7 +30,7 @@ feature 'not found private on app', organization_workspace: :base do
     expect(page.text).to json_eq errors: [
       'The operation on organization base' +
       ' was forbidden to user foo+1@bar.com' +
-      ' with permissions !student:central/*;teacher:;headmaster:;janitor:;admin:;owner:;ex_student:']
+      ' with permissions !student:central/*;teacher:;headmaster:;janitor:;admin:;owner:']
   end
 
   scenario 'api with authentication', :json_eq_error do
