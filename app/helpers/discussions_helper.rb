@@ -184,7 +184,10 @@ module DiscussionsHelper
   end
 
   def discussion_info(discussion)
-    "#{t(:time_since, time: time_ago_in_words(discussion.created_at))} · #{t(:reply_count, count: discussion.visible_messages.size)}"
+    <<~HTML.html_safe
+      <span>#{friendly_time(discussion.created_at, :time_since)}</span>
+      <span> · #{t(:reply_count, count: discussion.visible_messages.size)}</span>
+    HTML
   end
 
   def discussion_filter_params_without_page

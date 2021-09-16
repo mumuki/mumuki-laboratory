@@ -1,6 +1,6 @@
 module UserDiscussionsHelper
   def user_discussions_table_title(discussion, user, last_read)
-    %Q{
+    <<~HTML.html_safe
       <tr></tr>
       <thead>
         <tr>
@@ -9,30 +9,30 @@ module UserDiscussionsHelper
           </td>
         </tr>
       </thead>
-    }.html_safe
+    HTML
   end
 
   def user_discussions_table_header
-    %Q{
+    <<~HTML.html_safe
       <tr class="fw-bold">
         <td></td>
         <td>#{t(:exercise)}</td>
         <td>#{t(:discussion_created_by)}</td>
         <td>#{t(:last_message)}</td>
       </tr>
-    }.html_safe
+    HTML
   end
 
   def user_discussions_table_item(discussion, user)
-    %Q{
+    <<~HTML.html_safe
       <tr>
         <td class="text-center">
           #{icon_for_read(discussion.read_by?(user))}
         </td>
         <td>#{link_to discussion.item.name, item_discussion_path(discussion)}</td>
         <td>#{discussion_user_name discussion.initiator}</td>
-        <td>#{t(:time_since, time: time_ago_in_words(discussion.last_message_date))}</td>
+        <td>#{friendly_time(discussion.last_message_date, :time_since)}</td>
       </tr>
-    }.html_safe
+    HTML
   end
 end
