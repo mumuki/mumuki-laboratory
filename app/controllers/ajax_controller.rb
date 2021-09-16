@@ -9,6 +9,6 @@ class AjaxController < ApplicationController
   end
 
   def validate_organization_enabled!
-    Organization.current.validate_enabled!
+    Organization.current.validate_enabled! unless current_user&.teacher_here?
   end
 end
