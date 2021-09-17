@@ -1,0 +1,12 @@
+.mu-progress-bar-outer {
+  background-color: $gray-200;
+  border-radius: 10px;
+  height: 15px;
+}
+
+.mu-progress-bar-inner {
+  background-color: $success;
+  width: 0%;
+  height: 15px;
+  border-radius: 10px;
+}
