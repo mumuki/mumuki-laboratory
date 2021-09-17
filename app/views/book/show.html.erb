@@ -37,6 +37,9 @@
           <div class="text-box" <%= 'aria-label=""' unless enabled %>>
             <%= it.description_teaser_html %>
           </div>
+          <div class="ms-2">
+            <strong><%= "#{it.topic.humanized_progress_for(current_user)}" %></strong>
+          </div>
         </div>
 
         <% unless enabled %>
