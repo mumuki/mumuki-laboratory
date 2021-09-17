@@ -29,6 +29,11 @@
       <div class="chapter-container">
         <div class="chapter <%= enabled ? '' : 'mu-locked' %>">
           <h3><%= it.number %>. <%= link_to_path_element it, mode: :plain %></h3>
+          <div class="d-flex align-items-center mb-2">
+            <div class="mu-progress-bar-outer flex-grow-1">
+              <div class="mu-progress-bar-inner" data-mu-progress-bar-id="<%= it.number %>"></div>
+            </div>
+          </div>
           <div class="text-box" <%= 'aria-label=""' unless enabled %>>
             <%= it.description_teaser_html %>
           </div>
