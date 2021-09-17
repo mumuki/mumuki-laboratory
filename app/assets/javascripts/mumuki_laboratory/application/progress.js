@@ -4,7 +4,7 @@ mumuki.progress = (() => {
    *
    * @param {SubmissionResult} result
    * */
-  function updateProgressBarAndShowModal(result) {
+  function updateProgressListAndShowModal(result) {
     $('.progress-list-item.active').attr('class', result.class_for_progress_list_item);
     if(result.guide_finished_by_solution) new bootstrap.Modal('#guide-done').show();
   }
@@ -14,7 +14,7 @@ mumuki.progress = (() => {
    *
    * @param {(anchor: JQuery) => string} f
    */
-  function updateWholeProgressBar(f) {
+  function updateWholeProgressList(f) {
     $('.progress-list-item').each((_, it) => {
       const $anchor = $(it);
       $anchor.attr('class', f($anchor));
@@ -22,10 +22,10 @@ mumuki.progress = (() => {
   }
 
   return {
-    updateProgressBarAndShowModal,
-    updateWholeProgressBar
+    updateProgressListAndShowModal,
+    updateWholeProgressList
   };
 })();
 
-/** @deprecated use {@code mumuki.progress.updateProgressBarAndShowModal} instead */
-mumuki.updateProgressBarAndShowModal = mumuki.progress.updateProgressBarAndShowModal;
+/** @deprecated use {@code mumuki.progress.updateProgressListAndShowModal} instead */
+mumuki.updateProgressBarAndShowModal = mumuki.progress.updateProgressListAndShowModal;
