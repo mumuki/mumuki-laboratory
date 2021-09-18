@@ -38,6 +38,9 @@
                 <strong><%= "#{it.topic.humanized_progress_for(current_user)}" %></strong>
               </div>
             </div>
+            <span class="d-none" id="mu-progress-percentage-<%= it.number %>"
+                  data-mu-progress-percentage="<%= it.topic.completion_percentage_for(current_user) %>">
+            </span>
           </div>
           <div class="text-box" <%= 'aria-label=""' unless enabled %>>
             <%= it.description_teaser_html %>
