@@ -30,17 +30,19 @@
         <div class="chapter <%= enabled ? '' : 'mu-locked' %>">
           <div class="d-flex justify-content-between">
             <h3><%= it.number %>. <%= link_to_path_element it, mode: :plain %></h3>
-            <div class="d-flex align-items-center w-25">
-              <div class="mu-progress-bar-outer flex-grow-1">
-                <div class="mu-progress-bar-inner" data-mu-progress-bar-id="<%= it.number %>"></div>
+            <% if current_user? %>
+              <div class="d-flex align-items-center w-25">
+                <div class="mu-progress-bar-outer flex-grow-1">
+                  <div class="mu-progress-bar-inner" data-mu-progress-bar-id="<%= it.number %>"></div>
+                </div>
+                <div class="ms-2">
+                  <strong><%= "#{it.topic.humanized_progress_for(current_user)}" %></strong>
+                </div>
+                <span class="d-none" id="mu-progress-percentage-<%= it.number %>"
+                      data-mu-progress-percentage="<%= it.topic.completion_percentage_for(current_user) %>">
+                </span>
               </div>
-              <div class="ms-2">
-                <strong><%= "#{it.topic.humanized_progress_for(current_user)}" %></strong>
-              </div>
-            </div>
-            <span class="d-none" id="mu-progress-percentage-<%= it.number %>"
-                  data-mu-progress-percentage="<%= it.topic.completion_percentage_for(current_user) %>">
-            </span>
+            <% end %>
           </div>
           <div class="text-box" <%= 'aria-label=""' unless enabled %>>
             <%= it.description_teaser_html %>
