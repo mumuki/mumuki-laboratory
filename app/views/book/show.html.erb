@@ -19,7 +19,7 @@
 
   <% unless @book.chapters.empty? %>
     <% if show_content?(@book) %>
-      <h2><%= t(:chapters) %></h2>
+      <h2 class="mb-4"><%= t(:chapters) %></h2>
     <% end %>
 
     <% @book.chapter_visibilities_in(current_workspace).each do |it, enabled| %>
