@@ -45,7 +45,7 @@
     <h2><%= t(:exams) %></h2>
     <% @exams.each_with_index do |it, index| %>
       <div class="chapter">
-        <h3> <%= index + 1 %>. <%= link_to_path_element it, mode: :plain %></h3>
+        <h3><%= link_to_path_element it, mode: :plain %></h3>
 
         <div class="text-box">
           <%= it.guide.description_teaser_html %>
