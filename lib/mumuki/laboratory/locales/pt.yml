@@ -31,6 +31,7 @@ pt:
   authoring: Autores
   authoring_note_html: 'Este guia foi desenvolvido por %{authors} nos termos do <a href = "https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"> Creative Commons License Share-Equal, 4.0 </a>.'
   authoring_note_with_collaborators_html: 'Este guia foi desenvolvido por %{authors} e <a href="%{collaborators}" target="_blank">muitas outras pessoas </a>, nos termos do <a href = "https://creativecommons.org/licenses/by-sa/4.0/" target="_blank"> Creative Commons License Share-Equal, 4.0 </a>.'
+  available_time: Tempo disponível
   back_to_mumuki: Voltei para Mumuki!
   bibliotheca_ui: Biblioteca
   birthdate: Fecha de nacimiento
@@ -64,6 +65,7 @@ pt:
   continue_lesson: Continue esta lição!
   continue_practicing: Continue aprendendo!
   correct_answer: A resposta está correta!
+  course: Curso
   create_submission: Enviar
   created_at: Criado
   created_at_asc: Antigo
@@ -71,6 +73,7 @@ pt:
   created_exercises: Exercícios criados
   created_guides: Lições criadas
   date: Data
+  date_and_time: Data e hora
   deleted_by: Removido pelo
   deleted_message_warning: Se você violar repetidamente essas ou outras regras da Área de Consulta, seu acesso a ela pode ser proibido ou você pode sofrer consequências mais graves, como a expulsão do curso.
   deletion_motive:
@@ -373,6 +376,7 @@ pt:
   terms_and_conditions_continue_disclaimer: Ao continuar, você concorda %{terms_link}
   terms_and_conditions_must_be_accepted: Você deve aceitar os Termos e Condições
   test_results: Resultados do teste
+  time_in_minutes: "%{time} minutos"
   time_since: "há %{time}"
   time_left: Te deixam
   title: Título
