@@ -1,12 +1,12 @@
 mumuki.CsrfToken =  (() => {
   class CsrfToken {
-    constructor() {
-      this.value = $('meta[name="csrf-token"]').attr('content');
+    get token() {
+      return $('meta[name="csrf-token"]').attr('content');
     }
+
     newRequest(data) {
-      var self = this;
-      data.beforeSend = function (xhr) {
-        xhr.setRequestHeader('X-CSRF-Token', self.value);
+      data.beforeSend = (xhr) => {
+        xhr.setRequestHeader('X-CSRF-Token', this.token);
       };
       return data;
     }
