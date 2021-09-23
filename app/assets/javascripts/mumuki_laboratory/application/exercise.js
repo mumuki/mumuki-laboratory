@@ -1,12 +1,20 @@
 (() => {
+  function shouldSkipChangesCheck() {
+    return mumuki.isKidsExercise() || mumuki.exercise.isReadOnly;
+  }
+
   function solutionChangedSinceLastSubmission() {
     return  mumuki.exercise.id &&
             mumuki.SubmissionsStore.getLastSubmissionAndResult(mumuki.exercise.id) &&
             !mumuki.SubmissionsStore.getSubmissionResultFor(mumuki.exercise.id, mumuki.editors.getSubmission());
   }
 
+  function shouldWarnOfChanges() {
+    return !shouldSkipChangesCheck() && solutionChangedSinceLastSubmission();
+  }
+
   window.addEventListener("beforeunload", (event) => {
-    if (solutionChangedSinceLastSubmission()) {
+    if (shouldWarnOfChanges()) {
       event.returnValue = 'unsaved_progress';
     } else {
       delete event['returnValue'];
@@ -14,7 +22,7 @@
   });
 
   window.addEventListener("turbolinks:before-visit", (event) => {
-    if (solutionChangedSinceLastSubmission() && !confirm(mumuki.I18n.t('unsaved_progress'))) event.preventDefault();
+    if (shouldWarnOfChanges() && !confirm(mumuki.I18n.t('unsaved_progress'))) event.preventDefault();
   });
 })();
 
@@ -64,6 +72,13 @@ mumuki.exercise = {
    */
   get current() {
     return this._current;
+  },
+
+  /**
+   * @type {Boolean?}
+   */
+  get isReadOnly() {
+    return $('#mu-exercise-read-only').val() === 'true';
   },
 
   /**

@@ -45,6 +45,7 @@
 <%= hidden_field_tag "mu-exercise-id", @exercise.id %>
 <%= hidden_field_tag "mu-exercise-layout", @exercise.layout %>
 <%= hidden_field_tag "mu-exercise-settings", @exercise.settings.to_json %>
+<%= hidden_field_tag "mu-exercise-read-only", current_access_mode.read_only? %>
 
 <div class="d-none" id="processing-template">
   <div class="bs-callout bs-callout-info">
