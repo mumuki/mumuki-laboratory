@@ -35,10 +35,6 @@ module ExerciseInputHelper
     should_render_exercise_tabs?(exercise) { exercise.has_messages_for? user }
   end
 
-  def should_render_read_only_exercise_tabs?(discussion)
-    should_render_exercise_tabs?(discussion.exercise) { discussion.has_submission? }
-  end
-
   def should_render_message_input?(exercise, organization = Organization.current)
     exercise.is_a?(Problem) && !exercise.hidden? && organization.raise_hand_enabled?
   end
