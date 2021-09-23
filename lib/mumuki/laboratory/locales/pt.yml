@@ -280,6 +280,7 @@ pt:
   notifications_will_be_here: Suas notificações aparecerão aqui
   notify_problem_with_exercise: Relatar um erro
   office: Secretariado
+  only_forum_questions_on_forum: Lembre-se que apenas as dúvidas relacionadas aos exercícios são respondidas no espaço de consulta. Para qualquer outro tipo de consulta, reveja a %{link}.
   only_landscape_support: Por favor, gire seu tablet ou celular para realizar exercícios
   opened: Aberto
   opened_count: '%{count} aberto'

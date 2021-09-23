@@ -272,6 +272,7 @@ en:
   notifications_will_be_here: Notifications will be here
   notify_problem_with_exercise: Report a bug
   office: Office
+  only_forum_questions_on_forum: Remember that only exercise-related questions are answered on the forum. For any other kind of inquiries, please check the %{link}.
   only_landscape_support: Please, rotate your tablet or cellphone to continue practicing
   opened: Open
   opened_count: '%{count} opened'

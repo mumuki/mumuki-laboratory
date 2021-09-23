@@ -22,12 +22,18 @@
         <div class="container-fluid">
           <div class="row">
             <div class="discussion-new-message-content">
-              <%= f.editor :description, '', {id: 'discussion-new-message', class: 'form-control', placeholder: t(:discussion_description_placeholder)} %>
+              <%= spell_checked_editor 'discussion[description]',
+                                       { id: 'discussion-new-message', placeholder: t(:discussion_description_placeholder) } %>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <% if faqs_enabled_here? %>
+      <div class="fs-7">
+        <%= fa_icon('exclamation-triangle', text: t(:only_forum_questions_on_forum, link: link_to_faqs).html_safe) %>
+      </div>
+    <% end %>
     <%= f.submit t(:publish_discussion), class: 'btn btn-complementary w-100 discussion-new-message-button' %>
   <% end %>
 <% end %>
