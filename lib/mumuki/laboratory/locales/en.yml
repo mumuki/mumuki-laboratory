@@ -30,6 +30,7 @@ en:
   authoring: Authoring
   authoring_note_html: This guide's content was developed by %{authors} under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons License Share-Alike, 4.0</a>
   authoring_note_with_collaborators_html: This guide's content was developed by %{authors} and <a href="%{collaborators}" target="_blank">many others</a>, under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons License Share-Alike, 4.0</a>
+  available_time: Available time
   back_to_mumuki: Back to Mumuki!
   bibliotheca_ui: Bibliotheca
   birthdate: Birthdate
@@ -67,9 +68,11 @@ en:
   continue_practicing: Continue practicing!
   corollary: To think about
   correct_answer: The answer is correct!
+  course: Course
   create_submission: Submit
   created_at: Created at
   date: Date
+  date_and_time: Date and time
   deleted_by: Deleted by %{deleter}
   deleted_message_warning: If you repeateadly violate these or other rules, you may be prohibited from accessing the forum or you may suffer more severe consequences, such as being expulsed from the course.
   deletion_motive:
@@ -361,6 +364,7 @@ en:
   terms_and_conditions_continue_disclaimer: By continuing you agree to %{terms_link}
   terms_and_conditions_must_be_accepted: You must accept the terms and conditions
   test_results: Test results
+  time_in_minutes: "%{time} minutes"
   time_since: "%{time} ago"
   time_left: You have
   title: Title

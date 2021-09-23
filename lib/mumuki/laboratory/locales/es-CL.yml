@@ -29,6 +29,7 @@ es-CL:
   authoring: Autores
   authoring_note_html: Esta guía fue desarrollada por %{authors} bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia Creative Commons Compartir-Igual, 4.0</a>.
   authoring_note_with_collaborators_html: Esta guía fue desarrollada por %{authors} y <a href="%{collaborators}" target="_blank">muchas personas más</a>, bajo los términos de la <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Licencia Creative Commons Compartir-Igual, 4.0</a>.
+  available_time: Tiempo disponible
   back_to_mumuki: ¡Vuelve a Mumuki!
   bibliotheca_ui: Biblioteca
   birthdate: Fecha de nacimiento
@@ -65,11 +66,13 @@ es-CL:
   continue_lesson: ¡Continúa esta lección!
   continue_practicing: ¡Sigue aprendiendo!
   correct_answer: ¡La respuesta es correcta!
+  course: Curso
   create_submission: Enviar
   created_at: Creado
   created_exercises: Ejercicios Creados
   created_guides: Lecciones Creadas
   date: Fecha
+  date_and_time: Fecha y hora
   deleted_by: Eliminado por %{deleter}
   deleted_message_warning: Si infringes reiteradamente estas u otras reglas del Espacio de Consultas, se te puede prohibir el acceso al mismo o podrás sufrir consecuencias más severas, como la expulsión del curso.
   deletion_motive:
@@ -375,6 +378,7 @@ es-CL:
   terms_and_conditions_continue_disclaimer: Al continuar aceptas los %{terms_link}
   terms_and_conditions_must_be_accepted: Tienes que aceptar los términos y condiciones
   test_results: Resultados de las pruebas
+  time_in_minutes: "%{time} minutos"
   time_since: "hace %{time}"
   time_left: Te quedan
   title: Título
