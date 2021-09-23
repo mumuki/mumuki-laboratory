@@ -46,7 +46,9 @@
     <% @exams.each_with_index do |it, index| %>
       <div class="chapter">
         <h3><%= link_to_path_element it, mode: :plain %></h3>
-
+        <div class="fs-7">
+          <%= exam_information_for(current_user, it) %>
+        </div>
         <div class="text-box">
           <%= it.guide.description_teaser_html %>
         </div>
