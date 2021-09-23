@@ -15,24 +15,7 @@
     <h3 class="flex-grow-1 me-3"><%= t :messages %></h3>
     <% if current_user && @discussion.persisted? && current_access_mode.show_discussion_element? %>
       <span class="d-flex">
-        <% if @discussion.can_toggle_responsible?(current_user) %>
-          <div class="discussion-responsible me-1">
-            <%= btn_toggle responsible_icon, not_responsible_icon, @discussion.any_responsible?, class: 'btn-sm',
-                           onclick: "mumuki.Forum.discussionResponsible('#{responsible_discussion_url(@discussion)}')" %>
-          </div>
-        <% end %>
-        <% if @discussion.subscribable? %>
-          <div class="discussion-subscription me-1">
-            <%= btn_toggle subscription_icon, unsubscription_icon, current_user.subscribed_to?(@discussion), class: 'btn-sm',
-                           onclick: "mumuki.Forum.discussionSubscription('#{subscription_discussion_url(@discussion)}')" %>
-          </div>
-        <% end %>
-        <% if @discussion.solved? %>
-          <div class="discussion-upvote">
-            <%= btn_toggle upvote_icon, undo_upvote_icon, current_user.upvoted?(@discussion), class: 'btn-sm',
-                           onclick: "mumuki.Forum.discussionUpvote('#{upvote_discussion_url(@discussion)}')" %>
-          </div>
-        <% end %>
+        <%= render partial: 'discussions/actions' %>
       </span>
     <% end %>
   </div>

@@ -38,12 +38,13 @@ module MenuBarHelper
     li_tag menu_item('sign-out-alt', :sign_out, logout_path(origin: url_for, organization: Organization.current))
   end
 
-  def menu_item(icon, name, url, css_class = nil, **translation_params)
-    menu_text_item(icon, t(name, translation_params), url, css_class)
+  def menu_item(icon, name, url, css_class = nil, translation_params = {}, options = {})
+    menu_text_item(icon, t(name, translation_params), url, css_class, **options)
   end
 
-  def menu_text_item(icon, text, url, css_class = nil)
-    link_to fixed_fa_icon(icon, text: text), url, role: 'menuitem', tabindex: '-1', class: "dropdown-item #{css_class}"
+  def menu_text_item(icon, text, url, css_class = nil, **options)
+    link_options = { role: 'menuitem', tabindex: '-1', class: "dropdown-item #{css_class}" }.merge(options)
+    link_to fixed_fa_icon(icon, text: text), url, link_options
   end
 
   def any_menu_bar_links?
