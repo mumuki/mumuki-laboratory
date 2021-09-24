@@ -10,8 +10,6 @@ gem 'mini_racer', '~> 0.4'
 gem 'uglifier', '~> 2.7'
 gem 'sanitize', '~> 6.0'
 
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'feature-time-left-for-exam'
-
 group :test do
   gem 'rspec-rails', '~> 3.6'
   gem 'factory_bot_rails', '~> 5.0'
@@ -37,3 +35,7 @@ group :development, :test do
   gem 'pry-stack_explorer'
   gem 'binding_of_caller'
 end
+#
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'feature-async-massive-notifications'
+#
+gem 'mumukit-nuntius', github: 'mumuki/mumukit-nuntius', branch: 'feature-async-massive-notifications'
