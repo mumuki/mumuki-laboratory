@@ -1,2 +1,1 @@
-<% target = notification.target %>
-<%= notification_text_preview_item :envelope, target.custom_title, notification.organization.url_for('/user/notifications') %>
+<%= notification_text_preview_item :envelope, notification.target.title, notification.organization.url_for('/user/notifications') %>
