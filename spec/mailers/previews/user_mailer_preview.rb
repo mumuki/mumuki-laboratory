@@ -1,41 +1,47 @@
 # Preview all emails at http://localhost:3000/rails/mailers/user_mailer
 class UserMailerPreview < ActionMailer::Preview
 
-  # Preview this email at http://localhost:3000/rails/mailers/user_mailer/we_miss_you_notification
+  # Preview this email at http://localhost:3000/rails/mailers/user_mailer/we_miss_you_reminder
   def we_miss_you_reminder
     UserMailer.we_miss_you_reminder user, 1
   end
 
-  def custom_content_plain_text_notification
-    UserMailer.notification notification subject: :custom,
-                                         custom_content_plain_text: 'This is the text of the mail. Awesome!',
-                                         custom_title: 'This is the title!'
-  end
-
-  def custom_content_html_notification
-    UserMailer.notification notification subject: :custom,
-                                         custom_content_html: 'This is <em>the text</em> of the mail. <strong>Awesome!</strong>',
-                                         custom_title: 'This is the title!'
-  end
-
+  # Preview this email at http://localhost:3000/rails/mailers/user_mailer/certificate_preview
   def certificate_preview
     UserMailer.certificate certificate
   end
 
+  # Preview this email at http://localhost:3000/rails/mailers/user_mailer/exam_registration_preview
   def exam_registration_preview
-    notification = notification target: exam_registration, subject: :exam_registration
+    notification = notification target: exam_registration
 
     UserMailer.notification notification
   end
 
+  # Preview this email at http://localhost:3000/rails/mailers/user_mailer/exam_authorization_request_approved
   def exam_authorization_request_approved
-    notification = notification target: exam_authorization_request('approved'), subject: :exam_authorization_request_updated
+    notification = notification target: exam_authorization_request('approved')
 
     UserMailer.notification notification
   end
 
+  # Preview this email at http://localhost:3000/rails/mailers/user_mailer/exam_authorization_request_rejected
   def exam_authorization_request_rejected
-    notification = notification target: exam_authorization_request('rejected'), subject: :exam_authorization_request_updated
+    notification = notification target: exam_authorization_request('rejected')
+
+    UserMailer.notification notification
+  end
+
+  # Preview this email at http://localhost:3000/rails/mailers/user_mailer/custom_content_plain_text_notification
+  def custom_content_plain_text_notification
+    notification = notification target: custom_notification
+
+    UserMailer.notification notification target: custom_notification
+  end
+
+  # Preview this email at http://localhost:3000/rails/mailers/user_mailer/custom_content_html_notification
+  def custom_content_html_notification
+    notification = notification target: custom_notification('This is <em>the text</em> of the mail. <strong>Awesome!</strong>')
 
     UserMailer.notification notification
   end
@@ -57,6 +63,14 @@ class UserMailerPreview < ActionMailer::Preview
                                  status: status,
                                  exam: exam,
                                  organization: organization
+  end
+
+  def custom_notification(custom_html = '')
+    CustomNotification.new id: 1,
+                           organization: organization,
+                           title: 'This is the title!',
+                           body_html: 'This is the text of the mail. <strong>Awesome!</strong>',
+                           custom_html: custom_html
   end
 
   def exam
@@ -89,7 +103,6 @@ class UserMailerPreview < ActionMailer::Preview
   end
 
   def notification(**hash)
-    Notification.new({user: user,
-                     organization: organization}.merge hash)
+    Notification.new({user: user, organization: organization}.merge hash)
   end
 end
