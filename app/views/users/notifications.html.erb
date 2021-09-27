@@ -37,7 +37,9 @@
               <td class="col-md-8 text-break mu-notifications-content">
                 <button class="mu-notifications-arrow" onclick="$(this).parent().toggleClass('opened')"><i class="fas fa-fw fa-angle-down"></i></button>
                 <div class="mu-notifications-title"><%= render partial: "notifications/titles/#{notification.subject}", locals: { notification: notification } %></div>
-                <div class="mu-notifications-body"><%= render partial: "notifications/#{notification.subject}", locals: { notification: notification } %></div>
+                <div class="mu-notifications-body">
+                  <div class="mu-notifications-body-content"><%= render partial: "notifications/#{notification.subject}", locals: { notification: notification } %></div>
+                </div>
               </td>
               <td class="col-md-3">
                 <%= friendly_time(notification.created_at, :time_since) %>
@@ -53,3 +55,19 @@
     <% end %>
   </div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  mumuki.resize(() => {
+    $('.mu-notifications-content').each((_i, el) => {
+      const $el = $(el);
+      const container = $el.find('.mu-notifications-body')[0];
+      const content = $el.find('.mu-notifications-body-content')[0];
+
+      if( container.offsetHeight > content.offsetHeight) {
+        $el.find('.mu-notifications-arrow').hide();
+      } else {
+        $el.find('.mu-notifications-arrow').show();
+      }
+    });
+  });
+</script>
