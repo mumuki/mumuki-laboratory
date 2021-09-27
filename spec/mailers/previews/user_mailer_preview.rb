@@ -1,6 +1,11 @@
 # Preview all emails at http://localhost:3000/rails/mailers/user_mailer
 class UserMailerPreview < ActionMailer::Preview
 
+  # Preview this email at http://localhost:3000/rails/mailers/user_mailer/welcome_preview
+  def welcome_preview
+    UserMailer.welcome_email user, organization
+  end
+
   # Preview this email at http://localhost:3000/rails/mailers/user_mailer/we_miss_you_reminder
   def we_miss_you_reminder
     UserMailer.we_miss_you_reminder user, 1
@@ -44,10 +49,6 @@ class UserMailerPreview < ActionMailer::Preview
     notification = notification target: custom_notification('This is <em>the text</em> of the mail. <strong>Awesome!</strong>')
 
     UserMailer.notification notification
-  end
-
-  def welcome_preview
-    UserMailer.welcome_email user, organization
   end
 
   private
