@@ -335,6 +335,7 @@ en:
   retry_exercise: Retry
   running: running
   save: Save
+  see_all_notifications: "See all notifications"
   see_context: Watch exercise introduction animation
   select_file: Select file
   sending_solution: Sending solution

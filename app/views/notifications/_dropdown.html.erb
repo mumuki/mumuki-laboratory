@@ -3,10 +3,17 @@
     <i class="fas fa-bell fa-fw fa-2x mu-navbar-icon"></i>
     <span class="badge badge-notifications"><%= notifications_count %></span>
   </div>
-  <ul id="notificationsPanel" class="dropdown-menu dropdown-menu-end" aria-labelledby="notificationsDropdown">
-    <% user_notifications.each do |it| %>
-      <li>
-        <%= notification_preview_for it %>
+  <ul id="notificationsPanel" class="notifications-dropdown dropdown-menu dropdown-menu-end pb-0" aria-labelledby="notificationsDropdown">
+    <% user_notifications.take(10).each do |it| %>
+      <li><%= notification_preview_for it %></li>
+    <% end %>
+
+    <% if has_many_notifications? %>
+      <li class="dropdown-divider"></li>
+      <li class="mu-see-all-notifications mb-0">
+        <a role="menuitem" class="dropdown-item mu-notification-preview" href="<%= notifications_user_path(Organization.current) %>">
+          <small><%= t(:see_all_notifications) %></small>
+        </a>
       </li>
     <% end %>
   </ul>

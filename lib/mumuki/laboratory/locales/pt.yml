@@ -342,6 +342,7 @@ pt:
   retry_exercise: Tentar novamente
   running: processamento
   save: Salvar
+  see_all_notifications: "Ver todas as notificações"
   see_context: Veja a animação desde o início
   select_file: Selecione o arquivo
   send: Enviar

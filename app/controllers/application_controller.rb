@@ -35,6 +35,7 @@ class ApplicationController < ActionController::Base
                 :login_button,
                 :notifications_count,
                 :has_notifications?,
+                :has_many_notifications?,
                 :user_notifications,
                 :subject,
                 :should_choose_organization?,
