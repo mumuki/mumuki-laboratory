@@ -5,36 +5,17 @@
 <div class="row">
   <%= render partial: 'layouts/user_menu' %>
 
-  <div class="col-md-9 mu-tab-body">
-    <div class="mu-user-header">
-      <h1><%= t(:notifications) %></h1>
-    </div>
-    <% if @notifications.empty? %>
-      <div class="mu-tab-body">
-        <%= t :notifications_will_be_here %>
-      </div>
-    <% else %>
-      <div class="table-responsive mb-3">
-        <table class="table">
-          <% @notifications.each do |notification| %>
-            <% if notification.read? != @last_read %>
-              <%= user_notifications_table_title notification, @last_read %>
-              <% @last_read = notification.read? %>
-
-              <%= user_notifications_table_header %>
-            <% end %>
-
-            <%= user_notifications_table_item notification %>
-          <% end %>
-        </table>
-      </div>
-
-      <div class="discussion-pagination">
-        <%= paginate @notifications, nav_class: 'pagination' %>
-      </div>
-
-    <% end %>
-  </div>
+  <%= render partial: 'layouts/user_readable_table', locals: {
+    title: t(:notifications),
+    empty_legend: t(:notifications_will_be_here),
+    readable_items: @notifications,
+    group_by: proc { |it| it.read? },
+    table: {
+      '' => { class: 'mu-readable-item-icon', proc: method(:notification_toggle_read) },
+      t(:notification) => { class: 'text-break mu-notifications-content', proc: method(:notification_content) },
+      t(:created_at) => { class: 'col-md-3', proc: proc { |it| friendly_time(it.created_at, :time_since) } }
+    }
+  } %>
 </div>
 
 <script type="text/javascript" charset="utf-8">
