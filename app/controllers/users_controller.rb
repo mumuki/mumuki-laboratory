@@ -59,7 +59,7 @@ class UsersController < ApplicationController
   end
 
   def notifications
-    @notifications = @user.notifications_in_organization.order(created_at: :desc).page(params[:page])
+    @notifications = @user.notifications_in_organization.order(:read, created_at: :desc).page(params[:page]).per(10)
   end
 
   def toggle_read
