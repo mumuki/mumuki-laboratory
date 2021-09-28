@@ -6,52 +6,33 @@
   <%= render partial: 'layouts/user_menu' %>
 
   <div class="col-md-9 mu-tab-body">
-    <div class="mu-user-header d-flex justify-content-between">
-      <span>
-        <h1><%= t(:notifications) %></h1>
-      </span>
-      <span>
-        <a href="notifications/manage" class="btn btn-complementary"><%= t(:manage_notifications) %></a>
-      </span>
+    <div class="mu-user-header">
+      <h1><%= t(:notifications) %></h1>
     </div>
     <% if @notifications.empty? %>
       <div class="mu-tab-body">
         <%= t :notifications_will_be_here %>
       </div>
     <% else %>
-
-
       <div class="table-responsive mb-3">
         <table class="table">
-          <tr class="fw-bold">
-            <td></td>
-            <td><%= t(:content) %></td>
-            <td><%= t(:created_at) %></td>
-          </tr>
-
           <% @notifications.each do |notification| %>
-            <tr class="<%= background_for_notification notification %>" >
-              <td class="col-md-1">
-                <%= link_to icon_for_read(notification.read?), "notifications/#{notification.id}/toggle_read", tooltip_options(:toggle_read).merge(method: :post, role: :button) %>
-              </td>
-              <td class="col-md-8 text-break mu-notifications-content">
-                <button class="mu-notifications-arrow" onclick="$(this).parent().toggleClass('opened')"><i class="fas fa-fw fa-angle-down"></i></button>
-                <div class="mu-notifications-title"><%= render partial: "notifications/titles/#{notification.subject}", locals: { notification: notification } %></div>
-                <div class="mu-notifications-body">
-                  <div class="mu-notifications-body-content"><%= render partial: "notifications/#{notification.subject}", locals: { notification: notification } %></div>
-                </div>
-              </td>
-              <td class="col-md-3">
-                <%= friendly_time(notification.created_at, :time_since) %>
-              </td>
-            </tr>
+            <% if notification.read? != @last_read %>
+              <%= user_notifications_table_title notification, @last_read %>
+              <% @last_read = notification.read? %>
+
+              <%= user_notifications_table_header %>
+            <% end %>
+
+            <%= user_notifications_table_item notification %>
           <% end %>
         </table>
       </div>
 
-      <div class="notification-pagination">
+      <div class="discussion-pagination">
         <%= paginate @notifications, nav_class: 'pagination' %>
       </div>
+
     <% end %>
   </div>
 </div>
@@ -63,7 +44,7 @@
       const container = $el.find('.mu-notifications-body')[0];
       const content = $el.find('.mu-notifications-body-content')[0];
 
-      if( container.offsetHeight > content.offsetHeight) {
+      if (container.offsetHeight > content.offsetHeight) {
         $el.find('.mu-notifications-arrow').hide();
       } else {
         $el.find('.mu-notifications-arrow').show();
