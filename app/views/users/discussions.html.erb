@@ -5,34 +5,16 @@
 <div class="row">
   <%= render partial: 'layouts/user_menu' %>
 
-  <div class="col-md-9 mu-tab-body">
-    <div class="mu-user-header">
-      <h1><%= t(:discussions) %></h1>
-    </div>
-    <% if @watched_discussions.empty? %>
-      <div class="mu-tab-body">
-        <%= t :discussions_will_be_here %>
-      </div>
-    <% else %>
-      <div class="table-responsive mb-3">
-        <table class="table">
-          <% @watched_discussions.each do |discussion| %>
-            <% if discussion.read_by?(@user) != @last_read %>
-              <%= user_discussions_table_title(discussion, @user, @last_read) %>
-              <% @last_read = discussion.read_by?(@user) %>
-
-              <%= user_discussions_table_header %>
-            <% end %>
-
-            <%= user_discussions_table_item(discussion, @user) %>
-          <% end %>
-        </table>
-      </div>
-
-      <div class="discussion-pagination">
-        <%= paginate @watched_discussions, nav_class: 'pagination' %>
-      </div>
-
-    <% end %>
-  </div>
+  <%= render partial: 'layouts/user_readable_table', locals: {
+    title: t(:discussions),
+    empty_legend: t(:discussions_will_be_here),
+    readable_items: @watched_discussions,
+    group_by: proc { |it| it.read_by? @user },
+    table: {
+      '' => { class: 'mu-readable-item-icon', proc: proc { |it| icon_for_read(it.read_by? @user) } },
+      t(:exercise) => { proc: proc { |it| link_to it.item.name, item_discussion_path(it) } },
+      t(:discussion_created_by) => { proc: proc { |it| discussion_user_name(it.initiator) } },
+      t(:last_message) => { class: 'col-md-3', proc: proc { |it| friendly_time(it.last_message_date, :time_since) } }
+    }
+  } %>
 </div>

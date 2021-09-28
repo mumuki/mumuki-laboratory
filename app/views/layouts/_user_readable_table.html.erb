@@ -1,0 +1,42 @@
+<div class="col-md-9 mu-tab-body">
+  <div class="mu-user-header">
+    <h1><%= title %></h1>
+  </div>
+  <% if readable_items.empty? %>
+    <div class="mu-tab-body">
+      <%= empty_legend %>
+    </div>
+  <% else %>
+    <div class="table-responsive mb-3">
+      <table class="table">
+        <% readable_items.group_by(&group_by).each_with_index do |(is_read, grouped_readable_items), index| %>
+          <tr></tr>
+          <thead>
+            <tr>
+              <td class="<%= index.zero? ? '' : 'pt-5' %>" colspan="100%">
+                <strong><%= is_read ? t(:discussions_read) : t(:discussions_unread) %></strong>
+              </td>
+            </tr>
+          </thead>
+          <tr class="fw-bold">
+            <% table.keys.each do |header| %>
+              <td><%= header %></td>
+            <% end %>
+          </tr>
+          <% grouped_readable_items.each_with_index do |it| %>
+            <tr>
+              <% table.values.each do |transformation| %>
+                <td class="<%= transformation[:class] %>"><%= transformation[:proc].call it %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+
+    <div class="discussion-pagination">
+      <%= paginate readable_items, nav_class: 'pagination' %>
+    </div>
+
+  <% end %>
+</div>
