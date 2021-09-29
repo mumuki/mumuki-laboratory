@@ -21,7 +21,7 @@ class ExamAuthorizationRequestsController < ApplicationController
   private
 
   def create_authorization_request_params
-    authorization_request_params.slice :user, :organization
+    authorization_request_params.slice :user
   end
 
   def authorization_request_params
