@@ -7,8 +7,7 @@ class ExamAuthorizationRequestsController < ApplicationController
 
   def create
     authorization_request = @registration.authorization_requests.find_or_create_by! user: current_user do |it|
-      it.assign_attributes user: current_user,
-                           organization: @registration.organization,
+      it.assign_attributes organization: @registration.organization,
                            exam: @exam
     end
     current_user.read_notification! @registration
