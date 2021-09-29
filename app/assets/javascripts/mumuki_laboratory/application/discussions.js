@@ -70,6 +70,7 @@ mumuki.load(() => {
     discussionMessageToggleApprove: function (url, elem) {
       Forum.discussionPost(url).done(function () {
         elem.toggleClass("selected");
+        elem.attr('data-bs-original-title', '');
       });
     },
     discussionMessageToggleNotActuallyAQuestion: function (url, elem) {
