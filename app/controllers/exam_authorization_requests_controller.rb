@@ -4,7 +4,7 @@ class ExamAuthorizationRequestsController < ApplicationController
   before_action :verify_registration_opened!
 
   def create
-    authorization_request = @exam_registration.authorization_requests.find_or_create_by! create_authorization_request_params do |it|
+    authorization_request = @exam_registration.authorization_requests.find_or_create_by! user: current_user do |it|
       it.assign_attributes authorization_request_params
     end
     current_user.read_notification! authorization_request.exam_registration
@@ -19,10 +19,6 @@ class ExamAuthorizationRequestsController < ApplicationController
   end
 
   private
-
-  def create_authorization_request_params
-    authorization_request_params.slice :user
-  end
 
   def authorization_request_params
     params
