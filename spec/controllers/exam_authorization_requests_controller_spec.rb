@@ -3,6 +3,7 @@ require 'spec_helper'
 describe ExamAuthorizationRequestsController, type: :controller, organization_workspace: :test do
   let(:user) { create(:user) }
   let(:exam) { create(:exam) }
+  let(:exam_id) { exam.id }
   let(:organization) { Organization.current }
   let(:exam_registration) { create(:exam_registration, exams: [exam], organization: organization) }
 
@@ -13,7 +14,7 @@ describe ExamAuthorizationRequestsController, type: :controller, organization_wo
 
     def do_post
       post :create, params: {
-        exam_authorization_request: { exam_id: exam.id, exam_registration_id: exam_registration.id }
+        exam_authorization_request: { exam_id: exam_id, exam_registration_id: exam_registration.id }
       }
     end
 
@@ -21,6 +22,12 @@ describe ExamAuthorizationRequestsController, type: :controller, organization_wo
 
     describe 'called once in wrong organization' do
       let(:organization) { create(:organization, name: 'other') }
+      it { expect(response.status).to eq 404 }
+      it { expect(exam_registration.authorization_requests.size).to be 0 }
+    end
+
+    describe 'called once with wrong exam' do
+      let(:exam_id) { create(:exam).id }
       it { expect(response.status).to eq 404 }
       it { expect(exam_registration.authorization_requests.size).to be 0 }
     end
