@@ -3,7 +3,8 @@ require 'spec_helper'
 describe ExamAuthorizationRequestsController, type: :controller, organization_workspace: :test do
   let(:user) { create(:user) }
   let(:exam) { create(:exam) }
-  let(:exam_registration) { create(:exam_registration, exams: [exam]) }
+  let(:organization) { Organization.current }
+  let(:exam_registration) { create(:exam_registration, exams: [exam], organization: organization) }
 
   before { set_current_user! user }
 
@@ -17,6 +18,12 @@ describe ExamAuthorizationRequestsController, type: :controller, organization_wo
     end
 
     before { do_post }
+
+    describe 'called once in wrong organization' do
+      let(:organization) { create(:organization, name: 'other') }
+      it { expect(response.status).to eq 404 }
+      it { expect(exam_registration.authorization_requests.size).to be 0 }
+    end
 
     describe 'called once' do
       it { expect(response.status).to eq 302 }
