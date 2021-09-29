@@ -6,7 +6,7 @@ class ExamAuthorizationRequestsController < ApplicationController
 
   def create
     authorization_request = @registration.authorization_requests.find_or_create_by! user: current_user do |it|
-      it.assign_attributes authorization_request_params
+      it.assign_attributes authorization_request_params.merge(user: current_user, organization: @registration.organization)
     end
     current_user.read_notification! @registration
     flash.notice = I18n.t :exam_authorization_request_created
@@ -22,9 +22,7 @@ class ExamAuthorizationRequestsController < ApplicationController
   private
 
   def authorization_request_params
-    params
-        .require(:exam_authorization_request).permit(:exam_id, :exam_registration_id)
-        .merge(user: current_user, organization: Organization.current)
+    params.require(:exam_authorization_request).permit(:exam_id, :exam_registration_id)
   end
 
   def set_registration!
