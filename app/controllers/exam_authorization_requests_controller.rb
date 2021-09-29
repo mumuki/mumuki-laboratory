@@ -1,9 +1,10 @@
 class ExamAuthorizationRequestsController < ApplicationController
 
-  before_action :verify_registration_opened!, on: [:create, :update]
+  before_action :set_exam_registration!
+  before_action :verify_registration_opened!
 
   def create
-    authorization_request = ExamAuthorizationRequest.find_or_create_by! create_authorization_request_params do |it|
+    authorization_request = @exam_registration.authorization_requests.find_or_create_by! create_authorization_request_params do |it|
       it.assign_attributes authorization_request_params
     end
     current_user.read_notification! authorization_request.exam_registration
@@ -12,7 +13,7 @@ class ExamAuthorizationRequestsController < ApplicationController
   end
 
   def update
-    ExamAuthorizationRequest.update params[:id], authorization_request_params
+    @exam_registration.authorization_requests.update params[:id], authorization_request_params
     flash.notice = I18n.t :exam_authorization_request_saved
     redirect_to root_path
   end
@@ -20,7 +21,7 @@ class ExamAuthorizationRequestsController < ApplicationController
   private
 
   def create_authorization_request_params
-    authorization_request_params.slice :exam_registration_id, :user, :organization
+    authorization_request_params.slice :user, :organization
   end
 
   def authorization_request_params
@@ -29,8 +30,11 @@ class ExamAuthorizationRequestsController < ApplicationController
         .merge(user: current_user, organization: Organization.current)
   end
 
+  def set_exam_registration!
+    @exam_registration = ExamRegistration.find(authorization_request_params[:exam_registration_id])
+  end
+
   def verify_registration_opened!
-    exam_registration = ExamRegistration.find(authorization_request_params[:exam_registration_id])
-    raise Mumuki::Domain::GoneError if exam_registration.ended?
+    raise Mumuki::Domain::GoneError if @exam_registration.ended?
   end
 end
