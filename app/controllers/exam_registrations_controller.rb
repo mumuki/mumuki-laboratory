@@ -1,6 +1,6 @@
 class ExamRegistrationsController < ApplicationController
   def show
-    @registration = ExamRegistration.find(params[:id])
+    @registration = Organization.current.exam_registrations.find(params[:id])
     @authorization_request = @registration.authorization_request_for(current_user)
   end
 end
