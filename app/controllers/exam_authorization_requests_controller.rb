@@ -3,7 +3,6 @@ class ExamAuthorizationRequestsController < ApplicationController
   before_action :set_registration!
   before_action :set_exam!
   before_action :verify_registration_opened!
-  before_action :verify_registration_in_current_organization!
 
   def create
     authorization_request = @registration.request_authorization! current_user, @exam
@@ -25,15 +24,11 @@ class ExamAuthorizationRequestsController < ApplicationController
   end
 
   def set_registration!
-    @registration = ExamRegistration.find(authorization_request_params[:exam_registration_id])
+    @registration = Organization.current.exam_registrations.find(authorization_request_params[:exam_registration_id])
   end
 
   def set_exam!
     @exam = @registration.exams.find(authorization_request_params[:exam_id])
-  end
-
-  def verify_registration_in_current_organization!
-    raise Mumuki::Domain::NotFoundError unless @registration.organization == Organization.current
   end
 
   def verify_registration_opened!
