@@ -14,6 +14,7 @@ es:
   and: y
   appendix: Apéndice
   appendix_teaser: ¿Querés saber más? <a href="%{link}">Consultá el apéndice de este capítulo</a>
+  approved_by: Validado por %{validator} el %{date}
   approved_message: Validado por mentorías
   approved_messages:
     one: validado

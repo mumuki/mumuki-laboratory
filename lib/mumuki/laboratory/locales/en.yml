@@ -13,6 +13,7 @@ en:
   all: All
   appendix: Appendix
   appendix_teaser: Do you want to learn more? <a href="%{link}">Check this chapter's appendix</a>"
+  approved_by: Validated by %{validator} at %{date}
   approved_message: Validated by mentor
   approved_messages:
     other: validated
