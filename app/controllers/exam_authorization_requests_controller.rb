@@ -6,17 +6,14 @@ class ExamAuthorizationRequestsController < ApplicationController
   before_action :verify_registration_in_current_organization!
 
   def create
-    authorization_request = @registration.authorization_requests.find_or_create_by! user: current_user do |it|
-      it.assign_attributes organization: @registration.organization,
-                           exam: @exam
-    end
+    authorization_request = @registration.request_authorization! current_user, @exam
     current_user.read_notification! @registration
     flash.notice = I18n.t :exam_authorization_request_created
     redirect_to root_path
   end
 
   def update
-    @registration.authorization_requests.update params[:id], exam: @exam
+    @registration.update_authorization_request_by_id! params[:id], @exam
     flash.notice = I18n.t :exam_authorization_request_saved
     redirect_to root_path
   end
