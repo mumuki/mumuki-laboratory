@@ -25,7 +25,7 @@
         <%= f.hidden_field :exam_registration_id, value: @registration.id %>
         <div class="mb-4">
           <%= f.label :exam_id, t(:exam_registration_choose_exam) %>
-          <% @registration.exams.each do |exam| %>
+          <% @registration.available_exams.each do |exam| %>
             <div class="form-check">
               <%= f.radio_button(:exam_id, exam.id, id: exam.id, required: true, class: 'form-check-input mu-read-only-input',
                                  checked: @authorization_request.exam_id == exam.id) %>
