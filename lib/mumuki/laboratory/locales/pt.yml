@@ -39,7 +39,7 @@ pt:
   blocked_forum_explanation: Você está no meio de um exame agora?
   cancel: Cancelar
   certificate: Certificado
-  certificate_available: Seu certificado já está disponível
+  certificate_available: Seu certificado já está disponível.
   certificate_download: Baixe-o do anexo deste e-mail ou visualize-o em seu perfil Mumuki.
   certificates: Certificados
   certificates_will_be_here: Seus certificados nesta organização aparecerão aqui
@@ -203,23 +203,34 @@ pt:
   locked_content: 'Este conteúdo será desbloqueado quando você terminar os capítulos anteriores'
   mailer:
     title:
+      certificate: Parabéns!
+      custom: Você tem uma nova notificação!
+      custom_notification: Você tem uma nova notificação!
       exam_authorization_request_updated: Você tem alterações no registro do seu exame
       exam_authorization_request_rejected: Inscrição rejeitada
       exam_registration: Abertura de inscrições
-      custom: Você tem uma nova notificação!
+      welcome: Olá %{first_name}!<br>Sejam bem-vindos a Mumuki
     subtitle:
+      certificate: Seu certificado já está disponível.
       exam_authorization_request_approved: Seu pedido de inscrição para o exame foi aprovado.
       exam_authorization_request_rejected: Sua inscrição para o exame foi rejeitada porque os requisitos não foram atendidos.
       exam_registration: Agora você pode se inscrever para o exame!
     text:
+      certificate: Baixe-o do anexo deste e-mail ou visualize-o em seu perfil Mumuki.
       exam_authorization_request_approved: Você poderá fazer o exame em %{exam_start_date} ao entrar na plataforma. Êxitos!
       exam_authorization_request_rejected: Não te desanimes! Você fez um grande esforço e esperamos que continue aprendendo programação.
       exam_registration: Você tem tempo para se registrar até o exam_registration_deadline. Para que seu registro seja aceito, você deve atender aos requisitos.
     button:
+      certificate: Minhas certificado
+      custom: Minhas notificações
+      custom_notification: Minhas notificações
       exam_registration: Assinar o exame
       exam_authorization_request_approved: Vá para a plataforma
-      exam_authorization_request_rejected: Meus exames
-      custom: Minhas notificações
+      exam_authorization_request_rejected: ''
+    footer:
+      problems: Se você tiver problemas com a plataforma, escreva para %{link}.
+      unsubscribe: Você pode parar de receber esses e-mails %{link}.
+      unsubscribe_link: modificando suas preferências
   male: Masculino
   manage_notification_subscriptions: Gerenciar suas notificações
   manage_notifications: Gerenciar notificações

@@ -30,14 +30,14 @@
       <% end %>
 
     </div>
-    <div style="background-color: #F7F9FC;color: #6A7C94; padding: 32px;">
+    <div style="background-color: #F7F9FC;color: #6A7C94; padding: 32px">
 
-    <div style="font-size: 10px">
+      <div style="font-size: 10px">
         <p>
-          Si tenés problemas con la plataforma escribinos a <a href="mailto:<%= @organization.contact_email %>" target="_blank" style="color: #17687D;"><%= @organization.contact_email %></a>.
+          <%= t('mailer.footer.problems', link: link_to(@organization.contact_email, "mailto:#{@organization.contact_email}", target: '_blank', style: 'color: #17687D')).html_safe %>
         </p>
         <p>
-          Podés dejar de recibir estos mails <a href="<%= @organization.url_for '/user/notifications/manage' %>" target="_blank" style="color: #17687D;">modificando tus preferencias</a>.
+          <%= t('mailer.footer.unsubscribe', link: link_to(t('mailer.footer.unsubscribe_link'), @organization.url_for('/user/notifications/manage'), target: '_blank', style: 'color: #17687D')).html_safe %>
         </p>
       </div>
 
@@ -48,7 +48,7 @@
         <div style="height: 20px; width: 50%; text-align: right">
           <a href="https://www.twitter.com/MumukiOrg" style="color: unset; padding-left: 16px;"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/outline-color-twitter-48.png" height="24" width="24"></a>
           <a href="https://www.facebook.com/MumukiOrg" style="color: unset; padding-left: 16px;"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/outline-color-facebook-48.png" height="24" width="24"></a>
-          <a href="https://www.instagram.com/MumukiOrg" style="color: unset; padding-left: 16px;"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/outline-color-instagram-48.png" height="24" width="24""></a>
+          <a href="https://www.instagram.com/MumukiOrg" style="color: unset; padding-left: 16px;"><img src="https://cdn-images.mailchimp.com/icons/social-block-v2/outline-color-instagram-48.png" height="24" width="24"></a>
         </div>
       </div>
     </div>
