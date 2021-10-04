@@ -6,8 +6,9 @@ ruby '~> 2.3'
 gem 'puma'
 
 gem 'execjs'
-gem 'therubyracer', platforms: :ruby
+gem 'mini_racer', '~> 0.4'
 gem 'uglifier', '~> 2.7'
+gem 'sanitize', '~> 6.0'
 
 group :test do
   gem 'rspec-rails', '~> 3.6'
