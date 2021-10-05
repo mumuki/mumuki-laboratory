@@ -12,6 +12,12 @@
       <button class="fas fa-pencil-alt fa-2x btn mu-edit-avatar" type="button" data-bs-toggle="modal" data-bs-target="#mu-avatar-picker" tabindex="0"></button>
     </div>
     <div class="col-md-6 col-lg-8">
+      <% unless current_user.profile_completed? %>
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+          <%= fa_icon 'info-circle', class: 'fa-lg me-2 align-middle', text: t(:please_fill_profile_data) %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
       <%= render partial: 'profile_fields', locals: {form: f} %>
       <%= render partial: 'layouts/terms_acceptance_disclaimer', locals: {user: @user} %>
     </div>
