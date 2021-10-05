@@ -1,10 +1,6 @@
 <%= form_for :user, url: user_path, :html => { id: 'mu-user-form', class: 'mu-form' }, method: :put do |f| %>
   <div class="mu-user-header">
     <h1><%= t(:edit_profile) %></h1>
-    <div class="mu-profile-actions d-none d-md-block">
-      <%= cancel_edit_profile_button %>
-      <%= save_edit_profile_button f %>
-    </div>
   </div>
   <div class="row mu-tab-body">
     <div class="col-md-6 col-lg-4 mu-user-avatar-container">
@@ -22,7 +18,7 @@
       <%= render partial: 'layouts/terms_acceptance_disclaimer', locals: {user: @user} %>
     </div>
   </div>
-  <div class="mu-profile-actions mobile d-block d-md-none">
+  <div class="mu-profile-actions">
     <%= cancel_edit_profile_button %>
     <%= save_edit_profile_button f %>
   </div>
