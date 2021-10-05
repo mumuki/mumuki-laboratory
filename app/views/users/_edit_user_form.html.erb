@@ -3,11 +3,11 @@
     <h1><%= t(:edit_profile) %></h1>
   </div>
   <div class="row mu-tab-body">
-    <div class="col-md-6 col-lg-4 mu-user-avatar-container">
+    <div class="col-md-6 col-lg-4 mu-user-avatar-container mb-3">
       <%= profile_picture_for(@user, id: 'mu-user-avatar', class: 'mu-user-avatar') %>
       <button class="fas fa-pencil-alt fa-2x btn mu-edit-avatar" type="button" data-bs-toggle="modal" data-bs-target="#mu-avatar-picker" tabindex="0"></button>
     </div>
-    <div class="col-md-6 col-lg-8">
+    <div class="col-md-6 col-lg-8 mb-4">
       <% unless current_user.profile_completed? %>
         <div class="alert alert-info alert-dismissible fade show" role="alert">
           <%= fa_icon 'info-circle', class: 'fa-lg me-2 align-middle', text: t(:please_fill_profile_data) %>
