@@ -104,6 +104,8 @@ feature 'Profile Flow', organization_workspace: :test do
     end
 
     context 'with messages' do
+      before { create :user, uid: 'test-email@gmail.com' }
+
       scenario 'visit messages' do
         Organization.find_by_name('test').switch!
         problem.submit_solution! user, {content: 'something'}

@@ -32,7 +32,7 @@ describe DiscussionsMessagesController, type: :controller, organization_workspac
   end
 
   describe 'delete' do
-    let(:message) { create(:message, discussion: discussion, sender: student.uid) }
+    let(:message) { create(:message, discussion: discussion, sender: student) }
 
     describe 'for student' do
       before { set_current_user! student }
@@ -64,7 +64,7 @@ describe DiscussionsMessagesController, type: :controller, organization_workspac
       end
 
       describe 'someone else\'s message' do
-        let(:message) { create(:message, discussion: discussion, sender: moderator.uid) }
+        let(:message) { create(:message, discussion: discussion, sender: moderator) }
         before do
           delete :destroy, params: {id: message.id, discussion_id: discussion.id, motive: :self_deleted}
           message.reload
@@ -94,7 +94,7 @@ describe DiscussionsMessagesController, type: :controller, organization_workspac
   end
 
   describe 'approve' do
-    let(:message) { create(:message, discussion: discussion, sender: student.uid) }
+    let(:message) { create(:message, discussion: discussion, sender: student) }
 
     describe 'for student' do
       before { set_current_user! student }
@@ -114,7 +114,7 @@ describe DiscussionsMessagesController, type: :controller, organization_workspac
   end
 
   describe 'question' do
-    let(:message) { create(:message, discussion: discussion, sender: student.uid) }
+    let(:message) { create(:message, discussion: discussion, sender: student) }
 
     describe 'for student' do
       before { set_current_user! student }
@@ -133,7 +133,7 @@ describe DiscussionsMessagesController, type: :controller, organization_workspac
     end
 
     describe 'preview' do
-      let(:message) { create(:message, content: 'Message in **bold** and _italics_', discussion: discussion, sender: student.uid) }
+      let(:message) { create(:message, content: 'Message in **bold** and _italics_', discussion: discussion, sender: student) }
 
       describe 'for student' do
         before { set_current_user! student }
