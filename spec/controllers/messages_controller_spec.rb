@@ -11,10 +11,10 @@ describe MessagesController, organization_workspace: :test do
 
     it { expect(response.status).to eq 302 }
     it { expect(user.assignments.size).to eq 1 }
-    it { expect(user.messages.size).to eq 1 }
+    it { expect(user.direct_messages.size).to eq 1 }
 
     describe 'deleting exercises does delete all messages' do
-      before { @message_id = user.messages.first.id }
+      before { @message_id = user.direct_messages.first.id }
       before { exercise.destroy }
 
       it { expect { Message.find(@message_id) }.to raise_exception(ActiveRecord::RecordNotFound) }
@@ -27,6 +27,6 @@ describe MessagesController, organization_workspace: :test do
 
     it { expect(response.status).to eq 302 }
     it { expect(user.assignments.size).to eq 1 }
-    it { expect(user.messages.size).to eq 1 }
+    it { expect(user.direct_messages.size).to eq 1 }
   end
 end
