@@ -9,7 +9,6 @@ gem 'execjs'
 gem 'mini_racer', '~> 0.4'
 gem 'uglifier', '~> 2.7'
 gem 'sanitize', '~> 6.0'
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'feature-delete-user-account'
 
 group :test do
   gem 'rspec-rails', '~> 3.6'
@@ -36,3 +35,5 @@ group :development, :test do
   gem 'pry-stack_explorer'
   gem 'binding_of_caller'
 end
+
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'feature-delete-user'
