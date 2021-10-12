@@ -47,25 +47,19 @@ class UsersController < ApplicationController
     @exam_authorization_requests ||= ExamAuthorizationRequest.where(user: current_user, organization: Organization.current)
   end
 
-  def delete_request
-  end
-
   def send_delete_confirmation_email
     current_user.generate_delete_account_token!
-    UserMailer.delete_account(current_user).deliver_now
+    UserMailer.delete_account(current_user).post!
     redirect_to delete_request_user_path
   end
 
   def delete_confirmation
-    redirect_to delete_confirmation_invalid_user_path unless @user.delete_account_token_matches? params[:token]
-  end
+    return redirect_to delete_confirmation_invalid_user_path unless @user.delete_account_token_matches? params[:token]
 
-  def delete_confirmation_invalid
-  end
+    @user.destroy!
 
-  def disable
-    current_user.disable!
-    redirect_to root_path
+    flash.notice = I18n.t(:user_deleted_successfully)
+    redirect_to logout_path
   end
 
   def permissible_params

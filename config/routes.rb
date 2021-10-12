@@ -79,7 +79,6 @@ Rails.application.routes.draw do
       post :delete_request, to: 'users#send_delete_confirmation_email'
       get :delete_confirmation_invalid
       get :delete_confirmation
-      post :delete_confirmation, to: 'users#disable'
     end
 
     resources :faqs, only: [:index]
