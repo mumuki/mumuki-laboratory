@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   include Mumukit::Login::AuthenticationHelpers
 
   include Mumuki::Laboratory::Controllers::Authorization
-  include Mumuki::Laboratory::Controllers::Disabling
   include Mumuki::Laboratory::Controllers::Notifications
   include Mumuki::Laboratory::Controllers::DynamicErrors
   include Mumuki::Laboratory::Controllers::EmbeddedMode
@@ -18,7 +17,6 @@ class ApplicationController < ActionController::Base
   before_action :set_locale!
   before_action :set_time_zone!
 
-  before_action :ensure_user_enabled!, if: :current_user?
   before_action :redirect_to_proper_context!, if: :immersive_context_wrong?
 
   before_action :authorize_if_private!
