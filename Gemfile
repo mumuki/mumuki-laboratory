@@ -6,8 +6,9 @@ ruby '~> 2.3'
 gem 'puma'
 
 gem 'execjs'
-gem 'therubyracer', platforms: :ruby
+gem 'mini_racer', '~> 0.4'
 gem 'uglifier', '~> 2.7'
+gem 'sanitize', '~> 6.0'
 
 group :test do
   gem 'rspec-rails', '~> 3.6'
@@ -15,6 +16,9 @@ group :test do
   gem 'faker', '~> 2.2'
   gem 'rake', '~> 12.3'
   gem 'capybara', '~> 3.33.0'
+  gem 'teaspoon', '~> 1.1.5'
+  gem 'teaspoon-jasmine'
+  gem 'selenium-webdriver'
 end
 
 group :development do
@@ -24,9 +28,6 @@ end
 
 group :development, :test do
   gem 'coffee-script'
-  gem 'teaspoon', '~> 1.1.5'
-  gem 'teaspoon-jasmine'
-  gem 'selenium-webdriver'
   gem 'pry'
   gem 'pry-rails'
   gem 'pry-remote'
