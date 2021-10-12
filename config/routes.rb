@@ -77,6 +77,7 @@ Rails.application.routes.draw do
       get 'notifications/manage', action: :show_manage_notifications
       post 'notifications/manage', action: :manage_notifications
 
+      get :delete_account
       get :delete_request
       post :delete_request, to: 'users#send_delete_confirmation_email'
       get :delete_confirmation_invalid
