@@ -81,8 +81,9 @@ pt:
   delete_account_confirmation_request: Para confirmar esta ação, por favor escreva
   delete_account_confirmation_text: deletar minha conta
   delete_account_explain: Depois de excluir sua conta, você perderá o acesso a todo o conteúdo e ao seu progresso.
-  delete_account_invalid_token:
-  delete_account_modal_explain_html: <p>Você está prestes a excluir a conta <strong>%{name}</strong></p><p>Ao fazer isso, você perderá o acesso aos seguintes caminhos:</p>
+  delete_account_invalid_token: Desculpe, o link que trouxe você aqui expirou ou é inválido.
+  delete_account_modal_explain_html: Você está prestes a excluir a conta <strong>%{name}</strong>
+  delete_account_modal_lost_permissions: 'Ao fazer isso, você perderá o acesso aos seguintes caminhos:'
   delete_account_mumuki: Exclua sua conta Mumuki
   delete_account_try_again_html: Se você ainda deseja excluir sua conta, reinicie o processo em <a href="%{profile_url}">seu perfil</a>.
   deleted_by: Removido pelo %{deleter}
@@ -213,23 +214,27 @@ pt:
   locked_content: 'Este conteúdo será desbloqueado quando você terminar os capítulos anteriores'
   mailer:
     title:
+      custom: Você tem uma nova notificação!
+      delete_account: Confirme a exclusão da conta
       exam_authorization_request_updated: Você tem alterações no registro do seu exame
       exam_authorization_request_rejected: Inscrição rejeitada
       exam_registration: Abertura de inscrições
-      custom: Você tem uma nova notificação!
     subtitle:
+      delete_account: Lamentamos que você nos tenha deixado
       exam_authorization_request_approved: Seu pedido de inscrição para o exame foi aprovado.
       exam_authorization_request_rejected: Sua inscrição para o exame foi rejeitada porque os requisitos não foram atendidos.
       exam_registration: Agora você pode se inscrever para o exame!
     text:
+      delete_account: Mas não se preocupe! Se você decidir tentar novamente, sempre poderá criar uma nova conta.
       exam_authorization_request_approved: Você poderá fazer o exame em %{exam_start_date} ao entrar na plataforma. Êxitos!
       exam_authorization_request_rejected: Não te desanimes! Você fez um grande esforço e esperamos que continue aprendendo programação.
       exam_registration: Você tem tempo para se registrar até o exam_registration_deadline. Para que seu registro seja aceito, você deve atender aos requisitos.
     button:
+      custom: Minhas notificações
+      delete_account: Deletar conta
       exam_registration: Assinar o exame
       exam_authorization_request_approved: Vá para a plataforma
       exam_authorization_request_rejected: Meus exames
-      custom: Minhas notificações
   male: Masculino
   manage_notification_subscriptions: Gerenciar suas notificações
   manage_notifications: Gerenciar notificações
@@ -238,7 +243,6 @@ pt:
   message: Mensagem
   message_deleted: Esta mensagem foi excluída porque %{motive}, o que viola as %{forum_terms}.
   messages: Mensagens
-    mais tarde!
   messages_pluralized:
     one: Mensagem
     other: Mensagens
