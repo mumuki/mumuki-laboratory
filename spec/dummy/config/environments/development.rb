@@ -26,7 +26,8 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  config.reminder_sender_email = 'support@mumuki.org'
+  config.reminder_sender_email = 'no-reply@mumuki.org'
+  config.support_email = 'support@mumuki.org'
   config.action_mailer.perform_caching = false
   config.action_mailer.raise_delivery_errors = false
 
