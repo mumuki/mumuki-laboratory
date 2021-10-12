@@ -47,13 +47,6 @@ class UsersController < ApplicationController
     @exam_authorization_requests ||= ExamAuthorizationRequest.where(user: current_user, organization: Organization.current)
   end
 
-  def unsubscribe
-    user_id = User.unsubscription_verifier.verify(params[:id])
-    User.find(user_id).unsubscribe_from_reminders!
-
-    redirect_to root_path, notice: t(:unsubscribed_successfully)
-  end
-
   def delete_request
   end
 

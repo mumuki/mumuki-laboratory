@@ -63,9 +63,6 @@ Rails.application.routes.draw do
       get :terms
       post :terms, to: 'users#accept_profile_terms'
 
-      # Notification subscriptions
-      get :unsubscribe
-
       get :messages
       get :discussions
       get :activity

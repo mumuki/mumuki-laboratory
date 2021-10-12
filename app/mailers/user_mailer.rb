@@ -45,7 +45,6 @@ class UserMailer < ApplicationMailer
 
   def with_locale(user, organization = nil, &block)
     @user = user
-    @unsubscribe_code = User.unsubscription_verifier.generate(user.id)
     @organization = organization || user.last_organization
 
     I18n.with_locale(@organization.locale, &block)
