@@ -44,7 +44,8 @@ class ApplicationController < ActionController::Base
                 :theme_stylesheet_url,
                 :extension_javascript_url,
                 :current_immersive_path,
-                :current_access_mode
+                :current_access_mode,
+                :limited_query?
 
   add_flash_types :info
 
@@ -169,5 +170,9 @@ class ApplicationController < ActionController::Base
     if current_access_mode.restore_indicators?(Organization.current.book)
       current_user.restore_organization_progress!(Organization.current)
     end
+  end
+
+  def limited_query?
+    params[:limit].present?
   end
 end

@@ -17,7 +17,9 @@ module ApplicationHelper
   end
 
   def paginate(object, options = {})
-    super(object, {theme: 'bootstrap-5', pagination_class: 'flex-wrap justify-content-center'}.merge(options))
+    unless limited_query?
+      super(object, {theme: 'bootstrap-5', pagination_class: 'flex-wrap justify-content-center'}.merge(options))
+    end
   end
 
   def last_box_class(trailing_boxes)
