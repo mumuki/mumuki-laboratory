@@ -27,6 +27,7 @@ end
 
 Organization.find_or_create_by!(name: 'central') do |org|
   org.book = Book.find_by!(slug: 'mumuki/mumuki-libro-programacion')
+  org.login_methods = Mumukit::Login::Settings.login_methods
   org.public = true
   org.time_zone = 'Buenos Aires'
 end
