@@ -45,7 +45,7 @@ module DiscussionsHelper
   end
 
   def default_discussions_params
-    {status: :solved, sort: :upvotes_count_desc}
+    {status: :solved, sort: :created_at_desc}
   end
 
   def user_avatar(user, image_class='')
