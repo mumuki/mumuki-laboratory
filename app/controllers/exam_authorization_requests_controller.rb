@@ -7,17 +7,21 @@ class ExamAuthorizationRequestsController < ApplicationController
   def create
     authorization_request = @registration.request_authorization! current_user, @exam
     current_user.read_notification! @registration
-    flash.notice = I18n.t :exam_authorization_request_created
-    redirect_to root_path
+    flash.notice = friendly_flash_notice(:exam_authorization_request_created)
+    redirect_to exam_authorizations_user_path
   end
 
   def update
     @registration.update_authorization_request_by_id! params[:id], @exam
-    flash.notice = I18n.t :exam_authorization_request_saved
-    redirect_to root_path
+    flash.notice = friendly_flash_notice(:exam_authorization_request_saved)
+    redirect_to exam_authorizations_user_path
   end
 
   private
+
+  def friendly_flash_notice(key)
+    I18n.t key, friendly_date: helpers.local_time(@exam.start_time)
+  end
 
   def authorization_request_params
     params.require(:exam_authorization_request).permit(:exam_id, :exam_registration_id)

@@ -124,9 +124,9 @@ pt:
   errored: Opa! Sua solução não pode ser executada
   exam_authorization_pending_explanation_html: Você tem tempo até <strong>%{date}</strong> (horário de %{location}) para se inscrever. Após essa data, sua inscrição será avaliada e você receberá uma confirmação. <br> Não se esqueça de verificar as notificações!
   exam_authorization_request_approved_html: Sua solicitação foi aprovada, não se esqueça de conectar em <strong>%{date}</strong> (horário de %{location}). Boa sorte!
-  exam_authorization_request_created: Seu registro de exame foi salvo com sucesso!
+  exam_authorization_request_created: Você se inscreveu para o exame do dia %{friendly_date}
   exam_authorization_request_rejected: Sua solicitação foi rejeitada porque você não atendeu aos requisitos.
-  exam_authorization_request_saved: Seu registro de exame foi modificado com sucesso!
+  exam_authorization_request_saved: Você alterou seu registro de exame para o dia %{friendly_date}
   exam_authorization_request_updated: Há notícias sobre seu registro para %{description}
   exam_registration_choose_exam: Selecione o dia e a hora em que gostaria de fazer o exame
   exam_registration_explanation_html: Você tem tempo até <strong>%{date}</strong> (horário de %{location}) para se inscrever. Após essa data, sua inscrição será avaliada e você receberá uma confirmação. <br> Não se esqueça de verificar as notificações!
