@@ -1,9 +1,6 @@
 mumuki.startTimer = (() => {
-  function startTimer(endDate) {
-    var endTime = new Date(endDate).getTime();
-    var currentTime = Date.now();
-    var diffTime = endTime - currentTime;
-    var duration = moment.duration(diffTime, 'milliseconds');
+  function startTimer(seconds) {
+    var duration = moment.duration(seconds, 'seconds');
     var intervalDuration = 1000;
 
     var interval = mumuki.setInterval(function () {
