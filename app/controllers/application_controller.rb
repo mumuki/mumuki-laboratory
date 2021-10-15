@@ -68,7 +68,7 @@ class ApplicationController < ActionController::Base
   # ensures contents are accessible to current user
   def validate_accessible!
     return if current_user&.teacher_here?
-    accessible_subject.validate_accessible_for! current_user
+    accessible_subject&.validate_accessible_for! current_user
   end
 
   def validate_active_organization!
