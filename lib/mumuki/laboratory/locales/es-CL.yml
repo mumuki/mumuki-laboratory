@@ -124,9 +124,9 @@ es-CL:
   exam_authorization_pending_change_date_html: Tienes tiempo hasta el <strong>%{end_time}</strong> (hora de %{location}) para cambiar el turno haciendo click <strong><a href="%{edit_path}">aquí</a></strong>. Pasada esa fecha, tu solicitud será evaluada y recibirás una confirmación. <br> ¡No olvides revisar las notificaciones!
   exam_authorization_pending_done_html: Ya te inscribiste a este examen. Luego del <strong>%{end_time}</strong> (hora de %{location}) se evaluará tu solicitud y recibirás una confirmación. <br> ¡No olvides de revisar las notificaciones!
   exam_authorization_request_approved_html: Tu solicitud fue aprobada, no olvides conectarte el <strong>%{date}</strong> (hora de %{location}). ¡Buena suerte!
-  exam_authorization_request_created: ¡Tu inscripción al examen se registró exitosamente!
+  exam_authorization_request_created: Te has inscripto al examen del día %{friendly_date}
   exam_authorization_request_rejected: Tu solicitud fue rechazada porque no cumpliste con los requisitos para rendir el examen.
-  exam_authorization_request_saved: ¡Tu inscripción al examen se modificó exitosamente!
+  exam_authorization_request_saved: Has cambiado tu inscripción al examen al día %{friendly_date}
   exam_authorization_request_updated: Hay novedades sobre tu inscripción a %{description}
   exam_registration_choose_exam: Seleccioná día y horario en el que te gustaría rendir el examen
   exam_registration_explanation_html: Tienes tiempo hasta el <strong>%{date}</strong> (hora de %{location}) para inscribirte. Pasada esa fecha, tu solicitud será evaluada y recibirás una confirmación. <br> ¡No olvides revisar las notificaciones!
