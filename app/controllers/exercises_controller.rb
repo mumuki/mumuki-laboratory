@@ -6,7 +6,6 @@ class ExercisesController < ApplicationController
 
   before_action :set_guide!, only: :show
   before_action :set_assignment!, only: :show, if: :current_user?
-  before_action :validate_accessible!, only: :show
   before_action :start!, only: :show
 
   def show
