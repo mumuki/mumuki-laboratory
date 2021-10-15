@@ -4,7 +4,7 @@
     <i class="timer timer-text text-center"><%= t :time_left %></i>
     <i id="timer" class="timer timer-text text-center"></i>
     <script>
-      mumuki.startTimer('<%= end_time&.iso8601 %>');
+      mumuki.startTimer(<%= duration %>);
     </script>
   </div>
 </div>

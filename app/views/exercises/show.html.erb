@@ -9,7 +9,7 @@
 <% @stats = @exercise.stats_for(current_user) %>
 
 <% if @exercise.navigable_parent.timed? && !current_user.teacher? %>
-  <%= render partial: 'layouts/timer', locals: {end_time: @exercise.navigable_parent.real_end_time(current_user)} %>
+  <%= render partial: 'layouts/timer', locals: { duration: @exercise.navigable_parent.time_left(current_user) } %>
 <% end %>
 
 <% unless @exercise.input_kids? %>
