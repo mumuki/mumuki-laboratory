@@ -470,20 +470,22 @@ feature 'Read Only Flow' do
 
       context 'and user is ex student of organization' do
         before { user.update! permissions: { ex_student: slug } }
-        scenario 'avatar dorpdown' do
+        scenario 'avatar dropdown' do
           visit "/"
           find('#profileDropdown').click
-          expect(page).not_to have_text('My account')
-          expect(page).not_to have_text('FAQs')
-          expect(page).not_to have_text('Classroom')
-          expect(page).not_to have_text('Solve other\'s doubts')
+          expect(page).to have_text('My account')
+          expect(page).to have_text('FAQs')
           expect(page).not_to have_text('My doubts')
+          expect(page).not_to have_text('Classroom')
           expect(page).not_to have_text('Bibliotheca')
+          expect(page).not_to have_text('Solve other\'s doubts')
           expect(page).to have_text('Sign Out')
         end
         scenario 'show book' do
           visit "/"
-          expect(page).to have_text('You are not allowed to see this content')
+          expect(page).not_to have_text('Chapter 1')
+          expect(page).not_to have_text('Chapter 2')
+          expect(page).not_to have_text('Practicing!')
         end
         scenario 'show chapter' do
           visit "/chapters/#{chapter1.id}"
@@ -503,27 +505,23 @@ feature 'Read Only Flow' do
         end
         scenario 'show profile' do
           visit "/user"
-          expect(page).to have_text('You are not allowed to see this content')
+          expect(page).to have_text('My profile')
         end
         scenario 'show faqs' do
           visit "/faqs"
-          expect(page).to have_text('You are not allowed to see this content')
-        end
-        scenario 'show discussion' do
-          visit "/discussions"
-          expect(page).to have_text('You are not allowed to see this content')
+          expect(page).to have_text('FAQs')
         end
         scenario 'show discussion in existent exercise' do
           visit "/exercises/#{exercise111.id}/discussions/#{discussion111.id}"
-          expect(page).to have_text('You are not allowed to see this content')
+          expect(page).to have_text('Page was not found')
         end
         scenario 'show discussion in existent exercise' do
           visit "/exercises/#{exercise112.id}/discussions/#{discussion112.id}"
-          expect(page).to have_text('You are not allowed to see this content')
+          expect(page).to have_text('Page was not found')
         end
         scenario 'new discussion' do
           visit "/exercises/#{exercise112.id}/discussions/new"
-          expect(page).to have_text('You are not allowed to see this content')
+          expect(page).to have_text('Page was not found')
         end
       end
 
@@ -740,7 +738,7 @@ feature 'Read Only Flow' do
 
       context 'and user is ex student of organization' do
         before { user.update! permissions: { ex_student: slug } }
-        scenario 'avatar dorpdown' do
+        scenario 'avatar dorpdownz' do
           visit "/"
           find('#profileDropdown').click
           expect(page).to have_text('My account')
