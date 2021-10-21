@@ -3,7 +3,7 @@
     <div class="discussion-message-bubble-header">
       <div class="discussion-message-bubble-title">
         <%= linked_discussion_user_name user %>
-        <% if user.moderator_here? %>
+        <% if message.from_moderator? %>
           <span class="moderator-badge"><%= t(:moderation) %></span>
         <% end %>
         <span class="message-date">
