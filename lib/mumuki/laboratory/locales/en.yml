@@ -280,7 +280,7 @@ en:
   only_landscape_support: Please, rotate your tablet or cellphone to continue practicing
   opened: Open
   opened_count: '%{count} opened'
-  organization_read_only_legend: 'You are in reading mode. You will only be able to access the exercises that you did previously and you will not be able to send new solutions'
+  organization_read_only_legend: 'You are in reading mode: as the course has already finished, you will be able to see the exercises you solved but you will not be able to send new solutions.'
   other: Other
   out_of_attempts: You've run out of attempts. You should proceed to the next exercise!
   output: Output

@@ -300,7 +300,7 @@ es:
     one: '1 abierta'
     other: '%{count} abiertas'
   organizations: Organizaciones
-  organization_read_only_legend: 'Estás en modo lectura. Solo podrás acceder a los ejercicios que realizaste previamente y no podrás enviar nuevas soluciones'
+  organization_read_only_legend: 'Estás en modo lectura: como el curso ya finalizó podrás ver los ejercicios que resolviste pero no podrás enviar nuevas soluciones.'
   other: Otro
   out_of_attempts: Te quedaste sin intentos. ¡Seguí al proximo ejercicio!
   output: Salida
