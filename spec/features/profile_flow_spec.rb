@@ -14,7 +14,7 @@ feature 'Profile Flow', organization_workspace: :test do
      'submission_id' => problem.assignments.last.submission_id,
      'organization' => 'test-organization',
      'message' => {
-       'sender' => 'test-email@gmail.com',
+       'sender' => create(:user).uid,
        'content' => 'a',
        'created_at' => '1/1/1'}} }
   let(:organization) { create(:organization, name: 'test-organization') }
