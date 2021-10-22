@@ -7,6 +7,7 @@
 
 .mu-profile-actions {
   margin-left: auto;
+  text-align: center;
 
   .btn {
     width: 150px;
@@ -16,15 +17,6 @@
     &[disabled], &[disabled]:hover {
       background-color: lighten($mu-color-complementary, 15%);
       border-color: lighten($mu-color-complementary, 15%);
-    }
-  }
-
-  &.mobile {
-    text-align: center;
-    margin: 20px 5px -20px -10px;
-
-    .btn {
-      width: calc(50% - 20px);
     }
   }
 }

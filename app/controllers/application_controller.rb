@@ -129,7 +129,6 @@ class ApplicationController < ActionController::Base
   def validate_user_profile!
     unless current_user.profile_completed?
       save_location_before! :profile_completion
-      flash[:info] = I18n.t :please_fill_profile_data
       redirect_to edit_user_path
     end
   end
