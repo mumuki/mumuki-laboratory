@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 5.1.6"
 
-  s.add_dependency 'mumuki-domain', '~> 9.19.0'
+  s.add_dependency 'mumuki-domain', '~> 9.20.0'
   s.add_dependency 'mumukit-bridge', '~> 4.1'
   s.add_dependency 'mumukit-login', '~> 7.7'
   s.add_dependency 'mumukit-nuntius', '~> 6.1'
