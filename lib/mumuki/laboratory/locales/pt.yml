@@ -289,7 +289,7 @@ pt:
   opened: Aberto
   opened_count: '%{count} aberto'
   organizations: Organizações
-  organization_read_only_legend: 'Você está no modo de leitura. Você só poderá acessar os exercícios que fez anteriormente e não poderá enviar novas soluções'
+  organization_read_only_legend: 'Você está no modo de leitura: como o curso já terminou, você poderá ver os exercícios que resolveu mas não poderá enviar novas soluções.'
   other: Outro
   out_of_attempts: Você ficou sem tentativas. Você deve prosseguir para o próximo exercício!
   output: Sair
