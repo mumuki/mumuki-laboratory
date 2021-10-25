@@ -1,0 +1,58 @@
+.notifications-dropdown {
+  min-width: 18rem;
+
+  .mu-see-all-notifications {
+    text-align: center;
+    width: 100%;
+
+    a {
+      text-decoration: none;
+      width: 100%;
+    }
+  }
+}
+
+.mu-notifications-content {
+  position: relative;
+
+  .mu-notifications-title {
+    font-weight: bold;
+  }
+
+  .mu-notifications-body {
+    min-height: 2rem;
+    height: 2rem;
+    overflow: hidden;
+  }
+
+  .mu-notifications-arrow {
+    position: absolute;
+    border: none;
+    background: none;
+    top: 5px;
+    right: 0;
+    i {
+      @extend .fa-angle-down;
+    }
+  }
+
+  &.opened {
+    .mu-notifications-body {
+      height: auto;
+      overflow: hidden;
+    }
+    .mu-notifications-arrow {
+      i {
+        @extend .fa-angle-up;
+      }
+    }
+  }
+}
+
+.mu-readable-item-icon {
+  width: 3.5em;
+  text-align: center;
+  a {
+    color: unset;
+  }
+}

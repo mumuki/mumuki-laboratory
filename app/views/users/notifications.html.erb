@@ -5,50 +5,31 @@
 <div class="row">
   <%= render partial: 'layouts/user_menu' %>
 
-  <div class="col-md-9 mu-tab-body">
-    <div class="mu-user-header d-flex justify-content-between">
-      <span>
-        <h1><%= t(:notifications) %></h1>
-      </span>
-      <span>
-        <a href="notifications/manage" class="btn btn-complementary"><%= t(:manage_notifications) %></a>
-      </span>
-    </div>
-    <% if @notifications.empty? %>
-      <div class="mu-tab-body">
-        <%= t :notifications_will_be_here %>
-      </div>
-    <% else %>
-
-
-      <div class="table-responsive mb-3">
-        <table class="table">
-          <tr class="fw-bold">
-            <td></td>
-            <td><%= t(:content) %></td>
-            <td><%= t(:created_at) %></td>
-          </tr>
-
-          <% @notifications.each do |notification| %>
-            <tr class="<%= background_for_notification notification %>" >
-              <td class="col-md-1">
-                <%= link_to icon_for_read(notification.read?), "notifications/#{notification.id}/toggle_read", tooltip_options(:toggle_read).merge(method: :post, role: :button) %>
-              </td>
-              <td class="col-md-8 text-break">
-                <%= render partial: "notifications/#{notification.subject}", locals: { notification: notification } %>
-              </td>
-              <td class="col-md-3">
-                <%= friendly_time(notification.created_at, :time_since) %>
-              </td>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-
-      <div class="notification-pagination">
-        <%= paginate @notifications, nav_class: 'pagination' %>
-      </div>
-    <% end %>
-  </div>
+  <%= render partial: 'layouts/user_readable_table', locals: {
+    title: t(:notifications),
+    empty_legend: t(:notifications_will_be_here),
+    readable_items: @notifications,
+    group_by: proc { |it| it.read? },
+    table: {
+      '' => { class: 'mu-readable-item-icon', proc: method(:notification_toggle_read) },
+      t(:notification) => { class: 'text-break mu-notifications-content', proc: method(:notification_content) },
+      t(:created_at) => { class: 'col-md-3', proc: proc { |it| friendly_time(it.created_at, :time_since) } }
+    }
+  } %>
 </div>
 
+<script type="text/javascript" charset="utf-8">
+  mumuki.resize(() => {
+    $('.mu-notifications-content').each((_i, el) => {
+      const $el = $(el);
+      const container = $el.find('.mu-notifications-body')[0];
+      const content = $el.find('.mu-notifications-body-content')[0];
+
+      if (container.offsetHeight > content.offsetHeight) {
+        $el.find('.mu-notifications-arrow').hide();
+      } else {
+        $el.find('.mu-notifications-arrow').show();
+      }
+    });
+  });
+</script>

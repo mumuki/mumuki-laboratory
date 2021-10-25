@@ -1,0 +1,5 @@
+<%= render partial: 'user_mailer/mail_template', locals: {
+  title: t('mailer.title.welcome', first_name: @user.first_name).html_safe,
+  text: @organization.welcome_email_template.html_safe,
+  url: @organization.url_for('/user'),
+} %>

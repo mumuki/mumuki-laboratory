@@ -1,10 +1,5 @@
-module Mumukit::Nuntius::EventConsumer
-  def self.handled_events
-    @@handlers.keys
-  end
-end
-
 logger = Mumukit::Nuntius::Logger
+
 namespace :laboratory do
   namespace :events do
     task listen: :environment do

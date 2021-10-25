@@ -199,23 +199,34 @@ en:
   locked_content: 'This content will be unlocked when you finish previous chapters'
   mailer:
     title:
+      certificate: Congratulations!
+      custom: You have a new notification!
+      custom_notification: You have a new notification!
       exam_authorization_request_updated: There are updates in your exam registration
       exam_authorization_request_rejected: Exam registration rejected
       exam_registration: Exam registrations open
-      custom: You have a new notification!
+      welcome: Hello %{first_name}!<br>Welcome to Mumuki
     subtitle:
+      certificate: Your certificate is available!
       exam_authorization_request_approved: Your registration request to the exam has been approved.
       exam_authorization_request_rejected: Your registration request to the exam has been rejected because the requirements weren't met.
       exam_registration: ¡You can register for the exam!
     text:
+      certificate: You can find it attached to this email or in your Mumuki profile
       exam_authorization_request_approved: You can sit for the exam on %{exam_start_date} by going into the platform. ¡Good luck!
       exam_authorization_request_rejected: ¡Don't be upset! You did a great job and we hope you'll keep learning programming.
       exam_registration: You have until %{exam_registration_deadline} to sign up. In order to be approved, you must meet the requirements.
     button:
+      certificate: View certificate
+      custom: View my notifications
+      custom_notification: View my notifications
       exam_registration: Sign up for the exam
       exam_authorization_request_approved: Go to the platform
-      exam_authorization_request_rejected: My exams
-      custom: My notifications
+      exam_authorization_request_rejected: ''
+    footer:
+      problems: If you have technical issues with the platform, get in contact with us at %{link}.
+      unsubscribe: You can stop receiving these emails by %{link}.
+      unsubscribe_link: modifying your preferences
   male: Male
   manage_notification_subscriptions: Manage your notification subscriptions
   manage_notifications: Manage notifications
@@ -319,6 +330,7 @@ en:
   retry_exercise: Retry
   running: running
   save: Save
+  see_all_notifications: "See all notifications"
   see_context: Watch exercise introduction animation
   select_file: Select file
   sending_solution: Sending solution

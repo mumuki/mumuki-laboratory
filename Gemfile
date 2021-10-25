@@ -35,3 +35,7 @@ group :development, :test do
   gem 'pry-stack_explorer'
   gem 'binding_of_caller'
 end
+#
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'feature-async-massive-notifications'
+#
+gem 'mumukit-nuntius', github: 'mumuki/mumukit-nuntius', branch: 'feature-async-massive-notifications'

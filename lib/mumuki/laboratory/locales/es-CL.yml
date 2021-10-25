@@ -203,23 +203,34 @@ es-CL:
   locked_content: 'Éste contenido se desbloqueará cuando termines los capítulos anteriores'
   mailer:
     title:
-      exam_authorization_request_updated: Tenés cambios en tu inscripción al examen
+      certificate: ¡Felicitaciones!
+      custom: ¡Tenés una nueva notificación!
+      custom_notification: ¡Tenés una nueva notificación!
+      exam_authorization_request_updated: Tenemos novedades sobre tu inscripción al examen
       exam_authorization_request_rejected: Inscripción rechazada
       exam_registration: Apertura de inscripciones
-      custom: ¡Tenés una nueva notificación!
+      welcome: ¡Hola, %{first_name}!<br>Te damos la bienvenida a Mumuki
     subtitle:
+      certificate: Ya está disponible tu certificado.
       exam_authorization_request_approved: Tu solicitud de inscripción al examen fue aprobada.
       exam_authorization_request_rejected: Tu solicitud de inscripción al examen fue rechazada ya que no se cumplieron los requisitos.
       exam_registration: ¡Ya podés inscribirte al examen!
     text:
+      certificate: Descargalo desde el adjunto de este mail o visualizalo en tu perfil de Mumuki.
       exam_authorization_request_approved: Podrás rendir el examen el día %{exam_start_date} ingresando a la plataforma. ¡Éxitos!
       exam_authorization_request_rejected: ¡No te desanimes! Hiciste un gran esfuerzo y esperamos que continúes aprendiendo programación.
       exam_registration: Tenés tiempo de inscribirte hasta el %{exam_registration_deadline}. Para que tu inscripción sea aceptada debés cumplir con los requisitos.
     button:
+      certificate: Ver certificado
+      custom: Ver mis notificaciones
+      custom_notification: Ver mis notificaciones
       exam_registration: Inscribirme al Examen
       exam_authorization_request_approved: Ir a la plataforma
-      exam_authorization_request_rejected: Mis exámenes
-      custom: Mis notificaciones
+      exam_authorization_request_rejected: ''
+    footer:
+      problems: Si tienes problemas con la plataforma escribinos a %{link}.
+      unsubscribe: Podés dejar de recibir estos mails %{link}.
+      unsubscribe_link: modificando tus preferencias
   male: Hombre
   manage_notification_subscriptions: Administrá tus notificaciones
   manage_notifications: Administrar notificaciones
@@ -327,6 +338,7 @@ es-CL:
   retry_exercise: Reintentar
   running: procesando
   save: Guardar
+  see_all_notifications: "Ver todas las notificaciones"
   see_context: Mira la animación del principio
   select_file: Seleccionar archivo
   send: Enviar

@@ -82,21 +82,21 @@ RSpec.describe UserMailer, type: :mailer do
 
       context "last submission 1 week ago" do
         it { expect(user.should_remind?).to be true }
-        it { expect(reminder.body.encoded).to include("Keep learning") }
+        it { expect(reminder.body.encoded).to include 'KEEP LEARNING' }
       end
 
       context "last submission 2 weeks ago" do
         let(:days_since_last_submission) { 16 }
 
         it { expect(user.should_remind?).to be true }
-        it { expect(reminder.body.encoded).to include("Keep learning") }
+        it { expect(reminder.body.encoded).to include 'KEEP LEARNING' }
       end
 
       context "last submission 3 weeks ago" do
         let(:days_since_last_submission) { 26 }
 
         it { expect(user.should_remind?).to be true }
-        it { expect(reminder.body.encoded).to include("Keep learning") }
+        it { expect(reminder.body.encoded).to include 'KEEP LEARNING' }
       end
 
       context "last submission 4 weeks ago" do
@@ -186,7 +186,7 @@ RSpec.describe UserMailer, type: :mailer do
 
     let(:user) { create :user, first_name: 'some name' }
 
-    it { expect(email.body.encoded).to eq 'hello some name!' }
+    it { expect(email.body.encoded).to include 'Hello some name!' }
 
     context 'when organization does not have a custom sender address' do
       it { expect(email.from).to eq ['support@mumuki.org'] }
