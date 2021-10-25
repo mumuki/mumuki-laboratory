@@ -329,12 +329,11 @@ $moderator-badge-color: #dd9900;
     }
     .discussion-message-bubble-title {
       padding: 5px 15px;
-      display: block;
+      display: flex;
       .message-date {
         font-size: 15px;
       }
       .actions {
-        float: right;
         > a, .dropdown {
           margin-left: 20px;
           cursor: pointer;
