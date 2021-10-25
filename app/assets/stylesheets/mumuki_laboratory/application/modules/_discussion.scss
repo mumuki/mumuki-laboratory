@@ -318,7 +318,6 @@ $moderator-badge-color: #dd9900;
   margin-bottom: 20px;
   .discussion-message-bubble-header {
     background-color: $mu-color-highlight-background;
-    height: 40px;
     &:before {
       position: absolute;
       top: calc(20px - #{$discussion-message-arrow-size + 2px} / 2);
