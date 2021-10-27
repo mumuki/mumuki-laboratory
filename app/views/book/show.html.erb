@@ -17,30 +17,33 @@
     <% end %>
   <% end %>
 
-  <% if show_content?(@book) %>
-    <h2><%= t(:chapters) %></h2>
-  <% end %>
+  <% unless @book.chapters.empty? %>
+    <% if show_content?(@book) %>
+      <h2><%= t(:chapters) %></h2>
+    <% end %>
 
-  <% @book.chapter_visibilities_in(current_workspace).each do |it, enabled| %>
+    <% @book.chapter_visibilities_in(current_workspace).each do |it, enabled| %>
 
-    <% next unless show_content?(it.topic) %>
+      <% next unless show_content?(it.topic) %>
 
-    <div class="chapter-container">
-      <div class="chapter <%= enabled ? '' : 'mu-locked' %>">
-        <h3><%= it.number %>. <%= link_to_path_element it, mode: :plain %></h3>
-        <div class="text-box" <%= 'aria-label=""' unless enabled %>>
-          <%= it.description_teaser_html %>
+      <div class="chapter-container">
+        <div class="chapter <%= enabled ? '' : 'mu-locked' %>">
+          <h3><%= it.number %>. <%= link_to_path_element it, mode: :plain %></h3>
+          <div class="text-box" <%= 'aria-label=""' unless enabled %>>
+            <%= it.description_teaser_html %>
+          </div>
         </div>
+
+        <% unless enabled %>
+          <div class="text-center mu-lock">
+            <i class="fas fa-lock fa-5x"></i>
+            <p><%= t :locked_content %></p>
+          </div>
+        <% end %>
       </div>
-
-      <% unless enabled %>
-        <div class="text-center mu-lock">
-          <i class="fas fa-lock fa-5x"></i>
-          <p><%= t :locked_content %></p>
-        </div>
-      <% end %>
-    </div>
+    <% end %>
   <% end %>
+
   <% if current_user? && @exams.present? %>
     <h2><%= t(:exams) %></h2>
     <% @exams.each_with_index do |it, index| %>

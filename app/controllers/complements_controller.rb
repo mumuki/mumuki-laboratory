@@ -16,6 +16,6 @@ class ComplementsController < GuideContainerController
   end
 
   def contentless_subject?
-    subject_container.structural_children.empty?
+    subject_container.exercises.empty?
   end
 end
