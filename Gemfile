@@ -10,8 +10,6 @@ gem 'mini_racer', '~> 0.4'
 gem 'uglifier', '~> 2.7'
 gem 'sanitize', '~> 6.0'
 
-gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'master'
-
 group :test do
   gem 'rspec-rails', '~> 3.6'
   gem 'factory_bot_rails', '~> 5.0'
