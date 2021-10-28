@@ -41,27 +41,27 @@ module Mumuki::Laboratory::Controllers::DynamicErrors
   def forbidden
     message = "The operation on organization #{Organization.current} was forbidden to user #{current_user.uid} with permissions #{current_user.permissions}"
     Rails.logger.info message
-    render_error 'forbidden', 403, locals: { explanation: :forbidden_explanation }, error_message: message
+    render_error 'forbidden', 403, locals: { error_code: :forbidden, explanation: :forbidden_explanation }, error_message: message
   end
 
   def disabled
-    render_error 'forbidden', 403, locals: { explanation: :disabled_explanation }
+    render_error 'forbidden', 403, locals: { error_code: :disabled, explanation: :disabled_explanation }
   end
 
   def blocked_forum
-    render_error 'forbidden', 403, locals: { explanation: :blocked_forum_explanation }
+    render_error 'forbidden', 403, locals: { error_code: :blocked_forum, explanation: :blocked_forum_explanation }
   end
 
   def gone
-    render_error 'gone', 410, locals: { explanation: :gone_explanation }
+    render_error 'gone', 410, locals: { error_code: :gone, explanation: :gone_explanation }
   end
 
   def unprepared_organization
-    render_error 'forbidden', 403, locals: { explanation: :unprepared_organization_explanation }
+    render_error 'forbidden', 403, locals: { error_code: :unprepared_organization, explanation: :unprepared_organization_explanation }
   end
 
   def disabled_organization
-    render_error 'gone', 410, locals: { explanation: :disabled_organization_explanation }
+    render_error 'gone', 410, locals: { error_code: :disabled_organization, explanation: :disabled_organization_explanation }
   end
 
   def render_error(template, status, options={})

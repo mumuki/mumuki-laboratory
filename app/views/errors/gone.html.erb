@@ -8,8 +8,7 @@
         <%= t(:error_description, error: link_to_status_codes(410)).html_safe %>
       </p>
       <p class="mu-error-explanation-line">
-        <%= Organization.current.explain_error(410, explanation).html_safe %>
+        <%= Organization.current.explain_error(error_code, explanation).html_safe %>
       </p>
     </div>
 <% end %>
-

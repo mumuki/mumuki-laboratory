@@ -6,7 +6,14 @@ feature 'not found public on app' do
   let!(:some_orga) { create(:public_organization, name: 'someorga', profile: profile) }
 
   let(:profile) { Mumuki::Domain::Organization::Profile.parse json  }
-  let(:json) { { contact_email: 'some@email.com', locale: 'en', time_zone: 'Brasilia', errors_explanations: { 404 => 'Some explanation'} } }
+  let(:json) do
+     {
+      contact_email: 'some@email.com',
+      locale: 'en',
+      time_zone: 'Brasilia',
+      errors_explanations: { "not_found" => 'Some explanation'}
+    }
+  end
 
   scenario 'when route does not exist in explicit central' do
     set_subdomain_host! 'test'
