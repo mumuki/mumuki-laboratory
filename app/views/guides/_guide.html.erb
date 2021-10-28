@@ -8,12 +8,16 @@
 
 <%= yield if block_given? %>
 
-<h3>
-  <%= t :exercises %>
-  <%= restart_guide_link(@guide) if current_user && @stats.started? && @guide.resettable? %>
-</h3>
+<% unless @guide.exercises.empty? %>
 
-<%= render partial: 'layouts/progress_listing', locals: { guide: @guide } %>
+  <h3>
+    <%= t :exercises %>
+    <%= restart_guide_link(@guide) if current_user && @stats.started? && @guide.resettable? %>
+  </h3>
+
+  <%= render partial: 'layouts/progress_listing', locals: { guide: @guide } %>
+
+<% end %>
 
 <% if @stats&.done? %>
   <div class="text-box">

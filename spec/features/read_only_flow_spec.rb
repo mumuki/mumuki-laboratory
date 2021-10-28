@@ -14,14 +14,18 @@ feature 'Read Only Flow' do
   let(:exercise122) { create :exercise, name: 'Exercise 122' }
   let(:exercise211) { create :exercise, name: 'Exercise 211' }
   let(:exercise212) { create :exercise, name: 'Exercise 212' }
+  let(:exercise31) { create :exercise, name: 'Exercise 31' }
+  let(:exercise32) { create :exercise, name: 'Exercise 32' }
   let(:lesson11) { create :lesson, name: 'Lesson 11', exercises: [exercise111, exercise112] }
   let(:lesson12) { create :lesson, name: 'Lesson 12', exercises: [exercise121, exercise122] }
   let(:lesson21) { create :lesson, name: 'Lesson 21', exercises: [exercise211, exercise212] }
+  let(:complement3) { build :complement, name: 'Complement 3', exercises: [exercise31, exercise32] }
   let(:chapter1) { create :chapter, name: 'Chapter 1', lessons: [lesson11, lesson12] }
   let(:chapter2) { create :chapter, name: 'Chapter 2', lessons: [lesson21] }
-  let(:book) { create :book, chapters: [chapter1, chapter2] }
+  let(:book) { create :book, chapters: [chapter1, chapter2], complements: [complement3] }
 
   let(:assignment111) { build :assignment, submitter: user, organization: organization, exercise: exercise111, status: :failed }
+  let(:assignment31) { build :assignment, submitter: user, organization: organization, exercise: exercise31, status: :failed }
   let(:discussion111) { build :discussion, initiator: assignment111.user, item: assignment111.exercise, organization: assignment111.organization }
 
   let(:assignment112) { build :assignment, submitter: other_user, organization: organization, exercise: exercise112, status: :failed }
@@ -32,6 +36,7 @@ feature 'Read Only Flow' do
   before { set_current_user! user }
 
   before { assignment111.save! }
+  before { assignment31.save! }
   before { discussion111.save! }
   before { discussion112.save! }
 
@@ -71,6 +76,12 @@ feature 'Read Only Flow' do
           expect(page).to have_text('Exercise 111')
           expect(page).to have_text('Exercise 112')
           expect(page).to have_text('Continue this lesson!')
+        end
+        scenario 'show complement' do
+          visit "/complements/#{complement3.id}"
+          expect(page).to have_text('Complement 3')
+          expect(page).to have_text('Exercise 31')
+          expect(page).to have_text('Exercise 32')
         end
         scenario 'show exercise 111' do
           visit "/exercises/#{exercise111.id}"
@@ -145,6 +156,12 @@ feature 'Read Only Flow' do
           expect(page).to have_text('Exercise 111')
           expect(page).to have_text('Exercise 112')
           expect(page).to have_text('Continue this lesson!')
+        end
+        scenario 'show complement' do
+          visit "/complements/#{complement3.id}"
+          expect(page).to have_text('Complement 3')
+          expect(page).to have_text('Exercise 31')
+          expect(page).to have_text('Exercise 32')
         end
         scenario 'show exercise 111' do
           visit "/exercises/#{exercise111.id}"
@@ -222,6 +239,12 @@ feature 'Read Only Flow' do
           expect(page).not_to have_text('Exercise 112')
           expect(page).not_to have_text('Continue this lesson!')
         end
+        scenario 'show complement' do
+          visit "/complements/#{complement3.id}"
+          expect(page).to have_text('Complement 3')
+          expect(page).to have_text('Exercise 31')
+          expect(page).to_not have_text('Exercise 32')
+        end
         scenario 'show exercise 111' do
           visit "/exercises/#{exercise111.id}"
           expect(page).to have_text('Exercise 111')
@@ -297,6 +320,10 @@ feature 'Read Only Flow' do
           visit "/lessons/#{lesson11.id}"
           expect(page).to have_text('You are not allowed to see this content')
         end
+        scenario 'show complement' do
+          visit "/complements/#{complement3.id}"
+          expect(page).to have_text('You are not allowed to see this content')
+        end
         scenario 'show exercise 111' do
           visit "/exercises/#{exercise111.id}"
           expect(page).to have_text('You are not allowed to see this content')
@@ -370,6 +397,12 @@ feature 'Read Only Flow' do
           expect(page).to have_text('Exercise 112')
           expect(page).to have_text('Continue this lesson!')
         end
+        scenario 'show complement' do
+          visit "/complements/#{complement3.id}"
+          expect(page).to have_text('Complement 3')
+          expect(page).to have_text('Exercise 31')
+          expect(page).to have_text('Exercise 32')
+        end
         scenario 'show exercise 111' do
           visit "/exercises/#{exercise111.id}"
           expect(page).to have_text('Exercise 111')
@@ -434,6 +467,10 @@ feature 'Read Only Flow' do
           visit "/lessons/#{lesson11.id}"
           expect(page).to have_text('This path hasn\'t started yet')
         end
+        scenario 'show complemen' do
+          visit "/complemens/#{complement3.id}"
+          expect(page).to have_text('This path hasn\'t started yet')
+        end
         scenario 'show exercise 111' do
           visit "/exercises/#{exercise111.id}"
           expect(page).to have_text('This path hasn\'t started yet')
@@ -495,6 +532,10 @@ feature 'Read Only Flow' do
           visit "/lessons/#{lesson11.id}"
           expect(page).to have_text('You are not allowed to see this content')
         end
+        scenario 'show complement' do
+          visit "/complements/#{complement3.id}"
+          expect(page).to have_text('You are not allowed to see this content')
+        end
         scenario 'show exercise 111' do
           visit "/exercises/#{exercise111.id}"
           expect(page).to have_text('You are not allowed to see this content')
@@ -548,6 +589,10 @@ feature 'Read Only Flow' do
         end
         scenario 'show lesson' do
           visit "/lessons/#{lesson11.id}"
+          expect(page).to have_text('You are not allowed to see this content')
+        end
+        scenario 'show complement' do
+          visit "/complements/#{complement3.id}"
           expect(page).to have_text('You are not allowed to see this content')
         end
         scenario 'show exercise 111' do
@@ -623,6 +668,12 @@ feature 'Read Only Flow' do
           expect(page).to have_text('Exercise 112')
           expect(page).to have_text('Continue this lesson!')
         end
+        scenario 'show complement' do
+          visit "/complements/#{complement3.id}"
+          expect(page).to have_text('Complement 3')
+          expect(page).to have_text('Exercise 31')
+          expect(page).to have_text('Exercise 32')
+        end
         scenario 'show exercise 111' do
           visit "/exercises/#{exercise111.id}"
           expect(page).to have_text('Exercise 111')
@@ -697,6 +748,12 @@ feature 'Read Only Flow' do
           expect(page).to have_text('Exercise 112')
           expect(page).not_to have_text('Continue this lesson!')
         end
+        scenario 'show complement' do
+          visit "/complements/#{complement3.id}"
+          expect(page).to have_text('Complement 3')
+          expect(page).to have_text('Exercise 31')
+          expect(page).to have_text('Exercise 32')
+        end
         scenario 'show exercise 111' do
           visit "/exercises/#{exercise111.id}"
           expect(page).to have_text('Exercise 111')
@@ -763,6 +820,10 @@ feature 'Read Only Flow' do
           visit "/lessons/#{lesson11.id}"
           expect(page).to have_text('You are not allowed to see this content')
         end
+        scenario 'show complement' do
+          visit "/complements/#{complement3.id}"
+          expect(page).to have_text('You are not allowed to see this content')
+        end
         scenario 'show exercise 111' do
           visit "/exercises/#{exercise111.id}"
           expect(page).to have_text('You are not allowed to see this content')
@@ -817,6 +878,10 @@ feature 'Read Only Flow' do
         end
         scenario 'show lesson' do
           visit "/lessons/#{lesson11.id}"
+          expect(page).to have_text('You are not allowed to see this content')
+        end
+        scenario 'show complement' do
+          visit "/complements/#{complement3.id}"
           expect(page).to have_text('You are not allowed to see this content')
         end
         scenario 'show exercise 111' do
@@ -888,6 +953,12 @@ feature 'Read Only Flow' do
           expect(page).to have_text('Exercise 111')
           expect(page).to have_text('Exercise 112')
           expect(page).to have_text('Continue this lesson!')
+        end
+        scenario 'show complement' do
+          visit "/complements/#{complement3.id}"
+          expect(page).to have_text('Complement 3')
+          expect(page).to have_text('Exercise 31')
+          expect(page).to have_text('Exercise 32')
         end
         scenario 'show exercise 111' do
           visit "/exercises/#{exercise111.id}"

@@ -20,7 +20,7 @@
   </div>
 </div>
 
-<% if @chapter.lessons.present? %>
+<% unless @chapter.lessons.empty? %>
   <% if @chapter.monolesson? %>
     <div> <%= render partial: 'guides/guide', locals: { subject: @monolesson } %> </div>
   <% else %>

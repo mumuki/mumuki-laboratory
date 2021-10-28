@@ -2,18 +2,27 @@ require 'spec_helper'
 
 feature 'Guides Flow', organization_workspace: :test do
   let(:haskell) { create(:haskell) }
-  let!(:exercises) { [
-    create(:exercise, name: 'Foo', guide: guide, number: 1, description: 'Description of foo'),
-    create(:exercise, name: 'Bar', guide: guide, number: 2),
-    create(:exercise, name: 'Baz', guide: guide, number: 4)
-  ] }
-  let(:guide) { create(:guide, name: 'awesomeGuide', description: 'An awesome guide', language: haskell, slug: 'foo/bar', authors: authors) }
+  let(:exercises) do
+    [
+      create(:exercise, name: 'Foo', number: 1, description: 'Description of foo'),
+      create(:exercise, name: 'Bar', number: 2),
+      create(:exercise, name: 'Baz', number: 4)
+    ]
+  end
+  let(:guide) do
+    create(:guide,
+      name: 'awesomeGuide',
+      description: 'An awesome guide',
+      language: haskell,
+      slug: 'foo/bar',
+      authors: authors,
+      exercises: exercises)
+  end
   let(:authors) { nil }
   let(:guide_not_in_path) { create(:guide) }
 
   let!(:lesson) { create(:lesson, guide: guide) }
   let!(:chapter) { create(:chapter, name: 'C1', lessons: [lesson]) }
-
 
   let!(:complement) { create(:complement, name: 'a complement', exercises: [
     create(:exercise, name: 'complementary exercise 1'),
@@ -48,6 +57,19 @@ feature 'Guides Flow', organization_workspace: :test do
   end
 
   context 'existent guide' do
+
+    context 'no exercises' do
+      let(:exercises) { []}
+
+      scenario 'visit lesson by id' do
+        visit "/guides/#{lesson.guide.id}"
+
+        expect(page).to have_text('awesomeGuide')
+        expect(page).to have_text('An awesome guide')
+        expect(page).to_not have_text('Exercises')
+      end
+    end
+
     context 'no authors' do
       let(:authors) { '' }
 

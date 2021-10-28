@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'Immersive redirection Flow', organization_workspace: :test, subdomain_redirection_without_port: true do
   def create_guide(name)
-    create(:guide, name: name)
+    create(:guide, name: name, exercises: [create(:exercise)])
   end
 
   def create_immersive_organization(name, guides)
