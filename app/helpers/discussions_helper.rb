@@ -38,14 +38,14 @@ module DiscussionsHelper
 
   def solve_discussion_params_for(user)
     if user&.moderator_here?
-      {status: :pending_review, sort: :responses_count_asc, requires_moderator_response: true}
+      {status: :pending_review, sort: :responses_count_asc, requires_attention: true}
     else
       {status: :opened, sort: :responses_count_desc}
     end
   end
 
   def default_discussions_params
-    {status: :solved, sort: :upvotes_count_desc}
+    {status: :solved, sort: :created_at_desc, recent: true, limit: 15}
   end
 
   def user_avatar(user, image_class='')
