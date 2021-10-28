@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210929223144) do
+ActiveRecord::Schema.define(version: 20211020224011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -387,6 +387,7 @@ ActiveRecord::Schema.define(version: 20210929223144) do
     t.datetime "deleted_at"
     t.bigint "deleted_by_id"
     t.bigint "assignment_id"
+    t.boolean "from_moderator"
     t.index ["approved_by_id"], name: "index_messages_on_approved_by_id"
     t.index ["assignment_id"], name: "index_messages_on_assignment_id"
     t.index ["deleted_by_id"], name: "index_messages_on_deleted_by_id"
