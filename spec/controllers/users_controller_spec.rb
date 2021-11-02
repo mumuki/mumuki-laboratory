@@ -11,9 +11,8 @@ describe UsersController, type: :controller, organization_workspace: :test do
     }
   end
 
-  before { set_current_user! user }
-
   context 'put' do
+    before { set_current_user! user }
     before { put :update, body: { user: user_json }.to_json, as: :json }
 
     it { expect(User.last.first_name).to eq 'foo' }
@@ -71,6 +70,7 @@ describe UsersController, type: :controller, organization_workspace: :test do
 
   context 'send_delete_confirmation_email' do
     let(:last_email) { ActionMailer::Base.deliveries.last }
+    before { set_current_user! user }
     before { post :send_delete_confirmation_email }
 
     context 'sends a delete confirmation email' do

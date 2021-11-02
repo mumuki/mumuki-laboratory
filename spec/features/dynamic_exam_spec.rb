@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 feature 'Dynamic Exam', organization_workspace: :test do
-  let(:user) { create(:user, id: 1) }
+  let(:user) { create(:user, id: 5) }
   let(:user2) { create(:user, id: 2) }
 
-  let!(:problem) { build(:problem, description: 'do f = $someVariable', randomizations: { someVariable: { type: :one_of, value: %w(some_string some_other_string)} }) }
+  let!(:problem) { build(:problem, description: 'do f = $someVariable', randomizations: { someVariable: { type: :one_of, value: %w(some_string some_other_string) } }) }
 
   let!(:chapter) {
     create(:chapter, lessons: [
@@ -30,7 +30,9 @@ feature 'Dynamic Exam', organization_workspace: :test do
       visit "/exercises/#{problem.transparent_id}"
 
       expect(page).to have_text('do f = some_other_string')
+    end
 
+    scenario 'visit exercise by transparent_id' do
       set_current_user! user2
       visit "/exercises/#{problem.transparent_id}"
 
