@@ -122,7 +122,9 @@ module DiscussionsHelper
   #TODO: this one uses a long method chain in order to take advantage of eager load
   # Delegate it once again when polymorphic association is removed
   def discussions_languages(discussions)
-    @languages ||= discussions.map { |it| it.exercise.language.name }.uniq
+    @languages ||= discussions.distinct
+                              .joins(:exercise)
+                              .pluck('languages.name')
   end
 
   def discussion_status_filter_link(status, discussions)
