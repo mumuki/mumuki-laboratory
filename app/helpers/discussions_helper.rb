@@ -107,8 +107,13 @@ module DiscussionsHelper
     HTML
   end
 
-  def discussion_count_for_status(status, discussions)
-    discussions.scoped_query_by(discussion_filter_params, excluded_params: [:status], excluded_methods: [:page]).by_status(status).count
+  def discussion_status_counts(discussions)
+    discussions.scoped_query_by(discussion_filter_params, excluded_params: [:status], excluded_methods: [:page])
+               .group(:status)
+               .reorder('')
+               .pluck(:status, 'count(*)')
+               .to_h
+               .transform_keys(&:to_sym)
   end
 
   def discussions_reset_query_link
@@ -127,8 +132,16 @@ module DiscussionsHelper
                               .pluck('languages.name')
   end
 
-  def discussion_status_filter_link(status, discussions)
-    discussions_count = discussion_count_for_status(status, discussions)
+  def discussion_status_filter_links(discussions)
+    status_counts = discussion_status_counts(discussions)
+
+    discussions_statuses.map do |status|
+      discussion_status_filter_link(status, status_counts)
+    end.compact.join("\n").html_safe
+  end
+
+  def discussion_status_filter_link(status, status_counts)
+    discussions_count = status_counts[status.to_sym]
     if status.should_be_shown?(discussions_count, current_user)
       discussion_filter_item(:status, status) do
         discussion_status_filter(status, discussions_count)

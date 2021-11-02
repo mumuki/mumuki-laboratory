@@ -3,9 +3,7 @@
   <div class="discussions-toolbar">
     <div class="discussions-toolbar-status">
       <div class="d-none d-lg-block">
-        <% discussions_statuses.each do |status| %>
-          <%= discussion_status_filter_link(status, @discussions) %>
-        <% end %>
+        <%= discussion_status_filter_links(@discussions) %>
       </div>
     </div>
     <div>
