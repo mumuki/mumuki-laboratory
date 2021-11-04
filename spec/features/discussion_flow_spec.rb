@@ -162,8 +162,8 @@ feature 'Discussion Flow', organization_workspace: :test do
       end
 
       context 'and forum enabled' do
-        let!(:problem_2_discussion_message) { create(:message, discussion: problem_2_discussions.first, sender: another_student.uid) }
-        let!(:another_problem_2_discussion_message) { create(:message, discussion: problem_2_discussions.first, sender: another_student.uid) }
+        let!(:problem_2_discussion_message) { create(:message, discussion: problem_2_discussions.first, sender: another_student) }
+        let!(:another_problem_2_discussion_message) { create(:message, discussion: problem_2_discussions.first, sender: another_student) }
         before do
           Organization.current.update! forum_enabled: true
           another_problem_2_discussion_message.soft_delete! :inappropriate_content, moderator
