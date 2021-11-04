@@ -87,6 +87,7 @@ en:
   delete_account_try_again_html: If you still want to delete your account, begin the process again from <a href="%{profile_url}">your profile</a>.
   deleted_by: Deleted by %{deleter}
   deleted_message_warning: If you repeateadly violate these or other rules, you may be prohibited from accessing the forum or you may suffer more severe consequences, such as being expulsed from the course.
+  deleted_user: Deleted User
   deletion_motive:
     inappropriate_content:
       present: Includes inappropriate content
@@ -404,6 +405,7 @@ en:
   upvotes_count_asc: Least voted
   user: User
   user_data_updated: Your data was updated successfully
+  user_deleted_successfully: Your account was successfully deleted
   username: Username
   verified_full_name: Verified name
   verified_full_name_notice: Your verified name was provided by %{organization}. If there's a mistake, please send an email to %{contact}.

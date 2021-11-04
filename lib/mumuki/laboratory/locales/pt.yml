@@ -88,6 +88,7 @@ pt:
   delete_account_try_again_html: Se você ainda deseja excluir sua conta, reinicie o processo em <a href="%{profile_url}">seu perfil</a>.
   deleted_by: Removido pelo %{deleter}
   deleted_message_warning: Se você violar repetidamente essas ou outras regras da Área de Consulta, seu acesso a ela pode ser proibido ou você pode sofrer consequências mais graves, como a expulsão do curso.
+  deleted_user: Conta excluída
   deletion_motive:
     inappropriate_content:
       present: Inclui conteúdo impróprio
@@ -402,6 +403,7 @@ pt:
   to_solved: Marcar como resolvida
   toggle_read: "Marcar como lido / não lido"
   unauthorized_explanation: Opa! Isso é o que é conhecido como %{error}, ou seja, você não fez logon.
+  user_deleted_successfully: Sua conta foi excluída com sucesso
   total: Total
   uncategorized: Não classificado
   unlocked_medal_as_avatar: Você ganhou essa medalha! Agora você pode escolhê-la como avatar.

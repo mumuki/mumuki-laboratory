@@ -87,6 +87,7 @@ es-CL:
   delete_account_try_again_html: Si todavía quieres eliminar tu cuenta, volvé a iniciar el proceso desde <a href="%{profile_url}">tu perfil</a>.
   deleted_by: Eliminado por %{deleter}
   deleted_message_warning: Si infringes reiteradamente estas u otras reglas del Espacio de Consultas, se te puede prohibir el acceso al mismo o podrás sufrir consecuencias más severas, como la expulsión del curso.
+  deleted_user: Cuenta Eliminada
   deletion_motive:
     inappropriate_content:
       present: Incluye contenido inapropiado
@@ -418,6 +419,7 @@ es-CL:
   upvotes_count_desc: Más útiles
   upvotes_count_asc: Menos útiles
   user_data_updated: Tus datos se actualizaron correctamente
+  user_deleted_successfully: Tu cuenta fue eliminada exitosamente
   user: Usuario
   username: Nombre de usuario
   verified_full_name: Nombre verificado
