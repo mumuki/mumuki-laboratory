@@ -53,37 +53,37 @@ module DiscussionsHelper
   end
 
   def forum_terms_link
-    %Q{
+    <<~HTML.html_safe
       <span>
         #{ t(:forum_terms_link, terms_link: link_to_forum_terms).html_safe }
       </span>
-    }.html_safe
+    HTML
   end
 
   def discussion_messages_count(discussion)
-    %Q{
+    <<~HTML.html_safe
       <span class="discussion-messages-count">
         #{fa_icon :comments, type: :regular, text: discussion.messages_count}
       </span>
-    }.html_safe
+    HTML
   end
 
   def discussion_validated_messages_count(discussion)
-    %Q{
+    <<~HTML.html_safe
       <span class="discussion-validated-messages-count">
         #{fa_icon :comment, type: :regular}#{fa_icon :check, text: discussion.validated_messages_count}
       </span>
-    }.html_safe
+    HTML
   end
 
   def discussion_upvotes_icon(discussion)
     if discussion.upvotes_count > 0
-      %Q{
+      <<~HTML.html_safe
         <span class="discussion-icon fa-stack fa-xs">
           <i class="far fa-star fa-stack-2x"></i>
           <i class="fas fa-stack-1x">#{discussion.upvotes_count}</i>
         </span>
-      }.html_safe
+      HTML
     end
   end
 
@@ -99,16 +99,21 @@ module DiscussionsHelper
   end
 
   def new_discussion_link(teaser_text, link_text)
-    %Q{
+    <<~HTML.html_safe
       <h4>
         <span>#{t(teaser_text)}</span>
         #{link_to t(link_text), new_exercise_discussion_path(@debatable, anchor: 'new-discussion-description-container') }
       </h4>
-    }.html_safe
+    HTML
   end
 
-  def discussion_count_for_status(status, discussions)
-    discussions.scoped_query_by(discussion_filter_params, excluded_params: [:status], excluded_methods: [:page]).by_status(status).count
+  def discussion_status_counts(discussions)
+    discussions.scoped_query_by(discussion_filter_params, excluded_params: [:status], excluded_methods: [:page])
+               .group(:status)
+               .reorder('')
+               .pluck(:status, 'count(*)')
+               .to_h
+               .transform_keys(&:to_sym)
   end
 
   def discussions_reset_query_link
@@ -127,8 +132,16 @@ module DiscussionsHelper
                               .pluck('languages.name')
   end
 
-  def discussion_status_filter_link(status, discussions)
-    discussions_count = discussion_count_for_status(status, discussions)
+  def discussion_status_filter_links(discussions)
+    status_counts = discussion_status_counts(discussions)
+
+    discussions_statuses.map do |status|
+      discussion_status_filter_link(status, status_counts)
+    end.compact.join("\n").html_safe
+  end
+
+  def discussion_status_filter_link(status, status_counts)
+    discussions_count = status_counts[status.to_sym] || 0
     if status.should_be_shown?(discussions_count, current_user)
       discussion_filter_item(:status, status) do
         discussion_status_filter(status, discussions_count)
@@ -137,17 +150,17 @@ module DiscussionsHelper
   end
 
   def discussion_status_filter(status, discussions_count)
-    %Q{
-    #{discussion_status_fa_icon(status)}
+    <<~HTML.html_safe
+      #{discussion_status_fa_icon(status)}
       <span>
         #{t("#{status}_count", count: discussions_count)}
       </span>
-    }.html_safe
+    HTML
   end
 
   def discussion_dropdown_filter(label, filters, can_select_all = false, &block)
     if filters.present?
-      %Q{
+      <<~HTML.html_safe
         <div class="dropdown discussions-toolbar-filter">
           <a id="dropdown-#{label}" data-bs-toggle="dropdown" role="menu">
             #{t label} #{fa_icon :'caret-down', class: 'fa-xs'}
@@ -157,7 +170,7 @@ module DiscussionsHelper
             #{discussion_filter_list(label, filters, &block)}
           </ul>
         </div>
-      }.html_safe
+      HTML
     end
   end
 
@@ -246,7 +259,7 @@ module DiscussionsHelper
   end
 
   def discussion_delete_message_dropdown(discussion, message)
-    %Q{
+    <<~HTML.html_safe
       <span class="dropdown">
         #{content_tag :span, fa_icon('trash-alt', type: :regular, class: 'fa-lg'), role: 'menu', 'data-bs-toggle': 'dropdown',
                       class: 'discussion-delete-message', id: 'deleteDiscussionDropdown'}
@@ -256,17 +269,17 @@ module DiscussionsHelper
           #{discussion_delete_message_option discussion, message, :discloses_personal_information, 'user-tag'}
         </ul>
       </span>
-    }.html_safe
+    HTML
   end
 
   def discussion_delete_message_option(discussion, message, motive, icon)
-    %Q{
+    <<~HTML.html_safe
       <li>
         #{link_to fa_icon(icon, text: t("deletion_motive.#{motive}.present"), class: 'fa-fw fixed-icon'),
                   discussion_message_path(discussion, message, motive: motive), method: :delete, class: 'dropdown-item',
                   role: 'menuitem', data: { confirm: t(:are_you_sure, action: t(:destroy_message)) } }
       </li>
-    }.html_safe
+    HTML
   end
 
   def message_deleted_text(message)
