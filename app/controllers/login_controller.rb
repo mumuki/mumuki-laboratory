@@ -9,6 +9,11 @@ class LoginController < ApplicationController
                      :ensure_restore_progress!,
                      :visit_organization!
 
+  def logout_current_user!
+    flash.keep
+    super
+  end
+
   private
 
   def organization_name

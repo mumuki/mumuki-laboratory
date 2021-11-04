@@ -58,8 +58,7 @@ class UsersController < ApplicationController
 
     @user.destroy!
 
-    flash.notice = I18n.t(:user_deleted_successfully)
-    redirect_to logout_path
+    redirect_to logout_path, notice: I18n.t(:user_deleted_successfully)
   end
 
   def permissible_params
