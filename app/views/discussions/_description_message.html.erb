@@ -2,10 +2,12 @@
   <div class="discussion-message-bubble">
     <div class="discussion-message-bubble-header">
       <div class="discussion-message-bubble-title">
-        <%= linked_discussion_user_name(discussion.initiator) %>
-        <span class="message-date">
-          <%= friendly_time(discussion.created_at, :time_since) %>
-        </span>
+        <div class="flex-fill">
+          <%= linked_discussion_user_name(discussion.initiator) %>
+          <span class="message-date">
+            <%= friendly_time(discussion.created_at, :time_since) %>
+          </span>
+        </div>
       </div>
     </div>
     <div class="discussion-message-bubble-content">

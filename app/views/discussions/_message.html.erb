@@ -2,14 +2,16 @@
   <div class="discussion-message-bubble">
     <div class="discussion-message-bubble-header">
       <div class="discussion-message-bubble-title">
-        <%= linked_discussion_user_name user %>
-        <% if message.from_moderator? %>
-          <span class="moderator-badge"><%= t(:moderation) %></span>
-        <% end %>
-        <span class="message-date">
-          <%= friendly_time(message.created_at, :time_since) %>
-        </span>
-        <span class="actions">
+        <div class="flex-fill">
+          <%= linked_discussion_user_name user %>
+          <% if message.from_moderator? %>
+            <span class="moderator-badge"><%= t(:moderation) %></span>
+          <% end %>
+          <span class="message-date">
+            <%= friendly_time(message.created_at, :time_since) %>
+          </span>
+        </div>
+        <span class="actions flex-shrink-0">
           <% if message.authorized?(current_user) && !message.deleted? %>
             <% if current_user&.moderator_here? %>
               <a class="discussion-message-approved <%= 'selected' if message.approved? %>"
