@@ -5,13 +5,13 @@
 <div class="row">
   <div class="mu-inline-block-left">
     <h1>
-      <%= t :delete_account %>
+      <%= t :email_sent %>
     </h1>
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <%= t :delete_account_confirmation_email_explain_html, user_email: @user.email, support_email: Rails.configuration.support_email %>
+    <%= t :delete_account_confirmation_email_explain_html, user_email: @user.email, disable_email: Rails.configuration.disable_email %>
   </div>
 </div>

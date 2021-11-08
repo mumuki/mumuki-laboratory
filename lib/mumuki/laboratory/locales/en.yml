@@ -76,15 +76,14 @@ en:
   date_and_time: Date and time
   delete_account: Delete account
   delete_account_agree: I understand the consequences and want to delete my account
-  delete_account_confirmation_email_explain_html: <p>We sent you an email to <a href="%{user_email}">%{user_email}</a> to continue with the removal process.
+  delete_account_confirmation_email_explain_html: <p>We've sent you an email to <strong>%{user_email}</strong> to continue with the removal process. </p><p> Please, check your inbox. If you have not received it, please contact us at <a href="mailto:%{disable_email}">%{disable_email}</a>.</p>
   delete_account_confirmation_request: To confirm this action, please write
-  delete_account_confirmation_text: delete my account
-  delete_account_explain: After deleting your account, you will lose access to all contents as well as your progress.
-  delete_account_invalid_token: We are sorry, the link has expired or is invalid.
-  delete_account_modal_explain_html: You're about to delete the account for <strong>%{name}</strong>
-  delete_account_modal_lost_permissions: 'By doing that, you will lose access to the following paths:'
+  delete_account_explain: Upon deleting your account, you will lose access to your progress as well as your personal data.
+  delete_account_invalid_token: We are sorry, the link you followed here has expired or is invalid.
+  delete_account_modal_explain_html: To keep your account safe, we'll send you an email to <strong>%{user_email}</strong> to continue the deletion process.
+  delete_account_modal_lost_permissions: 'By deleting your account, you will lose access to the following courses:'
   delete_account_mumuki: Delete your Mumuki account
-  delete_account_try_again_html: If you still want to delete your account, begin the process again from <a href="%{profile_url}">your profile</a>.
+  delete_account_try_again_html: If you still want to delete your account, start the process again from <a href="%{profile_url}">your profile</a>.
   deleted_by: Deleted by %{deleter}
   deleted_message_warning: If you repeateadly violate these or other rules, you may be prohibited from accessing the forum or you may suffer more severe consequences, such as being expulsed from the course.
   deleted_user: Deleted User
@@ -118,6 +117,7 @@ en:
   edit_profile: Edit profile
   editor_placeholder: "write your solution here..."
   email: Email
+  email_sent: Email sent
   error:
     title:
       forbidden: You are not allowed to see this content
@@ -217,12 +217,12 @@ en:
       exam_authorization_request_rejected: Exam registration rejected
       exam_registration: Exam registrations open
     subtitle:
-      delete_account: We're sorry to see you go
+      delete_account: You've requested to delete your Mumuki account
       exam_authorization_request_approved: Your registration request to the exam has been approved.
       exam_authorization_request_rejected: Your registration request to the exam has been rejected because the requirements weren't met.
       exam_registration: ¡You can register for the exam!
     text:
-      delete_account: But don't worry! if you decide to try again, you can always create a new account.
+      delete_account: Once your account is deleted, your progress and personal data will be deleted as well and you will not be able to access this account again or request the restoration of the deleted information. <br><br> This is irreversible and permanent. <br><br> Do you understand the consequences and still want to delete your account?
       exam_authorization_request_approved: You can sit for the exam on %{exam_start_date} by going into the platform. ¡Good luck!
       exam_authorization_request_rejected: ¡Don't be upset! You did a great job and we hope you'll keep learning programming.
       exam_registration: You have until %{exam_registration_deadline} to sign up. In order to be approved, you must meet the requirements.

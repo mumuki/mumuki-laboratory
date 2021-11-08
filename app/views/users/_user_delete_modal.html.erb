@@ -1,12 +1,5 @@
-<script type="text/javascript" charset="utf-8">
-  function checkConfirmationText() {
-    const val = $('#confirm-delete-input').val();
-    $('#delete-account-button').prop('disabled', val !== '<%= t :delete_account_confirmation_text %>');
-  }
-</script>
-
 <div class="modal fade" id="user-delete-account-modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog d-table">
+  <div class="modal-dialog modal-lg d-table">
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title"><%= t :delete_account %></h4>
@@ -15,7 +8,7 @@
       <div class="modal-body">
         <div class="container-fluid">
           <div class="row">
-            <p><%= t :delete_account_modal_explain_html, name: @user.name %></p>
+            <p><%= t :delete_account_modal_explain_html, user_email: @user.email %></p>
           </div>
           <% if @user.student_granted_organizations.present? %>
             <div class="row">
@@ -31,18 +24,8 @@
             </div>
           <% end %>
           <div class="row">
-            <p>
-              <%= t :delete_account_confirmation_request %>:
-              <br>
-              <b><%= t :delete_account_confirmation_text %></b>
-            </p>
-          </div>
-          <div class="row">
             <%= form_with class: 'mu-form', url: delete_request_user_path do |f| %>
-              <fieldset class="form-group">
-                <input class="form-control" type="text" id="confirm-delete-input" autocomplete="off" onkeyup="checkConfirmationText()">
-              </fieldset>
-              <%= f.submit t(:delete_account_agree), class: 'btn btn-danger w-100', id: 'delete-account-button', disabled: true %>
+              <%= f.submit t(:delete_account_agree), class: 'btn btn-danger w-100', id: 'delete-account-button' %>
             <% end %>
           </div>
         </div>

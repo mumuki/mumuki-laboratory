@@ -77,15 +77,14 @@ pt:
   date_and_time: Data e hora
   delete_account: Deletar conta
   delete_account_agree: Eu entendo as consequências e quero excluir minha conta
-  delete_account_confirmation_email_explain_html: <p> Enviamos a você um e-mail para <a href="%{user_email}">%{user_email}</a> para continuar com o processo de remoção.
+  delete_account_confirmation_email_explain_html: <p> Enviamos a você um e-mail para <strong>%{user_email}</strong> para continuar com o processo de exclusão. </p><p> Por favor, verifique sua caixa. Se você não o recebeu, escreva para <a href="mailto:%{disable_email}">%{disable_email}</a>.</p>
   delete_account_confirmation_request: Para confirmar esta ação, por favor escreva
-  delete_account_confirmation_text: deletar minha conta
-  delete_account_explain: Depois de excluir sua conta, você perderá o acesso a todo o conteúdo e ao seu progresso.
-  delete_account_invalid_token: Desculpe, o link que trouxe você aqui expirou ou é inválido.
-  delete_account_modal_explain_html: Você está prestes a excluir a conta <strong>%{name}</strong>
-  delete_account_modal_lost_permissions: 'Ao fazer isso, você perderá o acesso aos seguintes caminhos:'
+  delete_account_explain: Excluir sua conta também excluirá seu progresso e todos os seus dados pessoais.
+  delete_account_invalid_token: Desculpe, o link que você usou expirou ou é inválido.
+  delete_account_modal_explain_html: Por razões de segurança, para excluir sua conta, enviaremos um e-mail para seu e-mail <strong>%{user_email}</strong>.
+  delete_account_modal_lost_permissions: 'Ao deletar sua conta você perderá acesso aos seguintes cursos:'
   delete_account_mumuki: Exclua sua conta Mumuki
-  delete_account_try_again_html: Se você ainda deseja excluir sua conta, reinicie o processo em <a href="%{profile_url}">seu perfil</a>.
+  delete_account_try_again_html: Se você ainda deseja excluir sua conta, inicie o processo novamente a partir de <a href="%{profile_url}">seu perfil</a>.
   deleted_by: Removido pelo %{deleter}
   deleted_message_warning: Se você violar repetidamente essas ou outras regras da Área de Consulta, seu acesso a ela pode ser proibido ou você pode sofrer consequências mais graves, como a expulsão do curso.
   deleted_user: Conta excluída
@@ -121,6 +120,7 @@ pt:
   edit_profile: Editar perfil
   editor_placeholder: ... Escreva sua solução aqui ...
   email: E-mail
+  email_sent: Email enviado
   error:
     title:
       forbidden: Você não tem autorização para ver esse conteúdo
@@ -221,12 +221,12 @@ pt:
       exam_authorization_request_rejected: Inscrição rejeitada
       exam_registration: Abertura de inscrições
     subtitle:
-      delete_account: Lamentamos que você nos tenha deixado
+      delete_account: Você solicitou a exclusão de sua conta Mumuki
       exam_authorization_request_approved: Seu pedido de inscrição para o exame foi aprovado.
       exam_authorization_request_rejected: Sua inscrição para o exame foi rejeitada porque os requisitos não foram atendidos.
       exam_registration: Agora você pode se inscrever para o exame!
     text:
-      delete_account: Mas não se preocupe! Se você decidir tentar novamente, sempre poderá criar uma nova conta.
+      delete_account: Assim que sua conta for excluída, seu progresso e todos os seus dados pessoais também serão excluídos e você não poderá acessar esta conta novamente ou solicitar a restauração futura das informações. <br><br> Esta ação é irreversível e permanente. <br><br> Você entende as consequências e ainda deseja excluir sua conta?
       exam_authorization_request_approved: Você poderá fazer o exame em %{exam_start_date} ao entrar na plataforma. Êxitos!
       exam_authorization_request_rejected: Não te desanimes! Você fez um grande esforço e esperamos que continue aprendendo programação.
       exam_registration: Você tem tempo para se registrar até o exam_registration_deadline. Para que seu registro seja aceito, você deve atender aos requisitos.
