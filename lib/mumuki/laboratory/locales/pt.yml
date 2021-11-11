@@ -75,8 +75,19 @@ pt:
   created_guides: Lições criadas
   date: Data
   date_and_time: Data e hora
-  deleted_by: Removido pelo
+  delete_account: Deletar conta
+  delete_account_agree: Eu entendo as consequências e quero excluir minha conta
+  delete_account_confirmation_email_explain_html: <p> Enviamos a você um e-mail para <strong>%{user_email}</strong> para continuar com o processo de exclusão. </p><p> Por favor, verifique sua caixa. Se você não o recebeu, escreva para <a href="mailto:%{disable_email}">%{disable_email}</a>.</p>
+  delete_account_confirmation_request: Para confirmar esta ação, por favor escreva
+  delete_account_explain: Excluir sua conta também excluirá seu progresso e todos os seus dados pessoais.
+  delete_account_invalid_token: Desculpe, o link que você usou expirou ou é inválido.
+  delete_account_modal_explain_html: Por razões de segurança, para excluir sua conta, enviaremos um e-mail para seu e-mail <strong>%{user_email}</strong>.
+  delete_account_modal_lost_permissions: 'Ao deletar sua conta você perderá acesso aos seguintes cursos:'
+  delete_account_mumuki: Exclua sua conta Mumuki
+  delete_account_try_again_html: Se você ainda deseja excluir sua conta, inicie o processo novamente a partir de <a href="%{profile_url}">seu perfil</a>.
+  deleted_by: Removido pelo %{deleter}
   deleted_message_warning: Se você violar repetidamente essas ou outras regras da Área de Consulta, seu acesso a ela pode ser proibido ou você pode sofrer consequências mais graves, como a expulsão do curso.
+  deleted_user: Conta excluída
   deletion_motive:
     inappropriate_content:
       present: Inclui conteúdo impróprio
@@ -109,6 +120,7 @@ pt:
   edit_profile: Editar perfil
   editor_placeholder: ... Escreva sua solução aqui ...
   email: E-mail
+  email_sent: Email enviado
   error:
     title:
       forbidden: Você não tem autorização para ver esse conteúdo
@@ -203,23 +215,27 @@ pt:
   locked_content: 'Este conteúdo será desbloqueado quando você terminar os capítulos anteriores'
   mailer:
     title:
+      custom: Você tem uma nova notificação!
+      delete_account: Confirme a exclusão da conta
       exam_authorization_request_updated: Você tem alterações no registro do seu exame
       exam_authorization_request_rejected: Inscrição rejeitada
       exam_registration: Abertura de inscrições
-      custom: Você tem uma nova notificação!
     subtitle:
+      delete_account: Você solicitou a exclusão de sua conta Mumuki
       exam_authorization_request_approved: Seu pedido de inscrição para o exame foi aprovado.
       exam_authorization_request_rejected: Sua inscrição para o exame foi rejeitada porque os requisitos não foram atendidos.
       exam_registration: Agora você pode se inscrever para o exame!
     text:
+      delete_account: Assim que sua conta for excluída, seu progresso e todos os seus dados pessoais também serão excluídos e você não poderá acessar esta conta novamente ou solicitar a restauração futura das informações. <br><br> Esta ação é irreversível e permanente. <br><br> Você entende as consequências e ainda deseja excluir sua conta?
       exam_authorization_request_approved: Você poderá fazer o exame em %{exam_start_date} ao entrar na plataforma. Êxitos!
       exam_authorization_request_rejected: Não te desanimes! Você fez um grande esforço e esperamos que continue aprendendo programação.
       exam_registration: Você tem tempo para se registrar até o exam_registration_deadline. Para que seu registro seja aceito, você deve atender aos requisitos.
     button:
+      custom: Minhas notificações
+      delete_account: Deletar conta
       exam_registration: Assinar o exame
       exam_authorization_request_approved: Vá para a plataforma
       exam_authorization_request_rejected: Meus exames
-      custom: Minhas notificações
   male: Masculino
   manage_notification_subscriptions: Gerenciar suas notificações
   manage_notifications: Gerenciar notificações
@@ -228,7 +244,6 @@ pt:
   message: Mensagem
   message_deleted: Esta mensagem foi excluída porque %{motive}, o que viola as %{forum_terms}.
   messages: Mensagens
-    mais tarde!
   messages_pluralized:
     one: Mensagem
     other: Mensagens
@@ -388,6 +403,7 @@ pt:
   to_solved: Marcar como resolvida
   toggle_read: "Marcar como lido / não lido"
   unauthorized_explanation: Opa! Isso é o que é conhecido como %{error}, ou seja, você não fez logon.
+  user_deleted_successfully: Sua conta foi excluída com sucesso
   total: Total
   uncategorized: Não classificado
   unlocked_medal_as_avatar: Você ganhou essa medalha! Agora você pode escolhê-la como avatar.

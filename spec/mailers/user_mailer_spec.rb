@@ -68,7 +68,7 @@ RSpec.describe UserMailer, type: :mailer do
     it "renders the headers" do
       expect(reminder.subject).to eq("We miss you!")
       expect(reminder.to).to eq([user.email])
-      expect(reminder.from).to eq(["support@mumuki.org"])
+      expect(reminder.from).to eq(["no-reply@mumuki.org"])
     end
 
     context 'last reminded over 1 week ago' do
@@ -134,7 +134,7 @@ RSpec.describe UserMailer, type: :mailer do
     it "renders the headers" do
       expect(reminder.subject).to eq("Start using Mumuki!")
       expect(reminder.to).to eq([user.email])
-      expect(reminder.from).to eq(["support@mumuki.org"])
+      expect(reminder.from).to eq(["no-reply@mumuki.org"])
     end
 
     context 'last reminded over 1 week ago' do
@@ -189,7 +189,7 @@ RSpec.describe UserMailer, type: :mailer do
     it { expect(email.body.encoded).to eq 'hello some name!' }
 
     context 'when organization does not have a custom sender address' do
-      it { expect(email.from).to eq ['support@mumuki.org'] }
+      it { expect(email.from).to eq ['no-reply@mumuki.org'] }
     end
 
     context 'when organization does not have a custom sender address' do
@@ -197,5 +197,12 @@ RSpec.describe UserMailer, type: :mailer do
 
       it { expect(email.from).to eq ['info@mumuki.org'] }
     end
+  end
+
+  describe 'delete account email' do
+    let(:user) { create(:user, delete_account_token: 'SecreT1234', last_organization: central) }
+    let(:email) { UserMailer.delete_account(user) }
+
+    it { expect(email.body.encoded).to include 'central.localmumuki.io/user/delete_confirmation?token=SecreT1234' }
   end
 end

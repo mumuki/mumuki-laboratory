@@ -63,9 +63,6 @@ Rails.application.routes.draw do
       get :terms
       post :terms, to: 'users#accept_profile_terms'
 
-      # Notification subscriptions
-      get :unsubscribe
-
       get :messages
       get :discussions
       get :activity
@@ -76,6 +73,12 @@ Rails.application.routes.draw do
       post 'notifications/:id/toggle_read', action: :toggle_read
       get 'notifications/manage', action: :show_manage_notifications
       post 'notifications/manage', action: :manage_notifications
+
+      get :delete_account
+      get :delete_request
+      post :delete_request, to: 'users#send_delete_confirmation_email'
+      get :delete_confirmation_invalid
+      get :delete_confirmation
     end
 
     resources :faqs, only: [:index]

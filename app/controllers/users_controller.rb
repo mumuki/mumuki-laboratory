@@ -47,11 +47,18 @@ class UsersController < ApplicationController
     @exam_authorization_requests ||= ExamAuthorizationRequest.where(user: current_user, organization: Organization.current)
   end
 
-  def unsubscribe
-    user_id = User.unsubscription_verifier.verify(params[:id])
-    User.find(user_id).unsubscribe_from_reminders!
+  def send_delete_confirmation_email
+    current_user.generate_delete_account_token!
+    UserMailer.delete_account(current_user).post!
+    redirect_to delete_request_user_path
+  end
 
-    redirect_to root_path, notice: t(:unsubscribed_successfully)
+  def delete_confirmation
+    return redirect_to delete_confirmation_invalid_user_path unless @user.delete_account_token_matches? params[:token]
+
+    @user.destroy!
+
+    redirect_to logout_path, notice: I18n.t(:user_deleted_successfully)
   end
 
   def permissible_params

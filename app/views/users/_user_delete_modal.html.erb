@@ -1,0 +1,35 @@
+<div class="modal fade" id="user-delete-account-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg d-table">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title"><%= t :delete_account %></h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <p><%= t :delete_account_modal_explain_html, user_email: @user.email %></p>
+          </div>
+          <% if @user.student_granted_organizations.present? %>
+            <div class="row">
+              <p><%= t :delete_account_modal_lost_permissions %></p>
+            </div>
+            <div class="row">
+              <% @user.student_granted_organizations.each do |organization| %>
+                <div class="col-md-4 text-center">
+                  <%= image_tag(organization.banner_url, width: '100%', class: 'pull-left') %>
+                  <p><%= organization.name %></p>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+          <div class="row">
+            <%= form_with class: 'mu-form', url: delete_request_user_path do |f| %>
+              <%= f.submit t(:delete_account_agree), class: 'btn btn-danger w-100', id: 'delete-account-button' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

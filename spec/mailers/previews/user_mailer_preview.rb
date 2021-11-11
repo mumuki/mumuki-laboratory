@@ -40,6 +40,10 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.notification notification
   end
 
+  def delete_account
+    UserMailer.delete_account user
+  end
+
   private
 
   def exam_registration

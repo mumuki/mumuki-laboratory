@@ -113,7 +113,7 @@ feature 'Immersive redirection Flow', organization_workspace: :test, subdomain_r
     end
 
     def choose_organization(name)
-      within '.modal' do
+      within '#organization-chooser-modal' do
         click_on "Go to #{name}"
       end
     end

@@ -1,0 +1,7 @@
+<%= render partial: 'user_mailer/mail_template', locals: {
+  title: t('mailer.title.delete_account'),
+  subtitle: t('mailer.subtitle.delete_account'),
+  text: t('mailer.text.delete_account').html_safe,
+  button: t('mailer.button.delete_account'),
+  url: delete_account_url_for(@user)
+} %>

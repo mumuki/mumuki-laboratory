@@ -22,6 +22,12 @@ class UserMailer < ApplicationMailer
     end
   end
 
+  def delete_account(user)
+    with_locale(user) do
+      build_email t(:delete_account_mumuki), 'delete_account'
+    end
+  end
+
   def certificate(certificate)
     with_locale certificate.user, certificate.organization do
       attachments[certificate.filename] = pdf_for(certificate)
@@ -39,7 +45,6 @@ class UserMailer < ApplicationMailer
 
   def with_locale(user, organization = nil, &block)
     @user = user
-    @unsubscribe_code = User.unsubscription_verifier.generate(user.id)
     @organization = organization || user.last_organization
 
     I18n.with_locale(@organization.locale, &block)

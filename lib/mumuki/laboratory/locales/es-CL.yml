@@ -74,8 +74,19 @@ es-CL:
   created_guides: Lecciones Creadas
   date: Fecha
   date_and_time: Fecha y hora
+  delete_account: Eliminar cuenta
+  delete_account_agree: Enviar mail para eliminar cuenta
+  delete_account_confirmation_email_explain_html: <p>Te enviamos un correo electrónico a <strong>%{user_email}</strong> para continuar con el proceso de eliminación. </p><p> Por favor, revisá tu casilla. Si no lo recibiste, escríbenos a <a href="mailto:%{disable_email}">%{disable_email}</a>.</p>
+  delete_account_confirmation_request: Para confirmar esta acción, escribí
+  delete_account_explain: Al eliminar tu cuenta se eliminarán también tu progreso y todos tus datos personales.
+  delete_account_invalid_token: Lo sentimos, el enlace que utilizaste ha expirado o es inválido.
+  delete_account_modal_explain_html: Por cuestiones de seguridad, para eliminar tu cuenta te enviaremos un mail a tu casilla <strong>%{user_email}</strong>.
+  delete_account_modal_lost_permissions: 'Al eliminar tu cuenta perderás el acceso a los siguientes cursos:'
+  delete_account_mumuki: Eliminar tu cuenta de Mumuki
+  delete_account_try_again_html: Si todavía quieres eliminar tu cuenta, vuelve a iniciar el proceso desde <a href="%{profile_url}">tu perfil</a>.
   deleted_by: Eliminado por %{deleter}
   deleted_message_warning: Si infringes reiteradamente estas u otras reglas del Espacio de Consultas, se te puede prohibir el acceso al mismo o podrás sufrir consecuencias más severas, como la expulsión del curso.
+  deleted_user: Cuenta Eliminada
   deletion_motive:
     inappropriate_content:
       present: Incluye contenido inapropiado
@@ -107,6 +118,7 @@ es-CL:
   edit_message: Editar mensaje
   editor_placeholder: "...escribe tu solución acá..."
   email: Email
+  email_sent: Email enviado
   error_description: Esto es lo que se conoce como <span class="error-link">%{error}</span>.
   error_401: error 401
   error_403: error 403
@@ -203,23 +215,27 @@ es-CL:
   locked_content: 'Éste contenido se desbloqueará cuando termines los capítulos anteriores'
   mailer:
     title:
+      custom: ¡Tenés una nueva notificación!
+      delete_account: Confirmar eliminación de cuenta
       exam_authorization_request_updated: Tenés cambios en tu inscripción al examen
       exam_authorization_request_rejected: Inscripción rechazada
       exam_registration: Apertura de inscripciones
-      custom: ¡Tenés una nueva notificación!
     subtitle:
+      delete_account: Solicitaste eliminar tu cuenta de Mumuki
       exam_authorization_request_approved: Tu solicitud de inscripción al examen fue aprobada.
       exam_authorization_request_rejected: Tu solicitud de inscripción al examen fue rechazada ya que no se cumplieron los requisitos.
       exam_registration: ¡Ya podés inscribirte al examen!
     text:
+      delete_account: Una vez que se elimine tu cuenta se eliminarán también tu progreso y todos tus datos personales y no podrás volver a acceder a esta cuenta ni pedir la restitución futura de la información. <br><br> Esta acción es irreversible y permanente. <br><br> ¿Entiendes las consecuencias y aún así quieres eliminar tu cuenta?
       exam_authorization_request_approved: Podrás rendir el examen el día %{exam_start_date} ingresando a la plataforma. ¡Éxitos!
       exam_authorization_request_rejected: ¡No te desanimes! Hiciste un gran esfuerzo y esperamos que continúes aprendiendo programación.
       exam_registration: Tenés tiempo de inscribirte hasta el %{exam_registration_deadline}. Para que tu inscripción sea aceptada debés cumplir con los requisitos.
     button:
+      custom: Mis notificaciones
+      delete_account: Eliminar Cuenta
       exam_registration: Inscribirme al Examen
       exam_authorization_request_approved: Ir a la plataforma
       exam_authorization_request_rejected: Mis exámenes
-      custom: Mis notificaciones
   male: Hombre
   manage_notification_subscriptions: Administrá tus notificaciones
   manage_notifications: Administrar notificaciones
@@ -403,6 +419,7 @@ es-CL:
   upvotes_count_desc: Más útiles
   upvotes_count_asc: Menos útiles
   user_data_updated: Tus datos se actualizaron correctamente
+  user_deleted_successfully: Tu cuenta fue eliminada exitosamente
   user: Usuario
   username: Nombre de usuario
   verified_full_name: Nombre verificado

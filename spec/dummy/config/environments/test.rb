@@ -49,6 +49,9 @@ Rails.application.configure do
                            credentials: {},
                            info: {first_name: 'John', last_name: 'Doe', name: 'John Doe', nickname: 'johndoe'}
 
-  config.reminder_sender_email = 'support@mumuki.org'
+  config.reminder_sender_email = 'no-reply@mumuki.org'
+  config.support_email = 'soporte@mumuki.org'
+  config.disable_email = 'bajas@mumuki.org'
+
   config.reminder_frequency = 7
 end
