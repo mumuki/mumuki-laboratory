@@ -1,5 +1,77 @@
-mumuki.SubmissionsStore = (() => {
+mumuki.SubmissionsStore = (()=> {
+  class AllLocalSubmissions {
+    /**
+     * @param {string} key
+     * @returns {SubmissionAndResult}
+     */
+     read(key) {
+      const submissionAndResult = window.localStorage.getItem(key);
+      if (!submissionAndResult) return null;
+      return JSON.parse(submissionAndResult);
+    }
+
+    /**
+     * @param {string} key
+     * @param {SubmissionAndResult} submissionAndResult
+     */
+    write(key, submissionAndResult) {
+      window.localStorage.setItem(key, this._asString(submissionAndResult));
+    }
+
+    clear() {
+      window.localStorage.clear();
+    }
+
+    /**
+     * Serializes the submission and result.
+     * Private attributes are ignored
+     */
+    _asString(submissionAndResult) {
+      return JSON.stringify(submissionAndResult, (key, value) => {
+        if (!key.startsWith("_")) return value
+      });
+    }
+  }
+
+  class OnlyLastSubmission {
+    constructor() {
+      this.lastSubmissionKey = null;
+      this.lastSubmissionAndResult = null;
+    }
+
+    /**
+     * @param {string} key
+     * @returns {SubmissionAndResult}
+     */
+     read(key) {
+      return key === this.lastSubmissionKey ? this.lastSubmissionAndResult : null;
+    }
+
+    /**
+     * @param {string} key
+     * @param {SubmissionAndResult} submissionAndResult
+     */
+    write(key, submissionAndResult) {
+      this.lastSubmissionKey = key;
+      this.lastSubmissionAndResult = submissionAndResult;
+    }
+
+    clear() {
+      this.lastSubmissionKey = null;
+      this.lastSubmissionAndResult = null;
+    }
+  }
+
   const SubmissionsStore = new class {
+    constructor() {
+      this.backends = {
+        AllLocalSubmissions: new AllLocalSubmissions(),
+        OnlyLastSubmission: new OnlyLastSubmission()
+      };
+      /** @type {AllLocalSubmissions | OnlyLastSubmission} */
+      this.backend = this.backends.AllLocalSubmissions;
+    }
+
     /**
      * Returns the submission's result status for the last submission to
      * the given exercise, or pending, if not present
@@ -20,9 +92,7 @@ mumuki.SubmissionsStore = (() => {
      * @returns {SubmissionAndResult}
      */
     getLastSubmissionAndResult(exerciseId) {
-      const submissionAndResult = window.localStorage.getItem(this._keyFor(exerciseId));
-      if (!submissionAndResult) return null;
-      return JSON.parse(submissionAndResult);
+      return this.backend.read(this._keyFor(exerciseId));
     }
 
     /**
@@ -32,7 +102,7 @@ mumuki.SubmissionsStore = (() => {
      * @param {SubmissionAndResult} submissionAndResult
      */
     setSubmissionResultFor(exerciseId, submissionAndResult) {
-      window.localStorage.setItem(this._keyFor(exerciseId), this._asString(submissionAndResult));
+      this.backend.write(this._keyFor(exerciseId), submissionAndResult);
     }
 
     /**
@@ -84,26 +154,15 @@ mumuki.SubmissionsStore = (() => {
     }
 
     clear() {
-      window.localStorage.clear();
+      this.backend.clear();
     }
 
     // private API
-
-    /**
-     * Serializes the submission and result.
-     * Private attributes are ignored
-     */
-    _asString(submissionAndResult) {
-      return JSON.stringify(submissionAndResult, (key, value) => {
-        if (!key.startsWith("_")) return value
-      });
-    }
 
     _keyFor(exerciseId) {
       return `/organization/${mumuki.organization.id}/user/${mumuki.user.id}/exercise/${exerciseId}/submission`;
     }
   }();
-
   return SubmissionsStore;
 })();
 
