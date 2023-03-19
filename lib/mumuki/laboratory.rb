@@ -29,9 +29,6 @@ class Mumuki::Laboratory::Engine < ::Rails::Engine
   config.i18n.available_locales = Mumukit::Platform::Locale.supported
 end
 
-# module Mumukit::Platform::OrganizationMapping 
-# end
-
 module Mumukit::Platform::OrganizationMapping::Path
   class << self
     alias_method :__organization_name__, :organization_name
