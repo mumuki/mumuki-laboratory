@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:15.2
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+      - ./docker/postgres:/docker-entrypoint-initdb.d/
+
+  rabbitmq:
+    image: rabbitmq:3.11.10
+    environment:
+      - RABBITMQ_DEFAULT_USER=rabbitmq
+      - RABBITMQ_DEFAULT_PASS=rabbitmq
+    ports:
+      - 5672:5672
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq
+
+  laboratory:
+    build:
+      dockerfile: docker/Dockerfile
+      context: .
+    ports:
+      - 8082:8080
+    volumes:
+      - ./lib:/usr/src/app/lib:ro
+
+volumes:
+  postgres:
+    driver: local
+  rabbitmq:
+    driver: local
