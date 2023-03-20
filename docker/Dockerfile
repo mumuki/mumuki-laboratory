@@ -9,11 +9,10 @@ WORKDIR /usr/src/app
 COPY Gemfile ./
 COPY mumuki-laboratory.gemspec ./
 COPY lib/mumuki/laboratory/version.rb lib/mumuki/laboratory/version.rb
-# COPY lib/ lib/
 
 RUN bundle install
 COPY . .
 
-EXPOSE 8080
-# CMD ["rails", "server", "-b", "0.0.0.0"]
-CMD sleep infinity
+RUN chmod +x docker/start.sh docker/init.sh
+
+ENTRYPOINT [ "docker/start.sh" ]

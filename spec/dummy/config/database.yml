@@ -1,19 +1,19 @@
-common: &common
-  adapter: postgresql
-  encoding: unicode
-  host: localhost
-  pool: 5
-  username: mumuki
-  password: mumuki
+# common: &common
+#   adapter: postgresql
+#   encoding: unicode
+#   host: localhost
+#   pool: 5
+#   username: mumuki
+#   password: mumuki
 
-test:
-  <<: *common
-  database: mumuki_test
-  pool: 5
-  timeout: 5000
+# test:
+#   <<: *common
+#   database: mumuki_test
+#   pool: 5
+#   timeout: 5000
 
-development:
-  <<: *common
-  database: mumuki_development
-  pool: 5
-  timeout: 5000
+# development:
+#   <<: *common
+#   database: mumuki_development
+#   pool: 5
+#   timeout: 5000

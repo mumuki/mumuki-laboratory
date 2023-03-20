@@ -24,10 +24,11 @@ services:
     build:
       dockerfile: docker/Dockerfile
       context: .
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres/mumuki_test
+    command: init
     ports:
-      - 8082:8080
-    volumes:
-      - ./lib:/usr/src/app/lib:ro
+      - 3000:3000
 
 volumes:
   postgres:

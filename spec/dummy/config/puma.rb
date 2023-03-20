@@ -4,7 +4,7 @@ threads threads_count, threads_count
 
 preload_app!
 
-rackup      DefaultRackup
+# rackup      DefaultRackup
 port        ENV['MUMUKI_LABORATORY_PORT']       || 3000
 environment ENV['RAILS_ENV'] || ENV['RACK_ENV'] || 'development'
 
