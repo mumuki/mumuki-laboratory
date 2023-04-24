@@ -10,6 +10,9 @@ gem 'mini_racer', '~> 0.4'
 gem 'uglifier', '~> 2.7'
 gem 'sanitize', '~> 6.0'
 
+gem 'mumukit-inspection', github: 'mumuki/mumukit-inspection', branch: 'feature-eslint-warnings'
+gem 'mumuki-domain', github: 'mumuki/mumuki-domain', branch: 'feature-eslint-warnings'
+
 group :test do
   gem 'rspec-rails', '~> 3.6'
   gem 'factory_bot_rails', '~> 5.0'
